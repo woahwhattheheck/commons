@@ -10,7 +10,7 @@ from urllib.parse import urlparse
 SCHEMA = "txst-ai-advising-qualification/v1"
 SOLICITATION_ID = "754-TXST-2027-RFP-513-VPGOI"
 SOLICITATION_TITLE = "Artificial Intelligence (AI) Powered Advising Platform"
-DEADLINE_UTC = "2026-09-28T22:00:00Z"
+DISCOVERY_DEADLINE_UTC = "2026-09-28T22:00:00Z"
 
 # These are intentionally absent until exact official packet / retained evidence bytes
 # are acquired and independently reviewed. Candidate JSON cannot populate them.
@@ -160,10 +160,10 @@ def _official_host(url: str) -> bool:
     parsed = urlparse(url)
     return parsed.scheme == "https" and parsed.hostname in OFFICIAL_HOSTS
 
-def _validate_official_authority(authority: Any, raw: bytes, trusted_sha: str | None) -> tuple[bool, list[str]]:
+def _validate_official_authority(authority: Any, raw: bytes, trusted_sha: str | None) -> tuple[bool, datetime | None, list[str]]:
     blockers: list[str] = []
     if trusted_sha is None:
-        return False, ["official packet bytes/root not retained in reviewed source"]
+        return False, None, ["official packet bytes/root not retained in reviewed source"]
     if sha256(raw) != trusted_sha:
         raise ContractError("official authority bytes do not match retained root")
     a = _must_exact_keys(
@@ -175,6 +175,7 @@ def _validate_official_authority(authority: Any, raw: bytes, trusted_sha: str | 
             "packet_generation",
             "packet_complete",
             "captured_at_utc",
+            "deadline_utc",
             "source_url",
             "documents",
             "requirements",
@@ -187,6 +188,7 @@ def _validate_official_authority(authority: Any, raw: bytes, trusted_sha: str | 
         raise ContractError("official authority solicitation identity mismatch")
     _safe_text(a["packet_generation"], "packet_generation", max_len=96)
     _parse_utc(a["captured_at_utc"])
+    official_deadline = _parse_utc(a["deadline_utc"])
     if type(a["packet_complete"]) is not bool:
         raise ContractError("packet_complete must be bool")
     if not _official_host(_safe_text(a["source_url"], "source_url", max_len=500)):
@@ -227,7 +229,7 @@ def _validate_official_authority(authority: Any, raw: bytes, trusted_sha: str | 
             raise ContractError("requirement is not bound to exact official document digest")
     if not a["packet_complete"]:
         blockers.append("official packet capture explicitly incomplete")
-    return a["packet_complete"], blockers
+    return a["packet_complete"], official_deadline, blockers
 
 def _validate_evidence_ledger(
     evidence: Any,
@@ -287,15 +289,15 @@ def _compile_at(
     if now.tzinfo is None or now.utcoffset() is None:
         raise ContractError("evaluation time must be timezone aware")
     now = now.astimezone(timezone.utc).replace(microsecond=0)
-    deadline = _parse_utc(DEADLINE_UTC)
     blockers: list[str] = []
     warnings: list[str] = []
 
     official_ok = False
+    official_deadline: datetime | None = None
     if official_raw is None:
         blockers.append("official controlling RFP package not acquired")
     else:
-        official_ok, found = _validate_official_authority(
+        official_ok, official_deadline, found = _validate_official_authority(
             strict_loads(official_raw), official_raw, trusted_official_sha
         )
         blockers.extend(found)
@@ -330,13 +332,13 @@ def _compile_at(
     combined = owner_proven | partner_proven
     missing_team = sorted(set(OWNER_GATES) - combined)
 
-    if now > deadline:
+    if not official_ok:
+        state = "HOLD_OFFICIAL_PACKET_REQUIRED"
+        route_states = {"PRIME": "HOLD_OFFICIAL_PACKET_REQUIRED", "TEAMING": "HOLD_OFFICIAL_PACKET_REQUIRED"}
+    elif official_deadline is not None and now > official_deadline:
         state = "NO_RESPONSE_DEADLINE_PASSED"
         route_states = {"PRIME": "CLOSED", "TEAMING": "CLOSED"}
         blockers.append("controlling response deadline passed")
-    elif not official_ok:
-        state = "HOLD_OFFICIAL_PACKET_REQUIRED"
-        route_states = {"PRIME": "HOLD_OFFICIAL_PACKET_REQUIRED", "TEAMING": "HOLD_OFFICIAL_PACKET_REQUIRED"}
     else:
         if not missing_prime:
             prime = "READY_FOR_OWNER_PRIME_REVIEW"
@@ -378,7 +380,12 @@ def _compile_at(
         "solicitation": {
             "id": SOLICITATION_ID,
             "title": SOLICITATION_TITLE,
-            "deadline_utc": DEADLINE_UTC,
+            "discovery_deadline_utc": DISCOVERY_DEADLINE_UTC,
+            "official_deadline_utc": (
+                official_deadline.strftime("%Y-%m-%dT%H:%M:%SZ")
+                if official_deadline is not None
+                else None
+            ),
         },
         "evaluation_class": "HISTORICAL_INTEGRITY_ONLY" if historical else "CURRENT_OWNER_REVIEW",
         "evaluated_at_utc": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
