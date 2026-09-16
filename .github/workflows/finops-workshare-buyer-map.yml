@@ -1,0 +1,31 @@
+name: finops-workshare-buyer-map
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/finops_workshare_buyer_map/**'
+      - 'tests/test_finops_workshare_buyer_map.py'
+      - '.github/workflows/finops-workshare-buyer-map.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'revenue/finops_workshare_buyer_map/**'
+      - 'tests/test_finops_workshare_buyer_map.py'
+      - '.github/workflows/finops-workshare-buyer-map.yml'
+
+concurrency:
+  group: finops-workshare-buyer-map-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m py_compile revenue/finops_workshare_buyer_map/*.py tests/test_finops_workshare_buyer_map.py
+      - run: python -m unittest -v tests.test_finops_workshare_buyer_map
+      - run: python -O -m unittest -v tests.test_finops_workshare_buyer_map
