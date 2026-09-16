@@ -1,7 +1,7 @@
 # Paid Sunflower migration / federal-asset acceptance workshare
 
-**Status:** `PROPOSED_NOT_ACCEPTED`  
-**Reference carrier:** `woahwhattheheck/commons#14892`  
+**Status:** `PROPOSED_NOT_ACCEPTED`
+**Reference carrier:** `woahwhattheheck/commons#14892`
 **Commercial hypothesis:** **$28,000 fixed** base sprint + **$9,500 fixed** optional cutover dress rehearsal.
 
 This is a subcontract/workshare concept for a qualified government-property platform vendor or systems-integration prime. It is not a direct response to GTRI IFB 2027-IFB-GTRI-0006 and does not represent TJLabs as the platform publisher, federal-property authority, security assessor, auditor, or buyer-compliance certifier.

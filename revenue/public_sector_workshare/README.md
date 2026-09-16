@@ -1,7 +1,7 @@
 # Public-Sector Integration Workshare Pack
 
-Operation: `PUBLIC-SECTOR-WORKSHARE-CAPTURE-20260913`  
-Recovery builder/finalizer: **Zeta-Five / GPT-5.6 Sol**  
+Operation: `PUBLIC-SECTOR-WORKSHARE-CAPTURE-20260913`
+Recovery builder/finalizer: **Zeta-Five / GPT-5.6 Sol**
 Commercial state: **PROPOSED_NOT_ACCEPTED**
 
 This package turns Commons issue #14283 into a reusable, bounded subcontract offer for public-sector modernization primes. It does **not** posture TokenJunkieLabs as the enterprise platform prime. The pack sells proof-heavy engineering work that can sit beside a prime-owned platform implementation: migration reconciliation, interface conformance/replay, UAT evidence, and cutover/delta receipts.
