@@ -38,6 +38,7 @@
     ".github/workflows/moving-main-mirror.yml",
     ".github/workflows/muhlnickel-foundry-cloud.yml",
     ".github/workflows/muhlnickel-spec-guard.yml",
+    ".github/workflows/ohsu-digital-pathology-evidence.yml",
     ".github/workflows/open-door-guard.yml",
     ".github/workflows/open-repo-backup.yml",
     ".github/workflows/owner-net.yml",
@@ -749,12 +750,6 @@
       "archive": "ci/workflow-recipes/offering-bundle-composer.yml",
       "sha256": "a5e53a34e5af509adcb370220f2a3a16655c95a87b2467c759da78ac479ce4fb",
       "bytes": 1344
-    },
-    {
-      "source": ".github/workflows/ohsu-digital-pathology-evidence.yml",
-      "archive": "ci/workflow-recipes/ohsu-digital-pathology-evidence.yml",
-      "sha256": "a805325ef06259a7ac5ceef1a0c3267d0d23ddce96e404666365fb9f50b73061",
-      "bytes": 1797
     },
     {
       "source": ".github/workflows/ohsu-erp-rfp-2027-0005.yml",
