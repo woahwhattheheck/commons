@@ -17,7 +17,7 @@ Supported events are:
 - `HANDOFF` — owner handoff after a positive/conditional reply.
 - `TERMINAL` — `NO_FIT`, `DECLINED`, or `CLOSED` terminal state.
 
-The compiler rejects or holds contradictory history: provider message/thread replay across candidates, send before the qualifying evidence existed, duplicate sends without exact exception evidence, exception reuse, replies before sends or on a different provider thread, handoff before a positive/conditional reply, decline without a negative reply, future/stale evidence, and events after terminal disposition.
+The compiler rejects or holds contradictory history: provider message replay anywhere in the normalized packet (including two events under the same candidate), provider thread reuse across different candidates, send before the qualifying evidence existed, duplicate sends without exact exception evidence, exception reuse, replies before sends or on a different provider thread, handoff before a positive/conditional reply, decline without a negative reply, future/stale evidence, and events after terminal disposition. Replay is fail-closed for **every affected candidate**; packet ordering cannot bless the first owner while holding only a later duplicate. Reusing one provider thread inside the same candidate remains valid because a conversation naturally carries several distinct message IDs.
 
 Raw email addresses, message bodies, paths, credentials, secrets, and contact strings are intentionally absent from the durable schema. Recipient routes are represented by digest only; provider message/thread IDs are evidence identities, never permission.
 
@@ -42,9 +42,9 @@ python -m revenue.partner_conversion_ledger.cli verify \
   /tmp/partner-conversion-report.json
 ```
 
-`compile` samples process UTC. The public current verifier first proves the historical receipt and then recompiles current semantic state, so stale qualification evidence cannot remain current merely because an old receipt is byte-valid.
+`compile` samples process UTC. The public current verifier first proves the historical receipt and then recompiles semantic state with a process-UTC compiler captured when the module is initialized. Ordinary rebinding of module-global helper names cannot select a different clock or compiler afterward. This prevents a cooperative same-process caller from turning a byte-valid historical receipt into `CURRENT_VERIFIED` merely by swapping those helper globals. Arbitrary interpreter memory/source replacement remains outside this offline library's threat boundary; `CURRENT_VERIFIED` is evidence classification only and grants no external authority.
 
-Inputs are strict UTF-8 JSON with duplicate-key and non-finite-number rejection. CLI input is bounded regular-file only; outputs are create-exclusive and refuse overwrite/symlink targets. The package performs no network calls.
+Inputs are strict UTF-8 JSON with duplicate-key and non-finite-number rejection. CLI input is bounded regular-file only. JSON and Markdown outputs are create-exclusive and the entire pair is reserved before either payload is written. The writer retains the owned file descriptors through write and identity/size validation. Failure rollback never pathname-deletes a reserved output: it best-effort truncates only the retained owned inode and closes it. A still-visible owned path may therefore remain as a fail-visible zero-byte tombstone that requires explicit operator cleanup. This tradeoff is intentional because portable pathname deletion cannot atomically say “unlink only if this name still identifies my inode”; a same-directory foreign successor must never be deleted by rollback. The package performs no network calls.
 
 ## Validation
 
@@ -56,7 +56,7 @@ python -m unittest -v revenue.partner_conversion_ledger.test_ledger_core revenue
 python -O -m unittest -v revenue.partner_conversion_ledger.test_ledger_core revenue.partner_conversion_ledger.test_ledger_runtime
 ```
 
-The checked-in synthetic fixture contains no real recipient address, email body, credential, buyer data, or provider secret.
+The hostile suite includes symmetric cross-candidate provider replay, same-candidate message-ID replay, same-candidate thread continuity, exact follow-up exception binding, stale/current receipt drift, and output substitution/collision rollback that proves foreign successor bytes survive. The checked-in synthetic fixture contains no real recipient address, email body, credential, buyer data, or provider secret.
 
 ## Authority ceiling
 
