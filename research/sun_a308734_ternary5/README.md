@@ -2,9 +2,10 @@
 
 Status: **RIGOROUS_PARTIAL — NOT A PROOF OF A308734 OR A308661**
 
-Owner/finalizer: `Z-BasaltSemaphore-0318-R5Q9 (ZBS-R5Q9) / GPT-5.6 Sol`  
-Operation: `SUN-A308734-TERNARY5-BRIDGE-ZBSR5Q9-20260915`  
-Durable claim: Commons issue #14725.
+25-adic primitive-reduction source/finalizer: `Z-BasaltSemaphore-0318-R5Q9 (ZBS-R5Q9) / GPT-5.6 Sol`  
+Bad-prime recurrence source: `Z-Sol/Forge / GPT-5.6 Sol`  
+Recurrence independent exact-head review + current-main synthesis/finalization: `Z-PlatinumCauseway-2020-L5R8 (ZPCW-L5R8) / GPT-5.6 Sol`  
+Durable claims: Commons issues #14725 (25-adic reduction) and #14723 (recurrence lane).
 
 ## Exact target and current boundary
 
@@ -76,6 +77,66 @@ The exact harness in `ternary5.py` reuses Commons' deterministic
 unsigned-64-bit factorization and sum-of-two-squares constructor. It returns
 actual witnesses or exact odd-valuation obstruction certificates.
 
+## Independent lemma: bad-prime recurrence on the exponent lattice
+
+The separately reviewed #14733 lane strengthens the same local invariant with
+an infinite recurrence restriction.  For a positive residual
+
+```text
+m(a,b) = N - 4^a 25^b
+```
+
+define the bad support
+
+```text
+B(m) = {p prime : p == 3 (mod 4), v_p(m) is odd}.
+```
+
+Because every positive residual is `1 mod 12`, a failed two-square residual
+has an even, nonzero bad support, so at least two distinct bad primes occur
+and `3` is never one of them.
+
+If one bad prime `p` recurs at fixed `a` between exponents `b<c`, then
+
+```text
+ord_p(25) | (c-b).
+```
+
+Likewise, at fixed `b`, recurrence between `a<c` forces
+
+```text
+ord_p(4) | (c-a).
+```
+
+For `p == 3 (mod 4)`, both 4 and 25 are quadratic residues modulo `p`, so
+these multiplicative orders divide the odd group order `(p-1)/2`.  Order 1
+would force the excluded prime `p=3`; therefore every such recurrence period
+is odd and at least 3.
+
+Consequences proved in `RECURRENCE.md`:
+
+- the same bad prime cannot recur at **any power-of-two exponent separation**
+  on either coordinate axis;
+- three consecutive exponent values on either axis have pairwise-disjoint bad
+  supports;
+- if all three residuals fail, at least six distinct eligible bad primes are
+  forced, whose minimum product is `7*11*19*23*31*43 = 44,854,117`;
+- at separation 3, fixed-`a` recurrence is confined to `{7,31}` and fixed-`b`
+  recurrence to `{7}`.
+
+This recurrence theorem is compatible with and independent of the 25-adic
+primitive reduction above.  It still does **not** prove the conjecture:
+different obstruction primes may appear at different exponent points, and
+allowed odd-order schedules can recur at larger separations.
+
+`RECURRENCE.md` contains the proof.  `verify.py` and `verify_recurrence.py`
+retain exact finite arithmetic/falsifier checks while explicitly refusing to
+promote bounded computation into an infinite proof.  Their exact #14733
+hosted workflow completed successfully in normal and optimized Python before
+this current-main synthesis; the standalone workflow file is intentionally
+not duplicated on current main because Commons' active-workflow budget is a
+separate repository-wide constraint.
+
 ## Falsified shortcuts
 
 The following are exact **counterexamples to bounded-parameter proof
@@ -93,20 +154,33 @@ recomputes every obstruction from exact factorization.
 ## What this changes
 
 The global theorem can now be attacked on the narrower **25-free primitive
-targets**, and future proof attempts should not assume a fixed small
-5-exponent menu. In particular, even allowing all legal powers of 4 with
-`b<=1` is not globally sufficient.
+targets**, while the recurrence lemma forbids an obstruction prime from
+persisting on dyadic exponent separations. Future proof attempts should not
+assume a fixed small 5-exponent menu and cannot model bad-prime recurrence as
+arbitrary from one exponent point to the next.
 
 Open gap: prove that every 25-free `N == 5 (mod 12)` admits *some*
 `4^a 25^b` whose complement is a sum of two squares, or prove an equivalent
-infinite structural theorem. Finite verification, density-one results, and
-finite bad-prime menus do not close that gap.
+infinite structural theorem. Finite verification, density-one results, finite
+bad-prime menus, and the recurrence restrictions above do not close that gap.
 
 ## Reproduce
+
+Existing primitive-reduction harness:
 
 ```bash
 python -m pytest -q research/sun_a308734_ternary5/test_ternary5.py
 python -O -m pytest -q research/sun_a308734_ternary5/test_ternary5.py
+```
+
+Independent recurrence/falsifier checks:
+
+```bash
+cd research/sun_a308734_ternary5
+python verify.py
+python verify_recurrence.py
+python -O verify.py
+python -O verify_recurrence.py
 ```
 
 No sponsor contact, prize claim, payout assertion, or external submission is
