@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 121,
-    "open_pull_requests": 71,
-    "runs_in_progress": 14,
-    "runs_queued": 394
+    "open_pull_requests": 73,
+    "runs_in_progress": 15,
+    "runs_queued": 491
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,24 +69,79 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "ztsw-h6q8/right-now-human-authority-recovery",
-      "created_at": "2026-09-16T13:16:14Z",
+      "branch": "zov-k8r6/niwc-evidenceaar-recovery-20260916",
+      "created_at": "2026-09-16T13:31:53Z",
       "draft": false,
-      "head_sha": "de8a405da9f7104d8af6d6791c5fd6cb14f12042",
-      "number": 14849,
-      "title": "Recover right-now human reply authority on live revenue control",
-      "updated_at": "2026-09-16T13:18:12Z"
+      "head_sha": "48ee5b8ee72692fea7d00f14f7dff5ed2816660e",
+      "number": 14858,
+      "title": "Build EvidenceAAR NIWC Digital Scribe source carrier",
+      "updated_at": "2026-09-16T13:35:28Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zch-m6p2/bidder-vault-v2-candidate-recovery-20260916",
-      "created_at": "2026-09-16T13:15:01Z",
+      "branch": "ztsw-h6q8/service-deal-economics-quote-expiry",
+      "created_at": "2026-09-16T13:27:45Z",
       "draft": false,
-      "head_sha": "b2b6f7ae73a4c86eeaa5ba8c8ab306cfbc236086",
-      "number": 14848,
-      "title": "Revenue: recover bidder vault v2 as candidate-only evidence compiler",
-      "updated_at": "2026-09-16T13:16:38Z"
+      "head_sha": "90db7d58103130638f27ba62778151ec41775d61",
+      "number": 14856,
+      "title": "Recover Service Deal Economics authority and restore quote-expiry fence",
+      "updated_at": "2026-09-16T13:35:36Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zblm-w7r4/water4all-2026-red-recovery",
+      "created_at": "2026-09-16T13:27:30Z",
+      "draft": false,
+      "head_sha": "e733ef5fb004c1d14e5a6cb5c01c4a531f83520c",
+      "number": 14855,
+      "title": "Recover Water4All 2026 readiness carrier with fail-closed authority",
+      "updated_at": "2026-09-16T13:33:08Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zpb-h7n4/pinellas-current-authority-v4-20260916",
+      "created_at": "2026-09-16T13:24:06Z",
+      "draft": false,
+      "head_sha": "bfb51b4e80b73b24e42bfe89c281eb23d173551b",
+      "number": 14853,
+      "title": "Revenue: finalize Pinellas current custody authority boundary",
+      "updated_at": "2026-09-16T13:35:13Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zch-r7n5/osuchsh-migration-authority-current-main-20260916",
+      "created_at": "2026-09-16T13:20:04Z",
+      "draft": false,
+      "head_sha": "7693bb7d89a18d5ea98d0a74830da0aab1301efe",
+      "number": 14851,
+      "title": "Revenue: finalize OSU-CHS resident-data carrier with source-bound migration authority",
+      "updated_at": "2026-09-16T13:20:46Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zcal-l9v6/dv026-external-action-eval",
+      "created_at": "2026-09-16T13:19:58Z",
+      "draft": false,
+      "head_sha": "09929ce23670d855b19c47befa1182972d4f0fd5",
+      "number": 14850,
+      "title": "feat(dv026): evaluate externally supplied black-box actions",
+      "updated_at": "2026-09-16T13:35:45Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "ztsw-h6q8/right-now-human-authority-recovery",
+      "created_at": "2026-09-16T13:16:14Z",
+      "draft": false,
+      "head_sha": "64f6bc6e05e3e830baa68f1541bb49c82537cf35",
+      "number": 14849,
+      "title": "Recover right-now human reply authority on live revenue control",
+      "updated_at": "2026-09-16T13:34:42Z"
     },
     {
       "author": "woahwhattheheck",
@@ -94,10 +149,10 @@
       "branch": "z-cobaltswitchyard/sasria-ai-training-20260916",
       "created_at": "2026-09-16T12:58:53Z",
       "draft": false,
-      "head_sha": "6ce2f5d9ba14b23ea0e3745f3f3b219dc8993a43",
+      "head_sha": "8603597d72d08f537c8df01dadb505c6d2d9385e",
       "number": 14842,
       "title": "Sasria RFP2026/22: add AI-training teaming readiness carrier",
-      "updated_at": "2026-09-16T13:16:40Z"
+      "updated_at": "2026-09-16T13:26:40Z"
     },
     {
       "author": "woahwhattheheck",
@@ -108,7 +163,7 @@
       "head_sha": "4b2b2d40246e45e2ef84b637dc5a6c28e4e66707",
       "number": 14838,
       "title": "fix(revenue): bind opportunity qualifier source authority",
-      "updated_at": "2026-09-16T12:52:21Z"
+      "updated_at": "2026-09-16T13:21:36Z"
     },
     {
       "author": "woahwhattheheck",
@@ -119,62 +174,7 @@
       "head_sha": "6a75e5568d805b47a803e29003584ed59cfd9d47",
       "number": 14837,
       "title": "fix(revenue): recover Service Deal authority and enforce quote expiry",
-      "updated_at": "2026-09-16T12:54:20Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zpb-h7n4/pinellas-current-trust-recovery-20260916",
-      "created_at": "2026-09-16T12:48:36Z",
-      "draft": false,
-      "head_sha": "17d7a4e9e3a1952ac29174305b5bcb6cbe1175f4",
-      "number": 14833,
-      "title": "Revenue: recover Pinellas current custody trust boundary",
-      "updated_at": "2026-09-16T13:05:40Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-cobaltswitchyard/legal-aid-copilot-agents-20260916",
-      "created_at": "2026-09-16T12:47:39Z",
-      "draft": false,
-      "head_sha": "87b07933f663cfd28c651979eb7363e1f0c8d093",
-      "number": 14832,
-      "title": "Legal Aid Chicago: add Copilot training evidence gate",
-      "updated_at": "2026-09-16T13:18:22Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zch-m6p2/army-sbir-14299-current-main-recovery-20260916",
-      "created_at": "2026-09-16T12:40:59Z",
-      "draft": false,
-      "head_sha": "6edab3481ff600a5087b16cf571e94df92c8b928",
-      "number": 14828,
-      "title": "Revenue: recover ARM26BX06-NV012 decision carrier after authority RED",
-      "updated_at": "2026-09-16T13:04:15Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsl-p7m4/swfwmd-rtff-evidence-recovery-20260916",
-      "created_at": "2026-09-16T12:38:05Z",
-      "draft": false,
-      "head_sha": "f1b87ee6dc1e5b5242c660c0c7f1bca250e18511",
-      "number": 14827,
-      "title": "Recover and harden SWFWMD RTFF forecast-evidence workstream",
-      "updated_at": "2026-09-16T12:41:47Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zrs-j6m4/sun-a308734-current-main-recovery-20260916",
-      "created_at": "2026-09-16T12:36:30Z",
-      "draft": false,
-      "head_sha": "d092e81a4e111e480a4b4010c7017e3687f43068",
-      "number": 14826,
-      "title": "Recover Sun A308734 P18 frontier on current main",
-      "updated_at": "2026-09-16T13:06:05Z"
+      "updated_at": "2026-09-16T13:20:48Z"
     }
   ],
   "open_heads": {
@@ -183,7 +183,6 @@
     "14122": "1c95d8463cbaf7e6d11d266d292a5b7792a2dbbb",
     "14188": "1859cf0bfc12f2819f3f63fd4349ed06ca5f341b",
     "14299": "cd6a66435851b57f61c5a68c4ab7f8356701f910",
-    "14314": "742aeafae8c258759c435bf6758e1546ff258c56",
     "14317": "b49030a2ff320730415263803d878825970fa6b9",
     "14321": "1810cbac9e1fc9a0beddfcb13af37f6aa60726aa",
     "14333": "26e7110348d2ab0d994adf68d5e0f14ad8677e38",
@@ -231,7 +230,6 @@
     "14810": "13b45573c20f1d8761869149e710463d5617fb23",
     "14811": "c9ded734df239a4f5b7b281d72f5f9d005aeb344",
     "14813": "8076873e07f6f9ca9bdfa0f13423846dabeb6f94",
-    "14814": "9053181a89bae861917f178500f65fd1274176b7",
     "14816": "ee1f843ea27a9062834b0c5807723f04dc811205",
     "14819": "a22cfefd953bf251521140192212d5887165a53b",
     "14820": "fc9e80d0d176598640e54569dd949c997551daf9",
@@ -241,19 +239,89 @@
     "14824": "da8cc45aa63934fe741e415381d2127c7e2afe4a",
     "14826": "d092e81a4e111e480a4b4010c7017e3687f43068",
     "14827": "f1b87ee6dc1e5b5242c660c0c7f1bca250e18511",
-    "14828": "6edab3481ff600a5087b16cf571e94df92c8b928",
+    "14828": "ac622b31c0a647582253514172a738168dfffa6e",
     "14832": "87b07933f663cfd28c651979eb7363e1f0c8d093",
-    "14833": "17d7a4e9e3a1952ac29174305b5bcb6cbe1175f4",
     "14837": "6a75e5568d805b47a803e29003584ed59cfd9d47",
     "14838": "4b2b2d40246e45e2ef84b637dc5a6c28e4e66707",
-    "14842": "6ce2f5d9ba14b23ea0e3745f3f3b219dc8993a43",
-    "14848": "b2b6f7ae73a4c86eeaa5ba8c8ab306cfbc236086",
-    "14849": "de8a405da9f7104d8af6d6791c5fd6cb14f12042"
+    "14842": "8603597d72d08f537c8df01dadb505c6d2d9385e",
+    "14849": "64f6bc6e05e3e830baa68f1541bb49c82537cf35",
+    "14850": "09929ce23670d855b19c47befa1182972d4f0fd5",
+    "14851": "7693bb7d89a18d5ea98d0a74830da0aab1301efe",
+    "14853": "bfb51b4e80b73b24e42bfe89c281eb23d173551b",
+    "14855": "e733ef5fb004c1d14e5a6cb5c01c4a531f83520c",
+    "14856": "90db7d58103130638f27ba62778151ec41775d61",
+    "14858": "48ee5b8ee72692fea7d00f14f7dff5ed2816660e"
   },
-  "pulls_listed": 71,
+  "pulls_listed": 73,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 28.1,
+  "queue_depth_per_runner": 32.7,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zvlh/slack-mirror-uncertain-recovery-20260916",
+      "closed_at": "2026-09-16T13:32:31Z",
+      "head_sha": "59f58f5512e39c86710ff9e949bf935832a0c39d",
+      "merged_at": null,
+      "number": 14854,
+      "state": "CLOSED",
+      "title": "CLOSED DUPLICATE \u2014 fix(slack): recover durable mirror with first-call uncertain receipts"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zpb-h7n4/pinellas-current-trust-recovery-20260916",
+      "closed_at": "2026-09-16T13:25:15Z",
+      "head_sha": "17d7a4e9e3a1952ac29174305b5bcb6cbe1175f4",
+      "merged_at": null,
+      "number": 14833,
+      "state": "CLOSED",
+      "title": "Revenue: recover Pinellas current custody trust boundary"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zke-r9v2/ohsu-ap-ai-rfi-approof-recovery",
+      "closed_at": "2026-09-16T13:24:20Z",
+      "head_sha": "9053181a89bae861917f178500f65fd1274176b7",
+      "merged_at": null,
+      "number": 14814,
+      "state": "CLOSED",
+      "title": "feat(revenue): recover OHSU APProof shadow carrier"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zch-r7n5/ohsu-approof-authority-current-main-20260916",
+      "closed_at": "2026-09-16T13:23:57Z",
+      "head_sha": "d58810d7be41da3bd04628d83aab0f409f74eaae",
+      "merged_at": "2026-09-16T13:23:56Z",
+      "number": 14852,
+      "state": "MERGED",
+      "title": "Revenue: finalize OHSU APProof with code-owned hard-false authority"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zds-c7r2/bidder-vault-v2-14280",
+      "closed_at": "2026-09-16T13:23:02Z",
+      "head_sha": "742aeafae8c258759c435bf6758e1546ff258c56",
+      "merged_at": "2026-09-16T13:23:02Z",
+      "number": 14314,
+      "state": "MERGED",
+      "title": "Revenue: harden bidder qualification vault with entity-bound v2"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zch-m6p2/bidder-vault-v2-candidate-recovery-20260916",
+      "closed_at": "2026-09-16T13:23:01Z",
+      "head_sha": "a034c5a5e5ee04c9458809d284e888766d67088a",
+      "merged_at": "2026-09-16T13:23:01Z",
+      "number": 14848,
+      "state": "MERGED",
+      "title": "Revenue: recover bidder vault v2 as candidate-only evidence compiler"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -352,76 +420,10 @@
       "number": 14831,
       "state": "MERGED",
       "title": "Revenue: qualify Colorado Springs ERP Consultant Services"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol09/pursuit-portfolio-trust-custody-20260913",
-      "closed_at": "2026-09-16T12:44:12Z",
-      "head_sha": "8c56dd0fa7679e5eb8de8e76b5ee41f0aa2f885b",
-      "merged_at": null,
-      "number": 13910,
-      "state": "CLOSED",
-      "title": "Revenue: authenticate pursuit portfolio authority and file custody"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zca-n7q4/catawba-erp-evidence-20260916",
-      "closed_at": "2026-09-16T12:43:36Z",
-      "head_sha": "fce409cd56c22c4617892f561e81d719b2425e45",
-      "merged_at": "2026-09-16T12:43:36Z",
-      "number": 14809,
-      "state": "MERGED",
-      "title": "feat(revenue): add Catawba ERP implementation evidence workstream"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zrs-v8m2/titan-v4-evaluator-child-mode-compose",
-      "closed_at": "2026-09-16T11:49:57Z",
-      "head_sha": "681a46decf6d580e5fccb29938cf058d4cb7fba4",
-      "merged_at": null,
-      "number": 14704,
-      "state": "CLOSED",
-      "title": "TITAN V4: close evaluator authority chain after #14686"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zoh-v9q3/paid-proof-provenance-current-main",
-      "closed_at": "2026-09-16T11:41:09Z",
-      "head_sha": "3c2919782b6d8f14e8d5f6a99369c37a7e61496a",
-      "merged_at": null,
-      "number": 14785,
-      "state": "CLOSED",
-      "title": "Revenue: recover paid-proof provenance on current main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zhc-q8m3/paid-proof-current-main-finalization-20260916",
-      "closed_at": "2026-09-16T11:40:40Z",
-      "head_sha": "6ad20741a4488361e946a9fb16b5322be4322a81",
-      "merged_at": "2026-09-16T11:40:40Z",
-      "number": 14818,
-      "state": "MERGED",
-      "title": "Revenue: finalize verified paid-proof provenance on current main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-cobaltfurnace-0707/opportunity-identity-alias-fresh-main",
-      "closed_at": "2026-09-16T11:19:28Z",
-      "head_sha": "24f578000233dd82aaf0cf858252a5c5ae9e6097",
-      "merged_at": null,
-      "number": 14815,
-      "state": "CLOSED",
-      "title": "revenue: land opportunity identity alias registry on fresh main"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-16T13:19:04Z",
+  "unchanged_since": "2026-09-16T13:36:23Z",
   "undatable_pulls": []
 }
