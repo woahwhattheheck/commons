@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 119,
+    "open_issues": 118,
     "open_pull_requests": 53,
     "runs_in_progress": 20,
-    "runs_queued": 539
+    "runs_queued": 559
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -234,8 +234,41 @@
   },
   "pulls_listed": 53,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 26.9,
+  "queue_depth_per_runner": 27.9,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol-delta/daf26tz06-nv006-ai-eval-recovery-20260916",
+      "closed_at": "2026-09-16T21:57:02Z",
+      "head_sha": "c1fed90ba870bbc328b5226c55e486bf31a890b9",
+      "merged_at": "2026-09-16T21:57:02Z",
+      "number": 15015,
+      "state": "MERGED",
+      "title": "Revenue proof: synthetic AI performance evaluation for DAF26TZ06-NV006"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "grok/ping-poll-html-keep-larger-fixed-20260916-01",
+      "closed_at": "2026-09-16T21:56:07Z",
+      "head_sha": "764cabf5681034aafee9f70c1e71374175fbc135",
+      "merged_at": "2026-09-16T21:56:06Z",
+      "number": 15014,
+      "state": "MERGED",
+      "title": "GROK: ping/poll.html KEEP Larger-fixed (20260916-01)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "grok-repair/swarm-capacity-dispatcher-odg-readme-20260916",
+      "closed_at": "2026-09-16T21:55:58Z",
+      "head_sha": "57156f106f6761a355ae065108ce59e90b2125fe",
+      "merged_at": "2026-09-16T21:55:58Z",
+      "number": 15013,
+      "state": "MERGED",
+      "title": "Rephrase swarm dispatcher README to clear open-door admission-phrase"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -367,43 +400,10 @@
       "number": 14991,
       "state": "MERGED",
       "title": "LATCH: leftover CI after 61085c21 \u2014 door-audit already green; lift slack_full_body_chunk KEEP"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "grok-repair/open-door-builds-json-projection-20260916",
-      "closed_at": "2026-09-16T21:41:49Z",
-      "head_sha": "7ea01355a3aafd8e47aa3a7a71fa88275bdd1290",
-      "merged_at": "2026-09-16T21:41:49Z",
-      "number": 14996,
-      "state": "MERGED",
-      "title": "Skip builds.json in open-door-guard as generated ledger projection"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "grok-open-work-md-keep-larger-fixed-20260916-01",
-      "closed_at": "2026-09-16T21:40:11Z",
-      "head_sha": "71f96786620ab92429a7547c780aad959a937a19",
-      "merged_at": "2026-09-16T21:40:11Z",
-      "number": 14995,
-      "state": "MERGED",
-      "title": "GROK: OPEN_WORK.md KEEP Larger-fixed on pointer remint (20260916-01)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "newbot-incoming-models-html-keep-larger-fixed-20260916-19",
-      "closed_at": "2026-09-16T21:38:50Z",
-      "head_sha": "abd672d39db0ddbb13f159f4126bddfd678f053f",
-      "merged_at": "2026-09-16T21:38:50Z",
-      "number": 14994,
-      "state": "MERGED",
-      "title": "NEWBOT: incoming-models.html KEEP Larger fixed (20260916-19)"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-16T21:54:58Z",
+  "unchanged_since": "2026-09-16T21:58:21Z",
   "undatable_pulls": []
 }
