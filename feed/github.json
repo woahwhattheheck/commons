@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 119,
+    "open_issues": 120,
     "open_pull_requests": 71,
-    "runs_in_progress": 19,
-    "runs_queued": 300
+    "runs_in_progress": 16,
+    "runs_queued": 326
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -72,10 +72,10 @@
       "branch": "z-cobaltswitchyard/sasria-ai-training-20260916",
       "created_at": "2026-09-16T12:58:53Z",
       "draft": false,
-      "head_sha": "1c2b8cce274818339827cc15494bd73b2bd9cd32",
+      "head_sha": "ae21316847d1330bc7d080196b8aa17ee7b835a4",
       "number": 14842,
       "title": "Sasria RFP2026/22: add AI-training teaming readiness carrier",
-      "updated_at": "2026-09-16T12:58:53Z"
+      "updated_at": "2026-09-16T13:03:26Z"
     },
     {
       "author": "woahwhattheheck",
@@ -105,10 +105,10 @@
       "branch": "zpb-h7n4/pinellas-current-trust-recovery-20260916",
       "created_at": "2026-09-16T12:48:36Z",
       "draft": false,
-      "head_sha": "3397b3154145c408f4eb8acef4acd89c32f0fd2f",
+      "head_sha": "17d7a4e9e3a1952ac29174305b5bcb6cbe1175f4",
       "number": 14833,
       "title": "Revenue: recover Pinellas current custody trust boundary",
-      "updated_at": "2026-09-16T13:00:03Z"
+      "updated_at": "2026-09-16T13:05:12Z"
     },
     {
       "author": "woahwhattheheck",
@@ -116,10 +116,10 @@
       "branch": "z-cobaltswitchyard/legal-aid-copilot-agents-20260916",
       "created_at": "2026-09-16T12:47:39Z",
       "draft": false,
-      "head_sha": "14ce2f29a4e3284628d0391f24a3aa96688c2f51",
+      "head_sha": "7c5a07fa66a22efb604f091a10842d3763c1543b",
       "number": 14832,
       "title": "Legal Aid Chicago: add Copilot training evidence gate",
-      "updated_at": "2026-09-16T12:48:26Z"
+      "updated_at": "2026-09-16T13:01:42Z"
     },
     {
       "author": "woahwhattheheck",
@@ -130,7 +130,7 @@
       "head_sha": "6edab3481ff600a5087b16cf571e94df92c8b928",
       "number": 14828,
       "title": "Revenue: recover ARM26BX06-NV012 decision carrier after authority RED",
-      "updated_at": "2026-09-16T12:57:37Z"
+      "updated_at": "2026-09-16T13:04:15Z"
     },
     {
       "author": "woahwhattheheck",
@@ -223,7 +223,7 @@
     "14776": "ad8a22b25efa67111d34f72a9bdfe85be7e864da",
     "14780": "8eda6a9e6078667134126e4783529e3ef9796b48",
     "14782": "8e2bc8c9201d6c6968eb22bf9bd73953d26b3c5d",
-    "14784": "fb9a64f3e281d794957f630b3f43a7169d53547a",
+    "14784": "eb29ffe2c0e8f4b663308d9243cf792ddffe2477",
     "14788": "ffaff5aa571aaccedd41f82c0eba85b09586f230",
     "14798": "8851163e0a5df417d494d3daffb1e21ffd419f31",
     "14801": "bbc065f3625883bcfa1973b645f0a3aa1474b51a",
@@ -244,15 +244,15 @@
     "14826": "d092e81a4e111e480a4b4010c7017e3687f43068",
     "14827": "f1b87ee6dc1e5b5242c660c0c7f1bca250e18511",
     "14828": "6edab3481ff600a5087b16cf571e94df92c8b928",
-    "14832": "14ce2f29a4e3284628d0391f24a3aa96688c2f51",
-    "14833": "3397b3154145c408f4eb8acef4acd89c32f0fd2f",
+    "14832": "7c5a07fa66a22efb604f091a10842d3763c1543b",
+    "14833": "17d7a4e9e3a1952ac29174305b5bcb6cbe1175f4",
     "14837": "6a75e5568d805b47a803e29003584ed59cfd9d47",
     "14838": "4b2b2d40246e45e2ef84b637dc5a6c28e4e66707",
-    "14842": "1c2b8cce274818339827cc15494bd73b2bd9cd32"
+    "14842": "ae21316847d1330bc7d080196b8aa17ee7b835a4"
   },
   "pulls_listed": 71,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 15.8,
+  "queue_depth_per_runner": 20.4,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -422,6 +422,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-16T13:00:14Z",
+  "unchanged_since": "2026-09-16T13:05:28Z",
   "undatable_pulls": []
 }
