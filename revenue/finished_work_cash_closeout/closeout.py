@@ -211,6 +211,8 @@ def classify_single(item: Mapping[str, Any]) -> tuple[str, list[str], str]:
         reasons.append("PAYMENT_STATE_UNKNOWN")
     if item["payment_state"] == "UNPAID" and not item["payment_state_evidence"]:
         reasons.append("MISSING_UNPAID_EVIDENCE")
+    if item["payment_state"] == "PENDING" and not item["payment_state_evidence"]:
+        reasons.append("MISSING_PENDING_PAYMENT_EVIDENCE")
     if reasons:
         return "EVIDENCE_GAP", sorted(reasons), "Fill the listed evidence gaps; do not contact the payer yet."
     if item["provider_state"] in {"SUBMITTED", "REVIEW", "PENDING", "UNKNOWN"}:
