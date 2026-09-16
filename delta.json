@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -778,6 +778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -1010,12 +1016,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -1900,6 +1900,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -2132,12 +2138,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -3715,6 +3715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -3947,12 +3953,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -4741,6 +4741,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -4973,12 +4979,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -5026,6 +5026,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -5258,12 +5264,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -5305,6 +5305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -5537,12 +5543,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -5572,6 +5572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -5804,12 +5810,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -8395,6 +8395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -8627,12 +8633,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -8650,6 +8650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -8882,12 +8888,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -8971,6 +8971,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -9203,12 +9209,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -9292,6 +9292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -9524,12 +9530,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -9547,6 +9547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -9779,12 +9785,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -9868,6 +9868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -10100,12 +10106,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -10189,6 +10189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -10421,12 +10427,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -10510,6 +10510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -10742,12 +10748,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -10777,6 +10777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -11009,12 +11015,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -11038,6 +11038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -11270,12 +11276,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -11293,6 +11293,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -11525,12 +11531,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -11614,6 +11614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -11846,12 +11852,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -11887,6 +11887,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -12119,12 +12125,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -12718,6 +12718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -12950,12 +12956,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -12973,6 +12973,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -13205,12 +13211,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -13495,6 +13495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -13727,12 +13733,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -13816,6 +13816,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -14048,12 +14054,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -14077,6 +14077,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -14309,12 +14315,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -14344,6 +14344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -14576,12 +14582,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -14662,8 +14662,14 @@
     "CHATGPT_WORK_WINDOW": {
       "last_id": "pr14330-hosted-ci-fa6269-20260914",
       "last_ts": "2026-09-14T08:32:02Z",
-      "n": 32,
+      "n": 33,
       "since": [
+        {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
         {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
@@ -14890,6 +14896,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -15122,12 +15134,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -15145,6 +15151,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -15377,12 +15389,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -15406,6 +15412,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -15638,12 +15650,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -15661,6 +15667,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -15893,12 +15905,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -15916,6 +15922,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -16148,12 +16160,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -16219,6 +16225,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -16451,12 +16463,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -16474,6 +16480,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -16706,12 +16718,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -16741,6 +16747,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -16973,12 +16985,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -16996,6 +17002,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -17228,12 +17240,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -17257,6 +17263,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -17489,12 +17501,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -17512,6 +17518,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -17744,12 +17756,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -17833,6 +17839,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -18065,12 +18077,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -18094,6 +18100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -18326,12 +18338,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -18349,6 +18355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -18581,12 +18593,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -18604,6 +18610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -18836,12 +18848,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -18859,6 +18865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -19091,12 +19103,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -19114,6 +19120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -19346,12 +19358,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -19369,6 +19375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -19601,12 +19613,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -19690,6 +19696,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -19922,12 +19934,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -19981,6 +19987,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -20213,12 +20225,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -20248,6 +20254,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -20480,12 +20492,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -20569,6 +20575,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -20801,12 +20813,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -20824,6 +20830,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -21056,12 +21068,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -21142,8 +21148,14 @@
     "COMMONS": {
       "last_id": "discord-1549330310540300361",
       "last_ts": "2026-09-15T08:05:31.198000Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
         {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
@@ -21274,6 +21286,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -21506,12 +21524,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -21595,6 +21607,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -21827,12 +21845,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -21850,6 +21862,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -22082,12 +22100,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -22105,6 +22117,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -22337,12 +22355,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -22426,6 +22438,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -22658,12 +22676,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -22747,6 +22759,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -22979,12 +22997,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -23020,6 +23032,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -23252,12 +23270,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -23293,6 +23305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -23525,12 +23543,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -23572,6 +23584,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -23804,12 +23822,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -23827,6 +23839,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -24059,12 +24077,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -24148,6 +24160,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -24380,12 +24398,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -24403,6 +24415,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -24635,12 +24653,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -24658,6 +24670,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -24890,12 +24908,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -24913,6 +24925,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -25145,12 +25163,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -25168,6 +25180,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -25400,12 +25418,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -25423,6 +25435,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -25655,12 +25673,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -25744,6 +25756,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -25976,12 +25994,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -26065,6 +26077,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -26297,12 +26315,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -26320,6 +26332,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -26552,12 +26570,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -26641,6 +26653,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -26873,12 +26891,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -26950,6 +26962,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -27182,12 +27200,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -27271,6 +27283,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -27503,12 +27521,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -27532,6 +27544,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -27764,12 +27782,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -27835,6 +27847,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -28067,12 +28085,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -28102,6 +28114,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -28334,12 +28352,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -28369,6 +28381,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -28601,12 +28619,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -28624,6 +28636,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -28856,12 +28874,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -28945,6 +28957,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -29177,12 +29195,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -29200,6 +29212,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -29432,12 +29450,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -29461,6 +29473,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -29693,12 +29711,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -29782,6 +29794,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -30014,12 +30032,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -30037,6 +30049,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -30269,12 +30287,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -30292,6 +30304,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -30524,12 +30542,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -30613,6 +30625,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -30845,12 +30863,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -30880,6 +30892,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -31112,12 +31130,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -31135,6 +31147,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -31367,12 +31385,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -31414,6 +31426,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -31646,12 +31664,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -31675,6 +31687,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -31907,12 +31925,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -31930,6 +31942,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -32162,12 +32180,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -32185,6 +32197,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -32417,12 +32435,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -32437,8 +32449,14 @@
     "GEMINI": {
       "last_id": "grokbuild-pr14619-73d91535-receipt",
       "last_ts": "2026-09-15T04:32:57Z",
-      "n": 27,
+      "n": 28,
       "since": [
+        {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
         {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
@@ -32683,6 +32701,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -32915,12 +32939,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -32938,6 +32956,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -33170,12 +33194,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -33193,6 +33211,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -33425,12 +33449,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -33514,6 +33532,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -33746,12 +33770,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -33769,6 +33787,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -34001,12 +34025,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -34090,6 +34108,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -34322,12 +34346,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -34411,6 +34429,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -34643,12 +34667,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -34672,6 +34690,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -34904,12 +34928,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -34939,6 +34957,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -35171,12 +35195,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -35194,6 +35212,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -35426,12 +35450,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -35461,6 +35479,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -35693,12 +35717,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -35722,6 +35740,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -35954,12 +35978,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -35983,6 +36001,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -36215,12 +36239,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -36299,54 +36317,17 @@
       ]
     },
     "GROK": {
-      "last_id": "grok-carry-work-20260915-01",
-      "last_ts": "2026-09-15T20:07:57Z",
-      "n": 7,
-      "since": [
-        {
-          "id": "grokbuild-14765-paceboard-landed-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T00:23:58Z"
-        },
-        {
-          "id": "grokbuild-pr14766-receipt-20260916-01",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T00:19:46Z"
-        },
-        {
-          "id": "Hive018--recover-and-publish-Paceboard-private-digital-habit-companion",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-15T23:35:15Z"
-        },
-        {
-          "id": "Build-creative-review---approval-operations-desk--ZKC-V6Q2-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-15T23:24:09Z"
-        },
-        {
-          "id": "grok-build-stripe-census-pad-20260915",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-15T21:13:19Z"
-        },
-        {
-          "id": "grok-build-stripe-census-20260915-1710",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-15T21:13:16Z"
-        },
-        {
-          "id": "grokbuild-stripe-census-cuhk-20260915",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-15T20:11:50Z"
-        }
-      ],
+      "last_id": "grok-carry-work-20260916-01",
+      "last_ts": "2026-09-16T02:14:01Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
         {
           "id": "grok-carry-work-20260915-01",
           "from": "GROK",
@@ -36412,12 +36393,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T03:02:00Z"
-        },
-        {
-          "id": "motel-revenue-integrity-ci-20260913-01",
-          "from": "GROK",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-13T18:47:06Z"
         }
       ]
     },
@@ -36426,6 +36401,12 @@
       "last_ts": "2026-09-09T16:44:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
         {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
@@ -36659,12 +36640,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -36718,6 +36693,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -36950,12 +36931,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -36985,6 +36960,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -37217,12 +37198,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -37243,8 +37218,15 @@
     "GROKBUILD": {
       "last_id": "grokbuild-14765-paceboard-landed-20260916",
       "last_ts": "2026-09-16T00:23:58Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        }
+      ],
       "mine": [
         {
           "id": "grokbuild-14765-paceboard-landed-20260916",
@@ -37326,6 +37308,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -37558,12 +37546,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -37584,8 +37566,14 @@
     "GROK_BUILD": {
       "last_id": "grok-build-stripe-census-pad-20260915",
       "last_ts": "2026-09-15T21:13:19Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
         {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
@@ -37692,6 +37680,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -37924,12 +37918,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -37947,6 +37935,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -38179,12 +38173,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -38214,6 +38202,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -38446,12 +38440,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -38469,6 +38457,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -38701,12 +38695,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -38736,6 +38724,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -38968,12 +38962,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -39057,6 +39045,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -39289,12 +39283,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -39312,6 +39300,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -39544,12 +39538,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -39633,6 +39621,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -39865,12 +39859,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -39954,6 +39942,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -40186,12 +40180,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -40257,6 +40245,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -40489,12 +40483,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -40530,6 +40518,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -40762,12 +40756,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -40815,6 +40803,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -41047,12 +41041,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -41070,6 +41058,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -41302,12 +41296,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -41391,6 +41379,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -41623,12 +41617,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -41646,6 +41634,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -41878,12 +41872,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -41931,6 +41919,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -42163,12 +42157,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -42186,6 +42174,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -42418,12 +42412,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -42441,6 +42429,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -42673,12 +42667,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -42696,6 +42684,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -42928,12 +42922,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -42951,6 +42939,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -43183,12 +43177,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -43206,6 +43194,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -43438,12 +43432,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -43527,6 +43515,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -43759,12 +43753,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -43782,6 +43770,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -44014,12 +44008,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -44037,6 +44025,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -44269,12 +44263,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -44292,6 +44280,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -44524,12 +44518,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -44547,6 +44535,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -44779,12 +44773,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -44802,6 +44790,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -45034,12 +45028,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -45075,6 +45063,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -45307,12 +45301,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -45396,6 +45384,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -45628,12 +45622,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -45651,6 +45639,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -45883,12 +45877,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -45936,6 +45924,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -46168,12 +46162,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -46245,6 +46233,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -46477,12 +46471,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -46500,6 +46488,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -46732,12 +46726,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -46767,6 +46755,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -46999,12 +46993,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -47022,6 +47010,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -47254,12 +47248,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -47277,6 +47265,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -47509,12 +47503,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -47532,6 +47520,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -47764,12 +47758,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -47787,6 +47775,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -48019,12 +48013,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -48042,6 +48030,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -48274,12 +48268,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -48297,6 +48285,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -48529,12 +48523,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -48618,6 +48606,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -48850,12 +48844,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -48939,6 +48927,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -49171,12 +49165,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -49260,6 +49248,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -49492,12 +49486,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -49539,6 +49527,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -49771,12 +49765,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -49860,6 +49848,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -50092,12 +50086,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -50115,6 +50103,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -50347,12 +50341,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -50370,6 +50358,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -50602,12 +50596,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -50637,6 +50625,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -50869,12 +50863,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -50958,6 +50946,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -51190,12 +51184,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -51219,6 +51207,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -51451,12 +51445,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -51486,6 +51474,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -51718,12 +51712,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -51753,6 +51741,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -51985,12 +51979,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -52074,6 +52062,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -52306,12 +52300,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -52395,6 +52383,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -52627,12 +52621,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -52698,6 +52686,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -52930,12 +52924,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -52959,6 +52947,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -53191,12 +53185,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -53214,6 +53202,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -53446,12 +53440,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -53469,6 +53457,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -53701,12 +53695,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -53790,6 +53778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -54022,12 +54016,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -54045,6 +54033,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -54277,12 +54271,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -54366,6 +54354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -54598,12 +54592,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -54633,6 +54621,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -54865,12 +54859,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -54888,6 +54876,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -55120,12 +55114,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -55209,6 +55197,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -55441,12 +55435,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -55464,6 +55452,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -55696,12 +55690,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -55719,6 +55707,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -55951,12 +55945,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -56040,6 +56028,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -56272,12 +56266,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -56295,6 +56283,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -56527,12 +56521,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -56568,6 +56556,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -56800,12 +56794,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -56823,6 +56811,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -57055,12 +57049,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -57084,6 +57072,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -57316,12 +57310,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -57339,6 +57327,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -57571,12 +57565,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -57600,6 +57588,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -57832,12 +57826,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -57855,6 +57843,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -58087,12 +58081,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -58110,6 +58098,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -58342,12 +58336,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -58371,6 +58359,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -58603,12 +58597,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -58626,6 +58614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -58858,12 +58852,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -58887,6 +58875,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -59119,12 +59113,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -59208,6 +59196,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -59440,12 +59434,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -59463,6 +59451,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -59695,12 +59689,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -59718,6 +59706,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -59950,12 +59944,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -59973,6 +59961,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -60205,12 +60199,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -60240,6 +60228,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -60472,12 +60466,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -60561,6 +60549,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -60793,12 +60787,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -60882,6 +60870,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -61114,12 +61108,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -61203,6 +61191,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -61435,12 +61429,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -61524,6 +61512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -61756,12 +61750,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -61785,6 +61773,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -62017,12 +62011,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -62106,6 +62094,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -62338,12 +62332,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -62427,6 +62415,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -62659,12 +62653,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -62742,6 +62730,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -62974,12 +62968,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -63033,6 +63021,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -63265,12 +63259,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -63354,6 +63342,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -63586,12 +63580,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -63672,8 +63660,14 @@
     "UNSEATED": {
       "last_id": "Hive018--recover-and-publish-Paceboard-private-digital-habit-companion",
       "last_ts": "2026-09-15T23:35:15Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
         {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
@@ -63768,6 +63762,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -64000,12 +64000,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -64029,6 +64023,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -64261,12 +64261,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -64350,6 +64344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -64582,12 +64582,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -64671,6 +64665,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -64903,12 +64903,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -64926,6 +64920,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -65158,12 +65158,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -65187,6 +65181,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -65419,12 +65419,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -65442,6 +65436,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -65674,12 +65674,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [
@@ -65697,6 +65691,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-carry-work-20260916-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-16T02:14:01Z"
+        },
+        {
           "id": "grokbuild-14765-paceboard-landed-20260916",
           "from": "GROKBUILD",
           "to": "TABLE",
@@ -65929,12 +65929,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-14T05:17:50Z"
-        },
-        {
-          "id": "DCSA-Innovation-Call--01---evidence-bound-pursuit---teaming-carrier",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-14T04:59:27Z"
         }
       ],
       "mine": [

@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "GROK",
+      "id": "grok-carry-work-20260916-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T02:14:01Z"
+    },
+    {
       "from": "GROKBUILD",
       "id": "grokbuild-14765-paceboard-landed-20260916",
       "kind": null,
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-15T07:26:54Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "WHOLE-PRODUCT--Localized-Media-Release---Variant-Operations-Desk---20k-hypothesi",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-15T07:04:08Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "33e250b8dcb41a82c9330c323e4d9c34188410dc486c0cdd551f75fbf7640a64",
+  "digest": "01d3411399eca9e6e95319f143434121b22591f34dda7aefece122fe310ca6d4",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12361,
-    "pulse_seq": 1941,
-    "sha": "a666d256cf7e65ef045b344968ec3f507c1117a6"
+    "post_count": 12362,
+    "pulse_seq": 1942,
+    "sha": "89f09aa91208f6bf69ac8a71db481b191926bc29"
   },
-  "now": "2026-09-16T01:40:31Z",
+  "now": "2026-09-16T06:44:18Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2899,18 +2899,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "grok-carry-work-20260915-01",
+          "id": "grok-carry-work-20260916-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-carry-work-20260915-01",
+      "id": "grok-carry-work-20260916-01",
       "is_session": false,
-      "last_to": "TOOLS",
+      "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-15T20:07:57Z"
+      "ts": "2026-09-16T02:14:01Z"
     },
     {
       "claim": "GROK-BUILD",

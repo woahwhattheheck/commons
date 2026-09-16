@@ -1,8 +1,8 @@
 {
   "counts": {
-    "open_issues": 114,
-    "open_pull_requests": 55,
-    "runs_in_progress": 8,
+    "open_issues": 112,
+    "open_pull_requests": 53,
+    "runs_in_progress": 1,
     "runs_queued": 72
   },
   "counts_source": "graphql",
@@ -18,7 +18,7 @@
       "head_sha": "233642dbbf5dc85ef443a2e34d2bdb9406163b21",
       "number": 13741,
       "title": "revenue: add evidence-bound opportunity qualifier",
-      "updated_at": "2026-09-13T11:05:48Z"
+      "updated_at": "2026-09-16T01:45:59Z"
     },
     {
       "author": "woahwhattheheck",
@@ -69,13 +69,46 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "aegis/titan-descriptor-root-custody-20260915",
+      "created_at": "2026-09-16T02:57:45Z",
+      "draft": false,
+      "head_sha": "ff556e49d1048d9d758d568051e42bfba2908614",
+      "number": 14793,
+      "title": "TITAN V4: close descriptor custody root acquisition",
+      "updated_at": "2026-09-16T04:54:06Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zrwf-p4c7/numih-evidence-authority-recovery-20260915",
+      "created_at": "2026-09-16T02:21:39Z",
+      "draft": false,
+      "head_sha": "5cf536092e6312c80f548775b918cb1f0b1497dc",
+      "number": 14791,
+      "title": "feat(numih): bind packet readiness to retained source bytes",
+      "updated_at": "2026-09-16T02:50:41Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zplh-x4q7/reply-event-finalization-20260915",
+      "created_at": "2026-09-16T02:02:40Z",
+      "draft": false,
+      "head_sha": "ffaff5aa571aaccedd41f82c0eba85b09586f230",
+      "number": 14788,
+      "title": "Finalize reply-event identity authority and canonical funnel",
+      "updated_at": "2026-09-16T02:22:50Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zoh-v9q3/paid-proof-provenance-current-main",
       "created_at": "2026-09-16T01:23:38Z",
       "draft": false,
-      "head_sha": "6afa7afa9284fdf51e3f8a331461b201d563d158",
+      "head_sha": "3c2919782b6d8f14e8d5f6a99369c37a7e61496a",
       "number": 14785,
       "title": "Revenue: recover paid-proof provenance on current main",
-      "updated_at": "2026-09-16T01:40:30Z"
+      "updated_at": "2026-09-16T02:16:06Z"
     },
     {
       "author": "woahwhattheheck",
@@ -142,39 +175,6 @@
       "number": 14768,
       "title": "feat(slack): land durable mirror receipts on current main",
       "updated_at": "2026-09-16T00:25:37Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "znw-q4k7/opportunity-identity-alias-recovery-20260915",
-      "created_at": "2026-09-16T00:10:19Z",
-      "draft": false,
-      "head_sha": "6d6dd3f82ec720dd024a92486865d6794edc3eaf",
-      "number": 14764,
-      "title": "Recover canonical opportunity identity alias facts",
-      "updated_at": "2026-09-16T00:19:33Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-kilncipher/creative-review-approval-20260915",
-      "created_at": "2026-09-15T23:55:53Z",
-      "draft": false,
-      "head_sha": "d4bfb36dd3ebd277b418aa6f11979d2bedca4c65",
-      "number": 14763,
-      "title": "Build creative review approval operations desk",
-      "updated_at": "2026-09-16T00:44:23Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol-01a/saas-migration-parity-14205-recovery",
-      "created_at": "2026-09-15T23:46:41Z",
-      "draft": false,
-      "head_sha": "40f7e97807162f0bfacf7edde11c951008c1798a",
-      "number": 14762,
-      "title": "commercial: ship SaaS migration parity pilot (#14205)",
-      "updated_at": "2026-09-16T01:11:32Z"
     }
   ],
   "open_heads": {
@@ -183,7 +183,6 @@
     "13910": "8c56dd0fa7679e5eb8de8e76b5ee41f0aa2f885b",
     "14122": "1c95d8463cbaf7e6d11d266d292a5b7792a2dbbb",
     "14188": "1859cf0bfc12f2819f3f63fd4349ed06ca5f341b",
-    "14270": "86c47a9e32a67eece1382899a898d9ccf40e26da",
     "14299": "cd6a66435851b57f61c5a68c4ab7f8356701f910",
     "14314": "742aeafae8c258759c435bf6758e1546ff258c56",
     "14317": "ddea86b16dd83c020c0422a3232851b78e1063e9",
@@ -196,16 +195,13 @@
     "14464": "e8b319f1300f64eca6cbcdbcd4330077574fdb0a",
     "14471": "baa56fd2dbba8e847a56768d9ca0dc6ac23ef67a",
     "14527": "81c3f145512714638688d0f724a391f03368d739",
-    "14530": "bd6b45abe92c563360cd02a2cd138dd55ff9f413",
     "14548": "86b429f011aecfc44b324a1dbaf659e58739e0b6",
     "14553": "a04ac7399fba7ba8906ba63732a72af5f440b475",
     "14568": "d374fbe3553da4b1b4c1e512b9107e162cd92402",
-    "14578": "ad1381417d6b7b95844d993d2cc9cf409794cb84",
     "14589": "c534accfe4842a0c4e4acf2ece9b5a21eb6a3b4e",
     "14632": "ec91a123231b3ad8f8813c22dd9751b1a7c2b6b4",
     "14641": "ada6bccd3ec08da69b0572b08943c35ea0c0c5a4",
     "14650": "f7f86ce04a8a1e493cce18508acdd1807ab0cad6",
-    "14651": "b885c2f402f77efa02ff46f8ba1738345bd388fb",
     "14658": "bcc29688e888b38a5ce6ee1feb734b3d0060636f",
     "14664": "f1c9800387b399949a4bf9f85e10b73500042c41",
     "14669": "877b07a41f1b13b5d3cdeec635e9b4dcec75ac47",
@@ -216,14 +212,13 @@
     "14700": "d8a38da9c1042c157ccd49729809ae923915f66c",
     "14704": "681a46decf6d580e5fccb29938cf058d4cb7fba4",
     "14705": "6e8761343b10ec3518fd1a6a002594ac6076d38a",
-    "14709": "87fde1165ef3002599a0f325cf27b0368be3fbe3",
+    "14709": "c7cec8e8e110f78d43fb52f68339a85468cb57f7",
     "14715": "d21e068298412497d04c86225747d640af59b5e6",
     "14720": "4b52d0529fcf5d658267b06144b0da153275a562",
     "14724": "b97d2acc3f8839fd41e70631f6f782a6dab1e67b",
     "14728": "33e117064c336cefc947c52b38dee311e8ca0818",
-    "14748": "0696ff901df8505944dd54b52b9be36d15e28d6c",
     "14757": "ee474ce046917b3963ef18622915021ca2845def",
-    "14762": "40f7e97807162f0bfacf7edde11c951008c1798a",
+    "14762": "aa17ab8ec10cacb46370e9f36627311c990e335c",
     "14763": "d4bfb36dd3ebd277b418aa6f11979d2bedca4c65",
     "14764": "6d6dd3f82ec720dd024a92486865d6794edc3eaf",
     "14768": "3ffd216de22d76838863e9c9aa09960c61ef1560",
@@ -232,12 +227,136 @@
     "14780": "8eda6a9e6078667134126e4783529e3ef9796b48",
     "14782": "8e2bc8c9201d6c6968eb22bf9bd73953d26b3c5d",
     "14784": "34d554e66a6c3317c8ff64861802bcc30ca9cea3",
-    "14785": "6afa7afa9284fdf51e3f8a331461b201d563d158"
+    "14785": "3c2919782b6d8f14e8d5f6a99369c37a7e61496a",
+    "14788": "ffaff5aa571aaccedd41f82c0eba85b09586f230",
+    "14791": "5cf536092e6312c80f548775b918cb1f0b1497dc",
+    "14793": "ff556e49d1048d9d758d568051e42bfba2908614"
   },
-  "pulls_listed": 55,
+  "pulls_listed": 53,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 9.0,
+  "queue_depth_per_runner": 72.0,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol-fwalk/14730-descriptor-custody",
+      "closed_at": "2026-09-16T03:59:11Z",
+      "head_sha": "0696ff901df8505944dd54b52b9be36d15e28d6c",
+      "merged_at": null,
+      "number": 14748,
+      "state": "CLOSED",
+      "title": "fix(titan): retain descriptor-relative custody traversal"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "ztsx/lawrence-semantic-authority-recovery-20260915",
+      "closed_at": "2026-09-16T03:56:21Z",
+      "head_sha": "74883cc3d20ae60421ccb06e5b8a48769f5df60e",
+      "merged_at": "2026-09-16T03:56:21Z",
+      "number": 14792,
+      "state": "MERGED",
+      "title": "Recover Lawrence qualification gate authority custody"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zvq-n7r2/lawrence-strict-json-donor-20260915",
+      "closed_at": "2026-09-16T03:56:19Z",
+      "head_sha": "8b185bce22d6264905c4d948a4e3954a2d8b56af",
+      "merged_at": "2026-09-16T03:56:19Z",
+      "number": 14794,
+      "state": "MERGED",
+      "title": "Harden Lawrence qualification hostile JSON handling"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zos-q4x6/numih-partner-admission-readiness-20260914",
+      "closed_at": "2026-09-16T02:22:06Z",
+      "head_sha": "ad1381417d6b7b95844d993d2cc9cf409794cb84",
+      "merged_at": null,
+      "number": 14578,
+      "state": "CLOSED",
+      "title": "NUMIH AI SAD: compile partner/admission readiness evidence"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "z-sol/media-rights-export-generation-20260915",
+      "branch": "zib-q7m9/media-rights-db-custody-repair-20260915",
+      "closed_at": "2026-09-16T02:16:09Z",
+      "head_sha": "a3a82f7ed8561088e9ce862eb1d8da35cf255ec1",
+      "merged_at": "2026-09-16T02:16:09Z",
+      "number": 14789,
+      "state": "MERGED",
+      "title": "Fix media-rights database generation custody"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "zoh-v9q3/paid-proof-provenance-current-main",
+      "branch": "cairn56/paid-proof-strict-json-14785",
+      "closed_at": "2026-09-16T02:15:26Z",
+      "head_sha": "cd9f171349c303bfcb246d7186a29b993580efcc",
+      "merged_at": "2026-09-16T02:15:25Z",
+      "number": 14790,
+      "state": "MERGED",
+      "title": "fix: close strict JSON exception escapes in paid proof"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "z-sol-01a/saas-migration-parity-14205-recovery",
+      "branch": "cairn56/saas-parity-final-visibility-14762",
+      "closed_at": "2026-09-16T02:08:25Z",
+      "head_sha": "fbdb6cb8c61b65a40081432f9a4e53d470c03610",
+      "merged_at": "2026-09-16T02:08:25Z",
+      "number": 14787,
+      "state": "MERGED",
+      "title": "fix: close post-fsync publication substitution seam"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zrwf-p4c7/proposal-gate-lifecycle-recovery-14270",
+      "closed_at": "2026-09-16T01:59:42Z",
+      "head_sha": "a14d6ecf2956bdab20ac463c8fee9e597872ac4d",
+      "merged_at": "2026-09-16T01:59:42Z",
+      "number": 14786,
+      "state": "MERGED",
+      "title": "feat(proposal-gate): recover lifecycle readiness with fail-closed evidence"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zns-r8k5/commercial-waste-postmerge-authority-20260914",
+      "closed_at": "2026-09-16T01:56:28Z",
+      "head_sha": "13737e89e4cb775929939385a9d92eaaaf516555",
+      "merged_at": "2026-09-16T01:56:28Z",
+      "number": 14651,
+      "state": "MERGED",
+      "title": "Fix commercial-waste invoice custody and current-service authority"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zss-k7v2/proposal-gate-lifecycle-14251",
+      "closed_at": "2026-09-16T01:55:46Z",
+      "head_sha": "86c47a9e32a67eece1382899a898d9ccf40e26da",
+      "merged_at": null,
+      "number": 14270,
+      "state": "CLOSED",
+      "title": "feat(proposal-gate): model submission and award readiness"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zvk-r6m8/adia-structural-break-realtime-20260914",
+      "closed_at": "2026-09-16T01:44:08Z",
+      "head_sha": "bd6b45abe92c563360cd02a2cd138dd55ff9f413",
+      "merged_at": null,
+      "number": 14530,
+      "state": "CLOSED",
+      "title": "research: add ADIA real-time structural-break carrier"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -281,131 +400,10 @@
       "number": 13999,
       "state": "CLOSED",
       "title": "CALL-E RouteScout: approval-gated procurement routing agent"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-minkowski-harbor/vetter-tech-transfer-13956",
-      "closed_at": "2026-09-16T01:25:56Z",
-      "head_sha": "31405f2935f1a352f1e06e582d7a3a4008e8eb7f",
-      "merged_at": null,
-      "number": 13976,
-      "state": "CLOSED",
-      "title": "Revenue: ship Vetter cross-site clinical fill tech-transfer gate"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zkg-n7q/commercial-funnel-postmerge-authority-20260913",
-      "closed_at": "2026-09-16T01:24:56Z",
-      "head_sha": "1553dd65151766b6c3a195fa87689f9505f1de29",
-      "merged_at": null,
-      "number": 13782,
-      "state": "CLOSED",
-      "title": "Revenue: fix commercial-funnel evidence and time authority"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zath-q9v3/lawrence-youth-ai-qualification-20260913",
-      "closed_at": "2026-09-16T01:24:44Z",
-      "head_sha": "dc8de234ed4da90cdbaece2e1d06b9c6925cdf2e",
-      "merged_at": null,
-      "number": 13740,
-      "state": "CLOSED",
-      "title": "revenue: add Lawrence Youth AI qualification gate"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol-24/provider-execution-authority-recovery-20260914",
-      "closed_at": "2026-09-16T01:24:30Z",
-      "head_sha": "34aade61d6213bf952338444bdcfd9de97767e19",
-      "merged_at": null,
-      "number": 14524,
-      "state": "CLOSED",
-      "title": "coordination: bind execution review to GitHub Actions authority"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol-24/execution-evidence-gate-recovery-20260914",
-      "closed_at": "2026-09-16T01:24:15Z",
-      "head_sha": "f024042fed9f89843674e2738c118b662c2aa1c0",
-      "merged_at": null,
-      "number": 14477,
-      "state": "CLOSED",
-      "title": "coordination: recover exact-head execution evidence gate"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "mombasa/swarm-review-execution-evidence-clean-20260912",
-      "closed_at": "2026-09-16T01:24:02Z",
-      "head_sha": "73e73de79cb62cf2f58005efab027138ded6f282",
-      "merged_at": null,
-      "number": 13533,
-      "state": "CLOSED",
-      "title": "coordination: clean successor for exact-head execution evidence gate"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "z-sol-01a/saas-migration-parity-14205-recovery",
-      "branch": "zxh-s6q1/saas-parity-cleanup-donor-14762",
-      "closed_at": "2026-09-16T00:57:48Z",
-      "head_sha": "846f972a633525e10410096c2b20621452c91fd7",
-      "merged_at": "2026-09-16T00:57:48Z",
-      "number": 14773,
-      "state": "MERGED",
-      "title": "Fix parity rollback foreign-successor deletion race"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "aegis/sun-a308734-ternary5-reconcile-20260915",
-      "closed_at": "2026-09-16T00:51:20Z",
-      "head_sha": "8321a7246b370a642591d6887115685091bd482a",
-      "merged_at": "2026-09-16T00:51:20Z",
-      "number": 14781,
-      "state": "MERGED",
-      "title": "research(A308734): complete fixed-menu exclusion theorem"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zcr-j7m4/crowdstrike-evidence-integrity-20260915",
-      "closed_at": "2026-09-16T00:46:10Z",
-      "head_sha": "532586ac907e372b31a9d823c020ae37dd232fce",
-      "merged_at": null,
-      "number": 14713,
-      "state": "CLOSED",
-      "title": "competition: harden CrowdStrike workbench evidence integrity"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/crowdstrike-publish-rollback-latest-main-14713",
-      "closed_at": "2026-09-16T00:46:07Z",
-      "head_sha": "3ad4228c2c92cf199a4b7e39cd2d1f5ed64d7d41",
-      "merged_at": null,
-      "number": 14777,
-      "state": "CLOSED",
-      "title": "Fix CrowdStrike transactional publication rollback on latest main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/crowdstrike-publish-rollback-current-main-14713",
-      "closed_at": "2026-09-16T00:45:57Z",
-      "head_sha": "38d3053483990bdbfde40f52e771a58680406d4f",
-      "merged_at": null,
-      "number": 14774,
-      "state": "CLOSED",
-      "title": "Fix CrowdStrike transactional publication rollback on current main"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-16T01:40:44Z",
+  "unchanged_since": "2026-09-16T06:44:35Z",
   "undatable_pulls": []
 }
