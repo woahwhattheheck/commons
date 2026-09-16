@@ -26,3 +26,22 @@ jobs:
 
       - name: Parse every tracked Python and JavaScript source
         run: python3 source_parses.py
+
+      - name: Verify Fleet CI execution-truth contract when present
+        shell: bash
+        run: |
+          if [ -d ci/actions_execution_truth ]; then
+            (
+              cd ci/actions_execution_truth
+              python3 -m unittest -v test_core.py test_cli.py
+              python3 -O -m unittest -v test_core.py test_cli.py
+            )
+          fi
+
+      - name: Verify Slack mirror durable-delivery contract when present
+        shell: bash
+        run: |
+          if [ -f host/slack_mirror_state.py ] && [ -f test_slack_mirror_delivery.py ]; then
+            python3 -m unittest -v test_slack_mirror test_slack_mirror_state test_slack_mirror_delivery
+            python3 -O -m unittest -v test_slack_mirror test_slack_mirror_state test_slack_mirror_delivery
+          fi
