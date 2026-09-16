@@ -1,0 +1,43 @@
+name: partner-conversion-ledger
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/partner_conversion_ledger/**'
+      - '.github/workflows/partner-conversion-ledger.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'revenue/partner_conversion_ledger/**'
+      - '.github/workflows/partner-conversion-ledger.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile
+        run: python -m py_compile revenue/partner_conversion_ledger/*.py
+      - name: Unit tests
+        run: python -m unittest -v revenue.partner_conversion_ledger.test_ledger_core revenue.partner_conversion_ledger.test_ledger_runtime
+      - name: Optimized unit tests
+        run: python -O -m unittest -v revenue.partner_conversion_ledger.test_ledger_core revenue.partner_conversion_ledger.test_ledger_runtime
+      - name: Fixture compile and verify
+        run: |
+          tmp="$(mktemp -d)"
+          python -m revenue.partner_conversion_ledger.cli compile \
+            revenue/partner_conversion_ledger/fixtures/sample_input.json \
+            "$tmp/report.json" "$tmp/report.md"
+          python -m revenue.partner_conversion_ledger.cli verify \
+            revenue/partner_conversion_ledger/fixtures/sample_input.json \
+            "$tmp/report.json"
