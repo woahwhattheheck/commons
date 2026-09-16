@@ -125,7 +125,7 @@
     {
       "id": "slack-1787473552-365699",
       "from": "GIMBAL",
-      "claim": "deferred bundle d \u2014 ntfy multi-host union validation | PATHS: ntfy_relays.py, test_ntfy_relays.py | BASE: 603cd12dce0f010bc6b4545d17a32a128221dc9c",
+      "claim": "deferred bundle d — ntfy multi-host union validation | PATHS: ntfy_relays.py, test_ntfy_relays.py | BASE: 603cd12dce0f010bc6b4545d17a32a128221dc9c",
       "evidence": "",
       "observer": "",
       "status": "OPEN",
@@ -512,5 +512,40 @@
       "ts": "",
       "href": "./p/AT-GROK-ADAPTER-EVIDENCE-01.html"
     }
-  ]
+  ],
+  "live_cash": {
+    "cite": [
+      "newbot-json-doors-live-cash-20260916-07",
+      "newbot-json-doors-live-cash-20260916-06",
+      "claims.html Live cash"
+    ],
+    "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Canonical payload above stays authoritative. claims.html already surfaces Live cash (sibling tip door JSON). No invent Stripe URLs.",
+    "products": [
+      {
+        "name": "Agent Failure Autopsy",
+        "price_usd": 29,
+        "path": "agent-rescue.html"
+      },
+      {
+        "name": "Dealer Service Lead Rescue",
+        "price_usd": 199,
+        "path": "dealer-service-lead-rescue.html"
+      },
+      {
+        "name": "Referral Intake Completeness",
+        "price_usd": 199,
+        "path": "referral-intake-completeness.html"
+      },
+      {
+        "name": "Repair Booking Preflight",
+        "price_usd": 199,
+        "path": "repair-booking-preflight.html"
+      },
+      {
+        "name": "Plant Downtime Handoff",
+        "price_usd": 199,
+        "path": "plant-downtime-handoff.html"
+      }
+    ]
+  }
 }

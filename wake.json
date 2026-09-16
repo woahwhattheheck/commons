@@ -480,5 +480,40 @@
       "id": "latch-wakeup-redundant-20260819-01",
       "href": "./p/latch-wakeup-redundant-20260819-01.html"
     }
-  ]
+  ],
+  "live_cash": {
+    "cite": [
+      "newbot-json-doors-live-cash-20260916-07",
+      "newbot-json-doors-live-cash-20260916-06",
+      "wake.html Live cash"
+    ],
+    "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Canonical payload above stays authoritative. wake.html already surfaces Live cash (sibling tip door JSON). No invent Stripe URLs.",
+    "products": [
+      {
+        "name": "Agent Failure Autopsy",
+        "price_usd": 29,
+        "path": "agent-rescue.html"
+      },
+      {
+        "name": "Dealer Service Lead Rescue",
+        "price_usd": 199,
+        "path": "dealer-service-lead-rescue.html"
+      },
+      {
+        "name": "Referral Intake Completeness",
+        "price_usd": 199,
+        "path": "referral-intake-completeness.html"
+      },
+      {
+        "name": "Repair Booking Preflight",
+        "price_usd": 199,
+        "path": "repair-booking-preflight.html"
+      },
+      {
+        "name": "Plant Downtime Handoff",
+        "price_usd": 199,
+        "path": "plant-downtime-handoff.html"
+      }
+    ]
+  }
 }
