@@ -53,6 +53,52 @@ class TeamingConversionAuthorityTests(unittest.TestCase):
         self.assertEqual(receipt["safe_assets"], [])
         self.assertEqual(receipt["safe_commercial_facts"], [])
 
+    def test_current_exec_boundary_ignores_second_order_helper_rebinding(self):
+        import revenue.teaming_conversion.assets as assets_module
+        import revenue.teaming_conversion.control as control
+        import revenue.teaming_conversion.parse as parse_module
+
+        candidate = canonical_bytes(base_candidate())
+        evidence_bytes, _ = build_roots(base_evidence())
+        receipt = compile_current_bytes(candidate, evidence_bytes)
+        receipt_bytes = canonical_bytes(receipt)
+
+        with mock.patch.object(
+            parse_module,
+            "require_list",
+            side_effect=AssertionError("CURRENT followed rebound parse.require_list"),
+        ), mock.patch.object(
+            assets_module,
+            "asset_descriptor",
+            side_effect=AssertionError("CURRENT followed rebound asset_descriptor"),
+        ), mock.patch.object(
+            control,
+            "_compile_at",
+            side_effect=AssertionError("CURRENT used caller interpreter compiler"),
+        ), mock.patch.object(
+            control,
+            "_CURRENT_RPC",
+            side_effect=AssertionError("CURRENT late-resolved transport"),
+        ), mock.patch.object(
+            control.os,
+            "posix_spawn",
+            side_effect=AssertionError("CURRENT late-resolved os.posix_spawn"),
+        ), mock.patch.object(
+            control.marshal,
+            "loads",
+            side_effect=AssertionError("CURRENT late-resolved marshal.loads"),
+        ):
+            rebound_receipt = compile_current_bytes(candidate, evidence_bytes)
+            verification = verify_current_bytes(candidate, evidence_bytes, receipt_bytes)
+
+        self.assertEqual(rebound_receipt["disposition"], "HOLD")
+        self.assertIn("trusted_root_missing", rebound_receipt["trust_blockers"])
+        self.assertEqual(rebound_receipt["safe_assets"], [])
+        self.assertEqual(rebound_receipt["safe_commercial_facts"], [])
+        self.assertTrue(verification["integrity_valid"])
+        self.assertTrue(verification["current_valid"])
+        self.assertEqual(verification["current_disposition"], "HOLD")
+
     def test_policy_helpers_cannot_rebind_transitive_evaluation(self):
         import revenue.teaming_conversion.assets as assets_module
         import revenue.teaming_conversion.control as control
