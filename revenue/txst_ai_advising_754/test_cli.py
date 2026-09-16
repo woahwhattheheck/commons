@@ -25,10 +25,10 @@ class CliTests(unittest.TestCase):
                 "accessibility": "UNKNOWN",
                 "integration_experience": "UNKNOWN",
                 "implementation_support": "UNKNOWN",
-                "ai_governance": "UNKNOWN"
+                "ai_governance": "UNKNOWN",
             },
             "partner_claims": {"status": "NONE", "cures": []},
-            "commercial": {"pricing_status": "OWNER_DECISION_REQUIRED", "staffing_status": "OWNER_DECISION_REQUIRED"}
+            "commercial": {"pricing_status": "OWNER_DECISION_REQUIRED", "staffing_status": "OWNER_DECISION_REQUIRED"},
         }
 
     def test_compile_and_verify_current_hold(self) -> None:
