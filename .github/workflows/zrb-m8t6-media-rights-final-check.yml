@@ -5,6 +5,7 @@ on:
     branches:
       - zym-l4v8/media-rights-ops-20260915
       - z-sol/media-rights-export-generation-20260915
+      - zam-b4k7/media-rights-fd-finalization-20260916
     paths:
       - 'revenue/hive/media-rights-ops/**'
       - '.github/workflows/zrb-m8t6-media-rights-final-check.yml'

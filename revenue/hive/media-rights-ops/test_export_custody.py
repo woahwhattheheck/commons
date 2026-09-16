@@ -1,4 +1,6 @@
+import errno
 import os
+import stat
 import tempfile
 import unittest
 from pathlib import Path
@@ -67,6 +69,43 @@ class ExportCustodyTests(unittest.TestCase):
         self.assertEqual((out / successor_name).read_bytes(), b"foreign-successor")
         self.assertTrue(orphan.is_file())
         self.assertEqual(orphan.stat().st_size, 0)
+
+    def test_leaf_fstat_failure_closes_descriptor_without_unlink(self):
+        out = self.root / "bundle"
+        out.mkdir(mode=0o700)
+        real_fstat = e.os.fstat
+        captured_fd = None
+        fired = False
+        proc_fd = Path("/proc/self/fd")
+        fd_count_before = len(list(proc_fd.iterdir())) if proc_fd.is_dir() else None
+
+        def failing_leaf_fstat(fd):
+            nonlocal captured_fd, fired
+            current = real_fstat(fd)
+            if not fired and stat.S_ISREG(current.st_mode):
+                fired = True
+                captured_fd = fd
+                raise OSError("injected leaf fstat failure")
+            return current
+
+        with mock.patch.object(e.os, "unlink") as unlink, mock.patch.object(
+            e.os, "fstat", side_effect=failing_leaf_fstat
+        ):
+            with self.assertRaisesRegex(OSError, "leaf fstat failure"):
+                r.publish_export(self.db, out, "2026-12-10T00:00:00Z")
+
+        self.assertTrue(fired)
+        self.assertIsNotNone(captured_fd)
+        unlink.assert_not_called()
+        with self.assertRaises(OSError) as closed:
+            os.fstat(captured_fd)
+        self.assertEqual(closed.exception.errno, errno.EBADF)
+        visible = list(out.iterdir())
+        self.assertEqual(len(visible), 1)
+        self.assertTrue(visible[0].is_file())
+        self.assertEqual(visible[0].stat().st_size, 0)
+        if fd_count_before is not None:
+            self.assertLessEqual(len(list(proc_fd.iterdir())), fd_count_before)
 
 
 if __name__ == "__main__":
