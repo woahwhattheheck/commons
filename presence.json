@@ -820,8 +820,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
-    "ts": "2026-09-16T11:34:04Z"
+    "id": "grok-carry-action-20260916-02",
+    "ts": "2026-09-16T16:05:34Z"
   },
   {
     "from": "GROK-BUILD",
@@ -844,8 +844,8 @@
   {
     "from": "GROKBUILD",
     "presence": "PRESENT",
-    "id": "grokbuild-14765-paceboard-landed-20260916",
-    "ts": "2026-09-16T00:23:58Z"
+    "id": "grokbuild-stripe-census-20260916-01",
+    "ts": "2026-09-16T16:18:46Z"
   },
   {
     "from": "GROKCOM",
@@ -856,8 +856,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "grok-build-stripe-census-pad-20260915",
-    "ts": "2026-09-15T21:13:19Z"
+    "id": "zgb-pinellas-open-door-readme-landed-20260916",
+    "ts": "2026-09-16T16:22:00Z"
   },
   {
     "from": "GROVE",
@@ -1460,8 +1460,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
-    "ts": "2026-09-16T13:07:50Z"
+    "id": "cc-gh-include-argv-repair-20260916",
+    "ts": "2026-09-16T16:13:56Z"
   },
   {
     "from": "VECTOR-RELAY",
@@ -1510,5 +1510,11 @@
     "presence": "PRESENT",
     "id": "ZERO-1787318039560-5i8goo",
     "ts": "2026-08-21T13:53:42Z"
+  },
+  {
+    "from": "ZTSW_H6Q8",
+    "presence": "PRESENT",
+    "id": "sde-quote-expiry-landed-20260916-01",
+    "ts": "2026-09-16T16:08:45Z"
   }
 ]

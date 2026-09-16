@@ -97,8 +97,8 @@ STEP_MARK = re.compile(r"(?m)^---\s*STEP(?:\s+\d+)?\s*---\s*$")
 def split_circuit_verbs(text: str) -> list[str]:
     """Split an ordered verb list. Comma / semicolon / pipe / arrow / newline.
 
-    Spaces inside a token stay part of the verb (`MAKE IT SO`). This is not an
-    allowlist: every nonempty token is kept.
+    Spaces inside a token stay part of the verb (`MAKE IT SO`).
+    This is not an allowlist: every nonempty token is kept.
     """
     if not (text or "").strip():
         return []

@@ -26,6 +26,7 @@ from payment_ready import (
     measure_root,
     milestone_amounts,
 )
+import revenue_recovery as rr
 
 
 class TestPaymentReady(unittest.TestCase):
@@ -225,6 +226,26 @@ class TestPaymentReady(unittest.TestCase):
             commercial = handle.read()
         self.assertIn("white-box-gguf-pilot-30d", commercial)
         self.assertNotIn("gguf-diagnostic-10d-12k", commercial)
+
+    def test_processor_docs_reject_contest_product_secret_scan_append(self):
+        hostile = (
+            "Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): "
+            "https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, "
+            "Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). "
+            "Cite Latch Pad KEEP."
+        )
+        self.assertTrue(rr.contains_sensitive_value(hostile))
+        for relative in (
+            "revenue/payment_ready/processor_handoff.md",
+            "revenue/payment_ready/evidence_contract.md",
+        ):
+            with self.subTest(relative=relative):
+                path = os.path.join(ROOT, relative)
+                with open(path, encoding="utf-8") as handle:
+                    text = handle.read()
+                self.assertNotIn("## Contest product (titanmcp)", text)
+                self.assertNotIn("Cite Latch Pad KEEP", text)
+                self.assertFalse(rr.contains_sensitive_value(text))
 
 
 if __name__ == "__main__":
