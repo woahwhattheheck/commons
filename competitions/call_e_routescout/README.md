@@ -40,7 +40,7 @@ Any change to the inquiry changes both the approval token and idempotency key.
 ### Offline reconcile — zero network
 
 ```bash
-python3 routescout.py reconcile   fixtures/sample_inquiry.json   fixtures/sample_terminal.json
+python3 routescout.py reconcile fixtures/sample_inquiry.json fixtures/sample_terminal.json
 ```
 
 Possible outputs:
@@ -52,6 +52,8 @@ Possible outputs:
 
 A provider `task_completed=true` is never enough by itself.
 
+`provider_binding.verified=true` in an **offline** receipt means only that the caller-supplied retained JSON has internally consistent call/inquiry identity fields matching the exact inquiry being reconciled. It does **not** authenticate that the local JSON was retrieved from CALL-E; a local file can be forged. Provider-origin evidence must come from a live fetch over the guarded CALL-E transport or from separately authenticated provider evidence.
+
 ### Live — one real CALL-E phone call
 
 1. Verify `source_url` is the organization's first-party page that published the exact business number.
@@ -61,10 +63,10 @@ A provider `task_completed=true` is never enough by itself.
 
 ```bash
 export CALLE_API_KEY='...'
-python3 routescout.py run fixtures/real_inquiry.json   --confirm-call ROUTESCOUT-EXACTTOKENFROMPREVIEW
+python3 routescout.py run fixtures/real_inquiry.json --confirm-call ROUTESCOUT-EXACTTOKENFROMPREVIEW
 ```
 
-The code sends credentials only to `https://api.heycall-e.com`, creates exactly one recipient, and sends a deterministic `Idempotency-Key` bound to the canonical inquiry. It then polls the returned call id.
+The code sends credentials only to `https://api.heycall-e.com`, creates exactly one recipient, and sends a deterministic `Idempotency-Key` bound to the canonical inquiry. The HTTP transport refuses every redirect before urllib can construct or issue a redirected request, so the bearer credential and request body are never forwarded to a redirect target. It then polls the returned call id.
 
 If creation or polling becomes ambiguous, **do not change the inquiry and retry**. Use the same exact inquiry/idempotency key or provider call id to recover state. The `resume` command performs GET/poll only and cannot create a new call:
 
@@ -123,7 +125,7 @@ python3 -O -m unittest -v test_contracts.py test_results_provider.py
 python3 -m py_compile routescout.py routescout_core/*.py test_support.py test_contracts.py test_results_provider.py
 ```
 
-The focused suite covers strict JSON, bool/int aliasing, prompt injection, source URL token leakage, one-recipient creation, exact idempotency, official-origin credential handling, DNC/declined dominance, route-proof requirements, no-call fences, and result fail-closed behavior.
+The focused suite covers strict JSON, bool/int aliasing, prompt injection, source URL token leakage, one-recipient creation, exact idempotency, official-origin credential handling, fail-closed redirect containment, DNC/declined dominance, route-proof requirements, no-call fences, and result fail-closed behavior.
 
 ## Competition packaging
 
