@@ -53,7 +53,7 @@ class GoatSidewalkDoorMatchTests(unittest.TestCase):
                 "titanmcp-pad-pointer-v1",
             ],
         )
-        self.assertGreater(self.result["door_size"], 6893)
+        self.assertGreater(self.result["door_size"], 8148)
         self.assertEqual(self.result["checkout"], "NOT_MINTED")
         self.assertTrue(self.result["match_ok"])
         door = (ROOT / match.DOOR_REL).read_text(encoding="utf-8")
