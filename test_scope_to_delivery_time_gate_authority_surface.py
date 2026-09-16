@@ -2,6 +2,7 @@ import inspect
 import unittest
 from datetime import datetime
 
+from host import scope_to_delivery_time_authority as authority
 from host import scope_to_delivery_time_gate as gate
 
 
@@ -27,7 +28,7 @@ def temporal_agreement():
 
 
 class AuthoritySurfaceTests(unittest.TestCase):
-    def test_no_parsed_or_fact_helper_accepts_raw_authority_claims(self):
+    def test_no_historical_helper_accepts_raw_authority_claims(self):
         forbidden = {
             "agreement_raw_sha256",
             "observations_raw_sha256",
@@ -38,8 +39,8 @@ class AuthoritySurfaceTests(unittest.TestCase):
             "current_work_authorized",
         }
         offenders = {}
-        for name, value in vars(gate).items():
-            if not inspect.isfunction(value) or value.__module__ != gate.__name__:
+        for name, value in vars(authority).items():
+            if not inspect.isfunction(value) or value.__module__ != authority.__name__:
                 continue
             if name in {
                 "evaluate_bytes",
@@ -56,12 +57,18 @@ class AuthoritySurfaceTests(unittest.TestCase):
         current = inspect.signature(gate.evaluate_current_bytes).parameters
         verify = inspect.signature(gate.verify_current_work_authority).parameters
         for params in (current, verify):
-            for name in ("as_of", "now", "trusted_now", "evaluation_time", "observed_at"):
+            for name in (
+                "as_of",
+                "now",
+                "trusted_now",
+                "evaluation_time",
+                "observed_at",
+            ):
                 self.assertNotIn(name, params)
         self.assertNotIn("receipt", verify)
 
-    def test_parsed_fact_helpers_cannot_emit_authority(self):
-        facts = gate._temporal_facts(
+    def test_historical_fact_helpers_cannot_emit_authority(self):
+        facts = authority._temporal_facts(
             temporal_agreement(),
             None,
             as_of=z("2026-09-13T11:00:00Z"),
@@ -78,7 +85,7 @@ class AuthoritySurfaceTests(unittest.TestCase):
             "receipt_sha256",
         }
         self.assertTrue(forbidden_fields.isdisjoint(facts))
-        base = gate._receipt_base(facts, state=facts["state"])
+        base = authority._receipt_base(facts, state=facts["state"])
         self.assertTrue(forbidden_fields.isdisjoint(base))
 
     def test_public_parsed_evaluate_is_permanently_fail_closed(self):
@@ -95,7 +102,7 @@ class AuthoritySurfaceTests(unittest.TestCase):
         self.assertFalse(receipt["canonical_project_bound"])
         self.assertFalse(receipt["current_work_authorized"])
 
-    def test_explicit_time_byte_evaluator_is_permanently_fail_closed_for_current_work(self):
+    def test_explicit_time_byte_evaluator_is_hard_false_for_current_work(self):
         source = inspect.getsource(gate.evaluate_bytes)
         self.assertIn('"current_work_authorized": False', source)
         self.assertIn("CALLER_SUPPLIED_HISTORICAL_ONLY", source)
@@ -104,6 +111,25 @@ class AuthoritySurfaceTests(unittest.TestCase):
         source = inspect.getsource(gate.verify_project_binding)
         self.assertIn("verify_project_binding_integrity", source)
         self.assertNotIn('"valid"', source)
+
+    def test_current_evaluator_source_has_no_gate_semantic_global_calls(self):
+        source = inspect.getsource(gate.evaluate_current_bytes)
+        for forbidden in (
+            "_temporal_facts(",
+            "_historical_project(",
+            "_receipt_base(",
+            "_exact_facts(",
+            "canonical_scope.",
+        ):
+            self.assertNotIn(forbidden, source)
+        self.assertIn("canonical_project_from_fresh_process", source)
+
+    def test_wrapper_points_at_isolated_authority_kernel(self):
+        self.assertIs(gate.evaluate_current_bytes, authority.evaluate_current_bytes)
+        self.assertIs(
+            gate.verify_current_work_authority,
+            authority.verify_current_work_authority,
+        )
 
 
 if __name__ == "__main__":
