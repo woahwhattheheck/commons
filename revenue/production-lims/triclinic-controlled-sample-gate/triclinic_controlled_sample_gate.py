@@ -137,6 +137,7 @@ class BusinessCalendar:
             while not self.is_business_day(cursor):
                 cursor += timedelta(days=1)
             return cursor
+        # Exact noon belongs to the next business day. Only strictly before noon stays same-day.
         if submitted_local.timetz().replace(tzinfo=None) < self.cutoff:
             return day
         return self.next_business_day(day)
@@ -228,14 +229,19 @@ def process_batch(raw_intakes: Any, calendar: BusinessCalendar, ledger: Ledger |
     ids = [item["intake_id"] for item in normalized]
     if len(ids) != len(set(ids)):
         raise GateError("batch contains duplicate intake_id")
+
+    # Preflight every identity before any mutation. A same-ID content change fails atomically.
     digests = {item["intake_id"]: semantic_digest(item) for item in normalized}
     for intake_id, digest in digests.items():
         prior = ledger.source_digests.get(intake_id)
         if prior is not None and prior != digest:
             raise GateError(f"changed-content replay for existing intake_id {intake_id}")
+
     before_counts = (len(ledger.accessions), len(ledger.jobs), len(ledger.reports))
     outcomes: list[dict[str, Any]] = []
-    added = held = idempotent = 0
+    added = 0
+    held = 0
+    idempotent = 0
     for intake in normalized:
         intake_id = intake["intake_id"]
         digest = digests[intake_id]
@@ -252,20 +258,57 @@ def process_batch(raw_intakes: Any, calendar: BusinessCalendar, ledger: Ledger |
         submitted = _parse_local(intake["submitted_local"], "intake.submitted_local")
         queue_date = calendar.queue_date(submitted).isoformat()
         accession_id = "ACC-" + intake_id
-        ledger.accessions[intake_id] = {"accession_id": accession_id, "intake_id": intake_id, "queue_date": queue_date, "calendar_id": calendar.calendar_id, "source_digest": digest, "state": "ACCESSIONED_DOCUMENTATION_READY"}
-        ledger.jobs[intake_id] = {"job_id": "JOB-" + intake_id, "accession_id": accession_id, "state": "STAGED_NOT_RUN", "production_execution_authorized": False}
-        ledger.reports[intake_id] = {"report_id": "RPT-" + intake_id, "accession_id": accession_id, "queue_date": queue_date, "state": "STAGED_HUMAN_DISPOSITION", "human_disposition_owner": intake["human_disposition_owner"], "delivery_state": "UNSENT", "automatic_release_authorized": False}
+        job_id = "JOB-" + intake_id
+        report_id = "RPT-" + intake_id
+        ledger.accessions[intake_id] = {
+            "accession_id": accession_id,
+            "intake_id": intake_id,
+            "queue_date": queue_date,
+            "calendar_id": calendar.calendar_id,
+            "source_digest": digest,
+            "state": "ACCESSIONED_DOCUMENTATION_READY",
+        }
+        ledger.jobs[intake_id] = {
+            "job_id": job_id,
+            "accession_id": accession_id,
+            "state": "STAGED_NOT_RUN",
+            "production_execution_authorized": False,
+        }
+        ledger.reports[intake_id] = {
+            "report_id": report_id,
+            "accession_id": accession_id,
+            "queue_date": queue_date,
+            "state": "STAGED_HUMAN_DISPOSITION",
+            "human_disposition_owner": intake["human_disposition_owner"],
+            "delivery_state": "UNSENT",
+            "automatic_release_authorized": False,
+        }
         added += 1
         outcomes.append({"intake_id": intake_id, "status": "READY", "hold_code": None, "queue_date": queue_date})
+
     after_counts = (len(ledger.accessions), len(ledger.jobs), len(ledger.reports))
     if not (after_counts[0] == after_counts[1] == after_counts[2]):
         raise GateError("ledger state count invariant violated")
     return {
-        "schema_version": "triclinic-controlled-sample-result/v1", "calendar_id": calendar.calendar_id,
-        "input_count": len(normalized), "added_ready": added, "new_holds": held, "idempotent": idempotent,
-        "before_counts": list(before_counts), "after_counts": list(after_counts), "outcomes": outcomes,
+        "schema_version": "triclinic-controlled-sample-result/v1",
+        "calendar_id": calendar.calendar_id,
+        "input_count": len(normalized),
+        "added_ready": added,
+        "new_holds": held,
+        "idempotent": idempotent,
+        "before_counts": list(before_counts),
+        "after_counts": list(after_counts),
+        "outcomes": outcomes,
         "ledger_digest": ledger.digest(),
-        "authority": {"synthetic_or_deidentified_only": True, "classifies_controlled_substances": False, "handles_or_transfers_controlled_substances": False, "authorizes_testing": False, "automatic_release": False, "customer_or_regulator_transmission": False, "human_disposition_required": True},
+        "authority": {
+            "synthetic_or_deidentified_only": True,
+            "classifies_controlled_substances": False,
+            "handles_or_transfers_controlled_substances": False,
+            "authorizes_testing": False,
+            "automatic_release": False,
+            "customer_or_regulator_transmission": False,
+            "human_disposition_required": True,
+        },
     }
 
 
@@ -280,11 +323,19 @@ def _expand_fixture_spec(spec: Any) -> list[dict[str, Any]]:
     for i in range(obj["count"]):
         n = i + 1
         intakes.append({
-            "schema_version": SCHEMA_VERSION, "intake_id": f"SYN-{n:03d}", "submitted_local": base_submitted,
-            "quote_id": f"Q-{n:03d}", "sds_present": True, "lot_id": f"LOT-{n:03d}", "storage_condition": "AMBIENT-SYNTHETIC",
-            "controlled_classification_required": False, "controlled_classification_present": False,
-            "form_222_required": False, "form_222_present": False,
-            "handling_instruction_primary": "STANDARD-SYNTHETIC", "handling_instruction_secondary": "STANDARD-SYNTHETIC",
+            "schema_version": SCHEMA_VERSION,
+            "intake_id": f"SYN-{n:03d}",
+            "submitted_local": base_submitted,
+            "quote_id": f"Q-{n:03d}",
+            "sds_present": True,
+            "lot_id": f"LOT-{n:03d}",
+            "storage_condition": "AMBIENT-SYNTHETIC",
+            "controlled_classification_required": False,
+            "controlled_classification_present": False,
+            "form_222_required": False,
+            "form_222_present": False,
+            "handling_instruction_primary": "STANDARD-SYNTHETIC",
+            "handling_instruction_secondary": "STANDARD-SYNTHETIC",
             "human_disposition_owner": f"QA-HUMAN-{(i % 5) + 1}",
         })
     for key, submitted in obj["submission_overrides"].items():
@@ -295,7 +346,10 @@ def _expand_fixture_spec(spec: Any) -> list[dict[str, Any]]:
         if not 0 <= index < len(intakes):
             raise GateError("submission override index outside fixture range")
         intakes[index]["submitted_local"] = _parse_local(submitted, "fixture_spec.submission_overrides").isoformat(timespec="seconds")
-    allowed = {"MISSING_QUOTE", "MISSING_SDS", "MISSING_LOT", "MISSING_STORAGE", "MISSING_CONTROLLED_CLASSIFICATION_OR_FORM_222", "CONFLICTING_HANDLING_INSTRUCTIONS"}
+    allowed = {
+        "MISSING_QUOTE", "MISSING_SDS", "MISSING_LOT", "MISSING_STORAGE",
+        "MISSING_CONTROLLED_CLASSIFICATION_OR_FORM_222", "CONFLICTING_HANDLING_INSTRUCTIONS",
+    }
     touched: set[int] = set()
     for j, raw_range in enumerate(obj["defect_ranges"]):
         rng = _expect_obj(raw_range, f"fixture_spec.defect_ranges[{j}]", ("start", "end", "kind"))
@@ -317,7 +371,8 @@ def _expand_fixture_spec(spec: Any) -> list[dict[str, Any]]:
             elif kind == "MISSING_CONTROLLED_CLASSIFICATION_OR_FORM_222":
                 row["controlled_classification_required"] = True
                 row["controlled_classification_present"] = False
-            elif kind == "CONFLICTING_HANDLING_INSTRUCTIONS": row["handling_instruction_secondary"] = "CONFLICTING-SYNTHETIC"
+            elif kind == "CONFLICTING_HANDLING_INSTRUCTIONS":
+                row["handling_instruction_secondary"] = "CONFLICTING-SYNTHETIC"
     if len(touched) != 40:
         raise GateError("fixture_spec must encode exactly 40 defect rows")
     return intakes
@@ -346,7 +401,10 @@ def main(argv: list[str] | None = None) -> int:
         ledger = Ledger()
         first = process_batch(intakes, calendar, ledger)
         replay = process_batch(intakes, calendar, ledger)
-        payload = {"first": {k: v for k, v in first.items() if k != "outcomes"}, "replay": {k: v for k, v in replay.items() if k != "outcomes"}}
+        payload = {
+            "first": {k: v for k, v in first.items() if k != "outcomes"},
+            "replay": {k: v for k, v in replay.items() if k != "outcomes"},
+        }
         print(json.dumps(payload, sort_keys=True, indent=2 if args.pretty else None))
         return 0
     except (GateError, OSError, json.JSONDecodeError) as exc:
