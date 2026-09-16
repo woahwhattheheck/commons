@@ -51,7 +51,7 @@ FEATURES = "90d7e47b"
 STALE_FEATURES = "5a37e0a8"
 INGEST = "174bab0a"
 LEDGER = "35a08aea"
-HUB = "5d54e4ff"
+HUB = "7bc61c8b"
 
 
 def git_blob(rel: str) -> str:

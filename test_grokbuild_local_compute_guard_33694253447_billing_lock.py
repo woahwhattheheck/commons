@@ -25,7 +25,7 @@ KEEP = {
     "p/grokbuild-local-compute-guard-33689357241-billing-lock-20260902-01.md": "2517b71d",
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
     "catalog.html": "35a7069f",
-    "hub_pages.py": "5d54e4ff",
+    "hub_pages.py": "7bc61c8b",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
     "test_cursor_goat_pages_super_mcp_land_readback_match.py": "a5c72234",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",

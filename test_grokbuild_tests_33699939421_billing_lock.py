@@ -34,7 +34,7 @@ KEEP = {
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
     "catalog.html": "35a7069f",
-    "hub_pages.py": "5d54e4ff",
+    "hub_pages.py": "7bc61c8b",
 }
 
 

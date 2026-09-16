@@ -34,7 +34,7 @@ KEEP = {
     "p/cursor-what-a-pack-is-20260902-01.md": "a4e4dd89",
     "p/cursor-pack-is-ready-to-run-20260902-01.md": "897b00ba",
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
-    "hub_pages.py": "5d54e4ff",
+    "hub_pages.py": "7bc61c8b",
     "door.js": "de1d570b",
     "ground/OWNER_NOW.md": "4b2a58ed",
 }

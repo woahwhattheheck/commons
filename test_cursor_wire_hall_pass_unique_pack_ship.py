@@ -27,7 +27,7 @@ KEEP = {
     "p/cursor-google-ai-mode-hall-pass-20260902-01.md": "4bb8b78d",
     "test_google_ai_mode_hall_pass.py": "9fe45498",
     "api/mcp.py": "393da756",
-    "hub_pages.py": "5d54e4ff",
+    "hub_pages.py": "7bc61c8b",
     "door.js": "de1d570b",
     "p/wire-shared-super-mcp-catalog-20260902-01.md": "b6cb27ef",
     "super-mcp.html": "d72c7828",

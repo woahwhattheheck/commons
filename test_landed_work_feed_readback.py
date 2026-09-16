@@ -32,7 +32,7 @@ KEEP = {
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "p/cursor-harborline-pack-market-render-readback-20260902-01.md": "6efbac54",
     "autogtm.html": "2fe108f4",
-    "hub_pages.py": "5d54e4ff",
+    "hub_pages.py": "7bc61c8b",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
 }
 

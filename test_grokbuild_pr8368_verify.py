@@ -46,7 +46,7 @@ class TestGrokbuildPr8368Verify(unittest.TestCase):
                 blob.startswith(prefix),
                 f"{rel} reminted: want {prefix} got {blob[:8]}",
             )
-        self.assertTrue(git_blob("hub_pages.py").startswith("5d54e4ff"))
+        self.assertTrue(git_blob("hub_pages.py").startswith("7bc61c8b"))
 
     def test_ship_helper_still_ships_standalone_store(self) -> None:
         proc = subprocess.run(

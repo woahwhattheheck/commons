@@ -31,7 +31,7 @@ KEEP = {
     "wire.html": "3f030862",
     "catalog.html": "35a7069f",
     "boards.html": "c7531a1e",
-    "hub_pages.py": "5d54e4ff",
+    "hub_pages.py": "7bc61c8b",
     "door.js": "dc59355d",
     "test_cursor_webmcp_adapter_keep_lift.py": "6d7745e4",
     "test_webmcp_door.py": "21b6993f",
