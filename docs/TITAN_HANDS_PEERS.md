@@ -74,3 +74,5 @@ Verified product pages only — no invented Stripe links. Peer-distribution doc 
 - [$199 plant diagnostic](../plant-downtime-handoff.html)
 
 Shelf HTML: [tools-cash.html](../tools-cash.html). Full catalog: [commerce.html](../commerce.html). Cite `stamp-docs-titan-hands-live-cash-20260905-01` / Coil MANUAL — do not remint.
+
+- [Larger fixed engagements](../diagnostic.html) — from $12k · [commercial.html](../commercial.html) — from $30k
