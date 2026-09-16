@@ -6,6 +6,8 @@ on:
       - 'revenue/water4all_2026_swm/**'
       - '.github/workflows/water4all-2026-swm.yml'
   push:
+    branches:
+      - main
     paths:
       - 'revenue/water4all_2026_swm/**'
       - '.github/workflows/water4all-2026-swm.yml'

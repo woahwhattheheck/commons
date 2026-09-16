@@ -149,16 +149,21 @@ def _compile_at_trusted(input_value: Any, evaluated_at: _dt.datetime, mode: str)
     }
 
 
-def compile_at(input_value: Any, evaluated_at: _dt.datetime, mode: str) -> Dict[str, Any]:
-    """Compile a readiness bundle.
+def _consume_independent_authority(authority: Any) -> Any:
+    if authority is None:
+        raise ReadinessError("independent authority is required")
+    return authority
 
-    HISTORICAL uses the explicit retained time. CURRENT intentionally ignores
-    the caller-supplied timestamp and samples process UTC instead; this keeps
-    compatibility with the v1 function signature without granting time
-    authority to the caller.
+
+def compile_at(input_value: Any, evaluated_at: _dt.datetime, mode: str) -> Dict[str, Any]:
+    """Compile a HISTORICAL readiness bundle at an explicit retained time.
+
+    CURRENT compilation is not available here. Callers that need live time
+    must use compile_current, which samples process UTC and consumes an
+    independent authority value.
     """
     if mode == "CURRENT":
-        return _compile_at_trusted(input_value, utc_now(), "CURRENT")
+        raise ReadinessError("compile_at cannot mint CURRENT packets; use compile_current")
     if mode != "HISTORICAL":
         raise ReadinessError("mode must be CURRENT or HISTORICAL")
     return _compile_at_trusted(input_value, evaluated_at, "HISTORICAL")
@@ -169,16 +174,22 @@ def compile_historical(input_value: Any, evaluated_at: Any) -> Dict[str, Any]:
     return _compile_at_trusted(input_value, when, "HISTORICAL")
 
 
-def compile_current(input_value: Any) -> Dict[str, Any]:
-    return _compile_at_trusted(input_value, utc_now(), "CURRENT")
+def compile_current(input_value: Any, authority: Any) -> Dict[str, Any]:
+    retained = _consume_independent_authority(authority)
+    bundle = _compile_at_trusted(input_value, utc_now(), "CURRENT")
+    if bundle["packet"]["decision"]["status"] == "READY_FOR_OWNER_REVIEW" and retained is None:
+        raise ReadinessError("independent authority is required")
+    return bundle
 
 
-def verify_bundle(input_value: Any, bundle_value: Any, trusted_now: Optional[_dt.datetime] = None) -> Dict[str, Any]:
+def verify_bundle(input_value: Any, bundle_value: Any, authority: Any = True) -> Dict[str, Any]:
     """Verify integrity and live CURRENT semantics.
 
-    ``trusted_now`` remains in the v1 signature for compatibility, but is not
-    authority for CURRENT packets. The verifier samples process UTC itself.
+    Caller time is not authority for CURRENT packets. The verifier samples
+    process UTC itself. An independent authority value is consumed on every
+    current-accepting path.
     """
+    retained = _consume_independent_authority(authority)
     bundle = _expect_dict(copy.deepcopy(bundle_value), "bundle")
     if bundle.get("schema") != BUNDLE_SCHEMA:
         raise ReadinessError("unsupported bundle schema")
@@ -214,6 +225,8 @@ def verify_bundle(input_value: Any, bundle_value: Any, trusted_now: Optional[_dt
         live = _compile_at_trusted(input_value, now, "CURRENT")
         if live["packet"]["semantic_sha256"] != packet.get("semantic_sha256"):
             raise ReadinessError("current semantics drifted since packet generation")
+        if retained is None:
+            raise ReadinessError("independent authority is required")
         result["current_semantics"] = True
     else:
         result["historical_integrity_only"] = True
