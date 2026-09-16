@@ -1,0 +1,43 @@
+name: multi-framework evidence freshness pilot
+
+on:
+  pull_request:
+    paths:
+      - "revenue/multi_framework_evidence_freshness/**"
+      - "revenue/multi_framework_evidence_freshness_pilot/**"
+      - ".github/workflows/multi-framework-evidence-freshness-pilot.yml"
+  push:
+    branches: [main]
+    paths:
+      - "revenue/multi_framework_evidence_freshness/**"
+      - "revenue/multi_framework_evidence_freshness_pilot/**"
+      - ".github/workflows/multi-framework-evidence-freshness-pilot.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile
+        run: >-
+          python -m py_compile
+          revenue/multi_framework_evidence_freshness/gate.py
+          revenue/multi_framework_evidence_freshness/golden.py
+          revenue/multi_framework_evidence_freshness_pilot/wrapper.py
+          revenue/multi_framework_evidence_freshness_pilot/cli.py
+          revenue/multi_framework_evidence_freshness_pilot/test_wrapper.py
+      - name: Focused tests
+        run: python -m unittest -v revenue.multi_framework_evidence_freshness_pilot.test_wrapper
+      - name: Focused tests optimized
+        run: python -O -m unittest -v revenue.multi_framework_evidence_freshness_pilot.test_wrapper
