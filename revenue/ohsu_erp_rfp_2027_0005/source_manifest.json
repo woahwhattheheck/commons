@@ -1,5 +1,5 @@
 {
-  "schema": "ohsu-erp-source-manifest/v1",
+  "schema": "ohsu-erp-source-manifest/v2",
   "opportunity_id": "RFP-2027-0005",
   "public_repo_policy": "HASHES_AND_NORMALIZED_GATES_ONLY",
   "received_sources": {
@@ -12,6 +12,12 @@
     "supplier_qa_workbook": {
       "sha256": "40815c4a57d9d82cf07e4db6b2b6f1dfc6512c7fa4cf996af6ec364608722cf0",
       "size_bytes": 2871373,
+      "received_date": "2026-09-14",
+      "published_to_public_repo": false
+    },
+    "professional_services_contract": {
+      "sha256": "2716d395072efbe4de6bdcca780f16a2aacbef69e7f542e66c7ca33ce980ed35",
+      "size_bytes": 91311,
       "received_date": "2026-09-14",
       "published_to_public_repo": false
     }
@@ -35,5 +41,17 @@
     "requires_confirmed_commitment_evidence": true,
     "unconfirmed_target_contributes_qualifications": false,
     "prime_remains_responsible": true
-  }
+  },
+  "normalized_contract_review_gates": [
+    "PSC_WORK_PRODUCT_AND_BACKGROUND_TOOL_RIGHTS",
+    "PSC_SUBCONTRACTING_WRITTEN_CONSENT",
+    "PSC_INSURANCE_REQUIREMENTS",
+    "PSC_PUBLIC_RECORDS_AND_CONFIDENTIALITY",
+    "PSC_TERMINATION_WITHOUT_CAUSE",
+    "PSC_HIPAA_AND_NETWORK_ACCESS_IF_APPLICABLE",
+    "PAYMENT_TERMS_SOURCE_CONFLICT_RFP_NET60_PSC_NET30"
+  ],
+  "source_conflicts": [
+    "PAYMENT_TERMS_SOURCE_CONFLICT_RFP_NET60_PSC_NET30"
+  ]
 }

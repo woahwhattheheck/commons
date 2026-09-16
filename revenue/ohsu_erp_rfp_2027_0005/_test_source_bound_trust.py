@@ -39,9 +39,7 @@ class TrustBoundaryTests(SourceBoundTestCase):
         self.assertEqual(packet["status"], "HOLD_INTENT_RECEIPT_UNVERIFIED")
         self.assertIn("INTENT_RECEIPT_NOT_PROVIDER_AUTHENTICATED", packet["blockers"])
         self.assertFalse(packet["source_policy"]["intent_receipt_trust_root_configured"])
-        self.assertFalse(
-            packet["truth_boundary"]["unverified_intent_receipt_clears_deadline_hold"]
-        )
+        self.assertFalse(packet["truth_boundary"]["unverified_intent_receipt_clears_deadline_hold"])
 
     def test_exact_pinned_provider_receipt_can_clear_deadline_hold(self):
         payload = facts(route="PRIME", all_satisfied=True)
@@ -61,14 +59,22 @@ class TrustBoundaryTests(SourceBoundTestCase):
         self.assertEqual(packet["status"], "READY_FOR_OWNER_PRIME_REVIEW")
         self.assertTrue(packet["source_policy"]["intent_receipt_trust_root_configured"])
 
-    def test_packet_v2_advertises_current_trust_boundaries(self):
+    def test_packet_v3_advertises_psc_and_trust_boundaries(self):
         packet = s._compile_at(facts(), self.before_intent())
-        self.assertEqual(packet["schema"], "ohsu-erp-source-bound-owner-review/v2")
+        self.assertEqual(packet["schema"], "ohsu-erp-source-bound-owner-review/v3")
         self.assertFalse(packet["source_policy"]["intent_receipt_trust_root_configured"])
         self.assertTrue(packet["truth_boundary"]["respondent_identity_code_pinned"])
-        self.assertFalse(
-            packet["truth_boundary"]["unverified_intent_receipt_clears_deadline_hold"]
-        )
+        self.assertTrue(packet["truth_boundary"]["professional_services_contract_hash_pinned"])
+        self.assertFalse(packet["truth_boundary"]["contract_terms_accepted"])
+        self.assertFalse(packet["truth_boundary"]["unverified_intent_receipt_clears_deadline_hold"])
+
+    def test_verify_stales_packet_if_contract_review_projection_is_forged(self):
+        payload = facts()
+        bound = self.before_intent()
+        packet = s._compile_at(payload, bound)
+        packet["contract_review"]["source_conflicts"] = []
+        with self.assertRaisesRegex(s.ContractError, "integrity does not match"):
+            s.verify_current(packet, payload)
 
     def test_verify_stales_forged_receipt_packet_at_deadline(self):
         payload = facts(route="PRIME", all_satisfied=True)

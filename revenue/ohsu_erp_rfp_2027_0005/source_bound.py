@@ -9,6 +9,7 @@ from ._source_bound_constants import (
     INTENT_DEADLINE,
     MAX_STDIN_BYTES,
     OPPORTUNITY_ID,
+    PROFESSIONAL_SERVICES_CONTRACT_SHA256,
     PROPOSAL_DEADLINE,
     REQUIREMENT_IDS,
     RESPONDENT_REF,
@@ -43,13 +44,8 @@ from ._source_bound_identity import (
     _normalize_source_binding,
 )
 
-# A receipt may clear the post-deadline HOLD only when both exact values are
-# pinned from a separately authenticated provider event. No such provider
-# attestation exists in this public carrier today, so caller-supplied hashes
-# remain evidence references rather than operational authority.
 VERIFIED_INTENT_RECEIPT_SHA256: str | None = None
 VERIFIED_INTENT_RECEIPT_SUBMITTED_AT: str | None = None
-
 
 def _intent_receipt_is_verified(receipt: dict[str, str] | None) -> bool:
     return _intent_receipt_is_verified_with_trust(
@@ -57,7 +53,6 @@ def _intent_receipt_is_verified(receipt: dict[str, str] | None) -> bool:
         VERIFIED_INTENT_RECEIPT_SHA256,
         VERIFIED_INTENT_RECEIPT_SUBMITTED_AT,
     )
-
 
 def _compile_at(facts_obj: Any, now: _dt.datetime) -> dict[str, Any]:
     return _compile_with_trust(
@@ -84,6 +79,7 @@ def _operational_projection(packet_obj: dict[str, Any]) -> dict[str, Any]:
         "deadlines",
         "source_binding",
         "source_policy",
+        "contract_review",
         "route",
         "status",
         "blockers",
@@ -104,12 +100,10 @@ def _operational_projection(packet_obj: dict[str, Any]) -> dict[str, Any]:
 def verify_current(packet_obj: Any, facts_obj: Any) -> bool:
     if not isinstance(packet_obj, dict):
         raise ContractError("packet must be object")
-
     bound_instant = _packet_evaluation_instant(packet_obj)
     expected_at_bound = _compile_at(facts_obj, bound_instant)
     if _canonical(packet_obj) != _canonical(expected_at_bound):
         raise ContractError("packet integrity does not match bound source compilation")
-
     current = compile_current(facts_obj)
     if _canonical(_operational_projection(packet_obj)) != _canonical(_operational_projection(current)):
         raise ContractError("packet operational state is stale")
@@ -157,17 +151,16 @@ def main(argv: list[str] | None = None) -> int:
 __all__ = [
     "SCHEMA_FACTS", "SCHEMA_PACKET", "SCHEMA_INPUT", "SCHEMA_VERIFY_INPUT",
     "OPPORTUNITY_ID", "MAX_STDIN_BYTES", "CONTROLLING_PACK_SHA256",
-    "SUPPLIER_QA_SHA256", "INTENT_DEADLINE", "PROPOSAL_DEADLINE",
-    "RESPONDENT_REF", "REQUIREMENT_IDS", "ContractError",
-    "VERIFIED_INTENT_RECEIPT_SHA256", "VERIFIED_INTENT_RECEIPT_SUBMITTED_AT",
-    "_canonical", "_sha", "_workshare", "_authority_false", "_require_keys",
-    "_require_sha256", "_require_utc_instant", "_parse_strict_json",
-    "_normalize_source_binding", "_normalize_commitment", "_normalize_requirements",
-    "_normalize_intent_receipt", "_normalize_facts", "_intent_receipt_is_verified",
-    "_as_utc", "_gap_blockers", "_basis_counts", "_compile_at", "_now_utc",
-    "compile_current", "verify_current", "main",
+    "SUPPLIER_QA_SHA256", "PROFESSIONAL_SERVICES_CONTRACT_SHA256",
+    "INTENT_DEADLINE", "PROPOSAL_DEADLINE", "RESPONDENT_REF", "REQUIREMENT_IDS",
+    "ContractError", "VERIFIED_INTENT_RECEIPT_SHA256",
+    "VERIFIED_INTENT_RECEIPT_SUBMITTED_AT", "_canonical", "_sha", "_workshare",
+    "_authority_false", "_require_keys", "_require_sha256", "_require_utc_instant",
+    "_parse_strict_json", "_normalize_source_binding", "_normalize_commitment",
+    "_normalize_requirements", "_normalize_intent_receipt", "_normalize_facts",
+    "_intent_receipt_is_verified", "_as_utc", "_gap_blockers", "_basis_counts",
+    "_compile_at", "_now_utc", "compile_current", "verify_current", "main",
 ]
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

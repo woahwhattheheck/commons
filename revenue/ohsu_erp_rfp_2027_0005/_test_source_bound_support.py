@@ -40,6 +40,7 @@ def facts(*, route="TEAMING", commitment=False, all_satisfied=False, partner_gat
         "source_binding": {
             "controlling_pack_sha256": s.CONTROLLING_PACK_SHA256,
             "supplier_qa_sha256": s.SUPPLIER_QA_SHA256,
+            "professional_services_contract_sha256": s.PROFESSIONAL_SERVICES_CONTRACT_SHA256,
         },
         "requirements": rows,
         "teaming_commitment": (

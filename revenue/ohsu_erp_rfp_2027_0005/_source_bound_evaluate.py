@@ -5,8 +5,11 @@ from typing import Any
 
 from ._source_bound_common import _authority_false, _require_utc_instant, _sha, _workshare
 from ._source_bound_constants import (
+    CONTRACT_REVIEW_GATES,
+    CONTRACT_SOURCE_CONFLICTS,
     INTENT_DEADLINE,
     OPPORTUNITY_ID,
+    PROFESSIONAL_SERVICES_CONTRACT_SHA256,
     PROPOSAL_DEADLINE,
     SCHEMA_PACKET,
     ContractError,
@@ -51,6 +54,15 @@ def _basis_counts(requirements: list[dict[str, Any]]) -> dict[str, int]:
         else:
             counts[row["basis"]] += 1
     return counts
+
+def _contract_review() -> dict[str, Any]:
+    return {
+        "professional_services_contract_sha256": PROFESSIONAL_SERVICES_CONTRACT_SHA256,
+        "normalized_review_gates": list(CONTRACT_REVIEW_GATES),
+        "source_conflicts": list(CONTRACT_SOURCE_CONFLICTS),
+        "owner_review_required_before_contract_acceptance": True,
+        "contract_acceptance_inferred": False,
+    }
 
 def compile_at(
     facts_obj: Any,
@@ -116,12 +128,10 @@ def compile_at(
                 status = "TEAMING_CANDIDATE"
                 blockers.append("NO_NAMED_COMMITTED_TEAM_PARTNER")
                 blockers.extend(gaps)
-                actions.extend(
-                    [
-                        "OBTAIN_NAMED_COMMITTED_TEAM_PARTNER",
-                        "CLOSE_TEAM_COMPOSABLE_GAPS_WITH_SOURCE_EVIDENCE",
-                    ]
-                )
+                actions.extend([
+                    "OBTAIN_NAMED_COMMITTED_TEAM_PARTNER",
+                    "CLOSE_TEAM_COMPOSABLE_GAPS_WITH_SOURCE_EVIDENCE",
+                ])
             elif gaps:
                 status = "HOLD_TEAM_QUALIFICATION"
                 blockers.extend(gaps)
@@ -133,6 +143,9 @@ def compile_at(
             else:
                 status = "READY_FOR_OWNER_TEAMING_REVIEW"
                 actions.append("OWNER_REVIEW_PAID_WORKSHARE_WITH_CONFIRMED_PRIME")
+
+    if status != "CLOSED_DEADLINE":
+        actions.append("OWNER_REVIEW_PSC_GATES_AND_PAYMENT_TERM_CONFLICT_BEFORE_CONTRACT_ACCEPTANCE")
 
     trust_root_configured = (
         verified_intent_receipt_sha256 is not None
@@ -149,11 +162,12 @@ def compile_at(
         },
         "source_binding": facts["source_binding"],
         "source_policy": {
-            "buyer_workbooks_published_to_public_repo": False,
+            "buyer_source_files_published_to_public_repo": False,
             "source_digest_match_required": True,
             "attachment_provenance_authenticated_by_code": False,
             "intent_receipt_trust_root_configured": trust_root_configured,
         },
+        "contract_review": _contract_review(),
         "route": facts["route"],
         "status": status,
         "blockers": sorted(set(blockers)),
@@ -169,6 +183,9 @@ def compile_at(
             "named_committed_team_partner_may_supply_source_bound_qualification_evidence": True,
             "prime_remains_responsible": True,
             "respondent_identity_code_pinned": True,
+            "professional_services_contract_hash_pinned": True,
+            "contract_terms_accepted": False,
+            "payment_terms_source_conflict_resolved": False,
             "unverified_intent_receipt_clears_deadline_hold": False,
             "strongest_output_is_owner_review_only": True,
             "external_send_authorized": False,

@@ -5,6 +5,7 @@ from typing import Any
 from ._source_bound_common import _require_keys, _require_sha256
 from ._source_bound_constants import (
     CONTROLLING_PACK_SHA256,
+    PROFESSIONAL_SERVICES_CONTRACT_SHA256,
     RESPONDENT_REF,
     SUPPLIER_QA_SHA256,
     ContractError,
@@ -16,16 +17,31 @@ def _normalize_source_binding(value: Any) -> dict[str, str]:
         raise ContractError("facts.source_binding must be object")
     _require_keys(
         value,
-        exact={"controlling_pack_sha256", "supplier_qa_sha256"},
+        exact={
+            "controlling_pack_sha256",
+            "supplier_qa_sha256",
+            "professional_services_contract_sha256",
+        },
         where="facts.source_binding",
     )
     pack = _require_sha256(value["controlling_pack_sha256"], "facts.source_binding.controlling_pack_sha256")
     qa = _require_sha256(value["supplier_qa_sha256"], "facts.source_binding.supplier_qa_sha256")
+    psc = _require_sha256(
+        value["professional_services_contract_sha256"],
+        "facts.source_binding.professional_services_contract_sha256",
+    )
     if pack != CONTROLLING_PACK_SHA256:
         raise ContractError("controlling pack digest differs from received source binding")
     if qa != SUPPLIER_QA_SHA256:
         raise ContractError("supplier Q&A digest differs from received source binding")
-    return {"controlling_pack_sha256": pack, "supplier_qa_sha256": qa}
+    if psc != PROFESSIONAL_SERVICES_CONTRACT_SHA256:
+        raise ContractError("professional services contract digest differs from received source binding")
+    return {
+        "controlling_pack_sha256": pack,
+        "supplier_qa_sha256": qa,
+        "professional_services_contract_sha256": psc,
+    }
+
 def _normalize_commitment(value: Any) -> dict[str, Any]:
     if not isinstance(value, dict):
         raise ContractError("facts.teaming_commitment must be object")
@@ -55,6 +71,7 @@ def _normalize_commitment(value: Any) -> dict[str, Any]:
     if evidence is None:
         raise ContractError("confirmed teaming commitment requires evidence_sha256")
     return {"status": status, "partner_ref": normalized_ref, "evidence_sha256": evidence}
+
 def _normalize_requirements(value: Any, *, route: str, commitment: dict[str, Any]) -> list[dict[str, Any]]:
     if not isinstance(value, list):
         raise ContractError("facts.requirements must be list")
@@ -105,15 +122,13 @@ def _normalize_requirements(value: Any, *, route: str, commitment: dict[str, Any
                 if entity_ref != RESPONDENT_REF:
                     raise ContractError("RESPONDENT qualification entity must match canonical respondent")
 
-        out.append(
-            {
-                "requirement_id": rid,
-                "state": state,
-                "basis": basis,
-                "entity_ref": entity_ref,
-                "evidence_sha256": evidence,
-            }
-        )
+        out.append({
+            "requirement_id": rid,
+            "state": state,
+            "basis": basis,
+            "entity_ref": entity_ref,
+            "evidence_sha256": evidence,
+        })
 
     if seen != _REQUIRED_SET:
         raise ContractError(
