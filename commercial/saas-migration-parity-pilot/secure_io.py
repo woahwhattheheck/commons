@@ -8,12 +8,13 @@ from typing import Any
 
 from errors import ParityError
 
+
 def _require_secure_io() -> None:
     required_flags = ("O_NOFOLLOW", "O_DIRECTORY")
     if any(not hasattr(os, name) for name in required_flags):
         raise ParityError("descriptor-relative no-follow file custody is unavailable on this platform")
     supports_dir_fd = getattr(os, "supports_dir_fd", set())
-    if any(fn not in supports_dir_fd for fn in (os.open, os.stat, os.unlink)):
+    if any(fn not in supports_dir_fd for fn in (os.open, os.stat)):
         raise ParityError("descriptor-relative file custody is unavailable on this platform")
 
 
@@ -149,16 +150,22 @@ def _write_all(fd: int, data: bytes) -> None:
 
 
 def _cleanup_reserved(item: dict[str, Any]) -> None:
+    """Retire only the inode we still own; never pathname-delete during rollback.
+
+    POSIX has no portable atomic "unlink this name only if it still names this
+    inode" primitive exposed here. A stat(name)->unlink(name) cleanup is therefore
+    unsafe under same-directory substitution. We fail visibly instead: truncate
+    the retained owned descriptor best-effort and leave any surviving directory
+    entry as a zero-byte tombstone for explicit operator cleanup. If an attacker
+    has renamed the owned inode and installed a foreign successor at the original
+    name, only the renamed owned inode is truncated; the foreign path is untouched.
+    """
     try:
         try:
-            current = os.stat(item["name"], dir_fd=item["parent_fd"], follow_symlinks=False)
+            os.ftruncate(item["fd"], 0)
+            os.fsync(item["fd"])
         except OSError:
-            current = None
-        if current is not None and _identity(current) == item["file_identity"]:
-            try:
-                os.unlink(item["name"], dir_fd=item["parent_fd"])
-            except OSError:
-                pass
+            pass
     finally:
         try:
             os.close(item["fd"])
