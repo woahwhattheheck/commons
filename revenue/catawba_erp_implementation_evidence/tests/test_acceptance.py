@@ -25,6 +25,15 @@ class ErpEvidenceTests(unittest.TestCase):
         row = copy.deepcopy(FIX["source"][-1]); row["attributes"]["ssn"] = "000-00-0000"
         with self.assertRaisesRegex(ValueError, "sensitive fixture"): normalize_record(row)
 
+    def test_rejects_nested_raw_sensitive_fixture_field(self):
+        row = copy.deepcopy(FIX["source"][-1])
+        row["attributes"]["nested"] = [{"profile": {"ssn": "000-00-0000"}}]
+        with self.assertRaisesRegex(ValueError, "sensitive fixture"): normalize_record(row)
+
+    def test_rejects_non_scalar_unicode(self):
+        row = copy.deepcopy(FIX["source"][0]); row["source_id"] = "bad\ud800"
+        with self.assertRaisesRegex(ValueError, "scalar Unicode"): normalize_record(row)
+
     def test_duplicate_stable_id_fails(self):
         with self.assertRaisesRegex(ValueError, "duplicate stable record"):
             ingest([FIX["source"][0], FIX["source"][0]])
@@ -63,19 +72,32 @@ class ErpEvidenceTests(unittest.TestCase):
         events = copy.deepcopy(FIX["events"]); events[-1]["payload_hash"] = "f"*64
         self.assertIn("req-002:replay_identity_changed", evaluate_interface_replay(events)["violations"])
 
+    def test_replay_types_fail_closed(self):
+        events = copy.deepcopy(FIX["events"]); events[0]["attempt"] = 1.5
+        with self.assertRaisesRegex(TypeError, "attempt must be an integer"): evaluate_interface_replay(events)
+        events = copy.deepcopy(FIX["events"]); events[0]["committed"] = "false"
+        with self.assertRaisesRegex(TypeError, "committed must be a boolean"): evaluate_interface_replay(events)
+
     def test_uat_duplicate_scenario_fails(self):
         with self.assertRaisesRegex(ValueError, "duplicate scenario_id"):
             build_uat_packet(FIX["uat"] + [copy.deepcopy(FIX["uat"][0])])
 
-    def test_cutover_never_grants_production_or_submission_authority(self):
-        migration = reconcile_migration(FIX["source"], FIX["target"])
-        replay = evaluate_interface_replay(FIX["events"])
-        uat = build_uat_packet(FIX["uat"])
-        gate = build_cutover_gate(migration, replay, uat)
+    def test_cutover_recomputes_raw_inputs_and_never_grants_external_authority(self):
+        gate = build_cutover_gate(FIX["source"], FIX["target"], FIX["events"], FIX["uat"])
         self.assertTrue(gate["ready_for_owner_review"])
+        self.assertEqual(gate["input_authority"], "caller_supplied_evidence_only")
         self.assertFalse(gate["production_cutover_authority"])
         self.assertFalse(gate["county_submission_authority"])
         self.assertEqual(gate["release_authority"], "owner_review_required")
+
+        target = copy.deepcopy(FIX["target"]); target[0]["amount"] = "1251"
+        bad_gate = build_cutover_gate(FIX["source"], target, FIX["events"], FIX["uat"])
+        self.assertFalse(bad_gate["ready_for_owner_review"])
+
+    def test_cutover_does_not_accept_precompiled_status_packets(self):
+        fake = {"status": "pass", "evidence_hash": "a"*64}
+        with self.assertRaises(TypeError):
+            build_cutover_gate(fake, fake, fake, fake)
 
 if __name__ == "__main__":
     unittest.main()
