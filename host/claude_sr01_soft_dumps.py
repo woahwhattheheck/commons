@@ -67,12 +67,14 @@ DO_NOT_REMINT = (
     "cursor-ship-claude-peer-check-sr01-20260902-01",
 )
 DO_NOT_REWRITE = SOFT_DUMPS + RECEIVE_BASELINE
+# Live dumps keep their soft/RECEIVE needles. Current HEAD blobs include
+# additive live-cash / Latch Pad KEEP tails. Stamp receipts not reminted.
 KNOWN_BLOBS = {
-    os.path.join("muhl", "docs", "CLAUDE_PROOF_PACKET.md"): "a1ce586a61490bd70f428f8d4bc9de9eec599673",
+    os.path.join("muhl", "docs", "CLAUDE_PROOF_PACKET.md"): "d09bf2fe3b63c703c17b64deb0d6736d85fc8b9c",
     os.path.join("muhl", "docs", "BULLY_CLAUDE.txt"): "a6adc3088fa94f71e3930eac4441cef5313315f8",
-    os.path.join("muhl", "docs", "CHAIR.md"): "54b4d34a3ab45027b4c2e1ebd7fb3c53b8a3ad04",
+    os.path.join("muhl", "docs", "CHAIR.md"): "05d376390b4b075fc9e4ac5cfc7aa9e7bb04629a",
     os.path.join("muhl", "docs", "FABLE_PLAYER_PAD.txt"): "cdaf8484ac1184bccf3330c1cc577f69edede7c5",
-    os.path.join("evidence", "bully_sessions", "CLAUDE_PROOF_PACKET.md"): "40caacefc06b130ebfaed25760f1fd4e08f8780d",
+    os.path.join("evidence", "bully_sessions", "CLAUDE_PROOF_PACKET.md"): "56954b0adef0b1c0aff174e31c3d94d10203c0bb",
     os.path.join("evidence", "bully_sessions", "BULLY_CLAUDE.txt"): "f637231f453edc7a77b86707a482edeb8632ae39",
 }
 

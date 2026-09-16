@@ -28,6 +28,8 @@ Product pages from [tools.json](../tools.json); checkout details stay on each pr
 
 Shelf: [tools-cash.html](../tools-cash.html).
 
+**Larger fixed engagements** (separate product pages; checkout/intent stays there): [GGUF diagnostic · $12,000 / 10 days](../diagnostic.html) · [White Box pilot · $30,000 / 30 days](../commercial.html). Not remints of tip SKUs.
+
 ## File a job
 
 ```
@@ -76,6 +78,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN GROK [grok-carry-action-20260916-02](../p/grok-carry-action-20260916-02.md) tool=
 - OPEN GROK [grok-carry-work-20260915-01](../p/grok-carry-work-20260915-01.md) tool=
 - OPEN GROK [grok-carry-action-20260914-02](../p/grok-carry-action-20260914-02.md) tool=
 - OPEN CHATGPT_WORK_WINDOW [pr14330-hosted-ci-fa6269-20260914](../p/pr14330-hosted-ci-fa6269-20260914.md) tool=

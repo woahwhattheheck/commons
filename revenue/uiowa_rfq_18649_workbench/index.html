@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>RFQ 18649 Analyst Workbench</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <p class="eyebrow">TJLabs · local-only operator surface</p>
+    <h1>University of Iowa RFQ 18649 analyst workbench</h1>
+    <p class="boundary">Untrusted inspection only. This UI cannot mint current evidence authority, buyer acceptance, submission authority, payment, savings, or revenue.</p>
+  </header>
+
+  <main>
+    <section class="panel" aria-labelledby="import-heading">
+      <h2 id="import-heading">1. Import evidence package</h2>
+      <p>Files stay in this browser tab except for one same-origin loopback POST to the existing compiler adapter. The server keeps no intake database or note store.</p>
+      <div class="inputs">
+        <label>Candidate JSON <input id="candidateFile" type="file" accept="application/json,.json"></label>
+        <label>Evidence authority JSON <input id="authorityFile" type="file" accept="application/json,.json"></label>
+      </div>
+      <div class="actions">
+        <button id="inspectBtn" type="button">Inspect with parent compiler</button>
+        <button id="demoBtn" type="button" class="secondary">Load synthetic UI demo</button>
+        <button id="resetBtn" type="button" class="secondary">Clear workbench</button>
+      </div>
+      <p id="error" class="error" role="alert" aria-live="assertive"></p>
+    </section>
+
+    <section class="panel" aria-labelledby="summary-heading">
+      <h2 id="summary-heading">2. Report summary</h2>
+      <dl id="summary" class="summary"></dl>
+      <div class="filters">
+        <label>Search cells <input id="search" type="search" placeholder="ESS, security, stale…" disabled></label>
+        <label>Status <select id="statusFilter" disabled><option value="">All statuses</option></select></label>
+      </div>
+      <div id="matrix" class="matrix" aria-label="12-cell assessment matrix"></div>
+    </section>
+
+    <section class="panel" aria-labelledby="detail-heading">
+      <h2 id="detail-heading">3. Cell detail and non-authoritative analyst notes</h2>
+      <pre id="detail" tabindex="0">Select a cell.</pre>
+      <label>Disposition
+        <select id="disposition" disabled>
+          <option value="UNREVIEWED">Unreviewed</option>
+          <option value="NEEDS_EVIDENCE">Needs evidence</option>
+          <option value="DISCUSS_WITH_PRIME">Discuss with prospective prime</option>
+          <option value="TECHNICAL_DRAFT_NOTE">Technical draft note</option>
+        </select>
+      </label>
+      <label>Analyst note
+        <textarea id="note" rows="6" maxlength="4000" disabled placeholder="Draft operator note; never evidence authority."></textarea>
+      </label>
+      <p class="muted">Notes are browser-memory only and are reset on every new import, even when a receipt repeats.</p>
+    </section>
+
+    <section class="panel" aria-labelledby="export-heading">
+      <h2 id="export-heading">4. Draft review handoff</h2>
+      <p>Export binds notes to the immutable compiler receipt and explicitly keeps every external authority flag false.</p>
+      <button id="exportBtn" type="button" disabled>Export draft handoff JSON</button>
+      <p id="exportStatus" class="muted" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>

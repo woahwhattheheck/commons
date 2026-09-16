@@ -929,7 +929,7 @@ class BusinessPackUniqueTest(unittest.TestCase):
             block["sidewalk_creative_brief"],
             "packs/sidewalk-signal-web-desk-20260902-01/creative_brief.md",
         )
-        self.assertEqual(block["sidewalk_creative_brief_blob"], "f38bacb5")
+        self.assertEqual(block["sidewalk_creative_brief_blob"], "64bc4f76")
         self.assertEqual(
             block["sidewalk_creative_brief_receipt"],
             "tally-sidewalk-creative-brief-20260902-01",
@@ -957,7 +957,7 @@ class BusinessPackUniqueTest(unittest.TestCase):
         blob = hashlib.sha1(
             b"blob " + str(len(data)).encode("ascii") + b"\0" + data
         ).hexdigest()[:8]
-        self.assertEqual(blob, "f38bacb5")
+        self.assertEqual(blob, "64bc4f76")
         self.assertTrue(
             (ROOT / "p" / "tally-sidewalk-creative-brief-20260902-01.md").is_file()
         )
@@ -968,7 +968,7 @@ class BusinessPackUniqueTest(unittest.TestCase):
                 / "cursor-business-pack-sidewalk-creative-brief-pointer-20260902-01.md"
             ).is_file()
         )
-        self.assertIn("f38bacb5", self.door)
+        self.assertIn("64bc4f76", self.door)
         self.assertIn("tally-sidewalk-creative-brief-20260902-01", self.card)
         self.assertIn("password", self.door)
         self.assertNotIn("<form", self.door)
@@ -981,7 +981,7 @@ class BusinessPackUniqueTest(unittest.TestCase):
             block["sidewalk_gems_note"],
             "packs/sidewalk-signal-web-desk-20260902-01/gems.md",
         )
-        self.assertEqual(block["sidewalk_gems_note_blob"], "f21a6d44")
+        self.assertEqual(block["sidewalk_gems_note_blob"], "992ef630")
         self.assertEqual(
             block["sidewalk_gems_note_receipt"],
             "tally-sidewalk-gems-note-20260902-01",
@@ -1007,7 +1007,7 @@ class BusinessPackUniqueTest(unittest.TestCase):
         blob = hashlib.sha1(
             b"blob " + str(len(data)).encode("ascii") + b"\0" + data
         ).hexdigest()[:8]
-        self.assertEqual(blob, "f21a6d44")
+        self.assertEqual(blob, "992ef630")
         self.assertTrue(
             (ROOT / "p" / "tally-sidewalk-gems-note-20260902-01.md").is_file()
         )
@@ -1018,7 +1018,7 @@ class BusinessPackUniqueTest(unittest.TestCase):
                 / "cursor-business-pack-sidewalk-gems-note-pointer-20260902-01.md"
             ).is_file()
         )
-        self.assertIn("f21a6d44", self.door)
+        self.assertIn("992ef630", self.door)
         self.assertIn("tally-sidewalk-gems-note-20260902-01", self.card)
         self.assertIn("UNDECIDED (Bryce)", self.door)
         self.assertIn("password", self.door)
