@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T14:33:41Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": "ACTION",
       "to": "TOOLS",
       "ts": "2026-09-15T20:07:57Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1549330310540300361",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-15T08:05:31.198000Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "d9809e475f19d9dea7a9e1cf2164e7b2d590f7821059471829437479f1159ba6",
+  "digest": "7433232253e5ea246bef413c34baed83a15c2038639492da965994e8fa04f757",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12372,
-    "pulse_seq": 1963,
-    "sha": "6ee7196f15b765db30292f0ef2ab6b80cf7c12c3"
+    "post_count": 12373,
+    "pulse_seq": 1964,
+    "sha": "54986f29b6494ad409a99f20853e51999704fd8d"
   },
-  "now": "2026-09-16T14:44:03Z",
+  "now": "2026-09-16T14:48:25Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4799,18 +4799,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+      "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T14:07:08Z"
+      "ts": "2026-09-16T14:33:41Z"
     },
     {
       "claim": "VECTOR-RELAY",
