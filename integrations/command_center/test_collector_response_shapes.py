@@ -154,15 +154,25 @@ class SlackResponseShapeTests(unittest.TestCase):
         self.assertEqual(self.store.state()["items"], [])
         self.assertTrue(result["receipts"][0]["coverage"]["complete"])
 
-    def test_later_bad_page_cannot_partially_replace_prior_snapshot(self):
+    def test_later_bad_page_merges_valid_rows_without_replacing_prior_snapshot(self):
         new = {**MESSAGE, "ts": "1788831000.123456", "text": "New page item"}
         result, provider = self.collect([
             {"ok": True, "messages": [new], "has_more": True,
              "response_metadata": {"next_cursor": "page2"}},
             {"ok": True},
         ])
-        self.assertEqual(result["receipts"][0]["status"], "source_error")
-        self.assertEqual(self.store.state()["items"], self.before["items"])
+        receipt = result["receipts"][0]
+        self.assertEqual(receipt["status"], "ingested")
+        self.assertFalse(receipt["coverage"]["complete"])
+        self.assertEqual((receipt["changed"], receipt["removed"], receipt["retained"]), (1, 0, 1))
+        state = self.store.state()
+        items = {item["id"]: item for item in state["items"]}
+        self.assertEqual(items[self.item_id], self.before["items"][0])
+        self.assertEqual(items["slack:C1:" + new["ts"]]["title"], "New page item")
+        self.assertEqual(state["sources"][0]["status"], "degraded")
+        self.assertIsNone(state["sources"][0]["error"])
+        self.assertEqual(state["sources"][0]["metadata"]["history"]["error"]["code"],
+                         "slack_messages_shape")
         self.assertEqual(provider.requests[1][1]["cursor"], "page2")
 
     def test_valid_cursor_pages_still_merge(self):
