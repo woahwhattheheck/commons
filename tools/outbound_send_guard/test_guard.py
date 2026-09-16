@@ -7,7 +7,7 @@ import unittest
 from copy import deepcopy
 from pathlib import Path
 
-from tools.outbound_send_guard.guard import GuardError, evaluate, main, parse_json_bytes
+from tools.outbound_send_guard._guard_core import GuardError, evaluate, main, parse_json_bytes
 
 
 RECIPIENT = "matt@scientist.com"
