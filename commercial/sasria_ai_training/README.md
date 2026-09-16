@@ -2,108 +2,36 @@
 
 A dependency-free, fail-closed teaming/readiness package for **Sasria SOC Ltd RFP2026/22 — Appointment of Service Provider for Artificial Intelligence Training**.
 
-The package exists because the truthful TJLabs posture is **teaming-first / direct-prime HOLD** unless a qualified South African training lead supplies the missing procurement, accreditation, certification, training-history, reference, platform-access, pricing, signatory, and portal evidence.
+The truthful TJLabs posture is **teaming-first / direct-prime HOLD** unless a qualified South African training lead supplies procurement, accreditation, certification, training-history, reference, platform-access, pricing, signatory, and portal evidence. The active commercial lane is separately governed; this source package does not authorize contact or submission.
 
 ## Source posture
 
-- Official submission / query system: <https://procurement.sasria.co.za/>
+- Official submission/query system: <https://procurement.sasria.co.za/>
 - Solicitation: `RFP2026/22`
 - Working close used by this carrier: **2026-09-17 12:00 SAST (UTC+02:00)**.
-- The source-backed RFP working review used for this carrier described a ~170-person, 12-month, role-based AI training programme and a three-level evaluation process.
+- Official Sasria RFP/amendments control. This repository does not contain an authenticated buyer-document byte snapshot and is not the procurement source of record.
 
-The official Sasria RFP and any official amendments control. This repository does not contain an authenticated buyer-document byte snapshot and must not be treated as the procurement source of record.
+## Readiness model
 
-## Captured working requirements
+The compiler records candidate/reviewer evidence for required returnables, recognized AI-governance framework alignment, training-body accreditation, certification capability, one-year platform access, externally supplied buyer-score inputs, all six captured role pathways, and an explicitly paid TJLabs specialist workshare.
 
-### Governance / returnables gate
+`RESPONSE_ASSEMBLY_READY` means only that those captured response-building gates are structurally complete. It does **not** mean the prime is qualified, the buyer has accepted a score, or a submission is authorized.
 
-The compiler expects explicit truth for these returnables before the prime mandatory gate can pass:
+### Submission authority is deliberately hard-HOLD
 
-- SBD 1 — Invitation to Bid;
-- SBD 4 — Disclosure and Declaration;
-- SBD 6.1 — Specific Goals;
-- Annexure A — confidentiality / NDA;
-- Annexure B — bid conditions / bidder details;
-- Annexure C — shareholder information;
-- Annexure D — experience / proposed project team;
-- CSD report;
-- B-BBEE certificate or sworn affidavit;
-- technical proposal;
-- financial proposal.
+Caller JSON fields `portal_account_confirmed`, `authorized_signatory_confirmed`, and `prime_approved_submission` are retained only as **candidate assertions**. Even literal `true/true/true` cannot mint `SUBMISSION_READY`. The machine status remains `HOLD` with `trusted_submission_authority_not_bound` until a future separately trusted authority source/generation is designed and reviewed.
 
-A missing or false item remains visible as `missing_required_returnables`; it is never inferred from a company name or software artifact.
-
-### Mandatory technical evidence
-
-The prime gate also requires supplied evidence for:
-
-- alignment to at least one recognized AI-governance framework captured by this implementation (`ISO/IEC 42001`, `NIST AI RMF`, or `Gartner AI Governance Playbook`);
-- training-body association/accreditation;
-- recognized certification capability;
-- one-year post-training AI-platform access.
-
-Regulated-environment training, financial-services training, facilitator evidence, reference letters, and recent AI-training count are separately exposed as warnings/evidence because they affect competitiveness/scoring but are not silently promoted into mandatory eligibility here.
-
-### Technical score boundary
-
-The working buyer score categories are represented only as **externally supplied, evidenced scores**:
-
-| Category | Cap |
-|---|---:|
-| Company profile | 20 |
-| Project proposal and training methodology | 40 |
-| Training personnel | 10 |
-| Key-personnel CVs | 10 |
-| Reference letters | 20 |
-
-The working threshold is 70/100. `BuyerTechnicalScore` validates category completeness, caps, threshold, and evidence references. It **does not award points** based on prose or infer a buyer result.
-
-### Role-pathway coverage
-
-All six captured audiences require their own explicit pathway:
-
-- executives and senior management;
-- specialists and general employees;
-- AI Navigators;
-- AI project team;
-- technical team;
-- business process owners.
-
-Each pathway must have learning outcomes, delivery modes, evaluation methods, and retained training artefacts. Missing or duplicate roles fail closed.
+This closes the unsafe predecessor where the same caller who authored the evidence JSON could self-assert portal/signatory/prime approval and manufacture the package's strongest status.
 
 ## Paid TJLabs seam
 
-See [`TEAMING_WORKSHARE.md`](./TEAMING_WORKSHARE.md). The workshare is deliberately separated from the prime qualification gate. Its supported commercial state is only:
+See [`TEAMING_WORKSHARE.md`](./TEAMING_WORKSHARE.md). The supported workshare commercial state is only `PAID_SCOPE_TO_BE_AGREED`. `FREE_DISCOVERY` or another state fails the workshare gate. This is not a contract, accepted price, award, invoice, payment, or booked revenue.
 
-`PAID_SCOPE_TO_BE_AGREED`
+## Strict-input / CLI boundary
 
-The package rejects `FREE_DISCOVERY` or any other commercial state as a valid workshare. That does not create a contract or price; it prevents buyer-specific delivery from being represented as implicitly free.
+The CLI validates nested object/list/string/boolean shapes before compilation. Hostile but valid JSON such as `prime.returnables: []`, `prime.framework_alignment: true`, or `training_pathways: null` returns deterministic exit code `2`, prints a controlled `INPUT_ERROR` on stderr, emits no traceback, and creates no requested output artifacts. The same predecessors are exercised under normal Python and `python -O`.
 
-## Response readiness versus submission authority
-
-Two states are mechanically separate:
-
-- `RESPONSE_ASSEMBLY_READY` means the captured prime mandatory gate, evidence-backed technical threshold, all six pathways, and paid workshare structure are complete.
-- `SUBMISSION_READY` additionally requires explicit confirmation of a procurement-portal account, an authorized signatory, and prime approval to submit.
-
-A technically strong packet with no submission authority therefore remains `HOLD` for submission.
-
-## Claims boundary
-
-This package does **not**:
-
-- certify CSD or B-BBEE status;
-- establish South African procurement eligibility;
-- claim Microsoft or other training accreditation/certification authority;
-- validate client references, facilitator qualifications, or financial-services experience;
-- issue buyer technical scores;
-- register a portal account or submit a bid;
-- create a partnership, subcontract, award, invoice, payment, cash, or booked revenue;
-- provide legal, tax, procurement, cybersecurity, privacy, or B-BBEE advice.
-
-## CLI
-
-The included fixture intentionally fails closed:
+The included HOLD fixture can be run with:
 
 ```bash
 python -m commercial.sasria_ai_training.cli \
@@ -112,12 +40,17 @@ python -m commercial.sasria_ai_training.cli \
   --markdown-out /tmp/sasria-readiness.md
 ```
 
-Exit code is `0` only when `submission_status == SUBMISSION_READY`; ordinary `HOLD` returns `2`.
+A successful compile still returns exit code `2` because this carrier intentionally cannot authorize submission.
+
+## Claims boundary
+
+This package does **not** certify CSD/B-BBEE status, establish South African procurement eligibility, claim training accreditation/certification authority, validate references/facilitators, issue buyer scores, register a portal account, authorize/sign/submit a bid, create a partnership/subcontract, or establish award/payment/cash/revenue.
 
 ## Tests
 
 ```bash
-python -m unittest test_sasria_ai_training -v
+python -m unittest test_sasria_ai_training test_sasria_ai_training_hardening -v
+python -O -m unittest test_sasria_ai_training test_sasria_ai_training_hardening -v
 ```
 
-The suite is deliberately at repository root so the existing Commons `tests` workflow / battery discovers it without creating another active workflow. It covers missing prime evidence, individual returnables, framework recognition, training-history warning semantics, score caps, boolean score rejection, the 70-point threshold, score provenance, missing/duplicate/incomplete role pathways, explicit paid-workshare state, response-vs-submission separation, fully synthetic submission readiness, and deterministic receipts.
+The root suites cover returnables, score caps/threshold, role completeness, paid-workshare separation, deterministic receipts, direct-public-API malformed inputs, caller authority self-mint prevention, the known HOLD fixture, and hostile real-CLI JSON shapes with no partial output publication.
