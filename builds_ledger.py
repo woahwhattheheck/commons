@@ -237,6 +237,19 @@ def project(root, write, open_prs=None, main_sha="", fetch_pulls=None):
         "n_open_prs": len(projected_prs),
         "open_prs": projected_prs,
     }
+    # KEEP tip live_cash across builds remints (newbot-06 doors; every board ingest
+    # calls project() and was wiping Autopsy/$199 product paths). Paths only.
+    prev_builds = {}
+    prev_path = os.path.join(root, "builds.json")
+    if os.path.isfile(prev_path):
+        try:
+            with open(prev_path, encoding="utf-8") as handle:
+                loaded = json.load(handle)
+            if isinstance(loaded, dict):
+                prev_builds = loaded
+        except (OSError, json.JSONDecodeError):
+            prev_builds = {}
+    projection = hub_pages._preserve_live_cash(prev_builds, projection)
     write(os.path.join(root, "builds.json"), json.dumps(projection, indent=1) + "\n")
 
     rows = []

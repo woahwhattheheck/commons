@@ -16,6 +16,20 @@ ID_OK = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 FROM_OK = re.compile(r"^[A-Z][A-Z0-9_]{1,31}$")
 
 
+def _preserve_live_cash(prev, doc):
+    """Keep tip Autopsy/$199 product doors across wakeups.json remints.
+
+    Paths only — never invent Stripe. Mirrors hub_pages KEEP (newbot-13).
+    """
+    if not isinstance(prev, dict) or not isinstance(doc, dict):
+        return doc
+    live = prev.get("live_cash")
+    if isinstance(live, dict) and live.get("products"):
+        doc["live_cash"] = live
+    return doc
+
+
+
 def now():
     return datetime.now(timezone.utc)
 
@@ -243,6 +257,10 @@ def main():
         "held_unrouted": held_unrouted,
         "fired": sorted(fired_ids),
     }
+    # KEEP tip live_cash (newbot-06) across wakeup baker remints.
+    public = _preserve_live_cash(
+        previous_public if isinstance(previous_public, dict) else {}, public
+    )
     # A scheduled check with no due work must be byte-quiet. Preserve the
     # prior observation timestamp when only wall-clock time changed.
     previous_semantic = dict(previous_public) if isinstance(previous_public, dict) else {}
