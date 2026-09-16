@@ -103,6 +103,11 @@ class ExternalActionEvaluationTests(unittest.TestCase):
         result["authority"]["external_llm_execution_proven"] = True
         self.assertFalse(verify_external_result(self.scenario, self.bundle, result))
 
+    def test_result_canonicalization_failure_is_invalid_not_exception(self):
+        result = evaluate_external_actions(self.scenario, self.bundle)
+        result["scenario_id"] = "\ud800"
+        self.assertFalse(verify_external_result(self.scenario, self.bundle, result))
+
     def test_economically_bad_actions_are_evidence_not_parser_errors(self):
         broken = copy.deepcopy(self.bundle)
         for row in broken["actions"]:
