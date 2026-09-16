@@ -272,23 +272,30 @@ def _compile_at(
     return receipt
 
 
-def compile_current_bytes(
-    candidate_bytes: bytes,
-    evidence_bytes: bytes,
+def _make_compile_current(
     _root_loader=load_current_roots_bytes,
     _clock=_utc_now,
     _compiler=_compile_at,
     _mode: str = CURRENT_MODE,
-) -> dict[str, Any]:
-    """Compile against import-captured CURRENT authority dependencies."""
-    roots_bytes = _root_loader()
-    return _compiler(
-        candidate_bytes,
-        evidence_bytes,
-        roots_bytes,
-        evaluated_at=_clock(),
-        mode=_mode,
-    )
+):
+    def compile_current_bytes(
+        candidate_bytes: bytes,
+        evidence_bytes: bytes,
+    ) -> dict[str, Any]:
+        roots_bytes = _root_loader()
+        return _compiler(
+            candidate_bytes,
+            evidence_bytes,
+            roots_bytes,
+            evaluated_at=_clock(),
+            mode=_mode,
+        )
+
+    return compile_current_bytes
+
+
+compile_current_bytes = _make_compile_current()
+del _make_compile_current
 
 
 def compile_historical_bytes(
@@ -297,15 +304,13 @@ def compile_historical_bytes(
     roots_bytes: bytes,
     *,
     evaluated_at: datetime,
-    _compiler=_compile_at,
-    _mode: str = HISTORICAL_MODE,
 ) -> dict[str, Any]:
-    return _compiler(
+    return _compile_at(
         candidate_bytes,
         evidence_bytes,
         roots_bytes,
         evaluated_at=evaluated_at,
-        mode=_mode,
+        mode=HISTORICAL_MODE,
     )
 
 
@@ -360,27 +365,20 @@ def verify_integrity_bytes(
     evidence_bytes: bytes,
     roots_bytes: bytes,
     receipt_bytes: bytes,
-    _parse_receipt=parse_receipt_bytes,
-    _require_timestamp=require_timestamp,
-    _compiler=_compile_at,
-    _canonical_bytes=canonical_bytes,
 ) -> bool:
-    receipt = _parse_receipt(receipt_bytes)
-    evaluated_at = _require_timestamp(receipt["evaluated_at"], "receipt.evaluated_at")
-    rebuilt = _compiler(
+    receipt = parse_receipt_bytes(receipt_bytes)
+    evaluated_at = require_timestamp(receipt["evaluated_at"], "receipt.evaluated_at")
+    rebuilt = _compile_at(
         candidate_bytes,
         evidence_bytes,
         roots_bytes,
         evaluated_at=evaluated_at,
         mode=receipt["mode"],
     )
-    return _canonical_bytes(rebuilt) == receipt_bytes
+    return canonical_bytes(rebuilt) == receipt_bytes
 
 
-def verify_current_bytes(
-    candidate_bytes: bytes,
-    evidence_bytes: bytes,
-    receipt_bytes: bytes,
+def _make_verify_current(
     _parse_receipt=parse_receipt_bytes,
     _clock=_utc_now,
     _root_loader=load_current_roots_bytes,
@@ -389,48 +387,60 @@ def verify_current_bytes(
     _canonical_bytes=canonical_bytes,
     _format_timestamp=format_timestamp,
     _mode: str = CURRENT_MODE,
-) -> dict[str, Any]:
-    """Verify against import-captured CURRENT clock, roots, and policy graph."""
-    receipt = _parse_receipt(receipt_bytes)
-    now = _clock()
-    roots_bytes = _root_loader()
-    integrity_valid = False
-    if receipt["mode"] == _mode:
-        evaluated_at = _require_timestamp(receipt["evaluated_at"], "receipt.evaluated_at")
-        rebuilt = _compiler(
+):
+    def verify_current_bytes(
+        candidate_bytes: bytes,
+        evidence_bytes: bytes,
+        receipt_bytes: bytes,
+    ) -> dict[str, Any]:
+        receipt = _parse_receipt(receipt_bytes)
+        now = _clock()
+        roots_bytes = _root_loader()
+        integrity_valid = False
+        if receipt["mode"] == _mode:
+            evaluated_at = _require_timestamp(
+                receipt["evaluated_at"], "receipt.evaluated_at"
+            )
+            rebuilt = _compiler(
+                candidate_bytes,
+                evidence_bytes,
+                roots_bytes,
+                evaluated_at=evaluated_at,
+                mode=_mode,
+            )
+            integrity_valid = _canonical_bytes(rebuilt) == receipt_bytes
+        current = _compiler(
             candidate_bytes,
             evidence_bytes,
             roots_bytes,
-            evaluated_at=evaluated_at,
+            evaluated_at=now,
             mode=_mode,
         )
-        integrity_valid = _canonical_bytes(rebuilt) == receipt_bytes
-    current = _compiler(
-        candidate_bytes,
-        evidence_bytes,
-        roots_bytes,
-        evaluated_at=now,
-        mode=_mode,
-    )
-    receipt_valid_until = _require_timestamp(
-        receipt["current_valid_until"], "receipt.current_valid_until"
-    )
-    current_valid = (
-        integrity_valid
-        and now <= receipt_valid_until
-        and current["decision_sha256"] == receipt["decision_sha256"]
-    )
-    return {
-        "schema": "teaming-conversion-current-verification/v2",
-        "verified_at": _format_timestamp(now),
-        "integrity_valid": integrity_valid,
-        "current_valid": current_valid,
-        "receipt_disposition": receipt["disposition"],
-        "current_disposition": current["disposition"],
-        "current_decision_sha256": current["decision_sha256"],
-        "receipt_decision_sha256": receipt["decision_sha256"],
-        "current_valid_until": current["current_valid_until"],
-    }
+        receipt_valid_until = _require_timestamp(
+            receipt["current_valid_until"], "receipt.current_valid_until"
+        )
+        current_valid = (
+            integrity_valid
+            and now <= receipt_valid_until
+            and current["decision_sha256"] == receipt["decision_sha256"]
+        )
+        return {
+            "schema": "teaming-conversion-current-verification/v2",
+            "verified_at": _format_timestamp(now),
+            "integrity_valid": integrity_valid,
+            "current_valid": current_valid,
+            "receipt_disposition": receipt["disposition"],
+            "current_disposition": current["disposition"],
+            "current_decision_sha256": current["decision_sha256"],
+            "receipt_decision_sha256": receipt["decision_sha256"],
+            "current_valid_until": current["current_valid_until"],
+        }
+
+    return verify_current_bytes
+
+
+verify_current_bytes = _make_verify_current()
+del _make_verify_current
 
 
 def render_markdown(receipt: dict[str, Any]) -> str:
