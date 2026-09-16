@@ -39,6 +39,16 @@ def _canonical_json(value: Any) -> str:
     return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
 
 
+def _semantic_key(*values: object) -> tuple[str, ...]:
+    """Canonical evidence identity used only for duplicate detection.
+
+    Case and surrounding whitespace cannot mint a second evidence item. All
+    substantive fields participate, so genuinely different evidence remains
+    distinct without inventing a provider-supplied identifier.
+    """
+    return tuple(value.strip().casefold() if isinstance(value, str) else "" for value in values)
+
+
 @dataclass(frozen=True)
 class Reference:
     organization: str
@@ -48,6 +58,9 @@ class Reference:
 
     def valid(self) -> bool:
         return all(_nonempty(v) for v in (self.organization, self.contact_name, self.contact_route, self.engagement_summary))
+
+    def evidence_key(self) -> tuple[str, ...]:
+        return _semantic_key(self.organization, self.contact_name, self.contact_route, self.engagement_summary)
 
 
 @dataclass(frozen=True)
@@ -59,6 +72,9 @@ class ComparableEngagement:
 
     def valid(self) -> bool:
         return all(_nonempty(v) for v in (self.client_label, self.scope, self.outcome, self.evidence_route))
+
+    def evidence_key(self) -> tuple[str, ...]:
+        return _semantic_key(self.client_label, self.scope, self.outcome, self.evidence_route)
 
 
 @dataclass(frozen=True)
@@ -104,12 +120,21 @@ class PartnerEvidence:
             blockers.append("missing_or_invalid_named_trainer")
         elif not self.trainer.covers_window():
             blockers.append("trainer_does_not_cover_delivery_window")
+
         valid_engagements = [item for item in self.comparable_engagements if isinstance(item, ComparableEngagement) and item.valid()]
-        if len(valid_engagements) < 2:
+        distinct_engagement_keys = {item.evidence_key() for item in valid_engagements}
+        if len(distinct_engagement_keys) < len(valid_engagements):
+            blockers.append("duplicate_comparable_engagement_evidence")
+        if len(distinct_engagement_keys) < 2:
             blockers.append("fewer_than_two_comparable_engagements")
+
         valid_refs = [item for item in self.references if isinstance(item, Reference) and item.valid()]
-        if len(valid_refs) < 2:
+        distinct_reference_keys = {item.evidence_key() for item in valid_refs}
+        if len(distinct_reference_keys) < len(valid_refs):
+            blockers.append("duplicate_reference_evidence")
+        if len(distinct_reference_keys) < 2:
             blockers.append("fewer_than_two_valid_references")
+
         if not _nonempty(self.subcontract_role):
             blockers.append("subcontract_role_not_defined")
         if self.commercial_split_discussed is not True:
@@ -120,8 +145,8 @@ class PartnerEvidence:
         return {
             "status": "TEAMING_READY" if not blockers else "HOLD",
             "blockers": blockers,
-            "valid_comparable_engagements": len(valid_engagements),
-            "valid_references": len(valid_refs),
+            "valid_comparable_engagements": len(distinct_engagement_keys),
+            "valid_references": len(distinct_reference_keys),
             "delivery_window": {"start": RFP_START.isoformat(), "end": RFP_END.isoformat()},
         }
 
@@ -226,13 +251,16 @@ class AdoptionMetrics:
             raise ValueError("trained_staff cannot exceed invited_staff")
         if self.builders > self.trained_staff:
             raise ValueError("builders cannot exceed trained_staff")
+        if self.functioning_agents > self.builders:
+            raise ValueError("functioning_agents cannot exceed builders")
         if self.evaluated_agents > self.functioning_agents:
             raise ValueError("evaluated_agents cannot exceed functioning_agents")
         training_rate = round(self.trained_staff / self.invited_staff, 4) if self.invited_staff else 0.0
+        outcome_pass = self.trained_staff >= 1 and self.builders >= 1 and self.functioning_agents >= 1
         return {
             **values,
             "training_completion_rate": training_rate,
-            "buyer_outcome_status": "PASS" if self.functioning_agents >= 1 else "HOLD",
+            "buyer_outcome_status": "PASS" if outcome_pass else "HOLD",
         }
 
 
