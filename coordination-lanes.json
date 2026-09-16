@@ -1,5 +1,6 @@
 {
  "lanes": [
+  {"canonical":14820,"chain":[14768,14820],"content_keys":["d09d5217a14dac48"],"families":[],"lane":"lane-14768","open":[14768,14820],"state":"OPEN","title":"feat(slack): land durable mirror receipts on current main"},
   {"canonical":14464,"chain":[14361,14464],"content_keys":["8b073a7eccb66210"],"families":["COMMONS-REPLY-EVENT-ENVELOPE-IDENTITY-ZMLR1","COMMONS-REPLY-EVENT-SINGLE-READ-CORE-ZMLA7Q2"],"lane":"lane-14361","open":[14464],"state":"OPEN","title":"Fix reply-event identity at the core boundary"},
   {"canonical":14778,"chain":[14648,14778],"content_keys":["c636782afa443072"],"families":[],"lane":"lane-14648","open":[],"state":"MERGED","title":"Recover reviewed ADIA structural-break carrier on current main"},
   {"canonical":14766,"chain":[14612,14766],"content_keys":["ea9bc69c255a26b1"],"families":[],"lane":"lane-14612","open":[],"state":"MERGED","title":"NIH SPARK: recover reviewed reload-authority repair onto current main"},
@@ -17,7 +18,7 @@
   {"canonical":14125,"chain":[14123,14125],"content_keys":["def25cd9e414194e"],"families":[],"lane":"lane-14123","open":[],"state":"MERGED","title":"research: Lost in Transcription all-three multitrack V2"}
  ],
  "note": "lanes with two or more members; an open pull request row without a lane field is a lane of its own",
- "observed_at": "2026-09-16T06:35:20Z",
+ "observed_at": "2026-09-16T11:58:56Z",
  "recent_closed": [
   {"closed_at":"2026-09-16T00:42:07Z","content_key":"UNKNOWN","created_at":"2026-09-16T00:41:42Z","head":"e1a9ecd58f320fddd073d5cdabda3842cf6c6bd0","links":[],"markers":[],"number":14778,"state":"MERGED","title":"Recover reviewed ADIA structural-break carrier on current main"},
   {"closed_at":"2026-09-16T00:14:56Z","content_key":"ea9bc69c255a26b1","created_at":"2026-09-16T00:14:37Z","head":"8716678c4b00d0f7431f34f8fda1d3558fc68632","links":[],"markers":[],"number":14766,"state":"MERGED","title":"NIH SPARK: recover reviewed reload-authority repair onto current main"},
