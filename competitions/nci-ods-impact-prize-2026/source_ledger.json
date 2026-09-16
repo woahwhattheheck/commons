@@ -1,0 +1,32 @@
+{
+  "schema": "nci-ods-impact-prize-source-ledger/v1",
+  "checked_at": "2026-09-16T21:50:00Z",
+  "sources": [
+    {
+      "id": "nci-gdc-impact-prize-announcement",
+      "authority": "OFFICIAL_NCI_PUBLIC",
+      "url": "https://gdc.cancer.gov/turn-data-sharing-ideas-impact-enter-nci-ods-impact-prize",
+      "supports": [
+        "TRACK_1_RESEARCH_OUTPUT_SHARING_AND_REUSE_IDEAS",
+        "OUTPUTS_EXTEND_BEYOND_DATASETS",
+        "TOTAL_PRIZE_PURSE_USD_200000",
+        "GRAND_PRIZE_USD_20000",
+        "SUBMISSIONS_OPEN_THROUGH_2026_10_05"
+      ]
+    },
+    {
+      "id": "nci-ods-webinar-index",
+      "authority": "OFFICIAL_NCI_PUBLIC",
+      "url": "https://datasharing.cancer.gov/post/News/ods-webinars/",
+      "supports": ["AUGUST_12_2026_PRE_SUBMISSION_WEBINAR_EXISTS", "PRIZE_TOTAL_USD_200000"]
+    }
+  ],
+  "controlling_rules": {
+    "state": "NOT_BOUND",
+    "eligibility": "HOLD",
+    "registration": "HOLD",
+    "submission_format": "HOLD",
+    "judging_criteria": "HOLD",
+    "reason": "Public NCI announcement confirms competition facts but this carrier has not acquired and hash-bound the controlling eligibility/submission rules."
+  }
+}
