@@ -111,13 +111,23 @@ def _validate_json_tree(value: Any, path: str = "$") -> Any:
     return value
 
 
+def _pairs_scalar_safe(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    """Reject duplicates without reflecting an unvalidated decoded key."""
+    result: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValidationError("duplicate JSON key")
+        result[key] = value
+    return result
+
+
 def loads_strict(text: str) -> Any:
     if type(text) is not str:
         raise ValidationError("strict JSON input must be text")
     try:
         value = json.loads(
             text,
-            object_pairs_hook=_core._pairs,
+            object_pairs_hook=_pairs_scalar_safe,
             parse_constant=_core._constant,
         )
     except ValidationError:
