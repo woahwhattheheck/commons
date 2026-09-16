@@ -201,6 +201,34 @@ class QualificationTests(unittest.TestCase):
         with self.assertRaises(q.ContractError):
             q.verify_report(b(candidate()), b(tampered))
 
+    def test_duplicate_evidence_gate_rejected(self):
+        o_raw = b(official())
+        e = evidence("txst-ai-advising-owner-evidence/v1", [q.OWNER_GATES[0]])
+        duplicate = dict(e["records"][0])
+        duplicate["record_id"] = "r-duplicate"
+        e["records"].append(duplicate)
+        e_raw = b(e)
+        with self.assertRaises(q.ContractError):
+            q._compile_at(
+                b(candidate()), o_raw, e_raw, None,
+                now=datetime(2026, 9, 16, 22, 0, tzinfo=timezone.utc),
+                trusted_official_sha=q.sha256(o_raw),
+                trusted_owner_sha=q.sha256(e_raw),
+                trusted_partner_sha=None,
+                historical=True,
+            )
+
+    def test_re_receipted_semantic_tamper_does_not_match_current(self):
+        report = q.compile_current(b(candidate()))
+        tampered = dict(report)
+        tampered["warnings"] = ["invented warning"]
+        unsigned = dict(tampered)
+        unsigned.pop("receipt_sha256", None)
+        tampered["receipt_sha256"] = q.sha256(q.canonical_bytes(unsigned))
+        verdict = q.verify_report(b(candidate()), b(tampered))
+        self.assertTrue(verdict["integrity_valid"])
+        self.assertFalse(verdict["current_semantics_match"])
+
     def test_verify_current_unchanged_hold(self):
         report = q.compile_current(b(candidate()))
         verdict = q.verify_report(b(candidate()), b(report))
