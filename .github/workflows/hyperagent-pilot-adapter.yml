@@ -1,0 +1,35 @@
+name: hyperagent-pilot-adapter
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/hyperagent_pilot/**'
+      - '.github/workflows/hyperagent-pilot-adapter.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'revenue/hyperagent_pilot/**'
+      - '.github/workflows/hyperagent-pilot-adapter.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile
+        run: >-
+          python -m py_compile
+          revenue/hyperagent_pilot/__init__.py
+          revenue/hyperagent_pilot/adapter.py
+          revenue/hyperagent_pilot/test_adapter.py
+      - name: Focused tests
+        run: python -m unittest -v revenue.hyperagent_pilot.test_adapter
+      - name: Optimized focused tests
+        run: python -O -m unittest -v revenue.hyperagent_pilot.test_adapter
