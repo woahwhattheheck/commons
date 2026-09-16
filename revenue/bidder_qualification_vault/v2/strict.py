@@ -7,30 +7,69 @@ from typing import Any, Optional
 
 from .constants import FINANCIAL_CLASSES, ID_RE, SHA_RE, UTC_RE
 
+
 class RegistryError(ValueError):
     pass
+
+
+def _scalar_unicode(value: str, where: str) -> str:
+    try:
+        value.encode("utf-8", "strict")
+    except UnicodeEncodeError as exc:
+        raise RegistryError(f"{where}:NON_SCALAR_UNICODE") from exc
+    return value
 
 
 def _strict_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
     out: dict[str, Any] = {}
     for key, value in pairs:
+        _scalar_unicode(key, "json.key")
         if key in out:
             raise RegistryError(f"DUPLICATE_JSON_KEY:{key}")
         out[key] = value
     return out
 
 
+def _reject_constant(value: str) -> Any:
+    raise RegistryError(f"INVALID_JSON_CONSTANT:{value}")
+
+
 def load_json_strict(text: str) -> Any:
     try:
-        return json.loads(text, object_pairs_hook=_strict_object)
+        _scalar_unicode(text, "json.text")
+        return json.loads(text, object_pairs_hook=_strict_object, parse_constant=_reject_constant)
     except RegistryError:
         raise
-    except (json.JSONDecodeError, TypeError) as exc:
+    except (json.JSONDecodeError, ValueError, TypeError, RecursionError) as exc:
         raise RegistryError(f"INVALID_JSON:{exc}") from exc
 
 
+def _validate_canonical_value(value: Any, where: str = "$") -> None:
+    if value is None or type(value) in (bool, int):
+        return
+    if type(value) is str:
+        _scalar_unicode(value, where)
+        return
+    if type(value) is list:
+        for index, item in enumerate(value):
+            _validate_canonical_value(item, f"{where}[{index}]")
+        return
+    if type(value) is dict:
+        for key, item in value.items():
+            if type(key) is not str:
+                raise RegistryError(f"{where}:NON_STRING_KEY")
+            _scalar_unicode(key, f"{where}.key")
+            _validate_canonical_value(item, f"{where}.{key}")
+        return
+    raise RegistryError(f"{where}:UNSUPPORTED_CANONICAL_TYPE:{type(value).__name__}")
+
+
 def canonical_json(value: Any) -> bytes:
-    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
+    _validate_canonical_value(value)
+    try:
+        return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False).encode("utf-8")
+    except (UnicodeEncodeError, ValueError, TypeError, RecursionError) as exc:
+        raise RegistryError(f"CANONICAL_JSON_FAILED:{exc}") from exc
 
 
 def sha256_hex(value: Any) -> str:
@@ -52,6 +91,7 @@ def _require_exact_keys(obj: Any, keys: set[str], where: str) -> dict[str, Any]:
 def _require_str(value: Any, where: str, *, nonempty: bool = True) -> str:
     if not isinstance(value, str):
         raise RegistryError(f"{where}:EXPECTED_STRING")
+    _scalar_unicode(value, where)
     if nonempty and not value:
         raise RegistryError(f"{where}:EMPTY")
     if len(value) > 512:

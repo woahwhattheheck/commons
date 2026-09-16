@@ -5,6 +5,7 @@ from typing import Any
 
 from .lineage import _candidate_matches, _state_for_evidence
 
+
 def _resolve_requirement(
     req: dict[str, Any], evidence: list[dict[str, Any]], entity_id: str, as_of: datetime,
     conflicts: set[str], superseded_by: dict[str, str]
@@ -18,18 +19,18 @@ def _resolve_requirement(
         }
 
     evaluated = [(ev, *_state_for_evidence(ev, as_of=as_of, conflicts=conflicts, superseded_by=superseded_by)) for ev in candidates]
-    current = [(ev, reason) for ev, state, reason in evaluated if state == "CURRENT_VERIFIED"]
-    if len(current) == 1:
-        ev, reason = current[0]
+    positive = [(ev, reason) for ev, state, reason in evaluated if state == "CANDIDATE_VERIFIED"]
+    if len(positive) == 1:
+        ev, reason = positive[0]
         return {
             "requirement_id": req["id"], "category": req["category"], "stage": req["stage"],
-            "state": "CURRENT_VERIFIED", "reason": reason, "evidence_id": ev["id"],
+            "state": "CANDIDATE_VERIFIED", "reason": reason, "evidence_id": ev["id"],
             "evidence_sha256": ev["content_sha256"],
         }
-    if len(current) > 1:
+    if len(positive) > 1:
         return {
             "requirement_id": req["id"], "category": req["category"], "stage": req["stage"],
-            "state": "CONFLICT", "reason": "MULTIPLE_CURRENT_GENERATIONS", "evidence_id": None,
+            "state": "CONFLICT", "reason": "MULTIPLE_CANDIDATE_GENERATIONS", "evidence_id": None,
             "evidence_sha256": None,
         }
 
@@ -37,7 +38,6 @@ def _resolve_requirement(
     for target in precedence:
         subset = [(ev, reason) for ev, state, reason in evaluated if state == target]
         if subset:
-            # Never leak descriptor/issuer/PII; only authority identifier + digest when unambiguous.
             ev, reason = sorted(subset, key=lambda p: p[0]["id"])[0]
             return {
                 "requirement_id": req["id"], "category": req["category"], "stage": req["stage"],

@@ -5,6 +5,7 @@ from typing import Any
 
 from .strict import _parse_utc, canonical_json
 
+
 def _generation_conflicts(evidence: list[dict[str, Any]]) -> tuple[set[str], dict[str, str], set[str]]:
     by_id: dict[str, list[dict[str, Any]]] = {}
     for item in evidence:
@@ -56,7 +57,6 @@ def _generation_conflicts(evidence: list[dict[str, Any]]) -> tuple[set[str], dic
             conflicts.update({old, prior, item["id"]})
         superseded_by[old] = item["id"]
 
-    # Cycles are conflicts, not silently linearized.
     for start in list(by_id):
         seen: set[str] = set()
         cur = start
@@ -72,8 +72,6 @@ def _generation_conflicts(evidence: list[dict[str, Any]]) -> tuple[set[str], dic
 def _candidate_matches(req: dict[str, Any], ev: dict[str, Any], entity_id: str) -> bool:
     if ev["entity_id"] != entity_id or ev["category"] != req["category"]:
         return False
-    # Subject scope is exact in both directions. Scoped evidence must never
-    # silently promote to an entity-wide (subject=None) requirement.
     if ev["subject_id"] != req["subject_id"]:
         return False
     if req["stage"] not in ev["stages"]:
@@ -96,13 +94,15 @@ def _state_for_evidence(
     revoked = _parse_utc(ev["revoked_at"], "internal.revoked", nullable=True)
     assert issued is not None and captured is not None
     if issued > as_of or captured > as_of:
-        return "CONFLICT", "FUTURE_EVIDENCE"
+        return "CONFLICT", "FUTURE_EVIDENCE_AT_CALLER_AS_OF"
     if ev["id"] in superseded_by:
         return "SUPERSEDED", f"SUPERSEDED_BY:{superseded_by[ev['id']]}"
     if revoked is not None and revoked <= as_of:
-        return "SUPERSEDED", "REVOKED"
+        return "SUPERSEDED", "REVOKED_AT_CALLER_AS_OF"
     if expires is not None and expires <= as_of:
-        return "EXPIRED", "EXPIRED_AT_AS_OF"
+        return "EXPIRED", "EXPIRED_AT_CALLER_AS_OF"
     if ev["verification_state"] != "VERIFIED" or ev["source_class"] == "SELF_ASSERTED":
-        return "HOLD_PRIVATE_REVIEW", "EVIDENCE_NOT_VERIFIED"
-    return "CURRENT_VERIFIED", "CURRENT_VERIFIED"
+        return "HOLD_PRIVATE_REVIEW", "CALLER_EVIDENCE_NOT_ASSERTED_VERIFIED"
+    # This is intentionally only a candidate judgment over caller-supplied
+    # bytes. No independent source root or current verifier clock is present.
+    return "CANDIDATE_VERIFIED", "CALLER_ASSERTED_VERIFIED_CANDIDATE"

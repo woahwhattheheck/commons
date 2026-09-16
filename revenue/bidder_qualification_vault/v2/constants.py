@@ -3,10 +3,12 @@ from __future__ import annotations
 import re
 
 INPUT_SCHEMA = "bidder-qualification-vault/entity-bound/v2"
-OUTPUT_SCHEMA = "bidder-qualification-vault/entity-bound-manifest/v2"
+OUTPUT_SCHEMA = "bidder-qualification-vault/entity-bound-candidate-manifest/v2"
 
+# These are candidate/integrity states over caller-supplied bytes. They are
+# deliberately not current operational authority.
 STATES = {
-    "CURRENT_VERIFIED",
+    "CANDIDATE_VERIFIED",
     "EXPIRED",
     "SUPERSEDED",
     "MISSING",
