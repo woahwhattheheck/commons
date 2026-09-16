@@ -29,7 +29,9 @@ def main() -> int:
 
             blocked = False
             try:
-                desk.draft_invoice("ACME", "2026-09-14", "2026-09-14", "demo-too-early")
+                desk.draft_invoice(
+                    "ACME", "2026-09-14", "2026-09-14", "demo-too-early"
+                )
             except BillingBlocked:
                 blocked = True
 
@@ -50,16 +52,21 @@ def main() -> int:
                 "2026-09-14",
                 "demo-beta-invoice",
             )
+            claim_count = desk.conn.execute(
+                "SELECT COUNT(*) count FROM invoice_lines"
+            ).fetchone()["count"]
 
             print(
                 json.dumps(
                     {
                         "ok": True,
                         "synthetic": True,
+                        "business_date": desk.business_date().isoformat(),
                         "route_stop_count": route["stop_count"],
                         "premature_invoice_blocked": blocked,
                         "acme_total_minor": acme_invoice["total_minor"],
                         "beta_total_minor": beta_invoice["total_minor"],
+                        "invoice_line_claim_count": claim_count,
                         "event_count": len(desk.event_log()),
                         "external_provider_calls": 0,
                         "outreach_sent": False,
