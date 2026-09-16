@@ -131,13 +131,8 @@ class RightNowCheckoutCurrentnessTests(unittest.TestCase):
                     return_value=copy.deepcopy(self.readback),
                 ):
                     with mock.patch.object(control, "_current_utc", return_value=stale_now):
-                        with self.assertRaises(control.ControlError) as caught:
+                        with self.assertRaisesRegex(control.ControlError, "stale"):
                             control.build_checkout_authority(catalog_as_of)
-                message = str(caught.exception)
-                self.assertTrue(
-                    "stale" in message or "later than catalog as_of" in message,
-                    msg=message,
-                )
 
     def test_future_provider_observation_fails(self) -> None:
         value = copy.deepcopy(self.readback)
@@ -203,17 +198,7 @@ class RightNowCheckoutCurrentnessTests(unittest.TestCase):
             control, "_credential_host_readback", return_value=copy.deepcopy(self.readback)
         ):
             with mock.patch.object(control, "_current_utc", return_value=FRESH_NOW):
-                with mock.patch.object(
-                    control._core,
-                    "build_checkout_authority",
-                    control.build_checkout_authority,
-                ):
-                    with mock.patch.object(
-                        control._core,
-                        "validate_catalog",
-                        control.validate_catalog,
-                    ):
-                        compiled = control.build_control()
+                compiled = control.build_control()
         self.assertIs(compiled["truth"]["active_chargeable_checkout"], True)
 
 
