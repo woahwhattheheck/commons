@@ -201,6 +201,19 @@ class TestDioCrlf(unittest.TestCase):
         self.assertGreaterEqual(len(SEARCH_SPACE), 7)
         self.assertEqual(classify(row)["state"], "INTEGRATED")
 
+    def test_subzero_receipt_rejects_live_cash_and_contest_append(self):
+        path = os.path.join(ROOT, "ground", "SUBZERO_GRBN.md")
+        with open(path, encoding="utf-8") as handle:
+            text = handle.read()
+        raw = text.encode("utf-8")
+        self.assertNotIn("## Live cash", text)
+        self.assertNotIn("## Contest product", text)
+        self.assertEqual(len(raw), 1854)
+        self.assertEqual(
+            hashlib.sha256(raw).hexdigest(),
+            "73926a0e1fc00051ec0b10fc873122b012fc6fb02981d6117d66c38ed8c8119b",
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

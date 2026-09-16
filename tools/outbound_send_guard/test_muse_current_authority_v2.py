@@ -1,8 +1,7 @@
 from __future__ import annotations
 
-import copy
 import unittest
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 
 from tools.outbound_send_guard import muse_current_authority_v2 as auth
 
@@ -44,6 +43,11 @@ def receipt(decision="SELECTED", reasons=None):
     return {"payload": p, "receipt_sha256": auth._digest(p)}
 
 
+def redigest(value):
+    value["receipt_sha256"] = auth._digest(value["payload"])
+    return value
+
+
 class CurrentAuthorityDonorTests(unittest.TestCase):
     def setUp(self):
         self.old = auth._utc_now
@@ -76,46 +80,89 @@ class CurrentAuthorityDonorTests(unittest.TestCase):
             self.assertIsNone(p[name])
 
     def test_side_effect_authority_stays_false(self):
-        raw = receipt(); raw["payload"]["external_send_authorized"] = True; raw["payload"]["side_effects_authorized"] = True
+        raw = receipt()
+        raw["payload"]["external_send_authorized"] = True
+        raw["payload"]["side_effects_authorized"] = True
+        redigest(raw)
         p = auth.seal_untrusted_snapshot_receipt(raw)["payload"]
-        self.assertFalse(p["external_send_authorized"]); self.assertFalse(p["side_effects_authorized"])
+        self.assertFalse(p["external_send_authorized"])
+        self.assertFalse(p["side_effects_authorized"])
+
+    def test_source_digest_must_match_before_seal(self):
+        raw = receipt()
+        raw["payload"]["claimant"] = "Z-TAMPER"
+        with self.assertRaises(ValueError):
+            auth.seal_untrusted_snapshot_receipt(raw)
+
+    def test_source_unknown_field_rejected_even_with_recomputed_digest(self):
+        raw = receipt()
+        raw["payload"]["send_authorized"] = True
+        redigest(raw)
+        with self.assertRaises(ValueError):
+            auth.seal_untrusted_snapshot_receipt(raw)
+
+    def test_source_missing_field_rejected_even_with_recomputed_digest(self):
+        raw = receipt()
+        del raw["payload"]["snapshot_sha256"]
+        redigest(raw)
+        with self.assertRaises(ValueError):
+            auth.seal_untrusted_snapshot_receipt(raw)
+
+    def test_source_schema_is_pinned_even_with_recomputed_digest(self):
+        raw = receipt()
+        raw["payload"]["schema_version"] = "outbound-muse-publication-election-receipt/v999"
+        redigest(raw)
+        with self.assertRaises(ValueError):
+            auth.seal_untrusted_snapshot_receipt(raw)
 
     def test_forged_selected_with_recomputed_outer_digest_fails(self):
         out = auth.seal_untrusted_snapshot_receipt(receipt())
         out["payload"]["decision"] = "SELECTED"
         out["payload"]["reasons"] = []
-        out["receipt_sha256"] = auth._digest(out["payload"])
+        redigest(out)
         self.assertFalse(auth.verify_untrusted_snapshot_receipt(out))
 
     def test_forged_not_selected_with_recomputed_outer_digest_fails(self):
         out = auth.seal_untrusted_snapshot_receipt(receipt("NOT_SELECTED"))
         out["payload"]["decision"] = "NOT_SELECTED"
         out["payload"]["reasons"] = []
-        out["receipt_sha256"] = auth._digest(out["payload"])
+        redigest(out)
         self.assertFalse(auth.verify_untrusted_snapshot_receipt(out))
 
     def test_forged_snapshot_authenticated_flag_fails(self):
         out = auth.seal_untrusted_snapshot_receipt(receipt())
         out["payload"]["snapshot_authenticated"] = True
-        out["receipt_sha256"] = auth._digest(out["payload"])
+        redigest(out)
         self.assertFalse(auth.verify_untrusted_snapshot_receipt(out))
 
     def test_forged_send_authority_fails(self):
         out = auth.seal_untrusted_snapshot_receipt(receipt())
         out["payload"]["external_send_authorized"] = True
-        out["receipt_sha256"] = auth._digest(out["payload"])
+        redigest(out)
+        self.assertFalse(auth.verify_untrusted_snapshot_receipt(out))
+
+    def test_sealed_unknown_field_rejected_even_with_recomputed_digest(self):
+        out = auth.seal_untrusted_snapshot_receipt(receipt())
+        out["payload"]["send_authorized"] = True
+        redigest(out)
+        self.assertFalse(auth.verify_untrusted_snapshot_receipt(out))
+
+    def test_sealed_schema_is_pinned_even_with_recomputed_digest(self):
+        out = auth.seal_untrusted_snapshot_receipt(receipt())
+        out["payload"]["schema_version"] = "outbound-muse-publication-election-receipt/v999"
+        redigest(out)
         self.assertFalse(auth.verify_untrusted_snapshot_receipt(out))
 
     def test_future_compiled_at_fails_current_verifier(self):
         out = auth.seal_untrusted_snapshot_receipt(receipt())
         out["payload"]["compiled_at"] = "2026-09-15T01:36:00Z"
-        out["receipt_sha256"] = auth._digest(out["payload"])
+        redigest(out)
         self.assertFalse(auth.verify_untrusted_snapshot_receipt(out))
 
     def test_tampered_claimant_fails_inner_binding_even_with_outer_redigest(self):
         out = auth.seal_untrusted_snapshot_receipt(receipt())
         out["payload"]["claimant"] = "Z-TAMPER"
-        out["receipt_sha256"] = auth._digest(out["payload"])
+        redigest(out)
         self.assertFalse(auth.verify_untrusted_snapshot_receipt(out))
 
     def test_hold_must_have_reason(self):
@@ -133,7 +180,7 @@ class CurrentAuthorityDonorTests(unittest.TestCase):
                     else "1789440010.000002" if field.endswith("_ts")
                     else "attacker-value"
                 )
-                out["receipt_sha256"] = auth._digest(out["payload"])
+                redigest(out)
                 self.assertFalse(auth.verify_untrusted_snapshot_receipt(out))
 
 

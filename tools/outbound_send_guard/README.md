@@ -1,70 +1,41 @@
 # Outbound send guard
 
-`tools/outbound_send_guard` is a **read-only, offline authority gate** for parallel sales/email workers.
-It exists because a workspace-only search can say “no send receipt” while the mailbox already contains a provider-SENT message to the buyer. A second worker must not turn that visibility gap into duplicate outreach.
+This package is a read-only preflight against duplicate outbound contact. It does not search providers or send messages; callers supply intent/evidence snapshots.
 
-The guard does not search Gmail or Slack and cannot send email. An adapter/operator supplies two bounded JSON inputs:
+## CURRENT authority boundary
 
-- an `outbound-send-intent/v1` describing one intended email route + offer;
-- an `outbound-send-evidence/v1` snapshot from a complete bidirectional mailbox query and complete Slack receipt query.
-
-It emits `outbound-send-guard-receipt/v1` with one decision:
-
-- `ALLOW_NEW` — complete/fresh evidence contains no same-offer send and no outbound inside the configured cross-offer cooldown;
-- `REPLY_ONLY` — a recipient inbound is newer than the latest outbound; the receipt returns the exact inbound provider message id, but does **not** authorize a net-new thread;
-- `HOLD` — evidence is incomplete, stale, future-dated, contradictory, or another outbound is still inside the cross-offer cooldown;
-- `DO_NOT_RESEND` — a hard DNR exists or the exact offer has already been sent without a newer inbound.
-
-The receipt always sets `side_effects_authorized=false`. A sender must make its own explicit mutation call only after separately consuming an acceptable decision.
-
-## Safety / authority rules
-
-1. Mailbox and Slack lookups must both be marked complete. Rate limits or partial pagination are `HOLD`, never “not found.”
-2. Provider-SENT evidence is authoritative even when Slack has no send receipt.
-3. Exact-offer outbound evidence never ages out by itself. A newer inbound changes the lane to `REPLY_ONLY`, not `ALLOW_NEW`.
-4. Unknown/different prior outreach enforces a configurable route-level cooldown (default 30 days).
-5. `hard_dnr` is terminal in v1. There is deliberately no automatic “release DNR” event.
-6. Duplicate provider/event identifiers with conflicting facts make authority `unknown` and `HOLD`.
-7. Email identity is case-folded but plus tags are **not** stripped or guessed equivalent.
-8. Input JSON is strict: duplicate keys, non-finite numbers, coercive booleans/integers, unknown fields, naive timestamps and malformed addresses fail closed.
-9. CLI output cannot alias either evidence input and is published with same-directory stage + `fsync` + `os.replace`.
-
-## Minimal example
-
-```json
-{
-  "schema_version": "outbound-send-intent/v1",
-  "intent_id": "intent-001",
-  "recipient": "buyer@example.com",
-  "offer_id": "fixed-proof-001",
-  "requested_at": "2026-09-13T07:20:00Z",
-  "route_kind": "email"
-}
-```
-
-The evidence envelope has:
-
-- `generated_at`;
-- `mailbox.complete`, `mailbox.query_id`, `mailbox.messages[]`;
-- `slack.complete`, `slack.query_id`, `slack.events[]`;
-- optional strict policy integers for cooldown/freshness/skew.
-
-Each mailbox row is metadata-only: `message_id`, `direction`, `counterparty`, `observed_at`, optional `offer_id`. The guard does not require or persist email bodies. Slack rows use `event_id`, `kind` (`lead`, `sent`, `hard_dnr`), `recipient`, `observed_at`, optional `offer_id` and optional `provider_message_id`.
-
-Run:
+Positive CURRENT authority begins **outside an imported Python library**, at direct isolated/no-site startup:
 
 ```bash
-python -m tools.outbound_send_guard.guard --intent intent.json --evidence evidence.json --out receipt.json
+python -I -S tools/outbound_send_guard/cli.py compile --intent intent.json --evidence evidence.json --out receipt.json
+python -I -S tools/outbound_send_guard/cli.py verify --intent intent.json --evidence evidence.json --receipt receipt.json --out verification.json
 ```
 
-Exit codes are deliberately semantic: `0 ALLOW_NEW`, `3 REPLY_ONLY`, `4 HOLD`, `5 DO_NOT_RESEND`, `2 invalid input/publication failure`.
+The CLI checks that it is the direct script (`__name__ == "__main__"`), not package-imported, and that both `-I` and `-S` are active before it imports the internal current runtime. Only that clean process binds the deterministic historical engine into the verifier-clock implementation and samples process UTC.
+
+Imported/library surfaces are deliberately non-authorizing. `tools.outbound_send_guard.evaluate`, `current.compile_current`, and compatibility `guard.evaluate` can reconstruct historical decisions but never emit positive CURRENT clearance; historical `ALLOW_NEW`/`REPLY_ONLY` becomes outward `HOLD`. Terminal `DO_NOT_RESEND` remains terminal. `verify_current` on the embedded surface never returns current validity.
+
+This narrowing is intentional. Arbitrary Python can execute before package import and can rewrite module globals, defaults, closures, clocks, cores, or launch primitives. Hiding those objects behind another imported wrapper would only move the trust defect. `current_worker.py` is an internal runtime/testing primitive, not a supported authority API.
+
+## Historical engine and compatibility
+
+`_guard_core.py` retains the deterministic v1 engine. `guard.py` preserves parsing/canonicalization helpers and the legacy receipt shape used by composed guards, including exact source-digest kwargs, but embedded positive decisions are forced to HOLD. Explicit `compile_historical_at()` is integrity/reconstruction only and is always outward HOLD.
+
+The reviewed verifier-clock implementation remains in `current_impl.py`. By default it imports the fail-closed public facade; a bare/imported/module execution therefore cannot recover positive CURRENT. The direct isolated worker explicitly binds `_guard_core` only after the CLI boundary is proven.
+
+## Authority ceiling
+
+Every surface keeps `side_effects_authorized=false`. CURRENT clearance is only a precondition: Muse election/custody, route and relationship policy, fresh provider evidence, one-shot send consumption, and the provider mutation remain separate controls.
 
 ## Regression gate
 
-```bash
-python -m py_compile tools/outbound_send_guard/guard.py tools/outbound_send_guard/test_guard.py
-python -m unittest -v tools.outbound_send_guard.test_guard
-python -O -m unittest -v tools.outbound_send_guard.test_guard
-```
+The dedicated workflow runs Python 3.11 and 3.13, normal and optimized (`-O`), and covers:
 
-The hostile suite includes the live failure shape that motivated this gate: no Slack send receipt, but a provider-SENT Gmail message for the buyer. That shape must never return `ALLOW_NEW`.
+- the full deterministic v1 engine suite against `_guard_core`;
+- embedded package/compatibility HOLD behavior and legacy-shape preservation;
+- inert `_utc_now`/`_core` predecessor assignments on the embedded wrapper;
+- direct CLI rejection without `-I -S` or when imported;
+- real direct `python -I -S .../cli.py` compile→verify round trips, normal and optimized;
+- the exact stale matched-pair predecessor: historical `ALLOW_NEW` must be CURRENT `HOLD`.
+
+Queued or absent hosted jobs are never represented as green.
