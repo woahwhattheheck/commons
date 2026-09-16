@@ -1,3 +1,15 @@
+from . import engine as _engine
+from .strict_json import canonical_json, digest, parse_strict_json
+
+# Install the hardened parser/canonical graph before importing the authority
+# layer. Existing engine functions intentionally resolve these names through
+# their module globals, so historical/current compilation, file ingress and
+# receipt verification all share one fail-closed UTF-8 JSON boundary without
+# duplicating the economic engine.
+_engine.parse_strict_json = parse_strict_json
+_engine.canonical_json = canonical_json
+_engine.digest = digest
+
 from .authority import (
     AuthorityError,
     authority_subject,
@@ -7,10 +19,7 @@ from .authority import (
 )
 from .engine import (
     DealEconomicsError,
-    canonical_json,
     compile_report as compile_arithmetic_report,
-    digest,
-    parse_strict_json,
     render_markdown as render_arithmetic_markdown,
     verify_historical as verify_arithmetic_historical,
 )
