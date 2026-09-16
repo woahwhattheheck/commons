@@ -96,6 +96,7 @@ def compile_from_dict(data: dict[str, Any]) -> dict[str, Any]:
         prime=prime,
         workshare=workshare,
         submission_authority=auth,
+        authority_root=data.get("authority_root") is True,
     )
 
 

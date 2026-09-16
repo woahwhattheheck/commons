@@ -95,7 +95,7 @@ class PrimeGateTests(unittest.TestCase):
         self.assertIn("unknown_prime_evidence_keys", result["blockers"])
 
     def test_complete_synthetic_prime_can_reach_evidence_ready(self):
-        self.assertEqual(good_prime().result()["status"], "PRIME_EVIDENCE_READY")
+        self.assertEqual(good_prime().result(True)["status"], "PRIME_EVIDENCE_READY")
 
 
 class WorkshareTests(unittest.TestCase):
@@ -130,6 +130,7 @@ class ReadinessTests(unittest.TestCase):
             source_custody=source_ready(),
             prime=PrimeCandidate("", {}),
             workshare=good_workshare(),
+            authority_root=True,
         )
         self.assertEqual(pack["teaming_status"], "TEAMING_PACKET_READY")
         self.assertEqual(pack["response_status"], "HOLD")
@@ -140,6 +141,7 @@ class ReadinessTests(unittest.TestCase):
             source_custody=source_ready(),
             prime=good_prime(),
             workshare=good_workshare(),
+            authority_root=True,
         )
         self.assertEqual(pack["response_status"], "PRIME_RESPONSE_ASSEMBLY_READY")
         self.assertEqual(pack["submission_status"], "HOLD")
@@ -170,6 +172,7 @@ class ReadinessTests(unittest.TestCase):
             prime=good_prime(),
             workshare=good_workshare(),
             submission_authority=auth,
+            authority_root=True,
         )
         self.assertEqual(pack["submission_status"], "SUBMISSION_READY")
 
