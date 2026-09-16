@@ -109,6 +109,32 @@ def observations(*times: str, agreement_id: str = "agr-temporal-hostile-20260916
     }
 
 
+def measured_observations(
+    when: str,
+    digest: str,
+    *,
+    agreement_id: str = "agr-temporal-hostile-20260916-0001",
+):
+    """ACCEPTANCE_ROW evidence that the composer actually projects into the project."""
+    return {
+        "schema_version": "commons-scope-observations/v1",
+        "kind": "EXECUTION_OBSERVATIONS",
+        "agreement_id": agreement_id,
+        "observations": [
+            {
+                "observation_id": "obs-01-measured",
+                "kind": "ACCEPTANCE_ROW",
+                "row_id": "happy-path",
+                "result": "PASS",
+                "public_ref": "revenue/scope_to_delivery/fixtures/synthetic-happy-path.txt",
+                "sha256": digest,
+                "observed_at": when,
+                "note": "Synthetic measured evidence.",
+            }
+        ],
+    }
+
+
 def raw(value, *, pretty=False):
     return json.dumps(
         value,
@@ -293,14 +319,45 @@ class TemporalGateTests(unittest.TestCase):
 
     def test_same_agreement_observation_a_vs_b_project_mismatch(self):
         doc = agreement()
-        oa = observations("2026-09-13T10:15:00Z")
-        ob = observations("2026-09-13T10:25:00Z")
+        oa = measured_observations(
+            "2026-09-13T10:15:00Z",
+            "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        )
+        ob = measured_observations(
+            "2026-09-13T10:25:00Z",
+            "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        )
+        pa = project(doc, oa)
+        pb = project(doc, ob)
+        self.assertNotEqual(gate.digest(pa), gate.digest(pb))
         with self.assertRaisesRegex(gate.TemporalAuthorityError, "does not bind"):
             gate.evaluate_bytes(
                 raw(doc),
                 raw(ob),
                 as_of=z("2026-09-13T11:00:00Z"),
-                canonical_project=project(doc, oa),
+                canonical_project=pa,
+            )
+
+    def test_current_observation_a_vs_b_project_mismatch(self):
+        doc = dynamic_agreement("ready")
+        now = datetime.now(timezone.utc).replace(microsecond=0)
+        oa = measured_observations(
+            fmt(now - timedelta(minutes=5)),
+            "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            agreement_id=doc["agreement_id"],
+        )
+        ob = measured_observations(
+            fmt(now - timedelta(minutes=3)),
+            "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            agreement_id=doc["agreement_id"],
+        )
+        pa = project(doc, oa)
+        self.assertNotEqual(gate.digest(pa), gate.digest(project(doc, ob)))
+        with self.assertRaisesRegex(gate.TemporalAuthorityError, "does not bind"):
+            gate.evaluate_current_bytes(
+                raw(doc),
+                raw(ob),
+                canonical_project=pa,
             )
 
     def test_duplicate_json_key_rejected(self):
