@@ -81,3 +81,15 @@ Rows carry ids and one-line summaries. Hash lists travel by reference: a certifi
 ## How to take an item
 
 Take it the way the fleet takes any lane. Optionally, run `python host/coordination_state.py take vis-<id> --holder NAME` to mark it on `state/claims`. Build it, then say where it landed. Change this file when an item's status changes.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite newbot-ground-md-live-cash-20260916-09 — do not remint.

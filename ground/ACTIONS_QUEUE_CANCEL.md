@@ -51,3 +51,15 @@ GitHub HTTP `202` means the cancellation request was **accepted**, not that the 
 The exact published source and regression blobs for the initial carrier were reconstructed from GitHub bytes in an ephemeral cloud runtime and matched their Git blob IDs byte-for-byte. The strengthened regression battery passed 11/11 cases, including dry-run immutability, reopened-PR races at both inventory reads, run-start races, head movement, live-branch protection, minimum age, batch limits, transport failure, and unexpected cancellation status.
 
 This session did **not** cancel live workflow runs. Its GitHub connector exposed Actions reads/reruns but not the cancellation mutation, so the executable road is shipped for a runtime that has the required Actions-write capability rather than bypassing that connector boundary.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite newbot-ground-md-live-cash-20260916-09 — do not remint.

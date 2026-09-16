@@ -93,3 +93,15 @@ keys:
 - Merge-bases older than the producer's shallow history read `unknown`. Deepen the clone to reach them.
 - Closed PRs get a content key only when their head is still fetchable.
 - The verdict parser is a regex. Improve `_FIELD_WORDS`, `_SEGMENT_RE` and `_verdict_paragraph` freely, and add the review text that broke it to `test_coordination_state.py`.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite newbot-ground-md-live-cash-20260916-09 — do not remint.
