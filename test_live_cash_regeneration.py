@@ -12,7 +12,8 @@ import llms_txt
 PRODUCTS = (
     "agent-rescue.html", "dealer-service-lead-rescue.html",
     "referral-intake-completeness.html", "repair-booking-preflight.html",
-    "plant-downtime-handoff.html", "tools-cash.html", "commerce.html",
+    "plant-downtime-handoff.html", "diagnostic.html", "commercial.html",
+    "tools-cash.html", "commerce.html",
 )
 
 
