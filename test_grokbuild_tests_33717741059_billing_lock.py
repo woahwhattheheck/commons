@@ -31,7 +31,7 @@ KEEP = {
     "test_grokbuild_open_door_guard_33717733987_billing_lock.py": "928fd0eb",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
     "catalog.html": "35a7069f",
-    "hub_pages.py": "44bbd2ec",
+    "hub_pages.py": "5d54e4ff",
     ".github/workflows/tests.yml": "fd94b65c",
     "open_door_guard.py": "877e148d",
 }

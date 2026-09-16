@@ -23,7 +23,7 @@ KEEP = {
     "test_grounding_door.py": "0908ec95",
     "p/cursor-mcp-get-grounding-20260902-01.md": "0bc79b8c",
     "p/grok-build-repair-tracker-mcp-get-20260902-01.md": "14760206",
-    "hub_pages.py": "44bbd2ec",
+    "hub_pages.py": "5d54e4ff",
     "features/registry/cursor-mcp-get-grounding-20260902-01.json": "2ad88f05",
 }
 

@@ -27,7 +27,7 @@ KEEP = {
     "harness_wake/__main__.py": "a4457781",
     "harness_wake/cancel_stale.py": "ce59da45",
     "harness_wake/watchdog.py": "149ed075",
-    "hub_pages.py": "44bbd2ec",
+    "hub_pages.py": "5d54e4ff",
     "p/grok-build-job-watchdog-33689281276-billing-lock-20260902-01.md": "29c547f4",
     "p/grok-build-job-watchdog-33689096542-billing-lock-20260902-01.md": "795847b1",
     "p/grok-build-job-watchdog-33689088762-billing-lock-20260902-01.md": "62bb626a",

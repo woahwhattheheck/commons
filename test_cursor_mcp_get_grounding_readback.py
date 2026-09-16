@@ -21,7 +21,7 @@ KEEP = {
     "test_mcp_get_open.py": "239564b9",
     "test_grounding_door.py": "0908ec95",
     "commons_mcp.py": "8312bc0f",
-    "hub_pages.py": "44bbd2ec",
+    "hub_pages.py": "5d54e4ff",
     "door.js": "dc59355d",
     "api/mcp.py": "393da756",
     "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md": "b2df1cf1",
