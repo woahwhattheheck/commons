@@ -25,7 +25,12 @@ EXPECTED_CANDIDATES = {
 class EvidenceError(RuntimeError): pass
 
 def canonical_bytes(v: Any) -> bytes:
-    return (json.dumps(v, sort_keys=True, separators=(",", ":"), ensure_ascii=False)+"\n").encode()
+    """Return canonical finite UTF-8 JSON or fail closed as EvidenceError."""
+    try:
+        text=json.dumps(v,sort_keys=True,separators=(",",":"),ensure_ascii=False,allow_nan=False)+"\n"
+        return text.encode("utf-8",errors="strict")
+    except (TypeError,ValueError,OverflowError,UnicodeEncodeError) as e:
+        raise EvidenceError("value must be finite scalar-Unicode JSON") from e
 def canonical_sha256(v: Any) -> str: return hashlib.sha256(canonical_bytes(v)).hexdigest()
 def git_blob_sha1_bytes(b: bytes) -> str:
     return hashlib.sha1(b"blob "+str(len(b)).encode()+b"\0"+b).hexdigest()
