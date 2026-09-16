@@ -13,7 +13,7 @@ from .core import (
     compile_migration,
     strict_json_loads,
 )
-from .qualification import qualify_manifest
+from .qualification import current_qualification
 
 __all__ = [
     "AuditError",
@@ -23,6 +23,6 @@ __all__ = [
     "ResidentStore",
     "StaleWriteError",
     "compile_migration",
-    "qualify_manifest",
+    "current_qualification",
     "strict_json_loads",
 ]

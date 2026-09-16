@@ -17,12 +17,12 @@ This isolated, **synthetic-only** package demonstrates the system boundaries nee
 - append-only SHA-256 hash-linked audit evidence for every admitted create/update;
 - aggregate-only analytics export that emits no direct resident identifiers;
 - deterministic receipts binding record state + audit head;
-- fail-closed pursuit qualification: direct-prime evidence readiness is impossible until the controlling packet SHA, three distinct similar-reference receipts, and owner-controlled bid gates are retained;
+- source-pinned pursuit qualification: current status is fixed at `TEAMING_REQUIRED`; runtime callers cannot inject packet/reference/owner evidence to upgrade it;
 - a deterministic end-to-end synthetic demo.
 
 ## Deliberate truth ceiling
 
-The discovery manifest is based on current public secondary procurement mirrors. The controlling event packet (`1440285-event.pdf`) has **not** been retained byte-exact in this carrier, so it is not authoritative for the full compliance matrix. Current qualification therefore returns `TEAMING_REQUIRED`, not prime-ready. Even a future `PRIME_EVIDENCE_READY` result never authorizes a submission or buyer contact; those remain separate owner/provider actions.
+The discovery manifest is based on current public secondary procurement mirrors. The controlling event packet (`1440285-event.pdf`) has **not** been retained byte-exact in this carrier, so it is not authoritative for the full compliance matrix. Current qualification therefore returns `TEAMING_REQUIRED`, not prime-ready. Upgrading that status requires a reviewed source/evidence change composed with the shared bidder-vault/pursuit bridge; there is no runtime evidence argument. Submission and buyer contact remain separate owner/provider actions.
 
 Deadline and current-time authority should compose with the already-landed shared `revenue/pursuit_evidence_bridge/`; this package does not mint a competing caller-clock implementation.
 
@@ -31,8 +31,8 @@ Deadline and current-time authority should compose with the already-landed share
 From repository root:
 
 ```bash
-python -m unittest revenue.osuchsh_gme_resident_data.test_core revenue.osuchsh_gme_resident_data.test_qualification -v
-python -O -m unittest revenue.osuchsh_gme_resident_data.test_core revenue.osuchsh_gme_resident_data.test_qualification -v
+python -m unittest revenue.osuchsh_gme_resident_data.test_core revenue.osuchsh_gme_resident_data.test_qualification revenue.osuchsh_gme_resident_data.test_hardening -v
+python -O -m unittest revenue.osuchsh_gme_resident_data.test_core revenue.osuchsh_gme_resident_data.test_qualification revenue.osuchsh_gme_resident_data.test_hardening -v
 python -m revenue.osuchsh_gme_resident_data.demo
 ```
 

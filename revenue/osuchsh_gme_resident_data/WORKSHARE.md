@@ -19,10 +19,10 @@ This package supports a prime, partner, or direct response with a bounded techni
 ### We can truthfully show now
 
 - an executable data-free prototype implementing migration conflict detection, RBAC-style field allowlists, optimistic concurrency, tamper-evident audit, aggregate analytics, and deterministic receipts;
-- a fail-closed qualification gate that does not self-mint bidder references or bid authority;
+- a source-pinned current qualification state with no runtime evidence input;
 - a concrete staged implementation/acceptance method.
 
-### Evidence still required before a direct-prime claim
+### Evidence needed before direct-prime readiness
 
 - exact controlling RFP/addenda bytes and compliance extraction;
 - three similar-reference receipts from distinct organizations, preferably medical or higher-ed, meeting the buyer wording;
@@ -30,7 +30,7 @@ This package supports a prime, partner, or direct response with a bounded techni
 - owner-confirmed portal registration and submission identity;
 - pricing/legal/insurance/security commitments required by the controlling packet.
 
-Until those exist, **TEAMING_REQUIRED is the commercially correct route**, not pretending the company satisfies the reference gate.
+Until those exist, **TEAMING_REQUIRED is the commercially correct route**; current source cannot emit direct-prime readiness.
 
 ## Prime/partner target profile
 

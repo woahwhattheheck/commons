@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from .core import ResidentStore, canonical_bytes, compile_migration
-from .qualification import qualify_manifest
+from .qualification import current_qualification
 
 
 def synthetic_rows():
@@ -64,16 +64,7 @@ def build_demo_receipt() -> dict:
         "initial_receipt": initial,
         "final_receipt": store.receipt(),
         "analytics": store.analytics_export(role="auditor"),
-        "qualification": qualify_manifest(
-            {
-                "opportunity_id": "OSUTUL-RFP-001864-2027",
-                "controlling_packet_sha256": None,
-                "similar_reference_receipts": [],
-                "non_collusion_owner_confirmed": False,
-                "portal_registration_confirmed": False,
-                "pricing_owner_confirmed": False,
-            }
-        ),
+        "qualification": current_qualification(),
     }
 
 
