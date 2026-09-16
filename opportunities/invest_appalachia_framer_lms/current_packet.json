@@ -1,0 +1,42 @@
+{
+  "opportunity": {
+    "opportunity_id": "INVEST-APPALACHIA-FRAMER-LMS-20260916",
+    "buyer": "Invest Appalachia",
+    "source_url": "https://investappalachia.org/framer-rfp/",
+    "rfp_url": "https://investappalachia.org/wp-content/uploads/2026/08/1.-draft2_RFP_Invest_Appalachia_Framer_Training_LMS.docx.pdf",
+    "attachments_zip_url": "https://investappalachia.org/wp-content/uploads/2026/08/Zipped-RFP-Docs.zip",
+    "deadline_utc": "2026-09-22T21:00:00Z",
+    "budget_cap_usd": 60000,
+    "contract_start": "2026-10-13",
+    "contract_end": "2027-04-30",
+    "submission_subject": "RFP Proposal Submission - Invest Appalachia Framer Training LMS",
+    "attachments_status": "PARTIAL"
+  },
+  "qualification": {
+    "two_lms_platform_implementations": {"state": "MISSING", "evidence_refs": [], "note": "Slack, GitHub, Gmail, and Drive searches found opportunity/teaming material but no retained proof of selecting/configuring/launching two LMS platforms."},
+    "adult_learning_packaging": {"state": "HOLD", "evidence_refs": [], "note": "No retained completed-client evidence found yet for packaging non-academic adult-learning materials for online delivery."},
+    "start_capacity_2026_10_13": {"state": "HOLD", "evidence_refs": ["Google Calendar primary: 2026-10-13 busy=[] checked 2026-09-16"], "note": "Primary calendar had no busy interval on 2026-10-13 when checked 2026-09-16; this proves no calendar conflict only, not staffing/project-start capacity."},
+    "w9_available": {"state": "HOLD", "evidence_refs": [], "note": "No retained W-9 document located by current Gmail/Drive search."},
+    "general_liability_available": {"state": "HOLD", "evidence_refs": [], "note": "No retained general-liability proof located by current Gmail/Drive search."},
+    "professional_liability_available": {"state": "HOLD", "evidence_refs": [], "note": "No retained E&O/professional-liability proof located by current Gmail/Drive search."},
+    "cybersecurity_insurance_available": {"state": "HOLD", "evidence_refs": [], "note": "No retained cybersecurity-insurance proof located by current Gmail/Drive search."},
+    "two_relevant_project_examples": {"state": "MISSING", "evidence_refs": [], "note": "No two completed LMS/online-learning project examples with attributable client/work-sample evidence found."},
+    "two_prior_client_references": {"state": "MISSING", "evidence_refs": [], "note": "No two current prior-client references for comparable LMS/online-learning work have been evidenced for this pursuit."}
+  },
+  "proposal": {
+    "proposed_total_usd": 0,
+    "year1_license_usd": 0,
+    "post_year1_recurring_usd": 0,
+    "platform_recommendation": "UNSELECTED_PENDING_ATTACHMENT_A_AND_QUALIFIED_PRIME_INPUT",
+    "attachments_complete": false
+  },
+  "authority": {
+    "external_contact_authorized": false,
+    "submission_authorized": false,
+    "signature_authorized": false,
+    "contract_acceptance_authorized": false,
+    "spend_authorized": false,
+    "payment_authorized": false,
+    "award_or_revenue_asserted": false
+  }
+}
