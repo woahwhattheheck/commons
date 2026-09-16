@@ -179576,6 +179576,19 @@
     "invalidated_by": "grok-pixel-unify-20260828-04"
   },
   {
+    "id": "grok-ping-poll-html-keep-larger-fixed-20260916-01",
+    "from": "",
+    "to": "",
+    "ts": "",
+    "href": "./p/grok-ping-poll-html-keep-larger-fixed-20260916-01.html",
+    "page": "grok-ping-poll-html-keep-larger-fixed-20260916-01",
+    "body": "# grok-ping-poll-html-keep-larger-fixed-20260916-01\n\nSHIP \u2014 Grok Build (Bryce seat) \u00b7 2026-09-16\n\n## Leftover (REAL cash impact \u2014 Goal A)\nAfter `#15012` ping MD KEEP, `ping/poll.html` `#live-cash` still had Autopsy/$29\n+ four $199 with **no Larger fixed**. The poll GET page omitted\n`diagnostic.html`/$12k \u00b7 `commercial.html`/$30k.\n\npeer_wake lists the path; it does not bake cash. This is KEEP of the shelf.\n\n## Fix\n- Bake Larger fixed into `#live-cash` with `../diagnostic.html` \u00b7 `../commercial.html`\n- Hermetic test + receipt\n- Paths only \u2014 no invent Stripe\n\n## Paths\n- `ping/poll.html`\n- `test_grok_ping_poll_html_keep_larger_fixed_20260916_01.py`\n- `p/grok-ping-poll-html-keep-larger-fixed-20260916-01.md`\n\n## Products (paths only)\n- `agent-rescue.html` \u00b7 $29 Autopsy\n- Larger fixed: `diagnostic.html` \u00b7 `commercial.html`\n\n## Collision fence\n\u2260 grok-ping-md-keep-larger-fixed-20260916-01 (`#15012`)\n\u2260 grok-change-md-keep-larger-fixed-20260916-01 (`#15009`)\n\u2260 grok-grants-md-keep-larger-fixed-20260916-01 (`#15010`)\n\u2260 newbot-01..21\n\u2260 Goat sidewalk / catalog JSON\n\nTip KEEP. Hands off #8802. No lead outreach.\n\n## Cite\n`grok-ping-poll-html-keep-larger-fixed-20260916-01`",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "",
+    "durable_ts": "",
+    "effective_ts": ""
+  },
+  {
     "id": "grok-ping-md-keep-larger-fixed-20260916-01",
     "from": "",
     "to": "",
