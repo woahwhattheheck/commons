@@ -244,13 +244,19 @@ class OpportunityDeadlineCommandTests(unittest.TestCase):
             compile_portfolio(packet(op), policy(), as_of=AS_OF)
 
     def test_deadline_extension_supersedes_old_generation(self):
-        op = opportunity(deadlines=[
-            deadline("response-1", "RESPONSE", "2026-09-16T12:00:00Z", generation=1),
-            deadline(
-                "response-2", "RESPONSE", "2026-09-20T12:00:00Z", generation=2,
-                supersedes_deadline_id="response-1",
-            ),
-        ])
+        op = opportunity(
+            sources=[
+                source("official-1", generation=1),
+                source("official-2", generation=2, sha=H2, url="https://buyer.example.gov/addendum"),
+            ],
+            deadlines=[
+                deadline("response-1", "RESPONSE", "2026-09-16T12:00:00Z", source_id="official-1", generation=1),
+                deadline(
+                    "response-2", "RESPONSE", "2026-09-20T12:00:00Z", source_id="official-2", generation=2,
+                    supersedes_deadline_id="response-1",
+                ),
+            ],
+        )
         row = row_of(compile_portfolio(packet(op), policy(), as_of=AS_OF))
         self.assertEqual(row["next_deadline"]["deadline_id"], "response-2")
         self.assertEqual([d["deadline_id"] for d in row["deadlines"]], ["response-2"])
