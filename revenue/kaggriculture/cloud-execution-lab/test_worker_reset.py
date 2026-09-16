@@ -336,8 +336,45 @@ def _run_game(
     }, last_instance
 
 
+def _prewarm_dynamic_modules(root: Path) -> None:
+    try:
+        import titan_runtime
+    except ImportError:
+        return
+    loader = getattr(titan_runtime, "load", None)
+    if not callable(loader):
+        return
+
+    source = (
+        root
+        if (root / "pressure_priority.py").is_file()
+        else root.parent / "cloud-opponent-league/lark-responsive"
+    )
+    hist = root / "reference/titan-history"
+    modules = [
+        ("sell_priority", source / "sell_priority.py"),
+        ("_titan_pressure_priority", source / "pressure_priority.py"),
+        ("_titan_pressure_mechanics", root / "mechanics.py"),
+        ("_titan_funding", root / "reference/titan-current/seed_funding.py"),
+        ("_titan_seed_budget", root / "reference/integrated-selected/alder/seed_budget.py"),
+        ("_titan_redundant_hire", root / "reference/titan-current/redundant_hire.py"),
+        ("_titan_history_terminal_mechanics", hist / "terminal_mechanics.py"),
+        ("_titan_history_selected_action_history", hist / "selected_action_history.py"),
+        ("_titan_history_observed_fills", hist / "observed_fills.py"),
+        ("_titan_history_flow", hist / "flow.py"),
+        ("_titan_history_scenario_adapter", hist / "scenario_adapter.py"),
+    ]
+    for mod_name, mod_file in modules:
+        if mod_file.is_file():
+            try:
+                loader(mod_name, mod_file, cache=True)
+            except Exception:
+                pass
+
+
 def _worker(root: Path, order: list[str]) -> dict[str, Any]:
     engine_semantics, candidate = _load_official(root)
+    _prewarm_dynamic_modules(root)
     results = {}
     prior_instance = None
     with ThreadPoolExecutor(1) as executor:
