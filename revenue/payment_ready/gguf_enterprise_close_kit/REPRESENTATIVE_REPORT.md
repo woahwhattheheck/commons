@@ -2,50 +2,60 @@
 
 **Offer:** `gguf-diagnostic-10d-12k`  
 **Engagement:** `synthetic-gguf-001`  
-**Status:** synthetic rehearsal only — not a customer result, acceptance, payment, or revenue event
+**Mode:** `SYNTHETIC_REHEARSAL`  
+**Status:** evidence-contract rehearsal only — not a customer result, legal acceptance, delivery, payment, or revenue event
 
 ## Executive finding
 
-A bounded synthetic ablation produced an artifact with a distinct SHA-256 from the synthetic original, and the synthetic restore returned exactly to the original SHA-256 and byte count. Three distinct harness-run receipt identities represent baseline, ablation, and restore executions. This demonstrates the **shape of the AT1–AT6 evidence packet** and byte-exact rollback contract. It does not demonstrate any customer-model performance improvement.
+A bounded synthetic ablation uses a distinct artifact identity and the synthetic restore returns to the original SHA-256 and byte count. Baseline, ablation, and restore receipt digests are recomputed from retained run semantics: run kind, exact input artifact, frozen harness-command identity, frozen evaluation-suite identity, and outcome-summary identity. A separate delivery receipt is recomputed from a retained manifest that binds the engagement, artifacts, run receipts, and report identity.
 
-## Evidence summary
+That demonstrates the **shape and tamper-detection behavior** of AT1–AT6. It does not establish any real customer fact.
 
-| Test | Representative evidence | Result |
+## Representative evidence
+
+| Test | Synthetic evidence | Fixture result |
 | --- | --- | --- |
-| AT1 original hash | `aaaaaaaa…aaaa`, 4,294,967,296 bytes | evidence-shaped PASS |
-| AT2 ablation differs | `bbbbbbbb…bbbb` != original | evidence-shaped PASS |
-| AT3 byte-exact restore | restored `aaaaaaaa…aaaa`, same byte count | evidence-shaped PASS |
-| AT4 harness receipts | baseline `cccc…`, ablation `dddd…`, restore `eeee…` | evidence-shaped PASS |
-| AT5 concise finding | report identity `ffffffff…ffff` + limitations below | evidence-shaped PASS |
-| AT6 delivery receipt | receipt `99999999…9999` binds required hashes | evidence-shaped PASS |
+| AT1 original | `aaaaaaaa…aaaa`, 4,294,967,296 bytes | semantic fixture PASS |
+| AT2 ablation | `bbbbbbbb…bbbb` differs from original | semantic fixture PASS |
+| AT3 rollback | restored `aaaaaaaa…aaaa`, same byte count | semantic fixture PASS |
+| AT4 run receipts | baseline `c2bb56a4…`, ablation `3d0762ba…`, restore `66f32417…`; all bind frozen harness/eval generation | semantic fixture PASS |
+| AT5 finding | report identity `ffffffff…ffff` + limitations | semantic fixture PASS |
+| AT6 delivery | manifest receipt `e0c7e292…` binds engagement/artifacts/run receipts/report | semantic fixture PASS |
 
-“Evidence-shaped PASS” here means the synthetic fixture satisfies the deterministic close-kit contract. It is not a representation that a real customer artifact was processed.
+A fixture PASS is **not** production readiness. The compiled close packet for this fixture is `SYNTHETIC_EVIDENCE_COMPLETE_NON_PRODUCTION` and still reports the current canonical buyer blocker.
 
-## What the customer would receive in a real engagement
+## What a real customer evidence packet would contain
 
 - immutable original GGUF SHA-256 + byte count;
 - frozen harness command/config and evaluation-suite identities;
-- baseline, ablation, and restore run receipts;
-- bounded intervention/ablation artifact identity;
-- proof that the restored artifact is byte-identical to the original;
-- concise finding describing what was shown and measured;
-- explicit limitations and unresolved questions; and
-- a hash-bound delivery receipt for acceptance review.
+- baseline, ablation, and restore run payloads with recomputable receipts;
+- bounded intervention artifact identity;
+- byte-exact rollback identity;
+- concise finding + explicit limitations; and
+- a delivery manifest whose digest can be independently recomputed.
 
-The customer model bytes, private evaluation cases, signed documents, credentials, and payment data are not part of the Commons evidence packet.
+Customer model bytes, private evaluation cases, signed documents, credentials, and payment data are not Commons evidence.
+
+## Recovery-runtime boundary
+
+Receipt-shaped NDA/SOW/M1 values do not prove those events. The production recovery rail in `host/revenue_recovery.py` requires exact predecessor source bytes, exact external evidence bytes where applicable, schema-bound stage facts, and deterministic replay. The close kit never promotes standalone hashes to `nda_signed`, `sow_signed`, `m1_payment_received`, private file-transfer authority, customer acceptance, delivery, or revenue.
+
+Current canonical recovery still says purchase intent `NEEDS_BUYER` and delivery `NOT_LANDED`, so no production-ready state is represented here.
 
 ## Representative limitations
 
-1. This report uses synthetic hashes and no customer/model bytes.
-2. The contract proves artifact identity, evidence linkage, and rollback—not benchmark lift.
-3. A real harness result remains meaningful only for the frozen customer harness/evaluation identity supplied for that engagement.
-4. Customer acceptance is an external decision after review of AT1–AT6; the close-kit cannot self-accept.
-5. A payment reference, if one later exists, is commercial evidence only and never substitutes for delivery or acceptance.
+1. No customer/model bytes were processed.
+2. No buyer, NDA, SOW, M1 payment, acceptance, delivery, processor event, or cash event is represented.
+3. A real harness result is meaningful only for the frozen customer harness/evaluation generation.
+4. Byte-exact rollback is evidence; metric lift is not the acceptance rule.
+5. A payment reference is commercial evidence only and never substitutes for AT1–AT6 or customer acceptance.
 
-## Stop-state example
+## Failure example
 
-If the restored SHA-256 or byte count differs from AT1, AT3 fails and the engagement enters a rollback HOLD. TJLabs should not paper over the mismatch with a positive metric result or proceed to claim acceptance. The customer instead receives the safe evidence/limitations required to decide the next action.
+If a run receipt changes its input artifact, harness generation, evaluation generation, or payload without a matching recomputed digest, AT4 validation fails closed. If the delivery manifest is self-rewritten to point at the wrong report/run/artifact identities, AT6 fails even when the caller recomputes the manifest digest because the retained semantics no longer match the evidence packet.
+
+If restored SHA-256 or byte count differs from AT1, AT3 fails. A positive benchmark result cannot paper over that mismatch.
 
 ## Expansion boundary
 
-Only after a **real** customer accepts AT1–AT6 on the same GGUF should the separate 30-day White Box pilot be discussed. A license/productization path is later still and requires paid delivery; neither is implied by this synthetic report.
+Only after a **real**, runtime-supported customer acceptance on the same GGUF should the separate 30-day White Box pilot be discussed. License/productization comes only after paid delivery; neither is implied by this synthetic rehearsal.

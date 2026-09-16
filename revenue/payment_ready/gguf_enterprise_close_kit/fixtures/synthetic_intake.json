@@ -1,5 +1,6 @@
 {
-  "schema": "tjlabs.gguf-12k-intake/v1",
+  "schema": "tjlabs.gguf-12k-intake/v2",
+  "mode": "SYNTHETIC_REHEARSAL",
   "engagement_id": "synthetic-gguf-001",
   "customer_reference": "synthetic-customer-001",
   "gguf": {
@@ -15,7 +16,7 @@
     "ready": true
   },
   "scope": {
-    "objective": "Demonstrate a bounded, reversible diagnostic intervention and byte-exact rollback using a synthetic customer-controlled fixture.",
+    "objective": "Rehearse the evidence contract only; no customer file, legal acceptance, payment, delivery, or production transition exists.",
     "bounded_intervention": true,
     "metric_lift_guaranteed": false
   },
@@ -27,9 +28,10 @@
     "credentials_required": false,
     "public_contact_url": "https://example.com"
   },
-  "external_evidence": {
-    "nda_receipt_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
-    "sow_receipt_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
-    "m1_payment_receipt_sha256": "5555555555555555555555555555555555555555555555555555555555555555"
+  "recovery_authority": {
+    "receipt_schema_version": "revenue-recovery/v1",
+    "acceptance_receipt_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+    "offer_source_sha256": "cd132df7790940db230d7703ba49d6f95e2e00cc2a8893f0e29b5010453ecb36",
+    "terms_sha256": "1c0756062563415e551587a5f1ab22147366d406135de6c45ccbd3a562985730"
   }
 }
