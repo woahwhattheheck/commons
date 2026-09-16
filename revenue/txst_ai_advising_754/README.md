@@ -12,7 +12,9 @@ carrier**, without pretending that a public notice is the controlling RFP.
   ESBD and the TSUS Marketplace/Jaggaer routes.
 - A current public reproduction of the solicitation notice identifies the exact RFP, describes the
   objective as design/implementation/support of an AI-powered advising platform for personalized
-  guidance, engagement, and analytics, and gives a response deadline of **2026-09-28 17:00 CT**.
+  guidance, engagement, and analytics, and gives a discovery deadline of **2026-09-28 17:00 CT**.
+  That timestamp is a planning signal only until the controlling package binds the official deadline;
+  it cannot close the executable carrier by itself.
 - The controlling Jaggaer attachment/package set has **not** been retained in this carrier.
 - Therefore current state is intentionally `HOLD_OFFICIAL_PACKET_REQUIRED`.
 - No contract value, renewal term, bid bond, incumbent, evaluation score, mandatory certification,
