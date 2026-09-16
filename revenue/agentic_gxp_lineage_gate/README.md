@@ -86,3 +86,13 @@ assert verify(result, policy=policy, batch=evidence_batch)
 ```
 
 The caller owns policy approval, source authenticity, human identity/authority, production controls, validation strategy, and every real-world QA/regulatory decision. A supplied source snapshot digest is bound into lineage; this gate does not independently authenticate the source bytes behind that digest. This package only checks the evidence contract it is given.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)

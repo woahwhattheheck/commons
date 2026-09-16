@@ -49,3 +49,13 @@ Commercial Decision Relay is our attempt to make that boundary visible in the ar
 The public project includes a synthetic fixture, unit tests, a command-line reconciliation/verification path, a local decision board, an architecture diagram, and the Strands integration source. The deterministic core and board can be exercised without provider credentials. Provider-backed Strands execution requires the relevant SDK/provider environment and should not be inferred from the offline path alone.
 
 Project source: https://github.com/woahwhattheheck/commons/tree/main/revenue/agents_for_humans/commercial_decision_relay
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../../../plant-downtime-handoff.html)

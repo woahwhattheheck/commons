@@ -24,3 +24,13 @@ The central design choice is a hard authority boundary: `HUMAN_CLOSING_READY` is
 
 ### Prior work/open-source disclosure
 This project was created during the Aug. 10–Sep. 14, 2026 submission period. Commercial-evidence patterns were informed by contemporaneous work in the `woahwhattheheck/commons` repository, including a commercial acceptance evidence bridge created during the same period. If any source is incorporated verbatim, the exact source commit/file will be disclosed in the final submission. The Strands-native orchestration, tool layer, audit hooks, product dashboard, fixtures, documentation, and hackathon packaging are new work for this project.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../../plant-downtime-handoff.html)
