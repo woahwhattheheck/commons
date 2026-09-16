@@ -93,6 +93,33 @@ class LedgerTests(unittest.TestCase):
     def test_deterministic_under_input_order(self):
         a=compile_ledger(payload([request(),decision(),sent()])); b=compile_ledger(payload([sent(),request(),decision()])); self.assertEqual(a,b)
     def test_authority_all_false(self): self.assertTrue(all(v is False for v in compile_ledger(payload([request()]))["authority"].values()))
+    def test_public_authority_mutation_cannot_widen_compiled_flags(self):
+        import coordination.muse_arbitration_liveness.ledger as ledger
+        p = payload([request()])
+        original = dict(ledger.AUTHORITY)
+        try:
+            ledger.AUTHORITY["can_send_external"] = True
+            ledger.AUTHORITY["can_assert_payment"] = True
+            ledger.AUTHORITY["can_recognize_revenue"] = True
+            packet = compile_ledger(p)
+            self.assertTrue(all(v is False for v in packet["authority"].values()))
+            self.assertTrue(verify_ledger(p, packet))
+            self.assertTrue(packet["authority"]["can_send_external"] is False)
+        finally:
+            ledger.AUTHORITY.clear()
+            ledger.AUTHORITY.update(original)
+    def test_public_authority_rebind_cannot_widen_compiled_flags(self):
+        import coordination.muse_arbitration_liveness.ledger as ledger
+        p = payload([request()])
+        original = ledger.AUTHORITY
+        try:
+            ledger.AUTHORITY = {key: True for key in original}
+            packet = compile_ledger(p)
+            self.assertTrue(all(v is False for v in packet["authority"].values()))
+            self.assertTrue(verify_ledger(p, packet))
+            self.assertEqual(set(packet["authority"]), set(original))
+        finally:
+            ledger.AUTHORITY = original
     def test_verify_detects_tamper(self):
         p=payload([request(),decision()]); packet=compile_ledger(p); self.assertTrue(verify_ledger(p,packet)); packet["items"][0]["status"]="SENT_DNR"; self.assertFalse(verify_ledger(p,packet))
     def test_duplicate_json_key_rejected(self):

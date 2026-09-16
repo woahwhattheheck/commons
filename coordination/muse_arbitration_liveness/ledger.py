@@ -33,17 +33,23 @@ STATUSES = frozenset({
     "CONFLICT",
 })
 
-AUTHORITY = {
-    "can_select_writer": False,
-    "can_resubmit": False,
-    "can_reassign_lease": False,
-    "can_send_external": False,
-    "can_mutate_provider": False,
-    "can_contact_counterparty": False,
-    "can_assert_acceptance": False,
-    "can_assert_payment": False,
-    "can_recognize_revenue": False,
-}
+def _hard_false_authority() -> Dict[str, bool]:
+    # Code-owned ceiling: literals only. Do not read the public AUTHORITY name.
+    return {
+        "can_select_writer": False,
+        "can_resubmit": False,
+        "can_reassign_lease": False,
+        "can_send_external": False,
+        "can_mutate_provider": False,
+        "can_contact_counterparty": False,
+        "can_assert_acceptance": False,
+        "can_assert_payment": False,
+        "can_recognize_revenue": False,
+    }
+
+
+# Historical public label only. Compiler/verifier must not source authority from this object.
+AUTHORITY = _hard_false_authority()
 
 class LedgerError(ValueError):
     pass
@@ -419,7 +425,7 @@ def compile_ledger(payload: Mapping[str, Any]) -> Dict[str, Any]:
             "orphan_provider_event_ids": sorted(orphan_events),
             "status_counts": counts,
         },
-        "authority": dict(AUTHORITY),
+        "authority": _hard_false_authority(),
     }
     body["packet_sha256"] = _sha(body)
     return body
