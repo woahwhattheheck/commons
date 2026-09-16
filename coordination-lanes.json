@@ -1,6 +1,5 @@
 {
  "lanes": [
-  {"canonical":14651,"chain":[14651,14663],"content_keys":["df26fa7b9db67940"],"families":[],"lane":"lane-14651","open":[14651],"state":"OPEN","title":"Repair authenticated commercial-waste custody backfill"},
   {"canonical":14464,"chain":[14361,14464],"content_keys":["8b073a7eccb66210"],"families":["COMMONS-REPLY-EVENT-ENVELOPE-IDENTITY-ZMLR1","COMMONS-REPLY-EVENT-SINGLE-READ-CORE-ZMLA7Q2"],"lane":"lane-14361","open":[14464],"state":"OPEN","title":"Fix reply-event identity at the core boundary"},
   {"canonical":14778,"chain":[14648,14778],"content_keys":["c636782afa443072"],"families":[],"lane":"lane-14648","open":[],"state":"MERGED","title":"Recover reviewed ADIA structural-break carrier on current main"},
   {"canonical":14766,"chain":[14612,14766],"content_keys":["ea9bc69c255a26b1"],"families":[],"lane":"lane-14612","open":[],"state":"MERGED","title":"NIH SPARK: recover reviewed reload-authority repair onto current main"},
@@ -18,13 +17,12 @@
   {"canonical":14125,"chain":[14123,14125],"content_keys":["def25cd9e414194e"],"families":[],"lane":"lane-14123","open":[],"state":"MERGED","title":"research: Lost in Transcription all-three multitrack V2"}
  ],
  "note": "lanes with two or more members; an open pull request row without a lane field is a lane of its own",
- "observed_at": "2026-09-16T01:17:20Z",
+ "observed_at": "2026-09-16T06:35:20Z",
  "recent_closed": [
   {"closed_at":"2026-09-16T00:42:07Z","content_key":"UNKNOWN","created_at":"2026-09-16T00:41:42Z","head":"e1a9ecd58f320fddd073d5cdabda3842cf6c6bd0","links":[],"markers":[],"number":14778,"state":"MERGED","title":"Recover reviewed ADIA structural-break carrier on current main"},
   {"closed_at":"2026-09-16T00:14:56Z","content_key":"ea9bc69c255a26b1","created_at":"2026-09-16T00:14:37Z","head":"8716678c4b00d0f7431f34f8fda1d3558fc68632","links":[],"markers":[],"number":14766,"state":"MERGED","title":"NIH SPARK: recover reviewed reload-authority repair onto current main"},
   {"closed_at":"2026-09-15T06:42:39Z","content_key":"UNKNOWN","created_at":"2026-09-15T06:39:44Z","head":"ffc21798be8d8e5e20365b8f5c4f60e466a86b5d","links":[],"markers":["JERSEY-DN827803-LEGACY-AUTHORITY-RETIRE-ZVF-M8Q4"],"number":14675,"state":"MERGED","title":"fix(revenue): retire Jersey DN827803 legacy false-ready authority"},
   {"closed_at":"2026-09-15T06:28:06Z","content_key":"6fb7b091ed306036","created_at":"2026-09-15T06:12:01Z","head":"383ed292faa4022862a54d4a2f18308d9177980d","links":[],"markers":["CAS-ACTUARIAL-SNAPSHOT-SELFVERIFY-RECOVERY-ZGBN7Q4"],"number":14666,"state":"MERGED","title":"revenue: make CAS benchmark snapshots independently self-verifying"},
-  {"closed_at":"2026-09-15T06:11:41Z","content_key":"df26fa7b9db67940","created_at":"2026-09-15T06:02:52Z","head":"d81dddea30c5ed87e176ee139d6ff97d8c8ea94d","links":[],"markers":[],"number":14663,"state":"MERGED","title":"Repair authenticated commercial-waste custody backfill"},
   {"closed_at":"2026-09-16T00:43:19Z","content_key":"c636782afa443072","created_at":"2026-09-15T05:20:59Z","head":"d422798850c2803484a2da2b77df3e515196bc74","links":[14778],"markers":[],"number":14648,"state":"CLOSED","title":"research: recover and re-verify ADIA structural-break carrier on current main"},
   {"closed_at":"2026-09-16T00:16:42Z","content_key":"ea9bc69c255a26b1","created_at":"2026-09-15T03:27:34Z","head":"a46937dbeaa21caa72c30cbb03b8d535163ccc13","links":[],"markers":[],"number":14612,"state":"CLOSED","title":"NIH SPARK: preserve retrieval authority across baseline reloads"},
   {"closed_at":"2026-09-15T03:18:07Z","content_key":"d2033eba217e795b","created_at":"2026-09-15T03:17:04Z","head":"5f220b5347830b33b0bdb5d988768f1cf0d1d389","links":[],"markers":[],"number":14594,"state":"MERGED","title":"Fix NIH SPARK retrieval receipt authority after #14584"},
