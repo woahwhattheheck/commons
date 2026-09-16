@@ -14,6 +14,7 @@ from revenue.hyperagent_slack_transcript.adapter import (
     ValidationError,
     canonical_bytes,
     load_strict_json,
+    normalize_event,
     project_fixture,
 )
 from revenue.hyperagent_slack_transcript.cli import main as cli_main
@@ -43,6 +44,10 @@ def mutation_event(event_id="m1", run_id="mut-run", action="send", generation=2)
     }
 
 
+def _event_semantics_sha256(event: dict) -> str:
+    return hashlib.sha256(canonical_bytes(normalize_event(event).semantics())).hexdigest()
+
+
 def approval_for(
     event,
     *,
@@ -59,6 +64,7 @@ def approval_for(
         "run_id": run_id,
         "action_id": event["payload"]["action_id"],
         "generation": generation,
+        "event_semantics_sha256": _event_semantics_sha256(event),
         "decision": "APPROVE",
         "issued_at": issued,
         "expires_at": expires,
@@ -127,6 +133,47 @@ class HyperagentTranscriptTests(unittest.TestCase):
         self.assertRegex(message["approval_receipt_sha256"], r"^[0-9a-f]{64}$")
         self.assertFalse(result["artifacts"][0]["external_send_authorized"])
 
+    def test_valid_approval_does_not_authorize_fresh_event_with_changed_text(self):
+        approved = mutation_event("m1")
+        foreign = mutation_event("m2")
+        foreign["payload"]["text"] = "different mutation payload"
+        result = trusted_projector().ingest([foreign], [approval_for(approved)])
+        self.assertEqual(result["message_count"], 0)
+        self.assertEqual(len(result["held"]), 1)
+
+    def test_valid_approval_does_not_authorize_changed_thread_or_sequence(self):
+        approved = mutation_event("m1")
+        foreign = mutation_event("m2")
+        foreign["seq"] = 7
+        foreign["payload"]["thread"] = "other-thread"
+        result = trusted_projector().ingest([foreign], [approval_for(approved)])
+        self.assertEqual(result["message_count"], 0)
+        self.assertEqual(len(result["held"]), 1)
+
+    def test_one_approval_cannot_amplify_across_two_distinct_events_same_action_tuple(self):
+        approved = mutation_event("m1")
+        foreign = mutation_event("m2")
+        foreign["payload"]["text"] = "another action representation"
+        result = trusted_projector().ingest(
+            [approved, foreign],
+            [approval_for(approved)],
+        )
+        self.assertEqual(result["message_count"], 1)
+        self.assertEqual(len(result["new_message_ids"]), 1)
+        self.assertEqual(len(result["held"]), 1)
+        message = result["artifacts"][0]["messages"][0]
+        self.assertEqual(message["source"]["source_event_id"], "m1")
+
+    def test_exact_mutating_event_replay_remains_idempotent(self):
+        event = mutation_event()
+        approval = approval_for(event)
+        projector = trusted_projector()
+        first = projector.ingest([event], [approval])
+        second = projector.ingest([event], [approval])
+        self.assertEqual(len(first["new_message_ids"]), 1)
+        self.assertEqual(second["new_message_ids"], [])
+        self.assertEqual(second["message_count"], 1)
+
     def test_signed_approval_without_retained_runtime_key_stays_held(self):
         event = mutation_event()
         result = TranscriptProjector().ingest([event], [approval_for(event)])
@@ -143,6 +190,13 @@ class HyperagentTranscriptTests(unittest.TestCase):
         event = mutation_event()
         approval = approval_for(event)
         approval["expires_at"] = "2098-01-01T00:00:00Z"
+        with self.assertRaisesRegex(ApprovalError, "authentication failed"):
+            trusted_projector().ingest([event], [approval])
+
+    def test_tampered_event_semantics_digest_is_rejected(self):
+        event = mutation_event()
+        approval = approval_for(event)
+        approval["event_semantics_sha256"] = "f" * 64
         with self.assertRaisesRegex(ApprovalError, "authentication failed"):
             trusted_projector().ingest([event], [approval])
 
