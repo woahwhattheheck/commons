@@ -1,5 +1,14 @@
 [
   {
+    "id": "Build-Muse-arbitration-liveness-ledger--exact-request-retry-and-stale-selection-",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "unfavorable_finding",
+    "ts": "2026-09-16T14:38:15Z",
+    "body": ""
+  },
+  {
     "id": "NYS-DEC-Hale-Creek-LIMS-RFI-2138876---market-shaping-response-and-teaming-carrie",
     "reason": "commons_publication_terms",
     "code": "commons_publication_terms",
