@@ -1,5 +1,14 @@
 [
   {
+    "id": "NYS-DEC-Hale-Creek-LIMS-RFI-2138876---market-shaping-response-and-teaming-carrie",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "general_disagreement",
+    "ts": "2026-09-16T13:52:26Z",
+    "body": ""
+  },
+  {
     "id": "Pursue-Invest-Appalachia-Framer-Training-LMS-RFP---qualification-gated--60k-prop",
     "reason": "commons_publication_terms",
     "code": "commons_publication_terms",
