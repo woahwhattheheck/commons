@@ -47,9 +47,10 @@ class WrapperTests(unittest.TestCase):
         altered = copy.deepcopy(raw)
         altered["evidence"] = list(reversed(altered["evidence"]))
         b = compile_diagnostic(altered)
+        # Engine receipts/projections include evaluated_at; only counts and canonical
+        # input_sha256 are order-invariant across a wall-clock second boundary.
         self.assertEqual(a["diagnostic"]["summary"]["counts"], b["diagnostic"]["summary"]["counts"])
         self.assertEqual(a["diagnostic"]["binding"]["input_sha256"], b["diagnostic"]["binding"]["input_sha256"])
-        self.assertEqual(a["diagnostic"]["binding"]["projection_sha256"], b["diagnostic"]["binding"]["projection_sha256"])
         self.assertEqual(verify_diagnostic(a), a["diagnostic_sha256"])
         self.assertEqual(verify_diagnostic(b), b["diagnostic_sha256"])
 
