@@ -56,6 +56,13 @@ The compiler cannot:
 Those are data-level hard-false fields in every projection, not prose-only
 promises.
 
+The supported package and CLI entrypoints bind the reviewed reconciliation
+compiler to a private all-false authority generation. The public `AUTHORITY`
+view is immutable and informational only; compilation and verification do not
+consult that exported object or any later rebinding of the public, `common`, or
+`engine` module authority names. This prevents a caller from turning a shadow
+projection into an authority-bearing one by mutating shared module state.
+
 ## CLI
 
 ```bash
@@ -78,3 +85,9 @@ The root test suite exercises normal and optimized-interpreter semantics,
 input strictness (including duplicate JSON keys), duplicate/PO/receipt/approval/statement membership+amount exception behavior,
 determinism, tamper rejection, CLI round-trip, and 1,000 randomized safety
 packets proving no generated result can promote external authority.
+
+`test_ohsu_ap_ai_rfi_approof_authority.py` is the authority-mutation predecessor
+suite. It attempts both mutation and rebinding through every importable authority
+view, compares all supported compiler/verifier entrypoints, and proves promoted
+projections are rejected. `.github/workflows/ohsu-ap-ai-rfi-approof.yml` runs the
+full APProof suite under both normal Python and `python -O` on every relevant PR.
