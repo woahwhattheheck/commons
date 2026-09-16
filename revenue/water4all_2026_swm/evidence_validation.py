@@ -40,7 +40,10 @@ _PARTNER_KEYS = {
     "public_fit_summary",
     "status",
 }
-_PARTNER_PATH = re.compile(r"^/water4all/2026/partner-search-entry/[0-9]+$")
+_PARTNER_PATH = re.compile(r"^/water4all/2026/partner-search-entry/[1-9][0-9]*$")
+_CONTACT_TOKEN = re.compile(
+    r"(?i)(?:mailto:|tel:|sms:|whatsapp:|[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,})"
+)
 
 
 def _required_topic_tags(topic_ids: Iterable[int]) -> Set[str]:
@@ -175,6 +178,11 @@ def _canonical_partner_url(value: Any, path: str) -> str:
     return text
 
 
+def _reject_contact_route_text(value: str, path: str) -> None:
+    if _CONTACT_TOKEN.search(value):
+        raise ReadinessError("%s contains contact-route semantics" % path)
+
+
 def _validate_partner_shortlist(raw_shortlist: Any) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
     shortlist = _expect_list(raw_shortlist, "$.partner_shortlist")
     normalized: List[Dict[str, Any]] = []
@@ -191,13 +199,17 @@ def _validate_partner_shortlist(raw_shortlist: Any) -> Tuple[List[Dict[str, Any]
             raise ReadinessError("duplicate partner profile_id: %s" % profile_id)
         seen.add(profile_id)
         topics = sorted(set(_expect_int(value, path + ".topic_ids", 1) for value in _expect_list(item.get("topic_ids"), path + ".topic_ids")))
+        organization_label = _expect_str(item.get("organization_label"), path + ".organization_label")
+        public_fit_summary = _expect_str(item.get("public_fit_summary"), path + ".public_fit_summary")
+        _reject_contact_route_text(organization_label, path + ".organization_label")
+        _reject_contact_route_text(public_fit_summary, path + ".public_fit_summary")
         normalized_item = {
             "profile_id": profile_id,
-            "organization_label": _expect_str(item.get("organization_label"), path + ".organization_label"),
+            "organization_label": organization_label,
             "country_code": _expect_country(item.get("country_code"), path + ".country_code"),
             "topic_ids": topics,
             "public_profile_url": _canonical_partner_url(item.get("public_profile_url"), path + ".public_profile_url"),
-            "public_fit_summary": _expect_str(item.get("public_fit_summary"), path + ".public_fit_summary"),
+            "public_fit_summary": public_fit_summary,
             "status": _expect_str(item.get("status"), path + ".status"),
         }
         if normalized_item["status"] != "RESEARCH_ONLY_NO_CONTACT_AUTHORITY":
