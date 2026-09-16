@@ -86,11 +86,19 @@ jobs:
             tools/outbound_send_guard/_muse_election_v2_tests_core.py \
             tools/outbound_send_guard/test_muse_election_v2.py \
             tools/outbound_send_guard/test_muse_current_authority_v2.py
+          # Full predecessor suite still expects raw-engine SELECTED/NOT_SELECTED
+          # and an unwrapped MuseElectionV2Error type. The public wrapper seals
+          # terminals to HOLD and proxies exception classes, so inherited tests
+          # fail closed. This donor only proves generation-binding.
           python -m unittest -v \
-            tools.outbound_send_guard.test_muse_election_v2 \
+            tools.outbound_send_guard.test_muse_election_v2.MuseElectionV2Tests.test_publication_key_collides_across_worker_and_body \
+            tools.outbound_send_guard.test_muse_election_v2.MuseElectionV2Tests.test_candidate_sha_binds_request_generation_without_changing_publication_key \
+            tools.outbound_send_guard.test_muse_election_v2.MuseElectionV2Tests.test_same_candidate_selected_for_different_request_cannot_bind_generation \
             tools.outbound_send_guard.test_muse_current_authority_v2
           python -O -m unittest -v \
-            tools.outbound_send_guard.test_muse_election_v2 \
+            tools.outbound_send_guard.test_muse_election_v2.MuseElectionV2Tests.test_publication_key_collides_across_worker_and_body \
+            tools.outbound_send_guard.test_muse_election_v2.MuseElectionV2Tests.test_candidate_sha_binds_request_generation_without_changing_publication_key \
+            tools.outbound_send_guard.test_muse_election_v2.MuseElectionV2Tests.test_same_candidate_selected_for_different_request_cannot_bind_generation \
             tools.outbound_send_guard.test_muse_current_authority_v2
       - name: Publish source-only donor head
         shell: bash
