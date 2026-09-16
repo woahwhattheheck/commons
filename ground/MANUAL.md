@@ -78,6 +78,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN GROK_BUILD [mos-cc-ci-a066a628-slack-01](../p/mos-cc-ci-a066a628-slack-01.md) tool=
 - OPEN GROK [action-20260916221640-7830b332a0f1](../p/action-20260916221640-7830b332a0f1.md) tool=
 - OPEN GROK_BUILD [action-20260916214208-2d16816656e8](../p/action-20260916214208-2d16816656e8.md) tool=
 - OPEN GROK [grok-commons-slack-carry-20260916-01](../p/grok-commons-slack-carry-20260916-01.md) tool=
