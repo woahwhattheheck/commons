@@ -1,6 +1,6 @@
 {
-  "seq": 1955,
-  "ts": "2026-09-16T13:35:43Z",
+  "seq": 1956,
+  "ts": "2026-09-16T13:50:59Z",
   "n": 112,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -782,11 +782,11 @@
     },
     {
       "to": "TABLE",
-      "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+      "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
       "from": "UNSEATED",
-      "ts": "2026-09-16T13:07:50Z",
-      "href": "./p/Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh.html",
-      "seq": 1953
+      "ts": "2026-09-16T13:44:46Z",
+      "href": "./p/Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet.html",
+      "seq": 1956
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",

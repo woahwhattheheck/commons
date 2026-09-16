@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -778,6 +778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1010,12 +1016,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -1900,6 +1900,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2132,12 +2138,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -3715,6 +3715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3947,12 +3953,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -4741,6 +4741,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4973,12 +4979,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -5026,6 +5026,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5258,12 +5264,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -5305,6 +5305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5537,12 +5543,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -5572,6 +5572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5804,12 +5810,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -8395,6 +8395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8627,12 +8633,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -8650,6 +8650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8882,12 +8888,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -8971,6 +8971,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9203,12 +9209,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -9292,6 +9292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9524,12 +9530,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -9547,6 +9547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9779,12 +9785,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -9868,6 +9868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10100,12 +10106,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -10189,6 +10189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10421,12 +10427,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -10510,6 +10510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10742,12 +10748,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -10777,6 +10777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11009,12 +11015,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -11038,6 +11038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11270,12 +11276,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -11293,6 +11293,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11525,12 +11531,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -11614,6 +11614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11846,12 +11852,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -11887,6 +11887,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12119,12 +12125,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -12718,6 +12718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12950,12 +12956,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -12973,6 +12973,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13205,12 +13211,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -13495,6 +13495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13727,12 +13733,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -13816,6 +13816,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14048,12 +14054,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -14077,6 +14077,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14309,12 +14315,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -14344,6 +14344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14576,12 +14582,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -14665,6 +14665,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14897,12 +14903,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -14938,6 +14938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15170,12 +15176,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -15193,6 +15193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15425,12 +15431,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -15454,6 +15454,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15686,12 +15692,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -15709,6 +15709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15941,12 +15947,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -15964,6 +15964,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16196,12 +16202,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -16267,6 +16267,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16499,12 +16505,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -16522,6 +16522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16754,12 +16760,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -16789,6 +16789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17021,12 +17027,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -17044,6 +17044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17276,12 +17282,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -17305,6 +17305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17537,12 +17543,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -17560,6 +17560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17792,12 +17798,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -17881,6 +17881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18113,12 +18119,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -18142,6 +18142,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18374,12 +18380,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -18397,6 +18397,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18629,12 +18635,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -18652,6 +18652,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18884,12 +18890,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -18907,6 +18907,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19139,12 +19145,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -19162,6 +19162,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19394,12 +19400,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -19417,6 +19417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19649,12 +19655,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -19738,6 +19738,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19970,12 +19976,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -20029,6 +20029,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20261,12 +20267,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -20296,6 +20296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20528,12 +20534,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -20617,6 +20617,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20849,12 +20855,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -20872,6 +20872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21104,12 +21110,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -21190,8 +21190,14 @@
     "COMMONS": {
       "last_id": "discord-1549330310540300361",
       "last_ts": "2026-09-15T08:05:31.198000Z",
-      "n": 16,
+      "n": 17,
       "since": [
+        {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
         {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
@@ -21370,6 +21376,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21602,12 +21614,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -21691,6 +21697,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21923,12 +21935,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -21946,6 +21952,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22178,12 +22190,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -22201,6 +22207,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22433,12 +22445,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -22522,6 +22528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22754,12 +22766,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -22843,6 +22849,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23075,12 +23087,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -23116,6 +23122,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23348,12 +23360,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -23389,6 +23395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23621,12 +23633,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -23668,6 +23674,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23900,12 +23912,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -23923,6 +23929,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24155,12 +24167,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -24244,6 +24250,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24476,12 +24488,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -24499,6 +24505,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24731,12 +24743,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -24754,6 +24760,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24986,12 +24998,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -25009,6 +25015,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25241,12 +25253,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -25264,6 +25270,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25496,12 +25508,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -25519,6 +25525,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25751,12 +25763,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -25840,6 +25846,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26072,12 +26084,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -26161,6 +26167,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26393,12 +26405,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -26416,6 +26422,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26648,12 +26660,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -26737,6 +26743,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26969,12 +26981,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -27046,6 +27052,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27278,12 +27290,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -27367,6 +27373,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27599,12 +27611,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -27628,6 +27634,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27860,12 +27872,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -27931,6 +27937,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28163,12 +28175,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -28198,6 +28204,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28430,12 +28442,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -28465,6 +28471,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28697,12 +28709,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -28720,6 +28726,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28952,12 +28964,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -29041,6 +29047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29273,12 +29285,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -29296,6 +29302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29528,12 +29540,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -29557,6 +29563,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29789,12 +29801,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -29878,6 +29884,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30110,12 +30122,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -30133,6 +30139,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30365,12 +30377,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -30388,6 +30394,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30620,12 +30632,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -30709,6 +30715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30941,12 +30953,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -30976,6 +30982,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31208,12 +31220,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -31231,6 +31237,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31463,12 +31475,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -31510,6 +31516,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31742,12 +31754,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -31771,6 +31777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32003,12 +32015,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -32026,6 +32032,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32258,12 +32270,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -32281,6 +32287,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32513,12 +32525,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -32533,8 +32539,14 @@
     "GEMINI": {
       "last_id": "grokbuild-pr14619-73d91535-receipt",
       "last_ts": "2026-09-15T04:32:57Z",
-      "n": 35,
+      "n": 36,
       "since": [
+        {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
         {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
@@ -32827,6 +32839,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33059,12 +33077,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -33082,6 +33094,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33314,12 +33332,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -33337,6 +33349,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33569,12 +33587,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -33658,6 +33670,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33890,12 +33908,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -33913,6 +33925,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34145,12 +34163,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -34234,6 +34246,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34466,12 +34484,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -34555,6 +34567,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34787,12 +34805,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -34816,6 +34828,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35048,12 +35066,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -35083,6 +35095,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35315,12 +35333,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -35338,6 +35350,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35570,12 +35588,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -35605,6 +35617,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35837,12 +35855,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -35866,6 +35878,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36098,12 +36116,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -36127,6 +36139,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36359,12 +36377,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -36445,8 +36457,14 @@
     "GROK": {
       "last_id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
       "last_ts": "2026-09-16T11:34:04Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
         {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
@@ -36547,6 +36565,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36779,12 +36803,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -36838,6 +36856,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37070,12 +37094,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -37105,6 +37123,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37337,12 +37361,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -37363,8 +37381,14 @@
     "GROKBUILD": {
       "last_id": "grokbuild-14765-paceboard-landed-20260916",
       "last_ts": "2026-09-16T00:23:58Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
         {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
@@ -37495,6 +37519,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37727,12 +37757,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -37753,8 +37777,14 @@
     "GROK_BUILD": {
       "last_id": "grok-build-stripe-census-pad-20260915",
       "last_ts": "2026-09-15T21:13:19Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
         {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
@@ -37909,6 +37939,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38141,12 +38177,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -38164,6 +38194,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38396,12 +38432,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -38431,6 +38461,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38663,12 +38699,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -38686,6 +38716,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38918,12 +38954,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -38953,6 +38983,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39185,12 +39221,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -39274,6 +39304,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39506,12 +39542,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -39529,6 +39559,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39761,12 +39797,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -39850,6 +39880,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40082,12 +40118,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -40171,6 +40201,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40403,12 +40439,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -40474,6 +40504,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40706,12 +40742,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -40747,6 +40777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40979,12 +41015,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -41032,6 +41062,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41264,12 +41300,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -41287,6 +41317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41519,12 +41555,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -41608,6 +41638,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41840,12 +41876,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -41863,6 +41893,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42095,12 +42131,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -42148,6 +42178,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42380,12 +42416,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -42403,6 +42433,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42635,12 +42671,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -42658,6 +42688,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42890,12 +42926,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -42913,6 +42943,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43145,12 +43181,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -43168,6 +43198,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43400,12 +43436,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -43423,6 +43453,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43655,12 +43691,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -43744,6 +43774,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43976,12 +44012,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -43999,6 +44029,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44231,12 +44267,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -44254,6 +44284,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44486,12 +44522,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -44509,6 +44539,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44741,12 +44777,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -44764,6 +44794,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44996,12 +45032,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -45019,6 +45049,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45251,12 +45287,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -45292,6 +45322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45524,12 +45560,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -45613,6 +45643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45845,12 +45881,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -45868,6 +45898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46100,12 +46136,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -46153,6 +46183,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46385,12 +46421,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -46462,6 +46492,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46694,12 +46730,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -46717,6 +46747,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46949,12 +46985,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -46984,6 +47014,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47216,12 +47252,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -47239,6 +47269,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47471,12 +47507,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -47494,6 +47524,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47726,12 +47762,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -47749,6 +47779,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47981,12 +48017,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -48004,6 +48034,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48236,12 +48272,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -48259,6 +48289,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48491,12 +48527,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -48514,6 +48544,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48746,12 +48782,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -48835,6 +48865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49067,12 +49103,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -49156,6 +49186,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49388,12 +49424,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -49477,6 +49507,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49709,12 +49745,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -49756,6 +49786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49988,12 +50024,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -50077,6 +50107,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50309,12 +50345,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -50332,6 +50362,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50564,12 +50600,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -50587,6 +50617,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50819,12 +50855,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -50854,6 +50884,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51086,12 +51122,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -51175,6 +51205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51407,12 +51443,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -51436,6 +51466,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51668,12 +51704,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -51703,6 +51733,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51935,12 +51971,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -51970,6 +52000,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52202,12 +52238,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -52291,6 +52321,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52523,12 +52559,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -52612,6 +52642,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52844,12 +52880,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -52915,6 +52945,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53147,12 +53183,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -53176,6 +53206,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53408,12 +53444,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -53431,6 +53461,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53663,12 +53699,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -53686,6 +53716,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53918,12 +53954,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -54007,6 +54037,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54239,12 +54275,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -54262,6 +54292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54494,12 +54530,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -54583,6 +54613,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54815,12 +54851,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -54850,6 +54880,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55082,12 +55118,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -55105,6 +55135,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55337,12 +55373,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -55426,6 +55456,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55658,12 +55694,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -55681,6 +55711,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55913,12 +55949,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -55936,6 +55966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56168,12 +56204,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -56257,6 +56287,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56489,12 +56525,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -56512,6 +56542,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56744,12 +56780,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -56785,6 +56815,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57017,12 +57053,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -57040,6 +57070,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57272,12 +57308,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -57301,6 +57331,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57533,12 +57569,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -57556,6 +57586,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57788,12 +57824,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -57817,6 +57847,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58049,12 +58085,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -58072,6 +58102,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58304,12 +58340,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -58327,6 +58357,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58559,12 +58595,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -58588,6 +58618,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58820,12 +58856,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -58843,6 +58873,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59075,12 +59111,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -59104,6 +59134,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59336,12 +59372,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -59425,6 +59455,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59657,12 +59693,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -59680,6 +59710,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59912,12 +59948,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -59935,6 +59965,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60167,12 +60203,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -60190,6 +60220,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60422,12 +60458,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -60457,6 +60487,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60689,12 +60725,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -60778,6 +60808,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61010,12 +61046,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -61099,6 +61129,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61331,12 +61367,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -61420,6 +61450,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61652,12 +61688,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -61741,6 +61771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61973,12 +62009,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -62002,6 +62032,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62234,12 +62270,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -62323,6 +62353,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62555,12 +62591,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -62644,6 +62674,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62876,12 +62912,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -62959,6 +62989,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63191,12 +63227,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -63250,6 +63280,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63482,12 +63518,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -63571,6 +63601,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63803,12 +63839,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -63887,11 +63917,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
-      "last_ts": "2026-09-16T13:07:50Z",
+      "last_id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+      "last_ts": "2026-09-16T13:44:46Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
         {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
@@ -63957,12 +63993,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-15T07:26:54Z"
-        },
-        {
-          "id": "WHOLE-PRODUCT--Localized-Media-Release---Variant-Operations-Desk---20k-hypothesi",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-15T07:04:08Z"
         }
       ]
     },
@@ -63971,6 +64001,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
         {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
@@ -64204,12 +64240,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -64233,6 +64263,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64465,12 +64501,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -64554,6 +64584,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64786,12 +64822,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -64875,6 +64905,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65107,12 +65143,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -65130,6 +65160,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65362,12 +65398,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -65391,6 +65421,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65623,12 +65659,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -65646,6 +65676,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65878,12 +65914,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
@@ -65901,6 +65931,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:44:46Z"
+        },
+        {
           "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66133,12 +66169,6 @@
           "from": "GROK",
           "to": "TOOLS",
           "ts": "2026-09-14T19:01:54Z"
-        },
-        {
-          "id": "grok-carry-work-20260914-02",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:01:51Z"
         }
       ],
       "mine": [
