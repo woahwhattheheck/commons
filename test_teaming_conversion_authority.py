@@ -20,16 +20,90 @@ class TeamingConversionAuthorityTests(unittest.TestCase):
         self.assertEqual(receipt["safe_assets"], [])
         self.assertEqual(receipt["safe_commercial_facts"], [])
 
-    def test_current_positive_path_uses_fixed_registry_loader(self):
-        candidate, evidence, roots, _ = compile_fixture()
-        with mock.patch(
-            "revenue.teaming_conversion.control.load_current_roots_bytes",
-            return_value=roots,
-        ), mock.patch("revenue.teaming_conversion.control._utc_now", return_value=NOW):
-            receipt = compile_current_bytes(candidate, evidence)
+    def test_current_authority_ignores_post_import_rebinding(self):
+        import revenue.teaming_conversion.control as control
+        import revenue.teaming_conversion.policy as policy_module
+        import revenue.teaming_conversion.trusted_roots as roots_module
+
+        candidate = canonical_bytes(base_candidate())
+        evidence_bytes, attacker_roots = build_roots(base_evidence())
+        attacker_policy = policy_module.policy_dict()
+        attacker_policy["max_reply_age_seconds"] = 10**9
+
+        with mock.patch.object(
+            control, "load_current_roots_bytes", return_value=attacker_roots
+        ), mock.patch.object(
+            control, "_utc_now", return_value=NOW
+        ), mock.patch.object(
+            control, "policy_dict", return_value=attacker_policy
+        ), mock.patch.object(
+            control, "POLICY_SHA256", "f" * 64
+        ), mock.patch.object(
+            roots_module, "_ROOTS_PATH", Path("/attacker/roots.json")
+        ), mock.patch.object(
+            roots_module.os,
+            "open",
+            side_effect=AssertionError("CURRENT loader followed rebound os.open"),
+        ):
+            receipt = compile_current_bytes(candidate, evidence_bytes)
+
         self.assertEqual(receipt["mode"], CURRENT_MODE)
+        self.assertEqual(receipt["disposition"], "HOLD")
+        self.assertIn("trusted_root_missing", receipt["trust_blockers"])
+        self.assertEqual(receipt["safe_assets"], [])
+        self.assertEqual(receipt["safe_commercial_facts"], [])
+
+    def test_policy_helpers_cannot_rebind_transitive_evaluation(self):
+        import revenue.teaming_conversion.assets as assets_module
+        import revenue.teaming_conversion.control as control
+        import revenue.teaming_conversion.evidence as evidence_module
+        import revenue.teaming_conversion.policy as policy_module
+        import revenue.teaming_conversion.qualification as qualification_module
+
+        candidate, evidence, roots, _ = compile_fixture()
+        fake_policy = policy_module.policy_dict()
+        fake_policy.update(
+            {
+                "max_future_skew_seconds": 0,
+                "max_reply_age_seconds": 0,
+                "max_source_age_seconds": 0,
+                "max_current_receipt_age_seconds": 0,
+                "required_clear_gate_ids": ["attacker-gate"],
+                "required_commitment_ids": ["attacker-commitment"],
+            }
+        )
+        with mock.patch.object(
+            control, "policy_dict", return_value=fake_policy
+        ), mock.patch.object(
+            control, "POLICY_SHA256", "f" * 64
+        ), mock.patch.object(
+            evidence_module, "policy_dict", return_value=fake_policy
+        ), mock.patch.object(
+            evidence_module, "POLICY_SHA256", "f" * 64
+        ), mock.patch.object(
+            assets_module, "policy_dict", return_value=fake_policy
+        ), mock.patch.object(
+            qualification_module, "policy_dict", return_value=fake_policy
+        ):
+            receipt = compile_historical_bytes(
+                candidate, evidence, roots, evaluated_at=NOW
+            )
+
         self.assertEqual(receipt["disposition"], "FOLLOWUP_READY")
-        self.assertFalse(receipt["historical_integrity_only"])
+        self.assertEqual(receipt["policy"]["sha256"], POLICY_SHA256)
+        self.assertEqual(receipt["qualification_blockers"], [])
+
+    def test_current_public_signatures_expose_no_authority_injection(self):
+        import inspect
+
+        self.assertEqual(
+            list(inspect.signature(compile_current_bytes).parameters),
+            ["candidate_bytes", "evidence_bytes"],
+        )
+        self.assertEqual(
+            list(inspect.signature(verify_current_bytes).parameters),
+            ["candidate_bytes", "evidence_bytes", "receipt_bytes"],
+        )
 
     def test_candidate_cannot_embed_authority_records(self):
         candidate = base_candidate()
@@ -123,4 +197,3 @@ class TeamingConversionAuthorityTests(unittest.TestCase):
         _, _, _, receipt = compile_fixture(evidence=evidence)
         self.assertEqual(receipt["disposition"], "HOLD")
         self.assertIn("supersession_fork:obs-1", receipt["trust_blockers"])
-
