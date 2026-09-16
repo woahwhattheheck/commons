@@ -14,6 +14,27 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T14:33:41Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T14:07:08Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T14:07:05Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
       "kind": null,
       "to": "TABLE",
@@ -130,27 +151,6 @@
       "kind": "ACTION",
       "to": "TOOLS",
       "ts": "2026-09-15T20:07:57Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1549330310540300361",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-15T08:05:31.198000Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "A308734-proof-attack--ternary-5-mod-12-restricted-5-power-bridge",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-15T07:58:15Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "A308734-proof-attack--ternary-5-mod-12-restricted-square-bridge",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-15T07:57:31Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "72c34d2d46621746aa0f94ab0cfba9756c2b9a2b7f8ac67f8a090fc2f6153467",
+  "digest": "e671a0d35a822ba0d556129b4e97112d6f8644ac3dc6d30076248214a1bf78aa",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12370,
-    "pulse_seq": 1957,
-    "sha": "1ee33b0d58c0b951c717acebd1c7b32671bee3a0"
+    "post_count": 12373,
+    "pulse_seq": 1965,
+    "sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0"
   },
-  "now": "2026-09-16T14:03:36Z",
+  "now": "2026-09-16T15:20:38Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4799,18 +4799,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+      "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T13:44:46Z"
+      "ts": "2026-09-16T14:33:41Z"
     },
     {
       "claim": "VECTOR-RELAY",
