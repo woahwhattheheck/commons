@@ -1,6 +1,11 @@
 import copy
+import json
 import math
+import subprocess
+import sys
+import tempfile
 import unittest
+from pathlib import Path
 
 from revenue.columbia_erp_acceptance.acceptance import (
     AcceptanceError,
@@ -30,6 +35,10 @@ def interfaces():
     ]
 
 
+def expected_interfaces():
+    return ["Dayforce payroll", "Club Automation"]
+
+
 class AcceptanceTests(unittest.TestCase):
     def setUp(self):
         self.source = [
@@ -38,19 +47,24 @@ class AcceptanceTests(unittest.TestCase):
         ]
         self.target = list(reversed(copy.deepcopy(self.source)))
 
-    def test_happy_receipt_is_deterministic_across_record_and_interface_order(self):
-        a = build_receipt(
-            self.source,
-            self.target,
+    def receipt(self, source=None, target=None, **kwargs):
+        return build_receipt(
+            self.source if source is None else source,
+            self.target if target is None else target,
             phase_evidence(),
             interfaces(),
-            scope_id="ledger-wave-1",
+            expected_interfaces=expected_interfaces(),
+            **kwargs,
         )
+
+    def test_happy_receipt_is_deterministic_across_record_and_interface_order(self):
+        a = self.receipt(scope_id="ledger-wave-1")
         b = build_receipt(
             list(reversed(self.source)),
             list(reversed(self.target)),
             phase_evidence(),
             list(reversed(interfaces())),
+            expected_interfaces=list(reversed(expected_interfaces())),
             scope_id="ledger-wave-1",
         )
         self.assertEqual(a, b)
@@ -68,7 +82,13 @@ class AcceptanceTests(unittest.TestCase):
         self.assertEqual(result["unexpected_target_keys"], ["GL-999"])
         self.assertEqual(result["field_mismatches"][0]["field"], "amount")
         with self.assertRaisesRegex(AcceptanceError, "blocking exceptions"):
-            build_receipt(self.source, target, phase_evidence(), interfaces())
+            build_receipt(
+                self.source,
+                target,
+                phase_evidence(),
+                interfaces(),
+                expected_interfaces=expected_interfaces(),
+            )
 
     def test_duplicate_and_conflicting_duplicate_are_rejected(self):
         same_duplicate = self.source + [copy.deepcopy(self.source[0])]
@@ -88,21 +108,47 @@ class AcceptanceTests(unittest.TestCase):
         evidence = phase_evidence()
         evidence.pop("validate")
         with self.assertRaisesRegex(AcceptanceError, "missing ETL evidence: validate"):
-            build_receipt(self.source, self.target, evidence, interfaces())
+            build_receipt(
+                self.source,
+                self.target,
+                evidence,
+                interfaces(),
+                expected_interfaces=expected_interfaces(),
+            )
 
     def test_failed_or_duplicate_interface_cannot_issue_receipt(self):
         failed = interfaces()
         failed[0]["status"] = "HOLD"
         with self.assertRaisesRegex(AcceptanceError, "not PASS"):
-            build_receipt(self.source, self.target, phase_evidence(), failed)
+            build_receipt(
+                self.source,
+                self.target,
+                phase_evidence(),
+                failed,
+                expected_interfaces=expected_interfaces(),
+            )
         duplicate = interfaces() + [interfaces()[0]]
         with self.assertRaisesRegex(AcceptanceError, "duplicate interface"):
-            build_receipt(self.source, self.target, phase_evidence(), duplicate)
+            build_receipt(
+                self.source,
+                self.target,
+                phase_evidence(),
+                duplicate,
+                expected_interfaces=expected_interfaces(),
+            )
+
+    def test_interface_roster_omission_is_blocking(self):
+        with self.assertRaisesRegex(AcceptanceError, "interface roster mismatch"):
+            build_receipt(
+                self.source,
+                self.target,
+                phase_evidence(),
+                interfaces()[:1],
+                expected_interfaces=expected_interfaces(),
+            )
 
     def test_receipt_tamper_is_detected(self):
-        receipt = build_receipt(
-            self.source, self.target, phase_evidence(), interfaces()
-        )
+        receipt = self.receipt()
         receipt["payload"]["reconciliation"]["source_count"] = 999
         self.assertFalse(verify_receipt(receipt))
 
@@ -116,6 +162,33 @@ class AcceptanceTests(unittest.TestCase):
         )
         self.assertEqual(result["status"], "PASS")
 
+    def test_receipt_binds_record_roots_and_comparison_contract(self):
+        first = self.receipt(scope_id="same-scope")
+        other_source = [
+            {"key": "GL-300", "amount": "30.00", "account": "3000", "version": 2},
+            {"key": "GL-400", "amount": "40.00", "account": "4000", "version": 4},
+        ]
+        second = self.receipt(
+            source=other_source,
+            target=list(reversed(copy.deepcopy(other_source))),
+            scope_id="same-scope",
+        )
+        self.assertNotEqual(
+            first["payload"]["reconciliation"]["source_records_sha256"],
+            second["payload"]["reconciliation"]["source_records_sha256"],
+        )
+        self.assertNotEqual(first["sha256"], second["sha256"])
+
+        narrow = self.receipt(scope_id="same-scope", compare_fields=["amount"])
+        wide = self.receipt(
+            scope_id="same-scope", compare_fields=["amount", "account"]
+        )
+        self.assertNotEqual(narrow["sha256"], wide["sha256"])
+        self.assertEqual(narrow["payload"]["contract"]["compare_fields"], ["amount"])
+        self.assertEqual(
+            wide["payload"]["contract"]["compare_fields"], ["account", "amount"]
+        )
+
     def test_malformed_compare_fields_fail_closed_with_acceptance_error(self):
         with self.assertRaisesRegex(AcceptanceError, "sequence of field names"):
             reconcile_records(self.source, self.target, compare_fields="amount")
@@ -126,13 +199,67 @@ class AcceptanceTests(unittest.TestCase):
         evidence = phase_evidence()
         evidence[7] = "sha256:bad-key"
         with self.assertRaisesRegex(AcceptanceError, "phase evidence keys must be strings"):
-            build_receipt(self.source, self.target, evidence, interfaces())
+            build_receipt(
+                self.source,
+                self.target,
+                evidence,
+                interfaces(),
+                expected_interfaces=expected_interfaces(),
+            )
 
     def test_invalid_key_field_fails_closed_with_acceptance_error(self):
         with self.assertRaisesRegex(AcceptanceError, "key_field must be a non-empty string"):
             reconcile_records(self.source, self.target, key_field="")
         with self.assertRaisesRegex(AcceptanceError, "key_field must be a non-empty string"):
             reconcile_records(self.source, self.target, key_field=7)
+
+    def test_lone_surrogate_cli_fails_bounded_in_normal_and_optimized_modes(self):
+        repo_root = Path(__file__).resolve().parents[2]
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp = Path(tmpdir)
+            source = tmp / "source.json"
+            target = tmp / "target.json"
+            phases = tmp / "phases.json"
+            interface_evidence = tmp / "interfaces.json"
+            expected = tmp / "expected_interfaces.json"
+            surrogate_fixture = '[{"key":"GL-100","amount":"\\ud800"}]'
+            source.write_text(surrogate_fixture, encoding="ascii")
+            target.write_text(surrogate_fixture, encoding="ascii")
+            phases.write_text(json.dumps(phase_evidence()), encoding="utf-8")
+            interface_evidence.write_text(json.dumps(interfaces()), encoding="utf-8")
+            expected.write_text(json.dumps(expected_interfaces()), encoding="utf-8")
+
+            for optimized in (False, True):
+                command = [sys.executable]
+                if optimized:
+                    command.append("-O")
+                command.extend(
+                    [
+                        "-m",
+                        "revenue.columbia_erp_acceptance.acceptance",
+                        "--source",
+                        str(source),
+                        "--target",
+                        str(target),
+                        "--phases",
+                        str(phases),
+                        "--interfaces",
+                        str(interface_evidence),
+                        "--expected-interfaces",
+                        str(expected),
+                    ]
+                )
+                result = subprocess.run(
+                    command,
+                    cwd=repo_root,
+                    capture_output=True,
+                    text=True,
+                    timeout=20,
+                    check=False,
+                )
+                self.assertEqual(result.returncode, 2, result.stderr)
+                self.assertIn("string is not valid UTF-8", result.stderr)
+                self.assertNotIn("Traceback", result.stderr)
 
 
 if __name__ == "__main__":
