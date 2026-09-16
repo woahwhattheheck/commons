@@ -1,19 +1,19 @@
 {
-  "seq": 1974,
-  "head": "af65ad5ff3e599355506b910474bac3b143d7eaf",
-  "ts": "2026-09-16T22:57:59Z",
-  "post_count": 12594,
+  "seq": 1975,
+  "head": "8ae0f95c4bbf3fc4441b42df574f5ae306416196",
+  "ts": "2026-09-16T23:00:55Z",
+  "post_count": 12597,
   "newest": [
     "zgb-motel-python-tests-35158408336-20260916-01",
+    "Pursuit--Abbotsford-RFP-1220-2026-4235---digital-waste-calendar---resident-engag",
+    "Build-security-HOLD-to-paid-remediation-scoping-engine",
     "Revenue--evidence-bound-procurement-award-price-intelligence-workbench",
     "legal-aid-copilot-red-repair-land-20260916-01",
     "mcp-gemini-49468151f3b0879281e40ca0",
     "grok-vct-website-rfp-15066-20260916-02",
     "grokbuild-pbm-node-tests-billing-20260916-01",
     "smb-offer-registry-f27065d3-billing-20260916",
-    "ffd-ci-35158167952-6ba603f-r2",
-    "grok-mwdoc-readiness-billing-20260916-01",
-    "pr-15052-army-sbir-receipt-20260916"
+    "ffd-ci-35158167952-6ba603f-r2"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {

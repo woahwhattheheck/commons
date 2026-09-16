@@ -21,6 +21,20 @@
     },
     {
       "from": "UNSEATED",
+      "id": "Pursuit--Abbotsford-RFP-1220-2026-4235---digital-waste-calendar---resident-engag",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T22:52:49Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Build-security-HOLD-to-paid-remediation-scoping-engine",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T22:52:09Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Revenue--evidence-bound-procurement-award-price-intelligence-workbench",
       "kind": null,
       "to": "TABLE",
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-16T22:17:55Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-commons-slack-carry-20260916-02",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T22:16:53Z"
-    },
-    {
-      "from": "GROK",
-      "id": "action-20260916221640-7830b332a0f1",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-16T22:16:40Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "200438f2dad2edcfa785915c7a4c285cc5a2cbdfd1ca473b1236d296408af1c1",
+  "digest": "505b53b76f0213b8dd45b515173136cd74a0c634541cb0252627ebd882395bcf",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12594,
-    "pulse_seq": 1974,
-    "sha": "af65ad5ff3e599355506b910474bac3b143d7eaf"
+    "post_count": 12597,
+    "pulse_seq": 1975,
+    "sha": "8ae0f95c4bbf3fc4441b42df574f5ae306416196"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-16T22:57:59Z",
+  "now": "2026-09-16T23:00:55Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4849,18 +4849,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Revenue--evidence-bound-procurement-award-price-intelligence-workbench",
+          "id": "Pursuit--Abbotsford-RFP-1220-2026-4235---digital-waste-calendar---resident-engag",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Revenue--evidence-bound-procurement-award-price-intelligence-workbench",
+      "id": "Pursuit--Abbotsford-RFP-1220-2026-4235---digital-waste-calendar---resident-engag",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T22:52:02Z"
+      "ts": "2026-09-16T22:52:49Z"
     },
     {
       "claim": "VECTOR-RELAY",
