@@ -40,6 +40,32 @@ def ledger(*attempts):
     return {"schema": SCHEMA, "attempts": list(attempts)}
 
 
+class _PostCreateFailure:
+    """Proxy a real exclusive file while injecting failure after creation."""
+
+    def __init__(self, wrapped, *, fail_write=False, fail_close=False):
+        self._wrapped = wrapped
+        self._fail_write = fail_write
+        self._fail_close = fail_close
+
+    def __enter__(self):
+        self._wrapped.__enter__()
+        return self
+
+    def __exit__(self, exc_type, exc, tb):
+        result = self._wrapped.__exit__(exc_type, exc, tb)
+        if exc_type is None and self._fail_close:
+            raise OSError("synthetic close failure")
+        return result
+
+    def write(self, text):
+        if self._fail_write:
+            self._wrapped.write(text[: max(1, len(text) // 8)])
+            self._wrapped.flush()
+            raise OSError("synthetic write failure")
+        return self._wrapped.write(text)
+
+
 class WorkbenchTests(unittest.TestCase):
     def test_duplicate_json_keys_rejected(self):
         raw = '{"schema":"x","schema":"y"}'
@@ -214,7 +240,7 @@ class WorkbenchTests(unittest.TestCase):
                 publish(result, target, target)
             self.assertFalse(target.exists())
 
-    def test_publish_rolls_back_first_file_when_second_write_fails(self):
+    def test_publish_rolls_back_first_file_when_second_open_fails(self):
         result = evaluate_ledger(ledger(attempt()))
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -224,8 +250,48 @@ class WorkbenchTests(unittest.TestCase):
 
             def failing_open(path_self, *args, **kwargs):
                 if path_self == md:
-                    raise OSError("synthetic second-write failure")
+                    raise OSError("synthetic second-open failure")
                 return real_open(path_self, *args, **kwargs)
+
+            with mock.patch.object(Path, "open", new=failing_open):
+                with self.assertRaises(LedgerError):
+                    publish(result, js, md)
+            self.assertFalse(js.exists())
+            self.assertFalse(md.exists())
+
+    def test_publish_rolls_back_partial_first_output_after_write_failure(self):
+        result = evaluate_ledger(ledger(attempt()))
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            js = root / "out.json"
+            md = root / "out.md"
+            real_open = Path.open
+
+            def failing_open(path_self, *args, **kwargs):
+                opened = real_open(path_self, *args, **kwargs)
+                if path_self == js:
+                    return _PostCreateFailure(opened, fail_write=True)
+                return opened
+
+            with mock.patch.object(Path, "open", new=failing_open):
+                with self.assertRaises(LedgerError):
+                    publish(result, js, md)
+            self.assertFalse(js.exists())
+            self.assertFalse(md.exists())
+
+    def test_publish_rolls_back_both_outputs_after_second_close_failure(self):
+        result = evaluate_ledger(ledger(attempt()))
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            js = root / "out.json"
+            md = root / "out.md"
+            real_open = Path.open
+
+            def failing_open(path_self, *args, **kwargs):
+                opened = real_open(path_self, *args, **kwargs)
+                if path_self == md:
+                    return _PostCreateFailure(opened, fail_close=True)
+                return opened
 
             with mock.patch.object(Path, "open", new=failing_open):
                 with self.assertRaises(LedgerError):
