@@ -13,3 +13,13 @@ python3 compiler.py /tmp/ejet-100.json --out /tmp/ejet-out || test $? -eq 2
 ```
 
 A complete dossier carries field-level JSON-path lineage and a SHA-256 over the canonical lineage object. The tests resolve every lineage path back into the source record and assert exact value equality, so the compiler cannot invent evidence values. Both dossiers and exceptions explicitly set `automated_release=false` and `release_decision=null`. The compiler has no PLC/DCS, recipe/setpoint, blending, tank/valve, certification, batch-disposition, or shipment-authorization action.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)

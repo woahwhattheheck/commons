@@ -27,10 +27,23 @@ jobs:
       - name: Compile
         run: >-
           python -m py_compile
-          revenue/multi_framework_evidence_freshness_pilot/pilot.py
+          revenue/multi_framework_evidence_freshness_pilot/wrapper.py
           revenue/multi_framework_evidence_freshness_pilot/cli.py
+          revenue/multi_framework_evidence_freshness_pilot/verify.py
+          revenue/multi_framework_evidence_freshness_pilot/pilot.py
+          revenue/multi_framework_evidence_freshness_pilot/strict_cli.py
+          revenue/multi_framework_evidence_freshness_pilot/test_wrapper.py
+          revenue/multi_framework_evidence_freshness_pilot/test_wrapper_hostile.py
           tests/test_multi_framework_evidence_freshness_pilot.py
       - name: Focused tests
-        run: python -m unittest -v tests.test_multi_framework_evidence_freshness_pilot
+        run: >-
+          python -m unittest -v
+          revenue.multi_framework_evidence_freshness_pilot.test_wrapper
+          revenue.multi_framework_evidence_freshness_pilot.test_wrapper_hostile
+          tests.test_multi_framework_evidence_freshness_pilot
       - name: Focused tests optimized
-        run: python -O -m unittest -v tests.test_multi_framework_evidence_freshness_pilot
+        run: >-
+          python -O -m unittest -v
+          revenue.multi_framework_evidence_freshness_pilot.test_wrapper
+          revenue.multi_framework_evidence_freshness_pilot.test_wrapper_hostile
+          tests.test_multi_framework_evidence_freshness_pilot

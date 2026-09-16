@@ -9,7 +9,8 @@ from pathlib import Path
 from unittest import mock
 
 from revenue.multi_framework_evidence_freshness import gate
-from revenue.multi_framework_evidence_freshness_pilot import cli, pilot
+from revenue.multi_framework_evidence_freshness_pilot import pilot
+from revenue.multi_framework_evidence_freshness_pilot import strict_cli as cli
 
 FIXED_NOW = dt.datetime(2026, 9, 16, 22, 30, 0, tzinfo=dt.timezone.utc)
 

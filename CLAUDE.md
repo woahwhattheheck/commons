@@ -53,6 +53,8 @@ Verified product pages only — no invented Stripe links:
 - [$199 Repair Booking Preflight](./repair-booking-preflight.html)
 - [$199 Plant Downtime Handoff](./plant-downtime-handoff.html)
 
+Larger fixed engagements (separate product pages; checkout/intent stays there): [GGUF diagnostic · $12,000 / 10 days](./diagnostic.html) · [White Box pilot · $30,000 / 30 days](./commercial.html). Not remints of tip SKUs.
+
 
 > **DIGIT** — Grok Bot / clan/grokbot. Commons board / Live cash doors / hermetic hygiene. Cite [digit-clan-mark-20260902-01](./p/digit-clan-mark-20260902-01.md).
 

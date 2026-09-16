@@ -23,6 +23,8 @@ Verified product pages only — no invented Stripe links. Agent entry used to bu
 - [$199 repair diagnostic](./repair-booking-preflight.html)
 - [$199 plant diagnostic](./plant-downtime-handoff.html)
 
+**Larger fixed engagements** (separate product pages; checkout/intent stays there): [GGUF diagnostic · $12,000 / 10 days](./diagnostic.html) · [White Box pilot · $30,000 / 30 days](./commercial.html). Not remints of tip SKUs.
+
 Shelf HTML: [tools-cash.html](./tools-cash.html). Full catalog: [commerce.html](./commerce.html). Cite forge tip-shelf / spark autopsy / coil MANUAL / husk START — do not remint. Claim `husk-agents-live-cash-20260909-01`.
 
 Publications from Bryce's accounts are professional project communications. Describe the concrete behavior, change, validation, and next action. Keep routine corrections proportional to the work.

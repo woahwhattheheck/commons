@@ -397,12 +397,13 @@
   "door": "business-packs.html",
   "live_cash": {
     "cite": [
+      "grok-catalog-json-keep-larger-fixed-20260916-01",
       "goat-business-packs-json-live-cash-20260916-01",
       "coil-business-packs-live-cash-20260905-01",
       "goat-clans-json-live-cash-20260916-01",
       "business-packs.html Live cash / tip-shelf"
     ],
-    "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Unique-pack law / instances / factory above stay canonical. business-packs.html already surfaces Live cash and loads this JSON. Pack instance checkout remains NOT_MINTED until owner pastes a live Payment Link. No invent Stripe URLs.",
+    "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Unique-pack law / instances / factory above stay canonical. business-packs.html already surfaces Live cash and loads this JSON. Pack instance checkout remains NOT_MINTED until owner pastes a live Payment Link. No invent Stripe URLs. Larger fixed engagements are separate product pages (checkout/intent stays there).",
     "products": [
       {
         "name": "Agent Failure Autopsy",
@@ -428,6 +429,20 @@
         "name": "Plant Downtime Handoff",
         "price_usd": 199,
         "path": "plant-downtime-handoff.html"
+      }
+    ],
+    "larger_fixed": [
+      {
+        "days": 10,
+        "name": "GGUF diagnostic",
+        "path": "diagnostic.html",
+        "price_usd": 12000
+      },
+      {
+        "days": 30,
+        "name": "White Box pilot",
+        "path": "commercial.html",
+        "price_usd": 30000
       }
     ]
   }

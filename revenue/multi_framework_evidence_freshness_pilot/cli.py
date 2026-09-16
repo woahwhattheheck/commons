@@ -1,54 +1,84 @@
 from __future__ import annotations
 
 import argparse
-import sys
+import json
+import os
 from pathlib import Path
 
-from . import pilot
+from revenue.multi_framework_evidence_freshness.gate import GateError, load_strict_json
+
+from .wrapper import DiagnosticError, compile_diagnostic, render_buyer_page, verify_diagnostic
 
 
-def _distinct(paths: list[Path]) -> None:
-    normalized = [str(p.absolute()) for p in paths]
-    if len(set(normalized)) != len(normalized):
-        raise pilot.PilotError("outputs_must_be_distinct")
+def _write_new(path: Path, data: bytes) -> None:
+    parent = path.parent if str(path.parent) else Path(".")
+    dflags = os.O_RDONLY
+    if hasattr(os, "O_DIRECTORY"):
+        dflags |= os.O_DIRECTORY
+    if hasattr(os, "O_CLOEXEC"):
+        dflags |= os.O_CLOEXEC
+    if hasattr(os, "O_NOFOLLOW"):
+        dflags |= os.O_NOFOLLOW
+    dfd = os.open(parent, dflags)
+    try:
+        flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
+        if hasattr(os, "O_CLOEXEC"):
+            flags |= os.O_CLOEXEC
+        if hasattr(os, "O_NOFOLLOW"):
+            flags |= os.O_NOFOLLOW
+        fd = os.open(path.name, flags, 0o600, dir_fd=dfd)
+        try:
+            view = memoryview(data)
+            sent = 0
+            while sent < len(view):
+                n = os.write(fd, view[sent:])
+                if n <= 0:
+                    raise OSError("short_write")
+                sent += n
+            os.fsync(fd)
+        finally:
+            os.close(fd)
+    finally:
+        os.close(dfd)
+
+
+def _exists(path: Path) -> bool:
+    try:
+        os.lstat(path)
+        return True
+    except FileNotFoundError:
+        return False
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Fixed Evidence Freshness Diagnostic")
+    parser = argparse.ArgumentParser(description="Fixed multi-framework evidence freshness diagnostic")
     sub = parser.add_subparsers(dest="cmd", required=True)
-
     c = sub.add_parser("compile")
-    c.add_argument("request", type=Path)
-    c.add_argument("engine_packet", type=Path)
-    c.add_argument("diagnostic", type=Path)
-    c.add_argument("buyer_report", type=Path)
-
+    c.add_argument("input")
+    c.add_argument("diagnostic")
+    c.add_argument("markdown")
     v = sub.add_parser("verify")
-    v.add_argument("request", type=Path)
-    v.add_argument("engine_packet", type=Path)
-    v.add_argument("diagnostic", type=Path)
-    v.add_argument("buyer_report", type=Path)
-
-    args = parser.parse_args(argv)
+    v.add_argument("diagnostic")
+    ns = parser.parse_args(argv)
     try:
-        if args.cmd == "compile":
-            _distinct([args.engine_packet, args.diagnostic, args.buyer_report])
-            request = pilot.load_json(args.request)
-            packet, diagnostic, report = pilot.compile_diagnostic(request)
-            pilot.write_exclusive(args.engine_packet, pilot.canonical(packet) + b"\n")
-            pilot.write_exclusive(args.diagnostic, pilot.canonical(diagnostic) + b"\n")
-            pilot.write_exclusive(args.buyer_report, report.encode("utf-8"))
-            print("DIAGNOSTIC_READY")
-        else:
-            request = pilot.load_json(args.request)
-            packet = pilot.load_json(args.engine_packet)
-            diagnostic = pilot.load_json(args.diagnostic)
-            report = pilot.load_markdown(args.buyer_report)
-            pilot.verify_diagnostic(request, packet, diagnostic, report)
-            print("VERIFIED")
+        if ns.cmd == "compile":
+            raw = load_strict_json(ns.input)
+            envelope = compile_diagnostic(raw)
+            page = render_buyer_page(envelope)
+            out = Path(ns.diagnostic)
+            md = Path(ns.markdown)
+            if _exists(out) or _exists(md):
+                raise DiagnosticError("output_exists")
+            payload = json.dumps(envelope, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode() + b"\n"
+            _write_new(out, payload)
+            _write_new(md, page.encode("utf-8"))
+            print(envelope["diagnostic_sha256"])
+            return 0
+        envelope = load_strict_json(ns.diagnostic)
+        print(verify_diagnostic(envelope))
         return 0
-    except pilot.PilotError as exc:
-        print(f"ERROR: {exc}", file=sys.stderr)
+    except (DiagnosticError, GateError, OSError) as exc:
+        print(f"ERROR:{exc}")
         return 2
 
 
