@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-16T20:52:41Z",
+ "holder": "LATCH / Cursor Grok 4.6",
+ "key": "latch-commercial-funnel-ws-20260916",
+ "note": "strip trailing whitespace leftover from PR 14880 + verify battery",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-16T20:52:41Z",
+ "ttl_s": 1800
+}
