@@ -1,13 +1,18 @@
 from __future__ import annotations
 
 import json
+import marshal
+import os
+import sys
 import time
 from datetime import datetime, timedelta, timezone
+from pathlib import Path
 from typing import Any
 
 from .assets import evaluate_assets
 from .common import (
     ControlError,
+    MAX_JSON_BYTES,
     canonical_bytes,
     digest_object,
     format_timestamp,
@@ -272,24 +277,157 @@ def _compile_at(
     return receipt
 
 
-def _make_compile_current(
-    _root_loader=load_current_roots_bytes,
-    _clock=_utc_now,
-    _compiler=_compile_at,
-    _mode: str = CURRENT_MODE,
+# CURRENT authority is executed in a fresh isolated interpreter, not in the
+# caller's mutable Python module graph. The parent-side transport uses captured
+# C-level POSIX/marshal primitives only; post-import monkeypatches of package
+# helpers cannot influence the child that reads current roots/policy.
+_CURRENT_REPO_ROOT = str(Path(__file__).resolve().parents[2])
+_CURRENT_WORKER_CODE = (
+    "import sys;"
+    f"sys.path.insert(0,{_CURRENT_REPO_ROOT!r});"
+    "from revenue.teaming_conversion._current_worker import main;"
+    "raise SystemExit(main())"
+)
+_CURRENT_OPT_FLAG = (
+    "-OO" if sys.flags.optimize >= 2 else ("-O" if sys.flags.optimize == 1 else None)
+)
+_CURRENT_WORKER_ARGV = (
+    (sys.executable, "-I", _CURRENT_OPT_FLAG, "-c", _CURRENT_WORKER_CODE)
+    if _CURRENT_OPT_FLAG is not None
+    else (sys.executable, "-I", "-c", _CURRENT_WORKER_CODE)
+)
+_MAX_CURRENT_WIRE_BYTES = 8 * MAX_JSON_BYTES
+
+
+def _make_current_rpc(
+    _pipe=os.pipe,
+    _spawn=getattr(os, "posix_spawn", None),
+    _spawn_dup2=getattr(os, "POSIX_SPAWN_DUP2", None),
+    _spawn_close=getattr(os, "POSIX_SPAWN_CLOSE", None),
+    _close=os.close,
+    _write=os.write,
+    _read=os.read,
+    _waitpid=os.waitpid,
+    _marshal_dumps=marshal.dumps,
+    _marshal_loads=marshal.loads,
+    _argv: tuple[str, ...] = _CURRENT_WORKER_ARGV,
+    _executable: str = sys.executable,
+    _max_wire_bytes: int = _MAX_CURRENT_WIRE_BYTES,
+    _error=ControlError,
+    _len=len,
 ):
+    def fail_closed_unavailable(*_args: Any) -> Any:
+        raise _error("CURRENT authority requires POSIX isolated-exec support")
+
+    if _spawn is None or _spawn_dup2 is None or _spawn_close is None:
+        return fail_closed_unavailable
+
+    def write_all(fd: int, data: bytes) -> None:
+        offset = 0
+        size = _len(data)
+        while offset < size:
+            written = _write(fd, data[offset:])
+            if written <= 0:
+                raise _error("CURRENT authority worker input write failed")
+            offset += written
+
+    def read_all(fd: int) -> bytes:
+        chunks: list[bytes] = []
+        total = 0
+        while True:
+            chunk = _read(fd, 65_536)
+            if not chunk:
+                break
+            chunks.append(chunk)
+            total += _len(chunk)
+            if total > _max_wire_bytes:
+                raise _error("CURRENT authority worker output is too large")
+        return b"".join(chunks)
+
+    def current_rpc(operation: str, *payload: bytes) -> Any:
+        try:
+            request = _marshal_dumps((operation, *payload))
+        except (TypeError, ValueError) as exc:
+            raise _error("CURRENT authority request is not serializable") from exc
+        if _len(request) > _max_wire_bytes:
+            raise _error("CURRENT authority request is too large")
+
+        stdin_r, stdin_w = _pipe()
+        stdout_r, stdout_w = _pipe()
+        file_actions = (
+            (_spawn_dup2, stdin_r, 0),
+            (_spawn_dup2, stdout_w, 1),
+            (_spawn_close, stdin_w),
+            (_spawn_close, stdout_r),
+            (_spawn_close, stdin_r),
+            (_spawn_close, stdout_w),
+        )
+        try:
+            pid = _spawn(_executable, _argv, {}, file_actions=file_actions)
+        except OSError as exc:
+            for fd in (stdin_r, stdin_w, stdout_r, stdout_w):
+                try:
+                    _close(fd)
+                except OSError:
+                    pass
+            raise _error("CURRENT authority worker could not start") from exc
+
+        _close(stdin_r)
+        _close(stdout_w)
+        write_error: OSError | None = None
+        try:
+            write_all(stdin_w, request)
+        except OSError as exc:
+            write_error = exc
+        finally:
+            _close(stdin_w)
+
+        response_bytes = b""
+        read_error: OSError | None = None
+        try:
+            response_bytes = read_all(stdout_r)
+        except OSError as exc:
+            read_error = exc
+        finally:
+            _close(stdout_r)
+
+        _, status = _waitpid(pid, 0)
+        if write_error is not None:
+            raise _error("CURRENT authority worker input write failed") from write_error
+        if read_error is not None:
+            raise _error("CURRENT authority worker output read failed") from read_error
+        if status != 0:
+            raise _error("CURRENT authority worker exited unsuccessfully")
+        try:
+            response = _marshal_loads(response_bytes)
+        except (EOFError, TypeError, ValueError) as exc:
+            raise _error("CURRENT authority worker returned an invalid response") from exc
+        if (
+            type(response) is not tuple
+            or _len(response) != 2
+            or response[0] not in {"ok", "error"}
+        ):
+            raise _error("CURRENT authority worker returned an invalid envelope")
+        if response[0] == "error":
+            raise _error(str(response[1]))
+        return response[1]
+
+    return current_rpc
+
+
+_CURRENT_RPC = _make_current_rpc()
+del _make_current_rpc
+
+
+def _make_compile_current(_rpc=_CURRENT_RPC):
     def compile_current_bytes(
         candidate_bytes: bytes,
         evidence_bytes: bytes,
     ) -> dict[str, Any]:
-        roots_bytes = _root_loader()
-        return _compiler(
-            candidate_bytes,
-            evidence_bytes,
-            roots_bytes,
-            evaluated_at=_clock(),
-            mode=_mode,
-        )
+        result = _rpc("compile", candidate_bytes, evidence_bytes)
+        if type(result) is not dict:
+            raise ControlError("CURRENT authority worker returned a non-object receipt")
+        return result
 
     return compile_current_bytes
 
@@ -378,63 +516,16 @@ def verify_integrity_bytes(
     return canonical_bytes(rebuilt) == receipt_bytes
 
 
-def _make_verify_current(
-    _parse_receipt=parse_receipt_bytes,
-    _clock=_utc_now,
-    _root_loader=load_current_roots_bytes,
-    _require_timestamp=require_timestamp,
-    _compiler=_compile_at,
-    _canonical_bytes=canonical_bytes,
-    _format_timestamp=format_timestamp,
-    _mode: str = CURRENT_MODE,
-):
+def _make_verify_current(_rpc=_CURRENT_RPC):
     def verify_current_bytes(
         candidate_bytes: bytes,
         evidence_bytes: bytes,
         receipt_bytes: bytes,
     ) -> dict[str, Any]:
-        receipt = _parse_receipt(receipt_bytes)
-        now = _clock()
-        roots_bytes = _root_loader()
-        integrity_valid = False
-        if receipt["mode"] == _mode:
-            evaluated_at = _require_timestamp(
-                receipt["evaluated_at"], "receipt.evaluated_at"
-            )
-            rebuilt = _compiler(
-                candidate_bytes,
-                evidence_bytes,
-                roots_bytes,
-                evaluated_at=evaluated_at,
-                mode=_mode,
-            )
-            integrity_valid = _canonical_bytes(rebuilt) == receipt_bytes
-        current = _compiler(
-            candidate_bytes,
-            evidence_bytes,
-            roots_bytes,
-            evaluated_at=now,
-            mode=_mode,
-        )
-        receipt_valid_until = _require_timestamp(
-            receipt["current_valid_until"], "receipt.current_valid_until"
-        )
-        current_valid = (
-            integrity_valid
-            and now <= receipt_valid_until
-            and current["decision_sha256"] == receipt["decision_sha256"]
-        )
-        return {
-            "schema": "teaming-conversion-current-verification/v2",
-            "verified_at": _format_timestamp(now),
-            "integrity_valid": integrity_valid,
-            "current_valid": current_valid,
-            "receipt_disposition": receipt["disposition"],
-            "current_disposition": current["disposition"],
-            "current_decision_sha256": current["decision_sha256"],
-            "receipt_decision_sha256": receipt["decision_sha256"],
-            "current_valid_until": current["current_valid_until"],
-        }
+        result = _rpc("verify", candidate_bytes, evidence_bytes, receipt_bytes)
+        if type(result) is not dict:
+            raise ControlError("CURRENT authority worker returned a non-object verification")
+        return result
 
     return verify_current_bytes
 
