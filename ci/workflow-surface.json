@@ -753,8 +753,8 @@
     {
       "source": ".github/workflows/ohsu-digital-pathology-evidence.yml",
       "archive": "ci/workflow-recipes/ohsu-digital-pathology-evidence.yml",
-      "sha256": "a805325ef06259a7ac5ceef1a0c3267d0d23ddce96e404666365fb9f50b73061",
-      "bytes": 1797
+      "sha256": "1dbadb5cb58e5e8b0e74ac5061bbf5675277c4c78708e69b18ed0d12fbc6660c",
+      "bytes": 2876
     },
     {
       "source": ".github/workflows/ohsu-erp-rfp-2027-0005.yml",
