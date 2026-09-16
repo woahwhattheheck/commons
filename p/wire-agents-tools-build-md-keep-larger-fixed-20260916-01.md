@@ -14,7 +14,7 @@ subject: AGENTS/TOOLS/BUILD MD KEEP LARGER FIXED
 
 PLAIN: Claim `wire-agents-tools-build-md-keep-larger-fixed-20260916-01`. Tip measurement: `AGENTS.md` already KEEP Larger; `TOOLS.md` and `BUILD.md` absent (do not invent); `README.md` leave ink `#15040`. Unique leftover is this receipt + hermetic canary. Tip KEEP. Hands off #8802. No invent Stripe. No lead outreach.
 
-## Measured on tip `a3745482cd24581b77771e3bc1569f4e64f2c13f`
+## Measured on tip `4a75f4d278bc95816b6e86b1850902cae8786adc`
 
 - `AGENTS.md` blob `de1124818574b0004347eb6db8d26a057ba6e7b4` — Live cash already has occupancy KEEP pattern (`./diagnostic.html` · `$12,000` · `./commercial.html` · `$30,000`). Coil `coil-start-ground-larger-fixed-20260916-01`. Skip; do not remint.
 - `TOOLS.md` — ABSENT on tip. Do not invent a new shelf.
