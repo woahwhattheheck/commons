@@ -16,7 +16,7 @@ LEFTOVER = ROOT / "p/cursor-commons-slack-full-body-20260902-01.md"
 KEEP = {
     "p/cursor-commons-slack-full-body-20260902-01.md": "86f4eddc",
     "host/commons_slack_full_body.py": "d5338810",
-    "test_commons_slack_full_body.py": "d85672c7",
+    "test_commons_slack_full_body.py": "a06fbfca",
     "ground/COMMONS_SLACK_FULL_BODY.json": "eece8b1a",
     "ground/COMMONS_SLACK_FULL_BODY.md": "9203dd5b",
     "commons-slack.html": "16a25386",
