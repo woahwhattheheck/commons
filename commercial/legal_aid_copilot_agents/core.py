@@ -77,6 +77,8 @@ class Trainer:
             _nonempty(self.name)
             and _nonempty(self.role)
             and _nonempty(self.copilot_experience_summary)
+            and isinstance(self.availability_start, date)
+            and isinstance(self.availability_end, date)
             and self.availability_start <= self.availability_end
         )
 
@@ -98,21 +100,21 @@ class PartnerEvidence:
             blockers.append("missing_company_name")
         if not _nonempty(self.company_profile):
             blockers.append("missing_company_profile")
-        if self.trainer is None or not self.trainer.valid():
+        if self.trainer is None or not isinstance(self.trainer, Trainer) or not self.trainer.valid():
             blockers.append("missing_or_invalid_named_trainer")
         elif not self.trainer.covers_window():
             blockers.append("trainer_does_not_cover_delivery_window")
-        valid_engagements = [item for item in self.comparable_engagements if item.valid()]
+        valid_engagements = [item for item in self.comparable_engagements if isinstance(item, ComparableEngagement) and item.valid()]
         if len(valid_engagements) < 2:
             blockers.append("fewer_than_two_comparable_engagements")
-        valid_refs = [item for item in self.references if item.valid()]
+        valid_refs = [item for item in self.references if isinstance(item, Reference) and item.valid()]
         if len(valid_refs) < 2:
             blockers.append("fewer_than_two_valid_references")
         if not _nonempty(self.subcontract_role):
             blockers.append("subcontract_role_not_defined")
-        if not self.commercial_split_discussed:
+        if self.commercial_split_discussed is not True:
             blockers.append("commercial_role_split_not_discussed")
-        if not self.sample_agreement_available:
+        if self.sample_agreement_available is not True:
             blockers.append("sample_agreement_not_available")
         blockers.sort()
         return {
@@ -131,11 +133,16 @@ class GovernanceReview:
 
     def result(self) -> dict[str, Any]:
         missing = sorted(control for control in REQUIRED_GOVERNANCE_CONTROLS if self.controls.get(control) is not True)
+        notes = {
+            key: value
+            for key, value in self.notes.items()
+            if isinstance(key, str) and isinstance(value, str)
+        }
         return {
             "status": "PASS" if not missing else "HOLD",
             "required_controls": list(REQUIRED_GOVERNANCE_CONTROLS),
             "missing_controls": missing,
-            "notes": {k: self.notes[k] for k in sorted(self.notes)},
+            "notes": {k: notes[k] for k in sorted(notes)},
         }
 
 
@@ -149,8 +156,13 @@ class EvaluationCase:
     def result(self, minimum_dimension_score: int = 3) -> dict[str, Any]:
         if not _nonempty(self.case_id):
             raise ValueError("case_id must be non-empty")
-        if minimum_dimension_score < 0 or minimum_dimension_score > 5:
-            raise ValueError("minimum_dimension_score must be between 0 and 5")
+        if (
+            isinstance(minimum_dimension_score, bool)
+            or not isinstance(minimum_dimension_score, int)
+            or minimum_dimension_score < 0
+            or minimum_dimension_score > 5
+        ):
+            raise ValueError("minimum_dimension_score must be an integer between 0 and 5")
         missing = [dim for dim in RUBRIC_DIMENSIONS if dim not in self.scores]
         invalid = {
             dim: value
@@ -167,6 +179,7 @@ class EvaluationCase:
             and self.scores[dim] < minimum_dimension_score
         }
         evidence_refs = _sorted_unique(self.evidence_refs)
+        observed_result = self.observed_result.strip() if isinstance(self.observed_result, str) else ""
         blockers: list[str] = []
         if missing:
             blockers.append("missing_rubric_dimensions")
@@ -176,18 +189,18 @@ class EvaluationCase:
             blockers.append("score_below_threshold")
         if not evidence_refs:
             blockers.append("missing_evidence_refs")
-        if not _nonempty(self.observed_result):
+        if not observed_result:
             blockers.append("missing_observed_result")
         blockers.sort()
         return {
-            "case_id": self.case_id,
+            "case_id": self.case_id.strip(),
             "status": "PASS" if not blockers else "HOLD",
             "blockers": blockers,
             "missing_dimensions": sorted(missing),
             "invalid_scores": {k: invalid[k] for k in sorted(invalid)},
             "below_threshold": {k: below[k] for k in sorted(below)},
             "evidence_refs": evidence_refs,
-            "observed_result": self.observed_result.strip(),
+            "observed_result": observed_result,
         }
 
 
