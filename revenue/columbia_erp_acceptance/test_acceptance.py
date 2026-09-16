@@ -116,6 +116,24 @@ class AcceptanceTests(unittest.TestCase):
         )
         self.assertEqual(result["status"], "PASS")
 
+    def test_malformed_compare_fields_fail_closed_with_acceptance_error(self):
+        with self.assertRaisesRegex(AcceptanceError, "sequence of field names"):
+            reconcile_records(self.source, self.target, compare_fields="amount")
+        with self.assertRaisesRegex(AcceptanceError, "invalid field name"):
+            reconcile_records(self.source, self.target, compare_fields=["amount", 7])
+
+    def test_non_string_phase_key_fails_closed_with_acceptance_error(self):
+        evidence = phase_evidence()
+        evidence[7] = "sha256:bad-key"
+        with self.assertRaisesRegex(AcceptanceError, "phase evidence keys must be strings"):
+            build_receipt(self.source, self.target, evidence, interfaces())
+
+    def test_invalid_key_field_fails_closed_with_acceptance_error(self):
+        with self.assertRaisesRegex(AcceptanceError, "key_field must be a non-empty string"):
+            reconcile_records(self.source, self.target, key_field="")
+        with self.assertRaisesRegex(AcceptanceError, "key_field must be a non-empty string"):
+            reconcile_records(self.source, self.target, key_field=7)
+
 
 if __name__ == "__main__":
     unittest.main()
