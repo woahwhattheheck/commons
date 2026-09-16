@@ -1,0 +1,47 @@
+{
+  "evidence_max_age_seconds": 86400,
+  "generated_at": "2026-09-16T22:40:00Z",
+  "library_id": "synthetic-internal-library",
+  "receipts": [
+    {
+      "assertion_class": "GENERAL",
+      "claim_id": "corp-1",
+      "claim_text": "Internal capability note: public-sector delivery practice exists in the synthetic fixture.",
+      "family": "corporate_capability",
+      "kind": "CAPABILITY",
+      "module_id": "mod-corporate",
+      "observed_at": "2026-09-16T20:00:00Z",
+      "owner_status": "APPROVED",
+      "receipt_id": "ev-corp-1",
+      "ref": "fixture://internal/capability-corporate.md",
+      "revision": 1,
+      "sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "status": "SUPPORTED",
+      "summary": "Synthetic general capability receipt.",
+      "tags": ["public_sector"],
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": "2026-12-31T00:00:00Z"
+    },
+    {
+      "assertion_class": "CERTIFICATION",
+      "claim_id": "cert-1",
+      "claim_text": "No FedRAMP package is asserted; certification remains non-supported.",
+      "family": "cybersecurity",
+      "kind": "POLICY",
+      "module_id": "mod-cyber",
+      "observed_at": "2026-09-16T20:00:00Z",
+      "owner_status": "PENDING",
+      "receipt_id": "ev-cert-1",
+      "ref": "fixture://internal/certification-gap.md",
+      "revision": 1,
+      "sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "status": "MISSING",
+      "summary": "Unsupported certification assertion held as MISSING.",
+      "tags": ["public_sector"],
+      "valid_from": "2026-01-01T00:00:00Z",
+      "valid_until": "2026-12-31T00:00:00Z"
+    }
+  ],
+  "schema": "procurement-response-modules/materializer/v1",
+  "truth_boundary": "INTERNAL_OWNER_REVIEW_ONLY"
+}

@@ -12,15 +12,23 @@ permissions:
   contents: read
 jobs:
   verify:
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
-        with: {python-version: '3.13'}
-      - run: python -m py_compile revenue/procurement_response_module_library/engine.py revenue/procurement_response_module_library/test_engine.py
+        with: {python-version: '${{ matrix.python-version }}'}
+      - run: python -m py_compile revenue/procurement_response_module_library/engine.py revenue/procurement_response_module_library/test_engine.py revenue/procurement_response_module_library/materialize.py revenue/procurement_response_module_library/test_materialize.py
       - run: python -m unittest -v revenue.procurement_response_module_library.test_engine
       - run: python -O -m unittest -v revenue.procurement_response_module_library.test_engine
+      - run: python -m unittest -v revenue.procurement_response_module_library.test_materialize
+      - run: python -O -m unittest -v revenue.procurement_response_module_library.test_materialize
       - run: |
-          rm -rf /tmp/prm
+          rm -rf /tmp/prm /tmp/prm-mat
           python -m revenue.procurement_response_module_library.engine compile --library revenue/procurement_response_module_library/catalog.json --solicitation revenue/procurement_response_module_library/solicitation.json --out-dir /tmp/prm
           python -m revenue.procurement_response_module_library.engine verify --library revenue/procurement_response_module_library/catalog.json --solicitation revenue/procurement_response_module_library/solicitation.json --packet /tmp/prm/packet.json --markdown /tmp/prm/packet.md --receipt /tmp/prm/receipt.json
+          python -m revenue.procurement_response_module_library.materialize compile --receipts revenue/procurement_response_module_library/fixtures/internal_receipts.json --out-dir /tmp/prm-mat
+          python -m revenue.procurement_response_module_library.materialize verify --receipts revenue/procurement_response_module_library/fixtures/internal_receipts.json --catalog /tmp/prm-mat/catalog.json --diff /tmp/prm-mat/diff.json --receipt /tmp/prm-mat/receipt.json
