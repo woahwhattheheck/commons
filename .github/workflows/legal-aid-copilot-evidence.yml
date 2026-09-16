@@ -1,0 +1,44 @@
+name: legal-aid-copilot-evidence
+
+on:
+  pull_request:
+    paths:
+      - 'commercial/legal_aid_copilot_agents/**'
+      - 'tests/test_legal_aid_copilot_agents.py'
+      - '.github/workflows/legal-aid-copilot-evidence.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'commercial/legal_aid_copilot_agents/**'
+      - 'tests/test_legal_aid_copilot_agents.py'
+      - '.github/workflows/legal-aid-copilot-evidence.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  evidence-gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run Copilot evidence-gate tests
+        run: python -m unittest discover -s tests -p 'test_legal_aid_copilot_agents.py' -v
+      - name: Verify HOLD fixture exits closed
+        shell: bash
+        run: |
+          set +e
+          python -m commercial.legal_aid_copilot_agents.cli commercial/legal_aid_copilot_agents/example_hold.json >/tmp/legal-aid-hold.json
+          rc=$?
+          set -e
+          test "$rc" -eq 2
+          python - <<'PY'
+          import json
+          pack = json.load(open('/tmp/legal-aid-hold.json', encoding='utf-8'))
+          assert pack['delivery_status'] == 'HOLD'
+          assert 'proposal_evidence_gate' in pack['delivery_blockers']
+          assert len(pack['receipt_sha256']) == 64
+          PY
