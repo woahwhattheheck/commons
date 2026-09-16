@@ -26,6 +26,13 @@ PRODUCTS = (
     "repair-booking-preflight.html",
     "plant-downtime-handoff.html",
 )
+LARGER_FIXED = (
+    "diagnostic.html",
+    "commercial.html",
+)
+# LIVE_CASH_PRODUCTS_HTML lists Autopsy/$199 then Larger fixed. Exact href
+# order is the rebuild contract: extras would hide a remint wipe.
+CASH_HREFS = tuple("./" + name for name in PRODUCTS + LARGER_FIXED)
 
 
 class BoardCashRebakeTests(unittest.TestCase):
@@ -49,9 +56,12 @@ class BoardCashRebakeTests(unittest.TestCase):
     def assert_cash(self, text):
         self.assertEqual(text.count('id="live-cash"'), 1)
         section = re.search(r'<section\b[^>]*\bid="live-cash"[^>]*>.*?</section>', text, re.S).group()
-        self.assertEqual(re.findall(r'href="([^\"]+)"', section), ["./" + name for name in PRODUCTS])
+        self.assertEqual(re.findall(r'href="([^\"]+)"', section), list(CASH_HREFS))
         self.assertIn("$29 Autopsy", section)
         self.assertIn("$199 dealer diagnostic", section)
+        self.assertIn("Larger fixed engagements", section)
+        self.assertIn("GGUF diagnostic · $12,000 / 10 days", section)
+        self.assertIn("White Box pilot · $30,000 / 30 days", section)
         self.assertNotIn("tools-cash.html", text)
         self.assertNotIn("buy.stripe.com", text)
 
@@ -112,10 +122,19 @@ class BoardCashRebakeTests(unittest.TestCase):
         self.bake("annex.html")
         text = (self.root / "features.html").read_text(encoding="utf-8")
         self.assertEqual(text.count('id="live-cash"'), 1)
-        for name in PRODUCTS:
+        for name in PRODUCTS + LARGER_FIXED:
             self.assertIn('href="./%s"' % name, text)
+        self.assertIn("Larger fixed engagements", text)
         self.assertIn('href="./tools-cash.html"', text)
         self.assertIn('href="./commerce.html"', text)
+
+    def test_live_cash_products_html_keeps_larger_fixed_hrefs(self):
+        text = hub_pages.LIVE_CASH_PRODUCTS_HTML
+        section = re.search(r'<section\b[^>]*\bid="live-cash"[^>]*>.*?</section>', text, re.S).group()
+        self.assertEqual(re.findall(r'href="([^\"]+)"', section), list(CASH_HREFS))
+        self.assertIn("Larger fixed engagements", section)
+        self.assertNotIn("buy.stripe.com", section)
+        self.assertNotIn("youtu.be", section)
 
 
 if __name__ == "__main__":
