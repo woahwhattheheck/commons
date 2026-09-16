@@ -1,0 +1,30 @@
+name: Swarm product collision preflight
+on:
+  pull_request:
+    paths:
+      - 'tools/swarm_product_collision/**'
+      - 'tests/test_swarm_product_collision.py'
+      - '.github/workflows/swarm-product-collision-preflight.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tools/swarm_product_collision/**'
+      - 'tests/test_swarm_product_collision.py'
+      - '.github/workflows/swarm-product-collision-preflight.yml'
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m py_compile tools/swarm_product_collision/*.py tests/test_swarm_product_collision.py
+      - run: python -m unittest -v tests.test_swarm_product_collision
+      - run: python -O -m unittest -v tests.test_swarm_product_collision
