@@ -67,6 +67,15 @@ PROVENANCE_SUCCESSORS = {
                 "[commerce.html](./commerce.html).\n\n"
             ).encode("utf-8"),
         ),
+        (
+            "grok-grants-md-keep-larger-fixed-20260916-01",
+            (
+                "Larger fixed engagements (separate product pages; checkout/intent stays there): "
+                "[GGUF diagnostic · $12,000 / 10 days](./diagnostic.html) · "
+                "[White Box pilot · $30,000 / 30 days](./commercial.html). "
+                "Not remints of tip SKUs.\n"
+            ).encode("utf-8"),
+        ),
     ),
 }
 
