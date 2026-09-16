@@ -129,7 +129,9 @@ def _validate_concept_and_evidence(
             reasons.append(_reason("TECHNICAL_EVIDENCE_STALE", "technical evidence observation exceeds the currentness window", [evidence_id]))
         if not verified:
             reasons.append(_reason("TECHNICAL_EVIDENCE_UNVERIFIED", "caller marks the retained evidence descriptor unverified", [evidence_id]))
-        if retained_match and verified and observed_dt <= evaluated_at + _dt.timedelta(seconds=FUTURE_SKEW_SECONDS) and (
+        if publicability != "PUBLIC_DESCRIPTOR":
+            reasons.append(_reason("PUBLIC_DESCRIPTOR_REQUIRED_FOR_OWNER_REVIEW", "owner-ready technical evidence must use a public descriptor", [evidence_id]))
+        if retained_match and verified and publicability == "PUBLIC_DESCRIPTOR" and observed_dt <= evaluated_at + _dt.timedelta(seconds=FUTURE_SKEW_SECONDS) and (
             not current_mode or evaluated_at - observed_dt <= _dt.timedelta(seconds=EVIDENCE_MAX_AGE_SECONDS)
         ):
             verified_tags.update(tags)
@@ -183,7 +185,7 @@ def _validate_partner_shortlist(raw_shortlist: Any) -> Tuple[List[Dict[str, Any]
         item = _expect_dict(raw, path)
         unknown = sorted(set(item) - _PARTNER_KEYS)
         if unknown:
-            raise ReadinessError("%s contains non-research/contact/secret fields: %s" % (path, ", ".join(unknown)))
+            raise ReadinessError("%s contains forbidden contact/outreach/secret fields: %s" % (path, ", ".join(unknown)))
         profile_id = _expect_id(item.get("profile_id"), path + ".profile_id")
         if profile_id in seen:
             raise ReadinessError("duplicate partner profile_id: %s" % profile_id)
