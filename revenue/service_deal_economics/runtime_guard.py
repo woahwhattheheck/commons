@@ -13,20 +13,20 @@ def freeze_call_graph(
 ) -> Callable[[], bool]:
     """Capture a transitive Python call graph and return a closure-only guard.
 
-    Globals and referenced module attributes are identity-bound selectively.
-    Reachable class/instance namespaces are also snapshotted so a stable object
-    cannot hide an in-place replacement of an authority-bearing method (for
-    example ``json.JSONEncoder.encode``, a cached JSON encoder method, or
-    ``hmac.HMAC.__init__``).
+    Resolution is frozen at three levels:
+    * globals and builtins named by each Python function's bytecode;
+    * selectively referenced module/class attributes and recursively reached
+      Python function objects;
+    * full namespaces for reachable mutable classes/instances, including class
+      MRO bases and already-existing concrete subclasses. This covers implicit
+      special-method dispatch that is absent from ``co_names``.
 
-    Whole module namespaces are deliberately *not* snapshotted: this module
-    installs guarded public CURRENT wrappers after capture, and unrelated module
-    names may legitimately appear later. Authority-bearing module attributes are
-    already covered by the selective global/attribute bindings below.
+    Whole module namespaces are deliberately not snapshotted: authority-bearing
+    module attributes are already identity-bound selectively, while unrelated
+    names may legitimately appear after import.
 
     The returned guard accepts no arguments. Snapshots and check primitives are
-    held only in closure cells, so callers cannot inject alternate trust/time
-    dependencies through keyword/default parameters.
+    held only in closure cells, preventing keyword/default trust injection.
     """
 
     global_bindings: list[tuple[dict[str, Any], str, object]] = []
@@ -37,8 +37,9 @@ def freeze_call_graph(
     seen_attrs: set[tuple[int, str, bool]] = set()
     seen_functions: set[int] = set()
     seen_namespaces: set[int] = set()
+    seen_classes: set[int] = set()
 
-    def capture_namespace(owner: object) -> None:
+    def snapshot_namespace(owner: object) -> None:
         if isinstance(owner, (FunctionType, ModuleType)):
             return
         marker = id(owner)
@@ -51,6 +52,35 @@ def freeze_call_graph(
         seen_namespaces.add(marker)
         namespace_bindings.append((owner, tuple(namespace.items())))
 
+    def capture_class(cls: type) -> None:
+        marker = id(cls)
+        if marker in seen_classes:
+            return
+        seen_classes.add(marker)
+        snapshot_namespace(cls)
+        # Snapshot inherited special-method providers without recursively
+        # walking object.__subclasses__(), which would be unbounded/noisy.
+        for base in cls.__mro__[1:]:
+            snapshot_namespace(base)
+        # Capture concrete implementations selected by Python factories such as
+        # pathlib.Path -> PosixPath/WindowsPath. Recurse only downward from the
+        # class actually reached by the authority graph.
+        try:
+            children = tuple(cls.__subclasses__())
+        except TypeError:
+            children = ()
+        for child in children:
+            capture_class(child)
+
+    def capture_mutable_state(owner: object) -> None:
+        if isinstance(owner, (FunctionType, ModuleType)):
+            return
+        if isinstance(owner, type):
+            capture_class(owner)
+            return
+        snapshot_namespace(owner)
+        capture_class(type(owner))
+
     def capture_attr(owner: object, name: str) -> object:
         is_namespace = isinstance(owner, (ModuleType, type))
         key = (id(owner), name, is_namespace)
@@ -59,16 +89,25 @@ def freeze_call_graph(
                 return vars(owner).get(name, _MISSING)
             return getattr(owner, name, _MISSING)
         seen_attrs.add(key)
-        capture_namespace(owner)
+        capture_mutable_state(owner)
         if is_namespace:
             value = vars(owner).get(name, _MISSING)
         else:
             value = getattr(owner, name, _MISSING)
         attr_bindings.append((owner, name, value, is_namespace))
-        capture_namespace(value)
+        capture_mutable_state(value)
         if isinstance(value, FunctionType):
             capture_function(value)
         return value
+
+    def bind_name(namespace: dict[str, Any], name: str, value: object) -> None:
+        key = (id(namespace), name)
+        if key not in seen_globals:
+            seen_globals.add(key)
+            global_bindings.append((namespace, name, value))
+        capture_mutable_state(value)
+        if isinstance(value, FunctionType):
+            capture_function(value)
 
     def capture_function(fn: FunctionType) -> None:
         marker = id(fn)
@@ -78,26 +117,21 @@ def freeze_call_graph(
         function_bindings.append((fn, fn.__code__, fn.__defaults__, fn.__kwdefaults__))
         names = tuple(fn.__code__.co_names)
         namespace = fn.__globals__
+        builtins_namespace = fn.__builtins__
+        if isinstance(builtins_namespace, ModuleType):
+            builtins_namespace = vars(builtins_namespace)
         for name in names:
-            if name not in namespace:
-                continue
-            value = namespace[name]
-            gkey = (id(namespace), name)
-            if gkey not in seen_globals:
-                seen_globals.add(gkey)
-                global_bindings.append((namespace, name, value))
-            capture_namespace(value)
-            if isinstance(value, FunctionType):
-                capture_function(value)
-            elif isinstance(value, (ModuleType, type)):
-                # co_names mixes global and attribute names. Conservative
-                # over-binding is intentional: an irrelevant monkeypatch may
-                # fail closed, but a mutated trust dependency cannot mint CURRENT.
-                for attr_name in names:
-                    if attr_name == name:
-                        continue
-                    if attr_name in vars(value) or hasattr(value, attr_name):
-                        capture_attr(value, attr_name)
+            if name in namespace:
+                value = namespace[name]
+                bind_name(namespace, name, value)
+                if isinstance(value, (ModuleType, type)):
+                    for attr_name in names:
+                        if attr_name == name:
+                            continue
+                        if attr_name in vars(value) or hasattr(value, attr_name):
+                            capture_attr(value, attr_name)
+            elif name in builtins_namespace:
+                bind_name(builtins_namespace, name, builtins_namespace[name])
 
     for root in roots:
         if not isinstance(root, FunctionType):

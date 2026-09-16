@@ -1,7 +1,9 @@
 from __future__ import annotations
 
+import builtins
 import inspect
 import unittest
+from pathlib import Path, PurePath
 from unittest.mock import patch
 
 from . import AuthorityError, compile_current, verify_current_authority
@@ -32,6 +34,21 @@ class FrozenCurrentRuntimeTests(unittest.TestCase):
         with self.assertRaises(TypeError):
             verify_current_authority(packet(), {}, _guard=lambda: True)
 
+    def test_pathlib_special_dispatch_is_not_in_current_trust_root(self):
+        expected_root = a._fixed_host_root()
+        expected_paths = a._host_paths()
+        concrete = type(Path("."))
+        mutations = (
+            (PurePath, "__truediv__", lambda self, _other: Path("/tmp/attacker")),
+            (concrete, "__truediv__", lambda self, _other: Path("/tmp/attacker")),
+            (PurePath, "__new__", staticmethod(lambda cls, *_a, **_k: object.__new__(cls))),
+        )
+        for owner, name, replacement in mutations:
+            with self.subTest(owner=owner.__name__, name=name), patch.object(owner, name, replacement):
+                self.assertEqual(a._fixed_host_root(), expected_root)
+                self.assertEqual(a._host_paths(), expected_paths)
+                assert_current_runtime()
+
     def test_post_import_rebinding_of_authority_roots_fails_closed(self):
         mutations = (
             (a, "now_utc", lambda: None),
@@ -42,12 +59,13 @@ class FrozenCurrentRuntimeTests(unittest.TestCase):
             (a, "digest", lambda _value: "0" * 64),
             (a, "_compile_current_at", lambda *_args: {"state": a.READY}),
             (a, "_verify_current_at", lambda *_args: {"state": "CURRENT_VERIFIED"}),
+            (a, "_host_paths", lambda: ("/tmp/a", "/tmp/b", "/tmp/c")),
         )
         for owner, name, replacement in mutations:
             with self.subTest(name=name), patch.object(owner, name, replacement):
                 self._both_fail_closed()
 
-    def test_post_import_rebinding_of_clock_and_json_graph_fails_closed(self):
+    def test_post_import_rebinding_of_clock_json_and_builtin_graph_fails_closed(self):
         class FakeDateTime:
             @classmethod
             def now(cls, _tz=None):
@@ -58,6 +76,7 @@ class FrozenCurrentRuntimeTests(unittest.TestCase):
             (strict_json.json, "dumps", lambda *_a, **_k: "{}"),
             (strict_json.json, "loads", lambda *_a, **_k: {}),
             (strict_json.hashlib, "sha256", lambda *_a, **_k: None),
+            (builtins, "any", lambda _items: False),
         )
         for owner, name, replacement in mutations:
             with self.subTest(name=f"{getattr(owner, '__name__', type(owner).__name__)}.{name}"), patch.object(owner, name, replacement):

@@ -5,10 +5,20 @@ from typing import Any
 from . import authority as _authority
 from . import engine as _engine
 from . import strict_json as _strict_json
+from .fixed_host import fixed_host_paths as _fixed_host_paths
+from .fixed_host import fixed_host_root as _fixed_host_root
+from .fixed_host import no_symlink_components as _no_symlink_components
 from .runtime_guard import freeze_call_graph
 
 
 AuthorityError = _authority.AuthorityError
+
+# Remove pathlib's mutable Python special-method dispatch from the production
+# CURRENT trust-root graph before capture. Historical helpers remain injectable,
+# but CURRENT root selection now uses verifier-owned absolute POSIX strings.
+_authority._fixed_host_root = _fixed_host_root
+_authority._host_paths = _fixed_host_paths
+_authority._no_symlink_components = _no_symlink_components
 
 # Capture the exact implementation roots once. Public CURRENT calls use these
 # original objects, never a late lookup through writable module globals.
@@ -28,7 +38,9 @@ _explicit_bindings = (
     (_authority, "_load_current"),
     (_authority, "_key"),
     (_authority, "_read_host"),
+    (_authority, "_fixed_host_root"),
     (_authority, "_host_paths"),
+    (_authority, "_no_symlink_components"),
     (_authority, "canonical_json"),
     (_authority, "digest"),
     (_authority, "parse_strict_json"),
