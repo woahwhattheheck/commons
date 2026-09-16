@@ -2857,11 +2857,12 @@
   ],
   "live_cash": {
     "cite": [
+      "grok-catalog-json-keep-larger-fixed-20260916-01",
       "goat-outcome-commerce-catalog-json-live-cash-20260909-01",
       "goat-right-now-catalog-json-live-cash-20260909-01",
       "commerce.html Live cash"
     ],
-    "note": "Optional tip-shelf product paths with live checkout. Existing outcome_commerce listings above stay canonical. No invent Stripe URLs.",
+    "note": "Optional tip-shelf product paths with live checkout. Existing outcome_commerce listings above stay canonical. No invent Stripe URLs. Larger fixed engagements are separate product pages (checkout/intent stays there).",
     "products": [
       {
         "name": "Agent Failure Autopsy",
@@ -2887,6 +2888,20 @@
         "name": "Plant Downtime Handoff",
         "price_usd": 199,
         "path": "plant-downtime-handoff.html"
+      }
+    ],
+    "larger_fixed": [
+      {
+        "days": 10,
+        "name": "GGUF diagnostic",
+        "path": "diagnostic.html",
+        "price_usd": 12000
+      },
+      {
+        "days": 30,
+        "name": "White Box pilot",
+        "path": "commercial.html",
+        "price_usd": 30000
       }
     ]
   }
