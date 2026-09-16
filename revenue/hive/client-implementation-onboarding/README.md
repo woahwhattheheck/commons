@@ -34,7 +34,7 @@ Mutating workflow is CLI-only:
 ```bash
 python onboarding.py --db demo.db receive-input --workspace ws-demo-example --input-id client-brief --sha <64-hex> --op recv-brief-1
 python onboarding.py --db demo.db review-input --workspace ws-demo-example --input-id client-brief --decision ACCEPTED_LOCAL --op review-brief-1
-python onboarding.py --db demo.db milestone --workspace ws-demo-example --milestone-id kickoff --action START --op start-kickoff-1
+python onboarding.py --db demo.db milestone --workspace ws-demo-example --milestone-id kickoff --transition START --op start-kickoff-1
 python onboarding.py --db demo.db deliverable --workspace ws-demo-example --milestone-id kickoff --deliverable-id kickoff-plan --sha <64-hex> --op plan-artifact-1
 python onboarding.py --db demo.db review-deliverable --workspace ws-demo-example --milestone-id kickoff --deliverable-id kickoff-plan --revision 1 --decision OWNER_APPROVED_LOCAL --op review-plan-1
 ```
