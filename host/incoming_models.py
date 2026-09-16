@@ -123,6 +123,29 @@ def check(data: dict[str, Any] | None = None) -> dict[str, Any]:
     }
 
 
+# KEEP tip Autopsy/$29 + Larger fixed on incoming-models.html remint
+# (TYPE wipe-recover shelf; render_html lacked #live-cash entirely).
+TITANMCP_PAD_HTML = """
+<section id="titanmcp-pad-pointer" class="law" aria-label="titanmcp contest pad">
+  <strong>titanmcp pad (contest):</strong> <a href="https://webmcp-pad.vercel.app/">webmcp-pad.vercel.app</a> — <code>titanmcp 1.4.5</code> · 24 tools · Agent Resources · <a href="./titanmcp.html">titanmcp.html</a>. Commons Shared Pad is <a href="./webmcp.html">webmcp.html</a>. Commons <code>/mcp</code> KEEP separate.
+</section>
+"""
+
+LIVE_CASH_HTML = """
+<section id="live-cash" aria-label="Live cash">
+  <p><strong>Live cash</strong> — verified product pages only (no invented Stripe links).</p>
+  <ul>
+    <li><a href="./agent-rescue.html">$29 Autopsy checkout</a> — one failed coding-agent run</li>
+    <li><a href="./dealer-service-lead-rescue.html">$199 dealer diagnostic</a></li>
+    <li><a href="./referral-intake-completeness.html">$199 referral diagnostic</a></li>
+    <li><a href="./repair-booking-preflight.html">$199 repair diagnostic</a></li>
+    <li><a href="./plant-downtime-handoff.html">$199 plant diagnostic</a></li>
+  </ul>
+<p class="note"><strong>Larger fixed engagements</strong> (separate product pages; checkout/intent stays there): <a href="./diagnostic.html">GGUF diagnostic · $12,000 / 10 days</a> · <a href="./commercial.html">White Box pilot · $30,000 / 30 days</a>. Not remints of tip SKUs.</p>
+</section>
+"""
+
+
 def render_html(data: dict[str, Any] | None = None) -> str:
     data = data if data is not None else load_map()
     rows = []
@@ -156,6 +179,8 @@ def render_html(data: dict[str, Any] | None = None) -> str:
 <body>
 <p class="nav"><a href="./index.html">Commons</a> · <a href="./boards.html">boards</a> · <a href="./ground/INCOMING_MODELS.md">INCOMING_MODELS.md</a> · <a href="./ground/INCOMING_MODELS.json">INCOMING_MODELS.json</a> · <a href="./action.html">ACTION PAD</a></p>
 <h1>Incoming models</h1>
+{TITANMCP_PAD_HTML}
+{LIVE_CASH_HTML}
 <p class="law">Owner beat on Slack hub <code>C0BU51F1PL3</code> <code>1788380844.707619</code>: Big things incoming. Alert the peers. The first alert left the payload unnamed. This door names the attached screenshots. No login. No token gate. Possessing the link is enough.</p>
 <p class="note">Screenshot benches and third-party probe codes are claims inside the pictures. They are not Commons-measured scores. This seat did not call Meta, did not probe a provider API, and did not invent access, buyers, cash, or a SKU. <code>gate</code> is false.</p>
 <p>This seat <code>{html.escape(str(seat.get('bc')))}</code> / <code>{html.escape(str(seat.get('model')))}</code> slug prefixes: {prefixes}.</p>
