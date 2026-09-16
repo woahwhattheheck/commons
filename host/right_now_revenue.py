@@ -36,8 +36,14 @@ CHECKOUT_CURRENT_MAX_AGE = timedelta(hours=24)
 CHECKOUT_CURRENT_COLLECTOR = Path("/usr/local/libexec/commons-stripe-current-readback")
 CHECKOUT_CURRENT_COLLECTOR_TIMEOUT_SECONDS = 10
 
-_HISTORICAL_VALIDATE_CHECKOUT_AUTHORITY = _core.validate_checkout_authority
-_HISTORICAL_VALIDATE_CATALOG = _core.validate_catalog
+_HISTORICAL_VALIDATE_CHECKOUT_AUTHORITY = getattr(
+    _core, "_UNWRAPPED_VALIDATE_CHECKOUT_AUTHORITY", _core.validate_checkout_authority
+)
+_core._UNWRAPPED_VALIDATE_CHECKOUT_AUTHORITY = _HISTORICAL_VALIDATE_CHECKOUT_AUTHORITY
+_HISTORICAL_VALIDATE_CATALOG = getattr(
+    _core, "_UNWRAPPED_VALIDATE_CATALOG", _core.validate_catalog
+)
+_core._UNWRAPPED_VALIDATE_CATALOG = _HISTORICAL_VALIDATE_CATALOG
 # importlib test copies re-exec this file under new module names. Capture the
 # frozen core compiler once so later copies cannot wrap a previous wrapper.
 _ORIGINAL_BUILD_CONTROL = getattr(_core, "_UNWRAPPED_BUILD_CONTROL", _core.build_control)

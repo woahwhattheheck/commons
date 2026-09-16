@@ -1,8 +1,11 @@
 from __future__ import annotations
 
 import copy
+import importlib.util
+import json
 import tempfile
 import unittest
+from datetime import datetime, timezone
 from pathlib import Path
 from unittest.mock import patch
 
@@ -282,6 +285,30 @@ class RightNowHumanAuthorityCompositionTests(unittest.TestCase):
             with self.assertRaisesRegex(revenue.ControlError, "source digest drift"):
                 revenue._compose_human_outcome_authority(control)
         self.assertEqual(control, snapshot)
+
+    def test_importlib_copy_after_canonical_import_keeps_copy_checkout_authority(self):
+        spec = importlib.util.spec_from_file_location(
+            "right_now_revenue_copy_after_human_canonical",
+            Path(__file__).resolve().parent / "host" / "right_now_revenue.py",
+        )
+        self.assertIsNotNone(spec)
+        self.assertIsNotNone(spec.loader)
+        copy_mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(copy_mod)
+        readback = json.loads(copy_mod.CHECKOUT_CURRENT_PATH.read_text(encoding="utf-8"))
+        now = datetime(2026, 9, 14, 1, 40, 0, tzinfo=timezone.utc)
+        with (
+            patch.object(copy_mod, "_credential_host_readback", return_value=copy.deepcopy(readback)),
+            patch.object(copy_mod, "_current_utc", return_value=now),
+            patch.object(copy_mod._core, "build_checkout_authority", copy_mod.build_checkout_authority),
+            patch.object(copy_mod._core, "validate_catalog", copy_mod.validate_catalog),
+        ):
+            compiled = copy_mod.build_control()
+        self.assertIs(compiled["truth"]["active_chargeable_checkout"], True)
+        self.assertEqual(
+            compiled["truth"]["verified_positive_replies"],
+            human.reply_to_revenue.build_funnel()["truth"]["human_positive"],
+        )
 
 
 if __name__ == "__main__":
