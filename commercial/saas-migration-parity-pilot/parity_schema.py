@@ -37,8 +37,13 @@ CLASSIFICATIONS = (
     "INVALID_EVIDENCE",
 )
 
+
 def _reject_constant(value: str) -> None:
     raise ParityError(f"non-finite JSON number rejected: {value}")
+
+
+def _reject_float(value: str) -> None:
+    raise ParityError(f"floating-point JSON numbers rejected: {value}")
 
 
 def _pairs_no_duplicates(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
@@ -60,16 +65,26 @@ def loads_strict(raw: bytes) -> Any:
             text,
             object_pairs_hook=_pairs_no_duplicates,
             parse_constant=_reject_constant,
-            parse_float=lambda x: (_ for _ in ()).throw(ParityError(f"floating-point JSON numbers rejected: {x}")),
+            parse_float=_reject_float,
         )
     except ParityError:
         raise
-    except (json.JSONDecodeError, UnicodeDecodeError) as exc:
+    except (json.JSONDecodeError, UnicodeDecodeError, RecursionError, ValueError) as exc:
         raise ParityError(f"invalid JSON: {exc}") from exc
 
 
 def canonical_bytes(value: Any) -> bytes:
-    return (json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n").encode("utf-8")
+    try:
+        text = json.dumps(
+            value,
+            sort_keys=True,
+            separators=(",", ":"),
+            ensure_ascii=False,
+            allow_nan=False,
+        ) + "\n"
+        return text.encode("utf-8", errors="strict")
+    except (UnicodeEncodeError, RecursionError, TypeError, ValueError) as exc:
+        raise ParityError(f"value is not canonical JSON: {exc}") from exc
 
 
 def sha256(data: bytes) -> str:
@@ -86,12 +101,20 @@ def _exact_keys(obj: dict[str, Any], required: set[str], where: str) -> None:
         raise ParityError(f"{where} keys mismatch; missing={missing} extra={extra}")
 
 
-def _string(value: Any, where: str, *, max_len: int = MAX_STRING) -> str:
+def _safe_string(value: Any, where: str, *, max_len: int) -> str:
     if type(value) is not str or not value or len(value) > max_len:
         raise ParityError(f"{where} must be non-empty string <= {max_len} chars")
-    if any(ord(ch) < 32 for ch in value):
-        raise ParityError(f"{where} contains control characters")
+    if any(ord(ch) < 32 or ord(ch) == 127 or 0xD800 <= ord(ch) <= 0xDFFF for ch in value):
+        raise ParityError(f"{where} contains control or non-scalar Unicode characters")
+    try:
+        value.encode("utf-8", errors="strict")
+    except UnicodeEncodeError as exc:
+        raise ParityError(f"{where} is not UTF-8 encodable") from exc
     return value
+
+
+def _string(value: Any, where: str, *, max_len: int = MAX_STRING) -> str:
+    return _safe_string(value, where, max_len=max_len)
 
 
 def _identifier(value: Any, where: str) -> str:
@@ -133,7 +156,15 @@ def _timestamp(value: Any, where: str) -> tuple[str, dt.datetime]:
 
 def _cell_type_ok(value: Any, declared: str) -> bool:
     if declared == "string":
-        return type(value) is str and len(value) <= MAX_STRING and not any(ord(ch) < 32 for ch in value)
+        if type(value) is not str or not value or len(value) > MAX_STRING:
+            return False
+        if any(ord(ch) < 32 or ord(ch) == 127 or 0xD800 <= ord(ch) <= 0xDFFF for ch in value):
+            return False
+        try:
+            value.encode("utf-8", errors="strict")
+        except UnicodeEncodeError:
+            return False
+        return True
     if declared == "integer":
         return type(value) is int and -(2**63) <= value <= 2**63 - 1
     if declared == "boolean":
@@ -262,7 +293,6 @@ def _index_records(records: list[dict[str, Any]], key_map: list[dict[str, str]],
         ok, key_values = _record_key(record, key_map, side)
         if not ok:
             invalid += 1
-            # Stable opaque commitment for a structurally valid record with invalid key evidence.
             key = "invalid:" + sha256(canonical_bytes(record))
         else:
             key = _key_commitment(key_values, key_map)
@@ -305,7 +335,4 @@ def _mismatch_fields(source: dict[str, Any], target: dict[str, Any], mapping: li
 def _age_state(snapshot: dict[str, Any], cutover: dt.datetime, max_age: int) -> tuple[bool, int]:
     captured = snapshot["_captured"]
     age = int((cutover - captured).total_seconds())
-    # Future snapshot relative to the declared cutover is invalid/stale evidence, not fresh.
     return 0 <= age <= max_age, age
-
-
