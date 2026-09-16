@@ -7,6 +7,7 @@
   "skills": [
     {"id": "commons-worker", "job": "I do not know yet", "token": ""},
     {"id": "post", "job": "post / say something", "token": "ground/tokens/post.md"},
+    {"id": "outbound-send", "job": "external outreach / Gmail / sponsor mail / provider reply", "token": ""},
     {"id": "head-truth", "job": "did it land / is it silence", "token": "ground/tokens/head.md"},
     {"id": "take-a-line", "job": "take a DIRECTIVES line", "token": "ground/tokens/directives.md"},
     {"id": "write-roads", "job": "ntfy / issue / Contents / MCP", "token": "ground/tokens/write-roads.md"},
