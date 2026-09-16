@@ -11,6 +11,7 @@ of the unresolved conjecture.
 
 from __future__ import annotations
 
+from collections.abc import Iterable
 from dataclasses import dataclass
 
 from research.sun_a303656.oracle import factor_u64, sum_two_squares
@@ -95,6 +96,38 @@ def iter_restricted_shifts(n: int, *, max_b: int | None = None):
         pow25 *= 25
 
 
+def _normalize_b_values(b_values: Iterable[int]) -> tuple[int, ...]:
+    try:
+        values = tuple(b_values)
+    except TypeError as exc:
+        raise ValueError("b_values must be an iterable of nonnegative integers") from exc
+    if not values:
+        raise ValueError("b_values must not be empty")
+    if any(
+        not isinstance(value, int) or isinstance(value, bool) or value < 0
+        for value in values
+    ):
+        raise ValueError("b_values must contain only nonnegative integers")
+    return tuple(sorted(set(values)))
+
+
+def _iter_selected_b_shifts(n: int, b_values: tuple[int, ...]):
+    """Yield legal shifts for an explicit finite b-menu without huge powers."""
+    for b in b_values:
+        pow25 = 1
+        for _ in range(b):
+            pow25 *= 25
+            if 4 * pow25 >= n:
+                break
+        else:
+            a = 1
+            pow4 = 4
+            while pow4 * pow25 < n:
+                yield a, b, pow4 * pow25
+                a += 1
+                pow4 *= 4
+
+
 def bad_prime_obstructions(residual: int) -> tuple[tuple[int, int], ...]:
     """Return p == 3 mod 4 with odd valuation, the exact two-square obstruction."""
     if not isinstance(residual, int) or residual < 0 or residual >= 1 << 64:
@@ -118,29 +151,94 @@ def find_witness(n: int, *, max_b: int | None = None) -> Ternary5Witness | None:
     return None
 
 
-def certify_bounded_failure(n: int, max_b: int) -> tuple[dict[str, object], ...]:
-    """Certify every legal shift with b <= max_b leaves a two-square obstruction.
+def certify_b_menu_failure(
+    n: int, b_values: Iterable[int]
+) -> tuple[dict[str, object], ...]:
+    """Certify every legal shift in an explicit finite b-menu fails.
 
-    Raises if any legal shift succeeds, so returned rows are an exact falsifier
-    for the bounded-b shortcut, never a conjecture counterexample.
+    An empty result is meaningful: it says the menu supplies no restricted
+    square smaller than ``n``. Any legal shift that succeeds raises instead.
     """
+    validate_target(n)
+    menu = _normalize_b_values(b_values)
     rows: list[dict[str, object]] = []
-    for a, b, shift in iter_restricted_shifts(n, max_b=max_b):
-        residual = n - shift
-        bad = bad_prime_obstructions(residual)
+    for a, b, shift in _iter_selected_b_shifts(n, menu):
+        remainder = n - shift
+        bad = bad_prime_obstructions(remainder)
         if not bad:
             raise ValueError(
-                f"target {n} has a valid witness inside b <= {max_b}: a={a}, b={b}"
+                f"target {n} has a valid witness in b-menu {menu}: a={a}, b={b}"
             )
         rows.append(
             {
                 "a": a,
                 "b": b,
                 "shift": shift,
-                "residual": residual,
+                "residual": remainder,
                 "odd_bad_prime_valuations": [list(item) for item in bad],
             }
         )
+    return tuple(rows)
+
+
+def certify_bounded_failure(n: int, max_b: int) -> tuple[dict[str, object], ...]:
+    """Certify every legal shift with b <= max_b leaves a two-square obstruction.
+
+    Raises if any legal shift succeeds, so returned rows are an exact falsifier
+    for the bounded-b shortcut, never a conjecture counterexample.
+    """
+    if not isinstance(max_b, int) or isinstance(max_b, bool) or max_b < 0:
+        raise ValueError("max_b must be a nonnegative integer")
+    rows = certify_b_menu_failure(n, range(max_b + 1))
     if not rows:
         raise ValueError("bound produced no legal restricted shifts")
-    return tuple(rows)
+    return rows
+
+
+def certify_fixed_menu_size_at_most_two(
+    b_values: Iterable[int],
+) -> dict[str, object]:
+    """Mechanize the exact case split excluding every fixed b-menu of size <= 2.
+
+    The returned target defeats precisely the supplied menu while the returned
+    witness uses a b-value outside it, proving this is a shortcut falsifier and
+    not a counterexample to Sun's conjecture.
+    """
+    menu = _normalize_b_values(b_values)
+    if len(menu) > 2:
+        raise ValueError("this theorem-support certificate requires menu size <= 2")
+
+    if 0 not in menu:
+        target = 5
+        witness = Ternary5Witness(0, 1, 1, 0)
+    elif menu == (0,):
+        target = 12_233
+        witness = Ternary5Witness(18, 97, 1, 2)
+    elif menu == (0, 1):
+        target = 1_595_477
+        witness = Ternary5Witness(831, 946, 2, 2)
+    elif menu == (0, 2):
+        target = 1_750_109
+        witness = Ternary5Witness(403, 1260, 1, 1)
+    else:
+        # Here menu=(0,k) with k>=3.  At N=12233 the k-shift is already
+        # at least 4*25^3=62500>N, while every b=0 residual is obstructed.
+        target = 12_233
+        witness = Ternary5Witness(18, 97, 1, 2)
+
+    rows = certify_b_menu_failure(target, menu)
+    witness.verify(target)
+    if witness.b in menu:
+        raise RuntimeError("shortcut falsifier rescue unexpectedly lies inside menu")
+    return {
+        "b_values": list(menu),
+        "n": target,
+        "positive_residual_failures": rows,
+        "outside_menu_witness": {
+            "x": witness.x,
+            "y": witness.y,
+            "a": witness.a,
+            "b": witness.b,
+        },
+        "status": "FINITE_EXACT_SHORTCUT_FALSIFIER_NOT_CONJECTURE_COUNTEREXAMPLE",
+    }
