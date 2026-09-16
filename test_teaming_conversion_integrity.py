@@ -32,6 +32,19 @@ class TeamingConversionIntegrityTests(unittest.TestCase):
         with self.assertRaises(ControlError):
             parse_json_bytes(b'{"value":NaN}\n')
 
+    def test_canonical_utc_seconds_timestamp_includes_calendar_day(self):
+        from revenue.teaming_conversion.common import require_timestamp
+
+        parsed = require_timestamp("2026-09-15T12:00:00Z", "evaluated_at")
+        self.assertEqual(parsed, datetime(2026, 9, 15, 12, 0, 0, tzinfo=UTC))
+        self.assertEqual(ts(parsed), "2026-09-15T12:00:00Z")
+        with self.assertRaises(ControlError) as ctx:
+            require_timestamp("2026-09T12:00:00Z", "evaluated_at")
+        self.assertIn("length must be 20..20", str(ctx.exception))
+        with self.assertRaises(ControlError) as ctx:
+            require_timestamp("2026-09-15T12:00:00+00:00", "evaluated_at")
+        self.assertIn("length must be 20..20", str(ctx.exception))
+
     def test_valid_linear_supersession_uses_unique_terminal(self):
         evidence = base_evidence()
         evidence["observations"].append(
@@ -111,4 +124,3 @@ class TeamingConversionIntegrityTests(unittest.TestCase):
         evidence["interpretations"][0]["decision"] = "AMBIGUOUS"
         _, _, _, receipt = compile_fixture(evidence=evidence)
         self.assertEqual(receipt["disposition"], "NEEDS_CLARIFICATION")
-
