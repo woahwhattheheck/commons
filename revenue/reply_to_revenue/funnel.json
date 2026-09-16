@@ -224,7 +224,7 @@
   ],
   "kind": "REPLY_TO_REVENUE_FUNNEL",
   "limits": [
-    "ingest each inbound event_ref once; collision on same ref with different payload hash",
+    "ingest each inbound event_ref once; collision on same ref with a different full observation envelope",
     "automated acknowledgements are not buyer interest",
     "delivery failures require owner review of an alternate route; they never auto-resend",
     "HARD DNR and completed sends are never resent",
