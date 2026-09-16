@@ -66,7 +66,7 @@ class HardeningTests(unittest.TestCase):
             plan_digest=digest(forged_body),
         )
         self.assertEqual(digest(forged_body), forged.plan_digest)
-        self.assertEqual(forged.status, "READY")
+        self.assertEqual(forged.status, "NO_CONFLICTS")
 
         store = ResidentStore(conflicting_rows)
         with self.assertRaisesRegex(DataError, "does not match retained source generation"):

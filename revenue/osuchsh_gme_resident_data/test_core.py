@@ -37,7 +37,7 @@ class StrictJsonTests(unittest.TestCase):
 class MigrationTests(unittest.TestCase):
     def test_clean_plan(self):
         plan = compile_migration(synthetic_rows())
-        self.assertEqual(plan.status, "READY")
+        self.assertEqual(plan.status, "NO_CONFLICTS")
         self.assertEqual(len(plan.records), 2)
         self.assertEqual(plan.source_rows, 3)
 

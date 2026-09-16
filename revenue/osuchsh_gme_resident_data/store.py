@@ -70,18 +70,26 @@ class ResidentStore:
         self._audit.append(event)
         return copy.deepcopy(event)
 
-    def apply_migration(self, plan: MigrationPlan, *, actor_role: str = "admin") -> dict[str, Any]:
+    def apply_migration(
+        self,
+        plan: MigrationPlan,
+        *,
+        actor_role: str = "admin",
+        source_generation: object | None = None,
+    ) -> dict[str, Any]:
+        if source_generation is None:
+            source_generation = self._migration_rows
+        if not source_generation:
+            raise DataError("initial migration requires a retained source generation")
         if actor_role != "admin":
             raise PermissionDenied("only admin may apply a compiled migration")
         if type(plan) is not MigrationPlan:
             raise DataError("migration plan type invalid")
-        if self._migration_rows is None:
-            raise DataError("initial migration requires a retained source generation")
 
         # A public dataclass + public digest is not authority. Recompile from the
         # deep-copied source generation retained by this store and require exact
         # plan equality before evaluating any caller-supplied plan fields.
-        expected = compile_migration(copy.deepcopy(self._migration_rows))
+        expected = compile_migration(copy.deepcopy(source_generation))
         if plan != expected or plan.plan_digest != self._migration_plan_digest:
             raise DataError("migration plan does not match retained source generation")
 
@@ -125,7 +133,7 @@ class ResidentStore:
                 after_version=1,
                 changes=record,
             )
-        return self.receipt()
+        return self.receipt(source_generation=source_generation)
 
     def view(self, resident_id: str, *, role: str, self_resident_id: str | None = None) -> dict[str, Any]:
         rid = _require_text("resident_id", resident_id, max_len=32).upper()
@@ -207,7 +215,16 @@ class ResidentStore:
             raise PermissionDenied("role cannot read audit events")
         return tuple(copy.deepcopy(self._audit))
 
-    def verify_audit(self, events: Iterable[Mapping[str, Any]] | None = None) -> bool:
+    def verify_audit(
+        self,
+        events: Iterable[Mapping[str, Any]] | None = None,
+        *,
+        source_generation: object | None = None,
+    ) -> bool:
+        if source_generation is None:
+            source_generation = self._migration_rows
+        if not source_generation:
+            raise DataError("audit verification requires a retained source generation")
         candidate = list(copy.deepcopy(self._audit if events is None else list(events)))
         prev_hash = "0" * 64
         for expected_seq, event in enumerate(candidate, start=1):
@@ -235,8 +252,12 @@ class ResidentStore:
             prev_hash = expected_hash
         return True
 
-    def receipt(self) -> dict[str, Any]:
-        self.verify_audit()
+    def receipt(self, *, source_generation: object | None = None) -> dict[str, Any]:
+        if source_generation is None:
+            source_generation = self._migration_rows
+        if not source_generation:
+            raise DataError("receipt requires a retained source generation")
+        self.verify_audit(source_generation=source_generation)
         record_snapshot = [
             {"resident_id": rid, "version": self._versions[rid], "record": self._records[rid]}
             for rid in sorted(self._records)

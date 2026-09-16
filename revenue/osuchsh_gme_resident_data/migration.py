@@ -17,7 +17,8 @@ class MigrationPlan:
 
     @property
     def status(self) -> str:
-        return "READY" if not self.conflicts else "CONFLICTS_PRESENT"
+        # NO_CONFLICTS is a compile result, not a current-readiness mint.
+        return "NO_CONFLICTS" if not self.conflicts else "CONFLICTS_PRESENT"
 
 
 def compile_migration(rows: Iterable[Mapping[str, Any]]) -> MigrationPlan:
