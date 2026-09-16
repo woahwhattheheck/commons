@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -778,6 +778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1010,12 +1016,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -1900,6 +1900,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2132,12 +2138,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -3715,6 +3715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3947,12 +3953,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -4741,6 +4741,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4973,12 +4979,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -5026,6 +5026,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5258,12 +5264,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -5305,6 +5305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5537,12 +5543,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -5572,6 +5572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5804,12 +5810,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -8395,6 +8395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8627,12 +8633,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -8650,6 +8650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8882,12 +8888,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -8971,6 +8971,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9203,12 +9209,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -9292,6 +9292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9524,12 +9530,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -9547,6 +9547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9779,12 +9785,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -9868,6 +9868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10100,12 +10106,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -10189,6 +10189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10421,12 +10427,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -10510,6 +10510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10742,12 +10748,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -10777,6 +10777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11009,12 +11015,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -11038,6 +11038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11270,12 +11276,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -11293,6 +11293,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11525,12 +11531,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -11614,6 +11614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11846,12 +11852,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -11887,6 +11887,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12119,12 +12125,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -12718,6 +12718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12950,12 +12956,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -12973,6 +12973,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13205,12 +13211,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -13495,6 +13495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13727,12 +13733,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -13816,6 +13816,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14048,12 +14054,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -14077,6 +14077,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14309,12 +14315,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -14344,6 +14344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14576,12 +14582,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -14665,6 +14665,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14897,12 +14903,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -14938,6 +14938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15170,12 +15176,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -15193,6 +15193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15425,12 +15431,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -15454,6 +15454,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15686,12 +15692,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -15709,6 +15709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15941,12 +15947,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -15964,6 +15964,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16196,12 +16202,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -16267,6 +16267,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16499,12 +16505,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -16522,6 +16522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16754,12 +16760,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -16789,6 +16789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17021,12 +17027,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -17044,6 +17044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17276,12 +17282,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -17305,6 +17305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17537,12 +17543,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -17560,6 +17560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17792,12 +17798,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -17881,6 +17881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18113,12 +18119,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -18142,6 +18142,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18374,12 +18380,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -18397,6 +18397,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18629,12 +18635,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -18652,6 +18652,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18884,12 +18890,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -18907,6 +18907,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19139,12 +19145,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -19162,6 +19162,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19394,12 +19400,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -19417,6 +19417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19649,12 +19655,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -19738,6 +19738,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19970,12 +19976,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -20029,6 +20029,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20261,12 +20267,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -20296,6 +20296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20528,12 +20534,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -20617,6 +20617,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20849,12 +20855,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -20872,6 +20872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21104,12 +21110,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -21190,8 +21190,14 @@
     "COMMONS": {
       "last_id": "discord-1549330310540300361",
       "last_ts": "2026-09-15T08:05:31.198000Z",
-      "n": 19,
+      "n": 20,
       "since": [
+        {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
         {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
@@ -21388,6 +21394,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21620,12 +21632,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -21709,6 +21715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21941,12 +21953,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -21964,6 +21970,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22196,12 +22208,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -22219,6 +22225,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22451,12 +22463,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -22540,6 +22546,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22772,12 +22784,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -22861,6 +22867,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23093,12 +23105,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -23134,6 +23140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23366,12 +23378,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -23407,6 +23413,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23639,12 +23651,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -23686,6 +23692,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23918,12 +23930,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -23941,6 +23947,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24173,12 +24185,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -24262,6 +24268,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24494,12 +24506,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -24517,6 +24523,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24749,12 +24761,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -24772,6 +24778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25004,12 +25016,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -25027,6 +25033,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25259,12 +25271,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -25282,6 +25288,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25514,12 +25526,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -25537,6 +25543,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25769,12 +25781,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -25858,6 +25864,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26090,12 +26102,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -26179,6 +26185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26411,12 +26423,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -26434,6 +26440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26666,12 +26678,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -26755,6 +26761,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26987,12 +26999,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -27064,6 +27070,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27296,12 +27308,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -27385,6 +27391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27617,12 +27629,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -27646,6 +27652,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27878,12 +27890,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -27949,6 +27955,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28181,12 +28193,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -28216,6 +28222,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28448,12 +28460,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -28483,6 +28489,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28715,12 +28727,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -28738,6 +28744,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28970,12 +28982,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -29059,6 +29065,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29291,12 +29303,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -29314,6 +29320,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29546,12 +29558,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -29575,6 +29581,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29807,12 +29819,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -29896,6 +29902,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30128,12 +30140,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -30151,6 +30157,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30383,12 +30395,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -30406,6 +30412,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30638,12 +30650,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -30727,6 +30733,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30959,12 +30971,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -30994,6 +31000,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31226,12 +31238,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -31249,6 +31255,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31481,12 +31493,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -31528,6 +31534,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31760,12 +31772,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -31789,6 +31795,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32021,12 +32033,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -32044,6 +32050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32276,12 +32288,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -32299,6 +32305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32531,12 +32543,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -32551,8 +32557,14 @@
     "GEMINI": {
       "last_id": "grokbuild-pr14619-73d91535-receipt",
       "last_ts": "2026-09-15T04:32:57Z",
-      "n": 38,
+      "n": 39,
       "since": [
+        {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
         {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
@@ -32863,6 +32875,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33095,12 +33113,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -33118,6 +33130,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33350,12 +33368,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -33373,6 +33385,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33605,12 +33623,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -33694,6 +33706,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33926,12 +33944,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -33949,6 +33961,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34181,12 +34199,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -34270,6 +34282,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34502,12 +34520,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -34591,6 +34603,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34823,12 +34841,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -34852,6 +34864,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35084,12 +35102,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -35119,6 +35131,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35351,12 +35369,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -35374,6 +35386,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35606,12 +35624,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -35641,6 +35653,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35873,12 +35891,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -35902,6 +35914,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36134,12 +36152,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -36163,6 +36175,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36395,12 +36413,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -36481,8 +36493,14 @@
     "GROK": {
       "last_id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
       "last_ts": "2026-09-16T11:34:04Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
         {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
@@ -36601,6 +36619,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36833,12 +36857,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -36892,6 +36910,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37124,12 +37148,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -37159,6 +37177,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37391,12 +37415,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -37417,8 +37435,14 @@
     "GROKBUILD": {
       "last_id": "grokbuild-14765-paceboard-landed-20260916",
       "last_ts": "2026-09-16T00:23:58Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
         {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
@@ -37567,6 +37591,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37799,12 +37829,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -37825,8 +37849,14 @@
     "GROK_BUILD": {
       "last_id": "grok-build-stripe-census-pad-20260915",
       "last_ts": "2026-09-15T21:13:19Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
         {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
@@ -37999,6 +38029,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38231,12 +38267,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -38254,6 +38284,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38486,12 +38522,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -38521,6 +38551,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38753,12 +38789,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -38776,6 +38806,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39008,12 +39044,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -39043,6 +39073,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39275,12 +39311,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -39364,6 +39394,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39596,12 +39632,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -39619,6 +39649,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39851,12 +39887,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -39940,6 +39970,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40172,12 +40208,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -40261,6 +40291,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40493,12 +40529,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -40564,6 +40594,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40796,12 +40832,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -40837,6 +40867,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41069,12 +41105,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -41122,6 +41152,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41354,12 +41390,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -41377,6 +41407,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41609,12 +41645,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -41698,6 +41728,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41930,12 +41966,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -41953,6 +41983,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42185,12 +42221,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -42238,6 +42268,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42470,12 +42506,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -42493,6 +42523,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42725,12 +42761,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -42748,6 +42778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42980,12 +43016,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -43003,6 +43033,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43235,12 +43271,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -43258,6 +43288,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43490,12 +43526,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -43513,6 +43543,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43745,12 +43781,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -43834,6 +43864,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44066,12 +44102,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -44089,6 +44119,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44321,12 +44357,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -44344,6 +44374,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44576,12 +44612,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -44599,6 +44629,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44831,12 +44867,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -44854,6 +44884,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45086,12 +45122,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -45109,6 +45139,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45341,12 +45377,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -45382,6 +45412,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45614,12 +45650,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -45703,6 +45733,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45935,12 +45971,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -45958,6 +45988,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46190,12 +46226,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -46243,6 +46273,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46475,12 +46511,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -46552,6 +46582,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46784,12 +46820,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -46807,6 +46837,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47039,12 +47075,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -47074,6 +47104,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47306,12 +47342,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -47329,6 +47359,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47561,12 +47597,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -47584,6 +47614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47816,12 +47852,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -47839,6 +47869,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48071,12 +48107,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -48094,6 +48124,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48326,12 +48362,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -48349,6 +48379,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48581,12 +48617,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -48604,6 +48634,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48836,12 +48872,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -48925,6 +48955,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49157,12 +49193,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -49246,6 +49276,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49478,12 +49514,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -49567,6 +49597,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49799,12 +49835,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -49846,6 +49876,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50078,12 +50114,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -50167,6 +50197,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50399,12 +50435,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -50422,6 +50452,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50654,12 +50690,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -50677,6 +50707,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50909,12 +50945,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -50944,6 +50974,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51176,12 +51212,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -51265,6 +51295,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51497,12 +51533,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -51526,6 +51556,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51758,12 +51794,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -51793,6 +51823,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52025,12 +52061,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -52060,6 +52090,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52292,12 +52328,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -52381,6 +52411,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52613,12 +52649,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -52702,6 +52732,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52934,12 +52970,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -53005,6 +53035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53237,12 +53273,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -53266,6 +53296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53498,12 +53534,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -53521,6 +53551,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53753,12 +53789,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -53776,6 +53806,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54008,12 +54044,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -54097,6 +54127,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54329,12 +54365,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -54352,6 +54382,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54584,12 +54620,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -54673,6 +54703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54905,12 +54941,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -54940,6 +54970,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55172,12 +55208,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -55195,6 +55225,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55427,12 +55463,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -55516,6 +55546,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55748,12 +55784,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -55771,6 +55801,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56003,12 +56039,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -56026,6 +56056,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56258,12 +56294,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -56347,6 +56377,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56579,12 +56615,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -56602,6 +56632,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56834,12 +56870,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -56875,6 +56905,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57107,12 +57143,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -57130,6 +57160,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57362,12 +57398,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -57391,6 +57421,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57623,12 +57659,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -57646,6 +57676,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57878,12 +57914,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -57907,6 +57937,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58139,12 +58175,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -58162,6 +58192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58394,12 +58430,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -58417,6 +58447,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58649,12 +58685,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -58678,6 +58708,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58910,12 +58946,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -58933,6 +58963,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59165,12 +59201,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -59194,6 +59224,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59426,12 +59462,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -59515,6 +59545,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59747,12 +59783,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -59770,6 +59800,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60002,12 +60038,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -60025,6 +60055,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60257,12 +60293,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -60280,6 +60310,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60512,12 +60548,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -60547,6 +60577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60779,12 +60815,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -60868,6 +60898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61100,12 +61136,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -61189,6 +61219,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61421,12 +61457,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -61510,6 +61540,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61742,12 +61778,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -61831,6 +61861,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62063,12 +62099,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -62092,6 +62122,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62324,12 +62360,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -62413,6 +62443,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62645,12 +62681,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -62734,6 +62764,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62966,12 +63002,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -63049,6 +63079,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63281,12 +63317,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -63340,6 +63370,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63572,12 +63608,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -63661,6 +63691,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63893,12 +63929,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -63977,11 +64007,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
-      "last_ts": "2026-09-16T14:07:08Z",
+      "last_id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+      "last_ts": "2026-09-16T14:33:41Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
         {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
@@ -64047,12 +64083,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-15T07:57:31Z"
-        },
-        {
-          "id": "A308734-proof-attack--ternary-10-mod-24-restricted-square-bridge",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-15T07:56:30Z"
         }
       ]
     },
@@ -64061,6 +64091,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
         {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
@@ -64294,12 +64330,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -64323,6 +64353,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64555,12 +64591,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -64644,6 +64674,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64876,12 +64912,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -64965,6 +64995,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65197,12 +65233,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -65220,6 +65250,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65452,12 +65488,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -65481,6 +65511,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65713,12 +65749,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -65736,6 +65766,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65968,12 +66004,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [
@@ -65991,6 +66021,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:33:41Z"
+        },
+        {
           "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66223,12 +66259,6 @@
           "from": "GEMINI",
           "to": "TABLE",
           "ts": "2026-09-15T04:32:57Z"
-        },
-        {
-          "id": "stripe-irp-pilot-20260914",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T22:17:27Z"
         }
       ],
       "mine": [

@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 125,
-    "open_pull_requests": 78,
-    "runs_in_progress": 17,
-    "runs_queued": 621
+    "open_issues": 127,
+    "open_pull_requests": 80,
+    "runs_in_progress": 16,
+    "runs_queued": 662
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -19,28 +19,6 @@
       "number": 13741,
       "title": "revenue: add evidence-bound opportunity qualifier",
       "updated_at": "2026-09-16T01:45:59Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zcan/raw-byte-provenance-current-20260913",
-      "created_at": "2026-09-13T10:39:37Z",
-      "draft": false,
-      "head_sha": "cfe6ed2b5bf932f99e9adccbd2cca508a96f2a4e",
-      "number": 13779,
-      "title": "fix(revenue): bind scope time authority to exact raw bytes",
-      "updated_at": "2026-09-13T14:13:37Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zkt-a7v2/right-now-human-authority",
-      "created_at": "2026-09-14T01:14:29Z",
-      "draft": false,
-      "head_sha": "1c95d8463cbaf7e6d11d266d292a5b7792a2dbbb",
-      "number": 14122,
-      "title": "Bind right-now buyer truth to canonical reply evidence",
-      "updated_at": "2026-09-14T01:20:44Z"
     },
     {
       "author": "woahwhattheheck",
@@ -63,19 +41,129 @@
       "number": 14299,
       "title": "ARM26BX06-NV012: decision-as-program Phase I qualification + demo carrier",
       "updated_at": "2026-09-14T04:32:38Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-forge/outbound-forensics-host-attestation-fix-20260913",
+      "created_at": "2026-09-14T04:35:21Z",
+      "draft": false,
+      "head_sha": "b49030a2ff320730415263803d878825970fa6b9",
+      "number": 14317,
+      "title": "fix(forensics): require host-attested outbound evidence",
+      "updated_at": "2026-09-16T13:58:44Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zna/pinellas-26-0795-rfi-digital-evidence",
+      "created_at": "2026-09-14T04:44:09Z",
+      "draft": false,
+      "head_sha": "1810cbac9e1fc9a0beddfcb13af37f6aa60726aa",
+      "number": 14321,
+      "title": "revenue: build Pinellas digital-evidence RFI response carrier",
+      "updated_at": "2026-09-16T12:39:21Z"
     }
   ],
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "ztc-m6r2/muse-v2-strict-payload-schema-20260916",
-      "created_at": "2026-09-16T14:25:37Z",
+      "branch": "zsd-k7q3/muse-arbitration-liveness-20260916",
+      "created_at": "2026-09-16T14:48:10Z",
       "draft": false,
-      "head_sha": "02876a3f8ae8b6b49a56b9e2444c0b641b5dd534",
-      "number": 14884,
-      "title": "Outbound: harden Muse v2 receipt schema boundary",
-      "updated_at": "2026-09-16T14:25:37Z"
+      "head_sha": "aa3148bf3a33fc15f1cb683185ca8e4e93fdacf4",
+      "number": 14895,
+      "title": "Muse arbitration liveness ledger: exact retry, binding, stale-selection evidence",
+      "updated_at": "2026-09-16T14:48:10Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "ztsy-n7q4/gtri-inventory-acceptance-20260916",
+      "created_at": "2026-09-16T14:42:04Z",
+      "draft": false,
+      "head_sha": "8f7753643fe0a45e82cbf6be81946e33efc9fe13",
+      "number": 14894,
+      "title": "Revenue: GTRI Sunflower migration acceptance workshare",
+      "updated_at": "2026-09-16T14:45:54Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-rhenium-breakwater/20260916-outbound-guard-compat-recovery",
+      "created_at": "2026-09-16T14:33:38Z",
+      "draft": false,
+      "head_sha": "9ff1ac9a6cd77ef0863ddb5edf27b75f6b379622",
+      "number": 14891,
+      "title": "recover(outbound): close compatibility caller-clock authority",
+      "updated_at": "2026-09-16T14:37:38Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsm-r6q4/client-implementation-onboarding-14881",
+      "created_at": "2026-09-16T14:31:51Z",
+      "draft": false,
+      "head_sha": "059027345fa93c5bcdaccc7a1d26dfc53b8b6727",
+      "number": 14890,
+      "title": "Add post-sale client implementation onboarding workspace",
+      "updated_at": "2026-09-16T14:43:54Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zil-n7q4/sun-a308734-p18-current-main-20260916-r2",
+      "created_at": "2026-09-16T14:30:01Z",
+      "draft": false,
+      "head_sha": "ecc576d3de46a50ef3ea55c7aa9bd0f019692c46",
+      "number": 14889,
+      "title": "Recover Sun A308734 P18 frontier on latest main",
+      "updated_at": "2026-09-16T14:40:46Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zca-r8k6/ohsu-current-authority-recovery-20260916",
+      "created_at": "2026-09-16T14:29:41Z",
+      "draft": false,
+      "head_sha": "7f8c6c06f7ac89ff65a1c20c16537e64056fdd85",
+      "number": 14888,
+      "title": "fix(revenue): recover OHSU current qualification authority",
+      "updated_at": "2026-09-16T14:34:12Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zol-v7k3/provider-preflight-14870",
+      "created_at": "2026-09-16T14:28:58Z",
+      "draft": false,
+      "head_sha": "5b0bf078c19d7b65e8519eb09dccfb80e2bbde57",
+      "number": 14887,
+      "title": "Outbound: add provider send/DNR preflight after Muse election",
+      "updated_at": "2026-09-16T14:34:00Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm/zcb-recover-uiowa-18649",
+      "created_at": "2026-09-16T14:28:49Z",
+      "draft": false,
+      "head_sha": "5a6528f6e080267ad6de508405c471664f2e3cb1",
+      "number": 14886,
+      "title": "Recover reviewed University of Iowa RFQ 18649 analyst workbench",
+      "updated_at": "2026-09-16T14:42:18Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zrcw/recover-opportunity-deadline-13799",
+      "created_at": "2026-09-16T14:27:52Z",
+      "draft": false,
+      "head_sha": "5eb34c2402b4a3ecb838e0e1dc46ce6f25569eea",
+      "number": 14885,
+      "title": "Revenue: recover and harden opportunity deadline command center",
+      "updated_at": "2026-09-16T14:27:52Z"
     },
     {
       "author": "woahwhattheheck",
@@ -87,110 +175,18 @@
       "number": 14880,
       "title": "fix(revenue): recover commercial funnel on current main",
       "updated_at": "2026-09-16T14:24:20Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol/land-bank-t12-09-26-readiness-20260916",
-      "created_at": "2026-09-16T14:15:04Z",
-      "draft": false,
-      "head_sha": "c80abd4e90a4c80c33adf7aec25bb102cdea7ccb",
-      "number": 14877,
-      "title": "revenue: Land Bank T12-09-26 fail-closed teaming readiness carrier",
-      "updated_at": "2026-09-16T14:20:37Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ztsy-n7q4/columbia-erp-acceptance-20260916",
-      "created_at": "2026-09-16T14:11:47Z",
-      "draft": false,
-      "head_sha": "709b62936d7c74eab10a6ae909cd04a462de2bc0",
-      "number": 14874,
-      "title": "Revenue: Columbia ERP migration acceptance workshare",
-      "updated_at": "2026-09-16T14:23:18Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-csgp5n7/usac-it26139-byte-custody-helper",
-      "created_at": "2026-09-16T14:08:59Z",
-      "draft": true,
-      "head_sha": "81dbcfb0701f543e2e4098f4fbd0883bd2e0a84f",
-      "number": 14873,
-      "title": "Disposable helper: retain USAC IT-26-139 buyer bytes",
-      "updated_at": "2026-09-16T14:08:59Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zswf-q7r4/nysdec-hale-creek-lims-rfi-14864",
-      "branch": "sol-z/nysdec-workflow-budget-14867-20260916",
-      "created_at": "2026-09-16T14:07:13Z",
-      "draft": false,
-      "head_sha": "4b938fd21134e1600659fa7c33eff5fc873f7579",
-      "number": 14871,
-      "title": "Donor: keep NYS DEC carrier inside workflow budget",
-      "updated_at": "2026-09-16T14:16:31Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol/sun-a308734-p18-current-main-20260916",
-      "created_at": "2026-09-16T14:05:35Z",
-      "draft": false,
-      "head_sha": "91384cf536f39c84bf7dddbe208fd72b6ee865ca",
-      "number": 14868,
-      "title": "Recover Sun A308734 P18 frontier on literal current main",
-      "updated_at": "2026-09-16T14:12:36Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zswf-q7r4/nysdec-hale-creek-lims-rfi-14864",
-      "created_at": "2026-09-16T14:02:17Z",
-      "draft": false,
-      "head_sha": "25aa0b5418a915ad97fad4dab9599c2868379e23",
-      "number": 14867,
-      "title": "Add truth-gated NYS DEC Hale Creek LIMS RFI carrier",
-      "updated_at": "2026-09-16T14:16:31Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zhv-r4q8/service-deal-current-runtime-v3",
-      "created_at": "2026-09-16T13:57:34Z",
-      "draft": false,
-      "head_sha": "f044de49e9293cb129a66a94321487294aef5b58",
-      "number": 14865,
-      "title": "Freeze Service Deal Economics CURRENT authority runtime",
-      "updated_at": "2026-09-16T14:18:30Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-switchyard/slack-thread-visibility-14710",
-      "created_at": "2026-09-16T13:41:42Z",
-      "draft": false,
-      "head_sha": "e8c91de8fb79833ae635f63a13f0000a4db650f3",
-      "number": 14861,
-      "title": "Command center: recover bounded Slack thread visibility",
-      "updated_at": "2026-09-16T13:54:04Z"
     }
   ],
   "open_heads": {
     "13741": "233642dbbf5dc85ef443a2e34d2bdb9406163b21",
-    "13779": "cfe6ed2b5bf932f99e9adccbd2cca508a96f2a4e",
-    "14122": "1c95d8463cbaf7e6d11d266d292a5b7792a2dbbb",
     "14188": "1859cf0bfc12f2819f3f63fd4349ed06ca5f341b",
     "14299": "cd6a66435851b57f61c5a68c4ab7f8356701f910",
     "14317": "b49030a2ff320730415263803d878825970fa6b9",
     "14321": "1810cbac9e1fc9a0beddfcb13af37f6aa60726aa",
-    "14333": "26e7110348d2ab0d994adf68d5e0f14ad8677e38",
     "14356": "4d55e009437563dd254dfa38e2cd4bfaffec2f10",
     "14395": "1b6907c68885d2feac44c15c2dd39f128864640d",
     "14454": "69b1cc3a9a3133ba6c5441eda3ad41712406f3fb",
     "14464": "e8b319f1300f64eca6cbcdbcd4330077574fdb0a",
-    "14553": "a04ac7399fba7ba8906ba63732a72af5f440b475",
     "14568": "d374fbe3553da4b1b4c1e512b9107e162cd92402",
     "14589": "c534accfe4842a0c4e4acf2ece9b5a21eb6a3b4e",
     "14632": "ec91a123231b3ad8f8813c22dd9751b1a7c2b6b4",
@@ -206,7 +202,6 @@
     "14715": "d21e068298412497d04c86225747d640af59b5e6",
     "14724": "b97d2acc3f8839fd41e70631f6f782a6dab1e67b",
     "14728": "33e117064c336cefc947c52b38dee311e8ca0818",
-    "14757": "ee474ce046917b3963ef18622915021ca2845def",
     "14762": "aa17ab8ec10cacb46370e9f36627311c990e335c",
     "14763": "d4bfb36dd3ebd277b418aa6f11979d2bedca4c65",
     "14764": "6d6dd3f82ec720dd024a92486865d6794edc3eaf",
@@ -249,18 +244,102 @@
     "14861": "e8c91de8fb79833ae635f63a13f0000a4db650f3",
     "14865": "f044de49e9293cb129a66a94321487294aef5b58",
     "14867": "25aa0b5418a915ad97fad4dab9599c2868379e23",
-    "14868": "91384cf536f39c84bf7dddbe208fd72b6ee865ca",
     "14871": "4b938fd21134e1600659fa7c33eff5fc873f7579",
     "14873": "81dbcfb0701f543e2e4098f4fbd0883bd2e0a84f",
-    "14874": "709b62936d7c74eab10a6ae909cd04a462de2bc0",
+    "14874": "970875a23dca6ca8506a1a280a32cbef041f8cd9",
     "14877": "c80abd4e90a4c80c33adf7aec25bb102cdea7ccb",
     "14880": "05a468e3d16539263c627f7bf76da9fa4e52cc36",
-    "14884": "02876a3f8ae8b6b49a56b9e2444c0b641b5dd534"
+    "14885": "5eb34c2402b4a3ecb838e0e1dc46ce6f25569eea",
+    "14886": "5a6528f6e080267ad6de508405c471664f2e3cb1",
+    "14887": "5b0bf078c19d7b65e8519eb09dccfb80e2bbde57",
+    "14888": "7f8c6c06f7ac89ff65a1c20c16537e64056fdd85",
+    "14889": "ecc576d3de46a50ef3ea55c7aa9bd0f019692c46",
+    "14890": "059027345fa93c5bcdaccc7a1d26dfc53b8b6727",
+    "14891": "9ff1ac9a6cd77ef0863ddb5edf27b75f6b379622",
+    "14894": "8f7753643fe0a45e82cbf6be81946e33efc9fe13",
+    "14895": "aa3148bf3a33fc15f1cb683185ca8e4e93fdacf4"
   },
-  "pulls_listed": 78,
+  "pulls_listed": 80,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 36.5,
+  "queue_depth_per_runner": 41.4,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zik-m7q4/uiowa-workbench-recovery-20260915",
+      "closed_at": "2026-09-16T14:45:26Z",
+      "head_sha": "ee474ce046917b3963ef18622915021ca2845def",
+      "merged_at": null,
+      "number": 14757,
+      "state": "CLOSED",
+      "title": "feat(uiowa): recover local RFQ 18649 analyst workbench"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zvl-p8r6/uark-currentness-fixforward-20260914",
+      "closed_at": "2026-09-16T14:45:12Z",
+      "head_sha": "a04ac7399fba7ba8906ba63732a72af5f440b475",
+      "merged_at": null,
+      "number": 14553,
+      "state": "CLOSED",
+      "title": "Fix UArk RFP 09112026 currentness authority"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zkw-f4d9/outbound-guard-verifier-clock-20260914",
+      "closed_at": "2026-09-16T14:44:15Z",
+      "head_sha": "26e7110348d2ab0d994adf68d5e0f14ad8677e38",
+      "merged_at": null,
+      "number": 14333,
+      "state": "CLOSED",
+      "title": "fix(outbound): bind current preflight to verifier-owned time"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zcan/raw-byte-provenance-current-20260913",
+      "closed_at": "2026-09-16T14:43:52Z",
+      "head_sha": "cfe6ed2b5bf932f99e9adccbd2cca508a96f2a4e",
+      "merged_at": null,
+      "number": 13779,
+      "state": "CLOSED",
+      "title": "fix(revenue): bind scope time authority to exact raw bytes"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zkt-a7v2/right-now-human-authority",
+      "closed_at": "2026-09-16T14:43:25Z",
+      "head_sha": "1c95d8463cbaf7e6d11d266d292a5b7792a2dbbb",
+      "merged_at": null,
+      "number": 14122,
+      "state": "CLOSED",
+      "title": "Bind right-now buyer truth to canonical reply evidence"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "ztc-m6r2/muse-v2-strict-payload-schema-20260916",
+      "closed_at": "2026-09-16T14:35:24Z",
+      "head_sha": "02876a3f8ae8b6b49a56b9e2444c0b641b5dd534",
+      "merged_at": "2026-09-16T14:35:24Z",
+      "number": 14884,
+      "state": "MERGED",
+      "title": "Outbound: harden Muse v2 receipt schema boundary"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol/sun-a308734-p18-current-main-20260916",
+      "closed_at": "2026-09-16T14:30:47Z",
+      "head_sha": "91384cf536f39c84bf7dddbe208fd72b6ee865ca",
+      "merged_at": null,
+      "number": 14868,
+      "state": "CLOSED",
+      "title": "[SUPERSEDED by #14889] Recover Sun A308734 P18 frontier on literal current main"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -348,87 +427,10 @@
       "number": 14709,
       "state": "CLOSED",
       "title": "Donor: make media-rights export generation + path custody atomic"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zym-l4v8/media-rights-ops-20260915",
-      "closed_at": "2026-09-16T14:13:28Z",
-      "head_sha": "6e3b3fe0f15b6d067712af533a27bff8f80c8390",
-      "merged_at": null,
-      "number": 14670,
-      "state": "CLOSED",
-      "title": "revenue: add content rights usage-window operations desk"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ziq-k4r9/muse-election-v2-consolidation-14503",
-      "closed_at": "2026-09-16T14:10:17Z",
-      "head_sha": "3fcca188c872b35a64ec62c7fcfc991bf9fbe7b3",
-      "merged_at": null,
-      "number": 14866,
-      "state": "CLOSED",
-      "title": "Outbound: recover canonical Muse election v2 consolidation"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zzq-n4p8/muse-v2-current-auth-integration-14503",
-      "branch": "z-forge/muse-v2-negative-authority-donor-14684",
-      "closed_at": "2026-09-16T14:06:50Z",
-      "head_sha": "4b52d0529fcf5d658267b06144b0da153275a562",
-      "merged_at": "2026-09-16T14:06:50Z",
-      "number": 14720,
-      "state": "MERGED",
-      "title": "Donor: fail closed unauthenticated Muse negative election outcomes"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zam-b4k7/media-rights-final-main-20260916",
-      "closed_at": "2026-09-16T13:54:07Z",
-      "head_sha": "beadb5fe71bf51ff1c5f09461dc05cc6ddd8963d",
-      "merged_at": "2026-09-16T13:54:07Z",
-      "number": 14863,
-      "state": "MERGED",
-      "title": "Revenue: finalize Content Rights & Usage-Window Ops on current main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "z-sol/media-rights-export-generation-20260915",
-      "branch": "zam-b4k7/media-rights-fd-finalization-20260916",
-      "closed_at": "2026-09-16T13:47:27Z",
-      "head_sha": "7a11449f262934e01de8d6ad789114d21863c620",
-      "merged_at": "2026-09-16T13:47:27Z",
-      "number": 14860,
-      "state": "MERGED",
-      "title": "fix(media-rights): close post-open leaf descriptor leak"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zcal-l9v6/dv026-external-action-eval",
-      "closed_at": "2026-09-16T13:47:18Z",
-      "head_sha": "2bb726fbb6e25b7e8e5b502c8be369024793e10c",
-      "merged_at": "2026-09-16T13:47:18Z",
-      "number": 14850,
-      "state": "MERGED",
-      "title": "feat(dv026): evaluate externally supplied black-box actions"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zvlh/slack-mirror-uncertain-recovery-20260916",
-      "closed_at": "2026-09-16T13:32:31Z",
-      "head_sha": "59f58f5512e39c86710ff9e949bf935832a0c39d",
-      "merged_at": null,
-      "number": 14854,
-      "state": "CLOSED",
-      "title": "CLOSED DUPLICATE \u2014 fix(slack): recover durable mirror with first-call uncertain receipts"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-16T14:27:33Z",
+  "unchanged_since": "2026-09-16T14:48:42Z",
   "undatable_pulls": []
 }
