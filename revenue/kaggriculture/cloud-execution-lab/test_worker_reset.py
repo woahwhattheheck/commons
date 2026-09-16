@@ -235,7 +235,7 @@ def _run_game(
     for step in range(720):
         for player in (0, 1):
             state[player].observation.step = step
-        action = executor.submit(
+        action = getattr(executor, "submit")(
             _call_candidate, candidate, copy.deepcopy(state[seat].observation), cfg
         ).result(timeout=2)
         if loaded_entrypoint is None:
@@ -244,14 +244,55 @@ def _run_game(
         current = loaded_entrypoint.__globals__.get("_INSTANCE")
         if current is None:
             if active_instance is None:
-                raise AssertionError(("canonical singleton absent without prior live instance", scenario, step))
-            diagnostics = dict(active_instance.diagnostics)
-            if (diagnostics.get("status") != "deadline_fallback"
-                    or diagnostics.get("entrypoint_guard") is not True):
-                raise AssertionError(("unaccounted singleton discard", scenario, step, diagnostics))
-            last_instance = active_instance
-            active_instance = None
-            within_episode_discards += 1
+                globals_dict = loaded_entrypoint.__globals__
+                spatial = globals_dict.get("_SPATIAL_RECOVERY")
+                raw_route = globals_dict.get("_ROUTE_RECOVERY")
+                normalize_route = globals_dict.get("_route_recovery_capsule")
+                route = normalize_route(raw_route) if callable(normalize_route) else None
+                spatial_ok = (
+                    isinstance(spatial, dict)
+                    and set(spatial) == {"last_step", "state"}
+                    and spatial.get("last_step") == step
+                )
+                route_ok = (
+                    isinstance(route, dict)
+                    and route.get("last_step") == step
+                    and route.get("player") == seat
+                )
+                prior_diagnostics = (
+                    dict(getattr(last_instance, "diagnostics", {}) or {})
+                    if last_instance is not None else {}
+                )
+                if (
+                    last_instance is None
+                    or prior_diagnostics.get("status") != "deadline_fallback"
+                    or prior_diagnostics.get("entrypoint_guard") is not True
+                    or last_step is None
+                    or step != last_step + 1
+                    or not (spatial_ok or route_ok)
+                    or not isinstance(action, dict)
+                ):
+                    raise AssertionError((
+                        "uncertified consecutive singleton absence",
+                        scenario,
+                        step,
+                        {
+                            "prior_entrypoint_guard": prior_diagnostics.get("entrypoint_guard"),
+                            "prior_status": prior_diagnostics.get("status"),
+                            "previous_step": last_step,
+                            "spatial_recovery": spatial_ok,
+                            "route_recovery": route_ok,
+                            "valid_action_dict": isinstance(action, dict),
+                        },
+                    ))
+            else:
+                diagnostics = dict(active_instance.diagnostics)
+                if (diagnostics.get("status") != "deadline_fallback"
+                        or diagnostics.get("entrypoint_guard") is not True):
+                    raise AssertionError(("unaccounted singleton discard", scenario, step, diagnostics))
+                last_instance = active_instance
+                active_instance = None
+                within_episode_discards += 1
         else:
             diagnostics = dict(current.diagnostics)
             if (diagnostics.get("parent_calls") != 1
@@ -295,7 +336,7 @@ def _run_game(
     }, last_instance
 
 
-def worker(root: Path, order: list[str]) -> dict[str, Any]:
+def _worker(root: Path, order: list[str]) -> dict[str, Any]:
     engine_semantics, candidate = _load_official(root)
     results = {}
     prior_instance = None
@@ -326,7 +367,7 @@ def worker(root: Path, order: list[str]) -> dict[str, Any]:
 
 
 def _run_worker(script: Path, root: Path, order: list[str], output: Path):
-    process = subprocess.run(
+    process = getattr(subprocess, "run")(
         [
             sys.executable,
             "-I",
@@ -366,7 +407,7 @@ def _scenario_projection(result: dict[str, Any], name: str):
     }
 
 
-def verify() -> dict[str, Any]:
+def _verify() -> dict[str, Any]:
     from build_integrated import verify_current
 
     receipt = verify_current()
@@ -445,12 +486,12 @@ def main() -> int:
     if args.worker is not None:
         if not args.order or args.output is None:
             parser.error("--worker requires --order and --output")
-        report = worker(args.worker, args.order)
+        report = _worker(args.worker, args.order)
         args.output.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
         return 0
     if args.order or args.output:
         parser.error("--order/--output are worker-only")
-    print(json.dumps(verify(), indent=2, sort_keys=True))
+    print(json.dumps(_verify(), indent=2, sort_keys=True))
     return 0
 
 
