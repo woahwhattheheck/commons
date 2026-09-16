@@ -1,11 +1,13 @@
 from __future__ import annotations
 
 import copy
+import os
 from pathlib import Path
 import shutil
 import subprocess
 import sys
 import tempfile
+import time
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -170,6 +172,106 @@ class SecurityQuestionnaireEvidencePackTests(unittest.TestCase):
                 ]),
                 2,
             )
+
+    def test_cli_rejects_fifo_input_without_blocking(self):
+        with tempfile.TemporaryDirectory() as temp:
+            temp = Path(temp)
+            fifo = temp / "input.fifo"
+            os.mkfifo(fifo)
+            report_path = temp / "report.json"
+            markdown_path = temp / "report.md"
+            start = time.monotonic()
+            proc = subprocess.run(
+                [
+                    sys.executable,
+                    str(PRODUCT / "questionnaire.py"),
+                    "compile",
+                    "--input",
+                    str(fifo),
+                    "--evidence-root",
+                    str(EVIDENCE),
+                    "--report-json",
+                    str(report_path),
+                    "--report-md",
+                    str(markdown_path),
+                ],
+                capture_output=True,
+                text=True,
+                check=False,
+                timeout=2,
+            )
+            elapsed = time.monotonic() - start
+            self.assertLess(elapsed, 2.0)
+            self.assertEqual(proc.returncode, 2)
+            self.assertFalse(report_path.exists())
+            self.assertFalse(markdown_path.exists())
+            opt = subprocess.run(
+                [
+                    sys.executable,
+                    "-O",
+                    str(PRODUCT / "questionnaire.py"),
+                    "compile",
+                    "--input",
+                    str(fifo),
+                    "--evidence-root",
+                    str(EVIDENCE),
+                    "--report-json",
+                    str(temp / "opt.json"),
+                    "--report-md",
+                    str(temp / "opt.md"),
+                ],
+                capture_output=True,
+                text=True,
+                check=False,
+                timeout=2,
+            )
+            self.assertEqual(opt.returncode, 2)
+
+    def test_cli_rejects_symlink_input(self):
+        with tempfile.TemporaryDirectory() as temp:
+            temp = Path(temp)
+            real = temp / "real.json"
+            real.write_bytes(fixture_raw())
+            link = temp / "link.json"
+            link.symlink_to(real)
+            report_path = temp / "report.json"
+            markdown_path = temp / "report.md"
+            rc = q.cli(
+                [
+                    "compile",
+                    "--input",
+                    str(link),
+                    "--evidence-root",
+                    str(EVIDENCE),
+                    "--report-json",
+                    str(report_path),
+                    "--report-md",
+                    str(markdown_path),
+                ]
+            )
+            self.assertEqual(rc, 2)
+            self.assertFalse(report_path.exists())
+            proc = subprocess.run(
+                [
+                    sys.executable,
+                    "-O",
+                    str(PRODUCT / "questionnaire.py"),
+                    "compile",
+                    "--input",
+                    str(link),
+                    "--evidence-root",
+                    str(EVIDENCE),
+                    "--report-json",
+                    str(report_path),
+                    "--report-md",
+                    str(markdown_path),
+                ],
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            self.assertEqual(proc.returncode, 2)
+            self.assertFalse(report_path.exists())
 
 
 if __name__ == "__main__":
