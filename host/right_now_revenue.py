@@ -43,8 +43,9 @@ CHECKOUT_CURRENT_COLLECTOR_TIMEOUT_SECONDS = 10
 # Preserve the true core functions and a shared re-entrant lock exactly once
 # so later copies cannot capture a sibling wrapper as historical, recurse
 # through an unmocked collector, or race hook assignment.
-_SENTINEL_CHECKOUT = "_commons_right_now_historical_validate_checkout_authority"
-_SENTINEL_CATALOG = "_commons_right_now_historical_validate_catalog"
+# Pin names match the existing unwrapped-core sentinels on main.
+_SENTINEL_CHECKOUT = "_UNWRAPPED_VALIDATE_CHECKOUT_AUTHORITY"
+_SENTINEL_CATALOG = "_UNWRAPPED_VALIDATE_CATALOG"
 _SENTINEL_BUILD = "_UNWRAPPED_BUILD_CONTROL"
 _SENTINEL_LOCK = "_commons_right_now_build_lock"
 if not hasattr(_core, _SENTINEL_CHECKOUT):
