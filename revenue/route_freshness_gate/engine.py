@@ -286,7 +286,7 @@ def compile_packet(raw, *, historical=False):
         "muse_receipt_digest": muse_receipt_digest,
         "historical": historical,
         "event_ids": [e["event_id"] for e in sorted(events, key=lambda x: (x["occurred_at_raw"], x["event_id"]))],
-        "touch_ids": [t["touch_id"] for t in sorted(touches, key=lambda x: (x["occurred_at_raw"], t["touch_id"]))],
+        "touch_ids": [t["touch_id"] for t in sorted(touches, key=lambda x: (x["occurred_at_raw"], x["touch_id"]))],
         **AUTHORITY_FALSE,
     }
     packet["packet_digest"] = _sha256_text(_canonical_dumps({k: v for k, v in packet.items() if k != "packet_digest"}))
