@@ -2,22 +2,23 @@
 
 This package is an **offline fulfillment-readiness artifact** for the paid-pilot seam recorded in Commons issue #14225. It does not contact Hyperagent or Slack, does not use credentials, and does not claim buyer acceptance, funding, payment, or revenue.
 
-The existing commercial posture remains **PROPOSED / NOT ACCEPTED**. Hyperagent outreach remains **DNR until a new human event**. Building or merging this package does not alter that rule.
+The commercial posture remains **PROPOSED / NOT ACCEPTED**. Hyperagent outreach remains **DNR until a new human event**. Building or merging this package does not alter that rule.
 
 ## Acceptance proof
 
 `fixture_30_events.json` contains exactly 30 synthetic events: 10 `atlas`, 10 `beacon`, and 10 `cipher` events. The three backend schemas are intentionally heterogeneous.
 
-The adapter normalizes each event into stable SHA-256 run/thread/event identities and then projects the retained generation into canonical transcript artifacts. The focused test contract proves:
+The adapter normalizes each event into stable SHA-256 run/thread/event identities and projects the retained generation into canonical transcript artifacts. The focused contract proves:
 
 - 30 clean fixture events produce exactly **6** logical transcript artifacts and **30** unique logical messages;
 - replaying all 30 source events a second time still produces the same 30 logical messages, with 30 exact source duplicates suppressed;
-- same backend/source-event ID with changed semantics fails closed;
+- same backend/source-event ID with changed canonical semantics fails closed;
 - conflicting sequence ownership inside a source run fails closed;
-- two clean projections of the same fixture are byte-identical, and source ordering does not change projection bytes;
-- `ACTION_REQUEST` events can produce an **offline candidate payload** only when an approval binds the exact normalized `run_id`, `event_id`, and `action_generation` and is current at caller-supplied canonical UTC;
-- missing, malformed, foreign, duplicate, wrong-run, wrong-generation, noncanonical-time, or stale approval input produces **zero** candidate payloads;
-- every transcript and candidate payload fixes `outbound_authorized=false`; no function sends or invokes a provider.
+- two clean projections of the same fixture are byte-identical, independent of source ordering;
+- `ACTION_REQUEST` generation is bound to normalized run/thread/event identity plus action text;
+- action candidates require an authenticated `hyperagent-pilot/approval/v1` that binds the exact run, event, action generation, and approval window;
+- missing, malformed, foreign, duplicate, wrong-run, wrong-generation, unauthenticated, noncanonical, or stale approval input produces **zero** candidate payloads;
+- every transcript and candidate fixes `outbound_authorized=false`; no function sends or invokes a provider.
 
 ## Schemas
 
@@ -43,28 +44,45 @@ Unknown fields are rejected at every schema level. IDs are bounded opaque text; 
 
 ## Deterministic identity and replay
 
-Provider IDs are never treated as globally unique by themselves. Canonical IDs are namespaced by backend and purpose:
+Canonical identities are namespaced by backend and purpose:
 
 - run identity: SHA-256 of backend + source run ID;
 - thread identity: SHA-256 of backend + source thread key;
 - event identity: SHA-256 of backend + source event ID;
-- action generation: SHA-256 of the normalized run/thread/event identity + action text.
+- action generation: SHA-256 of normalized run/thread/event identity + action text.
 
-An exact repeat of a source event is idempotent. Reusing the same `(backend, source_event_id)` with changed canonical semantics is a conflict, not an update. Reusing one source-run sequence for a different event is also rejected.
+An exact repeat of a source event is idempotent. Reusing the same backend/source-event ID with changed canonical semantics is a conflict, not an update. Reusing one source-run sequence for a different event is rejected.
 
 Projection output is canonical ASCII JSON (`sort_keys=True`, compact separators, no NaN) and carries SHA-256 receipts for each artifact and the whole projection.
 
-## Approval boundary
+## Approval authority boundary
 
-`prepare_candidate_payloads()` accepts only `hyperagent-pilot/approval/v1` objects containing exact `run_id`, `event_id`, `action_generation`, `approved_at`, and `expires_at` bindings. Times are canonical second-precision UTC ending in `Z`.
+A structural approval object alone is **not authority**. Hyperagent retains human approval authority under issue #14225, so the candidate path also requires possession of a retained runtime approval key supplied outside this repository.
 
-Even a valid approval produces only `hyperagent-pilot/offline-slack-candidate/v1` bytes. Those bytes explicitly state:
+`hyperagent-pilot/approval/v1` has these signed fields:
 
-- `approval_validated=true`;
-- `outbound_authorized=false`;
-- `provider_action_performed=false`.
+```json
+{
+  "schema": "hyperagent-pilot/approval/v1",
+  "run_id": "...",
+  "event_id": "...",
+  "action_generation": "...",
+  "approved_at": "2026-09-16T18:00:00Z",
+  "expires_at": "2026-09-16T19:00:00Z"
+}
+```
 
-This is an evidence/compiler boundary, not a Slack client. There is no token, webhook, HTTP, socket, subprocess, browser, or provider SDK in the package.
+The issuer computes lowercase `auth_tag = HMAC-SHA256(approval_auth_key, canonical_json(signed_fields))` and appends that tag to the object. `approval_auth_key` must be 32..128 bytes and is injected at runtime; no buyer key or secret is committed here.
+
+`prepare_candidate_payloads()`:
+
+1. authenticates the approval with the retained runtime key using `hmac.compare_digest`;
+2. requires exact run/event/action-generation binding;
+3. evaluates the signed approval window against captured process UTC, with **no caller-supplied clock**;
+4. fails the whole approval set closed on malformed, unauthenticated, foreign, duplicate, or stale input;
+5. emits only `hyperagent-pilot/offline-slack-candidate/v1` bytes with `approval_validated=true`, an `approval_receipt_sha256`, `outbound_authorized=false`, and `provider_action_performed=false`.
+
+The approval receipt digest binds the candidate to the exact authenticated approval generation. Possessing or validating an approval still does **not** authorize this package to send anything.
 
 ## Run the proof
 
@@ -80,17 +98,17 @@ python -m unittest -v revenue.hyperagent_pilot.test_adapter
 python -O -m unittest -v revenue.hyperagent_pilot.test_adapter
 ```
 
-Hosted CI is useful evidence only when it actually runs. A missing/queued run is `UNKNOWN`, never green.
+Hosted CI is useful evidence only when it actually runs. Missing or queued is `UNKNOWN`, never green.
 
 ## Commercial handoff
 
 What this artifact makes ready for a future human-approved paid pilot:
 
-1. obtain a buyer-approved mapping from their real event schemas to one of these bounded adapter schemas (or add a separately reviewed schema adapter);
+1. obtain a buyer-approved mapping from real event schemas to one of these bounded adapter schemas, or add a separately reviewed schema adapter;
 2. validate a retained synthetic/sample generation locally;
 3. agree which event classes are transcript-only versus action candidates;
-4. obtain the buyer's actual approval-generation and expiry semantics;
-5. only after a new human buyer event, a separately authorized integration may translate offline candidate artifacts into provider actions.
+4. provision the buyer-controlled approval issuer/key and approval-window semantics outside this repository;
+5. only after a new human buyer event, a separately authorized integration may translate authenticated offline candidate artifacts into provider actions.
 
 This repository artifact itself does **not** perform step 5.
 
