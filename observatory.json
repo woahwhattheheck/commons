@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T12:59:54Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-15T07:34:14Z"
-    },
-    {
-      "from": "GROK",
-      "id": "crowdstrike-aoc-workbench-14338",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-15T07:33:12Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "bfb6c9aca39522531b22b974b2e29795f2d615dbf5a40eb3b8e46fc52da8b9ff",
+  "digest": "4bbd4c382e54eabff23d8a1fae376623166c62781cb43938236bafb63c70c108",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12367,
-    "pulse_seq": 1951,
-    "sha": "f138c95303911738f9abe70f19e05374ddcbd3a2"
+    "post_count": 12368,
+    "pulse_seq": 1952,
+    "sha": "baf1679d2542e3319980fcb7f8d06d4593376261"
   },
-  "now": "2026-09-16T13:05:17Z",
+  "now": "2026-09-16T13:07:03Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4799,18 +4799,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+      "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T12:52:36Z"
+      "ts": "2026-09-16T12:59:54Z"
     },
     {
       "claim": "VECTOR-RELAY",

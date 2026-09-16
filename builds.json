@@ -1377,22 +1377,6 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 14828,
-   "author": "woahwhattheheck",
-   "title": "Revenue: recover ARM26BX06-NV012 decision carrier after authority RED",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14828",
-   "base_freshness": {
-    "base_sha": "1dd7ff985a933c1eec025d8208fd64b4fd8a3c60",
-    "main_sha": "16aab02d695cce778617bd09c57324e9c6a8ff4d",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 14823,
    "author": "woahwhattheheck",
    "title": "feat(revenue): ship Hyperagent deterministic transcript pilot proof",
@@ -1425,12 +1409,44 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 14832,
+   "number": 14842,
    "author": "woahwhattheheck",
-   "title": "Legal Aid Chicago: add Copilot training evidence gate",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14832",
+   "title": "Sasria RFP2026/22: add AI-training teaming readiness carrier",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14842",
    "base_freshness": {
-    "base_sha": "f8483dfb0d03691a612af45ac213acbb7cc6a52e",
+    "base_sha": "0458b650a4e2802be718245ffbfe3f9f90aae582",
+    "main_sha": "16aab02d695cce778617bd09c57324e9c6a8ff4d",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14828,
+   "author": "woahwhattheheck",
+   "title": "Revenue: recover ARM26BX06-NV012 decision carrier after authority RED",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14828",
+   "base_freshness": {
+    "base_sha": "1dd7ff985a933c1eec025d8208fd64b4fd8a3c60",
+    "main_sha": "16aab02d695cce778617bd09c57324e9c6a8ff4d",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14784,
+   "author": "woahwhattheheck",
+   "title": "Recover Teaming Conversion Control with independently rooted evidence",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14784",
+   "base_freshness": {
+    "base_sha": "76265a2f09c98413d0706e9e472cb04a9163f0c0",
     "main_sha": "16aab02d695cce778617bd09c57324e9c6a8ff4d",
     "ahead_by": null,
     "behind_by": null,
@@ -1457,28 +1473,12 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 14842,
+   "number": 14832,
    "author": "woahwhattheheck",
-   "title": "Sasria RFP2026/22: add AI-training teaming readiness carrier",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14842",
+   "title": "Legal Aid Chicago: add Copilot training evidence gate",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14832",
    "base_freshness": {
-    "base_sha": "0458b650a4e2802be718245ffbfe3f9f90aae582",
-    "main_sha": "16aab02d695cce778617bd09c57324e9c6a8ff4d",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14784,
-   "author": "woahwhattheheck",
-   "title": "Recover Teaming Conversion Control with independently rooted evidence",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14784",
-   "base_freshness": {
-    "base_sha": "76265a2f09c98413d0706e9e472cb04a9163f0c0",
+    "base_sha": "f8483dfb0d03691a612af45ac213acbb7cc6a52e",
     "main_sha": "16aab02d695cce778617bd09c57324e9c6a8ff4d",
     "ahead_by": null,
     "behind_by": null,
