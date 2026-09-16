@@ -1,0 +1,120 @@
+name: zswf-invest-appalachia-attachment-recovery
+
+on:
+  push:
+    branches: [zswf-q7r4/invest-appalachia-attachment-fetch-14857]
+    paths: [.github/workflows/zswf-invest-appalachia-attachment-fetch.yml]
+
+permissions:
+  contents: read
+
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch, fence, hash, and inertly extract buyer templates
+        env:
+          SOURCE_URL: https://investappalachia.org/wp-content/uploads/2026/08/Zipped-RFP-Docs.zip
+        run: |
+          python3 - <<'PY'
+          import datetime as dt, hashlib, json, os, shutil, subprocess, urllib.request, zipfile
+          import xml.etree.ElementTree as ET
+          from pathlib import Path, PurePosixPath
+          URL=os.environ['SOURCE_URL']; OUT=Path('zswf_14857_evidence'); OUT.mkdir(exist_ok=True)
+          Z=OUT/'buyer-attachments.zip'; MD,MF,MM,MT=20<<20,40,12<<20,40<<20
+          req=urllib.request.Request(URL,headers={'User-Agent':'Mozilla/5.0 TJLabs-evidence/1.0'})
+          b=bytearray()
+          with urllib.request.urlopen(req,timeout=30) as r:
+            status=getattr(r,'status',None); final=r.geturl(); ctype=r.headers.get('Content-Type',''); clen=r.headers.get('Content-Length')
+            while True:
+              c=r.read(1<<20)
+              if not c: break
+              b.extend(c)
+              if len(b)>MD: raise RuntimeError('download cap exceeded')
+          Z.write_bytes(b); outer=hashlib.sha256(b).hexdigest(); at=dt.datetime.now(dt.timezone.utc).isoformat()
+          if not zipfile.is_zipfile(Z): raise RuntimeError('not a zip')
+          D=OUT/'files'; D.mkdir(exist_ok=True); ms=[]; total=0
+          with zipfile.ZipFile(Z) as z:
+            infos=[i for i in z.infolist() if not i.is_dir()]
+            if len(infos)>MF: raise RuntimeError('file-count cap exceeded')
+            for i in infos:
+              p=PurePosixPath(i.filename)
+              if p.is_absolute() or '..' in p.parts or '\x00' in i.filename: raise RuntimeError('unsafe member path')
+              if i.file_size>MM: raise RuntimeError('member cap exceeded')
+              total+=i.file_size
+              if total>MT: raise RuntimeError('total cap exceeded')
+              d=z.read(i); q=D.joinpath(*p.parts); q.parent.mkdir(parents=True,exist_ok=True); q.write_bytes(d)
+              ms.append({'name':i.filename,'size':len(d),'compressed_size':i.compress_size,'sha256':hashlib.sha256(d).hexdigest()})
+          manifest={'source_url':URL,'effective_url':final,'retrieved_at_utc':at,'http_status':status,'content_type':ctype,'content_length_header':clen,'zip_size':len(b),'zip_sha256':outer,'member_count':len(ms),'total_uncompressed_bytes':total,'members':ms}
+          (OUT/'manifest.json').write_text(json.dumps(manifest,indent=2,sort_keys=True),encoding='utf-8')
+          W='http://schemas.openxmlformats.org/wordprocessingml/2006/main'; X='http://schemas.openxmlformats.org/spreadsheetml/2006/main'; R='http://schemas.openxmlformats.org/officeDocument/2006/relationships'
+          def docx(p):
+            o=[]
+            with zipfile.ZipFile(p) as z:
+              body=ET.fromstring(z.read('word/document.xml')).find(f'{{{W}}}body')
+              for e in body or []:
+                if e.tag==f'{{{W}}}p':
+                  s=''.join(t.text or '' for t in e.iter(f'{{{W}}}t')).strip()
+                  if s:o.append(s)
+                elif e.tag==f'{{{W}}}tbl':
+                  for tr in e.findall(f'{{{W}}}tr'):
+                    cs=[]
+                    for tc in tr.findall(f'{{{W}}}tc'):
+                      cs.append(' '.join(''.join(t.text or '' for t in p0.iter(f'{{{W}}}t')).strip() for p0 in tc.findall(f'.//{{{W}}}p')).strip())
+                    o.append('TABLE | '+' | '.join(cs))
+            return '\n'.join(o)
+          def xlsx(p):
+            o=[]
+            with zipfile.ZipFile(p) as z:
+              ns=set(z.namelist()); ss=[]
+              if 'xl/sharedStrings.xml' in ns:
+                for si in ET.fromstring(z.read('xl/sharedStrings.xml')).findall(f'{{{X}}}si'): ss.append(''.join(t.text or '' for t in si.iter(f'{{{X}}}t')))
+              rel={}
+              if 'xl/_rels/workbook.xml.rels' in ns:
+                for x in ET.fromstring(z.read('xl/_rels/workbook.xml.rels')): rel[x.attrib.get('Id')]=x.attrib.get('Target')
+              wb=ET.fromstring(z.read('xl/workbook.xml'))
+              for sh in wb.findall(f'.//{{{X}}}sheet'):
+                name=sh.attrib.get('name','?'); target=rel.get(sh.attrib.get(f'{{{R}}}id'),''); sp=target.lstrip('/') if target.startswith('/') else 'xl/'+target.lstrip('./')
+                if sp not in ns: continue
+                o.append('SHEET: '+name)
+                for row in ET.fromstring(z.read(sp)).findall(f'.//{{{X}}}row'):
+                  vals=[]
+                  for c in row.findall(f'{{{X}}}c'):
+                    ref=c.attrib.get('r','?'); typ=c.attrib.get('t'); v=c.find(f'{{{X}}}v'); ins=c.find(f'{{{X}}}is'); f=c.find(f'{{{X}}}f'); val=''
+                    if ins is not None: val=''.join(t.text or '' for t in ins.iter(f'{{{X}}}t'))
+                    elif v is not None and v.text is not None:
+                      val=v.text
+                      if typ=='s':
+                        try: val=ss[int(val)]
+                        except Exception: pass
+                    if f is not None and f.text: val=f'FORMULA={f.text}; VALUE={val}'
+                    if val: vals.append(f'{ref}={val}')
+                  if vals:o.append(' | '.join(vals))
+            return '\n'.join(o)
+          sections=[]
+          for m in ms:
+            p=D.joinpath(*PurePosixPath(m['name']).parts); ext=p.suffix.lower(); text=''; parser='metadata-only'
+            try:
+              if ext=='.docx': text,parser=docx(p),'docx/xml'
+              elif ext=='.xlsx': text,parser=xlsx(p),'xlsx/xml'
+              elif ext in ('.txt','.csv','.md','.tsv'): text,parser=p.read_text(encoding='utf-8-sig',errors='replace'),'plain'
+              elif ext=='.pdf' and shutil.which('pdftotext'): text,parser=subprocess.run(['pdftotext','-layout',str(p),'-'],check=True,capture_output=True,text=True).stdout,'pdftotext'
+            except Exception as e: parser=f'parse-error:{type(e).__name__}:{e}'
+            sections.append((m['name'],parser,text))
+          r=['# Invest Appalachia Framer LMS attachment recovery','',f'- source_url: `{URL}`',f'- effective_url: `{final}`',f'- retrieved_at_utc: `{at}`',f'- http_status: `{status}`',f'- content_type: `{ctype}`',f'- zip_size: `{len(b)}`',f'- zip_sha256: `{outer}`',f'- member_count: `{len(ms)}`',f'- total_uncompressed_bytes: `{total}`','','## Members']
+          r += [f"- `{m['name']}` — {m['size']} bytes — sha256 `{m['sha256']}`" for m in ms]
+          r += ['','## Inert text/table extraction']
+          for n,p,t in sections: r += ['',f'### {n} ({p})','```text',t,'```']
+          report='\n'.join(r)
+          if len(report)>240000: report=report[:240000]+'\n[REPORT TRUNCATED AT SAFETY CAP]\n'
+          (OUT/'report.md').write_text(report,encoding='utf-8'); print(report)
+          PY
+      - name: Upload retained buyer evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: invest-appalachia-rfp-attachments-14857
+          path: zswf_14857_evidence/
+          retention-days: 30
+          if-no-files-found: error
