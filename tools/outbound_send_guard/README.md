@@ -1,61 +1,41 @@
 # Outbound send guard
 
-`tools/outbound_send_guard` is a read-only, offline preflight for parallel sales and email workers. It exists because a workspace-only search can say “no send receipt” while the mailbox already contains a provider-SENT message to the buyer. A second worker must not turn that visibility gap into duplicate outreach.
+This package is a read-only preflight against duplicate outbound contact. It does not search providers or send messages; callers supply intent/evidence snapshots.
 
-The package does not search Gmail or Slack and cannot send email. An adapter/operator supplies an `outbound-send-intent/v1` and a complete `outbound-send-evidence/v1` snapshot.
+## CURRENT authority boundary
 
-## Supported current boundary
-
-Use the package API or package CLI:
-
-```python
-from tools.outbound_send_guard import compile_current, verify_current
-
-receipt = compile_current(intent_object, evidence_object)
-verification = verify_current(intent_object, evidence_object, receipt)
-```
+Positive CURRENT authority begins **outside an imported Python library**, at direct isolated/no-site startup:
 
 ```bash
-python -m tools.outbound_send_guard compile --intent intent.json --evidence evidence.json --out receipt.json
-python -m tools.outbound_send_guard verify --intent intent.json --evidence evidence.json --receipt receipt.json --out verification.json
+python -I -S tools/outbound_send_guard/cli.py compile --intent intent.json --evidence evidence.json --out receipt.json
+python -I -S tools/outbound_send_guard/cli.py verify --intent intent.json --evidence evidence.json --receipt receipt.json --out verification.json
 ```
 
-Package-level `evaluate` is `compile_current`. Compatibility `tools.outbound_send_guard.guard.evaluate(...)` is also verifier-clock current, and the old `python -m tools.outbound_send_guard.guard ...` syntax routes through the same current compiler.
+The CLI checks that it is the direct script (`__name__ == "__main__"`), not package-imported, and that both `-I` and `-S` are active before it imports the internal current runtime. Only that clean process binds the deterministic historical engine into the verifier-clock implementation and samples process UTC.
 
-The deterministic v1 engine is preserved byte-for-byte as underscore-private `_guard_core.py` for reconstruction, focused engine tests, and internal composition. The reviewed verifier-clock implementation from the original #14333 carrier is preserved byte-for-byte as `current_impl.py`. `current.py` is a small safety wrapper that binds `current_impl` to the private core without exporting that core through `current.guard`.
+Imported/library surfaces are deliberately non-authorizing. `tools.outbound_send_guard.evaluate`, `current.compile_current`, and compatibility `guard.evaluate` can reconstruct historical decisions but never emit positive CURRENT clearance; historical `ALLOW_NEW`/`REPLY_ONLY` becomes outward `HOLD`. Terminal `DO_NOT_RESEND` remains terminal. `verify_current` on the embedded surface never returns current validity.
 
-`guard_legacy.py` is now an explicitly historical, non-authorizing compatibility surface. Historical evaluation requires an explicit timestamp and emits only `HISTORICAL_INTEGRITY_ONLY` with outward `HOLD`; its CLI always returns HOLD. No supported compatibility API returns the old positive receipt as current authority.
+This narrowing is intentional. Arbitrary Python can execute before package import and can rewrite module globals, defaults, closures, clocks, cores, or launch primitives. Hiding those objects behind another imported wrapper would only move the trust defect. `current_worker.py` is an internal runtime/testing primitive, not a supported authority API.
 
-## Current decisions and authority
+## Historical engine and compatibility
 
-The current receipt preserves the deterministic core decision while binding verifier-owned time and expiry:
+`_guard_core.py` retains the deterministic v1 engine. `guard.py` preserves parsing/canonicalization helpers and the legacy receipt shape used by composed guards, including exact source-digest kwargs, but embedded positive decisions are forced to HOLD. Explicit `compile_historical_at()` is integrity/reconstruction only and is always outward HOLD.
 
-- `ALLOW_NEW` — complete evidence is fresh at verifier time and no exact-offer/cooldown/DNR blocker exists;
-- `REPLY_ONLY` — a recipient inbound is newer than the latest outbound;
-- `HOLD` — evidence is incomplete, stale, future-dated, contradictory, expired, or another outbound is inside cooldown;
-- `DO_NOT_RESEND` — a hard DNR or exact-offer outbound exists.
+The reviewed verifier-clock implementation remains in `current_impl.py`. By default it imports the fail-closed public facade; a bare/imported/module execution therefore cannot recover positive CURRENT. The direct isolated worker explicitly binds `_guard_core` only after the CLI boundary is proven.
 
-Every compiler and verifier result sets `side_effects_authorized=false`. A current positive result is only a prerequisite. Muse election/custody, relationship and route controls, provider reread, one-shot send consumption, and the actual provider mutation remain separate boundaries.
+## Authority ceiling
 
-Current authority uses code-owned ceilings: evidence age 900 seconds, request age 900 seconds, future skew 300 seconds, and positive receipt lifetime 60 seconds. Candidate policy may tighten but never widen them. Current verification replays the receipt at its bound verifier time and then reassesses it under fresh process UTC; expiry, source change, reseal, or semantic drift fails current preflight.
-
-## Source custody
-
-Parsed-object APIs canonicalize and detach one object generation before evaluation. Exact-byte APIs hash the same bytes they strict-parse. Inputs reject duplicate JSON keys, non-finite values, coercive booleans/integers, unknown fields, naive timestamps, malformed addresses, oversized evidence, and conflicting duplicate provider/Slack identifiers.
-
-The CLI consumes bounded no-follow regular files and creates outputs exclusively. Existing output paths and final-component symlinks are refused.
+Every surface keeps `side_effects_authorized=false`. CURRENT clearance is only a precondition: Muse election/custody, route and relationship policy, fresh provider evidence, one-shot send consumption, and the provider mutation remain separate controls.
 
 ## Regression gate
 
-The dedicated workflow runs Python 3.11 and 3.13 in normal and optimized (`-O`) modes over:
+The dedicated workflow runs Python 3.11 and 3.13, normal and optimized (`-O`), and covers:
 
-- the full deterministic v1 engine test suite against `_guard_core`;
-- current verifier-clock semantics and expiry/custody hostiles;
-- compatibility `guard.evaluate` stale-pair replay closure;
-- package/guard CLI convergence;
-- explicit historical HOLD-only behavior;
-- absence of caller-clock current authority parameters.
+- the full deterministic v1 engine suite against `_guard_core`;
+- embedded package/compatibility HOLD behavior and legacy-shape preservation;
+- inert `_utc_now`/`_core` predecessor assignments on the embedded wrapper;
+- direct CLI rejection without `-I -S` or when imported;
+- real direct `python -I -S .../cli.py` compile→verify round trips, normal and optimized;
+- the exact stale matched-pair predecessor: historical `ALLOW_NEW` must be CURRENT `HOLD`.
 
-The predecessor exploit is pinned directly: matched 2025 intent/evidence may still reconstruct a historical core `ALLOW_NEW`, but both package `evaluate` and compatibility `guard.evaluate` must emit current `HOLD` with `current_preflight_clear=false`.
-
-See `CURRENT_TIME.md` for the exact authority boundary.
+Queued or absent hosted jobs are never represented as green.
