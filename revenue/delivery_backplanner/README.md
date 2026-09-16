@@ -25,7 +25,7 @@ python -m revenue.delivery_backplanner solve revenue/delivery_backplanner/exampl
 python -m revenue.delivery_backplanner verify revenue/delivery_backplanner/example.json /tmp/backplan/result.json
 ```
 
-`solve` creates `result.json`, `timeline.md`, and `resource_load.csv` using create-exclusive writes and refuses to overwrite existing output files. `verify` revalidates the schedule and recomputes the deterministic semantic result.
+`solve` creates `result.json`, `timeline.md`, and `resource_load.csv` using create-exclusive writes and refuses to overwrite existing output files. If a later sibling write fails, rollback unlinks only the exact owned generation recorded at create time (device + inode); a renamed-aside file replaced by foreign bytes at the same pathname is left intact. Retry after a failed `solve` by choosing a new empty output directory or removing only files this process still owns. `verify` revalidates the schedule and recomputes the deterministic semantic result.
 
 ## Why this exists
 
