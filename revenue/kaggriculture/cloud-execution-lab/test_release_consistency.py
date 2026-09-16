@@ -107,4 +107,23 @@ class ReleaseTests(unittest.TestCase):
     self.assertNotEqual(predecessor, current_bytes)
     self.assertFalse(name.endswith('.py'))
 
+
+ def test_live_current_packages_landed_evaluator_and_keeps_predecessor(self):
+  receipt=b.verify_current()
+  self.assertEqual(receipt['path'],b.ARCHIVE)
+  live=(b.ROOT/'reference/evaluator/evaluate.py').read_bytes()
+  live_blob=hashlib.sha1(b'blob '+str(len(live)).encode()+b'\0'+live).hexdigest()
+  self.assertEqual(live_blob,'6d9edcc4ec5eeee22c8a6faec6ddd208a9a2e9e7')
+  with tarfile.open(b.ROOT/b.ARCHIVE) as cur:
+   packaged=cur.extractfile('checks/reference/evaluator/evaluate.py').read()
+  self.assertEqual(packaged,live)
+  predecessor=b.ROOT/'exports/historical'/'titan-4ba742a88d73d483cc844e1007ade5e02c4be198f7383abbbbb32dff1860eac5.tar.gz'
+  self.assertEqual(hashlib.sha256(predecessor.read_bytes()).hexdigest(),
+                   '4ba742a88d73d483cc844e1007ade5e02c4be198f7383abbbbb32dff1860eac5')
+  with tarfile.open(predecessor) as old:
+   old_eval=old.extractfile('checks/reference/evaluator/evaluate.py').read()
+  self.assertNotEqual(old_eval,packaged)
+  old_blob=hashlib.sha1(b'blob '+str(len(old_eval)).encode()+b'\0'+old_eval).hexdigest()
+  self.assertEqual(old_blob,'1fb6b655bb4ca1e1684be165a8ef513e2e6c2325')
+
 if __name__=='__main__':unittest.main()
