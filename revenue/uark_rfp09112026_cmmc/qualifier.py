@@ -171,24 +171,27 @@ def verify_packet(
 
 def _snapshot_exact_json(value: Any, _input_error=InputError) -> Any:
     """Copy one exact built-in JSON generation; reject observable container hooks."""
-    if value is None or type(value) in (str, int, bool):
-        return value
-    if type(value) is list:
-        return [_snapshot_exact_json(item, _input_error) for item in value]
-    if type(value) is dict:
-        out: dict[str, Any] = {}
-        try:
-            items = list(value.items())
-        except RuntimeError as exc:
-            raise _input_error("input changed during generation capture") from exc
-        for key, item in items:
-            if type(key) is not str:
-                raise _input_error("JSON object keys must be exact strings")
-            out[key] = _snapshot_exact_json(item, _input_error)
-        return out
-    raise _input_error(
-        f"unsupported non-exact JSON value type: {type(value).__name__}"
-    )
+    def capture(node: Any) -> Any:
+        if node is None or type(node) in (str, int, bool):
+            return node
+        if type(node) is list:
+            return [capture(item) for item in node]
+        if type(node) is dict:
+            out: dict[str, Any] = {}
+            try:
+                items = list(node.items())
+            except RuntimeError as exc:
+                raise _input_error("input changed during generation capture") from exc
+            for key, item in items:
+                if type(key) is not str:
+                    raise _input_error("JSON object keys must be exact strings")
+                out[key] = capture(item)
+            return out
+        raise _input_error(
+            f"unsupported non-exact JSON value type: {type(node).__name__}"
+        )
+
+    return capture(value)
 
 
 def _make_private_current_semantics(
@@ -210,10 +213,11 @@ def _make_private_current_semantics(
     private_spec.loader.exec_module(private_core)
 
     p_compile = private_core.compile_qualification
-    p_verify = private_core.verify_packet
     p_error = private_core.InputError
     p_dt = private_core._dt
     p_sha = private_core.sha256_obj
+    p_deepcopy = private_core.copy.deepcopy
+    p_sha_re = private_core.SHA_RE
     schema = private_core.SCHEMA
     recheck_boundary = p_dt(boundary_text)
 
@@ -256,8 +260,6 @@ def _make_private_current_semantics(
         return apply_private_currentness(translate(p_compile, stamped))
 
     def verify_historical_private(packet: dict[str, Any]) -> bool:
-        # Private core verifies its own historical packet first. Packets carrying a
-        # currentness blocker are recompiled through our private currentness layer.
         required = {
             "schema", "operation", "owner", "model", "evaluated_at_utc", "buyer",
             "rfp_number", "question_deadline_utc", "proposal_deadline_utc",
@@ -268,9 +270,9 @@ def _make_private_current_semantics(
         if set(packet) != required:
             raise input_error("packet schema mismatch")
         receipt = packet["packet_receipt_sha256"]
-        if type(receipt) is not str or not private_core.SHA_RE.fullmatch(receipt):
+        if type(receipt) is not str or not p_sha_re.fullmatch(receipt):
             raise input_error("packet receipt invalid")
-        unsigned = copy.deepcopy(packet)
+        unsigned = p_deepcopy(packet)
         unsigned.pop("packet_receipt_sha256")
         if p_sha(unsigned) != receipt:
             raise input_error("packet receipt mismatch")
@@ -286,7 +288,7 @@ def _make_private_current_semantics(
         return True
 
     def decision_body(decision: dict[str, Any]) -> dict[str, Any]:
-        body = copy.deepcopy(decision)
+        body = p_deepcopy(decision)
         body.pop("decision_receipt_sha256", None)
         return body
 
