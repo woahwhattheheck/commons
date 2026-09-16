@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 126,
-    "open_pull_requests": 78,
+    "open_pull_requests": 77,
     "runs_in_progress": 17,
-    "runs_queued": 620
+    "runs_queued": 623
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,24 +69,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zeta-five/public-sector-workshare-20260916",
-      "created_at": "2026-09-16T14:18:44Z",
-      "draft": false,
-      "head_sha": "ea56fad97b2eb0e66cb384e6eec61403bb051c8d",
-      "number": 14882,
-      "title": "Revenue: ship public-sector integration workshare pack + IL/NC overlays",
-      "updated_at": "2026-09-16T14:18:44Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "zzf-r7m9/commercial-funnel-current-main-recovery-20260916",
       "created_at": "2026-09-16T14:17:26Z",
       "draft": false,
       "head_sha": "05a468e3d16539263c627f7bf76da9fa4e52cc36",
       "number": 14880,
       "title": "fix(revenue): recover commercial funnel on current main",
-      "updated_at": "2026-09-16T14:18:13Z"
+      "updated_at": "2026-09-16T14:20:47Z"
     },
     {
       "author": "woahwhattheheck",
@@ -97,7 +86,7 @@
       "head_sha": "c80abd4e90a4c80c33adf7aec25bb102cdea7ccb",
       "number": 14877,
       "title": "revenue: Land Bank T12-09-26 fail-closed teaming readiness carrier",
-      "updated_at": "2026-09-16T14:15:04Z"
+      "updated_at": "2026-09-16T14:20:37Z"
     },
     {
       "author": "woahwhattheheck",
@@ -105,10 +94,10 @@
       "branch": "ztsy-n7q4/columbia-erp-acceptance-20260916",
       "created_at": "2026-09-16T14:11:47Z",
       "draft": false,
-      "head_sha": "ecc3ce2a041e6b91bd05ab16811e424f186cfd9c",
+      "head_sha": "709b62936d7c74eab10a6ae909cd04a462de2bc0",
       "number": 14874,
       "title": "Revenue: Columbia ERP migration acceptance workshare",
-      "updated_at": "2026-09-16T14:18:00Z"
+      "updated_at": "2026-09-16T14:23:04Z"
     },
     {
       "author": "woahwhattheheck",
@@ -175,6 +164,17 @@
       "number": 14861,
       "title": "Command center: recover bounded Slack thread visibility",
       "updated_at": "2026-09-16T13:54:04Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zca-k6v2/invest-appalachia-framer-lms-20260916",
+      "created_at": "2026-09-16T13:38:04Z",
+      "draft": false,
+      "head_sha": "a7b5d66d5611605b788e3a8f5be1001f1065433d",
+      "number": 14859,
+      "title": "Revenue: capture Invest Appalachia Framer LMS pursuit with fail-closed prime/team gate",
+      "updated_at": "2026-09-16T14:12:44Z"
     }
   ],
   "open_heads": {
@@ -252,15 +252,25 @@
     "14868": "91384cf536f39c84bf7dddbe208fd72b6ee865ca",
     "14871": "4b938fd21134e1600659fa7c33eff5fc873f7579",
     "14873": "81dbcfb0701f543e2e4098f4fbd0883bd2e0a84f",
-    "14874": "ecc3ce2a041e6b91bd05ab16811e424f186cfd9c",
+    "14874": "709b62936d7c74eab10a6ae909cd04a462de2bc0",
     "14877": "c80abd4e90a4c80c33adf7aec25bb102cdea7ccb",
-    "14880": "05a468e3d16539263c627f7bf76da9fa4e52cc36",
-    "14882": "ea56fad97b2eb0e66cb384e6eec61403bb051c8d"
+    "14880": "05a468e3d16539263c627f7bf76da9fa4e52cc36"
   },
-  "pulls_listed": 78,
+  "pulls_listed": 77,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 36.5,
+  "queue_depth_per_runner": 36.6,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zeta-five/public-sector-workshare-20260916",
+      "closed_at": "2026-09-16T14:22:16Z",
+      "head_sha": "ea56fad97b2eb0e66cb384e6eec61403bb051c8d",
+      "merged_at": "2026-09-16T14:22:15Z",
+      "number": 14882,
+      "state": "MERGED",
+      "title": "Revenue: ship public-sector integration workshare pack + IL/NC overlays"
+    },
     {
       "author": "woahwhattheheck",
       "base": "ziq-k4r9/muse-election-v2-consolidation-14503",
@@ -414,21 +424,10 @@
       "number": 14854,
       "state": "CLOSED",
       "title": "CLOSED DUPLICATE \u2014 fix(slack): recover durable mirror with first-call uncertain receipts"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zpb-h7n4/pinellas-current-trust-recovery-20260916",
-      "closed_at": "2026-09-16T13:25:15Z",
-      "head_sha": "17d7a4e9e3a1952ac29174305b5bcb6cbe1175f4",
-      "merged_at": null,
-      "number": 14833,
-      "state": "CLOSED",
-      "title": "Revenue: recover Pinellas current custody trust boundary"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-16T14:20:27Z",
+  "unchanged_since": "2026-09-16T14:23:08Z",
   "undatable_pulls": []
 }
