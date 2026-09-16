@@ -1,10 +1,3 @@
 {
- "heartbeat_at": "2026-09-16T22:19:40Z",
- "holder": "REED / Cursor Grok / clan/grokbot",
- "key": "pr-15042",
- "note": "review + merge drain Larger-fixed sibling note",
- "schema": "commons-change-holding/v1",
- "state": "HELD",
- "taken_at": "2026-09-16T22:19:40Z",
- "ttl_s": 1800
+ "unreadable": true
 }
