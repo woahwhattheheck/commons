@@ -72,7 +72,7 @@ jobs:
           ok = True
           for module, now in cases:
               print(f"\n=== {module} @ {now.isoformat()} ===")
-              with patch.object(current, "_utc_now", return_value=now):
+              with patch("tools.outbound_send_guard.current.datetime.now", return_value=now):
                   suite = unittest.defaultTestLoader.loadTestsFromName(module)
                   result = unittest.TextTestRunner(verbosity=2).run(suite)
                   ok = result.wasSuccessful() and ok
@@ -103,7 +103,7 @@ jobs:
           ok = True
           for module, now in cases:
               print(f"\n=== {module} @ {now.isoformat()} optimized ===")
-              with patch.object(current, "_utc_now", return_value=now):
+              with patch("tools.outbound_send_guard.current.datetime.now", return_value=now):
                   suite = unittest.defaultTestLoader.loadTestsFromName(module)
                   result = unittest.TextTestRunner(verbosity=2).run(suite)
                   ok = result.wasSuccessful() and ok
