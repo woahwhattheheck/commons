@@ -46,7 +46,7 @@ class CurrentEntrypointTests(unittest.TestCase):
             ip, ep, out = root / "intent.json", root / "evidence.json", root / "receipt.json"
             ip.write_text(json.dumps(intent()), encoding="utf-8")
             ep.write_text(json.dumps(evidence()), encoding="utf-8")
-            with patch.object(current, "_utc_now", return_value=NOW):
+            with patch("tools.outbound_send_guard.current.datetime.now", return_value=NOW):
                 rc = guard.main(
                     ["--intent", str(ip), "--evidence", str(ep), "--out", str(out)]
                 )
@@ -59,7 +59,7 @@ class CurrentEntrypointTests(unittest.TestCase):
     def test_guard_compatibility_shape_is_current_bound(self):
         stale_intent = intent("2025-01-01T00:00:10Z")
         stale_evidence = evidence("2025-01-01T00:00:00Z")
-        with patch.object(current, "_utc_now", return_value=NOW):
+        with patch("tools.outbound_send_guard.current.datetime.now", return_value=NOW):
             compat = guard.evaluate(
                 stale_intent,
                 stale_evidence,
@@ -80,7 +80,7 @@ class CurrentEntrypointTests(unittest.TestCase):
     def test_package_api_remains_rich_current_receipt(self):
         stale_intent = intent("2025-01-01T00:00:10Z")
         stale_evidence = evidence("2025-01-01T00:00:00Z")
-        with patch.object(current, "_utc_now", return_value=NOW):
+        with patch("tools.outbound_send_guard.current.datetime.now", return_value=NOW):
             package = outbound_package.evaluate(stale_intent, stale_evidence)
         payload = package["payload"]
         self.assertEqual(payload["schema_version"], current.CURRENT_RECEIPT_SCHEMA)
