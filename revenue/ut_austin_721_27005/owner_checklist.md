@@ -6,7 +6,7 @@ All items below must be real, current, and evidence-linked. `verify.py` will not
 
 - [ ] Confirm official current solicitation/addenda set in Texas SmartBuy + Bonfire; archive exact bytes/hashes where permitted.
 - [ ] Confirm whether any addendum changed deadline, scope, requested artifacts, forms, BidTables, terms, security, or EIR requirements.
-- [ ] Decide whether to click **Intent to Bid** before **Sep 28 2026 12:00 PM CDT**. This is an owner/provider action, not authorized here.
+- [ ] Decide whether to click **Intent to Bid** before **Sep 28 2026 12:00 PM CDT**. This carrier records the deadline; the click is an owner/provider portal action.
 - [ ] Supply authorized company/legal identity and signatory.
 - [ ] Supply truthful comparable-project evidence satisfying the buyer's requested experience.
 - [ ] Supply curated UX/design portfolio evidence.

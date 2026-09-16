@@ -5,8 +5,8 @@
 | Requirement | Bound fact | Current state |
 |---|---|---|
 | Official solicitation | UT Austin `721-27005`; Bonfire opportunity `250679` | VERIFIED locator |
-| Intent to Bid | Sep 28, 2026 12:00 PM CDT | OWNER/PORTAL ACTION — NOT AUTHORIZED |
-| Final submission | Sep 28, 2026 2:30 PM CDT | OWNER/PORTAL ACTION — NOT AUTHORIZED |
+| Intent to Bid | Sep 28, 2026 12:00 PM CDT | OWNER/PORTAL ACTION — CARRIER RECORDS DEADLINE ONLY |
+| Final submission | Sep 28, 2026 2:30 PM CDT | OWNER/PORTAL ACTION — CARRIER RECORDS DEADLINE ONLY |
 | Questions | Closed Sep 14, 2026 2:30 PM CDT | CLOSED; do not manufacture a question route |
 | Submission method | Official portal; individual uploads | VERIFIED requirement |
 | Upload timing | University recommends beginning at least one day early | PLAN INPUT |
