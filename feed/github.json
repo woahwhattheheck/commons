@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 115,
     "open_pull_requests": 53,
-    "runs_in_progress": 21,
-    "runs_queued": 986
+    "runs_in_progress": 18,
+    "runs_queued": 994
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,6 +69,17 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "z-sol01/sasria-authority-recovery-20260916",
+      "created_at": "2026-09-16T22:42:18Z",
+      "draft": false,
+      "head_sha": "3c5f4b1a25e5a60d3c6792c4d6223e402a07b1fb",
+      "number": 15076,
+      "title": "Revenue: recover Sasria RFP2026/22 truth-narrow teaming carrier",
+      "updated_at": "2026-09-16T22:42:18Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "z-sol-17/security-questionnaire-evidence-pack-20260916",
       "created_at": "2026-09-16T22:40:39Z",
       "draft": false,
@@ -97,7 +108,7 @@
       "head_sha": "9132e989d79d7ad18e506b0f9a5392be4b049487",
       "number": 15072,
       "title": "Revenue: ship Channel Partner Deal Desk",
-      "updated_at": "2026-09-16T22:42:05Z"
+      "updated_at": "2026-09-16T22:42:30Z"
     },
     {
       "author": "woahwhattheheck",
@@ -119,7 +130,7 @@
       "head_sha": "76df8ed3e0b9514b7680e594a7178f864473747e",
       "number": 15069,
       "title": "Revenue: gate live-procurement partner outreach before Muse",
-      "updated_at": "2026-09-16T22:39:44Z"
+      "updated_at": "2026-09-16T22:42:25Z"
     },
     {
       "author": "woahwhattheheck",
@@ -153,17 +164,6 @@
       "number": 15063,
       "title": "Revenue: deterministic finished-work \u2192 cash closeout compiler",
       "updated_at": "2026-09-16T22:39:21Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol/creative-review-current-main-recovery-20260916",
-      "created_at": "2026-09-16T22:34:10Z",
-      "draft": false,
-      "head_sha": "09973cc5f85121521ab2c71c5fb66e434693c1db",
-      "number": 15062,
-      "title": "fix(hive-media): recover creative review desk with honest integrity boundary",
-      "updated_at": "2026-09-16T22:42:03Z"
     },
     {
       "author": "woahwhattheheck",
@@ -222,7 +222,6 @@
     "14873": "81dbcfb0701f543e2e4098f4fbd0883bd2e0a84f",
     "14887": "a5df89acf67c06f1f6918ff0e51ed21409fc0724",
     "15020": "622fb084050e1b5bf65244b61d4149726fbc179a",
-    "15062": "09973cc5f85121521ab2c71c5fb66e434693c1db",
     "15063": "f2cc38721626250ec8c9669672d97e87818c16f3",
     "15064": "b8221e7df432e2f73b169efe472df8ac54e5c6d5",
     "15066": "f2f4d5f8f41eba9c83d6ca5ea4536a2c89a9119f",
@@ -230,12 +229,24 @@
     "15070": "24c0ef128c79eb076f78997629a3bb48e2ce8efc",
     "15072": "9132e989d79d7ad18e506b0f9a5392be4b049487",
     "15074": "dc6e96bcb646cf7b7818f1bb73c713447e49a640",
-    "15075": "d6b6f7ae2119fc2f90e0b1c1b9e2384cc0ef6a20"
+    "15075": "d6b6f7ae2119fc2f90e0b1c1b9e2384cc0ef6a20",
+    "15076": "3c5f4b1a25e5a60d3c6792c4d6223e402a07b1fb"
   },
   "pulls_listed": 53,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 47.0,
+  "queue_depth_per_runner": 55.2,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol/creative-review-current-main-recovery-20260916",
+      "closed_at": "2026-09-16T22:42:17Z",
+      "head_sha": "09973cc5f85121521ab2c71c5fb66e434693c1db",
+      "merged_at": "2026-09-16T22:42:17Z",
+      "number": 15062,
+      "state": "MERGED",
+      "title": "fix(hive-media): recover creative review desk with honest integrity boundary"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -389,21 +400,10 @@
       "number": 15061,
       "state": "CLOSED",
       "title": "commercial: recover SaaS migration parity pilot onto current main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zic/osuchsh-gme-resident-data-20260916",
-      "closed_at": "2026-09-16T22:33:39Z",
-      "head_sha": "6d2749228625e5fe38f189f72a37516b4a15be13",
-      "merged_at": null,
-      "number": 14807,
-      "state": "CLOSED",
-      "title": "Revenue: build OSU-CHS GME resident-data pursuit prototype"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-16T22:42:12Z",
+  "unchanged_since": "2026-09-16T22:42:49Z",
   "undatable_pulls": []
 }
