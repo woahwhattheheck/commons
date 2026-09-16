@@ -51,3 +51,13 @@ zip -j ../../aimo-answer-stability.zip solution.py stability_probe.py
 Do not include the audit file in the competition archive. The next empirical gate is an authorized GPU run against the organizers' public validation tooling, followed by threshold-free error analysis and only then an entrant submission decision.
 
 No Codabench registration, terms acceptance, private/test-set access, sponsor contact, submission, prize claim, or paid compute is performed by this carrier.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
