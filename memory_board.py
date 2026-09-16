@@ -32,6 +32,7 @@ MEMORY_LIVE_CASH_HTML = """
 <li><a href="../repair-booking-preflight.html">$199 repair diagnostic</a></li>
 <li><a href="../plant-downtime-handoff.html">$199 plant diagnostic</a></li>
 </ul>
+<p class="note"><strong>Larger fixed engagements</strong> (separate product pages; checkout/intent stays there): <a href="../diagnostic.html">GGUF diagnostic · $12,000 / 10 days</a> · <a href="../commercial.html">White Box pilot · $30,000 / 30 days</a>. Not remints of tip SKUs.</p>
 </section>
 """
 SESSION_BIND = "SESSION_MEMORY"
