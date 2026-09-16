@@ -1,0 +1,35 @@
+{
+  "schema_version": "commons.decision-program/v1",
+  "program_id": "commercial-fleet-telemetry-gateway",
+  "title": "Synthetic commercial fleet telemetry gateway decision program",
+  "generation": 1,
+  "supersedes_digest": null,
+  "as_of": "2026-09-01T00:00:00Z",
+  "human_authority": {"required": true, "decision_state": "PENDING_HUMAN"},
+  "objectives": [
+    {"id": "integration", "label": "Integration fit", "weight_bp": 3000},
+    {"id": "security", "label": "Security posture", "weight_bp": 3000},
+    {"id": "cost", "label": "Three-year cost", "weight_bp": 2500},
+    {"id": "support", "label": "Supportability", "weight_bp": 1500}
+  ],
+  "options": [
+    {"id": "gateway_a", "label": "Gateway A", "scores": {"integration": 8400, "security": 8200, "cost": 7700, "support": 7600}, "metrics": {"three_year_cost_usd": 220000, "deployment_weeks": 14}},
+    {"id": "gateway_b", "label": "Gateway B", "scores": {"integration": 7600, "security": 8600, "cost": 8300, "support": 8500}, "metrics": {"three_year_cost_usd": 205000, "deployment_weeks": 16}}
+  ],
+  "constraints": [
+    {"id": "budget", "metric": "three_year_cost_usd", "op": "<=", "value": 225000, "rationale": "Synthetic program budget."},
+    {"id": "schedule", "metric": "deployment_weeks", "op": "<=", "value": 18, "rationale": "Synthetic rollout window."}
+  ],
+  "assumptions": [
+    {"id": "api_stability", "statement": "Published vendor API remains stable through the evaluation generation.", "status": "SUPPORTED", "evidence_ids": ["ev-api"]}
+  ],
+  "risks": [
+    {"id": "vendor_roadmap", "statement": "Vendor roadmap could alter integration effort.", "level": "MEDIUM", "mitigation": "Refresh product evidence at each decision generation."}
+  ],
+  "bias_checks": [
+    {"id": "price_anchor", "question": "Does lowest price automatically win?", "status": "PASS", "finding": "Price is only one weighted objective."}
+  ],
+  "evidence": [
+    {"id": "ev-api", "kind": "SYNTHETIC_FIXTURE", "source_ref": "fixture://gateway-api/v1", "observed_at": "2026-09-01T00:00:00Z", "digest_sha256": "2222222222222222222222222222222222222222222222222222222222222222"}
+  ]
+}
