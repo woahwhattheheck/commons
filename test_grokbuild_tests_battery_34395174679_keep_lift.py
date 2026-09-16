@@ -14,9 +14,11 @@ frozen trees. Hands off #8802.
 from __future__ import annotations
 
 import json
+import tempfile
 import subprocess
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 import manual_build
 
@@ -59,16 +61,24 @@ class TestGrokbuildTestsBattery34395174679KeepLift(unittest.TestCase):
         self.assertIn(POINTER, manual)
         self.assertIn("builds.html", manual)
         self.assertIn("wire.html", manual)
-        self.assertTrue(git_blob("ground/MANUAL.md").startswith("3f4140b0"))
+        self.assertTrue(git_blob("ground/MANUAL.md").startswith("60235e5d"))
         self.assertFalse(git_blob("ground/MANUAL.md").startswith("79a93583"))
 
     def test_rebuild_is_byte_identical_to_live_manual(self) -> None:
         before = (ROOT / "ground/MANUAL.md").read_text(encoding="utf-8")
-        rc = manual_build.main()
-        after = (ROOT / "ground/MANUAL.md").read_text(encoding="utf-8")
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "MANUAL.md"
+            with patch.object(manual_build, "OUT", str(out)):
+                rc = manual_build.main()
+            after = out.read_text(encoding="utf-8")
         self.assertEqual(rc, 0)
         self.assertEqual(before, after)
         self.assertIn(POINTER, after)
+        self.assertIn("Larger fixed engagements", after)
+        # Must not dirty tracked ground/MANUAL.md (battery checkout clean).
+        self.assertEqual(
+            before, (ROOT / "ground/MANUAL.md").read_text(encoding="utf-8")
+        )
 
     def test_originally_failing_unique_graph_contracts_pass(self) -> None:
         for name in ORIGINALS:
@@ -94,7 +104,7 @@ class TestGrokbuildTestsBattery34395174679KeepLift(unittest.TestCase):
         self.assertTrue(
             git_blob("test_wire_manual_md_builds_door.py").startswith("0c62d7bd")
         )
-        self.assertTrue(git_blob("tools.json").startswith("0c4b38e7"))
+        self.assertTrue(git_blob("tools.json").startswith("0a74c566"))
         self.assertTrue(
             git_blob("p/coil-tools-super-mcp-fold-20260902-01.md").startswith(
                 "6948bdc1"
