@@ -65,7 +65,7 @@ Orders are sorted deterministically by:
 4. explicit priority,
 5. order id.
 
-An order can only land on an active worker with every required capability, a free capacity slot, and enough remaining token budget. Explicit `preferred_workers` break worker-fit ties, followed by remaining token budget and lexical worker id.
+An order is assigned to an active worker whose listed skills cover the order's skill tags, who still has an unused capacity slot, and whose remaining token budget covers the order cost. Explicit `preferred_workers` break worker-fit ties, followed by remaining token budget and lexical worker id.
 
 The receipt records assignments, unassigned reasons, worker utilization, a canonical input digest, and a canonical receipt digest.
 
