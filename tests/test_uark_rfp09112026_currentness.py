@@ -2,9 +2,10 @@ from __future__ import annotations
 
 import copy
 import importlib.util
+import inspect
 import json
 import unittest
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -25,6 +26,10 @@ def fixture() -> dict:
 
 def utc(value: str) -> datetime:
     return datetime.fromisoformat(value.replace("Z", "+00:00")).astimezone(timezone.utc)
+
+
+def utc_text(value: datetime) -> str:
+    return value.astimezone(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
 class UarkRfp09112026CurrentnessTests(unittest.TestCase):
@@ -55,36 +60,95 @@ class UarkRfp09112026CurrentnessTests(unittest.TestCase):
         )
         self.assertTrue(mod.verify_packet(packet))
 
-    def test_production_compile_ignores_backdated_input(self) -> None:
-        value = fixture()
-        value["evaluated_at_utc"] = "2000-01-01T00:00:00Z"
-        packet = mod.compile_production(
-            value,
-            now=utc(mod.PROPOSAL_DEADLINE_UTC),
+    def test_current_api_has_no_caller_time_or_clock_parameters(self) -> None:
+        self.assertEqual(
+            list(inspect.signature(mod.compile_production).parameters),
+            ["intake"],
         )
         self.assertEqual(
-            packet["evaluated_at_utc"],
-            mod.PROPOSAL_DEADLINE_UTC,
+            list(inspect.signature(mod.verify_packet_current).parameters),
+            ["packet"],
         )
+        with self.assertRaises(TypeError):
+            mod.compile_production(fixture(), now=utc("2000-01-01T00:00:00Z"))
+        packet = mod.compile_qualification(fixture())
+        with self.assertRaises(TypeError):
+            mod.verify_packet_current(packet, clock=lambda: utc("2000-01-01T00:00:00Z"))
+
+    def test_production_compile_ignores_backdated_input_and_uses_live_process_time(self) -> None:
+        value = fixture()
+        value["evaluated_at_utc"] = "2000-01-01T00:00:00Z"
+        before = datetime.now(timezone.utc).replace(microsecond=0)
+        packet = mod.compile_production(value)
+        after = datetime.now(timezone.utc).replace(microsecond=0)
+        observed = utc(packet["evaluated_at_utc"])
+        self.assertGreaterEqual(observed, before)
+        self.assertLessEqual(observed, after)
+        self.assertNotEqual(packet["evaluated_at_utc"], value["evaluated_at_utc"])
+        self.assertTrue(mod.verify_packet_current(packet))
+
+    def test_post_import_clock_and_parser_global_rebinding_cannot_backdate_current(self) -> None:
+        value = fixture()
+        value["evaluated_at_utc"] = "2000-01-01T00:00:00Z"
+        before = datetime.now(timezone.utc).replace(microsecond=0)
+
+        original_datetime = mod.datetime
+        original_timezone = mod.timezone
+        original_dt = mod._dt
+        original_normalize = mod._normalize_aware_utc
+        original_utc_text = mod._utc_text
+        original_compile = mod.compile_qualification
+        original_verify = mod.verify_packet
+        try:
+            class BackdatedDateTime:
+                @classmethod
+                def now(cls, *_args, **_kwargs):
+                    return utc("2000-01-01T00:00:00Z")
+
+            mod.datetime = BackdatedDateTime
+            mod.timezone = object()
+            mod._dt = lambda _value: utc("2000-01-01T00:00:00Z")
+            mod._normalize_aware_utc = lambda _value: utc("2000-01-01T00:00:00Z")
+            mod._utc_text = lambda _value: "2000-01-01T00:00:00Z"
+            mod.compile_qualification = lambda _value: (_ for _ in ()).throw(
+                AssertionError("CURRENT must retain its compiler dependency")
+            )
+            mod.verify_packet = lambda _value: (_ for _ in ()).throw(
+                AssertionError("CURRENT must retain its verifier dependency")
+            )
+
+            packet = mod.compile_production(value)
+            observed = utc(packet["evaluated_at_utc"])
+            self.assertGreaterEqual(observed, before)
+            self.assertNotEqual(packet["evaluated_at_utc"], "2000-01-01T00:00:00Z")
+            self.assertTrue(mod.verify_packet_current(packet))
+        finally:
+            mod.datetime = original_datetime
+            mod.timezone = original_timezone
+            mod._dt = original_dt
+            mod._normalize_aware_utc = original_normalize
+            mod._utc_text = original_utc_text
+            mod.compile_qualification = original_compile
+            mod.verify_packet = original_verify
+
+    def test_current_verify_rejects_future_evaluation(self) -> None:
+        value = fixture()
+        future = datetime.now(timezone.utc) + timedelta(days=1)
+        value["evaluated_at_utc"] = utc_text(future)
+        packet = mod.compile_qualification(value)
+        with self.assertRaisesRegex(mod.InputError, "ahead of trusted"):
+            mod.verify_packet_current(packet)
+
+    def test_historical_deadline_semantics_remain_explicit_time_replay_only(self) -> None:
+        value = fixture()
+        value["evaluated_at_utc"] = mod.PROPOSAL_DEADLINE_UTC
+        packet = mod.compile_qualification(value)
         self.assertEqual(packet["decision"]["status"], "NO_BID")
         self.assertIn(
             "PROPOSAL_DEADLINE_PASSED",
             packet["decision"]["blockers"],
         )
-
-    def test_current_verify_rejects_predeadline_ready_after_deadline(self) -> None:
-        packet = mod.compile_qualification(fixture())
-        with self.assertRaisesRegex(mod.InputError, "no longer current"):
-            mod.verify_packet_current(
-                packet,
-                now=utc(mod.PROPOSAL_DEADLINE_UTC),
-            )
-
-    def test_current_verify_rejects_future_evaluation(self) -> None:
-        packet = mod.compile_qualification(fixture())
-        before_capture = utc("2026-09-15T00:00:00Z")
-        with self.assertRaisesRegex(mod.InputError, "ahead of trusted"):
-            mod.verify_packet_current(packet, now=before_capture)
+        self.assertTrue(mod.verify_packet(packet))
 
     def test_receipt_recomputation_covers_currentness_blockers(self) -> None:
         packet = mod.compile_qualification(fixture())
