@@ -848,8 +848,8 @@
     {
       "source": ".github/workflows/service-deal-economics.yml",
       "archive": "ci/workflow-recipes/service-deal-economics.yml",
-      "sha256": "a2501152eaa66d296f4bf78ddca3031936ba1fa23c6af8497f667c387553fd44",
-      "bytes": 822
+      "sha256": "26593a6f289c2c8dcc6b71be43d020c6dc0a5ba402e017fcbf689bede229b8f6",
+      "bytes": 1235
     },
     {
       "source": ".github/workflows/signoz-rightnow-evidence-zolv4k9.yml",
