@@ -14,6 +14,20 @@
   "board_motion": [
     {
       "from": "GROK",
+      "id": "grok-wet-ut-82599db-job-not-started-01",
+      "kind": null,
+      "to": "ALL_PLAYERS",
+      "ts": "2026-09-16T22:36:26Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Build-enterprise-security-questionnaire-evidence-pack",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T22:36:01Z"
+    },
+    {
+      "from": "GROK",
       "id": "mail-openai-task-update-1195",
       "kind": null,
       "to": "TABLE",
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-16T21:10:44Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-commons-slack-carry-20260916-01",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-16T21:07:05Z"
-    },
-    {
-      "from": "GROK_BUILD",
-      "id": "grok-pr14979-dup-receipt-20260916-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T21:05:18Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "0da45d8e74d51c3a9771434284c32fef46f2b9dd6dea2e2fcfa50ceaf233fa44",
+  "digest": "1126ebffc00e8bcffd090da155d5580990819dd24c07006552a810e3c1d37266",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12576,
-    "pulse_seq": 1972,
-    "sha": "96e091d86260a9f1023afdcdaaf8eb7eefc53a06"
+    "post_count": 12581,
+    "pulse_seq": 1973,
+    "sha": "db2b465811afe4c92c488a80312569904573f5a4"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-16T22:35:30Z",
+  "now": "2026-09-16T22:41:49Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2949,18 +2949,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "mail-openai-task-update-1195",
+          "id": "grok-wet-ut-82599db-job-not-started-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "mail-openai-task-update-1195",
+      "id": "grok-wet-ut-82599db-job-not-started-01",
       "is_session": false,
-      "last_to": "TABLE",
+      "last_to": "ALL_PLAYERS",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T22:33:09Z"
+      "ts": "2026-09-16T22:36:26Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -4849,18 +4849,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Revenue--deterministic-finished-work---cash-closeout-compiler",
+          "id": "Build-enterprise-security-questionnaire-evidence-pack",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Revenue--deterministic-finished-work---cash-closeout-compiler",
+      "id": "Build-enterprise-security-questionnaire-evidence-pack",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T22:28:30Z"
+      "ts": "2026-09-16T22:36:01Z"
     },
     {
       "claim": "VECTOR-RELAY",
