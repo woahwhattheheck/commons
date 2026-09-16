@@ -71,6 +71,24 @@ control = importlib.util.module_from_spec(control_spec)
 control_spec.loader.exec_module(control)
 
 
+def _passthrough_catalog(value, checkout_authority=None):
+    return value
+
+
+def _dummy_checkout_authority(catalog_as_of):
+    authority = control.CHECKOUT_AUTHORITY
+    return {
+        "active": True,
+        "offer_id": authority["offer_id"],
+        "provider": authority["provider"],
+        "public_checkout_page": "agent-rescue.html",
+        "payment_url": authority["payment_url"],
+        "provider_payment_link_id": authority["provider_payment_link_id"],
+        "provider_receipt_sha256": authority["provider_receipt_sha256"],
+        "verified_at_utc": "2026-09-01T00:00:00Z",
+    }
+
+
 class RightNowAwardsIntegrationTests(unittest.TestCase):
     def fixture(self, root: Path) -> None:
         for relative in (
@@ -149,16 +167,29 @@ class RightNowAwardsIntegrationTests(unittest.TestCase):
             "RECEIPTS_PATH": root / "revenue/payment_ready/outreach_receipts",
             "ROOT": root,
         }
+        core = control._core
         for name, value in paths.items():
             original[name] = getattr(control, name)
             setattr(control, name, value)
+            original[f"_core_{name}"] = getattr(core, name)
+            setattr(core, name, value)
         original["validate_catalog"] = control.validate_catalog
-        control.validate_catalog = lambda value: value
+        original["_core_validate_catalog"] = core.validate_catalog
+        original["build_checkout_authority"] = control.build_checkout_authority
+        original["_core_build_checkout_authority"] = core.build_checkout_authority
+        control.validate_catalog = _passthrough_catalog
+        core.validate_catalog = _passthrough_catalog
+        control.build_checkout_authority = _dummy_checkout_authority
+        core.build_checkout_authority = _dummy_checkout_authority
         return original
 
     def restore(self, original: dict[str, object]) -> None:
+        core = control._core
         for name, value in original.items():
-            setattr(control, name, value)
+            if name.startswith("_core_"):
+                setattr(core, name[len("_core_"):], value)
+            else:
+                setattr(control, name, value)
 
     def test_paid_award_is_composed_without_promoting_usd_cash(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
