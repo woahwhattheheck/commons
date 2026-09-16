@@ -227,6 +227,9 @@ def render_external_markdown(result: dict[str, Any]) -> str:
         "- external LLM execution proven: `false`",
         "- model/provider identity proven: `false`",
         "- DARPA Phase-I milestone proven: `false`",
+        "- SBIR eligibility proven: `false`",
+        "- DARPA submission authorized: `false`",
+        "- award/payment proven: `false`",
         "",
         "## Mechanisms",
     ]
