@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 67,
+ "n_open_prs": 69,
  "open_prs": [
   {
    "number": 13779,
@@ -1313,44 +1313,12 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 14826,
-   "author": "woahwhattheheck",
-   "title": "Recover Sun A308734 P18 frontier on current main",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14826",
-   "base_freshness": {
-    "base_sha": "1dd7ff985a933c1eec025d8208fd64b4fd8a3c60",
-    "main_sha": "1dd7ff985a933c1eec025d8208fd64b4fd8a3c60",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "FRESH"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 14827,
    "author": "woahwhattheheck",
    "title": "Recover and harden SWFWMD RTFF forecast-evidence workstream",
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14827",
    "base_freshness": {
     "base_sha": "3f8ae48b0e2769e357dbb4f7215144fbc597e3ba",
-    "main_sha": "1dd7ff985a933c1eec025d8208fd64b4fd8a3c60",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14784,
-   "author": "woahwhattheheck",
-   "title": "Recover Teaming Conversion Control with independently rooted evidence",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14784",
-   "base_freshness": {
-    "base_sha": "76265a2f09c98413d0706e9e472cb04a9163f0c0",
     "main_sha": "1dd7ff985a933c1eec025d8208fd64b4fd8a3c60",
     "ahead_by": null,
     "behind_by": null,
@@ -1393,16 +1361,16 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 14828,
+   "number": 14784,
    "author": "woahwhattheheck",
-   "title": "Revenue: recover ARM26BX06-NV012 decision carrier after authority RED",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14828",
+   "title": "Recover Teaming Conversion Control with independently rooted evidence",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14784",
    "base_freshness": {
-    "base_sha": "1dd7ff985a933c1eec025d8208fd64b4fd8a3c60",
+    "base_sha": "76265a2f09c98413d0706e9e472cb04a9163f0c0",
     "main_sha": "1dd7ff985a933c1eec025d8208fd64b4fd8a3c60",
     "ahead_by": null,
     "behind_by": null,
-    "label": "FRESH"
+    "label": "STALE_BASE"
    },
    "status": "PR_OPEN",
    "road": "pr",
@@ -1419,6 +1387,70 @@
     "ahead_by": null,
     "behind_by": null,
     "label": "FRESH"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14828,
+   "author": "woahwhattheheck",
+   "title": "Revenue: recover ARM26BX06-NV012 decision carrier after authority RED",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14828",
+   "base_freshness": {
+    "base_sha": "1dd7ff985a933c1eec025d8208fd64b4fd8a3c60",
+    "main_sha": "1dd7ff985a933c1eec025d8208fd64b4fd8a3c60",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "FRESH"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14832,
+   "author": "woahwhattheheck",
+   "title": "Legal Aid Chicago: add Copilot training evidence gate",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14832",
+   "base_freshness": {
+    "base_sha": "f8483dfb0d03691a612af45ac213acbb7cc6a52e",
+    "main_sha": "1dd7ff985a933c1eec025d8208fd64b4fd8a3c60",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14826,
+   "author": "woahwhattheheck",
+   "title": "Recover Sun A308734 P18 frontier on current main",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14826",
+   "base_freshness": {
+    "base_sha": "5ba5746b9490ade7805d05a5fd984f7828f36129",
+    "main_sha": "1dd7ff985a933c1eec025d8208fd64b4fd8a3c60",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14833,
+   "author": "woahwhattheheck",
+   "title": "Revenue: recover Pinellas current custody trust boundary",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14833",
+   "base_freshness": {
+    "base_sha": "f8483dfb0d03691a612af45ac213acbb7cc6a52e",
+    "main_sha": "1dd7ff985a933c1eec025d8208fd64b4fd8a3c60",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
    },
    "status": "PR_OPEN",
    "road": "pr",
