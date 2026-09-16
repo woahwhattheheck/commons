@@ -3,7 +3,7 @@ from __future__ import annotations
 import hashlib
 from typing import Any, Iterable, Mapping, Sequence
 from .common import (
-    APProofError, AUTHORITY, PROJECTION_SCHEMA, SCHEMA, SOURCE_HASH_AUTHORITY,
+    APProofError, PROJECTION_SCHEMA, SCHEMA, SOURCE_HASH_AUTHORITY,
     canonical_json_bytes, digest,
 )
 from .validate import semantic_packet
@@ -256,11 +256,24 @@ def compile_packet(packet: Any) -> dict[str, Any]:
         "invoice_total_cents_by_currency": {k: totals[k] for k in sorted(totals)},
         "statement_exception_count": len(statement_exceptions),
     }
+    # Authority is code-owned at the compilation boundary.  The stable public
+    # `approof.AUTHORITY` compatibility object is intentionally not an input:
+    # callers may mutate or replace public module objects without promoting any
+    # projection, verifier result, Oracle shadow row, or audit event.
+    authority = {
+        "oracle_ebs_write_authorized": False,
+        "invoice_approval_authorized": False,
+        "payment_authorized": False,
+        "supplier_contact_authorized": False,
+        "buyer_submission_authorized": False,
+        "contract_award_claimed": False,
+        "revenue_claimed": False,
+    }
     events = ([{"kind": "INVOICE_RESULT", "payload": row} for row in results]
               + [{"kind": "STATEMENT_EXCEPTION", "payload": row}
                  for row in statement_exceptions]
               + [{"kind": "METRICS", "payload": metrics},
-                 {"kind": "AUTHORITY", "payload": AUTHORITY}])
+                 {"kind": "AUTHORITY", "payload": dict(authority)}])
     base = {
         "schema": PROJECTION_SCHEMA, "packet_schema": SCHEMA, "as_of": p["as_of"],
         "packet_sha256": packet_sha,
@@ -268,7 +281,7 @@ def compile_packet(packet: Any) -> dict[str, Any]:
         "invoice_results": results,
         "statement_exceptions": statement_exceptions,
         "oracle_shadow_rows": shadow_rows,
-        "metrics": metrics, "audit_chain": _audit(events), "authority": dict(AUTHORITY),
+        "metrics": metrics, "audit_chain": _audit(events), "authority": dict(authority),
     }
     return {**base, "projection_sha256": digest(base)}
 
