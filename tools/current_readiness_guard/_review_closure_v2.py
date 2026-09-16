@@ -121,6 +121,123 @@ def _direct_authority_facts(node: ast.AST, authority_params: set[str], *, truth:
     return set()
 
 
+def _copy_bound_env(
+    env: Mapping[str, tuple[tuple[ast.AST, frozenset[str]], ...]],
+) -> dict[str, tuple[tuple[ast.AST, frozenset[str]], ...]]:
+    return {name: tuple(values) for name, values in env.items()}
+
+
+def _merge_bound_envs(
+    *environments: Mapping[str, tuple[tuple[ast.AST, frozenset[str]], ...]],
+) -> dict[str, tuple[tuple[ast.AST, frozenset[str]], ...]]:
+    out: dict[str, tuple[tuple[ast.AST, frozenset[str]], ...]] = {}
+    names: set[str] = set()
+    for env in environments:
+        names.update(env)
+    for name in names:
+        seen: set[tuple[str, tuple[str, ...]]] = set()
+        merged: list[tuple[ast.AST, frozenset[str]]] = []
+        for env in environments:
+            for expression, facts in env.get(name, ()):
+                identity = (ast.dump(expression, include_attributes=False), tuple(sorted(facts)))
+                if identity not in seen:
+                    seen.add(identity)
+                    merged.append((expression, facts))
+        if merged:
+            out[name] = tuple(merged)
+    return out
+
+
+def _bind_assignment(
+    statement: ast.stmt,
+    env: dict[str, tuple[tuple[ast.AST, frozenset[str]], ...]],
+    facts: frozenset[str],
+) -> None:
+    value: ast.AST | None = None
+    targets: list[ast.AST] = []
+    if isinstance(statement, ast.Assign):
+        value = statement.value
+        targets = list(statement.targets)
+    elif isinstance(statement, ast.AnnAssign) and statement.value is not None:
+        value = statement.value
+        targets = [statement.target]
+    if value is None:
+        return
+    bound = ((value, facts),)
+    for target in targets:
+        if isinstance(target, ast.Name):
+            env[target.id] = bound
+
+
+def _iter_return_paths(
+    statements: Sequence[ast.stmt],
+    authority_params: set[str],
+    *,
+    facts: frozenset[str] = frozenset(),
+    env: Mapping[str, tuple[tuple[ast.AST, frozenset[str]], ...]] | None = None,
+    condition_facts,
+) -> tuple[
+    list[tuple[ast.AST | None, frozenset[str], dict[str, tuple[tuple[ast.AST, frozenset[str]], ...]]]],
+    bool,
+    frozenset[str],
+    dict[str, tuple[tuple[ast.AST, frozenset[str]], ...]],
+]:
+    out: list[
+        tuple[ast.AST | None, frozenset[str], dict[str, tuple[tuple[ast.AST, frozenset[str]], ...]]]
+    ] = []
+    current = set(facts)
+    current_env = _copy_bound_env(env or {})
+    for statement in statements:
+        if isinstance(statement, ast.Return):
+            out.append((statement.value, frozenset(current), _copy_bound_env(current_env)))
+            return out, False, frozenset(current), current_env
+        if isinstance(statement, ast.Raise):
+            return out, False, frozenset(current), current_env
+        if isinstance(statement, (ast.Assign, ast.AnnAssign)):
+            _bind_assignment(statement, current_env, frozenset(current))
+            continue
+        if isinstance(statement, ast.If):
+            true_facts = frozenset(current | condition_facts(statement.test, authority_params, True))
+            false_facts = frozenset(current | condition_facts(statement.test, authority_params, False))
+            body_paths, body_fall, body_end, body_env = _iter_return_paths(
+                statement.body,
+                authority_params,
+                facts=true_facts,
+                env=current_env,
+                condition_facts=condition_facts,
+            )
+            if statement.orelse:
+                else_paths, else_fall, else_end, else_env = _iter_return_paths(
+                    statement.orelse,
+                    authority_params,
+                    facts=false_facts,
+                    env=current_env,
+                    condition_facts=condition_facts,
+                )
+            else:
+                else_paths, else_fall, else_end, else_env = (
+                    [],
+                    True,
+                    false_facts,
+                    _copy_bound_env(current_env),
+                )
+            out.extend(body_paths)
+            out.extend(else_paths)
+            if body_fall and else_fall:
+                current = set(body_end & else_end)
+                current_env = _merge_bound_envs(body_env, else_env)
+            elif body_fall:
+                current = set(body_end)
+                current_env = body_env
+            elif else_fall:
+                current = set(else_end)
+                current_env = else_env
+            else:
+                return out, False, frozenset(current), current_env
+            continue
+    return out, True, frozenset(current), current_env
+
+
 def _direct_return_paths(
     statements: Sequence[ast.stmt],
     authority_params: set[str],
@@ -128,36 +245,13 @@ def _direct_return_paths(
     facts: frozenset[str] = frozenset(),
     condition_facts,
 ) -> list[tuple[ast.AST | None, frozenset[str]]]:
-    out: list[tuple[ast.AST | None, frozenset[str]]] = []
-    current = set(facts)
-    for statement in statements:
-        if isinstance(statement, ast.Return):
-            out.append((statement.value, frozenset(current)))
-            return out
-        if isinstance(statement, ast.Raise):
-            return out
-        if isinstance(statement, ast.If):
-            true_facts = frozenset(current | condition_facts(statement.test, authority_params, True))
-            false_facts = frozenset(current | condition_facts(statement.test, authority_params, False))
-            out.extend(
-                _direct_return_paths(
-                    statement.body,
-                    authority_params,
-                    facts=true_facts,
-                    condition_facts=condition_facts,
-                )
-            )
-            if statement.orelse:
-                out.extend(
-                    _direct_return_paths(
-                        statement.orelse,
-                        authority_params,
-                        facts=false_facts,
-                        condition_facts=condition_facts,
-                    )
-                )
-            continue
-    return out
+    paths, _, _, _ = _iter_return_paths(
+        statements,
+        authority_params,
+        facts=facts,
+        condition_facts=condition_facts,
+    )
+    return [(expression, path_facts) for expression, path_facts, _env in paths]
 
 
 def _truth_controlled_by_parameter(fn: ast.FunctionDef | ast.AsyncFunctionDef, parameter: str) -> bool:
@@ -452,4 +546,4 @@ def additional_findings(source: str | bytes, *, path: str = "<memory>") -> list[
     return sorted(set([*_surface_crg003_findings(tree, path), *_surface_crg004_findings(tree, path)]))
 
 
-__all__ = ["additional_findings"]
+__all__ = ["additional_findings", "_iter_return_paths"]
