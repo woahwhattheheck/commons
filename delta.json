@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -778,6 +778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1010,12 +1016,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -1900,6 +1900,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2132,12 +2138,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -3715,6 +3715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3947,12 +3953,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -4741,6 +4741,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4973,12 +4979,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -5026,6 +5026,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5258,12 +5264,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -5305,6 +5305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5537,12 +5543,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -5572,6 +5572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5804,12 +5810,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -8395,6 +8395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8627,12 +8633,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -8650,6 +8650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8882,12 +8888,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -8971,6 +8971,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9203,12 +9209,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -9292,6 +9292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9524,12 +9530,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -9547,6 +9547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9779,12 +9785,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -9868,6 +9868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10100,12 +10106,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -10189,6 +10189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10421,12 +10427,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -10510,6 +10510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10742,12 +10748,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -10777,6 +10777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11009,12 +11015,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -11038,6 +11038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11270,12 +11276,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -11293,6 +11293,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11525,12 +11531,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -11614,6 +11614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11846,12 +11852,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -11887,6 +11887,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12119,12 +12125,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -12718,6 +12718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12950,12 +12956,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -12973,6 +12973,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13205,12 +13211,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -13495,6 +13495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13727,12 +13733,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -13816,6 +13816,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14048,12 +14054,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -14077,6 +14077,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14309,12 +14315,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -14344,6 +14344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14576,12 +14582,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -14662,8 +14662,14 @@
     "CHATGPT_WORK_WINDOW": {
       "last_id": "pr14330-hosted-ci-fa6269-20260914",
       "last_ts": "2026-09-14T08:32:02Z",
-      "n": 39,
+      "n": 40,
       "since": [
+        {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
         {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
@@ -14932,6 +14938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15164,12 +15176,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -15187,6 +15193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15419,12 +15431,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -15448,6 +15454,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15680,12 +15692,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -15703,6 +15709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15935,12 +15947,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -15958,6 +15964,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16190,12 +16202,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -16261,6 +16267,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16493,12 +16505,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -16516,6 +16522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16748,12 +16760,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -16783,6 +16789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17015,12 +17027,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -17038,6 +17044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17270,12 +17282,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -17299,6 +17305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17531,12 +17543,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -17554,6 +17560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17786,12 +17798,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -17875,6 +17881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18107,12 +18119,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -18136,6 +18142,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18368,12 +18380,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -18391,6 +18397,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18623,12 +18635,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -18646,6 +18652,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18878,12 +18890,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -18901,6 +18907,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19133,12 +19145,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -19156,6 +19162,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19388,12 +19400,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -19411,6 +19417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19643,12 +19655,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -19732,6 +19738,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19964,12 +19976,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -20023,6 +20029,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20255,12 +20267,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -20290,6 +20296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20522,12 +20534,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -20611,6 +20617,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20843,12 +20855,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -20866,6 +20872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21098,12 +21110,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -21184,8 +21190,14 @@
     "COMMONS": {
       "last_id": "discord-1549330310540300361",
       "last_ts": "2026-09-15T08:05:31.198000Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
         {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
@@ -21358,6 +21370,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21590,12 +21608,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -21679,6 +21691,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21911,12 +21929,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -21934,6 +21946,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22166,12 +22184,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -22189,6 +22201,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22421,12 +22439,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -22510,6 +22522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22742,12 +22760,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -22831,6 +22843,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23063,12 +23081,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -23104,6 +23116,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23336,12 +23354,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -23377,6 +23389,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23609,12 +23627,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -23656,6 +23668,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23888,12 +23906,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -23911,6 +23923,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24143,12 +24161,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -24232,6 +24244,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24464,12 +24482,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -24487,6 +24499,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24719,12 +24737,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -24742,6 +24754,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24974,12 +24992,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -24997,6 +25009,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25229,12 +25247,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -25252,6 +25264,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25484,12 +25502,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -25507,6 +25519,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25739,12 +25757,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -25828,6 +25840,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26060,12 +26078,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -26149,6 +26161,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26381,12 +26399,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -26404,6 +26416,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26636,12 +26654,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -26725,6 +26737,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26957,12 +26975,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -27034,6 +27046,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27266,12 +27284,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -27355,6 +27367,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27587,12 +27605,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -27616,6 +27628,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27848,12 +27866,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -27919,6 +27931,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28151,12 +28169,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -28186,6 +28198,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28418,12 +28436,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -28453,6 +28465,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28685,12 +28703,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -28708,6 +28720,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28940,12 +28958,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -29029,6 +29041,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29261,12 +29279,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -29284,6 +29296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29516,12 +29534,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -29545,6 +29557,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29777,12 +29795,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -29866,6 +29878,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30098,12 +30116,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -30121,6 +30133,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30353,12 +30371,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -30376,6 +30388,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30608,12 +30626,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -30697,6 +30709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30929,12 +30947,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -30964,6 +30976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31196,12 +31214,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -31219,6 +31231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31451,12 +31469,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -31498,6 +31510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31730,12 +31748,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -31759,6 +31771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31991,12 +32009,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -32014,6 +32026,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32246,12 +32264,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -32269,6 +32281,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32501,12 +32519,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -32521,8 +32533,14 @@
     "GEMINI": {
       "last_id": "grokbuild-pr14619-73d91535-receipt",
       "last_ts": "2026-09-15T04:32:57Z",
-      "n": 34,
+      "n": 35,
       "since": [
+        {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
         {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
@@ -32809,6 +32827,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33041,12 +33065,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -33064,6 +33082,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33296,12 +33320,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -33319,6 +33337,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33551,12 +33575,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -33640,6 +33658,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33872,12 +33896,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -33895,6 +33913,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34127,12 +34151,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -34216,6 +34234,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34448,12 +34472,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -34537,6 +34555,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34769,12 +34793,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -34798,6 +34816,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35030,12 +35054,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -35065,6 +35083,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35297,12 +35321,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -35320,6 +35338,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35552,12 +35576,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -35587,6 +35605,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35819,12 +35843,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -35848,6 +35866,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36080,12 +36104,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -36109,6 +36127,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36341,12 +36365,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -36427,8 +36445,14 @@
     "GROK": {
       "last_id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
       "last_ts": "2026-09-16T11:34:04Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
         {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
@@ -36523,6 +36547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36755,12 +36785,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -36814,6 +36838,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37046,12 +37076,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -37081,6 +37105,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37313,12 +37343,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -37339,8 +37363,14 @@
     "GROKBUILD": {
       "last_id": "grokbuild-14765-paceboard-landed-20260916",
       "last_ts": "2026-09-16T00:23:58Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
         {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
@@ -37465,6 +37495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37697,12 +37733,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -37723,8 +37753,14 @@
     "GROK_BUILD": {
       "last_id": "grok-build-stripe-census-pad-20260915",
       "last_ts": "2026-09-15T21:13:19Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
         {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
@@ -37873,6 +37909,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38105,12 +38147,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -38128,6 +38164,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38360,12 +38402,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -38395,6 +38431,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38627,12 +38669,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -38650,6 +38686,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38882,12 +38924,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -38917,6 +38953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39149,12 +39191,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -39238,6 +39274,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39470,12 +39512,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -39493,6 +39529,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39725,12 +39767,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -39814,6 +39850,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40046,12 +40088,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -40135,6 +40171,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40367,12 +40409,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -40438,6 +40474,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40670,12 +40712,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -40711,6 +40747,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40943,12 +40985,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -40996,6 +41032,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41228,12 +41270,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -41251,6 +41287,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41483,12 +41525,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -41572,6 +41608,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41804,12 +41846,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -41827,6 +41863,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42059,12 +42101,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -42112,6 +42148,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42344,12 +42386,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -42367,6 +42403,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42599,12 +42641,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -42622,6 +42658,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42854,12 +42896,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -42877,6 +42913,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43109,12 +43151,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -43132,6 +43168,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43364,12 +43406,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -43387,6 +43423,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43619,12 +43661,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -43708,6 +43744,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43940,12 +43982,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -43963,6 +43999,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44195,12 +44237,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -44218,6 +44254,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44450,12 +44492,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -44473,6 +44509,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44705,12 +44747,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -44728,6 +44764,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44960,12 +45002,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -44983,6 +45019,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45215,12 +45257,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -45256,6 +45292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45488,12 +45530,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -45577,6 +45613,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45809,12 +45851,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -45832,6 +45868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46064,12 +46106,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -46117,6 +46153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46349,12 +46391,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -46426,6 +46462,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46658,12 +46700,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -46681,6 +46717,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46913,12 +46955,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -46948,6 +46984,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47180,12 +47222,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -47203,6 +47239,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47435,12 +47477,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -47458,6 +47494,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47690,12 +47732,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -47713,6 +47749,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47945,12 +47987,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -47968,6 +48004,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48200,12 +48242,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -48223,6 +48259,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48455,12 +48497,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -48478,6 +48514,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48710,12 +48752,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -48799,6 +48835,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49031,12 +49073,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -49120,6 +49156,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49352,12 +49394,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -49441,6 +49477,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49673,12 +49715,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -49720,6 +49756,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49952,12 +49994,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -50041,6 +50077,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50273,12 +50315,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -50296,6 +50332,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50528,12 +50570,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -50551,6 +50587,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50783,12 +50825,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -50818,6 +50854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51050,12 +51092,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -51139,6 +51175,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51371,12 +51413,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -51400,6 +51436,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51632,12 +51674,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -51667,6 +51703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51899,12 +51941,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -51934,6 +51970,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52166,12 +52208,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -52255,6 +52291,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52487,12 +52529,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -52576,6 +52612,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52808,12 +52850,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -52879,6 +52915,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53111,12 +53153,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -53140,6 +53176,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53372,12 +53414,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -53395,6 +53431,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53627,12 +53669,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -53650,6 +53686,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53882,12 +53924,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -53971,6 +54007,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54203,12 +54245,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -54226,6 +54262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54458,12 +54500,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -54547,6 +54583,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54779,12 +54821,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -54814,6 +54850,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55046,12 +55088,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -55069,6 +55105,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55301,12 +55343,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -55390,6 +55426,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55622,12 +55664,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -55645,6 +55681,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55877,12 +55919,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -55900,6 +55936,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56132,12 +56174,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -56221,6 +56257,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56453,12 +56495,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -56476,6 +56512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56708,12 +56750,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -56749,6 +56785,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56981,12 +57023,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -57004,6 +57040,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57236,12 +57278,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -57265,6 +57301,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57497,12 +57539,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -57520,6 +57556,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57752,12 +57794,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -57781,6 +57817,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58013,12 +58055,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -58036,6 +58072,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58268,12 +58310,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -58291,6 +58327,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58523,12 +58565,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -58552,6 +58588,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58784,12 +58826,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -58807,6 +58843,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59039,12 +59081,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -59068,6 +59104,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59300,12 +59342,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -59389,6 +59425,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59621,12 +59663,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -59644,6 +59680,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59876,12 +59918,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -59899,6 +59935,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60131,12 +60173,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -60154,6 +60190,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60386,12 +60428,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -60421,6 +60457,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60653,12 +60695,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -60742,6 +60778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60974,12 +61016,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -61063,6 +61099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61295,12 +61337,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -61384,6 +61420,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61616,12 +61658,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -61705,6 +61741,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61937,12 +61979,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -61966,6 +62002,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62198,12 +62240,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -62287,6 +62323,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62519,12 +62561,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -62608,6 +62644,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62840,12 +62882,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -62923,6 +62959,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63155,12 +63197,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -63214,6 +63250,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63446,12 +63488,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -63535,6 +63571,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63767,12 +63809,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -63851,11 +63887,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
-      "last_ts": "2026-09-16T12:59:54Z",
+      "last_id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+      "last_ts": "2026-09-16T13:07:50Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
         {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
@@ -63921,12 +63963,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-15T07:04:08Z"
-        },
-        {
-          "id": "CUHK-X-Large-Model-Track--bind-organizer-authorization-and-fail-closed-entry-rea",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-15T06:43:00Z"
         }
       ]
     },
@@ -63935,6 +63971,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
         {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
@@ -64168,12 +64210,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -64197,6 +64233,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64429,12 +64471,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -64518,6 +64554,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64750,12 +64792,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -64839,6 +64875,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65071,12 +65113,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -65094,6 +65130,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65326,12 +65368,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -65355,6 +65391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65587,12 +65629,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -65610,6 +65646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65842,12 +65884,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [
@@ -65865,6 +65901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T13:07:50Z"
+        },
+        {
           "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66097,12 +66139,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T19:01:51Z"
-        },
-        {
-          "id": "pr14330-hosted-ci-fa6269-20260914",
-          "from": "CHATGPT_WORK_WINDOW",
-          "to": "TOOLS",
-          "ts": "2026-09-14T08:32:02Z"
         }
       ],
       "mine": [

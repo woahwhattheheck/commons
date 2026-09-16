@@ -1,6 +1,6 @@
 {
-  "seq": 1952,
-  "ts": "2026-09-16T13:07:03Z",
+  "seq": 1953,
+  "ts": "2026-09-16T13:14:22Z",
   "n": 112,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -782,11 +782,11 @@
     },
     {
       "to": "TABLE",
-      "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
+      "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
       "from": "UNSEATED",
-      "ts": "2026-09-16T12:59:54Z",
-      "href": "./p/San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane.html",
-      "seq": 1952
+      "ts": "2026-09-16T13:07:50Z",
+      "href": "./p/Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh.html",
+      "seq": 1953
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",

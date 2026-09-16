@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T13:07:50Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-15T07:56:30Z"
-    },
-    {
-      "from": "GROKBUILD",
-      "id": "grokbuild-pr14691-receipt-20260915-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-15T07:34:14Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "4bbd4c382e54eabff23d8a1fae376623166c62781cb43938236bafb63c70c108",
+  "digest": "4da2be096fb11382ad110cbeb0c1d3eb55af2cb8bda8e45f3c29aaaa92cb3cca",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12368,
-    "pulse_seq": 1952,
-    "sha": "baf1679d2542e3319980fcb7f8d06d4593376261"
+    "post_count": 12369,
+    "pulse_seq": 1953,
+    "sha": "a989d4f3a47c48d5f231d5debe0715d531eed7af"
   },
-  "now": "2026-09-16T13:07:03Z",
+  "now": "2026-09-16T13:14:22Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4799,18 +4799,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
+          "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
+      "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T12:59:54Z"
+      "ts": "2026-09-16T13:07:50Z"
     },
     {
       "claim": "VECTOR-RELAY",
