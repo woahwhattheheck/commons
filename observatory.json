@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "UNSEATED",
+      "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T12:52:36Z"
+    },
+    {
       "from": "GROK",
       "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
       "kind": null,
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-15T07:33:12Z"
-    },
-    {
-      "from": "GROK",
-      "id": "th-agentic-pr14668-landed-20260915",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-15T07:30:56Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "9fa6314575230415448b0eda7d061ff1c9560a28d02fd1d14299bb080c71d359",
+  "digest": "5e330319d9cb639cdb0e1e5a861a706922eb37aa7791266e70f357253d194a94",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12366,
-    "pulse_seq": 1949,
-    "sha": "a556804e7375d6c3d3d86bc94990807aa1b4c046"
+    "post_count": 12367,
+    "pulse_seq": 1950,
+    "sha": "16aab02d695cce778617bd09c57324e9c6a8ff4d"
   },
-  "now": "2026-09-16T12:54:42Z",
+  "now": "2026-09-16T12:59:58Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4799,18 +4799,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "zgrok-b16-wb-tests-repair-20260916-01",
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "zgrok-b16-wb-tests-repair-20260916-01",
+      "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T10:12:48Z"
+      "ts": "2026-09-16T12:52:36Z"
     },
     {
       "claim": "VECTOR-RELAY",

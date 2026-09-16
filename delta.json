@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -778,6 +778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -1010,12 +1016,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -1900,6 +1900,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -2132,12 +2138,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -3715,6 +3715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -3947,12 +3953,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -4741,6 +4741,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -4973,12 +4979,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -5026,6 +5026,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -5258,12 +5264,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -5305,6 +5305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -5537,12 +5543,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -5572,6 +5572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -5804,12 +5810,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -8395,6 +8395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -8627,12 +8633,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -8650,6 +8650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -8882,12 +8888,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -8971,6 +8971,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -9203,12 +9209,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -9292,6 +9292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -9524,12 +9530,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -9547,6 +9547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -9779,12 +9785,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -9868,6 +9868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -10100,12 +10106,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -10189,6 +10189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -10421,12 +10427,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -10510,6 +10510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -10742,12 +10748,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -10777,6 +10777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -11009,12 +11015,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -11038,6 +11038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -11270,12 +11276,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -11293,6 +11293,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -11525,12 +11531,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -11614,6 +11614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -11846,12 +11852,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -11887,6 +11887,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -12119,12 +12125,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -12718,6 +12718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -12950,12 +12956,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -12973,6 +12973,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -13205,12 +13211,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -13495,6 +13495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -13727,12 +13733,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -13816,6 +13816,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -14048,12 +14054,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -14077,6 +14077,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -14309,12 +14315,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -14344,6 +14344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -14576,12 +14582,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -14662,8 +14662,14 @@
     "CHATGPT_WORK_WINDOW": {
       "last_id": "pr14330-hosted-ci-fa6269-20260914",
       "last_ts": "2026-09-14T08:32:02Z",
-      "n": 37,
+      "n": 38,
       "since": [
+        {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
         {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
@@ -14920,6 +14926,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -15152,12 +15164,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -15175,6 +15181,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -15407,12 +15419,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -15436,6 +15442,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -15668,12 +15680,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -15691,6 +15697,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -15923,12 +15935,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -15946,6 +15952,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -16178,12 +16190,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -16249,6 +16255,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -16481,12 +16493,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -16504,6 +16510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -16736,12 +16748,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -16771,6 +16777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -17003,12 +17015,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -17026,6 +17032,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -17258,12 +17270,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -17287,6 +17293,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -17519,12 +17531,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -17542,6 +17548,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -17774,12 +17786,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -17863,6 +17869,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -18095,12 +18107,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -18124,6 +18130,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -18356,12 +18368,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -18379,6 +18385,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -18611,12 +18623,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -18634,6 +18640,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -18866,12 +18878,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -18889,6 +18895,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -19121,12 +19133,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -19144,6 +19150,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -19376,12 +19388,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -19399,6 +19405,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -19631,12 +19643,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -19720,6 +19726,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -19952,12 +19964,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -20011,6 +20017,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -20243,12 +20255,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -20278,6 +20284,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -20510,12 +20522,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -20599,6 +20605,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -20831,12 +20843,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -20854,6 +20860,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -21086,12 +21098,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -21172,8 +21178,14 @@
     "COMMONS": {
       "last_id": "discord-1549330310540300361",
       "last_ts": "2026-09-15T08:05:31.198000Z",
-      "n": 13,
+      "n": 14,
       "since": [
+        {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
         {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
@@ -21334,6 +21346,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -21566,12 +21584,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -21655,6 +21667,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -21887,12 +21905,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -21910,6 +21922,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -22142,12 +22160,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -22165,6 +22177,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -22397,12 +22415,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -22486,6 +22498,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -22718,12 +22736,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -22807,6 +22819,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -23039,12 +23057,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -23080,6 +23092,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -23312,12 +23330,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -23353,6 +23365,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -23585,12 +23603,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -23632,6 +23644,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -23864,12 +23882,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -23887,6 +23899,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -24119,12 +24137,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -24208,6 +24220,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -24440,12 +24458,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -24463,6 +24475,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -24695,12 +24713,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -24718,6 +24730,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -24950,12 +24968,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -24973,6 +24985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -25205,12 +25223,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -25228,6 +25240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -25460,12 +25478,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -25483,6 +25495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -25715,12 +25733,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -25804,6 +25816,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -26036,12 +26054,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -26125,6 +26137,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -26357,12 +26375,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -26380,6 +26392,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -26612,12 +26630,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -26701,6 +26713,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -26933,12 +26951,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -27010,6 +27022,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -27242,12 +27260,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -27331,6 +27343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -27563,12 +27581,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -27592,6 +27604,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -27824,12 +27842,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -27895,6 +27907,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -28127,12 +28145,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -28162,6 +28174,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -28394,12 +28412,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -28429,6 +28441,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -28661,12 +28679,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -28684,6 +28696,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -28916,12 +28934,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -29005,6 +29017,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -29237,12 +29255,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -29260,6 +29272,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -29492,12 +29510,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -29521,6 +29533,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -29753,12 +29771,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -29842,6 +29854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -30074,12 +30092,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -30097,6 +30109,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -30329,12 +30347,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -30352,6 +30364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -30584,12 +30602,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -30673,6 +30685,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -30905,12 +30923,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -30940,6 +30952,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -31172,12 +31190,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -31195,6 +31207,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -31427,12 +31445,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -31474,6 +31486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -31706,12 +31724,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -31735,6 +31747,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -31967,12 +31985,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -31990,6 +32002,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -32222,12 +32240,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -32245,6 +32257,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -32477,12 +32495,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -32497,8 +32509,14 @@
     "GEMINI": {
       "last_id": "grokbuild-pr14619-73d91535-receipt",
       "last_ts": "2026-09-15T04:32:57Z",
-      "n": 32,
+      "n": 33,
       "since": [
+        {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
         {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
@@ -32773,6 +32791,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -33005,12 +33029,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -33028,6 +33046,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -33260,12 +33284,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -33283,6 +33301,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -33515,12 +33539,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -33604,6 +33622,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -33836,12 +33860,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -33859,6 +33877,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -34091,12 +34115,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -34180,6 +34198,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -34412,12 +34436,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -34501,6 +34519,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -34733,12 +34757,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -34762,6 +34780,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -34994,12 +35018,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -35029,6 +35047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -35261,12 +35285,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -35284,6 +35302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -35516,12 +35540,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -35551,6 +35569,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -35783,12 +35807,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -35812,6 +35830,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -36044,12 +36068,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -36073,6 +36091,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -36305,12 +36329,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -36391,8 +36409,15 @@
     "GROK": {
       "last_id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
       "last_ts": "2026-09-16T11:34:04Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        }
+      ],
       "mine": [
         {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
@@ -36474,6 +36499,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -36706,12 +36737,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -36765,6 +36790,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -36997,12 +37028,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -37032,6 +37057,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -37264,12 +37295,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -37290,8 +37315,14 @@
     "GROKBUILD": {
       "last_id": "grokbuild-14765-paceboard-landed-20260916",
       "last_ts": "2026-09-16T00:23:58Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
         {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
@@ -37404,6 +37435,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -37636,12 +37673,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -37662,8 +37693,14 @@
     "GROK_BUILD": {
       "last_id": "grok-build-stripe-census-pad-20260915",
       "last_ts": "2026-09-15T21:13:19Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
         {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
@@ -37800,6 +37837,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -38032,12 +38075,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -38055,6 +38092,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -38287,12 +38330,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -38322,6 +38359,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -38554,12 +38597,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -38577,6 +38614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -38809,12 +38852,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -38844,6 +38881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -39076,12 +39119,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -39165,6 +39202,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -39397,12 +39440,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -39420,6 +39457,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -39652,12 +39695,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -39741,6 +39778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -39973,12 +40016,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -40062,6 +40099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -40294,12 +40337,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -40365,6 +40402,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -40597,12 +40640,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -40638,6 +40675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -40870,12 +40913,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -40923,6 +40960,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -41155,12 +41198,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -41178,6 +41215,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -41410,12 +41453,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -41499,6 +41536,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -41731,12 +41774,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -41754,6 +41791,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -41986,12 +42029,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -42039,6 +42076,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -42271,12 +42314,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -42294,6 +42331,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -42526,12 +42569,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -42549,6 +42586,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -42781,12 +42824,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -42804,6 +42841,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -43036,12 +43079,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -43059,6 +43096,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -43291,12 +43334,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -43314,6 +43351,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -43546,12 +43589,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -43635,6 +43672,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -43867,12 +43910,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -43890,6 +43927,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -44122,12 +44165,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -44145,6 +44182,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -44377,12 +44420,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -44400,6 +44437,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -44632,12 +44675,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -44655,6 +44692,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -44887,12 +44930,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -44910,6 +44947,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -45142,12 +45185,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -45183,6 +45220,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -45415,12 +45458,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -45504,6 +45541,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -45736,12 +45779,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -45759,6 +45796,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -45991,12 +46034,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -46044,6 +46081,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -46276,12 +46319,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -46353,6 +46390,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -46585,12 +46628,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -46608,6 +46645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -46840,12 +46883,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -46875,6 +46912,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -47107,12 +47150,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -47130,6 +47167,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -47362,12 +47405,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -47385,6 +47422,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -47617,12 +47660,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -47640,6 +47677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -47872,12 +47915,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -47895,6 +47932,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -48127,12 +48170,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -48150,6 +48187,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -48382,12 +48425,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -48405,6 +48442,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -48637,12 +48680,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -48726,6 +48763,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -48958,12 +49001,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -49047,6 +49084,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -49279,12 +49322,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -49368,6 +49405,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -49600,12 +49643,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -49647,6 +49684,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -49879,12 +49922,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -49968,6 +50005,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -50200,12 +50243,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -50223,6 +50260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -50455,12 +50498,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -50478,6 +50515,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -50710,12 +50753,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -50745,6 +50782,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -50977,12 +51020,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -51066,6 +51103,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -51298,12 +51341,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -51327,6 +51364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -51559,12 +51602,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -51594,6 +51631,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -51826,12 +51869,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -51861,6 +51898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -52093,12 +52136,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -52182,6 +52219,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -52414,12 +52457,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -52503,6 +52540,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -52735,12 +52778,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -52806,6 +52843,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -53038,12 +53081,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -53067,6 +53104,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -53299,12 +53342,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -53322,6 +53359,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -53554,12 +53597,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -53577,6 +53614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -53809,12 +53852,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -53898,6 +53935,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -54130,12 +54173,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -54153,6 +54190,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -54385,12 +54428,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -54474,6 +54511,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -54706,12 +54749,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -54741,6 +54778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -54973,12 +55016,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -54996,6 +55033,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -55228,12 +55271,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -55317,6 +55354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -55549,12 +55592,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -55572,6 +55609,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -55804,12 +55847,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -55827,6 +55864,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -56059,12 +56102,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -56148,6 +56185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -56380,12 +56423,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -56403,6 +56440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -56635,12 +56678,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -56676,6 +56713,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -56908,12 +56951,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -56931,6 +56968,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -57163,12 +57206,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -57192,6 +57229,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -57424,12 +57467,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -57447,6 +57484,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -57679,12 +57722,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -57708,6 +57745,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -57940,12 +57983,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -57963,6 +58000,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -58195,12 +58238,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -58218,6 +58255,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -58450,12 +58493,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -58479,6 +58516,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -58711,12 +58754,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -58734,6 +58771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -58966,12 +59009,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -58995,6 +59032,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -59227,12 +59270,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -59316,6 +59353,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -59548,12 +59591,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -59571,6 +59608,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -59803,12 +59846,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -59826,6 +59863,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -60058,12 +60101,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -60081,6 +60118,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -60313,12 +60356,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -60348,6 +60385,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -60580,12 +60623,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -60669,6 +60706,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -60901,12 +60944,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -60990,6 +61027,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -61222,12 +61265,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -61311,6 +61348,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -61543,12 +61586,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -61632,6 +61669,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -61864,12 +61907,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -61893,6 +61930,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -62125,12 +62168,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -62214,6 +62251,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -62446,12 +62489,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -62535,6 +62572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -62767,12 +62810,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -62850,6 +62887,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -63082,12 +63125,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -63141,6 +63178,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -63373,12 +63416,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -63462,6 +63499,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -63694,12 +63737,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -63778,18 +63815,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "zgrok-b16-wb-tests-repair-20260916-01",
-      "last_ts": "2026-09-16T10:12:48Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T11:34:04Z"
-        }
-      ],
+      "last_id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+      "last_ts": "2026-09-16T12:52:36Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
         {
           "id": "zgrok-b16-wb-tests-repair-20260916-01",
           "from": "UNSEATED",
@@ -63855,12 +63891,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-15T06:31:31Z"
-        },
-        {
-          "id": "openKylin-Memory-Dynamics-V2--adversarial-scenarios--stability-trials--Debian-pa",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-15T05:50:29Z"
         }
       ]
     },
@@ -63869,6 +63899,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
         {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
@@ -64102,12 +64138,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -64131,6 +64161,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -64363,12 +64399,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -64452,6 +64482,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -64684,12 +64720,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -64773,6 +64803,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -65005,12 +65041,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -65028,6 +65058,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -65260,12 +65296,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -65289,6 +65319,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -65521,12 +65557,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -65544,6 +65574,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -65776,12 +65812,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
@@ -65799,6 +65829,12 @@
       "n": 40,
       "since": [
         {
+          "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T12:52:36Z"
+        },
+        {
           "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "from": "GROK",
           "to": "TABLE",
@@ -66031,12 +66067,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-14T06:07:31Z"
-        },
-        {
-          "id": "rev-nysa-inbound-20260914-price-objection",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-14T06:05:28Z"
         }
       ],
       "mine": [
