@@ -187,11 +187,33 @@ def evaluate_external_actions(raw_scenario: Any, raw_bundle: Any) -> dict[str, A
     return {**core, "receipt": receipt}
 
 
+def _validate_external_result_shape(candidate: Any) -> dict[str, Any]:
+    result = _expect_keys(
+        candidate,
+        {"schema", "scenario_id", "scenario_sha256", "action_bundle_sha256", "mechanisms", "status", "blockers", "authority", "receipt"},
+        where="external action evaluation result",
+    )
+    if result["schema"] != EXTERNAL_RESULT_SCHEMA:
+        raise ContractError("unsupported external action evaluation result schema")
+    if not isinstance(result["mechanisms"], list) or len(result["mechanisms"]) != len(MECHANISMS):
+        raise ContractError("external action evaluation result must contain every mechanism exactly once")
+    receipt = _expect_keys(
+        result["receipt"],
+        {"schema", "result_sha256", "scenario_sha256", "action_bundle_sha256", "evaluation_contract_sha256"},
+        where="external action evaluation receipt",
+    )
+    if receipt["schema"] != EXTERNAL_RECEIPT_SCHEMA:
+        raise ContractError("unsupported external action evaluation receipt schema")
+    return result
+
+
 def verify_external_result(raw_scenario: Any, raw_bundle: Any, candidate: Any) -> bool:
-    if not isinstance(candidate, dict):
+    try:
+        checked = _validate_external_result_shape(candidate)
+        expected = evaluate_external_actions(raw_scenario, raw_bundle)
+        return canonical_bytes(expected) == canonical_bytes(checked)
+    except (UnicodeError, TypeError, ValueError, OverflowError, RecursionError):
         return False
-    expected = evaluate_external_actions(raw_scenario, raw_bundle)
-    return canonical_bytes(expected) == canonical_bytes(candidate)
 
 
 def render_external_markdown(result: dict[str, Any]) -> str:
