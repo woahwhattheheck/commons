@@ -1,0 +1,37 @@
+name: NUMIH AI SAD admission readiness
+on:
+  pull_request:
+    paths:
+      - "revenue/numih_ai_sad_admission_readiness/**"
+      - ".github/workflows/numih-ai-sad-admission-readiness.yml"
+  push:
+    branches: [main]
+    paths:
+      - "revenue/numih_ai_sad_admission_readiness/**"
+      - ".github/workflows/numih-ai-sad-admission-readiness.yml"
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m unittest discover -s revenue/numih_ai_sad_admission_readiness/tests -v
+      - run: python -O -m unittest discover -s revenue/numih_ai_sad_admission_readiness/tests -v
+      - run: python -m py_compile revenue/numih_ai_sad_admission_readiness/compiler.py revenue/numih_ai_sad_admission_readiness/cli.py
+      - name: synthetic retained-byte CLI proof
+        run: |
+          td="$(mktemp -d)"
+          python -m revenue.numih_ai_sad_admission_readiness.cli \
+            revenue/numih_ai_sad_admission_readiness/examples/fictional_partner_packet.json \
+            --evidence-bundle revenue/numih_ai_sad_admission_readiness/examples/fictional_evidence_bundle.json \
+            --json-out "$td/result.json" \
+            --markdown-out "$td/result.md"
+          grep -q '"packet_state": "PACKET_REVIEW_READY"' "$td/result.json"
+          grep -q '"authority_label": "EXACT_RETAINED_BYTES_MATCH_MANIFEST_NOT_EXTERNAL_SEMANTIC_TRUTH"' "$td/result.json"
+          grep -q 'CURRENTNESS_UNVERIFIED' "$td/result.json"
+          grep -q 'not a sponsor score' "$td/result.md"
