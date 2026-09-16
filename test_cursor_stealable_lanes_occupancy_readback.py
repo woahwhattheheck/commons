@@ -36,7 +36,7 @@ KEEP = {
     "lanes.json": "3ac25ce9",
     "roles.json": "9fb3f2c2",
     "ground/HEAVY_LANES.json": "7849eac9",
-    "hub_pages.py": "5d54e4ff",
+    "hub_pages.py": "7bc61c8b",
     "door.js": "de1d570b",
     "api/mcp.py": "393da756",
     "ground/OWNER_NOW.md": "4b2a58ed",

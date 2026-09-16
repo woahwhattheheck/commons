@@ -30,7 +30,7 @@ KEEP = {
     "ground/OWNER_NOW.md": "4b2a58ed",
     "grounding.html": "310d63b2",
     "autogtm.html": "2fe108f4",
-    "hub_pages.py": "5d54e4ff",
+    "hub_pages.py": "7bc61c8b",
     "door.js": "de1d570b",
     "api/mcp.py": "393da756",
     "repo_pulse.py": "298716e9",
