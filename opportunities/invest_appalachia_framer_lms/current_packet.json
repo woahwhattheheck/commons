@@ -15,7 +15,7 @@
   "qualification": {
     "two_lms_platform_implementations": {"state": "MISSING", "evidence_refs": [], "note": "Slack, GitHub, Gmail, and Drive searches found opportunity/teaming material but no retained proof of selecting/configuring/launching two LMS platforms."},
     "adult_learning_packaging": {"state": "HOLD", "evidence_refs": [], "note": "No retained completed-client evidence found yet for packaging non-academic adult-learning materials for online delivery."},
-    "start_capacity_2026_10_13": {"state": "VERIFIED", "evidence_refs": ["Google Calendar primary: 2026-10-13 busy=[] checked 2026-09-16"], "note": "Calendar has no busy interval on the required kickoff/start date; overall project staffing capacity still requires owner review."},
+    "start_capacity_2026_10_13": {"state": "HOLD", "evidence_refs": ["Google Calendar primary: 2026-10-13 busy=[] checked 2026-09-16"], "note": "Primary calendar had no busy interval on 2026-10-13 when checked 2026-09-16; this proves no calendar conflict only, not staffing/project-start capacity."},
     "w9_available": {"state": "HOLD", "evidence_refs": [], "note": "No retained W-9 document located by current Gmail/Drive search."},
     "general_liability_available": {"state": "HOLD", "evidence_refs": [], "note": "No retained general-liability proof located by current Gmail/Drive search."},
     "professional_liability_available": {"state": "HOLD", "evidence_refs": [], "note": "No retained E&O/professional-liability proof located by current Gmail/Drive search."},
