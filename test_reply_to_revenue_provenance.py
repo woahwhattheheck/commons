@@ -144,6 +144,39 @@ class ReplyToRevenueProvenanceTests(unittest.TestCase):
         finally:
             core._bounded_provenance_scalar = original
 
+    def test_unmatched_opt_out_stays_hard_dnr_without_canonical_receipt(self):
+        opt_out = _event(prospect="raw-unmatched-buyer", receipt="missing-receipt")
+        opt_out["requested_classification"] = "OPT_OUT"
+        opt_out["markers"] = ["unsubscribe"]
+        loaded = self._load(_observations(opt_out))
+        funnel = core.build_funnel(receipts=[], observations=loaded)
+        self.assertEqual(funnel["truth"]["inbound_recorded"], 1)
+        contacts = [
+            row
+            for row in funnel["contacts"]
+            if row["prospect_key"] == "raw-unmatched-buyer"
+        ]
+        self.assertEqual(len(contacts), 1)
+        self.assertIs(contacts[0]["hard_dnr"], True)
+        self.assertEqual(contacts[0]["lane"], "CLOSED")
+        self.assertEqual(contacts[0]["next_action"], "DNC/CLOSE")
+
+        still_dnr = core.build_funnel(receipts=[_receipt()], observations=loaded)
+        contacts = [
+            row
+            for row in still_dnr["contacts"]
+            if row["prospect_key"] == "raw-unmatched-buyer"
+        ]
+        self.assertEqual(len(contacts), 1)
+        self.assertIs(contacts[0]["hard_dnr"], True)
+        self.assertEqual(contacts[0]["lane"], "CLOSED")
+
+    def test_empty_receipts_measurement_path_still_builds(self):
+        loaded = self._load(_observations(_event()))
+        funnel = core.build_funnel(receipts=[], observations=loaded)
+        self.assertEqual(funnel["truth"]["canonical_receipts"], 0)
+        self.assertEqual(funnel["truth"]["inbound_recorded"], 1)
+
     def test_valid_receipt_binding_still_builds(self):
         loaded = self._load(_observations(_event()))
         funnel = core.build_funnel(receipts=[_receipt()], observations=loaded)
