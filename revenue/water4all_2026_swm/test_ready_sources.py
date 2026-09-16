@@ -7,8 +7,14 @@ from .test_support import *  # noqa: F401,F403
 
 class ReadyPathTests(unittest.TestCase):
     def test_valid_packet_reaches_owner_review(self):
-        bundle = compile_valid()
+        bundle = compile_valid(mode="CURRENT")
         self.assertEqual(bundle["packet"]["decision"]["status"], "READY_FOR_OWNER_REVIEW")
+        self.assertEqual(bundle["packet"]["decision"]["reason_count"], 0)
+
+    def test_historical_compile_is_hold_only(self):
+        bundle = compile_valid()
+        self.assertEqual(bundle["packet"]["decision"]["status"], "HOLD_FOR_OWNER_REVIEW")
+        self.assertEqual(bundle["packet"]["mode"], "HISTORICAL")
         self.assertEqual(bundle["packet"]["decision"]["reason_count"], 0)
 
     def test_ready_never_authorizes_external_action(self):

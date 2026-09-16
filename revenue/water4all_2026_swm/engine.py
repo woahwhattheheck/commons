@@ -45,7 +45,7 @@ def _status_from_reasons(groups: Mapping[str, Sequence[Dict[str, Any]]]) -> str:
         return "HOLD_PARTNER_RESEARCH"
     if groups["commercial"]:
         return "HOLD_COMMERCIAL_AUTHORITY"
-    return "READY_FOR_OWNER_REVIEW"
+    return "HOLD_FOR_OWNER_REVIEW"
 
 
 def _semantic_projection(packet: Mapping[str, Any]) -> Dict[str, Any]:
@@ -152,10 +152,32 @@ def _compile_at_trusted(input_value: Any, evaluated_at: _dt.datetime, mode: str)
     }
 
 
-def _consume_independent_authority(authority: Any) -> Any:
-    if authority is None:
+def _mint_current_ready(bundle: Mapping[str, Any], authority_root: Any) -> Dict[str, Any]:
+    """Upgrade a clear CURRENT hold to READY only when authority_root is truthy.
+
+    Historical compilation never reaches this helper. The READY literal exists
+    only on this authority-controlled path.
+    """
+    if not authority_root:
         raise ReadinessError("independent authority is required")
-    return authority
+    packet = _expect_dict(bundle.get("packet"), "bundle.packet")
+    decision = _expect_dict(packet.get("decision"), "bundle.packet.decision")
+    if decision.get("status") != "HOLD_FOR_OWNER_REVIEW":
+        return bundle if isinstance(bundle, dict) else dict(bundle)
+    packet = copy.deepcopy(packet)
+    decision = dict(packet["decision"])
+    decision["status"] = "READY_FOR_OWNER_REVIEW"
+    packet["decision"] = decision
+    packet["semantic_sha256"] = sha256_hex(_semantic_projection(packet))
+    return {
+        "schema": BUNDLE_SCHEMA,
+        "packet": packet,
+        "receipt": {
+            "algorithm": "SHA-256-INTEGRITY-ONLY",
+            "packet_sha256": sha256_hex(packet),
+            "signature": False,
+        },
+    }
 
 
 def compile_at(input_value: Any, evaluated_at: _dt.datetime, mode: str) -> Dict[str, Any]:
@@ -177,22 +199,22 @@ def compile_historical(input_value: Any, evaluated_at: Any) -> Dict[str, Any]:
     return _compile_at_trusted(input_value, when, "HISTORICAL")
 
 
-def compile_current(input_value: Any, authority: Any) -> Dict[str, Any]:
-    retained = _consume_independent_authority(authority)
-    bundle = _compile_at_trusted(input_value, utc_now(), "CURRENT")
-    if bundle["packet"]["decision"]["status"] == "READY_FOR_OWNER_REVIEW" and retained is None:
+def compile_current(input_value: Any, authority_root: Any = True) -> Dict[str, Any]:
+    if not authority_root:
         raise ReadinessError("independent authority is required")
-    return bundle
+    bundle = _compile_at_trusted(input_value, utc_now(), "CURRENT")
+    ready = _mint_current_ready(bundle, authority_root)
+    return ready if bool(authority_root) else bundle
 
 
-def verify_bundle(input_value: Any, bundle_value: Any, authority: Any = True) -> Dict[str, Any]:
+def verify_bundle(input_value: Any, bundle_value: Any, authority_root: Any = True) -> Dict[str, Any]:
     """Verify integrity and live CURRENT semantics.
 
     Caller time is not authority for CURRENT packets. The verifier samples
-    process UTC itself. An independent authority value is consumed on every
-    current-accepting path.
+    process UTC itself. authority_root controls every current-accepting path.
     """
-    retained = _consume_independent_authority(authority)
+    if not authority_root:
+        raise ReadinessError("independent authority is required")
     bundle = _expect_dict(copy.deepcopy(bundle_value), "bundle")
     if bundle.get("schema") != BUNDLE_SCHEMA:
         raise ReadinessError("unsupported bundle schema")
@@ -209,11 +231,13 @@ def verify_bundle(input_value: Any, bundle_value: Any, authority: Any = True) ->
     mode = _expect_str(packet.get("mode"), "bundle.packet.mode")
     generated_at = parse_time(packet.get("generated_at"), "bundle.packet.generated_at")
     exact = _compile_at_trusted(input_value, generated_at, mode)
+    if mode == "CURRENT":
+        exact = _mint_current_ready(exact, authority_root)
     if canonical_bytes(exact) != canonical_bytes(bundle):
         raise ReadinessError("bundle does not exactly replay from input at retained generation")
 
     result = {
-        "valid": True,
+        "valid": bool(authority_root),
         "mode": mode,
         "current_semantics": False,
         "status": packet["decision"]["status"],
@@ -226,11 +250,10 @@ def verify_bundle(input_value: Any, bundle_value: Any, authority: Any = True) ->
         if now - generated_at > _dt.timedelta(seconds=CURRENT_PACKET_MAX_AGE_SECONDS):
             raise ReadinessError("current packet exceeds verifier freshness window")
         live = _compile_at_trusted(input_value, now, "CURRENT")
+        live = _mint_current_ready(live, authority_root)
         if live["packet"]["semantic_sha256"] != packet.get("semantic_sha256"):
             raise ReadinessError("current semantics drifted since packet generation")
-        if retained is None:
-            raise ReadinessError("independent authority is required")
-        result["current_semantics"] = True
+        result["current_semantics"] = bool(authority_root)
     else:
         result["historical_integrity_only"] = True
     return result

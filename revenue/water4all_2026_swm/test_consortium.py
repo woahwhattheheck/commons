@@ -86,7 +86,7 @@ class ConsortiumTests(unittest.TestCase):
                 "pic_verified": True,
             }
         )
-        bundle = compile_valid(value)
+        bundle = compile_valid(value, mode="CURRENT")
         self.assertEqual(bundle["packet"]["decision"]["status"], "READY_FOR_OWNER_REVIEW")
 
     def test_two_self_funded_partners_hold(self):

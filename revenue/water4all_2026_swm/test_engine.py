@@ -26,6 +26,32 @@ class PackagePublicApiTests(unittest.TestCase):
         with self.assertRaisesRegex(ReadinessError, "cannot mint CURRENT"):
             compile_at(base_valid(), T0, "CURRENT")
 
+    def test_authority_root_controls_current_ready(self):
+        from .test_support import ReadinessError, base_valid, compile_current
+
+        value = base_valid()
+        ready = compile_current(value, True)
+        self.assertEqual(ready["packet"]["decision"]["status"], "READY_FOR_OWNER_REVIEW")
+        with self.assertRaisesRegex(ReadinessError, "independent authority"):
+            compile_current(value, False)
+        with self.assertRaisesRegex(ReadinessError, "independent authority"):
+            compile_current(value, None)
+
+    def test_current_readiness_guard_is_clear_on_engine_module(self):
+        from pathlib import Path
+
+        from tools.current_readiness_guard.guard import scan_paths
+
+        root = Path(__file__).resolve().parents[2]
+        findings = scan_paths(
+            ["revenue/water4all_2026_swm/engine.py"],
+            root=root,
+        )
+        self.assertEqual(
+            [(item.rule, item.function) for item in findings],
+            [],
+        )
+
 
 __all__ = [
     "PackagePublicApiTests",

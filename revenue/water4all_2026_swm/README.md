@@ -57,7 +57,8 @@ Decision states are:
 - `HOLD_TECHNICAL_EVIDENCE`
 - `HOLD_PARTNER_RESEARCH`
 - `HOLD_COMMERCIAL_AUTHORITY`
-- `READY_FOR_OWNER_REVIEW`
+- `HOLD_FOR_OWNER_REVIEW` — historical compile never mints CURRENT READY
+- `READY_FOR_OWNER_REVIEW` — CURRENT only, and only when `authority_root` is truthy
 
 Even `READY_FOR_OWNER_REVIEW` keeps every external authority bit false.
 
