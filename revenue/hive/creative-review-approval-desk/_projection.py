@@ -25,6 +25,7 @@ from _validation import (
     sha256_json,
 )
 
+
 def _derive(manifest_without_derived: dict[str, Any]) -> dict[str, Any]:
     required = {"schema", "campaign", "events", "assets"}
     if type(manifest_without_derived) is not dict or set(manifest_without_derived) != required:
@@ -65,6 +66,16 @@ def _derive(manifest_without_derived: dict[str, Any]) -> dict[str, Any]:
             for event in events
         )
 
+    def latest_event(kind: str, key: dict[str, Any]) -> dict[str, Any] | None:
+        """Return the latest event of ``kind`` for one semantic state key."""
+        for event in reversed(events):
+            if type(event) is not dict or event.get("event_kind") != kind:
+                continue
+            payload = event.get("payload")
+            if type(payload) is dict and all(payload.get(name) == value for name, value in key.items()):
+                return event
+        return None
+
     assets_raw = manifest_without_derived["assets"]
     if type(assets_raw) is not list:
         raise InvalidInput("manifest assets must be an array")
@@ -85,12 +96,27 @@ def _derive(manifest_without_derived: dict[str, Any]) -> dict[str, Any]:
     has_review = False
     if not audit_ok:
         campaign_holds.append(audit_reason or "AUDIT_INVALID")
-    campaign_event_kind = "CAMPAIGN_CREATED" if campaign["revision"] == 1 else "CAMPAIGN_REQUIREMENTS_REVISED"
-    if not has_event(
-        campaign_event_kind,
-        {"revision": campaign["revision"], "spec_sha256": campaign["spec_sha256"]},
+    expected_campaign_kind = "CAMPAIGN_CREATED" if campaign["revision"] == 1 else "CAMPAIGN_REQUIREMENTS_REVISED"
+    latest_campaign_event = next(
+        (
+            event
+            for event in reversed(events)
+            if type(event) is dict
+            and event.get("event_kind") in {"CAMPAIGN_CREATED", "CAMPAIGN_REQUIREMENTS_REVISED"}
+        ),
+        None,
+    )
+    expected_campaign_payload = {"revision": campaign["revision"], "spec_sha256": campaign["spec_sha256"]}
+    if (
+        type(latest_campaign_event) is not dict
+        or latest_campaign_event.get("event_kind") != expected_campaign_kind
+        or type(latest_campaign_event.get("payload")) is not dict
+        or not all(
+            latest_campaign_event["payload"].get(key) == value
+            for key, value in expected_campaign_payload.items()
+        )
     ):
-        campaign_holds.append("CAMPAIGN_STATE_NOT_AUDIT_BOUND")
+        campaign_holds.append("CAMPAIGN_STATE_NOT_LATEST_AUDIT")
     for requirement in spec["assets"]:
         asset_id = requirement["asset_id"]
         item = by_id.get(asset_id)
@@ -143,24 +169,27 @@ def _derive(manifest_without_derived: dict[str, Any]) -> dict[str, Any]:
                 holds.append("MEDIA_TYPE_MISMATCH")
             metadata = normalize_metadata(version["metadata"])
             holds.extend(_metadata_matches(metadata, requirement["constraints"]))
-            if not has_event(
-                "ASSET_VERSION_SUBMITTED",
-                {
-                    "asset_id": asset_id,
-                    "version": version["version"],
-                    "content_sha256": version["content_sha256"],
-                    "content_size": version["content_size"],
-                    "file_name": version["file_name"],
-                    "media_type": version["media_type"],
-                    "metadata": metadata,
-                    "provenance_ref": version["provenance_ref"],
-                    "author_id": version["author_id"],
-                },
+            expected_version_payload = {
+                "asset_id": asset_id,
+                "version": version["version"],
+                "content_sha256": version["content_sha256"],
+                "content_size": version["content_size"],
+                "file_name": version["file_name"],
+                "media_type": version["media_type"],
+                "metadata": metadata,
+                "provenance_ref": version["provenance_ref"],
+                "author_id": version["author_id"],
+            }
+            latest_version_event = latest_event("ASSET_VERSION_SUBMITTED", {"asset_id": asset_id})
+            if (
+                type(latest_version_event) is not dict
+                or latest_version_event.get("payload") != expected_version_payload
             ):
-                holds.append("ASSET_STATE_NOT_AUDIT_BOUND")
+                holds.append("ASSET_STATE_NOT_LATEST_AUDIT")
             current_version = version["version"]
             revision = campaign["revision"]
             assignment_by_role: dict[str, str] = {}
+            assignment_event_ordinal_by_role: dict[str, int] = {}
             for assignment in assignments:
                 assignment = _exact_dict(
                     assignment,
@@ -185,17 +214,21 @@ def _derive(manifest_without_derived: dict[str, Any]) -> dict[str, Any]:
                     continue
                 if spec["policy"]["prohibit_author_review"] and reviewer == version["author_id"]:
                     holds.append("AUTHOR_ASSIGNED_AS_REVIEWER")
-                if not has_event(
-                    "REVIEWER_ASSIGNED",
-                    {
-                        "asset_id": asset_id,
-                        "campaign_revision": revision,
-                        "asset_version": current_version,
-                        "role": role,
-                        "reviewer_id": reviewer,
-                    },
+                assignment_key = {
+                    "asset_id": asset_id,
+                    "campaign_revision": revision,
+                    "asset_version": current_version,
+                    "role": role,
+                }
+                latest_assignment_event = latest_event("REVIEWER_ASSIGNED", assignment_key)
+                expected_assignment_payload = {**assignment_key, "reviewer_id": reviewer}
+                if (
+                    type(latest_assignment_event) is not dict
+                    or latest_assignment_event.get("payload") != expected_assignment_payload
                 ):
-                    holds.append(f"ASSIGNMENT_NOT_AUDIT_BOUND:{role}")
+                    holds.append(f"ASSIGNMENT_NOT_LATEST_AUDIT:{role}")
+                else:
+                    assignment_event_ordinal_by_role[role] = latest_assignment_event["ordinal"]
                 assignment_by_role[role] = reviewer
             if spec["policy"]["require_distinct_reviewers"]:
                 reviewers = list(assignment_by_role.values())
@@ -256,9 +289,12 @@ def _derive(manifest_without_derived: dict[str, Any]) -> dict[str, Any]:
                     },
                 ):
                     holds.append(f"ANNOTATION_NOT_AUDIT_BOUND:{annotation_id}")
+                latest_resolution_event = latest_event("ANNOTATION_RESOLVED", {"annotation_id": annotation_id})
                 if annotation["status"] == "OPEN":
                     if annotation["resolved_at"] is not None or annotation["resolved_by"] is not None:
                         holds.append("OPEN_ANNOTATION_HAS_RESOLUTION")
+                    if latest_resolution_event is not None:
+                        holds.append("OPEN_ANNOTATION_HAS_AUDIT_RESOLUTION")
                     if not assigned:
                         holds.append("UNASSIGNED_OPEN_ANNOTATION")
                     open_annotations.append(annotation_id)
@@ -269,13 +305,14 @@ def _derive(manifest_without_derived: dict[str, Any]) -> dict[str, Any]:
                     except InvalidInput:
                         holds.append("INVALID_ANNOTATION_RESOLUTION")
                         continue
-                    if not has_event(
-                        "ANNOTATION_RESOLVED",
-                        {
-                            "annotation_id": annotation_id,
-                            "asset_id": asset_id,
-                            "resolver_id": resolver,
-                        },
+                    expected_resolution_payload = {
+                        "annotation_id": annotation_id,
+                        "asset_id": asset_id,
+                        "resolver_id": resolver,
+                    }
+                    if (
+                        type(latest_resolution_event) is not dict
+                        or latest_resolution_event.get("payload") != expected_resolution_payload
                     ):
                         holds.append(f"RESOLUTION_NOT_AUDIT_BOUND:{annotation_id}")
                 else:
@@ -315,22 +352,35 @@ def _derive(manifest_without_derived: dict[str, Any]) -> dict[str, Any]:
                 if assignment_by_role.get(role) != disposition_reviewer:
                     holds.append("UNASSIGNED_DISPOSITION")
                     continue
-                event = event_by_ordinal.get(disposition["event_ordinal"])
-                expected_payload = {
+                disposition_key = {
                     "asset_id": asset_id,
                     "campaign_revision": revision,
                     "asset_version": current_version,
                     "role": role,
+                }
+                expected_payload = {
+                    **disposition_key,
                     "reviewer_id": disposition_reviewer,
                     "decision": disposition["decision"],
                     "note": disposition["note"],
                 }
+                event = event_by_ordinal.get(disposition["event_ordinal"])
+                latest_disposition_event = latest_event("REVIEW_DISPOSITION_RECORDED", disposition_key)
+                assignment_ordinal = assignment_event_ordinal_by_role.get(role)
                 if (
                     type(event) is not dict
                     or event.get("event_kind") != "REVIEW_DISPOSITION_RECORDED"
                     or event.get("payload") != expected_payload
                 ):
                     holds.append(f"DISPOSITION_NOT_AUDIT_BOUND:{role}")
+                if (
+                    type(latest_disposition_event) is not dict
+                    or latest_disposition_event.get("ordinal") != disposition["event_ordinal"]
+                    or latest_disposition_event.get("payload") != expected_payload
+                    or type(assignment_ordinal) is not int
+                    or disposition["event_ordinal"] <= assignment_ordinal
+                ):
+                    holds.append(f"DISPOSITION_NOT_LATEST_AUDIT:{role}")
                 disposition_by_role[role] = disposition
                 if disposition["decision"] == "CHANGES_REQUESTED":
                     changes.append(f"CHANGES_REQUESTED:{role}")
