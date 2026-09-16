@@ -8,7 +8,9 @@ import pytest
 from research.sun_a308734_ternary5.ternary5 import (
     Ternary5Witness,
     bad_prime_obstructions,
+    certify_b_menu_failure,
     certify_bounded_failure,
+    certify_fixed_menu_size_at_most_two,
     find_witness,
     lift_witness_by_25,
     primitive_25_core,
@@ -16,6 +18,9 @@ from research.sun_a308734_ternary5.ternary5 import (
 
 
 EVIDENCE = Path(__file__).with_name("evidence") / "bounded_shortcut_falsifiers_v1.json"
+FIXED_MENU_EVIDENCE = (
+    Path(__file__).with_name("evidence") / "fixed_menu_falsifiers_v1.json"
+)
 
 
 def test_source_base_case_and_local_congruence() -> None:
@@ -55,6 +60,40 @@ def test_b_at_most_one_shortcut_fails_but_conjecture_witness_exists() -> None:
     witness.verify(1_595_477)
 
 
+def test_nonconsecutive_b_menu_zero_two_is_exactly_falsified() -> None:
+    rows = certify_b_menu_failure(1_750_109, (0, 2))
+    assert len(rows) == 15
+    assert {row["b"] for row in rows} == {0, 2}
+
+    witness = Ternary5Witness(403, 1260, 1, 1)
+    witness.verify(1_750_109)
+    assert witness.b not in {0, 2}
+
+
+@pytest.mark.parametrize(
+    ("menu", "target", "row_count"),
+    [
+        ((1,), 5, 0),
+        ((1, 2), 5, 0),
+        ((0,), 12_233, 6),
+        ((0, 1), 1_595_477, 17),
+        ((0, 2), 1_750_109, 15),
+        ((0, 3), 12_233, 6),
+        ((0, 100_000), 12_233, 6),
+    ],
+)
+def test_every_fixed_b_menu_of_size_at_most_two_is_excluded(
+    menu: tuple[int, ...], target: int, row_count: int
+) -> None:
+    certificate = certify_fixed_menu_size_at_most_two(menu)
+    assert certificate["b_values"] == list(menu)
+    assert certificate["n"] == target
+    assert len(certificate["positive_residual_failures"]) == row_count
+    witness = Ternary5Witness(**certificate["outside_menu_witness"])
+    witness.verify(target)
+    assert witness.b not in menu
+
+
 def test_evidence_fixture_replays_exactly() -> None:
     fixture = json.loads(EVIDENCE.read_text(encoding="utf-8"))
     assert fixture["status"] == "FINITE_EXACT_EVIDENCE_NOT_FULL_PROOF"
@@ -65,6 +104,17 @@ def test_evidence_fixture_replays_exactly() -> None:
         if declared:
             witness = Ternary5Witness(**declared)
             witness.verify(case["n"])
+
+
+def test_fixed_menu_fixture_replays_exactly() -> None:
+    fixture = json.loads(FIXED_MENU_EVIDENCE.read_text(encoding="utf-8"))
+    assert fixture["status"] == "FINITE_EXACT_EVIDENCE_NOT_FULL_PROOF"
+    case = fixture["cases"][0]
+    rows = certify_b_menu_failure(case["n"], case["b_values"])
+    assert len(rows) == case["expected_positive_residual_failures"]
+    witness = Ternary5Witness(**case["outside_menu_witness"])
+    witness.verify(case["n"])
+    assert witness.b not in case["b_values"]
 
 
 def test_known_obstruction_certificate() -> None:
