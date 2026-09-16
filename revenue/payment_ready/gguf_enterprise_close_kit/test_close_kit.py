@@ -49,6 +49,8 @@ class AuthorityTests(unittest.TestCase):
         self.assertEqual(result["term_calendar_days"], 10)
         self.assertEqual(result["m1_amount_usd"], 6000)
         self.assertEqual(result["m2_amount_usd"], 6000)
+        self.assertEqual(result["m2_due"], "on AT1-AT6 acceptance")
+        self.assertEqual(result["currency"], "USD")
         self.assertEqual(result["acceptance_ids"], list(ACCEPTANCE_IDS))
         self.assertEqual(result["public_surface_kind"], "PURCHASE_INTENT_ONLY")
         self.assertFalse(result["payment_collection_on_public_surface"])
@@ -73,6 +75,20 @@ class AuthorityTests(unittest.TestCase):
         pack = strict_load(PACK)
         recovery = strict_load(RECOVERY)
         recovery["offer"]["acceptance_tests"][-1] = "AT7"
+        with self.assertRaises(ContractError):
+            validate_authority_docs(pack, recovery)
+
+    def test_m2_due_term_is_bound(self):
+        pack = strict_load(PACK)
+        recovery = strict_load(RECOVERY)
+        pack["offer"]["milestones"][1]["due"] = "on metric lift"
+        with self.assertRaises(ContractError):
+            validate_authority_docs(pack, recovery)
+
+    def test_currency_drift_fails_closed(self):
+        pack = strict_load(PACK)
+        recovery = strict_load(RECOVERY)
+        pack["offer"]["currency"] = "EUR"
         with self.assertRaises(ContractError):
             validate_authority_docs(pack, recovery)
 
@@ -138,6 +154,18 @@ class IntakeTests(unittest.TestCase):
         result = validate_intake(doc)
         self.assertEqual(result["qualification_state"], "READY_FOR_OWNER_PRIVATE_REVIEW")
 
+    def test_raw_model_public_allowed_false_is_a_valid_boundary_flag(self):
+        doc = intake()
+        self.assertFalse(doc["security"]["raw_model_public_allowed"])
+        result = validate_intake(doc)
+        self.assertEqual(result["qualification_state"], "READY_FOR_OWNER_PRIVATE_REVIEW")
+
+    def test_raw_model_field_is_rejected_as_sensitive(self):
+        doc = intake()
+        doc["gguf"]["raw_model"] = "do-not-store-this"
+        with self.assertRaises(ContractError):
+            validate_intake(doc)
+
     def test_raw_sensitive_field_is_rejected_before_schema_use(self):
         doc = intake()
         doc["password"] = "do-not-store-this"
@@ -152,6 +180,8 @@ class AcceptanceTests(unittest.TestCase):
         self.assertTrue(all(result["tests"].values()))
         self.assertEqual(result["verdict"], "AT1_AT6_EVIDENCE_READY_FOR_CUSTOMER_REVIEW")
         self.assertFalse(result["payment_reference_proves_acceptance"])
+        self.assertFalse(result["AT4_verified_receipt_binding"])
+        self.assertFalse(result["AT6_verified_receipt_binding"])
         for field in AUTHORITY_FALSE:
             self.assertFalse(result[field])
 
@@ -175,6 +205,14 @@ class AcceptanceTests(unittest.TestCase):
         doc["delivery_receipt"]["artifact_hashes"][-2] = "7777777777777777777777777777777777777777777777777777777777777777"
         result = evaluate_acceptance(intake(), doc)
         self.assertFalse(result["tests"]["AT6"])
+
+    def test_random_delivery_receipt_hash_is_not_verified_binding(self):
+        doc = evidence()
+        doc["delivery_receipt"]["receipt_sha256"] = "7777777777777777777777777777777777777777777777777777777777777777"
+        result = evaluate_acceptance(intake(), doc)
+        self.assertFalse(result["tests"]["AT6"])
+        self.assertFalse(result["AT6_verified_receipt_binding"])
+        self.assertEqual(result["verdict"], "HOLD_ACCEPTANCE_EVIDENCE")
 
     def test_engagement_identity_cannot_cross_contaminate(self):
         doc = evidence()
@@ -211,6 +249,16 @@ class ClosePacketTests(unittest.TestCase):
     def test_forged_authority_terms_fail_even_with_recomputed_receipt(self):
         auth = authority()
         auth["fixed_amount_usd"] = 1
+        unsigned = dict(auth)
+        unsigned.pop("receipt_sha256", None)
+        auth["receipt_sha256"] = sha256_hex(canonical_json(unsigned))
+        with self.assertRaises(ContractError):
+            compile_close_packet(auth, intake(), evidence())
+
+    def test_forged_source_digests_and_truth_fail_even_with_recomputed_receipt(self):
+        auth = authority()
+        auth["pack_sha256"] = "7777777777777777777777777777777777777777777777777777777777777777"
+        auth["canonical_collected_cash_usd"] = 12000
         unsigned = dict(auth)
         unsigned.pop("receipt_sha256", None)
         auth["receipt_sha256"] = sha256_hex(canonical_json(unsigned))
