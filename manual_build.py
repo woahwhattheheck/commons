@@ -38,6 +38,15 @@ def cash_section_lines(data: dict) -> list[str]:
         lines.append("- [%s](%s)" % (door["label"], _manual_link(door["href"])))
     if cash.get("shelf"):
         lines += ["", "Shelf: [tools-cash.html](%s)." % _manual_link(cash["shelf"])]
+    # KEEP Larger fixed on every rebuild (hub_pages LIVE_CASH_PRODUCTS_HTML parallel).
+    # Product pages own checkout; do not invent Stripe URLs here.
+    lines += [
+        "",
+        "**Larger fixed engagements** (separate product pages; checkout/intent stays there): "
+        "[GGUF diagnostic · $12,000 / 10 days](../diagnostic.html) · "
+        "[White Box pilot · $30,000 / 30 days](../commercial.html). "
+        "Not remints of tip SKUs.",
+    ]
     return lines + [""]
 
 
