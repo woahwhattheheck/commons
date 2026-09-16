@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "GROK",
+      "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T11:34:04Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "zgrok-b16-wb-tests-repair-20260916-01",
       "kind": null,
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-15T07:30:56Z"
-    },
-    {
-      "from": "GROK",
-      "id": "receipt-14690-overlap-14484",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-15T07:30:41Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "d90f8407a0acb0b0956bda009f0cc4edbfe78064ae99cf7ab6b706f15731b4da",
+  "digest": "43fde85a16e4a5f77a4c492c3b898d099aa6b542bf86c07e2ad09c7cc70e0697",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12365,
-    "pulse_seq": 1943,
-    "sha": "f737b102127ef5c3b5ba337a02f200b13facdc7f"
+    "post_count": 12366,
+    "pulse_seq": 1945,
+    "sha": "c18cf0e2847070267bcd6f1da1ef6820c86db325"
   },
-  "now": "2026-09-16T10:34:35Z",
+  "now": "2026-09-16T12:06:16Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2899,18 +2899,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "mcp-gemini-8c993288ce0c14481b0055e4",
+          "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "mcp-gemini-8c993288ce0c14481b0055e4",
+      "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T08:34:03Z"
+      "ts": "2026-09-16T11:34:04Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -4807,7 +4807,7 @@
       "id": "zgrok-b16-wb-tests-repair-20260916-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-16T10:12:48Z"
