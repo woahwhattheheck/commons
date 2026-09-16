@@ -11,18 +11,17 @@ def freeze_call_graph(
     *roots: Callable[..., Any],
     bindings: Iterable[tuple[object, str]] = (),
 ) -> Callable[[], bool]:
-    """Capture the reachable Python call graph and return an integrity guard.
+    """Capture a transitive Python call graph and return a closure-only guard.
 
-    The guard records identities of every global used by the supplied Python
-    function roots. When a reachable global is a module or class, attributes
-    named by that function's bytecode are captured too; Python function-valued
-    attributes are traversed recursively. This closes the common "stable
-    function object, mutable __globals__" hole without making historical/test
-    helpers inaccessible.
+    Every global used by the supplied Python function roots is identity-bound.
+    Module/class attributes named by bytecode are identity-bound too, and any
+    Python function-valued dependency is traversed recursively. This detects the
+    important case where a stable function object still resolves mutable values
+    from its live ``__globals__`` mapping.
 
-    The returned function keeps all snapshots in closure cells and uses only
-    captured builtins while checking them, so rebinding this module after import
-    cannot bless a modified authority graph.
+    The returned guard accepts no arguments and keeps its snapshots plus the
+    builtins it needs in closure cells, so callers cannot supply alternate
+    snapshots/check primitives through Python keyword/default injection.
     """
 
     global_bindings: list[tuple[dict[str, Any], str, object]] = []
@@ -68,9 +67,9 @@ def freeze_call_graph(
             if isinstance(value, FunctionType):
                 capture_function(value)
             elif isinstance(value, (ModuleType, type)):
-                # co_names contains both global and attribute names. Capturing
-                # matching attributes is intentionally conservative: a benign
-                # unrelated rebind may fail closed, but cannot mint CURRENT.
+                # co_names mixes global and attribute names. Conservative
+                # over-binding is intentional: it may fail closed on an
+                # irrelevant monkeypatch, but it cannot mint CURRENT.
                 for attr_name in names:
                     if attr_name == name:
                         continue
@@ -88,26 +87,21 @@ def freeze_call_graph(
     attrs_snapshot = tuple(attr_bindings)
     functions_snapshot = tuple(function_bindings)
     missing = _MISSING
+    get_attr = getattr
+    get_vars = vars
 
-    def intact(
-        _globals: tuple[tuple[dict[str, Any], str, object], ...] = globals_snapshot,
-        _attrs: tuple[tuple[object, str, object, bool], ...] = attrs_snapshot,
-        _funcs: tuple[tuple[FunctionType, object, object, object], ...] = functions_snapshot,
-        _missing: object = missing,
-        _getattr: Callable[[object, str, object], object] = getattr,
-        _vars: Callable[[object], dict[str, Any]] = vars,
-    ) -> bool:
-        for namespace, name, expected in _globals:
-            if namespace.get(name, _missing) is not expected:
+    def intact() -> bool:
+        for namespace, name, expected in globals_snapshot:
+            if namespace.get(name, missing) is not expected:
                 return False
-        for owner, name, expected, is_namespace in _attrs:
+        for owner, name, expected, is_namespace in attrs_snapshot:
             if is_namespace:
-                actual = _vars(owner).get(name, _missing)
+                actual = get_vars(owner).get(name, missing)
             else:
-                actual = _getattr(owner, name, _missing)
+                actual = get_attr(owner, name, missing)
             if actual is not expected:
                 return False
-        for fn, code, defaults, kwdefaults in _funcs:
+        for fn, code, defaults, kwdefaults in functions_snapshot:
             if fn.__code__ is not code or fn.__defaults__ is not defaults or fn.__kwdefaults__ is not kwdefaults:
                 return False
         return True

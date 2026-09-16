@@ -28,39 +28,46 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def main(
-    argv: list[str] | None = None,
-    _assert_runtime=assert_current_runtime,
-    _compile=compile_current,
-    _verify=verify_current_authority,
-    _render=render_current_markdown,
-    _read=read_json_file,
-    _write=write_exclusive,
-    _canonical=canonical_json,
-) -> int:
-    args = build_parser().parse_args(argv)
-    try:
-        # Fence the graph before any authority-bearing ingress. The CURRENT
-        # wrappers repeat the fence before/after clock and verification work.
-        _assert_runtime()
-        if args.command == "compile":
-            packet = _read(args.input)
-            report = _compile(packet)
-            _write(args.output, _canonical(report) + "\n")
-            if args.markdown:
-                _write(args.markdown, _render(report))
-            print(report["state"])
-            print(report["receipt_sha256"])
-            return 0 if report["state"] == "READY_FOR_OWNER_QUOTE_REVIEW" else 2
+def _build_main(parser_factory, assert_runtime, compile_current_fn, verify_current_fn, render_fn, read_fn, write_fn, canonical_fn):
+    # Keep CURRENT dependencies in closure cells so main(argv) has no hidden
+    # caller-overridable trust/clock/provider keyword arguments.
+    def main(argv: list[str] | None = None) -> int:
+        args = parser_factory().parse_args(argv)
+        try:
+            assert_runtime()
+            if args.command == "compile":
+                packet = read_fn(args.input)
+                report = compile_current_fn(packet)
+                write_fn(args.output, canonical_fn(report) + "\n")
+                if args.markdown:
+                    write_fn(args.markdown, render_fn(report))
+                print(report["state"])
+                print(report["receipt_sha256"])
+                return 0 if report["state"] == "READY_FOR_OWNER_QUOTE_REVIEW" else 2
 
-        packet = _read(args.input)
-        report = _read(args.report)
-        result = _verify(packet, report)
-        print(_canonical(result))
-        return 0 if result["state"] == "CURRENT_VERIFIED" else 2
-    except (DealEconomicsError, AuthorityError) as exc:
-        print(f"ERROR: {exc}", file=sys.stderr)
-        return 2
+            packet = read_fn(args.input)
+            report = read_fn(args.report)
+            result = verify_current_fn(packet, report)
+            print(canonical_fn(result))
+            return 0 if result["state"] == "CURRENT_VERIFIED" else 2
+        except (DealEconomicsError, AuthorityError) as exc:
+            print(f"ERROR: {exc}", file=sys.stderr)
+            return 2
+
+    return main
+
+
+main = _build_main(
+    build_parser,
+    assert_current_runtime,
+    compile_current,
+    verify_current_authority,
+    render_current_markdown,
+    read_json_file,
+    write_exclusive,
+    canonical_json,
+)
+del _build_main
 
 
 if __name__ == "__main__":

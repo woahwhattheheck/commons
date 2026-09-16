@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import inspect
 import unittest
 from unittest.mock import patch
 
@@ -7,6 +8,7 @@ from . import AuthorityError, compile_current, verify_current_authority
 from . import authority as a
 from . import engine
 from . import strict_json
+from .cli import main as cli_main
 from .test_authority import packet
 
 
@@ -16,6 +18,15 @@ class FrozenCurrentRuntimeTests(unittest.TestCase):
             compile_current(packet())
         with self.assertRaises(AuthorityError):
             verify_current_authority(packet(), {})
+
+    def test_public_surfaces_have_no_trust_or_time_injection_parameters(self):
+        self.assertEqual(tuple(inspect.signature(compile_current).parameters), ("packet",))
+        self.assertEqual(tuple(inspect.signature(verify_current_authority).parameters), ("packet", "report"))
+        self.assertEqual(tuple(inspect.signature(cli_main).parameters), ("argv",))
+        with self.assertRaises(TypeError):
+            compile_current(packet(), _clock=lambda: None)
+        with self.assertRaises(TypeError):
+            verify_current_authority(packet(), {}, _guard=lambda: True)
 
     def test_post_import_rebinding_of_authority_roots_fails_closed(self):
         mutations = (
@@ -59,11 +70,6 @@ class FrozenCurrentRuntimeTests(unittest.TestCase):
                 self._both_fail_closed()
 
     def test_runtime_recovers_after_temporary_rebinding_is_restored(self):
-        # The guard is an integrity fence, not a one-way poison bit. A temporary
-        # test monkeypatch cannot mint CURRENT while installed, and once fully
-        # restored the original graph is authoritative again. With no fixed-host
-        # files in this hermetic test, the normal result is simply a domain hold
-        # or a host-authority report, not a graph-integrity exception.
         original = a.now_utc
         with patch.object(a, "now_utc", lambda: None):
             self._both_fail_closed()

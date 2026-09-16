@@ -11,16 +11,16 @@ from .runtime_guard import freeze_call_graph
 AuthorityError = _authority.AuthorityError
 
 # Capture the exact implementation roots once. Public CURRENT calls use these
-# captured objects, never a late lookup through writable module globals.
-_COMPILE_AT = _authority._compile_current_at
-_VERIFY_AT = _authority._verify_current_at
-_RENDER = _authority.render_current_markdown
-_CLOCK = _engine.now_utc
+# original objects, never a late lookup through writable module globals.
+_compile_at = _authority._compile_current_at
+_verify_at = _authority._verify_current_at
+_render = _authority.render_current_markdown
+_clock = _engine.now_utc
 
-# Explicit bindings complement transitive bytecode discovery. They make the
-# intended trust boundary reviewable and ensure direct rebinding of a root is
-# itself detectable even though the public wrappers retain the original object.
-_EXPLICIT_BINDINGS = (
+# Explicit root pins complement transitive bytecode discovery. Historical/test
+# helpers remain injectable, but any such injection makes the public CURRENT
+# surface fail closed for the duration of the mutation.
+_explicit_bindings = (
     (_authority, "_compile_current_at"),
     (_authority, "_verify_current_at"),
     (_authority, "_historical_valid"),
@@ -50,78 +50,60 @@ _EXPLICIT_BINDINGS = (
     (_strict_json, "json"),
     (_strict_json, "hashlib"),
 )
-
-_CURRENT_GRAPH_INTACT = freeze_call_graph(
-    _COMPILE_AT,
-    _VERIFY_AT,
-    _RENDER,
-    _CLOCK,
-    bindings=_EXPLICIT_BINDINGS,
+_guard = freeze_call_graph(
+    _compile_at,
+    _verify_at,
+    _render,
+    _clock,
+    bindings=_explicit_bindings,
 )
 
 
-def assert_current_runtime(
-    _guard=_CURRENT_GRAPH_INTACT,
-    _error=AuthorityError,
-) -> None:
-    if not _guard():
-        raise _error("CURRENT runtime dependency graph changed after import")
+def _build_current_surface(guard, clock, compile_at, verify_at, render, error_type):
+    # All authority-bearing dependencies live in closure cells. The returned
+    # public functions expose only their business arguments: there is no
+    # caller-selectable clock, trust root, guard, compile function, or verifier.
+    def assert_current_runtime() -> None:
+        if not guard():
+            raise error_type("CURRENT runtime dependency graph changed after import")
+
+    def compile_current(packet: Any) -> dict[str, Any]:
+        assert_current_runtime()
+        now = clock()
+        assert_current_runtime()
+        result = compile_at(packet, now)
+        assert_current_runtime()
+        return result
+
+    def verify_current_authority(packet: Any, report: Any) -> dict[str, Any]:
+        assert_current_runtime()
+        now = clock()
+        assert_current_runtime()
+        result = verify_at(packet, report, now)
+        assert_current_runtime()
+        return result
+
+    def render_current_markdown(report: Any) -> str:
+        assert_current_runtime()
+        rendered = render(report)
+        assert_current_runtime()
+        return rendered
+
+    return assert_current_runtime, compile_current, verify_current_authority, render_current_markdown
 
 
-def compile_current(
-    packet: Any,
-    _guard=_CURRENT_GRAPH_INTACT,
-    _clock=_CLOCK,
-    _compile=_COMPILE_AT,
-    _error=AuthorityError,
-) -> dict[str, Any]:
-    if not _guard():
-        raise _error("CURRENT runtime dependency graph changed after import")
-    now = _clock()
-    if not _guard():
-        raise _error("CURRENT runtime dependency graph changed after import")
-    result = _compile(packet, now)
-    if not _guard():
-        raise _error("CURRENT runtime dependency graph changed after import")
-    return result
+(
+    assert_current_runtime,
+    compile_current,
+    verify_current_authority,
+    render_current_markdown,
+) = _build_current_surface(_guard, _clock, _compile_at, _verify_at, _render, AuthorityError)
 
-
-def verify_current_authority(
-    packet: Any,
-    report: Any,
-    _guard=_CURRENT_GRAPH_INTACT,
-    _clock=_CLOCK,
-    _verify=_VERIFY_AT,
-    _error=AuthorityError,
-) -> dict[str, Any]:
-    if not _guard():
-        raise _error("CURRENT runtime dependency graph changed after import")
-    now = _clock()
-    if not _guard():
-        raise _error("CURRENT runtime dependency graph changed after import")
-    result = _verify(packet, report, now)
-    if not _guard():
-        raise _error("CURRENT runtime dependency graph changed after import")
-    return result
-
-
-def render_current_markdown(
-    report: Any,
-    _guard=_CURRENT_GRAPH_INTACT,
-    _render=_RENDER,
-    _error=AuthorityError,
-) -> str:
-    if not _guard():
-        raise _error("CURRENT runtime dependency graph changed after import")
-    rendered = _render(report)
-    if not _guard():
-        raise _error("CURRENT runtime dependency graph changed after import")
-    return rendered
-
-
-# Keep the historical/test helpers in authority.py injectable, but replace its
-# public CURRENT names so importing the submodule cannot bypass the frozen
-# package/CLI boundary.
+# Keep historical/test helpers in authority.py injectable, but replace its
+# public CURRENT names so importing the submodule cannot bypass this boundary.
 _authority.compile_current = compile_current
 _authority.verify_current_authority = verify_current_authority
 _authority.render_current_markdown = render_current_markdown
+
+# Do not leave an alternate surface builder as a convenient public bypass.
+del _build_current_surface
