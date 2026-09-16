@@ -107,3 +107,13 @@ Do not convert local validation into a leaderboard, eligibility, prize, payment,
 ## Competition-side next work
 
 The high-leverage next execution is a **public-data aggregation runner** that streams the four Source Cooperative study regions, emits the exact aggregate schema above, and records source object hashes and CRS/filter decisions. Keep scored computation restricted to the challenge-provided datasets. Any extra public data belongs in a separately labeled Best Bias Discovery analysis and must not feed `coverage_gap_score`.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)

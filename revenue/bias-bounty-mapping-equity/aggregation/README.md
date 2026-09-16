@@ -122,3 +122,13 @@ done
 Then feed each aggregate CSV into the already-merged parent `mapping_equity.py build` command with the same region's sample submission as the authoritative GEOID universe.
 
 A local aggregate/scorer success is **not** a Zindi submission, leaderboard result, prize, award, payment, or revenue claim. Those require separate provider evidence.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
