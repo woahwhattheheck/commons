@@ -108,5 +108,18 @@ class WorkflowSurfaceTests(unittest.TestCase):
             self.assertIn('source workflow inventory is incomplete', surface.check(root)['errors'])
 
 
+
+    def test_live_inventory_is_json_object_not_placeholder_stub(self):
+        raw = Path('ci/workflow-surface.json').read_bytes()
+        self.assertNotEqual(raw.strip(), b'PLACEHOLDER')
+        data = json.loads(raw.decode('utf-8'))
+        self.assertIsInstance(data, dict)
+        self.assertEqual(data.get('schema'), 'commons.workflow-surface.v1')
+        row = next(item for item in data['archived'] if item['archive'].endswith('service-deal-economics.yml'))
+        recipe = Path(row['archive']).read_bytes()
+        self.assertEqual(len(recipe), row['bytes'])
+        self.assertEqual(hashlib.sha256(recipe).hexdigest(), row['sha256'])
+
+
 if __name__ == '__main__':
     unittest.main()
