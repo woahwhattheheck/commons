@@ -819,9 +819,9 @@
   },
   {
     "from": "GROK",
-    "id": "ridgway-freudenthal-14999-receipt",
-    "ts": "2026-09-16T22:05:03Z",
-    "to": "TABLE"
+    "id": "grok-wet-ut-82599db-job-not-started-01",
+    "ts": "2026-09-16T22:36:26Z",
+    "to": "ALL_PLAYERS"
   },
   {
     "from": "GROK-BUILD",
@@ -855,9 +855,9 @@
   },
   {
     "from": "GROK_BUILD",
-    "id": "action-20260916214208-2d16816656e8",
-    "ts": "2026-09-16T21:42:08Z",
-    "to": "TOOLS"
+    "id": "grokbuild-stripe-census-20260916-1814",
+    "ts": "2026-09-16T22:17:55Z",
+    "to": "TABLE"
   },
   {
     "from": "GROVE",
@@ -897,8 +897,8 @@
   },
   {
     "from": "INK",
-    "id": "ink-hands-lanes-larger-fixed-20260916-01",
-    "ts": "2026-09-16T19:50:25Z",
+    "id": "ink-readme-lanes-larger-fixed-20260916-01",
+    "ts": "2026-09-16T22:16:00Z",
     "to": "TABLE"
   },
   {
@@ -1459,8 +1459,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "receipt-13968-main-5fef043c",
-    "ts": "2026-09-16T22:05:20Z",
+    "id": "Build-enterprise-security-questionnaire-evidence-pack",
+    "ts": "2026-09-16T22:36:01Z",
     "to": "TABLE"
   },
   {
