@@ -1,0 +1,295 @@
+name: zplh-reply-provenance-repair
+
+on:
+  push:
+    branches:
+      - "zplh-x4q7/reply-event-finalization-20260915"
+    paths:
+      - ".github/workflows/zplh-reply-provenance-repair.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: "zplh-x4q7/reply-event-finalization-20260915"
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Apply provenance repair and predecessor killers
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          core_path = Path("host/reply_to_revenue_core.py")
+          test_path = Path("test_reply_to_revenue_event_identity.py")
+          core = core_path.read_text(encoding="utf-8")
+          tests = test_path.read_text(encoding="utf-8")
+
+          def replace_once(text: str, old: str, new: str, label: str) -> str:
+              count = text.count(old)
+              if count != 1:
+                  raise SystemExit(f"{label}: expected one match, found {count}")
+              return text.replace(old, new, 1)
+
+          if "    def bounded_text(" in core:
+              raise SystemExit("provenance repair already present")
+
+          exact_keys = '''    def exact_keys(value: dict[str, Any], expected: set[str], where: str) -> None:
+              actual = _set(value)
+              if actual != expected:
+                  raise _reply_error(
+                      f"{where} fields differ: "
+                      f"missing={_sorted(expected - actual)} extra={_sorted(actual - expected)}"
+                  )
+
+'''
+          bounded_text = exact_keys + '''    def bounded_text(
+              value: Any,
+              where: str,
+              *,
+              limit: int = 200,
+          ) -> str:
+              if (
+                  not _isinstance(value, _str)
+                  or not value
+                  or value != value.strip()
+                  or _len(value) > limit
+                  or not _all(character.isprintable() for character in value)
+              ):
+                  raise _reply_error(f"{where} must be a bounded nonempty string")
+              return value
+
+'''
+          core = replace_once(core, exact_keys, bounded_text, "bounded text helper")
+
+          provenance_validation = '''            if _sha_fullmatch(event["payload_sha256"]) is None:
+                  raise _reply_error(f"{where}.payload_sha256 is invalid")
+              bounded_text(event["provider"], f"{where}.provider", limit=100)
+              bounded_text(
+                  event["matched_receipt_id"],
+                  f"{where}.matched_receipt_id",
+                  limit=200,
+              )
+              if not _isinstance(event["markers"], _list):
+'''
+          core = replace_once(
+              core,
+              '''            if _sha_fullmatch(event["payload_sha256"]) is None:
+                  raise _reply_error(f"{where}.payload_sha256 is invalid")
+              if not _isinstance(event["markers"], _list):
+''',
+              provenance_validation,
+              "raw provenance validation",
+          )
+
+          bind_observations = '''    def bind_observations(
+              receipts: list[dict[str, Any]],
+              inbound: list[dict[str, Any]],
+          ) -> None:
+              by_receipt: dict[str, str] = {}
+              for index, receipt in _enumerate(receipts):
+                  where = f"receipts[{index}]"
+                  if not _isinstance(receipt, _dict):
+                      raise _reply_error(f"{where} must be an object")
+                  receipt_id = bounded_text(
+                      receipt.get("receipt_id"),
+                      f"{where}.receipt_id",
+                      limit=200,
+                  )
+                  prospect_key = receipt.get("prospect_key")
+                  if (
+                      not _isinstance(prospect_key, _str)
+                      or _prospect_fullmatch(prospect_key) is None
+                  ):
+                      raise _reply_error(f"{where}.prospect_key is invalid")
+                  if receipt_id in by_receipt:
+                      raise _reply_error(f"duplicate receipt_id: {receipt_id}")
+                  by_receipt[receipt_id] = prospect_key
+
+              for index, event in _enumerate(inbound):
+                  where = f"inbound[{index}]"
+                  if not _isinstance(event, _dict):
+                      raise _reply_error(f"{where} must be an object")
+                  bounded_text(event.get("provider"), f"{where}.provider", limit=100)
+                  matched_receipt_id = bounded_text(
+                      event.get("matched_receipt_id"),
+                      f"{where}.matched_receipt_id",
+                      limit=200,
+                  )
+                  prospect_key = event.get("prospect_key")
+                  if (
+                      not _isinstance(prospect_key, _str)
+                      or _prospect_fullmatch(prospect_key) is None
+                  ):
+                      raise _reply_error(f"{where}.prospect_key is invalid")
+                  canonical_prospect = by_receipt.get(matched_receipt_id)
+                  if canonical_prospect is None:
+                      raise _reply_error(
+                          f"{where}.matched_receipt_id is unknown: {matched_receipt_id}"
+                      )
+                  if prospect_key != canonical_prospect:
+                      raise _reply_error(
+                          f"{where}.prospect_key does not match canonical receipt prospect"
+                      )
+
+'''
+          core = replace_once(
+              core,
+              "    def contact_rows(\n",
+              bind_observations + "    def contact_rows(\n",
+              "receipt binding function",
+          )
+
+          core = replace_once(
+              core,
+              '''        assert_observation_window(measured_at, inbound)
+
+              contacts = contact_rows(receipt_rows, inbound)
+''',
+              '''        assert_observation_window(measured_at, inbound)
+              bind_observations(receipt_rows, inbound)
+
+              contacts = contact_rows(receipt_rows, inbound)
+''',
+              "build provenance gate",
+          )
+
+          core = replace_once(
+              core,
+              '''    "ingest each inbound event_ref once; collision on same ref with a different full observation envelope",
+              "automated acknowledgements are not buyer interest",
+''',
+              '''    "ingest each inbound event_ref once; collision on same ref with a different full observation envelope",
+              "bind every inbound observation to one unique canonical receipt for the same prospect",
+              "automated acknowledgements are not buyer interest",
+''',
+              "public provenance limit",
+          )
+
+          new_tests = r'''
+              def test_raw_provenance_fields_are_bounded_nonempty_strings(self) -> None:
+                  core = load_direct_core()
+                  invalid_values = [None, "", " padded", "x" * 201]
+                  for field in ("provider", "matched_receipt_id"):
+                      for value in invalid_values:
+                          with self.subTest(field=field, value=repr(value)):
+                              event = self._raw_event(
+                                  "opaque:invalid-provenance-0001",
+                                  "POSITIVE_SCOPE",
+                                  markers=["please invoice"],
+                              )
+                              event[field] = value
+                              observations = self._raw_observations([event])
+                              with tempfile.TemporaryDirectory() as directory:
+                                  path = self._write_json(
+                                      directory,
+                                      "observations.json",
+                                      observations,
+                                  )
+                                  with self.assertRaisesRegex(
+                                      core.ReplyRevenueError,
+                                      rf"{field} must be a bounded nonempty string",
+                                  ):
+                                      core.load_observations(path)
+
+              def test_unknown_and_cross_prospect_receipts_fail_closed(self) -> None:
+                  core = load_direct_core()
+                  first = self._receipt("buyer-one")
+                  first["receipt_id"] = "receipt-one"
+                  second = self._receipt("buyer-two")
+                  second["receipt_id"] = "receipt-two"
+                  second["organization"] = "Fixture Org Two"
+                  receipts = [first, second]
+
+                  cases = (
+                      ("missing-receipt", "unknown matched_receipt_id"),
+                      ("receipt-two", "does not match canonical receipt prospect"),
+                  )
+                  for matched_receipt_id, error in cases:
+                      with self.subTest(matched_receipt_id=matched_receipt_id):
+                          event = self._raw_event(
+                              "opaque:receipt-binding-0001",
+                              "POSITIVE_SCOPE",
+                              markers=["please invoice"],
+                          )
+                          event["matched_receipt_id"] = matched_receipt_id
+                          observations = self._raw_observations([event])
+                          with tempfile.TemporaryDirectory() as directory:
+                              loaded = core.load_observations(
+                                  self._write_json(
+                                      directory,
+                                      "observations.json",
+                                      observations,
+                                  )
+                              )
+                          with self.assertRaisesRegex(core.ReplyRevenueError, error):
+                              core.build_funnel(
+                                  receipts=copy.deepcopy(receipts),
+                                  observations=loaded,
+                              )
+
+              def test_duplicate_canonical_receipt_ids_fail_closed(self) -> None:
+                  core = load_direct_core()
+                  first = self._receipt("buyer-one")
+                  first["receipt_id"] = "duplicate-receipt"
+                  second = self._receipt("buyer-two")
+                  second["receipt_id"] = "duplicate-receipt"
+                  second["organization"] = "Fixture Org Two"
+                  event = self._event(
+                      "opaque:duplicate-receipt-0001",
+                      "QUESTION",
+                  )
+                  event["matched_receipt_id"] = "duplicate-receipt"
+                  with self.assertRaisesRegex(
+                      core.ReplyRevenueError,
+                      "duplicate receipt_id",
+                  ):
+                      core.build_funnel(
+                          receipts=[first, second],
+                          observations=self._observations([event]),
+                      )
+
+              def test_preclassified_observations_cannot_bypass_provenance_gate(self) -> None:
+                  core = load_direct_core()
+                  event = self._event(
+                      "opaque:preclassified-provenance-0001",
+                      "POSITIVE_SCOPE",
+                  )
+                  event["provider"] = None
+                  with self.assertRaisesRegex(
+                      core.ReplyRevenueError,
+                      "provider must be a bounded nonempty string",
+                  ):
+                      core.build_funnel(
+                          receipts=[self._receipt()],
+                          observations=self._observations([event]),
+                      )
+          '''
+          tests = replace_once(
+              tests,
+              '\n\nif __name__ == "__main__":\n',
+              new_tests + '\n\nif __name__ == "__main__":\n',
+              "hostile provenance tests",
+          )
+
+          core_path.write_text(core, encoding="utf-8")
+          test_path.write_text(tests, encoding="utf-8")
+          PY
+          python3 host/reply_to_revenue.py snapshot --output revenue/reply_to_revenue/funnel.json
+          python3 -m unittest -v test_reply_to_revenue test_reply_to_revenue_event_identity
+          python3 -O -m unittest -v test_reply_to_revenue test_reply_to_revenue_event_identity
+          python3 -m py_compile host/reply_to_revenue.py host/reply_to_revenue_core.py test_reply_to_revenue.py test_reply_to_revenue_event_identity.py
+          git diff --check
+      - name: Commit exact repaired carrier
+        run: |
+          git config user.name "ZPLH-X4Q7"
+          git config user.email "tokenjunkielabs@gmail.com"
+          git add host/reply_to_revenue_core.py test_reply_to_revenue_event_identity.py revenue/reply_to_revenue/funnel.json
+          git commit -m "Bind reply observations to canonical receipt provenance"
+          git push origin HEAD:zplh-x4q7/reply-event-finalization-20260915
