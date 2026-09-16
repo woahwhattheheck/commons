@@ -27,6 +27,8 @@ def rules(text):
 def main():
     workflow = Path(".github/workflows/open-door-guard.yml").read_text(encoding="utf-8")
     assert "\n  push:\n    branches: [main]\n" in workflow, "open-door guard must report direct main pushes"
+    assert workflow.count("- '!builds.json'\n") == 2, "workflow must skip the builds.json projection on PR and push"
+    assert "builds.json" in guard.SKIP_FILES
 
     test_workflow_diff_base()
 
@@ -267,9 +269,24 @@ def main():
                 "revenue/data/board_feed_sample_20260830.json",
                 ['{"body": "historical quote: authentication required; PROTECTED_PATHS = []"}'],
             ),
+            # Run 35145536899 / SHA b1a84a82309c2eeea26e56b861fd29a751c84cd3 / PR 14955:
+            # pretty-print of the builds.json ledger projection re-added historical
+            # permit stop_conditions. builds/records/ is already skipped; the live
+            # projection is generated data too.
+            diff("builds.json", ['            "unexpected protected path",']),
+            diff("builds.json", ['            "protected-path surprise",']),
         ]
     )
     assert guard.scan_diff(historical) == [], guard.scan_diff(historical)
+    assert "protected-action" in rules(diff("action_executor.py", ['            "unexpected protected path",']))
+    assert "protected-action" in rules(diff("action_executor.py", ['            "protected-path surprise",']))
+    builds_live = [
+        guard.AddedLine("builds.json", line_number, text)
+        for line_number, text in enumerate(Path("builds.json").read_text(encoding="utf-8").splitlines(), 1)
+        if "protected path" in text.lower() or "protected-path" in text.lower()
+    ]
+    assert builds_live, "builds.json still carries historical permit stop_conditions"
+    assert guard.scan_added(builds_live) == [], guard.scan_added(builds_live)
 
     # Only the exact frozen JSON artifact is historical data. An active source
     # lookalike with the same stem must remain inside the policy guard.
