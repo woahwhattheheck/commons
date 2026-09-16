@@ -96,7 +96,15 @@
         "dealer-service-lead-rescue",
         "plant-downtime-handoff",
         "referral-intake-completeness",
-        "repair-booking-exactly-once-v1"
+        "repair-booking-exactly-once-v1",
+        "salesforce-contact-preflight",
+        "permit-intake-receipt",
+        "catering-deposit-rescue",
+        "invoice-exception-pack",
+        "open-model-release-receipt",
+        "fleet-work-order-exactly-once",
+        "mcp-conformance-receipt-run",
+        "mcp-conformance-same-day-repair"
       ],
       "currencies": [
         "usd"
@@ -248,6 +256,110 @@
             "reference": "provider-receipt-sha256:727cfb6f0e9a84a1b1c4deeed98a017d4b4aaa7fa8bf75580506849a0f791a01+account-capability-snapshot:2026-08-28T16:10:00Z",
             "observed_at": "2026-09-05T11:29:50.741356+00:00",
             "receipt_sha256": "727cfb6f0e9a84a1b1c4deeed98a017d4b4aaa7fa8bf75580506849a0f791a01"
+          }
+        },
+        {
+          "sku": "salesforce-contact-preflight",
+          "plink": "plink_1UEGTQATH4EDE7XDkFP2PPsF",
+          "url": "https://buy.stripe.com/4gM8wO4SxbnrdKV9h043S0m",
+          "link_active": true,
+          "livemode": true,
+          "exposure": "CHECKOUT_FIRST",
+          "evidence": {
+            "reference": "catalog-checkout+stripe-livemode-GetPaymentLinks:2026-09-16",
+            "observed_at": "2026-09-16T20:50:00+00:00",
+            "note": "TYPE battery repair: bind catalog-proven active checkout to registry canonical_links / supported_skus"
+          }
+        },
+        {
+          "sku": "permit-intake-receipt",
+          "plink": "plink_1UEGUOATH4EDE7XDFIif4d4O",
+          "url": "https://buy.stripe.com/8x2cN42Kp8bf8qBgJs43S0n",
+          "link_active": true,
+          "livemode": true,
+          "exposure": "CHECKOUT_FIRST",
+          "evidence": {
+            "reference": "catalog-checkout+stripe-livemode-GetPaymentLinks:2026-09-16",
+            "observed_at": "2026-09-16T20:50:00+00:00",
+            "note": "TYPE battery repair: bind catalog-proven active checkout to registry canonical_links / supported_skus"
+          }
+        },
+        {
+          "sku": "catering-deposit-rescue",
+          "plink": "plink_1UEGVoATH4EDE7XDglYAlRRs",
+          "url": "https://buy.stripe.com/dRmdR8acR4Z36it2SC43S0q",
+          "link_active": true,
+          "livemode": true,
+          "exposure": "CHECKOUT_FIRST",
+          "evidence": {
+            "reference": "catalog-checkout+stripe-livemode-GetPaymentLinks:2026-09-16",
+            "observed_at": "2026-09-16T20:50:00+00:00",
+            "note": "TYPE battery repair: bind catalog-proven active checkout to registry canonical_links / supported_skus"
+          }
+        },
+        {
+          "sku": "invoice-exception-pack",
+          "plink": "plink_1UEGT5ATH4EDE7XDA7WFJthA",
+          "url": "https://buy.stripe.com/14A00i84Jdvz36hdxg43S0l",
+          "link_active": true,
+          "livemode": true,
+          "exposure": "CHECKOUT_FIRST",
+          "evidence": {
+            "reference": "catalog-checkout+stripe-livemode-GetPaymentLinks:2026-09-16",
+            "observed_at": "2026-09-16T20:50:00+00:00",
+            "note": "TYPE battery repair: bind catalog-proven active checkout to registry canonical_links / supported_skus"
+          }
+        },
+        {
+          "sku": "open-model-release-receipt",
+          "plink": "plink_1UEGUgATH4EDE7XD1fhfWxzw",
+          "url": "https://buy.stripe.com/dRmfZgdp34Z322d0Ku43S0o",
+          "link_active": true,
+          "livemode": true,
+          "exposure": "CHECKOUT_FIRST",
+          "evidence": {
+            "reference": "catalog-checkout+stripe-livemode-GetPaymentLinks:2026-09-16",
+            "observed_at": "2026-09-16T20:50:00+00:00",
+            "note": "TYPE battery repair: bind catalog-proven active checkout to registry canonical_links / supported_skus"
+          }
+        },
+        {
+          "sku": "fleet-work-order-exactly-once",
+          "plink": "plink_1UEGV0ATH4EDE7XD8vmj5Afc",
+          "url": "https://buy.stripe.com/7sY9AS98NdvzdKVbp843S0p",
+          "link_active": true,
+          "livemode": true,
+          "exposure": "CHECKOUT_FIRST",
+          "evidence": {
+            "reference": "catalog-checkout+stripe-livemode-GetPaymentLinks:2026-09-16",
+            "observed_at": "2026-09-16T20:50:00+00:00",
+            "note": "TYPE battery repair: bind catalog-proven active checkout to registry canonical_links / supported_skus"
+          }
+        },
+        {
+          "sku": "mcp-conformance-receipt-run",
+          "plink": "plink_1UEGWVATH4EDE7XDNPUXHid5",
+          "url": "https://buy.stripe.com/fZudR8bgV637fT3ctc43S0r",
+          "link_active": true,
+          "livemode": true,
+          "exposure": "CHECKOUT_FIRST",
+          "evidence": {
+            "reference": "catalog-checkout+stripe-livemode-GetPaymentLinks:2026-09-16",
+            "observed_at": "2026-09-16T20:50:00+00:00",
+            "note": "TYPE battery repair: bind catalog-proven active checkout to registry canonical_links / supported_skus"
+          }
+        },
+        {
+          "sku": "mcp-conformance-same-day-repair",
+          "plink": "plink_1UEGWqATH4EDE7XDatjbiRHb",
+          "url": "https://buy.stripe.com/14AeVcgBf2QV5epbp843S0s",
+          "link_active": true,
+          "livemode": true,
+          "exposure": "CHECKOUT_FIRST",
+          "evidence": {
+            "reference": "catalog-checkout+stripe-livemode-GetPaymentLinks:2026-09-16",
+            "observed_at": "2026-09-16T20:50:00+00:00",
+            "note": "TYPE battery repair: bind catalog-proven active checkout to registry canonical_links / supported_skus"
           }
         }
       ]
