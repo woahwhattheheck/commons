@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 117,
-    "open_pull_requests": 70,
-    "runs_in_progress": 19,
-    "runs_queued": 224
+    "open_pull_requests": 73,
+    "runs_in_progress": 16,
+    "runs_queued": 283
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,46 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zmq-v5r9/vctc-erp-gms-20260916",
-      "created_at": "2026-09-16T12:51:00Z",
+      "branch": "zch-r7n5/vetter-trust-boundary-recovery-20260916",
+      "created_at": "2026-09-16T12:53:28Z",
       "draft": false,
-      "head_sha": "b9e7b5955093a562cc5e60c46db0ed98f8d8c2d8",
-      "number": 14835,
-      "title": "revenue: add VCTC ERP/GMS teaming pursuit carrier",
-      "updated_at": "2026-09-16T12:51:00Z"
+      "head_sha": "cb398dfb0b9ead3b2a079709370fc6b77520c995",
+      "number": 14841,
+      "title": "Revenue: finalize Vetter tech-transfer gate with truthful runtime boundary",
+      "updated_at": "2026-09-16T12:54:32Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsm-d3p8/opportunity-qualifier-authority-13741",
+      "created_at": "2026-09-16T12:52:21Z",
+      "draft": false,
+      "head_sha": "4b2b2d40246e45e2ef84b637dc5a6c28e4e66707",
+      "number": 14838,
+      "title": "fix(revenue): bind opportunity qualifier source authority",
+      "updated_at": "2026-09-16T12:52:21Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zmk-r6q2/service-deal-quote-expiry-recovery-20260916",
+      "created_at": "2026-09-16T12:51:32Z",
+      "draft": false,
+      "head_sha": "6a75e5568d805b47a803e29003584ed59cfd9d47",
+      "number": 14837,
+      "title": "fix(revenue): recover Service Deal authority and enforce quote expiry",
+      "updated_at": "2026-09-16T12:54:20Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zvlh/ohsu-source-bound-deadline-recovery-20260916",
+      "created_at": "2026-09-16T12:51:17Z",
+      "draft": false,
+      "head_sha": "15f071d78464cb51305455170f4b0f05a163b658",
+      "number": 14836,
+      "title": "Revenue: bind OHSU PSC source and contract review gates",
+      "updated_at": "2026-09-16T12:53:13Z"
     },
     {
       "author": "woahwhattheheck",
@@ -86,7 +119,7 @@
       "head_sha": "52b7b031e9dd76d1dc25f6805906d65db9e3528b",
       "number": 14833,
       "title": "Revenue: recover Pinellas current custody trust boundary",
-      "updated_at": "2026-09-16T12:49:57Z"
+      "updated_at": "2026-09-16T12:53:53Z"
     },
     {
       "author": "woahwhattheheck",
@@ -108,7 +141,7 @@
       "head_sha": "1a3ce1a6a9960eaf357efd640972dea2bd2ff137",
       "number": 14828,
       "title": "Revenue: recover ARM26BX06-NV012 decision carrier after authority RED",
-      "updated_at": "2026-09-16T12:48:20Z"
+      "updated_at": "2026-09-16T12:51:23Z"
     },
     {
       "author": "woahwhattheheck",
@@ -142,39 +175,6 @@
       "number": 14824,
       "title": "fix(revenue): seal OHSU APProof authority boundary",
       "updated_at": "2026-09-16T12:38:41Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zoc-r6v3/hyperagent-paid-pilot-20260916",
-      "created_at": "2026-09-16T12:28:37Z",
-      "draft": false,
-      "head_sha": "e9db9c491a8533caf9af5de87465cadac45fdfb7",
-      "number": 14823,
-      "title": "feat(revenue): ship Hyperagent deterministic transcript pilot proof",
-      "updated_at": "2026-09-16T12:50:58Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsl-p7m4/commercial-funnel-current-main-recovery-20260916",
-      "created_at": "2026-09-16T12:20:45Z",
-      "draft": false,
-      "head_sha": "4c33a3723fe5ae302fd16e539e12c9b5430046fb",
-      "number": 14822,
-      "title": "Recover commercial-funnel authority onto current main",
-      "updated_at": "2026-09-16T12:33:56Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "sol/slack-canary-entry-types-20260908-01-recovery",
-      "created_at": "2026-09-16T11:57:49Z",
-      "draft": false,
-      "head_sha": "e2030f7a46a996ca683684b4325c2879a638f08d",
-      "number": 14821,
-      "title": "fix(slack-canary): require regular-file entry types on current main",
-      "updated_at": "2026-09-16T12:46:12Z"
     }
   ],
   "open_heads": {
@@ -224,7 +224,7 @@
     "14776": "ad8a22b25efa67111d34f72a9bdfe85be7e864da",
     "14780": "8eda6a9e6078667134126e4783529e3ef9796b48",
     "14782": "8e2bc8c9201d6c6968eb22bf9bd73953d26b3c5d",
-    "14784": "445faac9197e3c23b033963ef755254f0d3bfb0d",
+    "14784": "fb9a64f3e281d794957f630b3f43a7169d53547a",
     "14788": "ffaff5aa571aaccedd41f82c0eba85b09586f230",
     "14798": "8851163e0a5df417d494d3daffb1e21ffd419f31",
     "14801": "bbc065f3625883bcfa1973b645f0a3aa1474b51a",
@@ -247,12 +247,37 @@
     "14828": "1a3ce1a6a9960eaf357efd640972dea2bd2ff137",
     "14832": "14ce2f29a4e3284628d0391f24a3aa96688c2f51",
     "14833": "52b7b031e9dd76d1dc25f6805906d65db9e3528b",
-    "14835": "b9e7b5955093a562cc5e60c46db0ed98f8d8c2d8"
+    "14836": "15f071d78464cb51305455170f4b0f05a163b658",
+    "14837": "6a75e5568d805b47a803e29003584ed59cfd9d47",
+    "14838": "4b2b2d40246e45e2ef84b637dc5a6c28e4e66707",
+    "14841": "cb398dfb0b9ead3b2a079709370fc6b77520c995"
   },
-  "pulls_listed": 70,
+  "pulls_listed": 73,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 11.8,
+  "queue_depth_per_runner": 17.7,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zmq-v5r9/vctc-erp-gms-20260916",
+      "closed_at": "2026-09-16T12:53:43Z",
+      "head_sha": "df2888b2fe927d398e6671c9a4fe08854e4d197c",
+      "merged_at": "2026-09-16T12:53:42Z",
+      "number": 14835,
+      "state": "MERGED",
+      "title": "revenue: add VCTC ERP/GMS teaming pursuit carrier"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zlb/san-bernardino-budget-rfi-14834",
+      "closed_at": "2026-09-16T12:53:17Z",
+      "head_sha": "f21fb74ec84bdcd1bdaea62f1c42f2a5a85d62ea",
+      "merged_at": "2026-09-16T12:53:17Z",
+      "number": 14840,
+      "state": "MERGED",
+      "title": "Revenue: qualify San Bernardino budgeting-system RFI"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -395,32 +420,10 @@
       "number": 14803,
       "state": "MERGED",
       "title": "Fix NUMIH duplicate-surrogate diagnostic escape"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zbc-p8n3/learn2design-provenance-finalize-20260916",
-      "closed_at": "2026-09-16T10:12:16Z",
-      "head_sha": "c75395da4c0fe126049e90b77b7c5dd9607866d1",
-      "merged_at": null,
-      "number": 14800,
-      "state": "CLOSED",
-      "title": "DO NOT MERGE \u2014 Learn2Design fresh-main donor snapshot"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "bounty/1579-commons-rustchain-link-20260916",
-      "closed_at": "2026-09-16T08:31:58Z",
-      "head_sha": "8bf0518ce053dc4c9984b671e040a620e36cd9aa",
-      "merged_at": "2026-09-16T08:31:58Z",
-      "number": 14797,
-      "state": "MERGED",
-      "title": "docs: link RustChain as related agent-economy infrastructure"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-16T12:51:17Z",
+  "unchanged_since": "2026-09-16T12:54:52Z",
   "undatable_pulls": []
 }
