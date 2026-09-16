@@ -1,11 +1,12 @@
 from __future__ import annotations
 
 import hashlib
+import hmac
 import json
 import re
 from collections import defaultdict
 from datetime import datetime, timezone
-from typing import Any, Iterable, Mapping, Sequence
+from typing import Any, Mapping, Sequence
 
 
 class AdapterError(ValueError):
@@ -13,8 +14,9 @@ class AdapterError(ValueError):
 
 
 _ID_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:-]{0,79}$")
+_HEX64_RE = re.compile(r"^[0-9a-f]{64}$")
 _KINDS = {"MESSAGE", "STATUS", "ACTION_REQUEST", "RESULT", "ERROR"}
-_APPROVAL_KEYS = {
+_APPROVAL_SIGNED_KEYS = {
     "schema",
     "run_id",
     "event_id",
@@ -22,6 +24,7 @@ _APPROVAL_KEYS = {
     "approved_at",
     "expires_at",
 }
+_APPROVAL_KEYS = _APPROVAL_SIGNED_KEYS | {"auth_tag"}
 
 
 def canonical_bytes(value: Any) -> bytes:
@@ -78,6 +81,15 @@ def _kind(value: Any) -> str:
 def _stable_id(namespace: str, *parts: str) -> str:
     body = {"namespace": namespace, "parts": list(parts)}
     return hashlib.sha256(canonical_bytes(body)).hexdigest()
+
+
+def _approval_key(value: Any) -> bytes:
+    if not isinstance(value, (bytes, bytearray, memoryview)):
+        raise AdapterError("approval authority key must be bytes")
+    key = bytes(value)
+    if len(key) < 32 or len(key) > 128:
+        raise AdapterError("approval authority key must be 32..128 bytes")
+    return key
 
 
 def normalize_event(raw: Mapping[str, Any]) -> dict[str, Any]:
@@ -249,12 +261,12 @@ def _parse_utc(value: Any, label: str) -> datetime:
     return parsed
 
 
-def _approval(value: Any) -> dict[str, Any]:
+def _approval(value: Any, approval_auth_key: bytes) -> dict[str, Any]:
     obj = _obj(value, "approval")
     _exact_keys(obj, _APPROVAL_KEYS, "approval")
     if obj["schema"] != "hyperagent-pilot/approval/v1":
         raise AdapterError("approval schema mismatch")
-    result = {
+    signed = {
         "schema": obj["schema"],
         "run_id": _identifier(obj["run_id"], "approval.run_id"),
         "event_id": _identifier(obj["event_id"], "approval.event_id"),
@@ -262,11 +274,17 @@ def _approval(value: Any) -> dict[str, Any]:
         "approved_at": obj["approved_at"],
         "expires_at": obj["expires_at"],
     }
-    approved = _parse_utc(result["approved_at"], "approval.approved_at")
-    expires = _parse_utc(result["expires_at"], "approval.expires_at")
+    approved = _parse_utc(signed["approved_at"], "approval.approved_at")
+    expires = _parse_utc(signed["expires_at"], "approval.expires_at")
     if expires <= approved:
         raise AdapterError("approval expiry must follow approval time")
-    return result
+    auth_tag = obj["auth_tag"]
+    if not isinstance(auth_tag, str) or not _HEX64_RE.fullmatch(auth_tag):
+        raise AdapterError("approval auth_tag must be lowercase HMAC-SHA256 hex")
+    expected = hmac.new(approval_auth_key, canonical_bytes(signed), hashlib.sha256).hexdigest()
+    if not hmac.compare_digest(auth_tag, expected):
+        raise AdapterError("approval authority authentication failed")
+    return {**signed, "auth_tag": auth_tag}
 
 
 def prepare_candidate_payloads(
@@ -274,18 +292,21 @@ def prepare_candidate_payloads(
     approvals: Any,
     *,
     now: str,
+    approval_auth_key: Any = None,
 ) -> list[dict[str, Any]]:
-    """Build offline candidate payloads only when approvals exactly bind generation.
+    """Build offline candidates only under an authenticated exact-generation approval.
 
+    `approval_auth_key` is retained runtime authority supplied outside this repository.
     This function never sends, performs network I/O, or grants provider authority.
-    Any malformed, foreign, duplicate, or stale approval set fails closed to [].
+    Malformed, foreign, unauthenticated, duplicate, or stale approval sets fail to [].
     """
     try:
+        key = _approval_key(approval_auth_key)
         current = _parse_utc(now, "now")
         events, _ = normalize_events(raw_events)
         if isinstance(approvals, (str, bytes, bytearray)) or not isinstance(approvals, Sequence):
             return []
-        normalized_approvals = [_approval(value) for value in approvals]
+        normalized_approvals = [_approval(value, key) for value in approvals]
         approval_by_event: dict[str, dict[str, Any]] = {}
         for approval in normalized_approvals:
             if approval["event_id"] in approval_by_event:
@@ -318,6 +339,7 @@ def prepare_candidate_payloads(
                 "action_generation": event["action_generation"],
                 "text": event["text"],
                 "approval_validated": True,
+                "approval_receipt_sha256": sha256_json(approval),
                 "outbound_authorized": False,
                 "provider_action_performed": False,
             }
