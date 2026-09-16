@@ -24,9 +24,11 @@ Even when chronology is inside the historical window, the output is `HOLD_CALLER
 
 ### 3. Current exact-byte authority: `evaluate_current_bytes(...)`
 
-This is the only receipt compiler that can emit `current_work_authorized=true`. It accepts **no clock argument**. It samples process UTC internally, strict-parses/hashes the exact source bytes, runs the canonical scope composer on the same parsed agreement/observations, and requires the supplied canonical project to digest-match that exact same-input project.
+This is the only receipt compiler that can emit `current_work_authorized=true`. It accepts **no clock argument**. At module construction it closure-binds the original process-UTC clock plus the reviewed exact-byte/canonical compiler helpers, then samples that bound clock when called. Ordinary later rebinding of module `datetime`, helper names, or the public evaluator name therefore cannot redirect the supported current path or the downstream verifier.
 
-A current positive therefore requires all of the following at one process observation:
+This is an application/API input-authority boundary, not a Python sandbox against arbitrary same-process reflection or arbitrary code execution.
+
+A current positive requires all of the following at one closure-bound process observation:
 
 - exact regular-file/byte custody at the caller boundary;
 - canonical agreement validation on those exact parsed bytes;
@@ -37,7 +39,7 @@ A current positive therefore requires all of the following at one process observ
 - every observation bound to the same agreement, at/after acceptance, inside the work window, and no later than verifier process UTC;
 - duplicate keys, non-finite JSON, malformed timestamps, oversized/non-byte inputs, symlinked files, project substitution, source substitution, and future evidence fail closed.
 
-A positive receipt states `clock_authority=VERIFIER_PROCESS_UTC`, `provenance_mode=EXACT_RAW_BYTES_VERIFIED`, `canonical_scope_validated=true`, `canonical_project_bound=true`, and `current_work_authorized=true`.
+A positive receipt states `clock_authority=VERIFIER_PROCESS_UTC_CLOSURE_BOUND`, `provenance_mode=EXACT_RAW_BYTES_VERIFIED`, `canonical_scope_validated=true`, `canonical_project_bound=true`, and `current_work_authorized=true`.
 
 ## Downstream verification
 
@@ -49,19 +51,20 @@ These functions intentionally return `integrity_valid`, **not generic `valid`**,
 
 ### Authoritative current-work verification
 
-`verify_current_work_authority(agreement_raw, observations_raw, canonical_project=...)` is the production downstream gate. It accepts **no receipt object and no clock argument**. It reconsumes the exact source bytes, samples process UTC, reruns canonical composition/project binding, and returns `valid=true` only when the newly recomputed receipt is exactly `TEMPORAL_PREREQUISITE_READY` with exact provenance and current-work authority.
+`verify_current_work_authority(agreement_raw, observations_raw, canonical_project=...)` is the production downstream gate. It accepts **no receipt object and no clock argument**. At import time it closure-binds the exact reviewed current evaluator. It reconsumes the exact source bytes, uses the evaluator's closure-bound process UTC, reruns canonical composition/project binding, and returns `valid=true` only when the newly recomputed receipt is exactly `TEMPORAL_PREREQUISITE_READY` with exact provenance and current-work authority.
 
-Therefore a genuine expired/HOLD receipt, a parsed-object receipt, a stale historical receipt, or a fabricated/resealed receipt cannot be promoted by downstream verification.
+Therefore a genuine expired/HOLD receipt, a parsed-object receipt, a stale historical receipt, a fabricated/resealed receipt, or later replacement of the public evaluator name cannot be promoted by downstream verification.
 
 ## Why the split is required
 
-Earlier generations had three distinct false-authority mechanisms:
+Earlier generations had distinct false-authority mechanisms:
 
 1. parsed payload A could carry caller-supplied raw SHA claims for unrelated bytes B;
 2. a temporal document B could share an agreement ID with canonical document A without being bound to the same canonical artifact;
-3. `verify_project_binding(project, receipt)` could return `valid=true` for a genuine expired/HOLD receipt—and could validate a fabricated self-consistent binding object—because it checked project equality but not current temporal authority.
+3. `verify_project_binding(project, receipt)` could return `valid=true` for a genuine expired/HOLD receipt—and could validate a fabricated self-consistent binding object—because it checked project equality but not current temporal authority;
+4. an otherwise-correct process-clock wrapper that dynamically looked up mutable module globals could be redirected after import without changing the supported call signature.
 
-The current contract removes authority knobs from parsed helpers, binds canonical composition to the same exact source bytes, makes caller time historical-only, and requires production verification to recompute from source bytes rather than trust a receipt object.
+The current contract removes authority knobs from parsed helpers, binds canonical composition to the same exact source bytes, makes caller time historical-only, closure-binds the production current path, and requires production verification to recompute from source bytes rather than trust a receipt object.
 
 ## Receipt authority ceiling
 
@@ -89,7 +92,7 @@ python3 host/scope_to_delivery_time_gate.py \
 
 There is no `--as-of` override. Exit codes:
 
-- `0`: current prerequisite recomputed READY at verifier process UTC;
+- `0`: current prerequisite recomputed READY at closure-bound verifier process UTC;
 - `3`: truthful current HOLD, including not-started, expired, non-PRESENT, or unbound project;
 - `2`: malformed, unsafe, source-substituted, or canonically inconsistent evidence.
 
