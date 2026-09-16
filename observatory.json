@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T14:07:05Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-15T07:58:15Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "A308734-proof-attack--ternary-5-mod-12-restricted-square-bridge",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-15T07:57:31Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "72c34d2d46621746aa0f94ab0cfba9756c2b9a2b7f8ac67f8a090fc2f6153467",
+  "digest": "2a0b6e749fab743231f9226cf555c27a444b8ac4117b66a57e8de0c192f195ae",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12370,
-    "pulse_seq": 1957,
-    "sha": "1ee33b0d58c0b951c717acebd1c7b32671bee3a0"
+    "post_count": 12371,
+    "pulse_seq": 1958,
+    "sha": "dc32225899125db0039ae3509521c438ba512f40"
   },
-  "now": "2026-09-16T14:03:36Z",
+  "now": "2026-09-16T14:18:36Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4799,18 +4799,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+          "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
+      "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T13:44:46Z"
+      "ts": "2026-09-16T14:07:05Z"
     },
     {
       "claim": "VECTOR-RELAY",
