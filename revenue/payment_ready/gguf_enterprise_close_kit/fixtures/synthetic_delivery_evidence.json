@@ -1,5 +1,6 @@
 {
-  "schema": "tjlabs.gguf-12k-delivery-evidence/v1",
+  "schema": "tjlabs.gguf-12k-delivery-evidence/v2",
+  "mode": "SYNTHETIC_REHEARSAL",
   "engagement_id": "synthetic-gguf-001",
   "artifacts": {
     "original": {
@@ -16,29 +17,52 @@
     }
   },
   "harness_runs": {
-    "baseline_receipt_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-    "ablation_receipt_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
-    "restore_receipt_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    "baseline": {
+      "run_kind": "BASELINE",
+      "input_artifact_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "harness_command_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "eval_suite_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "outcome_summary_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "receipt_sha256": "c2bb56a486c2e0f897ffc191bce074689bb2847d822cce8eed0a19539f3307f4"
+    },
+    "ablation": {
+      "run_kind": "ABLATION",
+      "input_artifact_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "harness_command_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "eval_suite_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "outcome_summary_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "receipt_sha256": "3d0762ba2122e3a124bc30e8fb9a1acc8e2e79bb7203cffaaffe0d72cda1fcbf"
+    },
+    "restore": {
+      "run_kind": "RESTORE",
+      "input_artifact_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "harness_command_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "eval_suite_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "outcome_summary_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "receipt_sha256": "66f324178a2f82607134d9c38b19fbeb0131d862e76e1a95f84ecb2f7a938b19"
+    }
   },
   "finding": {
     "report_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
-    "statement": "Synthetic rehearsal demonstrates a bounded ablation and byte-exact restore. No metric-lift claim is made; customer harness results remain customer-evaluable evidence.",
+    "statement": "Synthetic rehearsal demonstrates evidence linkage and byte-exact restore shape only; no customer artifact or production transition is represented.",
     "limitations": [
       "Synthetic fixture only; no customer model bytes were processed.",
-      "The evidence proves rollback mechanics and receipt linkage, not a performance guarantee."
+      "Receipt-shaped recovery identifiers are not runtime replay authority.",
+      "The evidence proves fixture semantics only, not legal acceptance, delivery, payment, or performance lift."
     ]
   },
   "delivery_receipt": {
-    "receipt_sha256": "311e41ea115ffa5d2d46c15be1b35c3706ad06d3aafe81acdf5273b73669a3f4",
-    "artifact_hashes": [
-      "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-      "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-      "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
-      "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
-      "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
-      "8888888888888888888888888888888888888888888888888888888888888888"
-    ]
+    "manifest": {
+      "engagement_id": "synthetic-gguf-001",
+      "original_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "ablated_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "restored_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "baseline_run_receipt_sha256": "c2bb56a486c2e0f897ffc191bce074689bb2847d822cce8eed0a19539f3307f4",
+      "ablation_run_receipt_sha256": "3d0762ba2122e3a124bc30e8fb9a1acc8e2e79bb7203cffaaffe0d72cda1fcbf",
+      "restore_run_receipt_sha256": "66f324178a2f82607134d9c38b19fbeb0131d862e76e1a95f84ecb2f7a938b19",
+      "report_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+    },
+    "receipt_sha256": "e0c7e292ff87ede1bf241acf5013701cca8eba8eea12b570f6863c6c579d39e0"
   },
   "payment_reference_sha256": "NONE"
 }
