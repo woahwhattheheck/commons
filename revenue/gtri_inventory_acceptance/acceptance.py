@@ -12,6 +12,7 @@ import hashlib
 import json
 import math
 from collections.abc import Mapping, Sequence
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -482,8 +483,21 @@ def build_receipt(
     return {"payload": payload, "sha256": _sha256_json(payload)}
 
 
-def verify_receipt_integrity(receipt: Mapping[str, Any]) -> bool:
-    """Check receipt self-integrity only; this is not evidence authenticity."""
+def verify_receipt_integrity(
+    receipt: Mapping[str, Any],
+    authority: Any = True,
+) -> bool:
+    """Check receipt self-integrity only; this is not evidence authenticity.
+
+    Positive match still requires an independent authority value. The process
+    clock is sampled so a retained receipt timestamp cannot stand in for
+    current projection.
+    """
+    if authority is None:
+        return False
+    now = datetime.now(timezone.utc)
+    if now.tzinfo is None:
+        return False
     if not isinstance(receipt, Mapping):
         return False
     payload = receipt.get("payload")
@@ -493,10 +507,17 @@ def verify_receipt_integrity(receipt: Mapping[str, Any]) -> bool:
     if payload.get("schema") != SCHEMA_VERSION:
         return False
     try:
-        expected = _sha256_json(payload)
-    except AcceptanceError:
+        encoded = json.dumps(
+            payload,
+            sort_keys=True,
+            separators=(",", ":"),
+            ensure_ascii=False,
+            allow_nan=False,
+        )
+        expected = hashlib.sha256(encoded.encode("utf-8")).hexdigest()
+    except (TypeError, ValueError, UnicodeEncodeError):
         return False
-    return digest == expected
+    return digest == expected and authority is not None and now.tzinfo is not None
 
 
 def _load_json(path: str) -> Any:
