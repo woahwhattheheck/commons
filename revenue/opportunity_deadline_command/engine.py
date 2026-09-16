@@ -342,7 +342,7 @@ def _validate_deadline(raw: Any, path: str, source_ix: Mapping[str, dict[str, An
 
 def _unique_index(rows: Sequence[dict[str, Any]], key: str, path: str) -> dict[str, dict[str, Any]]:
     out: dict[str, dict[str, Any]] = {}
-    for i, row in enumerate(rows):
+    for row in rows:
         item = row[key]
         if item in out:
             raise EvidenceError(f"{path}: duplicate {key} {item}")
@@ -350,7 +350,11 @@ def _unique_index(rows: Sequence[dict[str, Any]], key: str, path: str) -> dict[s
     return out
 
 
-def _validate_deadline_graph(deadlines: Sequence[dict[str, Any]], path: str) -> list[dict[str, Any]]:
+def _validate_deadline_graph(
+    deadlines: Sequence[dict[str, Any]],
+    source_ix: Mapping[str, dict[str, Any]],
+    path: str,
+) -> list[dict[str, Any]]:
     ix = _unique_index(deadlines, "deadline_id", path)
     superseded: set[str] = set()
     for deadline in deadlines:
@@ -366,6 +370,12 @@ def _validate_deadline_graph(deadlines: Sequence[dict[str, Any]], path: str) -> 
             raise EvidenceError(f"{path}: superseding deadline generation must increase")
         if prior_id in superseded:
             raise EvidenceError(f"{path}: deadline may be superseded by only one direct successor")
+        prior_source = source_ix[prior["source_id"]]
+        successor_source = source_ix[deadline["source_id"]]
+        if successor_source["authority"] != "OFFICIAL":
+            raise EvidenceError(f"{path}: superseding deadline must bind OFFICIAL source evidence")
+        if successor_source["generation"] <= prior_source["generation"]:
+            raise EvidenceError(f"{path}: superseding deadline source generation must increase")
         superseded.add(prior_id)
 
     effective = [row for row in deadlines if row["deadline_id"] not in superseded]
@@ -414,24 +424,36 @@ def _normalize_opportunity(raw: Any, i: int, *, as_of_dt: datetime) -> dict[str,
     sources_raw = _expect_list(obj["sources"], f"{path}.sources", max_items=MAX_SOURCES)
     if not sources_raw:
         raise EvidenceError(f"{path}.sources: at least one source required")
-    sources = [_validate_source(item, f"{path}.sources[{j}]", as_of_dt=as_of_dt) for j, item in enumerate(sources_raw)]
+    sources = [
+        _validate_source(item, f"{path}.sources[{j}]", as_of_dt=as_of_dt)
+        for j, item in enumerate(sources_raw)
+    ]
     source_ix = _unique_index(sources, "source_id", f"{path}.sources")
     controlling_source_id = _identifier(obj["controlling_source_id"], f"{path}.controlling_source_id")
     if controlling_source_id not in source_ix:
         raise EvidenceError(f"{path}.controlling_source_id: unknown source")
 
     deadlines_raw = _expect_list(obj["deadlines"], f"{path}.deadlines", max_items=MAX_DEADLINES)
-    deadlines = [_validate_deadline(item, f"{path}.deadlines[{j}]", source_ix) for j, item in enumerate(deadlines_raw)]
-    effective = _validate_deadline_graph(deadlines, f"{path}.deadlines")
+    deadlines = [
+        _validate_deadline(item, f"{path}.deadlines[{j}]", source_ix)
+        for j, item in enumerate(deadlines_raw)
+    ]
+    effective = _validate_deadline_graph(deadlines, source_ix, f"{path}.deadlines")
 
-    blockers = [_identifier(item, f"{path}.blocker_codes[{j}]") for j, item in enumerate(
-        _expect_list(obj["blocker_codes"], f"{path}.blocker_codes", max_items=MAX_LIST_ITEMS)
-    )]
+    blockers = [
+        _identifier(item, f"{path}.blocker_codes[{j}]")
+        for j, item in enumerate(
+            _expect_list(obj["blocker_codes"], f"{path}.blocker_codes", max_items=MAX_LIST_ITEMS)
+        )
+    ]
     if len(set(blockers)) != len(blockers):
         raise EvidenceError(f"{path}.blocker_codes: duplicate code")
-    actions = [_identifier(item, f"{path}.owner_action_refs[{j}]") for j, item in enumerate(
-        _expect_list(obj["owner_action_refs"], f"{path}.owner_action_refs", max_items=MAX_LIST_ITEMS)
-    )]
+    actions = [
+        _identifier(item, f"{path}.owner_action_refs[{j}]")
+        for j, item in enumerate(
+            _expect_list(obj["owner_action_refs"], f"{path}.owner_action_refs", max_items=MAX_LIST_ITEMS)
+        )
+    ]
     if len(set(actions)) != len(actions):
         raise EvidenceError(f"{path}.owner_action_refs: duplicate ref")
 
@@ -464,16 +486,19 @@ def _normalize_input(raw: Any, *, as_of_dt: datetime) -> dict[str, Any]:
     return {"schema_version": INPUT_VERSION, "opportunities": sorted(rows, key=lambda row: row["opportunity_id"])}
 
 
-def _minutes_until(at_text: str, as_of_dt: datetime) -> int:
-    seconds = int((_utc(at_text, "$deadline").timestamp() - as_of_dt.timestamp()))
+def _ceil_minutes(seconds: float) -> int:
     if seconds >= 0:
-        return seconds // 60
-    return -((-seconds) // 60)
+        return int(math.ceil(seconds / 60.0))
+    return -int(math.ceil((-seconds) / 60.0))
+
+
+def _minutes_until(at_text: str, as_of_dt: datetime) -> int:
+    return _ceil_minutes((_utc(at_text, "$deadline").timestamp() - as_of_dt.timestamp()))
 
 
 def _source_age_minutes(source: Mapping[str, Any], as_of_dt: datetime) -> int:
     captured = _utc(source["captured_at"], "$source.captured_at")
-    return int((as_of_dt - captured).total_seconds() // 60)
+    return _ceil_minutes((as_of_dt - captured).total_seconds())
 
 
 def _priority_for(state: str, remaining: int | None, policy: Mapping[str, Any]) -> str:
@@ -529,9 +554,6 @@ def _classify(op: Mapping[str, Any], policy: Mapping[str, Any], *, as_of_dt: dat
     elif op["route_state"] in {"HOLD", "UNKNOWN"}:
         state = "HOLD"
         reason_codes.append("ROUTE_NOT_ACTIONABLE")
-    elif not all_future:
-        state = "EXPIRED"
-        reason_codes.append("NO_FUTURE_DEADLINE")
     elif not op["source_set_complete"]:
         state = "SOURCE_RECOVERY_REQUIRED"
         reason_codes.append("SOURCE_SET_INCOMPLETE")
@@ -553,13 +575,19 @@ def _classify(op: Mapping[str, Any], policy: Mapping[str, Any], *, as_of_dt: dat
         if stale:
             state = "SOURCE_RECOVERY_REQUIRED"
             reason_codes.append("STALE_OFFICIAL_SOURCE")
+        elif not all_future:
+            state = "EXPIRED"
+            reason_codes.append("NO_FUTURE_DEADLINE")
         elif next_deadline is None:
             state = "SOURCE_RECOVERY_REQUIRED"
             reason_codes.append("NO_OFFICIAL_FUTURE_DEADLINE")
         else:
             response = next(
-                (row for row in effective if row["kind"] in {"RESPONSE", "MARKET_ENGAGEMENT"}
-                 and _utc(row["at"], "$response.at") > as_of_dt),
+                (
+                    row for row in effective
+                    if row["kind"] in {"RESPONSE", "MARKET_ENGAGEMENT"}
+                    and _utc(row["at"], "$response.at") > as_of_dt
+                ),
                 None,
             )
             response_remaining = _minutes_until(response["at"], as_of_dt) if response else None
@@ -722,6 +750,7 @@ def verify_result(
         raise EvidenceError("receipt digest mismatch")
 
     current = compile_portfolio(raw_input, raw_policy, as_of=_utc_text(current_dt))
+
     def semantic_key(row: Mapping[str, Any]) -> tuple[Any, ...]:
         deadline = row["next_deadline"]
         deadline_key = None if deadline is None else (
@@ -827,25 +856,53 @@ def ics_projection(result: Mapping[str, Any]) -> str:
 
 def read_bounded_json(path: str | os.PathLike[str]) -> Any:
     p = Path(path)
+    flags = os.O_RDONLY
+    if hasattr(os, "O_NOFOLLOW"):
+        flags |= os.O_NOFOLLOW
     try:
-        st = p.lstat()
+        fd = os.open(p, flags)
     except OSError as exc:
-        raise EvidenceError(f"cannot stat input file: {p}") from exc
-    if stat.S_ISLNK(st.st_mode) or not stat.S_ISREG(st.st_mode):
-        raise EvidenceError(f"input must be an ordinary regular file: {p}")
-    if st.st_size > MAX_FILE_BYTES:
-        raise EvidenceError(f"input file exceeds {MAX_FILE_BYTES} bytes: {p}")
+        raise EvidenceError(f"cannot open ordinary input file without following symlinks: {p}") from exc
     try:
-        data = p.read_bytes()
+        st = os.fstat(fd)
+        if not stat.S_ISREG(st.st_mode):
+            raise EvidenceError(f"input must be an ordinary regular file: {p}")
+        if st.st_size > MAX_FILE_BYTES:
+            raise EvidenceError(f"input file exceeds {MAX_FILE_BYTES} bytes: {p}")
+        chunks: list[bytes] = []
+        total = 0
+        while True:
+            chunk = os.read(fd, min(64 * 1024, MAX_FILE_BYTES + 1 - total))
+            if not chunk:
+                break
+            chunks.append(chunk)
+            total += len(chunk)
+            if total > MAX_FILE_BYTES:
+                raise EvidenceError(f"input file grew beyond {MAX_FILE_BYTES} bytes: {p}")
+        data = b"".join(chunks)
+    except EvidenceError:
+        raise
     except OSError as exc:
         raise EvidenceError(f"cannot read input file: {p}") from exc
-    if len(data) > MAX_FILE_BYTES:
-        raise EvidenceError(f"input file grew beyond {MAX_FILE_BYTES} bytes: {p}")
+    finally:
+        os.close(fd)
     try:
         text = data.decode("utf-8")
     except UnicodeDecodeError as exc:
         raise EvidenceError(f"input file is not UTF-8: {p}") from exc
     return loads_strict(text)
+
+
+def _same_file_identity(path: Path, opened: os.stat_result) -> bool:
+    try:
+        current = path.lstat()
+    except OSError:
+        return False
+    return (
+        stat.S_ISREG(current.st_mode)
+        and current.st_dev == opened.st_dev
+        and current.st_ino == opened.st_ino
+    )
 
 
 def write_new_file(path: str | os.PathLike[str], data: bytes) -> None:
@@ -864,6 +921,7 @@ def write_new_file(path: str | os.PathLike[str], data: bytes) -> None:
         fd = os.open(p, flags, 0o600)
     except OSError as exc:
         raise EvidenceError(f"refusing to overwrite/follow output path: {p}") from exc
+    opened = os.fstat(fd)
     try:
         with os.fdopen(fd, "wb") as handle:
             handle.write(data)
@@ -871,7 +929,8 @@ def write_new_file(path: str | os.PathLike[str], data: bytes) -> None:
             os.fsync(handle.fileno())
     except Exception:
         try:
-            p.unlink(missing_ok=True)
+            if _same_file_identity(p, opened):
+                p.unlink(missing_ok=True)
         finally:
             raise
 
