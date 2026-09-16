@@ -131,3 +131,15 @@ against exact V3.1. This is not champion clearance. Preserve existing SPARK PID
 Future unstarted cells use the corrected candidate; do not restart completed
 panels or relabel old results. See the existing selective-carrot/native-9901
 artifacts and the owning #sim-data thread TS1789245175.177299.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite newbot-ground-md-live-cash-20260916-09 — do not remint.
