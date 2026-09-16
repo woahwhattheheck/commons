@@ -1,7 +1,7 @@
 {
   "schema": "commons.workflow-surface.v1",
   "source_commit": "4592104ca9fd37f7546b0b39f01badb83f8a1300",
-  "source_workflows": 406,
+  "source_workflows": 407,
   "max_active_workflows": 67,
   "retained": [
     ".github/workflows/affordable-housing-compliance-demo.yml",
@@ -2027,6 +2027,12 @@
       "archive": "ci/workflow-recipes/usac-ai-consulting.yml",
       "sha256": "205116dfe88ba60393cdc6d96650f07d8368b6d63784a3bec6c9f10e65189d42",
       "bytes": 1295
+    },
+    {
+      "source": ".github/workflows/usac-it26139-byte-custody-helper.yml",
+      "archive": "ci/workflow-recipes/usac-it26139-byte-custody-helper.yml",
+      "sha256": "9daf2f43ff8400372234356d16487dc59fbc66a86abd64eca12fc4e7d9d69b4b",
+      "bytes": 4350
     },
     {
       "source": ".github/workflows/usac-pursuit.yml",
