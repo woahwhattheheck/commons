@@ -28,3 +28,13 @@ The model never determines commercial truth. The CLI preloads normalized evidenc
 The independent receipt digest, source batch, and caller-supplied current UTC are separate trust inputs during current verification. The receipt's own SHA-256 is only an integrity checksum, never authenticity by itself. Historical integrity verification remains available separately and is not treated as current authority.
 
 Receipt outputs are create-exclusive so a later run cannot silently replace the claim-time evidence file. Audit hooks record SDK exceptions and cancellations as failures and retain only hashes/metadata rather than raw commercial evidence.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../../plant-downtime-handoff.html)

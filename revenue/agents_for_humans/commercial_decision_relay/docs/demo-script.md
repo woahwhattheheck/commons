@@ -13,3 +13,13 @@
 **2:55–3:30 — Strands live path.** With configured Bedrock or OpenAI provider, run `decision-relay agent --provider bedrock --batch fixtures/demo-batch.json --evaluated-at 2026-09-13T12:00:00Z "Show me only decisions that need a human."` The trusted batch is already ingested/reconciled before the model starts; show the agent using `decision_queue` / `explain_blocker` / `verify_current_receipt`. An attempted model-side `ingest_batch` replacement is rejected. Briefly show hash-only audit JSONL, including `ok:false` for failed/cancelled tool calls.
 
 **3:30–3:40 — Why it matters.** The closer gets fewer interruptions without surrendering commercial authority to the model. It is a professional agent designed to quietly do work and surface only real decisions.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../../plant-downtime-handoff.html)

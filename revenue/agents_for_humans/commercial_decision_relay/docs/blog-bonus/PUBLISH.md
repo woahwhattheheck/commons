@@ -17,3 +17,13 @@ After each post is public:
 5. Do not mark points awarded, prize awarded, or revenue recognized. Judges determine bonus points after eligibility/judging.
 
 The checker validates only the local evidence record and URL shape; it does not make a network request and therefore does not prove that a URL is currently public. A browser-authorized publisher should visibly confirm each page before recording it.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../../../plant-downtime-handoff.html)

@@ -59,3 +59,13 @@ The pattern generalizes beyond sales:
 The promise of Agents for Humans is not that the agent replaces every human step. It is that software can absorb the repetitive work and make the remaining human step more informed, more explicit, and less noisy.
 
 Project source: https://github.com/woahwhattheheck/commons/tree/main/revenue/agents_for_humans/commercial_decision_relay
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../../../plant-downtime-handoff.html)
