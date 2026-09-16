@@ -57,8 +57,11 @@ Decision states are:
 - `HOLD_TECHNICAL_EVIDENCE`
 - `HOLD_PARTNER_RESEARCH`
 - `HOLD_COMMERCIAL_AUTHORITY`
+- `HISTORICAL_INTEGRITY_ONLY`
 - `READY_FOR_OWNER_REVIEW`
 
+Historical compilation is hold-only and never mints `READY_FOR_OWNER_REVIEW`.
+Current `READY_FOR_OWNER_REVIEW` is controlled by an independent `authority_root`.
 Even `READY_FOR_OWNER_REVIEW` keeps every external authority bit false.
 
 ## Files
