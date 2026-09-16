@@ -20,6 +20,7 @@ Verified product pages only — no invented Stripe links. DROP used to omit cash
 - [$199 referral diagnostic](./referral-intake-completeness.html)
 - [$199 repair diagnostic](./repair-booking-preflight.html)
 - [$199 plant diagnostic](./plant-downtime-handoff.html)
+Larger fixed engagements (separate product pages; checkout/intent stays there): [GGUF diagnostic · $12,000 / 10 days](./diagnostic.html) · [White Box pilot · $30,000 / 30 days](./commercial.html). Not remints of tip SKUs.
 
 Shelf: [tools-cash.html](./tools-cash.html) · [commerce.html](./commerce.html). Cite bass offer/todo — do not remint.
 

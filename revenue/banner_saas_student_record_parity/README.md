@@ -54,3 +54,13 @@ python engine.py verify --report report.json --markdown report.md
 ## Truth and authority boundary
 
 `PARITY_CLEAR_FOR_OWNER_REVIEW` means only that the supplied approved snapshots match under the declared policy. It is not a FERPA/security/legal conclusion, a migration completion claim, deployment approval, contract acceptance, buyer acceptance, payment, cash, or recognized revenue. No live Franklin & Marshall, Ellucian, Banner, student, or customer data is checked into this package.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)

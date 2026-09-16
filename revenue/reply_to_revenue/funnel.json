@@ -224,7 +224,8 @@
   ],
   "kind": "REPLY_TO_REVENUE_FUNNEL",
   "limits": [
-    "ingest each inbound event_ref once; collision on same ref with different payload hash",
+    "ingest each inbound event_ref once; collision on same ref with a different full observation envelope",
+    "bind every inbound observation to one unique canonical receipt for the same prospect",
     "automated acknowledgements are not buyer interest",
     "delivery failures require owner review of an alternate route; they never auto-resend",
     "HARD DNR and completed sends are never resent",
@@ -244,46 +245,16 @@
   },
   "schema_version": "commons-reply-to-revenue/v1",
   "stages": [
-    {
-      "count": 14,
-      "id": "SENT_COMPLETED"
-    },
-    {
-      "count": 14,
-      "id": "HARD_DNR"
-    },
-    {
-      "count": 4,
-      "id": "INBOUND_RECORDED"
-    },
-    {
-      "count": 4,
-      "id": "AUTO_ACK"
-    },
-    {
-      "count": 0,
-      "id": "DELIVERY_FAILURE"
-    },
-    {
-      "count": 0,
-      "id": "HUMAN_POSITIVE"
-    },
-    {
-      "count": 0,
-      "id": "NEEDS_ACCEPTANCE"
-    },
-    {
-      "count": 0,
-      "id": "SCOPE_ACCEPTANCE"
-    },
-    {
-      "count": 0,
-      "id": "PAYMENT_EVIDENCE"
-    },
-    {
-      "count": 0,
-      "id": "BANK_AVAILABLE"
-    }
+    {"count": 14, "id": "SENT_COMPLETED"},
+    {"count": 14, "id": "HARD_DNR"},
+    {"count": 4, "id": "INBOUND_RECORDED"},
+    {"count": 4, "id": "AUTO_ACK"},
+    {"count": 0, "id": "DELIVERY_FAILURE"},
+    {"count": 0, "id": "HUMAN_POSITIVE"},
+    {"count": 0, "id": "NEEDS_ACCEPTANCE"},
+    {"count": 0, "id": "SCOPE_ACCEPTANCE"},
+    {"count": 0, "id": "PAYMENT_EVIDENCE"},
+    {"count": 0, "id": "BANK_AVAILABLE"}
   ],
   "surfaces": [],
   "truth": {
