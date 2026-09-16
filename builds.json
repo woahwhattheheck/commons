@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 54,
+ "n_open_prs": 53,
  "open_prs": [
   {
    "number": 14299,
@@ -1191,22 +1191,6 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14641",
    "base_freshness": {
     "base_sha": "6f467673980f9064bc0004b83046d3c30e092a29",
-    "main_sha": "0db5ff94e4fb10681d2d00432c1539fbb113b30b",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 15014,
-   "author": "woahwhattheheck",
-   "title": "GROK: ping/poll.html KEEP Larger-fixed (20260916-01)",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15014",
-   "base_freshness": {
-    "base_sha": "014c756847ea3499385055381fba22fe26d8bf48",
     "main_sha": "0db5ff94e4fb10681d2d00432c1539fbb113b30b",
     "ahead_by": null,
     "behind_by": null,
