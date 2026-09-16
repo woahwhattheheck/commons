@@ -1,0 +1,26 @@
+{
+  "schema": "stockton-lims-qualification/source-manifest-v1",
+  "opportunity_id": "stockton-pur-27-007",
+  "official_authority_url": "https://www.stocktonca.gov/mudbid",
+  "observed_at": "2026-09-15T20:00:00Z",
+  "sources": [
+    {
+      "source_id": "RFP_PDF",
+      "expected_filename": "PUR_27-007_Final_.pdf",
+      "public_retrieval_url": "https://bqohpheioaljycjpwbjd.supabase.co/storage/v1/object/public/documents/documents/unique/d631859fdee6ef109d94e3a80b55a65de9667d30e60a17cf2b62949402b09134?download=PUR_27-007_Final_.pdf",
+      "storage_object_key": "d631859fdee6ef109d94e3a80b55a65de9667d30e60a17cf2b62949402b09134",
+      "storage_object_key_is_verified_content_sha256": false,
+      "observed_page_count": 64,
+      "custody_state": "TEXT_OBSERVED_BYTES_UNBOUND"
+    },
+    {
+      "source_id": "REQUIREMENTS_XLSX",
+      "expected_filename": "Requirements.xlsx",
+      "public_retrieval_url": null,
+      "listing_url": "https://bidscopeai.com/opportunities/fef1c63f-a855-4000-beab-e54ee6fe041d",
+      "custody_state": "SOURCE_REQUIRED"
+    }
+  ],
+  "addenda_census_state": "SOURCE_REQUIRED",
+  "decision_authority": false
+}
