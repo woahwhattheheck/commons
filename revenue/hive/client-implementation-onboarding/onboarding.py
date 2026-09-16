@@ -14,10 +14,12 @@ import json
 import os
 import re
 import sqlite3
+import stat
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Callable
+from urllib.parse import quote
 
 SCHEMA_VERSION = 1
 SAFE_INT = 9_007_199_254_740_991
@@ -63,11 +65,31 @@ def strict_loads(text: str) -> Any:
 
 def load_json(path: str | os.PathLike[str]) -> Any:
     p = Path(path)
-    if p.is_symlink() or not p.is_file():
-        raise OnboardingError(f"input must be a regular non-symlink file: {p}")
-    data = p.read_bytes()
-    if len(data) > 2_000_000:
-        raise OnboardingError("input exceeds 2 MB")
+    flags = os.O_RDONLY
+    if hasattr(os, "O_NOFOLLOW"):
+        flags |= os.O_NOFOLLOW
+    try:
+        fd = os.open(p, flags)
+    except OSError as exc:
+        raise OnboardingError(f"input must be a readable regular non-symlink file: {p}") from exc
+    try:
+        info = os.fstat(fd)
+        if not stat.S_ISREG(info.st_mode):
+            raise OnboardingError(f"input must be a regular file: {p}")
+        if info.st_size > 2_000_000:
+            raise OnboardingError("input exceeds 2 MB")
+        chunks: list[bytes] = []
+        total = 0
+        while True:
+            chunk = os.read(fd, min(131072, 2_000_001 - total))
+            if not chunk:
+                break
+            chunks.append(chunk); total += len(chunk)
+            if total > 2_000_000:
+                raise OnboardingError("input exceeds 2 MB")
+        data = b"".join(chunks)
+    finally:
+        os.close(fd)
     try:
         return strict_loads(data.decode("utf-8"))
     except UnicodeDecodeError as exc:
@@ -243,6 +265,30 @@ def connect(db_path: str | os.PathLike[str]) -> sqlite3.Connection:
     return conn
 
 
+def connect_readonly(db_path: str | os.PathLike[str]) -> sqlite3.Connection:
+    p = Path(db_path)
+    if p.is_symlink() or not p.is_file():
+        raise OnboardingError("read-only database must already exist as a regular non-symlink file")
+    uri = f"file:{quote(str(p.absolute()), safe='/:')}?mode=ro"
+    try:
+        conn = sqlite3.connect(uri, uri=True, timeout=10.0, isolation_level=None)
+    except sqlite3.Error as exc:
+        raise OnboardingError(f"cannot open read-only database: {exc}") from exc
+    conn.row_factory = sqlite3.Row
+    conn.execute("PRAGMA query_only=ON")
+    conn.execute("PRAGMA foreign_keys=ON")
+    conn.execute("PRAGMA busy_timeout=10000")
+    try:
+        row = conn.execute("SELECT value FROM meta WHERE key='schema_version'").fetchone()
+    except sqlite3.Error as exc:
+        conn.close()
+        raise OnboardingError("database is not an initialized onboarding workspace") from exc
+    if row is None or row["value"] != str(SCHEMA_VERSION):
+        conn.close()
+        raise OnboardingError("unsupported or missing schema version")
+    return conn
+
+
 def init_db(conn: sqlite3.Connection) -> None:
     conn.executescript("""
     CREATE TABLE IF NOT EXISTS meta(key TEXT PRIMARY KEY, value TEXT NOT NULL);
@@ -379,15 +425,33 @@ def kickoff_state(conn: sqlite3.Connection, workspace_id: str) -> str:
     return "ON_HOLD"
 
 
+def _invalidate_delivery_for_input_change(conn: sqlite3.Connection, workspace_id: str, generation: int, timestamp: str) -> None:
+    conn.execute(
+        "UPDATE milestone_state SET state='WAITING',revision=revision+1,updated_at=? "
+        "WHERE workspace_id=? AND generation=? AND state!='WAITING'",
+        (timestamp, workspace_id, generation),
+    )
+    conn.execute(
+        "UPDATE deliverable_state SET review_decision='UNREVIEWED',reviewed_revision=NULL,updated_at=? "
+        "WHERE workspace_id=? AND generation=? AND review_decision!='UNREVIEWED'",
+        (timestamp, workspace_id, generation),
+    )
+
+
 def receive_input(conn: sqlite3.Connection, workspace_id: str, input_id: str, artifact_sha: str, op_id: str, *, now: str | None = None) -> dict[str, Any]:
     validate_ref(input_id, "inputId"); validate_sha(artifact_sha, "artifactSha256")
     payload = {"workspaceId": workspace_id, "inputId": input_id, "artifactSha256": artifact_sha}
     timestamp = validate_utc(now, "now") if now else utc_now()
     def action() -> dict[str, Any]:
         ws = _workspace(conn, workspace_id); gen = ws["current_generation"]
-        row = conn.execute("SELECT artifact_revision FROM input_state WHERE workspace_id=? AND generation=? AND input_id=?", (workspace_id, gen, input_id)).fetchone()
+        row = conn.execute("SELECT artifact_revision,artifact_sha,status FROM input_state WHERE workspace_id=? AND generation=? AND input_id=?", (workspace_id, gen, input_id)).fetchone()
         if row is None: raise OnboardingError("input not in current scope")
-        rev = row["artifact_revision"] + 1
+        if row["artifact_revision"] >= 1 and row["artifact_sha"] == artifact_sha and row["status"] == "ACCEPTED_LOCAL":
+            return {"workspaceId": workspace_id, "generation": gen, "inputId": input_id, "artifactRevision": row["artifact_revision"], "artifactSha256": artifact_sha, "status": "ACCEPTED_LOCAL"}
+        changed_artifact = row["artifact_revision"] >= 1 and row["artifact_sha"] != artifact_sha
+        if changed_artifact:
+            _invalidate_delivery_for_input_change(conn, workspace_id, gen, timestamp)
+        rev = row["artifact_revision"] + 1 if row["artifact_sha"] != artifact_sha or row["artifact_revision"] == 0 else row["artifact_revision"]
         conn.execute("UPDATE input_state SET artifact_revision=?,artifact_sha=?,status='RECEIVED',updated_at=? WHERE workspace_id=? AND generation=? AND input_id=?", (rev, artifact_sha, timestamp, workspace_id, gen, input_id))
         return {"workspaceId": workspace_id, "generation": gen, "inputId": input_id, "artifactRevision": rev, "artifactSha256": artifact_sha, "status": "RECEIVED"}
     return _mutate(conn, op_id, "RECEIVE_INPUT", payload, action, now=timestamp)
@@ -402,6 +466,8 @@ def review_input(conn: sqlite3.Connection, workspace_id: str, input_id: str, dec
         ws = _workspace(conn, workspace_id); gen = ws["current_generation"]
         row = conn.execute("SELECT artifact_revision,artifact_sha,status FROM input_state WHERE workspace_id=? AND generation=? AND input_id=?", (workspace_id, gen, input_id)).fetchone()
         if row is None or row["artifact_revision"] < 1 or row["artifact_sha"] is None: raise OnboardingError("input has no received artifact")
+        if decision == "REJECTED_LOCAL":
+            _invalidate_delivery_for_input_change(conn, workspace_id, gen, timestamp)
         conn.execute("UPDATE input_state SET status=?,updated_at=? WHERE workspace_id=? AND generation=? AND input_id=?", (decision, timestamp, workspace_id, gen, input_id))
         return {"workspaceId": workspace_id, "generation": gen, "inputId": input_id, "artifactRevision": row["artifact_revision"], "artifactSha256": row["artifact_sha"], "status": decision}
     return _mutate(conn, op_id, "REVIEW_INPUT", payload, action, now=timestamp)
