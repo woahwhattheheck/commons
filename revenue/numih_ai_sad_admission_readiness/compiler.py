@@ -62,9 +62,9 @@ def _validate_text_scalar(value: str, path: str) -> str:
             raise ValidationError(
                 f"{path}[{index}] contains a non-scalar Unicode surrogate"
             )
-        if code < 0x20 or 0x7F <= code <= 0x9F or category in {"Zl", "Zp"}:
+        if code < 0x20 or 0x7F <= code <= 0x9F or category in {"Cf", "Zl", "Zp"}:
             raise ValidationError(
-                f"{path}[{index}] contains a disallowed control or line separator"
+                f"{path}[{index}] contains a disallowed control, format control, or line separator"
             )
     return value
 
