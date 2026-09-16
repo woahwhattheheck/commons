@@ -415,28 +415,43 @@ def verify_bytes(raw: bytes, report_raw: bytes, evidence_root: Path | str) -> No
 
 
 def _read_limited(path: Path, ceiling: int = 5_000_000) -> bytes:
-    flags = os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0) | getattr(os, "O_NONBLOCK", 0)
+    p = os.fspath(path)
+    flags = os.O_RDONLY
+    if hasattr(os, "O_NOFOLLOW"):
+        flags |= os.O_NOFOLLOW
+    if hasattr(os, "O_NONBLOCK"):
+        flags |= os.O_NONBLOCK
     try:
-        fd = os.open(path, flags)
+        before = os.lstat(p)
     except OSError as exc:
-        raise PackError(f"refusing non-regular or unreadable input: {path}") from exc
+        raise PackError(f"cannot stat input {p}: {exc}") from exc
+    if stat.S_ISLNK(before.st_mode) or not stat.S_ISREG(before.st_mode):
+        raise PackError(f"input must be a regular non-symlink file: {p}")
+    if before.st_size > ceiling:
+        raise PackError(f"{p} exceeds byte ceiling")
     try:
-        mode = os.fstat(fd).st_mode
-        if not stat.S_ISREG(mode):
-            raise PackError(f"refusing non-regular input: {path}")
+        fd = os.open(p, flags)
+    except OSError as exc:
+        raise PackError(f"cannot open input {p}: {exc}") from exc
+    try:
+        opened = os.fstat(fd)
+        if not stat.S_ISREG(opened.st_mode):
+            raise PackError(f"input must be a regular non-symlink file: {p}")
+        if opened.st_size > ceiling:
+            raise PackError(f"{p} exceeds byte ceiling")
         chunks: list[bytes] = []
         total = 0
         while True:
             try:
-                piece = os.read(fd, 65_536)
+                chunk = os.read(fd, min(1024 * 1024, ceiling + 1 - total))
             except BlockingIOError as exc:
-                raise PackError(f"refusing blocking input: {path}") from exc
-            if not piece:
+                raise PackError(f"input would block: {p}") from exc
+            if not chunk:
                 break
-            total += len(piece)
+            chunks.append(chunk)
+            total += len(chunk)
             if total > ceiling:
-                raise PackError(f"{path} exceeds byte ceiling")
-            chunks.append(piece)
+                raise PackError(f"{p} exceeds byte ceiling")
         return b"".join(chunks)
     finally:
         os.close(fd)
