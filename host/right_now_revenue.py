@@ -38,7 +38,10 @@ CHECKOUT_CURRENT_COLLECTOR_TIMEOUT_SECONDS = 10
 
 _HISTORICAL_VALIDATE_CHECKOUT_AUTHORITY = _core.validate_checkout_authority
 _HISTORICAL_VALIDATE_CATALOG = _core.validate_catalog
-_ORIGINAL_BUILD_CONTROL = _core.build_control
+# importlib test copies re-exec this file under new module names. Capture the
+# frozen core compiler once so later copies cannot wrap a previous wrapper.
+_ORIGINAL_BUILD_CONTROL = getattr(_core, "_UNWRAPPED_BUILD_CONTROL", _core.build_control)
+_core._UNWRAPPED_BUILD_CONTROL = _ORIGINAL_BUILD_CONTROL
 
 
 def _current_utc() -> datetime:
