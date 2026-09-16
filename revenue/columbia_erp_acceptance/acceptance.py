@@ -15,22 +15,34 @@ from pathlib import Path
 from typing import Any
 
 ETL_PHASES = ("profile", "cleanse", "map", "transform", "validate", "migrate")
-SCHEMA_VERSION = "columbia-erp-acceptance/v1"
+SCHEMA_VERSION = "columbia-erp-acceptance/v2"
 
 
 class AcceptanceError(ValueError):
     """Raised when evidence is malformed or cannot support an acceptance receipt."""
 
 
+def _validate_utf8_text(value: str, path: str) -> str:
+    try:
+        value.encode("utf-8")
+    except UnicodeEncodeError as exc:
+        raise AcceptanceError(f"{path}: string is not valid UTF-8") from exc
+    return value
+
+
 def _assert_json_safe(value: Any, path: str = "$") -> None:
+    if isinstance(value, str):
+        _validate_utf8_text(value, path)
+        return
     if isinstance(value, float) and not math.isfinite(value):
         raise AcceptanceError(f"{path}: non-finite float is not permitted")
-    if value is None or isinstance(value, (str, int, bool, float)):
+    if value is None or isinstance(value, (int, bool, float)):
         return
     if isinstance(value, Mapping):
         for key, item in value.items():
             if not isinstance(key, str):
                 raise AcceptanceError(f"{path}: object keys must be strings")
+            _validate_utf8_text(key, f"{path}: object key")
             _assert_json_safe(item, f"{path}.{key}")
         return
     if isinstance(value, Sequence) and not isinstance(value, (str, bytes, bytearray)):
@@ -41,21 +53,30 @@ def _assert_json_safe(value: Any, path: str = "$") -> None:
 
 
 def canonical_json(value: Any) -> str:
-    """Return canonical JSON or fail closed on non-JSON / non-finite values."""
+    """Return canonical UTF-8-safe JSON or fail closed on unsafe values."""
     _assert_json_safe(value)
-    return json.dumps(
-        value,
-        sort_keys=True,
-        separators=(",", ":"),
-        ensure_ascii=False,
-        allow_nan=False,
-    )
+    try:
+        encoded = json.dumps(
+            value,
+            sort_keys=True,
+            separators=(",", ":"),
+            ensure_ascii=False,
+            allow_nan=False,
+        )
+        encoded.encode("utf-8")
+    except (TypeError, ValueError, UnicodeEncodeError) as exc:
+        raise AcceptanceError("value cannot be encoded as canonical UTF-8 JSON") from exc
+    return encoded
+
+
+def _sha256_json(value: Any) -> str:
+    return hashlib.sha256(canonical_json(value).encode("utf-8")).hexdigest()
 
 
 def _validate_key_field(key_field: str) -> str:
     if not isinstance(key_field, str) or not key_field.strip():
         raise AcceptanceError("key_field must be a non-empty string")
-    return key_field
+    return _validate_utf8_text(key_field, "key_field")
 
 
 def _normalize_compare_fields(compare_fields: Sequence[str]) -> list[str]:
@@ -66,7 +87,29 @@ def _normalize_compare_fields(compare_fields: Sequence[str]) -> list[str]:
     fields = list(compare_fields)
     if any(not isinstance(field, str) or not field for field in fields):
         raise AcceptanceError("compare_fields contains an invalid field name")
+    for i, field in enumerate(fields):
+        _validate_utf8_text(field, f"compare_fields[{i}]")
     return sorted(set(fields))
+
+
+def _normalize_expected_interfaces(expected_interfaces: Sequence[str]) -> list[str]:
+    if isinstance(expected_interfaces, (str, bytes, bytearray)) or not isinstance(
+        expected_interfaces, Sequence
+    ):
+        raise AcceptanceError("expected_interfaces must be a sequence of names")
+    names: list[str] = []
+    seen: set[str] = set()
+    for i, raw_name in enumerate(expected_interfaces):
+        if not isinstance(raw_name, str) or not raw_name.strip():
+            raise AcceptanceError(
+                f"expected_interfaces[{i}] must be a non-empty string"
+            )
+        name = _validate_utf8_text(raw_name.strip(), f"expected_interfaces[{i}]")
+        if name in seen:
+            raise AcceptanceError(f"duplicate expected interface {name!r}")
+        seen.add(name)
+        names.append(name)
+    return sorted(names)
 
 
 def _index_records(
@@ -91,6 +134,12 @@ def _index_records(
     return index
 
 
+def _record_root(index: Mapping[str, Mapping[str, Any]]) -> str:
+    """Bind logical record content while remaining invariant to input record order."""
+    ordered_records = [index[key] for key in sorted(index)]
+    return _sha256_json(ordered_records)
+
+
 def reconcile_records(
     source_records: Sequence[Mapping[str, Any]],
     target_records: Sequence[Mapping[str, Any]],
@@ -100,9 +149,8 @@ def reconcile_records(
 ) -> dict[str, Any]:
     """Compare two bounded record sets and emit stable exception evidence.
 
-    If ``compare_fields`` is omitted, the union of non-key fields is compared for each
-    shared key. Missing fields compare as null only when the field exists on the other
-    side, making schema loss visible instead of silently ignored.
+    ``compare_fields=None`` is an explicit contract meaning: for every shared key,
+    compare the union of all non-key fields on the source and target records.
     """
     key_field = _validate_key_field(key_field)
     normalized_compare_fields = (
@@ -131,9 +179,14 @@ def reconcile_records(
                 )
 
     payload = {
-        "key_field": key_field,
+        "comparison_contract": {
+            "key_field": key_field,
+            "compare_fields": normalized_compare_fields,
+        },
         "source_count": len(source),
         "target_count": len(target),
+        "source_records_sha256": _record_root(source),
+        "target_records_sha256": _record_root(target),
         "missing_target_keys": missing,
         "unexpected_target_keys": unexpected,
         "field_mismatches": mismatches,
@@ -149,6 +202,8 @@ def normalize_phase_evidence(evidence: Mapping[str, Any]) -> dict[str, str]:
         raise AcceptanceError("phase evidence must be an object")
     if any(not isinstance(key, str) for key in evidence):
         raise AcceptanceError("phase evidence keys must be strings")
+    for key in evidence:
+        _validate_utf8_text(key, "phase evidence key")
     unknown = sorted(set(evidence) - set(ETL_PHASES))
     if unknown:
         raise AcceptanceError(f"unknown ETL phases: {', '.join(unknown)}")
@@ -159,7 +214,9 @@ def normalize_phase_evidence(evidence: Mapping[str, Any]) -> dict[str, str]:
         if not isinstance(value, str) or not value.strip():
             missing.append(phase)
         else:
-            out[phase] = value.strip()
+            out[phase] = _validate_utf8_text(
+                value.strip(), f"phase evidence {phase!r}"
+            )
     if missing:
         raise AcceptanceError(f"missing ETL evidence: {', '.join(missing)}")
     return out
@@ -167,11 +224,14 @@ def normalize_phase_evidence(evidence: Mapping[str, Any]) -> dict[str, str]:
 
 def normalize_interfaces(
     interfaces: Sequence[Mapping[str, Any]],
+    *,
+    expected_interfaces: Sequence[str],
 ) -> list[dict[str, str]]:
     if isinstance(interfaces, (str, bytes, bytearray)) or not isinstance(
         interfaces, Sequence
     ):
         raise AcceptanceError("interfaces must be a sequence")
+    expected = _normalize_expected_interfaces(expected_interfaces)
     out: list[dict[str, str]] = []
     seen: set[str] = set()
     for i, item in enumerate(interfaces):
@@ -182,7 +242,7 @@ def normalize_interfaces(
         evidence_id = item.get("evidence_id")
         if not isinstance(name, str) or not name.strip():
             raise AcceptanceError(f"interfaces[{i}].name must be non-empty")
-        name = name.strip()
+        name = _validate_utf8_text(name.strip(), f"interfaces[{i}].name")
         if name in seen:
             raise AcceptanceError(f"duplicate interface {name!r}")
         seen.add(name)
@@ -190,8 +250,18 @@ def normalize_interfaces(
             raise AcceptanceError(f"interface {name!r} is not PASS")
         if not isinstance(evidence_id, str) or not evidence_id.strip():
             raise AcceptanceError(f"interface {name!r} lacks evidence_id")
-        out.append(
-            {"name": name, "status": "PASS", "evidence_id": evidence_id.strip()}
+        evidence_id = _validate_utf8_text(
+            evidence_id.strip(), f"interface {name!r} evidence_id"
+        )
+        out.append({"name": name, "status": "PASS", "evidence_id": evidence_id})
+
+    actual = sorted(seen)
+    if actual != expected:
+        missing = sorted(set(expected) - seen)
+        unexpected = sorted(seen - set(expected))
+        raise AcceptanceError(
+            "interface roster mismatch: "
+            f"missing={canonical_json(missing)} unexpected={canonical_json(unexpected)}"
         )
     return sorted(out, key=lambda x: x["name"])
 
@@ -202,6 +272,7 @@ def build_receipt(
     phase_evidence: Mapping[str, Any],
     interfaces: Sequence[Mapping[str, Any]],
     *,
+    expected_interfaces: Sequence[str],
     key_field: str = "key",
     compare_fields: Sequence[str] | None = None,
     scope_id: str = "bounded-migration-slice",
@@ -209,6 +280,8 @@ def build_receipt(
     """Issue a receipt only when migration, phase, and interface evidence all pass."""
     if not isinstance(scope_id, str) or not scope_id.strip():
         raise AcceptanceError("scope_id must be a non-empty string")
+    scope_id = _validate_utf8_text(scope_id.strip(), "scope_id")
+    expected = _normalize_expected_interfaces(expected_interfaces)
     reconciliation = reconcile_records(
         source_records,
         target_records,
@@ -218,16 +291,23 @@ def build_receipt(
     if reconciliation["status"] != "PASS":
         raise AcceptanceError("reconciliation contains blocking exceptions")
     phases = normalize_phase_evidence(phase_evidence)
-    normalized_interfaces = normalize_interfaces(interfaces)
+    normalized_interfaces = normalize_interfaces(
+        interfaces, expected_interfaces=expected
+    )
+    comparison = reconciliation["comparison_contract"]
     payload = {
         "schema": SCHEMA_VERSION,
-        "scope_id": scope_id.strip(),
+        "contract": {
+            "scope_id": scope_id,
+            "key_field": comparison["key_field"],
+            "compare_fields": comparison["compare_fields"],
+            "expected_interfaces": expected,
+        },
         "reconciliation": reconciliation,
         "etl_evidence": phases,
         "interfaces": normalized_interfaces,
     }
-    digest = hashlib.sha256(canonical_json(payload).encode("utf-8")).hexdigest()
-    return {"payload": payload, "sha256": digest}
+    return {"payload": payload, "sha256": _sha256_json(payload)}
 
 
 def verify_receipt(receipt: Mapping[str, Any]) -> bool:
@@ -239,7 +319,7 @@ def verify_receipt(receipt: Mapping[str, Any]) -> bool:
     if not isinstance(payload, Mapping) or not isinstance(digest, str):
         return False
     try:
-        expected = hashlib.sha256(canonical_json(payload).encode("utf-8")).hexdigest()
+        expected = _sha256_json(payload)
     except AcceptanceError:
         return False
     return digest == expected
@@ -264,6 +344,11 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument(
         "--interfaces", required=True, help="JSON array of interface PASS evidence"
     )
+    parser.add_argument(
+        "--expected-interfaces",
+        required=True,
+        help="JSON array defining the exact in-scope interface roster",
+    )
     parser.add_argument("--scope-id", default="bounded-migration-slice")
     parser.add_argument("--key-field", default="key")
     args = parser.parse_args(argv)
@@ -274,6 +359,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             _load_json(args.target),
             _load_json(args.phases),
             _load_json(args.interfaces),
+            expected_interfaces=_load_json(args.expected_interfaces),
             scope_id=args.scope_id,
             key_field=args.key_field,
         )
