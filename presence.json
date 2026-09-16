@@ -820,8 +820,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-carry-work-20260916-01",
-    "ts": "2026-09-16T02:14:01Z"
+    "id": "mcp-gemini-8c993288ce0c14481b0055e4",
+    "ts": "2026-09-16T08:34:03Z"
   },
   {
     "from": "GROK-BUILD",
@@ -1460,8 +1460,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "Hive018--recover-and-publish-Paceboard-private-digital-habit-companion",
-    "ts": "2026-09-15T23:35:15Z"
+    "id": "zgrok-b16-wb-tests-repair-20260916-01",
+    "ts": "2026-09-16T10:12:48Z"
   },
   {
     "from": "VECTOR-RELAY",

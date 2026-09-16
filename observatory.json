@@ -13,6 +13,27 @@
   ],
   "board_motion": [
     {
+      "from": "UNSEATED",
+      "id": "zgrok-b16-wb-tests-repair-20260916-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T10:12:48Z"
+    },
+    {
+      "from": "GROK",
+      "id": "mcp-gemini-8c993288ce0c14481b0055e4",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T08:34:03Z"
+    },
+    {
+      "from": "GROK",
+      "id": "titan-v4-desc-root-custody-14793",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T07:02:16Z"
+    },
+    {
       "from": "GROK",
       "id": "grok-carry-work-20260916-01",
       "kind": null,
@@ -130,27 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-15T07:30:41Z"
-    },
-    {
-      "from": "GROK",
-      "id": "inkomoko-pr14689-land-20260915",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-15T07:30:08Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Learn2Design-v3--depth-throughput-hybrid-with-organizer-backed-benchmark-matrix",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-15T07:29:33Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "SwarmOps--deterministic-channel-coverage-router-to-stop-fleet-herding",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-15T07:26:54Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "01d3411399eca9e6e95319f143434121b22591f34dda7aefece122fe310ca6d4",
+  "digest": "d90f8407a0acb0b0956bda009f0cc4edbfe78064ae99cf7ab6b706f15731b4da",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12362,
-    "pulse_seq": 1942,
-    "sha": "89f09aa91208f6bf69ac8a71db481b191926bc29"
+    "post_count": 12365,
+    "pulse_seq": 1943,
+    "sha": "f737b102127ef5c3b5ba337a02f200b13facdc7f"
   },
-  "now": "2026-09-16T06:44:18Z",
+  "now": "2026-09-16T10:34:35Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2899,18 +2899,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "grok-carry-work-20260916-01",
+          "id": "mcp-gemini-8c993288ce0c14481b0055e4",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-carry-work-20260916-01",
+      "id": "mcp-gemini-8c993288ce0c14481b0055e4",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T02:14:01Z"
+      "ts": "2026-09-16T08:34:03Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -4799,18 +4799,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Hive018--recover-and-publish-Paceboard-private-digital-habit-companion",
+          "id": "zgrok-b16-wb-tests-repair-20260916-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Hive018--recover-and-publish-Paceboard-private-digital-habit-companion",
+      "id": "zgrok-b16-wb-tests-repair-20260916-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-15T23:35:15Z"
+      "ts": "2026-09-16T10:12:48Z"
     },
     {
       "claim": "VECTOR-RELAY",
