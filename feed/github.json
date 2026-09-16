@@ -1,13 +1,13 @@
 {
   "counts": {
-    "open_issues": 123,
-    "open_pull_requests": 77,
-    "runs_in_progress": 17,
-    "runs_queued": 534
+    "open_issues": 125,
+    "open_pull_requests": 78,
+    "runs_in_progress": 18,
+    "runs_queued": 616
   },
   "counts_source": "graphql",
   "degraded": [],
-  "drafts": 2,
+  "drafts": 3,
   "longest_open": [
     {
       "author": "woahwhattheheck",
@@ -69,24 +69,90 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zswf-q7r4/nysdec-hale-creek-lims-rfi-14864",
-      "created_at": "2026-09-16T14:02:17Z",
+      "branch": "zeta-five/public-sector-workshare-20260916",
+      "created_at": "2026-09-16T14:18:44Z",
       "draft": false,
-      "head_sha": "95379b3b5ff19af6410f03637183302e4dfa30d2",
-      "number": 14867,
-      "title": "Add truth-gated NYS DEC Hale Creek LIMS RFI carrier",
-      "updated_at": "2026-09-16T14:02:17Z"
+      "head_sha": "ea56fad97b2eb0e66cb384e6eec61403bb051c8d",
+      "number": 14882,
+      "title": "Revenue: ship public-sector integration workshare pack + IL/NC overlays",
+      "updated_at": "2026-09-16T14:18:44Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "ziq-k4r9/muse-election-v2-consolidation-14503",
-      "created_at": "2026-09-16T13:58:20Z",
+      "branch": "zzf-r7m9/commercial-funnel-current-main-recovery-20260916",
+      "created_at": "2026-09-16T14:17:26Z",
       "draft": false,
-      "head_sha": "3fcca188c872b35a64ec62c7fcfc991bf9fbe7b3",
-      "number": 14866,
-      "title": "Outbound: recover canonical Muse election v2 consolidation",
-      "updated_at": "2026-09-16T14:03:18Z"
+      "head_sha": "05a468e3d16539263c627f7bf76da9fa4e52cc36",
+      "number": 14880,
+      "title": "fix(revenue): recover commercial funnel on current main",
+      "updated_at": "2026-09-16T14:18:13Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol/land-bank-t12-09-26-readiness-20260916",
+      "created_at": "2026-09-16T14:15:04Z",
+      "draft": false,
+      "head_sha": "c80abd4e90a4c80c33adf7aec25bb102cdea7ccb",
+      "number": 14877,
+      "title": "revenue: Land Bank T12-09-26 fail-closed teaming readiness carrier",
+      "updated_at": "2026-09-16T14:15:04Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "ztsy-n7q4/columbia-erp-acceptance-20260916",
+      "created_at": "2026-09-16T14:11:47Z",
+      "draft": false,
+      "head_sha": "ecc3ce2a041e6b91bd05ab16811e424f186cfd9c",
+      "number": 14874,
+      "title": "Revenue: Columbia ERP migration acceptance workshare",
+      "updated_at": "2026-09-16T14:18:00Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-csgp5n7/usac-it26139-byte-custody-helper",
+      "created_at": "2026-09-16T14:08:59Z",
+      "draft": true,
+      "head_sha": "81dbcfb0701f543e2e4098f4fbd0883bd2e0a84f",
+      "number": 14873,
+      "title": "Disposable helper: retain USAC IT-26-139 buyer bytes",
+      "updated_at": "2026-09-16T14:08:59Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "zswf-q7r4/nysdec-hale-creek-lims-rfi-14864",
+      "branch": "sol-z/nysdec-workflow-budget-14867-20260916",
+      "created_at": "2026-09-16T14:07:13Z",
+      "draft": false,
+      "head_sha": "4b938fd21134e1600659fa7c33eff5fc873f7579",
+      "number": 14871,
+      "title": "Donor: keep NYS DEC carrier inside workflow budget",
+      "updated_at": "2026-09-16T14:16:31Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol/sun-a308734-p18-current-main-20260916",
+      "created_at": "2026-09-16T14:05:35Z",
+      "draft": false,
+      "head_sha": "91384cf536f39c84bf7dddbe208fd72b6ee865ca",
+      "number": 14868,
+      "title": "Recover Sun A308734 P18 frontier on literal current main",
+      "updated_at": "2026-09-16T14:12:36Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zswf-q7r4/nysdec-hale-creek-lims-rfi-14864",
+      "created_at": "2026-09-16T14:02:17Z",
+      "draft": false,
+      "head_sha": "25aa0b5418a915ad97fad4dab9599c2868379e23",
+      "number": 14867,
+      "title": "Add truth-gated NYS DEC Hale Creek LIMS RFI carrier",
+      "updated_at": "2026-09-16T14:16:31Z"
     },
     {
       "author": "woahwhattheheck",
@@ -94,10 +160,10 @@
       "branch": "zhv-r4q8/service-deal-current-runtime-v3",
       "created_at": "2026-09-16T13:57:34Z",
       "draft": false,
-      "head_sha": "f4e03759ab64dcc725717a468a4139bb4df23019",
+      "head_sha": "f044de49e9293cb129a66a94321487294aef5b58",
       "number": 14865,
       "title": "Freeze Service Deal Economics CURRENT authority runtime",
-      "updated_at": "2026-09-16T14:03:22Z"
+      "updated_at": "2026-09-16T14:18:30Z"
     },
     {
       "author": "woahwhattheheck",
@@ -109,72 +175,6 @@
       "number": 14861,
       "title": "Command center: recover bounded Slack thread visibility",
       "updated_at": "2026-09-16T13:54:04Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zca-k6v2/invest-appalachia-framer-lms-20260916",
-      "created_at": "2026-09-16T13:38:04Z",
-      "draft": false,
-      "head_sha": "a7b5d66d5611605b788e3a8f5be1001f1065433d",
-      "number": 14859,
-      "title": "Revenue: capture Invest Appalachia Framer LMS pursuit with fail-closed prime/team gate",
-      "updated_at": "2026-09-16T13:46:35Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zov-k8r6/niwc-evidenceaar-recovery-20260916",
-      "created_at": "2026-09-16T13:31:53Z",
-      "draft": false,
-      "head_sha": "438b7d4aff22d6f131272a3dd1c6a8ca05ed120c",
-      "number": 14858,
-      "title": "Build EvidenceAAR NIWC Digital Scribe source carrier",
-      "updated_at": "2026-09-16T13:50:32Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ztsw-h6q8/service-deal-economics-quote-expiry",
-      "created_at": "2026-09-16T13:27:45Z",
-      "draft": false,
-      "head_sha": "90db7d58103130638f27ba62778151ec41775d61",
-      "number": 14856,
-      "title": "Recover Service Deal Economics authority and restore quote-expiry fence",
-      "updated_at": "2026-09-16T13:40:22Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zblm-w7r4/water4all-2026-red-recovery",
-      "created_at": "2026-09-16T13:27:30Z",
-      "draft": false,
-      "head_sha": "e733ef5fb004c1d14e5a6cb5c01c4a531f83520c",
-      "number": 14855,
-      "title": "Recover Water4All 2026 readiness carrier with fail-closed authority",
-      "updated_at": "2026-09-16T13:33:08Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zpb-h7n4/pinellas-current-authority-v4-20260916",
-      "created_at": "2026-09-16T13:24:06Z",
-      "draft": false,
-      "head_sha": "a38ba906140557b32bb2c618bb0b942a2becc605",
-      "number": 14853,
-      "title": "Revenue: finalize Pinellas current custody authority boundary",
-      "updated_at": "2026-09-16T13:49:40Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zch-r7n5/osuchsh-migration-authority-current-main-20260916",
-      "created_at": "2026-09-16T13:20:04Z",
-      "draft": false,
-      "head_sha": "7693bb7d89a18d5ea98d0a74830da0aab1301efe",
-      "number": 14851,
-      "title": "Revenue: finalize OSU-CHS resident-data carrier with source-bound migration authority",
-      "updated_at": "2026-09-16T13:20:46Z"
     }
   ],
   "open_heads": {
@@ -186,7 +186,6 @@
     "14317": "b49030a2ff320730415263803d878825970fa6b9",
     "14321": "1810cbac9e1fc9a0beddfcb13af37f6aa60726aa",
     "14333": "26e7110348d2ab0d994adf68d5e0f14ad8677e38",
-    "14343": "c04b1fa4adcdb5cf928bb163c158a3adec828ea3",
     "14356": "4d55e009437563dd254dfa38e2cd4bfaffec2f10",
     "14395": "1b6907c68885d2feac44c15c2dd39f128864640d",
     "14454": "69b1cc3a9a3133ba6c5441eda3ad41712406f3fb",
@@ -200,15 +199,11 @@
     "14658": "bcc29688e888b38a5ce6ee1feb734b3d0060636f",
     "14664": "f1c9800387b399949a4bf9f85e10b73500042c41",
     "14669": "877b07a41f1b13b5d3cdeec635e9b4dcec75ac47",
-    "14670": "6e3b3fe0f15b6d067712af533a27bff8f80c8390",
     "14672": "36be284452141d26cdff4b74efb8f185b27c4b32",
     "14680": "3c801971265381a084d19eb064839ff74747015e",
-    "14684": "5804490ae2a883bc492f7fe975921b62fdc25216",
     "14700": "d8a38da9c1042c157ccd49729809ae923915f66c",
     "14705": "6e8761343b10ec3518fd1a6a002594ac6076d38a",
-    "14709": "f032b45d7dda0ddca9a8436636bbcd8de6c7d972",
     "14715": "d21e068298412497d04c86225747d640af59b5e6",
-    "14720": "4b52d0529fcf5d658267b06144b0da153275a562",
     "14724": "b97d2acc3f8839fd41e70631f6f782a6dab1e67b",
     "14728": "33e117064c336cefc947c52b38dee311e8ca0818",
     "14757": "ee474ce046917b3963ef18622915021ca2845def",
@@ -222,7 +217,7 @@
     "14782": "8e2bc8c9201d6c6968eb22bf9bd73953d26b3c5d",
     "14784": "eb29ffe2c0e8f4b663308d9243cf792ddffe2477",
     "14788": "ffaff5aa571aaccedd41f82c0eba85b09586f230",
-    "14798": "8851163e0a5df417d494d3daffb1e21ffd419f31",
+    "14798": "4bf723d7820087aa6efb82e140c8051667a72bb1",
     "14801": "bbc065f3625883bcfa1973b645f0a3aa1474b51a",
     "14802": "9c554591863d42fae5c8c4c90dbc0ac7a8352c67",
     "14807": "6d2749228625e5fe38f189f72a37516b4a15be13",
@@ -252,14 +247,130 @@
     "14858": "438b7d4aff22d6f131272a3dd1c6a8ca05ed120c",
     "14859": "a7b5d66d5611605b788e3a8f5be1001f1065433d",
     "14861": "e8c91de8fb79833ae635f63a13f0000a4db650f3",
-    "14865": "f4e03759ab64dcc725717a468a4139bb4df23019",
-    "14866": "3fcca188c872b35a64ec62c7fcfc991bf9fbe7b3",
-    "14867": "95379b3b5ff19af6410f03637183302e4dfa30d2"
+    "14865": "f044de49e9293cb129a66a94321487294aef5b58",
+    "14867": "25aa0b5418a915ad97fad4dab9599c2868379e23",
+    "14868": "91384cf536f39c84bf7dddbe208fd72b6ee865ca",
+    "14871": "4b938fd21134e1600659fa7c33eff5fc873f7579",
+    "14873": "81dbcfb0701f543e2e4098f4fbd0883bd2e0a84f",
+    "14874": "ecc3ce2a041e6b91bd05ab16811e424f186cfd9c",
+    "14877": "c80abd4e90a4c80c33adf7aec25bb102cdea7ccb",
+    "14880": "05a468e3d16539263c627f7bf76da9fa4e52cc36",
+    "14882": "ea56fad97b2eb0e66cb384e6eec61403bb051c8d"
   },
-  "pulls_listed": 77,
+  "pulls_listed": 78,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 31.4,
+  "queue_depth_per_runner": 34.2,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "ziq-k4r9/muse-election-v2-consolidation-14503",
+      "branch": "zzq-n4p8/muse-v2-current-auth-integration-14503",
+      "closed_at": "2026-09-16T14:17:12Z",
+      "head_sha": "46c531a57c1a92017dac6fa48771598781a95b8e",
+      "merged_at": null,
+      "number": 14684,
+      "state": "CLOSED",
+      "title": "Superseded by #14878: Compose Muse v2 current-authority boundary"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "sol-z/muse-election-v2-fresh-main-20260916",
+      "closed_at": "2026-09-16T14:16:47Z",
+      "head_sha": "2d85378a702981eddfab4146cb0e29bb21aef074",
+      "merged_at": "2026-09-16T14:16:47Z",
+      "number": 14878,
+      "state": "MERGED",
+      "title": "Outbound: land canonical Muse election v2 on current main"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "ziq-k4r9/muse-election-v2-consolidation-14503",
+      "branch": "z-sol/muse-v2-requester-control-repair-14866",
+      "closed_at": "2026-09-16T14:16:31Z",
+      "head_sha": "36b11be057f2c8404cf126dd94c93f17ad7401d1",
+      "merged_at": null,
+      "number": 14879,
+      "state": "CLOSED",
+      "title": "Muse v2: make bound requester controls terminal"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "zrcw/recover-opportunity-deadline-13799",
+      "branch": "zcf/opportunity-deadline-command-13799",
+      "closed_at": "2026-09-16T14:15:23Z",
+      "head_sha": "ec08f60eea61584456b7fb25ed17434064ffaf59",
+      "merged_at": "2026-09-16T14:15:23Z",
+      "number": 14876,
+      "state": "MERGED",
+      "title": "Recovery import: preserve #13799 opportunity deadline command"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "zcb-h8n6/reply-revenue-chronology-20260913",
+      "branch": "zml-b1r8/reply-revenue-envelope-identity-20260914",
+      "closed_at": "2026-09-16T14:14:24Z",
+      "head_sha": "c04b1fa4adcdb5cf928bb163c158a3adec828ea3",
+      "merged_at": null,
+      "number": 14343,
+      "state": "CLOSED",
+      "title": "Donor: bind reply event refs to the full observation envelope"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-ah-p4w7/learn2design-curvature-finalize-20260916",
+      "closed_at": "2026-09-16T14:14:22Z",
+      "head_sha": "51c392a01dc58605687795ad2a6da01c82955b51",
+      "merged_at": "2026-09-16T14:14:22Z",
+      "number": 14875,
+      "state": "MERGED",
+      "title": "Finalize Learn2Design curvature sidecar from Z-Cairn donor"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "zym-l4v8/media-rights-ops-20260915",
+      "branch": "z-sol/media-rights-export-generation-20260915",
+      "closed_at": "2026-09-16T14:13:49Z",
+      "head_sha": "f032b45d7dda0ddca9a8436636bbcd8de6c7d972",
+      "merged_at": null,
+      "number": 14709,
+      "state": "CLOSED",
+      "title": "Donor: make media-rights export generation + path custody atomic"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zym-l4v8/media-rights-ops-20260915",
+      "closed_at": "2026-09-16T14:13:28Z",
+      "head_sha": "6e3b3fe0f15b6d067712af533a27bff8f80c8390",
+      "merged_at": null,
+      "number": 14670,
+      "state": "CLOSED",
+      "title": "revenue: add content rights usage-window operations desk"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "ziq-k4r9/muse-election-v2-consolidation-14503",
+      "closed_at": "2026-09-16T14:10:17Z",
+      "head_sha": "3fcca188c872b35a64ec62c7fcfc991bf9fbe7b3",
+      "merged_at": null,
+      "number": 14866,
+      "state": "CLOSED",
+      "title": "Outbound: recover canonical Muse election v2 consolidation"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "zzq-n4p8/muse-v2-current-auth-integration-14503",
+      "branch": "z-forge/muse-v2-negative-authority-donor-14684",
+      "closed_at": "2026-09-16T14:06:50Z",
+      "head_sha": "4b52d0529fcf5d658267b06144b0da153275a562",
+      "merged_at": "2026-09-16T14:06:50Z",
+      "number": 14720,
+      "state": "MERGED",
+      "title": "Donor: fail closed unauthenticated Muse negative election outcomes"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -314,120 +425,10 @@
       "number": 14833,
       "state": "CLOSED",
       "title": "Revenue: recover Pinellas current custody trust boundary"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zke-r9v2/ohsu-ap-ai-rfi-approof-recovery",
-      "closed_at": "2026-09-16T13:24:20Z",
-      "head_sha": "9053181a89bae861917f178500f65fd1274176b7",
-      "merged_at": null,
-      "number": 14814,
-      "state": "CLOSED",
-      "title": "feat(revenue): recover OHSU APProof shadow carrier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zch-r7n5/ohsu-approof-authority-current-main-20260916",
-      "closed_at": "2026-09-16T13:23:57Z",
-      "head_sha": "d58810d7be41da3bd04628d83aab0f409f74eaae",
-      "merged_at": "2026-09-16T13:23:56Z",
-      "number": 14852,
-      "state": "MERGED",
-      "title": "Revenue: finalize OHSU APProof with code-owned hard-false authority"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zds-c7r2/bidder-vault-v2-14280",
-      "closed_at": "2026-09-16T13:23:02Z",
-      "head_sha": "742aeafae8c258759c435bf6758e1546ff258c56",
-      "merged_at": "2026-09-16T13:23:02Z",
-      "number": 14314,
-      "state": "MERGED",
-      "title": "Revenue: harden bidder qualification vault with entity-bound v2"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zch-m6p2/bidder-vault-v2-candidate-recovery-20260916",
-      "closed_at": "2026-09-16T13:23:01Z",
-      "head_sha": "a034c5a5e5ee04c9458809d284e888766d67088a",
-      "merged_at": "2026-09-16T13:23:01Z",
-      "number": 14848,
-      "state": "MERGED",
-      "title": "Revenue: recover bidder vault v2 as candidate-only evidence compiler"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zmq-v5r9/scaqmd-p2027-03-recovery",
-      "closed_at": "2026-09-16T13:11:14Z",
-      "head_sha": "4dfc91d51477a561f3d2754ab90b471334971ca5",
-      "merged_at": "2026-09-16T13:11:14Z",
-      "number": 14846,
-      "state": "MERGED",
-      "title": "revenue: recover South Coast AQMD P2027-03 pursuit carrier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zhp-r3x6/lawrence-document-authority-20260914",
-      "closed_at": "2026-09-16T13:08:50Z",
-      "head_sha": "86b429f011aecfc44b324a1dbaf659e58739e0b6",
-      "merged_at": null,
-      "number": 14548,
-      "state": "CLOSED",
-      "title": "fix: bind Lawrence document authority semantics"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z/verified-paid-proof-public-boundary-cz1",
-      "closed_at": "2026-09-16T13:07:52Z",
-      "head_sha": "81c3f145512714638688d0f724a391f03368d739",
-      "merged_at": null,
-      "number": 14527,
-      "state": "CLOSED",
-      "title": "fix(revenue): fail closed paid-proof public artifacts v3"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zvh-q9x7/vetter-tech-transfer-recovery-20260914",
-      "closed_at": "2026-09-16T12:59:43Z",
-      "head_sha": "baa56fd2dbba8e847a56768d9ca0dc6ac23ef67a",
-      "merged_at": null,
-      "number": 14471,
-      "state": "CLOSED",
-      "title": "Revenue: recover Vetter current tech-transfer evidence gate"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zch-r7n5/vetter-trust-boundary-recovery-20260916",
-      "closed_at": "2026-09-16T12:59:03Z",
-      "head_sha": "cb398dfb0b9ead3b2a079709370fc6b77520c995",
-      "merged_at": "2026-09-16T12:59:03Z",
-      "number": 14841,
-      "state": "MERGED",
-      "title": "Revenue: finalize Vetter tech-transfer gate with truthful runtime boundary"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zvlh/ohsu-source-bound-deadline-recovery-20260916",
-      "closed_at": "2026-09-16T12:55:58Z",
-      "head_sha": "aa9ddb91cebc3e7a502067374162722091fe0f33",
-      "merged_at": "2026-09-16T12:55:58Z",
-      "number": 14836,
-      "state": "MERGED",
-      "title": "Revenue: bind OHSU PSC source and contract review gates"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-16T14:04:15Z",
+  "unchanged_since": "2026-09-16T14:18:52Z",
   "undatable_pulls": []
 }
