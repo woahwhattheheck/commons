@@ -5,10 +5,14 @@ The large implementation is retained byte-for-byte in ``current_impl``.
 Its deterministic core dependency is rebound to the underscore-private v1
 engine before every authority operation. The private core is deliberately not
 exported through this module.
+
+Positive authority always reinstalls a process-UTC clock and the private
+core before compile/verify. Caller-writable module attributes on this wrapper
+or on ``current_impl`` are not the authority time source.
 """
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import datetime, timezone
 from types import SimpleNamespace
 from typing import Any
 
@@ -33,8 +37,8 @@ MAX_INPUT_BYTES = _impl.MAX_INPUT_BYTES
 DECISIONS = _impl.DECISIONS
 POSITIVE = _impl.POSITIVE
 
-# Testable current-clock/core seams. Public wrappers synchronize these into the
-# byte-preserved implementation; callers cannot select a clock via parameters.
+# Inspectable aliases only. Authority wrappers do not copy these back into
+# the implementation; rebinding them cannot select verifier time or core.
 _utc_now = _impl._utc_now
 _core = _impl._core
 
@@ -61,10 +65,29 @@ _source_record = _impl._source_record
 _receipt_current = _impl._receipt_current
 
 
-def _sync_impl() -> None:
+def _owned_utc_now() -> datetime:
+    return datetime.now(timezone.utc)
+
+
+def _owned_core(
+    intent: dict[str, Any], evidence: dict[str, Any], ib: bytes, eb: bytes
+) -> dict[str, Any]:
+    return _legacy_core.evaluate(
+        intent,
+        evidence,
+        intent_sha256=_legacy_core.digest_bytes(ib),
+        evidence_sha256=_legacy_core.digest_bytes(eb),
+    )
+
+
+def _sync_impl(
+    _clock=_owned_utc_now,
+    _core_fn=_owned_core,
+) -> None:
+    # Defaults bind the original function objects at definition time.
     _impl.guard = _legacy_core
-    _impl._utc_now = _utc_now
-    _impl._core = _core
+    _impl._utc_now = _clock
+    _impl._core = _core_fn
 
 
 def _compile_current_owned_clock(
