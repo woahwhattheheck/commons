@@ -5,8 +5,12 @@ from .compiler import (
     compile_text,
     public_json,
     public_payload,
-    write_outputs,
 )
+from .custody import write_outputs
+from . import compiler as _compiler
+
+# Keep the historical module import path safe as well as the package/CLI surface.
+_compiler.write_outputs = write_outputs
 
 __all__ = [
     "ProofError",

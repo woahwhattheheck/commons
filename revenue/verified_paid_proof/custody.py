@@ -12,7 +12,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable
 
-from ._compiler_impl import (
+from .compiler import (
     _verify_compiled,
     public_json,
     public_payload,
