@@ -127,6 +127,18 @@
       "commercial.html smaller-step Autopsy"
     ],
     "note": "Optional smaller-step paid diagnostics with live checkout on product pages. White Box offer terms above stay canonical. No invent Stripe URLs.",
+    "larger_fixed": [
+      {
+        "href": "./diagnostic.html",
+        "label": "GGUF diagnostic · $12,000 / 10 days",
+        "sku": "gguf-diagnostic-12000"
+      },
+      {
+        "href": "./commercial.html",
+        "label": "White Box pilot · $30,000 / 30 days",
+        "sku": "white-box-pilot-30000"
+      }
+    ],
     "products": [
       {
         "name": "Agent Failure Autopsy",
