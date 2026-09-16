@@ -18,14 +18,14 @@ KEEP = {
     "p/cursor-harborline-commerce-compose-20260902-01.md": "45b7d435",
     "host/harborline_commerce_compose.py": "75128e5d",
     "test_harborline_commerce_compose.py": "95044b73",
-    "test_harborline_commerce_compose_keep_lift.py": "9d46d812",
+    "test_harborline_commerce_compose_keep_lift.py": "3c0d6d6e",
     "p/cursor-claude-commerce-agents-readback-20260902-01.md": "0153924f",
     "p/cursor-harborline-commerce-compose-readback-20260902-01.md": "b33e2e24",
     "p/cursor-claude-commerce-agents-20260902-01.md": "3e48f691",
     "host/commerce_agents.py": "8d2ddf29",
     "p/cursor-big-huge-commerce-agents-20260902-01.md": "fddb5a7c",
     "host/commerce_agents_same_loop.py": "c90f6e50",
-    "test_commerce_agents_same_loop.py": "61d30af4",
+    "test_commerce_agents_same_loop.py": "6ffe17b0",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
 }
 
