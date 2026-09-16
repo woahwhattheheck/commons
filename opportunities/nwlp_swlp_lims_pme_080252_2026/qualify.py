@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Fail-closed qualification engine for FTS 080252-2026.
 
-This tool does not submit anything. It only evaluates whether an internal
-pre-market-engagement packet is ready for owner review. Buyer questionnaire
-bytes must be supplied and digest-bound before any READY state is possible.
+Current commercial readiness uses verifier-owned UTC and independently retained
+trust roots. Buyer questionnaire bytes are necessary but never sufficient for a
+READY state. Historical integrity checking is a separate, non-readiness mode.
 """
 from __future__ import annotations
 
@@ -64,6 +64,14 @@ ROUTES: dict[str, tuple[str, ...]] = {
 }
 TEAMING_ROUTES = {"TEAMING_INTEGRATION_SPECIALIST", "TEAMING_VALIDATION_EVIDENCE"}
 
+# Production trust roots are intentionally empty until reviewed authority packets
+# are committed in a separate change. A caller cannot mint current READY merely
+# by supplying self-authored authority JSON. Tests patch these sets with exact
+# synthetic digests to exercise the positive path.
+TRUSTED_QUESTIONNAIRE_AUTHORITY_SHA256: frozenset[str] = frozenset()
+TRUSTED_EVIDENCE_AUTHORITY_SHA256: frozenset[str] = frozenset()
+TRUSTED_PARTNER_AUTHORITY_SHA256: frozenset[str] = frozenset()
+
 
 class QualificationError(ValueError):
     """Invalid or unsafe qualification input."""
@@ -94,6 +102,10 @@ def load_json_path(path: Path, label: str) -> dict[str, Any]:
     return load_json_bytes(path.read_bytes(), label)
 
 
+def canonical_bytes(value: object) -> bytes:
+    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8") + b"\n"
+
+
 def sha256_bytes(raw: bytes) -> str:
     return hashlib.sha256(raw).hexdigest()
 
@@ -107,7 +119,7 @@ def _require_str(obj: dict[str, Any], key: str, *, nonempty: bool = True) -> str
 
 def _require_bool(obj: dict[str, Any], key: str) -> bool:
     value = obj.get(key)
-    if type(value) is not bool:  # bool is an int subclass: exact type is deliberate.
+    if type(value) is not bool:
         raise QualificationError(f"{key}:MUST_BE_BOOL")
     return value
 
@@ -128,13 +140,36 @@ def _parse_dt(value: str, label: str) -> datetime:
         raise QualificationError(f"{label}:INVALID_DATETIME") from exc
     if parsed.tzinfo is None:
         raise QualificationError(f"{label}:TIMEZONE_REQUIRED")
-    return parsed
+    return parsed.astimezone(timezone.utc)
 
 
 def _validate_sha(value: Any, label: str) -> str:
     if not isinstance(value, str) or not SHA256_RE.fullmatch(value):
         raise QualificationError(f"{label}:INVALID_SHA256")
     return value
+
+
+def _require_exact_keys(obj: dict[str, Any], expected: set[str], label: str) -> None:
+    missing = expected - obj.keys()
+    extra = obj.keys() - expected
+    if missing:
+        raise QualificationError(f"{label}:MISSING_KEYS:" + ",".join(sorted(missing)))
+    if extra:
+        raise QualificationError(f"{label}:UNKNOWN_KEYS:" + ",".join(sorted(extra)))
+
+
+def _normalize_now(now: datetime | None) -> datetime:
+    value = now if now is not None else datetime.now(timezone.utc)
+    if value.tzinfo is None:
+        raise QualificationError("verifier_now:TIMEZONE_REQUIRED")
+    return value.astimezone(timezone.utc)
+
+
+def _trusted_digest(raw: bytes, trusted: frozenset[str], label: str) -> str:
+    digest = sha256_bytes(raw)
+    if digest not in trusted:
+        raise QualificationError(f"{label}:UNTRUSTED_SHA256:{digest}")
+    return digest
 
 
 def validate_source_ledger(source: dict[str, Any], *, questionnaire_bytes: bytes | None) -> dict[str, Any]:
@@ -200,18 +235,14 @@ def validate_manifest(manifest: dict[str, Any], source_raw: bytes) -> dict[str, 
     route = _require_str(manifest, "route")
     if route not in ROUTES:
         raise QualificationError("manifest.route:UNSUPPORTED")
-    evaluated_at = _parse_dt(_require_str(manifest, "evaluated_at"), "manifest.evaluated_at")
-    partner_prime_confirmed = _require_bool(manifest, "partner_prime_confirmed")
+    # Retained only as caller metadata. Current readiness NEVER uses this clock.
+    caller_evaluated_at = _parse_dt(_require_str(manifest, "evaluated_at"), "manifest.evaluated_at")
+    caller_partner_prime_confirmed = _require_bool(manifest, "partner_prime_confirmed")
 
     authority = manifest.get("authority")
     if not isinstance(authority, dict):
         raise QualificationError("manifest.authority:MUST_BE_OBJECT")
-    missing_flags = FORBIDDEN_AUTHORITY_FLAGS - authority.keys()
-    if missing_flags:
-        raise QualificationError("manifest.authority:MISSING_FLAGS:" + ",".join(sorted(missing_flags)))
-    unexpected = authority.keys() - FORBIDDEN_AUTHORITY_FLAGS
-    if unexpected:
-        raise QualificationError("manifest.authority:UNKNOWN_FLAGS:" + ",".join(sorted(unexpected)))
+    _require_exact_keys(authority, FORBIDDEN_AUTHORITY_FLAGS, "manifest.authority")
     escalated = [name for name in sorted(FORBIDDEN_AUTHORITY_FLAGS) if _require_bool(authority, name)]
     if escalated:
         raise QualificationError("AUTHORITY_ESCALATION_FORBIDDEN:" + ",".join(escalated))
@@ -231,17 +262,205 @@ def validate_manifest(manifest: dict[str, Any], source_raw: bytes) -> dict[str, 
         refs = record.get("evidence_refs")
         if not isinstance(refs, list) or any(not isinstance(ref, str) or not ref.strip() for ref in refs):
             raise QualificationError(f"capability.{name}:INVALID_EVIDENCE_REFS")
+        if len(set(refs)) != len(refs):
+            raise QualificationError(f"capability.{name}:DUPLICATE_EVIDENCE_REF")
         if status == "PROVEN" and not refs:
             raise QualificationError(f"capability.{name}:PROVEN_REQUIRES_EVIDENCE")
         normalized[name] = {"status": status, "evidence_refs": list(refs)}
 
     return {
         "route": route,
-        "evaluated_at": evaluated_at,
-        "partner_prime_confirmed": partner_prime_confirmed,
+        "caller_evaluated_at": caller_evaluated_at,
+        "caller_partner_prime_confirmed": caller_partner_prime_confirmed,
         "capabilities": normalized,
         "source_sha256": actual_source_sha,
     }
+
+
+def validate_questionnaire_authority(
+    raw: bytes,
+    *,
+    source_raw: bytes,
+    questionnaire_bytes: bytes,
+    now: datetime,
+) -> dict[str, Any]:
+    digest = _trusted_digest(raw, TRUSTED_QUESTIONNAIRE_AUTHORITY_SHA256, "questionnaire_authority")
+    obj = load_json_bytes(raw, "questionnaire_authority")
+    if _require_int(obj, "schema_version", minimum=1) != SCHEMA_VERSION:
+        raise QualificationError("questionnaire_authority.schema_version:UNSUPPORTED")
+    if _require_str(obj, "kind") != "questionnaire_extraction":
+        raise QualificationError("questionnaire_authority.kind:MISMATCH")
+    if _require_str(obj, "notice_id") != NOTICE_ID:
+        raise QualificationError("questionnaire_authority.notice_id:MISMATCH")
+    if _require_str(obj, "atamis_contract_reference") != ATAMIS_REF:
+        raise QualificationError("questionnaire_authority.atamis_contract_reference:MISMATCH")
+    if _validate_sha(obj.get("source_ledger_sha256"), "questionnaire_authority.source_ledger_sha256") != sha256_bytes(source_raw):
+        raise QualificationError("QUESTIONNAIRE_AUTHORITY_SOURCE_REPLAY")
+    if _validate_sha(obj.get("questionnaire_sha256"), "questionnaire_authority.questionnaire_sha256") != sha256_bytes(questionnaire_bytes):
+        raise QualificationError("QUESTIONNAIRE_AUTHORITY_BYTES_MISMATCH")
+    _require_str(obj, "extraction_id")
+    _require_str(obj, "document_version")
+    extracted_at = _parse_dt(_require_str(obj, "extracted_at"), "questionnaire_authority.extracted_at")
+    if extracted_at > now:
+        raise QualificationError("questionnaire_authority.extracted_at:IN_FUTURE")
+    if not _require_bool(obj, "complete_addenda_set"):
+        raise QualificationError("QUESTIONNAIRE_AUTHORITY_ADDENDA_INCOMPLETE")
+    addenda = obj.get("addenda")
+    if not isinstance(addenda, list):
+        raise QualificationError("questionnaire_authority.addenda:MUST_BE_LIST")
+    seen_addenda: set[str] = set()
+    for index, item in enumerate(addenda):
+        if not isinstance(item, dict):
+            raise QualificationError(f"questionnaire_authority.addenda[{index}]:MUST_BE_OBJECT")
+        aid = _require_str(item, "id")
+        _validate_sha(item.get("sha256"), f"questionnaire_authority.addenda[{index}].sha256")
+        if aid in seen_addenda:
+            raise QualificationError("questionnaire_authority.addenda:DUPLICATE_ID")
+        seen_addenda.add(aid)
+
+    universe = obj.get("required_gates_by_route")
+    if not isinstance(universe, dict):
+        raise QualificationError("questionnaire_authority.required_gates_by_route:MUST_BE_OBJECT")
+    if set(universe) != set(ROUTES):
+        raise QualificationError("QUESTIONNAIRE_AUTHORITY_ROUTE_UNIVERSE_INCOMPLETE")
+    normalized_universe: dict[str, tuple[str, ...]] = {}
+    for route, baseline in ROUTES.items():
+        gates = universe.get(route)
+        if not isinstance(gates, list) or any(not isinstance(g, str) or not g for g in gates):
+            raise QualificationError(f"questionnaire_authority.required_gates_by_route.{route}:INVALID")
+        if len(set(gates)) != len(gates):
+            raise QualificationError(f"questionnaire_authority.required_gates_by_route.{route}:DUPLICATE")
+        missing_baseline = set(baseline) - set(gates)
+        if missing_baseline:
+            raise QualificationError("QUESTIONNAIRE_AUTHORITY_GATE_UNIVERSE_SHRINK:" + ",".join(sorted(missing_baseline)))
+        normalized_universe[route] = tuple(gates)
+    return {"sha256": digest, "required_gates_by_route": normalized_universe, "extraction_id": obj["extraction_id"]}
+
+
+def validate_evidence_authority(
+    raw: bytes,
+    *,
+    source_raw: bytes,
+    questionnaire_authority_sha256: str,
+    now: datetime,
+) -> dict[str, Any]:
+    digest = _trusted_digest(raw, TRUSTED_EVIDENCE_AUTHORITY_SHA256, "evidence_authority")
+    obj = load_json_bytes(raw, "evidence_authority")
+    if _require_int(obj, "schema_version", minimum=1) != SCHEMA_VERSION:
+        raise QualificationError("evidence_authority.schema_version:UNSUPPORTED")
+    if _require_str(obj, "kind") != "capability_evidence":
+        raise QualificationError("evidence_authority.kind:MISMATCH")
+    if _require_str(obj, "notice_id") != NOTICE_ID:
+        raise QualificationError("evidence_authority.notice_id:MISMATCH")
+    if _validate_sha(obj.get("source_ledger_sha256"), "evidence_authority.source_ledger_sha256") != sha256_bytes(source_raw):
+        raise QualificationError("EVIDENCE_AUTHORITY_SOURCE_REPLAY")
+    if _validate_sha(obj.get("questionnaire_authority_sha256"), "evidence_authority.questionnaire_authority_sha256") != questionnaire_authority_sha256:
+        raise QualificationError("EVIDENCE_AUTHORITY_QUESTIONNAIRE_REPLAY")
+    generation = _require_str(obj, "generation")
+    issued_at = _parse_dt(_require_str(obj, "issued_at"), "evidence_authority.issued_at")
+    valid_until = _parse_dt(_require_str(obj, "valid_until"), "evidence_authority.valid_until")
+    if issued_at > now:
+        raise QualificationError("evidence_authority.issued_at:IN_FUTURE")
+    if valid_until <= now:
+        raise QualificationError("EVIDENCE_AUTHORITY_EXPIRED")
+    claims = obj.get("claims")
+    if not isinstance(claims, list) or not claims:
+        raise QualificationError("evidence_authority.claims:MUST_BE_NONEMPTY_LIST")
+    by_id: dict[str, dict[str, Any]] = {}
+    for index, claim in enumerate(claims):
+        if not isinstance(claim, dict):
+            raise QualificationError(f"evidence_authority.claims[{index}]:MUST_BE_OBJECT")
+        evidence_id = _require_str(claim, "evidence_id")
+        capability = _require_str(claim, "capability")
+        kind = _require_str(claim, "evidence_kind")
+        artifact_sha = _validate_sha(claim.get("artifact_sha256"), f"evidence_authority.claims[{index}].artifact_sha256")
+        routes = claim.get("routes")
+        if not isinstance(routes, list) or not routes or any(route not in ROUTES for route in routes):
+            raise QualificationError(f"evidence_authority.claims[{index}].routes:INVALID")
+        if len(set(routes)) != len(routes):
+            raise QualificationError(f"evidence_authority.claims[{index}].routes:DUPLICATE")
+        if evidence_id in by_id:
+            raise QualificationError("evidence_authority.claims:DUPLICATE_EVIDENCE_ID")
+        by_id[evidence_id] = {
+            "capability": capability,
+            "evidence_kind": kind,
+            "artifact_sha256": artifact_sha,
+            "routes": frozenset(routes),
+        }
+    return {"sha256": digest, "generation": generation, "claims": by_id}
+
+
+def validate_partner_authority(
+    raw: bytes,
+    *,
+    route: str,
+    questionnaire_authority_sha256: str,
+    evidence_generation: str,
+    now: datetime,
+) -> dict[str, Any]:
+    digest = _trusted_digest(raw, TRUSTED_PARTNER_AUTHORITY_SHA256, "partner_authority")
+    obj = load_json_bytes(raw, "partner_authority")
+    if _require_int(obj, "schema_version", minimum=1) != SCHEMA_VERSION:
+        raise QualificationError("partner_authority.schema_version:UNSUPPORTED")
+    if _require_str(obj, "kind") != "partner_prime":
+        raise QualificationError("partner_authority.kind:MISMATCH")
+    if _require_str(obj, "notice_id") != NOTICE_ID:
+        raise QualificationError("partner_authority.notice_id:MISMATCH")
+    if _require_str(obj, "atamis_contract_reference") != ATAMIS_REF:
+        raise QualificationError("partner_authority.atamis_contract_reference:MISMATCH")
+    if _require_str(obj, "route") != route:
+        raise QualificationError("PARTNER_AUTHORITY_ROUTE_REPLAY")
+    if route not in TEAMING_ROUTES:
+        raise QualificationError("partner_authority:NOT_APPLICABLE_TO_ROUTE")
+    if not _require_bool(obj, "qualified_prime"):
+        raise QualificationError("PARTNER_AUTHORITY_NOT_QUALIFIED")
+    partner_id = _require_str(obj, "partner_id")
+    if _validate_sha(obj.get("questionnaire_authority_sha256"), "partner_authority.questionnaire_authority_sha256") != questionnaire_authority_sha256:
+        raise QualificationError("PARTNER_AUTHORITY_QUESTIONNAIRE_REPLAY")
+    if _require_str(obj, "evidence_generation") != evidence_generation:
+        raise QualificationError("PARTNER_AUTHORITY_EVIDENCE_GENERATION_REPLAY")
+    _validate_sha(obj.get("proof_sha256"), "partner_authority.proof_sha256")
+    valid_from = _parse_dt(_require_str(obj, "valid_from"), "partner_authority.valid_from")
+    valid_until = _parse_dt(_require_str(obj, "valid_until"), "partner_authority.valid_until")
+    if not (valid_from <= now < valid_until):
+        raise QualificationError("PARTNER_AUTHORITY_OUTSIDE_VALIDITY")
+    return {"sha256": digest, "partner_id": partner_id}
+
+
+def _evaluate_capabilities(
+    *,
+    route: str,
+    manifest_capabilities: dict[str, dict[str, Any]],
+    required: tuple[str, ...],
+    evidence_claims: dict[str, dict[str, Any]],
+) -> list[dict[str, str]]:
+    missing: list[dict[str, str]] = []
+    used_evidence: dict[str, str] = {}
+    for capability, record in manifest_capabilities.items():
+        if record["status"] != "PROVEN":
+            continue
+        for evidence_id in record["evidence_refs"]:
+            claim = evidence_claims.get(evidence_id)
+            if claim is None:
+                raise QualificationError(f"EVIDENCE_REF_UNTRUSTED:{evidence_id}")
+            if claim["capability"] != capability:
+                raise QualificationError(f"EVIDENCE_CAPABILITY_MISMATCH:{evidence_id}:{capability}")
+            if route not in claim["routes"]:
+                raise QualificationError(f"EVIDENCE_ROUTE_MISMATCH:{evidence_id}:{route}")
+            prior = used_evidence.get(evidence_id)
+            if prior is not None and prior != capability:
+                raise QualificationError(f"EVIDENCE_TRANSPLANT:{evidence_id}:{prior}:{capability}")
+            used_evidence[evidence_id] = capability
+
+    for gate in required:
+        record = manifest_capabilities.get(gate)
+        if record is None:
+            missing.append({"gate": gate, "status": "UNDECLARED"})
+        elif record["status"] != "PROVEN":
+            missing.append({"gate": gate, "status": record["status"]})
+        elif not record["evidence_refs"]:
+            missing.append({"gate": gate, "status": "PROVEN_WITHOUT_TRUSTED_REF"})
+    return missing
 
 
 @dataclass(frozen=True)
@@ -251,7 +470,7 @@ class Evaluation:
     payload: dict[str, Any]
 
     def bytes(self) -> bytes:
-        return (json.dumps(self.payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n").encode("utf-8")
+        return canonical_bytes(self.payload)
 
 
 def evaluate(
@@ -260,67 +479,142 @@ def evaluate(
     source_raw: bytes,
     *,
     questionnaire_bytes: bytes | None = None,
+    questionnaire_authority_raw: bytes | None = None,
+    evidence_authority_raw: bytes | None = None,
+    partner_authority_raw: bytes | None = None,
+    now: datetime | None = None,
 ) -> Evaluation:
+    verifier_now = _normalize_now(now)
     source_state = validate_source_ledger(source, questionnaire_bytes=questionnaire_bytes)
     manifest_state = validate_manifest(manifest, source_raw)
 
-    age_seconds = (manifest_state["evaluated_at"] - source_state["checked_at"]).total_seconds()
-    if age_seconds < 0:
-        raise QualificationError("manifest.evaluated_at:BEFORE_SOURCE_CHECK")
-    source_age_days = age_seconds // 86400
-
+    if source_state["checked_at"] > verifier_now:
+        raise QualificationError("source.checked_at:IN_FUTURE")
+    source_age_days = int((verifier_now - source_state["checked_at"]).total_seconds() // 86400)
     route = manifest_state["route"]
-    capabilities = manifest_state["capabilities"]
-    required = ROUTES[route]
-    missing_records: list[dict[str, str]] = []
-    for gate in required:
-        record = capabilities.get(gate)
-        if record is None:
-            missing_records.append({"gate": gate, "status": "UNDECLARED"})
-        elif record["status"] != "PROVEN":
-            missing_records.append({"gate": gate, "status": record["status"]})
 
-    if source_age_days > MAX_SOURCE_AGE_DAYS:
-        state = "HOLD_SOURCE_STALE"
-    elif not source_state["questionnaire_acquired"]:
-        state = "HOLD_QUESTIONNAIRE_REQUIRED"
-    elif questionnaire_bytes is None:
-        state = "HOLD_QUESTIONNAIRE_FILE_REQUIRED"
-    elif not source_state["questionnaire_reviewed"]:
-        state = "HOLD_QUESTIONNAIRE_REVIEW"
-    elif missing_records:
-        state = "HOLD_EVIDENCE_GAPS"
-    elif route in TEAMING_ROUTES and not manifest_state["partner_prime_confirmed"]:
-        state = "HOLD_PARTNER_REQUIRED"
-    else:
-        state = "READY_FOR_OWNER_MARKET_ENGAGEMENT_REVIEW"
-
-    payload = {
+    base_payload: dict[str, Any] = {
         "schema_version": SCHEMA_VERSION,
         "notice_id": NOTICE_ID,
         "ocid": OCID,
         "atamis_contract_reference": ATAMIS_REF,
         "route": route,
-        "state": state,
-        "source_age_days": int(source_age_days),
+        "source_age_days": source_age_days,
         "source_ledger_sha256": manifest_state["source_sha256"],
         "questionnaire_acquired": source_state["questionnaire_acquired"],
         "questionnaire_reviewed": source_state["questionnaire_reviewed"],
         "questionnaire_sha256": source_state["questionnaire_declared_sha256"],
-        "partner_prime_confirmed": manifest_state["partner_prime_confirmed"],
-        "missing_required_capabilities": missing_records,
+        "caller_partner_prime_confirmed": manifest_state["caller_partner_prime_confirmed"],
+        "partner_prime_confirmed": False,
         "authority": "INTERNAL_QUALIFICATION_ONLY",
         "buyer_submission_authorized": False,
-        "evaluated_at": manifest_state["evaluated_at"].astimezone(timezone.utc).isoformat().replace("+00:00", "Z"),
+        "evaluated_at": verifier_now.isoformat().replace("+00:00", "Z"),
+        "caller_evaluated_at": manifest_state["caller_evaluated_at"].isoformat().replace("+00:00", "Z"),
+        "questionnaire_authority_sha256": None,
+        "evidence_authority_sha256": None,
+        "partner_authority_sha256": None,
+        "evidence_generation": None,
+        "missing_required_capabilities": [],
     }
-    return Evaluation(state=state, exit_code=0 if state == "READY_FOR_OWNER_MARKET_ENGAGEMENT_REVIEW" else 3, payload=payload)
+
+    def hold(state: str) -> Evaluation:
+        payload = dict(base_payload)
+        payload["state"] = state
+        return Evaluation(state, 3, payload)
+
+    if verifier_now >= source_state["deadline"]:
+        return hold("HOLD_DEADLINE_PASSED")
+    if source_age_days > MAX_SOURCE_AGE_DAYS:
+        return hold("HOLD_SOURCE_STALE")
+    if not source_state["questionnaire_acquired"]:
+        return hold("HOLD_QUESTIONNAIRE_REQUIRED")
+    if questionnaire_bytes is None:
+        return hold("HOLD_QUESTIONNAIRE_FILE_REQUIRED")
+    if not source_state["questionnaire_reviewed"]:
+        return hold("HOLD_QUESTIONNAIRE_REVIEW")
+    if questionnaire_authority_raw is None:
+        return hold("HOLD_QUESTIONNAIRE_AUTHORITY_REQUIRED")
+
+    qauth = validate_questionnaire_authority(
+        questionnaire_authority_raw,
+        source_raw=source_raw,
+        questionnaire_bytes=questionnaire_bytes,
+        now=verifier_now,
+    )
+    base_payload["questionnaire_authority_sha256"] = qauth["sha256"]
+
+    if evidence_authority_raw is None:
+        return hold("HOLD_EVIDENCE_AUTHORITY_REQUIRED")
+    eauth = validate_evidence_authority(
+        evidence_authority_raw,
+        source_raw=source_raw,
+        questionnaire_authority_sha256=qauth["sha256"],
+        now=verifier_now,
+    )
+    base_payload["evidence_authority_sha256"] = eauth["sha256"]
+    base_payload["evidence_generation"] = eauth["generation"]
+
+    required = qauth["required_gates_by_route"][route]
+    missing = _evaluate_capabilities(
+        route=route,
+        manifest_capabilities=manifest_state["capabilities"],
+        required=required,
+        evidence_claims=eauth["claims"],
+    )
+    base_payload["missing_required_capabilities"] = missing
+    if missing:
+        return hold("HOLD_EVIDENCE_GAPS")
+
+    if route in TEAMING_ROUTES:
+        if partner_authority_raw is None:
+            return hold("HOLD_PARTNER_AUTHORITY_REQUIRED")
+        pauth = validate_partner_authority(
+            partner_authority_raw,
+            route=route,
+            questionnaire_authority_sha256=qauth["sha256"],
+            evidence_generation=eauth["generation"],
+            now=verifier_now,
+        )
+        base_payload["partner_authority_sha256"] = pauth["sha256"]
+        base_payload["partner_prime_confirmed"] = True
+        base_payload["partner_id"] = pauth["partner_id"]
+
+    payload = dict(base_payload)
+    payload["state"] = "READY_FOR_OWNER_MARKET_ENGAGEMENT_REVIEW"
+    return Evaluation("READY_FOR_OWNER_MARKET_ENGAGEMENT_REVIEW", 0, payload)
+
+
+def historical_integrity(
+    manifest: dict[str, Any],
+    source: dict[str, Any],
+    source_raw: bytes,
+    *,
+    questionnaire_bytes: bytes | None = None,
+) -> Evaluation:
+    source_state = validate_source_ledger(source, questionnaire_bytes=questionnaire_bytes)
+    manifest_state = validate_manifest(manifest, source_raw)
+    payload = {
+        "schema_version": SCHEMA_VERSION,
+        "notice_id": NOTICE_ID,
+        "state": "HISTORICAL_INTEGRITY_VERIFIED",
+        "commercial_readiness": False,
+        "buyer_submission_authorized": False,
+        "source_ledger_sha256": manifest_state["source_sha256"],
+        "questionnaire_sha256": source_state["questionnaire_declared_sha256"],
+        "note": "Integrity mode does not evaluate current deadline, freshness, evidence, partner, or submission readiness.",
+    }
+    return Evaluation("HISTORICAL_INTEGRITY_VERIFIED", 0, payload)
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("manifest", type=Path)
     parser.add_argument("--source-ledger", type=Path, default=Path(__file__).with_name("sources.json"))
-    parser.add_argument("--questionnaire", type=Path, default=None, help="buyer questionnaire bytes; required for READY")
+    parser.add_argument("--questionnaire", type=Path, default=None)
+    parser.add_argument("--questionnaire-authority", type=Path, default=None)
+    parser.add_argument("--evidence-authority", type=Path, default=None)
+    parser.add_argument("--partner-authority", type=Path, default=None)
+    parser.add_argument("--historical-integrity-only", action="store_true")
     parser.add_argument("--output", type=Path, default=None)
     args = parser.parse_args(argv)
 
@@ -329,10 +623,21 @@ def main(argv: list[str] | None = None) -> int:
         source = load_json_bytes(source_raw, "source")
         manifest = load_json_path(args.manifest, "manifest")
         questionnaire_bytes = args.questionnaire.read_bytes() if args.questionnaire else None
-        result = evaluate(manifest, source, source_raw, questionnaire_bytes=questionnaire_bytes)
+        if args.historical_integrity_only:
+            result = historical_integrity(manifest, source, source_raw, questionnaire_bytes=questionnaire_bytes)
+        else:
+            result = evaluate(
+                manifest,
+                source,
+                source_raw,
+                questionnaire_bytes=questionnaire_bytes,
+                questionnaire_authority_raw=args.questionnaire_authority.read_bytes() if args.questionnaire_authority else None,
+                evidence_authority_raw=args.evidence_authority.read_bytes() if args.evidence_authority else None,
+                partner_authority_raw=args.partner_authority.read_bytes() if args.partner_authority else None,
+            )
     except (OSError, QualificationError) as exc:
         payload = {"state": "INVALID_INPUT", "error": str(exc), "buyer_submission_authorized": False}
-        sys.stderr.buffer.write((json.dumps(payload, sort_keys=True, separators=(",", ":")) + "\n").encode("utf-8"))
+        sys.stderr.buffer.write(canonical_bytes(payload))
         return 2
 
     encoded = result.bytes()
