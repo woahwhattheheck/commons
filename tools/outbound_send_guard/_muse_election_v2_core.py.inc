@@ -25,6 +25,7 @@ LEASE_RECEIPT_SCHEMA = "outbound-send-lease-receipt/v3"
 LEASE_BINDING_SCHEMA = "outbound-lease-public-binding/v1"
 PUBLICATION_KEY_SCHEMA = "outbound-publication-key/v2"
 SELECTION_BINDING_SCHEMA = "outbound-muse-selection-binding/v2"
+CANDIDATE_GENERATION_SCHEMA = "outbound-muse-candidate-generation/v2"
 
 MUSE_USER_ID = "U0C0TKRTQHZ"
 MUSE_DM_CONVERSATION_ID = "D0C1U7TUZEC"
@@ -294,8 +295,22 @@ def publication_key(candidate: Mapping[str, Any]) -> str:
     })
 
 
-def candidate_digest(candidate: Mapping[str, Any]) -> str:
-    return _digest(normalize_candidate(candidate))
+def candidate_digest(
+    candidate: Mapping[str, Any],
+    *,
+    request_id: str,
+    requested_at: str,
+) -> str:
+    """Bind normalized candidate bytes to one canonical request generation."""
+    c = normalize_candidate(candidate)
+    rid = _request_id(request_id, "candidate.request_id")
+    requested = _fmt(_utc(requested_at, "candidate.requested_at"))
+    return _digest({
+        "schema_version": CANDIDATE_GENERATION_SCHEMA,
+        "candidate": c,
+        "request_id": rid,
+        "requested_at": requested,
+    })
 
 
 def lease_binding_digest(candidate: Mapping[str, Any]) -> str:
@@ -329,7 +344,11 @@ def prepare_request(candidate: Mapping[str, Any], *, request_id: str, requested_
     rid = _request_id(request_id)
     requested = _utc(requested_at, "requested_at")
     pub = publication_key(c)
-    cand = candidate_digest(c)
+    cand = candidate_digest(
+        c,
+        request_id=rid,
+        requested_at=_fmt(requested),
+    )
     message = _request_message(
         request_id=rid,
         publication_key_sha256=pub,
@@ -368,13 +387,17 @@ def _validate_request(raw: Mapping[str, Any]) -> tuple[dict[str, Any], str, str]
     if payload["schema_version"] != REQUEST_SCHEMA:
         raise MuseElectionV2Error("request: unsupported schema")
     c = normalize_candidate(payload["candidate"])
+    rid = _request_id(payload["request_id"], "request.request_id")
+    requested = _utc(payload["requested_at"], "request.requested_at")
     pub = _hex64(payload["publication_key"], "request.publication_key")
     cand = _hex64(payload["candidate_sha256"], "request.candidate_sha256")
     lease_binding = _hex64(payload["lease_binding_sha256"], "request.lease_binding_sha256")
-    if publication_key(c) != pub or candidate_digest(c) != cand or lease_binding_digest(c) != lease_binding:
+    if (
+        publication_key(c) != pub
+        or candidate_digest(c, request_id=rid, requested_at=_fmt(requested)) != cand
+        or lease_binding_digest(c) != lease_binding
+    ):
         raise MuseElectionV2Error("request: candidate/publication/lease digest mismatch")
-    rid = _request_id(payload["request_id"], "request.request_id")
-    requested = _utc(payload["requested_at"], "request.requested_at")
     deadline = _utc(payload["response_deadline_at"], "request.response_deadline_at")
     if deadline != requested + timedelta(seconds=RESPONSE_WINDOW_SECONDS):
         raise MuseElectionV2Error("request: response deadline mismatch")
