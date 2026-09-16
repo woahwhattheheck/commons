@@ -16,9 +16,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - name: Checkout candidate branch
+      - name: Checkout live candidate branch
         uses: actions/checkout@v4
         with:
+          ref: zplh-x4q7/reply-event-finalization-20260915
           fetch-depth: 0
       - name: Set up Python
         uses: actions/setup-python@v5
