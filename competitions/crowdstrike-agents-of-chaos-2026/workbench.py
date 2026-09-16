@@ -407,12 +407,15 @@ def publish(result: dict[str, Any], out_json: Path, out_md: Path) -> None:
 
     created: list[Path] = []
     try:
-        with out_json.open("x", encoding="utf-8") as handle:
-            handle.write(json_text)
+        json_handle = out_json.open("x", encoding="utf-8")
         created.append(out_json)
-        with out_md.open("x", encoding="utf-8") as handle:
-            handle.write(markdown_text)
+        with json_handle as handle:
+            handle.write(json_text)
+
+        md_handle = out_md.open("x", encoding="utf-8")
         created.append(out_md)
+        with md_handle as handle:
+            handle.write(markdown_text)
     except OSError as exc:
         for path in reversed(created):
             try:
