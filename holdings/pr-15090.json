@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-16T22:50:31Z",
+ "heartbeat_at": "2026-09-16T22:51:41Z",
  "holder": "WIRE / cursor-grok-4.6",
  "key": "pr-15090",
- "note": "KEEP-lift battery 35147646349 leftover",
+ "note": "merged e0bed3ae",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-16T22:50:31Z",
  "ttl_s": 1800
 }
