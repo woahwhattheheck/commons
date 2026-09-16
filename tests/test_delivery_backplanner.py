@@ -170,6 +170,57 @@ class DeliveryBackplannerTests(unittest.TestCase):
                 return True
         return False
 
+    def test_duration_one_root_rejects_ineligible_days(self):
+        spec = copy.deepcopy(BASE)
+        spec["calendars"][0]["holidays"] = ["2026-09-22"]
+        spec["tasks"] = [task("a", 1, resources={"eng": 1})]
+        weekend = [{"task_id": "a", "calendar": "std", "start": "2026-09-26", "finish": "2026-09-26", "workdays": ["2026-09-26"], "resources": {"eng": 1}}]
+        holiday = [{"task_id": "a", "calendar": "std", "start": "2026-09-22", "finish": "2026-09-22", "workdays": ["2026-09-22"], "resources": {"eng": 1}}]
+        self.assertFalse(validate_schedule(spec, weekend)["valid"])
+        self.assertFalse(validate_schedule(spec, holiday)["valid"])
+        result = solve(spec)
+        self.assertEqual(result["status"], "PLAN_FOUND")
+        self.assertTrue(validate_schedule(spec, result["schedule"])["valid"])
+        self.assertNotIn("2026-09-26", result["schedule"][0]["workdays"])
+        self.assertNotIn("2026-09-22", result["schedule"][0]["workdays"])
+
+    def test_load_spec_text_surrogate_is_backplanner_error(self):
+        with self.assertRaises(BackplannerError):
+            load_spec_text("{\"x\": \"\ud800\"}")
+
+    def test_command_solve_rollback_preserves_foreign_successor(self):
+        spec = copy.deepcopy(BASE)
+        spec["tasks"] = [task("a", 1)]
+        with tempfile.TemporaryDirectory() as tmp:
+            spec_path = Path(tmp) / "spec.json"
+            spec_path.write_text(json.dumps(spec), encoding="utf-8")
+            out_dir = Path(tmp) / "out"
+            out_dir.mkdir()
+            import revenue.delivery_backplanner.cli as cli
+            original = cli._write_exclusive
+            calls = {"n": 0}
+
+            def wrapped(path, text):
+                calls["n"] += 1
+                if calls["n"] == 1:
+                    owned = original(path, text)
+                    aside = path.with_name(path.name + ".aside")
+                    path.rename(aside)
+                    path.write_bytes(b"FOREIGN-SUCCESSOR-BYTES\n")
+                    return owned
+                raise OSError("induced sibling write failure")
+
+            cli._write_exclusive = wrapped
+            try:
+                with self.assertRaises(OSError):
+                    command_solve(spec_path, out_dir)
+            finally:
+                cli._write_exclusive = original
+            successor = out_dir / "result.json"
+            self.assertTrue(successor.exists())
+            self.assertEqual(successor.read_bytes(), b"FOREIGN-SUCCESSOR-BYTES\n")
+            self.assertFalse((out_dir / "timeline.md").exists())
+
 
 if __name__ == "__main__":
     unittest.main()
