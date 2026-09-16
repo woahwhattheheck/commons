@@ -2,9 +2,12 @@ from __future__ import annotations
 
 from copy import deepcopy
 import hashlib
+import hmac
 import unittest
 
-from revenue.hyperagent_slack_transcript import ConflictError, TranscriptProjector
+from revenue.hyperagent_slack_transcript import ConflictError, TranscriptProjector, canonical_bytes
+
+TEST_APPROVAL_KEY = b"hyperagent-test-approval-authority-32bytes"
 
 
 def mutation_event():
@@ -23,57 +26,71 @@ def mutation_event():
     }
 
 
-def approval_for(event):
+def approval_for(event, **overrides):
     raw = f"run\x1fstream\x1f{event['run_id']}".encode()
     run_id = "run_" + hashlib.sha256(raw).hexdigest()[:24]
-    return {
+    signed = {
         "approval_id": "ap-1",
         "run_id": run_id,
         "action_id": event["payload"]["action_id"],
         "generation": event["payload"]["generation"],
         "decision": "APPROVE",
-        "issued_at": "2026-09-16T11:00:00Z",
-        "expires_at": "2026-09-16T13:00:00Z",
+        "issued_at": "2020-01-01T00:00:00Z",
+        "expires_at": "2099-01-01T00:00:00Z",
         "evidence_sha256": "a" * 64,
     }
+    signed.update(overrides)
+    signed["authority_tag"] = hmac.new(
+        TEST_APPROVAL_KEY,
+        canonical_bytes(signed),
+        hashlib.sha256,
+    ).hexdigest()
+    return signed
+
+
+def projector():
+    return TranscriptProjector(approval_auth_key=TEST_APPROVAL_KEY)
 
 
 class IncrementalAuthorityTests(unittest.TestCase):
     def test_held_action_can_emit_after_exact_approval_arrives(self):
         event = mutation_event()
-        projector = TranscriptProjector()
-        first = projector.ingest([event], [], as_of="2026-09-16T12:00:00Z")
+        subject = projector()
+        first = subject.ingest([event], [])
         self.assertEqual(first["message_count"], 0)
-        second = projector.ingest([event], [approval_for(event)], as_of="2026-09-16T12:00:00Z")
+        second = subject.ingest([event], [approval_for(event)])
         self.assertEqual(second["message_count"], 1)
         self.assertEqual(len(second["new_message_ids"]), 1)
         self.assertFalse(second["artifacts"][0]["external_send_authorized"])
+        self.assertRegex(
+            second["artifacts"][0]["messages"][0]["approval_receipt_sha256"],
+            r"^[0-9a-f]{64}$",
+        )
 
     def test_changed_held_event_semantics_still_conflict(self):
         event = mutation_event()
-        projector = TranscriptProjector()
-        projector.ingest([event], [], as_of="2026-09-16T12:00:00Z")
+        subject = projector()
+        subject.ingest([event], [])
         changed = deepcopy(event)
         changed["payload"]["text"] = "changed"
         with self.assertRaises(ConflictError):
-            projector.ingest([changed], [approval_for(event)], as_of="2026-09-16T12:00:00Z")
+            subject.ingest([changed], [approval_for(event)])
 
     def test_approval_identity_is_immutable_across_ingests(self):
         event = mutation_event()
-        approval = approval_for(event)
-        projector = TranscriptProjector()
-        projector.ingest([], [approval], as_of="2026-09-16T12:00:00Z")
-        changed = deepcopy(approval)
-        changed["evidence_sha256"] = "b" * 64
+        first = approval_for(event)
+        second = approval_for(event, evidence_sha256="b" * 64)
+        subject = projector()
+        subject.ingest([], [first])
         with self.assertRaises(ConflictError):
-            projector.ingest([], [changed], as_of="2026-09-16T12:00:00Z")
+            subject.ingest([], [second])
 
     def test_emitted_event_replay_remains_idempotent(self):
         event = mutation_event()
         approval = approval_for(event)
-        projector = TranscriptProjector()
-        first = projector.ingest([event], [approval], as_of="2026-09-16T12:00:00Z")
-        second = projector.ingest([event], [approval], as_of="2026-09-16T12:00:00Z")
+        subject = projector()
+        first = subject.ingest([event], [approval])
+        second = subject.ingest([event], [approval])
         self.assertEqual(len(first["new_message_ids"]), 1)
         self.assertEqual(second["new_message_ids"], [])
         self.assertEqual(second["message_count"], 1)

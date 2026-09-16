@@ -3,10 +3,12 @@ from __future__ import annotations
 from copy import deepcopy
 from pathlib import Path
 import hashlib
+import hmac
 import tempfile
 import unittest
 
 from revenue.hyperagent_slack_transcript.adapter import (
+    ApprovalError,
     ConflictError,
     TranscriptProjector,
     ValidationError,
@@ -17,6 +19,8 @@ from revenue.hyperagent_slack_transcript.adapter import (
 from revenue.hyperagent_slack_transcript.cli import main as cli_main
 
 ROOT = Path(__file__).resolve().parent
+TEST_APPROVAL_KEY = b"hyperagent-test-approval-authority-32bytes"
+OTHER_APPROVAL_KEY = b"hyperagent-other-approval-authority-key"
 
 
 def fixture():
@@ -39,10 +43,18 @@ def mutation_event(event_id="m1", run_id="mut-run", action="send", generation=2)
     }
 
 
-def approval_for(event, *, generation=2, issued="2026-09-16T11:00:00Z", expires="2026-09-16T13:00:00Z"):
+def approval_for(
+    event,
+    *,
+    signing_key=TEST_APPROVAL_KEY,
+    generation=2,
+    issued="2020-01-01T00:00:00Z",
+    expires="2099-01-01T00:00:00Z",
+    **overrides,
+):
     raw = f"run\x1fstream\x1f{event['run_id']}".encode()
     run_id = "run_" + hashlib.sha256(raw).hexdigest()[:24]
-    return {
+    signed = {
         "approval_id": "ap-1",
         "run_id": run_id,
         "action_id": event["payload"]["action_id"],
@@ -52,6 +64,17 @@ def approval_for(event, *, generation=2, issued="2026-09-16T11:00:00Z", expires=
         "expires_at": expires,
         "evidence_sha256": "a" * 64,
     }
+    signed.update(overrides)
+    signed["authority_tag"] = hmac.new(
+        signing_key,
+        canonical_bytes(signed),
+        hashlib.sha256,
+    ).hexdigest()
+    return signed
+
+
+def trusted_projector():
+    return TranscriptProjector(approval_auth_key=TEST_APPROVAL_KEY)
 
 
 class HyperagentTranscriptTests(unittest.TestCase):
@@ -60,14 +83,17 @@ class HyperagentTranscriptTests(unittest.TestCase):
         self.assertEqual(result["artifact_count"], 6)
         self.assertEqual(result["message_count"], 30)
         self.assertEqual(len(result["new_message_ids"]), 30)
-        self.assertEqual({a["thread_ref"] for a in result["artifacts"]}, {"alpha", "beta", "gamma", "delta", "epsilon", "zeta"})
+        self.assertEqual(
+            {artifact["thread_ref"] for artifact in result["artifacts"]},
+            {"alpha", "beta", "gamma", "delta", "epsilon", "zeta"},
+        )
         self.assertTrue(all(a["external_send_authorized"] is False for a in result["artifacts"]))
 
     def test_full_fixture_replay_emits_zero_duplicate_messages(self):
         f = fixture()
         projector = TranscriptProjector()
-        first = projector.ingest(f["events"], f["approvals"], as_of=f["as_of"])
-        second = projector.ingest(f["events"], f["approvals"], as_of=f["as_of"])
+        first = projector.ingest(f["events"], f["approvals"])
+        second = projector.ingest(f["events"], f["approvals"])
         self.assertEqual(len(first["new_message_ids"]), 30)
         self.assertEqual(second["new_message_ids"], [])
         self.assertEqual(second["message_count"], 30)
@@ -77,88 +103,127 @@ class HyperagentTranscriptTests(unittest.TestCase):
     def test_changed_semantics_under_same_source_event_id_conflicts(self):
         f = fixture()
         projector = TranscriptProjector()
-        projector.ingest([f["events"][0]], [], as_of=f["as_of"])
+        projector.ingest([f["events"][0]], [])
         changed = deepcopy(f["events"][0])
         changed["payload"]["text"] = "changed bytes"
         with self.assertRaises(ConflictError):
-            projector.ingest([changed], [], as_of=f["as_of"])
+            projector.ingest([changed], [])
 
     def test_mutation_without_approval_emits_no_artifact(self):
         event = mutation_event()
-        result = TranscriptProjector().ingest([event], [], as_of="2026-09-16T12:00:00Z")
+        result = trusted_projector().ingest([event], [])
         self.assertEqual(result["artifact_count"], 0)
         self.assertEqual(result["message_count"], 0)
         self.assertEqual(len(result["held"]), 1)
 
-    def test_mutation_exact_current_approval_emits(self):
+    def test_mutation_exact_authenticated_current_approval_emits(self):
         event = mutation_event()
-        result = TranscriptProjector().ingest([event], [approval_for(event)], as_of="2026-09-16T12:00:00Z")
+        approval = approval_for(event)
+        result = trusted_projector().ingest([event], [approval])
         self.assertEqual(result["artifact_count"], 1)
         self.assertEqual(result["message_count"], 1)
-        self.assertEqual(result["artifacts"][0]["messages"][0]["approval_id"], "ap-1")
+        message = result["artifacts"][0]["messages"][0]
+        self.assertEqual(message["approval_id"], "ap-1")
+        self.assertRegex(message["approval_receipt_sha256"], r"^[0-9a-f]{64}$")
         self.assertFalse(result["artifacts"][0]["external_send_authorized"])
 
-    def test_held_mutation_can_emit_when_exact_approval_arrives_later(self):
+    def test_signed_approval_without_retained_runtime_key_stays_held(self):
         event = mutation_event()
-        projector = TranscriptProjector()
-        first = projector.ingest([event], [], as_of="2026-09-16T12:00:00Z")
+        result = TranscriptProjector().ingest([event], [approval_for(event)])
+        self.assertEqual(result["message_count"], 0)
+        self.assertEqual(result["held"][0]["reason"], "APPROVAL_AUTHORITY_UNAVAILABLE")
+
+    def test_forged_approval_under_other_key_is_rejected(self):
+        event = mutation_event()
+        forged = approval_for(event, signing_key=OTHER_APPROVAL_KEY)
+        with self.assertRaisesRegex(ApprovalError, "authentication failed"):
+            trusted_projector().ingest([event], [forged])
+
+    def test_tampered_signed_approval_is_rejected(self):
+        event = mutation_event()
+        approval = approval_for(event)
+        approval["expires_at"] = "2098-01-01T00:00:00Z"
+        with self.assertRaisesRegex(ApprovalError, "authentication failed"):
+            trusted_projector().ingest([event], [approval])
+
+    def test_held_mutation_can_emit_when_exact_authenticated_approval_arrives_later(self):
+        event = mutation_event()
+        projector = trusted_projector()
+        first = projector.ingest([event], [])
         self.assertEqual(first["message_count"], 0)
-        second = projector.ingest([event], [approval_for(event)], as_of="2026-09-16T12:00:00Z")
+        second = projector.ingest([event], [approval_for(event)])
         self.assertEqual(second["message_count"], 1)
         self.assertEqual(len(second["new_message_ids"]), 1)
 
-    def test_foreign_generation_approval_holds(self):
+    def test_foreign_generation_authenticated_approval_holds(self):
         event = mutation_event()
         approval = approval_for(event, generation=3)
-        result = TranscriptProjector().ingest([event], [approval], as_of="2026-09-16T12:00:00Z")
+        result = trusted_projector().ingest([event], [approval])
         self.assertEqual(result["artifact_count"], 0)
 
-    def test_stale_approval_holds(self):
+    def test_stale_authenticated_approval_holds_against_process_utc(self):
         event = mutation_event()
-        approval = approval_for(event, issued="2026-09-16T09:00:00Z", expires="2026-09-16T10:00:00Z")
-        result = TranscriptProjector().ingest([event], [approval], as_of="2026-09-16T12:00:00Z")
+        approval = approval_for(
+            event,
+            issued="2000-01-01T00:00:00Z",
+            expires="2001-01-01T00:00:00Z",
+        )
+        result = trusted_projector().ingest([event], [approval])
         self.assertEqual(result["artifact_count"], 0)
 
-    def test_foreign_run_approval_holds(self):
+    def test_foreign_run_authenticated_approval_holds(self):
         event = mutation_event()
-        approval = approval_for(event)
-        approval["run_id"] = "run_deadbeefdeadbeefdeadbeef"
-        result = TranscriptProjector().ingest([event], [approval], as_of="2026-09-16T12:00:00Z")
+        approval = approval_for(event, run_id="run_deadbeefdeadbeefdeadbeef")
+        result = trusted_projector().ingest([event], [approval])
         self.assertEqual(result["artifact_count"], 0)
 
-    def test_denied_approval_holds(self):
+    def test_denied_authenticated_approval_holds(self):
         event = mutation_event()
-        approval = approval_for(event)
-        approval["decision"] = "DENY"
-        result = TranscriptProjector().ingest([event], [approval], as_of="2026-09-16T12:00:00Z")
+        approval = approval_for(event, decision="DENY")
+        result = trusted_projector().ingest([event], [approval])
         self.assertEqual(result["artifact_count"], 0)
 
-    def test_duplicate_approval_id_changed_semantics_conflicts(self):
+    def test_duplicate_authenticated_approval_id_changed_semantics_conflicts(self):
         event = mutation_event()
-        a = approval_for(event)
-        b = deepcopy(a)
-        b["generation"] = 9
+        first = approval_for(event)
+        second = approval_for(event, generation=9)
         with self.assertRaises(ConflictError):
-            TranscriptProjector().ingest([event], [a, b], as_of="2026-09-16T12:00:00Z")
+            trusted_projector().ingest([event], [first, second])
 
     def test_approval_id_changed_across_ingests_conflicts(self):
         event = mutation_event()
-        a = approval_for(event)
-        b = deepcopy(a)
-        b["evidence_sha256"] = "b" * 64
-        projector = TranscriptProjector()
-        projector.ingest([], [a], as_of="2026-09-16T12:00:00Z")
+        first = approval_for(event)
+        second = approval_for(event, evidence_sha256="b" * 64)
+        projector = trusted_projector()
+        projector.ingest([], [first])
         with self.assertRaises(ConflictError):
-            projector.ingest([], [b], as_of="2026-09-16T12:00:00Z")
+            projector.ingest([], [second])
+
+    def test_public_ingest_has_no_caller_clock_parameter(self):
+        event = mutation_event()
+        with self.assertRaises(TypeError):
+            trusted_projector().ingest(
+                [event],
+                [approval_for(event)],
+                as_of="2000-01-01T00:00:00Z",
+            )
+
+    def test_synthetic_fixture_surface_cannot_backdate_action_approval(self):
+        f = fixture()
+        f["events"] = [mutation_event()]
+        f["approvals"] = [approval_for(f["events"][0])]
+        f["as_of"] = "2000-01-01T00:00:00Z"
+        with self.assertRaises(ApprovalError):
+            project_fixture(f)
 
     def test_input_order_does_not_change_artifact_bytes(self):
         f = fixture()
-        a = project_fixture(f)
-        g = deepcopy(f)
-        g["events"].reverse()
-        b = project_fixture(g)
-        self.assertEqual(canonical_bytes(a["artifacts"]), canonical_bytes(b["artifacts"]))
-        self.assertEqual(a["state_sha256"], b["state_sha256"])
+        first = project_fixture(f)
+        reversed_fixture = deepcopy(f)
+        reversed_fixture["events"].reverse()
+        second = project_fixture(reversed_fixture)
+        self.assertEqual(canonical_bytes(first["artifacts"]), canonical_bytes(second["artifacts"]))
+        self.assertEqual(first["state_sha256"], second["state_sha256"])
 
     def test_clean_projection_is_byte_identical(self):
         f = fixture()
@@ -170,14 +235,14 @@ class HyperagentTranscriptTests(unittest.TestCase):
             bad = deepcopy(f["events"][index])
             bad["unexpected"] = True
             with self.assertRaises(ValidationError):
-                TranscriptProjector().ingest([bad], [], as_of=f["as_of"])
+                TranscriptProjector().ingest([bad], [])
 
     def test_bool_does_not_alias_sequence_int(self):
         f = fixture()
         bad = deepcopy(f["events"][0])
         bad["seq"] = True
         with self.assertRaises(ValidationError):
-            TranscriptProjector().ingest([bad], [], as_of=f["as_of"])
+            TranscriptProjector().ingest([bad], [])
 
     def test_duplicate_json_key_rejected(self):
         with self.assertRaises(ValidationError):
@@ -206,7 +271,7 @@ class HyperagentTranscriptTests(unittest.TestCase):
         first = deepcopy(f["events"][0])
         second = deepcopy(first)
         second["run_id"] = "s-run-2"
-        result = TranscriptProjector().ingest([first, second], [], as_of=f["as_of"])
+        result = TranscriptProjector().ingest([first, second], [])
         self.assertEqual(result["artifact_count"], 2)
         self.assertEqual(result["message_count"], 2)
         ids = [m["message_id"] for a in result["artifacts"] for m in a["messages"]]
@@ -217,7 +282,7 @@ class HyperagentTranscriptTests(unittest.TestCase):
         bad = deepcopy(f["events"][0])
         bad["payload"]["text"] = "\ud800"
         with self.assertRaises(ValidationError):
-            TranscriptProjector().ingest([bad], [], as_of=f["as_of"])
+            TranscriptProjector().ingest([bad], [])
         with self.assertRaises(ValidationError):
             canonical_bytes({"bad": "\ud800"})
 
