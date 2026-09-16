@@ -89,6 +89,20 @@ def _dummy_checkout_authority(catalog_as_of):
     }
 
 
+def _zero_cash_summary(ledger):
+    return {
+        "schema_version": "commons-settled-cash-summary/v2",
+        "as_of": "2026-09-05T09:50:00Z",
+        "authority_state": "PINNED_RETAINED_PROVIDER_EVIDENCE",
+        "authority_root_sha256": "0" * 64,
+        "settled_receipts": 0,
+        "settled_usd": "0",
+        "bank_availability_asserted": False,
+        "withdrawability_asserted": False,
+        "receipts": [],
+    }
+
+
 class RightNowAwardsIntegrationTests(unittest.TestCase):
     def fixture(self, root: Path) -> None:
         for relative in (
@@ -97,6 +111,7 @@ class RightNowAwardsIntegrationTests(unittest.TestCase):
             "revenue/payment_ready/outreach_receipts",
             "revenue/human_outcomes",
             "revenue/production_survival",
+            "revenue/agent_failure_autopsy",
         ):
             (root / relative).mkdir(parents=True, exist_ok=True)
 
@@ -144,6 +159,19 @@ class RightNowAwardsIntegrationTests(unittest.TestCase):
             (ROOT / "revenue/right_now/settled_awards.json").read_text(encoding="utf-8"),
             encoding="utf-8",
         )
+        (root / "revenue/right_now/settled_cash.json").write_text(
+            json.dumps(
+                {
+                    "as_of": "2026-09-05T09:50:00Z",
+                    "kind": "SETTLED_CASH_LEDGER",
+                    "receipts": [],
+                    "schema_version": "commons-settled-cash/v1",
+                }
+            ),
+            encoding="utf-8",
+        )
+        (root / "revenue/agent_failure_autopsy/offer.json").write_text("{}", encoding="utf-8")
+        (root / "agent-rescue.html").write_text("<html></html>\n", encoding="utf-8")
         (root / "revenue/smart_outreach/candidates.json").write_text(
             "{}", encoding="utf-8"
         )
@@ -159,7 +187,10 @@ class RightNowAwardsIntegrationTests(unittest.TestCase):
             "CATALOG_PATH": root / "revenue/right_now/catalog.json",
             "DIAGNOSTIC_PATH": root / "revenue/right_now/diagnostic_offer.json",
             "AUTOPSY_PATH": root / "revenue/right_now/autopsy_offer.json",
+            "AUTOPSY_PROVIDER_PATH": root / "revenue/agent_failure_autopsy/offer.json",
+            "AUTOPSY_PUBLIC_PAGE_PATH": root / "agent-rescue.html",
             "SETTLED_AWARDS_PATH": root / "revenue/right_now/settled_awards.json",
+            "SETTLED_CASH_PATH": root / "revenue/right_now/settled_cash.json",
             "OUTREACH_PATH": root / "revenue/smart_outreach/candidates.json",
             "PAYMENT_PATH": root / "revenue/payment_ready/current_receipt.json",
             "HUMAN_PATH": root / "revenue/human_outcomes/offers.json",
@@ -177,19 +208,24 @@ class RightNowAwardsIntegrationTests(unittest.TestCase):
         original["_core_validate_catalog"] = core.validate_catalog
         original["build_checkout_authority"] = control.build_checkout_authority
         original["_core_build_checkout_authority"] = core.build_checkout_authority
+        original["__cash_summarize"] = core.settled_cash.summarize_ledger
         control.validate_catalog = _passthrough_catalog
         core.validate_catalog = _passthrough_catalog
         control.build_checkout_authority = _dummy_checkout_authority
         core.build_checkout_authority = _dummy_checkout_authority
+        core.settled_cash.summarize_ledger = _zero_cash_summary
         return original
 
     def restore(self, original: dict[str, object]) -> None:
         core = control._core
+        cash_summarize = original.pop("__cash_summarize", None)
         for name, value in original.items():
             if name.startswith("_core_"):
                 setattr(core, name[len("_core_"):], value)
             else:
                 setattr(control, name, value)
+        if cash_summarize is not None:
+            core.settled_cash.summarize_ledger = cash_summarize
 
     def test_paid_award_is_composed_without_promoting_usd_cash(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -229,6 +265,24 @@ class RightNowAwardsIntegrationTests(unittest.TestCase):
                     control.build_control()
             finally:
                 self.restore(original)
+
+    def test_awards_bind_keeps_checkout_authority_offline(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.fixture(root)
+            original = self.bind(root)
+            try:
+                value = control.build_control()
+                authority = control.build_checkout_authority("2026-09-05T09:50:00Z")
+                core_authority = control._core.build_checkout_authority(
+                    "2026-09-05T09:50:00Z"
+                )
+            finally:
+                self.restore(original)
+        self.assertEqual(value["truth"]["paid_awards"], 1)
+        self.assertEqual(authority["offer_id"], control.CHECKOUT_AUTHORITY["offer_id"])
+        self.assertEqual(core_authority["payment_url"], authority["payment_url"])
+        self.assertIs(authority["active"], True)
 
 
 if __name__ == "__main__":
