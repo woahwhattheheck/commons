@@ -23,3 +23,26 @@ python -m revenue.procurement_response_module_library.engine verify \
   --solicitation revenue/procurement_response_module_library/solicitation.json \
   --packet /tmp/prm/packet.json --markdown /tmp/prm/packet.md --receipt /tmp/prm/receipt.json
 ```
+
+## Evidence materializer
+
+`materializer.py` is an additive source-to-catalog adapter for owner-reviewed evidence descriptors. It accepts only strict, versioned records and emits a catalog compatible with the compiler plus a deterministic catalog diff and integrity receipt. It does **not** authenticate providers by itself and cannot authorize buyer contact, submission, signature/certification, price commitment, payment, award, or revenue.
+
+A record carries exact source identity (`source_ref` + SHA-256), observation/expiry and module validity times, owner status, applicability tags, claim family/kind, and evidence state. Generic capability and policy claims can become `SUPPORTED` only from explicitly approved internal receipt/capability/policy source classes. Certification, customer/reference, SLA, and security-control claims are never promoted by this generic adapter. Their descriptors must name the stricter proof class (issuer-verified certification, reference-permission receipt, accepted-SLA receipt, or control-test receipt), but even an exactly named descriptor remains `PARTIAL`/`PENDING` with `SPECIALIZED_AUTHORITY_REQUIRED` until a separate authority-bearing adapter validates that evidence class. Weaker source classes, non-approved owner state, non-supported evidence state, expiry, sensitive-claim wording under a generic claim kind, and synthetic fixtures also HOLD. This prevents schema relabeling from turning a self-authored descriptor into a certification, reference, SLA, or security-control assertion.
+
+The repository fixture `synthetic_materializer_source.json` deliberately remains HOLD-only and asserts no corporate fact. Real evidence descriptors should be produced only from separately approved retained evidence; do not convert a self-authored claim into evidence merely to satisfy the schema.
+
+```bash
+rm -rf /tmp/prm-materialized
+python -m revenue.procurement_response_module_library.materializer compile \
+  --source revenue/procurement_response_module_library/synthetic_materializer_source.json \
+  --out-dir /tmp/prm-materialized
+
+python -m revenue.procurement_response_module_library.materializer verify \
+  --source revenue/procurement_response_module_library/synthetic_materializer_source.json \
+  --catalog /tmp/prm-materialized/catalog.json \
+  --diff /tmp/prm-materialized/diff.json \
+  --receipt /tmp/prm-materialized/receipt.json
+```
+
+For a catalog-generation comparison, pass `--previous <catalog.json>` to both commands. Diff identity is content-based and reports added/removed/changed evidence and module IDs deterministically; it is an owner-review change surface, not approval to publish or submit anything externally.
