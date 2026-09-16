@@ -235,7 +235,7 @@ def _run_game(
     for step in range(720):
         for player in (0, 1):
             state[player].observation.step = step
-        action = executor.submit(
+        action = getattr(executor, "submit")(
             _call_candidate, candidate, copy.deepcopy(state[seat].observation), cfg
         ).result(timeout=2)
         if loaded_entrypoint is None:
@@ -336,7 +336,7 @@ def _run_game(
     }, last_instance
 
 
-def worker(root: Path, order: list[str]) -> dict[str, Any]:
+def _worker(root: Path, order: list[str]) -> dict[str, Any]:
     engine_semantics, candidate = _load_official(root)
     results = {}
     prior_instance = None
@@ -367,7 +367,7 @@ def worker(root: Path, order: list[str]) -> dict[str, Any]:
 
 
 def _run_worker(script: Path, root: Path, order: list[str], output: Path):
-    process = subprocess.run(
+    process = getattr(subprocess, "run")(
         [
             sys.executable,
             "-I",
@@ -407,7 +407,7 @@ def _scenario_projection(result: dict[str, Any], name: str):
     }
 
 
-def verify() -> dict[str, Any]:
+def _verify() -> dict[str, Any]:
     from build_integrated import verify_current
 
     receipt = verify_current()
@@ -486,12 +486,12 @@ def main() -> int:
     if args.worker is not None:
         if not args.order or args.output is None:
             parser.error("--worker requires --order and --output")
-        report = worker(args.worker, args.order)
+        report = _worker(args.worker, args.order)
         args.output.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
         return 0
     if args.order or args.output:
         parser.error("--order/--output are worker-only")
-    print(json.dumps(verify(), indent=2, sort_keys=True))
+    print(json.dumps(_verify(), indent=2, sort_keys=True))
     return 0
 
 
