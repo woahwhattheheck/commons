@@ -1,0 +1,47 @@
+name: sophelio-fusion-equilibrium
+
+# Archived candidate recipe under the current Commons workflow-surface policy.
+# Materialize/execute through the repository's approved CI recipe path; this
+# file is intentionally not active under .github/workflows.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m pip install --disable-pip-version-check numpy scikit-learn
+      - name: Compile
+        run: |
+          python -m py_compile \
+            revenue/sophelio_fusion_equilibrium/toolkit.py \
+            revenue/sophelio_fusion_equilibrium/contract.py \
+            revenue/sophelio_fusion_equilibrium/resampling.py \
+            revenue/sophelio_fusion_equilibrium/coil_features.py \
+            revenue/sophelio_fusion_equilibrium/features.py \
+            revenue/sophelio_fusion_equilibrium/model.py \
+            revenue/sophelio_fusion_equilibrium/npz_packaging.py \
+            revenue/sophelio_fusion_equilibrium/submission_bundle.py \
+            revenue/sophelio_fusion_equilibrium/synthetic_smoke.py \
+            revenue/sophelio_fusion_equilibrium/real_demo_gate.py \
+            revenue/sophelio_fusion_equilibrium/tests/test_direct_zip.py \
+            revenue/sophelio_fusion_equilibrium/tests/test_toolkit.py \
+            revenue/sophelio_fusion_equilibrium/tests/test_source_red_recovery.py
+      - name: Unit tests
+        run: python -m unittest discover -s revenue/sophelio_fusion_equilibrium/tests -v
+      - name: Optimized-mode tests
+        run: python -O -m unittest discover -s revenue/sophelio_fusion_equilibrium/tests -v
+      - name: Synthetic end-to-end smoke
+        run: python revenue/sophelio_fusion_equilibrium/synthetic_smoke.py
