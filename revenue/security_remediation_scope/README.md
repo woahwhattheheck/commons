@@ -1,50 +1,57 @@
 # Security HOLD → paid remediation scope
 
-This package turns **evidence-backed held or partial findings** into a deterministic, owner-review implementation SOW. It exists to make an honest `HOLD` commercially useful without converting missing evidence into a positive security/compliance claim.
+This package turns **verified source-packet HOLD/PARTIAL findings** into a deterministic, owner-review implementation SOW. It exists to make an honest `HOLD` commercially useful without converting missing evidence into a positive security/compliance claim.
 
-## What it accepts
+## Two-input custody model
 
-A strict `security-remediation-scope-v1` manifest contains:
+The compiler takes two files:
 
-- the immutable source packet ID, SHA-256, and observation time;
-- an evidence evaluation `as_of` time (historical owner-review semantics only);
-- source findings with exact status, requirement, evidence IDs, current state, and gap;
-- for actionable findings only, an explicit deliverable, observable acceptance test, dependencies, change-control trigger, and **owner-proposed integer-cent price**.
+1. a normalized `security-remediation-findings-v1` source packet containing the source finding IDs/statuses/requirements/evidence IDs/current-state/gaps;
+2. a `security-remediation-scope-v2` file containing only source-packet identity plus proposed remediation work.
 
-Only `PARTIAL`, `HOLD_MISSING_EVIDENCE`, and `HOLD_STALE_EVIDENCE` may create work items. `SUPPORTED` and `NOT_APPLICABLE` rows must carry `remediation: null`; trying to turn them into billable gaps is rejected.
+The scope file must pin the exact source packet ID, observed-at time, and SHA-256. Compilation re-reads the exact source bytes, verifies that SHA-256, parses them strictly, and **derives the finding fields from those verified bytes**. The scope manifest cannot restate or override a source finding's status/current-state/gap.
+
+The normalized source packet is still evidence input, not an auditor/regulator authority. The resulting report is explicitly `HISTORICAL_OWNER_REVIEW_ONLY`.
+
+## Actionability
+
+Only `PARTIAL`, `HOLD_MISSING_EVIDENCE`, and `HOLD_STALE_EVIDENCE` can receive remediation rows. `SUPPORTED` and `NOT_APPLICABLE` rows cannot be monetized. Unknown source finding IDs are rejected.
+
+If an actionable source finding has no remediation row, it is surfaced under `unscoped_findings` and the whole packet emits `HOLD_UNSCOPED_FINDINGS`. This prevents a convenient subset from making unresolved HOLDs disappear.
 
 ## Fixed-scope commercial envelope
 
-The bounded pilot envelope is **$5,000–$30,000**, entirely from owner-proposed line-item pricing. A scope inside the envelope emits `OWNER_REVIEW_READY`; an otherwise valid scope outside it emits `HOLD_PRICE_OUTSIDE_FIXED_SCOPE`. No state means buyer acceptance.
-
-Commercial state is always `PROPOSED_NOT_ACCEPTED`.
+Owner-proposed pricing is integer cents only. When all actionable findings are scoped and the total is **$5,000–$30,000**, the report may emit `OWNER_REVIEW_READY`; valid totals outside that envelope emit `HOLD_PRICE_OUTSIDE_FIXED_SCOPE`. Commercial state is always `PROPOSED_NOT_ACCEPTED`.
 
 ## Prohibited outcome language
 
-Proposed deliverables, acceptance tests, and change-control language fail closed if they attempt to promise certification/compliance/audit outcomes such as “certify”, “guaranteed compliance”, “SOC 2 compliant”, “HIPAA compliant”, “ISO 27001 certified”, “PCI compliant”, or “pass an audit”. The product may scope concrete technical/evidence work; it may not manufacture an auditor, lawyer, regulator, or customer acceptance decision.
+Deliverable, acceptance-test, and change-control text fails closed if it attempts certification/compliance/audit promises such as `certify`, `guaranteed compliance`, `SOC 2 compliant`, `HIPAA compliant`, `ISO 27001 certified`, `PCI compliant`, or `pass an audit`. Concrete technical/evidence work is scopeable; an auditor, regulator, lawyer, customer acceptance decision, or security guarantee is not.
 
 ## Demo
 
 ```bash
 cd revenue/security_remediation_scope
-python synthetic_fixture.py > /tmp/security-remediation-input.json
+python synthetic_fixture.py source > /tmp/security-remediation-source.json
+python synthetic_fixture.py scope > /tmp/security-remediation-input.json
 python remediation_scope.py compile \
   --input /tmp/security-remediation-input.json \
+  --source-packet /tmp/security-remediation-source.json \
   --report-json /tmp/security-remediation-report.json \
   --report-md /tmp/security-remediation-report.md
 python remediation_scope.py verify \
   --input /tmp/security-remediation-input.json \
+  --source-packet /tmp/security-remediation-source.json \
   --report-json /tmp/security-remediation-report.json
 ```
 
-The synthetic scope contains two actionable findings totaling $17,500 and one supported finding that is excluded from remediation.
+The synthetic source packet has two actionable findings plus one supported/nonbillable finding. The matching scope totals $17,500.
 
-## Determinism and custody
+## Determinism and verification
 
-Duplicate JSON keys, floats/non-finite numbers, unknown critical keys, invalid IDs/hashes/timestamps, future-dated source packets, duplicate evidence/dependency IDs, Boolean prices, and malformed price values fail closed. Input findings and list values are normalized for semantic receipt stability. Verification recompiles the complete report and requires canonical byte-equivalent semantics.
+Duplicate JSON keys, floats/non-finite numbers, unknown critical keys, invalid IDs/hashes/timestamps, future source packets, duplicate IDs/dependencies, Boolean prices, unknown finding references, nonactionable monetization, source-byte/hash drift, and malformed price values fail closed.
 
-The receipt binds exact raw input bytes, normalized semantic manifest, and canonical report body.
+The receipt binds exact scope bytes, normalized scope semantics, exact source packet bytes, normalized source semantics, and canonical report body. Verification recompiles from both retained inputs.
 
 ## Authority ceiling
 
-Every report hard-codes `false` for buyer contact, contract acceptance, compliance certification, security attestation, deployment, invoice authorization, payment, and revenue recognition. The tool is an offline scoping artifact; it does not send, deploy, sign, invoice, charge, or certify anything.
+Every report hard-codes `false` for buyer contact, contract acceptance, compliance certification, security attestation, deployment, invoice authorization, payment, and revenue recognition. The tool is offline; it does not send, deploy, sign, invoice, charge, certify, or recognize anything.
