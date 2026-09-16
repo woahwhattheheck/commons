@@ -332,9 +332,19 @@ class MirrorStore:
                 self._finish(identity, fingerprint, hashes, attempt, uncertain=True)
                 raise DeliveryUncertain(f"part {attempt['part'] + 1} outcome unknown; "
                                         f"attempt={attempt['attempt']}; no automatic resend") from None
-            # BaseException (process exit/interrupt) deliberately leaves the
-            # committed intent intact too; a restart cannot infer non-delivery.
-            self._finish(identity, fingerprint, hashes, attempt, receipt=ts)
+            # A valid provider receipt means Slack may already have committed the
+            # message. If local receipt persistence/COMMIT now fails, the only safe
+            # immediate result is UNCERTAIN: retain the exact pre-transport intent
+            # and require reconciliation rather than exposing a retryable state error.
+            try:
+                self._finish(identity, fingerprint, hashes, attempt, receipt=ts)
+            except DeliveryUncertain:
+                raise
+            except DeliveryError:
+                raise DeliveryUncertain(
+                    f"part {attempt['part'] + 1} provider receipt could not be durably recorded; "
+                    f"attempt={attempt['attempt']}; inspect and reconcile before retry"
+                ) from None
 
     def _finish(self, identity, fingerprint, hashes, attempt, *, receipt=None, rejection=None, uncertain=False):
         with self._connection() as db:
