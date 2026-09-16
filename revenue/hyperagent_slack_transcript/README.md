@@ -6,7 +6,7 @@ This package is the internal fulfillment-readiness artifact for the already-offe
 
 The package normalizes three intentionally heterogeneous synthetic backend event schemas (`stream`, `trace`, `envelope`) into deterministic logical transcript artifacts. Source identity is scoped to **backend + source run + source event**, so backend-local event IDs may safely repeat across distinct runs. The checked-in fixture contains **30 text events** spanning exactly **6 logical transcript artifacts**. A clean replay is idempotent: the second full replay emits **0 new logical messages**, while a reused source identity with changed semantics fails closed as a conflict.
 
-Mutating-action events are approval gated. An action is emitted only when one approval is current, binds the exact normalized run/action/generation, and authenticates under **retained runtime approval authority supplied outside this repository**. Approval data cannot self-authorize: `authority_tag` is HMAC-SHA256 over the canonical approval fields, verified with a runtime key that is never committed here. Missing authority key, missing approval, denied approval, stale approval, foreign run/generation, ambiguous approval evidence, or malformed/unauthenticated approval evidence cannot yield an approved action artifact.
+Mutating-action events are approval gated. An action is emitted only when one approval is current, binds the exact normalized run/action/generation **and the canonical `event_semantics_sha256` of that mutating event**, and authenticates under **retained runtime approval authority supplied outside this repository**. One authenticated approval cannot authorize a distinct first-seen event identity or a different text/thread/sequence under the same action tuple. Approval data cannot self-authorize: `authority_tag` is HMAC-SHA256 over the canonical approval fields, verified with a runtime key that is never committed here. Missing authority key, missing approval, denied approval, stale approval, foreign run/generation, ambiguous approval evidence, or malformed/unauthenticated approval evidence cannot yield an approved action artifact.
 
 Approval freshness uses captured **process UTC**. The public `TranscriptProjector.ingest()` API accepts no caller-provided `as_of` timestamp, so an expired approval cannot be replayed merely by asking the projector to evaluate itself in the past. The only deterministic caller-clock surface is `project_fixture()`, and it rejects both approvals and `MUTATING_ACTION`; it therefore cannot mint or backdate authority.
 
@@ -24,6 +24,7 @@ The authenticated approval object is:
   "run_id": "run_...",
   "action_id": "send",
   "generation": 2,
+  "event_semantics_sha256": "<64 lowercase hex of canonical event.semantics()>",
   "decision": "APPROVE",
   "issued_at": "2026-09-16T18:00:00Z",
   "expires_at": "2026-09-16T19:00:00Z",
@@ -64,7 +65,7 @@ python -m revenue.hyperagent_slack_transcript.cli \
 
 Expected text-fixture invariant: `artifact_count == 6`, `message_count == 30`. The root `test_hyperagent_slack_transcript.py` bridge is discovered by the retained Commons CI battery and executes the focused suite in both normal and optimized (`-O`) modes; no dedicated active workflow is required.
 
-The mutation tests use dedicated **test-only** key material and broad synthetic validity windows. They prove that a correctly authenticated exact-generation approval can yield one offline candidate, while missing key, wrong key, post-signature tampering, stale windows, wrong run/generation, denial, duplicate identity mutation, and caller-clock injection all fail closed.
+The mutation tests use dedicated **test-only** key material and broad synthetic validity windows. They prove that a correctly authenticated exact-generation approval can yield one offline candidate, while missing key, wrong key, post-signature tampering, stale windows, wrong run/generation, denial, duplicate identity mutation, caller-clock injection, and a reused approval against a distinct event semantic all fail closed.
 
 ## Commercial handoff
 
@@ -73,7 +74,7 @@ This is a product proof for a bounded paid pilot, not a free production deployme
 1. backend + run + source-event identity and semantic conflict detection;
 2. deterministic run/thread/message projection;
 3. replay without duplicate logical messages;
-4. authenticated exact action-generation approval binding before mutating-action projection;
+4. authenticated exact action-generation *and event-semantics* approval binding before mutating-action projection;
 5. process/trusted-time freshness rather than caller-authored clock authority;
 6. deterministic artifacts and exact approval receipts suitable for buyer review.
 
