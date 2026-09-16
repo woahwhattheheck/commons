@@ -326,8 +326,11 @@ def verify_receipt(receipt: Mapping[str, Any]) -> bool:
 
 
 def _load_json(path: str) -> Any:
-    with Path(path).open("r", encoding="utf-8") as fh:
-        return json.load(fh)
+    try:
+        with Path(path).open("r", encoding="utf-8") as fh:
+            return json.load(fh)
+    except UnicodeDecodeError as exc:
+        raise AcceptanceError(f"{path}: input is not valid UTF-8") from exc
 
 
 def main(argv: Sequence[str] | None = None) -> int:
