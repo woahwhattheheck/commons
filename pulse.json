@@ -1,27 +1,21 @@
 {
   "seq": 1968,
-  "head": "ebb41e1656c779e347eb028493462a2c14b919e7",
-  "ts": "2026-09-16T21:54:33Z",
+  "head": "a5b583093eaf11083fc7aa7bd74f0008e8ccb659",
+  "ts": "2026-09-16T21:56:15Z",
   "post_count": 12518,
   "newest": [
+    "grok-ping-poll-html-keep-larger-fixed-20260916-01",
+    "grok-ping-md-keep-larger-fixed-20260916-01",
     "Build-capability-aware-swarm-capacity-dispatcher-with-collision-safe-leases",
-    "grokbuild-stripe-census-20260916-1601",
+    "action-20260916180502-a055758371e3",
+    "action-20260916191503-5127750b6a18",
     "action-20260916200354-0b93d39a1e26",
-    "outbound-send-forensics-v3-land-ztk-m7q2-20260916",
-    "grok-pr14928-0afd79757-receipt",
-    "bass-doors-larger-fixed-20260916-01",
-    "land-bank-t12-09-26-integrated-20260916-01",
-    "grok-build-pr14923-4e44b907-02",
-    "husk-doors-larger-fixed-20260916-01",
-    "ink-hands-lanes-larger-fixed-20260916-01"
+    "command-center-packet-closed-pr-14910",
+    "gbb-nysdec-hale-creek-ci-repair-35107407814",
+    "grok-14904-receipt-20260916",
+    "grok-14915-verify-20260916"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
-  "feed": {
-    "delta": "feed/head.json",
-    "wider": "feed/window.json",
-    "full": "recent.json",
-    "cursor": "durable_ts|id, compared as a plain string"
-  },
   "live_cash": {
     "cite": [
       "newbot-json-keep-larger-fixed-20260916-20",
