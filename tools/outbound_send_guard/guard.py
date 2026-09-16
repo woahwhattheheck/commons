@@ -1,12 +1,14 @@
 """Compatibility facade for the outbound send guard.
 
-All supported evaluation and CLI entrypoints are verifier-clock current. The
-deterministic v1 engine is retained only as an underscore-private implementation
-dependency for reconstruction and composed controls.
+Supported evaluation is verifier-clock current. The public compatibility
+receipt preserves the v1 payload contract used by composed guards while binding
+its decision and digest to current verifier time. The deterministic v1 engine
+remains underscore-private for reconstruction and internal composition only.
 """
 from __future__ import annotations
 
 import sys
+from copy import deepcopy
 from datetime import datetime
 from typing import Any
 
@@ -19,18 +21,64 @@ for _name in dir(_legacy_core):
         globals()[_name] = getattr(_legacy_core, _name)
 
 
-def evaluate(intent_raw: dict[str, Any], evidence_raw: dict[str, Any]) -> dict[str, Any]:
-    """Evaluate only at verifier-owned current process time."""
+def evaluate(
+    intent_raw: dict[str, Any],
+    evidence_raw: dict[str, Any],
+    *,
+    intent_sha256: str | None = None,
+    evidence_sha256: str | None = None,
+) -> dict[str, Any]:
+    """Evaluate at verifier-owned current time with a v1-compatible payload.
+
+    Existing composed guards consume the historical v1 payload keys (intent,
+    evidence, authority, latest_*). Those keys remain stable, but the outward
+    decision is the current verifier decision and the receipt digest also binds
+    current-clock metadata. Exact caller-supplied source digests remain attached
+    when a byte-custody caller provides them.
+    """
     from .current import compile_current
 
-    return compile_current(intent_raw, evidence_raw)
+    current_receipt = compile_current(intent_raw, evidence_raw)
+    rich = current_receipt["payload"]
+    payload = deepcopy(rich["core"])
+
+    # Preserve exact-byte custody supplied by existing composed callers.
+    if intent_sha256 is not None:
+        payload["evidence"]["intent_sha256"] = intent_sha256
+    if evidence_sha256 is not None:
+        payload["evidence"]["evidence_sha256"] = evidence_sha256
+
+    core_reasons = list(payload.get("reasons", []))
+    temporal_reasons = list(rich.get("temporal_reasons", []))
+    payload["decision"] = rich["decision"]
+    payload["reasons"] = list(dict.fromkeys([*core_reasons, *temporal_reasons]))
+    payload["side_effects_authorized"] = False
+
+    # Additive current-clock proof. Legacy consumers ignore these keys, while
+    # the receipt digest prevents a historical positive receipt from being
+    # replay-identical to a current one.
+    payload["verified_at"] = rich["verified_at"]
+    payload["valid_until"] = rich["valid_until"]
+    payload["policy_generation"] = rich["policy_generation"]
+    payload["historical_decision"] = rich["historical_decision"]
+    payload["temporal_reasons"] = temporal_reasons
+    payload["current_preflight_clear"] = rich["current_preflight_clear"]
+    payload["net_new_send_preflight_clear"] = rich["net_new_send_preflight_clear"]
+    payload["reply_preflight_clear"] = rich["reply_preflight_clear"]
+
+    return {"payload": payload, "receipt_sha256": _legacy_core.digest_object(payload)}
 
 
 def evaluate_bytes(intent_bytes: bytes, evidence_bytes: bytes) -> dict[str, Any]:
-    """Evaluate exact consumed bytes only at verifier-owned current time."""
-    from .current import compile_current_bytes
-
-    return compile_current_bytes(intent_bytes, evidence_bytes)
+    """Evaluate exact consumed bytes at verifier-owned current time."""
+    intent = _legacy_core.parse_json_bytes(intent_bytes, "intent")
+    evidence = _legacy_core.parse_json_bytes(evidence_bytes, "evidence")
+    return evaluate(
+        intent,
+        evidence,
+        intent_sha256=_legacy_core.digest_bytes(intent_bytes),
+        evidence_sha256=_legacy_core.digest_bytes(evidence_bytes),
+    )
 
 
 def evaluate_historical_at(
