@@ -136,6 +136,21 @@ def main() -> None:
         assert path.is_file(), relative
         assert sha256(path) == expected, f"audited source moved: {relative}"
 
+    index_html = (ROOT / "door" / "index.html").read_text(encoding="utf-8")
+    cash = re.search(r'<p\b[^>]*\bid="live-cash"[^>]*>.*?</p>', index_html, re.S)
+    assert cash, "door/index.html keeps the live-cash note"
+    section = cash.group()
+    for href in (
+        "../agent-rescue.html",
+        "../dealer-service-lead-rescue.html",
+        "../referral-intake-completeness.html",
+        "../repair-booking-preflight.html",
+        "../plant-downtime-handoff.html",
+        "../diagnostic.html",
+        "../commercial.html",
+    ):
+        assert href in section, href
+
     source_tools = tool_names(mcp)
     manifest_tools = [row["name"] for row in manifest["tools"]]
     assert len(source_tools) == manifest["tool_count"] == 18

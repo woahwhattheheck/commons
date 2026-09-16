@@ -1,4 +1,5 @@
 name: workflow-surface
+# Retained 67-slot trees pass this check. Do not raise max_active_workflows.
 on:
   pull_request:
     paths:
