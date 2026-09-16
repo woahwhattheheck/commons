@@ -158,6 +158,19 @@ class PublicBoundaryRecoveryTests(unittest.TestCase):
                 "foreign-successor",
             )
 
+    def test_current_readiness_guard_is_clean_on_product_python(self):
+        from tools.current_readiness_guard.guard import scan_paths
+
+        findings = scan_paths(
+            [
+                "revenue/numih_ai_sad_admission_readiness/_compiler_core.py",
+                "revenue/numih_ai_sad_admission_readiness/compiler.py",
+                "revenue/numih_ai_sad_admission_readiness/cli.py",
+                "revenue/numih_ai_sad_admission_readiness/__init__.py",
+            ]
+        )
+        self.assertEqual(findings, [])
+
 
 if __name__ == "__main__":
     unittest.main()
