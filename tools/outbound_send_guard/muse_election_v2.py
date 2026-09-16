@@ -225,7 +225,9 @@ def _bind_boundary():
     @functools.lru_cache(maxsize=None)
     def safe_proxy(name: str):
         value = engine[name]
-        if not callable(value):
+        # Classes, including MuseElectionV2Error, must remain types so callers
+        # can catch them. Wrapping a class as a function makes assertRaises fail.
+        if isinstance(value, type) or not callable(value):
             return value
 
         @functools.wraps(value)
