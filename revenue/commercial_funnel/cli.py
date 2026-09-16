@@ -5,10 +5,23 @@ import json
 import os
 import stat
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from .ledger import HOLD, FunnelError, canonical_json, compile_funnel, strict_loads, verify_artifacts
+from .ledger import (
+    HOLD,
+    FunnelError,
+    canonical_json,
+    compile_funnel,
+    strict_loads,
+    verify_artifacts_current,
+)
+
+
+def _trusted_now() -> str:
+    """Return the process runtime UTC second used by current CLI decisions."""
+    return datetime.now(timezone.utc).replace(microsecond=0).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
 def _read_json(path: Path) -> Any:
@@ -44,7 +57,7 @@ def _write_exclusive(path: Path, data: bytes) -> None:
 
 def command_compile(args: argparse.Namespace) -> int:
     source = _read_json(Path(args.input))
-    result = compile_funnel(source, as_of=args.as_of)
+    result = compile_funnel(source, as_of=_trusted_now())
     out_dir = Path(args.out_dir)
     _ensure_output_dir(out_dir)
     outputs = {
@@ -79,9 +92,9 @@ def command_verify(args: argparse.Namespace) -> int:
     source = _read_json(Path(args.input))
     packet = _read_json(Path(args.packet))
     receipt = _read_json(Path(args.receipt))
-    ok = verify_artifacts(
+    ok = verify_artifacts_current(
         source,
-        as_of=args.as_of,
+        trusted_now=_trusted_now(),
         packet=packet,
         receipt=receipt,
         report_json=_read_bytes(Path(args.report_json)),
@@ -93,16 +106,20 @@ def command_verify(args: argparse.Namespace) -> int:
 
 
 def parser() -> argparse.ArgumentParser:
-    ap = argparse.ArgumentParser(description="Compile and verify evidence-bound Commons commercial funnel packets.")
+    ap = argparse.ArgumentParser(description="Compile and currently verify evidence-bound Commons commercial funnel packets.")
     sub = ap.add_subparsers(dest="command", required=True)
-    compile_p = sub.add_parser("compile", help="compile one input ledger into deterministic review artifacts")
+    compile_p = sub.add_parser(
+        "compile",
+        help="compile one input ledger at trusted process UTC into current review artifacts",
+    )
     compile_p.add_argument("input")
-    compile_p.add_argument("--as-of", required=True, help="trusted UTC RFC3339 seconds, e.g. 2026-09-13T10:10:00Z")
     compile_p.add_argument("--out-dir", required=True)
     compile_p.set_defaults(func=command_compile)
-    verify_p = sub.add_parser("verify", help="recompile and byte-verify packet + receipt")
+    verify_p = sub.add_parser(
+        "verify",
+        help="byte-verify original artifacts and re-evaluate their semantics at trusted process UTC",
+    )
     verify_p.add_argument("input")
-    verify_p.add_argument("--as-of", required=True)
     verify_p.add_argument("--packet", required=True)
     verify_p.add_argument("--receipt", required=True)
     verify_p.add_argument("--report-json", required=True)
