@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 114,
-    "open_pull_requests": 63,
-    "runs_in_progress": 6,
-    "runs_queued": 72
+    "open_pull_requests": 68,
+    "runs_in_progress": 16,
+    "runs_queued": 134
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,6 +69,61 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zsl-p7m4/swfwmd-rtff-evidence-recovery-20260916",
+      "created_at": "2026-09-16T12:38:05Z",
+      "draft": false,
+      "head_sha": "f1b87ee6dc1e5b5242c660c0c7f1bca250e18511",
+      "number": 14827,
+      "title": "Recover and harden SWFWMD RTFF forecast-evidence workstream",
+      "updated_at": "2026-09-16T12:38:05Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zrs-j6m4/sun-a308734-current-main-recovery-20260916",
+      "created_at": "2026-09-16T12:36:30Z",
+      "draft": false,
+      "head_sha": "e3be9ee4355507578fae88c3a3d592b9795ae5f4",
+      "number": 14826,
+      "title": "Recover Sun A308734 P18 frontier on current main",
+      "updated_at": "2026-09-16T12:36:30Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsm-d3p8/ohsu-ap-ai-rfi-approof-authority-14814",
+      "created_at": "2026-09-16T12:32:03Z",
+      "draft": false,
+      "head_sha": "da8cc45aa63934fe741e415381d2127c7e2afe4a",
+      "number": 14824,
+      "title": "fix(revenue): seal OHSU APProof authority boundary",
+      "updated_at": "2026-09-16T12:38:41Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zoc-r6v3/hyperagent-paid-pilot-20260916",
+      "created_at": "2026-09-16T12:28:37Z",
+      "draft": false,
+      "head_sha": "c995949fec6df127afcaf827979b1196c6465bff",
+      "number": 14823,
+      "title": "feat(revenue): ship Hyperagent deterministic transcript pilot proof",
+      "updated_at": "2026-09-16T12:37:32Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsl-p7m4/commercial-funnel-current-main-recovery-20260916",
+      "created_at": "2026-09-16T12:20:45Z",
+      "draft": false,
+      "head_sha": "4c33a3723fe5ae302fd16e539e12c9b5430046fb",
+      "number": 14822,
+      "title": "Recover commercial-funnel authority onto current main",
+      "updated_at": "2026-09-16T12:33:56Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "sol/slack-canary-entry-types-20260908-01-recovery",
       "created_at": "2026-09-16T11:57:49Z",
       "draft": false,
@@ -108,7 +163,7 @@
       "head_sha": "ee1f843ea27a9062834b0c5807723f04dc811205",
       "number": 14816,
       "title": "Repair scope-time current authority from exact source bytes",
-      "updated_at": "2026-09-16T11:29:42Z"
+      "updated_at": "2026-09-16T12:19:29Z"
     },
     {
       "author": "woahwhattheheck",
@@ -120,61 +175,6 @@
       "number": 14814,
       "title": "feat(revenue): recover OHSU APProof shadow carrier",
       "updated_at": "2026-09-16T11:29:38Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zok-p7x4/collision-preflight-v2-authority-recovery-20260916",
-      "created_at": "2026-09-16T10:52:24Z",
-      "draft": false,
-      "head_sha": "8076873e07f6f9ca9bdfa0f13423846dabeb6f94",
-      "number": 14813,
-      "title": "Recover product collision preflight with truth-narrowed v2",
-      "updated_at": "2026-09-16T10:59:35Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zca-n7q4/swfwmd-rtff-evidence-20260916",
-      "created_at": "2026-09-16T10:50:56Z",
-      "draft": false,
-      "head_sha": "c9ded734df239a4f5b7b281d72f5f9d005aeb344",
-      "number": 14811,
-      "title": "feat(revenue): add SWFWMD RTFF forecast-evidence workstream",
-      "updated_at": "2026-09-16T10:50:56Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zph-c7n9/sophelio-fold-authority-recovery-20260916",
-      "created_at": "2026-09-16T10:45:16Z",
-      "draft": false,
-      "head_sha": "13b45573c20f1d8761869149e710463d5617fb23",
-      "number": 14810,
-      "title": "[ZPH-C7N9] Recover Sophelio with provider-pinned terminal fold authority",
-      "updated_at": "2026-09-16T10:55:09Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zca-n7q4/catawba-erp-evidence-20260916",
-      "created_at": "2026-09-16T10:42:37Z",
-      "draft": false,
-      "head_sha": "134d6c9d93e600803018b11b638fdf844ac41849",
-      "number": 14809,
-      "title": "feat(revenue): add Catawba ERP implementation evidence workstream",
-      "updated_at": "2026-09-16T10:44:51Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zof-r7m5/creative-review-finalization-recovery-20260916",
-      "created_at": "2026-09-16T10:37:47Z",
-      "draft": false,
-      "head_sha": "7efa4080766fe6868154cba5cc5ae8f70e97d423",
-      "number": 14808,
-      "title": "feat(hive-media): recover creative review approval desk finalization",
-      "updated_at": "2026-09-16T10:38:02Z"
     }
   ],
   "open_heads": {
@@ -225,14 +225,14 @@
     "14776": "ad8a22b25efa67111d34f72a9bdfe85be7e864da",
     "14780": "8eda6a9e6078667134126e4783529e3ef9796b48",
     "14782": "8e2bc8c9201d6c6968eb22bf9bd73953d26b3c5d",
-    "14784": "34d554e66a6c3317c8ff64861802bcc30ca9cea3",
+    "14784": "61ebb1314bd149e9894c04925e3715f530a6d0df",
     "14788": "ffaff5aa571aaccedd41f82c0eba85b09586f230",
     "14798": "8851163e0a5df417d494d3daffb1e21ffd419f31",
     "14801": "bbc065f3625883bcfa1973b645f0a3aa1474b51a",
     "14802": "9c554591863d42fae5c8c4c90dbc0ac7a8352c67",
     "14807": "3dcc78c00e1f0281e2c4d77b062cd77b7b219338",
     "14808": "7efa4080766fe6868154cba5cc5ae8f70e97d423",
-    "14809": "134d6c9d93e600803018b11b638fdf844ac41849",
+    "14809": "ee501a78af071430f39951e19b287b9048a4f9d0",
     "14810": "13b45573c20f1d8761869149e710463d5617fb23",
     "14811": "c9ded734df239a4f5b7b281d72f5f9d005aeb344",
     "14813": "8076873e07f6f9ca9bdfa0f13423846dabeb6f94",
@@ -240,11 +240,16 @@
     "14816": "ee1f843ea27a9062834b0c5807723f04dc811205",
     "14819": "a22cfefd953bf251521140192212d5887165a53b",
     "14820": "435ba514f4966eb74a6068c1c91477f8adf7f159",
-    "14821": "6510d6091e15b1bcee4a76dcfc292953aafc491a"
+    "14821": "6510d6091e15b1bcee4a76dcfc292953aafc491a",
+    "14822": "4c33a3723fe5ae302fd16e539e12c9b5430046fb",
+    "14823": "c995949fec6df127afcaf827979b1196c6465bff",
+    "14824": "da8cc45aa63934fe741e415381d2127c7e2afe4a",
+    "14826": "e3be9ee4355507578fae88c3a3d592b9795ae5f4",
+    "14827": "f1b87ee6dc1e5b5242c660c0c7f1bca250e18511"
   },
-  "pulls_listed": 63,
+  "pulls_listed": 68,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 12.0,
+  "queue_depth_per_runner": 8.4,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -414,6 +419,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-16T12:06:31Z",
+  "unchanged_since": "2026-09-16T12:39:16Z",
   "undatable_pulls": []
 }
