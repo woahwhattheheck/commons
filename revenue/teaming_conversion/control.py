@@ -49,13 +49,37 @@ _EXTERNAL_AUTHORITY = {
     "award_or_acceptance_claim": False,
     "cash_or_revenue_recognition": False,
 }
+_EXTERNAL_AUTHORITY_ITEMS = tuple(_EXTERNAL_AUTHORITY.items())
+
+_POLICY_AT_IMPORT = policy_dict()
+_POLICY_ID = str(_POLICY_AT_IMPORT["policy_id"])
+_POLICY_VERSION = str(_POLICY_AT_IMPORT["policy_version"])
+_MAX_CURRENT_RECEIPT_AGE_SECONDS = int(
+    _POLICY_AT_IMPORT["max_current_receipt_age_seconds"]
+)
+_POLICY_SHA256_AT_IMPORT = POLICY_SHA256
+del _POLICY_AT_IMPORT
 
 
-def _utc_now() -> datetime:
-    return datetime.fromtimestamp(time.time(), tz=timezone.utc).replace(microsecond=0)
+def _make_utc_clock(
+    _time=time.time,
+    _fromtimestamp=datetime.fromtimestamp,
+    _utc=timezone.utc,
+):
+    def current_utc() -> datetime:
+        return _fromtimestamp(_time(), tz=_utc).replace(microsecond=0)
+
+    return current_utc
 
 
-def _root_summary(root: ParsedRoot | None) -> dict[str, Any] | None:
+_utc_now = _make_utc_clock()
+del _make_utc_clock
+
+
+def _root_summary(
+    root: ParsedRoot | None,
+    _format_timestamp=format_timestamp,
+) -> dict[str, Any] | None:
     if root is None:
         return None
     return {
@@ -64,8 +88,8 @@ def _root_summary(root: ParsedRoot | None) -> dict[str, Any] | None:
         "counterparty_ref": root.counterparty_ref,
         "thread_id": root.thread_id,
         "generation": root.generation,
-        "active_from": format_timestamp(root.active_from),
-        "expires_at": format_timestamp(root.expires_at),
+        "active_from": _format_timestamp(root.active_from),
+        "expires_at": _format_timestamp(root.expires_at),
     }
 
 
@@ -94,28 +118,50 @@ def _compile_at(
     *,
     evaluated_at: datetime,
     mode: str,
+    _policy_id: str = _POLICY_ID,
+    _policy_version: str = _POLICY_VERSION,
+    _policy_sha256: str = _POLICY_SHA256_AT_IMPORT,
+    _max_current_receipt_age_seconds: int = _MAX_CURRENT_RECEIPT_AGE_SECONDS,
+    _external_authority_items: tuple[tuple[str, bool], ...] = _EXTERNAL_AUTHORITY_ITEMS,
+    _parse_json_bytes=parse_json_bytes,
+    _parse_candidate=parse_candidate,
+    _parse_evidence=parse_evidence,
+    _parse_roots=parse_roots,
+    _select_and_validate_root=select_and_validate_root,
+    _evaluate_evidence=evaluate_evidence,
+    _evaluate_assets=evaluate_assets,
+    _evaluate_qualification=evaluate_qualification,
+    _summarize_observation=summarize_observation,
+    _summarize_interpretation=summarize_interpretation,
+    _sorted_unique=sorted_unique,
+    _sha256_bytes=sha256_bytes,
+    _digest_object=digest_object,
+    _format_timestamp=format_timestamp,
+    _timedelta=timedelta,
+    _utc=timezone.utc,
+    _root_summary_fn=_root_summary,
+    _decision_core_fn=_decision_core,
 ) -> dict[str, Any]:
     if mode not in {CURRENT_MODE, HISTORICAL_MODE}:
         raise ControlError("unknown compile mode")
-    now = evaluated_at.astimezone(timezone.utc).replace(microsecond=0)
-    policy = policy_dict()
-    candidate_value = parse_json_bytes(candidate_bytes, label="candidate")
-    evidence_value = parse_json_bytes(evidence_bytes, label="retained evidence")
-    roots_value = parse_json_bytes(roots_bytes, label="trusted roots")
-    candidate = parse_candidate(candidate_value)
-    evidence = parse_evidence(evidence_value)
-    normalized_roots, roots = parse_roots(roots_value)
+    now = evaluated_at.astimezone(_utc).replace(microsecond=0)
+    candidate_value = _parse_json_bytes(candidate_bytes, label="candidate")
+    evidence_value = _parse_json_bytes(evidence_bytes, label="retained evidence")
+    roots_value = _parse_json_bytes(roots_bytes, label="trusted roots")
+    candidate = _parse_candidate(candidate_value)
+    evidence = _parse_evidence(evidence_value)
+    normalized_roots, roots = _parse_roots(roots_value)
 
-    root, root_blockers = select_and_validate_root(
+    root, root_blockers = _select_and_validate_root(
         candidate,
         evidence,
         roots,
         evidence_bytes=evidence_bytes,
         now=now,
     )
-    evidence_result = evaluate_evidence(candidate, evidence, now=now)
-    asset_result = evaluate_assets(candidate, evidence, now=now)
-    qualification_result = evaluate_qualification(candidate, evidence, now=now)
+    evidence_result = _evaluate_evidence(candidate, evidence, now=now)
+    asset_result = _evaluate_assets(candidate, evidence, now=now)
+    qualification_result = _evaluate_qualification(candidate, evidence, now=now)
 
     asset_trust_blockers = [
         item for item in asset_result["blockers"] if item.startswith("asset_release_")
@@ -137,14 +183,14 @@ def _compile_at(
         for item in qualification_result["blockers"]
         if item not in qualification_trust_blockers
     ]
-    trust_blockers = sorted_unique(
+    trust_blockers = _sorted_unique(
         root_blockers
         + evidence_result["blockers"]
         + asset_trust_blockers
         + qualification_trust_blockers
     )
-    qualification_blockers = sorted_unique(qualification_state_blockers)
-    asset_blockers = sorted_unique(asset_state_blockers)
+    qualification_blockers = _sorted_unique(qualification_state_blockers)
+    asset_blockers = _sorted_unique(asset_state_blockers)
 
     interpretation = evidence_result["current_interpretation"]
     decision = interpretation["decision"] if interpretation is not None else None
@@ -162,12 +208,14 @@ def _compile_at(
         disposition = "FOLLOWUP_READY"
     else:
         disposition = "HOLD"
-        trust_blockers = sorted_unique(trust_blockers + ["positive_interpretation_missing"])
+        trust_blockers = _sorted_unique(
+            trust_blockers + ["positive_interpretation_missing"]
+        )
 
     valid_until_candidates = [
         evidence_result["reply_valid_until"],
         evidence_result["source_valid_until"],
-        now + timedelta(seconds=policy["max_current_receipt_age_seconds"]),
+        now + _timedelta(seconds=_max_current_receipt_age_seconds),
     ]
     if root is not None:
         valid_until_candidates.append(root.expires_at)
@@ -176,7 +224,7 @@ def _compile_at(
     trusted = not root_blockers
     safe_assets = asset_result["safe_assets"] if trusted else []
     safe_facts = qualification_result["safe_facts"] if trusted else []
-    owner_actions = sorted_unique(
+    owner_actions = _sorted_unique(
         evidence_result["owner_actions"]
         + asset_result["owner_actions"]
         + qualification_result["owner_actions"]
@@ -185,29 +233,31 @@ def _compile_at(
         "schema": RECEIPT_SCHEMA,
         "mode": mode,
         "historical_integrity_only": mode == HISTORICAL_MODE,
-        "evaluated_at": format_timestamp(now),
-        "current_valid_until": format_timestamp(current_valid_until),
+        "evaluated_at": _format_timestamp(now),
+        "current_valid_until": _format_timestamp(current_valid_until),
         "policy": {
-            "policy_id": policy["policy_id"],
-            "policy_version": policy["policy_version"],
-            "sha256": POLICY_SHA256,
+            "policy_id": _policy_id,
+            "policy_version": _policy_version,
+            "sha256": _policy_sha256,
             "source": "repository_owned_constant",
         },
         "custody": {
             "mode": "exact_json_bytes",
-            "candidate_sha256": sha256_bytes(candidate_bytes),
-            "evidence_sha256": sha256_bytes(evidence_bytes),
-            "trusted_roots_sha256": sha256_bytes(roots_bytes),
-            "normalized_roots_sha256": digest_object(normalized_roots),
+            "candidate_sha256": _sha256_bytes(candidate_bytes),
+            "evidence_sha256": _sha256_bytes(evidence_bytes),
+            "trusted_roots_sha256": _sha256_bytes(roots_bytes),
+            "normalized_roots_sha256": _digest_object(normalized_roots),
         },
-        "trusted_root": _root_summary(root),
+        "trusted_root": _root_summary_fn(root),
         "opportunity": {
             "opportunity_id": candidate.opportunity_id,
             "counterparty_ref": candidate.counterparty_ref,
             "thread_id": candidate.thread_id,
         },
-        "current_observation": summarize_observation(evidence_result["current_observation"]),
-        "owner_interpretation": summarize_interpretation(interpretation),
+        "current_observation": _summarize_observation(
+            evidence_result["current_observation"]
+        ),
+        "owner_interpretation": _summarize_interpretation(interpretation),
         "disposition": disposition,
         "trust_blockers": trust_blockers,
         "qualification_blockers": qualification_blockers,
@@ -216,20 +266,28 @@ def _compile_at(
         "safe_assets": safe_assets,
         "safe_commercial_facts": safe_facts,
         "owner_review_only": True,
-        "external_authority": dict(_EXTERNAL_AUTHORITY),
+        "external_authority": dict(_external_authority_items),
     }
-    receipt["decision_sha256"] = digest_object(_decision_core(receipt))
+    receipt["decision_sha256"] = _digest_object(_decision_core_fn(receipt))
     return receipt
 
 
-def compile_current_bytes(candidate_bytes: bytes, evidence_bytes: bytes) -> dict[str, Any]:
-    roots_bytes = load_current_roots_bytes()
-    return _compile_at(
+def compile_current_bytes(
+    candidate_bytes: bytes,
+    evidence_bytes: bytes,
+    _root_loader=load_current_roots_bytes,
+    _clock=_utc_now,
+    _compiler=_compile_at,
+    _mode: str = CURRENT_MODE,
+) -> dict[str, Any]:
+    """Compile against import-captured CURRENT authority dependencies."""
+    roots_bytes = _root_loader()
+    return _compiler(
         candidate_bytes,
         evidence_bytes,
         roots_bytes,
-        evaluated_at=_utc_now(),
-        mode=CURRENT_MODE,
+        evaluated_at=_clock(),
+        mode=_mode,
     )
 
 
@@ -239,19 +297,28 @@ def compile_historical_bytes(
     roots_bytes: bytes,
     *,
     evaluated_at: datetime,
+    _compiler=_compile_at,
+    _mode: str = HISTORICAL_MODE,
 ) -> dict[str, Any]:
-    return _compile_at(
+    return _compiler(
         candidate_bytes,
         evidence_bytes,
         roots_bytes,
         evaluated_at=evaluated_at,
-        mode=HISTORICAL_MODE,
+        mode=_mode,
     )
 
 
-def parse_receipt_bytes(receipt_bytes: bytes) -> dict[str, Any]:
-    value = parse_json_bytes(receipt_bytes, label="receipt")
-    receipt = require_object(value, "receipt")
+def parse_receipt_bytes(
+    receipt_bytes: bytes,
+    _parse_json_bytes=parse_json_bytes,
+    _require_object=require_object,
+    _require_exact_keys=require_exact_keys,
+    _require_string=require_string,
+    _require_timestamp=require_timestamp,
+) -> dict[str, Any]:
+    value = _parse_json_bytes(receipt_bytes, label="receipt")
+    receipt = _require_object(value, "receipt")
     required = {
         "schema",
         "mode",
@@ -275,16 +342,16 @@ def parse_receipt_bytes(receipt_bytes: bytes) -> dict[str, Any]:
         "external_authority",
         "decision_sha256",
     }
-    require_exact_keys(receipt, required=required, label="receipt")
-    if require_string(receipt["schema"], "receipt.schema", maximum=128) != RECEIPT_SCHEMA:
+    _require_exact_keys(receipt, required=required, label="receipt")
+    if _require_string(receipt["schema"], "receipt.schema", maximum=128) != RECEIPT_SCHEMA:
         raise ControlError(f"receipt.schema must be {RECEIPT_SCHEMA}")
-    if require_string(receipt["mode"], "receipt.mode", maximum=64) not in {
+    if _require_string(receipt["mode"], "receipt.mode", maximum=64) not in {
         CURRENT_MODE,
         HISTORICAL_MODE,
     }:
         raise ControlError("receipt.mode is unknown")
-    require_timestamp(receipt["evaluated_at"], "receipt.evaluated_at")
-    require_timestamp(receipt["current_valid_until"], "receipt.current_valid_until")
+    _require_timestamp(receipt["evaluated_at"], "receipt.evaluated_at")
+    _require_timestamp(receipt["current_valid_until"], "receipt.current_valid_until")
     return receipt
 
 
@@ -293,46 +360,59 @@ def verify_integrity_bytes(
     evidence_bytes: bytes,
     roots_bytes: bytes,
     receipt_bytes: bytes,
+    _parse_receipt=parse_receipt_bytes,
+    _require_timestamp=require_timestamp,
+    _compiler=_compile_at,
+    _canonical_bytes=canonical_bytes,
 ) -> bool:
-    receipt = parse_receipt_bytes(receipt_bytes)
-    evaluated_at = require_timestamp(receipt["evaluated_at"], "receipt.evaluated_at")
-    rebuilt = _compile_at(
+    receipt = _parse_receipt(receipt_bytes)
+    evaluated_at = _require_timestamp(receipt["evaluated_at"], "receipt.evaluated_at")
+    rebuilt = _compiler(
         candidate_bytes,
         evidence_bytes,
         roots_bytes,
         evaluated_at=evaluated_at,
         mode=receipt["mode"],
     )
-    return canonical_bytes(rebuilt) == receipt_bytes
+    return _canonical_bytes(rebuilt) == receipt_bytes
 
 
 def verify_current_bytes(
     candidate_bytes: bytes,
     evidence_bytes: bytes,
     receipt_bytes: bytes,
+    _parse_receipt=parse_receipt_bytes,
+    _clock=_utc_now,
+    _root_loader=load_current_roots_bytes,
+    _require_timestamp=require_timestamp,
+    _compiler=_compile_at,
+    _canonical_bytes=canonical_bytes,
+    _format_timestamp=format_timestamp,
+    _mode: str = CURRENT_MODE,
 ) -> dict[str, Any]:
-    receipt = parse_receipt_bytes(receipt_bytes)
-    now = _utc_now()
-    roots_bytes = load_current_roots_bytes()
+    """Verify against import-captured CURRENT clock, roots, and policy graph."""
+    receipt = _parse_receipt(receipt_bytes)
+    now = _clock()
+    roots_bytes = _root_loader()
     integrity_valid = False
-    if receipt["mode"] == CURRENT_MODE:
-        evaluated_at = require_timestamp(receipt["evaluated_at"], "receipt.evaluated_at")
-        rebuilt = _compile_at(
+    if receipt["mode"] == _mode:
+        evaluated_at = _require_timestamp(receipt["evaluated_at"], "receipt.evaluated_at")
+        rebuilt = _compiler(
             candidate_bytes,
             evidence_bytes,
             roots_bytes,
             evaluated_at=evaluated_at,
-            mode=CURRENT_MODE,
+            mode=_mode,
         )
-        integrity_valid = canonical_bytes(rebuilt) == receipt_bytes
-    current = _compile_at(
+        integrity_valid = _canonical_bytes(rebuilt) == receipt_bytes
+    current = _compiler(
         candidate_bytes,
         evidence_bytes,
         roots_bytes,
         evaluated_at=now,
-        mode=CURRENT_MODE,
+        mode=_mode,
     )
-    receipt_valid_until = require_timestamp(
+    receipt_valid_until = _require_timestamp(
         receipt["current_valid_until"], "receipt.current_valid_until"
     )
     current_valid = (
@@ -342,7 +422,7 @@ def verify_current_bytes(
     )
     return {
         "schema": "teaming-conversion-current-verification/v2",
-        "verified_at": format_timestamp(now),
+        "verified_at": _format_timestamp(now),
         "integrity_valid": integrity_valid,
         "current_valid": current_valid,
         "receipt_disposition": receipt["disposition"],
