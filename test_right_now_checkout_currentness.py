@@ -208,7 +208,12 @@ class RightNowCheckoutCurrentnessTests(unittest.TestCase):
                     "build_checkout_authority",
                     control.build_checkout_authority,
                 ):
-                    compiled = control.build_control()
+                    with mock.patch.object(
+                        control._core,
+                        "validate_catalog",
+                        control.validate_catalog,
+                    ):
+                        compiled = control.build_control()
         self.assertIs(compiled["truth"]["active_chargeable_checkout"], True)
 
 
