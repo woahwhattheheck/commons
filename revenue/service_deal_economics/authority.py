@@ -277,17 +277,34 @@ def _historical_valid(packet: Any, report: Any) -> bool:
 def _verify_current_at(packet: Any, report: Any, as_of: datetime) -> dict[str, Any]:
     as_of = as_of.astimezone(timezone.utc).replace(microsecond=0)
     historical_ok = _historical_valid(packet, report)
-    current = None if not historical_ok else _compile_current_at(packet, as_of)
+    current = None
     if not historical_ok:
         state = "INVALID_HISTORICAL_RECEIPT"
-    elif not current["input_authority"]["authenticated"]:
-        state = AUTHORITY_HOLD
-    elif any(report["input_authority"].get(k) != current["input_authority"].get(k) for k in ("registry_sha256", "generation")):
-        state = "STALE_OR_AUTHORITY_SUPERSEDED"
-    elif report["calculation"].get("candidate_semantic_sha256") != current["calculation"].get("candidate_semantic_sha256") or report.get("state") != current["state"]:
-        state = "STALE_OR_DRIFTED"
     else:
-        state = "CURRENT_VERIFIED"
+        try:
+            evaluated_at = _utc(report["evaluated_at"], "report.evaluated_at")
+            quote_valid_until = _utc(
+                report["calculation"]["quote_valid_until"],
+                "report.calculation.quote_valid_until",
+            )
+        except (AuthorityError, KeyError, TypeError):
+            historical_ok = False
+            state = "INVALID_HISTORICAL_RECEIPT"
+        else:
+            if evaluated_at > as_of:
+                state = "FUTURE_RECEIPT"
+            else:
+                current = _compile_current_at(packet, as_of)
+                if not current["input_authority"]["authenticated"]:
+                    state = AUTHORITY_HOLD
+                elif any(report["input_authority"].get(k) != current["input_authority"].get(k) for k in ("registry_sha256", "generation")):
+                    state = "STALE_OR_AUTHORITY_SUPERSEDED"
+                elif as_of > quote_valid_until:
+                    state = "STALE_OR_DRIFTED"
+                elif report["calculation"].get("candidate_semantic_sha256") != current["calculation"].get("candidate_semantic_sha256") or report.get("state") != current["state"]:
+                    state = "STALE_OR_DRIFTED"
+                else:
+                    state = "CURRENT_VERIFIED"
     result = {"schema": CURRENT_VERIFY_SCHEMA, "verified_at": _utc_text(as_of), "historical_receipt_valid": historical_ok, "state": state,
               "report_receipt_sha256": report.get("receipt_sha256") if type(report) is dict else None,
               "current_report_receipt_sha256": None if current is None else current["receipt_sha256"],
