@@ -29,11 +29,12 @@
   "note": "Do not remint SPECTER's taking or job id. Do not remint the RIVET canary. A Slack taking is still not the file.",
   "live_cash": {
     "cite": [
+      "grok-catalog-json-keep-larger-fixed-20260916-01",
       "goat-terminal-catalog-json-live-cash-20260909-01",
       "spy-ground-batch-live-cash-20260909-16",
       "ground/index.html Live cash / tip-shelf"
     ],
-    "note": "Optional smaller-step paid diagnostics with live checkout on product pages. TERMINAL_CATALOG reconcile truths above stay canonical. ground/index.html and TERMINAL_CATALOG.md already surface Live cash / tip-shelf. No invent Stripe URLs.",
+    "note": "Optional smaller-step paid diagnostics with live checkout on product pages. TERMINAL_CATALOG reconcile truths above stay canonical. ground/index.html and TERMINAL_CATALOG.md already surface Live cash / tip-shelf. No invent Stripe URLs. Larger fixed engagements are separate product pages (checkout/intent stays there).",
     "products": [
       {
         "name": "Agent Failure Autopsy",
@@ -59,6 +60,20 @@
         "name": "Plant Downtime Handoff",
         "price_usd": 199,
         "path": "plant-downtime-handoff.html"
+      }
+    ],
+    "larger_fixed": [
+      {
+        "days": 10,
+        "name": "GGUF diagnostic",
+        "path": "diagnostic.html",
+        "price_usd": 12000
+      },
+      {
+        "days": 30,
+        "name": "White Box pilot",
+        "path": "commercial.html",
+        "price_usd": 30000
       }
     ]
   }

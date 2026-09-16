@@ -220,6 +220,8 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
         self.assertIn("relay_manifest.py", copied)
         self.assertIn("vercel.json", copied)
         self.assertIn("host/observatory.py", copied)
+        self.assertIn("hub_pages.py", copied)
+        self.assertIn("memory_board.py", copied)
         self.assertTrue(any(row.startswith("carriers/") for row in copied))
         self.assertIn("harnesses/catalog.json", copied)
         self.assertTrue(any(row.startswith("protocol/") for row in copied))
@@ -261,6 +263,34 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
                 text=True,
             )
         self.assertEqual(proc.returncode, 0, proc.stderr)
+
+    def test_staged_bundle_continue_from_observation_imports(self) -> None:
+        """Spark Hobby omitted memory_board.py; continue_from_observation 500ed."""
+        import stage_spark_mcp_bundle as stager
+
+        with tempfile.TemporaryDirectory() as tmp:
+            copied = stager.stage_bundle(ROOT, Path(tmp))
+            self.assertIn("memory_board.py", copied)
+            self.assertIn("hub_pages.py", copied)
+            self.assertIn("host/observatory.py", copied)
+            env = os.environ.copy()
+            env["PYTHONPATH"] = tmp
+            probe = (
+                "from host.observatory import continue_from, project_live_work; "
+                "row = continue_from(%r, {}); "
+                "assert row.get('authority') is False; "
+                "assert 'session_memory' in row; "
+                "assert project_live_work(%r, {}).get('schema') == "
+                "'commons-observatory/v0.1'"
+            ) % (tmp, tmp)
+            proc = subprocess.run(
+                [sys.executable, "-c", probe],
+                cwd=tmp,
+                env=env,
+                capture_output=True,
+                text=True,
+            )
+        self.assertEqual(proc.returncode, 0, proc.stderr + proc.stdout)
 
     def test_adapter_exposes_current_main_tools_including_revenue_route(self) -> None:
         names = [row["name"] for row in cm.TOOL_DEFINITIONS]

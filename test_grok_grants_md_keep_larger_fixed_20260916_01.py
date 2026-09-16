@@ -60,8 +60,14 @@ class TestGrokGrantsMdKeepLargerFixed2026091601(unittest.TestCase):
 
     def test_index_spy_ground_successor_untouched(self):
         docket = _load_docket()
-        labels = [label for label, _ in docket.PROVENANCE_SUCCESSORS["ground/INVENTION_BURST_INDEX.md"]]
-        self.assertEqual(labels, ["spy-ground-live-cash-v1"])
+        entries = docket.PROVENANCE_SUCCESSORS["ground/INVENTION_BURST_INDEX.md"]
+        labels = [label for label, _ in entries]
+        self.assertIn("spy-ground-live-cash-v1", labels)
+        spy = dict(entries)["spy-ground-live-cash-v1"].decode("utf-8")
+        self.assertIn("## Live cash", spy)
+        self.assertIn("../agent-rescue.html", spy)
+        self.assertNotIn("Larger fixed engagements", spy)
+        self.assertNotIn("diagnostic.html", spy)
 
     def test_product_pages_exist(self):
         for name in PRODUCTS:

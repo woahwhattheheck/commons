@@ -88,12 +88,13 @@
 
   "live_cash": {
     "cite": [
+      "grok-catalog-json-keep-larger-fixed-20260916-01",
       "goat-carriers-catalog-json-live-cash-20260909-01",
       "goat-commercial-json-live-cash-20260909-01",
       "digit-docs-mcp-carriers-live-cash-20260905-01",
       "capabilities.html Live cash"
     ],
-    "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Carrier MCP catalog and MCP Conformance product above stay. pages_door capabilities.html already surfaces Live cash. No invent Stripe URLs.",
+    "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Carrier MCP catalog and MCP Conformance product above stay. pages_door capabilities.html already surfaces Live cash. No invent Stripe URLs. Larger fixed engagements are separate product pages (checkout/intent stays there).",
     "products": [
       {
         "name": "Agent Failure Autopsy",
@@ -119,6 +120,20 @@
         "name": "Plant Downtime Handoff",
         "price_usd": 199,
         "path": "plant-downtime-handoff.html"
+      }
+    ],
+    "larger_fixed": [
+      {
+        "days": 10,
+        "name": "GGUF diagnostic",
+        "path": "diagnostic.html",
+        "price_usd": 12000
+      },
+      {
+        "days": 30,
+        "name": "White Box pilot",
+        "path": "commercial.html",
+        "price_usd": 30000
       }
     ]
   }
