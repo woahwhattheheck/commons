@@ -1,0 +1,94 @@
+name: Learn2Design public evidence
+
+on:
+  push:
+    branches:
+      - zsh-q6m4/learn2design-public-evidence-20260915
+    paths:
+      - 'revenue/learn2design2026/**'
+      - 'test_learn2design2026.py'
+      - 'test_learn2design2026_evidence.py'
+      - '.github/workflows/learn2design-public-evidence.yml'
+  pull_request:
+    paths:
+      - 'revenue/learn2design2026/**'
+      - 'test_learn2design2026.py'
+      - 'test_learn2design2026_evidence.py'
+      - '.github/workflows/learn2design-public-evidence.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  public-development-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      JAX_PLATFORM_NAME: cpu
+      JAX_ENABLE_X64: 'true'
+      OMP_NUM_THREADS: '2'
+      OPENBLAS_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+    steps:
+      - name: Checkout Commons candidate sources
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - name: Verify fail-closed carrier before external install
+        run: |
+          python -m unittest -v test_learn2design2026_evidence.py
+          python -m unittest -v test_learn2design2026.py
+          python revenue/learn2design2026/evidence.py verify-manifest
+
+      - name: Checkout pinned organizer source
+        uses: actions/checkout@v4
+        with:
+          repository: artificial-scientist-lab/Learn2Design-2026
+          ref: 84a4b0a4c7e0f3b702459ffc8ba6a1d84d34cefa
+          path: _organizer_learn2design
+          persist-credentials: false
+
+      - name: Install organizer CPU stack and serial-v1 dependency
+        run: |
+          python -m pip install --disable-pip-version-check -e ./_organizer_learn2design 'optax>=0.2.3,<1'
+
+      - name: Measure frozen serial v1 on public ConstrainedVoyager cell
+        run: |
+          mkdir -p revenue/learn2design2026/evidence_runs
+          python revenue/learn2design2026/evidence.py measure \
+            --candidate serial_v1 \
+            --organizer-source _organizer_learn2design \
+            --out revenue/learn2design2026/evidence_runs/serial_v1.json \
+            --require-measured
+
+      - name: Measure vectorized v2 on the identical public cell
+        run: |
+          python revenue/learn2design2026/evidence.py measure \
+            --candidate vectorized_v2 \
+            --organizer-source _organizer_learn2design \
+            --out revenue/learn2design2026/evidence_runs/vectorized_v2.json \
+            --require-measured
+
+      - name: Verify and compare exact receipts
+        run: |
+          python revenue/learn2design2026/evidence.py verify-receipt revenue/learn2design2026/evidence_runs/serial_v1.json
+          python revenue/learn2design2026/evidence.py verify-receipt revenue/learn2design2026/evidence_runs/vectorized_v2.json
+          python revenue/learn2design2026/evidence.py compare \
+            revenue/learn2design2026/evidence_runs/serial_v1.json \
+            revenue/learn2design2026/evidence_runs/vectorized_v2.json \
+            --out revenue/learn2design2026/evidence_runs/comparison.json
+
+      - name: Upload exact public-development receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: learn2design-public-evidence
+          path: revenue/learn2design2026/evidence_runs/*.json
+          if-no-files-found: warn
+          retention-days: 14
