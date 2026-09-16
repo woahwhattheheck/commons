@@ -799,17 +799,35 @@ def _make_runtime(
                 raise _reply_error(f"{where}.prospect_key is invalid")
             canonical_key = by_receipt.get(matched_receipt_id)
             if canonical_key is None:
-                raise _reply_error(
-                    f"{where}.matched_receipt_id is not a canonical receipt: "
-                    f"{matched_receipt_id}"
-                )
-            if canonical_key != key:
+                # Empty receipts remain a measurement path. Unmatched OPT_OUT
+                # stays HARD DNR / CLOSED without a live canonical receipt.
+                # Ordinary inbound with a non-empty receipt set still fails
+                # closed on unknown receipt IDs.
+                if _len(receipts) != 0 and event.get("classification") != "OPT_OUT":
+                    raise _reply_error(
+                        f"{where}.matched_receipt_id is not a canonical receipt: "
+                        f"{matched_receipt_id}"
+                    )
+            elif canonical_key != key:
                 raise _reply_error(
                     f"{where} receipt/prospect mismatch: receipt "
                     f"{matched_receipt_id} belongs to {canonical_key}, not {key}"
                 )
-            grouped[key]["inbound_event_refs"].append(event["event_ref"])
-            grouped[key]["events"].append(event)
+            row = grouped.get(key)
+            if row is None:
+                row = {
+                    "prospect_key": key,
+                    "organization": key,
+                    "hard_dnr": True,
+                    "receipt_ids": [],
+                    "receipt_paths": [],
+                    "cash_usd": 0,
+                    "inbound_event_refs": [],
+                    "events": [],
+                }
+                grouped[key] = row
+            row["inbound_event_refs"].append(event["event_ref"])
+            row["events"].append(event)
 
         rows: list[dict[str, Any]] = []
         for row in grouped.values():
