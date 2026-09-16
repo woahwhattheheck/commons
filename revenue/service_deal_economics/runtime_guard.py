@@ -6,6 +6,36 @@ from typing import Any, Callable, Iterable
 
 _MISSING = object()
 
+# Only these reachable types are part of CURRENT trust. Snapshotting every
+# stdlib class on the graph (pathlib, weakref.finalize, datetime, ...) both
+# pulls pathlib special-method dispatch back into the integrity set and
+# self-poisons when tests or atexit mutate unrelated class namespaces.
+_TRUST_CLASS_MODULES = {
+    "revenue.service_deal_economics",
+    "revenue.service_deal_economics.authority",
+    "revenue.service_deal_economics.engine",
+    "revenue.service_deal_economics.strict_json",
+    "revenue.service_deal_economics.fixed_host",
+    "revenue.service_deal_economics.current_runtime",
+    "revenue.service_deal_economics.runtime_guard",
+    "revenue.service_deal_economics.cli",
+}
+_TRUST_STDLIB_TYPES = {
+    ("json", "JSONEncoder"),
+    ("json.encoder", "JSONEncoder"),
+    ("json", "JSONDecoder"),
+    ("json.decoder", "JSONDecoder"),
+    ("hmac", "HMAC"),
+}
+
+
+def _is_trust_class(cls: type) -> bool:
+    module = getattr(cls, "__module__", "") or ""
+    name = getattr(cls, "__name__", "") or ""
+    if module in _TRUST_CLASS_MODULES or module.startswith("revenue.service_deal_economics."):
+        return True
+    return (module, name) in _TRUST_STDLIB_TYPES
+
 
 def freeze_call_graph(
     *roots: Callable[..., Any],
@@ -17,9 +47,10 @@ def freeze_call_graph(
     * globals and builtins named by each Python function's bytecode;
     * selectively referenced module/class attributes and recursively reached
       Python function objects;
-    * full namespaces for reachable mutable classes/instances, including class
-      MRO bases and already-existing concrete subclasses. This covers implicit
-      special-method dispatch that is absent from ``co_names``.
+    * full namespaces for reachable trust-class instances and for package,
+      JSONEncoder/JSONDecoder, and HMAC classes (including trust-class MRO
+      bases and subclasses). Pathlib and other incidental stdlib types are
+      not CURRENT trust roots and are not snapshotted as class namespaces.
 
     Whole module namespaces are deliberately not snapshotted: authority-bearing
     module attributes are already identity-bound selectively, while unrelated
@@ -57,20 +88,21 @@ def freeze_call_graph(
         if marker in seen_classes:
             return
         seen_classes.add(marker)
+        if not _is_trust_class(cls):
+            return
         snapshot_namespace(cls)
-        # Snapshot inherited special-method providers without recursively
-        # walking object.__subclasses__(), which would be unbounded/noisy.
+        # Snapshot inherited special-method providers that are themselves
+        # trust types. Do not walk object / pathlib / weakref.
         for base in cls.__mro__[1:]:
-            snapshot_namespace(base)
-        # Capture concrete implementations selected by Python factories such as
-        # pathlib.Path -> PosixPath/WindowsPath. Recurse only downward from the
-        # class actually reached by the authority graph.
+            if isinstance(base, type) and _is_trust_class(base):
+                capture_class(base)
         try:
             children = tuple(cls.__subclasses__())
         except TypeError:
             children = ()
         for child in children:
-            capture_class(child)
+            if _is_trust_class(child):
+                capture_class(child)
 
     def capture_mutable_state(owner: object) -> None:
         if isinstance(owner, (FunctionType, ModuleType)):
