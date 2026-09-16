@@ -164,7 +164,7 @@ The MAST demo shots are diagnostic only and must not become pseudo-training data
 
 ## CI / publication control
 
-Commons keeps candidate/product workflows under `ci/workflow-recipes/` rather than automatically activating each one in `.github/workflows/`. The Sophelio recipe stays archived there and does not consume another active-workflow slot or claim hosted execution.
+This carrier deliberately adds **no** `.github/workflows` entry and **no** `ci/workflow-recipes` entry. The exact validation commands above are the executable review contract until an existing retained Commons runner is deliberately wired to this path. That keeps Sophelio outside the global workflow-surface inventory and avoids presenting an unexecuted recipe as hosted CI evidence.
 
 ## Truth boundary
 
