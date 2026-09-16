@@ -77,6 +77,59 @@ class MuseElectionV2Tests(_core_tests.MuseElectionV2Tests):
         self.assertTrue(gate.verify_receipt(receipt))
         self.assertFalse(gate.verify_selected_binding(mine, receipt))
 
+    def test_explicit_not_selected(self):
+        req = _core_tests.request()
+        snapshot = _core_tests.snap(
+            [
+                _core_tests.msg(_core_tests.sts(5), _core_tests.SENDER, req["message"]),
+                _core_tests.msg(
+                    _core_tests.sts(15),
+                    _core_tests.MUSE,
+                    _core_tests.selected_text(req, "NOT_SELECTED"),
+                ),
+            ]
+        )
+        receipt = self.compile(req, snapshot)
+        self.assertEqual(receipt["payload"]["decision"], "HOLD")
+        self.assertIn(current_auth.UNAUTHENTICATED_SNAPSHOT_REASON, receipt["payload"]["reasons"])
+        self.assertIn(current_auth.CURRENT_NEGATIVE_DISABLED_REASON, receipt["payload"]["reasons"])
+        for name in current_auth._SELECTION_FIELDS + current_auth._WINNER_FIELDS:
+            self.assertIsNone(receipt["payload"][name])
+        self.assertTrue(gate.verify_receipt(receipt))
+        self.assertFalse(gate.verify_selected_binding(req, receipt))
+
+    def test_selected_then_cancelled_not_selected(self):
+        req = _core_tests.request()
+        snapshot = _core_tests.snap(
+            [
+                _core_tests.msg(_core_tests.sts(5), _core_tests.SENDER, req["message"]),
+                _core_tests.msg(_core_tests.sts(15), _core_tests.MUSE, _core_tests.selected_text(req)),
+                _core_tests.msg(
+                    _core_tests.sts(16),
+                    _core_tests.MUSE,
+                    _core_tests.selected_text(req, "CANCELLED"),
+                ),
+            ]
+        )
+        receipt = self.compile(req, snapshot)
+        self.assertEqual(receipt["payload"]["decision"], "HOLD")
+        self.assertIn(current_auth.UNAUTHENTICATED_SNAPSHOT_REASON, receipt["payload"]["reasons"])
+        self.assertIn(current_auth.CURRENT_NEGATIVE_DISABLED_REASON, receipt["payload"]["reasons"])
+        self.assertIsNone(receipt["payload"]["selection_binding_sha256"])
+        self.assertTrue(gate.verify_receipt(receipt))
+        self.assertFalse(gate.verify_selected_binding(req, receipt))
+
+    def test_public_error_type_remains_catchable(self):
+        self.assertTrue(issubclass(gate.MuseElectionV2Error, ValueError))
+        c = _core_tests.candidate()
+        c["mystery"] = True
+        with self.assertRaises(gate.MuseElectionV2Error):
+            gate.normalize_candidate(c)
+
+    def test_candidate_digest_requires_request_generation(self):
+        with self.assertRaises(TypeError):
+            gate.candidate_digest(_core_tests.candidate())
+
     def test_compile_signature_has_no_observed_at(self):
         self.assertNotIn("observed_at", inspect.signature(gate.compile_receipt).parameters)
 

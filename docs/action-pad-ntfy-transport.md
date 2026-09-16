@@ -13,7 +13,7 @@ The live path is split across existing files:
 - [`action_executor.py`](../action_executor.py) — execution from the durable `kind: ACTION` record and result latch; and
 - [`ground/ACTION_DOOR.md`](../ground/ACTION_DOOR.md) — the owner rule that every nonblank verb remains usable.
 
-`commons-ntfy-relay-v1` is the browser's `localStorage` key for relay selection and cooldown state. It is **not** currently serialized as a `protocol` field in the ntfy message body. Code or documentation must not claim that a receiver negotiated a packet protocol merely because that local key exists.
+`commons-ntfy-relay-v1` is the browser's `localStorage` key for relay selection and cooldown state. It is not currently serialized as a `protocol` field in the ntfy message body. Code or documentation must not claim that a receiver negotiated a packet protocol merely because that local key exists.
 
 ## Browser producer
 

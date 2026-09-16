@@ -107,6 +107,10 @@ def _bind_boundary():
             for name in negative_authority_fields:
                 raw["payload"][name] = None
             raw["receipt_sha256"] = engine["_digest"](raw["payload"])
+        if not engine["verify_receipt"](raw):
+            raise engine["MuseElectionV2Error"](
+                "embedded source receipt failed structural verification"
+            )
         return current_auth.seal_untrusted_snapshot_receipt(raw)
 
     def verify_receipt(raw: Mapping[str, Any]) -> bool:
@@ -221,7 +225,9 @@ def _bind_boundary():
     @functools.lru_cache(maxsize=None)
     def safe_proxy(name: str):
         value = engine[name]
-        if not callable(value):
+        # Classes, including MuseElectionV2Error, must remain types so callers
+        # can catch them. Wrapping a class as a function makes assertRaises fail.
+        if isinstance(value, type) or not callable(value):
             return value
 
         @functools.wraps(value)
