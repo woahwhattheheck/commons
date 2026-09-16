@@ -96,3 +96,13 @@ This is only a point-in-time collision fence. Re-check Gmail + Slack immediately
 - Do not represent a candidate as a partner, prime, subcontractor, reference, or credential source without explicit authority.
 - Do not copy candidate experience into CPCA application evidence merely because it appears on a public page.
 - Do not commit pricing, staffing, signatures, attestations, contract terms, submission, award, payment, or revenue.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
