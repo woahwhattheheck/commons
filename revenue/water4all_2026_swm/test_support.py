@@ -3,21 +3,15 @@ from __future__ import annotations
 import copy
 import datetime as dt
 import json
-import os
-import tempfile
-import unittest
 from pathlib import Path
 
-from revenue.water4all_2026_swm import authority_registry, cli
+from revenue.water4all_2026_swm import authority_registry
 from revenue.water4all_2026_swm.engine import (
-    ReadinessError,
-    canonical_bytes,
     compile_at,
+    compile_current,
     compile_historical,
-    render_owner_markdown,
-    verify_bundle,
 )
-from revenue.water4all_2026_swm.common import seal_source, sha256_hex, strict_json_loads
+from revenue.water4all_2026_swm.common import seal_source
 
 UTC = dt.timezone.utc
 T0 = dt.datetime(2026, 9, 14, 4, 0, 0, tzinfo=UTC)
@@ -143,7 +137,12 @@ def base_valid():
 
 
 def compile_valid(value=None, mode="HISTORICAL", when=T0):
-    return compile_at(base_valid() if value is None else value, when, mode)
+    payload = base_valid() if value is None else value
+    if mode == "CURRENT":
+        return compile_current(payload, payload)
+    if mode != "HISTORICAL":
+        raise ValueError("mode must be CURRENT or HISTORICAL")
+    return compile_at(payload, when, "HISTORICAL")
 
 
 def reason_codes(bundle):

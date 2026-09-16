@@ -43,7 +43,7 @@ _PARTNER_KEYS = {
 _PARTNER_PATH = re.compile(r"^/water4all/2026/partner-search-entry/[0-9]+$")
 
 
-def _required_capabilities(topic_ids: Iterable[int]) -> Set[str]:
+def _required_topic_tags(topic_ids: Iterable[int]) -> Set[str]:
     required: Set[str] = set()
     for topic_id in topic_ids:
         required.update(_TOPIC_REQUIREMENTS.get(topic_id, set()))
@@ -136,12 +136,12 @@ def _validate_concept_and_evidence(
         ):
             verified_tags.update(tags)
 
-    required = _required_capabilities(topic_ids)
+    required = _required_topic_tags(topic_ids)
     missing = sorted(required - verified_tags)
     if any(topic not in _TOPIC_REQUIREMENTS for topic in topic_ids):
-        reasons.append(_reason("TOPIC_CAPABILITY_MODEL_UNSUPPORTED", "v1 has no fixed capability model for one or more selected topics", [str(topic) for topic in topic_ids if topic not in _TOPIC_REQUIREMENTS]))
+        reasons.append(_reason("TOPIC_TAG_MODEL_UNSUPPORTED", "v1 has no fixed topic-tag model for one or more selected topics", [str(topic) for topic in topic_ids if topic not in _TOPIC_REQUIREMENTS]))
     if missing:
-        reasons.append(_reason("TECHNICAL_CAPABILITY_GAPS", "required capability evidence is missing", missing))
+        reasons.append(_reason("TECHNICAL_TOPIC_TAG_GAPS", "required topic-tag evidence is missing", missing))
 
     normalized_evidence.sort(key=lambda item: item["evidence_id"])
     return {
