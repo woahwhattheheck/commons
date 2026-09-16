@@ -117,7 +117,7 @@
     },
     {
       "id": "gpt-grok-ship-loop",
-      "job": "HIGH-PRODUCTIVITY BUILD LOOP \u2014 GPT scouts, Grok ships",
+      "job": "HIGH-PRODUCTIVITY BUILD LOOP — GPT scouts, Grok ships",
       "token": ""
     },
     {
@@ -175,9 +175,10 @@
     "cite": [
       "goat-skills-json-live-cash-20260916-01",
       "goat-clans-json-live-cash-20260916-01",
-      "skills.html Live cash"
+      "skills.html Live cash",
+      "grok-skills-json-larger-fixed-20260916-01"
     ],
-    "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Skill roster / law above stay canonical. skills.html already surfaces Live cash and loads this JSON. No invent Stripe URLs.",
+    "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Larger fixed engagements are separate product pages (checkout/intent stays there). Skill roster / law above stay canonical. skills.html already surfaces Live cash and Larger fixed and loads this JSON. No invent Stripe URLs.",
     "products": [
       {
         "name": "Agent Failure Autopsy",
@@ -203,6 +204,20 @@
         "name": "Plant Downtime Handoff",
         "price_usd": 199,
         "path": "plant-downtime-handoff.html"
+      }
+    ],
+    "larger_fixed": [
+      {
+        "name": "GGUF diagnostic",
+        "price_usd": 12000,
+        "days": 10,
+        "path": "diagnostic.html"
+      },
+      {
+        "name": "White Box pilot",
+        "price_usd": 30000,
+        "days": 30,
+        "path": "commercial.html"
       }
     ]
   }
