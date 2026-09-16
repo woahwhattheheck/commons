@@ -6,7 +6,7 @@ import os
 import stat
 from pathlib import Path
 
-from .qualification import ContractError, compile_current, verify_report
+from .qualification import ContractError, canonical_bytes, compile_current, verify_report
 
 MAX_INPUT = 1_000_000
 
