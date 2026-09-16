@@ -99,7 +99,7 @@ class CliTests(unittest.TestCase):
             root = Path(td)
             inp = self.write_input(root, ready_payload())
             out = root / "out"
-            self.trusted_now.return_value = "2027-09-13T10:10:00Z"
+            self.trusted_now.return_value = "2026-09-13T10:10:01Z"
             self.assertEqual(cli.main(["compile", str(inp), "--out-dir", str(out)]), 0)
             self.trusted_now.return_value = AS_OF
             self.assertEqual(cli.main(self.verify_args(inp, out)), 4)
