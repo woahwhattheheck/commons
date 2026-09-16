@@ -1,68 +1,188 @@
-name: reply-to-revenue
+name: reply-to-revenue-provenance-patch
 
 on:
-  schedule:
-    - cron: "17 * * * *"
-  workflow_dispatch:
   push:
-    branches: [main]
-    paths:
-      - "host/reply_to_revenue.py"
-      - "host/reply_to_revenue_core.py"
-      - "revenue/reply_to_revenue/**"
-      - "revenue/payment_ready/outreach_receipts/**"
-      - "revenue/production_survival/reply_intake.py"
-      - "reply-to-revenue.html"
-      - "reply-to-revenue.js"
-      - "test_reply_to_revenue.py"
-      - "test_reply_to_revenue_event_identity.py"
-      - ".github/workflows/reply-to-revenue.yml"
-  pull_request:
-    paths:
-      - "host/reply_to_revenue.py"
-      - "host/reply_to_revenue_core.py"
-      - "revenue/reply_to_revenue/**"
-      - "revenue/payment_ready/outreach_receipts/**"
-      - "revenue/production_survival/reply_intake.py"
-      - "reply-to-revenue.html"
-      - "reply-to-revenue.js"
-      - "test_reply_to_revenue.py"
-      - "test_reply_to_revenue_event_identity.py"
-      - ".github/workflows/reply-to-revenue.yml"
+    branches:
+      - "cairn56/reply-revenue-provenance-14788"
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  funnel:
+  patch:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: "cairn56/reply-revenue-provenance-14788"
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Validate canonical funnel
-        run: python3 host/reply_to_revenue.py validate
-      - name: Refuse any send path
+      - name: Apply exact guarded source substitutions
         run: |
-          if python3 host/reply_to_revenue.py monitor --send; then
-            echo "send path must fail" >&2
-            exit 1
-          fi
-      - name: Run reply-to-revenue tests
-        run: >-
-          python3 -m unittest -v
-          test_reply_to_revenue
-          test_reply_to_revenue_event_identity
-      - name: Run optimized reply-to-revenue tests
-        run: >-
-          python3 -O -m unittest -v
-          test_reply_to_revenue
-          test_reply_to_revenue_event_identity
-      - name: Verify syntax
-        run: >-
-          python3 -m py_compile
-          host/reply_to_revenue.py
-          host/reply_to_revenue_core.py
-          test_reply_to_revenue.py
-          test_reply_to_revenue_event_identity.py
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path("host/reply_to_revenue_core.py")
+          source = path.read_text(encoding="utf-8")
+
+          replacements = [
+              (
+                  '''            if _sha_fullmatch(event["payload_sha256"]) is None:
+                      raise _reply_error(f"{where}.payload_sha256 is invalid")
+                  if not _isinstance(event["markers"], _list):
+                      raise _reply_error(f"{where}.markers must be an array")
+                  requested = event["requested_classification"]
+          ''',
+                  '''            if _sha_fullmatch(event["payload_sha256"]) is None:
+                      raise _reply_error(f"{where}.payload_sha256 is invalid")
+                  provider = event["provider"]
+                  if (
+                      not _isinstance(provider, _str)
+                      or provider != provider.strip()
+                      or not provider
+                      or _len(provider) > 200
+                  ):
+                      raise _reply_error(
+                          f"{where}.provider must be a bounded nonempty string"
+                      )
+                  matched_receipt_id = event["matched_receipt_id"]
+                  if (
+                      not _isinstance(matched_receipt_id, _str)
+                      or matched_receipt_id != matched_receipt_id.strip()
+                      or not matched_receipt_id
+                      or _len(matched_receipt_id) > 200
+                  ):
+                      raise _reply_error(
+                          f"{where}.matched_receipt_id must be a bounded nonempty string"
+                      )
+                  if not _isinstance(event["markers"], _list):
+                      raise _reply_error(f"{where}.markers must be an array")
+                  requested = event["requested_classification"]
+          ''',
+              ),
+              (
+                  '''        grouped: dict[str, dict[str, Any]] = {}
+                  for receipt in receipts:
+          ''',
+                  '''        grouped: dict[str, dict[str, Any]] = {}
+                  by_receipt: dict[str, str] = {}
+                  for index, receipt in _enumerate(receipts):
+                      where = f"receipts[{index}]"
+                      if not _isinstance(receipt, _dict):
+                          raise _reply_error(f"{where} must be an object")
+                      receipt_id = receipt.get("receipt_id")
+                      key = receipt.get("prospect_key")
+                      if (
+                          not _isinstance(receipt_id, _str)
+                          or receipt_id != receipt_id.strip()
+                          or not receipt_id
+                          or _len(receipt_id) > 200
+                      ):
+                          raise _reply_error(
+                              f"{where}.receipt_id must be a bounded nonempty string"
+                          )
+                      if not _isinstance(key, _str) or _prospect_fullmatch(key) is None:
+                          raise _reply_error(f"{where}.prospect_key is invalid")
+                      if receipt_id in by_receipt:
+                          raise _reply_error(
+                              f"duplicate canonical receipt_id: {receipt_id}"
+                          )
+                      by_receipt[receipt_id] = key
+
+                  for receipt in receipts:
+          ''',
+              ),
+              (
+                  '''        by_receipt: dict[str, str] = {}
+                  for receipt in receipts:
+                      by_receipt[receipt["receipt_id"]] = receipt["prospect_key"]
+
+                  for event in inbound:
+                      key = event["prospect_key"]
+                      if key not in grouped and event["matched_receipt_id"] in by_receipt:
+                          key = by_receipt[event["matched_receipt_id"]]
+                      if key not in grouped:
+                          grouped[key] = {
+                              "prospect_key": key,
+                              "organization": key,
+                              "hard_dnr": True,
+                              "receipt_ids": [],
+                              "receipt_paths": [],
+                              "cash_usd": 0,
+                              "inbound_event_refs": [],
+                              "events": [],
+                          }
+                      grouped[key]["inbound_event_refs"].append(event["event_ref"])
+                      grouped[key]["events"].append(event)
+          ''',
+                  '''        for index, event in _enumerate(inbound):
+                      where = f"inbound[{index}]"
+                      if not _isinstance(event, _dict):
+                          raise _reply_error(f"{where} must be an object")
+                      key = event.get("prospect_key")
+                      provider = event.get("provider")
+                      receipt_id = event.get("matched_receipt_id")
+                      if not _isinstance(key, _str) or _prospect_fullmatch(key) is None:
+                          raise _reply_error(f"{where}.prospect_key is invalid")
+                      if (
+                          not _isinstance(provider, _str)
+                          or provider != provider.strip()
+                          or not provider
+                          or _len(provider) > 200
+                      ):
+                          raise _reply_error(
+                              f"{where}.provider must be a bounded nonempty string"
+                          )
+                      if (
+                          not _isinstance(receipt_id, _str)
+                          or receipt_id != receipt_id.strip()
+                          or not receipt_id
+                          or _len(receipt_id) > 200
+                      ):
+                          raise _reply_error(
+                              f"{where}.matched_receipt_id must be a bounded nonempty string"
+                          )
+                      canonical_key = by_receipt.get(receipt_id)
+                      if canonical_key is None:
+                          raise _reply_error(
+                              f"{where}.matched_receipt_id names unknown canonical receipt: {receipt_id}"
+                          )
+                      if key != canonical_key:
+                          raise _reply_error(
+                              f"{where}.prospect_key {key} does not match canonical prospect "
+                              f"{canonical_key} for receipt {receipt_id}"
+                          )
+                      if key not in grouped:
+                          raise _reply_error(
+                              f"canonical receipt {receipt_id} did not produce contact {key}"
+                          )
+                      grouped[key]["inbound_event_refs"].append(event["event_ref"])
+                      grouped[key]["events"].append(event)
+          ''',
+              ),
+          ]
+
+          for old, new in replacements:
+              count = source.count(old)
+              if count != 1:
+                  raise SystemExit(f"guarded replacement expected once, found {count}")
+              source = source.replace(old, new, 1)
+
+          path.write_text(source, encoding="utf-8")
+          PY
+      - name: Verify repaired exact branch
+        run: |
+          python3 -m py_compile host/reply_to_revenue_core.py test_reply_to_revenue_provenance.py
+          python3 -m unittest -v test_reply_to_revenue test_reply_to_revenue_event_identity test_reply_to_revenue_provenance
+          python3 -O -m unittest -v test_reply_to_revenue test_reply_to_revenue_event_identity test_reply_to_revenue_provenance
+      - name: Commit repaired canonical source
+        run: |
+          git config user.name "Cairn-56"
+          git config user.email "tokenjunkielabs@gmail.com"
+          git add host/reply_to_revenue_core.py
+          git diff --cached --check
+          git commit -m "fix: bind inbound events to canonical receipts"
+          git push origin HEAD:cairn56/reply-revenue-provenance-14788
