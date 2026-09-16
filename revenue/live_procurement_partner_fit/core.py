@@ -42,6 +42,14 @@ _ROLE_REQUIRED = (
     (("not recruiting",), "ROLE_CLARITY_NOT_RECRUITING_MISSING"),
     (("not platform replacement",), "ROLE_CLARITY_NOT_PLATFORM_REPLACEMENT_MISSING"),
 )
+_ROLE_CONTRADICTIONS = (
+    "unpaid",
+    "not paid",
+    "not fixed-fee",
+    "not fixed fee",
+    "not subcontract",
+    "not workshare",
+)
 
 _CLEAR_ROUTE_PROVENANCE = "FIRST_PARTY_CURRENT"
 _CLEAR_ROUTE_STATE = "CLEAR"
@@ -179,6 +187,11 @@ def _freshness_reason(observed_at: datetime, now: datetime, max_age: timedelta, 
     if now - observed_at > max_age:
         return f"{code}_STALE"
     return None
+
+
+def _contains_phrase(text: str, phrase: str) -> bool:
+    pattern = r"(?<![a-z0-9])" + re.escape(phrase).replace(r"\ ", r"\s+") + r"(?![a-z0-9])"
+    return re.search(pattern, text) is not None
 
 
 def _normalize(payload: Mapping[str, Any]) -> dict[str, Any]:
@@ -324,8 +337,10 @@ def compile_partner_fit(payload: Mapping[str, Any], *, now: datetime) -> dict[st
 
     role = " ".join(normalized["workshare"]["role_statement"].casefold().split())
     for alternatives, reason in _ROLE_REQUIRED:
-        if not any(token in role for token in alternatives):
+        if not any(_contains_phrase(role, token) for token in alternatives):
             reasons.append(reason)
+    if any(_contains_phrase(role, token) for token in _ROLE_CONTRADICTIONS):
+        reasons.append("ROLE_CLARITY_CONTRADICTORY")
 
     if normalized["route"]["organization"].casefold() != normalized["partner_fit"]["organization"].casefold():
         reasons.append("ROUTE_ORGANIZATION_MISMATCH")
