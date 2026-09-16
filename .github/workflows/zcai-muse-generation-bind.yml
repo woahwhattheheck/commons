@@ -1,0 +1,108 @@
+name: ZCAI Muse request-generation binding donor
+
+on:
+  push:
+    branches:
+      - zcai-g5v8/muse-generation-binding-14503
+    paths:
+      - .github/workflows/zcai-muse-generation-bind.yml
+
+permissions:
+  contents: write
+
+jobs:
+  patch-test-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Patch candidate generation identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+
+          core_path = Path('tools/outbound_send_guard/_muse_election_v2_core.py.inc')
+          test_path = Path('tools/outbound_send_guard/_muse_election_v2_tests_core.py')
+          core = core_path.read_text(encoding='utf-8')
+          tests = test_path.read_text(encoding='utf-8')
+
+          def replace_once(text, old, new, label):
+              count = text.count(old)
+              if count != 1:
+                  raise SystemExit(f'{label}: expected exactly one match, got {count}')
+              return text.replace(old, new, 1)
+
+          core = replace_once(
+              core,
+              'SELECTION_BINDING_SCHEMA = "outbound-muse-selection-binding/v2"\n',
+              'SELECTION_BINDING_SCHEMA = "outbound-muse-selection-binding/v2"\n'
+              'CANDIDATE_GENERATION_SCHEMA = "outbound-muse-candidate-generation/v2"\n',
+              'generation schema constant',
+          )
+
+          core = replace_once(
+              core,
+              '''def candidate_digest(candidate: Mapping[str, Any]) -> str:\n    return _digest(normalize_candidate(candidate))\n''',
+              '''def candidate_digest(\n    candidate: Mapping[str, Any],\n    *,\n    request_id: str,\n    requested_at: str,\n) -> str:\n    """Bind normalized candidate identity to one canonical request generation."""\n    c = normalize_candidate(candidate)\n    rid = _request_id(request_id, "candidate.request_id")\n    requested = _fmt(_utc(requested_at, "candidate.requested_at"))\n    return _digest({\n        "schema_version": CANDIDATE_GENERATION_SCHEMA,\n        "candidate": c,\n        "request_id": rid,\n        "requested_at": requested,\n    })\n''',
+              'candidate_digest',
+          )
+
+          core = replace_once(
+              core,
+              '''    pub = publication_key(c)\n    cand = candidate_digest(c)\n''',
+              '''    pub = publication_key(c)\n    cand = candidate_digest(\n        c,\n        request_id=rid,\n        requested_at=_fmt(requested),\n    )\n''',
+              'prepare candidate digest',
+          )
+
+          old_validate = '''    c = normalize_candidate(payload["candidate"])\n    pub = _hex64(payload["publication_key"], "request.publication_key")\n    cand = _hex64(payload["candidate_sha256"], "request.candidate_sha256")\n    lease_binding = _hex64(payload["lease_binding_sha256"], "request.lease_binding_sha256")\n    if publication_key(c) != pub or candidate_digest(c) != cand or lease_binding_digest(c) != lease_binding:\n        raise MuseElectionV2Error("request: candidate/publication/lease digest mismatch")\n    rid = _request_id(payload["request_id"], "request.request_id")\n    requested = _utc(payload["requested_at"], "request.requested_at")\n    deadline = _utc(payload["response_deadline_at"], "request.response_deadline_at")\n'''
+          new_validate = '''    c = normalize_candidate(payload["candidate"])\n    rid = _request_id(payload["request_id"], "request.request_id")\n    requested = _utc(payload["requested_at"], "request.requested_at")\n    pub = _hex64(payload["publication_key"], "request.publication_key")\n    cand = _hex64(payload["candidate_sha256"], "request.candidate_sha256")\n    lease_binding = _hex64(payload["lease_binding_sha256"], "request.lease_binding_sha256")\n    if (\n        publication_key(c) != pub\n        or candidate_digest(c, request_id=rid, requested_at=_fmt(requested)) != cand\n        or lease_binding_digest(c) != lease_binding\n    ):\n        raise MuseElectionV2Error("request: candidate/publication/lease digest mismatch")\n    deadline = _utc(payload["response_deadline_at"], "request.response_deadline_at")\n'''
+          core = replace_once(core, old_validate, new_validate, 'request validation digest')
+
+          old_pub_test = '''    def test_publication_key_collides_across_worker_and_body(self):\n        a = candidate()\n        b = candidate("Z-OTHER", "9" * 64, "OP-B", "claim-b")\n        self.assertEqual(gate.publication_key(a), gate.publication_key(b))\n        self.assertNotEqual(gate.candidate_digest(a), gate.candidate_digest(b))\n'''
+          new_pub_test = '''    def test_publication_key_collides_across_worker_and_body(self):\n        a = candidate()\n        b = candidate("Z-OTHER", "9" * 64, "OP-B", "claim-b")\n        self.assertEqual(gate.publication_key(a), gate.publication_key(b))\n        self.assertNotEqual(\n            gate.candidate_digest(a, request_id="req-00000001", requested_at=z(0)),\n            gate.candidate_digest(b, request_id="req-00000001", requested_at=z(0)),\n        )\n\n    def test_candidate_sha_binds_request_generation_without_changing_publication_key(self):\n        c = candidate()\n        by_id_a = request(c, rid="req-00000001", requested_at=z(0))\n        by_id_b = request(c, rid="req-00000002", requested_at=z(0))\n        by_time = request(c, rid="req-00000001", requested_at=z(1))\n        self.assertEqual(by_id_a["payload"]["publication_key"], by_id_b["payload"]["publication_key"])\n        self.assertEqual(by_id_a["payload"]["publication_key"], by_time["payload"]["publication_key"])\n        self.assertNotEqual(by_id_a["payload"]["candidate_sha256"], by_id_b["payload"]["candidate_sha256"])\n        self.assertNotEqual(by_id_a["payload"]["candidate_sha256"], by_time["payload"]["candidate_sha256"])\n'''
+          tests = replace_once(tests, old_pub_test, new_pub_test, 'publication/generation tests')
+
+          old_cross = '''    def test_same_candidate_selected_for_different_request_holds(self):\n        mine = request(rid="req-00000001")\n        second = request(rid="req-00000002")\n        s = snap([\n            msg(sts(5), SENDER, mine["message"]),\n            msg(sts(6), SENDER, second["message"]),\n            msg(sts(15), MUSE, selected_text(second)),\n        ])\n        r = self.compile(mine, s)\n        self.assertIn("SAME_CANDIDATE_SELECTED_FOR_DIFFERENT_REQUEST", r["payload"]["reasons"])\n'''
+          new_cross = '''    def test_same_candidate_selected_for_different_request_cannot_bind_generation(self):\n        mine = request(rid="req-00000001")\n        second = request(rid="req-00000002")\n        self.assertEqual(mine["payload"]["publication_key"], second["payload"]["publication_key"])\n        self.assertNotEqual(mine["payload"]["candidate_sha256"], second["payload"]["candidate_sha256"])\n        s = snap([\n            msg(sts(5), SENDER, mine["message"]),\n            msg(sts(6), SENDER, second["message"]),\n            msg(sts(15), MUSE, selected_text(second)),\n        ])\n        r = self.compile(mine, s)\n        self.assertNotEqual(r["payload"]["decision"], "SELECTED")\n        self.assertFalse(gate.verify_selected_binding(mine, r))\n'''
+          tests = replace_once(tests, old_cross, new_cross, 'cross-generation test')
+
+          core_path.write_text(core, encoding='utf-8')
+          test_path.write_text(tests, encoding='utf-8')
+          PY
+
+          grep -R "candidate_digest(" tools/outbound_send_guard/_muse_election_v2_core.py.inc tools/outbound_send_guard/_muse_election_v2_tests_core.py
+          git diff --check
+      - name: Execute exact branch bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m py_compile \
+            tools/outbound_send_guard/muse_election_v2.py \
+            tools/outbound_send_guard/muse_current_authority_v2.py \
+            tools/outbound_send_guard/_muse_election_v2_tests_core.py \
+            tools/outbound_send_guard/test_muse_election_v2.py \
+            tools/outbound_send_guard/test_muse_current_authority_v2.py
+          python -m unittest -v \
+            tools.outbound_send_guard.test_muse_election_v2 \
+            tools.outbound_send_guard.test_muse_current_authority_v2
+          python -O -m unittest -v \
+            tools.outbound_send_guard.test_muse_election_v2 \
+            tools.outbound_send_guard.test_muse_current_authority_v2
+      - name: Publish source-only donor head
+        shell: bash
+        run: |
+          set -euo pipefail
+          git rm .github/workflows/zcai-muse-generation-bind.yml
+          git diff --check
+          test "$(git diff --name-only HEAD | sort | tr '\n' ' ')" = "tools/outbound_send_guard/_muse_election_v2_core.py.inc tools/outbound_send_guard/_muse_election_v2_tests_core.py "
+          git config user.name "Z-CadmiumArchipelago-1002-G5V8"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tools/outbound_send_guard/_muse_election_v2_core.py.inc tools/outbound_send_guard/_muse_election_v2_tests_core.py
+          git commit -m "Bind Muse candidate identity to request generation"
+          git push origin HEAD:zcai-g5v8/muse-generation-binding-14503
+          echo "DONOR_HEAD=$(git rev-parse HEAD)"
+          git rev-parse HEAD
