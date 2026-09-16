@@ -25,6 +25,24 @@ SALON_LANES = ROOT / "lanes.json"
 SALON_ROLES = ROOT / "roles.json"
 HEAVY = ROOT / "ground" / "HEAVY_LANES.json"
 
+# KEEP tip Autopsy/$29 + Larger fixed on stealable-lanes.html remint
+# (newbot-02 additive shelf; render_html lacked #live-cash entirely).
+LIVE_CASH_HTML = """
+<section id="live-cash">
+  <h2>Live cash</h2>
+  <p>Verified product pages only — no invented Stripe links.</p>
+  <ul>
+    <li><a href="agent-rescue.html">$29 Autopsy checkout</a> — one failed coding-agent run</li>
+    <li><a href="dealer-service-lead-rescue.html">$199 dealer diagnostic</a></li>
+    <li><a href="referral-intake-completeness.html">$199 referral diagnostic</a></li>
+    <li><a href="repair-booking-preflight.html">$199 repair diagnostic</a></li>
+    <li><a href="plant-downtime-handoff.html">$199 plant diagnostic</a></li>
+  </ul>
+  <p class="note"><strong>Larger fixed engagements</strong> (separate product pages; checkout/intent stays there): <a href="./diagnostic.html">GGUF diagnostic · $12,000 / 10 days</a> · <a href="./commercial.html">White Box pilot · $30,000 / 30 days</a>. Not remints of tip SKUs.</p>
+  <p>Shelf: <a href="tools-cash.html">tools-cash.html</a>. Catalog: <a href="commerce.html">commerce.html</a>. Cite spy-html-money-doors-live-cash-20260905-05 — do not remint.</p>
+</section>
+"""
+
 LANE_SCHEMA = "commons-stealable-lanes/v1"
 ROLE_SCHEMA = "commons-stealable-roles/v1"
 ALLOWED_STATES = {"OPEN", "HELD", "LANDED", "DONE"}
@@ -242,6 +260,7 @@ th,td{{text-align:left;padding:.4rem .5rem;border-bottom:1px solid #333;vertical
 <h2>Roles</h2>
 {table("role", role_rows)}
 <p class="note">Role cards stay stealable. No single-clan choke. Did not invent Stripe URLs. Did not spawn Muse Spark / gpt-6 / gpt-5.7. Empty checkout is a measurement, not a freeze. Sends 0.</p>
+{LIVE_CASH_HTML}
 </body>
 </html>
 """
