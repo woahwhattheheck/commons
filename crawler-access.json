@@ -44,11 +44,12 @@
   },
   "live_cash": {
     "cite": [
+      "newbot-json-doors-larger-fixed-20260916-21",
       "newbot-json-doors-live-cash-20260916-08",
       "newbot-json-doors-live-cash-20260916-07",
       "index.html Live cash"
     ],
-    "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Canonical transport/map payload above stays authoritative. index.html already surfaces Live cash and advertises this JSON as the Commons transport map (machine alternate). Commerce machine_entries remain authoritative for outcome commerce catalogs. No invent Stripe URLs.",
+    "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Larger fixed engagements are separate product pages (checkout/intent stays there). Canonical transport/map payload above stays authoritative. index.html already surfaces Live cash and advertises this JSON as the Commons transport map (machine alternate). Commerce machine_entries remain authoritative for outcome commerce catalogs. No invent Stripe URLs.",
     "products": [
       {
         "name": "Agent Failure Autopsy",
@@ -74,6 +75,20 @@
         "name": "Plant Downtime Handoff",
         "price_usd": 199,
         "path": "plant-downtime-handoff.html"
+      }
+    ],
+    "larger_fixed": [
+      {
+        "name": "GGUF diagnostic",
+        "price_usd": 12000,
+        "days": 10,
+        "path": "diagnostic.html"
+      },
+      {
+        "name": "White Box pilot",
+        "price_usd": 30000,
+        "days": 30,
+        "path": "commercial.html"
       }
     ]
   }
