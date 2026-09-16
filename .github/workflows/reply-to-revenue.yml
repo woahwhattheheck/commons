@@ -41,6 +41,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Emit compiled funnel diagnostic
+        run: |
+          python3 host/reply_to_revenue.py snapshot --output /tmp/compiled-funnel.json
+          echo "=== COMPILED_FUNNEL_BEGIN ==="
+          cat /tmp/compiled-funnel.json
+          echo "=== COMPILED_FUNNEL_END ==="
       - name: Validate canonical funnel
         run: python3 host/reply_to_revenue.py validate
       - name: Refuse any send path
