@@ -84,3 +84,4 @@ Verified product pages only — no invented Stripe links.
 - [$199 repair diagnostic](../repair-booking-preflight.html)
 - [$199 plant diagnostic](../plant-downtime-handoff.html)
 
+- [Larger fixed engagements](../diagnostic.html) — from $12k · [commercial.html](../commercial.html) — from $30k

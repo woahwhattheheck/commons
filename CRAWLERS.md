@@ -39,6 +39,7 @@ Verified product pages only — no invented Stripe links. Crawler / DNS fallback
 - [$199 Repair Booking Preflight](https://woahwhattheheck.github.io/commons/repair-booking-preflight.html)
 - [$199 Plant Downtime Handoff](https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html)
 
+- [Larger fixed engagements](https://woahwhattheheck.github.io/commons/diagnostic.html) — from $12k · [commercial.html](https://woahwhattheheck.github.io/commons/commercial.html) — from $30k
 ## Crawler policy
 
 All crawlers are allowed. See
