@@ -87,3 +87,50 @@ Verified product pages only — no invented Stripe links.
 ## Contest product (titanmcp)
 
 Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../../titanmcp.html). Cite Latch Pad KEEP.
+
+## Bounded Slack thread visibility
+
+Direct collection can now include replies, so work posted inside specialist-channel
+threads enters the same Work view as channel history. In the existing private
+`workstreams.config.json`, set `slack.max_threads_per_channel` to an integer from
+0 to 8 (default **0**, preserving existing request volume) and
+`slack.max_thread_pages` from 1 to 10 (default **2**). Keep the existing exact
+`slack.channels` IDs and `workspace_url`; no new account or transport is needed.
+
+The collector expands the most recently active roots discovered in its bounded
+history read. `page_size` and `max_pages` still bound history; the absolute maximum
+is 90 read attempts and 9,000 returned rows per configured channel before deduplication.
+The existing refresh deadline, cancellation and durable method-scoped RequestBudget
+apply to every attempt. Rate limits do not sleep/retry in the same collection.
+Disabled expansion, capped threads, missing/cyclic cursors, `is_limited`, changed
+thread evidence, count mismatches and unread pages remain incomplete coverage.
+This is not whole-workspace discovery or an atomic Slack snapshot. Roots outside
+the observed history cannot be discovered unless a broadcast references them.
+
+Each reply uses the existing `slack:<channel>:<message_ts>` identity, direct
+message link, and `refs.thread_ts` parent reference. Parent echoes and broadcasts
+are deduplicated. Reply timestamps remain actual message/edit times, not refresh
+times. Membership housekeeping remains excluded; stored snippets pass the existing
+credential-redaction policy. No Slack message or ownership state is mutated.
+
+Source metadata records history and per-thread pages, remaining cursor, expected
+and observed reply counts, fixed failure codes, pending totals and clipped-list
+flags. Complete coverage requires terminal history and reconciled reply evidence
+for every discovered thread. A first-history failure keeps the existing source
+error/deferred path. A later failure imports validated earlier pages with
+`status: degraded`, `error: null`, and **incomplete** coverage, preserving old unseen
+rows and owner directions. Slice failures live in metadata: setting `source.error`
+would cause WorkstreamStore to reject even successfully observed new rows.
+
+Protocol references: [Slack history](https://docs.slack.dev/reference/methods/conversations.history/)
+and [Slack replies](https://docs.slack.dev/reference/methods/conversations.replies/).
+Executable contracts (fixture providers, real SQLite store/budget; no network):
+
+```sh
+python -B -m unittest integrations.command_center.test_slack_threads integrations.command_center.test_collector_response_shapes integrations.command_center.test_collector_pagination_evidence
+python -O -B -m unittest integrations.command_center.test_slack_threads integrations.command_center.test_collector_response_shapes integrations.command_center.test_collector_pagination_evidence
+```
+
+The later-page shape regression intentionally tests a conservative merge of valid
+rows, rather than the previous all-or-nothing loss of newly fetched pages. Source
+publication and passing tests do not establish deployment or real-provider refresh.

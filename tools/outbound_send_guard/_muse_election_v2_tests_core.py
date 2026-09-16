@@ -118,7 +118,20 @@ class MuseElectionV2Tests(unittest.TestCase):
         a = candidate()
         b = candidate("Z-OTHER", "9" * 64, "OP-B", "claim-b")
         self.assertEqual(gate.publication_key(a), gate.publication_key(b))
-        self.assertNotEqual(gate.candidate_digest(a), gate.candidate_digest(b))
+        self.assertNotEqual(
+            gate.candidate_digest(a, request_id="req-00000001", requested_at=z(0)),
+            gate.candidate_digest(b, request_id="req-00000001", requested_at=z(0)),
+        )
+
+    def test_candidate_sha_binds_request_generation_without_changing_publication_key(self):
+        c = candidate()
+        by_id_a = request(c, rid="req-00000001", requested_at=z(0))
+        by_id_b = request(c, rid="req-00000002", requested_at=z(0))
+        by_time = request(c, rid="req-00000001", requested_at=z(1))
+        self.assertEqual(by_id_a["payload"]["publication_key"], by_id_b["payload"]["publication_key"])
+        self.assertEqual(by_id_a["payload"]["publication_key"], by_time["payload"]["publication_key"])
+        self.assertNotEqual(by_id_a["payload"]["candidate_sha256"], by_id_b["payload"]["candidate_sha256"])
+        self.assertNotEqual(by_id_a["payload"]["candidate_sha256"], by_time["payload"]["candidate_sha256"])
 
     def test_request_pins_real_muse_route(self):
         req = request()
@@ -250,16 +263,19 @@ class MuseElectionV2Tests(unittest.TestCase):
         self.assertEqual(r["payload"]["decision"], "HOLD")
         self.assertIn("MULTIPLE_DISTINCT_WINNERS", r["payload"]["reasons"])
 
-    def test_same_candidate_selected_for_different_request_holds(self):
+    def test_same_candidate_selected_for_different_request_cannot_bind_generation(self):
         mine = request(rid="req-00000001")
         second = request(rid="req-00000002")
+        self.assertEqual(mine["payload"]["publication_key"], second["payload"]["publication_key"])
+        self.assertNotEqual(mine["payload"]["candidate_sha256"], second["payload"]["candidate_sha256"])
         s = snap([
             msg(sts(5), SENDER, mine["message"]),
             msg(sts(6), SENDER, second["message"]),
             msg(sts(15), MUSE, selected_text(second)),
         ])
         r = self.compile(mine, s)
-        self.assertIn("SAME_CANDIDATE_SELECTED_FOR_DIFFERENT_REQUEST", r["payload"]["reasons"])
+        self.assertNotEqual(r["payload"]["decision"], "SELECTED")
+        self.assertFalse(gate.verify_selected_binding(mine, r))
 
     def test_request_id_rebound_to_other_candidate_holds(self):
         mine = request()

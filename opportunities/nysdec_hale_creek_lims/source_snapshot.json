@@ -1,0 +1,252 @@
+{
+  "current_environment": {
+    "existing_tools": [
+      "Microsoft Access",
+      "Microsoft Excel"
+    ],
+    "instrument_families": [
+      {
+        "annual_sample_capacity": 1100,
+        "models": [
+          "7890A",
+          "8890"
+        ],
+        "type": "GC/ECD",
+        "use": "PCBs / organochlorine pesticides",
+        "vendor": "Agilent"
+      },
+      {
+        "annual_sample_capacity": null,
+        "models": [
+          "8890/5977C",
+          "7890B/5977B"
+        ],
+        "type": "GC/MS",
+        "use": "PCBs / organochlorine pesticides",
+        "vendor": "Agilent"
+      },
+      {
+        "annual_sample_capacity": 1000,
+        "count": 2,
+        "models": [
+          "1290 Infinity II/6470"
+        ],
+        "type": "LC/MS",
+        "use": "PFAS",
+        "vendor": "Agilent"
+      },
+      {
+        "annual_sample_capacity": 200,
+        "models": [
+          "7800"
+        ],
+        "type": "ICP/MS",
+        "use": "Metals",
+        "vendor": "Agilent"
+      },
+      {
+        "annual_sample_capacity": 2000,
+        "models": [
+          "MA-3000"
+        ],
+        "type": "Mercury analyzer",
+        "use": "Mercury",
+        "vendor": "Nippon"
+      }
+    ],
+    "lims_present": false,
+    "manual_data_entry": true
+  },
+  "general_terms": {
+    "confidentiality_not_guaranteed": true,
+    "cost_figures_non_binding": true,
+    "failure_to_respond_affects_future_competition": false,
+    "foil_may_apply": true,
+    "procurement_lobbying_law_restriction_applies": false,
+    "questions_via_response_email": true,
+    "response_preparation_costs_reimbursed": false,
+    "state_may_amend_or_cancel": true,
+    "state_may_request_supplemental_information_or_demonstrations": true,
+    "state_may_use_ideas": true
+  },
+  "objectives": {
+    "data_ownership_retained_by_dec_dfw": true,
+    "data_sharing_without_consent": false,
+    "hybrid_storage_requested": true,
+    "robust_lims": true,
+    "software_maintenance_support_24x7x365_requested": true
+  },
+  "opportunity": {
+    "buyer": "New York State Department of Environmental Conservation, Division of Fish & Wildlife",
+    "contract_reporter_number": "2138876",
+    "department_responses_due": "2026-10-09",
+    "direct_award_from_response": false,
+    "market_research_only": true,
+    "official_notice_url": "https://www.nyscr.ny.gov/Ads/IFrameDetails/2138876?FromAction=Search",
+    "procurement_commitment": false,
+    "project_name": "Hale Creek Field Station Laboratory Information Management System (LIMS)",
+    "release_date": "2026-09-15",
+    "response_email": "hcfs-lims@dec.ny.gov",
+    "response_format": "Microsoft Office product or Adobe PDF",
+    "response_subject": "Hale Creek Laboratory Information Management System (LIMS)",
+    "rfi_responses_due": "2026-10-20",
+    "solicitation_type": "RFI",
+    "submission_method": "email",
+    "vendor_inquiries_due": "2026-09-29"
+  },
+  "questions": [
+    {
+      "number": 1,
+      "section": "Desired Requirements",
+      "text": "Sample login: replace the current Microsoft Access workflow; support multiple aliquots, barcode labels, collection chain of custody, and internal laboratory chain of custody."
+    },
+    {
+      "number": 2,
+      "section": "Desired Requirements",
+      "text": "Sample preparation: replace the current Microsoft Access PCB / organochlorine-pesticide preparation workflow and support additional preparation workflows."
+    },
+    {
+      "number": 3,
+      "section": "Desired Requirements",
+      "text": "Sample processing: replace the current Microsoft Access processing-parameter workflow and support observations and pictures."
+    },
+    {
+      "number": 4,
+      "section": "Desired Requirements",
+      "text": "Import results from all laboratory instruments and support manual sample and test-result entry."
+    },
+    {
+      "number": 5,
+      "section": "Desired Requirements",
+      "text": "Track consumables and solvent inventory."
+    },
+    {
+      "number": 6,
+      "section": "Desired Requirements",
+      "text": "Manage agency standard operating procedures and quality-control information."
+    },
+    {
+      "number": 7,
+      "section": "Desired Requirements",
+      "text": "Provide analytical-run reports, QC and process-control charts, ad-hoc reports, work lists, preparation lists, run lists, sample-result reports, sample-status reports, and consumable/reagent traceability."
+    },
+    {
+      "number": 8,
+      "section": "Desired Requirements",
+      "text": "Import legacy databases and preserve access to archived data according to agency policies."
+    },
+    {
+      "number": 9,
+      "section": "Desired Requirements",
+      "text": "Provide staff training."
+    },
+    {
+      "number": 10,
+      "section": "Desired Requirements",
+      "text": "Follow applicable New York State and DEC policies, laws, and compliance requirements."
+    },
+    {
+      "number": 11,
+      "section": "Desired Requirements",
+      "text": "Follow New York State Office of Information Technology Services policies and standards."
+    },
+    {
+      "number": 12,
+      "section": "Desired Requirements",
+      "text": "Be highly available, modular, and scalable."
+    },
+    {
+      "number": 13,
+      "section": "Desired Requirements",
+      "text": "Allow users to define future workflows, analytical methods, and equipment."
+    },
+    {
+      "number": 14,
+      "section": "Desired Requirements",
+      "text": "Identify whether proposed products are available on a New York State contract or Federal GSA contract and provide the contract number if applicable."
+    },
+    {
+      "number": 15,
+      "section": "Information Requested",
+      "text": "Describe the ability to offer a LIMS that meets the Desired Requirements."
+    },
+    {
+      "number": 16,
+      "section": "Information Requested",
+      "text": "Describe hybrid on-site / cloud storage, if applicable."
+    },
+    {
+      "number": 17,
+      "section": "Information Requested",
+      "text": "Describe remote management of software, if applicable."
+    },
+    {
+      "number": 18,
+      "section": "Information Requested",
+      "text": "Describe the maintenance and support program and any additional costs."
+    },
+    {
+      "number": 19,
+      "section": "Information Requested",
+      "text": "Describe disaster-recovery capabilities."
+    },
+    {
+      "number": 20,
+      "section": "Information Requested",
+      "text": "Describe network, server, and equipment requirements."
+    },
+    {
+      "number": 21,
+      "section": "Information Requested",
+      "text": "Describe warranties, installation, training, and ongoing maintenance."
+    },
+    {
+      "number": 22,
+      "section": "Information Requested",
+      "text": "Describe equipment-replacement provisions."
+    },
+    {
+      "number": 23,
+      "section": "Information Requested",
+      "text": "Identify existing customers with implementations of similar scope and size."
+    },
+    {
+      "number": 24,
+      "section": "Information Requested",
+      "text": "Provide a feasible implementation plan requiring minimal DEC / NYS ITS support."
+    },
+    {
+      "number": 25,
+      "section": "Information Requested",
+      "text": "Describe hybrid on-site / cloud deployment, if applicable."
+    },
+    {
+      "number": 26,
+      "section": "Information Requested",
+      "text": "Provide company personnel count, years in business, and special government or sensitive clearances / ratings, if any."
+    },
+    {
+      "number": 27,
+      "section": "Information Requested",
+      "text": "Identify partners and responsibilities; if partners are not selected, describe desired partner types and responsibilities."
+    },
+    {
+      "number": 28,
+      "section": "Information Requested",
+      "text": "Provide New York State OGS or Federal GSA contract information, if applicable."
+    }
+  ],
+  "response_instructions": {
+    "answer_by_question_number": true,
+    "brief_and_concise": true,
+    "cover_page_fields": [
+      "company name and mailing address",
+      "contact name and title",
+      "contact email",
+      "contact phone",
+      "formal solicitation mailing address"
+    ],
+    "include_summary_and_key_recommendations": true
+  },
+  "schema": "nysdec_hcfs_lims.source.v1"
+}
