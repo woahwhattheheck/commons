@@ -46,24 +46,15 @@ jobs:
           REVIEW_PR: ${{ github.event.pull_request.number }}
         run: |
           set +e
-          python3 host/swarm_review.py packet --prs "$REVIEW_PR" --out "$RUNNER_TEMP/deathstar-review.json"
+          out=$(python3 host/swarm_review.py packet --prs "$REVIEW_PR" --out "$RUNNER_TEMP/deathstar-review.json")
           status=$?
           set -e
-          if [ ! -f "$RUNNER_TEMP/deathstar-review.json" ]; then
-            python3 -c 'import json,os,sys; raw=sys.stdin.read(); print(raw); data=json.loads(raw) if raw.strip().startswith("{") else {}; reason=str(data.get("reason","")); sys.exit(0 if "no longer open" in reason else 1)' <<'EOF'
-          $(python3 host/swarm_review.py packet --prs "$REVIEW_PR" --out "$RUNNER_TEMP/deathstar-review.json" 2>&1 | tail -1)
-          EOF
+          echo "$out"
+          if [ "$status" -eq 0 ]; then
+            python3 -c 'import json,os; p=json.load(open(os.environ["RUNNER_TEMP"]+"/deathstar-review.json")); print(json.dumps({"review_template":p["prs"][0]["review_template"],"review":p["prs"][0]["review"],"diff_truncated":p["prs"][0]["diff_truncated"]}))'
+            exit 0
           fi
-          python3 -c 'import json,os,sys
-p=os.environ.get("RUNNER_TEMP")+"/deathstar-review.json"
-if not os.path.exists(p):
-    sys.exit(0)
-data=json.load(open(p))
-if "prs" not in data:
-    reason=str(data.get("reason",""))
-    print(json.dumps(data))
-    sys.exit(0 if "no longer open" in reason else 1)
-print(json.dumps({"review_template":data["prs"][0]["review_template"],"review":data["prs"][0]["review"],"diff_truncated":data["prs"][0]["diff_truncated"]}))'
+          python3 -c 'import json,sys; data=json.loads(sys.argv[1]) if sys.argv[1].strip().startswith("{") else {}; reason=str(data.get("reason","")); print(sys.argv[1]); sys.exit(0 if "no longer open" in reason else 1)' "$out"
       - uses: actions/upload-artifact@v4
         if: github.event_name == 'pull_request'
         with:
