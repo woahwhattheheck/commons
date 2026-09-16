@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 117,
-    "open_pull_requests": 73,
-    "runs_in_progress": 16,
-    "runs_queued": 283
+    "open_issues": 120,
+    "open_pull_requests": 71,
+    "runs_in_progress": 21,
+    "runs_queued": 333
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zch-r7n5/vetter-trust-boundary-recovery-20260916",
-      "created_at": "2026-09-16T12:53:28Z",
+      "branch": "z-cobaltswitchyard/sasria-ai-training-20260916",
+      "created_at": "2026-09-16T12:58:53Z",
       "draft": false,
-      "head_sha": "cb398dfb0b9ead3b2a079709370fc6b77520c995",
-      "number": 14841,
-      "title": "Revenue: finalize Vetter tech-transfer gate with truthful runtime boundary",
-      "updated_at": "2026-09-16T12:54:32Z"
+      "head_sha": "ae21316847d1330bc7d080196b8aa17ee7b835a4",
+      "number": 14842,
+      "title": "Sasria RFP2026/22: add AI-training teaming readiness carrier",
+      "updated_at": "2026-09-16T13:06:00Z"
     },
     {
       "author": "woahwhattheheck",
@@ -102,24 +102,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zvlh/ohsu-source-bound-deadline-recovery-20260916",
-      "created_at": "2026-09-16T12:51:17Z",
-      "draft": false,
-      "head_sha": "15f071d78464cb51305455170f4b0f05a163b658",
-      "number": 14836,
-      "title": "Revenue: bind OHSU PSC source and contract review gates",
-      "updated_at": "2026-09-16T12:53:13Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "zpb-h7n4/pinellas-current-trust-recovery-20260916",
       "created_at": "2026-09-16T12:48:36Z",
       "draft": false,
-      "head_sha": "52b7b031e9dd76d1dc25f6805906d65db9e3528b",
+      "head_sha": "17d7a4e9e3a1952ac29174305b5bcb6cbe1175f4",
       "number": 14833,
       "title": "Revenue: recover Pinellas current custody trust boundary",
-      "updated_at": "2026-09-16T12:53:53Z"
+      "updated_at": "2026-09-16T13:05:40Z"
     },
     {
       "author": "woahwhattheheck",
@@ -127,10 +116,10 @@
       "branch": "z-cobaltswitchyard/legal-aid-copilot-agents-20260916",
       "created_at": "2026-09-16T12:47:39Z",
       "draft": false,
-      "head_sha": "14ce2f29a4e3284628d0391f24a3aa96688c2f51",
+      "head_sha": "7c5a07fa66a22efb604f091a10842d3763c1543b",
       "number": 14832,
       "title": "Legal Aid Chicago: add Copilot training evidence gate",
-      "updated_at": "2026-09-16T12:48:26Z"
+      "updated_at": "2026-09-16T13:05:30Z"
     },
     {
       "author": "woahwhattheheck",
@@ -138,10 +127,10 @@
       "branch": "zch-m6p2/army-sbir-14299-current-main-recovery-20260916",
       "created_at": "2026-09-16T12:40:59Z",
       "draft": false,
-      "head_sha": "1a3ce1a6a9960eaf357efd640972dea2bd2ff137",
+      "head_sha": "6edab3481ff600a5087b16cf571e94df92c8b928",
       "number": 14828,
       "title": "Revenue: recover ARM26BX06-NV012 decision carrier after authority RED",
-      "updated_at": "2026-09-16T12:51:23Z"
+      "updated_at": "2026-09-16T13:04:15Z"
     },
     {
       "author": "woahwhattheheck",
@@ -163,7 +152,7 @@
       "head_sha": "d092e81a4e111e480a4b4010c7017e3687f43068",
       "number": 14826,
       "title": "Recover Sun A308734 P18 frontier on current main",
-      "updated_at": "2026-09-16T12:49:22Z"
+      "updated_at": "2026-09-16T13:06:05Z"
     },
     {
       "author": "woahwhattheheck",
@@ -175,6 +164,17 @@
       "number": 14824,
       "title": "fix(revenue): seal OHSU APProof authority boundary",
       "updated_at": "2026-09-16T12:38:41Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zoc-r6v3/hyperagent-paid-pilot-20260916",
+      "created_at": "2026-09-16T12:28:37Z",
+      "draft": false,
+      "head_sha": "1d59327caf4ce0636edc3e2e2bbabbd2e03cb553",
+      "number": 14823,
+      "title": "feat(revenue): ship Hyperagent deterministic transcript pilot proof",
+      "updated_at": "2026-09-16T13:07:09Z"
     }
   ],
   "open_heads": {
@@ -184,7 +184,7 @@
     "14188": "1859cf0bfc12f2819f3f63fd4349ed06ca5f341b",
     "14299": "cd6a66435851b57f61c5a68c4ab7f8356701f910",
     "14314": "742aeafae8c258759c435bf6758e1546ff258c56",
-    "14317": "ddea86b16dd83c020c0422a3232851b78e1063e9",
+    "14317": "b49030a2ff320730415263803d878825970fa6b9",
     "14321": "1810cbac9e1fc9a0beddfcb13af37f6aa60726aa",
     "14333": "26e7110348d2ab0d994adf68d5e0f14ad8677e38",
     "14343": "c04b1fa4adcdb5cf928bb163c158a3adec828ea3",
@@ -192,7 +192,6 @@
     "14395": "1b6907c68885d2feac44c15c2dd39f128864640d",
     "14454": "69b1cc3a9a3133ba6c5441eda3ad41712406f3fb",
     "14464": "e8b319f1300f64eca6cbcdbcd4330077574fdb0a",
-    "14471": "baa56fd2dbba8e847a56768d9ca0dc6ac23ef67a",
     "14527": "81c3f145512714638688d0f724a391f03368d739",
     "14548": "86b429f011aecfc44b324a1dbaf659e58739e0b6",
     "14553": "a04ac7399fba7ba8906ba63732a72af5f440b475",
@@ -224,7 +223,7 @@
     "14776": "ad8a22b25efa67111d34f72a9bdfe85be7e864da",
     "14780": "8eda6a9e6078667134126e4783529e3ef9796b48",
     "14782": "8e2bc8c9201d6c6968eb22bf9bd73953d26b3c5d",
-    "14784": "fb9a64f3e281d794957f630b3f43a7169d53547a",
+    "14784": "eb29ffe2c0e8f4b663308d9243cf792ddffe2477",
     "14788": "ffaff5aa571aaccedd41f82c0eba85b09586f230",
     "14798": "8851163e0a5df417d494d3daffb1e21ffd419f31",
     "14801": "bbc065f3625883bcfa1973b645f0a3aa1474b51a",
@@ -237,25 +236,57 @@
     "14814": "54e4b6fc9f9432ff492593abd338d0982758c692",
     "14816": "ee1f843ea27a9062834b0c5807723f04dc811205",
     "14819": "a22cfefd953bf251521140192212d5887165a53b",
-    "14820": "435ba514f4966eb74a6068c1c91477f8adf7f159",
+    "14820": "fc9e80d0d176598640e54569dd949c997551daf9",
     "14821": "e2030f7a46a996ca683684b4325c2879a638f08d",
     "14822": "4c33a3723fe5ae302fd16e539e12c9b5430046fb",
-    "14823": "e9db9c491a8533caf9af5de87465cadac45fdfb7",
+    "14823": "1d59327caf4ce0636edc3e2e2bbabbd2e03cb553",
     "14824": "da8cc45aa63934fe741e415381d2127c7e2afe4a",
     "14826": "d092e81a4e111e480a4b4010c7017e3687f43068",
     "14827": "f1b87ee6dc1e5b5242c660c0c7f1bca250e18511",
-    "14828": "1a3ce1a6a9960eaf357efd640972dea2bd2ff137",
-    "14832": "14ce2f29a4e3284628d0391f24a3aa96688c2f51",
-    "14833": "52b7b031e9dd76d1dc25f6805906d65db9e3528b",
-    "14836": "15f071d78464cb51305455170f4b0f05a163b658",
+    "14828": "6edab3481ff600a5087b16cf571e94df92c8b928",
+    "14832": "7c5a07fa66a22efb604f091a10842d3763c1543b",
+    "14833": "17d7a4e9e3a1952ac29174305b5bcb6cbe1175f4",
     "14837": "6a75e5568d805b47a803e29003584ed59cfd9d47",
     "14838": "4b2b2d40246e45e2ef84b637dc5a6c28e4e66707",
-    "14841": "cb398dfb0b9ead3b2a079709370fc6b77520c995"
+    "14842": "ae21316847d1330bc7d080196b8aa17ee7b835a4"
   },
-  "pulls_listed": 73,
+  "pulls_listed": 71,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 17.7,
+  "queue_depth_per_runner": 15.9,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zvh-q9x7/vetter-tech-transfer-recovery-20260914",
+      "closed_at": "2026-09-16T12:59:43Z",
+      "head_sha": "baa56fd2dbba8e847a56768d9ca0dc6ac23ef67a",
+      "merged_at": null,
+      "number": 14471,
+      "state": "CLOSED",
+      "title": "Revenue: recover Vetter current tech-transfer evidence gate"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zch-r7n5/vetter-trust-boundary-recovery-20260916",
+      "closed_at": "2026-09-16T12:59:03Z",
+      "head_sha": "cb398dfb0b9ead3b2a079709370fc6b77520c995",
+      "merged_at": "2026-09-16T12:59:03Z",
+      "number": 14841,
+      "state": "MERGED",
+      "title": "Revenue: finalize Vetter tech-transfer gate with truthful runtime boundary"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zvlh/ohsu-source-bound-deadline-recovery-20260916",
+      "closed_at": "2026-09-16T12:55:58Z",
+      "head_sha": "aa9ddb91cebc3e7a502067374162722091fe0f33",
+      "merged_at": "2026-09-16T12:55:58Z",
+      "number": 14836,
+      "state": "MERGED",
+      "title": "Revenue: bind OHSU PSC source and contract review gates"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -387,43 +418,10 @@
       "number": 14804,
       "state": "CLOSED",
       "title": "[SUPERSEDED] Reject Unicode format controls in NUMIH authority text"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zrwf-p4c7/numih-evidence-authority-recovery-20260915",
-      "closed_at": "2026-09-16T10:26:52Z",
-      "head_sha": "5cf536092e6312c80f548775b918cb1f0b1497dc",
-      "merged_at": null,
-      "number": 14791,
-      "state": "CLOSED",
-      "title": "feat(numih): bind packet readiness to retained source bytes"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zqa-h9v2/numih-red-recovery-20260916",
-      "closed_at": "2026-09-16T10:25:46Z",
-      "head_sha": "4f768c268adda14ec5739afef391c17daa17eae5",
-      "merged_at": "2026-09-16T10:25:45Z",
-      "number": 14799,
-      "state": "MERGED",
-      "title": "fix(numih): close render and hostile-input authority gaps"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zqa-h9v2/numih-red-recovery-20260916",
-      "branch": "zvm-r4x8/numih-surrogate-diagnostic-repair-20260916",
-      "closed_at": "2026-09-16T10:23:36Z",
-      "head_sha": "21569622e3e6afcaff4c328c57f81b9df5405803",
-      "merged_at": "2026-09-16T10:23:35Z",
-      "number": 14803,
-      "state": "MERGED",
-      "title": "Fix NUMIH duplicate-surrogate diagnostic escape"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-16T12:54:52Z",
+  "unchanged_since": "2026-09-16T13:07:19Z",
   "undatable_pulls": []
 }
