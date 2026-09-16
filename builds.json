@@ -359,7 +359,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14299",
    "base_freshness": {
     "base_sha": "303537cb200151a24c5597eea744be352e3337ba",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -375,7 +375,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14356",
    "base_freshness": {
     "base_sha": "cd7560c64f7cde184a67b73fd218499d34edbf05",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -391,7 +391,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14395",
    "base_freshness": {
     "base_sha": "b53c8e6bf1aa770ca41c47bb5fa6558cb27ed4e5",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -407,7 +407,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14589",
    "base_freshness": {
     "base_sha": "58be28ca7c4500a3a2e49cbd94f22c5665a149f1",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -423,7 +423,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14650",
    "base_freshness": {
     "base_sha": "a92826aef5a6867069450e9e5b52a78e9c3df740",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -439,7 +439,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14632",
    "base_freshness": {
     "base_sha": "c13b16c3cee2d49e3cb314caeaf924f6864a2f20",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -455,7 +455,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14658",
    "base_freshness": {
     "base_sha": "f7f86ce04a8a1e493cce18508acdd1807ab0cad6",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -471,23 +471,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14664",
    "base_freshness": {
     "base_sha": "bcc29688e888b38a5ce6ee1feb734b3d0060636f",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14680,
-   "author": "woahwhattheheck",
-   "title": "coordination: bind execution authority to exact PR/base composition",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14680",
-   "base_freshness": {
-    "base_sha": "a664101b94d95840e8b7440d3a45ea9d307dd656",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -503,7 +487,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14669",
    "base_freshness": {
     "base_sha": "38e9cf6d6fdcbd6107d8d4bc52b5638c7e2e5d77",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -519,7 +503,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14705",
    "base_freshness": {
     "base_sha": "e3170922572a541823049e78b2f0b3d7edeee6f0",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -535,7 +519,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14700",
    "base_freshness": {
     "base_sha": "e3170922572a541823049e78b2f0b3d7edeee6f0",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -551,7 +535,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14672",
    "base_freshness": {
     "base_sha": "7a26c3392f8e65e737ae80e47fd8000917730da1",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -567,7 +551,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14464",
    "base_freshness": {
     "base_sha": "3953757d45636832c0985f8772a419873c926158",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -583,7 +567,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14715",
    "base_freshness": {
     "base_sha": "3031df0ef1cd1986b9b8999b8d170c400040e8b8",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -599,7 +583,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14724",
    "base_freshness": {
     "base_sha": "4ceefeaa66ea6618da36a03055ab8474798dafa7",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -615,7 +599,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14768",
    "base_freshness": {
     "base_sha": "e5f928213c3710ff36c6f5a4d4da1a9af97e0768",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -631,7 +615,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14728",
    "base_freshness": {
     "base_sha": "36be284452141d26cdff4b74efb8f185b27c4b32",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -647,7 +631,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14776",
    "base_freshness": {
     "base_sha": "33e117064c336cefc947c52b38dee311e8ca0818",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -663,7 +647,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14763",
    "base_freshness": {
     "base_sha": "0ccb272ced44795e0ffd40350b89538eb562914e",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -679,7 +663,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14780",
    "base_freshness": {
     "base_sha": "d4bfb36dd3ebd277b418aa6f11979d2bedca4c65",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -695,7 +679,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14782",
    "base_freshness": {
     "base_sha": "76265a2f09c98413d0706e9e472cb04a9163f0c0",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -711,7 +695,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14770",
    "base_freshness": {
     "base_sha": "76265a2f09c98413d0706e9e472cb04a9163f0c0",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -727,7 +711,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13741",
    "base_freshness": {
     "base_sha": "cb553c1692fada76b72f69b72ab5509860182013",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -743,7 +727,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14762",
    "base_freshness": {
     "base_sha": "76265a2f09c98413d0706e9e472cb04a9163f0c0",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -759,7 +743,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14788",
    "base_freshness": {
     "base_sha": "4fc9562a8dacfc5ac5238560599d9819589541a3",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -775,7 +759,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14802",
    "base_freshness": {
     "base_sha": "8989c8ab3f4f4e2fe046b94f3bc6812a94a1ddd9",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -791,7 +775,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14808",
    "base_freshness": {
     "base_sha": "864131604610702cf0cd27afd83d164c20d49c6d",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -807,7 +791,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14801",
    "base_freshness": {
     "base_sha": "864131604610702cf0cd27afd83d164c20d49c6d",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -823,7 +807,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14810",
    "base_freshness": {
     "base_sha": "864131604610702cf0cd27afd83d164c20d49c6d",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -839,7 +823,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14813",
    "base_freshness": {
     "base_sha": "864131604610702cf0cd27afd83d164c20d49c6d",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -855,7 +839,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14454",
    "base_freshness": {
     "base_sha": "233b75a5c9741f56fa2c1dd737ce82663ac4d05e",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -871,7 +855,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14816",
    "base_freshness": {
     "base_sha": "4fe3cbb62f500004eea844aacf44372e219da345",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -887,7 +871,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14824",
    "base_freshness": {
     "base_sha": "3f8ae48b0e2769e357dbb4f7215144fbc597e3ba",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -903,7 +887,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14819",
    "base_freshness": {
     "base_sha": "58a14866f1cddd37091cbef20259af816fa79696",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -919,7 +903,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14821",
    "base_freshness": {
     "base_sha": "8c620f038dc94301a91adf55831898bdffd37330",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -935,7 +919,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14826",
    "base_freshness": {
     "base_sha": "5ba5746b9490ade7805d05a5fd984f7828f36129",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -951,7 +935,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14823",
    "base_freshness": {
     "base_sha": "5ba5746b9490ade7805d05a5fd984f7828f36129",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -967,7 +951,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14822",
    "base_freshness": {
     "base_sha": "3f8ae48b0e2769e357dbb4f7215144fbc597e3ba",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -983,7 +967,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14842",
    "base_freshness": {
     "base_sha": "0458b650a4e2802be718245ffbfe3f9f90aae582",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -999,7 +983,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14832",
    "base_freshness": {
     "base_sha": "f8483dfb0d03691a612af45ac213acbb7cc6a52e",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1015,7 +999,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14784",
    "base_freshness": {
     "base_sha": "76265a2f09c98413d0706e9e472cb04a9163f0c0",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1031,7 +1015,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14838",
    "base_freshness": {
     "base_sha": "38436aa6fb2f72c522d88a63cb3db6639e451581",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1047,39 +1031,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14820",
    "base_freshness": {
     "base_sha": "58a14866f1cddd37091cbef20259af816fa79696",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14807,
-   "author": "woahwhattheheck",
-   "title": "Revenue: build OSU-CHS GME resident-data pursuit prototype",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14807",
-   "base_freshness": {
-    "base_sha": "7012f20a5c576476de561cdfaff48a538b034948",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14828,
-   "author": "woahwhattheheck",
-   "title": "Revenue: recover ARM26BX06-NV012 decision carrier after authority RED",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14828",
-   "base_freshness": {
-    "base_sha": "1dd7ff985a933c1eec025d8208fd64b4fd8a3c60",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1095,23 +1047,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14871",
    "base_freshness": {
     "base_sha": "25aa0b5418a915ad97fad4dab9599c2868379e23",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14859,
-   "author": "woahwhattheheck",
-   "title": "Revenue: capture Invest Appalachia Framer LMS pursuit with fail-closed prime/team gate",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14859",
-   "base_freshness": {
-    "base_sha": "6a1c33fd8be45042985a9d9e652ca9ff8090c081",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1127,7 +1063,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14798",
    "base_freshness": {
     "base_sha": "2a2a43bfb3b9abbad7417c78e6cdeb12888260bb",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1143,7 +1079,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14873",
    "base_freshness": {
     "base_sha": "41d76a33cae55baee5bbb2b05a0f8a28701eac76",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1159,55 +1095,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14887",
    "base_freshness": {
     "base_sha": "013c94fee105f2d7248190e29181dbb794097c91",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14641,
-   "author": "woahwhattheheck",
-   "title": "Water4All 2026: repair live authority trust roots",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14641",
-   "base_freshness": {
-    "base_sha": "6f467673980f9064bc0004b83046d3c30e092a29",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14764,
-   "author": "woahwhattheheck",
-   "title": "Recover canonical opportunity identity alias facts",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14764",
-   "base_freshness": {
-    "base_sha": "0ccb272ced44795e0ffd40350b89538eb562914e",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 15019,
-   "author": "woahwhattheheck",
-   "title": "GROK: Spark continue_from_observation bundles memory_board (20260916-01)",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15019",
-   "base_freshness": {
-    "base_sha": "e832fd503cceaa4519110cad7895e542e7b04dc2",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1223,7 +1111,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15020",
    "base_freshness": {
     "base_sha": "e832fd503cceaa4519110cad7895e542e7b04dc2",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1233,13 +1121,13 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 15022,
+   "number": 15030,
    "author": "woahwhattheheck",
-   "title": "coordination: recover execution authority as one provider-bound front door",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15022",
+   "title": "Donor: bind reply observations to unique canonical receipts",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15030",
    "base_freshness": {
-    "base_sha": "e4cef084146916f5d7dd6405c11a206a6405ab45",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "base_sha": "2aec19c90cbab0c5cd7e7a5679350bfea488cee2",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1249,13 +1137,125 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 15023,
+   "number": 14641,
    "author": "woahwhattheheck",
-   "title": "LATCH: invoice-exception-pack catalog checkout after f383cde0 battery",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15023",
+   "title": "Water4All 2026: repair live authority trust roots",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14641",
    "base_freshness": {
-    "base_sha": "e4cef084146916f5d7dd6405c11a206a6405ab45",
-    "main_sha": "1b1dc19ebe9439368758e8bc1262e7a534bdc001",
+    "base_sha": "6f467673980f9064bc0004b83046d3c30e092a29",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15048,
+   "author": "woahwhattheheck",
+   "title": "WIRE: AGENTS/TOOLS/BUILD MD KEEP Larger-fixed proof (20260916-01)",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15048",
+   "base_freshness": {
+    "base_sha": "2aec19c90cbab0c5cd7e7a5679350bfea488cee2",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15057,
+   "author": "woahwhattheheck",
+   "title": "Revenue: land canonical Hyperagent paid-pilot transcript proof on current main",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15057",
+   "base_freshness": {
+    "base_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "FRESH"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15058,
+   "author": "woahwhattheheck",
+   "title": "Revenue: bind UT Austin 721-27005 pursuit and fail-closed qualification gate",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15058",
+   "base_freshness": {
+    "base_sha": "f2b3fc972b871164a2cde73b771eab1c79043d01",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15047,
+   "author": "woahwhattheheck",
+   "title": "Build deterministic Hyperagent event-to-transcript paid-pilot adapter",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15047",
+   "base_freshness": {
+    "base_sha": "0af79da45a672d38023cf246a004c2cdf7e95c14",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15061,
+   "author": "woahwhattheheck",
+   "title": "commercial: recover SaaS migration parity pilot onto current main",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15061",
+   "base_freshness": {
+    "base_sha": "ee7b2c5db8a242d039a1af22c32cdc22d25d0db5",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15055,
+   "author": "woahwhattheheck",
+   "title": "feat(outbound): add terminal one-shot provider consumer",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15055",
+   "base_freshness": {
+    "base_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "FRESH"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15062,
+   "author": "woahwhattheheck",
+   "title": "fix(hive-media): recover creative review desk with honest integrity boundary",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15062",
+   "base_freshness": {
+    "base_sha": "b3279b288040da2bd9b07c4a133c3c6b96a8a84a",
+    "main_sha": "1f152959f61924ca5d9db21d038835c5c6072d2f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
