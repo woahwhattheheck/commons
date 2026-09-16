@@ -1,0 +1,45 @@
+name: zplh-reply-provenance-repair
+
+on:
+  push:
+    branches:
+      - zplh-x4q7/reply-event-finalization-20260915
+    paths:
+      - tools/zplh_reply_provenance_repair.py
+      - .github/workflows/zplh-reply-provenance-repair.yml
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout candidate branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Apply provenance repair
+        run: python3 tools/zplh_reply_provenance_repair.py
+      - name: Regenerate canonical funnel
+        run: python3 host/reply_to_revenue.py snapshot --output revenue/reply_to_revenue/funnel.json
+      - name: Run normal product suites
+        run: python3 -m unittest -v test_reply_to_revenue test_reply_to_revenue_event_identity
+      - name: Run optimized product suites
+        run: python3 -O -m unittest -v test_reply_to_revenue test_reply_to_revenue_event_identity
+      - name: Verify syntax and patch hygiene
+        run: |
+          python3 -m py_compile host/reply_to_revenue.py host/reply_to_revenue_core.py test_reply_to_revenue.py test_reply_to_revenue_event_identity.py
+          git diff --check
+      - name: Commit repaired carrier
+        run: |
+          git config user.name "ZPLH-X4Q7"
+          git config user.email "tokenjunkielabs@gmail.com"
+          git add host/reply_to_revenue_core.py test_reply_to_revenue_event_identity.py revenue/reply_to_revenue/funnel.json
+          git commit -m "Bind reply observations to canonical receipt provenance"
+          git push origin HEAD:zplh-x4q7/reply-event-finalization-20260915
