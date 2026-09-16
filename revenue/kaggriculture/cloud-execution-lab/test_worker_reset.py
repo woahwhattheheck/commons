@@ -244,14 +244,64 @@ def _run_game(
         current = loaded_entrypoint.__globals__.get("_INSTANCE")
         if current is None:
             if active_instance is None:
-                raise AssertionError(("canonical singleton absent without prior live instance", scenario, step))
-            diagnostics = dict(active_instance.diagnostics)
-            if (diagnostics.get("status") != "deadline_fallback"
-                    or diagnostics.get("entrypoint_guard") is not True):
-                raise AssertionError(("unaccounted singleton discard", scenario, step, diagnostics))
-            last_instance = active_instance
-            active_instance = None
-            within_episode_discards += 1
+                globals_dict = loaded_entrypoint.__globals__
+                spatial = globals_dict.get("_SPATIAL_RECOVERY")
+                raw_route = globals_dict.get("_ROUTE_RECOVERY")
+                normalize_route = globals_dict.get("_route_recovery_capsule")
+                route = normalize_route(raw_route) if callable(normalize_route) else None
+                spatial_ok = (
+                    isinstance(spatial, dict)
+                    and set(spatial) == {"last_step", "state"}
+                    and spatial.get("last_step") == step
+                )
+                route_ok = (
+                    isinstance(route, dict)
+                    and route.get("last_step") == step
+                    and route.get("player") == seat
+                )
+                prior_diagnostics = (
+                    dict(getattr(last_instance, "diagnostics", {}) or {})
+                    if last_instance is not None else {}
+                )
+                import titan_runtime
+
+                obs = dict(state[seat].observation)
+                cfg_dict = dict(cfg)
+                last = int(cfg_dict.get("episodeSteps", 720)) - 2
+                expected = (
+                    titan_runtime.deadline.terminal_liquidation_fallback(obs, cfg_dict)
+                    if step == last else titan_runtime.deadline.legal_pass(obs)
+                )
+                if (
+                    last_instance is None
+                    or prior_diagnostics.get("status") != "deadline_fallback"
+                    or prior_diagnostics.get("entrypoint_guard") is not True
+                    or last_step is None
+                    or step != last_step + 1
+                    or not (spatial_ok or route_ok)
+                    or action != expected
+                ):
+                    raise AssertionError((
+                        "uncertified consecutive singleton absence",
+                        scenario,
+                        step,
+                        {
+                            "prior_entrypoint_guard": prior_diagnostics.get("entrypoint_guard"),
+                            "prior_status": prior_diagnostics.get("status"),
+                            "previous_step": last_step,
+                            "spatial_recovery": spatial_ok,
+                            "route_recovery": route_ok,
+                            "visible_state_fallback": action == expected,
+                        },
+                    ))
+            else:
+                diagnostics = dict(active_instance.diagnostics)
+                if (diagnostics.get("status") != "deadline_fallback"
+                        or diagnostics.get("entrypoint_guard") is not True):
+                    raise AssertionError(("unaccounted singleton discard", scenario, step, diagnostics))
+                last_instance = active_instance
+                active_instance = None
+                within_episode_discards += 1
         else:
             diagnostics = dict(current.diagnostics)
             if (diagnostics.get("parent_calls") != 1
