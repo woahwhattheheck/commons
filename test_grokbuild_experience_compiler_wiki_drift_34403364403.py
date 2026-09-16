@@ -58,7 +58,7 @@ class TestGrokbuildExperienceCompilerWikiDrift34403364403(unittest.TestCase):
             check=False,
         )
         self.assertEqual(check.returncode, 0, msg=check.stdout + check.stderr)
-        self.assertIn("CURRENT 1 records 5 outputs", check.stdout)
+        self.assertIn("CURRENT 4 records 7 outputs", check.stdout)
         unit = subprocess.run(
             ["python3", "-m", "unittest", "-v", "test_experience_compiler.py"],
             cwd=ROOT,
@@ -81,11 +81,11 @@ class TestGrokbuildExperienceCompilerWikiDrift34403364403(unittest.TestCase):
         self.assertEqual(rc.returncode, 0, msg=rc.stdout + rc.stderr)
         self.assertEqual(before_index, INDEX.read_text(encoding="utf-8"))
         self.assertEqual(before_pattern, PATTERN.read_text(encoding="utf-8"))
-        self.assertTrue(git_blob("experience/wiki/index.md").startswith("72983a5f"))
+        self.assertTrue(git_blob("experience/wiki/index.md").startswith("427cab45"))
         self.assertTrue(
             git_blob(
                 "experience/wiki/patterns/publish-discovery-before-interaction.md"
-            ).startswith("23bf2ca8")
+            ).startswith("04ae47a4")
         )
 
     def test_receipt_and_open_door(self) -> None:
