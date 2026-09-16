@@ -141,6 +141,19 @@ class PartnerFitTests(unittest.TestCase):
                 payload = valid_payload(); payload["workshare"]["role_statement"] = original.replace(removed, "")
                 self.assertIn(expected, compile_partner_fit(payload, now=NOW)["reasons"])
 
+    def test_role_substring_and_contradiction_cannot_pass(self):
+        payload = valid_payload()
+        payload["workshare"]["role_statement"] = "Unpaid fixed-fee specialist subcontract/workshare; not staffing; not recruiting; not platform replacement."
+        receipt = compile_partner_fit(payload, now=NOW)
+        self.assertEqual(receipt["status"], "HOLD")
+        self.assertIn("ROLE_CLARITY_PAID_MISSING", receipt["reasons"])
+        self.assertIn("ROLE_CLARITY_CONTRADICTORY", receipt["reasons"])
+
+        payload = valid_payload()
+        payload["workshare"]["role_statement"] = "Paid fixed-fee specialist not subcontract but workshare; not staffing; not recruiting; not platform replacement."
+        receipt = compile_partner_fit(payload, now=NOW)
+        self.assertIn("ROLE_CLARITY_CONTRADICTORY", receipt["reasons"])
+
     def test_route_organization_binding_holds(self):
         payload = valid_payload(); payload["route"]["organization"] = "Other Integrator"
         self.assertIn("ROUTE_ORGANIZATION_MISMATCH", compile_partner_fit(payload, now=NOW)["reasons"])
