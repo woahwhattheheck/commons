@@ -1,11 +1,13 @@
 """Review invariants against real Git objects and fast-forward races."""
 import copy
 import datetime as dt
+import io
 import json
 import subprocess
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 from host import coordination_state as cs
 from host import swarm_review as sr
@@ -142,6 +144,54 @@ class Queue(unittest.TestCase):
     def test_duplicate_metadata_and_path_traversal_are_not_review_subjects(self):
         self.assertIsNone(sr.block('```commons-work\n{"seat":"A","seat":"B"}\n```', "commons-work"))
         self.assertFalse(sr.paths_valid(["../policy"]))
+
+
+class ClosedPacket(unittest.TestCase):
+    """Packet is a review aid: closed or merged PRs must not fail the CLI."""
+
+    def test_merged_stub_is_already_present(self):
+        row = sr.closed_packet(14900, {"state": "closed", "merged": True})
+        self.assertEqual(14900, row["number"])
+        self.assertEqual("ALREADY_PRESENT", row["review"]["state"])
+        self.assertEqual("PR is no longer open", row["review"]["reason"])
+        self.assertEqual({}, row["review_template"])
+        self.assertEqual("", row["diff"])
+        self.assertFalse(row["diff_truncated"])
+
+    def test_closed_unmerged_stub_is_unknown(self):
+        row = sr.closed_packet(12, {"state": "closed", "merged": False})
+        self.assertEqual("UNKNOWN", row["review"]["state"])
+        self.assertEqual("PR is no longer open", row["review"]["reason"])
+
+    def test_packet_writes_stub_and_exits_zero(self):
+        pulls = {
+            14900: {"number": 14900, "state": "closed", "merged": True},
+            12: {"number": 12, "state": "closed", "merged": False},
+        }
+        out = Path(tempfile.mkdtemp()) / "packet.json"
+        with mock.patch.object(sr, "live_pull", side_effect=lambda _gh, n: pulls[n]) as live, \
+             mock.patch.object(sr, "verify_live") as verify:
+            code = sr.main(["packet", "--prs", "14900,12", "--out", str(out)])
+        self.assertEqual(0, code)
+        self.assertEqual(2, live.call_count)
+        verify.assert_not_called()
+        data = json.loads(out.read_text())
+        self.assertEqual("commons-review-packet/v1", data["schema"])
+        self.assertEqual([14900, 12], [row["number"] for row in data["prs"]])
+        self.assertEqual("ALREADY_PRESENT", data["prs"][0]["review"]["state"])
+        self.assertEqual("UNKNOWN", data["prs"][1]["review"]["state"])
+
+    def test_check_and_merge_still_refuse_closed_prs(self):
+        pull = {"number": 14900, "state": "closed", "merged": True}
+        with mock.patch.object(sr, "live_pull", return_value=pull):
+            for command in ("check", "merge"):
+                buf = io.StringIO()
+                with mock.patch("sys.stdout", buf):
+                    code = sr.main([command, "--pr", "14900"])
+                self.assertEqual(1, code, command)
+                payload = json.loads(buf.getvalue())
+                self.assertEqual("UNKNOWN", payload["state"])
+                self.assertIn("no longer open", payload["reason"])
 
 
 if __name__ == "__main__":

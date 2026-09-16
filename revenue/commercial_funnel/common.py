@@ -139,6 +139,10 @@ def validate_source(value: Any, field: str) -> dict[str, str]:
     if not isinstance(repository, str) or not REPO_RE.fullmatch(repository):
         raise FunnelError(f"{field}.repository invalid")
     safe_text(repository, f"{field}.repository")
+    # GitHub owner/repository identity is case-insensitive. Canonicalize at the
+    # single source-validation boundary so every downstream authority map,
+    # event dedupe path, and logical-offer comparison consumes one identity.
+    repository = repository.casefold()
     commit = source["commit"]
     if not isinstance(commit, str) or not HEX40.fullmatch(commit):
         raise FunnelError(f"{field}.commit must be immutable lowercase 40-hex commit")

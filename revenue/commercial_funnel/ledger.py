@@ -21,8 +21,42 @@ from .common import (
     sha256,
     strict_loads,
     validate_json_scalars,
+    validate_source,
 )
-from .model import csv_bytes, markdown_bytes, metrics, normalize_opportunity
+from .model import csv_bytes, markdown_bytes, metrics, normalize_opportunity, source_key
+
+
+def _hold(opportunities: list[dict[str, Any]], impacted: set[str], reason: str) -> None:
+    for opp in opportunities:
+        if opp["id"] in impacted:
+            opp["hold_reasons"] = sorted(set(opp["hold_reasons"]) | {reason})
+            opp["state"] = HOLD
+            opp["next_evidence_needed"] = "REVIEW_HOLD_REASONS"
+
+
+def _semantic_digest_projection(raw: dict[str, Any], field: str) -> dict[str, Any]:
+    """Canonicalize provider identity without erasing raw-input conflict evidence.
+
+    GitHub repository owner/name identity is case-insensitive. The authority model
+    already validates and case-folds source identities before role/reuse checks;
+    the packet input digest must apply the same equivalence. Other raw event
+    fields remain untouched so conflicting same-ID rows still bind distinct input
+    bytes instead of disappearing behind normalized event retention.
+    """
+    digest_opp = dict(raw)
+    offer = dict(raw["offer"])
+    offer["source"] = validate_source(offer["source"], f"{field}.offer.source")
+    digest_opp["offer"] = offer
+
+    unique_events: dict[bytes, dict[str, Any]] = {}
+    for i, event in enumerate(raw["events"]):
+        digest_event = dict(event)
+        digest_event["evidence"] = validate_source(
+            event["evidence"], f"{field}.events[{i}].evidence"
+        )
+        unique_events[canonical_json(digest_event)] = digest_event
+    digest_opp["events"] = [unique_events[key] for key in sorted(unique_events)]
+    return digest_opp
 
 
 def compile_funnel(value: Any, *, as_of: str) -> dict[str, Any]:
@@ -37,7 +71,13 @@ def compile_funnel(value: Any, *, as_of: str) -> dict[str, Any]:
 
     normalized: list[dict[str, Any]] = []
     ids: set[str] = set()
-    evidence_owners: dict[tuple[str, str, str, str], set[str]] = defaultdict(set)
+    event_evidence_owners: dict[tuple[str, str, str, str], set[str]] = defaultdict(set)
+    offer_source_owners: dict[tuple[str, str, str, str], set[str]] = defaultdict(set)
+    offer_identity_sources: dict[
+        tuple[str, str, str],
+        dict[tuple[str, str, str, str], set[str]],
+    ] = defaultdict(lambda: defaultdict(set))
+
     for i, raw in enumerate(raw_opportunities):
         opp, usage = normalize_opportunity(raw, f"opportunities[{i}]", evaluated)
         if opp["id"] in ids:
@@ -45,30 +85,58 @@ def compile_funnel(value: Any, *, as_of: str) -> dict[str, Any]:
         ids.add(opp["id"])
         normalized.append(opp)
         for key, owners in usage.items():
-            evidence_owners[key].update(owners)
+            event_evidence_owners[key].update(owners)
 
-    cross_reused = {key: owners for key, owners in evidence_owners.items() if len(owners) > 1}
+        offer_key = source_key(opp["offer"]["source"])
+        offer_source_owners[offer_key].add(opp["id"])
+        identity = (opp["family"], opp["offer"]["id"], opp["offer"]["version"])
+        offer_identity_sources[identity][offer_key].add(opp["id"])
+
+    cross_reused = {
+        key: owners for key, owners in event_evidence_owners.items() if len(owners) > 1
+    }
     if cross_reused:
-        impacted = set().union(*cross_reused.values())
-        for opp in normalized:
-            if opp["id"] in impacted:
-                opp["hold_reasons"] = sorted(set(opp["hold_reasons"]) | {"EVIDENCE_REUSED_ACROSS_OPPORTUNITIES"})
-                opp["state"] = HOLD
-                opp["next_evidence_needed"] = "REVIEW_HOLD_REASONS"
+        _hold(
+            normalized,
+            set().union(*cross_reused.values()),
+            "EVIDENCE_REUSED_ACROSS_OPPORTUNITIES",
+        )
+
+    # Offer-definition bytes and commercial-event evidence are different semantic
+    # roles. Rebinding one immutable object across those roles is ambiguous even
+    # when the uses occur in different opportunities.
+    cross_role_keys = set(event_evidence_owners) & set(offer_source_owners)
+    if cross_role_keys:
+        impacted: set[str] = set()
+        for key in cross_role_keys:
+            impacted.update(event_evidence_owners[key])
+            impacted.update(offer_source_owners[key])
+        _hold(normalized, impacted, "EVIDENCE_ROLE_CONFLICT")
+
+    # One logical offer version has one immutable definition. Multiple
+    # opportunities may reference that same definition, but the same logical
+    # identity cannot silently resolve to different source objects.
+    for sources in offer_identity_sources.values():
+        if len(sources) > 1:
+            _hold(
+                normalized,
+                set().union(*sources.values()),
+                "OFFER_SOURCE_IDENTITY_CONFLICT",
+            )
 
     normalized.sort(key=lambda opp: opp["id"])
     packet_metrics = metrics(normalized)
     overall = READY if packet_metrics["held_opportunity_count"] == 0 else HOLD
-    digest_opportunities = []
-    for raw in raw_opportunities:
-        digest_opp = dict(raw)
-        # The semantic input digest is order-independent and replay-idempotent:
-        # an exact duplicate event does not mint a different packet identity.
-        unique_events = {canonical_json(event): event for event in raw["events"]}
-        digest_opp["events"] = [unique_events[key] for key in sorted(unique_events)]
-        digest_opportunities.append(digest_opp)
-    digest_opportunities.sort(key=lambda item: (require_id(item["id"], "opportunity.id"), canonical_json(item)))
-    input_digest = sha256(canonical_json({"schema": INPUT_SCHEMA, "opportunities": digest_opportunities}))
+    digest_opportunities = [
+        _semantic_digest_projection(raw, f"opportunities[{i}]")
+        for i, raw in enumerate(raw_opportunities)
+    ]
+    digest_opportunities.sort(
+        key=lambda item: (require_id(item["id"], "opportunity.id"), canonical_json(item))
+    )
+    input_digest = sha256(
+        canonical_json({"schema": INPUT_SCHEMA, "opportunities": digest_opportunities})
+    )
     authority = {
         "buyer_contact_authorized": False,
         "acceptance_authorized": False,
@@ -140,7 +208,7 @@ def verify_artifacts(
     report_csv: bytes,
     report_markdown: bytes,
 ) -> bool:
-    """Recompile from semantic input and byte-verify every emitted artifact."""
+    """Byte-verify an artifact set at its explicitly supplied historical instant."""
     try:
         expected = compile_funnel(value, as_of=as_of)
         if not verify_compilation(value, as_of=as_of, packet=packet, receipt=receipt):
@@ -152,6 +220,65 @@ def verify_artifacts(
             and receipt.get("outputs", {}).get("report_json_sha256") == sha256(report_json)
             and receipt.get("outputs", {}).get("report_csv_sha256") == sha256(report_csv)
             and receipt.get("outputs", {}).get("report_markdown_sha256") == sha256(report_markdown)
+        )
+    except (FunnelError, TypeError, ValueError, OverflowError):
+        return False
+
+
+def verify_artifacts_current(
+    value: Any,
+    *,
+    trusted_now: str,
+    packet: Any,
+    receipt: Any,
+    report_json: bytes,
+    report_csv: bytes,
+    report_markdown: bytes,
+) -> bool:
+    """Verify original bytes and independently re-evaluate time-sensitive truth now.
+
+    The receipt's own evaluation instant is used only to prove that the stored
+    bytes are the exact deterministic result originally emitted. Currentness is
+    established separately against trusted runtime UTC, never a time selected by
+    the artifact or caller.
+    """
+    try:
+        if not isinstance(packet, dict) or not isinstance(receipt, dict):
+            return False
+        evaluated_at = receipt.get("evaluated_at")
+        if not isinstance(evaluated_at, str):
+            return False
+        evaluated = parse_time(evaluated_at, "receipt.evaluated_at")
+        current_time = parse_time(trusted_now, "trusted_now")
+        if evaluated > current_time:
+            return False
+
+        if not verify_artifacts(
+            value,
+            as_of=evaluated_at,
+            packet=packet,
+            receipt=receipt,
+            report_json=report_json,
+            report_csv=report_csv,
+            report_markdown=report_markdown,
+        ):
+            return False
+
+        current_packet = compile_funnel(value, as_of=trusted_now)["packet"]
+        # These fields contain the time-sensitive semantic truth of the packet.
+        # Output hashes and evaluated_at intentionally differ when re-evaluated.
+        semantic_fields = (
+            "schema",
+            "state",
+            "max_evidence_age_seconds",
+            "input_sha256",
+            "metrics",
+            "opportunities",
+            "authority",
+        )
+        return all(
+            canonical_json(packet.get(field)) == canonical_json(current_packet.get(field))
+            for field in semantic_fields
         )
     except (FunnelError, TypeError, ValueError, OverflowError):
         return False
@@ -170,5 +297,6 @@ __all__ = [
     "compile_funnel",
     "strict_loads",
     "verify_artifacts",
+    "verify_artifacts_current",
     "verify_compilation",
 ]
