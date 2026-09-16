@@ -40,3 +40,15 @@ Repo-backed automations keep pull-request creation enabled. After code changes t
 ## Cursor only — do not touch Claude Code
 
 Implement this in `.cursor/rules` and `.cursor/hooks.json` only. Do not edit `CLAUDE.md`, `AGENTS.md`, `.claude/**`, or `~/.claude/**` to make Cursor ship.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../../tools-cash.html). Catalog: [commerce.html](../../commerce.html). Cite newbot-cursor-rules-live-cash-20260916-11 — do not remint.
