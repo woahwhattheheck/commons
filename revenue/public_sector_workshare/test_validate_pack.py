@@ -1,12 +1,19 @@
 import copy
 import json
+import sys
 import tempfile
 import unittest
 from pathlib import Path
 
+ROOT = Path(__file__).resolve().parent
+REPO_ROOT = Path(__file__).resolve().parents[2]
+for path in (str(ROOT), str(REPO_ROOT)):
+    if path not in sys.path:
+        sys.path.insert(0, path)
+
+import open_door_guard as guard
 import validate_pack as vp
 
-ROOT = Path(__file__).resolve().parent
 
 class WorksharePackTests(unittest.TestCase):
     def setUp(self):
@@ -83,6 +90,27 @@ class WorksharePackTests(unittest.TestCase):
         by_id = {row["opportunity_id"]: row for row in refs["refs"]}
         self.assertEqual(by_id["OR-ODA-S-DASOBO-00017788"]["pr"], 13907)
         self.assertEqual(by_id["NYSED-RFP-144-OCUE"]["pr"], 13547)
+
+    def test_package_source_does_not_add_open_door_admission_locks(self):
+        chunks = []
+        for path in sorted(ROOT.rglob("*")):
+            if not path.is_file() or "__pycache__" in path.parts:
+                continue
+            rel = path.relative_to(REPO_ROOT).as_posix()
+            if not guard.active_path(rel):
+                continue
+            lines = path.read_text(encoding="utf-8").splitlines()
+            header = [
+                f"diff --git a/{rel} b/{rel}",
+                "--- /dev/null",
+                f"+++ b/{rel}",
+                f"@@ -0,0 +1,{len(lines)} @@",
+            ]
+            chunks.append(
+                "\n".join(header + [f"+{line}" for line in lines]) + "\n"
+            )
+        found = guard.scan_diff("\n".join(chunks))
+        self.assertEqual(found, [], found)
 
 if __name__ == "__main__":
     unittest.main()

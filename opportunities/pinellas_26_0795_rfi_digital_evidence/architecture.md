@@ -4,55 +4,70 @@ This is a **reference architecture / integration-assurance component**, not a cl
 
 ## Core invariants
 
-1. **Content identity is separate from metadata.** Every uploaded digital object receives a cryptographic content digest over the immutable original bytes. Case IDs, exhibit numbers, confidentiality labels and workflow state are metadata that may evolve; they do not silently change evidence identity.
-2. **Every material action is an event.** Submission, virus-scan disposition, metadata edits, view/access, copy/export, status/classification change, acceptance/finalization, legal hold, retention decision and destruction authorization append events. The County RFI explicitly calls for activity on all file actions, including viewing.
-3. **Event history is hash-linked and externally witnessed.** Each event commits to the prior event hash, canonical payload, actor and UTC timestamp. Hash linking alone is self-resealable and therefore does not prove which coherent history was retained. Verification must also match an independently retained witness binding the exact event count, chain head and current state. Reorder/deletion/mutation fails semantic/hash replay; a coherent fully rehashed alternate history fails the external witness.
-4. **Accepted/finalized evidence is immutable.** A workflow lock blocks byte replacement. Later redaction/derivative/copy operations create separately identified objects linked to the original; they do not rewrite original bytes.
-5. **Retention and destruction are externally rooted authority transitions, not delete buttons.** Eligibility comes from an authorized schedule record; legal hold/release comes from authority evidence; notice/copy completion, approvals and destruction authority are exact generated records. Lifecycle events bind the exact authority snapshot root plus each record generation/root. Verification reacquires archived snapshot bytes and requires the snapshot root to be independently trusted. Final destruction requires current eligible retention evidence, completed notice evidence, at least two current approvals from distinct issuers, explicit destruction authority, and no active hold.
-6. **Views matter.** Read access emits audit events with actor, purpose/context, object identity and authorization decision; the system should not treat read-only access as invisible.
-7. **External submission is untrusted input.** Uploads land in quarantine, are size/type bounded and scanned before being promoted into the managed evidence store. Client-provided MIME names do not establish trusted type.
-8. **Court/CMS systems remain systems of authority for case context unless expressly migrated.** Integration adapters use stable external IDs and idempotency keys so retries cannot duplicate submissions or silently attach evidence to a different case/hearing.
-9. **Test/training is isolated.** No production court records or live external-user identities enter training by default. Test data is synthetic or explicitly authorized, and the environment has separate credentials/endpoints.
-10. **Exports are verifiable.** Authorized copies carry a manifest with object digest, requested representation, custody-window/event digest, export actor, time and authority so downstream consumers can verify origin without modifying the managed original.
+1. **Content identity is separate from metadata.** Every uploaded object receives a cryptographic content digest over immutable original bytes. Case IDs, exhibit numbers, confidentiality labels and workflow state do not silently change evidence identity.
+2. **Every material action is an event.** Submission, scan disposition, metadata edits, view/access, copy/export, status/classification change, acceptance/finalization, legal hold, retention decision and destruction authorization append events. The County RFI explicitly calls for activity on all file actions, including viewing.
+3. **Current history is hash-linked and host-witnessed.** Hash links detect mutation relative to a retained head but are self-resealable in isolation. Current verification therefore also requires an exact witness retained outside the request caller's mutable evidence object.
+4. **Accepted/finalized evidence is immutable.** Later redaction/derivative/copy operations create separately identified objects; they do not rewrite accepted originals.
+5. **Current time belongs to the host boundary.** Low-level replay accepts explicit event times for deterministic historical analysis. Current request operations do not. The current service obtains one canonical UTC instant from its captured host provider, uses it to verify the predecessor and construct the transition, then verifies the successor against that same current instant before commit. Future authority cannot be promoted by a request-selected clock.
+6. **Current witness advancement is atomic and publication is descriptor-free.** The host provider exposes exact expected-predecessor → successor compare-and-retain semantics. A current mutation verifies a raw-storage clone, constructs and fully re-verifies the successor, preflights the caller's exact built-in instance dictionary and the successor publication values, atomically advances the witness, and then replaces only the already-existing raw dictionary keys through captured built-in `dict.__setitem__`. No `Evidence.__setattr__`/property setter is dispatched after CAS. Concurrent same-predecessor writers cannot both commit, and ordinary late `Evidence` data descriptors cannot create a committed-host/unpublished-local split.
+7. **Retention and destruction are host-rooted authority transitions.** Eligibility, hold/release, notice, approvals and destruction authority are generation-bound records. Current hold/destruction obtains the snapshot from the host provider; request callers cannot supply a snapshot, root or trusted-root extension. Verification reacquires exact archived snapshot generations referenced by retained events and recomputes their record/snapshot roots inside the current authority graph.
+8. **The current semantic graph does not late-delegate to mutable low-level authority helpers.** `custody_reference.py` remains the historical/integrity model. The current service independently implements canonical timestamp validation, canonical JSON, authority-record/snapshot roots, event hashing, witness generation, semantic replay and transition construction from captured runtime primitives. The concrete `NoneType` is captured when the private graph is built. Authority-record and Evidence values are read through captured `object.__getattribute__` from exact raw instance dictionaries instead of descriptor lookup. Ordinary late rebinding of the previously exploitable low-level `_utc`, `AuthoritySnapshot.bind_current`/root, `AuthorityRecord.root`/field descriptors, `Evidence.verify`/witness methods, module builtin names or `hashlib.sha256` does not retarget an already constructed current graph.
+9. **Views matter.** Read access emits audit events with actor, purpose/context, object identity and authorization decision; read-only access is not invisible.
+10. **External submission is untrusted input.** Uploads land in quarantine, are bounded/scanned, and client-provided MIME labels do not establish trusted type.
+11. **Court/CMS systems remain systems of authority for case context unless expressly migrated.** Integration adapters use stable external IDs and idempotency keys so retries cannot duplicate submissions or attach evidence to a different case/hearing.
+12. **Test/training is isolated.** No production court records or live external-user identities enter training by default. Test data is synthetic or explicitly authorized.
+13. **Exports are verifiable.** Authorized copies carry object digest, requested representation, custody-window/event digest, export actor/time and authority metadata.
 
-## Trust-root boundary
+## Historical primitive vs current-positive composition
 
-The supplied Python reference demonstrates the data contract at the evidence-system boundary; it is not itself a court PKI, records-authority service or immutable ledger. Two values must be retained outside the mutable `Evidence` object:
+The supplied Python reference has two deliberate layers.
 
-- a custody witness for the accepted event-history generation; and
-- trusted roots for the exact authority snapshots used by hold/release/destruction transitions.
+`custody_reference.py` is the **deterministic historical/integrity primitive**. Explicit timestamps, `expected_witness`, snapshots and trusted roots are inputs to replay. Possession of well-formed values is not itself current trust.
 
-Possession of snapshot bytes is not trust. A caller-generated snapshot whose root is absent from the independent trust store is rejected even if every record is internally well-formed and all event hashes are recomputed. A production design should obtain these roots from an authenticated append-only store, signed authority service, or equivalent County-controlled system and retain historical generations required to verify prior transitions.
+`current_custody_service.py` is the **current-positive composition boundary**. The public factory accepts one host provider and current operations accept business-event inputs only. They do not accept current time, witness, snapshot, trusted root or trust-set members.
+
+The provider supplies:
+
+- canonical current UTC time;
+- the retained predecessor witness;
+- atomic compare-and-retain of predecessor → successor witness;
+- the current authority snapshot; and
+- archived authority snapshot generations.
+
+The module constructs the public factory from captured low-level data types plus canonical hashing/time/object/builtin primitives. Current verification and mutation do not call the low-level authority-affecting methods that previously allowed transitive rebinding. On each existing-object mutation, the service:
+
+1. acquires host current time and retained predecessor witness;
+2. reads the caller's exact raw instance dictionary and clones the seven custody fields into a freshly allocated raw-storage `Evidence` value without descriptor assignment;
+3. independently verifies the complete predecessor chain/state/witness and all archived authority bindings against host time;
+4. constructs the candidate transition using the same host time and raw storage;
+5. independently verifies the complete successor, including any new authority binding, against that same time and the successor witness;
+6. preflights the target's exact raw storage identity/shape and clones every successor publication value **before** host mutation;
+7. atomically advances the exact predecessor witness to the successor through the host; and
+8. publishes the already-preflighted successor by replacing the target's existing built-in dictionary values through captured `dict.__setitem__`, without `Evidence` descriptor dispatch.
+
+A newly supplied current snapshot must already be retrievable from the host's archived-snapshot surface by the recomputed root before a transition that references it can commit. This prevents a transition from committing an authority generation the verifier cannot subsequently reacquire.
+
+The boundary is intentionally narrower than an interpreter sandbox. Arbitrary closure-cell manipulation, debugger/interpreter compromise, source replacement, malicious concurrent raw-dictionary mutation or a malicious host provider are deployment/infrastructure concerns, not authority guarantees claimed by this Python reference. The code also does not create authentication, credentials, ACLs, user admission or another authorization subsystem.
 
 ## Logical components
 
-- **Submission edge:** browser/mobile upload, chunked resumable transfer, notification hooks, quarantine status.
+- **Submission edge:** browser/mobile upload, resumable transfer, notification hooks, quarantine status.
 - **Identity/security edge:** SSO for internal identities; MFA-capable external identity flow; provisioning/deprovisioning; role + case/workflow authorization.
-- **Object store:** immutable originals plus separately identified derivatives; U.S.-residency requirement enforced at infrastructure policy layer.
-- **Custody ledger:** append-only event stream, independently retained chain witness and deterministic verification/export service.
-- **Authority evidence store:** retained roots/generations for holds, releases, schedule eligibility, notice, approvals and destruction authority; this is separate from the evidence object's mutable state.
+- **Object store:** immutable originals plus separately identified derivatives; U.S.-residency policy at infrastructure layer.
+- **Custody ledger:** append-only event stream, independently retained witness and deterministic verification/export service.
+- **Authority evidence store:** retained generations for holds, releases, schedule eligibility, notice, approvals and destruction authority.
 - **Workflow service:** evidence/exhibit status, confidentiality/restriction, review, hearing/jury presentation, physical-item placeholders, appeal/records retrieval.
 - **Records service:** retention schedules, holds, review queues, notice/copy window, approval-bound destruction.
 - **Integration gateway:** case/hearing lookup, CMS adapters, webhooks/events, notification adapter and API rate/idempotency controls.
-- **Security pipeline:** malware scanning/quarantine, encryption/key management, security telemetry, backup/restore and DR validation.
+- **Security pipeline:** malware scanning/quarantine, encryption/key management, telemetry, backup/restore and DR validation.
 - **Admin/reporting:** inventory, search/filter, audit/custody reports, retention/destruction queues and role administration.
 
 ## Integration contract
 
-A production response should ask Pinellas to identify its authoritative court/case systems and permitted integration mechanism during a future procurement. The adapter should minimally preserve:
-
-- external system + case/hearing ID;
-- evidence/exhibit object ID + immutable content digest;
-- submitter/actor authority and tenant/context;
-- idempotency key for retries;
-- canonical lifecycle status;
-- event timestamp + source event ID;
-- link to custody verification receipt.
+A production response should ask Pinellas to identify its authoritative court/case systems and permitted integration mechanism during a future procurement. The adapter should minimally preserve external system + case/hearing ID, evidence object ID + immutable digest, submitter/actor context, idempotency key, lifecycle status, source event ID/time and custody verification receipt.
 
 Unknown CMS vendor/API details are a dependency, not a reason to fabricate an integration claim in an RFI.
 
 ## What a platform/hosting partner must prove
 
-A turnkey response requires evidence TJLabs does not currently claim in this carrier: production-scale upload/UI workflows; U.S.-based hosting topology; applicable court/criminal-justice policy compliance; operational malware scanning; enterprise IAM integrations; tested backup/restore and disaster recovery; production support/SLA; major-media compatibility at expected sizes; accessibility; court deployments/references; and exact pricing/licensing.
-
-Verification replays custody event semantics, rejects divergence between current state and the hash-linked history, checks authority events against independently trusted snapshot generations, and finally requires an independently retained custody witness for the exact history/state generation.
+A turnkey response requires evidence TJLabs does not currently claim here: production-scale upload/UI workflows; U.S.-based hosting; applicable court/criminal-justice policy compliance; operational malware scanning; enterprise IAM integrations; tested backup/restore and DR; production support/SLA; major-media compatibility; accessibility; court deployments/references; and exact pricing/licensing.

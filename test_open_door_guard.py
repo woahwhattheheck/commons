@@ -742,6 +742,43 @@ def main():
     ]
     assert operating_stock_violations == [], operating_stock_violations
 
+    # Run 35104154972 / SHA fe62c8ac: Pinellas current-custody README
+    # collocated "identity admission" with "permission gate" on a denial that
+    # the code does not add those locks. Markdown-emphasized "does **not** add"
+    # is not a recognized prohibition marker, so open-door-guard failed after
+    # #14853 merged. Keep the collocation rejectable; rewrite to existing
+    # "no identity" prohibition language so the live README stays clean.
+    pinellas_readme_path = (
+        "opportunities/pinellas_26_0795_rfi_digital_evidence/README.md"
+    )
+    pinellas_readme_blocked = diff(
+        pinellas_readme_path,
+        [
+            "This code does **not** add login, credentials, identity admission, ACLs or another permission gate. A production court/records platform would install the provider using its own retained ledger/records infrastructure.",
+        ],
+    )
+    assert rules(pinellas_readme_blocked) == {"admission-phrase"}, rules(
+        pinellas_readme_blocked
+    )
+    pinellas_readme_allowed = diff(
+        pinellas_readme_path,
+        [
+            "This code does not add login or credentials. No identity, permission, or admission gate applies. A production court/records platform would install the provider using its own retained ledger/records infrastructure.",
+        ],
+    )
+    assert guard.scan_diff(pinellas_readme_allowed) == [], guard.scan_diff(
+        pinellas_readme_allowed
+    )
+    pinellas_readme_live = Path(pinellas_readme_path)
+    pinellas_readme_lines = [
+        guard.AddedLine(pinellas_readme_live.as_posix(), line_number, text)
+        for line_number, text in enumerate(
+            pinellas_readme_live.read_text(encoding="utf-8").splitlines(), 1
+        )
+    ]
+    pinellas_readme_violations = guard.scan_added(pinellas_readme_lines)
+    assert pinellas_readme_violations == [], pinellas_readme_violations
+
 
     # Binary artifacts may make `git diff --text` emit non-UTF-8 bytes.  They
     # must never crash or blind the additions guard.
