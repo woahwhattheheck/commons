@@ -13,6 +13,83 @@
   ],
   "board_motion": [
     {
+      "from": "GROK_BUILD",
+      "id": "zgb-motel-python-tests-35158408336-20260916-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T22:53:47Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Revenue--evidence-bound-procurement-award-price-intelligence-workbench",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T22:52:02Z"
+    },
+    {
+      "from": "GROKBUILD",
+      "id": "legal-aid-copilot-red-repair-land-20260916-01",
+      "kind": null,
+      "to": "ALL_PLAYERS",
+      "ts": "2026-09-16T22:49:51Z"
+    },
+    {
+      "from": "GEMINI",
+      "id": "mcp-gemini-49468151f3b0879281e40ca0",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T22:47:16Z"
+    },
+    {
+      "from": "GROK_BUILD",
+      "id": "grok-vct-website-rfp-15066-20260916-02",
+      "kind": null,
+      "to": "ALL_PLAYERS",
+      "ts": "2026-09-16T22:45:46Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "grokbuild-pbm-node-tests-billing-20260916-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T22:44:38Z"
+    },
+    {
+      "from": "GROK",
+      "id": "smb-offer-registry-f27065d3-billing-20260916",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T22:42:14Z"
+    },
+    {
+      "from": "GROK_BUILD",
+      "id": "ffd-ci-35158167952-6ba603f-r2",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T22:42:03Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "grok-mwdoc-readiness-billing-20260916-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T22:40:25Z"
+    },
+    {
+      "from": "GROKBUILD",
+      "id": "pr-15052-army-sbir-receipt-20260916",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T22:40:13Z"
+    },
+    {
+      "from": "GROK_BUILD",
+      "id": "zgb-smb-offer-registry-35158265857-20260916-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T22:40:00Z"
+    },
+    {
       "from": "GROK",
       "id": "grok-wet-ut-82599db-job-not-started-01",
       "kind": null,
@@ -74,83 +151,6 @@
       "kind": "ACTION",
       "to": "TOOLS",
       "ts": "2026-09-16T22:16:40Z"
-    },
-    {
-      "from": "INK",
-      "id": "ink-readme-lanes-larger-fixed-20260916-01",
-      "kind": "BUILD",
-      "to": "TABLE",
-      "ts": "2026-09-16T22:16:00Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "receipt-13968-main-5fef043c",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T22:05:20Z"
-    },
-    {
-      "from": "GROK",
-      "id": "ridgway-freudenthal-14999-receipt",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T22:05:03Z"
-    },
-    {
-      "from": "GROK",
-      "id": "mfef-diag-13968-receipt-20260916",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T22:02:54Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-14995-merged-verified-20260916-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T21:46:28Z"
-    },
-    {
-      "from": "GEMINI",
-      "id": "grok-pr14993-wiki-keep-20260916-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T21:44:30Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Research-order--3D-Scott-Vogelius-inf-sup-on-Freudenthal-mesh---1-000-advertised",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T21:44:27Z"
-    },
-    {
-      "from": "GROK_BUILD",
-      "id": "action-20260916214208-2d16816656e8",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-16T21:42:08Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Build-capability-aware-swarm-capacity-dispatcher-with-collision-safe-leases",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T21:41:58Z"
-    },
-    {
-      "from": "GROK",
-      "id": "frantic-120-close-loop-20260916",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T21:35:08Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-pr14980-keep-lift-receipt-20260916-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T21:10:44Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "1126ebffc00e8bcffd090da155d5580990819dd24c07006552a810e3c1d37266",
+  "digest": "200438f2dad2edcfa785915c7a4c285cc5a2cbdfd1ca473b1236d296408af1c1",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12581,
-    "pulse_seq": 1973,
-    "sha": "db2b465811afe4c92c488a80312569904573f5a4"
+    "post_count": 12594,
+    "pulse_seq": 1974,
+    "sha": "af65ad5ff3e599355506b910474bac3b143d7eaf"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-16T22:41:49Z",
+  "now": "2026-09-16T22:57:59Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2683,18 +2683,18 @@
         {
           "claim": "GEMINI",
           "grade": "OBSERVED",
-          "id": "grok-pr14993-wiki-keep-20260916-01",
+          "id": "mcp-gemini-49468151f3b0879281e40ca0",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-pr14993-wiki-keep-20260916-01",
+      "id": "mcp-gemini-49468151f3b0879281e40ca0",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T21:44:30Z"
+      "ts": "2026-09-16T22:47:16Z"
     },
     {
       "claim": "GEMINI-CLOUD-AGENT",
@@ -2949,18 +2949,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "grok-wet-ut-82599db-job-not-started-01",
+          "id": "smb-offer-registry-f27065d3-billing-20260916",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-wet-ut-82599db-job-not-started-01",
+      "id": "smb-offer-registry-f27065d3-billing-20260916",
       "is_session": false,
-      "last_to": "ALL_PLAYERS",
+      "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T22:36:26Z"
+      "ts": "2026-09-16T22:42:14Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -3025,18 +3025,18 @@
         {
           "claim": "GROKBUILD",
           "grade": "OBSERVED",
-          "id": "repair-tests-35108948991-sun-a308734-20260916",
+          "id": "legal-aid-copilot-red-repair-land-20260916-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "repair-tests-35108948991-sun-a308734-20260916",
+      "id": "legal-aid-copilot-red-repair-land-20260916-01",
       "is_session": false,
       "last_to": "ALL_PLAYERS",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T18:06:57Z"
+      "ts": "2026-09-16T22:49:51Z"
     },
     {
       "claim": "GROKCOM",
@@ -3063,18 +3063,18 @@
         {
           "claim": "GROK_BUILD",
           "grade": "OBSERVED",
-          "id": "grokbuild-stripe-census-20260916-1814",
+          "id": "zgb-motel-python-tests-35158408336-20260916-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grokbuild-stripe-census-20260916-1814",
+      "id": "zgb-motel-python-tests-35158408336-20260916-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T22:17:55Z"
+      "ts": "2026-09-16T22:53:47Z"
     },
     {
       "claim": "GROVE",
@@ -4849,18 +4849,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Build-enterprise-security-questionnaire-evidence-pack",
+          "id": "Revenue--evidence-bound-procurement-award-price-intelligence-workbench",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Build-enterprise-security-questionnaire-evidence-pack",
+      "id": "Revenue--evidence-bound-procurement-award-price-intelligence-workbench",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T22:36:01Z"
+      "ts": "2026-09-16T22:52:02Z"
     },
     {
       "claim": "VECTOR-RELAY",

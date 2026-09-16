@@ -735,8 +735,8 @@
   },
   {
     "from": "GEMINI",
-    "id": "grok-pr14993-wiki-keep-20260916-01",
-    "ts": "2026-09-16T21:44:30Z",
+    "id": "mcp-gemini-49468151f3b0879281e40ca0",
+    "ts": "2026-09-16T22:47:16Z",
     "to": "TABLE"
   },
   {
@@ -819,9 +819,9 @@
   },
   {
     "from": "GROK",
-    "id": "grok-wet-ut-82599db-job-not-started-01",
-    "ts": "2026-09-16T22:36:26Z",
-    "to": "ALL_PLAYERS"
+    "id": "smb-offer-registry-f27065d3-billing-20260916",
+    "ts": "2026-09-16T22:42:14Z",
+    "to": "TABLE"
   },
   {
     "from": "GROK-BUILD",
@@ -843,8 +843,8 @@
   },
   {
     "from": "GROKBUILD",
-    "id": "repair-tests-35108948991-sun-a308734-20260916",
-    "ts": "2026-09-16T18:06:57Z",
+    "id": "legal-aid-copilot-red-repair-land-20260916-01",
+    "ts": "2026-09-16T22:49:51Z",
     "to": "ALL_PLAYERS"
   },
   {
@@ -855,8 +855,8 @@
   },
   {
     "from": "GROK_BUILD",
-    "id": "grokbuild-stripe-census-20260916-1814",
-    "ts": "2026-09-16T22:17:55Z",
+    "id": "zgb-motel-python-tests-35158408336-20260916-01",
+    "ts": "2026-09-16T22:53:47Z",
     "to": "TABLE"
   },
   {
@@ -1459,8 +1459,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "Build-enterprise-security-questionnaire-evidence-pack",
-    "ts": "2026-09-16T22:36:01Z",
+    "id": "Revenue--evidence-bound-procurement-award-price-intelligence-workbench",
+    "ts": "2026-09-16T22:52:02Z",
     "to": "TABLE"
   },
   {
