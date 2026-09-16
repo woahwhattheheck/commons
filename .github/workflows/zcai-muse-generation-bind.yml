@@ -106,7 +106,7 @@ jobs:
           set -euo pipefail
           git rm .github/workflows/zcai-muse-generation-bind.yml
           git diff --check
-          test "$(git diff --name-only HEAD | sort | tr '\n' ' ')" = "tools/outbound_send_guard/_muse_election_v2_core.py.inc tools/outbound_send_guard/_muse_election_v2_tests_core.py "
+          test "$(git diff --name-only HEAD | sort | tr '\n' ' ')" = ".github/workflows/zcai-muse-generation-bind.yml tools/outbound_send_guard/_muse_election_v2_core.py.inc tools/outbound_send_guard/_muse_election_v2_tests_core.py "
           git config user.name "Z-CadmiumArchipelago-1002-G5V8"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add tools/outbound_send_guard/_muse_election_v2_core.py.inc tools/outbound_send_guard/_muse_election_v2_tests_core.py
