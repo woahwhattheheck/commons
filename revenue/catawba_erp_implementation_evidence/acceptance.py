@@ -27,6 +27,10 @@ def _text(value: Any, name: str, max_len: int = 256) -> str:
     value = value.strip()
     if not value or len(value) > max_len:
         raise ValueError(f"{name} must be non-empty and <= {max_len} chars")
+    try:
+        value.encode("utf-8")
+    except UnicodeEncodeError as exc:
+        raise ValueError(f"{name} must contain scalar Unicode") from exc
     return value
 
 
@@ -52,17 +56,31 @@ def _decimal(value: Any, name: str) -> str:
     return "0" if rendered in {"-0", ""} else rendered
 
 
+def _reject_sensitive_fixture_fields(value: Any) -> None:
+    if isinstance(value, dict):
+        for key, child in value.items():
+            lowered = str(key).lower()
+            if lowered in FORBIDDEN_FIXTURE_FIELDS:
+                raise ValueError(f"raw sensitive fixture field forbidden: {lowered}")
+            _reject_sensitive_fixture_fields(child)
+    elif isinstance(value, list):
+        for child in value:
+            _reject_sensitive_fixture_fields(child)
+
+
 def _safe_attributes(value: Any) -> dict[str, Any]:
     if value is None:
         return {}
     if not isinstance(value, dict):
         raise TypeError("attributes must be an object")
-    lowered = {str(k).lower() for k in value}
-    exposed = sorted(lowered & FORBIDDEN_FIXTURE_FIELDS)
-    if exposed:
-        raise ValueError(f"raw sensitive fixture field forbidden: {exposed[0]}")
-    stable_json(value)
-    return json.loads(stable_json(value))
+    serialized = stable_json(value)
+    try:
+        serialized.encode("utf-8")
+    except UnicodeEncodeError as exc:
+        raise ValueError("attributes must contain scalar Unicode") from exc
+    normalized = json.loads(serialized)
+    _reject_sensitive_fixture_fields(normalized)
+    return normalized
 
 
 def normalize_record(raw: dict[str, Any]) -> dict[str, Any]:
@@ -138,10 +156,14 @@ def evaluate_interface_replay(events: Iterable[dict[str, Any]]) -> dict[str, Any
         payload_hash = _text(raw.get("payload_hash"), "payload_hash", 64).lower()
         if len(payload_hash) != 64 or any(c not in "0123456789abcdef" for c in payload_hash):
             raise ValueError("payload_hash must be 64 hex chars")
-        attempt = int(raw.get("attempt", 0))
+        attempt = raw.get("attempt")
+        if isinstance(attempt, bool) or not isinstance(attempt, int):
+            raise TypeError("attempt must be an integer")
         if attempt < 1:
             raise ValueError("attempt must be >= 1")
-        committed = bool(raw.get("committed", False))
+        committed = raw.get("committed", False)
+        if not isinstance(committed, bool):
+            raise TypeError("committed must be a boolean")
         response = _text(raw.get("response"), "response", 40)
         existing = attempts.get(request_id)
         if existing:
@@ -197,12 +219,21 @@ def build_uat_packet(scenarios: Iterable[dict[str, Any]]) -> dict[str, Any]:
     return packet
 
 
-def build_cutover_gate(migration: dict[str, Any], replay: dict[str, Any], uat: dict[str, Any]) -> dict[str, Any]:
+def build_cutover_gate(
+    source_rows: Iterable[dict[str, Any]],
+    target_rows: Iterable[dict[str, Any]],
+    events: Iterable[dict[str, Any]],
+    scenarios: Iterable[dict[str, Any]],
+) -> dict[str, Any]:
+    migration = reconcile_migration(source_rows, target_rows)
+    replay = evaluate_interface_replay(events)
+    uat = build_uat_packet(scenarios)
     gate = {
-        "migration_hash": _text(migration.get("evidence_hash"), "migration evidence_hash", 64),
-        "replay_hash": _text(replay.get("evidence_hash"), "replay evidence_hash", 64),
-        "uat_hash": _text(uat.get("evidence_hash"), "uat evidence_hash", 64),
-        "ready_for_owner_review": all(item.get("status") == "pass" for item in (migration, replay, uat)),
+        "migration_hash": migration["evidence_hash"],
+        "replay_hash": replay["evidence_hash"],
+        "uat_hash": uat["evidence_hash"],
+        "ready_for_owner_review": all(item["status"] == "pass" for item in (migration, replay, uat)),
+        "input_authority": "caller_supplied_evidence_only",
         "release_authority": "owner_review_required",
         "production_cutover_authority": False,
         "county_submission_authority": False,
