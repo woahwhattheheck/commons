@@ -3,9 +3,11 @@ from __future__ import annotations
 import hashlib
 from typing import Any, Iterable, Mapping, Sequence
 from .common import (
-    APProofError, AUTHORITY, PROJECTION_SCHEMA, SCHEMA, canonical_json_bytes, digest,
+    APProofError, AUTHORITY, PROJECTION_SCHEMA, SCHEMA, SOURCE_HASH_AUTHORITY,
+    canonical_json_bytes, digest,
 )
 from .validate import semantic_packet
+
 
 def _receipt_quantities(receipts: Sequence[Mapping[str, Any]]) -> dict[tuple[str, str], int]:
     out: dict[tuple[str, str], int] = {}
@@ -57,15 +59,108 @@ def _match(inv: Mapping[str, Any], po: Mapping[str, Any] | None,
     return out
 
 
-def _statement_findings(inv: Mapping[str, Any],
-                        statements: Sequence[Mapping[str, Any]]) -> list[dict[str, Any]]:
-    rows = [s for s in statements
-            if s["vendor_id"] == inv["vendor_id"] and s["currency"] == inv["currency"]]
-    if not rows:
-        return [{"code": "NO_VENDOR_STATEMENT"}]
-    if not any(inv["invoice_number"] in s["invoice_numbers"] for s in rows):
-        return [{"code": "INVOICE_NOT_ON_STATEMENT"}]
-    return []
+def _statement_reconciliation(
+    invoices: Sequence[Mapping[str, Any]],
+    statements: Sequence[Mapping[str, Any]],
+) -> tuple[dict[str, list[dict[str, Any]]], list[dict[str, Any]]]:
+    """Reconcile exact statement membership and amount with packet invoices.
+
+    A statement amount is comparable only when every declared invoice number maps
+    to exactly one packet invoice for the same vendor/currency. Any unknown or
+    ambiguous member holds all otherwise-resolved members of that statement.
+    Multiple statement membership for one invoice is also a hold because this v1
+    schema has no statement-period/allocation authority to disambiguate it.
+    """
+    findings: dict[str, list[dict[str, Any]]] = {inv["invoice_id"]: [] for inv in invoices}
+    by_number: dict[tuple[str, str, str], list[Mapping[str, Any]]] = {}
+    for inv in invoices:
+        by_number.setdefault(
+            (inv["vendor_id"], inv["currency"], inv["invoice_number"]), []
+        ).append(inv)
+
+    memberships: dict[str, list[str]] = {inv["invoice_id"]: [] for inv in invoices}
+    same_vendor_currency: dict[str, int] = {inv["invoice_id"]: 0 for inv in invoices}
+    for inv in invoices:
+        same_vendor_currency[inv["invoice_id"]] = sum(
+            st["vendor_id"] == inv["vendor_id"] and st["currency"] == inv["currency"]
+            for st in statements
+        )
+
+    exceptions: list[dict[str, Any]] = []
+    for st in statements:
+        resolved: list[Mapping[str, Any]] = []
+        unresolved = False
+        for number in st["invoice_numbers"]:
+            matches = by_number.get((st["vendor_id"], st["currency"], number), [])
+            if not matches:
+                unresolved = True
+                exceptions.append({
+                    "statement_id": st["statement_id"],
+                    "code": "STATEMENT_INVOICE_NOT_IN_PACKET",
+                    "invoice_number": number,
+                })
+                continue
+            for inv in matches:
+                memberships[inv["invoice_id"]].append(st["statement_id"])
+            if len(matches) != 1:
+                unresolved = True
+                ids = sorted(inv["invoice_id"] for inv in matches)
+                exceptions.append({
+                    "statement_id": st["statement_id"],
+                    "code": "STATEMENT_INVOICE_NUMBER_AMBIGUOUS",
+                    "invoice_number": number,
+                    "packet_invoice_ids": ids,
+                })
+                for inv in matches:
+                    findings[inv["invoice_id"]].append({
+                        "code": "STATEMENT_INVOICE_NUMBER_AMBIGUOUS",
+                        "statement_id": st["statement_id"],
+                        "invoice_number": number,
+                    })
+                continue
+            resolved.append(matches[0])
+
+        if unresolved:
+            for inv in resolved:
+                findings[inv["invoice_id"]].append({
+                    "code": "STATEMENT_MEMBERSHIP_UNRESOLVED",
+                    "statement_id": st["statement_id"],
+                })
+            continue
+
+        expected = sum(inv["total_cents"] for inv in resolved)
+        observed = st["statement_total_cents"]
+        if observed != expected:
+            exceptions.append({
+                "statement_id": st["statement_id"],
+                "code": "STATEMENT_TOTAL_MISMATCH",
+                "expected_total_cents": expected,
+                "statement_total_cents": observed,
+            })
+            for inv in resolved:
+                findings[inv["invoice_id"]].append({
+                    "code": "STATEMENT_TOTAL_MISMATCH",
+                    "statement_id": st["statement_id"],
+                    "expected_total_cents": expected,
+                    "statement_total_cents": observed,
+                })
+
+    for inv in invoices:
+        iid = inv["invoice_id"]
+        if same_vendor_currency[iid] == 0:
+            findings[iid].append({"code": "NO_VENDOR_STATEMENT"})
+        elif not memberships[iid]:
+            findings[iid].append({"code": "INVOICE_NOT_ON_STATEMENT"})
+        elif len(memberships[iid]) > 1:
+            findings[iid].append({
+                "code": "MULTIPLE_STATEMENT_MEMBERSHIP",
+                "statement_ids": sorted(memberships[iid]),
+            })
+
+    for rows in findings.values():
+        rows.sort(key=canonical_json_bytes)
+    exceptions.sort(key=canonical_json_bytes)
+    return findings, exceptions
 
 
 def _duplicates(invoices: Sequence[Mapping[str, Any]]) -> set[tuple[str, str, str, int]]:
@@ -95,6 +190,9 @@ def compile_packet(packet: Any) -> dict[str, Any]:
     pos = {po["po_id"]: po for po in p["purchase_orders"]}
     received = _receipt_quantities(p["receipts"])
     duplicate_keys = _duplicates(invoices)
+    statement_findings, statement_exceptions = _statement_reconciliation(
+        invoices, p["supplier_statements"]
+    )
     results: list[dict[str, Any]] = []
     exception_counts: dict[str, int] = {}
     shadow_rows: list[dict[str, Any]] = []
@@ -125,15 +223,17 @@ def compile_packet(packet: Any) -> dict[str, Any]:
             findings.append({"code": "APPROVAL_PENDING"})
         elif approval == "REJECTED":
             findings.append({"code": "APPROVAL_REJECTED"})
-        findings.extend(_statement_findings(inv, p["supplier_statements"]))
+        findings.extend(statement_findings[inv["invoice_id"]])
         findings = sorted(findings, key=canonical_json_bytes)
         for finding in findings:
             code = finding["code"]
             exception_counts[code] = exception_counts.get(code, 0) + 1
         state = "READY_FOR_SHADOW_EXPORT" if not findings else "HOLD_OWNER_REVIEW"
-        results.append({"invoice_id": inv["invoice_id"], "state": state,
-                        "approval_state": approval, "findings": findings,
-                        "source_sha256": inv["source_sha256"]})
+        results.append({
+            "invoice_id": inv["invoice_id"], "state": state,
+            "approval_state": approval, "findings": findings,
+            "declared_source_sha256": inv["source_sha256"],
+        })
         if state == "READY_FOR_SHADOW_EXPORT":
             shadow_rows.append({
                 "invoice_id": inv["invoice_id"], "vendor_id": inv["vendor_id"],
@@ -141,19 +241,6 @@ def compile_packet(packet: Any) -> dict[str, Any]:
                 "currency": inv["currency"], "total_cents": inv["total_cents"],
                 "po_id": inv["po_id"], "mode": "SHADOW_ONLY",
                 "oracle_ebs_transaction_id": None, "posting_authorized": False,
-            })
-
-    known: dict[tuple[str, str], set[str]] = {}
-    for inv in invoices:
-        known.setdefault((inv["vendor_id"], inv["currency"]), set()).add(inv["invoice_number"])
-    statement_exceptions = []
-    for st in p["supplier_statements"]:
-        allowed = known.get((st["vendor_id"], st["currency"]), set())
-        for number in sorted(set(st["invoice_numbers"]) - allowed):
-            statement_exceptions.append({
-                "statement_id": st["statement_id"],
-                "code": "STATEMENT_INVOICE_NOT_IN_PACKET",
-                "invoice_number": number,
             })
 
     totals: dict[str, int] = {}
@@ -176,8 +263,11 @@ def compile_packet(packet: Any) -> dict[str, Any]:
                  {"kind": "AUTHORITY", "payload": AUTHORITY}])
     base = {
         "schema": PROJECTION_SCHEMA, "packet_schema": SCHEMA, "as_of": p["as_of"],
-        "packet_sha256": packet_sha, "invoice_results": results,
-        "statement_exceptions": statement_exceptions, "oracle_shadow_rows": shadow_rows,
+        "packet_sha256": packet_sha,
+        "source_hash_authority": SOURCE_HASH_AUTHORITY,
+        "invoice_results": results,
+        "statement_exceptions": statement_exceptions,
+        "oracle_shadow_rows": shadow_rows,
         "metrics": metrics, "audit_chain": _audit(events), "authority": dict(AUTHORITY),
     }
     return {**base, "projection_sha256": digest(base)}

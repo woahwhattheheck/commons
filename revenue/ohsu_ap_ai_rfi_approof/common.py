@@ -12,6 +12,8 @@ _SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 _ID_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:/-]{0,127}$")
 _CURRENCY_RE = re.compile(r"^[A-Z]{3}$")
 
+SOURCE_HASH_AUTHORITY = "CALLER_DECLARED_FORMAT_VALIDATED_ONLY"
+
 AUTHORITY = {
     "oracle_ebs_write_authorized": False,
     "invoice_approval_authorized": False,
@@ -34,6 +36,25 @@ def canonical_json_bytes(value: Any) -> bytes:
         ).encode("utf-8")
     except (TypeError, ValueError) as exc:
         raise APProofError(f"not canonical-json encodable: {exc}") from exc
+
+
+def load_json_strict(text: str) -> Any:
+    """Parse JSON while rejecting duplicate keys and non-finite constants."""
+    def pairs_hook(pairs):
+        out = {}
+        for key, value in pairs:
+            if key in out:
+                raise APProofError(f"duplicate JSON key: {key}")
+            out[key] = value
+        return out
+
+    def bad_constant(value):
+        raise APProofError(f"non-finite JSON number: {value}")
+
+    try:
+        return json.loads(text, object_pairs_hook=pairs_hook, parse_constant=bad_constant)
+    except (json.JSONDecodeError, TypeError) as exc:
+        raise APProofError(f"invalid JSON: {exc}") from exc
 
 
 def digest(value: Any) -> str:

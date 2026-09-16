@@ -37,6 +37,8 @@ class APProofTests(unittest.TestCase):
         self.assertIs(out["oracle_shadow_rows"][0]["posting_authorized"], False)
         self.assertEqual(out["authority"], AUTHORITY)
         self.assertTrue(all(value is False for value in out["authority"].values()))
+        self.assertEqual(out["source_hash_authority"], "CALLER_DECLARED_FORMAT_VALIDATED_ONLY")
+        self.assertEqual(out["invoice_results"][0]["declared_source_sha256"], "a" * 64)
 
     def test_price_mismatch_holds(self):
         packet = load_fixture()
@@ -112,6 +114,83 @@ class APProofTests(unittest.TestCase):
         out = compile_packet(packet)
         self.assertEqual(out["statement_exceptions"][0]["code"], "STATEMENT_INVOICE_NOT_IN_PACKET")
         self.assertEqual(out["statement_exceptions"][0]["invoice_number"], "GHOST-9")
+
+    def test_statement_unknown_member_holds_known_members_too(self):
+        packet = load_fixture()
+        packet["supplier_statements"][0]["invoice_numbers"].append("GHOST-9")
+        packet["supplier_statements"][0]["statement_total_cents"] += 1
+        out = compile_packet(packet)
+        codes = {f["code"] for f in out["invoice_results"][0]["findings"]}
+        self.assertIn("STATEMENT_MEMBERSHIP_UNRESOLVED", codes)
+        self.assertEqual(out["invoice_results"][0]["state"], "HOLD_OWNER_REVIEW")
+
+    def test_statement_zero_total_with_matching_membership_holds(self):
+        packet = load_fixture()
+        packet["supplier_statements"][0]["statement_total_cents"] = 0
+        out = compile_packet(packet)
+        finding = next(
+            f for f in out["invoice_results"][0]["findings"]
+            if f["code"] == "STATEMENT_TOTAL_MISMATCH"
+        )
+        self.assertEqual(finding["expected_total_cents"], 25000)
+        self.assertEqual(finding["statement_total_cents"], 0)
+        self.assertEqual(out["invoice_results"][0]["state"], "HOLD_OWNER_REVIEW")
+
+    def test_statement_short_total_with_matching_membership_holds(self):
+        packet = load_fixture()
+        packet["supplier_statements"][0]["statement_total_cents"] = 24999
+        out = compile_packet(packet)
+        self.assertIn(
+            "STATEMENT_TOTAL_MISMATCH",
+            {f["code"] for f in out["invoice_results"][0]["findings"]},
+        )
+        self.assertEqual(out["oracle_shadow_rows"], [])
+
+    def test_statement_over_total_with_matching_membership_holds(self):
+        packet = load_fixture()
+        packet["supplier_statements"][0]["statement_total_cents"] = 25001
+        out = compile_packet(packet)
+        self.assertIn(
+            "STATEMENT_TOTAL_MISMATCH",
+            {f["code"] for f in out["invoice_results"][0]["findings"]},
+        )
+        self.assertEqual(out["oracle_shadow_rows"], [])
+
+    def test_multiple_statement_membership_holds(self):
+        packet = load_fixture()
+        second = copy.deepcopy(packet["supplier_statements"][0])
+        second["statement_id"] = "S2"
+        second["source_sha256"] = "2" * 64
+        packet["supplier_statements"].append(second)
+        out = compile_packet(packet)
+        self.assertIn(
+            "MULTIPLE_STATEMENT_MEMBERSHIP",
+            {f["code"] for f in out["invoice_results"][0]["findings"]},
+        )
+        self.assertEqual(out["invoice_results"][0]["state"], "HOLD_OWNER_REVIEW")
+
+    def test_duplicate_invoice_number_is_statement_ambiguous(self):
+        packet = load_fixture()
+        twin = copy.deepcopy(packet["invoices"][0])
+        twin["invoice_id"] = "INV-B"
+        twin["total_cents"] = 20000
+        twin["lines"] = [{
+            "line_id": "L1", "sku": "SKU-1", "quantity": 2,
+            "unit_price_cents": 10000, "cost_center": "CC-100",
+        }]
+        twin["source_sha256"] = "1" * 64
+        packet["invoices"].append(twin)
+        packet["approvals"].append({
+            "approval_id": "A2", "invoice_id": "INV-B", "status": "APPROVED",
+            "source_sha256": "2" * 64,
+        })
+        out = compile_packet(packet)
+        for row in out["invoice_results"]:
+            self.assertIn(
+                "STATEMENT_INVOICE_NUMBER_AMBIGUOUS",
+                {f["code"] for f in row["findings"]},
+            )
+            self.assertEqual(row["state"], "HOLD_OWNER_REVIEW")
 
     def test_invoice_line_total_must_equal_total(self):
         packet = load_fixture()
@@ -205,6 +284,20 @@ class APProofTests(unittest.TestCase):
             )
             self.assertEqual(cp.returncode, 2)
             self.assertIn(b"APProofError", cp.stderr)
+
+    def test_cli_duplicate_json_key_returns_two(self):
+        with tempfile.TemporaryDirectory() as td:
+            bad = Path(td) / "duplicate.json"
+            bad.write_text('{"schema":"approof/v1","schema":"approof/v1"}', encoding="utf-8")
+            cp = subprocess.run(
+                [
+                    sys.executable, "-m", "revenue.ohsu_ap_ai_rfi_approof.cli",
+                    "compile", str(bad),
+                ],
+                cwd=ROOT, check=False, capture_output=True,
+            )
+            self.assertEqual(cp.returncode, 2)
+            self.assertIn(b"duplicate JSON key: schema", cp.stderr)
 
     def test_1000_randomized_safety_packets_never_authorize_effects(self):
         rng = random.Random(20260916)

@@ -25,13 +25,15 @@ and owner review.
 
 APProof accepts owner-supplied JSON evidence and deterministically computes:
 
-* strict invoice source validation and line-total reconciliation;
+`source_sha256` values are **caller-declared lineage labels only**. The carrier validates their lowercase SHA-256 format but does not authenticate provider/source bytes. Output therefore labels them `declared_source_sha256` and emits `source_hash_authority=CALLER_DECLARED_FORMAT_VALIDATED_ONLY`.
+
+* strict owner-supplied row validation, duplicate-key rejection, SHA-format lineage metadata, and line-total reconciliation;
 * duplicate economic-invoice holds;
 * PO/vendor/currency/line/price/quantity matching;
 * receipt-quantity checks for three-way-match evidence;
 * non-PO coding-review holds;
 * approval missing/pending/rejected holds;
-* supplier-statement reconciliation in both directions;
+* supplier-statement membership **and amount** reconciliation in both directions, with ambiguous/multiple membership held for owner review;
 * currency-separated deterministic metrics;
 * a **shadow-only** Oracle staging projection;
 * a SHA-256 hash chain over every emitted result and the authority ceiling;
@@ -73,6 +75,6 @@ award, receivable, payment, or revenue. They remain outside compiler authority.
 ## Test boundary
 
 The root test suite exercises normal and optimized-interpreter semantics,
-input strictness, duplicate/PO/receipt/approval/statement exception behavior,
+input strictness (including duplicate JSON keys), duplicate/PO/receipt/approval/statement membership+amount exception behavior,
 determinism, tamper rejection, CLI round-trip, and 1,000 randomized safety
 packets proving no generated result can promote external authority.

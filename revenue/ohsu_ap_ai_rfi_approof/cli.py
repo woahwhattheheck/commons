@@ -7,15 +7,17 @@ import sys
 
 try:
     from .approof import APProofError, canonical_json_bytes, compile_packet, verify_projection
+    from .common import load_json_strict
 except ImportError:  # direct script execution from package directory
     from approof import APProofError, canonical_json_bytes, compile_packet, verify_projection
+    from common import load_json_strict
 
 
 def _read(path: str):
     try:
         raw = Path(path).read_bytes()
         text = raw.decode("utf-8")
-        return json.loads(text)
+        return load_json_strict(text)
     except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
         raise APProofError(f"cannot read JSON {path}: {exc}") from exc
 
