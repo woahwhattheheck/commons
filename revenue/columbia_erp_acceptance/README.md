@@ -30,13 +30,17 @@ The public packet mirrors describe an Infor/Lawson V10 replacement, retained ent
 1. indexes source and target records by an explicit natural/business key;
 2. rejects duplicate and conflicting duplicate keys rather than silently taking last write;
 3. reports missing target records, unexpected target records, and field-level mismatches;
-4. rejects non-finite and non-JSON values so canonical receipts cannot vary by runtime;
-5. requires evidence IDs for all six public migration stages before a receipt can exist;
-6. requires every in-scope retained-system interface to carry a `PASS` and evidence ID;
-7. emits a stable SHA-256-bound receipt only when reconciliation, phase evidence, and interface evidence all pass;
-8. verifies receipt integrity after handoff.
+4. rejects non-finite, non-JSON, and non-UTF-8-safe text values so canonical receipts fail closed;
+5. binds order-invariant SHA-256 roots of the complete normalized logical source and target record sets;
+6. binds the exact `scope_id`, key field, and comparison-field contract into the receipt;
+7. requires evidence IDs for all six public migration stages before a receipt can exist;
+8. requires an explicit expected-interface roster and refuses missing or unexpected interface evidence;
+9. requires every in-scope retained-system interface to carry a `PASS` and evidence ID;
+10. emits a stable SHA-256-bound receipt only when reconciliation, phase evidence, and interface evidence all pass, then verifies receipt integrity after handoff.
 
-The digest is an **integrity check, not a digital signature**. Authenticity/custody must be supplied by the surrounding delivery process.
+The record roots bind **normalized logical records**, not raw input-file bytes. If byte-for-byte input custody is required, the surrounding delivery process must retain raw-file hashes separately.
+
+The receipt digest is an **integrity check, not a digital signature**. Authenticity/custody must be supplied by the surrounding delivery process.
 
 ## Evidence contract
 
@@ -48,6 +52,8 @@ Source and target records are JSON objects. The default business key is `key`.
   {"key":"GL-200","account":"2000","amount":"20.00","version":1}
 ]
 ```
+
+`compare_fields=null` means the contract compares the union of all non-key fields on each shared source/target record. An explicit field list narrows that contract, and the normalized list is itself hashed into the receipt.
 
 Phase evidence is a complete six-key object:
 
@@ -71,7 +77,13 @@ Interfaces are explicit, bounded attestations:
 ]
 ```
 
-No `PASS`, no receipt. No evidence ID, no receipt. Any record exception, no receipt.
+The expected roster is supplied independently so omitted interface evidence cannot silently shrink the acceptance scope:
+
+```json
+["Dayforce payroll", "Club Automation"]
+```
+
+No `PASS`, no receipt. No evidence ID, no receipt. Missing/unexpected interface evidence, unsafe text, or any record exception also blocks receipt issuance.
 
 ## Run the focused tests
 
@@ -82,7 +94,7 @@ python -m unittest revenue.columbia_erp_acceptance.test_acceptance -v
 python -O -m unittest revenue.columbia_erp_acceptance.test_acceptance -v
 ```
 
-The authored pre-publication check passed **8/8 tests in both modes** on 2026-09-16. Provider CI remains separate evidence.
+The successor suite contains **14 hostile/positive tests**, including receipt-root/contract collision predecessors, interface-roster omission, and real CLI lone-surrogate failure in both normal and optimized subprocesses. Provider CI and independent exact-head review are separate evidence and must not be inferred from this statement.
 
 ## CLI
 
@@ -92,10 +104,11 @@ python -m revenue.columbia_erp_acceptance.acceptance \
   --target target.json \
   --phases phases.json \
   --interfaces interfaces.json \
+  --expected-interfaces expected_interfaces.json \
   --scope-id ledger-wave-1
 ```
 
-A successful command prints canonicalizable JSON containing the bounded payload and SHA-256 digest. A blocking reconciliation exception, incomplete phase record, failed interface, malformed JSON, or unsafe numeric value exits non-zero.
+A successful command prints canonicalizable JSON containing the bounded contract, logical record roots, evidence, and SHA-256 digest. A blocking reconciliation exception, incomplete phase record, interface-roster mismatch, failed interface, malformed JSON, unsafe numeric value, or invalid UTF-8 text exits non-zero.
 
 ## Deliberate exclusions
 
