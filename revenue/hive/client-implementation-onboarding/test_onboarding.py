@@ -10,6 +10,7 @@ import urllib.error
 import urllib.request
 from http.server import ThreadingHTTPServer
 from pathlib import Path
+from unittest.mock import patch
 
 from onboarding import (
     ConflictError, OnboardingError, canonical, compile_packet, connect, decide_change,
@@ -250,5 +251,66 @@ class ProductTests(Harness):
         started=run("milestone","--workspace","ws-demo-001","--milestone-id","kickoff","--transition","START","--op","cli-ms-1")
         self.assertEqual(started.returncode,0,started.stderr)
         self.assertIn('"state": "IN_PROGRESS"',started.stdout)
+
+    def test_cli_rejects_lone_surrogate_json(self):
+        payload=accepted_payload()
+        payload["scope"]["deliverables"][0]["title"]="\ud800"
+        inp=Path(self.tmp.name)/"hostile.json"
+        inp.write_text(json.dumps(payload, ensure_ascii=True), encoding="utf-8")
+        cli=Path(__file__).with_name("onboarding.py")
+        for dash_o in (False, True):
+            db=Path(self.tmp.name)/f"surr-{int(dash_o)}.db"
+            cmd=[sys.executable] + (["-O"] if dash_o else []) + ["-B", str(cli), "--db", str(db), "init", "--input", str(inp), "--op", f"surr-{int(dash_o)}"]
+            cp=subprocess.run(cmd, capture_output=True, text=True, check=False)
+            self.assertNotEqual(cp.returncode, 0, cp.stdout+cp.stderr)
+            combined=cp.stdout+cp.stderr
+            self.assertNotIn("Traceback", combined)
+            self.assertIn("non-Unicode-scalar", combined)
+
+    def _swap_after_dir_open(self, original: Path, successor: Path, parked: Path):
+        real_open=os.open
+        swapped={"done": False}
+        def hijack(path, flags, mode=0o777, *args, dir_fd=None, **kwargs):
+            if dir_fd is None:
+                fd=real_open(path, flags, mode, *args, **kwargs)
+            else:
+                fd=real_open(path, flags, mode, *args, dir_fd=dir_fd, **kwargs)
+            if (
+                not swapped["done"]
+                and dir_fd is None
+                and hasattr(os, "O_DIRECTORY")
+                and flags & os.O_DIRECTORY
+                and Path(path).resolve() == original.resolve()
+            ):
+                os.rename(original, parked)
+                os.rename(successor, original)
+                swapped["done"]=True
+            return fd
+        return hijack
+
+    def test_export_parent_swap_keeps_original_generation(self):
+        self.open(); self.complete_happy()
+        original=Path(self.tmp.name)/"export"; successor=Path(self.tmp.name)/"successor"; parked=Path(self.tmp.name)/"parked"
+        original.mkdir(); successor.mkdir()
+        with patch("onboarding.os.open", self._swap_after_dir_open(original, successor, parked)):
+            export_handoff(self.conn,"ws-demo-001", original)
+        self.assertTrue((parked/"handoff.json").is_file())
+        self.assertTrue((parked/"receipt.json").is_file())
+        self.assertFalse((original/"handoff.json").exists())
+        self.assertTrue(verify_export(self.conn,"ws-demo-001", parked)["valid"])
+
+    def test_verify_parent_swap_reads_original_generation(self):
+        self.open(); self.complete_happy()
+        original=Path(self.tmp.name)/"export"
+        export_handoff(self.conn,"ws-demo-001", original)
+        successor=Path(self.tmp.name)/"successor"; successor.mkdir()
+        for name, body in (("handoff.json", b"foreign-packet\n"), ("handoff.md", b"x"), ("milestones.csv", b"x"), ("receipt.json", b"{}")):
+            (successor/name).write_bytes(body)
+        parked=Path(self.tmp.name)/"parked"
+        with patch("onboarding.os.open", self._swap_after_dir_open(original, successor, parked)):
+            result=verify_export(self.conn,"ws-demo-001", original)
+        self.assertTrue(result["valid"])
+        self.assertEqual((original/"handoff.json").read_bytes(), b"foreign-packet\n")
+        self.assertNotEqual((parked/"handoff.json").read_bytes(), b"foreign-packet\n")
 
 if __name__ == "__main__": unittest.main(verbosity=2)
