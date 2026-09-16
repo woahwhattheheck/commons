@@ -78,6 +78,6 @@ python -O -m unittest -v revenue.vancouver_civic_theatres_website.test_engine
 
 ## Authority ceiling
 
-Authorized here: public-source recovery, internal qualification, response drafting, evidence retention, tests/docs/CI and repository integration.
+This package records public-source recovery, internal qualification, response drafting, evidence retention, tests/docs/CI and repository integration.
 
-Not authorized: supplier-account creation; acceptance of legal terms; buyer email/phone/questions; portal mutation; proposal submission; signatures/certifications; invented credentials/references; staffing commitments; binding price; contract acceptance; spend; award/payment/revenue claims.
+This land records no supplier-account creation, legal-terms acceptance, buyer email/phone/question, portal mutation, proposal submission, signature/certification, invented credential/reference, staffing commitment, binding price, contract acceptance, spend, or award/payment/revenue claim.

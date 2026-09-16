@@ -139,7 +139,7 @@ def _normalize_gate(name: str, raw: Any) -> dict[str, Any]:
     if status == "READY" and not evidence_ref:
         raise ContractError(f"company_evidence.{name}: READY requires evidence_ref")
     if status == "NOT_APPLICABLE" and name not in _CONDITIONAL_GATES:
-        raise ContractError(f"company_evidence.{name}: NOT_APPLICABLE is not permitted for this required response")
+        raise ContractError(f"company_evidence.{name}: NOT_APPLICABLE is invalid for this required response")
     return {"status": status, "evidence_ref": evidence_ref, "notes": notes}
 
 

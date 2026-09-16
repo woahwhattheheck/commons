@@ -118,7 +118,7 @@ class PursuitCarrierTests(unittest.TestCase):
         value = packet()
         value["company_evidence"]["wcag_aa_capability"]["status"] = "NOT_APPLICABLE"
         value["company_evidence"]["wcag_aa_capability"]["notes"] = "no"
-        with self.assertRaisesRegex(engine.ContractError, "NOT_APPLICABLE is not permitted"):
+        with self.assertRaisesRegex(engine.ContractError, "NOT_APPLICABLE is invalid"):
             engine._compile_at(value, self.open_time)
 
     def test_conditional_gate_may_be_not_applicable(self):
