@@ -64,20 +64,25 @@ class MigrationTests(unittest.TestCase):
 
 class StoreTests(unittest.TestCase):
     def setUp(self):
-        self.plan = compile_migration(synthetic_rows())
-        self.store = ResidentStore()
+        self.rows = synthetic_rows()
+        self.plan = compile_migration(self.rows)
+        self.store = ResidentStore(self.rows)
         self.store.apply_migration(self.plan)
 
     def test_apply_conflicted_plan_rejected(self):
         rows = synthetic_rows()
         rows.append({"source": "other", "row": 1, "record": {"resident_id": "R001", "program": "Surgery"}})
-        store = ResidentStore()
+        store = ResidentStore(rows)
         with self.assertRaises(ConflictError):
             store.apply_migration(compile_migration(rows))
 
+    def test_unbound_store_rejects_plan(self):
+        with self.assertRaises(DataError):
+            ResidentStore().apply_migration(self.plan)
+
     def test_non_admin_migration_rejected(self):
         with self.assertRaises(PermissionDenied):
-            ResidentStore().apply_migration(self.plan, actor_role="coordinator")
+            ResidentStore(self.rows).apply_migration(self.plan, actor_role="coordinator")
 
     def test_second_initial_migration_rejected(self):
         with self.assertRaises(ConflictError):
@@ -153,7 +158,7 @@ class StoreTests(unittest.TestCase):
             self.store.analytics_export(role="resident_self")
 
     def test_receipt_is_deterministic_for_same_operations(self):
-        other = ResidentStore()
+        other = ResidentStore(self.rows)
         other.apply_migration(self.plan)
         self.assertEqual(self.store.receipt(), other.receipt())
 
