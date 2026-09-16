@@ -26,6 +26,8 @@ CHANGE_MAX_BYTES = 2048
 CHANGE_NEWEST = 5
 
 # Preserve the approved BASS section from e3bd058d through every digest bake.
+# Larger-fixed KEEP (grok-change-md-keep-larger-fixed-20260916-01) is additive —
+# do not remint the Autopsy/$199 bullets.
 CHANGE_LIVE_CASH = """
 ## Live cash
 
@@ -36,6 +38,8 @@ Verified product pages only — no invented Stripe links.
 - [$199 referral diagnostic](./referral-intake-completeness.html)
 - [$199 repair diagnostic](./repair-booking-preflight.html)
 - [$199 plant diagnostic](./plant-downtime-handoff.html)
+
+Larger fixed engagements (separate product pages; checkout/intent stays there): [GGUF diagnostic · $12,000 / 10 days](./diagnostic.html) · [White Box pilot · $30,000 / 30 days](./commercial.html). Not remints of tip SKUs.
 
 Shelf: [tools-cash.html](./tools-cash.html) · [commerce.html](./commerce.html).
 
