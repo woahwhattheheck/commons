@@ -1,0 +1,45 @@
+name: sasria-ai-training-readiness
+
+on:
+  pull_request:
+    paths:
+      - 'commercial/sasria_ai_training/**'
+      - 'tests/test_sasria_ai_training.py'
+      - '.github/workflows/sasria-ai-training-readiness.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'commercial/sasria_ai_training/**'
+      - 'tests/test_sasria_ai_training.py'
+      - '.github/workflows/sasria-ai-training-readiness.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  readiness-gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run Sasria readiness tests
+        run: python -m unittest discover -s tests -p 'test_sasria_ai_training.py' -v
+      - name: Verify unresolved fixture fails closed
+        shell: bash
+        run: |
+          set +e
+          python -m commercial.sasria_ai_training.cli commercial/sasria_ai_training/example_hold.json >/tmp/sasria-hold.json
+          rc=$?
+          set -e
+          test "$rc" -eq 2
+          python - <<'PY'
+          import json
+          pack = json.load(open('/tmp/sasria-hold.json', encoding='utf-8'))
+          assert pack['response_status'] == 'HOLD'
+          assert pack['submission_status'] == 'HOLD'
+          assert 'prime_mandatory_gate' in pack['response_blockers']
+          assert len(pack['receipt_sha256']) == 64
+          PY
