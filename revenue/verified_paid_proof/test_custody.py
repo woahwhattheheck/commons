@@ -76,8 +76,41 @@ class DescriptorCustodyTests(unittest.TestCase):
             self.assertFalse(internal.exists())
             self.assertFalse(public.exists())
 
+    def test_leaf_substitution_is_detected_and_foreign_successor_survives(self):
+        compiled = compiler.compile_proof(base_record())
+        real_verify = custody._verify_file_bindings
+        attacked = False
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            internal = root / "internal"
+            public = root / "public"
+            moved = internal / "owned-proof-moved.json"
+            foreign = b"foreign-successor-must-survive\n"
+
+            def replace_before_final_file_check(bound):
+                nonlocal attacked
+                if bound.path == internal and not attacked:
+                    attacked = True
+                    os.rename(internal / "proof.json", moved)
+                    (internal / "proof.json").write_bytes(foreign)
+                return real_verify(bound)
+
+            with mock.patch.object(
+                custody,
+                "_verify_file_bindings",
+                side_effect=replace_before_final_file_check,
+            ):
+                with self.assertRaises(ProofError):
+                    compiler.write_outputs(compiled, internal, public)
+
+            self.assertTrue(attacked)
+            self.assertEqual((internal / "proof.json").read_bytes(), foreign)
+            self.assertFalse(moved.exists())
+            self.assertFalse(public.exists())
+
     @unittest.skipUnless(hasattr(os, "symlink"), "symlink unsupported")
-    def test_path_replacement_is_detected_and_redirect_target_stays_empty(self):
+    def test_path_replacement_after_durability_is_detected(self):
         compiled = compiler.compile_proof(base_record())
         real_verify = custody._verify_dir_binding
         attacked = False
@@ -107,6 +140,7 @@ class DescriptorCustodyTests(unittest.TestCase):
                     compiler.write_outputs(compiled, internal, public)
 
             self.assertTrue(attacked)
+            self.assertTrue(public.is_symlink())
             self.assertEqual(list(redirect.iterdir()), [])
             self.assertTrue(moved.is_dir())
             self.assertEqual(list(moved.iterdir()), [])
