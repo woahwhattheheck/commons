@@ -33,9 +33,9 @@ jobs:
         run: |
           python -m py_compile *.py
           python -m tabnanny *.py
-      - name: Focused and hostile tests
-        run: python -m unittest -v test_desk_core.py test_desk_hostile.py
-      - name: Optimized focused and hostile tests
-        run: python -O -m unittest -v test_desk_core.py test_desk_hostile.py
+      - name: Focused, hostile, and predecessor tests
+        run: python -m unittest -v test_desk_core.py test_desk_hostile.py test_desk_predecessor.py
+      - name: Optimized focused, hostile, and predecessor tests
+        run: python -O -m unittest -v test_desk_core.py test_desk_hostile.py test_desk_predecessor.py
       - name: Synthetic end-to-end demo and independent verification
         run: python demo.py --workspace "$RUNNER_TEMP/creative-review-demo-${{ matrix.python-version }}" --replace
