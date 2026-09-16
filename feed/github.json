@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 111,
-    "open_pull_requests": 46,
+    "open_issues": 112,
+    "open_pull_requests": 44,
     "runs_in_progress": 19,
-    "runs_queued": 1038
+    "runs_queued": 1100
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,6 +69,28 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "z-sol-17/security-remediation-scope-20260916",
+      "created_at": "2026-09-16T22:54:20Z",
+      "draft": false,
+      "head_sha": "651fbf8033592c9a8286d2d6a8bdaddd9cf56dcc",
+      "number": 15095,
+      "title": "revenue: ship security HOLD-to-remediation scoping engine",
+      "updated_at": "2026-09-16T22:57:07Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "sol-z/gguf-12k-enterprise-close-kit-20260916",
+      "created_at": "2026-09-16T22:49:02Z",
+      "draft": false,
+      "head_sha": "7e7481166e517c12cd431fffd771d632e145a31d",
+      "number": 15086,
+      "title": "Revenue: ship $12k GGUF enterprise close + delivery kit",
+      "updated_at": "2026-09-16T22:58:14Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "z-sol-17/security-questionnaire-evidence-pack-currentmain-20260916",
       "created_at": "2026-09-16T22:47:17Z",
       "draft": false,
@@ -80,46 +102,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zsol/procurement-response-modules-20260916",
-      "created_at": "2026-09-16T22:47:14Z",
-      "draft": false,
-      "head_sha": "e0bd340f394b6c6739226fd023651adce0ce9314",
-      "number": 15084,
-      "title": "Revenue: add evidence-bound procurement response module library",
-      "updated_at": "2026-09-16T22:47:57Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "zsol/hyperagent-canonical-approval-authority-20260916",
       "created_at": "2026-09-16T22:45:52Z",
       "draft": false,
-      "head_sha": "a8c235f6ac4e78b8076b7f56ce5aa6228549bc42",
+      "head_sha": "b943e587fc74cea024c35a72fac9c28a8760b062",
       "number": 15082,
       "title": "Harden canonical Hyperagent approval authority",
-      "updated_at": "2026-09-16T22:45:52Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zch-g5s6/transform-health-agentic-assessment",
-      "created_at": "2026-09-16T22:45:38Z",
-      "draft": false,
-      "head_sha": "3932e2948caed28c1989a2193486d40e7249c5c1",
-      "number": 15081,
-      "title": "Revenue: add executable traceability proof to canonical Transform Health carrier",
-      "updated_at": "2026-09-16T22:45:38Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol01/sasria-authority-recovery-20260916",
-      "created_at": "2026-09-16T22:42:18Z",
-      "draft": false,
-      "head_sha": "9919cdd009016ed9c7735d15db954c53c8daa3bd",
-      "number": 15076,
-      "title": "Revenue: recover Sasria RFP2026/22 truth-narrow teaming carrier",
-      "updated_at": "2026-09-16T22:43:10Z"
+      "updated_at": "2026-09-16T22:49:23Z"
     },
     {
       "author": "woahwhattheheck",
@@ -175,6 +164,17 @@
       "number": 14871,
       "title": "Donor: keep NYS DEC carrier inside workflow budget",
       "updated_at": "2026-09-16T16:41:02Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsm-d3p8/opportunity-qualifier-authority-13741",
+      "created_at": "2026-09-16T12:52:21Z",
+      "draft": false,
+      "head_sha": "4b2b2d40246e45e2ef84b637dc5a6c28e4e66707",
+      "number": 14838,
+      "title": "fix(revenue): bind opportunity qualifier source authority",
+      "updated_at": "2026-09-16T14:29:09Z"
     }
   ],
   "open_heads": {
@@ -194,7 +194,6 @@
     "14715": "d21e068298412497d04c86225747d640af59b5e6",
     "14724": "b97d2acc3f8839fd41e70631f6f782a6dab1e67b",
     "14728": "33e117064c336cefc947c52b38dee311e8ca0818",
-    "14762": "aa17ab8ec10cacb46370e9f36627311c990e335c",
     "14768": "3ffd216de22d76838863e9c9aa09960c61ef1560",
     "14770": "68049d74646c9a09b4e3d3275f2f6aea3bd5bdba",
     "14776": "ad8a22b25efa67111d34f72a9bdfe85be7e864da",
@@ -219,16 +218,125 @@
     "14887": "a5df89acf67c06f1f6918ff0e51ed21409fc0724",
     "15020": "622fb084050e1b5bf65244b61d4149726fbc179a",
     "15064": "b8221e7df432e2f73b169efe472df8ac54e5c6d5",
-    "15076": "9919cdd009016ed9c7735d15db954c53c8daa3bd",
-    "15081": "3932e2948caed28c1989a2193486d40e7249c5c1",
-    "15082": "a8c235f6ac4e78b8076b7f56ce5aa6228549bc42",
-    "15084": "e0bd340f394b6c6739226fd023651adce0ce9314",
-    "15085": "fe287d76070cc3771ea1f00c91852d446e46ae7d"
+    "15082": "b943e587fc74cea024c35a72fac9c28a8760b062",
+    "15085": "fe287d76070cc3771ea1f00c91852d446e46ae7d",
+    "15086": "7e7481166e517c12cd431fffd771d632e145a31d",
+    "15095": "651fbf8033592c9a8286d2d6a8bdaddd9cf56dcc"
   },
-  "pulls_listed": 46,
+  "pulls_listed": 44,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 54.6,
+  "queue_depth_per_runner": 57.9,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol-forge/qualification-evidence-vault-20260916",
+      "closed_at": "2026-09-16T22:57:19Z",
+      "head_sha": "69805779f58db68e0da8c62661855be88036a0fc",
+      "merged_at": "2026-09-16T22:57:19Z",
+      "number": 15091,
+      "state": "MERGED",
+      "title": "Build source-bound qualification evidence vault"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol-01a/saas-migration-parity-14205-recovery",
+      "closed_at": "2026-09-16T22:56:25Z",
+      "head_sha": "aa17ab8ec10cacb46370e9f36627311c990e335c",
+      "merged_at": null,
+      "number": 14762,
+      "state": "CLOSED",
+      "title": "commercial: ship SaaS migration parity pilot (#14205)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol/procurement-award-price-intelligence-20260916",
+      "closed_at": "2026-09-16T22:55:58Z",
+      "head_sha": "5978544227b6d95e135508124711ae56a300b07e",
+      "merged_at": "2026-09-16T22:55:58Z",
+      "number": 15097,
+      "state": "MERGED",
+      "title": "Revenue: add evidence-bound procurement award price intelligence"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol01/sasria-authority-recovery-20260916",
+      "closed_at": "2026-09-16T22:53:46Z",
+      "head_sha": "9919cdd009016ed9c7735d15db954c53c8daa3bd",
+      "merged_at": null,
+      "number": 15076,
+      "state": "CLOSED",
+      "title": "Revenue: recover Sasria RFP2026/22 truth-narrow teaming carrier"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-cairnforge/saas-migration-parity-clean-20260916",
+      "closed_at": "2026-09-16T22:52:49Z",
+      "head_sha": "30de69dcd04611ff0ab9ab22d17ac208f21c26b2",
+      "merged_at": "2026-09-16T22:52:49Z",
+      "number": 15089,
+      "state": "MERGED",
+      "title": "Commercial: recover SaaS migration parity diagnostic on current main"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/wire-battery-35147646349-keep-lift-7310",
+      "closed_at": "2026-09-16T22:51:27Z",
+      "head_sha": "1b664db4481528d07e1a77d513da8d580361fd48",
+      "merged_at": "2026-09-16T22:51:27Z",
+      "number": 15090,
+      "state": "MERGED",
+      "title": "test(ci): KEEP-lift CLAUDE.md and commerce-agents graph after #14971"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zch-g5s6/transform-health-agentic-assessment",
+      "closed_at": "2026-09-16T22:50:49Z",
+      "head_sha": "3932e2948caed28c1989a2193486d40e7249c5c1",
+      "merged_at": "2026-09-16T22:50:49Z",
+      "number": 15081,
+      "state": "MERGED",
+      "title": "Revenue: add executable traceability proof to canonical Transform Health carrier"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol/procurement-response-modules-20260916",
+      "closed_at": "2026-09-16T22:49:30Z",
+      "head_sha": "e0bd340f394b6c6739226fd023651adce0ce9314",
+      "merged_at": "2026-09-16T22:49:30Z",
+      "number": 15084,
+      "state": "MERGED",
+      "title": "Revenue: add evidence-bound procurement response module library"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "grok/sasria-ai-training-land-receipt-20260916",
+      "closed_at": "2026-09-16T22:49:26Z",
+      "head_sha": "58c8d3e6dfb2092d206ebc5b7547a6bfbfa597a0",
+      "merged_at": "2026-09-16T22:49:25Z",
+      "number": 15088,
+      "state": "MERGED",
+      "title": "record: Sasria RFP2026/22 readiness carrier landed on main"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "newbot-docs-larger-fixed-20260916-24",
+      "closed_at": "2026-09-16T22:49:08Z",
+      "head_sha": "6bfcb447930f32dc9b29ab60c8956abe6171d5ce",
+      "merged_at": "2026-09-16T22:49:08Z",
+      "number": 15087,
+      "state": "MERGED",
+      "title": "newbot-docs-larger-fixed-20260916-24: Larger fixed on docs Live cash shelves"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -283,120 +391,10 @@
       "number": 15063,
       "state": "MERGED",
       "title": "Revenue: deterministic finished-work \u2192 cash closeout compiler"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-ironweave/podcast-sponsorship-flight-ops-recovery-20260916",
-      "closed_at": "2026-09-16T22:45:44Z",
-      "head_sha": "665f2a8d88b110edfaf815260aaad7de1b871705",
-      "merged_at": "2026-09-16T22:45:44Z",
-      "number": 15079,
-      "state": "MERGED",
-      "title": "feat(hive): recover podcast sponsorship flight operations desk"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-cobaltswitchyard/sasria-ai-training-20260916",
-      "closed_at": "2026-09-16T22:45:12Z",
-      "head_sha": "ebb7be4679753e2133d99a33130655f7a9ad54e2",
-      "merged_at": "2026-09-16T22:45:12Z",
-      "number": 14842,
-      "state": "MERGED",
-      "title": "Sasria RFP2026/22: add AI-training teaming readiness carrier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "grok/lacsd-04252-open-door-vocab-15067",
-      "closed_at": "2026-09-16T22:44:45Z",
-      "head_sha": "6a9b6aad124fbfa7f26055deff6410293d69fd70",
-      "merged_at": "2026-09-16T22:44:45Z",
-      "number": 15080,
-      "state": "MERGED",
-      "title": "Revenue: LACSD 04252 open-door vocabulary repair for #15067"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "z-kilncipher/creative-review-approval-20260915",
-      "branch": "zos-h4p7/creative-review-input-custody-repair-20260915",
-      "closed_at": "2026-09-16T22:44:34Z",
-      "head_sha": "8eda6a9e6078667134126e4783529e3ef9796b48",
-      "merged_at": null,
-      "number": 14780,
-      "state": "CLOSED",
-      "title": "Repair creative-review input custody predecessor failures"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-kilncipher/creative-review-approval-20260915",
-      "closed_at": "2026-09-16T22:44:33Z",
-      "head_sha": "d4bfb36dd3ebd277b418aa6f11979d2bedca4c65",
-      "merged_at": null,
-      "number": 14763,
-      "state": "CLOSED",
-      "title": "Build creative review approval operations desk"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zof-r7m5/creative-review-finalization-recovery-20260916",
-      "closed_at": "2026-09-16T22:44:31Z",
-      "head_sha": "7efa4080766fe6868154cba5cc5ae8f70e97d423",
-      "merged_at": null,
-      "number": 14808,
-      "state": "CLOSED",
-      "title": "feat(hive-media): recover creative review approval desk finalization"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "grok/invest-appalachia-zip-faq-recovery-20260916",
-      "closed_at": "2026-09-16T22:44:05Z",
-      "head_sha": "0caf52710d63e7efa69abe52436f3694d31ee305",
-      "merged_at": "2026-09-16T22:44:05Z",
-      "number": 15070,
-      "state": "MERGED",
-      "title": "Donor: Invest Appalachia ZIP/FAQ recovered source (FAQ_NOT_VISIBLE_YET)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/channel-partner-deal-desk-20260916-01",
-      "closed_at": "2026-09-16T22:43:51Z",
-      "head_sha": "9132e989d79d7ad18e506b0f9a5392be4b049487",
-      "merged_at": "2026-09-16T22:43:51Z",
-      "number": 15072,
-      "state": "MERGED",
-      "title": "Revenue: ship Channel Partner Deal Desk"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zgb/smb-offer-registry-35158265857-20260916",
-      "closed_at": "2026-09-16T22:43:09Z",
-      "head_sha": "3f4d80ad5d401e3698aa1701c4da420148ceb9d3",
-      "merged_at": "2026-09-16T22:43:09Z",
-      "number": 15078,
-      "state": "MERGED",
-      "title": "Receipt: smb offer-portfolio-registry 35158265857 GitHub billing hold"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zkiln/live-procurement-partner-fit-15054",
-      "closed_at": "2026-09-16T22:43:05Z",
-      "head_sha": "76df8ed3e0b9514b7680e594a7178f864473747e",
-      "merged_at": "2026-09-16T22:43:05Z",
-      "number": 15069,
-      "state": "MERGED",
-      "title": "Revenue: gate live-procurement partner outreach before Muse"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-16T22:48:45Z",
+  "unchanged_since": "2026-09-16T22:58:21Z",
   "undatable_pulls": []
 }
