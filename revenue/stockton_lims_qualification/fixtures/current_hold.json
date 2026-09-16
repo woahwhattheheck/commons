@@ -1,0 +1,58 @@
+{
+  "schema": "stockton-lims-qualification/input-v1",
+  "opportunity_id": "stockton-pur-27-007",
+  "opportunity_status": "OPEN",
+  "status_evidence": {
+    "status": "MISSING",
+    "artifact_id": null,
+    "sha256": null,
+    "observed_at": null,
+    "valid_until": null,
+    "authority_ref": null
+  },
+  "sources": [
+    {
+      "source_id": "RFP_PDF",
+      "status": "METADATA_ONLY",
+      "filename": "PUR_27-007_Final_.pdf",
+      "sha256": null,
+      "size_bytes": null,
+      "captured_at": "2026-09-15T20:00:00Z"
+    },
+    {
+      "source_id": "REQUIREMENTS_XLSX",
+      "status": "SOURCE_REQUIRED",
+      "filename": "Requirements.xlsx",
+      "sha256": null,
+      "size_bytes": null,
+      "captured_at": null
+    }
+  ],
+  "addenda_census": {
+    "status": "MISSING",
+    "artifact_id": null,
+    "sha256": null,
+    "observed_at": null,
+    "valid_until": null,
+    "authority_ref": null
+  },
+  "gates": [],
+  "specialist_seam": {
+    "scope_ids": [
+      "CIWQS_REPORTING_VALIDATION",
+      "SCADA_CONTRACT_LAB_ADAPTERS",
+      "MIGRATION_RECONCILIATION",
+      "QC_ACCEPTANCE_TESTS",
+      "TRAINING_VALIDATION"
+    ],
+    "evidence": {
+      "status": "MISSING",
+      "artifact_id": null,
+      "sha256": null,
+      "observed_at": null,
+      "valid_until": null,
+      "authority_ref": null
+    },
+    "proposed_fee_usd": null
+  }
+}
