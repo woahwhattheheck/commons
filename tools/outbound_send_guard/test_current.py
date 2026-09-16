@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import inspect
 import json
 import unittest
 from datetime import datetime, timezone
@@ -125,6 +126,14 @@ class CurrentBoundaryTests(unittest.TestCase):
         self.assertEqual(payload["decision"], "ALLOW_NEW")
         self.assertTrue(payload["current_preflight_clear"])
         self.assertFalse(payload["side_effects_authorized"])
+
+    def test_worker_bind_keeps_four_arg_core_adapter(self):
+        """Regress run 35113530437: do not smash current_impl._core with 2-arg evaluate."""
+        current_worker._bind_internal_engine()
+        self.assertIs(current_impl.guard, current_worker._core)
+        params = list(inspect.signature(current_impl._core).parameters)
+        self.assertEqual(params, ["intent", "evidence", "ib", "eb"])
+        self.assertIsNot(current_impl._core, current_worker._core.evaluate)
 
 
 if __name__ == "__main__":

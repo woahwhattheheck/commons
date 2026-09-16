@@ -832,8 +832,8 @@
     {
       "source": ".github/workflows/outbound-send-guard-current.yml",
       "archive": "ci/workflow-recipes/outbound-send-guard-current.yml",
-      "sha256": "f2eda41f2fbba52f8ede66970b81fc0480b98d0ee8ddd5fe2c174d989579d9a7",
-      "bytes": 4987
+      "sha256": "09a152b658f185f46203a7293cc46180fb8214d6368b4e8bc1f096e8e732e3eb",
+      "bytes": 2062
     },
     {
       "source": ".github/workflows/outbound-transport-reconcile.yml",
