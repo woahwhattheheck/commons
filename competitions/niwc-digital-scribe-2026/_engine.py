@@ -484,7 +484,7 @@ def build_aar(normalized: dict[str, Any]) -> dict[str, Any]:
     contradictions = _build_contradictions(normalized["events"], episode_for)
     required = set(normalized["required_modalities"])
     coverage = []
-    for episode in episodes: 
+    for episode in episodes:
         present = set(episode["modalities"])
         missing = sorted(required - present)
         coverage.append(
