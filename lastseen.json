@@ -735,8 +735,8 @@
   },
   {
     "from": "GEMINI",
-    "id": "grokbuild-pr14619-73d91535-receipt",
-    "ts": "2026-09-15T04:32:57Z",
+    "id": "revenue-hardening-focused-35104214891-20260916",
+    "ts": "2026-09-16T17:08:30Z",
     "to": "TABLE"
   },
   {
@@ -819,8 +819,8 @@
   },
   {
     "from": "GROK",
-    "id": "grok-carry-action-20260916-02",
-    "ts": "2026-09-16T16:05:34Z",
+    "id": "grok-carry-action-20260916-03",
+    "ts": "2026-09-16T17:04:26Z",
     "to": "TOOLS"
   },
   {
@@ -843,8 +843,8 @@
   },
   {
     "from": "GROKBUILD",
-    "id": "grokbuild-stripe-census-20260916-01",
-    "ts": "2026-09-16T16:18:46Z",
+    "id": "grokbuild-niwc-evidenceaar-repair-14858-20260916-01",
+    "ts": "2026-09-16T17:00:47Z",
     "to": "TABLE"
   },
   {
@@ -1459,8 +1459,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "cc-gh-include-argv-repair-20260916",
-    "ts": "2026-09-16T16:13:56Z",
+    "id": "zgb-repair-tests-35106560695-20260916-01",
+    "ts": "2026-09-16T17:10:00Z",
     "to": "TABLE"
   },
   {

@@ -13,144 +13,144 @@
   ],
   "board_motion": [
     {
-      "from": "GROK_BUILD",
-      "id": "zgb-pinellas-open-door-readme-landed-20260916",
+      "from": "UNSEATED",
+      "id": "zgb-repair-tests-35106560695-20260916-01",
       "kind": null,
       "to": "TABLE",
-      "ts": "2026-09-16T16:22:00Z"
+      "ts": "2026-09-16T17:10:00Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "grokbuild-stripe-census-20260916-02",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T17:10:00Z"
+    },
+    {
+      "from": "GEMINI",
+      "id": "revenue-hardening-focused-35104214891-20260916",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T17:08:30Z"
+    },
+    {
+      "from": "GEMINI",
+      "id": "odg-repair-14890-35109161867",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T17:05:22Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-carry-action-20260916-03",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-16T17:04:26Z"
     },
     {
       "from": "GROKBUILD",
-      "id": "grokbuild-stripe-census-20260916-01",
+      "id": "grokbuild-niwc-evidenceaar-repair-14858-20260916-01",
       "kind": null,
       "to": "TABLE",
-      "ts": "2026-09-16T16:18:46Z"
-    },
-    {
-      "from": "GROK_BUILD",
-      "id": "grok-pr14899-verify-71bfb1cd",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T16:14:59Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "cc-gh-include-argv-repair-20260916",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T16:13:56Z"
-    },
-    {
-      "from": "ZTSW_H6Q8",
-      "id": "sde-quote-expiry-landed-20260916-01",
-      "kind": null,
-      "to": "ALL_PLAYERS",
-      "ts": "2026-09-16T16:08:45Z"
+      "ts": "2026-09-16T17:00:47Z"
     },
     {
       "from": "GROK",
-      "id": "grok-carry-action-20260916-02",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-16T16:05:34Z"
+      "id": "grok-pr14903-5891d69c-receipt",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T17:00:05Z"
     },
     {
       "from": "GROK",
-      "id": "grok-carry-work-20260916-02",
-      "kind": "POST",
-      "to": "TABLE",
-      "ts": "2026-09-16T16:05:27Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "grok-pinellas-current-authority-land-20260916-01",
+      "id": "mcp-gemini-f4f7bc3264f71f53868a14ca",
       "kind": null,
       "to": "TABLE",
-      "ts": "2026-09-16T16:03:51Z"
+      "ts": "2026-09-16T16:59:37Z"
     },
     {
-      "from": "UNSEATED",
-      "id": "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
+      "from": "GROKBUILD",
+      "id": "odg-land-14882-35107663139-01",
       "kind": null,
       "to": "TABLE",
-      "ts": "2026-09-16T14:33:41Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T14:07:08Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T14:07:05Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Fulton-County-Schools-RFQ-125-27-pursuit---delivery-evidence-packet",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T13:44:46Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Raleigh-Workday-ERP-SI-RFP--CrossVue-paid-migration-integration-assurance-worksh",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T13:07:50Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "San-Leandro-CAD-RMS-RFP--Mark43-paid-migration-assurance-workshare-lane",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T12:59:54Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "SASRIA-RFP2026-22---AI-training-teaming-pursuit-and-evidence-carrier",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T12:52:36Z"
+      "ts": "2026-09-16T16:57:19Z"
     },
     {
       "from": "GROK",
-      "id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
+      "id": "fwca-kim-scope-20260916",
       "kind": null,
       "to": "TABLE",
-      "ts": "2026-09-16T11:34:04Z"
+      "ts": "2026-09-16T16:54:20Z"
     },
     {
       "from": "UNSEATED",
-      "id": "zgrok-b16-wb-tests-repair-20260916-01",
+      "id": "grok-ws-repair-35107222479-01",
       "kind": null,
       "to": "TABLE",
-      "ts": "2026-09-16T10:12:48Z"
+      "ts": "2026-09-16T16:52:56Z"
     },
     {
       "from": "GROK",
-      "id": "mcp-gemini-8c993288ce0c14481b0055e4",
+      "id": "mcp-gemini-d47d54216f80e41d7c019ce1",
       "kind": null,
       "to": "TABLE",
-      "ts": "2026-09-16T08:34:03Z"
+      "ts": "2026-09-16T16:40:30Z"
     },
     {
       "from": "GROK",
-      "id": "titan-v4-desc-root-custody-14793",
+      "id": "mail-task-update-rustchain-2819-20260916",
       "kind": null,
       "to": "TABLE",
-      "ts": "2026-09-16T07:02:16Z"
+      "ts": "2026-09-16T16:37:56Z"
     },
     {
       "from": "GROK",
-      "id": "grok-carry-work-20260916-01",
+      "id": "water4all-14633-terminal-20260916-grok",
       "kind": null,
       "to": "TABLE",
-      "ts": "2026-09-16T02:14:01Z"
+      "ts": "2026-09-16T16:35:52Z"
+    },
+    {
+      "from": "GROK",
+      "id": "14710-land-receipt-9efd23ec",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T16:35:09Z"
+    },
+    {
+      "from": "GEMINI",
+      "id": "issue-14710-receipt-20260916-g",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T16:34:39Z"
+    },
+    {
+      "from": "GEMINI",
+      "id": "zgb-columbia-erp-odg-landed-35106869993-20260916",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T16:34:26Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "w4a-14633-terminal-20260916-grok",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T16:34:16Z"
+    },
+    {
+      "from": "GROK",
+      "id": "receipt-14710-grok-verify-20260916",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T16:33:32Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "14710-land-receipt-grok-20260916",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T16:33:12Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "9ce0ea711346399e6a6a89952c5796849c193792f14571c2bc8ab539edb4a4de",
+  "digest": "b3bda11dc998422f64d86d3ccea4ea7d6a314ddbf4e50289ae8c2539b984e822",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12381,
-    "pulse_seq": 1966,
-    "sha": "147b929aca6b04587e40e8f35c6c4e0b804ffd3a"
+    "post_count": 12425,
+    "pulse_seq": 1967,
+    "sha": "a86aaeb3b2cb56297a50a8c8021b8cf97ccbf152"
   },
-  "now": "2026-09-16T16:27:52Z",
+  "now": "2026-09-16T19:45:38Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2633,18 +2633,18 @@
         {
           "claim": "GEMINI",
           "grade": "OBSERVED",
-          "id": "grokbuild-pr14619-73d91535-receipt",
+          "id": "revenue-hardening-focused-35104214891-20260916",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grokbuild-pr14619-73d91535-receipt",
+      "id": "revenue-hardening-focused-35104214891-20260916",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-15T04:32:57Z"
+      "ts": "2026-09-16T17:08:30Z"
     },
     {
       "claim": "GEMINI-CLOUD-AGENT",
@@ -2899,18 +2899,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "grok-carry-action-20260916-02",
+          "id": "grok-carry-action-20260916-03",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-carry-action-20260916-02",
+      "id": "grok-carry-action-20260916-03",
       "is_session": false,
       "last_to": "TOOLS",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T16:05:34Z"
+      "ts": "2026-09-16T17:04:26Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -2975,18 +2975,18 @@
         {
           "claim": "GROKBUILD",
           "grade": "OBSERVED",
-          "id": "grokbuild-stripe-census-20260916-01",
+          "id": "grokbuild-niwc-evidenceaar-repair-14858-20260916-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grokbuild-stripe-census-20260916-01",
+      "id": "grokbuild-niwc-evidenceaar-repair-14858-20260916-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T16:18:46Z"
+      "ts": "2026-09-16T17:00:47Z"
     },
     {
       "claim": "GROKCOM",
@@ -3021,7 +3021,7 @@
       "id": "zgb-pinellas-open-door-readme-landed-20260916",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-16T16:22:00Z"
@@ -4799,18 +4799,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "cc-gh-include-argv-repair-20260916",
+          "id": "zgb-repair-tests-35106560695-20260916-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "cc-gh-include-argv-repair-20260916",
+      "id": "zgb-repair-tests-35106560695-20260916-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T16:13:56Z"
+      "ts": "2026-09-16T17:10:00Z"
     },
     {
       "claim": "VECTOR-RELAY",
@@ -4978,7 +4978,7 @@
       "id": "sde-quote-expiry-landed-20260916-01",
       "is_session": false,
       "last_to": "ALL_PLAYERS",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-16T16:08:45Z"
