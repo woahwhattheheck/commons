@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 112,
-    "open_pull_requests": 44,
-    "runs_in_progress": 19,
-    "runs_queued": 1100
+    "open_issues": 111,
+    "open_pull_requests": 43,
+    "runs_in_progress": 20,
+    "runs_queued": 1092
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -66,17 +66,6 @@
     }
   ],
   "newest_pulls": [
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol-17/security-remediation-scope-20260916",
-      "created_at": "2026-09-16T22:54:20Z",
-      "draft": false,
-      "head_sha": "651fbf8033592c9a8286d2d6a8bdaddd9cf56dcc",
-      "number": 15095,
-      "title": "revenue: ship security HOLD-to-remediation scoping engine",
-      "updated_at": "2026-09-16T22:57:07Z"
-    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -175,6 +164,17 @@
       "number": 14838,
       "title": "fix(revenue): bind opportunity qualifier source authority",
       "updated_at": "2026-09-16T14:29:09Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zrs-j6m4/sun-a308734-current-main-recovery-20260916",
+      "created_at": "2026-09-16T12:36:30Z",
+      "draft": false,
+      "head_sha": "d092e81a4e111e480a4b4010c7017e3687f43068",
+      "number": 14826,
+      "title": "Recover Sun A308734 P18 frontier on current main",
+      "updated_at": "2026-09-16T13:06:05Z"
     }
   ],
   "open_heads": {
@@ -220,13 +220,34 @@
     "15064": "b8221e7df432e2f73b169efe472df8ac54e5c6d5",
     "15082": "b943e587fc74cea024c35a72fac9c28a8760b062",
     "15085": "fe287d76070cc3771ea1f00c91852d446e46ae7d",
-    "15086": "7e7481166e517c12cd431fffd771d632e145a31d",
-    "15095": "651fbf8033592c9a8286d2d6a8bdaddd9cf56dcc"
+    "15086": "7e7481166e517c12cd431fffd771d632e145a31d"
   },
-  "pulls_listed": 44,
+  "pulls_listed": 43,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 57.9,
+  "queue_depth_per_runner": 54.6,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol-17/security-remediation-scope-20260916",
+      "closed_at": "2026-09-16T23:01:22Z",
+      "head_sha": "651fbf8033592c9a8286d2d6a8bdaddd9cf56dcc",
+      "merged_at": "2026-09-16T23:01:22Z",
+      "number": 15095,
+      "state": "MERGED",
+      "title": "revenue: ship security HOLD-to-remediation scoping engine"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "grok/qualification-evidence-vault-land-20260916",
+      "closed_at": "2026-09-16T22:59:29Z",
+      "head_sha": "2fc980d22e1742dcc630dbab3d42f4d64721868b",
+      "merged_at": "2026-09-16T22:59:29Z",
+      "number": 15098,
+      "state": "MERGED",
+      "title": "record: qualification evidence vault landed on main"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -369,32 +390,10 @@
       "number": 15083,
       "state": "CLOSED",
       "title": "Land node-tests billing CI diagnostic receipt"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol-17/security-questionnaire-evidence-pack-20260916",
-      "closed_at": "2026-09-16T22:47:30Z",
-      "head_sha": "b47dcaa97490ca092bcec617bacab7f06ca37b16",
-      "merged_at": null,
-      "number": 15075,
-      "state": "CLOSED",
-      "title": "revenue: ship security questionnaire evidence pack"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zcl-l7q4/finished-work-cash-closeout-15053",
-      "closed_at": "2026-09-16T22:47:25Z",
-      "head_sha": "764ae6d1bf23b9d9bf1275e2b930c7790b162389",
-      "merged_at": "2026-09-16T22:47:25Z",
-      "number": 15063,
-      "state": "MERGED",
-      "title": "Revenue: deterministic finished-work \u2192 cash closeout compiler"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-16T22:58:21Z",
+  "unchanged_since": "2026-09-16T23:02:17Z",
   "undatable_pulls": []
 }
