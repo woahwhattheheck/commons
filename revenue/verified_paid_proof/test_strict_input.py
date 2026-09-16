@@ -30,7 +30,7 @@ def hostile_payloads() -> dict[str, str]:
     )
     return {
         "integer_digit_limit": '{"schema_version":' + ("9" * 5000) + "}",
-        "deep_valid_nesting": ('{\"x\":' * 10000) + "0" + ("}" * 10000),
+        "deep_valid_nesting": ('{"x":' * 10000) + "0" + ("}" * 10000),
         "escaped_lone_surrogate": surrogate_record,
         "escaped_lone_surrogate_key": '{"\\ud800":1}',
     }
