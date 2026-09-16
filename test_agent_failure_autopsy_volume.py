@@ -32,6 +32,18 @@ def base_intake(case_id: str = "case-volume-001") -> dict:
     intake["record_classification"] = "BUYER_CASE"
     intake["case_id"] = case_id
     intake["buyer_ref"] = "buyer_1111111111111111"
+    # Canonical fulfillment binds BUYER_CASE evidence to private: locations.
+    # The synthetic example uses example:; rewrite so volume tests exercise
+    # the live validator instead of a weaker fixture.
+    for evidence in intake["evidence"]:
+        evidence["location_ref"] = evidence["location_ref"].replace(
+            "example:", "private:"
+        )
+        extracted = evidence.get("extracted_text_location_ref")
+        if isinstance(extracted, str):
+            evidence["extracted_text_location_ref"] = extracted.replace(
+                "example:", "private:"
+            )
     return intake
 
 
@@ -214,6 +226,16 @@ class AutopsyVolumeEngineTests(unittest.TestCase):
             compile_cases([
                 case_record(coordinator="peer_same_operator", backup="peer_same_operator")
             ])
+
+    def test_buyer_case_example_location_is_rejected_by_canonical_intake(self):
+        intake = load_json(AUTOPSY / "examples" / "intake.json")
+        intake["record_classification"] = "BUYER_CASE"
+        intake["case_id"] = "case-volume-001"
+        intake["buyer_ref"] = "buyer_1111111111111111"
+        with self.assertRaisesRegex(
+            VolumeValidationError, "canonical intake validation failed"
+        ):
+            compile_cases([case_record(intake=intake)])
 
     def test_usable_intake_before_deadline_is_analysis_due(self):
         intake = base_intake()
