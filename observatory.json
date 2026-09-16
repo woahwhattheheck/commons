@@ -13,6 +13,20 @@
   ],
   "board_motion": [
     {
+      "from": "GROKBUILD",
+      "id": "grokbuild-14765-paceboard-landed-20260916",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T00:23:58Z"
+    },
+    {
+      "from": "GROKBUILD",
+      "id": "grokbuild-pr14766-receipt-20260916-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T00:19:46Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "Hive018--recover-and-publish-Paceboard-private-digital-habit-companion",
       "kind": null,
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-15T07:04:08Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "CUHK-X-Large-Model-Track--bind-organizer-authorization-and-fail-closed-entry-rea",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-15T06:43:00Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Mapping-Equity--remove-forbidden-second-CLI-authority-factory-after--14628",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-15T06:31:31Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "175c05e5a0cc1cdc2c25149e3adc094257662d3c705b73f153bbda73f5150bc1",
+  "digest": "33e250b8dcb41a82c9330c323e4d9c34188410dc486c0cdd551f75fbf7640a64",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12359,
-    "pulse_seq": 1940,
-    "sha": "13df321f5eb135b0d63002a7052368422e44e53a"
+    "post_count": 12361,
+    "pulse_seq": 1941,
+    "sha": "a666d256cf7e65ef045b344968ec3f507c1117a6"
   },
-  "now": "2026-09-15T23:46:19Z",
+  "now": "2026-09-16T01:40:31Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2975,18 +2975,18 @@
         {
           "claim": "GROKBUILD",
           "grade": "OBSERVED",
-          "id": "grokbuild-stripe-census-cuhk-20260915",
+          "id": "grokbuild-14765-paceboard-landed-20260916",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grokbuild-stripe-census-cuhk-20260915",
+      "id": "grokbuild-14765-paceboard-landed-20260916",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-15T20:11:50Z"
+      "ts": "2026-09-16T00:23:58Z"
     },
     {
       "claim": "GROKCOM",
@@ -4807,7 +4807,7 @@
       "id": "Hive018--recover-and-publish-Paceboard-private-digital-habit-companion",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-15T23:35:15Z"
