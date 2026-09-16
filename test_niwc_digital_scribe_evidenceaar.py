@@ -45,7 +45,7 @@ def check_coverage(t):
 def check_lineage(t):
     b=bundle(); sources={x["source_id"]:x for x in b["normalized"]["sources"]}; cl=next(x for x in b["aar"]["claims"] if x["evidence"][0]["event_id"]=="evt-001"); t.assertEqual(cl["evidence"][0]["source_sha256"],sources["text-log"]["sha256"])
 def check_render_escape(t):
-    b=bundle(); t.assertIn(r"\<safely\>",b["markdown"]); t.assertNotIn("<safely>",b["markdown"]); t.assertIn("&lt;safely&gt; &amp; logged *once*.",b["html"])
+    b=bundle(); t.assertIn(r"\\<safely\\>",b["markdown"]); t.assertNotIn("<safely>",b["markdown"]); t.assertIn("<safely> & logged *once*.",b["html"])
 def check_authority(t):
     a=bundle()["aar"]["authority"]; t.assertTrue(a["synthetic_offline_only"]); t.assertTrue(all(a[k] is False for k in ("operational_exercise_data_processed","sponsor_submission_authorized","winner_or_award_claimed","payment_or_revenue_claimed")))
 def check_receipt(t):
@@ -58,10 +58,10 @@ def check_unknown_bundle(t):
     b=bundle(); b["extra"]=1; raises(lambda: wb.verify_bundle(raw(),b))
 def check_mismatch(t):
     b=bundle(); o=obj(); o["exercise_id"]="other"; raises(lambda: wb.verify_bundle(enc(o),b))
-def check_duplicate_key(t): raises(lambda: wb.strict_json_loads('{"x":1,"x":2}'))
-def check_float(t): raises(lambda: wb.strict_json_loads('{"x":1.25}'))
-def check_nan(t): raises(lambda: wb.strict_json_loads('{"x":NaN}'))
-def check_huge_int(t): raises(lambda: wb.strict_json_loads('{"x":'+('9'*5000)+'}'))
+def check_duplicate_key(t): raises(lambda: wb.strict_json_loads('{\"x\":1,\"x\":2}'))
+def check_float(t): raises(lambda: wb.strict_json_loads('{\"x\":1.25}'))
+def check_nan(t): raises(lambda: wb.strict_json_loads('{\"x\":NaN}'))
+def check_huge_int(t): raises(lambda: wb.strict_json_loads('{\"x\":'+('9'*5000)+'}'))
 def check_depth(t):
     v=0
     for _ in range(wb.MAX_NESTING+2): v=[v]
@@ -78,18 +78,45 @@ def check_cli(t,opt):
         out=Path(td)/"b.json"; p=subprocess.run([sys.executable,*opt,str(MODULE),"compile",str(FIXTURE),"-o",str(out)],capture_output=True,text=True); t.assertEqual(p.returncode,0,p.stderr); p=subprocess.run([sys.executable,*opt,str(MODULE),"verify",str(FIXTURE),str(out)],capture_output=True,text=True); t.assertEqual((p.returncode,p.stdout.strip()),(0,"VERIFIED"),p.stderr)
 def check_cli_bad(t,opt):
     with tempfile.TemporaryDirectory() as td:
-        bad=Path(td)/"bad.json"; bad.write_text('{"x":'+('9'*5000)+'}',encoding="utf-8"); p=subprocess.run([sys.executable,*opt,str(MODULE),"compile",str(bad)],capture_output=True,text=True); t.assertEqual(p.returncode,2); t.assertIn("ERROR:",p.stderr); t.assertNotIn("Traceback",p.stderr)
+        bad=Path(td)/"bad.json"; bad.write_text('{\"x\":'+('9'*5000)+'}',encoding=\"utf-8\"); p=subprocess.run([sys.executable,*opt,str(MODULE),"compile",str(bad)],capture_output=True,text=True); t.assertEqual(p.returncode,2); t.assertIn(\"ERROR:\",p.stderr); t.assertNotIn(\"Traceback\",p.stderr)
 def check_render_exclusive(t):
     with tempfile.TemporaryDirectory() as td:
-        out=Path(td)/"rendered"; p=subprocess.run([sys.executable,str(MODULE),"render",str(FIXTURE),str(out)],capture_output=True,text=True); t.assertEqual(p.returncode,0,p.stderr); t.assertTrue(all((out/x).is_file() for x in ("aar.json","aar.md","aar.html","receipt.json","bundle.json"))); p=subprocess.run([sys.executable,str(MODULE),"render",str(FIXTURE),str(out)],capture_output=True,text=True); t.assertEqual(p.returncode,2); t.assertNotIn("Traceback",p.stderr)
+        out=Path(td)/\"rendered\"; p=subprocess.run([sys.executable,str(MODULE),\"render\",str(FIXTURE),str(out)],capture_output=True,text=True); t.assertEqual(p.returncode,0,p.stderr); t.assertTrue(all((out/x).is_file() for x in (\"aar.json\",\"aar.md\",\"aar.html\",\"receipt.json\",\"bundle.json\"))); p=subprocess.run([sys.executable,str(MODULE),\"render\",str(FIXTURE),str(out)],capture_output=True,text=True); t.assertEqual(p.returncode,2); t.assertNotIn(\"Traceback\",p.stderr)
+
+
+def check_engine_api(t):
+    for name in (\"_text\",\"_pairs\",\"strict_json_loads\",\"finalize_bundle\",\"verify_bundle\",\"render_markdown\",\"render_html\",\"main\",\"compile_bundle\"):
+        t.assertTrue(hasattr(wb,name), name)
+
+def check_render_summary_window(t):
+    b=bundle()
+    md=b[\"markdown\"]; html_doc=b[\"html\"]
+    t.assertIn(\"- Unresolved contradictions: 1\", md)
+    t.assertIn(\"- Coverage-complete episodes: 1\", md)
+    t.assertIn(\"- Window: `2026-09-16T13:00:00.000Z` → `2026-09-16T13:00:11.000Z`\", md)
+    t.assertIn(\"Evidence: `evt-001`\", md)
+    t.assertNotIn(\"`;\", md)
+    t.assertNotIn(\"UNRESOLVEE\", html_doc)
+    t.assertIn(\"UNRESOLVED\", html_doc)
+    t.assertIn(\"<li>Evidence-linked claims: 8</li>\", html_doc)
+    t.assertIn(\"<li>Coverage-complete episodes: 1</li>\", html_doc)
+
+def check_surrogate_value(t):
+    o=obj(); o[\"events\"][0][\"assertion\"]=\"ok\\ud800x\"
+    raises(lambda: wb.finalize_bundle(enc(o)))
+
+def check_surrogate_key(t):
+    raw='{\"schema_version\":\"evidenceaar-input/v1\",\"\\ud800\":1}'
+    raises(lambda: wb.strict_json_loads(raw))
 
 CASES = [
-("determinism",check_determinism),("verify",check_verify),("summary",check_summary),("clock",check_clock),("episodes",check_episodes),("contradiction",check_contradiction),("coverage",check_coverage),("lineage",check_lineage),("render_escape",check_render_escape),("authority",check_authority),("receipt",check_receipt),("whitespace",check_whitespace),("tamper",check_tamper),("unknown_bundle",check_unknown_bundle),("mismatch",check_mismatch),("duplicate_key",check_duplicate_key),("float",check_float),("nan",check_nan),("huge_int",check_huge_int),("depth",check_depth),
-("synthetic_false",mutate(lambda o,v:o.__setitem__("synthetic",v),False)),("bool_gap",mutate(lambda o,v:o.__setitem__("episode_gap_ms",v),True)),("confidence_bool",mutate(lambda o,v:o["events"][0].__setitem__("confidence_milli",v),True)),("unknown_top",mutate(lambda o,v:o.__setitem__("authority",v),{})),("duplicate_source",mutate(lambda o,v:o["sources"].append(copy.deepcopy(o["sources"][0])),None)),("duplicate_event",mutate(lambda o,v:o["events"].append(copy.deepcopy(o["events"][0])),None)),("unknown_source",mutate(lambda o,v:o["events"][0].__setitem__("source_id",v),"missing")),("unknown_modality",mutate(lambda o,v:o["sources"][0].__setitem__("modality",v),"HOLOGRAM")),("unknown_kind",mutate(lambda o,v:o["events"][0].__setitem__("kind",v),"SPECULATION")),("timezone",mutate(lambda o,v:o["events"][0].__setitem__("observed_at",v),"2026-09-16T13:00:00")),("uppercase_hash",mutate(lambda o,v:o["sources"][0].__setitem__("sha256",v),"A"*64)),("required_empty",mutate(lambda o,v:o.__setitem__("required_modalities",v),[])),("tags",check_tags),("cli_normal",lambda t:check_cli(t,[])),("cli_opt",lambda t:check_cli(t,["-O"])),("cli_bad_normal",lambda t:check_cli_bad(t,[])),("cli_bad_opt",lambda t:check_cli_bad(t,["-O"])),("render_exclusive",check_render_exclusive),("bundle_digest",lambda t:t.assertRegex(bundle()["bundle_sha256"],r"^[0-9a-f]{64}$")),
+(\"determinism\",check_determinism),(\"verify\",check_verify),(\"summary\",check_summary),(\"clock\",check_clock),(\"episodes\",check_episodes),(\"contradiction\",check_contradiction),(\"coverage\",check_coverage),(\"lineage\",check_lineage),(\"render_escape\",check_render_escape),(\"authority\",check_authority),(\"receipt\",check_receipt),(\"whitespace\",check_whitespace),(\"tamper\",check_tamper),(\"unknown_bundle\",check_unknown_bundle),(\"mismatch\",check_mismatch),(\"duplicate_key\",check_duplicate_key),(\"float\",check_float),(\"nan\",check_nan),(\"huge_int\",check_huge_int),(\"depth\",check_depth),
+(\"synthetic_false\",mutate(lambda o,v:o.__setitem__(\"synthetic\",v),False)),(\"bool_gap\",mutate(lambda o,v:o.__setitem__(\"episode_gap_ms\",v),True)),(\"confidence_bool\",mutate(lambda o,v:o[\"events\"][0].__setitem__(\"confidence_milli\",v),True)),(\"unknown_top\",mutate(lambda o,v:o.__setitem__(\"authority\",v),{})),(\"duplicate_source\",mutate(lambda o,v:o[\"sources\"].append(copy.deepcopy(o[\"sources\"][0])),None)),(\"duplicate_event\",mutate(lambda o,v:o[\"events\"].append(copy.deepcopy(o[\"events\"][0])),None)),(\"unknown_source\",mutate(lambda o,v:o[\"events\"][0].__setitem__(\"source_id\",v),\"missing\")),(\"unknown_modality\",mutate(lambda o,v:o[\"sources\"][0].__setitem__(\"modality\",v),\"HOLOGRAM\")),(\"unknown_kind\",mutate(lambda o,v:o[\"events\"][0].__setitem__(\"kind\",v),\"SPECULATION\")),(\"timezone\",mutate(lambda o,v:o[\"events\"][0].__setitem__(\"observed_at\",v),\"2026-09-16T13:00:00\")),(\"uppercase_hash\",mutate(lambda o,v:o[\"sources\"][0].__setitem__(\"sha256\",v),\"A\"*64)),(\"required_empty\",mutate(lambda o,v:o.__setitem__(\"required_modalities\",v),[])),(\"tags\",check_tags),(\"cli_normal\",lambda t:check_cli(t,[])),(\"cli_opt\",lambda t:check_cli(t,[\"-O\"])),(\"cli_bad_normal\",lambda t:check_cli_bad(t,[])),(\"cli_bad_opt\",lambda t:check_cli_bad(t,[\"-O\"])),(\"render_exclusive\",check_render_exclusive),(\"bundle_digest\",lambda t:t.assertRegex(bundle()[\"bundle_sha256\"],r\"^[0-9a-f]{64}$\")),
+(\"engine_api\",check_engine_api),(\"render_summary_window\",check_render_summary_window),(\"surrogate_value\",check_surrogate_value),(\"surrogate_key\",check_surrogate_key),
 ]
-assert len(CASES)==39
+assert len(CASES)==43
 class EvidenceAARContractTests(unittest.TestCase): pass
 for i,(name,fn) in enumerate(CASES,1):
-    setattr(EvidenceAARContractTests,f"test_{i:02d}_{name}",(lambda f: lambda self: f(self))(fn))
+    setattr(EvidenceAARContractTests,f\"test_{i:02d}_{name}\",(lambda f: lambda self: f(self))(fn))
 
-if __name__ == "__main__": unittest.main()
+if __name__ == \"__main__\": unittest.main()
