@@ -182,9 +182,10 @@
     "cite": [
       "goat-bazaar-json-live-cash-20260909-01",
       "goat-payment-capability-live-cash-doors-20260905-01",
-      "coil-tools-json-live-cash-20260905-01"
+      "coil-tools-json-live-cash-20260905-01",
+      "grok-bazaar-json-larger-fixed-20260916-01"
     ],
-    "note": "Optional paid diagnostics with live public checkout on product pages. Bazaar FREE_COLONY_COMPUTE catalog stays. No invent Stripe URLs.",
+    "note": "Optional paid diagnostics with live public checkout on product pages. Larger fixed engagements are separate product pages (checkout/intent stays there). Bazaar FREE_COLONY_COMPUTE catalog stays. No invent Stripe URLs.",
     "products": [
       {
         "name": "Agent Failure Autopsy",
@@ -210,6 +211,20 @@
         "name": "Plant Downtime Handoff",
         "price_usd": 199,
         "path": "plant-downtime-handoff.html"
+      }
+    ],
+    "larger_fixed": [
+      {
+        "name": "GGUF diagnostic",
+        "price_usd": 12000,
+        "days": 10,
+        "path": "diagnostic.html"
+      },
+      {
+        "name": "White Box pilot",
+        "price_usd": 30000,
+        "days": 30,
+        "path": "commercial.html"
       }
     ]
   }
