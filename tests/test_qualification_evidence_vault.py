@@ -151,13 +151,26 @@ class QualificationVaultTests(unittest.TestCase):
         packet = engine.compile_assessment(vault, solicitation([req("PAST_PERFORMANCE", "ERP", max_age_days=365, partner=True)]), AS_OF)
         self.assertEqual(packet["outcome"], "HOLD_MISSING_EVIDENCE")
 
-    def test_private_redaction_strips_source_and_description(self):
-        vault = {"schema": engine.VAULT_SCHEMA, "records": [record("private-1", "INSURANCE", "CGL", "OWNER_ONLY", source="OWNER_PRIVATE_DOCUMENT", visibility="PRIVATE")]}
+    def test_private_redaction_omits_private_row_metadata(self):
+        secret_id = "private-client-alpha"
+        vault = {"schema": engine.VAULT_SCHEMA, "records": [record(secret_id, "INSURANCE", "CGL", "OWNER_ONLY", source="OWNER_PRIVATE_DOCUMENT", visibility="PRIVATE")]}
         redacted = engine.redact_vault(vault, AS_OF)
-        row = redacted["records"][0]
-        self.assertEqual(row["source_kind"], "PRIVATE_REDACTED")
-        self.assertIsNone(row["source_ref"])
-        self.assertIsNone(row["description"])
+        self.assertEqual(redacted["records"], [])
+        self.assertEqual(redacted["private_record_count"], 1)
+        self.assertNotIn(secret_id, engine.canonical_bytes(redacted).decode())
+
+    def test_private_verified_evidence_can_satisfy_without_identifier_leak(self):
+        secret_id = "private-client-beta"
+        vault = {"schema": engine.VAULT_SCHEMA, "records": [record(secret_id, "INSURANCE", "CGL", "VERIFIED", source="OWNER_PRIVATE_DOCUMENT", visibility="PRIVATE")]}
+        packet = engine.compile_assessment(vault, solicitation([req("INSURANCE", "CGL")]), AS_OF)
+        self.assertEqual(packet["outcome"], "PRIME_SUPPORTED")
+        row = packet["requirements"][0]
+        self.assertEqual(row["verified_evidence_ids"], [])
+        self.assertEqual(row["verified_private_count"], 1)
+        self.assertEqual(row["candidate_private_count"], 1)
+        self.assertNotIn(secret_id, engine.canonical_bytes(packet).decode())
+        self.assertNotIn(secret_id, engine.render_markdown(packet))
+        self.assertEqual(packet["evidence_input_authentication"], "CURATED_BUNDLE_NOT_LIVE_PROVIDER_AUTHENTICATED")
 
     def test_private_document_cannot_be_public(self):
         vault = {"schema": engine.VAULT_SCHEMA, "records": [record("private-1", "INSURANCE", "CGL", "OWNER_ONLY", source="OWNER_PRIVATE_DOCUMENT", visibility="PUBLIC")]}
