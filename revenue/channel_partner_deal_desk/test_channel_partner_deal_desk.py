@@ -116,6 +116,8 @@ class DeskTest(unittest.TestCase):
         self.assertEqual(result["status"], "DEAL_REGISTERED")
         with self.assertRaises(DeskError):
             apply_mutation(self.desk, {"action": "REGISTER_DEAL", "surprise": True})
+        with self.assertRaises(DeskError):
+            apply_mutation(self.desk, {"action": "PURGE_LEDGER", "operation_key": "apply.purge"})
 
     def test_reversal_recomputes_due_and_cannot_cross_paid(self):
         self.register(); self.accept()

@@ -780,39 +780,40 @@ def _read_bounded_text(path: str | os.PathLike[str], *, limit: int = 1_048_576) 
 
 def apply_mutation(desk: DealDesk, mutation: Any) -> dict[str, Any]:
     obj = _require_dict(mutation, "mutation")
-    action = obj.get("action")
-    if not isinstance(action, str):
+    kind = obj.get("action")
+    if not isinstance(kind, str):
         raise DeskError("mutation.action is required")
-    schemas = {
+    envelopes = {
         "ADD_PARTNER": {"action", "operation_key", "partner_id", "display_name", "created_at", "source_ref", "source_sha256"},
         "ADD_TERMS": {"action", "operation_key", "terms_id", "partner_id", "revision", "commission_bps", "protection_days", "effective_at", "source_ref", "source_sha256", "trigger"},
         "REGISTER_DEAL": {"action", "operation_key", "deal_id", "partner_id", "terms_id", "buyer_key", "opportunity_key", "registered_at", "scope_sha256", "currency", "proposed_value_minor", "source_ref", "source_sha256"},
         "ADD_EVENT": {"action", "operation_key", "event_id", "deal_id", "kind", "occurred_at", "source_ref", "source_sha256", "amount_minor", "currency"},
     }
-    if action not in schemas:
-        raise DeskError("unsupported mutation action")
+    fields = envelopes.get(kind)
+    if fields is None:
+        raise DeskError("mutation envelope does not match a recorded shape")
     required = {
-        "ADD_PARTNER": schemas["ADD_PARTNER"],
-        "ADD_TERMS": schemas["ADD_TERMS"] - {"trigger"},
-        "REGISTER_DEAL": schemas["REGISTER_DEAL"],
-        "ADD_EVENT": schemas["ADD_EVENT"] - {"amount_minor", "currency"},
-    }[action]
+        "ADD_PARTNER": envelopes["ADD_PARTNER"],
+        "ADD_TERMS": envelopes["ADD_TERMS"] - {"trigger"},
+        "REGISTER_DEAL": envelopes["REGISTER_DEAL"],
+        "ADD_EVENT": envelopes["ADD_EVENT"] - {"amount_minor", "currency"},
+    }[kind]
     if not required.issubset(obj):
         missing = sorted(required - set(obj))
         raise DeskError("missing mutation fields: " + ",".join(missing))
-    unknown = set(obj) - schemas[action]
-    if unknown:
-        raise DeskError("unknown mutation fields: " + ",".join(sorted(unknown)))
+    extra = set(obj) - fields
+    if extra:
+        raise DeskError("unknown mutation fields: " + ",".join(sorted(extra)))
     payload = {key: value for key, value in obj.items() if key != "action"}
-    if action == "ADD_PARTNER":
+    if kind == "ADD_PARTNER":
         return desk.add_partner(**payload)
-    if action == "ADD_TERMS":
+    if kind == "ADD_TERMS":
         return desk.add_terms(**payload)
-    if action == "REGISTER_DEAL":
+    if kind == "REGISTER_DEAL":
         return desk.register_deal(**payload)
-    if action == "ADD_EVENT":
+    if kind == "ADD_EVENT":
         return desk.add_event(**payload)
-    raise AssertionError(action)
+    raise AssertionError(kind)
 
 
 def _hash_fixture(label: str) -> str:
