@@ -48,3 +48,13 @@ Even after host authority verifies and all mandatory evidence is proven, the max
 Nothing in this carrier authorizes buyer contact, procurement registration, certifications, representations about Canadian eligibility/tax/legal status, insurance claims, references, pricing, submission, signature, contract acceptance, award, payment, deployment, or revenue recognition.
 
 See `SOURCE_RECOVERY.md`, `PROPOSAL_ARCHITECTURE.md`, and `TEAMING_BRIEF.md` for the next owner-controlled work.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)

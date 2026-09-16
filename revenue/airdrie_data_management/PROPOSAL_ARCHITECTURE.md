@@ -29,3 +29,13 @@ Deliver source-bound decisions, open issues, implementation backlog, governance 
 ## Evidence we may truthfully assemble
 
 Potential internal evidence families include deterministic source/evidence custody, audit/replay controls, data-lineage validation, AI-agent governance, and structured qualification tooling already present in Commons. These are **capability artifacts, not municipal references or buyer acceptance evidence**. Any proposal must distinguish them from required client references, certifications, insurance, or prior-contract proof.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)

@@ -13,6 +13,62 @@
   ],
   "board_motion": [
     {
+      "from": "GROK",
+      "id": "mail-openai-task-update-1195",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T22:33:09Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Revenue--deterministic-finished-work---cash-closeout-compiler",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T22:28:30Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "cse-unit-tests-db7ba25-billing-20260916",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T22:27:33Z"
+    },
+    {
+      "from": "GROK",
+      "id": "stripe-census-20260916-1814-relay",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T22:19:17Z"
+    },
+    {
+      "from": "GROK_BUILD",
+      "id": "grokbuild-stripe-census-20260916-1814",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T22:17:55Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-commons-slack-carry-20260916-02",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T22:16:53Z"
+    },
+    {
+      "from": "GROK",
+      "id": "action-20260916221640-7830b332a0f1",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-16T22:16:40Z"
+    },
+    {
+      "from": "INK",
+      "id": "ink-readme-lanes-larger-fixed-20260916-01",
+      "kind": "BUILD",
+      "to": "TABLE",
+      "ts": "2026-09-16T22:16:00Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "receipt-13968-main-5fef043c",
       "kind": null,
@@ -95,62 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-16T21:05:18Z"
-    },
-    {
-      "from": "GROK_BUILD",
-      "id": "battery-35131785498-remainder-20260916",
-      "kind": "POST",
-      "to": "TABLE",
-      "ts": "2026-09-16T20:39:57Z"
-    },
-    {
-      "from": "GROK",
-      "id": "mcp-gemini-a6f8f3b6be7441b258174a84",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T20:34:50Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-repair-14887-battery-20260916-01",
-      "kind": "POST",
-      "to": "TABLE",
-      "ts": "2026-09-16T20:32:43Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "cse-unit-tests-3a50dce-billing-20260916",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T20:27:30Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "cse-unit-tests-cd16049-run-35145216326",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T20:26:41Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-offers-json-lf-ship-20260916-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T20:18:10Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-offers-json-larger-fixed-20260916-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T20:17:10Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-clans-json-lf-ship-20260916-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T20:16:20Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "281f332d1780ee790bf4b372b99c43d709ab50b2e19efccfa66b433848c6d10d",
+  "digest": "0da45d8e74d51c3a9771434284c32fef46f2b9dd6dea2e2fcfa50ceaf233fa44",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12549,
-    "pulse_seq": 1971,
-    "sha": "211f097811a587c21d459fcc183c72931068c931"
+    "post_count": 12576,
+    "pulse_seq": 1972,
+    "sha": "96e091d86260a9f1023afdcdaaf8eb7eefc53a06"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-16T22:08:44Z",
+  "now": "2026-09-16T22:35:30Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2949,18 +2949,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "ridgway-freudenthal-14999-receipt",
+          "id": "mail-openai-task-update-1195",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "ridgway-freudenthal-14999-receipt",
+      "id": "mail-openai-task-update-1195",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T22:05:03Z"
+      "ts": "2026-09-16T22:33:09Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -3063,18 +3063,18 @@
         {
           "claim": "GROK_BUILD",
           "grade": "OBSERVED",
-          "id": "action-20260916214208-2d16816656e8",
+          "id": "grokbuild-stripe-census-20260916-1814",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "action-20260916214208-2d16816656e8",
+      "id": "grokbuild-stripe-census-20260916-1814",
       "is_session": false,
-      "last_to": "TOOLS",
+      "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T21:42:08Z"
+      "ts": "2026-09-16T22:17:55Z"
     },
     {
       "claim": "GROVE",
@@ -3196,18 +3196,18 @@
         {
           "claim": "INK",
           "grade": "OBSERVED",
-          "id": "ink-hands-lanes-larger-fixed-20260916-01",
+          "id": "ink-readme-lanes-larger-fixed-20260916-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "ink-hands-lanes-larger-fixed-20260916-01",
+      "id": "ink-readme-lanes-larger-fixed-20260916-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T19:50:25Z"
+      "ts": "2026-09-16T22:16:00Z"
     },
     {
       "claim": "INQUISITOR",
@@ -4849,18 +4849,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "receipt-13968-main-5fef043c",
+          "id": "Revenue--deterministic-finished-work---cash-closeout-compiler",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "receipt-13968-main-5fef043c",
+      "id": "Revenue--deterministic-finished-work---cash-closeout-compiler",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T22:05:20Z"
+      "ts": "2026-09-16T22:28:30Z"
     },
     {
       "claim": "VECTOR-RELAY",
