@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from typing import Any
 
 from revenue.multi_framework_evidence_freshness.gate import (
@@ -21,6 +22,7 @@ DIAGNOSTIC_CENTS = 350000
 INTEGRATION_CENTS = 1000000
 PRICE_STATUS = "PROPOSED_NOT_ACCEPTED"
 STATES = ("REUSABLE", "STALE", "SCOPE_MISMATCH", "MISSING_OWNER", "INCOMPLETE")
+_SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 
 
 class DiagnosticError(ValueError):
@@ -52,6 +54,14 @@ def _counts_from_packet(packet: dict[str, Any]) -> dict[str, int]:
                 if type(row) is dict and row.get("state") in counts:
                     counts[str(row["state"])] += 1
             return counts
+    raw_counts = packet.get("counts")
+    if type(raw_counts) is dict:
+        for state in STATES:
+            value = raw_counts.get(state, 0)
+            if type(value) is not int or value < 0:
+                raise DiagnosticError("engine:bad_counts")
+            counts[state] = value
+        return counts
     results = packet.get("results")
     if type(results) is list:
         for row in results:
@@ -76,13 +86,20 @@ def _reasons_from_packet(packet: dict[str, Any]) -> list[dict[str, str]]:
         state = row.get("state")
         if state == "REUSABLE":
             continue
-        reason = row.get("reason") or row.get("reason_code") or row.get("code") or "UNSPECIFIED"
         eid = row.get("evidence_id") or row.get("id") or ""
+        reasons = row.get("reasons")
+        if type(reasons) is list and reasons:
+            for reason in reasons:
+                if type(reason) is not str or not reason:
+                    raise DiagnosticError("engine:bad_reason")
+                out.append({"evidence_id": str(eid), "state": str(state), "reason": reason})
+            continue
+        reason = row.get("reason") or row.get("reason_code") or row.get("code") or "UNSPECIFIED"
         out.append({"evidence_id": str(eid), "state": str(state), "reason": str(reason)})
     return out
 
 
-def compile_diagnostic(raw: Any) -> dict[str, Any]:
+def _diagnostic_body(raw: Any, packet: dict[str, Any]) -> dict[str, Any]:
     if type(raw) is not dict:
         raise DiagnosticError("root:object_required")
     evidence = raw.get("evidence")
@@ -90,28 +107,26 @@ def compile_diagnostic(raw: Any) -> dict[str, Any]:
         raise DiagnosticError("evidence:list_required")
     if len(evidence) > MAX_EVIDENCE_OBJECTS:
         raise DiagnosticError("evidence:max_500")
-    try:
-        packet = compile_packet(raw)
-        verify_packet(packet)
-    except GateError as exc:
-        raise DiagnosticError(str(exc)) from exc
     counts = _counts_from_packet(packet)
     objects_evaluated = sum(counts.values())
-    if objects_evaluated == 0 and type(evidence) is list:
-        objects_evaluated = len(evidence)
+    if objects_evaluated != len(evidence):
+        raise DiagnosticError("engine:count_mismatch")
     reasons = _reasons_from_packet(packet)
     engine_receipt = packet.get("receipt_sha256")
-    if type(engine_receipt) is not str or len(engine_receipt) != 64:
-        raise DiagnosticError("engine:receipt_missing")
     input_sha = packet.get("input_sha256") or packet.get("normalized_input_sha256")
     projection_sha = packet.get("projection_sha256")
-    body = {
+    for label, value in (("receipt", engine_receipt), ("input", input_sha), ("projection", projection_sha)):
+        if type(value) is not str or not _SHA256_RE.fullmatch(value):
+            raise DiagnosticError(f"engine:{label}_missing")
+    return {
         "schema": SCHEMA,
         "authority": {
             "audit_opinion": False,
             "certification": False,
             "control_effectiveness": False,
             "customer_contact": False,
+            "evidence_mutation": False,
+            "outbound": False,
             "payment": False,
             "provider_mutation": False,
             "revenue_recognition": False,
@@ -130,6 +145,8 @@ def compile_diagnostic(raw: Any) -> dict[str, Any]:
         "offer": {
             "diagnostic_cents": DIAGNOSTIC_CENTS,
             "integration_sprint_cents": INTEGRATION_CENTS,
+            "integration_sprint_condition": "ONLY_AFTER_PAID_DIAGNOSTIC_ESTABLISHES_VALUE_AND_ACTUAL_ADAPTER_SCOPE",
+            "free_custom_adapter": False,
             "status": PRICE_STATUS,
         },
         "scope": {
@@ -142,6 +159,22 @@ def compile_diagnostic(raw: Any) -> dict[str, Any]:
             "non_reusable": reasons,
         },
     }
+
+
+def compile_diagnostic(raw: Any) -> dict[str, Any]:
+    if type(raw) is not dict:
+        raise DiagnosticError("root:object_required")
+    evidence = raw.get("evidence")
+    if type(evidence) is not list:
+        raise DiagnosticError("evidence:list_required")
+    if len(evidence) > MAX_EVIDENCE_OBJECTS:
+        raise DiagnosticError("evidence:max_500")
+    try:
+        packet = compile_packet(raw)
+        verify_packet(packet)
+    except GateError as exc:
+        raise DiagnosticError(str(exc)) from exc
+    body = _diagnostic_body(raw, packet)
     return {"diagnostic": body, "diagnostic_sha256": _sha(body), "engine_packet": packet}
 
 
@@ -164,6 +197,7 @@ def render_buyer_page(envelope: dict[str, Any]) -> str:
         f"- Engine receipt: `{d['binding']['engine_receipt_sha256']}`",
         f"- Diagnostic digest: `{envelope['diagnostic_sha256']}`",
         f"- Offer: $3,500 diagnostic / optional $10,000 integration sprint ({d['offer']['status']})",
+        "- Integration sprint only after the paid diagnostic establishes value and actual adapter scope; no free custom adapter.",
         "",
         "## Non-reusable reasons",
     ]
@@ -171,10 +205,12 @@ def render_buyer_page(envelope: dict[str, Any]) -> str:
     if not reasons:
         lines.append("- none")
     else:
-        for row in reasons[:40]:
-            lines.append(f"- `{row['evidence_id']}` {row['state']}: {row['reason']}")
-        if len(reasons) > 40:
-            lines.append(f"- … {len(reasons) - 40} more")
+        aggregate: dict[tuple[str, str], int] = {}
+        for row in reasons:
+            key = (row["state"], row["reason"])
+            aggregate[key] = aggregate.get(key, 0) + 1
+        for (state, reason), count in sorted(aggregate.items()):
+            lines.append(f"- {state}: {reason} — {count}")
     lines.append("")
     lines.append("Credit: commercial ZCS-W7M2; engine ZAF-M7Q2 / #13908.")
     lines.append("")
@@ -213,4 +249,7 @@ def verify_diagnostic(envelope: Any) -> str:
     bound = diagnostic.get("binding", {}).get("engine_receipt_sha256")
     if bound != packet.get("receipt_sha256"):
         raise DiagnosticError("receipt_binding")
+    expected = _diagnostic_body(packet.get("input"), packet)
+    if diagnostic != expected:
+        raise DiagnosticError("diagnostic_packet_mismatch")
     return digest
