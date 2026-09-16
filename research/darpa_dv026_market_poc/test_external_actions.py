@@ -5,7 +5,7 @@ import unittest
 
 from support import *
 from contract import MECHANISMS, sha256_value
-from external_actions import ACTION_BUNDLE_SCHEMA, EXTERNAL_READY, evaluate_external_actions, verify_external_result
+from external_actions import ACTION_BUNDLE_SCHEMA, EXTERNAL_READY, evaluate_external_actions, render_external_markdown, verify_external_result
 from market import _trader, synthetic_action
 
 
@@ -46,6 +46,18 @@ class ExternalActionEvaluationTests(unittest.TestCase):
         self.assertFalse(result["authority"]["model_provider_identity_proven"])
         self.assertFalse(result["authority"]["darpa_phase_i_milestone_proven"])
         self.assertTrue(verify_external_result(self.scenario, self.bundle, result))
+
+    def test_markdown_projects_every_hard_false_external_authority(self):
+        markdown = render_external_markdown(evaluate_external_actions(self.scenario, self.bundle))
+        for line in (
+            "external LLM execution proven: `false`",
+            "model/provider identity proven: `false`",
+            "DARPA Phase-I milestone proven: `false`",
+            "SBIR eligibility proven: `false`",
+            "DARPA submission authorized: `false`",
+            "award/payment proven: `false`",
+        ):
+            self.assertIn(line, markdown)
 
     def test_bundle_order_is_nonsemantic(self):
         first = evaluate_external_actions(self.scenario, self.bundle)
