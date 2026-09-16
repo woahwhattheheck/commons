@@ -251,6 +251,7 @@ def _validate_evidence_ledger(
         raise ContractError(f"{label} records must be bounded list")
     proven: set[str] = set()
     seen_ids: set[str] = set()
+    seen_gates: set[str] = set()
     for i, item in enumerate(e["records"]):
         r = _must_exact_keys(
             item,
@@ -264,6 +265,9 @@ def _validate_evidence_ledger(
         gate = _safe_text(r["gate"], "evidence gate", max_len=96)
         if gate not in OWNER_GATES:
             raise ContractError(f"unknown evidence gate: {gate}")
+        if gate in seen_gates:
+            raise ContractError(f"duplicate {label} evidence gate: {gate}")
+        seen_gates.add(gate)
         digest = _safe_text(r["evidence_sha256"], "evidence_sha256", max_len=64)
         if not re.fullmatch(r"[0-9a-f]{64}", digest):
             raise ContractError("evidence sha256 invalid")
@@ -464,6 +468,7 @@ def verify_report(
     semantic_keys = (
         "schema",
         "solicitation",
+        "evaluation_class",
         "state",
         "route_states",
         "official_packet_retained",
@@ -471,6 +476,8 @@ def verify_report(
         "partner_evidence_proven_gates",
         "missing_prime_gates",
         "missing_teaming_gates",
+        "blockers",
+        "warnings",
         "proposal_workstreams",
         "commercial",
         "authority",
