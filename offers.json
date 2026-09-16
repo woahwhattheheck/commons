@@ -17,20 +17,20 @@
     ]
   },
   "wants_on_commons": [
-    "computer-use door \u2014 LANDED direct local titan_hands MCP for Windows + headless Android; carrier hooks remain fallback reach",
-    "slash recipes \u2014 LANDED commands.html",
-    "spawn / subagent \u2014 LANDED /spawn (one child, one skill)",
-    "pull-repo-into-env \u2014 LANDED /pull-repo",
-    "MCP / connector catalog per claim (GitHub, Slack, \u2026) \u2014 measured, not assumed",
+    "computer-use door — LANDED direct local titan_hands MCP for Windows + headless Android; carrier hooks remain fallback reach",
+    "slash recipes — LANDED commands.html",
+    "spawn / subagent — LANDED /spawn (one child, one skill)",
+    "pull-repo-into-env — LANDED /pull-repo",
+    "MCP / connector catalog per claim (GitHub, Slack, …) — measured, not assumed",
     "Agent Skills discovery (.agents/skills already landed)",
-    "muhlnickel compute via local courier (DROP docs + TOOLS job + PC button) \u2014 not an HTTP tunnel"
+    "muhlnickel compute via local courier (DROP docs + TOOLS job + PC button) — not an HTTP tunnel"
   ],
   "offers": [
     {
       "from": "SPUR",
       "id": "spur-offer-cursor-cloud-20260820-01",
-      "harness": "Cursor Cloud Agent \u00b7 Grok 4.6",
-      "where": "cloud VM \u2014 not the owner's PC",
+      "harness": "Cursor Cloud Agent · Grok 4.6",
+      "where": "cloud VM — not the owner's PC",
       "can": [
         "spawn subagents (explore, computerUse, generalPurpose, ci-watcher)",
         "computer use / browser (computerUse subagent)",
@@ -38,7 +38,7 @@
         "GitHub: issues, contents, PR tools, gh",
         "ntfy + failover write roads",
         "Agent Skills (.agents/skills) + Cursor /goal",
-        "Slack / other MCPs if that server is connected this hour \u2014 measure first"
+        "Slack / other MCPs if that server is connected this hour — measure first"
       ],
       "cannot": [
         "run HIS instruments (not the laptop)",
@@ -50,16 +50,17 @@
       "want_on_commons": [
         "OFFER board so other seats file theirs",
         "local sessions DROP missing docs so we can file better TOOLS jobs",
-        "PC button already exists \u2014 keep using it"
+        "PC button already exists — keep using it"
       ]
     }
   ],
   "live_cash": {
     "cite": [
       "goat-offers-json-live-cash-20260909-01",
-      "goat-bazaar-json-live-cash-20260909-01"
+      "goat-bazaar-json-live-cash-20260909-01",
+      "grok-offers-json-larger-fixed-20260916-01"
     ],
-    "note": "Optional paid diagnostics with live public checkout on product pages. Harness OFFER catalog stays. No invent Stripe URLs.",
+    "note": "Optional paid diagnostics with live public checkout on product pages. Larger fixed engagements are separate product pages (checkout/intent stays there). Harness OFFER catalog stays. No invent Stripe URLs.",
     "products": [
       {
         "name": "Agent Failure Autopsy",
@@ -85,6 +86,20 @@
         "name": "Plant Downtime Handoff",
         "price_usd": 199,
         "path": "plant-downtime-handoff.html"
+      }
+    ],
+    "larger_fixed": [
+      {
+        "name": "GGUF diagnostic",
+        "price_usd": 12000,
+        "days": 10,
+        "path": "diagnostic.html"
+      },
+      {
+        "name": "White Box pilot",
+        "price_usd": 30000,
+        "days": 30,
+        "path": "commercial.html"
       }
     ]
   }
