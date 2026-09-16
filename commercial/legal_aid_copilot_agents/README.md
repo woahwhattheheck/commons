@@ -44,7 +44,7 @@ The included example intentionally remains `HOLD` because it contains no fabrica
 ## Test
 
 ```bash
-python -m unittest discover -s tests -p 'test_legal_aid_copilot_agents.py' -v
+python -m unittest test_legal_aid_copilot_agents -v
 ```
 
-Tests cover truth-preserving proposal holds, delivery-window mismatch, governance gaps, rubric validation, duplicate case identifiers, functioning-agent outcomes, deterministic receipts, and a complete synthetic acceptance-ready path. Synthetic fixtures demonstrate software behavior only.
+The suite is deliberately at repository root so the existing Commons `tests` workflow / battery discovers it without creating another active workflow. Tests cover truth-preserving proposal holds, delivery-window mismatch, governance gaps, rubric validation, duplicate case identifiers, functioning-agent outcomes, deterministic receipts, and a complete synthetic acceptance-ready path. Synthetic fixtures demonstrate software behavior only.
