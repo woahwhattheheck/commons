@@ -40,7 +40,10 @@ class ConflictError(OnboardingError):
 
 
 def canonical(obj: Any) -> bytes:
-    return json.dumps(obj, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    try:
+        return json.dumps(obj, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    except UnicodeEncodeError as exc:
+        raise OnboardingError("canonical JSON contains non-Unicode-scalar characters") from exc
 
 
 def sha256_bytes(data: bytes) -> str:
@@ -135,6 +138,8 @@ def validate_int(value: Any, field: str, *, minimum: int = 0) -> int:
 def validate_text(value: Any, field: str, *, max_len: int = 500, nonempty: bool = True) -> str:
     if not isinstance(value, str):
         raise OnboardingError(f"{field} must be string")
+    if any(0xD800 <= ord(ch) <= 0xDFFF for ch in value):
+        raise OnboardingError(f"{field} contains non-Unicode-scalar characters")
     if nonempty and not value.strip():
         raise OnboardingError(f"{field} cannot be empty")
     if len(value) > max_len or "\x00" in value:
@@ -660,22 +665,89 @@ def render_csv(packet: dict[str, Any]) -> bytes:
     return buf.getvalue().encode("utf-8")
 
 
-def _exclusive_write(path: Path, data: bytes) -> None:
-    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
-    if hasattr(os, "O_NOFOLLOW"): flags |= os.O_NOFOLLOW
+def _open_real_dir(path: Path, *, create: bool) -> int:
+    if path.exists():
+        if path.is_symlink() or not path.is_dir():
+            raise OnboardingError("output directory must be real directory")
+    elif create:
+        try:
+            os.mkdir(path, 0o700)
+        except FileExistsError:
+            if path.is_symlink() or not path.is_dir():
+                raise OnboardingError("output directory must be real directory")
+        except OSError as exc:
+            raise OnboardingError(f"cannot create output directory: {exc}") from exc
+    else:
+        if path.is_symlink() or not path.is_dir():
+            raise OnboardingError("output directory must be real directory")
+    flags = os.O_RDONLY
+    if hasattr(os, "O_DIRECTORY"):
+        flags |= os.O_DIRECTORY
+    if hasattr(os, "O_NOFOLLOW"):
+        flags |= os.O_NOFOLLOW
     try:
-        fd = os.open(path, flags, 0o600)
-    except FileExistsError as exc:
-        raise OnboardingError(f"refusing to overwrite existing output: {path.name}") from exc
+        dir_fd = os.open(path, flags)
     except OSError as exc:
-        raise OnboardingError(f"cannot create output {path.name}: {exc}") from exc
+        raise OnboardingError(f"cannot open output directory: {exc}") from exc
+    try:
+        info = os.fstat(dir_fd)
+        if not stat.S_ISDIR(info.st_mode):
+            raise OnboardingError("output directory must be real directory")
+        return dir_fd
+    except Exception:
+        os.close(dir_fd)
+        raise
+
+
+def _leaf_name(name: str) -> str:
+    if not name or name in {".", ".."} or "/" in name or "\\" in name:
+        raise OnboardingError(f"invalid output name: {name}")
+    return name
+
+
+def _exclusive_write_at(dir_fd: int, name: str, data: bytes) -> None:
+    name = _leaf_name(name)
+    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
+    if hasattr(os, "O_NOFOLLOW"):
+        flags |= os.O_NOFOLLOW
+    try:
+        fd = os.open(name, flags, 0o600, dir_fd=dir_fd)
+    except FileExistsError as exc:
+        raise OnboardingError(f"refusing to overwrite existing output: {name}") from exc
+    except OSError as exc:
+        raise OnboardingError(f"cannot create output {name}: {exc}") from exc
     try:
         view = memoryview(data)
         while view:
             n = os.write(fd, view)
-            if n <= 0: raise OnboardingError("short output write")
+            if n <= 0:
+                raise OnboardingError("short output write")
             view = view[n:]
         os.fsync(fd)
+    finally:
+        os.close(fd)
+
+
+def _read_regular_at(dir_fd: int, name: str) -> bytes:
+    name = _leaf_name(name)
+    flags = os.O_RDONLY
+    if hasattr(os, "O_NOFOLLOW"):
+        flags |= os.O_NOFOLLOW
+    try:
+        fd = os.open(name, flags, dir_fd=dir_fd)
+    except OSError as exc:
+        raise OnboardingError(f"missing/nonregular export file: {name}") from exc
+    try:
+        info = os.fstat(fd)
+        if not stat.S_ISREG(info.st_mode):
+            raise OnboardingError(f"missing/nonregular export file: {name}")
+        chunks: list[bytes] = []
+        while True:
+            chunk = os.read(fd, 131072)
+            if not chunk:
+                break
+            chunks.append(chunk)
+        return b"".join(chunks)
     finally:
         os.close(fd)
 
@@ -683,37 +755,41 @@ def _exclusive_write(path: Path, data: bytes) -> None:
 def export_handoff(conn: sqlite3.Connection, workspace_id: str, out_dir: str | os.PathLike[str]) -> dict[str, Any]:
     packet = compile_packet(conn, workspace_id)
     target = Path(out_dir)
-    if target.exists():
-        if target.is_symlink() or not target.is_dir(): raise OnboardingError("output directory must be real directory")
-    else:
-        target.mkdir(mode=0o700, parents=False)
-    packet_bytes = canonical(packet) + b"\n"
-    md_bytes = render_markdown(packet)
-    csv_bytes = render_csv(packet)
-    receipt = {
-        "schema": "client-implementation-onboarding-export-receipt/v1",
-        "workspaceId": workspace_id,
-        "packetSha256": sha256_bytes(packet_bytes),
-        "markdownSha256": sha256_bytes(md_bytes),
-        "csvSha256": sha256_bytes(csv_bytes),
-        "handoffState": packet["handoffState"],
-        "authorityExternalSend": False,
-    }
-    receipt_bytes = canonical(receipt) + b"\n"
-    _exclusive_write(target / "handoff.json", packet_bytes)
-    _exclusive_write(target / "handoff.md", md_bytes)
-    _exclusive_write(target / "milestones.csv", csv_bytes)
-    _exclusive_write(target / "receipt.json", receipt_bytes)
-    return receipt
+    dir_fd = _open_real_dir(target, create=True)
+    try:
+        packet_bytes = canonical(packet) + b"\n"
+        md_bytes = render_markdown(packet)
+        csv_bytes = render_csv(packet)
+        receipt = {
+            "schema": "client-implementation-onboarding-export-receipt/v1",
+            "workspaceId": workspace_id,
+            "packetSha256": sha256_bytes(packet_bytes),
+            "markdownSha256": sha256_bytes(md_bytes),
+            "csvSha256": sha256_bytes(csv_bytes),
+            "handoffState": packet["handoffState"],
+            "authorityExternalSend": False,
+        }
+        receipt_bytes = canonical(receipt) + b"\n"
+        _exclusive_write_at(dir_fd, "handoff.json", packet_bytes)
+        _exclusive_write_at(dir_fd, "handoff.md", md_bytes)
+        _exclusive_write_at(dir_fd, "milestones.csv", csv_bytes)
+        _exclusive_write_at(dir_fd, "receipt.json", receipt_bytes)
+        return receipt
+    finally:
+        os.close(dir_fd)
 
 
 def verify_export(conn: sqlite3.Connection, workspace_id: str, out_dir: str | os.PathLike[str]) -> dict[str, Any]:
     target = Path(out_dir)
     names = ["handoff.json", "handoff.md", "milestones.csv", "receipt.json"]
-    for name in names:
-        p = target / name
-        if p.is_symlink() or not p.is_file(): raise OnboardingError(f"missing/nonregular export file: {name}")
-    packet_bytes = (target / "handoff.json").read_bytes(); md_bytes = (target / "handoff.md").read_bytes(); csv_bytes = (target / "milestones.csv").read_bytes(); receipt_bytes = (target / "receipt.json").read_bytes()
+    dir_fd = _open_real_dir(target, create=False)
+    try:
+        packet_bytes = _read_regular_at(dir_fd, names[0])
+        md_bytes = _read_regular_at(dir_fd, names[1])
+        csv_bytes = _read_regular_at(dir_fd, names[2])
+        receipt_bytes = _read_regular_at(dir_fd, names[3])
+    finally:
+        os.close(dir_fd)
     receipt = strict_loads(receipt_bytes.decode("utf-8"))
     exact_keys(receipt, {"schema", "workspaceId", "packetSha256", "markdownSha256", "csvSha256", "handoffState", "authorityExternalSend"}, "receipt")
     if receipt["schema"] != "client-implementation-onboarding-export-receipt/v1" or receipt["workspaceId"] != workspace_id or receipt["authorityExternalSend"] is not False:
@@ -767,6 +843,9 @@ def _cli() -> int:
         return 0
     except OnboardingError as exc:
         print(json.dumps({"error": str(exc)}, sort_keys=True), file=sys.stderr)
+        return 2
+    except UnicodeEncodeError as exc:
+        print(json.dumps({"error": "canonical JSON contains non-Unicode-scalar characters"}, sort_keys=True), file=sys.stderr)
         return 2
     finally:
         conn.close()
