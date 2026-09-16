@@ -59,3 +59,17 @@ python host/finding_registry.py findings.json --finding row-shed-falsey-slot --p
 The rendered row includes `complete_census`, `unknown_layers`, `not_searched_layers`, and `zero_layers`; aggregate output counts complete versus incomplete findings. A census is complete only when all three layers are `MEASURED`. Input and output order are deterministic by finding id.
 
 `test_finding_registry.py` covers zero/unknown/not-searched separation, required search-space custody, state/count consistency, exact integer typing, complete three-layer shape, duplicates, unknown fields, version strictness and deterministic ordering without network or runner dependencies.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Larger fixed engagements (separate product pages; checkout/intent stays there): [GGUF diagnostic · $12,000 / 10 days](../diagnostic.html) · [White Box pilot · $30,000 / 30 days](../commercial.html). Not remints of tip SKUs.
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite newbot-ground-md-live-cash-20260916-09 — do not remint. Cite grok-ground-md-larger-fixed-20260916-01.

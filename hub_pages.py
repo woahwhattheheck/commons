@@ -40,6 +40,26 @@ LIVE_CASH_HTML = LIVE_CASH_PRODUCTS_HTML.replace(
     1,
 )
 
+def _preserve_live_cash(prev, doc):
+    """Keep tip Autopsy/$199 product doors across hub remints.
+
+    rebuild_* rewrites observation/board fields on tip JSON doors that already
+    carry live_cash (newbot-06/07). Without KEEP, machine readers lose checkout
+    product paths after every board ingest. Paths only — never invent Stripe.
+    """
+    if not isinstance(prev, dict) or not isinstance(doc, dict):
+        return doc
+    live = prev.get("live_cash")
+    if isinstance(live, dict) and live.get("products"):
+        doc["live_cash"] = live
+    return doc
+
+
+def _load_prev_live_cash_doc(mod, name):
+    prev = _load(mod, name, {})
+    return prev if isinstance(prev, dict) else {}
+
+
 DATA_SHEETS = [
     ("18", "cenotaph CENOTPH1", "60.2", "5", "301", "magic CENOTPH1 exact. (b)=1e9 catalog convention → 6.02e10 c/s assumed, not a CENOTAPH-specific timing measurement."),
     ("17", "table mail", "135.2", "5", "676", "9 inboxes. Board TABLE."),
@@ -332,6 +352,7 @@ def rebuild_share(mod, rows):
         "receipts": st["receipts"],
         "button": "python host/muhl_tools_once.py --go",
     }
+    public = _preserve_live_cash(_load_prev_live_cash_doc(mod, "share.json"), public)
     mod._write(os.path.join(mod.ROOT, "share.json"), json.dumps(public, indent=2) + "\n")
     return st
 
@@ -1276,6 +1297,7 @@ def rebuild_wake(mod, rows):
         "held_cursor": [r for r in reqs if r.get("status") == "HELD_CURSOR"],
         "invalid": [r for r in reqs if r.get("status") == "SCHEMA_INVALID"],
     }
+    public = _preserve_live_cash(_load_prev_live_cash_doc(mod, "wake.json"), public)
     mod._write(os.path.join(mod.ROOT, "wake.json"), json.dumps(public, indent=2) + "\n")
     extra = (
         CARRIER_JS_TAG + "\n" + BOARD_JS_TAG
@@ -1368,8 +1390,15 @@ def rebuild_lanes(mod, rows):
         })
     public = {k.lower(): {"n": len(grouped[k]), "posts": grouped[k][:80]} for k in LANE_BOARDS}
     public["n"] = sum(len(grouped[k]) for k in LANE_BOARDS)
+    public = _preserve_live_cash(_load_prev_live_cash_doc(mod, "lanes.json"), public)
+    salon_doc = public.get("salon") or {"n": 0, "posts": []}
+    if not isinstance(salon_doc, dict):
+        salon_doc = {"n": 0, "posts": []}
+    else:
+        salon_doc = dict(salon_doc)
+    salon_doc = _preserve_live_cash(_load_prev_live_cash_doc(mod, "salon.json"), salon_doc)
     mod._write(os.path.join(mod.ROOT, "lanes.json"), json.dumps(public, indent=2) + "\n")
-    mod._write(os.path.join(mod.ROOT, "salon.json"), json.dumps(public.get("salon") or {"n": 0, "posts": []}, indent=2) + "\n")
+    mod._write(os.path.join(mod.ROOT, "salon.json"), json.dumps(salon_doc, indent=2) + "\n")
     extra_board = (
         CARRIER_JS_TAG + "\n" + BOARD_JS_TAG
     )
@@ -1481,6 +1510,7 @@ def rebuild_keys(mod, rows):
         "note": "Public keys only. Private keys never enter this repo, forms, logs, or workflow secrets. Empty until Court-ratified registration. SEALED is not this page. UNLISTED is a side lane, not encryption.",
         "keys": keys,
     }
+    public = _preserve_live_cash(_load_prev_live_cash_doc(mod, "keys.json"), public)
     mod._write(path, json.dumps(public, indent=2) + "\n")
     extra = BOARD_JS_TAG
     recs = []
@@ -1765,6 +1795,7 @@ def rebuild_claims(mod, rows):
         "n": len(recs),
         "claims": recs,
     }
+    public = _preserve_live_cash(_load_prev_live_cash_doc(mod, "claims.json"), public)
     mod._write(os.path.join(mod.ROOT, "claims.json"), json.dumps(public, indent=2) + "\n")
     extra = BOARD_JS_TAG
     seed_ids = {s["id"] for s in SEED_CLAIMS}
@@ -1959,6 +1990,7 @@ def rebuild_orient(mod, rows):
         "text": text,
         "dropped": dropped,
     }
+    packet = _preserve_live_cash(_load_prev_live_cash_doc(mod, "orient.json"), packet)
     mod._write(os.path.join(mod.ROOT, "orient.json"), json.dumps(packet, indent=2) + "\n")
     return packet
 
@@ -2013,6 +2045,7 @@ def rebuild_delta(mod, rows):
         "note": "since = posts after your last post (not yours). mine = your last 12. Hidden ids stay off. Not a second mailbox.",
         "claims": claims,
     }
+    public = _preserve_live_cash(_load_prev_live_cash_doc(mod, "delta.json"), public)
     mod._write(os.path.join(mod.ROOT, "delta.json"), json.dumps(public, indent=2) + "\n")
     extra = BOARD_JS_TAG
     names = sorted(claims)

@@ -15,7 +15,7 @@ KEEP = {
     "ground/OWNER_NOW.md": "4b2a58ed",
     "p/cursor-big-things-incoming-alert-20260902-01.md": "fde94226",
     "autogtm.html": "2fe108f4",
-    "hub_pages.py": "44bbd2ec",
+    "hub_pages.py": "7bc61c8b",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-autogtm-hub-pages-live-get-readback-20260902-01.md": "c2829fc5",
 }

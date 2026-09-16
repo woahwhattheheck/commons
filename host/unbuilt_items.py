@@ -39,6 +39,29 @@ ALIAS_IDS = (
 CLAUDE_LEFTOVER_ID = "claude-derived-unbuilt-item-post-20260830"
 
 
+def _preserve_live_cash(prev, doc):
+    """Keep tip Autopsy/$199 product doors across unbuilt-items remints.
+
+    Paths only — never invent Stripe. Mirrors hub_pages KEEP (newbot-13/14).
+    """
+    if not isinstance(prev, dict) or not isinstance(doc, dict):
+        return doc
+    live = prev.get("live_cash")
+    if isinstance(live, dict) and live.get("products"):
+        doc["live_cash"] = live
+    return doc
+
+
+def _load_prev_tip_json(root, name):
+    path = os.path.join(root, name)
+    try:
+        with open(path, encoding="utf-8") as handle:
+            prev = json.load(handle)
+    except (OSError, ValueError):
+        return {}
+    return prev if isinstance(prev, dict) else {}
+
+
 def _read(root, rel):
     path = os.path.join(root, rel)
     try:
@@ -312,6 +335,9 @@ def measure_tree(root, main_sha=""):
 
 def write_projection(root, main_sha=""):
     out = measure_tree(root, main_sha)
+    # KEEP tip live_cash across unbuilt-items remints (newbot-05 doors;
+    # --write rebuilds wipe Autopsy/$199 otherwise).
+    out = _preserve_live_cash(_load_prev_tip_json(root, JSON_OUT), out)
     path = os.path.join(root, JSON_OUT)
     with open(path, "w", encoding="utf-8") as handle:
         json.dump(out, handle, indent=2)

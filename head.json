@@ -1,7 +1,58 @@
 {
-  "observed_at": "2026-09-16T19:51:18Z",
+  "live_cash": {
+    "cite": [
+      "newbot-bake-keep-live-cash-20260916-12",
+      "newbot-json-doors-live-cash-20260916-07",
+      "newbot-json-doors-live-cash-20260916-06",
+      "head.html Live cash",
+      "grok-newbot06-07-json-larger-fixed-20260916-01"
+    ],
+    "larger_fixed": [
+      {
+        "days": 10,
+        "name": "GGUF diagnostic",
+        "path": "diagnostic.html",
+        "price_usd": 12000
+      },
+      {
+        "days": 30,
+        "name": "White Box pilot",
+        "path": "commercial.html",
+        "price_usd": 30000
+      }
+    ],
+    "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Larger fixed engagements are separate product pages (checkout/intent stays there). Canonical payload above stays authoritative. head.html already surfaces Live cash and Larger fixed (sibling tip door JSON). Bake KEEP via llms_txt write_head_json. No invent Stripe URLs.",
+    "products": [
+      {
+        "name": "Agent Failure Autopsy",
+        "path": "agent-rescue.html",
+        "price_usd": 29
+      },
+      {
+        "name": "Dealer Service Lead Rescue",
+        "path": "dealer-service-lead-rescue.html",
+        "price_usd": 199
+      },
+      {
+        "name": "Referral Intake Completeness",
+        "path": "referral-intake-completeness.html",
+        "price_usd": 199
+      },
+      {
+        "name": "Repair Booking Preflight",
+        "path": "repair-booking-preflight.html",
+        "price_usd": 199
+      },
+      {
+        "name": "Plant Downtime Handoff",
+        "path": "plant-downtime-handoff.html",
+        "price_usd": 199
+      }
+    ]
+  },
+  "observed_at": "2026-09-16T20:31:09Z",
   "schema": "commons-head-v1",
-  "sha": "7ae553235704eef8fd92a09e096926cbd0d19038",
+  "sha": "5fe7008e3a7feafc65228a0d1e45662174be8cae",
   "source": "scheduled-pages-bake",
   "status": "BAKED_OBSERVATION"
 }

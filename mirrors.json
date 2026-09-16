@@ -134,5 +134,55 @@
       "action": "Provision a public-read object prefix (R2, S3, or equivalent) that can store the sibling .bundle and .manifest.json from host/repo_backup.py. Do not put access keys in this repository. After a public HTTPS origin exists, set adapter object-store-bundle.origin to that prefix."
     }
   ],
-  "still_open": "Automatic moving-main courier, ntfy cursor, Software Heritage snapshot, and Internet Archive Pages memento are wired. Software Heritage vault git-bare status new so restore fetch is not READY. jsDelivr @main stays a GitHub-backed CDN. GitLab/Codeberg/object-store full-bundle origins remain EXTERNAL_PROVIDER_ACTION. Pages bake is not git HEAD. None of these is canonical durability. This file is the catalog, not the mesh."
+  "still_open": "Automatic moving-main courier, ntfy cursor, Software Heritage snapshot, and Internet Archive Pages memento are wired. Software Heritage vault git-bare status new so restore fetch is not READY. jsDelivr @main stays a GitHub-backed CDN. GitLab/Codeberg/object-store full-bundle origins remain EXTERNAL_PROVIDER_ACTION. Pages bake is not git HEAD. None of these is canonical durability. This file is the catalog, not the mesh.",
+  "live_cash": {
+    "cite": [
+      "newbot-json-doors-live-cash-20260916-05",
+      "goat-skills-json-live-cash-20260916-01",
+      "mirrors.html Live cash",
+      "grok-newbot05-json-larger-fixed-20260916-01"
+    ],
+    "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Larger fixed engagements are separate product pages (checkout/intent stays there). Canonical payload above stays authoritative. mirrors.html already surfaces Live cash and Larger fixed and loads this JSON. No invent Stripe URLs.",
+    "products": [
+      {
+        "name": "Agent Failure Autopsy",
+        "price_usd": 29,
+        "path": "agent-rescue.html"
+      },
+      {
+        "name": "Dealer Service Lead Rescue",
+        "price_usd": 199,
+        "path": "dealer-service-lead-rescue.html"
+      },
+      {
+        "name": "Referral Intake Completeness",
+        "price_usd": 199,
+        "path": "referral-intake-completeness.html"
+      },
+      {
+        "name": "Repair Booking Preflight",
+        "price_usd": 199,
+        "path": "repair-booking-preflight.html"
+      },
+      {
+        "name": "Plant Downtime Handoff",
+        "price_usd": 199,
+        "path": "plant-downtime-handoff.html"
+      }
+    ],
+    "larger_fixed": [
+      {
+        "name": "GGUF diagnostic",
+        "price_usd": 12000,
+        "days": 10,
+        "path": "diagnostic.html"
+      },
+      {
+        "name": "White Box pilot",
+        "price_usd": 30000,
+        "days": 30,
+        "path": "commercial.html"
+      }
+    ]
+  }
 }

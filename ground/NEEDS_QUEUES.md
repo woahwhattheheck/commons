@@ -77,3 +77,17 @@ python host/needs_queue.py needs.json --item owner-upstream-pr --pretty
 The reducer reports deterministic item order plus `open`, `retired`, `needs_runner_open`, and `needs_owner_open` counts. Each item includes attempt counts, the immutable first-success receipt, and any events that arrived after retirement.
 
 `test_needs_queue.py` covers required runner capability/publisher/packet/return fields, wrong-publisher rejection, failure→success retirement, permanent first-success owner receipt, append ordering, duplicate ids/sequences/capabilities, unknown references/shapes, status strictness, deterministic ordering/counts, and strict version typing without network or runner dependencies.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Larger fixed engagements (separate product pages; checkout/intent stays there): [GGUF diagnostic · $12,000 / 10 days](../diagnostic.html) · [White Box pilot · $30,000 / 30 days](../commercial.html). Not remints of tip SKUs.
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite newbot-ground-md-live-cash-20260916-09 — do not remint. Cite grok-ground-md-larger-fixed-20260916-01.

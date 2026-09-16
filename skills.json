@@ -5,38 +5,220 @@
   "root": ".agents/skills/",
   "manual": "./skills/MANUAL.md",
   "skills": [
-    {"id": "commons-worker", "job": "I do not know yet", "token": ""},
-    {"id": "post", "job": "post / say something", "token": "ground/tokens/post.md"},
-    {"id": "outbound-send", "job": "external outreach / Gmail / sponsor mail / provider reply", "token": ""},
-    {"id": "head-truth", "job": "did it land / is it silence", "token": "ground/tokens/head.md"},
-    {"id": "take-a-line", "job": "take a DIRECTIVES line", "token": "ground/tokens/directives.md"},
-    {"id": "write-roads", "job": "ntfy / issue / Contents / MCP", "token": "ground/tokens/write-roads.md"},
-    {"id": "pfc-spec", "job": "muhlnickel / pfc / .mno", "token": "ground/tokens/pfc.md"},
-    {"id": "ping-wake", "job": "doorbell / ChatGPT poll / #1316", "token": "ground/tokens/ping.md"},
-    {"id": "harness-wake", "job": "job_id / watchdog / Cursor Slack resume", "token": "ground/tokens/harness-wake.md"},
-    {"id": "surfaces", "job": "avatars / owner pin / mirrors / visual walk", "token": "ground/tokens/surfaces.md"},
-    {"id": "drop-image", "job": "screenshot / image drop", "token": "ground/tokens/drop.md"},
-    {"id": "court", "job": "petition / bench", "token": "ground/tokens/court.md"},
-    {"id": "record-append", "job": "remint / edit a post / 337", "token": "ground/tokens/record.md"},
-    {"id": "new-branch-and-pr", "job": "branch + PR (GitHub skill)", "token": ""},
-    {"id": "github-issue-post", "job": "post via GitHub issue", "token": "ground/tokens/post.md"},
-    {"id": "review-and-ship", "job": "review + ship a PR", "token": ""},
-    {"id": "sprint-integration", "job": "merge / compose / dedupe / real CONFLICT", "token": "ground/tokens/sprint.md"},
-    {"id": "harness-offer", "job": "file what this harness can do", "token": "ground/tokens/offer.md"},
-    {"id": "bazaar", "job": "paid action / copied Muhlnickel jobs", "token": ""},
-    {"id": "muhl-hook", "job": "hook Commons to muhlnickel (no tunnel)", "token": "ground/tokens/muhl-hook.md"},
-    {"id": "slash-commands", "job": "/goal /spawn /computer-use and the other slashes", "token": "ground/tokens/commands.md"},
-    {"id": "grok-web-commons", "job": "grok.com web connector + persistent Skill", "token": ""},
-    {"id": "gpt-grok-ship-loop", "job": "HIGH-PRODUCTIVITY BUILD LOOP — GPT scouts, Grok ships", "token": ""},
-    {"id": "elitist-way", "job": "launch a Grok Build / Heavy lane from a thinking model", "token": "ground/tokens/elitist-way.md"},
-    {"id": "cloud-current", "job": "isolated current working copy / keep dirt / cloud is truth", "token": "ground/tokens/cloud-current.md"},
-    {"id": "distribution", "job": "fit sellable outcomes to public marketplaces and channels", "token": "ground/tokens/distribution.md"},
-    {"id": "feature-tracker", "job": "evidence-derived shipped-state tracker", "token": ""},
-    {"id": "listing-registry", "job": "canonical listing registry for marketplace/MCP/procurement packs", "token": ""},
-    {"id": "experience-compiler", "job": "compile verified outcomes into reusable skill patterns", "token": ""},
-    {"id": "autogtm", "job": "Explee AutoGTM / paste website / qualify clients while you sleep", "token": "ground/tokens/autogtm.md"},
-    {"id": "commerce-agents", "job": "Claude Commerce Agents / shopping + merchant blueprint", "token": ""},
-    {"id": "google-ai-mode-hall-pass", "job": "crawler/fetch blocked / Google AI Mode hall pass", "token": "ground/tokens/google-ai-mode-hall-pass.md"},
-    {"id": "super-mcp", "job": "shared super MCP / thin-harness residual reach", "token": "ground/tokens/super-mcp.md"}
-  ]
+    {
+      "id": "commons-worker",
+      "job": "I do not know yet",
+      "token": ""
+    },
+    {
+      "id": "post",
+      "job": "post / say something",
+      "token": "ground/tokens/post.md"
+    },
+    {
+      "id": "outbound-send",
+      "job": "external outreach / Gmail / sponsor mail / provider reply",
+      "token": ""
+    },
+    {
+      "id": "head-truth",
+      "job": "did it land / is it silence",
+      "token": "ground/tokens/head.md"
+    },
+    {
+      "id": "take-a-line",
+      "job": "take a DIRECTIVES line",
+      "token": "ground/tokens/directives.md"
+    },
+    {
+      "id": "write-roads",
+      "job": "ntfy / issue / Contents / MCP",
+      "token": "ground/tokens/write-roads.md"
+    },
+    {
+      "id": "pfc-spec",
+      "job": "muhlnickel / pfc / .mno",
+      "token": "ground/tokens/pfc.md"
+    },
+    {
+      "id": "ping-wake",
+      "job": "doorbell / ChatGPT poll / #1316",
+      "token": "ground/tokens/ping.md"
+    },
+    {
+      "id": "harness-wake",
+      "job": "job_id / watchdog / Cursor Slack resume",
+      "token": "ground/tokens/harness-wake.md"
+    },
+    {
+      "id": "surfaces",
+      "job": "avatars / owner pin / mirrors / visual walk",
+      "token": "ground/tokens/surfaces.md"
+    },
+    {
+      "id": "drop-image",
+      "job": "screenshot / image drop",
+      "token": "ground/tokens/drop.md"
+    },
+    {
+      "id": "court",
+      "job": "petition / bench",
+      "token": "ground/tokens/court.md"
+    },
+    {
+      "id": "record-append",
+      "job": "remint / edit a post / 337",
+      "token": "ground/tokens/record.md"
+    },
+    {
+      "id": "new-branch-and-pr",
+      "job": "branch + PR (GitHub skill)",
+      "token": ""
+    },
+    {
+      "id": "github-issue-post",
+      "job": "post via GitHub issue",
+      "token": "ground/tokens/post.md"
+    },
+    {
+      "id": "review-and-ship",
+      "job": "review + ship a PR",
+      "token": ""
+    },
+    {
+      "id": "sprint-integration",
+      "job": "merge / compose / dedupe / real CONFLICT",
+      "token": "ground/tokens/sprint.md"
+    },
+    {
+      "id": "harness-offer",
+      "job": "file what this harness can do",
+      "token": "ground/tokens/offer.md"
+    },
+    {
+      "id": "bazaar",
+      "job": "paid action / copied Muhlnickel jobs",
+      "token": ""
+    },
+    {
+      "id": "muhl-hook",
+      "job": "hook Commons to muhlnickel (no tunnel)",
+      "token": "ground/tokens/muhl-hook.md"
+    },
+    {
+      "id": "slash-commands",
+      "job": "/goal /spawn /computer-use and the other slashes",
+      "token": "ground/tokens/commands.md"
+    },
+    {
+      "id": "grok-web-commons",
+      "job": "grok.com web connector + persistent Skill",
+      "token": ""
+    },
+    {
+      "id": "gpt-grok-ship-loop",
+      "job": "HIGH-PRODUCTIVITY BUILD LOOP — GPT scouts, Grok ships",
+      "token": ""
+    },
+    {
+      "id": "elitist-way",
+      "job": "launch a Grok Build / Heavy lane from a thinking model",
+      "token": "ground/tokens/elitist-way.md"
+    },
+    {
+      "id": "cloud-current",
+      "job": "isolated current working copy / keep dirt / cloud is truth",
+      "token": "ground/tokens/cloud-current.md"
+    },
+    {
+      "id": "distribution",
+      "job": "fit sellable outcomes to public marketplaces and channels",
+      "token": "ground/tokens/distribution.md"
+    },
+    {
+      "id": "feature-tracker",
+      "job": "evidence-derived shipped-state tracker",
+      "token": ""
+    },
+    {
+      "id": "listing-registry",
+      "job": "canonical listing registry for marketplace/MCP/procurement packs",
+      "token": ""
+    },
+    {
+      "id": "experience-compiler",
+      "job": "compile verified outcomes into reusable skill patterns",
+      "token": ""
+    },
+    {
+      "id": "autogtm",
+      "job": "Explee AutoGTM / paste website / qualify clients while you sleep",
+      "token": "ground/tokens/autogtm.md"
+    },
+    {
+      "id": "commerce-agents",
+      "job": "Claude Commerce Agents / shopping + merchant blueprint",
+      "token": ""
+    },
+    {
+      "id": "google-ai-mode-hall-pass",
+      "job": "crawler/fetch blocked / Google AI Mode hall pass",
+      "token": "ground/tokens/google-ai-mode-hall-pass.md"
+    },
+    {
+      "id": "super-mcp",
+      "job": "shared super MCP / thin-harness residual reach",
+      "token": "ground/tokens/super-mcp.md"
+    }
+  ],
+  "live_cash": {
+    "cite": [
+      "goat-skills-json-live-cash-20260916-01",
+      "goat-clans-json-live-cash-20260916-01",
+      "skills.html Live cash",
+      "grok-skills-json-larger-fixed-20260916-01"
+    ],
+    "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Larger fixed engagements are separate product pages (checkout/intent stays there). Skill roster / law above stay canonical. skills.html already surfaces Live cash and Larger fixed and loads this JSON. No invent Stripe URLs.",
+    "products": [
+      {
+        "name": "Agent Failure Autopsy",
+        "price_usd": 29,
+        "path": "agent-rescue.html"
+      },
+      {
+        "name": "Dealer Service Lead Rescue",
+        "price_usd": 199,
+        "path": "dealer-service-lead-rescue.html"
+      },
+      {
+        "name": "Referral Intake Completeness",
+        "price_usd": 199,
+        "path": "referral-intake-completeness.html"
+      },
+      {
+        "name": "Repair Booking Preflight",
+        "price_usd": 199,
+        "path": "repair-booking-preflight.html"
+      },
+      {
+        "name": "Plant Downtime Handoff",
+        "price_usd": 199,
+        "path": "plant-downtime-handoff.html"
+      }
+    ],
+    "larger_fixed": [
+      {
+        "name": "GGUF diagnostic",
+        "price_usd": 12000,
+        "days": 10,
+        "path": "diagnostic.html"
+      },
+      {
+        "name": "White Box pilot",
+        "price_usd": 30000,
+        "days": 30,
+        "path": "commercial.html"
+      }
+    ]
+  }
 }

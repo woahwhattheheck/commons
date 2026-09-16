@@ -29,7 +29,7 @@ KEEP = {
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daa",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
     "catalog.html": "35a7069f",
-    "hub_pages.py": "44bbd2ec",
+    "hub_pages.py": "7bc61c8b",
     ".github/workflows/tests.yml": "fd94b65c",
     "open_door_guard.py": "877e148d",
 }

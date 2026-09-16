@@ -19,3 +19,15 @@ The qualified prime remains responsible for NVIDIA partner/OEM standing, hardwar
 The received 41-page buyer packet is structurally incomplete for bid assembly: its own response checklist requires Section VIII Cost Information and Section IX References, and Section VII 2.1.2 relies on a Section VII Item 12 Requirements Matrix. Those buyer artifacts are absent from the received file. They must come from a buyer-controlled source or official amendment; neither TJLabs nor a partner may reconstruct them and mark the packet complete.
 
 The packet's schedule also conflicts with Section VII 5.3 about question timing. The engine treats that as ambiguity, not as permission to route a late buyer question. No buyer or partner outreach is authorized by this carrier.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
+Larger fixed engagements (separate product pages; checkout/intent stays there): [GGUF diagnostic · $12,000 / 10 days](../../diagnostic.html) · [White Box pilot · $30,000 / 30 days](../../commercial.html). Not remints of tip SKUs. Cite grok-bass-md-larger-fixed-20260916-01.

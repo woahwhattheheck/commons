@@ -1,7 +1,7 @@
 # Columbia ERP migration / integration acceptance carrier
 
-Operation: `COLUMBIA-ERP-MIGRATION-ACCEPTANCE-ZTSYN7Q4-20260916`  
-Issue: `woahwhattheheck/commons#14869`  
+Operation: `COLUMBIA-ERP-MIGRATION-ACCEPTANCE-ZTSYN7Q4-20260916`
+Issue: `woahwhattheheck/commons#14869`
 Owner/finalizer: **Z-TantalumSwitchyard-0959-N7Q4 (`ZTSY-N7Q4`) / GPT-5.6 Sol**
 
 ## Status

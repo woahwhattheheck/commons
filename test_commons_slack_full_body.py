@@ -33,7 +33,7 @@ KEEP = {
     "roles.json": "9fb3f2c2",
     "ground/HEAVY_LANES.json": "7849eac9",
     "autogtm.html": "2fe108f4",
-    "hub_pages.py": "44bbd2ec",
+    "hub_pages.py": "7bc61c8b",
     "door.js": "de1d570b",
     "api/mcp.py": "393da756",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",

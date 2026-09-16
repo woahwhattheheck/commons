@@ -1,7 +1,7 @@
 # Paid ERP migration / integration acceptance workshare
 
-**Status:** `PROPOSED_NOT_ACCEPTED`  
-**Reference carrier:** `woahwhattheheck/commons#14869`  
+**Status:** `PROPOSED_NOT_ACCEPTED`
+**Reference carrier:** `woahwhattheheck/commons#14869`
 **Commercial hypothesis:** **$24,000 fixed** base sprint + **$8,000 fixed** optional cutover dress rehearsal.
 
 This is a subcontract/workshare concept for a qualified ERP prime. It is not a direct response to Columbia Association RFP 27-05 and does not represent TJLabs as the ERP publisher or implementation prime.

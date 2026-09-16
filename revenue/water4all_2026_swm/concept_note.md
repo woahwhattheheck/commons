@@ -1,7 +1,7 @@
 # Proposed Technical Concept — Evidence-Bound Adaptive Water Intelligence
 
-Status: `PROPOSED_NOT_ACCEPTED`  
-Primary fit: Water4All 2026 Topic 3  
+Status: `PROPOSED_NOT_ACCEPTED`
+Primary fit: Water4All 2026 Topic 3
 Secondary fit: Water4All 2026 Topic 1
 
 ## Problem framing

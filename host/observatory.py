@@ -19,6 +19,8 @@ if ROOT not in sys.path:
 from protocol.emit import continue_from_observation
 from protocol.projector import project
 
+import hub_pages
+
 SNAPSHOT_REL = "observatory.json"
 
 
@@ -177,6 +179,10 @@ def write_snapshot(root: str | None = None, *, now: str | None = None) -> dict[s
     root = root or ROOT
     snap = snapshot(root, now=now)
     path = os.path.join(root, SNAPSHOT_REL)
+    # KEEP tip live_cash across observatory remints (protocol projector rebuild
+    # drops Autopsy/$199 doors landed on tip observatory.json). Paths only.
+    prev = _read_json(path, {})
+    snap = hub_pages._preserve_live_cash(prev if isinstance(prev, dict) else {}, snap)
     payload = json.dumps(snap, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
     with open(path, "w", encoding="utf-8") as handle:
         handle.write(payload)

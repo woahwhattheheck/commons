@@ -41,7 +41,7 @@ KEEP = {
     "p/grokbuild-merged-branch-janitor-33718131639-billing-lock-20260903-01.md": "010f253e",
     "p/grok-build-moving-main-mirror-billing-lock-20260903-01.md": "4550e922",
     "catalog.html": "35a7069f",
-    "hub_pages.py": "44bbd2ec",
+    "hub_pages.py": "7bc61c8b",
 }
 
 EVENT_8634 = {

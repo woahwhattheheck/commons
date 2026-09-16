@@ -26,7 +26,7 @@ KEEP = {
     "autogtm.html": "2fe108f4",
     "p/cursor-big-huge-commerce-agents-20260902-01.md": "fddb5a7c",
     "host/commerce_agents_same_loop.py": "c90f6e50",
-    "test_commerce_agents_same_loop.py": "61d30af4",
+    "test_commerce_agents_same_loop.py": "6ffe17b0",
     "p/cursor-harborline-commerce-compose-20260902-01.md": "45b7d435",
     "host/harborline_commerce_compose.py": "75128e5d",
     "p/cursor-harborline-commerce-compose-keep-lift-20260902-01.md": "668dd5c4",
@@ -34,7 +34,7 @@ KEEP = {
     "p/cursor-what-a-pack-is-20260902-01.md": "a4e4dd89",
     "p/cursor-pack-is-ready-to-run-20260902-01.md": "897b00ba",
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
-    "hub_pages.py": "44bbd2ec",
+    "hub_pages.py": "7bc61c8b",
     "door.js": "de1d570b",
     "ground/OWNER_NOW.md": "4b2a58ed",
 }

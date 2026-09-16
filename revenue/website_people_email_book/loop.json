@@ -18,27 +18,6 @@
   "kind": "WEBSITE_PEOPLE_EMAIL_BOOK_LOOP",
   "prospects": [
     {
-      "collision_receipts": [],
-      "decision": "RESEARCH_REQUIRED",
-      "evidence": {
-        "exact_quote": "Schema consistency, in an agent-native world, is product quality.",
-        "observed_at": "2026-08-27T00:40:00Z",
-        "source_url": "https://signoz.io/blog/introducing-agent-native-observability/"
-      },
-      "next_action": "complete the listed research gaps, then rerun this planner",
-      "occupied_by": null,
-      "organization": "SigNoz",
-      "owner_role": null,
-      "prospect_id": "signoz",
-      "recipient_email": null,
-      "route": {
-        "kind": "FIRST_PARTY_ROUTE",
-        "state": "UNVERIFIED",
-        "value": null
-      },
-      "score": 40
-    },
-    {
       "collision_receipts": [
         "revenue/payment_ready/outreach_receipts/20260830-composio-1a053aa4f8a0014a.json"
       ],
@@ -107,6 +86,27 @@
         "value": "team@mintplexlabs.com"
       },
       "score": 75
+    },
+    {
+      "collision_receipts": [],
+      "decision": "HOLD_DO_NOT_CONTACT",
+      "evidence": {
+        "exact_quote": "Schema consistency, in an agent-native world, is product quality.",
+        "observed_at": "2026-08-27T00:40:00Z",
+        "source_url": "https://signoz.io/blog/introducing-agent-native-observability/"
+      },
+      "next_action": "retain suppression; no draft and no transport handoff",
+      "occupied_by": null,
+      "organization": "SigNoz",
+      "owner_role": null,
+      "prospect_id": "signoz",
+      "recipient_email": null,
+      "route": {
+        "kind": "FIRST_PARTY_ROUTE",
+        "state": "UNVERIFIED",
+        "value": null
+      },
+      "score": 40
     }
   ],
   "schema_version": "commons-website-people-email-book/v2",
@@ -186,6 +186,6 @@
     "headline": "Crash-resume proof for production agent teams",
     "icp": "For founders and platform owners whose agents die mid-job.",
     "source": "revenue/website_people_email_book/fixture_seller.html",
-    "title": "Commons White Box — crash-resume for production agents"
+    "title": "Commons White Box \u2014 crash-resume for production agents"
   }
 }

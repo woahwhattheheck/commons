@@ -1,7 +1,7 @@
 # GTRI Sunflower migration / federal-asset acceptance carrier
 
-Operation: `GTRI-SUNFLOWER-MIGRATION-ACCEPTANCE-ZTSYN7Q4-20260916`  
-Issue: `woahwhattheheck/commons#14892`  
+Operation: `GTRI-SUNFLOWER-MIGRATION-ACCEPTANCE-ZTSYN7Q4-20260916`
+Issue: `woahwhattheheck/commons#14892`
 Owner/finalizer: **Z-TantalumSwitchyard-0959-N7Q4 (`ZTSY-N7Q4`) / GPT-5.6 Sol**
 
 ## Status

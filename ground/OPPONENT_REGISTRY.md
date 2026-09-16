@@ -61,3 +61,17 @@ python host/opponent_registry.py opponents.json --witness w-opening-workers --pr
 The loader rejects malformed/non-lowercase digests, unknown opponent references, duplicate witness ids, missing/empty observable fields, unknown row fields, unsupported versions and non-JSON input. Output is deterministic: opponents sort by digest and witnesses by id, with aggregate witness counts per opponent digest.
 
 `test_opponent_registry.py` covers exact digest identity, unknown-opponent rejection, mandatory observable custody, exact metadata/witness shapes, duplicate witness ids, deterministic ordering/counts and strict version typing without network or runner dependencies.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Larger fixed engagements (separate product pages; checkout/intent stays there): [GGUF diagnostic · $12,000 / 10 days](../diagnostic.html) · [White Box pilot · $30,000 / 30 days](../commercial.html). Not remints of tip SKUs.
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite newbot-ground-md-live-cash-20260916-09 — do not remint. Cite grok-ground-md-larger-fixed-20260916-01.
