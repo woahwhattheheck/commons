@@ -17,38 +17,51 @@ wb = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(wb)
 
 
-def surrogate_packet() -> str:
+def surrogate_value_packet() -> str:
     obj = json.loads(FIXTURE.read_text(encoding="utf-8"))
     obj["events"][0]["assertion"] = "\ud800"
     return json.dumps(obj, ensure_ascii=True)
 
 
+def hostile_packets() -> tuple[tuple[str, str], ...]:
+    return (
+        ("value.json", surrogate_value_packet()),
+        ("key.json", r'{"\ud800":1}'),
+        ("duplicate-key.json", r'{"\ud800":1,"\ud800":2}'),
+    )
+
+
 class EvidenceAARUnicodeIngressTests(unittest.TestCase):
-    def test_direct_surrogate_is_contract_error(self):
-        with self.assertRaises(wb.ContractError):
-            wb.finalize_bundle(surrogate_packet().encode("utf-8"))
+    def test_all_surrogate_shapes_are_contract_errors(self):
+        for name, payload in hostile_packets():
+            with self.subTest(name=name), self.assertRaises(wb.ContractError):
+                if name == "value.json":
+                    wb.finalize_bundle(payload.encode("utf-8"))
+                else:
+                    wb.strict_json_loads(payload.encode("utf-8"))
 
     def _check_cli(self, optimized: bool):
         with tempfile.TemporaryDirectory() as td:
-            path = Path(td) / "surrogate.json"
-            path.write_text(surrogate_packet(), encoding="utf-8")
-            argv = [sys.executable]
-            if optimized:
-                argv.append("-O")
-            proc = subprocess.run(
-                [*argv, str(MODULE), "compile", str(path)],
-                capture_output=True,
-                text=True,
-            )
-            self.assertEqual(proc.returncode, 2, proc.stderr)
-            self.assertIn("ERROR:", proc.stderr)
-            self.assertNotIn("Traceback", proc.stderr)
-            self.assertEqual(proc.stdout, "")
+            for name, payload in hostile_packets():
+                path = Path(td) / name
+                path.write_text(payload, encoding="utf-8")
+                argv = [sys.executable]
+                if optimized:
+                    argv.append("-O")
+                proc = subprocess.run(
+                    [*argv, str(MODULE), "compile", str(path)],
+                    capture_output=True,
+                    text=True,
+                )
+                self.assertEqual(proc.returncode, 2, (name, proc.stderr))
+                self.assertIn("ERROR:", proc.stderr)
+                self.assertNotIn("Traceback", proc.stderr)
+                self.assertEqual(proc.stdout, "")
 
-    def test_cli_surrogate_normal_is_controlled(self):
+    def test_cli_surrogate_shapes_normal_are_controlled(self):
         self._check_cli(False)
 
-    def test_cli_surrogate_optimized_is_controlled(self):
+    def test_cli_surrogate_shapes_optimized_are_controlled(self):
         self._check_cli(True)
 
 
