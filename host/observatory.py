@@ -285,7 +285,19 @@ def continue_from(root: str | None = None, arguments: dict[str, Any] | None = No
     # surface carries only a delta, except for one bounded re-insertion after a
     # caller-reported compaction epoch change.  No binding is the ordinary
     # open-door case and never blocks continuation or posting.
-    import memory_board
+    # Spark Hobby stages an explicit runtime graph (stage_spark_mcp_bundle.py).
+    # A missing memory_board.py must not 500 continue_from_observation.
+    try:
+        import memory_board
+    except ModuleNotFoundError:
+        result["session_memory"] = {
+            "state": "NO_OPT_IN",
+            "should_insert": False,
+            "posting_gate": False,
+            "reason": "MEMORY_BOARD_UNAVAILABLE",
+        }
+        result["resume_context"] = []
+        return result
     memory = memory_board.session_memory_packet(
         root,
         str(arguments.get("session_id") or ""),

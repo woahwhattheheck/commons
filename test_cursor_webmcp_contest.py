@@ -20,7 +20,7 @@ KEEP = {
     "p/wire-webmcp-challenge-20260903-01.md": "0e815c6d",
     "webmcp.html": "b3b0d7d3",
     "api/mcp.py": "393da756",
-    "stage_spark_mcp_bundle.py": "1234e00c",
+    "stage_spark_mcp_bundle.py": "548ef02b",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
     "wire.html": "3f030862",
     "ground/WIRE_SUPER_MCP.md": "6a50f614",
