@@ -5,12 +5,14 @@ on:
     paths:
       - "revenue/uark_rfp09112026_cmmc/**"
       - "tests/test_uark_rfp09112026_cmmc.py"
+      - "tests/test_uark_rfp09112026_currentness.py"
       - ".github/workflows/uark-rfp09112026-cmmc.yml"
   push:
     branches: [main]
     paths:
       - "revenue/uark_rfp09112026_cmmc/**"
       - "tests/test_uark_rfp09112026_cmmc.py"
+      - "tests/test_uark_rfp09112026_currentness.py"
 
 permissions:
   contents: read
@@ -25,11 +27,22 @@ jobs:
         with:
           python-version: "3.12"
       - name: Syntax
-        run: python -m py_compile revenue/uark_rfp09112026_cmmc/qualifier.py tests/test_uark_rfp09112026_cmmc.py
+        run: >-
+          python -m py_compile
+          revenue/uark_rfp09112026_cmmc/qualifier.py
+          revenue/uark_rfp09112026_cmmc/_qualifier_core.py
+          tests/test_uark_rfp09112026_cmmc.py
+          tests/test_uark_rfp09112026_currentness.py
       - name: Focused hostile suite
-        run: python -m unittest tests/test_uark_rfp09112026_cmmc.py -v
+        run: >-
+          python -m unittest
+          tests/test_uark_rfp09112026_cmmc.py
+          tests/test_uark_rfp09112026_currentness.py -v
       - name: Focused hostile suite optimized
-        run: python -O -m unittest tests/test_uark_rfp09112026_cmmc.py -v
+        run: >-
+          python -O -m unittest
+          tests/test_uark_rfp09112026_cmmc.py
+          tests/test_uark_rfp09112026_currentness.py -v
       - name: Synthetic compile and semantic verify
         run: |
           td=$(mktemp -d)
