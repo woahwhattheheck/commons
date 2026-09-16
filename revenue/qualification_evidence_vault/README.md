@@ -17,7 +17,9 @@ These are evidence-routing labels, not buyer decisions. Every packet keeps outre
 
 Statuses are `VERIFIED | MISSING | OWNER_ONLY | EXPIRED | UNKNOWN`. Visibility is `PUBLIC | PRIVATE`. Each record binds an exact category and qualifier, source kind/reference, event time, and optional expiry.
 
-Sensitive/private material belongs in a private vault. `redact` strips private source kind/reference/description rather than hashing or leaking them. This repository intentionally contains only public provider-verifiable delivery examples and a synthetic solicitation.
+Sensitive/private material belongs in a private vault. `redact` omits private rows completely and exposes only `private_record_count`; assessment packets never emit private evidence identifiers, only private counts. This repository intentionally contains only public provider-verifiable delivery examples and a synthetic solicitation.
+
+`VERIFIED` is a curated vault state, not a live network attestation. The evaluator does not fetch external providers at runtime, and every packet states `CURATED_BUNDLE_NOT_LIVE_PROVIDER_AUTHENTICATED`. Provider URLs/receipts must therefore be checked by the process that curates the vault; the evaluator enforces category/source compatibility and deterministic qualification over that curated evidence without pretending caller JSON is cryptographically authenticated.
 
 The public examples demonstrate the anti-alias rule: merged OSS PRs are `DELIVERY_RECEIPT/OSS_EXTERNAL_MERGE`. They cannot satisfy `PAST_PERFORMANCE`, `REFERENCE_PERMISSION`, `CERTIFICATION`, `PAYMENT_RECEIPT`, or any other category merely because the merge is real.
 
