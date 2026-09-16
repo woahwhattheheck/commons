@@ -155,6 +155,22 @@ def git_head():
         return ""
 
 
+
+def _preserve_live_cash(prev, doc):
+    """Keep tip Autopsy/$199 (+ Larger fixed) product doors across projection rebakes.
+
+    Scheduled llms_txt bakes rewrite head.json / pulse.json observation fields.
+    Without this KEEP, machine readers lose checkout product paths after a land.
+    Paths only — never invent Stripe Payment Links.
+    """
+    if not isinstance(prev, dict) or not isinstance(doc, dict):
+        return doc
+    live = prev.get("live_cash")
+    if isinstance(live, dict) and live.get("products"):
+        doc["live_cash"] = live
+    return doc
+
+
 def head_document(sha, observed_at, source=HEAD_SOURCE):
     """Return the schema-pinned observation written by the scheduled bake."""
     sha = str(sha or "").strip().lower()
@@ -179,7 +195,15 @@ def head_document(sha, observed_at, source=HEAD_SOURCE):
 
 def write_head_json(sha, observed_at, path=None):
     path = path or os.path.join(ROOT, "head.json")
+    try:
+        with open(path, encoding="utf-8") as f:
+            prev = json.load(f)
+    except (OSError, json.JSONDecodeError):
+        prev = {}
+    if not isinstance(prev, dict):
+        prev = {}
     doc = head_document(sha, observed_at)
+    doc = _preserve_live_cash(prev, doc)
     with open(path, "w", encoding="utf-8") as f:
         f.write(json.dumps(doc, indent=2, sort_keys=True) + "\n")
     return doc
@@ -289,6 +313,7 @@ def write_head_pulse(rows, path=None, head=None):
         "instruction": prev.get("instruction")
         or "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses.",
     }
+    pulse = _preserve_live_cash(prev, pulse)
     with open(path, "w", encoding="utf-8") as f:
         f.write(json.dumps(pulse, indent=2) + "\n")
     return True
