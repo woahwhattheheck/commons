@@ -55,3 +55,13 @@ The CLI reads bounded regular files through one retained descriptor, rejects fin
 ## Acceptance / truth boundary
 
 A successful report proves only that the exact supplied sanitized evidence reconciles under this reducer. It does not authenticate an ERP or bank source, contact a customer, send or alter an invoice, perform collections, allocate unattributed funds, waive a dispute, mutate accounting/provider state, determine legal enforceability, recognize revenue, or prove cash collection. All external-action authority fields are hard false.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)

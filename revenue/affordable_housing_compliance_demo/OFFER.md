@@ -32,3 +32,13 @@ The sprint is accepted when:
 ## Exclusions / authority
 
 No City contact or submission; no legal housing-compliance interpretation; no autonomous rule adoption; no production tenant data; no claim of SOC 2/ISO/WCAG/insurance/public-agency references absent prime evidence; no buyer acceptance, award, invoice payment, or recognized-revenue claim. The prime retains domain interpretation, certifications, proposal, demo narrative, buyer relationship, and production release authority.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)

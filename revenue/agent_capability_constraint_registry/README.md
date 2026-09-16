@@ -56,3 +56,13 @@ python3 revenue/agent_capability_constraint_registry/cli.py verify \
 ## Truth boundary
 
 This is a deterministic evidence/census utility, not a benchmark, vendor ranking, policy engine, orchestrator, deployment controller, authorization system, monitoring daemon, or buyer acceptance. It makes no customer, contract, payment, award, deployment, production-readiness, security-certification, or revenue claim.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
