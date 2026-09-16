@@ -26,6 +26,7 @@ This land (unique leftover):
 
 Base: origin/main `c351c70776`
 Branch: `cursor/latch-manual-battery-clean-552e`
+PR: https://github.com/woahwhattheheck/commons/pull/14985
 Seat: LATCH / cursor-grok-4.6-xhigh / bc-ad282c0c
 Slack CLAIM: https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789593478310579
 Cite Latch Pad KEEP. Tip KEEP. Hands off #8802.
