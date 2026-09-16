@@ -1,11 +1,14 @@
 from __future__ import annotations
 
 import copy
+import datetime as dt
 import json
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
+from revenue.multi_framework_evidence_freshness import gate
 from revenue.multi_framework_evidence_freshness.golden import build_golden_input
 
 from . import cli
@@ -17,11 +20,14 @@ from .wrapper import (
     verify_diagnostic,
 )
 
+FIXED_NOW = dt.datetime(2026, 9, 16, 22, 30, 0, tzinfo=dt.timezone.utc)
+
 
 class WrapperTests(unittest.TestCase):
     def test_golden_compiles_and_verifies(self) -> None:
-        envelope = compile_diagnostic(build_golden_input())
-        digest = verify_diagnostic(envelope)
+        with mock.patch.object(gate, "_now_utc", return_value=FIXED_NOW):
+            envelope = compile_diagnostic(build_golden_input())
+            digest = verify_diagnostic(envelope)
         self.assertEqual(digest, envelope["diagnostic_sha256"])
         counts = envelope["diagnostic"]["summary"]["counts"]
         self.assertEqual(sum(counts.values()), 400)
@@ -43,15 +49,16 @@ class WrapperTests(unittest.TestCase):
 
     def test_order_invariance(self) -> None:
         raw = build_golden_input()
-        a = compile_diagnostic(copy.deepcopy(raw))
-        altered = copy.deepcopy(raw)
-        altered["evidence"] = list(reversed(altered["evidence"]))
-        b = compile_diagnostic(altered)
-        self.assertEqual(a["diagnostic"]["summary"]["counts"], b["diagnostic"]["summary"]["counts"])
-        self.assertEqual(a["diagnostic"]["binding"]["input_sha256"], b["diagnostic"]["binding"]["input_sha256"])
-        self.assertEqual(a["diagnostic"]["binding"]["projection_sha256"], b["diagnostic"]["binding"]["projection_sha256"])
-        self.assertEqual(verify_diagnostic(a), a["diagnostic_sha256"])
-        self.assertEqual(verify_diagnostic(b), b["diagnostic_sha256"])
+        with mock.patch.object(gate, "_now_utc", return_value=FIXED_NOW):
+            a = compile_diagnostic(copy.deepcopy(raw))
+            altered = copy.deepcopy(raw)
+            altered["evidence"] = list(reversed(altered["evidence"]))
+            b = compile_diagnostic(altered)
+            self.assertEqual(a["diagnostic"]["summary"]["counts"], b["diagnostic"]["summary"]["counts"])
+            self.assertEqual(a["diagnostic"]["binding"]["input_sha256"], b["diagnostic"]["binding"]["input_sha256"])
+            self.assertEqual(a["diagnostic"]["binding"]["projection_sha256"], b["diagnostic"]["binding"]["projection_sha256"])
+            self.assertEqual(verify_diagnostic(a), a["diagnostic_sha256"])
+            self.assertEqual(verify_diagnostic(b), b["diagnostic_sha256"])
 
     def test_cli_roundtrip(self) -> None:
         raw = build_golden_input()
@@ -61,8 +68,9 @@ class WrapperTests(unittest.TestCase):
             out = root / "diag.json"
             md = root / "page.md"
             src.write_text(json.dumps(raw), encoding="utf-8")
-            self.assertEqual(cli.main(["compile", str(src), str(out), str(md)]), 0)
-            self.assertEqual(cli.main(["verify", str(out)]), 0)
+            with mock.patch.object(gate, "_now_utc", return_value=FIXED_NOW):
+                self.assertEqual(cli.main(["compile", str(src), str(out), str(md)]), 0)
+                self.assertEqual(cli.main(["verify", str(out)]), 0)
             self.assertTrue(md.read_text(encoding="utf-8").startswith("# Evidence Freshness Diagnostic"))
 
 
