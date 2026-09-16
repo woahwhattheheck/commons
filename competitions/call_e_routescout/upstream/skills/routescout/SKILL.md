@@ -26,7 +26,7 @@ Do not use for marketing, lead generation, surveys, political outreach, personal
 3. Review the complete task, masked destination, source URL, one-call side effect, and authority ceiling.
 4. If approved, set `CALLE_API_KEY` locally and run the exact preview token with `--confirm-call`.
 5. Never blindly retry an ambiguous call. The request uses a deterministic idempotency key; use `resume` with the returned call id when available.
-6. Reconcile the terminal result. `task_completed=true` does not prove a route.
+6. Reconcile the terminal result. `task_completed=true` does not prove a route. For offline retained JSON, `provider_binding.verified=true` proves only internal identity-field consistency against the inquiry; it does not authenticate that the local file came from CALL-E.
 7. Treat `ROUTE_FOUND` only as evidence of a permitted routing channel. It is never acceptance, procurement permission, or authority to send the follow-up.
 
 ## Result states
@@ -38,7 +38,7 @@ Do not use for marketing, lead generation, surveys, political outreach, personal
 
 ## Side effects and credentials
 
-`preview` and `reconcile` are no-network. `run` can place **one real outbound phone call** and may incur CALL-E charges. The API key is read from `CALLE_API_KEY` and the script sends it only to `https://api.heycall-e.com`.
+`preview` and `reconcile` are no-network. `run` can place **one real outbound phone call** and may incur CALL-E charges. The API key is read from `CALLE_API_KEY` and the script sends it only to `https://api.heycall-e.com`. Its HTTP opener rejects every redirect before a second request can be constructed or issued, preventing bearer credentials or request bodies from being forwarded to redirect targets.
 
 There is no scheduler and no automatic retry. Cancel safely by withholding the exact confirmation token. After dispatch, use the provider call id for status/recovery rather than creating a changed inquiry.
 
