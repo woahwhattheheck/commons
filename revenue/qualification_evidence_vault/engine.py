@@ -390,6 +390,10 @@ def _evaluate_requirement(
         result = "OWNER_EVIDENCE_REQUIRED"
         reason = "mandatory evidence is not verified"
 
+    verified_public = [item for item in verified if item["visibility"] == "PUBLIC"]
+    verified_private = [item for item in verified if item["visibility"] == "PRIVATE"]
+    candidate_public = [item for item in matching if item["visibility"] == "PUBLIC"]
+    candidate_private = [item for item in matching if item["visibility"] == "PRIVATE"]
     return {
         "requirement_id": req["requirement_id"],
         "category": req["category"],
@@ -397,8 +401,10 @@ def _evaluate_requirement(
         "min_count": req["min_count"],
         "result": result,
         "reason": reason,
-        "verified_evidence_ids": sorted(item["evidence_id"] for item in verified),
-        "candidate_evidence_ids": sorted(item["evidence_id"] for item in matching),
+        "verified_evidence_ids": sorted(item["evidence_id"] for item in verified_public),
+        "verified_private_count": len(verified_private),
+        "candidate_evidence_ids": sorted(item["evidence_id"] for item in candidate_public),
+        "candidate_private_count": len(candidate_private),
     }
 
 
@@ -449,6 +455,7 @@ def compile_assessment(raw_vault: Any, raw_solicitation: Any, as_of: str) -> dic
         "requirements": results,
         "partner_gap_brief": partner_gaps,
         "owner_evidence_holds": sorted(owner_holds),
+        "evidence_input_authentication": "CURATED_BUNDLE_NOT_LIVE_PROVIDER_AUTHENTICATED",
         "authority_flags": {
             "outreach_authorized": False,
             "proposal_submission_authorized": False,
@@ -481,35 +488,32 @@ def verify_assessment(raw_vault: Any, raw_solicitation: Any, packet: Any) -> boo
 def redact_vault(raw_vault: Any, as_of: str) -> dict[str, Any]:
     vault = normalize_vault(raw_vault, as_of)
     public_records: list[dict[str, Any]] = []
+    private_count = 0
     for item in vault["records"]:
-        base = {
-            "evidence_id": item["evidence_id"],
-            "category": item["category"],
-            "qualifier": item["qualifier"],
-            "status": item["status"],
-            "effective_status": item["effective_status"],
-            "visibility": item["visibility"],
-            "event_at": item["event_at"],
-            "valid_until": item["valid_until"],
-        }
-        if item["visibility"] == "PUBLIC":
-            base.update(
-                {
-                    "source_kind": item["source_kind"],
-                    "source_ref": item["source_ref"],
-                    "description": item["description"],
-                }
-            )
-        else:
-            base.update(
-                {
-                    "source_kind": "PRIVATE_REDACTED",
-                    "source_ref": None,
-                    "description": None,
-                }
-            )
-        public_records.append(base)
-    out = {"schema": REDACTED_SCHEMA, "as_of": as_of, "records": public_records}
+        if item["visibility"] == "PRIVATE":
+            private_count += 1
+            continue
+        public_records.append(
+            {
+                "evidence_id": item["evidence_id"],
+                "category": item["category"],
+                "qualifier": item["qualifier"],
+                "status": item["status"],
+                "effective_status": item["effective_status"],
+                "visibility": item["visibility"],
+                "source_kind": item["source_kind"],
+                "source_ref": item["source_ref"],
+                "description": item["description"],
+                "event_at": item["event_at"],
+                "valid_until": item["valid_until"],
+            }
+        )
+    out = {
+        "schema": REDACTED_SCHEMA,
+        "as_of": as_of,
+        "records": public_records,
+        "private_record_count": private_count,
+    }
     out["public_vault_sha256"] = sha256_value(out)
     return out
 
