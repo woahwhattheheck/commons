@@ -319,7 +319,7 @@ def _verify_compiled(compiled: CompiledProof) -> None:
     if proof.get("policy_version") != POLICY_VERSION:
         raise ProofError("compiled proof policy is not release-authorized")
     if proof.get("status") != "HOLD":
-        raise ProofError("positive release state is not authorized for raw records")
+        raise ProofError("compiled proof status invariant failed for raw records")
     if proof.get("public_projection") != _empty_public_projection():
         raise ProofError("compiled public projection must remain empty")
     if PROVENANCE_BLOCKER not in proof.get("blockers", []):
