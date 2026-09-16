@@ -36,3 +36,13 @@ See `ARCHITECTURE.md`, `THREAT_MODEL.md`, `SUBMISSION.md`, and `DEVICE_TEST.md`.
 - Fire TV/Vega device execution: **HOLD until actual device/simulator receipt**.
 - AWS deployment/spend: **not performed by this carrier**.
 - Hackathon registration/submission/prize/payment/revenue: **not claimed**.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)

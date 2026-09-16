@@ -69,3 +69,13 @@ flowchart TD
 ## Claims we are not making
 
 This packet does not claim live AWS deployment, Devpost registration/submission, buyer use, time savings measured in production, organizer acceptance, rank, prize, payment, or revenue. Those require external evidence.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)

@@ -110,3 +110,13 @@ The hostile suite covers deterministic extraction, expiry, unconfirmed evidence,
 ## Competition truth boundary
 
 `submission_readiness.json` is intentionally `BLOCKED`. A final competition entry still requires a verified live Strands run, AWS Builder ID, public-repository requirement check, rendered architecture diagram, public <=5 minute demo video, Devpost registration/terms acceptance, and final submission authorization. No AWS deployment/spend, Devpost entry, organizer acceptance, prize, payment, or earned revenue is represented by this source carrier.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)

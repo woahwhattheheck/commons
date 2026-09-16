@@ -25,3 +25,13 @@ The client is dependency-free HTML5/CSS/ES modules. Fire TV supports HTML5 web a
 ## Privacy and cost
 
 The bundled demo is synthetic. No account, viewing history, microphone, camera, guest data, or PII is required. AWS is optional; offline mode is a complete deterministic demo. Deployment/spend is never implied by the source carrier.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
