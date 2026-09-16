@@ -330,9 +330,16 @@ def publish_export(path, out_dir, as_of, horizon_days=30):
                     0o600,
                     dir_fd=dir_fd,
                 )
-                file_stat = os.fstat(fd)
-                identity = (file_stat.st_dev, file_stat.st_ino)
-                created.append((name, identity, fd))
+                try:
+                    file_stat = os.fstat(fd)
+                    identity = (file_stat.st_dev, file_stat.st_ino)
+                    created.append((name, identity, fd))
+                except Exception:
+                    try:
+                        os.close(fd)
+                    except OSError:
+                        pass
+                    raise
                 view = memoryview(raw)
                 while view:
                     written = os.write(fd, view)
