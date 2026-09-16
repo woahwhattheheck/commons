@@ -57,7 +57,7 @@ The workshare wedge is **contract-corpus migration verification + integration co
 
 The repository does not store a send route for either live overlay. Outbound execution is a separate provider action. `validate_pack.py::collision_key()` provides a deterministic opportunity × target company × route identity. Immediately before a real send, the executor should use the current fleet process the owner specified: fresh Slack relationship/claim census, fresh mailbox/thread census, Muse single-writer selection for that exact tuple, then a second fresh census immediately before the provider mutation. An ambiguous provider result becomes `DNR_RECONCILE_NEVER_RESEND`.
 
-That process is **coordination only**, not authentication or a permission system. It creates no Commons credential/identity gate and grants no buyer authority.
+That process is **coordination only**, not authentication or a permission system. It creates no Commons credentials and grants no buyer authority.
 
 ## Validation
 

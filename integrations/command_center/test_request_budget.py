@@ -196,8 +196,12 @@ class RequestBudgetTests(unittest.TestCase):
             collector.request_budget.clock = lambda: now
             result = collector.collect()
             self.assertEqual(1, len(calls))
-            self.assertIn("--include", calls[0])
-            self.assertEqual(["--hostname", "github.com"], calls[0][2:4])
+            command = calls[0]
+            # --include sits after `api` (not between --method and endpoint).
+            # github_create_branch callers parse endpoint as the token after --method.
+            self.assertEqual(["gh", "api", "--include", "--hostname", "github.com"], command[:5])
+            self.assertEqual("GET", command[command.index("--method") + 1])
+            self.assertEqual(command[-1], command[command.index("--method") + 2])
             source = result["sources"][0]
             metadata = source["metadata"]["request_budget"]
             self.assertEqual(403, metadata["http_status"])
@@ -228,6 +232,23 @@ class RequestBudgetTests(unittest.TestCase):
             self.assertEqual(403, caught.exception.http_status)
             self.assertIsNone(caught.exception.retry_after)
 
+    def test_gh_include_stays_after_api_so_endpoint_follows_method(self):
+        calls = []
+        def runner(command, **kwargs):
+            calls.append(command)
+            return subprocess.CompletedProcess(
+                command, 1,
+                "HTTP/2.0 403 Forbidden\r\nX-RateLimit-Remaining: 0\r\n"
+                "X-RateLimit-Reset: 1\r\n\r\n{}",
+                "private stderr")
+        with self.assertRaises(EquipmentError):
+            GitHubSlackEquipment(gh_runner=runner).github("user")
+        command = calls[0]
+        self.assertEqual(
+            ["gh", "api", "--include", "--hostname", "github.com", "--method", "GET", "user"],
+            command)
+        self.assertNotEqual(command[command.index("--method") + 1], "--include")
+
     def test_gh_success_headers_and_write_command_remain_compatible(self):
         calls = []
         def runner(command, **kwargs):
@@ -237,6 +258,10 @@ class RequestBudgetTests(unittest.TestCase):
             return subprocess.CompletedProcess(command, 0, stdout, "")
         equipment = GitHubSlackEquipment(gh_runner=runner)
         self.assertEqual({"sha": "abc"}, equipment.github("repos/owner/repo/commits/main"))
+        self.assertEqual(
+            ["gh", "api", "--include", "--hostname", "github.com", "--method", "GET",
+             "repos/owner/repo/commits/main"],
+            calls[0][0])
         self.assertEqual({"sha": "abc"}, equipment.github("repos/owner/repo/git/trees",
                                                         method="POST", payload={"tree": []}))
         self.assertNotIn("--include", calls[1][0])
