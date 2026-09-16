@@ -120,6 +120,21 @@ class WorkflowSurfaceTests(unittest.TestCase):
         self.assertEqual(len(recipe), row['bytes'])
         self.assertEqual(hashlib.sha256(recipe).hexdigest(), row['sha256'])
 
+    def test_live_archived_recipes_match_inventory_hashes(self):
+        data = json.loads(Path('ci/workflow-surface.json').read_text(encoding='utf-8'))
+        mismatches = []
+        for row in data['archived']:
+            recipe = Path(row['archive']).read_bytes()
+            digest = hashlib.sha256(recipe).hexdigest()
+            if len(recipe) != row['bytes'] or digest != row['sha256']:
+                mismatches.append(row['archive'])
+        self.assertEqual(mismatches, [])
+
+    def test_live_checkout_fits_budget_and_passes_structural_check(self):
+        result = surface.check(Path('.'))
+        self.assertLessEqual(result['active'], json.loads(Path('ci/workflow-surface.json').read_text(encoding='utf-8'))['max_active_workflows'])
+        self.assertEqual(result['status'], 'PASS', result['errors'])
+
 
 if __name__ == '__main__':
     unittest.main()
