@@ -2,17 +2,14 @@ from . import engine as _engine
 from .strict_json import canonical_json, digest, parse_strict_json
 
 # Install the hardened parser/canonical graph before importing the authority
-# layer. Existing engine functions intentionally resolve these names through
-# their module globals, so historical/current compilation, file ingress and
-# receipt verification all share one fail-closed UTF-8 JSON boundary without
-# duplicating the economic engine.
+# layer. Historical/test helpers intentionally remain injectable; the public
+# CURRENT surface is wrapped by current_runtime after authority is loaded.
 _engine.parse_strict_json = parse_strict_json
 _engine.canonical_json = canonical_json
 _engine.digest = digest
 
-from .authority import (
-    AuthorityError,
-    authority_subject,
+from .authority import AuthorityError, authority_subject
+from .current_runtime import (
     compile_current,
     render_current_markdown,
     verify_current_authority,
