@@ -163,6 +163,27 @@ class WorkflowSurfaceTests(unittest.TestCase):
         self.assertIn('current_authority.py', text)
         self.assertIn('unrecognized arguments: --evaluated-at', text)
 
+    def test_outbound_send_guard_current_recipe_stays_archived_with_isolated_cli(self):
+        """Regress run 35113530437: keep CURRENT recipe archived inside the 67-slot budget."""
+        self.assertFalse(Path('.github/workflows/outbound-send-guard-current.yml').exists())
+        data = json.loads(Path('ci/workflow-surface.json').read_text(encoding='utf-8'))
+        self.assertNotIn('.github/workflows/outbound-send-guard-current.yml', data['retained'])
+        row = next(item for item in data['archived'] if item['archive'].endswith('outbound-send-guard-current.yml'))
+        recipe = Path(row['archive']).read_bytes()
+        self.assertEqual(len(recipe), row['bytes'])
+        self.assertEqual(hashlib.sha256(recipe).hexdigest(), row['sha256'])
+        parsed = surface.workflow(recipe)
+        self.assertFalse(surface.duplicate_branch_events(parsed))
+        text = recipe.decode('utf-8')
+        self.assertIn('tools/outbound_send_guard/cli.py', text)
+        self.assertIn('tools/outbound_send_guard/current_worker.py', text)
+        self.assertIn('tools.outbound_send_guard.test_current_entrypoint', text)
+        result = surface.check(Path('.'))
+        self.assertLessEqual(result['active'], data['max_active_workflows'])
+        self.assertEqual(result['status'], 'PASS', result['errors'])
+
+
+
 
 
 

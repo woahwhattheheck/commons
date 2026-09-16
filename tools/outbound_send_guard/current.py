@@ -1,121 +1,137 @@
-#!/usr/bin/env python3
-"""Safe public wrapper for the reviewed verifier-clock implementation.
+"""Fail-closed embedded CURRENT surface for the outbound send guard.
 
-The large implementation is retained byte-for-byte in ``current_impl``.
-Its deterministic core dependency is rebound to the underscore-private v1
-engine before every authority operation. The private core is deliberately not
-exported through this module.
-
-Positive authority always reinstalls a process-UTC clock and the private
-core before compile/verify. Caller-writable module attributes on this wrapper
-or on ``current_impl`` are not the authority time source.
+Positive CURRENT authority deliberately does not exist in an imported caller-
+controlled Python interpreter. Use the direct isolated CLI boundary documented
+in ``cli.py``. Historical/integrity reconstruction remains available here.
 """
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from copy import deepcopy
+from datetime import datetime
 from types import SimpleNamespace
 from typing import Any
 
-from . import _guard_core as _legacy_core
-from . import current_impl as _impl
+from . import _guard_core as _core_engine
 
-# Bind once immediately; every authority wrapper below reasserts the binding.
-_impl.guard = _legacy_core
-
-CurrentGuardError = _impl.CurrentGuardError
-CURRENT_RECEIPT_SCHEMA = _impl.CURRENT_RECEIPT_SCHEMA
-HISTORICAL_RECEIPT_SCHEMA = _impl.HISTORICAL_RECEIPT_SCHEMA
-CURRENT_VERIFICATION_SCHEMA = _impl.CURRENT_VERIFICATION_SCHEMA
-POLICY_GENERATION = _impl.POLICY_GENERATION
-MODE_CURRENT = _impl.MODE_CURRENT
-MODE_HISTORICAL = _impl.MODE_HISTORICAL
-MAX_EVIDENCE_AGE_SECONDS = _impl.MAX_EVIDENCE_AGE_SECONDS
-MAX_REQUEST_AGE_SECONDS = _impl.MAX_REQUEST_AGE_SECONDS
-MAX_FUTURE_SKEW_SECONDS = _impl.MAX_FUTURE_SKEW_SECONDS
-POSITIVE_RECEIPT_TTL_SECONDS = _impl.POSITIVE_RECEIPT_TTL_SECONDS
-MAX_INPUT_BYTES = _impl.MAX_INPUT_BYTES
-DECISIONS = _impl.DECISIONS
-POSITIVE = _impl.POSITIVE
-
-# Inspectable aliases only. Authority wrappers do not copy these back into
-# the implementation; rebinding them cannot select verifier time or core.
-_utc_now = _impl._utc_now
-_core = _impl._core
-
-# Safe helper compatibility for existing tests/callers. There is intentionally
-# no ``evaluate`` or ``main`` attribute here.
-guard = SimpleNamespace(
-    GuardError=_legacy_core.GuardError,
-    canonical_bytes=_legacy_core.canonical_bytes,
-    digest_bytes=_legacy_core.digest_bytes,
-    digest_object=_legacy_core.digest_object,
-    parse_json_bytes=_legacy_core.parse_json_bytes,
-    parse_time=_legacy_core.parse_time,
-    format_time=_legacy_core.format_time,
-    normalize_email=_legacy_core.normalize_email,
+CURRENT_RECEIPT_SCHEMA = "outbound-send-guard-current-receipt/v1"
+HISTORICAL_RECEIPT_SCHEMA = "outbound-send-guard-historical-receipt/v1"
+CURRENT_VERIFICATION_SCHEMA = "outbound-send-guard-current-verification/v1"
+POLICY_GENERATION = "outbound-send-guard-current-policy/1"
+MODE_CURRENT = "CURRENT"
+MODE_HISTORICAL = "HISTORICAL_INTEGRITY_ONLY"
+MODE_EMBEDDED = "EMBEDDED_CURRENT_UNAVAILABLE"
+MAX_EVIDENCE_AGE_SECONDS = 900
+MAX_REQUEST_AGE_SECONDS = 900
+MAX_FUTURE_SKEW_SECONDS = 300
+POSITIVE_RECEIPT_TTL_SECONDS = 60
+MAX_INPUT_BYTES = 2 * 1024 * 1024
+DECISIONS = {"ALLOW_NEW", "REPLY_ONLY", "HOLD", "DO_NOT_RESEND"}
+POSITIVE = {"ALLOW_NEW", "REPLY_ONLY"}
+EMBEDDED_REASON = (
+    "embedded CURRENT authority is unavailable; use direct isolated startup: "
+    "python -I -S tools/outbound_send_guard/cli.py ..."
 )
 
-# Pure helpers that do not emit current authority may remain inspectable.
-_snapshot = _impl._snapshot
-_parse_bytes = _impl._parse_bytes
-_temporal_projection = _impl._temporal_projection
-_decision = _impl._decision
-_policy = _impl._policy
-_source_record = _impl._source_record
-_receipt_current = _impl._receipt_current
+
+class CurrentGuardError(_core_engine.GuardError):
+    pass
 
 
-def _owned_utc_now() -> datetime:
-    return datetime.now(timezone.utc)
+# Safe helper compatibility only. No evaluator or CLI is exposed here.
+guard = SimpleNamespace(
+    GuardError=_core_engine.GuardError,
+    canonical_bytes=_core_engine.canonical_bytes,
+    digest_bytes=_core_engine.digest_bytes,
+    digest_object=_core_engine.digest_object,
+    parse_json_bytes=_core_engine.parse_json_bytes,
+    parse_time=_core_engine.parse_time,
+    format_time=_core_engine.format_time,
+    normalize_email=_core_engine.normalize_email,
+)
 
 
-def _owned_core(
-    intent: dict[str, Any], evidence: dict[str, Any], ib: bytes, eb: bytes
-) -> dict[str, Any]:
-    return _legacy_core.evaluate(
-        intent,
-        evidence,
-        intent_sha256=_legacy_core.digest_bytes(ib),
-        evidence_sha256=_legacy_core.digest_bytes(eb),
-    )
+def _snapshot(value: Any, label: str) -> tuple[dict[str, Any], bytes]:
+    if type(value) is not dict:
+        raise CurrentGuardError(f"{label} must be an object")
+    try:
+        raw = _core_engine.canonical_bytes(value)
+    except (TypeError, ValueError) as exc:
+        raise CurrentGuardError(f"{label} is not canonical JSON") from exc
+    return _core_engine.parse_json_bytes(raw, f"{label} canonical snapshot"), raw
 
 
-def _sync_impl(
-    _clock=_owned_utc_now,
-    _core_fn=_owned_core,
-) -> None:
-    # Defaults bind the original function objects at definition time.
-    _impl.guard = _legacy_core
-    _impl._utc_now = _clock
-    _impl._core = _core_fn
-
-
-def _compile_current_owned_clock(
+def _embedded_receipt(
     intent: dict[str, Any],
     evidence: dict[str, Any],
     *,
+    source_mode: str,
     ib: bytes,
     eb: bytes,
-    source_mode: str,
 ) -> dict[str, Any]:
-    _sync_impl()
-    return _impl._compile_current_owned_clock(
-        intent, evidence, ib=ib, eb=eb, source_mode=source_mode
-    )
+    core = _core_engine.evaluate(intent, evidence)
+    core_payload = deepcopy(core["payload"])
+    historical = core_payload["decision"]
+    decision = "DO_NOT_RESEND" if historical == "DO_NOT_RESEND" else "HOLD"
+    payload = {
+        "schema_version": CURRENT_RECEIPT_SCHEMA,
+        "policy_generation": POLICY_GENERATION,
+        "mode": MODE_EMBEDDED,
+        "source": {
+            "custody_mode": source_mode,
+            "intent_object_sha256": _core_engine.digest_object(intent),
+            "evidence_object_sha256": _core_engine.digest_object(evidence),
+            "byte_custody": (
+                {
+                    "intent_sha256": _core_engine.digest_bytes(ib),
+                    "evidence_sha256": _core_engine.digest_bytes(eb),
+                }
+                if source_mode == "exact_consumed_bytes"
+                else None
+            ),
+        },
+        "core_receipt_sha256": core["receipt_sha256"],
+        "core": core_payload,
+        "historical_decision": historical,
+        "decision": decision,
+        "reasons": [EMBEDDED_REASON],
+        "temporal_reasons": [EMBEDDED_REASON],
+        "verified_at": None,
+        "valid_until": None,
+        "current_policy": None,
+        "current_preflight_clear": False,
+        "net_new_send_preflight_clear": False,
+        "reply_preflight_clear": False,
+        "side_effects_authorized": False,
+    }
+    return {"payload": payload, "receipt_sha256": _core_engine.digest_object(payload)}
 
 
 def compile_current(
     intent_raw: dict[str, Any], evidence_raw: dict[str, Any]
 ) -> dict[str, Any]:
-    _sync_impl()
-    return _impl.compile_current(intent_raw, evidence_raw)
+    """Return a non-authorizing embedded projection; never positive CURRENT."""
+    intent, ib = _snapshot(intent_raw, "intent")
+    evidence, eb = _snapshot(evidence_raw, "evidence")
+    return _embedded_receipt(
+        intent, evidence, source_mode="canonical_objects", ib=ib, eb=eb
+    )
 
 
-def compile_current_bytes(
-    intent_bytes: bytes, evidence_bytes: bytes
-) -> dict[str, Any]:
-    _sync_impl()
-    return _impl.compile_current_bytes(intent_bytes, evidence_bytes)
+def compile_current_bytes(intent_bytes: bytes, evidence_bytes: bytes) -> dict[str, Any]:
+    """Return a non-authorizing exact-byte embedded projection."""
+    if type(intent_bytes) is not bytes or type(evidence_bytes) is not bytes:
+        raise CurrentGuardError("intent/evidence bytes must be bytes")
+    if len(intent_bytes) > MAX_INPUT_BYTES or len(evidence_bytes) > MAX_INPUT_BYTES:
+        raise CurrentGuardError(f"input exceeds {MAX_INPUT_BYTES} bytes")
+    intent = _core_engine.parse_json_bytes(intent_bytes, "intent")
+    evidence = _core_engine.parse_json_bytes(evidence_bytes, "evidence")
+    return _embedded_receipt(
+        intent,
+        evidence,
+        source_mode="exact_consumed_bytes",
+        ib=intent_bytes,
+        eb=evidence_bytes,
+    )
 
 
 def compile_historical_at(
@@ -124,30 +140,28 @@ def compile_historical_at(
     *,
     historical_at: datetime,
 ) -> dict[str, Any]:
-    _sync_impl()
-    return _impl.compile_historical_at(
-        intent_raw, evidence_raw, historical_at=historical_at
-    )
-
-
-def _verify_current_owned_clock(
-    intent: dict[str, Any],
-    evidence: dict[str, Any],
-    *,
-    ib: bytes,
-    eb: bytes,
-    source_mode: str,
-    receipt_raw: dict[str, Any],
-) -> dict[str, Any]:
-    _sync_impl()
-    return _impl._verify_current_owned_clock(
-        intent,
-        evidence,
-        ib=ib,
-        eb=eb,
-        source_mode=source_mode,
-        receipt_raw=receipt_raw,
-    )
+    """Explicit integrity replay. Outward authority is permanently HOLD."""
+    if type(historical_at) is not datetime or historical_at.tzinfo is None:
+        raise CurrentGuardError("historical_at must be timezone-aware")
+    intent, _ = _snapshot(intent_raw, "intent")
+    evidence, _ = _snapshot(evidence_raw, "evidence")
+    core = _core_engine.evaluate(intent, evidence)
+    historical = core["payload"]["decision"]
+    payload = {
+        "schema_version": HISTORICAL_RECEIPT_SCHEMA,
+        "mode": MODE_HISTORICAL,
+        "historical_at": historical_at.isoformat(),
+        "core_receipt_sha256": core["receipt_sha256"],
+        "core": deepcopy(core["payload"]),
+        "historical_decision": historical,
+        "decision": "HOLD",
+        "reasons": ["historical replay cannot authorize current outbound action"],
+        "current_preflight_clear": False,
+        "net_new_send_preflight_clear": False,
+        "reply_preflight_clear": False,
+        "side_effects_authorized": False,
+    }
+    return {"payload": payload, "receipt_sha256": _core_engine.digest_object(payload)}
 
 
 def verify_current(
@@ -155,31 +169,28 @@ def verify_current(
     evidence_raw: dict[str, Any],
     receipt_raw: dict[str, Any],
 ) -> dict[str, Any]:
-    _sync_impl()
-    return _impl.verify_current(intent_raw, evidence_raw, receipt_raw)
+    del intent_raw, evidence_raw, receipt_raw
+    payload = {
+        "schema_version": CURRENT_VERIFICATION_SCHEMA,
+        "mode": MODE_EMBEDDED,
+        "historical_valid": False,
+        "expired": True,
+        "current_semantics_match": False,
+        "current_preflight_valid": False,
+        "current_decision": "HOLD",
+        "reasons": [EMBEDDED_REASON],
+        "side_effects_authorized": False,
+    }
+    return {"payload": payload, "receipt_sha256": _core_engine.digest_object(payload)}
 
 
 def verify_current_bytes(
-    intent_bytes: bytes,
-    evidence_bytes: bytes,
-    receipt_bytes: bytes,
+    intent_bytes: bytes, evidence_bytes: bytes, receipt_bytes: bytes
 ) -> dict[str, Any]:
-    _sync_impl()
-    return _impl.verify_current_bytes(intent_bytes, evidence_bytes, receipt_bytes)
+    del intent_bytes, evidence_bytes, receipt_bytes
+    return verify_current({}, {}, {})
 
 
 def main(argv: list[str] | None = None) -> int:
-    _sync_impl()
-    return _impl.main(argv)
-
-
-def __getattr__(name: str) -> Any:
-    if name == "guard":
-        return guard
-    if name.startswith("__"):
-        raise AttributeError(name)
-    return getattr(_impl, name)
-
-
-if __name__ == "__main__":
-    raise SystemExit(main())
+    del argv
+    return 4
