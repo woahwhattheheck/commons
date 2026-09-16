@@ -88,6 +88,14 @@ def seal_untrusted_snapshot_receipt(receipt: Mapping[str, Any]) -> dict[str, Any
         reasons = [] if type(reasons) is not list else [x for x in reasons if type(x) is str and x]
         reasons.extend((UNAUTHENTICATED_SNAPSHOT_REASON, CURRENT_POSITIVE_DISABLED_REASON))
         payload["reasons"] = sorted(set(reasons))
+
+    # The election compiler may represent a valid NOT_SELECTED outcome by naming
+    # the *other* request/candidate that won.  Those winner coordinates are useful
+    # election evidence, but they are still positive authority fields and cannot
+    # survive into this deliberately non-positive current-authority envelope.
+    # Normalize every accepted negative decision to the verifier's authority
+    # ceiling instead of making a legitimate "other worker won" receipt unsealable.
+    if payload.get("decision") in {"HOLD", "NOT_SELECTED"}:
         for name in _SELECTION_FIELDS + _WINNER_FIELDS:
             payload[name] = None
 
