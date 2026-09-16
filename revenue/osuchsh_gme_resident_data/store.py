@@ -21,15 +21,29 @@ from .codec import (
     digest,
     validate_record,
 )
-from .migration import MigrationPlan
+from .migration import MigrationPlan, compile_migration
 
 class ResidentStore:
-    """Small deterministic administration store with CAS and hash-chained audit."""
+    """Small deterministic administration store with CAS and hash-chained audit.
 
-    def __init__(self) -> None:
+    Initial migration authority is bound to an owner-supplied source generation at
+    construction.  The rows are deep-copied and validated immediately, then every
+    applied plan is recompiled from that retained generation before any record is
+    admitted.  A MigrationPlan is therefore an inspectable proposal/receipt, not a
+    caller-mintable authorization token.
+    """
+
+    def __init__(self, migration_rows: Iterable[Mapping[str, Any]] | None = None) -> None:
         self._records: dict[str, dict[str, Any]] = {}
         self._versions: dict[str, int] = {}
         self._audit: list[dict[str, Any]] = []
+        self._migration_rows: tuple[Mapping[str, Any], ...] | None = None
+        self._migration_plan_digest: str | None = None
+        if migration_rows is not None:
+            retained = tuple(copy.deepcopy(list(migration_rows)))
+            expected = compile_migration(retained)
+            self._migration_rows = retained
+            self._migration_plan_digest = expected.plan_digest
 
     def _append_audit(
         self,
@@ -61,6 +75,16 @@ class ResidentStore:
             raise PermissionDenied("only admin may apply a compiled migration")
         if type(plan) is not MigrationPlan:
             raise DataError("migration plan type invalid")
+        if self._migration_rows is None:
+            raise DataError("initial migration requires a retained source generation")
+
+        # A public dataclass + public digest is not authority. Recompile from the
+        # deep-copied source generation retained by this store and require exact
+        # plan equality before evaluating any caller-supplied plan fields.
+        expected = compile_migration(copy.deepcopy(self._migration_rows))
+        if plan != expected or plan.plan_digest != self._migration_plan_digest:
+            raise DataError("migration plan does not match retained source generation")
+
         if type(plan.source_rows) is not int or plan.source_rows < len(plan.records):
             raise DataError("migration source_rows invalid")
         if not isinstance(plan.plan_digest, str) or not _SHA256_RE.fullmatch(plan.plan_digest):
