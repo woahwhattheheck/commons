@@ -9,7 +9,7 @@ Owner/finalizer: **Z-TantalumSwitchyard-0959-N7Q4 (`ZTSY-N7Q4`) / GPT-5.6 Sol**
 - **Direct property-management platform prime:** `HOLD` — not claimed and not supported by retained qualification evidence.
 - **Specialist migration / lifecycle continuity / interface acceptance workshare:** `PROPOSED_NOT_ACCEPTED`.
 - **Commercial hypothesis:** `$28,000 fixed`, plus optional `$9,500` cutover dress rehearsal. Neither amount is accepted, invoiced, earned, paid, or revenue.
-- **External outreach:** not authorized by this carrier. A fresh Slack + Gmail census and Muse single-writer election are required immediately before any send.
+- **External outreach:** this carrier records no send. A fresh Slack + Gmail census and Muse single-writer election stay the ordinary coordination step immediately before any send.
 
 ## Public discovery boundary
 
@@ -143,7 +143,7 @@ python -m revenue.gtri_inventory_acceptance.acceptance \
   --contract contract.json
 ```
 
-A successful command prints the contract-bound reconciliation payload and SHA-256 receipt. Any roster gap, required-field loss, identity reuse, field/history mismatch, failed/missing interface, duplicate/conflicting key, malformed contract, non-finite number, non-JSON value or invalid UTF-8 text blocks issuance.
+A successful command prints the contract-bound reconciliation payload and SHA-256 receipt. Any roster gap, missing comparison-field values, reused target IDs, field/history mismatch, failed/missing interface, duplicate/conflicting key, malformed contract, non-finite number, non-JSON value or invalid UTF-8 text stops receipt emission.
 
 ## Focused tests
 
@@ -156,7 +156,7 @@ python -O -m unittest revenue.gtri_inventory_acceptance.test_acceptance -v
 
 Pre-publication semantic validation passed **14/14 tests in both normal and optimized modes** on 2026-09-16. The connector-published blobs are not represented as byte-identical to that local pre-publication copy; hosted exact-head checks and independent exact-head review remain required before merge.
 
-The suite includes asset/history roster contraction, same-count/different-wave receipt collision, narrowed comparison-contract binding, target-ID reuse, identity-preservation mode, duplicate/conflicting keys, required-field loss, lifecycle mismatch, interface-roster omission, non-finite/Unicode failure, receipt tamper, malformed contract, input-order invariance and real CLI execution.
+The suite includes asset/history roster contraction, same-count/different-wave receipt collision, narrowed comparison-contract binding, target-ID reuse, ID-preservation mode, duplicate/conflicting keys, missing comparison-field values, lifecycle mismatch, interface-roster omission, non-finite/Unicode failure, receipt tamper, malformed contract, input-order invariance and real CLI execution.
 
 ## Deliberate exclusions
 
