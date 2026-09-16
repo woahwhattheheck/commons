@@ -10,6 +10,7 @@ This isolated, **synthetic-only** package demonstrates the system boundaries nee
 
 - strict JSON parsing: duplicate keys, non-finite numbers, malformed/non-scalar Unicode fail closed;
 - deterministic multi-source migration: identical facts coalesce, divergent facts become explicit conflicts, and no source silently wins by ordering;
+- migration authority bound to a deep-copied owner-supplied source generation: `ResidentStore` recompiles the retained rows and accepts only the exact resulting `MigrationPlan`, so a caller cannot erase a real source conflict by hand-building a canonical self-signed plan;
 - strict administrative resident schema with bounded values and date/status validation;
 - least-privilege views for admin, coordinator, program director, resident-self, and auditor;
 - role-scoped write allowlists and immutable resident IDs;
@@ -19,6 +20,14 @@ This isolated, **synthetic-only** package demonstrates the system boundaries nee
 - deterministic receipts binding record state + audit head;
 - source-pinned pursuit qualification: current status is fixed at `TEAMING_REQUIRED`; runtime callers cannot inject packet/reference/owner evidence to upgrade it;
 - a deterministic end-to-end synthetic demo.
+
+## Migration authority boundary
+
+`MigrationPlan` and the canonical SHA-256 helper remain public inspectable data surfaces; their self-consistency is **not** treated as authorization. A store that will perform an initial migration must be constructed with the owner-supplied source generation. The store deep-copies and validates those rows, retains them privately, recompiles them when `apply_migration()` is called, and requires the supplied plan to equal that retained-source result exactly before any record can be admitted.
+
+This blocks the reviewed predecessor where conflicting A/B rows exist but a caller selects one side, erases `conflicts`, and correctly recomputes the public digest. The forged result is internally self-consistent but does not match the store's retained source generation and is rejected. A bare/unbound store cannot apply an initial migration plan.
+
+The retained source generation is an **application custody boundary**, not authenticated OSU provenance. This synthetic carrier does not claim that caller/owner-supplied rows are buyer-signed, provider-authenticated, or production OSU data.
 
 ## Deliberate truth ceiling
 
@@ -38,7 +47,7 @@ python -m revenue.osuchsh_gme_resident_data.demo
 
 Expected demo truth:
 
-- two synthetic resident records migrate cleanly;
+- two synthetic resident records migrate cleanly from a retained source generation;
 - one CAS update advances one record to version 2;
 - audit chain verifies;
 - analytics are aggregate-only;
