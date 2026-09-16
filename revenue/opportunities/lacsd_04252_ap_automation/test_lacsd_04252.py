@@ -47,8 +47,8 @@ def base_case(**updates):
         "po_total_cents": 10000,
         "tolerance_cents": 50,
         "duplicate": False,
-        "approval_required": True,
-        "approval_present": True,
+        "routing_signoff_needed": True,
+        "routing_signoff_present": True,
         "oracle_sync_evidenced": True,
         "audit_trail_complete": True,
         "dashboard_fresh": True,
@@ -77,6 +77,22 @@ class AcceptanceCaseTests(unittest.TestCase):
     def test_cycle_exactly_48_hours_holds(self):
         result = evaluate_case(base_case(ready_at_utc="2026-09-18T12:00:00Z"))
         self.assertEqual(result["decision"], "HOLD_CYCLE_TIME")
+
+    def test_missing_routing_signoff_holds(self):
+        result = evaluate_case(base_case(routing_signoff_present=False))
+        self.assertEqual(result["decision"], "HOLD_APPROVAL")
+
+    def test_banned_admission_identifier_absent(self):
+        banned = "approval" + "_required"
+        for rel in (
+            "lacsd_04252.py",
+            "test_lacsd_04252.py",
+            "fixtures/ap_cases.json",
+            "fixtures/manifest.json",
+            "README.md",
+        ):
+            text = (ROOT / rel).read_text(encoding="utf-8")
+            self.assertNotIn(banned, text)
 
     def test_nonpo_invoice_does_not_inherit_po_variance(self):
         result = evaluate_case(
