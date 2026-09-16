@@ -1,0 +1,199 @@
+name: ZFK Mapping Equity Custody Fix
+
+on:
+  push:
+    branches:
+      - zfk-k4r8/mapping-equity-source-custody-20260914
+
+permissions:
+  contents: write
+
+jobs:
+  patch-test-commit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Apply exact custody repair and predecessor killers
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          aggregate_path = Path("revenue/bias-bounty-mapping-equity/aggregation/aggregate.py")
+          test_path = Path("revenue/bias-bounty-mapping-equity/aggregation/test_recovery.py")
+          workflow_path = Path(".github/workflows/zfk-mapping-equity-custody-fix.yml")
+
+          text = aggregate_path.read_text(encoding="utf-8")
+
+          start = text.index("def _stream_response_to_retained_fd(")
+          end = text.index("\n\ndef _materialize_one", start)
+          stream_fn = '''def _stream_response_to_retained_fd(key: str, uri: str, response: BinaryIO, temp_root: Path) -> tuple[int, str, dict[str, object]]:
+              """Stream one response into an anonymous, descriptor-retained read-only inode."""
+              hasher = hashlib.sha256()
+              byte_count = 0
+              writer = tempfile.TemporaryFile(mode="w+b", dir=temp_root)
+              fd: Optional[int] = None
+              try:
+                  while True:
+                      chunk = response.read(8 * 1024 * 1024)
+                      if not chunk:
+                          break
+                      if not isinstance(chunk, (bytes, bytearray)):
+                          raise AggregationError(f"{key}: source response yielded non-bytes")
+                      writer.write(chunk)
+                      hasher.update(chunk)
+                      byte_count += len(chunk)
+                  writer.flush()
+                  os.fsync(writer.fileno())
+                  if byte_count <= 0:
+                      raise AggregationError(f"{key}: empty source object")
+                  flags = os.O_RDONLY | getattr(os, "O_CLOEXEC", 0)
+                  fd = os.open(f"/proc/self/fd/{writer.fileno()}", flags)
+                  stat = os.fstat(fd)
+                  if stat.st_size != byte_count:
+                      raise AggregationError(f"{key}: retained source size changed during materialization")
+                  os.fchmod(fd, 0o400)
+              except Exception:
+                  if fd is not None:
+                      try:
+                          os.close(fd)
+                      except OSError:
+                          pass
+                  try:
+                      writer.close()
+                  except Exception:
+                      pass
+                  raise
+              try:
+                  writer.close()
+              except Exception:
+                  assert fd is not None
+                  try:
+                      os.close(fd)
+                  except OSError:
+                      pass
+                  raise
+              assert fd is not None
+              digest = hasher.hexdigest()
+              return fd, f"/proc/self/fd/{fd}", {
+                  "uri": uri,
+                  "sha256": digest,
+                  "bytes": byte_count,
+                  "generation": f"sha256:{digest}",
+              }
+          '''
+          stream_fn = "\n".join(line[12:] if line.startswith("            ") else line for line in stream_fn.splitlines())
+          text = text[:start] + stream_fn + text[end:]
+
+          old_redirect = '''        final_url = getattr(response, "geturl", lambda: uri)()
+                  parts = urlsplit(str(final_url))
+                  if parts.scheme != "https" or parts.username or parts.password:
+                      raise AggregationError(f"{key}: source redirect left credential-free HTTPS")
+                  token = _forbidden_token(str(final_url))
+                  if token is not None:
+                      raise AggregationError(f"{key}: source redirect contains forbidden token {token!r}")
+                  return _stream_response_to_retained_fd(key, uri, response, temp_root)'''
+          old_redirect = "\n".join(line[8:] if line.startswith("        ") else line for line in old_redirect.splitlines())
+          new_redirect = '''        final_url = str(getattr(response, "geturl", lambda: uri)())
+                  _safe_source(final_url)
+                  if _decode_bounded(final_url) != _decode_bounded(uri):
+                      raise AggregationError(f"{key}: source redirect changed canonical public object")
+                  return _stream_response_to_retained_fd(key, uri, response, temp_root)'''
+          new_redirect = "\n".join(line[8:] if line.startswith("        ") else line for line in new_redirect.splitlines())
+          if text.count(old_redirect) != 1:
+              raise SystemExit(f"redirect block match count={text.count(old_redirect)}")
+          text = text.replace(old_redirect, new_redirect, 1)
+
+          old_canonical = '        canonical = canonical.replace(str(path), f"sha256://{digest}/{key}")'
+          new_canonical = '''        source_literal = _sql_string(str(path))
+                  digest_literal = _sql_string(f"sha256://{digest}/{key}")
+                  canonical = canonical.replace(source_literal, digest_literal)'''
+          new_canonical = "\n".join(line[8:] if line.startswith("        ") else line for line in new_canonical.splitlines())
+          if text.count(old_canonical) != 1:
+              raise SystemExit(f"canonical block match count={text.count(old_canonical)}")
+          text = text.replace(old_canonical, new_canonical, 1)
+          aggregate_path.write_text(text, encoding="utf-8")
+
+          tests = test_path.read_text(encoding="utf-8")
+          marker = '\n\nif __name__ == "__main__":\n'
+          if tests.count(marker) != 1:
+              raise SystemExit("test insertion marker mismatch")
+          hostile_tests = r'''
+
+          class RedirectCanonicalizationAndModeHostiles(unittest.TestCase):
+              class _Response(io.BytesIO):
+                  def __init__(self, final_url: str) -> None:
+                      super().__init__(b"authoritative-bytes")
+                      self._final_url = final_url
+
+                  def geturl(self) -> str:
+                      return self._final_url
+
+              def test_cross_origin_and_different_object_redirects_fail_closed(self) -> None:
+                  uri = a.source_registry("northern-ca")["sample"]
+                  hostile_final_urls = (
+                      "https://example.com/authoritative.csv",
+                      a.source_registry("northern-ca")["tracts"],
+                  )
+                  with tempfile.TemporaryDirectory() as td:
+                      for final_url in hostile_final_urls:
+                          with self.subTest(final_url=final_url), self.assertRaises(a.AggregationError):
+                              a._materialize_one(
+                                  "sample",
+                                  uri,
+                                  Path(td),
+                                  _opener=lambda _uri, timeout, final_url=final_url: self._Response(final_url),
+                              )
+
+              def test_canonicalization_is_exact_under_fd_prefix_collision(self) -> None:
+                  keys = tuple(a.source_registry("northern-ca"))
+                  registry = {key: f"/proc/self/fd/{100 + index}" for index, key in enumerate(keys)}
+                  registry[keys[0]] = "/proc/self/fd/3"
+                  registry[keys[1]] = "/proc/self/fd/30"
+                  generations = {
+                      key: {"sha256": hashlib.sha256(key.encode()).hexdigest(), "bytes": 1}
+                      for key in keys
+                  }
+                  query = a._aggregate_query_for_registry("northern-ca", registry)
+                  canonical = a._canonicalize_bound_sql(query, registry, generations)
+                  self.assertNotIn("/proc/self/fd/", canonical)
+                  for key in keys:
+                      self.assertIn(f"sha256://{generations[key]['sha256']}/{key}", canonical)
+
+              def test_retained_generation_mode_has_no_write_bits(self) -> None:
+                  uri = a.source_registry("northern-ca")["sample"]
+                  with tempfile.TemporaryDirectory() as td:
+                      fd, _path, _generation = a._stream_response_to_retained_fd(
+                          "sample", uri, io.BytesIO(b"read-only"), Path(td)
+                      )
+                      try:
+                          self.assertEqual(os.fstat(fd).st_mode & 0o222, 0)
+                      finally:
+                          os.close(fd)
+          '''
+          hostile_tests = "\n".join(line[10:] if line.startswith("          ") else line for line in hostile_tests.splitlines())
+          tests = tests.replace(marker, hostile_tests + marker, 1)
+          test_path.write_text(tests, encoding="utf-8")
+
+          workflow_path.unlink()
+          PY
+      - name: Run Mapping Equity contract and recovery suites
+        shell: bash
+        run: |
+          cd revenue/bias-bounty-mapping-equity/aggregation
+          python -m py_compile aggregate.py test_aggregate.py test_recovery.py
+          python -m unittest -v test_aggregate.py test_recovery.py
+          python -O -m unittest -v test_aggregate.py test_recovery.py
+      - name: Commit exact repair
+        shell: bash
+        run: |
+          git config user.name "Z-Forgekeeper K4R8"
+          git config user.email "brycembusiness2@gmail.com"
+          git add revenue/bias-bounty-mapping-equity/aggregation/aggregate.py \
+                  revenue/bias-bounty-mapping-equity/aggregation/test_recovery.py \
+                  .github/workflows/zfk-mapping-equity-custody-fix.yml
+          git commit -m "Harden Mapping Equity source custody [zfk-patched]"
+          git push origin HEAD:zfk-k4r8/mapping-equity-source-custody-20260914
