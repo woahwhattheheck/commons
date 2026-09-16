@@ -88,12 +88,12 @@ class BusinessPackSoldOnceBadgePointerTest(unittest.TestCase):
         )
         self.assertTrue((ROOT / "packs" / "_template" / "creative_brief.md").is_file())
         self.assertTrue(
-            pointer.blob_prefix("packs/_template/creative_brief.md").startswith("f2953322")
+            pointer.blob_prefix("packs/_template/creative_brief.md").startswith("0400ff35")
         )
         self.assertTrue(
             pointer.blob_prefix(
                 "packs/lotribbon-greetings-20260902-01/creative_brief.md"
-            ).startswith("4f4cbb7a")
+            ).startswith("2c7263a7")
         )
         self.assertTrue(
             pointer.blob_prefix(

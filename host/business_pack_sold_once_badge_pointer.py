@@ -6,8 +6,8 @@ on current main (blob 1cc11a5f) and is not reminted. Peer bc-23891c63
 already landed LotRibbon door badge, instance creative_brief.md, and
 p/cursor-plant-sold-once-badge-20260902-01.md. This leftover LEADs the
 sidecar sold-once.md plus the unminted plant creative-brief receipt and
-CLEARs TALLY sold-once desk. GOAT template (f2953322) is cited and not
-overwritten.
+CLEARs TALLY sold-once desk. GOAT template current HEAD `0400ff35` (Latch
+Pad KEEP pointer on land-time `f2953322`) is cited, not overwritten as product.
 
 Live instance blobs are not pinned so TALLY can land sidewalk sold-once.
 Land-time observations stay in OBSERVED_AT_LAND. Checkout stays NOT_MINTED.
@@ -50,8 +50,8 @@ OBSERVED_AT_LAND = {
 EXPECTED_BLOBS = {
     "p/cursor-business-pack-sold-once-badge-pointer-20260902-01.md": "1cc11a5f",
     "p/cursor-plant-sold-once-badge-20260902-01.md": "39d83580",
-    "packs/_template/creative_brief.md": "f2953322",
-    "packs/lotribbon-greetings-20260902-01/creative_brief.md": "4f4cbb7a",
+    "packs/_template/creative_brief.md": "0400ff35",
+    "packs/lotribbon-greetings-20260902-01/creative_brief.md": "2c7263a7",
 }
 THIS_SEAT_PATHS = (
     "host/business_pack_sold_once_badge_pointer.py",
