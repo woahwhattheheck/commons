@@ -1,7 +1,7 @@
 {
   "schema": "commons.workflow-surface.v1",
   "source_commit": "4592104ca9fd37f7546b0b39f01badb83f8a1300",
-  "source_workflows": 405,
+  "source_workflows": 406,
   "max_active_workflows": 67,
   "retained": [
     ".github/workflows/affordable-housing-compliance-demo.yml",
@@ -791,6 +791,12 @@
       "archive": "ci/workflow-recipes/openserv-intentlease.yml",
       "sha256": "860a96fa4e4daed799d34debae6a6e088d22889b0947a8f195d882dc13d041b2",
       "bytes": 712
+    },
+    {
+      "source": ".github/workflows/opportunity-deadline-command.yml",
+      "archive": "ci/workflow-recipes/opportunity-deadline-command.yml",
+      "sha256": "bb717a9a118c7ba27a0ec88dc1d80af40999ee3d3334e640eee164869c38049a",
+      "bytes": 1395
     },
     {
       "source": ".github/workflows/organization-contact-pressure.yml",
