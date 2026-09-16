@@ -146,6 +146,20 @@ class WorkflowSurfaceTests(unittest.TestCase):
         parsed = surface.workflow(recipe)
         self.assertTrue(surface.duplicate_branch_events(parsed))
 
+    def test_ohsu_digital_pathology_evidence_recipe_stays_archived_not_active(self):
+        """Regress run 35109427453: recovered OHSU current-authority recipe stays hashed and archived."""
+        self.assertFalse(Path('.github/workflows/ohsu-digital-pathology-evidence.yml').exists())
+        data = json.loads(Path('ci/workflow-surface.json').read_text(encoding='utf-8'))
+        row = next(item for item in data['archived'] if item['archive'].endswith('ohsu-digital-pathology-evidence.yml'))
+        recipe = Path(row['archive']).read_bytes()
+        self.assertEqual(len(recipe), row['bytes'])
+        self.assertEqual(hashlib.sha256(recipe).hexdigest(), row['sha256'])
+        parsed = surface.workflow(recipe)
+        self.assertFalse(surface.duplicate_branch_events(parsed))
+        text = recipe.decode('utf-8')
+        self.assertIn('current_authority.py', text)
+        self.assertIn('unrecognized arguments: --evaluated-at', text)
+
 
 
 
