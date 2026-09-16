@@ -12,6 +12,7 @@ import hashlib
 import json
 import math
 from collections.abc import Mapping, Sequence
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -482,8 +483,10 @@ def build_receipt(
     return {"payload": payload, "sha256": _sha256_json(payload)}
 
 
-def verify_receipt_integrity(receipt: Mapping[str, Any]) -> bool:
+def verify_receipt_integrity(receipt: Mapping[str, Any], authority_root: object) -> bool:
     """Check receipt self-integrity only; this is not evidence authenticity."""
+    if not isinstance(authority_root, str) or not authority_root:
+        return False
     if not isinstance(receipt, Mapping):
         return False
     payload = receipt.get("payload")
@@ -492,11 +495,24 @@ def verify_receipt_integrity(receipt: Mapping[str, Any]) -> bool:
         return False
     if payload.get("schema") != SCHEMA_VERSION:
         return False
+    sampled_at = datetime.now(timezone.utc)
     try:
-        expected = _sha256_json(payload)
-    except AcceptanceError:
+        encoded = json.dumps(
+            payload,
+            sort_keys=True,
+            separators=(",", ":"),
+            ensure_ascii=False,
+            allow_nan=False,
+        )
+        encoded.encode("utf-8")
+    except (TypeError, ValueError, UnicodeEncodeError):
         return False
-    return digest == expected
+    expected = hashlib.sha256(encoded.encode("utf-8")).hexdigest()
+    return (
+        digest == expected
+        and expected == authority_root
+        and sampled_at.tzinfo is timezone.utc
+    )
 
 
 def _load_json(path: str) -> Any:

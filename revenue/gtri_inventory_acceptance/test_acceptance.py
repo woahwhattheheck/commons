@@ -141,7 +141,7 @@ class InventoryAcceptanceTests(unittest.TestCase):
             interfaces=list(reversed(interfaces())),
         )
         self.assertEqual(a, b)
-        self.assertTrue(verify_receipt_integrity(a))
+        self.assertTrue(verify_receipt_integrity(a, a["sha256"]))
 
     def test_asset_roster_scope_contraction_is_blocking(self):
         sa, ta = assets()
@@ -289,8 +289,30 @@ class InventoryAcceptanceTests(unittest.TestCase):
 
     def test_receipt_tamper_is_detected(self):
         receipt = self.make_receipt()
+        original = receipt["sha256"]
         receipt["payload"]["reconciliation"]["counts"]["source_assets"] = 999
-        self.assertFalse(verify_receipt_integrity(receipt))
+        self.assertFalse(verify_receipt_integrity(receipt, original))
+        self.assertFalse(verify_receipt_integrity(receipt, receipt["sha256"]))
+
+    def test_receipt_integrity_requires_independent_authority(self):
+        receipt = self.make_receipt()
+        self.assertTrue(verify_receipt_integrity(receipt, receipt["sha256"]))
+        self.assertFalse(verify_receipt_integrity(receipt, ""))
+        self.assertFalse(verify_receipt_integrity(receipt, None))
+        self.assertFalse(verify_receipt_integrity(receipt, "0" * 64))
+        with self.assertRaises(TypeError):
+            verify_receipt_integrity(receipt)
+
+    def test_verify_receipt_integrity_closes_crg003_and_crg004(self):
+        from tools.current_readiness_guard import analyze_source
+
+        source = Path(__file__).with_name("acceptance.py").read_text(encoding="utf-8")
+        findings = analyze_source(
+            source, path="revenue/gtri_inventory_acceptance/acceptance.py"
+        )
+        rules = sorted({item.rule for item in findings})
+        self.assertNotIn("CRG003", rules, findings)
+        self.assertNotIn("CRG004", rules, findings)
 
     def test_invalid_contract_shapes_fail_closed(self):
         with self.assertRaisesRegex(
