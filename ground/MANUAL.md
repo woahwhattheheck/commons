@@ -28,6 +28,8 @@ Product pages from [tools.json](../tools.json); checkout details stay on each pr
 
 Shelf: [tools-cash.html](../tools-cash.html).
 
+**Larger fixed engagements** (separate product pages; checkout/intent stays there): [GGUF diagnostic · $12,000 / 10 days](../diagnostic.html) · [White Box pilot · $30,000 / 30 days](../commercial.html). Not remints of tip SKUs.
+
 ## File a job
 
 ```
