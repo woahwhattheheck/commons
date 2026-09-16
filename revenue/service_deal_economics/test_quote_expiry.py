@@ -48,7 +48,7 @@ class QuoteExpiryVerificationTests(unittest.TestCase):
             report = a._compile_current_at(p, NOW)
             self.assertTrue(report["input_authority"]["authenticated"])
             result = a._verify_current_at(p, report, AFTER)
-        self.assertTrue(result["historical_receipt_valid"])
+        self.assertTrue(result["historical_receipt_reproduced"])
         self.assertEqual(result["state"], "STALE_OR_DRIFTED")
 
     def test_future_receipt_cannot_verify_current(self):
@@ -57,7 +57,7 @@ class QuoteExpiryVerificationTests(unittest.TestCase):
         with ctx:
             report = a._compile_current_at(p, NOW)
             result = a._verify_current_at(p, report, earlier)
-        self.assertTrue(result["historical_receipt_valid"])
+        self.assertTrue(result["historical_receipt_reproduced"])
         self.assertEqual(result["state"], "FUTURE_RECEIPT")
         self.assertIsNone(result["current_report_receipt_sha256"])
 
@@ -67,8 +67,29 @@ class QuoteExpiryVerificationTests(unittest.TestCase):
             report = a._compile_current_at(p, NOW)
             report["calculation"]["quote_valid_until"] = "not-a-time"
             result = a._verify_current_at(p, report, NOW)
-        self.assertFalse(result["historical_receipt_valid"])
+        self.assertFalse(result["historical_receipt_reproduced"])
         self.assertEqual(result["state"], "INVALID_HISTORICAL_RECEIPT")
+
+
+    def test_public_verifier_process_clock_respects_quote_expiry_boundary(self):
+        p, _, ctx = self._current_fixture()
+        with ctx:
+            report = a._compile_current_at(p, NOW)
+            with patch.object(a, "_process_now", return_value=EQUAL):
+                current = a.verify_current_authority(p, report)
+            with patch.object(a, "_process_now", return_value=AFTER):
+                stale = a.verify_current_authority(p, report)
+        self.assertEqual(current["state"], "CURRENT_VERIFIED")
+        self.assertEqual(stale["state"], "STALE_OR_DRIFTED")
+        self.assertTrue(stale["historical_receipt_reproduced"])
+
+    def test_falsey_authority_cannot_mint_current_verified(self):
+        p, _, ctx = self._current_fixture()
+        with ctx:
+            report = a._compile_current_at(p, NOW)
+            result = a._verify_current_at(p, report, EQUAL, authority=False)
+        self.assertNotEqual(result["state"], "CURRENT_VERIFIED")
+        self.assertEqual(result["state"], a.AUTHORITY_HOLD)
 
 
 if __name__ == "__main__":

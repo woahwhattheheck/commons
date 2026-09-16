@@ -197,7 +197,7 @@ class AuthorityTests(unittest.TestCase):
         with ctx: report=a._compile_current_at(p,NOW)
         h.sign(p,generation=10,issued="2026-09-13T21:00:00Z")
         with ctx: result=a._verify_current_at(p,report,NOW)
-        self.assertTrue(result["historical_receipt_valid"])
+        self.assertTrue(result["historical_receipt_reproduced"])
         self.assertEqual(result["state"],"STALE_OR_AUTHORITY_SUPERSEDED")
 
     def test_same_generation_new_registry_root_supersedes(self):

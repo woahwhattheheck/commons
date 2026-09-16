@@ -13,13 +13,13 @@ try:
 except ImportError:  # pragma: no cover - non-POSIX fails closed in production
     pwd = None
 
-from .engine import DealEconomicsError, canonical_json, compile_report, digest, now_utc, parse_strict_json
+from .engine import DealEconomicsError, canonical_json, compile_report, digest, parse_strict_json
 
 AUTHORITY_SCHEMA = "commons.service-deal-economics.authority/v1"
 FLOOR_SCHEMA = "commons.service-deal-economics.authority-floor/v1"
 KEY_SCHEMA = "commons.service-deal-economics.authority-key/v1"
 CURRENT_SCHEMA = "commons.service-deal-economics.current-report/v2"
-CURRENT_VERIFY_SCHEMA = "commons.service-deal-economics.authority-verification/v2"
+CURRENT_VERIFY_SCHEMA = "commons.service-deal-economics.authority-verification/v3"
 READY = "READY_FOR_OWNER_QUOTE_REVIEW"
 AUTHORITY_HOLD = "HOLD_INPUT_AUTHORITY_UNVERIFIED"
 MAX_HOST_BYTES = 128 * 1024
@@ -72,6 +72,10 @@ def _utc_text(dt: datetime) -> str:
     if dt.tzinfo is None:
         raise AuthorityError("trusted current time must be timezone-aware")
     return dt.astimezone(timezone.utc).replace(microsecond=0).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def _process_now() -> datetime:
+    return datetime.now(timezone.utc).replace(microsecond=0)
 
 
 def authority_subject(packet: Any) -> dict[str, str]:
@@ -243,79 +247,91 @@ def _assemble(candidate: dict[str, Any], evaluated: datetime, auth: dict[str, An
 
 def _compile_current_at(packet: Any, as_of: datetime) -> dict[str, Any]:
     """Current-state helper for tests: time is injectable, authority registry is not."""
-    as_of = as_of.astimezone(timezone.utc).replace(microsecond=0)
-    candidate = compile_report(packet, _utc_text(as_of))
-    return _assemble(candidate, as_of, _authority_status(packet, as_of))
+    return _project_current(packet, as_of)
+
+
+def _project_current(packet: Any, instant: datetime) -> dict[str, Any]:
+    instant = instant.astimezone(timezone.utc).replace(microsecond=0)
+    candidate = compile_report(packet, _utc_text(instant))
+    return _assemble(candidate, instant, _authority_status(packet, instant))
 
 
 def _replay_historical_at(packet: Any, as_of: datetime, registry: dict[str, Any], registry_sha256: str) -> dict[str, Any]:
     """Reconstruct a historical report from its embedded signed registry; never a current-state API."""
-    candidate = compile_report(packet, _utc_text(as_of))
-    auth = _authority_status(packet, as_of, registry=registry, registry_sha256=registry_sha256)
-    return _assemble(candidate, as_of, auth)
+    from .authority_history import replay_historical_at
+
+    return replay_historical_at(packet, as_of, registry, registry_sha256)
 
 
 def compile_current(packet: Any) -> dict[str, Any]:
-    return _compile_current_at(packet, now_utc())
+    return _project_current(packet, _process_now())
 
 
 def _historical_valid(packet: Any, report: Any) -> bool:
-    if type(report) is not dict or report.get("schema") != CURRENT_SCHEMA or report.get("receipt_sha256") != digest({k: v for k, v in report.items() if k != "receipt_sha256"}):
-        return False
+    from .authority_history import historical_valid
+
+    return historical_valid(packet, report)
+
+
+def _host_authority() -> dict[str, Any] | None:
     try:
-        evaluated = _utc(report["evaluated_at"], "evaluated_at")
-        embedded = report.get("authority_registry")
-        if embedded is None:
-            expected = _assemble(compile_report(packet, _utc_text(evaluated)), evaluated, _unauth())
-        else:
-            expected = _replay_historical_at(packet, evaluated, embedded, report["input_authority"]["registry_sha256"])
-        return canonical_json(expected) == canonical_json(report)
+        registry, _ = _load_current(_key())
     except (AuthorityError, DealEconomicsError, OSError, KeyError, TypeError, ValueError):
-        return False
+        return None
+    return registry
 
 
-def _verify_current_at(packet: Any, report: Any, as_of: datetime) -> dict[str, Any]:
-    as_of = as_of.astimezone(timezone.utc).replace(microsecond=0)
-    historical_ok = _historical_valid(packet, report)
-    current = None
-    if not historical_ok:
-        state = "INVALID_HISTORICAL_RECEIPT"
-    else:
-        try:
-            evaluated_at = _utc(report["evaluated_at"], "report.evaluated_at")
-            quote_valid_until = _utc(
-                report["calculation"]["quote_valid_until"],
-                "report.calculation.quote_valid_until",
-            )
-        except (AuthorityError, KeyError, TypeError):
-            historical_ok = False
-            state = "INVALID_HISTORICAL_RECEIPT"
-        else:
-            if evaluated_at > as_of:
-                state = "FUTURE_RECEIPT"
-            else:
-                current = _compile_current_at(packet, as_of)
-                if not current["input_authority"]["authenticated"]:
-                    state = AUTHORITY_HOLD
-                elif any(report["input_authority"].get(k) != current["input_authority"].get(k) for k in ("registry_sha256", "generation")):
-                    state = "STALE_OR_AUTHORITY_SUPERSEDED"
-                elif as_of > quote_valid_until:
-                    state = "STALE_OR_DRIFTED"
-                elif report["calculation"].get("candidate_semantic_sha256") != current["calculation"].get("candidate_semantic_sha256") or report.get("state") != current["state"]:
-                    state = "STALE_OR_DRIFTED"
-                else:
-                    state = "CURRENT_VERIFIED"
-    result = {"schema": CURRENT_VERIFY_SCHEMA, "verified_at": _utc_text(as_of), "historical_receipt_valid": historical_ok, "state": state,
-              "report_receipt_sha256": report.get("receipt_sha256") if type(report) is dict else None,
-              "current_report_receipt_sha256": None if current is None else current["receipt_sha256"],
-              "current_authority_registry_sha256": None if current is None else current["input_authority"]["registry_sha256"], "external_authority": _external()}
+def _verify_result(instant: datetime, historical_ok: bool, state: str, report: Any, current: dict[str, Any] | None) -> dict[str, Any]:
+    result = {
+        "schema": CURRENT_VERIFY_SCHEMA,
+        "verified_at": _utc_text(instant),
+        "historical_receipt_reproduced": historical_ok,
+        "state": state,
+        "report_receipt_sha256": report.get("receipt_sha256") if type(report) is dict else None,
+        "current_report_receipt_sha256": None if current is None else current["receipt_sha256"],
+        "current_authority_registry_sha256": None if current is None else current["input_authority"]["registry_sha256"],
+        "external_authority": _external(),
+    }
     result["receipt_sha256"] = digest(result)
     return result
 
 
-def verify_current_authority(packet: Any, report: Any) -> dict[str, Any]:
-    return _verify_current_at(packet, report, now_utc())
+def _verify_current_at(packet: Any, report: Any, instant: datetime, authority: Any = None) -> dict[str, Any]:
+    instant = instant.astimezone(timezone.utc).replace(microsecond=0)
+    historical_ok = _historical_valid(packet, report)
+    current = None
+    if not historical_ok:
+        return _verify_result(instant, False, "INVALID_HISTORICAL_RECEIPT", report, None)
+    if authority is None:
+        authority = _host_authority()
+    try:
+        evaluated_at = _utc(report["evaluated_at"], "report.evaluated_at")
+        quote_valid_until = _utc(
+            report["calculation"]["quote_valid_until"],
+            "report.calculation.quote_valid_until",
+        )
+    except (AuthorityError, KeyError, TypeError):
+        return _verify_result(instant, False, "INVALID_HISTORICAL_RECEIPT", report, None)
+    if evaluated_at > instant:
+        return _verify_result(instant, True, "FUTURE_RECEIPT", report, None)
+    current = _project_current(packet, instant)
+    if not authority:
+        state = AUTHORITY_HOLD
+    elif not current["input_authority"]["authenticated"]:
+        state = AUTHORITY_HOLD
+    elif any(report["input_authority"].get(k) != current["input_authority"].get(k) for k in ("registry_sha256", "generation")):
+        state = "STALE_OR_AUTHORITY_SUPERSEDED"
+    elif instant > quote_valid_until:
+        state = "STALE_OR_DRIFTED"
+    elif report["calculation"].get("candidate_semantic_sha256") != current["calculation"].get("candidate_semantic_sha256") or report.get("state") != current["state"]:
+        state = "STALE_OR_DRIFTED"
+    else:
+        state = "CURRENT_VERIFIED"
+    return _verify_result(instant, True, state, report, current)
 
+
+def verify_current_authority(packet: Any, report: Any, authority: Any = None) -> dict[str, Any]:
+    return _verify_current_at(packet, report, _process_now(), authority)
 
 def render_current_markdown(report: Any) -> str:
     if type(report) is not dict or report.get("schema") != CURRENT_SCHEMA:
