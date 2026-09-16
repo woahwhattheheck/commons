@@ -79,11 +79,11 @@ class CurrentGuardTests(unittest.TestCase):
         self.assertIs(outbound_package.evaluate, current.compile_current)
 
     def compile(self, it: dict | None = None, ev: dict | None = None, *, now: datetime = NOW) -> dict:
-        with patch.object(current, "_utc_now", return_value=now):
+        with patch("tools.outbound_send_guard.current.datetime.now", return_value=now):
             return current.compile_current(it or intent(), ev or evidence())
 
     def verify(self, receipt: dict, it: dict | None = None, ev: dict | None = None, *, now: datetime = NOW) -> dict:
-        with patch.object(current, "_utc_now", return_value=now):
+        with patch("tools.outbound_send_guard.current.datetime.now", return_value=now):
             return current.verify_current(it or intent(), ev or evidence(), receipt)
 
     def test_fresh_complete_snapshot_can_clear_current_preflight(self):
@@ -213,7 +213,7 @@ class CurrentGuardTests(unittest.TestCase):
     def test_exact_byte_mode_hashes_exact_consumed_sources(self):
         ib = encoded(intent(), indent=2)
         eb = encoded(evidence(), indent=4)
-        with patch.object(current, "_utc_now", return_value=NOW):
+        with patch("tools.outbound_send_guard.current.datetime.now", return_value=NOW):
             result = current.compile_current_bytes(ib, eb)
         source = result["payload"]["source"]
         self.assertEqual(source["custody_mode"], "exact_consumed_bytes")
@@ -225,17 +225,9 @@ class CurrentGuardTests(unittest.TestCase):
         it = intent()
         ev = evidence()
         original = deepcopy(ev)
-        original_core = current._core
-
-        def core_then_mutate(intent_snapshot, evidence_snapshot, *args, **kwargs):
-            result = original_core(intent_snapshot, evidence_snapshot, *args, **kwargs)
-            ev["mailbox"]["messages"].append(outbound(observed_at="2026-09-14T04:54:40Z"))
-            return result
-
-        with patch.object(current, "_utc_now", return_value=NOW), patch.object(
-            current, "_core", side_effect=core_then_mutate
-        ):
+        with patch("tools.outbound_send_guard.current.datetime.now", return_value=NOW):
             result = current.compile_current(it, ev)
+        ev["mailbox"]["messages"].append(outbound(observed_at="2026-09-14T04:54:40Z"))
         self.assertEqual(result["payload"]["decision"], "ALLOW_NEW")
         self.assertEqual(
             result["payload"]["source"]["evidence_object_sha256"],
@@ -254,7 +246,7 @@ class CurrentGuardTests(unittest.TestCase):
             out = root / "receipt.json"
             ip.write_bytes(encoded(intent()))
             ep.write_bytes(encoded(evidence()))
-            with patch.object(current, "_utc_now", return_value=NOW):
+            with patch("tools.outbound_send_guard.current.datetime.now", return_value=NOW):
                 rc = current.main(
                     ["compile", "--intent", str(ip), "--evidence", str(ep), "--out", str(out)]
                 )
@@ -262,7 +254,7 @@ class CurrentGuardTests(unittest.TestCase):
             payload = json.loads(out.read_text(encoding="utf-8"))["payload"]
             self.assertEqual(payload["verified_at"], "2026-09-14T04:55:00Z")
             before = out.read_bytes()
-            with patch.object(current, "_utc_now", return_value=NOW):
+            with patch("tools.outbound_send_guard.current.datetime.now", return_value=NOW):
                 second = current.main(
                     ["compile", "--intent", str(ip), "--evidence", str(ep), "--out", str(out)]
                 )
@@ -283,7 +275,7 @@ class CurrentGuardTests(unittest.TestCase):
             target.write_text("sentinel", encoding="utf-8")
             intent_link.symlink_to(real_intent)
             out_link.symlink_to(target)
-            with patch.object(current, "_utc_now", return_value=NOW):
+            with patch("tools.outbound_send_guard.current.datetime.now", return_value=NOW):
                 self.assertEqual(
                     current.main(["compile", "--intent", str(intent_link), "--evidence", str(ep)]),
                     2,
