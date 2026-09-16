@@ -1,5 +1,7 @@
 """Consortium authority hostiles."""
 
+from unittest.mock import patch
+
 from .test_support import *  # noqa: F401,F403
 
 class ConsortiumTests(unittest.TestCase):
@@ -86,7 +88,8 @@ class ConsortiumTests(unittest.TestCase):
                 "pic_verified": True,
             }
         )
-        bundle = compile_valid(value)
+        with patch("revenue.water4all_2026_swm.engine.utc_now", return_value=T0):
+            bundle = compile_valid(value, mode="CURRENT")
         self.assertEqual(bundle["packet"]["decision"]["status"], "READY_FOR_OWNER_REVIEW")
 
     def test_two_self_funded_partners_hold(self):

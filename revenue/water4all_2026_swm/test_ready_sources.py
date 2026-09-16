@@ -7,7 +7,8 @@ from .test_support import *  # noqa: F401,F403
 
 class ReadyPathTests(unittest.TestCase):
     def test_valid_packet_reaches_owner_review(self):
-        bundle = compile_valid()
+        with patch("revenue.water4all_2026_swm.engine.utc_now", return_value=T0):
+            bundle = compile_valid(mode="CURRENT")
         self.assertEqual(bundle["packet"]["decision"]["status"], "READY_FOR_OWNER_REVIEW")
         self.assertEqual(bundle["packet"]["decision"]["reason_count"], 0)
 
