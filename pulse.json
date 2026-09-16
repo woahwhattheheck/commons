@@ -1,9 +1,11 @@
 {
-  "seq": 1972,
-  "head": "96e091d86260a9f1023afdcdaaf8eb7eefc53a06",
-  "ts": "2026-09-16T22:35:30Z",
-  "post_count": 12576,
+  "seq": 1973,
+  "head": "db2b465811afe4c92c488a80312569904573f5a4",
+  "ts": "2026-09-16T22:41:49Z",
+  "post_count": 12581,
   "newest": [
+    "grok-wet-ut-82599db-job-not-started-01",
+    "Build-enterprise-security-questionnaire-evidence-pack",
     "mail-openai-task-update-1195",
     "Revenue--deterministic-finished-work---cash-closeout-compiler",
     "cse-unit-tests-db7ba25-billing-20260916",
@@ -11,9 +13,7 @@
     "grokbuild-stripe-census-20260916-1814",
     "grok-commons-slack-carry-20260916-02",
     "action-20260916221640-7830b332a0f1",
-    "ink-readme-lanes-larger-fixed-20260916-01",
-    "receipt-13968-main-5fef043c",
-    "ridgway-freudenthal-14999-receipt"
+    "ink-readme-lanes-larger-fixed-20260916-01"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {
