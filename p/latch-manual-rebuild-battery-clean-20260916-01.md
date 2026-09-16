@@ -24,7 +24,7 @@ This land (unique leftover):
 - keep_lift tempfile rebuild still must not dirty live MANUAL; catalog/cash/pointer stay locked; Open jobs bake may lag `share.json`
 - canary `test_latch_manual_rebuild_battery_clean_20260916.py` — every battery `manual_build.main()` caller patches OUT; keep_lift then tracked-checkout-clean stay green
 
-Base: origin/main `c27d392fdb`
+Base: origin/main `c351c70776`
 Branch: `cursor/latch-manual-battery-clean-552e`
 Seat: LATCH / cursor-grok-4.6-xhigh / bc-ad282c0c
 Slack CLAIM: https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789593478310579
