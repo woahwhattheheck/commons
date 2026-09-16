@@ -27,6 +27,8 @@ A future positive production path requires a **versioned, independently authenti
 
 The compiler accepts JSON only. It rejects duplicate keys, floats and non-finite numbers, integer tokens longer than 256 digits, decoder nesting beyond the supported interpreter limit, JSON booleans masquerading as integers, unknown/missing schema fields, timezone-free timestamps, unsourced settled-payment assertions, unsourced accepted-delivery assertions, unsourced quotes/outcomes, and permission grants that lack evidence references. Decoder-limit failures are translated to `ProofError`; the CLI reports `ERROR:` and exits 2 rather than leaking a traceback.
 
+The same 256-digit inclusive ceiling applies to direct Python integers on `compile_proof(dict)`. Magnitude is compared as `abs(value) >= 10**256` so a 4999-digit `amount_minor` cannot reach `_money` or leak CPython's integer-string conversion `ValueError`.
+
 All accepted object keys and string values must be Unicode scalar text that round-trips through strict UTF-8. Escaped lone surrogates are rejected before normalization, hashing, or rendering. Raw JSON control characters are rejected by the decoder; decoded NUL is rejected for every schema string, and evidence/source references additionally reject CR/LF. Other JSON-escaped control characters remain accepted only in fields whose own schema permits them and remain private under the v3 public boundary.
 
 Canonical and pretty JSON emission use `allow_nan=False` and require strict UTF-8 encodability. This keeps mutated/manual objects from bypassing the ingestion boundary during receipt or artifact generation.

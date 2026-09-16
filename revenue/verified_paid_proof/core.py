@@ -30,6 +30,7 @@ PERMISSION_SCOPES = {
 ENGAGEMENT_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:-]{2,127}$")
 CURRENCY_RE = re.compile(r"^[A-Z]{3}$")
 MAX_JSON_INTEGER_DIGITS = 256
+_MAX_JSON_INTEGER = 10**MAX_JSON_INTEGER_DIGITS
 
 
 class ProofError(ValueError):
@@ -154,6 +155,12 @@ def _bool(value: Any, path: str) -> bool:
 def _int(value: Any, path: str, *, minimum: int | None = None, maximum: int | None = None) -> int:
     if type(value) is not int:
         raise ProofError(f"{path} must be a JSON integer")
+    # Compare magnitude without converting to decimal text so a 4999-digit
+    # Python int cannot trip CPython's integer-to-string conversion ceiling.
+    if abs(value) >= _MAX_JSON_INTEGER:
+        raise ProofError(
+            f"{path} exceeds {MAX_JSON_INTEGER_DIGITS} digits"
+        )
     if minimum is not None and value < minimum:
         raise ProofError(f"{path} must be >= {minimum}")
     if maximum is not None and value > maximum:
@@ -248,11 +255,14 @@ def _canonical_json(value: Any) -> str:
 
 
 def _money(amount_minor: int, currency: str, decimals: int) -> str:
-    if decimals == 0:
-        return f"{currency} {amount_minor}"
-    scale = 10**decimals
-    major, minor = divmod(amount_minor, scale)
-    return f"{currency} {major}.{minor:0{decimals}d}"
+    try:
+        if decimals == 0:
+            return f"{currency} {amount_minor}"
+        scale = 10**decimals
+        major, minor = divmod(amount_minor, scale)
+        return f"{currency} {major}.{minor:0{decimals}d}"
+    except (ValueError, OverflowError) as exc:
+        raise ProofError("amount cannot be rendered as money") from exc
 
 
 def _public_proof_id(engagement_id: str) -> str:
