@@ -52,6 +52,23 @@ def canonical_json(value: Any) -> str:
     )
 
 
+def _validate_key_field(key_field: str) -> str:
+    if not isinstance(key_field, str) or not key_field.strip():
+        raise AcceptanceError("key_field must be a non-empty string")
+    return key_field
+
+
+def _normalize_compare_fields(compare_fields: Sequence[str]) -> list[str]:
+    if isinstance(compare_fields, (str, bytes, bytearray)) or not isinstance(
+        compare_fields, Sequence
+    ):
+        raise AcceptanceError("compare_fields must be a sequence of field names")
+    fields = list(compare_fields)
+    if any(not isinstance(field, str) or not field for field in fields):
+        raise AcceptanceError("compare_fields contains an invalid field name")
+    return sorted(set(fields))
+
+
 def _index_records(
     records: Sequence[Mapping[str, Any]], key_field: str, label: str
 ) -> dict[str, dict[str, Any]]:
@@ -87,6 +104,10 @@ def reconcile_records(
     shared key. Missing fields compare as null only when the field exists on the other
     side, making schema loss visible instead of silently ignored.
     """
+    key_field = _validate_key_field(key_field)
+    normalized_compare_fields = (
+        None if compare_fields is None else _normalize_compare_fields(compare_fields)
+    )
     source = _index_records(source_records, key_field, "source")
     target = _index_records(target_records, key_field, "target")
     source_keys = set(source)
@@ -97,14 +118,10 @@ def reconcile_records(
     mismatches: list[dict[str, Any]] = []
 
     for key in sorted(source_keys & target_keys):
-        if compare_fields is None:
+        if normalized_compare_fields is None:
             fields = sorted((set(source[key]) | set(target[key])) - {key_field})
         else:
-            if isinstance(compare_fields, (str, bytes, bytearray)):
-                raise AcceptanceError("compare_fields must be a sequence of field names")
-            fields = sorted(set(compare_fields))
-            if any(not isinstance(field, str) or not field for field in fields):
-                raise AcceptanceError("compare_fields contains an invalid field name")
+            fields = normalized_compare_fields
         for field in fields:
             left = source[key].get(field)
             right = target[key].get(field)
@@ -130,6 +147,8 @@ def reconcile_records(
 def normalize_phase_evidence(evidence: Mapping[str, Any]) -> dict[str, str]:
     if not isinstance(evidence, Mapping):
         raise AcceptanceError("phase evidence must be an object")
+    if any(not isinstance(key, str) for key in evidence):
+        raise AcceptanceError("phase evidence keys must be strings")
     unknown = sorted(set(evidence) - set(ETL_PHASES))
     if unknown:
         raise AcceptanceError(f"unknown ETL phases: {', '.join(unknown)}")
