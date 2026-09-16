@@ -110,6 +110,19 @@ class CurrentAuthorityDonorTests(unittest.TestCase):
         self.assertEqual(out["payload"]["reasons"], [])
         self.assertTrue(auth.verify_untrusted_snapshot_receipt(out))
 
+    def test_other_winner_negative_is_sanitized_and_verifiable(self):
+        raw = receipt("NOT_SELECTED")
+        raw["payload"]["winner_request_id"] = "req-00000002"
+        raw["payload"]["winner_candidate_sha256"] = "9" * 64
+        raw["payload"]["winner_message_ts"] = "1789440010.000002"
+        raw["receipt_sha256"] = auth._digest(raw["payload"])
+
+        out = auth.seal_untrusted_snapshot_receipt(raw)
+        self.assertEqual(out["payload"]["decision"], "NOT_SELECTED")
+        for name in auth._SELECTION_FIELDS + auth._WINNER_FIELDS:
+            self.assertIsNone(out["payload"][name])
+        self.assertTrue(auth.verify_untrusted_snapshot_receipt(out))
+
     def test_hold_must_have_reason(self):
         raw = receipt("HOLD", [])
         with self.assertRaises(ValueError): auth.seal_untrusted_snapshot_receipt(raw)
