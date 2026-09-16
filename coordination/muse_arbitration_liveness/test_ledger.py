@@ -104,6 +104,15 @@ class LedgerTests(unittest.TestCase):
     def test_bool_is_not_int_policy(self):
         p=payload([request()]); p["policy"]["resubmit_after_seconds"]=True
         with self.assertRaises(LedgerError): compile_ledger(p)
+    def test_bool_schema_version_rejected(self):
+        p=payload([request()]); p["schema_version"]=True
+        with self.assertRaises(LedgerError): compile_ledger(p)
+    def test_unhashable_event_type_is_bounded(self):
+        bad=request(); bad["type"]=[]
+        with self.assertRaises(LedgerError): compile_ledger(payload([bad]))
+    def test_unhashable_decision_is_bounded(self):
+        bad=decision(); bad["decision"]=[]
+        with self.assertRaises(LedgerError): compile_ledger(payload([request(),bad]))
     def test_unknown_field_rejected(self):
         p=payload([request(extra="x")]);
         with self.assertRaises(LedgerError): compile_ledger(p)

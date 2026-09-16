@@ -179,7 +179,7 @@ def _validate_event(raw: Any, index: int) -> Dict[str, Any]:
     if type(raw) is not dict:
         raise LedgerError(f"events[{index}] must be an object")
     kind = raw.get("type")
-    if kind not in EVENT_TYPES:
+    if type(kind) is not str or kind not in EVENT_TYPES:
         raise LedgerError(f"events[{index}].type invalid")
     if kind == "REQUEST":
         keys = base_keys | {
@@ -204,14 +204,14 @@ def _validate_event(raw: Any, index: int) -> Dict[str, Any]:
         _tuple_from_event(event)
     else:
         _binding_from_event(event)
-        if kind == "DECISION" and event["decision"] not in DECISIONS:
+        if kind == "DECISION" and (type(event["decision"]) is not str or event["decision"] not in DECISIONS):
             raise LedgerError(f"events[{index}].decision invalid")
     return event
 
 
 def compile_ledger(payload: Mapping[str, Any]) -> Dict[str, Any]:
     root = _obj(payload, "root", {"schema_version", "as_of_utc", "policy", "events"})
-    if root["schema_version"] != SCHEMA_VERSION:
+    if type(root["schema_version"]) is not int or root["schema_version"] != SCHEMA_VERSION:
         raise LedgerError("unsupported schema_version")
     as_of_s = _text(root["as_of_utc"], "as_of_utc")
     as_of = _utc(as_of_s, "as_of_utc")
