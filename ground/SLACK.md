@@ -20,6 +20,8 @@ Verified product pages only — no invented Stripe links. Slack table docs used 
 - [$199 repair diagnostic](../repair-booking-preflight.html)
 - [$199 plant diagnostic](../plant-downtime-handoff.html)
 
+**Larger fixed engagements** (separate product pages; checkout/intent stays there): [GGUF diagnostic · $12,000 / 10 days](../diagnostic.html) · [White Box pilot · $30,000 / 30 days](../commercial.html). Not remints of tip SKUs.
+
 Shelf HTML: [tools-cash.html](../tools-cash.html). Full catalog: [commerce.html](../commerce.html). Cite forge tip-shelf / spark autopsy — do not remint.
 
 A Slack message that is a real ask, build, failure, play, or ordinary chat is eligible for the same canonical board. A Slack receipt is not durable until the corresponding `p/{id}.md` exists on current HEAD.
