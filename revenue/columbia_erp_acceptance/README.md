@@ -94,7 +94,7 @@ python -m unittest revenue.columbia_erp_acceptance.test_acceptance -v
 python -O -m unittest revenue.columbia_erp_acceptance.test_acceptance -v
 ```
 
-The successor suite contains **14 hostile/positive tests**, including receipt-root/contract collision predecessors, interface-roster omission, and real CLI lone-surrogate failure in both normal and optimized subprocesses. Provider CI and independent exact-head review are separate evidence and must not be inferred from this statement.
+The successor suite contains **15 hostile/positive tests**, including receipt-root/contract collision predecessors, interface-roster omission, and real CLI lone-surrogate plus raw invalid UTF-8 failure in both normal and optimized subprocesses. Provider CI and independent exact-head review are separate evidence and must not be inferred from this statement.
 
 ## CLI
 
