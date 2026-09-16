@@ -350,40 +350,8 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 73,
+ "n_open_prs": 80,
  "open_prs": [
-  {
-   "number": 13779,
-   "author": "woahwhattheheck",
-   "title": "fix(revenue): bind scope time authority to exact raw bytes",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/13779",
-   "base_freshness": {
-    "base_sha": "bf7fb8209b03bc7497307249aeb97ce51d7daa5e",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14122,
-   "author": "woahwhattheheck",
-   "title": "Bind right-now buyer truth to canonical reply evidence",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14122",
-   "base_freshness": {
-    "base_sha": "736343b63a2a94686bf4e293a071f0aa547e40cb",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
   {
    "number": 14188,
    "author": "woahwhattheheck",
@@ -391,7 +359,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14188",
    "base_freshness": {
     "base_sha": "e2b97a0483a2d93794616216795770701cc2e698",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -407,39 +375,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14299",
    "base_freshness": {
     "base_sha": "303537cb200151a24c5597eea744be352e3337ba",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14333,
-   "author": "woahwhattheheck",
-   "title": "fix(outbound): bind current preflight to verifier-owned time",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14333",
-   "base_freshness": {
-    "base_sha": "1efc6813a5f6dff0b3f8c97f27f2caa2eea95e88",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14343,
-   "author": "woahwhattheheck",
-   "title": "Donor: bind reply event refs to the full observation envelope",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14343",
-   "base_freshness": {
-    "base_sha": "05f6f1775a5762ffa18c5c19da1d94d35bc45bb0",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -455,7 +391,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14356",
    "base_freshness": {
     "base_sha": "cd7560c64f7cde184a67b73fd218499d34edbf05",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -471,7 +407,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14395",
    "base_freshness": {
     "base_sha": "b53c8e6bf1aa770ca41c47bb5fa6558cb27ed4e5",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -487,7 +423,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14568",
    "base_freshness": {
     "base_sha": "f88907355a23e505ab6c43af6504485c2c79bb25",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -503,7 +439,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14589",
    "base_freshness": {
     "base_sha": "58be28ca7c4500a3a2e49cbd94f22c5665a149f1",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -519,7 +455,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14641",
    "base_freshness": {
     "base_sha": "c35b159817de42e79e2c29b267d7d8122c2baa05",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -535,7 +471,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14650",
    "base_freshness": {
     "base_sha": "a92826aef5a6867069450e9e5b52a78e9c3df740",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -551,7 +487,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14632",
    "base_freshness": {
     "base_sha": "c13b16c3cee2d49e3cb314caeaf924f6864a2f20",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -567,7 +503,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14658",
    "base_freshness": {
     "base_sha": "f7f86ce04a8a1e493cce18508acdd1807ab0cad6",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -583,7 +519,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14664",
    "base_freshness": {
     "base_sha": "bcc29688e888b38a5ce6ee1feb734b3d0060636f",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -599,7 +535,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14680",
    "base_freshness": {
     "base_sha": "a664101b94d95840e8b7440d3a45ea9d307dd656",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -615,23 +551,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14669",
    "base_freshness": {
     "base_sha": "38e9cf6d6fdcbd6107d8d4bc52b5638c7e2e5d77",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14670,
-   "author": "woahwhattheheck",
-   "title": "revenue: add content rights usage-window operations desk",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14670",
-   "base_freshness": {
-    "base_sha": "6d2b871dc6f257293ec3f49e3b32fb80603632a8",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -647,7 +567,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14705",
    "base_freshness": {
     "base_sha": "e3170922572a541823049e78b2f0b3d7edeee6f0",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -663,39 +583,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14700",
    "base_freshness": {
     "base_sha": "e3170922572a541823049e78b2f0b3d7edeee6f0",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14684,
-   "author": "woahwhattheheck",
-   "title": "Compose Muse v2 current-authority boundary",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14684",
-   "base_freshness": {
-    "base_sha": "1459189112ecdb3da9178cb18d6cc4ac18f678e3",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14720,
-   "author": "woahwhattheheck",
-   "title": "Donor: fail closed unauthenticated Muse negative election outcomes",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14720",
-   "base_freshness": {
-    "base_sha": "5804490ae2a883bc492f7fe975921b62fdc25216",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -711,7 +599,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14672",
    "base_freshness": {
     "base_sha": "7a26c3392f8e65e737ae80e47fd8000917730da1",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -727,7 +615,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14464",
    "base_freshness": {
     "base_sha": "3953757d45636832c0985f8772a419873c926158",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -743,7 +631,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14715",
    "base_freshness": {
     "base_sha": "3031df0ef1cd1986b9b8999b8d170c400040e8b8",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -759,23 +647,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14724",
    "base_freshness": {
     "base_sha": "4ceefeaa66ea6618da36a03055ab8474798dafa7",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14757,
-   "author": "woahwhattheheck",
-   "title": "feat(uiowa): recover local RFQ 18649 analyst workbench",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14757",
-   "base_freshness": {
-    "base_sha": "4b6d569b1eb550c6398831b9a605d0b219156f83",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -791,23 +663,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14764",
    "base_freshness": {
     "base_sha": "0ccb272ced44795e0ffd40350b89538eb562914e",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14553,
-   "author": "woahwhattheheck",
-   "title": "Fix UArk RFP 09112026 currentness authority",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14553",
-   "base_freshness": {
-    "base_sha": "44172a86d8561948b3cfa043f4e316769a8d1409",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -823,7 +679,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14768",
    "base_freshness": {
     "base_sha": "e5f928213c3710ff36c6f5a4d4da1a9af97e0768",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -839,7 +695,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14728",
    "base_freshness": {
     "base_sha": "36be284452141d26cdff4b74efb8f185b27c4b32",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -855,7 +711,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14776",
    "base_freshness": {
     "base_sha": "33e117064c336cefc947c52b38dee311e8ca0818",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -871,7 +727,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14763",
    "base_freshness": {
     "base_sha": "0ccb272ced44795e0ffd40350b89538eb562914e",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -887,7 +743,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14780",
    "base_freshness": {
     "base_sha": "d4bfb36dd3ebd277b418aa6f11979d2bedca4c65",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -903,7 +759,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14782",
    "base_freshness": {
     "base_sha": "76265a2f09c98413d0706e9e472cb04a9163f0c0",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -919,7 +775,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14770",
    "base_freshness": {
     "base_sha": "76265a2f09c98413d0706e9e472cb04a9163f0c0",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -935,7 +791,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/13741",
    "base_freshness": {
     "base_sha": "cb553c1692fada76b72f69b72ab5509860182013",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -951,23 +807,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14762",
    "base_freshness": {
     "base_sha": "76265a2f09c98413d0706e9e472cb04a9163f0c0",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14709,
-   "author": "woahwhattheheck",
-   "title": "Donor: make media-rights export generation + path custody atomic",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14709",
-   "base_freshness": {
-    "base_sha": "6e3b3fe0f15b6d067712af533a27bff8f80c8390",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -983,23 +823,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14788",
    "base_freshness": {
     "base_sha": "4fc9562a8dacfc5ac5238560599d9819589541a3",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14798,
-   "author": "woahwhattheheck",
-   "title": "test: certify consecutive reset absence fail-closed",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14798",
-   "base_freshness": {
-    "base_sha": "2a2a43bfb3b9abbad7417c78e6cdeb12888260bb",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1015,7 +839,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14802",
    "base_freshness": {
     "base_sha": "8989c8ab3f4f4e2fe046b94f3bc6812a94a1ddd9",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1031,7 +855,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14808",
    "base_freshness": {
     "base_sha": "864131604610702cf0cd27afd83d164c20d49c6d",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1047,7 +871,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14801",
    "base_freshness": {
     "base_sha": "864131604610702cf0cd27afd83d164c20d49c6d",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1063,7 +887,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14810",
    "base_freshness": {
     "base_sha": "864131604610702cf0cd27afd83d164c20d49c6d",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1079,7 +903,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14813",
    "base_freshness": {
     "base_sha": "864131604610702cf0cd27afd83d164c20d49c6d",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1095,7 +919,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14454",
    "base_freshness": {
     "base_sha": "233b75a5c9741f56fa2c1dd737ce82663ac4d05e",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1111,7 +935,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14816",
    "base_freshness": {
     "base_sha": "4fe3cbb62f500004eea844aacf44372e219da345",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1127,7 +951,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14811",
    "base_freshness": {
     "base_sha": "864131604610702cf0cd27afd83d164c20d49c6d",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1143,7 +967,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14824",
    "base_freshness": {
     "base_sha": "3f8ae48b0e2769e357dbb4f7215144fbc597e3ba",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1159,7 +983,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14321",
    "base_freshness": {
     "base_sha": "68072c17506170958bb5ff48d52494c33a76496e",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1175,7 +999,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14827",
    "base_freshness": {
     "base_sha": "3f8ae48b0e2769e357dbb4f7215144fbc597e3ba",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1191,23 +1015,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14819",
    "base_freshness": {
     "base_sha": "58a14866f1cddd37091cbef20259af816fa79696",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14317,
-   "author": "woahwhattheheck",
-   "title": "fix(forensics): require host-attested outbound evidence",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14317",
-   "base_freshness": {
-    "base_sha": "f2099945950e8dd6902fcfe538c4aa21b2c6eb5b",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1223,7 +1031,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14821",
    "base_freshness": {
     "base_sha": "8c620f038dc94301a91adf55831898bdffd37330",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1239,7 +1047,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14826",
    "base_freshness": {
     "base_sha": "5ba5746b9490ade7805d05a5fd984f7828f36129",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1255,71 +1063,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14823",
    "base_freshness": {
     "base_sha": "5ba5746b9490ade7805d05a5fd984f7828f36129",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14820,
-   "author": "woahwhattheheck",
-   "title": "feat(slack): land durable mirror receipts on current main",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14820",
-   "base_freshness": {
-    "base_sha": "58a14866f1cddd37091cbef20259af816fa79696",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14784,
-   "author": "woahwhattheheck",
-   "title": "Recover Teaming Conversion Control with independently rooted evidence",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14784",
-   "base_freshness": {
-    "base_sha": "76265a2f09c98413d0706e9e472cb04a9163f0c0",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14807,
-   "author": "woahwhattheheck",
-   "title": "Revenue: build OSU-CHS GME resident-data pursuit prototype",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14807",
-   "base_freshness": {
-    "base_sha": "7012f20a5c576476de561cdfaff48a538b034948",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14851,
-   "author": "woahwhattheheck",
-   "title": "Revenue: finalize OSU-CHS resident-data carrier with source-bound migration authority",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14851",
-   "base_freshness": {
-    "base_sha": "95bf36797a61b985c61d341e38e85a0edbdf24e8",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1335,23 +1079,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14837",
    "base_freshness": {
     "base_sha": "38436aa6fb2f72c522d88a63cb3db6639e451581",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14838,
-   "author": "woahwhattheheck",
-   "title": "fix(revenue): bind opportunity qualifier source authority",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14838",
-   "base_freshness": {
-    "base_sha": "38436aa6fb2f72c522d88a63cb3db6639e451581",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1367,7 +1095,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14822",
    "base_freshness": {
     "base_sha": "3f8ae48b0e2769e357dbb4f7215144fbc597e3ba",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1383,7 +1111,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14842",
    "base_freshness": {
     "base_sha": "0458b650a4e2802be718245ffbfe3f9f90aae582",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1399,103 +1127,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14832",
    "base_freshness": {
     "base_sha": "f8483dfb0d03691a612af45ac213acbb7cc6a52e",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14828,
-   "author": "woahwhattheheck",
-   "title": "Revenue: recover ARM26BX06-NV012 decision carrier after authority RED",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14828",
-   "base_freshness": {
-    "base_sha": "1dd7ff985a933c1eec025d8208fd64b4fd8a3c60",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14858,
-   "author": "woahwhattheheck",
-   "title": "Build EvidenceAAR NIWC Digital Scribe source carrier",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14858",
-   "base_freshness": {
-    "base_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "FRESH"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14855,
-   "author": "woahwhattheheck",
-   "title": "Recover Water4All 2026 readiness carrier with fail-closed authority",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14855",
-   "base_freshness": {
-    "base_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "FRESH"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14849,
-   "author": "woahwhattheheck",
-   "title": "Recover right-now human reply authority on live revenue control",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14849",
-   "base_freshness": {
-    "base_sha": "4deec11a91656eaf390b00ca3cc4545e1e8a1c32",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14853,
-   "author": "woahwhattheheck",
-   "title": "Revenue: finalize Pinellas current custody authority boundary",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14853",
-   "base_freshness": {
-    "base_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "FRESH"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14850,
-   "author": "woahwhattheheck",
-   "title": "feat(dv026): evaluate externally supplied black-box actions",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14850",
-   "base_freshness": {
-    "base_sha": "95bf36797a61b985c61d341e38e85a0edbdf24e8",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -1511,10 +1143,490 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14856",
    "base_freshness": {
     "base_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
-    "main_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14858,
+   "author": "woahwhattheheck",
+   "title": "Build EvidenceAAR NIWC Digital Scribe source carrier",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14858",
+   "base_freshness": {
+    "base_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14849,
+   "author": "woahwhattheheck",
+   "title": "Recover right-now human reply authority on live revenue control",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14849",
+   "base_freshness": {
+    "base_sha": "6a1c33fd8be45042985a9d9e652ca9ff8090c081",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14861,
+   "author": "woahwhattheheck",
+   "title": "Command center: recover bounded Slack thread visibility",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14861",
+   "base_freshness": {
+    "base_sha": "dc4e2d2e8023f59993ddc5ca3a2437e37ab24492",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14317,
+   "author": "woahwhattheheck",
+   "title": "fix(forensics): require host-attested outbound evidence",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14317",
+   "base_freshness": {
+    "base_sha": "f2099945950e8dd6902fcfe538c4aa21b2c6eb5b",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14853,
+   "author": "woahwhattheheck",
+   "title": "Revenue: finalize Pinellas current custody authority boundary",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14853",
+   "base_freshness": {
+    "base_sha": "9eb5dc99773d76ba5198da74210acbaaf5b2587e",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14873,
+   "author": "woahwhattheheck",
+   "title": "Disposable helper: retain USAC IT-26-139 buyer bytes",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14873",
+   "base_freshness": {
+    "base_sha": "41d76a33cae55baee5bbb2b05a0f8a28701eac76",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14859,
+   "author": "woahwhattheheck",
+   "title": "Revenue: capture Invest Appalachia Framer LMS pursuit with fail-closed prime/team gate",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14859",
+   "base_freshness": {
+    "base_sha": "6a1c33fd8be45042985a9d9e652ca9ff8090c081",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14798,
+   "author": "woahwhattheheck",
+   "title": "test: certify consecutive reset absence fail-closed",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14798",
+   "base_freshness": {
+    "base_sha": "2a2a43bfb3b9abbad7417c78e6cdeb12888260bb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14867,
+   "author": "woahwhattheheck",
+   "title": "Add truth-gated NYS DEC Hale Creek LIMS RFI carrier",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14867",
+   "base_freshness": {
+    "base_sha": "e12018494c974110d59b1b167e06baf8ab966d6a",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14871,
+   "author": "woahwhattheheck",
+   "title": "Donor: keep NYS DEC carrier inside workflow budget",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14871",
+   "base_freshness": {
+    "base_sha": "25aa0b5418a915ad97fad4dab9599c2868379e23",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14784,
+   "author": "woahwhattheheck",
+   "title": "Recover Teaming Conversion Control with independently rooted evidence",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14784",
+   "base_freshness": {
+    "base_sha": "76265a2f09c98413d0706e9e472cb04a9163f0c0",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14865,
+   "author": "woahwhattheheck",
+   "title": "Freeze Service Deal Economics CURRENT authority runtime",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14865",
+   "base_freshness": {
+    "base_sha": "1ee33b0d58c0b951c717acebd1c7b32671bee3a0",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14877,
+   "author": "woahwhattheheck",
+   "title": "revenue: Land Bank T12-09-26 fail-closed teaming readiness carrier",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14877",
+   "base_freshness": {
+    "base_sha": "e12018494c974110d59b1b167e06baf8ab966d6a",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14880,
+   "author": "woahwhattheheck",
+   "title": "fix(revenue): recover commercial funnel on current main",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14880",
+   "base_freshness": {
+    "base_sha": "dc32225899125db0039ae3509521c438ba512f40",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14885,
+   "author": "woahwhattheheck",
+   "title": "Revenue: recover and harden opportunity deadline command center",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14885",
+   "base_freshness": {
+    "base_sha": "013c94fee105f2d7248190e29181dbb794097c91",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14838,
+   "author": "woahwhattheheck",
+   "title": "fix(revenue): bind opportunity qualifier source authority",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14838",
+   "base_freshness": {
+    "base_sha": "38436aa6fb2f72c522d88a63cb3db6639e451581",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14820,
+   "author": "woahwhattheheck",
+   "title": "feat(slack): land durable mirror receipts on current main",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14820",
+   "base_freshness": {
+    "base_sha": "58a14866f1cddd37091cbef20259af816fa79696",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14887,
+   "author": "woahwhattheheck",
+   "title": "Outbound: add provider send/DNR preflight after Muse election",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14887",
+   "base_freshness": {
+    "base_sha": "013c94fee105f2d7248190e29181dbb794097c91",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14888,
+   "author": "woahwhattheheck",
+   "title": "fix(revenue): recover OHSU current qualification authority",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14888",
+   "base_freshness": {
+    "base_sha": "013c94fee105f2d7248190e29181dbb794097c91",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14889,
+   "author": "woahwhattheheck",
+   "title": "Recover Sun A308734 P18 frontier on latest main",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14889",
+   "base_freshness": {
+    "base_sha": "013c94fee105f2d7248190e29181dbb794097c91",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14886,
+   "author": "woahwhattheheck",
+   "title": "Recover reviewed University of Iowa RFQ 18649 analyst workbench",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14886",
+   "base_freshness": {
+    "base_sha": "6ee7196f15b765db30292f0ef2ab6b80cf7c12c3",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14890,
+   "author": "woahwhattheheck",
+   "title": "Add post-sale client implementation onboarding workspace",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14890",
+   "base_freshness": {
+    "base_sha": "013c94fee105f2d7248190e29181dbb794097c91",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14874,
+   "author": "woahwhattheheck",
+   "title": "Revenue: Columbia ERP migration acceptance workshare",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14874",
+   "base_freshness": {
+    "base_sha": "41d76a33cae55baee5bbb2b05a0f8a28701eac76",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14894,
+   "author": "woahwhattheheck",
+   "title": "Revenue: GTRI Sunflower migration acceptance workshare",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14894",
+   "base_freshness": {
+    "base_sha": "6ee7196f15b765db30292f0ef2ab6b80cf7c12c3",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14807,
+   "author": "woahwhattheheck",
+   "title": "Revenue: build OSU-CHS GME resident-data pursuit prototype",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14807",
+   "base_freshness": {
+    "base_sha": "7012f20a5c576476de561cdfaff48a538b034948",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14851,
+   "author": "woahwhattheheck",
+   "title": "Revenue: finalize OSU-CHS resident-data carrier with source-bound migration authority",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14851",
+   "base_freshness": {
+    "base_sha": "95bf36797a61b985c61d341e38e85a0edbdf24e8",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14896,
+   "author": "woahwhattheheck",
+   "title": "harden(outbound): require direct isolated CURRENT boundary",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14896",
+   "base_freshness": {
+    "base_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
     "ahead_by": null,
     "behind_by": null,
     "label": "FRESH"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14898,
+   "author": "woahwhattheheck",
+   "title": "Muse liveness: reconcile explicit decision corrections",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14898",
+   "base_freshness": {
+    "base_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "FRESH"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14828,
+   "author": "woahwhattheheck",
+   "title": "Revenue: recover ARM26BX06-NV012 decision carrier after authority RED",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14828",
+   "base_freshness": {
+    "base_sha": "1dd7ff985a933c1eec025d8208fd64b4fd8a3c60",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14855,
+   "author": "woahwhattheheck",
+   "title": "Recover Water4All 2026 readiness carrier with fail-closed authority",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14855",
+   "base_freshness": {
+    "base_sha": "0414200b2bf5f09faade8bd08c53ec26e78816eb",
+    "main_sha": "76b21d803ce2855f7131c2bf5484610b58f3f2e0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
    },
    "status": "PR_OPEN",
    "road": "pr",
