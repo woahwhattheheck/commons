@@ -1,0 +1,38 @@
+name: Opportunity identity alias registry
+on:
+  push:
+    paths:
+      - 'revenue/opportunity_identity_alias/**'
+      - '.github/workflows/opportunity-identity-alias.yml'
+  pull_request:
+    paths:
+      - 'revenue/opportunity_identity_alias/**'
+      - '.github/workflows/opportunity-identity-alias.yml'
+permissions:
+  contents: read
+jobs:
+  hostile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      matrix:
+        python: ['3.9', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Compile
+        run: python -m py_compile revenue/opportunity_identity_alias/{__init__,strict,aliases,registry,resolver,cli,test_resolution,test_transition,test_io}.py
+      - name: Normal hostile suite
+        run: python -m unittest -v revenue.opportunity_identity_alias.test_resolution revenue.opportunity_identity_alias.test_transition revenue.opportunity_identity_alias.test_io
+      - name: Optimized hostile suite
+        run: python -O -m unittest -v revenue.opportunity_identity_alias.test_resolution revenue.opportunity_identity_alias.test_transition revenue.opportunity_identity_alias.test_io
+      - name: Current registry canonical load
+        run: |
+          python - <<'PY'
+          import json
+          from revenue.opportunity_identity_alias.registry import compile_registry
+          value = json.load(open('revenue/opportunity_identity_alias/registry.json', encoding='utf-8'))
+          assert compile_registry(value)['generation'] == 1
+          PY
