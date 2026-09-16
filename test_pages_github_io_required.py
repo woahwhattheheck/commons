@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import re
 import unittest
 from pathlib import Path
 
@@ -127,11 +128,23 @@ class PagesGithubIoRequiredTests(unittest.TestCase):
         self.assertIn("pages build and deployment", text)
         self.assertIn("github.event.workflow_run.conclusion == 'success'", text)
         self.assertIn("cancel-in-progress: false", text)
-        self.assertNotRegex(
-            text,
-            r"(?m)^on:\n(?:  .*\n)*  push:",
-            "push trigger must stay dropped; ingest storms cancelled deploys",
-        )
+        # Narrow path-filtered push is allowed for revenue-critical public doors
+        # (pay/commerce/fixed-offer storefront). Broad push without paths stays forbidden
+        # so ingest storms cannot cancel/serialize the whole publisher.
+        if re.search(r"(?m)^  push:\n", text):
+            self.assertRegex(
+                text,
+                r"(?m)^  push:\n(?:    .*\n)*    paths:\n",
+                "push trigger must stay path-filtered; broad push cancelled deploys",
+            )
+            self.assertIn("pay.html", text)
+            self.assertIn("commerce.html", text)
+        else:
+            self.assertNotRegex(
+                text,
+                r"(?m)^on:\n(?:  .*\n)*  push:",
+                "push trigger must stay dropped; ingest storms cancelled deploys",
+            )
         self.assertIn("_site/pages-deploy.json", text)
         self.assertIn("--exclude '_site/'", text)
         self.assertIn("test -f _site/pages-deploy.json", text)
