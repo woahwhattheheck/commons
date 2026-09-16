@@ -132,3 +132,13 @@ The package performs no network calls and carries no provider credentials. It ha
 - contact a buyer/vendor, register a portal, submit a proposal, sign, quote on another party's behalf, spend, deploy, or recognize revenue.
 
 See `SOUTH_DAKOTA_TEAMING.md` for the current commercial use case that motivated this reusable core.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
