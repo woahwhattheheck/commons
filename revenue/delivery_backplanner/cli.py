@@ -35,7 +35,7 @@ def _load_result(path: Path) -> dict:
     return value
 
 
-def _write_exclusive(path: Path, text: str) -> None:
+def _write_exclusive(path: Path, text: str) -> tuple[int, int]:
     flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
     if hasattr(os, "O_NOFOLLOW"):
         flags |= os.O_NOFOLLOW
@@ -46,6 +46,8 @@ def _write_exclusive(path: Path, text: str) -> None:
         while written < len(data):
             written += os.write(fd, data[written:])
         os.fsync(fd)
+        st = os.fstat(fd)
+        return st.st_dev, st.st_ino
     finally:
         os.close(fd)
 
@@ -66,14 +68,20 @@ def command_solve(spec_path: Path, out_dir: Path) -> int:
     collisions = [name for name in targets if (out_dir / name).exists()]
     if collisions:
         raise BackplannerError(f"refusing to overwrite existing outputs: {collisions}")
-    created: list[Path] = []
+    created: list[tuple[Path, int, int]] = []
     try:
         for name, text in targets.items():
             path = out_dir / name
-            _write_exclusive(path, text)
-            created.append(path)
+            dev, ino = _write_exclusive(path, text)
+            created.append((path, dev, ino))
     except Exception:
-        for path in reversed(created):
+        for path, dev, ino in reversed(created):
+            try:
+                st = path.stat()
+            except OSError:
+                continue
+            if (st.st_dev, st.st_ino) != (dev, ino):
+                continue
             try:
                 path.unlink()
             except OSError:
