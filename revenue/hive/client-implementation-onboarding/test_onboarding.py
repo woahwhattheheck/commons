@@ -13,7 +13,7 @@ from pathlib import Path
 
 from onboarding import (
     ConflictError, OnboardingError, canonical, compile_packet, connect, decide_change,
-    export_handoff, init_db, kickoff_state, open_workspace, receive_input,
+    export_handoff, init_db, kickoff_state, load_json, open_workspace, receive_input,
     record_deliverable, request_change, review_deliverable, review_input,
     sha256_bytes, strict_loads, transition_milestone, validate_scope, verify_export,
 )
@@ -111,6 +111,21 @@ class ProductTests(Harness):
         with self.assertRaises(ConflictError): review_deliverable(self.conn,"ws-demo-001","kickoff","kickoff-plan",1,"OWNER_APPROVED_LOCAL","s5",now=NOW)
         with self.assertRaises(OnboardingError): transition_milestone(self.conn,"ws-demo-001","kickoff","COMPLETE","s6",now=NOW)
 
+    def test_changed_required_input_invalidates_completed_delivery(self):
+        self.open(); self.complete_happy()
+        self.assertEqual(compile_packet(self.conn,"ws-demo-001")["handoffState"],"READY_FOR_OWNER_HANDOFF_REVIEW")
+        receive_input(self.conn,"ws-demo-001","client-brief","e"*64,"replace-input",now=NOW)
+        packet=compile_packet(self.conn,"ws-demo-001")
+        self.assertEqual(packet["kickoffState"],"OWNER_REVIEW_REQUIRED")
+        self.assertEqual(packet["handoffState"],"HOLD")
+        self.assertTrue(all(m["state"]=="WAITING" for m in packet["milestones"]))
+        self.assertTrue(all(d["review_decision"]=="UNREVIEWED" for d in packet["deliverables"]))
+        review_input(self.conn,"ws-demo-001","client-brief","ACCEPTED_LOCAL","replace-review",now=NOW)
+        packet=compile_packet(self.conn,"ws-demo-001")
+        self.assertEqual(packet["kickoffState"],"READY_FOR_KICKOFF_REVIEW")
+        self.assertEqual(packet["handoffState"],"HOLD")
+        self.assertIn("MILESTONES_INCOMPLETE",packet["holds"])
+
     def test_pending_rejected_and_approved_change(self):
         self.open(); self.ready_inputs(); changed=base_scope(); changed["assumptions"]=["Revised local assumption"]
         request_change(self.conn,"ws-demo-001","chg-1",changed,"c1",now=NOW)
@@ -184,6 +199,24 @@ class ProductTests(Harness):
         finally:
             httpd.shutdown(); httpd.server_close(); th.join(timeout=3)
         with self.assertRaises(OnboardingError): server_mod.serve(str(self.db),"0.0.0.0",0)
+
+    def test_readonly_http_does_not_create_missing_database(self):
+        missing=Path(self.tmp.name)/"missing.db"; server_mod.Handler.db_path=str(missing)
+        httpd=ThreadingHTTPServer(("127.0.0.1",0),server_mod.Handler); port=httpd.server_address[1]
+        th=threading.Thread(target=httpd.serve_forever,daemon=True); th.start()
+        try:
+            with self.assertRaises(urllib.error.HTTPError) as cm:
+                urllib.request.urlopen(f"http://127.0.0.1:{port}/api/workspaces",timeout=3)
+            self.assertEqual(cm.exception.code,400)
+            self.assertFalse(missing.exists())
+        finally:
+            httpd.shutdown(); httpd.server_close(); th.join(timeout=3)
+
+    def test_json_ingress_refuses_symlink(self):
+        payload=accepted_payload(); source=Path(self.tmp.name)/"source.json"; source.write_text(json.dumps(payload),encoding="utf-8")
+        if hasattr(os,"symlink"):
+            link=Path(self.tmp.name)/"input-link.json"; os.symlink(source,link)
+            with self.assertRaises(OnboardingError): load_json(link)
 
     def test_cli_init_status_and_export_verify(self):
         payload=accepted_payload(); inp=Path(self.tmp.name)/"accepted.json"; inp.write_text(json.dumps(payload),encoding="utf-8")
