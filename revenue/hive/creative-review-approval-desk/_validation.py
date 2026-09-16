@@ -66,7 +66,24 @@ def utc_now() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
+def _require_scalar_unicode(value: Any, label: str = "value") -> None:
+    """Reject lone UTF-16 surrogate code points before UTF-8 canonicalization."""
+    if type(value) is str:
+        if any(0xD800 <= ord(ch) <= 0xDFFF for ch in value):
+            raise InvalidInput(f"{label} contains a non-scalar Unicode surrogate")
+        return
+    if type(value) is list:
+        for item in value:
+            _require_scalar_unicode(item, label)
+        return
+    if type(value) is dict:
+        for key, item in value.items():
+            _require_scalar_unicode(key, label)
+            _require_scalar_unicode(item, label)
+
+
 def canonical_json(value: Any) -> str:
+    _require_scalar_unicode(value, "canonical JSON")
     return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
 
 
@@ -101,14 +118,17 @@ def strict_json_loads(raw: bytes | str) -> Any:
             raise InvalidInput("JSON input must be UTF-8") from exc
     if not isinstance(raw, str):
         raise InvalidInput("JSON input must be bytes or text")
+    _require_scalar_unicode(raw, "JSON input")
     if len(raw.encode("utf-8")) > MAX_JSON_BYTES:
         raise InvalidInput("JSON input exceeds size cap")
     try:
-        return json.loads(
+        value = json.loads(
             raw,
             object_pairs_hook=_pairs,
             parse_constant=lambda token: (_ for _ in ()).throw(InvalidInput(f"non-finite JSON number: {token}")),
         )
+        _require_scalar_unicode(value, "JSON value")
+        return value
     except InvalidInput:
         raise
     except Exception as exc:
@@ -130,6 +150,7 @@ def _id(label: str, value: Any) -> str:
 def _text(label: str, value: Any, *, maximum: int = MAX_TEXT, empty: bool = False) -> str:
     if type(value) is not str or len(value) > maximum or (not empty and not value):
         raise InvalidInput(f"invalid {label}")
+    _require_scalar_unicode(value, label)
     if any(ord(ch) < 32 and ch not in "\t" for ch in value):
         raise InvalidInput(f"invalid control character in {label}")
     return value
@@ -232,9 +253,40 @@ def normalize_spec(value: Any) -> dict[str, Any]:
     }
 
 
+def _open_regular_no_symlink_components(path: os.PathLike[str] | str) -> int:
+    """Open one regular-file candidate without following any pathname component."""
+    if os.name != "posix" or not getattr(os, "O_NOFOLLOW", 0) or not getattr(os, "O_DIRECTORY", 0):
+        raise InvalidInput("secure input custody is unavailable on this platform")
+    if os.open not in getattr(os, "supports_dir_fd", set()):
+        raise InvalidInput("descriptor-relative input custody is unavailable on this platform")
+
+    absolute = os.path.abspath(os.fspath(path))
+    parent, leaf = os.path.split(absolute)
+    if not leaf or leaf in {".", ".."}:
+        raise InvalidInput("input path must name a file")
+
+    directory_flags = os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW | getattr(os, "O_CLOEXEC", 0)
+    leaf_flags = os.O_RDONLY | os.O_NOFOLLOW | getattr(os, "O_CLOEXEC", 0)
+    directory_fd = os.open(os.path.sep, directory_flags)
+    try:
+        relative_parent = parent.removeprefix(os.path.sep)
+        for component in relative_parent.split(os.path.sep):
+            if not component or component == ".":
+                continue
+            if component == "..":
+                raise InvalidInput("input path traversal is not allowed")
+            next_fd = os.open(component, directory_flags, dir_fd=directory_fd)
+            os.close(directory_fd)
+            directory_fd = next_fd
+        return os.open(leaf, leaf_flags, dir_fd=directory_fd)
+    except OSError as exc:
+        raise InvalidInput("input path must not traverse symlinks") from exc
+    finally:
+        os.close(directory_fd)
+
+
 def _read_regular(path: os.PathLike[str] | str, cap: int) -> bytes:
-    flags = os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0) | getattr(os, "O_CLOEXEC", 0)
-    fd = os.open(os.fspath(path), flags)
+    fd = _open_regular_no_symlink_components(path)
     try:
         info = os.fstat(fd)
         if not stat.S_ISREG(info.st_mode):
