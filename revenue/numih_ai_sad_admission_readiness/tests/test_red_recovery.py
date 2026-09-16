@@ -13,6 +13,7 @@ from revenue.numih_ai_sad_admission_readiness.compiler import (
     compile_packet,
     loads_strict,
     render_markdown,
+    verify_result,
 )
 
 EXAMPLES = Path(__file__).parents[1] / "examples"
@@ -31,6 +32,17 @@ def _bundle() -> dict:
 
 
 class PublicBoundaryRecoveryTests(unittest.TestCase):
+    def test_missing_bundle_cannot_mint_ready_or_verify_true(self):
+        packet = _packet()
+        result = compile_packet(packet, None)
+        self.assertEqual(result["packet_state"], "INCOMPLETE_EVIDENCE")
+        self.assertFalse(verify_result(packet, result, None))
+        bundle = _bundle()
+        ready = compile_packet(packet, bundle)
+        self.assertEqual(ready["packet_state"], "PACKET_REVIEW_READY")
+        self.assertTrue(verify_result(packet, ready, bundle))
+        self.assertFalse(verify_result(packet, ready, None))
+
     def test_arbitrary_result_cannot_use_legacy_renderer(self):
         fabricated = {
             "packet_state": "PACKET_REVIEW_READY",

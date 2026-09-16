@@ -714,7 +714,8 @@ def compile_packet(packet: Any, evidence_bundle: Any | None = None) -> dict[str,
     )
 
     packet_ready = (
-        core_complete
+        evidence_bundle is not None
+        and core_complete
         and categories_complete
         and not translation_queue
         and not authority_queue
@@ -760,7 +761,11 @@ def compile_packet(packet: Any, evidence_bundle: Any | None = None) -> dict[str,
             "currentness": "CURRENTNESS_UNVERIFIED",
             "reason": "Retained packet bytes cannot establish latest authoritative PLACE document currentness.",
         },
-        "packet_state": "PACKET_REVIEW_READY" if packet_ready else "INCOMPLETE_EVIDENCE",
+        "packet_state": (
+            "PACKET_REVIEW_READY"
+            if evidence_bundle is not None and packet_ready
+            else "INCOMPLETE_EVIDENCE"
+        ),
         "external_submission_state": "HOLD_CURRENTNESS_AND_OWNER_ACTIONS",
         "owner_actions": [
             "Name and verify the actual applicant legal entity and national registration mapping.",
@@ -811,6 +816,8 @@ def verify_result(
         bundle = validate_bundle(evidence_bundle)
         rebuilt = compile_packet(packet, evidence_bundle)
     except (ValidationError, TypeError, ValueError):
+        return False
+    if evidence_bundle is None:
         return False
     return (
         receipt.get("schema") == RECEIPT_SCHEMA
