@@ -9,6 +9,7 @@ from . import authority as a
 from . import engine
 from . import strict_json
 from .cli import main as cli_main
+from .current_runtime import assert_current_runtime
 from .test_authority import packet
 
 
@@ -18,6 +19,9 @@ class FrozenCurrentRuntimeTests(unittest.TestCase):
             compile_current(packet())
         with self.assertRaises(AuthorityError):
             verify_current_authority(packet(), {})
+
+    def test_guard_is_intact_immediately_after_import(self):
+        self.assertIsNone(assert_current_runtime())
 
     def test_public_surfaces_have_no_trust_or_time_injection_parameters(self):
         self.assertEqual(tuple(inspect.signature(compile_current).parameters), ("packet",))
@@ -87,6 +91,7 @@ class FrozenCurrentRuntimeTests(unittest.TestCase):
         with patch.object(a, "now_utc", lambda: None):
             self._both_fail_closed()
         self.assertIs(a.now_utc, original)
+        assert_current_runtime()
         try:
             compile_current(packet())
         except AuthorityError as exc:

@@ -13,12 +13,16 @@ def freeze_call_graph(
 ) -> Callable[[], bool]:
     """Capture a transitive Python call graph and return a closure-only guard.
 
-    The guard identity-binds globals and referenced attributes, recursively
-    traverses Python function-valued dependencies, and snapshots namespaces for
-    reachable modules/classes/instances. Namespace snapshots matter because a
-    class or cached singleton can keep the same identity while an attacker
-    replaces an authority-bearing method in place (for example
-    ``json.JSONEncoder.encode`` or ``json._default_encoder.encode``).
+    Globals and referenced module attributes are identity-bound selectively.
+    Reachable class/instance namespaces are also snapshotted so a stable object
+    cannot hide an in-place replacement of an authority-bearing method (for
+    example ``json.JSONEncoder.encode``, a cached JSON encoder method, or
+    ``hmac.HMAC.__init__``).
+
+    Whole module namespaces are deliberately *not* snapshotted: this module
+    installs guarded public CURRENT wrappers after capture, and unrelated module
+    names may legitimately appear later. Authority-bearing module attributes are
+    already covered by the selective global/attribute bindings below.
 
     The returned guard accepts no arguments. Snapshots and check primitives are
     held only in closure cells, so callers cannot inject alternate trust/time
@@ -35,7 +39,7 @@ def freeze_call_graph(
     seen_namespaces: set[int] = set()
 
     def capture_namespace(owner: object) -> None:
-        if isinstance(owner, FunctionType):
+        if isinstance(owner, (FunctionType, ModuleType)):
             return
         marker = id(owner)
         if marker in seen_namespaces:
