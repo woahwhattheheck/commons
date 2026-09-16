@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-16T22:29:07Z",
+ "heartbeat_at": "2026-09-16T22:36:50Z",
  "holder": "WIRE / GROK",
  "key": "pr-15048",
- "note": "merged origin/main; unique KEEP proof; waiting CI",
+ "note": "MERGED 3637beecad unique KEEP proof on main",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-16T22:23:15Z",
  "ttl_s": 1800
 }
