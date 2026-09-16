@@ -26,6 +26,11 @@ def load_fixture():
     return json.loads(FIXTURE.read_text(encoding="utf-8"))
 
 
+def cli_command(*args):
+    optimize = ["-O"] if sys.flags.optimize else []
+    return [sys.executable, *optimize, "-m", "revenue.ohsu_ap_ai_rfi_approof.cli", *args]
+
+
 class APProofTests(unittest.TestCase):
     def test_clean_packet_shadow_ready_hard_false_authority(self):
         out = compile_packet(load_fixture())
@@ -254,18 +259,12 @@ class APProofTests(unittest.TestCase):
     def test_cli_compile_verify_roundtrip(self):
         with tempfile.TemporaryDirectory() as td:
             projection = Path(td) / "projection.json"
-            cmd = [
-                sys.executable, "-m", "revenue.ohsu_ap_ai_rfi_approof.cli",
-                "compile", str(FIXTURE),
-            ]
+            cmd = cli_command("compile", str(FIXTURE))
             cp = subprocess.run(cmd, cwd=ROOT, check=False, capture_output=True)
             self.assertEqual(cp.returncode, 0, cp.stderr.decode())
             projection.write_bytes(cp.stdout)
             vp = subprocess.run(
-                [
-                    sys.executable, "-m", "revenue.ohsu_ap_ai_rfi_approof.cli",
-                    "verify", str(FIXTURE), str(projection),
-                ],
+                cli_command("verify", str(FIXTURE), str(projection)),
                 cwd=ROOT, check=False, capture_output=True,
             )
             self.assertEqual(vp.returncode, 0, vp.stderr.decode())
@@ -276,10 +275,7 @@ class APProofTests(unittest.TestCase):
             bad = Path(td) / "bad.json"
             bad.write_text("{}", encoding="utf-8")
             cp = subprocess.run(
-                [
-                    sys.executable, "-m", "revenue.ohsu_ap_ai_rfi_approof.cli",
-                    "compile", str(bad),
-                ],
+                cli_command("compile", str(bad)),
                 cwd=ROOT, check=False, capture_output=True,
             )
             self.assertEqual(cp.returncode, 2)
@@ -290,14 +286,40 @@ class APProofTests(unittest.TestCase):
             bad = Path(td) / "duplicate.json"
             bad.write_text('{"schema":"approof/v1","schema":"approof/v1"}', encoding="utf-8")
             cp = subprocess.run(
-                [
-                    sys.executable, "-m", "revenue.ohsu_ap_ai_rfi_approof.cli",
-                    "compile", str(bad),
-                ],
+                cli_command("compile", str(bad)),
                 cwd=ROOT, check=False, capture_output=True,
             )
             self.assertEqual(cp.returncode, 2)
             self.assertIn(b"duplicate JSON key: schema", cp.stderr)
+
+    def test_cli_5000_digit_integer_returns_two_without_traceback(self):
+        with tempfile.TemporaryDirectory() as td:
+            bad = Path(td) / "huge-int.json"
+            bad.write_text('{"x":' + ("9" * 5000) + '}', encoding="utf-8")
+            cp = subprocess.run(
+                cli_command("compile", str(bad)),
+                cwd=ROOT, check=False, capture_output=True,
+            )
+            self.assertEqual(cp.returncode, 2)
+            self.assertIn(b"APProofError: invalid JSON", cp.stderr)
+            self.assertNotIn(b"Traceback", cp.stderr)
+
+    def test_cli_lone_surrogate_returns_two_without_traceback(self):
+        with tempfile.TemporaryDirectory() as td:
+            packet = FIXTURE.read_text(encoding="utf-8").replace(
+                '"invoice_number": "ACME-100"',
+                '"invoice_number": "\\ud800"',
+                1,
+            )
+            bad = Path(td) / "lone-surrogate.json"
+            bad.write_text(packet, encoding="utf-8")
+            cp = subprocess.run(
+                cli_command("compile", str(bad)),
+                cwd=ROOT, check=False, capture_output=True,
+            )
+            self.assertEqual(cp.returncode, 2)
+            self.assertIn(b"contains non-scalar Unicode", cp.stderr)
+            self.assertNotIn(b"Traceback", cp.stderr)
 
     def test_1000_randomized_safety_packets_never_authorize_effects(self):
         rng = random.Random(20260916)

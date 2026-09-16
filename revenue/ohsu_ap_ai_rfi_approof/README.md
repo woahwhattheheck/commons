@@ -27,7 +27,7 @@ APProof accepts owner-supplied JSON evidence and deterministically computes:
 
 `source_sha256` values are **caller-declared lineage labels only**. The carrier validates their lowercase SHA-256 format but does not authenticate provider/source bytes. Output therefore labels them `declared_source_sha256` and emits `source_hash_authority=CALLER_DECLARED_FORMAT_VALIDATED_ONLY`.
 
-* strict owner-supplied row validation, duplicate-key rejection, SHA-format lineage metadata, and line-total reconciliation;
+* strict owner-supplied row validation, duplicate-key/resource-limit JSON rejection, non-scalar Unicode rejection, SHA-format lineage metadata, and line-total reconciliation;
 * duplicate economic-invoice holds;
 * PO/vendor/currency/line/price/quantity matching;
 * receipt-quantity checks for three-way-match evidence;

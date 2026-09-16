@@ -53,7 +53,9 @@ def load_json_strict(text: str) -> Any:
 
     try:
         return json.loads(text, object_pairs_hook=pairs_hook, parse_constant=bad_constant)
-    except (json.JSONDecodeError, TypeError) as exc:
+    except APProofError:
+        raise
+    except (ValueError, TypeError, RecursionError) as exc:
         raise APProofError(f"invalid JSON: {exc}") from exc
 
 
@@ -87,6 +89,10 @@ def string(value: Any, name: str) -> str:
         raise APProofError(f"{name} too long")
     if any(ord(ch) < 0x20 and ch not in "\t\n\r" for ch in value):
         raise APProofError(f"{name} contains control characters")
+    try:
+        value.encode("utf-8", "strict")
+    except UnicodeEncodeError as exc:
+        raise APProofError(f"{name} contains non-scalar Unicode") from exc
     return value
 
 
