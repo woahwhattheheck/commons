@@ -12,6 +12,14 @@ from .contracts import RouteScoutError, OFFICIAL_API_ORIGIN, TERMINAL, approval_
 from .planning import build_create_request
 from .results import reconcile
 
+
+class _RejectRedirects(urllib.request.HTTPRedirectHandler):
+    """Fail closed before urllib can construct or issue a redirected request."""
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        raise RouteScoutError(f"CALL-E API redirect refused ({code})")
+
+
 class CalleApi:
     def __init__(self, api_key: str, timeout: int = 30):
         if not api_key:
@@ -29,8 +37,9 @@ class CalleApi:
             req.add_header("Content-Type", "application/json")
         for key, value in (headers or {}).items():
             req.add_header(key, value)
+        opener = urllib.request.build_opener(_RejectRedirects())
         try:
-            with urllib.request.urlopen(req, timeout=self.timeout) as response:
+            with opener.open(req, timeout=self.timeout) as response:
                 parsed = json.loads(response.read().decode("utf-8") or "{}")
         except urllib.error.HTTPError as exc:
             detail = exc.read().decode("utf-8", "replace")[:500]
@@ -63,6 +72,7 @@ class CalleApi:
                     f"call {call_id} is still non-terminal; resume by call id instead of creating another call"
                 )
             time.sleep(poll_seconds)
+
 
 def run_live(inquiry: Mapping[str, Any], confirm_call: str) -> tuple[str, dict[str, Any]]:
     i = validate_inquiry(inquiry)
