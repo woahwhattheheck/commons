@@ -1,0 +1,251 @@
+{
+  "applicant": {
+    "display_name": "Fictional Prime SAS",
+    "id": "prime"
+  },
+  "categories": [
+    2,
+    3,
+    4
+  ],
+  "dce": {
+    "document_id": "synthetic-rc-v1",
+    "generation": "synthetic-g1",
+    "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "source_locator": "synthetic://numih/rc"
+  },
+  "evidence": [
+    {
+      "id": "e1",
+      "kind": "legal_registration",
+      "language": "fr",
+      "note": "Synthetic fixture only.",
+      "party_id": "prime",
+      "source": {
+        "generation": "synthetic-g1",
+        "locator": "synthetic://evidence/e1",
+        "sha256": "0101010101010101010101010101010101010101010101010101010101010101"
+      },
+      "status": "EVIDENCED",
+      "translation_status": "ORIGINAL_FR"
+    },
+    {
+      "id": "e2",
+      "kind": "binding_authority",
+      "language": "fr",
+      "note": "Synthetic fixture only.",
+      "party_id": "prime",
+      "source": {
+        "generation": "synthetic-g1",
+        "locator": "synthetic://evidence/e2",
+        "sha256": "0202020202020202020202020202020202020202020202020202020202020202"
+      },
+      "status": "EVIDENCED",
+      "translation_status": "ORIGINAL_FR"
+    },
+    {
+      "id": "e3",
+      "kind": "exclusion_labor_compliance",
+      "language": "fr",
+      "note": "Synthetic fixture only.",
+      "party_id": "prime",
+      "source": {
+        "generation": "synthetic-g1",
+        "locator": "synthetic://evidence/e3",
+        "sha256": "0303030303030303030303030303030303030303030303030303030303030303"
+      },
+      "status": "EVIDENCED",
+      "translation_status": "ORIGINAL_FR"
+    },
+    {
+      "id": "e4",
+      "kind": "gdpr_data_location",
+      "language": "fr",
+      "note": "Synthetic fixture only.",
+      "party_id": "prime",
+      "source": {
+        "generation": "synthetic-g1",
+        "locator": "synthetic://evidence/e4",
+        "sha256": "0404040404040404040404040404040404040404040404040404040404040404"
+      },
+      "status": "EVIDENCED",
+      "translation_status": "ORIGINAL_FR"
+    },
+    {
+      "id": "e5",
+      "kind": "professional_liability_insurance",
+      "language": "fr",
+      "note": "Synthetic fixture only.",
+      "party_id": "prime",
+      "source": {
+        "generation": "synthetic-g1",
+        "locator": "synthetic://evidence/e5",
+        "sha256": "0505050505050505050505050505050505050505050505050505050505050505"
+      },
+      "status": "EVIDENCED",
+      "translation_status": "ORIGINAL_FR"
+    },
+    {
+      "id": "e6",
+      "kind": "partner_capacity_commitment",
+      "language": "fr",
+      "note": "Synthetic fixture only.",
+      "party_id": "partner",
+      "source": {
+        "generation": "synthetic-g1",
+        "locator": "synthetic://evidence/e6",
+        "sha256": "0606060606060606060606060606060606060606060606060606060606060606"
+      },
+      "status": "EVIDENCED",
+      "translation_status": "ORIGINAL_FR"
+    },
+    {
+      "id": "e7",
+      "kind": "recent_ai_reference",
+      "language": "fr",
+      "note": "Synthetic fixture only.",
+      "party_id": "partner",
+      "source": {
+        "generation": "synthetic-g1",
+        "locator": "synthetic://evidence/e7",
+        "sha256": "0707070707070707070707070707070707070707070707070707070707070707"
+      },
+      "status": "EVIDENCED",
+      "translation_status": "ORIGINAL_FR"
+    },
+    {
+      "id": "e8",
+      "kind": "security_questionnaire",
+      "language": "fr",
+      "note": "Synthetic fixture only.",
+      "party_id": "partner",
+      "source": {
+        "generation": "synthetic-g1",
+        "locator": "synthetic://evidence/e8",
+        "sha256": "0808080808080808080808080808080808080808080808080808080808080808"
+      },
+      "status": "EVIDENCED",
+      "translation_status": "ORIGINAL_FR"
+    },
+    {
+      "id": "e9",
+      "kind": "ssi_charter",
+      "language": "fr",
+      "note": "Synthetic fixture only.",
+      "party_id": "partner",
+      "source": {
+        "generation": "synthetic-g1",
+        "locator": "synthetic://evidence/e9",
+        "sha256": "0909090909090909090909090909090909090909090909090909090909090909"
+      },
+      "status": "EVIDENCED",
+      "translation_status": "ORIGINAL_FR"
+    },
+    {
+      "id": "e10",
+      "kind": "confidentiality_commitment",
+      "language": "fr",
+      "note": "Synthetic fixture only.",
+      "party_id": "partner",
+      "source": {
+        "generation": "synthetic-g1",
+        "locator": "synthetic://evidence/e10",
+        "sha256": "0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a"
+      },
+      "status": "EVIDENCED",
+      "translation_status": "ORIGINAL_FR"
+    },
+    {
+      "id": "e11",
+      "kind": "ai_ethics_compliance",
+      "language": "fr",
+      "note": "Synthetic fixture only.",
+      "party_id": "partner",
+      "source": {
+        "generation": "synthetic-g1",
+        "locator": "synthetic://evidence/e11",
+        "sha256": "0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b"
+      },
+      "status": "EVIDENCED",
+      "translation_status": "ORIGINAL_FR"
+    },
+    {
+      "id": "e12",
+      "kind": "global_turnover",
+      "language": "fr",
+      "note": "Synthetic fixture only.",
+      "party_id": "partner",
+      "source": {
+        "generation": "synthetic-g1",
+        "locator": "synthetic://evidence/e12",
+        "sha256": "0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c"
+      },
+      "status": "EVIDENCED",
+      "translation_status": "ORIGINAL_FR"
+    },
+    {
+      "id": "e13",
+      "kind": "ai_domain_turnover_or_substitute",
+      "language": "fr",
+      "note": "Synthetic fixture only.",
+      "party_id": "partner",
+      "source": {
+        "generation": "synthetic-g1",
+        "locator": "synthetic://evidence/e13",
+        "sha256": "0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d"
+      },
+      "status": "EVIDENCED",
+      "translation_status": "ORIGINAL_FR"
+    },
+    {
+      "id": "e14",
+      "kind": "category_fit_2",
+      "language": "fr",
+      "note": "Synthetic fixture only.",
+      "party_id": "partner",
+      "source": {
+        "generation": "synthetic-g1",
+        "locator": "synthetic://evidence/e14",
+        "sha256": "0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e0e"
+      },
+      "status": "EVIDENCED",
+      "translation_status": "ORIGINAL_FR"
+    },
+    {
+      "id": "e15",
+      "kind": "category_fit_3",
+      "language": "fr",
+      "note": "Synthetic fixture only.",
+      "party_id": "partner",
+      "source": {
+        "generation": "synthetic-g1",
+        "locator": "synthetic://evidence/e15",
+        "sha256": "0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f0f"
+      },
+      "status": "EVIDENCED",
+      "translation_status": "ORIGINAL_FR"
+    },
+    {
+      "id": "e16",
+      "kind": "category_fit_4",
+      "language": "fr",
+      "note": "Synthetic fixture only.",
+      "party_id": "partner",
+      "source": {
+        "generation": "synthetic-g1",
+        "locator": "synthetic://evidence/e16",
+        "sha256": "1010101010101010101010101010101010101010101010101010101010101010"
+      },
+      "status": "EVIDENCED",
+      "translation_status": "ORIGINAL_FR"
+    }
+  ],
+  "partners": [
+    {
+      "commitment_evidence_id": "e6",
+      "display_name": "Fictional Partner SAS",
+      "id": "partner"
+    }
+  ],
+  "schema": "numih-ai-sad-admission-readiness/v1"
+}
