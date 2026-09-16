@@ -34,8 +34,8 @@ def approval_for(raw: dict, *, signing_key: bytes = TEST_APPROVAL_KEY, **overrid
         "run_id": event["run_id"],
         "event_id": event["event_id"],
         "action_generation": event["action_generation"],
-        "approved_at": "2026-09-16T18:00:00Z",
-        "expires_at": "2026-09-16T19:00:00Z",
+        "approved_at": "2020-01-01T00:00:00Z",
+        "expires_at": "2099-01-01T00:00:00Z",
     }
     value.update(overrides)
     value["auth_tag"] = hmac.new(
@@ -46,11 +46,10 @@ def approval_for(raw: dict, *, signing_key: bytes = TEST_APPROVAL_KEY, **overrid
     return value
 
 
-def prepare(rows, approvals, *, now="2026-09-16T18:30:00Z"):
+def prepare(rows, approvals):
     return prepare_candidate_payloads(
         rows,
         approvals,
-        now=now,
         approval_auth_key=TEST_APPROVAL_KEY,
     )
 
@@ -126,7 +125,10 @@ class HyperagentPilotAdapterTests(unittest.TestCase):
         payloads = prepare(rows, [approval])
         self.assertEqual(len(payloads), 1)
         self.assertTrue(payloads[0]["approval_validated"])
-        self.assertEqual(payloads[0]["approval_receipt_sha256"], hashlib.sha256(canonical_bytes(approval)).hexdigest())
+        self.assertEqual(
+            payloads[0]["approval_receipt_sha256"],
+            hashlib.sha256(canonical_bytes(approval)).hexdigest(),
+        )
         self.assertFalse(payloads[0]["outbound_authorized"])
         self.assertFalse(payloads[0]["provider_action_performed"])
         self.assertEqual(len(payloads[0]["candidate_sha256"]), 64)
@@ -141,18 +143,14 @@ class HyperagentPilotAdapterTests(unittest.TestCase):
         rows = fixture()
         action = next(row for row in rows if normalize_event(row)["kind"] == "ACTION_REQUEST")
         approval = approval_for(action)
-        approval["expires_at"] = "2026-09-16T20:00:00Z"
+        approval["expires_at"] = "2099-02-01T00:00:00Z"
         self.assertEqual(prepare(rows, [approval]), [])
 
     def test_missing_retained_approval_authority_key_fails_closed(self):
         rows = fixture()
         action = next(row for row in rows if normalize_event(row)["kind"] == "ACTION_REQUEST")
         self.assertEqual(
-            prepare_candidate_payloads(
-                rows,
-                [approval_for(action)],
-                now="2026-09-16T18:30:00Z",
-            ),
+            prepare_candidate_payloads(rows, [approval_for(action)]),
             [],
         )
 
@@ -172,13 +170,15 @@ class HyperagentPilotAdapterTests(unittest.TestCase):
             [],
         )
 
-    def test_stale_authenticated_approval_fails_closed_to_zero(self):
+    def test_stale_authenticated_approval_fails_closed_against_process_utc(self):
         rows = fixture()
         action = next(row for row in rows if normalize_event(row)["kind"] == "ACTION_REQUEST")
-        self.assertEqual(
-            prepare(rows, [approval_for(action)], now="2026-09-16T19:00:01Z"),
-            [],
+        stale = approval_for(
+            action,
+            approved_at="2000-01-01T00:00:00Z",
+            expires_at="2001-01-01T00:00:00Z",
         )
+        self.assertEqual(prepare(rows, [stale]), [])
 
     def test_foreign_authenticated_approval_fails_entire_set_closed(self):
         rows = fixture()
@@ -202,7 +202,7 @@ class HyperagentPilotAdapterTests(unittest.TestCase):
     def test_noncanonical_utc_approval_fails_closed(self):
         rows = fixture()
         action = next(row for row in rows if normalize_event(row)["kind"] == "ACTION_REQUEST")
-        approval = approval_for(action, approved_at="2026-09-16T14:00:00-04:00")
+        approval = approval_for(action, approved_at="2020-01-01T00:00:00-00:00")
         self.assertEqual(prepare(rows, [approval]), [])
 
     def test_short_approval_authority_key_fails_closed(self):
@@ -213,7 +213,6 @@ class HyperagentPilotAdapterTests(unittest.TestCase):
             prepare_candidate_payloads(
                 rows,
                 [approval],
-                now="2026-09-16T18:30:00Z",
                 approval_auth_key=b"too-short",
             ),
             [],
