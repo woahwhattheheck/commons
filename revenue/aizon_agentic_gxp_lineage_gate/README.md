@@ -32,3 +32,13 @@ The deterministic acceptance fixture evaluates 100 synthetic artifacts: 80 clean
 ## Boundary
 
 This module makes **no** GAMP 5, GMP, FDA, validation, quality-release, or regulatory-compliance certification. It never approves or releases a manufacturing batch, deploys a model, calls a provider, processes buyer data, or substitutes for a quality person/reviewer. It is pre-integration evidence and acceptance infrastructure only.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
