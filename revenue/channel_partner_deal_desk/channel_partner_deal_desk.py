@@ -220,6 +220,57 @@ CREATE INDEX IF NOT EXISTS idx_deal_events_deal ON deal_events(deal_id, occurred
 """
 
 
+_EVENT_ORDER = {
+    "BUYER_ACCEPTED": 0,
+    "BUYER_DECLINED": 0,
+    "PAYMENT_SETTLED": 1,
+    "PAYMENT_REVERSED": 2,
+    "PARTNER_PAYMENT_RECORDED": 3,
+    "DEAL_CANCELLED": 4,
+}
+
+
+def _validate_event_timeline(deal: Mapping[str, Any], terms: Mapping[str, Any], events: Iterable[Mapping[str, Any]]) -> None:
+    registered_at = _parse_utc(deal["registered_at"])
+    ordered = sorted(events, key=lambda row: (row["occurred_at"], _EVENT_ORDER[row["kind"]], row["event_id"]))
+    disposition = False
+    accepted = False
+    cancelled = False
+    settled = 0
+    reversed_minor = 0
+    paid = 0
+    for row in ordered:
+        if _parse_utc(row["occurred_at"]) < registered_at:
+            raise DeskError("event cannot predate deal registration")
+        if cancelled:
+            raise DeskError("cancelled deal cannot have later events")
+        kind = row["kind"]
+        if kind in {"BUYER_ACCEPTED", "BUYER_DECLINED"}:
+            if disposition:
+                raise DeskError("buyer disposition already recorded")
+            disposition = True
+            accepted = kind == "BUYER_ACCEPTED"
+            continue
+        if kind == "DEAL_CANCELLED":
+            cancelled = True
+            continue
+        if kind in AMOUNT_EVENTS:
+            if not accepted:
+                raise DeskError("financial event requires buyer acceptance evidence")
+            amount = int(row["amount_minor"])
+            if kind == "PAYMENT_SETTLED":
+                settled += amount
+            elif kind == "PAYMENT_REVERSED":
+                reversed_minor += amount
+                if reversed_minor > settled:
+                    raise DeskError("reversals cannot exceed prior settled payment evidence")
+            elif kind == "PARTNER_PAYMENT_RECORDED":
+                paid += amount
+            due = ((settled - reversed_minor) * int(terms["commission_bps"])) // 10_000
+            if paid > due:
+                raise DeskError("recorded partner payment exceeds commission supported at that event time")
+
+
 class DealDesk:
     def __init__(self, db_path: str | os.PathLike[str]):
         self.db_path = str(db_path)
@@ -497,6 +548,12 @@ class DealDesk:
                 if reversed_minor > settled:
                     raise DeskError("reversals cannot exceed settled payment evidence")
             terms = self.conn.execute("SELECT * FROM partner_terms WHERE terms_id=?", (deal["terms_id"],)).fetchone()
+            candidate = {
+                "event_id": event_id, "deal_id": deal_id, "kind": kind, "occurred_at": occurred_at,
+                "amount_minor": amount_minor, "currency": currency, "source_ref": source_ref,
+                "source_sha256": source_sha256, "event_sha256": event_sha256,
+            }
+            _validate_event_timeline(deal, terms, [*events, candidate])
             net = settled - reversed_minor
             due = (net * terms["commission_bps"]) // 10_000
             if kind == "PARTNER_PAYMENT_RECORDED":
@@ -524,6 +581,7 @@ class DealDesk:
         events = list(self.conn.execute(
             "SELECT * FROM deal_events WHERE deal_id=? ORDER BY occurred_at,event_id", (deal_id,)
         ))
+        _validate_event_timeline(deal, terms, events)
         accepted_rows = [row for row in events if row["kind"] == "BUYER_ACCEPTED"]
         declined = any(row["kind"] == "BUYER_DECLINED" for row in events)
         cancelled = any(row["kind"] == "DEAL_CANCELLED" for row in events)
