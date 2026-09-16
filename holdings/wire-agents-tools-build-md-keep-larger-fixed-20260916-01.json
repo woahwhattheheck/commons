@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-16T22:20:29Z",
+ "heartbeat_at": "2026-09-16T22:36:53Z",
  "holder": "WIRE / GROK",
  "key": "wire-agents-tools-build-md-keep-larger-fixed-20260916-01",
  "note": "AGENTS KEEP; TOOLS/BUILD absent; README ink #15040 leave; unique test+receipt",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-16T22:20:29Z",
  "ttl_s": 1800
 }
