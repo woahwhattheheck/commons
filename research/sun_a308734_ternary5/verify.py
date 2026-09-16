@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Exact finite checks for the A308661 / A308734 ternary-5 research lane.
 
-This module certifies only the finite falsifiers and arithmetic support used in
-README.md. It does not claim to prove the infinite conjecture.
+This module certifies only finite shortcut falsifiers and arithmetic support.
+It does not claim to prove the infinite conjecture.
 """
 from __future__ import annotations
 
+from collections.abc import Iterable
 from math import isqrt
 
 
@@ -63,28 +64,85 @@ def residual(N: int, a: int, b: int) -> int:
     return N - (4**a) * (25**b)
 
 
+def _normalize_b_values(b_values: Iterable[int]) -> tuple[int, ...]:
+    values = tuple(b_values)
+    if not values:
+        raise ValueError("b-menu must not be empty")
+    if any(
+        not isinstance(value, int) or isinstance(value, bool) or value < 0
+        for value in values
+    ):
+        raise ValueError("b-menu values must be nonnegative integers")
+    return tuple(sorted(set(values)))
+
+
+def bounded_b_menu_falsifier(
+    N: int, b_values: Iterable[int]
+) -> list[tuple[int, int, int, tuple[int, ...]]]:
+    """Return every legal residual for a menu, requiring each one to fail."""
+    if N <= 0 or N % 12 != 5:
+        raise ValueError("N must be positive and 5 mod 12")
+    menu = _normalize_b_values(b_values)
+    rows: list[tuple[int, int, int, tuple[int, ...]]] = []
+    for b in menu:
+        pow25 = 1
+        for _ in range(b):
+            pow25 *= 25
+            if 4 * pow25 >= N:
+                break
+        else:
+            a = 1
+            pow4 = 4
+            while pow4 * pow25 < N:
+                m = N - pow4 * pow25
+                support = bad_support(m)
+                if not support:
+                    raise AssertionError(
+                        f"{N} is not a falsifier for b-menu {menu}: "
+                        f"a={a}, b={b}, residual={m}"
+                    )
+                rows.append((a, b, m, support))
+                a += 1
+                pow4 *= 4
+    return rows
+
+
 def bounded_b_falsifier(
     N: int, max_b: int
 ) -> list[tuple[int, int, int, tuple[int, ...]]]:
     """Return every positive residual at b <= max_b, requiring all to fail."""
-    if N % 12 != 5:
-        raise ValueError("N must be 5 mod 12")
-    rows: list[tuple[int, int, int, tuple[int, ...]]] = []
-    a = 1
-    while 4**a < N:
-        for b in range(max_b + 1):
-            m = residual(N, a, b)
-            if m <= 0:
-                continue
-            support = bad_support(m)
-            if not support:
-                raise AssertionError(
-                    f"{N} is not a falsifier for b <= {max_b}: "
-                    f"a={a}, b={b}, residual={m}"
-                )
-            rows.append((a, b, m, support))
-        a += 1
+    if max_b < 0:
+        raise ValueError("max_b must be nonnegative")
+    rows = bounded_b_menu_falsifier(N, range(max_b + 1))
+    if not rows:
+        raise AssertionError("bounded menu produced no legal residual")
     return rows
+
+
+def fixed_menu_size_at_most_two_falsifier(
+    b_values: Iterable[int],
+) -> tuple[int, list[tuple[int, int, int, tuple[int, ...]]], tuple[int, int, int, int]]:
+    """Mechanize the complete case split for every fixed menu of size <= 2."""
+    menu = _normalize_b_values(b_values)
+    if len(menu) > 2:
+        raise ValueError("menu must have size at most two")
+
+    if 0 not in menu:
+        N, witness = 5, (0, 1, 1, 0)
+    elif menu == (0,):
+        N, witness = 12_233, (18, 97, 1, 2)
+    elif menu == (0, 1):
+        N, witness = 1_595_477, (831, 946, 2, 2)
+    elif menu == (0, 2):
+        N, witness = 1_750_109, (403, 1260, 1, 1)
+    else:
+        N, witness = 12_233, (18, 97, 1, 2)
+
+    rows = bounded_b_menu_falsifier(N, menu)
+    x, y, a, b = witness
+    if b in menu or x * x + y * y + (2**a * 5**b) ** 2 != N:
+        raise AssertionError(("invalid outside-menu rescue", menu, N, witness))
+    return N, rows, witness
 
 
 def theorem_support_checks() -> None:
@@ -124,6 +182,30 @@ def finite_regression_checks() -> None:
     rep = two_square_representation(residual(1_595_477, 2, 2))
     if rep != (831, 946):
         raise AssertionError(rep)
+
+    # The missing nonconsecutive menu {0,2} is also exactly falsified.
+    rows = bounded_b_menu_falsifier(1_750_109, (0, 2))
+    if len(rows) != 15:
+        raise AssertionError(len(rows))
+    rep = two_square_representation(residual(1_750_109, 1, 1))
+    if rep != (403, 1260):
+        raise AssertionError(rep)
+
+    # Exercise every branch of the quantified size-at-most-two case split,
+    # including a huge exponent that must be rejected without constructing 25^b.
+    expected = (
+        ((1,), 5, 0),
+        ((1, 2), 5, 0),
+        ((0,), 12_233, 6),
+        ((0, 1), 1_595_477, 17),
+        ((0, 2), 1_750_109, 15),
+        ((0, 3), 12_233, 6),
+        ((0, 100_000), 12_233, 6),
+    )
+    for menu, target, row_count in expected:
+        N, rows, _ = fixed_menu_size_at_most_two_falsifier(menu)
+        if (N, len(rows)) != (target, row_count):
+            raise AssertionError((menu, N, len(rows)))
 
 
 def sampled_disjointness_checks(limit: int = 100_000) -> None:
