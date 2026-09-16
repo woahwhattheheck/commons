@@ -34,7 +34,9 @@ def _sorted_unique(values: Iterable[str]) -> list[str]:
 
 
 def _canonical_json(value: Any) -> str:
-    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+    # ASCII-escaped canonical JSON keeps valid JSON strings containing lone
+    # surrogates hashable without leaking a raw UnicodeEncodeError at UTF-8.
+    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
 
 
 @dataclass(frozen=True)
