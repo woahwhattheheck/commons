@@ -52,6 +52,30 @@ class DescriptorCustodyTests(unittest.TestCase):
             self.assertFalse(internal.exists())
             self.assertFalse(public.exists())
 
+    def test_mid_write_fsync_failure_removes_partial_file_and_directories(self):
+        compiled = compiler.compile_proof(base_record())
+        real_fsync = custody.os.fsync
+        failed = False
+
+        def fail_first_regular_file(fd):
+            nonlocal failed
+            mode = os.fstat(fd).st_mode
+            if not failed and not __import__("stat").S_ISDIR(mode):
+                failed = True
+                raise OSError("synthetic file fsync failure")
+            return real_fsync(fd)
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            internal = root / "internal"
+            public = root / "public"
+            with mock.patch.object(custody.os, "fsync", side_effect=fail_first_regular_file):
+                with self.assertRaises(OSError):
+                    compiler.write_outputs(compiled, internal, public)
+            self.assertTrue(failed)
+            self.assertFalse(internal.exists())
+            self.assertFalse(public.exists())
+
     @unittest.skipUnless(hasattr(os, "symlink"), "symlink unsupported")
     def test_path_replacement_is_detected_and_redirect_target_stays_empty(self):
         compiled = compiler.compile_proof(base_record())
