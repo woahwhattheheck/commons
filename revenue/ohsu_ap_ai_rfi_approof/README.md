@@ -89,5 +89,7 @@ packets proving no generated result can promote external authority.
 `test_ohsu_ap_ai_rfi_approof_authority.py` is the authority-mutation predecessor
 suite. It attempts both mutation and rebinding through every importable authority
 view, compares all supported compiler/verifier entrypoints, and proves promoted
-projections are rejected. `.github/workflows/ohsu-ap-ai-rfi-approof.yml` runs the
-full APProof suite under both normal Python and `python -O` on every relevant PR.
+projections are rejected. The repository's generic root-test workflow discovers
+both APProof test modules; the authority repair was additionally exercised under
+normal Python and `python -O` before publication without adding a permanent
+workflow beyond the repository's active-workflow budget.
