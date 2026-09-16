@@ -1,7 +1,7 @@
 {
   "schema": "commons.workflow-surface.v1",
   "source_commit": "4592104ca9fd37f7546b0b39f01badb83f8a1300",
-  "source_workflows": 404,
+  "source_workflows": 405,
   "max_active_workflows": 67,
   "retained": [
     ".github/workflows/affordable-housing-compliance-demo.yml",
@@ -1161,8 +1161,8 @@
     {
       "source": ".github/workflows/service-deal-economics.yml",
       "archive": "ci/workflow-recipes/service-deal-economics.yml",
-      "sha256": "26593a6f289c2c8dcc6b71be43d020c6dc0a5ba402e017fcbf689bede229b8f6",
-      "bytes": 1235
+      "sha256": "3a648438dc34ce1f62b82376f3754948bc13d20c7ea6def180120a3431486951",
+      "bytes": 1339
     },
     {
       "source": ".github/workflows/signoz-rightnow-evidence-zolv4k9.yml",
@@ -2063,6 +2063,12 @@
       "archive": "ci/workflow-recipes/washington-county-ar-2026-21.yml",
       "sha256": "013ca733cf988be1e17be886f7b4475048c41f69c85cf0ecb683fbcec80b21ba",
       "bytes": 1427
+    },
+    {
+      "source": ".github/workflows/water4all-2026-swm.yml",
+      "archive": "ci/workflow-recipes/water4all-2026-swm.yml",
+      "sha256": "5d361b63dc702c786de9bc7f284dc82f016bcbddce517c687d107096bfd8b88f",
+      "bytes": 1540
     },
     {
       "source": ".github/workflows/wri-open-timber-proposal.yml",
