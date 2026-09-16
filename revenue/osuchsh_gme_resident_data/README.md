@@ -23,7 +23,7 @@ This isolated, **synthetic-only** package demonstrates the system boundaries nee
 
 ## Migration authority boundary
 
-`MigrationPlan` and the canonical SHA-256 helper remain public inspectable data surfaces; their self-consistency is **not** treated as authorization. A store that will perform an initial migration must be constructed with the owner-supplied source generation. The store deep-copies and validates those rows, retains them privately, recompiles them when `apply_migration()` is called, and requires the supplied plan to equal that retained-source result exactly before any record can be admitted.
+`MigrationPlan` and the canonical SHA-256 helper remain public inspectable data surfaces; their self-consistency is **not** treated as authorization. A store that will perform an initial migration must be constructed with the owner-supplied source generation. The store deep-copies and validates those rows, retains them privately, and recompiles **only those retained rows** when `apply_migration()` is called. Current-positive `apply_migration()`, `verify_audit()`, and `receipt()` surfaces do not accept a caller-selected `source_generation`. The supplied plan must equal the retained-source compile result exactly before any record can be admitted.
 
 This blocks the reviewed predecessor where conflicting A/B rows exist but a caller selects one side, erases `conflicts`, and correctly recomputes the public digest. The forged result is internally self-consistent but does not match the store's retained source generation and is rejected. A bare/unbound store cannot apply an initial migration plan.
 
