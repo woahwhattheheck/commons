@@ -130,9 +130,9 @@ def publish_bundle(directory: os.PathLike[str] | str, files: dict[str, bytes]) -
                     raise InvalidState("bundle member bytes changed during publication")
             finally:
                 os.close(fd)
-        check_fd, check_identity = _open_dir_nofollow(directory)
-        os.close(check_fd)
-        if check_identity != identity:
+        reopened_fd, reopened_identity = _open_dir_nofollow(directory)
+        os.close(reopened_fd)
+        if reopened_identity != identity:
             raise InvalidState("output directory identity changed during publication")
         return {"published": True, "files": {name: sha256_bytes(data) for name, data in sorted(files.items())}}
     except Exception:
@@ -166,9 +166,9 @@ def read_bundle(directory: os.PathLike[str] | str) -> dict[str, bytes]:
                 out[name] = _read_fd_all(fd, MAX_JSON_BYTES * 5)
             finally:
                 os.close(fd)
-        check_fd, check_identity = _open_dir_nofollow(directory)
-        os.close(check_fd)
-        if check_identity != identity:
+        reopened_fd, reopened_identity = _open_dir_nofollow(directory)
+        os.close(reopened_fd)
+        if reopened_identity != identity:
             raise InvalidState("bundle directory identity changed while reading")
         return out
     finally:

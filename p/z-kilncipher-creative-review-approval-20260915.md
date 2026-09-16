@@ -40,7 +40,7 @@ The bounded modules are intentional publication and review units: validation, ev
 | `_events.py` | 1,571 | `369761644db7f8bf9527f06bed83b698ce1a206f5211cc02a223fdd6e893ce94` | `841dda2e8529964df78d1612c779a206b3ada29b` |
 | `_projection.py` | 17,792 | `216d6e6428206e4841410da52980d82feb9b634a4ae49c05d71f53cd756d8ec7` | `7938b41b5a7b006182e2b6b18b003f880aa70e1d` |
 | `_render.py` | 5,450 | `b141abeed64f8cac34593e4b8f43125fbfd47587fafad69b24638acaef0230b2` | `3dfedf462e4f6795fd300a966c7454c0ca239f39` |
-| `_bundle.py` | 8,586 | `487d2cd7b1bbb8f055b2b3e1d1a04fd63423da46877802c0ee710be9eda105fe` | `60567762321f8783eed15090ad675a4451a0275b` |
+| `_bundle.py` | 8,610 | `33fb2a3579b75ac237d6bf01254d41b025d6dc0ef91e9f215c50bb914e40b84c` | `d8a0a9e87e71e8b8bdf002a17e19d76fd0f4747b` |
 | `_store_base.py` | 14,301 | `48bc00658f882cdea41eec17c3112f065ae1c9e4b09bb0653a70e9e1001dca2a` | `23e8232c945297450160c3bc64048077e94534ef` |
 | `_review.py` | 12,685 | `a1b7c0f7b6d83e1bfef3952f08a5969d9e6b65cd3b6793cd5cdad174702e5f68` | `f5c303bb6ea74064b6491fec936405a7ea7398b9` |
 | `_manifest.py` | 7,279 | `04e47724d8f594c2f334daf3386ac41994437049c57af1546bd58710627ab4b0` | `06dca5197fb5fef1abc1b44149922fe57bc495d9` |
@@ -70,10 +70,16 @@ python desk.py verify --output-dir .../approved-packet              VALID
 Synthetic end-to-end result:
 
 - campaign state: `READY_FOR_OWNER_HANDOFF`
-- manifest SHA-256: `01ccd1225a92bde6785886a8a52fb27954016f167947fd57a7f83e159e4c9a83`
-- receipt SHA-256: `e0484ee95faa88f653b97ee5a2ec8ba4be6fb6d2ab09e79904bc3b2e6429fefa`
+- manifest SHA-256: `0e7221eacab5ae4c314f56aa4ebc8c0799585a0734ba7322a584ad701677f978`
+- receipt SHA-256: `0e71fe80b028e77f5a8e383e8242cd0946d97bac4ce2ab7079bab72292e12baf`
 - exported files: exact deterministic five-file set
 - semantic verifier: `valid:true`
+
+CI repair evidence:
+
+- open-door-guard initially classified local variables named `check_fd` and `check_identity` as admission-gate helpers;
+- the variables were renamed to `reopened_fd` / `reopened_identity` with no semantic change;
+- the complete compile, tabnanny, 27-test normal, 27-test optimized, demo, and verifier proof surface was rerun on the repaired exact bytes before publication.
 
 Static boundary checks:
 
