@@ -5,6 +5,8 @@ The frozen core preserves the historical compiler and replay contracts. Current
 checkout truth is authorized only by a fresh Stripe readback emitted by a fixed,
 host-owned collector outside the repository trust domain. Repository-retained
 receipts remain audit evidence only and cannot mint current provider truth.
+Human reply and scope-acceptance truth is captured from one canonical source
+generation and bound into the final control manifest.
 """
 
 from __future__ import annotations
@@ -13,6 +15,7 @@ import hashlib
 import json
 import subprocess
 import sys
+import threading
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
@@ -36,12 +39,27 @@ CHECKOUT_CURRENT_MAX_AGE = timedelta(hours=24)
 CHECKOUT_CURRENT_COLLECTOR = Path("/usr/local/libexec/commons-stripe-current-readback")
 CHECKOUT_CURRENT_COLLECTOR_TIMEOUT_SECONDS = 10
 
-_HISTORICAL_VALIDATE_CHECKOUT_AUTHORITY = _core.validate_checkout_authority
-_HISTORICAL_VALIDATE_CATALOG = _core.validate_catalog
-# importlib test copies re-exec this file under new module names. Capture the
-# frozen core compiler once so later copies cannot wrap a previous wrapper.
-_ORIGINAL_BUILD_CONTROL = getattr(_core, "_UNWRAPPED_BUILD_CONTROL", _core.build_control)
-_core._UNWRAPPED_BUILD_CONTROL = _ORIGINAL_BUILD_CONTROL
+# Hostile tests exec this wrapper under distinct module names in one process.
+# Preserve the true core functions and a shared re-entrant lock exactly once
+# so later copies cannot capture a sibling wrapper as historical, recurse
+# through an unmocked collector, or race hook assignment.
+_SENTINEL_CHECKOUT = "_commons_right_now_historical_validate_checkout_authority"
+_SENTINEL_CATALOG = "_commons_right_now_historical_validate_catalog"
+_SENTINEL_BUILD = "_UNWRAPPED_BUILD_CONTROL"
+_SENTINEL_LOCK = "_commons_right_now_build_lock"
+if not hasattr(_core, _SENTINEL_CHECKOUT):
+    setattr(_core, _SENTINEL_CHECKOUT, _core.validate_checkout_authority)
+if not hasattr(_core, _SENTINEL_CATALOG):
+    setattr(_core, _SENTINEL_CATALOG, _core.validate_catalog)
+if not hasattr(_core, _SENTINEL_BUILD):
+    setattr(_core, _SENTINEL_BUILD, _core.build_control)
+if not hasattr(_core, _SENTINEL_LOCK):
+    setattr(_core, _SENTINEL_LOCK, threading.RLock())
+
+_HISTORICAL_VALIDATE_CHECKOUT_AUTHORITY = getattr(_core, _SENTINEL_CHECKOUT)
+_HISTORICAL_VALIDATE_CATALOG = getattr(_core, _SENTINEL_CATALOG)
+_ORIGINAL_BUILD_CONTROL = getattr(_core, _SENTINEL_BUILD)
+_CORE_BUILD_LOCK = getattr(_core, _SENTINEL_LOCK)
 
 
 def _current_utc() -> datetime:
@@ -228,33 +246,34 @@ def validate_current_checkout_readback(
 
 
 def build_checkout_authority(catalog_as_of: str) -> dict[str, Any]:
-    """Require historical integrity plus a fresh credential-host Stripe read."""
+    """Require fresh credential-host truth plus historical integrity.
+
+    Currentness is evaluated before retained chronology so stale live evidence
+    cannot be masked by an unrelated historical catalog boundary failure.
+    """
 
     try:
         public_page = AUTOPSY_PUBLIC_PAGE_PATH.read_text(encoding="utf-8")
     except OSError as error:
         raise ControlError(f"cannot read {AUTOPSY_PUBLIC_PAGE_PATH}: {error}") from error
 
+    provider_readback = _credential_host_readback()
+    current = validate_current_checkout_readback(
+        provider_readback,
+        current_moment=_current_utc(),
+    )
     historical = _HISTORICAL_VALIDATE_CHECKOUT_AUTHORITY(
         read_object(AUTOPSY_PROVIDER_PATH),
         public_page,
         catalog_as_of,
     )
 
-    provider_readback = _credential_host_readback()
-    current = validate_current_checkout_readback(
-        provider_readback,
-        current_moment=_current_utc(),
-    )
     result = dict(historical)
     result["current_observed_at_utc"] = current["observed_at_utc"]
     result["current_readback_sha256"] = current["readback_sha256"]
     result["current_max_age_seconds"] = current["max_age_seconds"]
     result["current_authority_boundary"] = current["authority_boundary"]
     return result
-
-
-_core.build_checkout_authority = build_checkout_authority
 
 
 def validate_catalog(
@@ -272,9 +291,6 @@ def validate_catalog(
         raise ControlError("checkout authority override must be an object")
     current = build_checkout_authority(catalog.get("as_of"))
     return _HISTORICAL_VALIDATE_CATALOG(catalog, current)
-
-
-_core.validate_catalog = validate_catalog
 
 
 def _compose_human_outcome_authority(control: dict[str, Any]) -> dict[str, Any]:
@@ -350,13 +366,31 @@ def _compose_human_outcome_authority(control: dict[str, Any]) -> dict[str, Any]:
     return control
 
 
+def _compile_core_control() -> dict[str, Any]:
+    """Run the frozen core with this module's authority hooks in isolation."""
+
+    with _CORE_BUILD_LOCK:
+        previous_checkout = _core.build_checkout_authority
+        previous_catalog = _core.validate_catalog
+        try:
+            _core.build_checkout_authority = build_checkout_authority
+            _core.validate_catalog = validate_catalog
+            return _ORIGINAL_BUILD_CONTROL()
+        finally:
+            _core.build_checkout_authority = previous_checkout
+            _core.validate_catalog = previous_catalog
+
+
 def build_control() -> dict[str, Any]:
     """Compile current checkout truth and canonical human-response authority."""
 
-    return _compose_human_outcome_authority(_ORIGINAL_BUILD_CONTROL())
+    return _compose_human_outcome_authority(_compile_core_control())
 
 
-_core.build_control = build_control
+with _CORE_BUILD_LOCK:
+    _core.build_checkout_authority = build_checkout_authority
+    _core.validate_catalog = validate_catalog
+    _core.build_control = build_control
 validate_checkout_authority = _HISTORICAL_VALIDATE_CHECKOUT_AUTHORITY
 
 

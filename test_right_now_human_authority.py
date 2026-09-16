@@ -1,8 +1,11 @@
 from __future__ import annotations
 
 import copy
+import importlib.util
+import json
 import tempfile
 import unittest
+from datetime import datetime, timezone
 from pathlib import Path
 from unittest.mock import patch
 
@@ -282,6 +285,52 @@ class RightNowHumanAuthorityCompositionTests(unittest.TestCase):
             with self.assertRaisesRegex(revenue.ControlError, "source digest drift"):
                 revenue._compose_human_outcome_authority(control)
         self.assertEqual(control, snapshot)
+
+
+class RightNowHumanAuthorityIsolationTests(unittest.TestCase):
+    def test_real_control_uses_own_hooks_after_sibling_wrapper_load(self) -> None:
+        previous = (
+            revenue._core.build_checkout_authority,
+            revenue._core.validate_catalog,
+            revenue._core.build_control,
+        )
+        spec = importlib.util.spec_from_file_location(
+            "right_now_revenue_human_authority_sibling",
+            ROOT / "host" / "right_now_revenue.py",
+        )
+        self.assertIsNotNone(spec)
+        self.assertIsNotNone(spec.loader)
+        sibling = importlib.util.module_from_spec(spec)
+        readback = json.loads(
+            revenue.CHECKOUT_CURRENT_PATH.read_text(encoding="utf-8")
+        )
+        fresh_now = datetime(2026, 9, 14, 1, 40, 0, tzinfo=timezone.utc)
+        try:
+            spec.loader.exec_module(sibling)
+            with (
+                patch.object(
+                    revenue, "_credential_host_readback", return_value=readback
+                ),
+                patch.object(revenue, "_current_utc", return_value=fresh_now),
+            ):
+                actual = revenue.build_control()
+        finally:
+            (
+                revenue._core.build_checkout_authority,
+                revenue._core.validate_catalog,
+                revenue._core.build_control,
+            ) = previous
+
+        self.assertIs(actual["truth"]["active_chargeable_checkout"], True)
+        bound = {row["path"]: row["sha256"] for row in actual["source_receipts"]}
+        expected_paths = {
+            path.relative_to(human.ROOT).as_posix()
+            for path in human.source_paths()
+        }
+        self.assertTrue(expected_paths.issubset(bound))
+        catalog = revenue.read_object(revenue.CATALOG_PATH)
+        captured = human.capture_human_truth(catalog["truth"])
+        self.assertGreaterEqual(actual["as_of"], captured["as_of"])
 
 
 if __name__ == "__main__":
