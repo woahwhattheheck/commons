@@ -102,7 +102,12 @@ def _probe_retained_root(
     it on temporary paths to exercise the filesystem predecessor classes.
     """
     source = f"{directory.rstrip('/')}/{filename}"
-    if os.name != "posix" or not os.path.isabs(directory):
+    required_posix_flags = ("O_CLOEXEC", "O_NOFOLLOW", "O_NONBLOCK", "O_DIRECTORY")
+    if (
+        os.name != "posix"
+        or not os.path.isabs(directory)
+        or any(not hasattr(os, name) for name in required_posix_flags)
+    ):
         return _root_result(
             value=None,
             custody="UNAVAILABLE",
@@ -110,11 +115,8 @@ def _probe_retained_root(
             source=source,
         )
 
-    required_flags = os.O_RDONLY
-    for name in ("O_CLOEXEC", "O_NOFOLLOW", "O_NONBLOCK"):
-        required_flags |= getattr(os, name, 0)
-    dir_flags = os.O_RDONLY | getattr(os, "O_DIRECTORY", 0) | getattr(os, "O_CLOEXEC", 0)
-    dir_flags |= getattr(os, "O_NOFOLLOW", 0)
+    required_flags = os.O_RDONLY | os.O_CLOEXEC | os.O_NOFOLLOW | os.O_NONBLOCK
+    dir_flags = os.O_RDONLY | os.O_DIRECTORY | os.O_CLOEXEC | os.O_NOFOLLOW
 
     opened: list[int] = []
     leaf_fd: int | None = None
@@ -147,8 +149,8 @@ def _probe_retained_root(
             raise OSError("trusted root owner mismatch")
         if leaf_before.st_nlink != 1:
             raise OSError("trusted root must have one link")
-        if stat.S_IMODE(leaf_before.st_mode) & 0o077:
-            raise OSError("trusted root must not grant group/other permissions")
+        if stat.S_IMODE(leaf_before.st_mode) not in {0o400, 0o600}:
+            raise OSError("trusted root mode must be owner-read-only or owner-private")
         if leaf_before.st_size < 64 or leaf_before.st_size > _MAX_ROOT_BYTES:
             raise OSError("trusted root size invalid")
 
@@ -295,13 +297,17 @@ def _build_current_bytes_evaluator() -> Callable[[bytes], dict[str, Any]]:
         interpreter_options.append("-O")
     stdout_pipe = subprocess.PIPE
     stderr_pipe = subprocess.PIPE
+    subprocess_error = subprocess.SubprocessError
     qualification_error = QualificationError
+    loads = json.loads
+    current_schema = CURRENT_SCHEMA
+    input_limit = _MAX_INPUT_BYTES
 
     def evaluate_current_bytes(raw: bytes) -> dict[str, Any]:
         """Evaluate exact JSON bytes in a fresh isolated verifier process."""
         if not isinstance(raw, (bytes, bytearray)):
             raise qualification_error("current evaluation requires bytes")
-        if len(raw) > _MAX_INPUT_BYTES:
+        if len(raw) > input_limit:
             raise qualification_error(
                 "qualification bundle exceeds current verifier byte limit"
             )
@@ -315,7 +321,7 @@ def _build_current_bytes_evaluator() -> Callable[[bytes], dict[str, Any]]:
                 timeout=15,
                 env={"PYTHONHASHSEED": "0"},
             )
-        except (OSError, subprocess.SubprocessError) as exc:
+        except (OSError, subprocess_error) as exc:
             raise qualification_error(
                 "isolated current verifier failed to start"
             ) from exc
@@ -325,12 +331,12 @@ def _build_current_bytes_evaluator() -> Callable[[bytes], dict[str, Any]]:
                 detail or "isolated current verifier rejected input"
             )
         try:
-            receipt = json.loads(proc.stdout.decode("utf-8"))
+            receipt = loads(proc.stdout.decode("utf-8"))
         except (UnicodeError, json.JSONDecodeError) as exc:
             raise qualification_error(
                 "isolated current verifier returned invalid JSON"
             ) from exc
-        if not isinstance(receipt, dict) or receipt.get("schema") != CURRENT_SCHEMA:
+        if not isinstance(receipt, dict) or receipt.get("schema") != current_schema:
             raise qualification_error(
                 "isolated current verifier returned wrong receipt schema"
             )

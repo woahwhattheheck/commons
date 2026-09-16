@@ -131,6 +131,26 @@ class CurrentAuthoritySurfaceTests(unittest.TestCase):
                 side_effect=forbidden,
                 create=True,
             ),
+            mock.patch.object(
+                current_authority,
+                "_probe_retained_root",
+                side_effect=forbidden,
+            ),
+            mock.patch.object(
+                current_authority,
+                "_candidate_attestation_sha256",
+                side_effect=forbidden,
+            ),
+            mock.patch.object(
+                current_authority.json,
+                "loads",
+                side_effect=forbidden,
+            ),
+            mock.patch.object(
+                current_authority,
+                "CURRENT_SCHEMA",
+                "attacker-current-schema",
+            ),
             mock.patch.object(current_authority.subprocess, "run", side_effect=forbidden),
         ):
             receipt = evaluate_current(payload)
