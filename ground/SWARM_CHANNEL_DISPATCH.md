@@ -81,3 +81,15 @@ python -O -m unittest tests.test_swarm_channel_dispatch tests.test_swarm_channel
 ```
 
 The suite covers specialist routing, relevance fencing, zero-target exclusion, hard channel capacity, hard verified-target cardinality, already-claimed target exhaustion, target-limited spillover, input-order invariance, strict schema rejection, paused channels, authority falsehoods, source mutation, receipt tampering, and the CLI round trip.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite newbot-ground-md-live-cash-20260916-09 — do not remint.
