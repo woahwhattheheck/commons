@@ -20,6 +20,7 @@ import argparse
 import json
 import os
 import re
+import stat
 import sys
 
 
@@ -115,6 +116,7 @@ def measure_from_listing(ts, names, declared_id=None, slack_write=True):
 
 
 def measure_posts_dir(ts, posts_dir, declared_id=None, slack_write=True):
+    """Measure exact regular post files, not directories or entry symlinks."""
     root = os.path.abspath(posts_dir)
     if not os.path.isdir(root):
         return {
@@ -124,11 +126,18 @@ def measure_posts_dir(ts, posts_dir, declared_id=None, slack_write=True):
             "error": "posts dir missing: %s" % root,
             "titan": "NOT_WRITTEN",
         }
-    names = []
-    for entry in os.listdir(root):
-        if entry.endswith(".md"):
-            names.append(entry)
-    row = measure_from_listing(ts, names, declared_id, slack_write)
+    # Listing normalization also accepts HTML projections and trims whitespace.
+    # Disk measurements instead require the exact candidate's regular .md file.
+    row = measure_from_listing(ts, [], declared_id, slack_write)
+    for item in row["candidates"]:
+        try:
+            mode = os.lstat(os.path.join(root, item + ".md")).st_mode
+        except (FileNotFoundError, NotADirectoryError):
+            continue
+        if stat.S_ISREG(mode):
+            row["file_on_head"] = True
+            row["landed_id"] = item
+            break
     row["posts_dir"] = root
     return row
 
