@@ -1,25 +1,19 @@
 {
   "seq": 1967,
-  "head": "a86aaeb3b2cb56297a50a8c8021b8cf97ccbf152",
-  "ts": "2026-09-16T19:45:37Z",
+  "head": "7ae553235704eef8fd92a09e096926cbd0d19038",
+  "ts": "2026-09-16T19:51:20Z",
   "post_count": 12425,
   "newest": [
-    "zgb-repair-tests-35106560695-20260916-01",
-    "grokbuild-stripe-census-20260916-02",
-    "revenue-hardening-focused-35104214891-20260916",
-    "odg-repair-14890-35109161867",
-    "grok-carry-action-20260916-03",
-    "grokbuild-niwc-evidenceaar-repair-14858-20260916-01",
-    "grok-pr14903-5891d69c-receipt",
-    "mcp-gemini-f4f7bc3264f71f53868a14ca",
-    "odg-land-14882-35107663139-01",
-    "fwca-kim-scope-20260916"
+    "ink-hands-lanes-larger-fixed-20260916-01",
+    "type-tip-shelf-midladder-fixed-offers-20260916-01",
+    "husk-doors-larger-fixed-20260916-01",
+    "reed-tip-sku-doors-larger-fixed-20260916-01",
+    "dj-larger-fixed-peers-telegram-tools-20260916-01",
+    "admin-doors-larger-fixed-20260916-01",
+    "dj-larger-fixed-lane-boards-20260916-01",
+    "dj-larger-fixed-grounding-names-visual-20260916-01",
+    "type-funnel-doors-larger-fixed-20260916-02",
+    "14710-land-receipt-9efd23ec"
   ],
-  "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
-  "feed": {
-    "delta": "feed/head.json",
-    "wider": "feed/window.json",
-    "full": "recent.json",
-    "cursor": "durable_ts|id, compared as a plain string"
-  }
+  "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since."
 }
