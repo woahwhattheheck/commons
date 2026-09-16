@@ -1,8 +1,8 @@
 # SPDX-License-Identifier: MIT
 """Deterministic, offline evidence ledger for Muse arbitration request liveness.
 
-This module has no publication, provider, or writer-selection authority.  It
-classifies supplied evidence at a caller-supplied audit instant only.
+This module has no publication, provider, or writer-selection authority. It
+classifies caller-supplied evidence at a caller-supplied audit instant only.
 """
 from __future__ import annotations
 
@@ -23,14 +23,10 @@ HEX = frozenset("0123456789abcdef")
 EVENT_TYPES = frozenset({"REQUEST", "DECISION", "SEND_RECEIPT"})
 DECISIONS = frozenset({"SELECTED", "HOLD", "COLLISION", "OTHER"})
 STATUSES = frozenset({
-    "PENDING_DECISION",
-    "OWNER_REVIEW_RESUBMIT_DUE",
-    "MALFORMED_OR_UNDERBOUND_DECISION",
-    "HOLD_OR_COLLISION",
-    "SELECTED_AWAITING_SEND_RECEIPT",
-    "OWNER_REVIEW_STALE_SELECTION",
-    "SENT_DNR",
-    "CONFLICT",
+    "PENDING_DECISION", "OWNER_REVIEW_RESUBMIT_DUE",
+    "MALFORMED_OR_UNDERBOUND_DECISION", "HOLD_OR_COLLISION",
+    "SELECTED_AWAITING_SEND_RECEIPT", "OWNER_REVIEW_STALE_SELECTION",
+    "SENT_DNR", "CONFLICT",
 })
 
 def _hard_false_authority() -> Dict[str, bool]:
@@ -50,6 +46,7 @@ def _hard_false_authority() -> Dict[str, bool]:
 
 # Historical public label only. Compiler/verifier must not source authority from this object.
 AUTHORITY = _hard_false_authority()
+
 
 class LedgerError(ValueError):
     pass
@@ -81,12 +78,7 @@ def loads_strict(raw: bytes | str) -> Any:
         except UnicodeDecodeError as exc:
             raise LedgerError("input must be strict UTF-8") from exc
     try:
-        return json.loads(
-            raw,
-            object_pairs_hook=_pairs,
-            parse_constant=_reject_constant,
-            parse_int=_strict_int,
-        )
+        return json.loads(raw, object_pairs_hook=_pairs, parse_constant=_reject_constant, parse_int=_strict_int)
     except LedgerError:
         raise
     except (json.JSONDecodeError, ValueError, RecursionError) as exc:
@@ -95,8 +87,8 @@ def loads_strict(raw: bytes | str) -> Any:
 
 def _canonical(value: Any) -> bytes:
     try:
-        text = json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False)
-        return text.encode("utf-8", "strict")
+        return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False,
+                          allow_nan=False).encode("utf-8", "strict")
     except (TypeError, ValueError, UnicodeEncodeError, RecursionError) as exc:
         raise LedgerError("value cannot be canonically encoded") from exc
 
@@ -108,8 +100,7 @@ def _sha(value: Any) -> str:
 def _obj(value: Any, label: str, keys: Iterable[str]) -> Mapping[str, Any]:
     if type(value) is not dict:
         raise LedgerError(f"{label} must be an object")
-    expected = set(keys)
-    actual = set(value)
+    expected, actual = set(keys), set(value)
     if actual != expected:
         raise LedgerError(f"{label} keys mismatch: expected {sorted(expected)}, got {sorted(actual)}")
     return value
@@ -148,8 +139,7 @@ def _utc(value: Any, label: str) -> datetime:
 
 
 def _age_seconds(now: datetime, then: datetime) -> int:
-    delta = int((now - then).total_seconds())
-    return delta
+    return int((now - then).total_seconds())
 
 
 def _tuple_from_event(event: Mapping[str, Any], prefix: str = "") -> Tuple[str, str, str, str, str, str]:
@@ -164,10 +154,8 @@ def _tuple_from_event(event: Mapping[str, Any], prefix: str = "") -> Tuple[str, 
 
 
 def _binding_from_event(event: Mapping[str, Any]) -> Tuple[Any, Any, Any, Any, Any, Any]:
-    keys = (
-        "bound_request_key", "bound_seat_id", "bound_counterparty_key",
-        "bound_route_sha256", "bound_purpose_sha256", "bound_retry_policy_generation",
-    )
+    keys = ("bound_request_key", "bound_seat_id", "bound_counterparty_key",
+            "bound_route_sha256", "bound_purpose_sha256", "bound_retry_policy_generation")
     values: List[Any] = []
     for key in keys:
         value = event[key]
@@ -181,28 +169,29 @@ def _binding_from_event(event: Mapping[str, Any]) -> Tuple[Any, Any, Any, Any, A
 
 
 def _validate_event(raw: Any, index: int) -> Dict[str, Any]:
-    base_keys = {"type", "provider_event_id", "provider_event_sha256", "observed_at"}
+    base = {"type", "provider_event_id", "provider_event_sha256", "observed_at"}
     if type(raw) is not dict:
         raise LedgerError(f"events[{index}] must be an object")
     kind = raw.get("type")
     if type(kind) is not str or kind not in EVENT_TYPES:
         raise LedgerError(f"events[{index}].type invalid")
     if kind == "REQUEST":
-        keys = base_keys | {
-            "request_key", "seat_id", "counterparty_key", "route_sha256",
-            "purpose_sha256", "retry_policy_generation",
-        }
+        keys = base | {"request_key", "seat_id", "counterparty_key", "route_sha256",
+                       "purpose_sha256", "retry_policy_generation"}
+        event = dict(_obj(raw, f"events[{index}]", keys))
     elif kind == "DECISION":
-        keys = base_keys | {
-            "decision", "bound_request_key", "bound_seat_id", "bound_counterparty_key",
-            "bound_route_sha256", "bound_purpose_sha256", "bound_retry_policy_generation",
-        }
+        required = base | {"decision", "bound_request_key", "bound_seat_id", "bound_counterparty_key",
+                           "bound_route_sha256", "bound_purpose_sha256", "bound_retry_policy_generation"}
+        allowed = required | {"supersedes_provider_event_id"}
+        if set(raw) - allowed or not required.issubset(raw):
+            raise LedgerError(f"events[{index}] decision keys mismatch")
+        event = dict(raw)
+        event.setdefault("supersedes_provider_event_id", None)
     else:
-        keys = base_keys | {
-            "bound_request_key", "bound_seat_id", "bound_counterparty_key",
-            "bound_route_sha256", "bound_purpose_sha256", "bound_retry_policy_generation",
-        }
-    event = dict(_obj(raw, f"events[{index}]", keys))
+        keys = base | {"bound_request_key", "bound_seat_id", "bound_counterparty_key",
+                       "bound_route_sha256", "bound_purpose_sha256", "bound_retry_policy_generation"}
+        event = dict(_obj(raw, f"events[{index}]", keys))
+
     _text(event["provider_event_id"], f"events[{index}].provider_event_id")
     _sha256(event["provider_event_sha256"], f"events[{index}].provider_event_sha256")
     _utc(event["observed_at"], f"events[{index}].observed_at")
@@ -210,9 +199,25 @@ def _validate_event(raw: Any, index: int) -> Dict[str, Any]:
         _tuple_from_event(event)
     else:
         _binding_from_event(event)
-        if kind == "DECISION" and (type(event["decision"]) is not str or event["decision"] not in DECISIONS):
-            raise LedgerError(f"events[{index}].decision invalid")
+        if kind == "DECISION":
+            if type(event["decision"]) is not str or event["decision"] not in DECISIONS:
+                raise LedgerError(f"events[{index}].decision invalid")
+            sup = event["supersedes_provider_event_id"]
+            if sup is not None:
+                _text(sup, f"events[{index}].supersedes_provider_event_id")
     return event
+
+
+def _cycle_exists(edges: Mapping[str, str]) -> bool:
+    for start in edges:
+        seen: set[str] = set()
+        node = start
+        while node in edges:
+            if node in seen:
+                return True
+            seen.add(node)
+            node = edges[node]
+    return False
 
 
 def compile_ledger(payload: Mapping[str, Any]) -> Dict[str, Any]:
@@ -224,12 +229,11 @@ def compile_ledger(payload: Mapping[str, Any]) -> Dict[str, Any]:
     policy = _obj(root["policy"], "policy", {"resubmit_after_seconds", "selection_stale_after_seconds"})
     resubmit_after = _int(policy["resubmit_after_seconds"], "resubmit_after_seconds", 1, MAX_AGE_SECONDS)
     selection_stale_after = _int(policy["selection_stale_after_seconds"], "selection_stale_after_seconds", 1, MAX_AGE_SECONDS)
-    events_raw = root["events"]
-    if type(events_raw) is not list or len(events_raw) > MAX_EVENTS:
+    raw_events = root["events"]
+    if type(raw_events) is not list or len(raw_events) > MAX_EVENTS:
         raise LedgerError("events must be a bounded list")
-    events = [_validate_event(raw, i) for i, raw in enumerate(events_raw)]
+    events = [_validate_event(raw, i) for i, raw in enumerate(raw_events)]
 
-    # Provider event identity is immutable. Exact replays collapse; same-id/different-bytes is conflict evidence.
     provider_digest: Dict[str, str] = {}
     provider_semantics: Dict[str, bytes] = {}
     identity_conflicts: set[str] = set()
@@ -237,24 +241,28 @@ def compile_ledger(payload: Mapping[str, Any]) -> Dict[str, Any]:
     seen_exact: set[bytes] = set()
     for event in events:
         eid = event["provider_event_id"]
-        digest = event["provider_event_sha256"]
         semantic = _canonical(event)
         prior_digest = provider_digest.get(eid)
         prior_semantic = provider_semantics.get(eid)
-        if prior_digest is not None and (prior_digest != digest or prior_semantic != semantic):
+        if prior_digest is not None and (prior_digest != event["provider_event_sha256"] or prior_semantic != semantic):
             identity_conflicts.add(eid)
-        provider_digest[eid] = digest
+        provider_digest[eid] = event["provider_event_sha256"]
         provider_semantics[eid] = semantic
         if semantic not in seen_exact:
             seen_exact.add(semantic)
             unique_events.append(event)
+
+    all_by_id: Dict[str, Dict[str, Any]] = {}
+    for event in unique_events:
+        eid = event["provider_event_id"]
+        if eid not in identity_conflicts:
+            all_by_id[eid] = event
 
     requests: Dict[str, List[Dict[str, Any]]] = {}
     for event in unique_events:
         if event["type"] == "REQUEST":
             requests.setdefault(event["request_key"], []).append(event)
 
-    # Decisions/receipts whose binding identifies a request key are routed to that key even when under-bound.
     routed: Dict[str, List[Dict[str, Any]]] = {key: [] for key in requests}
     orphan_events: List[str] = []
     for event in unique_events:
@@ -269,129 +277,131 @@ def compile_ledger(payload: Mapping[str, Any]) -> Dict[str, Any]:
     items: List[Dict[str, Any]] = []
     for key in sorted(requests):
         reqs = requests[key]
-        tuple_values = [_tuple_from_event(event) for event in reqs]
-        tuple_set = set(tuple_values)
-        reasons: List[str] = []
-        status = "PENDING_DECISION"
+        tuple_set = {_tuple_from_event(event) for event in reqs}
         canonical_tuple = sorted(tuple_set)[0]
         request_key, seat_id, counterparty_key, route_sha, purpose_sha, retry_gen = canonical_tuple
-        request_times = sorted((_utc(event["observed_at"], "request observed_at"), event["provider_event_id"]) for event in reqs)
-        first_request_at = request_times[0][0]
-        latest_request_at = request_times[-1][0]
+        request_times = sorted((_utc(e["observed_at"], "request observed_at"), e["provider_event_id"]) for e in reqs)
+        first_request_at, latest_request_at = request_times[0][0], request_times[-1][0]
+        relevant = routed.get(key, [])
+        reasons: List[str] = []
+        status = "PENDING_DECISION"
 
         if len(tuple_set) != 1:
-            status = "CONFLICT"
-            reasons.append("REQUEST_TUPLE_DRIFT")
+            status = "CONFLICT"; reasons.append("REQUEST_TUPLE_DRIFT")
+        if any(e["provider_event_id"] in identity_conflicts for e in reqs + relevant):
+            status = "CONFLICT"; reasons.append("PROVIDER_EVENT_ID_REUSED_WITH_CHANGED_SEMANTICS")
+        if any(_utc(e["observed_at"], "event observed_at") > as_of for e in reqs + relevant):
+            status = "CONFLICT"; reasons.append("FUTURE_EVENT")
 
-        relevant = routed.get(key, [])
-        if any(event["provider_event_id"] in identity_conflicts for event in reqs + relevant):
-            status = "CONFLICT"
-            reasons.append("PROVIDER_EVENT_ID_REUSED_WITH_CHANGED_SEMANTICS")
-        if any(_utc(event["observed_at"], "event observed_at") > as_of for event in reqs + relevant):
-            status = "CONFLICT"
-            reasons.append("FUTURE_EVENT")
+        decisions = [e for e in relevant if e["type"] == "DECISION"]
+        sends = [e for e in relevant if e["type"] == "SEND_RECEIPT"]
+        for decision in decisions:
+            if _utc(decision["observed_at"], "decision observed_at") < first_request_at:
+                status = "CONFLICT"; reasons.append("DECISION_BEFORE_REQUEST")
 
-        decisions = [event for event in relevant if event["type"] == "DECISION"]
-        sends = [event for event in relevant if event["type"] == "SEND_RECEIPT"]
+        # Validate explicit correction/supersession graph before disposition evaluation.
+        edges: Dict[str, str] = {}
+        target_claimers: Dict[str, List[str]] = {}
+        for decision in decisions:
+            target_id = decision.get("supersedes_provider_event_id")
+            if target_id is None:
+                continue
+            eid = decision["provider_event_id"]
+            target = all_by_id.get(target_id)
+            if target_id == eid:
+                status = "CONFLICT"; reasons.append("DECISION_SELF_SUPERSESSION"); continue
+            if target is None:
+                status = "CONFLICT"; reasons.append("SUPERSESSION_TARGET_MISSING_OR_AMBIGUOUS"); continue
+            if target["type"] != "DECISION":
+                status = "CONFLICT"; reasons.append("SUPERSESSION_TARGET_NOT_DECISION"); continue
+            if _binding_from_event(decision) != canonical_tuple:
+                status = "CONFLICT"; reasons.append("SUPERSEDER_NOT_EXACTLY_BOUND"); continue
+            if target.get("bound_request_key") != request_key:
+                status = "CONFLICT"; reasons.append("SUPERSESSION_WRONG_REQUEST"); continue
+            if _utc(target["observed_at"], "target observed_at") >= _utc(decision["observed_at"], "superseder observed_at"):
+                status = "CONFLICT"; reasons.append("SUPERSESSION_NOT_STRICTLY_LATER"); continue
+            edges[eid] = target_id
+            target_claimers.setdefault(target_id, []).append(eid)
+
+        if any(len(claimers) > 1 for claimers in target_claimers.values()):
+            status = "CONFLICT"; reasons.append("DECISION_SUPERSEDED_MULTIPLE_TIMES")
+        if _cycle_exists(edges):
+            status = "CONFLICT"; reasons.append("DECISION_SUPERSESSION_CYCLE")
+
+        superseded_ids = set(edges.values()) if status != "CONFLICT" else set()
+        active_decisions = [d for d in decisions if d["provider_event_id"] not in superseded_ids]
         exact_decisions: List[Dict[str, Any]] = []
         underbound_decisions: List[Dict[str, Any]] = []
-        for decision in decisions:
-            binding = _binding_from_event(decision)
-            when = _utc(decision["observed_at"], "decision observed_at")
-            if when < first_request_at:
-                status = "CONFLICT"
-                reasons.append("DECISION_BEFORE_REQUEST")
-            if binding == canonical_tuple:
+        for decision in active_decisions:
+            if _binding_from_event(decision) == canonical_tuple:
                 exact_decisions.append(decision)
             else:
                 underbound_decisions.append(decision)
 
         exact_sends: List[Dict[str, Any]] = []
         for send in sends:
-            binding = _binding_from_event(send)
             when = _utc(send["observed_at"], "send observed_at")
-            if binding == canonical_tuple:
+            if _binding_from_event(send) == canonical_tuple:
                 exact_sends.append(send)
             else:
-                status = "CONFLICT"
-                reasons.append("CROSS_REQUEST_OR_UNDERBOUND_SEND")
+                status = "CONFLICT"; reasons.append("CROSS_REQUEST_OR_UNDERBOUND_SEND")
             if when < first_request_at:
-                status = "CONFLICT"
-                reasons.append("SEND_BEFORE_REQUEST")
-
+                status = "CONFLICT"; reasons.append("SEND_BEFORE_REQUEST")
         if len(exact_sends) > 1:
-            status = "CONFLICT"
-            reasons.append("MULTIPLE_DISTINCT_SEND_RECEIPTS")
+            status = "CONFLICT"; reasons.append("MULTIPLE_DISTINCT_SEND_RECEIPTS")
 
-        exact_dispositions = {event["decision"] for event in exact_decisions}
+        exact_dispositions = {d["decision"] for d in exact_decisions}
         if len(exact_dispositions) > 1:
-            status = "CONFLICT"
-            reasons.append("CONTRADICTORY_EXACT_DECISIONS")
+            status = "CONFLICT"; reasons.append("CONTRADICTORY_ACTIVE_EXACT_DECISIONS")
 
         if status != "CONFLICT":
             if exact_sends:
-                selected = [event for event in exact_decisions if event["decision"] == "SELECTED"]
+                selected = [d for d in exact_decisions if d["decision"] == "SELECTED"]
                 if not selected:
-                    status = "CONFLICT"
-                    reasons.append("SEND_WITHOUT_EXACT_SELECTION")
+                    status = "CONFLICT"; reasons.append("SEND_WITHOUT_ACTIVE_EXACT_SELECTION")
                 else:
-                    selection_time = min(_utc(event["observed_at"], "selection observed_at") for event in selected)
-                    if any(_utc(send["observed_at"], "send observed_at") < selection_time for send in exact_sends):
-                        status = "CONFLICT"
-                        reasons.append("SEND_BEFORE_SELECTION")
+                    selection_time = min(_utc(d["observed_at"], "selection observed_at") for d in selected)
+                    if any(_utc(s["observed_at"], "send observed_at") < selection_time for s in exact_sends):
+                        status = "CONFLICT"; reasons.append("SEND_BEFORE_SELECTION")
                     else:
-                        status = "SENT_DNR"
-                        reasons.append("EXACT_SEND_RECEIPT_PRESENT")
+                        status = "SENT_DNR"; reasons.append("EXACT_SEND_RECEIPT_PRESENT")
             elif exact_decisions:
                 disposition = next(iter(exact_dispositions))
-                latest_decision_at = max(_utc(event["observed_at"], "decision observed_at") for event in exact_decisions)
+                latest_decision_at = max(_utc(d["observed_at"], "decision observed_at") for d in exact_decisions)
                 if disposition in {"HOLD", "COLLISION"}:
-                    status = "HOLD_OR_COLLISION"
-                    reasons.append(f"MUSE_{disposition}")
+                    status = "HOLD_OR_COLLISION"; reasons.append(f"MUSE_{disposition}")
                 elif disposition == "SELECTED":
                     age = _age_seconds(as_of, latest_decision_at)
                     if age < 0:
-                        status = "CONFLICT"
-                        reasons.append("FUTURE_DECISION")
+                        status = "CONFLICT"; reasons.append("FUTURE_DECISION")
                     elif age >= selection_stale_after:
-                        status = "OWNER_REVIEW_STALE_SELECTION"
-                        reasons.append("SELECTION_WITHOUT_SEND_RECEIPT_EXCEEDS_POLICY")
+                        status = "OWNER_REVIEW_STALE_SELECTION"; reasons.append("SELECTION_WITHOUT_SEND_RECEIPT_EXCEEDS_POLICY")
                     else:
-                        status = "SELECTED_AWAITING_SEND_RECEIPT"
-                        reasons.append("EXACT_SELECTION_NO_SEND_RECEIPT")
+                        status = "SELECTED_AWAITING_SEND_RECEIPT"; reasons.append("EXACT_SELECTION_NO_SEND_RECEIPT")
                 else:
-                    status = "MALFORMED_OR_UNDERBOUND_DECISION"
-                    reasons.append("NON_BINDING_DECISION_DISPOSITION")
+                    status = "MALFORMED_OR_UNDERBOUND_DECISION"; reasons.append("NON_BINDING_DECISION_DISPOSITION")
             elif underbound_decisions:
-                status = "MALFORMED_OR_UNDERBOUND_DECISION"
-                reasons.append("DECISION_DOES_NOT_BIND_EXACT_REQUEST_TUPLE")
+                status = "MALFORMED_OR_UNDERBOUND_DECISION"; reasons.append("ACTIVE_DECISION_DOES_NOT_BIND_EXACT_REQUEST_TUPLE")
             else:
                 age = _age_seconds(as_of, latest_request_at)
                 if age < 0:
-                    status = "CONFLICT"
-                    reasons.append("FUTURE_REQUEST")
+                    status = "CONFLICT"; reasons.append("FUTURE_REQUEST")
                 elif age >= resubmit_after:
-                    status = "OWNER_REVIEW_RESUBMIT_DUE"
-                    reasons.append("UNANSWERED_REQUEST_EXCEEDS_POLICY")
+                    status = "OWNER_REVIEW_RESUBMIT_DUE"; reasons.append("UNANSWERED_REQUEST_EXCEEDS_POLICY")
                 else:
-                    status = "PENDING_DECISION"
-                    reasons.append("UNANSWERED_REQUEST_WITHIN_POLICY")
+                    status = "PENDING_DECISION"; reasons.append("UNANSWERED_REQUEST_WITHIN_POLICY")
 
         item = {
-            "request_key": request_key,
-            "seat_id": seat_id,
-            "counterparty_key": counterparty_key,
-            "route_sha256": route_sha,
-            "purpose_sha256": purpose_sha,
-            "retry_policy_generation": retry_gen,
-            "attempt_count": len(reqs),
-            "exact_decision_count": len(exact_decisions),
-            "underbound_decision_count": len(underbound_decisions),
+            "request_key": request_key, "seat_id": seat_id, "counterparty_key": counterparty_key,
+            "route_sha256": route_sha, "purpose_sha256": purpose_sha,
+            "retry_policy_generation": retry_gen, "attempt_count": len(reqs),
+            "active_exact_decision_count": len(exact_decisions),
+            "active_underbound_decision_count": len(underbound_decisions),
+            "superseded_decision_count": len(superseded_ids),
             "send_receipt_count": len(exact_sends),
             "first_requested_at": first_request_at.strftime("%Y-%m-%dT%H:%M:%SZ"),
             "latest_requested_at": latest_request_at.strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "status": status,
-            "reasons": sorted(set(reasons)),
+            "status": status, "reasons": sorted(set(reasons)),
         }
         if status not in STATUSES:
             raise LedgerError("internal invalid status")
@@ -401,30 +411,18 @@ def compile_ledger(payload: Mapping[str, Any]) -> Dict[str, Any]:
     for item in items:
         counts[item["status"]] += 1
     normalized_input = {
-        "schema_version": SCHEMA_VERSION,
-        "as_of_utc": as_of_s,
-        "policy": {
-            "resubmit_after_seconds": resubmit_after,
-            "selection_stale_after_seconds": selection_stale_after,
-        },
-        "events": sorted(events, key=lambda event: _canonical(event)),
+        "schema_version": SCHEMA_VERSION, "as_of_utc": as_of_s,
+        "policy": {"resubmit_after_seconds": resubmit_after,
+                   "selection_stale_after_seconds": selection_stale_after},
+        "events": sorted(events, key=_canonical),
     }
     body: Dict[str, Any] = {
-        "schema_version": SCHEMA_VERSION,
-        "mode": MODE,
-        "as_of_utc": as_of_s,
-        "policy": {
-            "resubmit_after_seconds": resubmit_after,
-            "selection_stale_after_seconds": selection_stale_after,
-        },
-        "input_sha256": _sha(normalized_input),
-        "items": items,
-        "summary": {
-            "request_count": len(items),
-            "orphan_event_count": len(orphan_events),
-            "orphan_provider_event_ids": sorted(orphan_events),
-            "status_counts": counts,
-        },
+        "schema_version": SCHEMA_VERSION, "mode": MODE, "as_of_utc": as_of_s,
+        "policy": {"resubmit_after_seconds": resubmit_after,
+                   "selection_stale_after_seconds": selection_stale_after},
+        "input_sha256": _sha(normalized_input), "items": items,
+        "summary": {"request_count": len(items), "orphan_event_count": len(orphan_events),
+                    "orphan_provider_event_ids": sorted(orphan_events), "status_counts": counts},
         "authority": _hard_false_authority(),
     }
     body["packet_sha256"] = _sha(body)
@@ -435,8 +433,7 @@ def verify_ledger(payload: Mapping[str, Any], packet: Mapping[str, Any]) -> bool
     if type(packet) is not dict:
         return False
     try:
-        expected = compile_ledger(payload)
-        return _canonical(expected) == _canonical(packet)
+        return _canonical(compile_ledger(payload)) == _canonical(packet)
     except LedgerError:
         return False
 
@@ -463,8 +460,7 @@ def read_json_file(path: str) -> Any:
             chunk = os.read(fd, min(65_536, remaining))
             if not chunk:
                 break
-            chunks.append(chunk)
-            remaining -= len(chunk)
+            chunks.append(chunk); remaining -= len(chunk)
         raw = b"".join(chunks)
         if len(raw) > MAX_JSON_BYTES:
             raise LedgerError("input is too large")
@@ -474,7 +470,8 @@ def read_json_file(path: str) -> Any:
 
 
 def write_json_exclusive(path: str, value: Any) -> None:
-    data = json.dumps(value, indent=2, sort_keys=True, ensure_ascii=False, allow_nan=False).encode("utf-8", "strict") + b"\n"
+    data = json.dumps(value, indent=2, sort_keys=True, ensure_ascii=False,
+                      allow_nan=False).encode("utf-8", "strict") + b"\n"
     flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
     if hasattr(os, "O_NOFOLLOW"):
         flags |= os.O_NOFOLLOW
