@@ -30,6 +30,7 @@ _AUTHORITY_SOURCE_KEYS = {
 }
 
 _original_compile = _core.compile_qualification
+_original_validate_requirement = _core._validate_requirement
 
 
 def _evaluate_team(requirements, sources, teaming, teaming_source_id):
@@ -407,6 +408,32 @@ def _assess_completeness(
     }
 
 
+def _validate_requirement_allowing_authority_scope_mismatch(
+    raw, index, sources, evidence, as_of
+):
+    """Keep core packet-shape checks, but do not abort frozen-root scope drift.
+
+    Relabeling a committed BUYER authority source to CAPABILITY must compile to
+    HOLD with PACKAGE_AUTHORITY_SOURCE_SET_MISMATCH rather than raising before
+    the independently retained authority set can be compared.
+    """
+    try:
+        return _original_validate_requirement(raw, index, sources, evidence, as_of)
+    except QualificationError as exc:
+        if ": requirement must bind a BUYER source" not in str(exc):
+            raise
+        patched_sources = dict(sources)
+        for source_id, source in sources.items():
+            if source.get("scope") == "BUYER":
+                continue
+            patched = dict(source)
+            patched["scope"] = "BUYER"
+            patched_sources[source_id] = patched
+        return _original_validate_requirement(
+            raw, index, patched_sources, evidence, as_of
+        )
+
+
 def compile_qualification(
     packet,
     *,
@@ -414,7 +441,28 @@ def compile_qualification(
     trusted_completeness=None,
     trusted_completeness_sha256=None,
 ):
-    receipt = _original_compile(packet, trusted_as_of=trusted_as_of)
+    completeness = None
+    try:
+        receipt = _original_compile(packet, trusted_as_of=trusted_as_of)
+    except QualificationError as exc:
+        if ": requirement must bind a BUYER source" not in str(exc):
+            raise
+        completeness = _assess_completeness(
+            packet,
+            trusted_as_of=trusted_as_of,
+            trusted_completeness=trusted_completeness,
+            trusted_completeness_sha256=trusted_completeness_sha256,
+        )
+        if "PACKAGE_AUTHORITY_SOURCE_SET_MISMATCH" not in completeness["reasons"]:
+            raise
+        _core._validate_requirement = (
+            _validate_requirement_allowing_authority_scope_mismatch
+        )
+        try:
+            receipt = _original_compile(packet, trusted_as_of=trusted_as_of)
+        finally:
+            _core._validate_requirement = _original_validate_requirement
+
     package = receipt["package"]
 
     # A timestamp has negative commercial authority only when the controlling
