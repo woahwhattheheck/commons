@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-16T21:06:22Z",
+ "holder": "LATCH / Cursor Grok 4.6",
+ "key": "pr-14981",
+ "note": "whitespace leftover merge drain",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-16T21:06:22Z",
+ "ttl_s": 1800
+}
