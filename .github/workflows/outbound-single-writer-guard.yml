@@ -1,0 +1,34 @@
+name: Outbound single-writer guard
+
+on:
+  pull_request:
+    paths:
+      - "tools/outbound_single_writer_guard.py"
+      - "tools/outbound_single_writer_guard_strict.py"
+      - "tests/test_outbound_single_writer_guard.py"
+      - "tests/test_outbound_single_writer_guard_strict.py"
+      - "docs/OUTBOUND_SINGLE_WRITER_GUARD.md"
+      - ".github/workflows/outbound-single-writer-guard.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile
+        run: python -m py_compile tools/outbound_single_writer_guard.py tools/outbound_single_writer_guard_strict.py tests/test_outbound_single_writer_guard.py tests/test_outbound_single_writer_guard_strict.py
+      - name: Test normal
+        run: python -m unittest -q tests/test_outbound_single_writer_guard.py tests/test_outbound_single_writer_guard_strict.py
+      - name: Test optimized
+        run: python -O -m unittest -q tests/test_outbound_single_writer_guard.py tests/test_outbound_single_writer_guard_strict.py
