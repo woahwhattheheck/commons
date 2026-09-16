@@ -1,13 +1,43 @@
 from __future__ import annotations
 
 import contextlib
+import copy
 import io
+import json
 import tempfile
 import unittest
 from pathlib import Path
 
 from revenue.numih_ai_sad_admission_readiness import cli
-from revenue.numih_ai_sad_admission_readiness.compiler import ValidationError, loads_strict
+from revenue.numih_ai_sad_admission_readiness.compiler import (
+    ValidationError,
+    canonical_json,
+    compile_packet,
+    loads_strict,
+    render_markdown,
+)
+
+
+EXAMPLES = Path(__file__).parents[1] / "examples"
+FORMAT_CONTROLS = {
+    "bidi_override": "\u202e",
+    "bidi_isolate": "\u2066",
+    "pop_directional_isolate": "\u2069",
+    "zero_width_space": "\u200b",
+    "zero_width_joiner": "\u200d",
+}
+
+
+def _packet() -> dict:
+    return loads_strict(
+        (EXAMPLES / "fictional_partner_packet.json").read_text(encoding="utf-8")
+    )
+
+
+def _bundle() -> dict:
+    return loads_strict(
+        (EXAMPLES / "fictional_evidence_bundle.json").read_text(encoding="utf-8")
+    )
 
 
 class _StrictUtf8Stderr(io.TextIOBase):
@@ -56,6 +86,30 @@ class DuplicateSurrogateRecoveryTests(unittest.TestCase):
             self.assertLessEqual(len(rendered.encode("utf-8")), 128)
             self.assertNotIn("Traceback", rendered)
             self.assertNotIn("UnicodeEncodeError", rendered)
+
+    def test_format_controls_fail_strict_parse_and_canonicalization(self) -> None:
+        for name, character in FORMAT_CONTROLS.items():
+            with self.subTest(name=name, boundary="loads_strict"):
+                hostile = json.dumps({"value": character})
+                with self.assertRaisesRegex(ValidationError, "format control"):
+                    loads_strict(hostile)
+            with self.subTest(name=name, boundary="canonical_json"):
+                with self.assertRaisesRegex(ValidationError, "format control"):
+                    canonical_json({"value": character})
+
+    def test_format_controls_cannot_reach_markdown(self) -> None:
+        packet = _packet()
+        bundle = _bundle()
+        for name, character in FORMAT_CONTROLS.items():
+            with self.subTest(name=name):
+                hostile = copy.deepcopy(packet)
+                hostile["applicant"]["display_name"] += character + "spoof"
+                with self.assertRaisesRegex(ValidationError, "format control"):
+                    render_markdown(
+                        hostile,
+                        compile_packet(hostile, bundle),
+                        bundle,
+                    )
 
 
 if __name__ == "__main__":
