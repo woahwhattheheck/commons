@@ -80,6 +80,7 @@ class ConsortiumAndPartnerRegressionTests(unittest.TestCase):
             "https://proposals.etag.ee/water4all/2026/partner-search-entry/%38%35%38",
             "https://user@proposals.etag.ee/water4all/2026/partner-search-entry/858",
             "https://proposals.etag.ee:443/water4all/2026/partner-search-entry/858",
+            "https://proposals.etag.ee/water4all/2026/partner-search-entry/0858",
         ]
         for attack in attacks:
             value = base_valid()
@@ -87,6 +88,18 @@ class ConsortiumAndPartnerRegressionTests(unittest.TestCase):
             with self.subTest(url=attack):
                 with self.assertRaises(ReadinessError):
                     compile_valid(value)
+
+    def test_partner_shortlist_rejects_embedded_email_route(self):
+        value = base_valid()
+        value["partner_shortlist"][0]["public_fit_summary"] = "Write person@example.invalid for access"
+        with self.assertRaisesRegex(ReadinessError, "contact-route semantics"):
+            compile_valid(value)
+
+    def test_partner_shortlist_rejects_mailto_in_organization_label(self):
+        value = base_valid()
+        value["partner_shortlist"][0]["organization_label"] = "mailto:owner@example.invalid Lab"
+        with self.assertRaisesRegex(ReadinessError, "contact-route semantics"):
+            compile_valid(value)
 
 
 if __name__ == "__main__":

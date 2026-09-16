@@ -45,7 +45,7 @@ The compiler validates:
 - legal-entity, PIC, participating-FPO, eligibility, and self-funding evidence;
 - exact repository/commit/path/content-digest technical evidence descriptors;
 - fixed Topic 1 and Topic 3 capability evidence requirements;
-- public official partner-search URLs without email, phone, message body, or send authority;
+- public official partner-search URLs without email, phone, message body, send authority, leading-zero path IDs, or contact-route tokens in retained labels and summaries;
 - owner commercial approval without converting it into provider or submission authority.
 
 Decision states are:
@@ -78,7 +78,7 @@ Even `READY_FOR_OWNER_REVIEW` keeps every external authority bit false.
 - `qualification_matrix.json` — present blockers and exact cure conditions.
 - `workplan.json` — proposed work packages, acceptance criteria, risks, and unpriced budget assumptions.
 - `concept_note.md` — proposed Topic 1/3 technical concept and evidence boundaries.
-- `test_engine.py` — aggregate entry point for 69 authority and filesystem hostiles split across `test_*` modules.
+- `test_engine.py` — aggregate entry point for 85 authority and filesystem hostiles split across `test_*` modules.
 
 ## Run
 
