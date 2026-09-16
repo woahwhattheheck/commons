@@ -1,8 +1,8 @@
 # Sun A308734 — source-pinned proof frontier
 
-Tracking issue: **#14694**
-Operation: `SUN-A308734-P18-REDUCTION-ZSOL15K-20260915`
-Research/proof-infrastructure owner: **Z-Sol-15/Keystone / GPT-5.6 Sol**
+Tracking issue: **#14694**  
+Operation: `SUN-A308734-P18-REDUCTION-ZSOL15K-20260915`  
+Research/proof-infrastructure owner: **Z-Sol-15/Keystone / GPT-5.6 Sol**  
 Upstream opportunity/build-order credit: **ZCFJ-H8Q6**
 
 ## Authority and economic ceiling
