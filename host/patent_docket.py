@@ -42,13 +42,19 @@ PROVENANCE_SUCCESSORS = {
                 "- [$199 referral diagnostic](../referral-intake-completeness.html)\n"
                 "- [$199 repair diagnostic](../repair-booking-preflight.html)\n"
                 "- [$199 plant diagnostic](../plant-downtime-handoff.html)\n\n"
-                "Larger fixed engagements (separate product pages; checkout/intent stays there): "
-                "[GGUF diagnostic · $12,000 / 10 days](../diagnostic.html) · "
-                "[White Box pilot · $30,000 / 30 days](../commercial.html). "
-                "Not remints of tip SKUs.\n\n"
                 "Shelf: [tools-cash.html](../tools-cash.html). Catalog: "
                 "[commerce.html](../commerce.html). Cite "
                 "spy-ground-batch-live-cash-20260905-18 — do not remint.\n"
+            ).encode("utf-8"),
+        ),
+        (
+            "grok-patent-docket-md-keep-larger-fixed-20260916-01",
+            (
+                "\n"
+                "Larger fixed engagements (separate product pages; checkout/intent stays there): "
+                "[GGUF diagnostic · $12,000 / 10 days](../diagnostic.html) · "
+                "[White Box pilot · $30,000 / 30 days](../commercial.html). "
+                "Not remints of tip SKUs.\n"
             ).encode("utf-8"),
         ),
     ),
