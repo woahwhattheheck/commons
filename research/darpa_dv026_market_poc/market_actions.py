@@ -7,6 +7,7 @@ try:
 except ImportError:  # direct module execution/tests
     from contract import ContractError, MAX_PRICE, MECHANISMS, Fill, Order, Trader, sha256_value, validate_blackbox_action
 
+
 def _trader(row: dict[str, Any]) -> Trader:
     return Trader(
         trader_id=row["trader_id"],
@@ -33,10 +34,11 @@ def _public_value(reference_price: int, news: list[dict[str, Any]], action_step:
     return value, applied
 
 
-
-def synthetic_action(scenario: dict[str, Any], trader: Trader, mechanism: str) -> tuple[Order, dict[str, Any]]:
+def blackbox_observation(scenario: dict[str, Any], trader: Trader, mechanism: str) -> dict[str, Any]:
+    if mechanism not in MECHANISMS:
+        raise ContractError("unsupported market mechanism")
     public_value, news_ids = _public_value(scenario["reference_price"], scenario["news"], trader.action_step)
-    observation = {
+    return {
         "schema": "darpa-dv026-blackbox-observation/v1",
         "scenario_id": scenario["scenario_id"],
         "asset_id": scenario["asset_id"],
@@ -49,6 +51,11 @@ def synthetic_action(scenario: dict[str, Any], trader: Trader, mechanism: str) -
         "private_value": trader.private_value,
         "max_quantity": trader.quantity,
     }
+
+
+def synthetic_action(scenario: dict[str, Any], trader: Trader, mechanism: str) -> tuple[Order, dict[str, Any]]:
+    observation = blackbox_observation(scenario, trader, mechanism)
+    public_value = observation["public_reference_price"]
     obs_sha = sha256_value(observation)
     if trader.strategy == "TRUTHFUL":
         price = trader.private_value
@@ -87,5 +94,3 @@ def efficient_surplus(traders: Iterable[Trader]) -> int:
             break
         total += value - cost
     return total
-
-
