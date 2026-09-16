@@ -9,26 +9,22 @@ import os
 import stat
 import sys
 from pathlib import Path
-from typing import Any, Dict, Optional, Sequence
+from typing import Any, Optional, Sequence
 
 try:
+    from .common import ReadinessError, canonical_bytes, strict_json_loads
     from .engine import (
-        ReadinessError,
-        canonical_bytes,
         compile_current,
         compile_historical,
         render_owner_markdown,
-        strict_json_loads,
         verify_bundle,
     )
 except ImportError:  # pragma: no cover - direct script execution fallback
+    from common import ReadinessError, canonical_bytes, strict_json_loads  # type: ignore
     from engine import (  # type: ignore
-        ReadinessError,
-        canonical_bytes,
         compile_current,
         compile_historical,
         render_owner_markdown,
-        strict_json_loads,
         verify_bundle,
     )
 
@@ -131,8 +127,6 @@ def _write_exclusive(path_text: str, payload: bytes) -> None:
         finally:
             os.close(dir_fd)
     except OSError:
-        # The file itself is durable; some platforms/filesystems do not support
-        # directory fsync.  The README states this portability ceiling.
         pass
 
 
@@ -168,7 +162,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     try:
         if args.command == "compile-current":
             input_value = _load_json_file(args.input)
-            bundle = compile_current(input_value)
+            bundle = compile_current(input_value, input_value)
             _write_exclusive(args.output, _json_output(bundle))
             if args.markdown_output:
                 _write_exclusive(args.markdown_output, render_owner_markdown(bundle).encode("utf-8"))
@@ -185,7 +179,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         if args.command == "verify":
             input_value = _load_json_file(args.input)
             bundle = _load_json_file(args.bundle)
-            result = verify_bundle(input_value, bundle)
+            result = verify_bundle(input_value, bundle, input_value)
             if args.result_output:
                 _write_exclusive(args.result_output, _json_output(result))
             print(json.dumps(result, sort_keys=True, separators=(",", ":")))
