@@ -4,7 +4,7 @@ from __future__ import annotations
 import argparse, html, json
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import unquote
-from onboarding import OnboardingError, compile_packet, connect, init_db, list_workspaces
+from onboarding import OnboardingError, compile_packet, connect_readonly, list_workspaces
 
 ALLOWED_HOSTS = {"127.0.0.1", "localhost"}
 
@@ -16,8 +16,9 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header("Cache-Control", "no-store"); self.send_header("X-Content-Type-Options", "nosniff"); self.end_headers(); self.wfile.write(body)
     def _json(self, code: int, obj) -> None: self._send(code, json.dumps(obj, sort_keys=True, ensure_ascii=False).encode(), "application/json; charset=utf-8")
     def do_GET(self):
-        conn = connect(self.db_path); init_db(conn)
+        conn = None
         try:
+            conn = connect_readonly(self.db_path)
             if self.path == "/api/workspaces": return self._json(200, {"workspaces": list_workspaces(conn), "readOnly": True})
             if self.path.startswith("/api/workspaces/"):
                 wid = unquote(self.path[len("/api/workspaces/"):])
@@ -31,7 +32,8 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, body, "text/html; charset=utf-8")
             return self._json(404, {"error":"not found"})
         except OnboardingError as exc: return self._json(400, {"error":str(exc)})
-        finally: conn.close()
+        finally:
+            if conn is not None: conn.close()
     def _readonly(self): self._json(405, {"error":"read-only HTTP surface; use local CLI for mutation"})
     do_POST = _readonly; do_PUT = _readonly; do_PATCH = _readonly; do_DELETE = _readonly
     def log_message(self, fmt, *args): pass
