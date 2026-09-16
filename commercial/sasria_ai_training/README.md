@@ -117,7 +117,7 @@ Exit code is `0` only when `submission_status == SUBMISSION_READY`; ordinary `HO
 ## Tests
 
 ```bash
-python -m unittest discover -s tests -p 'test_sasria_ai_training.py' -v
+python -m unittest test_sasria_ai_training -v
 ```
 
-The suite covers missing prime evidence, individual returnables, framework recognition, training-history warning semantics, score caps, boolean score rejection, the 70-point threshold, score provenance, missing/duplicate/incomplete role pathways, explicit paid-workshare state, response-vs-submission separation, fully synthetic submission readiness, and deterministic receipts.
+The suite is deliberately at repository root so the existing Commons `tests` workflow / battery discovers it without creating another active workflow. It covers missing prime evidence, individual returnables, framework recognition, training-history warning semantics, score caps, boolean score rejection, the 70-point threshold, score provenance, missing/duplicate/incomplete role pathways, explicit paid-workshare state, response-vs-submission separation, fully synthetic submission readiness, and deterministic receipts.
