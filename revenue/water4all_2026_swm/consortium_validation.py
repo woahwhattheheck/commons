@@ -19,6 +19,7 @@ from .common import (
     _reason,
 )
 
+
 def _validate_consortium(raw_consortium: Any) -> Tuple[Dict[str, Any], List[Dict[str, Any]], Dict[str, Dict[str, Any]]]:
     consortium = _expect_dict(raw_consortium, "$.consortium")
     raw_members = _expect_list(consortium.get("members"), "$.consortium.members")
@@ -50,6 +51,7 @@ def _validate_consortium(raw_consortium: Any) -> Tuple[Dict[str, Any], List[Dict
             "coordinator": _expect_bool(member.get("coordinator"), path + ".coordinator"),
             "person_months_milli": _expect_int(member.get("person_months_milli"), path + ".person_months_milli", 0),
             "synthetic_placeholder": _expect_bool(member.get("synthetic_placeholder", False), path + ".synthetic_placeholder"),
+            "water4all_partnership_beneficiary": _expect_bool(member.get("water4all_partnership_beneficiary", False), path + ".water4all_partnership_beneficiary"),
         }
         members.append(normalized)
         by_id[partner_id] = normalized
@@ -57,6 +59,7 @@ def _validate_consortium(raw_consortium: Any) -> Tuple[Dict[str, Any], List[Dict
     funded = [member for member in members if member["role"] == "FUNDED_PARTNER"]
     self_funded = [member for member in members if member["role"] == "SELF_FUNDED_PARTNER"]
     coordinators = [member for member in members if member["coordinator"]]
+    beneficiary_members = [member for member in members if member["water4all_partnership_beneficiary"]]
 
     if len(funded) < 3:
         reasons.append(_reason("CONSORTIUM_FUNDED_PARTNER_MINIMUM", "at least three funded partners are required"))
@@ -70,6 +73,31 @@ def _validate_consortium(raw_consortium: Any) -> Tuple[Dict[str, Any], List[Dict
         reasons.append(_reason("CONSORTIUM_COORDINATOR_COUNT", "exactly one coordinator is required", [m["partner_id"] for m in coordinators]))
     elif coordinators[0]["role"] != "FUNDED_PARTNER" or not coordinators[0]["fpo_eligibility_verified"]:
         reasons.append(_reason("CONSORTIUM_COORDINATOR_INELIGIBLE", "the coordinator must be a verified funded partner", [coordinators[0]["partner_id"]]))
+
+    beneficiary_cap = 2 if len(members) <= 5 else 3
+    if len(beneficiary_members) > beneficiary_cap:
+        reasons.append(_reason(
+            "PARTNERSHIP_BENEFICIARY_ENTITY_CAP_EXCEEDED",
+            "Water4All Partnership beneficiary entity count exceeds the call cap of %d for this consortium size" % beneficiary_cap,
+            [m["partner_id"] for m in beneficiary_members],
+        ))
+
+    pi_raw = consortium.get("coordinator_pi_cross_proposal_evidence")
+    pi_evidence = None
+    if pi_raw is None:
+        reasons.append(_reason("COORDINATOR_PI_CROSS_PROPOSAL_EVIDENCE_MISSING", "coordinating PI needs retained evidence that they do not participate in another JTC/ECR proposal"))
+    else:
+        pi = _expect_dict(pi_raw, "$.consortium.coordinator_pi_cross_proposal_evidence")
+        pi_evidence = {
+            "pi_id": _expect_id(pi.get("pi_id"), "$.consortium.coordinator_pi_cross_proposal_evidence.pi_id"),
+            "evidence_id": _expect_id(pi.get("evidence_id"), "$.consortium.coordinator_pi_cross_proposal_evidence.evidence_id"),
+            "participates_in_other_jtc_or_ecr_proposal": _expect_bool(pi.get("participates_in_other_jtc_or_ecr_proposal"), "$.consortium.coordinator_pi_cross_proposal_evidence.participates_in_other_jtc_or_ecr_proposal"),
+            "verified": _expect_bool(pi.get("verified"), "$.consortium.coordinator_pi_cross_proposal_evidence.verified"),
+        }
+        if pi_evidence["participates_in_other_jtc_or_ecr_proposal"]:
+            reasons.append(_reason("COORDINATOR_PI_CROSS_PROPOSAL_CONFLICT", "coordinating PI is recorded as participating in another JTC/ECR proposal", [pi_evidence["pi_id"], pi_evidence["evidence_id"]]))
+        if not pi_evidence["verified"]:
+            reasons.append(_reason("COORDINATOR_PI_CROSS_PROPOSAL_EVIDENCE_UNVERIFIED", "coordinating PI cross-proposal evidence is not verified", [pi_evidence["pi_id"], pi_evidence["evidence_id"]]))
 
     max_members = 8 if any(member["role"] == "FUNDED_PARTNER" and member["undersubscribed_fpo"] for member in members) else 7
     if len(members) > max_members:
@@ -118,6 +146,9 @@ def _validate_consortium(raw_consortium: Any) -> Tuple[Dict[str, Any], List[Dict
         "funded_country_count": len(set(member["country_code"] for member in funded)),
         "eu_or_associated_funded_count": sum(1 for member in funded if member["eu_or_associated"]),
         "partner_limit": max_members,
+        "partnership_beneficiary_entity_count": len(beneficiary_members),
+        "partnership_beneficiary_entity_cap": beneficiary_cap,
+        "coordinator_pi_cross_proposal_evidence": pi_evidence,
         "total_person_months_milli": total_pm,
     }
     return summary, reasons, by_id
@@ -148,14 +179,12 @@ def _validate_applicant(raw_applicant: Any, consortium_by_id: Mapping[str, Dict[
         reasons.append(_reason("APPLICANT_LEGAL_ENTITY_UNVERIFIED", "applicant legal entity is not verified", refs))
     if not normalized["pic_verified"]:
         reasons.append(_reason("APPLICANT_PIC_UNVERIFIED", "applicant PIC is not verified", refs))
-
     if role in FORMAL_ROLES:
         member = consortium_by_id.get(applicant_id)
         if member is None:
             reasons.append(_reason("APPLICANT_NOT_IN_CONSORTIUM", "formal applicant role requires a matching consortium member", refs))
-        else:
-            if member["role"] != role or member["country_code"] != normalized["country_code"]:
-                reasons.append(_reason("APPLICANT_CONSORTIUM_ROLE_MISMATCH", "applicant role or country does not match consortium generation", refs))
+        elif member["role"] != role or member["country_code"] != normalized["country_code"]:
+            reasons.append(_reason("APPLICANT_CONSORTIUM_ROLE_MISMATCH", "applicant role or country does not match consortium generation", refs))
     else:
         if applicant_id in consortium_by_id:
             reasons.append(_reason("SUBCONTRACT_CANDIDATE_COUNTED_AS_PARTNER", "paid subcontract candidate must not be counted as a formal consortium partner", refs))
@@ -163,8 +192,5 @@ def _validate_applicant(raw_applicant: Any, consortium_by_id: Mapping[str, Dict[
             reasons.append(_reason("PAID_ROLE_AUTHORITY_UNVERIFIED", "paid technical role has not been accepted or authorized", refs))
         if not normalized["subcontract_rule_verified"]:
             reasons.append(_reason("SUBCONTRACT_RULE_UNVERIFIED", "specific call/national/consortium subcontract eligibility is not verified", refs))
-        # V1 never promotes a subcontract candidate to READY because a buyer-specific,
-        # national-rule-specific contract must be reviewed outside this generic tool.
         reasons.append(_reason("SUBCONTRACT_CANDIDATE_OWNER_REVIEW_REQUIRED", "v1 cannot authorize a paid subcontract role; buyer-specific owner review remains mandatory", refs))
-
     return normalized, reasons
