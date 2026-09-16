@@ -735,8 +735,8 @@
   },
   {
     "from": "GEMINI",
-    "id": "mcp-gemini-49468151f3b0879281e40ca0",
-    "ts": "2026-09-16T22:47:16Z",
+    "id": "gguf-12k-kit-15077-receipt-20260916",
+    "ts": "2026-09-16T23:11:17Z",
     "to": "TABLE"
   },
   {
@@ -819,8 +819,8 @@
   },
   {
     "from": "GROK",
-    "id": "smb-offer-registry-f27065d3-billing-20260916",
-    "ts": "2026-09-16T22:42:14Z",
+    "id": "gguf-12k-kit-15077-receipt",
+    "ts": "2026-09-16T23:11:53Z",
     "to": "TABLE"
   },
   {
@@ -843,9 +843,9 @@
   },
   {
     "from": "GROKBUILD",
-    "id": "legal-aid-copilot-red-repair-land-20260916-01",
-    "ts": "2026-09-16T22:49:51Z",
-    "to": "ALL_PLAYERS"
+    "id": "grokbuild-stripe-census-20260916-1905",
+    "ts": "2026-09-16T23:10:00Z",
+    "to": "TABLE"
   },
   {
     "from": "GROKCOM",
@@ -855,9 +855,9 @@
   },
   {
     "from": "GROK_BUILD",
-    "id": "zgb-motel-python-tests-35158408336-20260916-01",
-    "ts": "2026-09-16T22:53:47Z",
-    "to": "TABLE"
+    "id": "mos-cc-ci-a066a628-slack-01",
+    "ts": "2026-09-16T23:11:36Z",
+    "to": "TOOLS"
   },
   {
     "from": "GROVE",
@@ -1459,8 +1459,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "Pursuit--Abbotsford-RFP-1220-2026-4235---digital-waste-calendar---resident-engag",
-    "ts": "2026-09-16T22:52:49Z",
+    "id": "sqep-15085-land-20260916",
+    "ts": "2026-09-16T23:10:55Z",
     "to": "TABLE"
   },
   {
