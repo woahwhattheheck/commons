@@ -7,6 +7,10 @@ from .common import digest_object, sorted_unique
 from .parse import ParsedCandidate, ParsedEvidence
 from .policy import policy_dict
 
+_POLICY_AT_IMPORT = policy_dict()
+_MAX_FUTURE_SKEW_SECONDS = int(_POLICY_AT_IMPORT["max_future_skew_seconds"])
+del _POLICY_AT_IMPORT
+
 
 def asset_descriptor(asset: dict[str, Any]) -> dict[str, Any]:
     return {
@@ -34,8 +38,13 @@ def evaluate_assets(
     evidence: ParsedEvidence,
     *,
     now: datetime,
+    _max_future_skew_seconds: int = _MAX_FUTURE_SKEW_SECONDS,
+    _timedelta=timedelta,
+    _descriptor_sha256=asset_descriptor_sha256,
+    _project_asset=_project,
+    _sorted_unique=sorted_unique,
 ) -> dict[str, Any]:
-    future_skew = timedelta(seconds=policy_dict()["max_future_skew_seconds"])
+    future_skew = _timedelta(seconds=_max_future_skew_seconds)
     blockers: list[str] = []
     owner_actions: list[str] = []
     assets = {row["asset_id"]: row for row in evidence.assets}
@@ -67,7 +76,7 @@ def evaluate_assets(
             owner_actions.append(f"replace_internal_asset:{asset_id}")
             continue
         if asset["release_class"] == "OWNER_APPROVAL_REQUIRED":
-            descriptor_digest = asset_descriptor_sha256(asset)
+            descriptor_digest = _descriptor_sha256(asset)
             matching = [
                 release
                 for release in releases_by_asset.get(asset_id, [])
@@ -79,10 +88,10 @@ def evaluate_assets(
                 blockers.append(f"required_asset_exact_release_missing:{asset_id}")
                 owner_actions.append(f"retain_exact_asset_release:{asset_id}")
                 continue
-        safe_assets.append(_project(asset))
+        safe_assets.append(_project_asset(asset))
 
     return {
-        "blockers": sorted_unique(blockers),
-        "owner_actions": sorted_unique(owner_actions),
+        "blockers": _sorted_unique(blockers),
+        "owner_actions": _sorted_unique(owner_actions),
         "safe_assets": safe_assets,
     }
