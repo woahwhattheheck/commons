@@ -35,7 +35,7 @@ def _assert_json_safe(value: Any, path: str = "$") -> None:
         _validate_utf8_text(value, path)
         return
     if isinstance(value, float) and not math.isfinite(value):
-        raise AcceptanceError(f"{path}: non-finite float is not permitted")
+        raise AcceptanceError(f"{path}: non-finite float cannot be encoded as JSON")
     if value is None or isinstance(value, (int, bool, float)):
         return
     if isinstance(value, Mapping):

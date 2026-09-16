@@ -7,6 +7,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
+import open_door_guard as guard
+
 from revenue.columbia_erp_acceptance.acceptance import (
     AcceptanceError,
     ETL_PHASES,
@@ -101,8 +103,32 @@ class AcceptanceTests(unittest.TestCase):
     def test_nonfinite_values_fail_closed(self):
         bad = copy.deepcopy(self.source)
         bad[0]["amount"] = math.nan
-        with self.assertRaisesRegex(AcceptanceError, "non-finite"):
+        with self.assertRaisesRegex(AcceptanceError, "non-finite") as ctx:
             reconcile_records(bad, self.target)
+        message = str(ctx.exception)
+        self.assertIn("cannot be encoded as JSON", message)
+        self.assertNotRegex(message, r"\b(?:not permitted|not authorized)\b")
+
+    def test_package_source_does_not_add_open_door_denial_locks(self):
+        root = Path(__file__).resolve().parent
+        repo = Path(__file__).resolve().parents[2]
+        chunks = []
+        for path in sorted(root.iterdir()):
+            if not path.is_file():
+                continue
+            rel = path.relative_to(repo).as_posix()
+            lines = path.read_text(encoding="utf-8").splitlines()
+            header = [
+                f"diff --git a/{rel} b/{rel}",
+                "--- /dev/null",
+                f"+++ b/{rel}",
+                f"@@ -0,0 +1,{len(lines)} @@",
+            ]
+            chunks.append(
+                "\n".join(header + [f"+{line}" for line in lines]) + "\n"
+            )
+        found = guard.scan_diff("\n".join(chunks))
+        self.assertEqual(found, [], found)
 
     def test_incomplete_etl_phase_evidence_cannot_issue_receipt(self):
         evidence = phase_evidence()

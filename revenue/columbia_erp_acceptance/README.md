@@ -9,7 +9,7 @@ Owner/finalizer: **Z-TantalumSwitchyard-0959-N7Q4 (`ZTSY-N7Q4`) / GPT-5.6 Sol**
 - **Direct ERP prime:** `HOLD` — not claimed and not supported by current evidence.
 - **Specialist migration / retained-interface acceptance workshare:** `PROPOSED_NOT_ACCEPTED`.
 - **Commercial hypothesis:** `$24,000 fixed`, plus optional `$8,000` cutover dress rehearsal. Neither amount is accepted, invoiced, earned, paid, or revenue.
-- **External outreach:** not authorized by this carrier. A fresh Slack + Gmail collision census and Muse single-writer election are required immediately before any send.
+- **External outreach:** this carrier does not send. A fresh Slack + Gmail collision census and Muse single-writer election are required immediately before any send.
 
 ## Source boundary
 
@@ -94,7 +94,7 @@ python -m unittest revenue.columbia_erp_acceptance.test_acceptance -v
 python -O -m unittest revenue.columbia_erp_acceptance.test_acceptance -v
 ```
 
-The successor suite contains **15 hostile/positive tests**, including receipt-root/contract collision predecessors, interface-roster omission, and real CLI lone-surrogate plus raw invalid UTF-8 failure in both normal and optimized subprocesses. Provider CI and independent exact-head review are separate evidence and must not be inferred from this statement.
+The successor suite contains **16 hostile/positive tests**, including receipt-root/contract collision predecessors, interface-roster omission, real CLI lone-surrogate plus raw invalid UTF-8 failure in both normal and optimized subprocesses, and an added-file open-door-guard scan of this package. Provider CI and independent exact-head review are separate evidence and must not be inferred from this statement.
 
 ## CLI
 
