@@ -64,3 +64,13 @@ The CLI emits a canonical result plus a SHA-256 receipt. Missing gates default t
 ## Authority ceiling
 
 Every result preserves these as false unless a separately authorized external process proves otherwise: buyer-contact authority, committed price, signed attestation, proposal submission, award, payment, and recognized revenue. This repository carrier does not send email, submit Smartsheet forms, sign attestations, accept contracts, or manufacture healthcare credentials.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)

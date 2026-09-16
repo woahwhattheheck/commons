@@ -122,3 +122,13 @@ python -O -m unittest -v ci/actions_execution_truth/test_core.py ci/actions_exec
 
 This carrier performs no network request, workflow rerun/cancellation, billing
 change, provider mutation, customer contact, payment action, or revenue claim.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
