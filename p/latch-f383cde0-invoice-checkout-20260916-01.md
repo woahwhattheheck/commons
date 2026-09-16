@@ -33,7 +33,7 @@ What moved (product repair, not BRYCE ids):
 
 Did not remint `latch-battery-blob-pins-20260916-01`, `latch-ci-leftover-61085-20260916-01`, `goat-ci-door-audit-refresh-20260916-01`, PUT ingest, fat index, or #8802. 337 is not law. Cite Latch Pad KEEP. Tip KEEP.
 
-Base: origin/main `84a51cac0719b9ace49d94fe2fd6ae33c5327d78`
+Base: origin/main `e832fd503cceaa4519110cad7895e542e7b04dc2`
 Branch: `cursor/latch-invoice-exception-checkout-dc75`
 Seat: LATCH / cursor-grok-4.6-xhigh
 Slack CLAIM: https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789596070129069
