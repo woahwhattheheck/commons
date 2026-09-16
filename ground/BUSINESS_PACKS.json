@@ -15,12 +15,28 @@
   "similar_is_not_clone": true,
   "uniqueness": {
     "unit": "customer_sale",
-    "required_distinct": ["assets", "ops"],
-    "instance_distinct": ["assets", "brand", "checkout", "instructions"],
-    "shared_not_clone": ["template_id", "vertical"],
+    "required_distinct": [
+      "assets",
+      "ops"
+    ],
+    "instance_distinct": [
+      "assets",
+      "brand",
+      "checkout",
+      "instructions"
+    ],
+    "shared_not_clone": [
+      "template_id",
+      "vertical"
+    ],
     "marketing_may_claim_uniqueness_only_when": "content_fingerprint_is_unique_among_sales"
   },
-  "verdicts": ["UNIQUE", "CLONE_STAMP", "CONFLICT", "MISSING_FINGERPRINT"],
+  "verdicts": [
+    "UNIQUE",
+    "CLONE_STAMP",
+    "CONFLICT",
+    "MISSING_FINGERPRINT"
+  ],
   "mystery": {
     "mix_rare_valuable_ideas": true,
     "value_range_set_by": "BRYCE",
@@ -34,7 +50,13 @@
     "framing": "fun_generous_gesture_tokenjunkielabs",
     "nuts": "rare_extremely_valuable_ideas"
   },
-  "mystery_verdicts": ["MYSTERY_OK", "INVENTED_ODDS", "LOTTERY_FRAMING", "FAKE_SCARCITY", "VALUE_RANGE_NOT_BRYCE"],
+  "mystery_verdicts": [
+    "MYSTERY_OK",
+    "INVENTED_ODDS",
+    "LOTTERY_FRAMING",
+    "FAKE_SCARCITY",
+    "VALUE_RANGE_NOT_BRYCE"
+  ],
   "compose": {
     "id": "cursor-business-packs-similar-mystery-20260902-01",
     "kind": "BUSINESS_PACK_SIMILAR_MYSTERY_LAW",
@@ -60,8 +82,16 @@
     "source_channel_name": "#business-packs",
     "scout_demand_id": "scout-demand-yard-card-instance-20260902-01",
     "did_not_remint_scout_demand": true,
-    "named_unique_sell_requires": ["brand", "door"],
-    "door_aliases": ["checkout", "door", "door_url", "door_path"],
+    "named_unique_sell_requires": [
+      "brand",
+      "door"
+    ],
+    "door_aliases": [
+      "checkout",
+      "door",
+      "door_url",
+      "door_path"
+    ],
     "kit_without_instance": "list as kit, not unique-instance SELL",
     "copy": "prices_and_time_budgets_never_earnings",
     "job_door_noun": "weekend yard-help route",
@@ -119,7 +149,15 @@
   "paperwork": {
     "id": "cursor-business-pack-paperwork-20260902-01",
     "source_slack_ts": "1788327816.150299",
-    "required": ["state", "registration", "ein", "sales_tax", "license", "insurance", "contract"],
+    "required": [
+      "state",
+      "registration",
+      "ein",
+      "sales_tax",
+      "license",
+      "insurance",
+      "contract"
+    ],
     "legal_advice": false,
     "hold_counsel": true,
     "did_not_write_plant_instance": true,
@@ -356,5 +394,41 @@
   "not": "commons_admission_gate",
   "helper": "host/business_pack_unique.py",
   "card": "ground/BUSINESS_PACKS.md",
-  "door": "business-packs.html"
+  "door": "business-packs.html",
+  "live_cash": {
+    "cite": [
+      "goat-business-packs-json-live-cash-20260916-01",
+      "coil-business-packs-live-cash-20260905-01",
+      "goat-clans-json-live-cash-20260916-01",
+      "business-packs.html Live cash / tip-shelf"
+    ],
+    "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Unique-pack law / instances / factory above stay canonical. business-packs.html already surfaces Live cash and loads this JSON. Pack instance checkout remains NOT_MINTED until owner pastes a live Payment Link. No invent Stripe URLs.",
+    "products": [
+      {
+        "name": "Agent Failure Autopsy",
+        "price_usd": 29,
+        "path": "agent-rescue.html"
+      },
+      {
+        "name": "Dealer Service Lead Rescue",
+        "price_usd": 199,
+        "path": "dealer-service-lead-rescue.html"
+      },
+      {
+        "name": "Referral Intake Completeness",
+        "price_usd": 199,
+        "path": "referral-intake-completeness.html"
+      },
+      {
+        "name": "Repair Booking Preflight",
+        "price_usd": 199,
+        "path": "repair-booking-preflight.html"
+      },
+      {
+        "name": "Plant Downtime Handoff",
+        "price_usd": 199,
+        "path": "plant-downtime-handoff.html"
+      }
+    ]
+  }
 }
