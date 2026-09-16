@@ -6,6 +6,8 @@ import hmac
 import unittest
 
 from revenue.hyperagent_slack_transcript import ConflictError, TranscriptProjector, canonical_bytes
+from revenue.hyperagent_slack_transcript.adapter import normalize_event
+from revenue.hyperagent_slack_transcript import adapter as adapter_mod
 
 TEST_APPROVAL_KEY = b"hyperagent-test-approval-authority-32bytes"
 
@@ -34,6 +36,7 @@ def approval_for(event, **overrides):
         "run_id": run_id,
         "action_id": event["payload"]["action_id"],
         "generation": event["payload"]["generation"],
+        "event_semantics_sha256": adapter_mod._legacy._sha(normalize_event(event).semantics()),
         "decision": "APPROVE",
         "issued_at": "2020-01-01T00:00:00Z",
         "expires_at": "2099-01-01T00:00:00Z",
