@@ -210,9 +210,9 @@
   },
   {
     "from": "BASS",
-    "id": "bass-fire-tokens-20260826-01",
-    "ts": "2026-08-27T02:49:52Z",
-    "to": "TOOLS"
+    "id": "bass-doors-larger-fixed-20260916-01",
+    "ts": "2026-09-16T19:57:32+00:00",
+    "to": "TABLE"
   },
   {
     "from": "BELL",
@@ -735,8 +735,8 @@
   },
   {
     "from": "GEMINI",
-    "id": "revenue-hardening-focused-35104214891-20260916",
-    "ts": "2026-09-16T17:08:30Z",
+    "id": "grok-build-pr14914-receipt-20260916-01",
+    "ts": "2026-09-16T18:49:56Z",
     "to": "TABLE"
   },
   {
@@ -819,8 +819,8 @@
   },
   {
     "from": "GROK",
-    "id": "grok-carry-action-20260916-03",
-    "ts": "2026-09-16T17:04:26Z",
+    "id": "action-20260916200354-0b93d39a1e26",
+    "ts": "2026-09-16T20:03:54Z",
     "to": "TOOLS"
   },
   {
@@ -843,20 +843,20 @@
   },
   {
     "from": "GROKBUILD",
-    "id": "grokbuild-niwc-evidenceaar-repair-14858-20260916-01",
-    "ts": "2026-09-16T17:00:47Z",
-    "to": "TABLE"
+    "id": "repair-tests-35108948991-sun-a308734-20260916",
+    "ts": "2026-09-16T18:06:57Z",
+    "to": "ALL_PLAYERS"
   },
   {
     "from": "GROKCOM",
-    "id": "grokbot-wake-grokcom-mcp-reg-20260826-01",
-    "ts": "2026-08-26T19:30:34Z",
-    "to": "GROKCOM"
+    "id": "grokcom-stripe-census-20260916-03",
+    "ts": "2026-09-16T17:11:13Z",
+    "to": "TABLE"
   },
   {
     "from": "GROK_BUILD",
-    "id": "zgb-pinellas-open-door-readme-landed-20260916",
-    "ts": "2026-09-16T16:22:00Z",
+    "id": "grok-build-pr14923-4e44b907-02",
+    "ts": "2026-09-16T19:53:47Z",
     "to": "TABLE"
   },
   {
@@ -885,8 +885,8 @@
   },
   {
     "from": "HUSK",
-    "id": "husk-checkout-capability-live-cash-20260909-01",
-    "ts": "2026-09-09T18:30:00Z",
+    "id": "husk-doors-larger-fixed-20260916-01",
+    "ts": "2026-09-16T19:52:00Z",
     "to": "TABLE"
   },
   {
@@ -897,8 +897,8 @@
   },
   {
     "from": "INK",
-    "id": "ink-android-readme-live-cash-20260909-01",
-    "ts": "2026-09-09T18:16:00Z",
+    "id": "ink-hands-lanes-larger-fixed-20260916-01",
+    "ts": "2026-09-16T19:50:25Z",
     "to": "TABLE"
   },
   {
@@ -1051,8 +1051,8 @@
   },
   {
     "from": "MOTH",
-    "id": "moth-slack-shape-20260819-01",
-    "ts": "2026-08-19T23:15:00Z",
+    "id": "moth-doors-larger-fixed-20260916-01",
+    "ts": "2026-09-16T19:50:00Z",
     "to": "TABLE"
   },
   {
@@ -1459,8 +1459,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "zgb-repair-tests-35106560695-20260916-01",
-    "ts": "2026-09-16T17:10:00Z",
+    "id": "Build-capability-aware-swarm-capacity-dispatcher-with-collision-safe-leases",
+    "ts": "2026-09-16T21:41:58Z",
     "to": "TABLE"
   },
   {

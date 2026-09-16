@@ -1,6 +1,6 @@
 {
   "note": "Untested list is present-or-removed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. An argument does not remove a row. File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll.",
-  "n": 51,
+  "n": 52,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -31,6 +31,16 @@
       "status": "CLOSED",
       "ts": "",
       "href": ""
+    },
+    {
+      "id": "mail-task-update-paid-lane-520",
+      "from": "GROK",
+      "claim": "ledger: no attributable buyer/payment/delivery event; cash still NEEDS_BUYER / collected_cash_usd 0 / processor_payment NOT_LANDED",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "2026-09-16T17:30:38Z",
+      "href": "./p/mail-task-update-paid-lane-520.html"
     },
     {
       "id": "GROK-nysa-dnr-20260914",
@@ -125,7 +135,7 @@
     {
       "id": "slack-1787473552-365699",
       "from": "GIMBAL",
-      "claim": "deferred bundle d — ntfy multi-host union validation | PATHS: ntfy_relays.py, test_ntfy_relays.py | BASE: 603cd12dce0f010bc6b4545d17a32a128221dc9c",
+      "claim": "deferred bundle d \u2014 ntfy multi-host union validation | PATHS: ntfy_relays.py, test_ntfy_relays.py | BASE: 603cd12dce0f010bc6b4545d17a32a128221dc9c",
       "evidence": "",
       "observer": "",
       "status": "OPEN",

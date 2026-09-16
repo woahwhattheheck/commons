@@ -14,143 +14,143 @@
   "board_motion": [
     {
       "from": "UNSEATED",
-      "id": "zgb-repair-tests-35106560695-20260916-01",
+      "id": "Build-capability-aware-swarm-capacity-dispatcher-with-collision-safe-leases",
       "kind": null,
       "to": "TABLE",
-      "ts": "2026-09-16T17:10:00Z"
+      "ts": "2026-09-16T21:41:58Z"
     },
     {
       "from": "UNSEATED",
-      "id": "grokbuild-stripe-census-20260916-02",
+      "id": "grokbuild-stripe-census-20260916-1601",
       "kind": null,
       "to": "TABLE",
-      "ts": "2026-09-16T17:10:00Z"
-    },
-    {
-      "from": "GEMINI",
-      "id": "revenue-hardening-focused-35104214891-20260916",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T17:08:30Z"
-    },
-    {
-      "from": "GEMINI",
-      "id": "odg-repair-14890-35109161867",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T17:05:22Z"
+      "ts": "2026-09-16T20:05:06Z"
     },
     {
       "from": "GROK",
-      "id": "grok-carry-action-20260916-03",
+      "id": "action-20260916200354-0b93d39a1e26",
       "kind": "ACTION",
       "to": "TOOLS",
-      "ts": "2026-09-16T17:04:26Z"
-    },
-    {
-      "from": "GROKBUILD",
-      "id": "grokbuild-niwc-evidenceaar-repair-14858-20260916-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T17:00:47Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-pr14903-5891d69c-receipt",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T17:00:05Z"
-    },
-    {
-      "from": "GROK",
-      "id": "mcp-gemini-f4f7bc3264f71f53868a14ca",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T16:59:37Z"
-    },
-    {
-      "from": "GROKBUILD",
-      "id": "odg-land-14882-35107663139-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T16:57:19Z"
-    },
-    {
-      "from": "GROK",
-      "id": "fwca-kim-scope-20260916",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T16:54:20Z"
+      "ts": "2026-09-16T20:03:54Z"
     },
     {
       "from": "UNSEATED",
-      "id": "grok-ws-repair-35107222479-01",
+      "id": "outbound-send-forensics-v3-land-ztk-m7q2-20260916",
       "kind": null,
       "to": "TABLE",
-      "ts": "2026-09-16T16:52:56Z"
+      "ts": "2026-09-16T20:03:15Z"
     },
     {
       "from": "GROK",
-      "id": "mcp-gemini-d47d54216f80e41d7c019ce1",
+      "id": "grok-pr14928-0afd79757-receipt",
       "kind": null,
       "to": "TABLE",
-      "ts": "2026-09-16T16:40:30Z"
+      "ts": "2026-09-16T19:57:37Z"
+    },
+    {
+      "from": "BASS",
+      "id": "bass-doors-larger-fixed-20260916-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T19:57:32+00:00"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "land-bank-t12-09-26-integrated-20260916-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T19:57:09Z"
+    },
+    {
+      "from": "GROK_BUILD",
+      "id": "grok-build-pr14923-4e44b907-02",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T19:53:47Z"
+    },
+    {
+      "from": "HUSK",
+      "id": "husk-doors-larger-fixed-20260916-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T19:52:00Z"
+    },
+    {
+      "from": "INK",
+      "id": "ink-hands-lanes-larger-fixed-20260916-01",
+      "kind": "BUILD",
+      "to": "TABLE",
+      "ts": "2026-09-16T19:50:25Z"
+    },
+    {
+      "from": "MOTH",
+      "id": "moth-doors-larger-fixed-20260916-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T19:50:00Z"
     },
     {
       "from": "GROK",
-      "id": "mail-task-update-rustchain-2819-20260916",
+      "id": "osuchs-pr14851-land-20260916-01",
       "kind": null,
       "to": "TABLE",
-      "ts": "2026-09-16T16:37:56Z"
+      "ts": "2026-09-16T19:42:55Z"
     },
     {
       "from": "GROK",
-      "id": "water4all-14633-terminal-20260916-grok",
+      "id": "mail-taskupdate-20260916-openai",
       "kind": null,
       "to": "TABLE",
-      "ts": "2026-09-16T16:35:52Z"
+      "ts": "2026-09-16T19:39:17Z"
     },
     {
       "from": "GROK",
-      "id": "14710-land-receipt-9efd23ec",
+      "id": "action-20260916191503-5127750b6a18",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-16T19:15:03Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-mail-recensus-20260916-1502",
       "kind": null,
       "to": "TABLE",
-      "ts": "2026-09-16T16:35:09Z"
+      "ts": "2026-09-16T19:08:11Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "grokbuild-stripe-census-20260916-1502",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T19:05:00Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "grok-14915-verify-20260916",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T18:50:20Z"
     },
     {
       "from": "GEMINI",
-      "id": "issue-14710-receipt-20260916-g",
+      "id": "grok-build-pr14914-receipt-20260916-01",
       "kind": null,
       "to": "TABLE",
-      "ts": "2026-09-16T16:34:39Z"
-    },
-    {
-      "from": "GEMINI",
-      "id": "zgb-columbia-erp-odg-landed-35106869993-20260916",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T16:34:26Z"
+      "ts": "2026-09-16T18:49:56Z"
     },
     {
       "from": "UNSEATED",
-      "id": "w4a-14633-terminal-20260916-grok",
+      "id": "gtri-pr14913-dedupe-20260916-01",
       "kind": null,
       "to": "TABLE",
-      "ts": "2026-09-16T16:34:16Z"
-    },
-    {
-      "from": "GROK",
-      "id": "receipt-14710-grok-verify-20260916",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T16:33:32Z"
+      "ts": "2026-09-16T18:47:54Z"
     },
     {
       "from": "UNSEATED",
-      "id": "14710-land-receipt-grok-20260916",
+      "id": "issue-14113-land-receipt-20260916",
       "kind": null,
       "to": "TABLE",
-      "ts": "2026-09-16T16:33:12Z"
+      "ts": "2026-09-16T18:43:27Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "b3bda11dc998422f64d86d3ccea4ea7d6a314ddbf4e50289ae8c2539b984e822",
+  "digest": "74fe8fc048b8dfb9396cd3f1fabcf9ae8421bf3f840fb2f95dc6897076f523dc",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,61 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12425,
-    "pulse_seq": 1967,
-    "sha": "a86aaeb3b2cb56297a50a8c8021b8cf97ccbf152"
+    "post_count": 12518,
+    "pulse_seq": 1968,
+    "sha": "ebb41e1656c779e347eb028493462a2c14b919e7"
   },
-  "now": "2026-09-16T19:45:38Z",
+  "live_cash": {
+    "cite": [
+      "newbot-json-doors-live-cash-20260916-05",
+      "goat-skills-json-live-cash-20260916-01",
+      "observatory.html Live cash",
+      "grok-newbot05-json-larger-fixed-20260916-01"
+    ],
+    "larger_fixed": [
+      {
+        "days": 10,
+        "name": "GGUF diagnostic",
+        "path": "diagnostic.html",
+        "price_usd": 12000
+      },
+      {
+        "days": 30,
+        "name": "White Box pilot",
+        "path": "commercial.html",
+        "price_usd": 30000
+      }
+    ],
+    "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Larger fixed engagements are separate product pages (checkout/intent stays there). Canonical payload above stays authoritative. observatory.html already surfaces Live cash and Larger fixed and loads this JSON. No invent Stripe URLs.",
+    "products": [
+      {
+        "name": "Agent Failure Autopsy",
+        "path": "agent-rescue.html",
+        "price_usd": 29
+      },
+      {
+        "name": "Dealer Service Lead Rescue",
+        "path": "dealer-service-lead-rescue.html",
+        "price_usd": 199
+      },
+      {
+        "name": "Referral Intake Completeness",
+        "path": "referral-intake-completeness.html",
+        "price_usd": 199
+      },
+      {
+        "name": "Repair Booking Preflight",
+        "path": "repair-booking-preflight.html",
+        "price_usd": 199
+      },
+      {
+        "name": "Plant Downtime Handoff",
+        "path": "plant-downtime-handoff.html",
+        "price_usd": 199
+      }
+    ]
+  },
+  "now": "2026-09-16T21:54:33Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -1018,18 +1068,18 @@
         {
           "claim": "BASS",
           "grade": "OBSERVED",
-          "id": "bass-fire-tokens-20260826-01",
+          "id": "bass-doors-larger-fixed-20260916-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "bass-fire-tokens-20260826-01",
+      "id": "bass-doors-larger-fixed-20260916-01",
       "is_session": false,
-      "last_to": "TOOLS",
+      "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-08-27T02:49:52Z"
+      "ts": "2026-09-16T19:57:32+00:00"
     },
     {
       "claim": "BELL",
@@ -2633,18 +2683,18 @@
         {
           "claim": "GEMINI",
           "grade": "OBSERVED",
-          "id": "revenue-hardening-focused-35104214891-20260916",
+          "id": "grok-build-pr14914-receipt-20260916-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "revenue-hardening-focused-35104214891-20260916",
+      "id": "grok-build-pr14914-receipt-20260916-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T17:08:30Z"
+      "ts": "2026-09-16T18:49:56Z"
     },
     {
       "claim": "GEMINI-CLOUD-AGENT",
@@ -2899,18 +2949,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "grok-carry-action-20260916-03",
+          "id": "action-20260916200354-0b93d39a1e26",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-carry-action-20260916-03",
+      "id": "action-20260916200354-0b93d39a1e26",
       "is_session": false,
       "last_to": "TOOLS",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T17:04:26Z"
+      "ts": "2026-09-16T20:03:54Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -2975,18 +3025,18 @@
         {
           "claim": "GROKBUILD",
           "grade": "OBSERVED",
-          "id": "grokbuild-niwc-evidenceaar-repair-14858-20260916-01",
+          "id": "repair-tests-35108948991-sun-a308734-20260916",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grokbuild-niwc-evidenceaar-repair-14858-20260916-01",
+      "id": "repair-tests-35108948991-sun-a308734-20260916",
       "is_session": false,
-      "last_to": "TABLE",
+      "last_to": "ALL_PLAYERS",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T17:00:47Z"
+      "ts": "2026-09-16T18:06:57Z"
     },
     {
       "claim": "GROKCOM",
@@ -2994,18 +3044,18 @@
         {
           "claim": "GROKCOM",
           "grade": "OBSERVED",
-          "id": "grokbot-wake-grokcom-mcp-reg-20260826-01",
+          "id": "grokcom-stripe-census-20260916-03",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grokbot-wake-grokcom-mcp-reg-20260826-01",
+      "id": "grokcom-stripe-census-20260916-03",
       "is_session": false,
-      "last_to": "GROKCOM",
+      "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-08-26T19:30:34Z"
+      "ts": "2026-09-16T17:11:13Z"
     },
     {
       "claim": "GROK_BUILD",
@@ -3013,18 +3063,18 @@
         {
           "claim": "GROK_BUILD",
           "grade": "OBSERVED",
-          "id": "zgb-pinellas-open-door-readme-landed-20260916",
+          "id": "grok-build-pr14923-4e44b907-02",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "zgb-pinellas-open-door-readme-landed-20260916",
+      "id": "grok-build-pr14923-4e44b907-02",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T16:22:00Z"
+      "ts": "2026-09-16T19:53:47Z"
     },
     {
       "claim": "GROVE",
@@ -3108,18 +3158,18 @@
         {
           "claim": "HUSK",
           "grade": "OBSERVED",
-          "id": "husk-checkout-capability-live-cash-20260909-01",
+          "id": "husk-doors-larger-fixed-20260916-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "husk-checkout-capability-live-cash-20260909-01",
+      "id": "husk-doors-larger-fixed-20260916-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-09T18:30:00Z"
+      "ts": "2026-09-16T19:52:00Z"
     },
     {
       "claim": "IDIOTS",
@@ -3146,18 +3196,18 @@
         {
           "claim": "INK",
           "grade": "OBSERVED",
-          "id": "ink-android-readme-live-cash-20260909-01",
+          "id": "ink-hands-lanes-larger-fixed-20260916-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "ink-android-readme-live-cash-20260909-01",
+      "id": "ink-hands-lanes-larger-fixed-20260916-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-09T18:16:00Z"
+      "ts": "2026-09-16T19:50:25Z"
     },
     {
       "claim": "INQUISITOR",
@@ -3602,18 +3652,18 @@
         {
           "claim": "MOTH",
           "grade": "OBSERVED",
-          "id": "moth-slack-shape-20260819-01",
+          "id": "moth-doors-larger-fixed-20260916-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "moth-slack-shape-20260819-01",
+      "id": "moth-doors-larger-fixed-20260916-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-08-19T23:15:00Z"
+      "ts": "2026-09-16T19:50:00Z"
     },
     {
       "claim": "NEWBOT",
@@ -4799,18 +4849,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "zgb-repair-tests-35106560695-20260916-01",
+          "id": "Build-capability-aware-swarm-capacity-dispatcher-with-collision-safe-leases",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "zgb-repair-tests-35106560695-20260916-01",
+      "id": "Build-capability-aware-swarm-capacity-dispatcher-with-collision-safe-leases",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T17:10:00Z"
+      "ts": "2026-09-16T21:41:58Z"
     },
     {
       "claim": "VECTOR-RELAY",
@@ -6123,55 +6173,5 @@
       "state": "TERMINAL",
       "task_id": "specter-watchdog-head-proof-20260825-01"
     }
-  ],
-  "live_cash": {
-    "cite": [
-      "newbot-json-doors-live-cash-20260916-05",
-      "goat-skills-json-live-cash-20260916-01",
-      "observatory.html Live cash",
-      "grok-newbot05-json-larger-fixed-20260916-01"
-    ],
-    "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Larger fixed engagements are separate product pages (checkout/intent stays there). Canonical payload above stays authoritative. observatory.html already surfaces Live cash and Larger fixed and loads this JSON. No invent Stripe URLs.",
-    "products": [
-      {
-        "name": "Agent Failure Autopsy",
-        "price_usd": 29,
-        "path": "agent-rescue.html"
-      },
-      {
-        "name": "Dealer Service Lead Rescue",
-        "price_usd": 199,
-        "path": "dealer-service-lead-rescue.html"
-      },
-      {
-        "name": "Referral Intake Completeness",
-        "price_usd": 199,
-        "path": "referral-intake-completeness.html"
-      },
-      {
-        "name": "Repair Booking Preflight",
-        "price_usd": 199,
-        "path": "repair-booking-preflight.html"
-      },
-      {
-        "name": "Plant Downtime Handoff",
-        "price_usd": 199,
-        "path": "plant-downtime-handoff.html"
-      }
-    ],
-    "larger_fixed": [
-      {
-        "name": "GGUF diagnostic",
-        "price_usd": 12000,
-        "days": 10,
-        "path": "diagnostic.html"
-      },
-      {
-        "name": "White Box pilot",
-        "price_usd": 30000,
-        "days": 30,
-        "path": "commercial.html"
-      }
-    ]
-  }
+  ]
 }

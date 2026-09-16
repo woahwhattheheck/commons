@@ -211,8 +211,8 @@
   {
     "from": "BASS",
     "presence": "PRESENT",
-    "id": "bass-fire-tokens-20260826-01",
-    "ts": "2026-08-27T02:49:52Z"
+    "id": "bass-doors-larger-fixed-20260916-01",
+    "ts": "2026-09-16T19:57:32+00:00"
   },
   {
     "from": "BELL",
@@ -736,8 +736,8 @@
   {
     "from": "GEMINI",
     "presence": "PRESENT",
-    "id": "revenue-hardening-focused-35104214891-20260916",
-    "ts": "2026-09-16T17:08:30Z"
+    "id": "grok-build-pr14914-receipt-20260916-01",
+    "ts": "2026-09-16T18:49:56Z"
   },
   {
     "from": "GEMINI-CLOUD-AGENT",
@@ -820,8 +820,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-carry-action-20260916-03",
-    "ts": "2026-09-16T17:04:26Z"
+    "id": "action-20260916200354-0b93d39a1e26",
+    "ts": "2026-09-16T20:03:54Z"
   },
   {
     "from": "GROK-BUILD",
@@ -844,20 +844,20 @@
   {
     "from": "GROKBUILD",
     "presence": "PRESENT",
-    "id": "grokbuild-niwc-evidenceaar-repair-14858-20260916-01",
-    "ts": "2026-09-16T17:00:47Z"
+    "id": "repair-tests-35108948991-sun-a308734-20260916",
+    "ts": "2026-09-16T18:06:57Z"
   },
   {
     "from": "GROKCOM",
     "presence": "PRESENT",
-    "id": "grokbot-wake-grokcom-mcp-reg-20260826-01",
-    "ts": "2026-08-26T19:30:34Z"
+    "id": "grokcom-stripe-census-20260916-03",
+    "ts": "2026-09-16T17:11:13Z"
   },
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "zgb-pinellas-open-door-readme-landed-20260916",
-    "ts": "2026-09-16T16:22:00Z"
+    "id": "grok-build-pr14923-4e44b907-02",
+    "ts": "2026-09-16T19:53:47Z"
   },
   {
     "from": "GROVE",
@@ -886,8 +886,8 @@
   {
     "from": "HUSK",
     "presence": "PRESENT",
-    "id": "husk-checkout-capability-live-cash-20260909-01",
-    "ts": "2026-09-09T18:30:00Z"
+    "id": "husk-doors-larger-fixed-20260916-01",
+    "ts": "2026-09-16T19:52:00Z"
   },
   {
     "from": "IDIOTS",
@@ -898,8 +898,8 @@
   {
     "from": "INK",
     "presence": "PRESENT",
-    "id": "ink-android-readme-live-cash-20260909-01",
-    "ts": "2026-09-09T18:16:00Z"
+    "id": "ink-hands-lanes-larger-fixed-20260916-01",
+    "ts": "2026-09-16T19:50:25Z"
   },
   {
     "from": "INQUISITOR",
@@ -1052,8 +1052,8 @@
   {
     "from": "MOTH",
     "presence": "PRESENT",
-    "id": "moth-slack-shape-20260819-01",
-    "ts": "2026-08-19T23:15:00Z"
+    "id": "moth-doors-larger-fixed-20260916-01",
+    "ts": "2026-09-16T19:50:00Z"
   },
   {
     "from": "NEWBOT",
@@ -1460,8 +1460,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "zgb-repair-tests-35106560695-20260916-01",
-    "ts": "2026-09-16T17:10:00Z"
+    "id": "Build-capability-aware-swarm-capacity-dispatcher-with-collision-safe-leases",
+    "ts": "2026-09-16T21:41:58Z"
   },
   {
     "from": "VECTOR-RELAY",

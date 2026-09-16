@@ -1,21 +1,27 @@
 {
-  "seq": 1967,
-  "head": "5fe7008e3a7feafc65228a0d1e45662174be8cae",
-  "ts": "2026-09-16T20:31:11Z",
-  "post_count": 12425,
+  "seq": 1968,
+  "head": "ebb41e1656c779e347eb028493462a2c14b919e7",
+  "ts": "2026-09-16T21:54:33Z",
+  "post_count": 12518,
   "newest": [
-    "newbot-ground-md-live-cash-20260916-09",
-    "newbot-json-doors-live-cash-20260916-08",
-    "bass-lc-8d5ebb2889-20260916-01",
-    "newbot-json-doors-live-cash-20260916-07",
-    "newbot-json-doors-live-cash-20260916-06",
-    "newbot-json-doors-live-cash-20260916-05",
-    "bass-doors-larger-fixed-20260916-02",
-    "grok-tip-product-doors-larger-fixed-compose-20260916-01",
-    "newbot-proof-doors-larger-fixed-20260916-04",
-    "goat-skills-json-live-cash-20260916-01"
+    "Build-capability-aware-swarm-capacity-dispatcher-with-collision-safe-leases",
+    "grokbuild-stripe-census-20260916-1601",
+    "action-20260916200354-0b93d39a1e26",
+    "outbound-send-forensics-v3-land-ztk-m7q2-20260916",
+    "grok-pr14928-0afd79757-receipt",
+    "bass-doors-larger-fixed-20260916-01",
+    "land-bank-t12-09-26-integrated-20260916-01",
+    "grok-build-pr14923-4e44b907-02",
+    "husk-doors-larger-fixed-20260916-01",
+    "ink-hands-lanes-larger-fixed-20260916-01"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
+  "feed": {
+    "delta": "feed/head.json",
+    "wider": "feed/window.json",
+    "full": "recent.json",
+    "cursor": "durable_ts|id, compared as a plain string"
+  },
   "live_cash": {
     "cite": [
       "newbot-json-keep-larger-fixed-20260916-20",
