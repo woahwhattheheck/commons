@@ -1,5 +1,14 @@
 [
   {
+    "id": "Fix-Muse-liveness-ledger--reconcile-explicit-provider-decision-corrections",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "unfavorable_finding",
+    "ts": "2026-09-16T15:14:19Z",
+    "body": ""
+  },
+  {
     "id": "Build-Muse-arbitration-liveness-ledger--exact-request-retry-and-stale-selection-",
     "reason": "commons_publication_terms",
     "code": "commons_publication_terms",
