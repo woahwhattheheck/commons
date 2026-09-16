@@ -1,3 +1,6 @@
+import json
+import subprocess
+import sys
 import unittest
 
 from commercial.sasria_ai_training import (
@@ -219,6 +222,26 @@ class SubmissionAndReceiptTests(unittest.TestCase):
             evidence_refs=(EvidenceRef(label="edge", locator="fixture://edge", note=chr(0xD800)),),
         )
         pack = compile_good(technical_score=score)
+        self.assertEqual(len(pack["receipt_sha256"]), 64)
+
+    def test_real_cli_hold_fixture_fails_closed_without_traceback(self):
+        result = subprocess.run(
+            [
+                sys.executable,
+                "-m",
+                "commercial.sasria_ai_training.cli",
+                "commercial/sasria_ai_training/example_hold.json",
+            ],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(result.returncode, 2, msg=result.stderr)
+        self.assertNotIn("Traceback", result.stderr)
+        pack = json.loads(result.stdout)
+        self.assertEqual(pack["response_status"], "HOLD")
+        self.assertEqual(pack["submission_status"], "HOLD")
+        self.assertIn("prime_mandatory_gate", pack["response_blockers"])
         self.assertEqual(len(pack["receipt_sha256"]), 64)
 
 
