@@ -19,19 +19,13 @@ from .common import (
     canonical_bytes,
     format_time,
     parse_time,
-    seal_source,
     sha256_hex,
-    source_fact_commitment,
-    strict_json_loads,
     utc_now,
 )
 from .consortium_validation import _validate_applicant, _validate_consortium
-from .evidence_validation import (
-    _validate_commercial,
-    _validate_concept_and_evidence,
-    _validate_partner_shortlist,
-)
+from .evidence_validation import _validate_commercial, _validate_concept_and_evidence, _validate_partner_shortlist
 from .source_validation import _validate_sources
+
 
 def _status_from_reasons(groups: Mapping[str, Sequence[Dict[str, Any]]]) -> str:
     if groups["source"]:
@@ -64,14 +58,12 @@ def _semantic_projection(packet: Mapping[str, Any]) -> Dict[str, Any]:
     }
 
 
-def compile_at(input_value: Any, evaluated_at: _dt.datetime, mode: str) -> Dict[str, Any]:
-    """Compile an exact readiness bundle at a trusted evaluation time.
+def _compile_at_trusted(input_value: Any, evaluated_at: _dt.datetime, mode: str) -> Dict[str, Any]:
+    """Internal deterministic compiler at an already trusted timestamp.
 
-    ``mode`` must be ``CURRENT`` or ``HISTORICAL``.  Callers should use
-    :func:`compile_current` for current authority so process time, not caller
-    time, is used.
+    This is used for historical compilation and exact bundle replay. Public
+    CURRENT compilation never accepts this timestamp from a payload/caller.
     """
-
     if mode not in {"CURRENT", "HISTORICAL"}:
         raise ReadinessError("mode must be CURRENT or HISTORICAL")
     if evaluated_at.tzinfo is None:
@@ -92,7 +84,6 @@ def compile_at(input_value: Any, evaluated_at: _dt.datetime, mode: str) -> Dict[
     )
     partner_shortlist, partner_reasons = _validate_partner_shortlist(root.get("partner_shortlist"))
     commercial, commercial_reasons = _validate_commercial(root.get("commercial"))
-
     groups: Dict[str, List[Dict[str, Any]]] = {
         "source": source_reasons,
         "consortium": consortium_reasons,
@@ -110,7 +101,6 @@ def compile_at(input_value: Any, evaluated_at: _dt.datetime, mode: str) -> Dict[
             enriched["group"] = group_name
             all_reasons.append(enriched)
 
-    status = _status_from_reasons(groups)
     packet: Dict[str, Any] = {
         "schema": PACKET_SCHEMA,
         "mode": mode,
@@ -129,7 +119,7 @@ def compile_at(input_value: Any, evaluated_at: _dt.datetime, mode: str) -> Dict[
         "partner_shortlist": partner_shortlist,
         "commercial": commercial,
         "decision": {
-            "status": status,
+            "status": _status_from_reasons(groups),
             "reason_count": len(all_reasons),
             "reasons": all_reasons,
         },
@@ -148,34 +138,47 @@ def compile_at(input_value: Any, evaluated_at: _dt.datetime, mode: str) -> Dict[
         },
     }
     packet["semantic_sha256"] = sha256_hex(_semantic_projection(packet))
-    receipt = {
-        "algorithm": "SHA-256-INTEGRITY-ONLY",
-        "packet_sha256": sha256_hex(packet),
-        "signature": False,
+    return {
+        "schema": BUNDLE_SCHEMA,
+        "packet": packet,
+        "receipt": {
+            "algorithm": "SHA-256-INTEGRITY-ONLY",
+            "packet_sha256": sha256_hex(packet),
+            "signature": False,
+        },
     }
-    return {"schema": BUNDLE_SCHEMA, "packet": packet, "receipt": receipt}
+
+
+def compile_at(input_value: Any, evaluated_at: _dt.datetime, mode: str) -> Dict[str, Any]:
+    """Compile a readiness bundle.
+
+    HISTORICAL uses the explicit retained time. CURRENT intentionally ignores
+    the caller-supplied timestamp and samples process UTC instead; this keeps
+    compatibility with the v1 function signature without granting time
+    authority to the caller.
+    """
+    if mode == "CURRENT":
+        return _compile_at_trusted(input_value, utc_now(), "CURRENT")
+    if mode != "HISTORICAL":
+        raise ReadinessError("mode must be CURRENT or HISTORICAL")
+    return _compile_at_trusted(input_value, evaluated_at, "HISTORICAL")
 
 
 def compile_historical(input_value: Any, evaluated_at: Any) -> Dict[str, Any]:
-    return compile_at(input_value, parse_time(evaluated_at, "evaluated_at") if not isinstance(evaluated_at, _dt.datetime) else evaluated_at, "HISTORICAL")
+    when = parse_time(evaluated_at, "evaluated_at") if not isinstance(evaluated_at, _dt.datetime) else evaluated_at
+    return _compile_at_trusted(input_value, when, "HISTORICAL")
 
 
 def compile_current(input_value: Any) -> Dict[str, Any]:
-    return compile_at(input_value, utc_now(), "CURRENT")
+    return _compile_at_trusted(input_value, utc_now(), "CURRENT")
 
 
-def verify_bundle(
-    input_value: Any,
-    bundle_value: Any,
-    trusted_now: Optional[_dt.datetime] = None,
-) -> Dict[str, Any]:
-    """Verify bundle integrity and, for CURRENT packets, live semantics.
+def verify_bundle(input_value: Any, bundle_value: Any, trusted_now: Optional[_dt.datetime] = None) -> Dict[str, Any]:
+    """Verify integrity and live CURRENT semantics.
 
-    Historical packets are verified only against their retained evaluation time.
-    Current packets must be no older than five minutes and must have the same
-    semantic projection when recompiled at process-owned verifier time.
+    ``trusted_now`` remains in the v1 signature for compatibility, but is not
+    authority for CURRENT packets. The verifier samples process UTC itself.
     """
-
     bundle = _expect_dict(copy.deepcopy(bundle_value), "bundle")
     if bundle.get("schema") != BUNDLE_SCHEMA:
         raise ReadinessError("unsupported bundle schema")
@@ -191,7 +194,7 @@ def verify_bundle(
 
     mode = _expect_str(packet.get("mode"), "bundle.packet.mode")
     generated_at = parse_time(packet.get("generated_at"), "bundle.packet.generated_at")
-    exact = compile_at(input_value, generated_at, mode)
+    exact = _compile_at_trusted(input_value, generated_at, mode)
     if canonical_bytes(exact) != canonical_bytes(bundle):
         raise ReadinessError("bundle does not exactly replay from input at retained generation")
 
@@ -203,12 +206,12 @@ def verify_bundle(
         "packet_sha256": expected_packet_hash,
     }
     if mode == "CURRENT":
-        now = utc_now() if trusted_now is None else trusted_now.astimezone(_dt.timezone.utc).replace(microsecond=0)
+        now = utc_now()
         if generated_at > now + _dt.timedelta(seconds=FUTURE_SKEW_SECONDS):
             raise ReadinessError("current packet was generated in the future")
         if now - generated_at > _dt.timedelta(seconds=CURRENT_PACKET_MAX_AGE_SECONDS):
             raise ReadinessError("current packet exceeds verifier freshness window")
-        live = compile_at(input_value, now, "CURRENT")
+        live = _compile_at_trusted(input_value, now, "CURRENT")
         if live["packet"]["semantic_sha256"] != packet.get("semantic_sha256"):
             raise ReadinessError("current semantics drifted since packet generation")
         result["current_semantics"] = True
@@ -218,8 +221,6 @@ def verify_bundle(
 
 
 def render_owner_markdown(bundle_value: Any) -> str:
-    """Render a deliberately non-authoritative owner-review summary."""
-
     bundle = _expect_dict(bundle_value, "bundle")
     packet = _expect_dict(bundle.get("packet"), "bundle.packet")
     decision = _expect_dict(packet.get("decision"), "bundle.packet.decision")
@@ -245,11 +246,5 @@ def render_owner_markdown(bundle_value: Any) -> str:
             code = str(reason.get("code", "UNKNOWN")).replace("`", "&#96;")
             detail = str(reason.get("detail", "")).replace("\r", " ").replace("\n", " ").replace("`", "&#96;")
             lines.append("- `%s`: %s" % (code, detail))
-    lines.extend(
-        [
-            "",
-            "> Integrity receipts are not signatures. This packet cannot contact a partner, commit funding, quote a price, or submit a proposal.",
-            "",
-        ]
-    )
+    lines.extend(["", "> Integrity receipts are not signatures. This packet cannot contact a partner, commit funding, quote a price, or submit a proposal.", ""])
     return "\n".join(lines)
