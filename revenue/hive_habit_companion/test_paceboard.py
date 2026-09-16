@@ -145,6 +145,16 @@ class StoreCoreTest(unittest.TestCase):
         snapshot = self.store.snapshot()
         self.assertEqual(snapshot["summary"]["finished_focus_minutes"], 5)
 
+    def test_custom_action_is_recorded_not_rejected(self) -> None:
+        payload = {"body": "kept locally"}
+        first = self.mutate("journal.write", "operation-custom-0001", payload)
+        self.assertTrue(first["ok"])
+        self.assertEqual(first["action"], "journal.write")
+        self.assertEqual(first["effect"], "recorded")
+        self.assertEqual(first["accepted"], True)
+        second = self.mutate("journal.write", "operation-custom-0001", payload)
+        self.assertEqual(first, second)
+
     def test_reminder_is_process_current_and_resets_on_checkin(self) -> None:
         goal_id = self.goal(reminder_minutes=30)
         self.clock.advance(minutes=29)

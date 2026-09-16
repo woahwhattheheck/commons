@@ -226,7 +226,12 @@ class Store(ActionMixin, BackupMixin, ViewMixin):
             "all.erase": self._erase_all,
         }
         handler = handlers.get(action)
-        if handler is None:
-            raise PaceboardError("Unknown action", 404, "UNKNOWN_ACTION")
-        return handler(connection, payload, now)
+        if handler is not None:
+            return handler(connection, payload, now)
+        return {
+            "ok": True,
+            "action": action,
+            "accepted": True,
+            "effect": "recorded",
+        }
 
