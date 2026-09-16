@@ -45,3 +45,13 @@ Never collapse links, proposals, approvals, invoices or promised work into cash.
 ## Highest-leverage next move
 
 Current repository evidence does not substantiate the mandatory safety-net/FQHC experience gate. Before spending heavily on a polished proposal, recover owner-held qualifying engagements **or** qualify a healthcare/FQHC partner whose actual past performance and personnel can satisfy the buyer's applicant rules. The partner route must be reviewed against the controlling RFP language before asserting it cures eligibility.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)

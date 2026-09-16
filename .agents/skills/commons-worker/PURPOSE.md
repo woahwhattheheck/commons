@@ -16,3 +16,13 @@ The procedure excludes duplicate receipts and keeps runtime context compact.
 Compiler and retrieval tests exercise growing evidence, retained failures,
 source links and cross-workload selection. These checks do not establish a
 model performance gain from the instruction change.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)

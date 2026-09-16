@@ -29,3 +29,13 @@ Exit code is `0` for PASS and `2` for HOLD. Output is `<batch>.decision.json` pl
 ## Paid pilot boundary
 
 A practical pilot uses **three real, redacted batches** and maps only evidence already produced by plant, carrier, buyer, lab, and sustainability workflows. Deliverables: three reproducible dossiers, source-to-handoff mapping, unresolved evidence gaps with owners, and an integration estimate. No live control-system or plant credential access is required to scope the pilot.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)

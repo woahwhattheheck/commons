@@ -53,6 +53,20 @@ LIVE_CASH_PRODUCTS = (
     {"name": "Repair Booking Preflight", "price_usd": 199, "path": "repair-booking-preflight.html"},
     {"name": "Plant Downtime Handoff", "price_usd": 199, "path": "plant-downtime-handoff.html"},
 )
+LIVE_CASH_LARGER_FIXED = (
+    {
+        "days": 10,
+        "name": "GGUF diagnostic",
+        "path": "diagnostic.html",
+        "price_usd": 12000,
+    },
+    {
+        "days": 30,
+        "name": "White Box pilot",
+        "path": "commercial.html",
+        "price_usd": 30000,
+    },
+)
 CHECKOUT_AUTHORITY = {
     "offer_id": "agent-failure-autopsy-29",
     "name": "Agent Failure Autopsy",
@@ -238,10 +252,15 @@ def validate_live_cash(value: Any) -> dict[str, Any]:
     GOAT added verified product-page cites on the catalog. Exact-set
     validation used to reject that extra field. Expand the contract so
     the five public checkouts stay measured instead of being dropped.
+    Catalog JSON KEEP (#15021) added live_cash.larger_fixed
+    (diagnostic.html/$12k · commercial.html/$30k). Exact-set used to
+    reject that extra field too, wiping Larger fixed on every control
+    compile while Autopsy/$199 stayed. KEEP Larger fixed so remints
+    cannot drop those doors. Paths only — no invented Stripe URLs.
     """
     if not isinstance(value, dict):
         raise ControlError("live_cash must be an object")
-    required = {"cite", "note", "products"}
+    required = {"cite", "note", "products", "larger_fixed"}
     if set(value) != required:
         raise ControlError("live_cash fields differ from the control contract")
     cite = value["cite"]
@@ -259,6 +278,8 @@ def validate_live_cash(value: Any) -> dict[str, Any]:
     lowered = note.lower()
     if "buy.stripe.com" in lowered or "donate.stripe.com" in lowered:
         raise ControlError("live_cash must not invent Stripe URLs")
+    if "Larger fixed" not in note:
+        raise ControlError("live_cash.note must keep Larger fixed engagements")
     products = value["products"]
     if not isinstance(products, list) or len(products) != len(LIVE_CASH_PRODUCTS):
         raise ControlError("live_cash.products must list the five verified product pages")
@@ -273,6 +294,29 @@ def validate_live_cash(value: Any) -> dict[str, Any]:
             raise ControlError("live_cash.products price drift")
         if actual.get("path") != expected["path"]:
             raise ControlError("live_cash.products path drift")
+    larger = value["larger_fixed"]
+    if not isinstance(larger, list) or len(larger) != len(LIVE_CASH_LARGER_FIXED):
+        raise ControlError(
+            "live_cash.larger_fixed must list the two verified Larger-fixed product pages"
+        )
+    for actual, expected in zip(larger, LIVE_CASH_LARGER_FIXED):
+        if not isinstance(actual, dict):
+            raise ControlError("live_cash.larger_fixed entries must be objects")
+        if set(actual) != {"days", "name", "path", "price_usd"}:
+            raise ControlError(
+                "live_cash.larger_fixed entry fields differ from the control contract"
+            )
+        if actual.get("name") != expected["name"]:
+            raise ControlError("live_cash.larger_fixed name drift")
+        if actual.get("price_usd") != expected["price_usd"]:
+            raise ControlError("live_cash.larger_fixed price drift")
+        if actual.get("days") != expected["days"]:
+            raise ControlError("live_cash.larger_fixed days drift")
+        if actual.get("path") != expected["path"]:
+            raise ControlError("live_cash.larger_fixed path drift")
+        blob = json.dumps(actual, sort_keys=True)
+        if "buy.stripe.com" in blob or "donate.stripe.com" in blob or "plink_" in blob:
+            raise ControlError("live_cash.larger_fixed must not invent Stripe URLs")
     return value
 
 

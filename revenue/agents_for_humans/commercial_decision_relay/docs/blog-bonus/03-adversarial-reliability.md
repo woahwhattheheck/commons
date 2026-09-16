@@ -53,3 +53,13 @@ Use the model where flexible reasoning helps. Use deterministic code where exact
 That approach produces a less magical demo. It also produces an agent whose behavior a human can actually interrogate when the situation is no longer the happy path.
 
 Project source: https://github.com/woahwhattheheck/commons/tree/main/revenue/agents_for_humans/commercial_decision_relay
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../../../plant-downtime-handoff.html)

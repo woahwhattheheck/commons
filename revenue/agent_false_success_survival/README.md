@@ -44,3 +44,13 @@ Exclusions: live production probing, credentials, customer-data extraction, pene
 ## SigNoz target overlay
 
 `targets/signoz.json` is internal research/positioning metadata only and permanently carries `external_send_authorized=false`. It maps public first-party evidence to the diagnostic hypothesis. Before any contact, re-read live Slack ownership and mailbox/provider history, acquire the fleet's single-writer Muse selection for the exact target/thread, and make at most the selected bounded outbound action.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
