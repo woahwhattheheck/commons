@@ -111,3 +111,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+# recovery-trigger: ZOL-Q6R4-20260915T2027-0400
