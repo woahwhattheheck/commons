@@ -202,6 +202,30 @@ class AuthoritySourceTrustTests(unittest.TestCase):
             "PACKAGE_AUTHORITY_SOURCE_SET_MISMATCH",
             receipt["completeness"]["reasons"],
         )
+        self.assertTrue(
+            engine.verify_receipt_against_inputs(
+                receipt,
+                packet,
+                trusted_as_of=legacy.AS_OF,
+                trusted_completeness=copy.deepcopy(legacy.TRUSTED_COMPLETENESS),
+                trusted_completeness_sha256=legacy.TRUSTED_COMPLETENESS_SHA256,
+            )
+        )
+
+    def test_requirement_bound_to_capability_source_without_root_still_rejects(self):
+        packet = copy.deepcopy(legacy.PACKET)
+        packet["requirements"][0]["buyer_source_id"] = "prime-cap"
+        with self.assertRaises(engine.QualificationError) as caught:
+            engine.compile_qualification(
+                packet,
+                trusted_as_of=legacy.AS_OF,
+                trusted_completeness=None,
+                trusted_completeness_sha256=None,
+            )
+        self.assertIn(
+            "requirement must bind a BUYER source",
+            str(caught.exception),
+        )
 
     def test_separate_deadline_source_class_is_bound(self):
         packet = copy.deepcopy(legacy.PACKET)
