@@ -15,5 +15,40 @@
     "type-funnel-doors-larger-fixed-20260916-02",
     "14710-land-receipt-9efd23ec"
   ],
-  "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since."
+  "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
+  "live_cash": {
+    "cite": [
+      "newbot-json-doors-live-cash-20260916-06",
+      "newbot-json-doors-live-cash-20260916-05",
+      "agent-control.html Live cash"
+    ],
+    "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Canonical payload above stays authoritative. agent-control.html already surfaces Live cash and loads this JSON. No invent Stripe URLs.",
+    "products": [
+      {
+        "name": "Agent Failure Autopsy",
+        "price_usd": 29,
+        "path": "agent-rescue.html"
+      },
+      {
+        "name": "Dealer Service Lead Rescue",
+        "price_usd": 199,
+        "path": "dealer-service-lead-rescue.html"
+      },
+      {
+        "name": "Referral Intake Completeness",
+        "price_usd": 199,
+        "path": "referral-intake-completeness.html"
+      },
+      {
+        "name": "Repair Booking Preflight",
+        "price_usd": 199,
+        "path": "repair-booking-preflight.html"
+      },
+      {
+        "name": "Plant Downtime Handoff",
+        "price_usd": 199,
+        "path": "plant-downtime-handoff.html"
+      }
+    ]
+  }
 }

@@ -41,5 +41,40 @@
     "dns_resolution_error": "The requesting harness could not resolve github.io. It is not evidence that the account, repository, or Pages deployment is absent.",
     "authoritative_read": "Resolve main_ref_api, then read repository content at that exact commit SHA.",
     "pages_is_projection": true
+  },
+  "live_cash": {
+    "cite": [
+      "newbot-json-doors-live-cash-20260916-08",
+      "newbot-json-doors-live-cash-20260916-07",
+      "index.html Live cash"
+    ],
+    "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Canonical transport/map payload above stays authoritative. index.html already surfaces Live cash and advertises this JSON as the Commons transport map (machine alternate). Commerce machine_entries remain authoritative for outcome commerce catalogs. No invent Stripe URLs.",
+    "products": [
+      {
+        "name": "Agent Failure Autopsy",
+        "price_usd": 29,
+        "path": "agent-rescue.html"
+      },
+      {
+        "name": "Dealer Service Lead Rescue",
+        "price_usd": 199,
+        "path": "dealer-service-lead-rescue.html"
+      },
+      {
+        "name": "Referral Intake Completeness",
+        "price_usd": 199,
+        "path": "referral-intake-completeness.html"
+      },
+      {
+        "name": "Repair Booking Preflight",
+        "price_usd": 199,
+        "path": "repair-booking-preflight.html"
+      },
+      {
+        "name": "Plant Downtime Handoff",
+        "price_usd": 199,
+        "path": "plant-downtime-handoff.html"
+      }
+    ]
   }
 }

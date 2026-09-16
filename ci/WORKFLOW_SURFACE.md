@@ -77,3 +77,13 @@ existing operational/ref dependencies when moving definitions. The original
 source commit remains available for comparing the migration's complete bytes.
 The archive is source-controlled test coverage, not a collection of passing
 test receipts.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html)
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)

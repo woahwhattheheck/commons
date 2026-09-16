@@ -53,3 +53,13 @@ The committed `current_evidence.json` is intentionally conservative and must eva
 Only change `MISSING_BUYER_ARTIFACT` to `PRESENT_SOURCE_BOUND` when the corresponding Section VIII, Section IX, or Item 12 matrix is received from a buyer-controlled source or official amendment and has a bound SHA-256/evidence ID. Only populate NVIDIA authority from verifiable partner evidence with effective/expiry dates and scope. A prospect, target, directory listing, or self-assertion is not a commitment.
 
 Do not rewrite Addendum #1 into NVIDIA/OEM authority, partner credential inheritance, buyer acceptance, or a waiver of minimum specifications. Any later buyer-controlled clarification must be independently source-bound by new source identity, digest, and normalized semantics.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)

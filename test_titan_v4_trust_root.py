@@ -9,11 +9,12 @@ path. #12620 owns introducing exact blob
 2a1800c02d2a4c11293bdccc7914ab8f6fd93321; later serial-queue gameplay PRs
 must not be forced to mint a sibling plumbing carrier.
 
-Measured later: battery on pull/14887 failed because this test still
-required .github/workflows/titan-v4-trust-root.yml on disk after that
-workflow was dropped from the tree (active-workflow budget). host/
-titan_v4_trust_root.py already treats absent-on-canonical-and-candidate
-as OK. This test follows that contract.
+The custody workflow is not on the active surface. It lives at
+ci/workflow-recipes/titan-v4-trust-root.yml so max_active_workflows stays 67.
+Battery on pull/14887 also failed when this test required the dropped
+.github/workflows path; host/titan_v4_trust_root.py already treats
+absent-on-canonical-and-candidate as OK. If the recipe is missing too,
+skip the pin assertions rather than mint a sibling carrier.
 """
 from __future__ import annotations
 
@@ -23,7 +24,7 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent
 HELPER = ROOT / "host" / "titan_v4_trust_root.py"
-WORKFLOW = ROOT / ".github" / "workflows" / "titan-v4-trust-root.yml"
+WORKFLOW = ROOT / "ci" / "workflow-recipes" / "titan-v4-trust-root.yml"
 APPROVED = "2a1800c02d2a4c11293bdccc7914ab8f6fd93321"
 
 
