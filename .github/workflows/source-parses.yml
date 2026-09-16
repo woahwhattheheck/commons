@@ -42,6 +42,6 @@ jobs:
         shell: bash
         run: |
           if [ -f host/slack_mirror_state.py ] && [ -f test_slack_mirror_delivery.py ]; then
-            python3 -m unittest -v test_slack_mirror test_slack_mirror_state test_slack_mirror_delivery
-            python3 -O -m unittest -v test_slack_mirror test_slack_mirror_state test_slack_mirror_delivery
+            python3 -m unittest -v test_slack_mirror test_slack_mirror_state test_slack_mirror_delivery test_slack_mirror_receipt_commit
+            python3 -O -m unittest -v test_slack_mirror test_slack_mirror_state test_slack_mirror_delivery test_slack_mirror_receipt_commit
           fi
