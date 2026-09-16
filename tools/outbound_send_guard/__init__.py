@@ -1,4 +1,9 @@
-"""Fail-closed current authority for outbound email deduplication."""
+"""Fail-closed embedded surface for outbound email deduplication.
+
+Positive CURRENT authority is available only at the direct isolated CLI process
+boundary documented in ``cli.py``. Imported package evaluation is deliberately
+non-authorizing.
+"""
 
 from .guard import GuardError
 from .current import (
@@ -10,7 +15,8 @@ from .current import (
     verify_current_bytes,
 )
 
-# The package-level evaluation API is the process-clock current boundary.
+# Compatibility name: embedded evaluation is deliberately HOLD-only for any
+# historically positive decision.
 evaluate = compile_current
 
 __all__ = [

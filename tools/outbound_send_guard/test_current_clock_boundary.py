@@ -3,123 +3,44 @@ from __future__ import annotations
 import inspect
 import unittest
 from datetime import datetime, timezone
-from unittest.mock import patch
 
-import tools.outbound_send_guard as outbound_package
 from tools.outbound_send_guard import current, guard
 from tools.outbound_send_guard.test_current import evidence, intent
 
 
 class CurrentClockBoundaryTests(unittest.TestCase):
-    def test_reviewed_explicit_time_authority_emitters_do_not_exist(self):
-        self.assertFalse(hasattr(current, "_compile_at"))
-        self.assertFalse(hasattr(current, "_verify_at"))
-
-    def test_current_authority_emitters_accept_no_clock_or_mode_argument(self):
-        forbidden = {"now", "verified_at", "historical_at", "mode", "verifier_time"}
-        for name in (
-            "compile_current",
-            "compile_current_bytes",
-            "verify_current",
-            "verify_current_bytes",
-            "_compile_current_owned_clock",
-            "_verify_current_owned_clock",
-        ):
-            parameters = set(inspect.signature(getattr(current, name)).parameters)
-            self.assertFalse(parameters & forbidden, f"{name} exposes {parameters & forbidden}")
-
-    def test_private_core_is_not_exported_through_supported_modules(self):
+    def test_embedded_current_surface_exposes_no_clock_core_or_sync_authority_seam(self):
+        self.assertNotIn("_utc_now", current.__dict__)
+        self.assertNotIn("_core", current.__dict__)
+        self.assertNotIn("_sync_impl", current.__dict__)
+        self.assertNotIn("_compile_current_owned_clock", current.__dict__)
+        self.assertNotIn("_verify_current_owned_clock", current.__dict__)
         self.assertFalse(hasattr(current.guard, "evaluate"))
-        self.assertIsNot(guard.evaluate, getattr(current, "_core"))
-        self.assertIs(outbound_package.evaluate, current.compile_current)
 
-    def test_explicit_time_api_is_historical_hold_only(self):
-        old = datetime(2025, 1, 1, 0, 0, 20, tzinfo=timezone.utc)
-        result = current.compile_historical_at(
-            intent(requested_at="2025-01-01T00:00:10Z"),
-            evidence(generated_at="2025-01-01T00:00:00Z", max_age=604800),
-            historical_at=old,
-        )
-        payload = result["payload"]
-        self.assertEqual(payload["schema_version"], current.HISTORICAL_RECEIPT_SCHEMA)
-        self.assertEqual(payload["mode"], current.MODE_HISTORICAL)
-        self.assertEqual(payload["historical_decision"], "ALLOW_NEW")
-        self.assertEqual(payload["decision"], "HOLD")
-        self.assertFalse(payload["current_preflight_clear"])
-        self.assertFalse(payload["net_new_send_preflight_clear"])
-        self.assertFalse(payload["reply_preflight_clear"])
-        self.assertNotIn("verified_at", payload)
-        self.assertNotIn("valid_until", payload)
+    def test_supported_embedded_emitters_accept_no_clock_or_mode_parameter(self):
+        forbidden = {"now", "verified_at", "historical_at", "mode", "verifier_time"}
+        for name in ("compile_current", "compile_current_bytes", "verify_current", "verify_current_bytes"):
+            params = set(inspect.signature(getattr(current, name)).parameters)
+            self.assertFalse(params & forbidden, f"{name} exposes {params & forbidden}")
 
-    def test_compatibility_guard_evaluate_cannot_replay_stale_positive(self):
-        stale_intent = intent(requested_at="2025-01-01T00:00:10Z")
-        stale_evidence = evidence(
-            generated_at="2025-01-01T00:00:00Z", max_age=604800
+    def test_predecessor_wrapper_state_and_default_container_names_are_inert(self):
+        current._utc_now = lambda: datetime(2099, 1, 1, tzinfo=timezone.utc)  # type: ignore[attr-defined]
+        current._core = lambda *a, **k: None  # type: ignore[attr-defined]
+        current._sync_impl = lambda *a, **k: None  # type: ignore[attr-defined]
+        current._sync_impl.__defaults__ = (  # type: ignore[attr-defined]
+            lambda: datetime(2099, 1, 1, tzinfo=timezone.utc),
+            lambda *a, **k: {"payload": {"decision": "ALLOW_NEW"}},
         )
-        now = datetime(2026, 9, 14, 4, 55, 0, tzinfo=timezone.utc)
-        with patch("tools.outbound_send_guard.current.datetime.now", return_value=now):
-            result = guard.evaluate(stale_intent, stale_evidence)
+        result = current.compile_current(intent(), evidence())
+        self.assertEqual(result["payload"]["decision"], "HOLD")
+        self.assertEqual(result["payload"]["mode"], current.MODE_EMBEDDED)
+        self.assertFalse(result["payload"]["current_preflight_clear"])
+
+    def test_compatibility_facade_does_not_replay_historical_positive(self):
+        result = guard.evaluate(intent(), evidence())
         self.assertEqual(result["payload"]["historical_decision"], "ALLOW_NEW")
         self.assertEqual(result["payload"]["decision"], "HOLD")
         self.assertFalse(result["payload"]["current_preflight_clear"])
-
-    def test_explicit_historical_projection_helper_emits_no_authority_artifact(self):
-        it, _ = current._snapshot(intent(), "intent")
-        ev, _ = current._snapshot(evidence(), "evidence")
-        core_receipt = current._core(it, ev, b"{}", b"{}")
-        projection = current._temporal_projection(
-            it,
-            ev,
-            core_receipt["payload"],
-            datetime(2026, 9, 14, 4, 55, 0, tzinfo=timezone.utc),
-        )
-        self.assertIsInstance(projection, tuple)
-        self.assertEqual(len(projection), 3)
-        self.assertNotIn("schema_version", projection[1])
-        self.assertNotIn("current_preflight_clear", projection[1])
-
-    def test_rebinding_module_clock_cannot_mint_stale_positive(self):
-        stale_intent = intent(requested_at="2025-01-01T00:00:10Z")
-        stale_evidence = evidence(generated_at="2025-01-01T00:00:00Z", max_age=604800)
-        forged = datetime(2025, 1, 1, 0, 0, 20, tzinfo=timezone.utc)
-
-        def forged_clock():
-            return forged
-
-        current._utc_now = forged_clock
-        current._impl._utc_now = forged_clock
-        import tools.outbound_send_guard.current_impl as impl
-        impl._utc_now = forged_clock
-        try:
-            for result in (
-                current.compile_current(stale_intent, stale_evidence),
-                guard.evaluate(stale_intent, stale_evidence),
-                outbound_package.evaluate(stale_intent, stale_evidence),
-            ):
-                payload = result["payload"]
-                self.assertEqual(payload["historical_decision"], "ALLOW_NEW")
-                self.assertEqual(payload["decision"], "HOLD")
-                self.assertFalse(payload["current_preflight_clear"])
-                self.assertFalse(payload.get("net_new_send_preflight_clear", False))
-        finally:
-            current._sync_impl()
-
-    def test_rebinding_module_core_cannot_forge_positive(self):
-        stale_intent = intent(requested_at="2025-01-01T00:00:10Z")
-        stale_evidence = evidence(generated_at="2025-01-01T00:00:00Z", max_age=604800)
-
-        def forged_core(*_args, **_kwargs):
-            raise AssertionError("caller-rebound core must not run on authority path")
-
-        current._core = forged_core
-        import tools.outbound_send_guard.current_impl as impl
-        impl._core = forged_core
-        try:
-            result = current.compile_current(stale_intent, stale_evidence)
-            self.assertEqual(result["payload"]["decision"], "HOLD")
-            self.assertFalse(result["payload"]["current_preflight_clear"])
-        finally:
-            current._sync_impl()
 
 
 if __name__ == "__main__":
