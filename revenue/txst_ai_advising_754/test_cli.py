@@ -64,6 +64,30 @@ class CliTests(unittest.TestCase):
             link.symlink_to(target)
             self.assertEqual(cli.main(["compile", "--candidate", str(link), "--out", str(root / "out.json")]), 2)
 
+    def test_regular_file_swap_before_open_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            candidate = root / "candidate.json"
+            replacement = root / "replacement.json"
+            candidate.write_text(json.dumps(self.candidate), encoding="utf-8")
+            replacement.write_text(json.dumps(self.candidate), encoding="utf-8")
+            real_open = cli.os.open
+            swapped = False
+
+            def swapping_open(path, flags, *args):
+                nonlocal swapped
+                if not swapped and Path(path) == candidate:
+                    swapped = True
+                    cli.os.replace(replacement, candidate)
+                return real_open(path, flags, *args)
+
+            with mock.patch.object(cli.os, "open", side_effect=swapping_open):
+                self.assertEqual(
+                    cli.main(["compile", "--candidate", str(candidate), "--out", str(root / "out.json")]),
+                    2,
+                )
+            self.assertFalse((root / "out.json").exists())
+
 
 if __name__ == "__main__":
     unittest.main()
