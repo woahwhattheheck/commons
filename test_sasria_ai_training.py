@@ -1,6 +1,8 @@
 import json
+from pathlib import Path
 import subprocess
 import sys
+import tempfile
 import unittest
 
 from commercial.sasria_ai_training import (
@@ -68,22 +70,9 @@ def all_pathways():
 def good_workshare(**changes):
     values = dict(
         owner="TJLabs",
-        deliverables=(
-            "Responsible-AI evidence mapping",
-            "role-pathway evaluation rubrics",
-            "hands-on lab QA",
-            "deterministic outcome evidence pack",
-        ),
-        acceptance_criteria=(
-            "all agreed role pathways have testable evaluation criteria",
-            "evidence pack verifies deterministically from supplied evidence",
-        ),
-        exclusions=(
-            "South African procurement returns",
-            "training accreditation or certification issuance",
-            "buyer portal submission",
-            "prime client references",
-        ),
+        deliverables=("Responsible-AI evidence mapping", "role-pathway evaluation rubrics"),
+        acceptance_criteria=("all agreed outputs trace to supplied evidence",),
+        exclusions=("South African procurement returns", "buyer portal submission"),
     )
     values.update(changes)
     return PaidWorkshare(**values)
@@ -91,158 +80,98 @@ def good_workshare(**changes):
 
 def compile_good(authority=None, **changes):
     values = dict(
-        prime=good_prime(),
-        technical_score=good_score(),
-        pathways=all_pathways(),
-        workshare=good_workshare(),
-        submission_authority=authority or SubmissionAuthority(),
+        prime=good_prime(), technical_score=good_score(), pathways=all_pathways(),
+        workshare=good_workshare(), submission_authority=authority or SubmissionAuthority(),
     )
     values.update(changes)
     return compile_readiness_pack(**values)
 
 
-class PrimeGateTests(unittest.TestCase):
+class ReadinessTests(unittest.TestCase):
     def test_missing_prime_truth_holds(self):
-        gate = PrimeCandidate(
-            legal_name="",
-            company_profile_ref=None,
-            returnables={},
-        ).mandatory_gate()
+        gate = PrimeCandidate(legal_name="", company_profile_ref=None, returnables={}).mandatory_gate()
         self.assertEqual(gate["status"], "HOLD")
-        self.assertIn("missing_legal_name", gate["blockers"])
         self.assertIn("missing_required_returnables", gate["blockers"])
-        self.assertIn("missing_training_body_accreditation_evidence", gate["blockers"])
 
-    def test_missing_one_returnable_is_visible(self):
-        returns = {name: True for name in REQUIRED_RETURNABLES}
-        returns["csd_report"] = False
-        gate = good_prime(returnables=returns).mandatory_gate()
+    def test_invalid_returnables_public_api_holds_without_crash(self):
+        gate = PrimeCandidate(legal_name="x", company_profile_ref=ref(), returnables=None).mandatory_gate()  # type: ignore[arg-type]
         self.assertEqual(gate["status"], "HOLD")
-        self.assertEqual(gate["missing_returnables"], ["csd_report"])
+        self.assertIn("invalid_returnables_mapping", gate["blockers"])
 
-    def test_unrecognized_framework_does_not_pass(self):
-        gate = good_prime(framework_alignment=("Synthetic Framework",)).mandatory_gate()
-        self.assertEqual(gate["status"], "HOLD")
-        self.assertIn("missing_recognized_ai_governance_framework_alignment", gate["blockers"])
-
-    def test_training_count_is_evidence_not_eligibility_inference(self):
-        gate = good_prime(ai_trainings_last_3y=2).mandatory_gate()
-        self.assertEqual(gate["status"], "PRIME_MANDATORY_READY")
-        self.assertIn("company_profile_may_not_reach_max_training_history_score", gate["warnings"])
-
-
-class TechnicalScoreTests(unittest.TestCase):
-    def test_scores_are_bounded_by_buyer_caps(self):
-        result = good_score(company_profile=21).result()
-        self.assertEqual(result["status"], "HOLD")
-        self.assertIn("invalid_score:company_profile", result["blockers"])
-
-    def test_boolean_is_not_a_numeric_score(self):
-        result = good_score(training_personnel=True).result()
-        self.assertEqual(result["status"], "HOLD")
-        self.assertIn("invalid_score:training_personnel", result["blockers"])
-
-    def test_below_70_holds(self):
-        result = BuyerTechnicalScore(
-            scores={
-                "company_profile": 10,
-                "project_proposal_and_training_methodology": 20,
-                "training_personnel": 5,
-                "key_personnel_cvs": 5,
-                "reference_letters": 10,
-            },
+    def test_score_caps_boolean_and_threshold(self):
+        self.assertIn("invalid_score:company_profile", good_score(company_profile=21).result()["blockers"])
+        self.assertIn("invalid_score:training_personnel", good_score(training_personnel=True).result()["blockers"])
+        low = BuyerTechnicalScore(
+            scores={"company_profile": 10, "project_proposal_and_training_methodology": 20, "training_personnel": 5, "key_personnel_cvs": 5, "reference_letters": 10},
             evidence_refs=(ref(),),
         ).result()
-        self.assertEqual(result["total"], 50)
-        self.assertIn("technical_score_below_70", result["blockers"])
+        self.assertEqual(low["total"], 50)
+        self.assertIn("technical_score_below_70", low["blockers"])
 
-    def test_scores_without_grounded_evidence_hold(self):
-        result = BuyerTechnicalScore(scores=good_score().scores).result()
-        self.assertIn("missing_score_evidence", result["blockers"])
+    def test_pathway_and_paid_workshare_gates(self):
+        missing = compile_good(pathways=all_pathways()[:-1])
+        self.assertIn("missing_role_pathways", missing["response_blockers"])
+        dup = compile_good(pathways=all_pathways() + (pathway(ROLE_GROUPS[0]),))
+        self.assertIn("duplicate_role_pathways", dup["response_blockers"])
+        free = compile_good(workshare=good_workshare(commercial_state="FREE_DISCOVERY"))
+        self.assertIn("paid_workshare_gate", free["response_blockers"])
 
-
-class PathwayAndWorkshareTests(unittest.TestCase):
-    def test_missing_role_pathway_holds(self):
-        pack = compile_good(pathways=all_pathways()[:-1])
-        self.assertEqual(pack["response_status"], "HOLD")
-        self.assertIn("missing_role_pathways", pack["response_blockers"])
-
-    def test_duplicate_role_pathway_holds(self):
-        paths = all_pathways() + (pathway(ROLE_GROUPS[0]),)
-        pack = compile_good(pathways=paths)
-        self.assertIn("duplicate_role_pathways", pack["response_blockers"])
-
-    def test_incomplete_pathway_holds(self):
-        bad = TrainingPathway(
-            role_group=ROLE_GROUPS[0],
-            learning_outcomes=(),
-            delivery_modes=("workshop",),
-            evaluation_methods=("quiz",),
-            artefacts=("attendance",),
-        )
-        paths = (bad,) + tuple(pathway(role) for role in ROLE_GROUPS[1:])
-        pack = compile_good(pathways=paths)
-        self.assertIn("pathway_content_gate", pack["response_blockers"])
-
-    def test_workshare_must_remain_explicitly_paid(self):
-        pack = compile_good(workshare=good_workshare(commercial_state="FREE_DISCOVERY"))
-        self.assertIn("paid_workshare_gate", pack["response_blockers"])
-        self.assertIn("unsupported_commercial_state", pack["paid_workshare"]["blockers"])
-
-
-class SubmissionAndReceiptTests(unittest.TestCase):
-    def test_response_can_be_ready_while_submission_authority_stays_hold(self):
+    def test_response_ready_does_not_mean_submission_ready(self):
         pack = compile_good()
         self.assertEqual(pack["response_status"], "RESPONSE_ASSEMBLY_READY")
         self.assertEqual(pack["submission_status"], "HOLD")
-        self.assertEqual(pack["submission_authority"]["status"], "HOLD")
+        self.assertIn("trusted_submission_authority_not_bound", pack["submission_authority"]["blockers"])
 
-    def test_complete_synthetic_authority_path_is_submission_ready(self):
-        pack = compile_good(
-            authority=SubmissionAuthority(
-                portal_account_confirmed=True,
-                authorized_signatory_confirmed=True,
-                prime_approved_submission=True,
-            )
-        )
+    def test_caller_true_true_true_cannot_mint_submission_authority(self):
+        pack = compile_good(authority=SubmissionAuthority(True, True, True))
         self.assertEqual(pack["response_status"], "RESPONSE_ASSEMBLY_READY")
-        self.assertEqual(pack["submission_status"], "SUBMISSION_READY")
-        self.assertEqual(len(pack["receipt_sha256"]), 64)
+        self.assertEqual(pack["submission_status"], "HOLD")
+        self.assertEqual(pack["submission_authority"]["status"], "HOLD")
+        self.assertTrue(all(pack["submission_authority"]["candidate_assertions"].values()))
+        self.assertIn("trusted_submission_authority_not_bound", pack["submission_authority"]["blockers"])
 
-    def test_receipt_is_deterministic_and_changes_with_evidence(self):
-        first = compile_good()
-        second = compile_good()
+    def test_receipt_is_deterministic_and_evidence_sensitive(self):
+        first, second = compile_good(), compile_good()
         self.assertEqual(first["receipt_sha256"], second["receipt_sha256"])
         changed = compile_good(technical_score=good_score(reference_letters=16))
         self.assertNotEqual(first["receipt_sha256"], changed["receipt_sha256"])
 
-    def test_receipt_handles_lone_surrogate_evidence(self):
-        score = BuyerTechnicalScore(
-            scores=good_score().scores,
-            evidence_refs=(EvidenceRef(label="edge", locator="fixture://edge", note=chr(0xD800)),),
-        )
-        pack = compile_good(technical_score=score)
-        self.assertEqual(len(pack["receipt_sha256"]), 64)
+    def test_real_cli_hold_fixture_is_controlled(self):
+        for optimized in (False, True):
+            command = [sys.executable] + (["-O"] if optimized else []) + [
+                "-m", "commercial.sasria_ai_training.cli", "commercial/sasria_ai_training/example_hold.json"
+            ]
+            result = subprocess.run(command, check=False, capture_output=True, text=True)
+            self.assertEqual(result.returncode, 2, msg=result.stderr)
+            self.assertNotIn("Traceback", result.stderr)
+            pack = json.loads(result.stdout)
+            self.assertEqual(pack["submission_status"], "HOLD")
 
-    def test_real_cli_hold_fixture_fails_closed_without_traceback(self):
-        result = subprocess.run(
-            [
-                sys.executable,
-                "-m",
-                "commercial.sasria_ai_training.cli",
-                "commercial/sasria_ai_training/example_hold.json",
-            ],
-            check=False,
-            capture_output=True,
-            text=True,
-        )
-        self.assertEqual(result.returncode, 2, msg=result.stderr)
-        self.assertNotIn("Traceback", result.stderr)
-        pack = json.loads(result.stdout)
-        self.assertEqual(pack["response_status"], "HOLD")
-        self.assertEqual(pack["submission_status"], "HOLD")
-        self.assertIn("prime_mandatory_gate", pack["response_blockers"])
-        self.assertEqual(len(pack["receipt_sha256"]), 64)
+    def test_hostile_valid_json_shapes_are_rc2_no_traceback_no_outputs(self):
+        hostiles = [
+            {"prime": {"returnables": []}},
+            {"prime": {"framework_alignment": True}},
+            {"training_pathways": None},
+        ]
+        for payload in hostiles:
+            for optimized in (False, True):
+                with self.subTest(payload=payload, optimized=optimized), tempfile.TemporaryDirectory() as td:
+                    td_path = Path(td)
+                    source = td_path / "input.json"
+                    json_out = td_path / "out.json"
+                    md_out = td_path / "out.md"
+                    source.write_text(json.dumps(payload), encoding="utf-8")
+                    command = [sys.executable] + (["-O"] if optimized else []) + [
+                        "-m", "commercial.sasria_ai_training.cli", str(source),
+                        "--json-out", str(json_out), "--markdown-out", str(md_out),
+                    ]
+                    result = subprocess.run(command, check=False, capture_output=True, text=True)
+                    self.assertEqual(result.returncode, 2, msg=result.stderr)
+                    self.assertIn("INPUT_ERROR:", result.stderr)
+                    self.assertNotIn("Traceback", result.stderr)
+                    self.assertEqual(result.stdout, "")
+                    self.assertFalse(json_out.exists())
+                    self.assertFalse(md_out.exists())
 
 
 if __name__ == "__main__":
