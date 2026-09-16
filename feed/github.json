@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 126,
-    "open_pull_requests": 77,
+    "open_issues": 125,
+    "open_pull_requests": 78,
     "runs_in_progress": 17,
-    "runs_queued": 623
+    "runs_queued": 621
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,24 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "ztc-m6r2/muse-v2-strict-payload-schema-20260916",
+      "created_at": "2026-09-16T14:25:37Z",
+      "draft": false,
+      "head_sha": "02876a3f8ae8b6b49a56b9e2444c0b641b5dd534",
+      "number": 14884,
+      "title": "Outbound: harden Muse v2 receipt schema boundary",
+      "updated_at": "2026-09-16T14:25:37Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zzf-r7m9/commercial-funnel-current-main-recovery-20260916",
       "created_at": "2026-09-16T14:17:26Z",
       "draft": false,
       "head_sha": "05a468e3d16539263c627f7bf76da9fa4e52cc36",
       "number": 14880,
       "title": "fix(revenue): recover commercial funnel on current main",
-      "updated_at": "2026-09-16T14:20:47Z"
+      "updated_at": "2026-09-16T14:24:20Z"
     },
     {
       "author": "woahwhattheheck",
@@ -97,7 +108,7 @@
       "head_sha": "709b62936d7c74eab10a6ae909cd04a462de2bc0",
       "number": 14874,
       "title": "Revenue: Columbia ERP migration acceptance workshare",
-      "updated_at": "2026-09-16T14:23:04Z"
+      "updated_at": "2026-09-16T14:23:18Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 14861,
       "title": "Command center: recover bounded Slack thread visibility",
       "updated_at": "2026-09-16T13:54:04Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zca-k6v2/invest-appalachia-framer-lms-20260916",
-      "created_at": "2026-09-16T13:38:04Z",
-      "draft": false,
-      "head_sha": "a7b5d66d5611605b788e3a8f5be1001f1065433d",
-      "number": 14859,
-      "title": "Revenue: capture Invest Appalachia Framer LMS pursuit with fail-closed prime/team gate",
-      "updated_at": "2026-09-16T14:12:44Z"
     }
   ],
   "open_heads": {
@@ -254,11 +254,12 @@
     "14873": "81dbcfb0701f543e2e4098f4fbd0883bd2e0a84f",
     "14874": "709b62936d7c74eab10a6ae909cd04a462de2bc0",
     "14877": "c80abd4e90a4c80c33adf7aec25bb102cdea7ccb",
-    "14880": "05a468e3d16539263c627f7bf76da9fa4e52cc36"
+    "14880": "05a468e3d16539263c627f7bf76da9fa4e52cc36",
+    "14884": "02876a3f8ae8b6b49a56b9e2444c0b641b5dd534"
   },
-  "pulls_listed": 77,
+  "pulls_listed": 78,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 36.6,
+  "queue_depth_per_runner": 36.5,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -428,6 +429,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-16T14:23:08Z",
+  "unchanged_since": "2026-09-16T14:27:33Z",
   "undatable_pulls": []
 }
