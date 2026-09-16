@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# coil-fix-tracked-manual-battery-20260916-01: keep_lift must not dirty tracked MANUAL (tempfile OUT).
 """Restore MANUAL.md builds.html cite after tests battery 34395174679.
 
 Delayed pull_request battery on already-merged PR #11511
@@ -93,6 +94,10 @@ class TestGrokbuildTestsBattery34395174679KeepLift(unittest.TestCase):
         # identity with the tracked living file — that write was the dirty
         # tree on tests run 35142797410. Catalog / cash / pointer stay locked.
         self.assertEqual(_without_open_jobs(before), _without_open_jobs(after))
+
+    def test_module_starts_with_shebang_so_exec_stays_valid(self) -> None:
+        first = Path(__file__).read_text(encoding="utf-8").splitlines()[0]
+        self.assertEqual(first, "#!/usr/bin/env python3")
 
     def test_originally_failing_unique_graph_contracts_pass(self) -> None:
         for name in ORIGINALS:

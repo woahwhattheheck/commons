@@ -55,6 +55,10 @@ def _test_files() -> list[Path]:
 class LatchManualRebuildBatteryCleanTests(unittest.TestCase):
     def test_keep_lift_source_rebuilds_to_tempfile_not_live_out(self) -> None:
         text = KEEP_LIFT.read_text(encoding="utf-8")
+        self.assertTrue(
+            text.startswith("#!/usr/bin/env python3"),
+            text.splitlines()[0] if text else "<empty>",
+        )
         self.assertIn("TemporaryDirectory", text)
         self.assertIn('patch.object(manual_build, "OUT"', text)
         self.assertIn("manual_build.main(", text)
