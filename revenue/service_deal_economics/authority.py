@@ -313,10 +313,6 @@ def _verify_current_at(packet: Any, report: Any, as_of: datetime) -> dict[str, A
     return result
 
 
-def verify_current_authority(packet: Any, report: Any) -> dict[str, Any]:
-    return _verify_current_at(packet, report, now_utc())
-
-
 def render_current_markdown(report: Any) -> str:
     if type(report) is not dict or report.get("schema") != CURRENT_SCHEMA:
         raise AuthorityError("current report schema mismatch")
