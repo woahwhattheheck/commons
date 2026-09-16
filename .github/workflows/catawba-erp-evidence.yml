@@ -1,0 +1,40 @@
+name: Catawba ERP implementation evidence
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/catawba_erp_implementation_evidence/**'
+      - '.github/workflows/catawba-erp-evidence.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'revenue/catawba_erp_implementation_evidence/**'
+      - '.github/workflows/catawba-erp-evidence.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  evidence-contract:
+    strategy:
+      matrix:
+        python: ['3.11', '3.13']
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Compile
+        working-directory: revenue/catawba_erp_implementation_evidence
+        run: python -m py_compile acceptance.py scripts/verify_demo.py tests/test_acceptance.py
+      - name: Contract tests
+        working-directory: revenue/catawba_erp_implementation_evidence
+        run: python -m unittest -q tests/test_acceptance.py
+      - name: Optimized contract tests
+        working-directory: revenue/catawba_erp_implementation_evidence
+        run: PYTHONOPTIMIZE=1 python -m unittest -q tests/test_acceptance.py
+      - name: Synthetic end-to-end evidence packet
+        working-directory: revenue/catawba_erp_implementation_evidence
+        run: python scripts/verify_demo.py
