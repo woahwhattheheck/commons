@@ -6,6 +6,7 @@ import json
 import os
 import tempfile
 import unittest
+from contextlib import contextmanager
 from pathlib import Path
 from unittest import mock
 
@@ -77,6 +78,15 @@ def _descriptor_supported() -> bool:
     )
 
 
+@contextmanager
+def _hostile_open(racing_open):
+    # Replacing os.open changes its identity, so the capability probe would
+    # fail closed before the race. Keep that probe on the real builtins.
+    with mock.patch.object(ledger, "_require_descriptor_relative_custody"):
+        with mock.patch.object(ledger.os, "open", side_effect=racing_open):
+            yield
+
+
 @unittest.skipUnless(_descriptor_supported(), "descriptor-relative traversal unavailable")
 class DescriptorCustodyTests(unittest.TestCase):
     def test_nested_regular_files_satisfy_custody(self):
@@ -121,7 +131,7 @@ class DescriptorCustodyTests(unittest.TestCase):
                     swapped = True
                 return real_open(path, flags, mode, dir_fd=dir_fd)
 
-            with mock.patch.object(ledger.os, "open", side_effect=racing_open):
+            with _hostile_open(racing_open):
                 errors = ledger.validate(root)
 
             self.assertTrue(swapped, "hostile did not trigger at child-directory open")
@@ -183,7 +193,7 @@ class DescriptorCustodyTests(unittest.TestCase):
                     swapped = True
                 return real_open(path, flags, mode, dir_fd=dir_fd)
 
-            with mock.patch.object(ledger.os, "open", side_effect=racing_open):
+            with _hostile_open(racing_open):
                 with self.assertRaises(ledger.LedgerError) as raised:
                     ledger._custody_blob_ids(custody, wanted)
 
