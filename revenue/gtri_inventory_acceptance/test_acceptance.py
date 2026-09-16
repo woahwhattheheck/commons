@@ -292,6 +292,26 @@ class InventoryAcceptanceTests(unittest.TestCase):
         receipt["payload"]["reconciliation"]["counts"]["source_assets"] = 999
         self.assertFalse(verify_receipt_integrity(receipt))
 
+    def test_receipt_integrity_consumes_authority_root(self):
+        receipt = self.make_receipt()
+        self.assertTrue(verify_receipt_integrity(receipt))
+        self.assertTrue(verify_receipt_integrity(receipt, True))
+        self.assertFalse(verify_receipt_integrity(receipt, False))
+        self.assertFalse(verify_receipt_integrity(receipt, authority_root=None))
+
+    def test_current_readiness_guard_is_clear_on_acceptance_module(self):
+        from tools.current_readiness_guard.guard import scan_paths
+
+        root = Path(__file__).resolve().parents[2]
+        findings = scan_paths(
+            ["revenue/gtri_inventory_acceptance/acceptance.py"],
+            root=root,
+        )
+        self.assertEqual(
+            [(item.rule, item.function) for item in findings],
+            [],
+        )
+
     def test_invalid_contract_shapes_fail_closed(self):
         with self.assertRaisesRegex(
             AcceptanceError, "preserve_asset_id must be a boolean"
