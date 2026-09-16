@@ -1,0 +1,52 @@
+# Content Rights & Usage-Window Operations Desk
+
+Local-first operations software for agencies, brand teams, and media operators that need an exact answer to an operational question: **does this planned placement fit the authority facts the owner has supplied, and what currently needs renewal or retraction review?**
+
+The desk stores immutable asset fingerprints and derivative lineage, normalized grant facts, exact placement requests, grant revocations, and an audit ledger. It evaluates channel / territory / time-window scope, records permitted placements idempotently, blocks changed replays, and produces expiry/renewal and retraction-review queues plus deterministic JSON, CSV, Markdown, and receipt hashes.
+
+## Truth and authority boundary
+
+This is **not** a copyright, contract, licensing, fair-use, or ownership determination engine. `READY_ON_SUPPLIED_AUTHORITY` means only that a requested placement fits the owner-normalized facts currently stored in the desk. It never infers rights, parses legal language, creates a grant, contacts a creator/licensor, uploads/publishes/removes media, logs in to a platform, or moves money.
+
+Derivative lineage is provenance only, not authority inheritance. A grant authorizes only its exact `asset_id`; a grant on a parent/master does **not** authorize a child/derivative unless the owner supplies a separate grant fact for that exact child asset.
+
+All production mutations are local SQLite writes through the CLI. The optional HTTP desk binds to loopback and is read-only with respect to state: it exposes snapshot/evaluation/queue reads, while HTTP `/api/place` and `/api/revoke` fail closed with `405`. Use CLI `place` / `revoke` for mutations.
+
+## Commercial hypothesis
+
+`$25,000 fixed / PROPOSED_NOT_ACCEPTED`: one entity, one normalized grant schema, up to 5,000 assets/versions and 20,000 grant/placement rows, target 10 business days after complete normalized intake. Optional `$1,500/month` operations support is a hypothesis only after a delivered fixed-scope implementation. No buyer acceptance, contract, payment, cash, or revenue is claimed here.
+
+## Quick start
+
+```bash
+cd revenue/hive/media-rights-ops
+python rights_ops.py import desk.sqlite3 example_manifest.json --at 2026-09-15T06:00:00Z
+cat > intent.json <<'JSON'
+{"asset_id":"cut-a-15s","channel":"instagram","territory":"US","starts_at":"2026-10-01T12:00:00Z","ends_at":"2026-10-15T12:00:00Z"}
+JSON
+python rights_ops.py evaluate desk.sqlite3 intent.json
+python rights_ops.py queues desk.sqlite3 --as-of 2026-12-10T00:00:00Z --horizon-days 30
+mkdir -m 700 bundle
+python rights_ops.py export desk.sqlite3 bundle --as-of 2026-12-10T00:00:00Z
+python rights_ops.py serve desk.sqlite3 --host 127.0.0.1 --port 8765
+```
+
+To record a placement, add a stable `request_id` to the intent and use CLI `place --at ...`. The same request and content replay without duplication; the same request ID with changed content fails closed. CLI `revoke <grant_id> --at ...` is immutable: a revocation can be replayed exactly but not silently rewritten. A recorded placement affected by revocation enters the retraction-review queue; the desk does not remove it from any provider.
+
+Export publication consumes an **already-provisioned empty real directory**. The exporter does not create or remove that directory and does not follow a symlink in its place. It snapshots the directory's filesystem identity before open, opens it with `O_DIRECTORY|O_NOFOLLOW`, proves the descriptor is the same generation with `fstat`, and only then creates export leaves descriptor-relatively with exclusive/no-follow creation. This eliminates the prior `mkdir -> open` successor-adoption window: replacing the directory between observation and open fails the identity check, and replacing or renaming it after open cannot redirect the retained descriptor.
+
+Before success, the desk rechecks the caller-visible directory identity, requires the retained directory to contain exactly the transaction-created filenames, and revalidates every created leaf's filesystem identity. If publication fails, rollback removes only leaf identities created by the transaction through the retained descriptor; it never deletes the directory or any foreign successor/entry by pathname. A foreign entry injected during publication therefore makes the operation fail closed and survives cleanup. Operators should provision a fresh directory with restrictive permissions such as `0700` immediately before export. Secure publication requires a platform with descriptor-relative `open`/`stat`/`unlink`, `O_DIRECTORY`, `O_NOFOLLOW`, and file-descriptor `listdir`; unsupported platforms fail closed instead of silently using a weaker path.
+
+## Acceptance surface
+
+The hostile suite covers exact-asset authority; parent-grant/child-derivative non-inheritance; HTTP mutation fail-closure with unchanged durable state; allowed placement; wrong channel and territory; future/expired/revoked grants; unlicensed/unknown assets; request replay mutation; HOLD-without-write; immutable revocation; renewal/expiry queues; concurrent duplicate placement -> exactly one durable row; restart behavior; deterministic exports; pre-provisioned empty-directory enforcement; symlink-output rejection; ordinary-directory substitution between observation/open; post-open pathname replacement/redirection; failure rollback preserving a foreign successor; foreign-entry injection with preservation; duplicate-key, floating-point, non-finite, cyclic/missing-lineage, duplicate authority rows, and naive-time failures.
+
+Run both ordinary and optimized modes:
+
+```bash
+python -m unittest -v test_rights_ops.py
+python -O -m unittest -v test_rights_ops.py
+python -m py_compile rights_model.py rights_store.py rights_export.py rights_http.py rights_ops.py test_rights_ops.py
+```
+
+Input JSON is bounded to 8 MiB, UTF-8 only, duplicate-key rejecting, floating-point/non-finite rejecting, exact-schema validated, and timestamps must be offset-aware. The caller owns output-directory provisioning and permissions; export files are requested as mode `0600` subject to the process umask.
