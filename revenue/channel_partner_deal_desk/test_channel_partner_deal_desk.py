@@ -177,6 +177,21 @@ class DeskTest(unittest.TestCase):
         with self.assertRaises(DeskError): strict_json_loads('{"a":1,"a":2}')
         with self.assertRaises(DeskError): strict_json_loads('{"a":NaN}')
 
+    def test_event_cannot_predate_registration(self):
+        self.register()
+        with self.assertRaises(DeskError):
+            self.accept("2026-09-16T10:59:59Z")
+
+    def test_backdated_financial_timeline_is_rejected(self):
+        self.register(); self.accept()
+        self.desk.add_event(operation_key="late.settle", event_id="event.zsettle", deal_id="deal.a", kind="PAYMENT_SETTLED",
+                            occurred_at="2026-09-20T00:00:00Z", amount_minor=100_000, currency="USD",
+                            source_ref="fixture:late-settle", source_sha256=h("late-settle"))
+        with self.assertRaises(DeskError):
+            self.desk.add_event(operation_key="early.reverse", event_id="event.areverse", deal_id="deal.a", kind="PAYMENT_REVERSED",
+                                occurred_at="2026-09-19T00:00:00Z", amount_minor=1, currency="USD",
+                                source_ref="fixture:early-reverse", source_sha256=h("early-reverse"))
+
     def test_demo_is_real_restart_safe_flow(self):
         self.desk.close()
         demo_db = str(Path(self.tmp.name) / "demo.sqlite")
