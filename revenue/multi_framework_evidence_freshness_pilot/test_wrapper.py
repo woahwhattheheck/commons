@@ -49,6 +49,8 @@ class WrapperTests(unittest.TestCase):
 
     def test_order_invariance(self) -> None:
         raw = build_golden_input()
+        # Engine receipts/projections include evaluated_at; pin the clock so
+        # order-invariance is not confused with a wall-clock second boundary.
         with mock.patch.object(gate, "_now_utc", return_value=FIXED_NOW):
             a = compile_diagnostic(copy.deepcopy(raw))
             altered = copy.deepcopy(raw)
