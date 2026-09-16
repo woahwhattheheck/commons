@@ -59,6 +59,13 @@ class CurrentAuthorityDonorTests(unittest.TestCase):
         self.assertIn(auth.CURRENT_POSITIVE_DISABLED_REASON, out["payload"]["reasons"])
         self.assertTrue(auth.verify_untrusted_snapshot_receipt(out))
 
+    def test_raw_not_selected_becomes_hold(self):
+        out = auth.seal_untrusted_snapshot_receipt(receipt("NOT_SELECTED"))
+        self.assertEqual(out["payload"]["decision"], "HOLD")
+        self.assertIn(auth.UNAUTHENTICATED_SNAPSHOT_REASON, out["payload"]["reasons"])
+        self.assertIn(auth.CURRENT_NEGATIVE_DISABLED_REASON, out["payload"]["reasons"])
+        self.assertTrue(auth.verify_untrusted_snapshot_receipt(out))
+
     def test_seal_overwrites_caller_selected_clock(self):
         out = auth.seal_untrusted_snapshot_receipt(receipt())
         self.assertEqual(out["payload"]["compiled_at"], "2026-09-15T01:35:00Z")
@@ -76,6 +83,13 @@ class CurrentAuthorityDonorTests(unittest.TestCase):
     def test_forged_selected_with_recomputed_outer_digest_fails(self):
         out = auth.seal_untrusted_snapshot_receipt(receipt())
         out["payload"]["decision"] = "SELECTED"
+        out["payload"]["reasons"] = []
+        out["receipt_sha256"] = auth._digest(out["payload"])
+        self.assertFalse(auth.verify_untrusted_snapshot_receipt(out))
+
+    def test_forged_not_selected_with_recomputed_outer_digest_fails(self):
+        out = auth.seal_untrusted_snapshot_receipt(receipt("NOT_SELECTED"))
+        out["payload"]["decision"] = "NOT_SELECTED"
         out["payload"]["reasons"] = []
         out["receipt_sha256"] = auth._digest(out["payload"])
         self.assertFalse(auth.verify_untrusted_snapshot_receipt(out))
@@ -104,30 +118,12 @@ class CurrentAuthorityDonorTests(unittest.TestCase):
         out["receipt_sha256"] = auth._digest(out["payload"])
         self.assertFalse(auth.verify_untrusted_snapshot_receipt(out))
 
-    def test_negative_receipt_remains_negative(self):
-        out = auth.seal_untrusted_snapshot_receipt(receipt("NOT_SELECTED"))
-        self.assertEqual(out["payload"]["decision"], "NOT_SELECTED")
-        self.assertEqual(out["payload"]["reasons"], [])
-        self.assertTrue(auth.verify_untrusted_snapshot_receipt(out))
-
-    def test_other_winner_negative_is_sanitized_and_verifiable(self):
-        raw = receipt("NOT_SELECTED")
-        raw["payload"]["winner_request_id"] = "req-00000002"
-        raw["payload"]["winner_candidate_sha256"] = "9" * 64
-        raw["payload"]["winner_message_ts"] = "1789440010.000002"
-        raw["receipt_sha256"] = auth._digest(raw["payload"])
-
-        out = auth.seal_untrusted_snapshot_receipt(raw)
-        self.assertEqual(out["payload"]["decision"], "NOT_SELECTED")
-        for name in auth._SELECTION_FIELDS + auth._WINNER_FIELDS:
-            self.assertIsNone(out["payload"][name])
-        self.assertTrue(auth.verify_untrusted_snapshot_receipt(out))
-
     def test_hold_must_have_reason(self):
         raw = receipt("HOLD", [])
-        with self.assertRaises(ValueError): auth.seal_untrusted_snapshot_receipt(raw)
+        with self.assertRaises(ValueError):
+            auth.seal_untrusted_snapshot_receipt(raw)
 
-    def test_non_selected_cannot_smuggle_selection_or_winner_fields(self):
+    def test_non_terminal_cannot_smuggle_selection_or_winner_fields(self):
         authority_fields = auth._SELECTION_FIELDS + auth._WINNER_FIELDS
         for field in authority_fields:
             with self.subTest(field=field):
