@@ -57,7 +57,7 @@ class CurrentClockBoundaryTests(unittest.TestCase):
             generated_at="2025-01-01T00:00:00Z", max_age=604800
         )
         now = datetime(2026, 9, 14, 4, 55, 0, tzinfo=timezone.utc)
-        with patch.object(current, "_utc_now", return_value=now):
+        with patch("tools.outbound_send_guard.current.datetime.now", return_value=now):
             result = guard.evaluate(stale_intent, stale_evidence)
         self.assertEqual(result["payload"]["historical_decision"], "ALLOW_NEW")
         self.assertEqual(result["payload"]["decision"], "HOLD")
@@ -77,6 +77,49 @@ class CurrentClockBoundaryTests(unittest.TestCase):
         self.assertEqual(len(projection), 3)
         self.assertNotIn("schema_version", projection[1])
         self.assertNotIn("current_preflight_clear", projection[1])
+
+    def test_rebinding_module_clock_cannot_mint_stale_positive(self):
+        stale_intent = intent(requested_at="2025-01-01T00:00:10Z")
+        stale_evidence = evidence(generated_at="2025-01-01T00:00:00Z", max_age=604800)
+        forged = datetime(2025, 1, 1, 0, 0, 20, tzinfo=timezone.utc)
+
+        def forged_clock():
+            return forged
+
+        current._utc_now = forged_clock
+        current._impl._utc_now = forged_clock
+        import tools.outbound_send_guard.current_impl as impl
+        impl._utc_now = forged_clock
+        try:
+            for result in (
+                current.compile_current(stale_intent, stale_evidence),
+                guard.evaluate(stale_intent, stale_evidence),
+                outbound_package.evaluate(stale_intent, stale_evidence),
+            ):
+                payload = result["payload"]
+                self.assertEqual(payload["historical_decision"], "ALLOW_NEW")
+                self.assertEqual(payload["decision"], "HOLD")
+                self.assertFalse(payload["current_preflight_clear"])
+                self.assertFalse(payload.get("net_new_send_preflight_clear", False))
+        finally:
+            current._sync_impl()
+
+    def test_rebinding_module_core_cannot_forge_positive(self):
+        stale_intent = intent(requested_at="2025-01-01T00:00:10Z")
+        stale_evidence = evidence(generated_at="2025-01-01T00:00:00Z", max_age=604800)
+
+        def forged_core(*_args, **_kwargs):
+            raise AssertionError("caller-rebound core must not run on authority path")
+
+        current._core = forged_core
+        import tools.outbound_send_guard.current_impl as impl
+        impl._core = forged_core
+        try:
+            result = current.compile_current(stale_intent, stale_evidence)
+            self.assertEqual(result["payload"]["decision"], "HOLD")
+            self.assertFalse(result["payload"]["current_preflight_clear"])
+        finally:
+            current._sync_impl()
 
 
 if __name__ == "__main__":
