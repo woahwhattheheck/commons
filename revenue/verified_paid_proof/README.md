@@ -25,7 +25,11 @@ A future positive production path requires a **versioned, independently authenti
 
 ## Strict input contract
 
-The compiler accepts JSON only. It rejects duplicate keys, floats, JSON booleans masquerading as integers, unknown/missing schema fields, timezone-free timestamps, unsourced settled-payment assertions, unsourced accepted-delivery assertions, unsourced quotes/outcomes, and permission grants that lack evidence references.
+The compiler accepts JSON only. It rejects duplicate keys, floats and non-finite numbers, integer tokens longer than 256 digits, decoder nesting beyond the supported interpreter limit, JSON booleans masquerading as integers, unknown/missing schema fields, timezone-free timestamps, unsourced settled-payment assertions, unsourced accepted-delivery assertions, unsourced quotes/outcomes, and permission grants that lack evidence references. Decoder-limit failures are translated to `ProofError`; the CLI reports `ERROR:` and exits 2 rather than leaking a traceback.
+
+All accepted object keys and string values must be Unicode scalar text that round-trips through strict UTF-8. Escaped lone surrogates are rejected before normalization, hashing, or rendering. Raw JSON control characters are rejected by the decoder; decoded NUL is rejected for every schema string, and evidence/source references additionally reject CR/LF. Other JSON-escaped control characters remain accepted only in fields whose own schema permits them and remain private under the v3 public boundary.
+
+Canonical and pretty JSON emission use `allow_nan=False` and require strict UTF-8 encodability. This keeps mutated/manual objects from bypassing the ingestion boundary during receipt or artifact generation.
 
 Money uses integer minor units plus an explicit `currency_decimals` value. A `SETTLED` assertion requires positive `amount_minor`, a three-letter currency, a timezone-bearing `settled_at`, and at least one evidence reference.
 
@@ -87,8 +91,14 @@ The package does not expose the legacy positive-state Markdown renderer. Public 
 Run the hostile suite in both interpreter modes:
 
 ```bash
-python -m unittest revenue.verified_paid_proof.test_verified_paid_proof -v
-python -O -m unittest revenue.verified_paid_proof.test_verified_paid_proof -v
+python -m unittest \
+  revenue.verified_paid_proof.test_verified_paid_proof \
+  revenue.verified_paid_proof.test_custody \
+  revenue.verified_paid_proof.test_strict_input -v
+python -O -m unittest \
+  revenue.verified_paid_proof.test_verified_paid_proof \
+  revenue.verified_paid_proof.test_custody \
+  revenue.verified_paid_proof.test_strict_input -v
 python -m compileall -q revenue/verified_paid_proof
 ```
 
