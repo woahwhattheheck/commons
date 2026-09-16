@@ -226,4 +226,29 @@ class ProductTests(Harness):
         cp=subprocess.run([sys.executable,str(cli),"--db",str(db2),"status","--workspace","ws-demo-001"],capture_output=True,text=True,check=False)
         self.assertEqual(cp.returncode,0,cp.stderr); self.assertIn('"handoffState": "HOLD"',cp.stdout)
 
+    def test_cli_source_does_not_enumerate_action_choices(self):
+        source = Path(__file__).with_name("onboarding.py").read_text(encoding="utf-8")
+        self.assertNotRegex(source, r'add_argument\(\s*"--action".{0,120}choices\s*=')
+        self.assertRegex(source, r'add_argument\(\s*"--transition"')
+        self.assertNotIn('args.action', source)
+
+    def test_cli_milestone_uses_transition_flag(self):
+        payload=accepted_payload(); inp=Path(self.tmp.name)/"accepted.json"; inp.write_text(json.dumps(payload),encoding="utf-8")
+        cli=Path(__file__).with_name("onboarding.py"); db2=Path(self.tmp.name)/"cli.db"
+        digest="a"*64
+        def run(*extra):
+            return subprocess.run([sys.executable,str(cli),"--db",str(db2),*extra],capture_output=True,text=True,check=False)
+        self.assertEqual(run("init","--input",str(inp),"--op","cli-open").returncode,0)
+        self.assertEqual(run("receive-input","--workspace","ws-demo-001","--input-id","client-brief","--sha",digest,"--op","cli-in-1").returncode,0)
+        self.assertEqual(run("review-input","--workspace","ws-demo-001","--input-id","client-brief","--decision","ACCEPTED_LOCAL","--op","cli-in-r1").returncode,0)
+        self.assertEqual(run("receive-input","--workspace","ws-demo-001","--input-id","source-export","--sha","b"*64,"--op","cli-in-2").returncode,0)
+        self.assertEqual(run("review-input","--workspace","ws-demo-001","--input-id","source-export","--decision","ACCEPTED_LOCAL","--op","cli-in-r2").returncode,0)
+        blocked=run("milestone","--workspace","ws-demo-001","--milestone-id","kickoff","--action","START","--op","cli-ms-old")
+        self.assertNotEqual(blocked.returncode,0)
+        self.assertIn("--transition", blocked.stderr)
+        self.assertNotIn('"state": "IN_PROGRESS"', blocked.stdout)
+        started=run("milestone","--workspace","ws-demo-001","--milestone-id","kickoff","--transition","START","--op","cli-ms-1")
+        self.assertEqual(started.returncode,0,started.stderr)
+        self.assertIn('"state": "IN_PROGRESS"',started.stdout)
+
 if __name__ == "__main__": unittest.main(verbosity=2)
