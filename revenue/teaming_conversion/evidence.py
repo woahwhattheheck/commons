@@ -7,6 +7,12 @@ from .common import digest_object, format_timestamp, sha256_bytes, sorted_unique
 from .parse import ParsedCandidate, ParsedEvidence, ParsedRoot
 from .policy import POLICY_SHA256, policy_dict
 
+_POLICY_AT_IMPORT = policy_dict()
+_MAX_FUTURE_SKEW_SECONDS = int(_POLICY_AT_IMPORT["max_future_skew_seconds"])
+_MAX_REPLY_AGE_SECONDS = int(_POLICY_AT_IMPORT["max_reply_age_seconds"])
+_MAX_SOURCE_AGE_SECONDS = int(_POLICY_AT_IMPORT["max_source_age_seconds"])
+del _POLICY_AT_IMPORT
+
 
 def evidence_section_digests(evidence: ParsedEvidence) -> dict[str, str]:
     return {
@@ -30,6 +36,10 @@ def select_and_validate_root(
     *,
     evidence_bytes: bytes,
     now: datetime,
+    _policy_sha256: str = POLICY_SHA256,
+    _section_digests=evidence_section_digests,
+    _sha256_bytes=sha256_bytes,
+    _sorted_unique=sorted_unique,
 ) -> tuple[ParsedRoot | None, list[str]]:
     blockers: list[str] = []
     if candidate.opportunity_id != evidence.opportunity_id:
@@ -42,10 +52,10 @@ def select_and_validate_root(
     matching = [root for root in roots if root.opportunity_id == candidate.opportunity_id]
     if not matching:
         blockers.append("trusted_root_missing")
-        return None, sorted_unique(blockers)
+        return None, _sorted_unique(blockers)
     if len(matching) != 1:
         blockers.append("trusted_root_ambiguous")
-        return None, sorted_unique(blockers)
+        return None, _sorted_unique(blockers)
     root = matching[0]
     row = root.value
     if root.root_id != evidence.root_id:
@@ -60,15 +70,15 @@ def select_and_validate_root(
         blockers.append("trusted_root_not_yet_active")
     if now > root.expires_at:
         blockers.append("trusted_root_expired")
-    if row["policy_sha256"] != POLICY_SHA256:
+    if row["policy_sha256"] != _policy_sha256:
         blockers.append("trusted_policy_identity_mismatch")
-    if row["evidence_sha256"] != sha256_bytes(evidence_bytes):
+    if row["evidence_sha256"] != _sha256_bytes(evidence_bytes):
         blockers.append("trusted_evidence_bytes_mismatch")
-    section_digests = evidence_section_digests(evidence)
+    section_digests = _section_digests(evidence)
     for key, actual in section_digests.items():
         if row[key] != actual:
             blockers.append(f"trusted_{key.removesuffix('_sha256')}_mismatch")
-    return root, sorted_unique(blockers)
+    return root, _sorted_unique(blockers)
 
 
 def evaluate_evidence(
@@ -76,11 +86,15 @@ def evaluate_evidence(
     evidence: ParsedEvidence,
     *,
     now: datetime,
+    _max_future_skew_seconds: int = _MAX_FUTURE_SKEW_SECONDS,
+    _max_reply_age_seconds: int = _MAX_REPLY_AGE_SECONDS,
+    _max_source_age_seconds: int = _MAX_SOURCE_AGE_SECONDS,
+    _timedelta=timedelta,
+    _sorted_unique=sorted_unique,
 ) -> dict[str, Any]:
-    policy = policy_dict()
-    future_skew = timedelta(seconds=policy["max_future_skew_seconds"])
-    reply_age = timedelta(seconds=policy["max_reply_age_seconds"])
-    source_age = timedelta(seconds=policy["max_source_age_seconds"])
+    future_skew = _timedelta(seconds=_max_future_skew_seconds)
+    reply_age = _timedelta(seconds=_max_reply_age_seconds)
+    source_age = _timedelta(seconds=_max_source_age_seconds)
     blockers: list[str] = []
     owner_actions: list[str] = []
 
@@ -179,8 +193,8 @@ def evaluate_evidence(
     )
     source_valid_until = evidence.captured_at + source_age
     return {
-        "blockers": sorted_unique(blockers),
-        "owner_actions": sorted_unique(owner_actions),
+        "blockers": _sorted_unique(blockers),
+        "owner_actions": _sorted_unique(owner_actions),
         "current_observation": terminal,
         "current_interpretation": current_interpretation,
         "reply_valid_until": reply_valid_until,
