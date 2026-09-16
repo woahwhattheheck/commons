@@ -1,5 +1,8 @@
 from teaming_conversion_test_support import *
 
+import subprocess
+import sys
+
 
 class TeamingConversionIoTests(unittest.TestCase):
     def test_tampered_receipt_fails_exact_integrity(self):
@@ -70,6 +73,104 @@ class TeamingConversionIoTests(unittest.TestCase):
             self.assertFalse(thread.is_alive())
             self.assertEqual(writer_error, [])
 
+    def test_strict_json_normalizes_resource_errors_and_non_scalar_unicode(self):
+        huge_integer = b'{"n":' + (b"9" * 5000) + b"}\n"
+        with self.assertRaises(ControlError):
+            parse_json_bytes(huge_integer)
+        with self.assertRaises(ControlError):
+            canonical_bytes({"bad": "\ud800"})
+
+    def test_historical_clis_fail_closed_on_hostile_valid_json_normal_and_optimized(self):
+        candidate, evidence, roots, receipt = compile_fixture()
+        del candidate
+        hostile_inputs = {
+            "surrogate": b'{"schema":"\\ud800"}\n',
+            "huge-int": b'{"n":' + (b"9" * 5000) + b"}\n",
+        }
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            candidate_path = root / "candidate.json"
+            evidence_path = root / "evidence.json"
+            roots_path = root / "roots.json"
+            receipt_path = root / "receipt.json"
+            evidence_path.write_bytes(evidence)
+            roots_path.write_bytes(roots)
+            receipt_path.write_bytes(canonical_bytes(receipt))
+
+            for optimize in (False, True):
+                for label, hostile in hostile_inputs.items():
+                    candidate_path.write_bytes(hostile)
+                    json_output = root / f"{label}-{int(optimize)}.json"
+                    markdown_output = root / f"{label}-{int(optimize)}.md"
+                    prefix = [sys.executable]
+                    if optimize:
+                        prefix.append("-O")
+                    compile_result = subprocess.run(
+                        [
+                            *prefix,
+                            "-m",
+                            "revenue.teaming_conversion.cli",
+                            "compile-history",
+                            "--candidate",
+                            str(candidate_path),
+                            "--evidence",
+                            str(evidence_path),
+                            "--roots",
+                            str(roots_path),
+                            "--as-of",
+                            ts(NOW),
+                            "--json-output",
+                            str(json_output),
+                            "--markdown-output",
+                            str(markdown_output),
+                        ],
+                        cwd=Path(__file__).resolve().parent,
+                        capture_output=True,
+                        text=True,
+                        timeout=30,
+                        check=False,
+                    )
+                    self.assertEqual(
+                        compile_result.returncode,
+                        2,
+                        (optimize, label, compile_result.stdout, compile_result.stderr),
+                    )
+                    self.assertIn("ERROR:", compile_result.stderr)
+                    self.assertNotIn("Traceback", compile_result.stderr)
+                    self.assertEqual(compile_result.stdout, "")
+                    self.assertFalse(json_output.exists())
+                    self.assertFalse(markdown_output.exists())
+
+                    verify_result = subprocess.run(
+                        [
+                            *prefix,
+                            "-m",
+                            "revenue.teaming_conversion.cli",
+                            "verify-integrity",
+                            "--candidate",
+                            str(candidate_path),
+                            "--evidence",
+                            str(evidence_path),
+                            "--roots",
+                            str(roots_path),
+                            "--receipt",
+                            str(receipt_path),
+                        ],
+                        cwd=Path(__file__).resolve().parent,
+                        capture_output=True,
+                        text=True,
+                        timeout=30,
+                        check=False,
+                    )
+                    self.assertEqual(
+                        verify_result.returncode,
+                        2,
+                        (optimize, label, verify_result.stdout, verify_result.stderr),
+                    )
+                    self.assertIn("ERROR:", verify_result.stderr)
+                    self.assertNotIn("Traceback", verify_result.stderr)
+                    self.assertEqual(verify_result.stdout, "")
+
     def test_cli_history_and_integrity_have_distinct_labels(self):
         candidate, evidence, roots, _ = compile_fixture()
         with tempfile.TemporaryDirectory() as directory:
@@ -139,4 +240,3 @@ class TeamingConversionIoTests(unittest.TestCase):
                         "receipt.md",
                     ]
                 )
-
