@@ -78,8 +78,10 @@ class TestUnusedInvoke(unittest.TestCase):
         self.assertGreaterEqual(measured["unused_count"], 1)
         self.assertEqual(classify(measured)["state"], "INTEGRATED")
         roads = {row["road"]: row for row in measured["providers"]}
-        self.assertTrue(roads["Cirrus"]["config_present"])
-        self.assertEqual(roads["Cirrus"]["state"], "UNMEASURED")
+        # Cirrus hosted execution retired 2026-06-01; config removed in
+        # CIRRUS-ABSENCE-INVARIANT-ZETA-FORGE-20260913. Measure absence.
+        self.assertFalse(roads["Cirrus"]["config_present"])
+        self.assertEqual(roads["Cirrus"]["state"], "NOT_LANDED")
         self.assertEqual(roads["GitHub Actions"]["state"], "LIVE")
 
 

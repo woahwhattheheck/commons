@@ -24,7 +24,7 @@ KEEP = {
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
-    "hub_pages.py": "44bbd2ec",
+    "hub_pages.py": "5d54e4ff",
     "door.js": "de1d570b",
     "ground/OWNER_NOW.md": "4b2a58ed",
 }
