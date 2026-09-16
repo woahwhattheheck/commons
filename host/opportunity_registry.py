@@ -931,6 +931,7 @@ table{font-size:.86rem}
     <li><a href="./repair-booking-preflight.html">$199 repair diagnostic</a></li>
     <li><a href="./plant-downtime-handoff.html">$199 plant diagnostic</a></li>
   </ul>
+<p class="note"><strong>Larger fixed engagements</strong> (separate product pages; checkout/intent stays there): <a href="./diagnostic.html">GGUF diagnostic · $12,000 / 10 days</a> · <a href="./commercial.html">White Box pilot · $30,000 / 30 days</a>. Not remints of tip SKUs.</p>
   <p>Full catalog: <a href="./commerce.html">commerce.html</a>. Cite forge tip-shelf / spark autopsy — do not remint.</p>
 </section>
 
@@ -1054,6 +1055,7 @@ def render_proof_html(registry: dict) -> str:
     <li><a href="repair-booking-preflight.html">$199 repair diagnostic</a></li>
     <li><a href="plant-downtime-handoff.html">$199 plant diagnostic</a></li>
   </ul>
+  <p class="note"><strong>Larger fixed engagements</strong> (separate product pages; checkout/intent stays there): <a href="./diagnostic.html">GGUF diagnostic · $12,000 / 10 days</a> · <a href="./commercial.html">White Box pilot · $30,000 / 30 days</a>. Not remints of tip SKUs.</p>
   <p>Shelf: <a href="tools-cash.html">tools-cash.html</a>. Catalog: <a href="commerce.html">commerce.html</a>. Cite spy-html-money-doors-live-cash-20260905-02 — do not remint.</p>
 </section>
 
@@ -1063,6 +1065,8 @@ def render_proof_html(registry: dict) -> str:
 
 
 def write_surfaces(root: Path, registry: dict) -> None:
+    # KEEP tip Larger fixed on opportunity.html + proof-to-proposal.html remints
+    # (newbot-01/#14936 + newbot-04/#14947 additive shelves; template lacked them).
     text = json.dumps(registry, indent=2, ensure_ascii=False) + "\n"
     (root / REGISTRY_PATH).write_text(text, encoding="utf-8")
     write_packets(root, registry)
