@@ -19,7 +19,7 @@ receipt = compile_current(intent_object, evidence_object)
 verification = verify_current(intent_object, evidence_object, receipt)
 ```
 
-There is no current API clock parameter and no CLI `--as-of` option. Current compiler/verifier emitters sample process UTC inside the authority operation. The code-owned ceilings are 900 seconds evidence age, 900 seconds request age, 300 seconds future skew, and 60 seconds positive receipt lifetime; candidate policy may tighten but never widen them.
+There is no current API clock parameter and no CLI `--as-of` option. Before every positive authority operation the wrapper reinstalls a process-UTC clock and the private core captured at definition time; rebinding `current._utc_now` or `current_impl._utc_now` cannot select verifier time. Current compiler/verifier emitters sample that owned process UTC inside the authority operation. The code-owned ceilings are 900 seconds evidence age, 900 seconds request age, 300 seconds future skew, and 60 seconds positive receipt lifetime; candidate policy may tighten but never widen them.
 
 The current receipt binds source custody, core receipt, verifier time, expiry, policy generation, current decision, and historical decision. Verification reconstructs the bound receipt at its original verifier time, then rechecks semantics under fresh process UTC. Expiry, changed sources, reseal, or decision drift clears no current authority.
 
