@@ -26,12 +26,14 @@ jobs:
         run: >-
           python -W error::SyntaxWarning -m unittest
           revenue.verified_paid_proof.test_verified_paid_proof
-          revenue.verified_paid_proof.test_custody -v
+          revenue.verified_paid_proof.test_custody
+          revenue.verified_paid_proof.test_strict_input -v
       - name: Optimized interpreter
         run: >-
           python -O -W error::SyntaxWarning -m unittest
           revenue.verified_paid_proof.test_verified_paid_proof
-          revenue.verified_paid_proof.test_custody -v
+          revenue.verified_paid_proof.test_custody
+          revenue.verified_paid_proof.test_strict_input -v
       - name: Compile all modules
         run: python -W error::SyntaxWarning -m compileall -q revenue/verified_paid_proof
       - name: Synthetic split-custody public-boundary smoke

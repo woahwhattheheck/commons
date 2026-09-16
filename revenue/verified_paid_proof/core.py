@@ -29,6 +29,8 @@ PERMISSION_SCOPES = {
 }
 ENGAGEMENT_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:-]{2,127}$")
 CURRENCY_RE = re.compile(r"^[A-Z]{3}$")
+MAX_JSON_INTEGER_DIGITS = 256
+_MAX_JSON_INTEGER = 10**MAX_JSON_INTEGER_DIGITS
 
 
 class ProofError(ValueError):
@@ -48,32 +50,80 @@ def _pairs_no_duplicates(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
     return out
 
 
+def _parse_int(token: str) -> int:
+    digits = token[1:] if token.startswith("-") else token
+    if len(digits) > MAX_JSON_INTEGER_DIGITS:
+        raise ProofError(
+            f"JSON integer token exceeds {MAX_JSON_INTEGER_DIGITS} digits"
+        )
+    try:
+        return int(token)
+    except ValueError as exc:
+        raise ProofError("invalid JSON integer token") from exc
+
+
+def _require_unicode_scalar(value: str, path: str) -> None:
+    """Require text that can be represented as strict UTF-8.
+
+    Python strings can contain lone UTF-16 surrogate code points after JSON
+    escape decoding. They are not Unicode scalar values and cannot be emitted
+    as strict UTF-8, so reject them before validation, hashing, or rendering.
+    """
+    try:
+        value.encode("utf-8")
+    except UnicodeEncodeError as exc:
+        raise ProofError(f"{path} must contain only Unicode scalar values") from exc
+
+
+def _validate_json_tree(value: Any) -> None:
+    """Iteratively enforce strict number and string semantics.
+
+    Iteration avoids adding a second recursive walk after the JSON decoder.
+    """
+    stack = [value]
+    while stack:
+        current = stack.pop()
+        if isinstance(current, float):
+            raise ProofError(
+                "floating-point values are forbidden; use integer minor units"
+            )
+        if isinstance(current, str):
+            _require_unicode_scalar(current, "JSON string")
+        elif isinstance(current, dict):
+            for key, child in current.items():
+                _require_unicode_scalar(key, "JSON object key")
+                stack.append(child)
+        elif isinstance(current, list):
+            stack.extend(current)
+
+
 def strict_json_loads(text: str) -> dict[str, Any]:
     try:
         value = json.loads(
             text,
             object_pairs_hook=_pairs_no_duplicates,
             parse_constant=_reject_constant,
+            parse_int=_parse_int,
         )
     except ProofError:
         raise
     except json.JSONDecodeError as exc:
         raise ProofError(f"invalid JSON: {exc.msg}") from exc
+    except RecursionError as exc:
+        raise ProofError("invalid JSON: nesting exceeds the supported limit") from exc
+    except ValueError as exc:
+        # CPython raises ValueError when an integer token exceeds its configured
+        # digit-conversion limit. Keep that interpreter detail inside ProofError.
+        raise ProofError("invalid JSON: integer token exceeds the supported limit") from exc
     if not isinstance(value, dict):
         raise ProofError("top-level JSON value must be an object")
-    _reject_floats(value, path="$")
+    _validate_json_tree(value)
     return value
 
 
 def _reject_floats(value: Any, path: str) -> None:
-    if isinstance(value, float):
-        raise ProofError(f"floating-point values are forbidden; use integer minor units: {path}")
-    if isinstance(value, dict):
-        for key, child in value.items():
-            _reject_floats(child, f"{path}.{key}")
-    elif isinstance(value, list):
-        for index, child in enumerate(value):
-            _reject_floats(child, f"{path}[{index}]")
+    """Backward-compatible strict-tree validator for internal callers."""
+    _validate_json_tree(value)
 
 
 def _exact_keys(obj: dict[str, Any], expected: set[str], path: str) -> None:
@@ -105,6 +155,12 @@ def _bool(value: Any, path: str) -> bool:
 def _int(value: Any, path: str, *, minimum: int | None = None, maximum: int | None = None) -> int:
     if type(value) is not int:
         raise ProofError(f"{path} must be a JSON integer")
+    # Compare magnitude without converting to decimal text so a 4999-digit
+    # Python int cannot trip CPython's integer-to-string conversion ceiling.
+    if abs(value) >= _MAX_JSON_INTEGER:
+        raise ProofError(
+            f"{path} exceeds {MAX_JSON_INTEGER_DIGITS} digits"
+        )
     if minimum is not None and value < minimum:
         raise ProofError(f"{path} must be >= {minimum}")
     if maximum is not None and value > maximum:
@@ -120,6 +176,7 @@ def _str(value: Any, path: str, *, min_len: int = 1, max_len: int = 2048) -> str
         raise ProofError(f"{path} length must be {min_len}..{max_len}")
     if "\x00" in normalized:
         raise ProofError(f"{path} contains NUL")
+    _require_unicode_scalar(normalized, path)
     return normalized
 
 
@@ -170,16 +227,42 @@ def _permission(value: Any, path: str) -> dict[str, Any]:
     return {"granted": granted, "evidence_refs": refs}
 
 
+def _strict_json_dumps(
+    value: Any,
+    *,
+    indent: int | None = None,
+    separators: tuple[str, str] | None = None,
+) -> str:
+    try:
+        rendered = json.dumps(
+            value,
+            sort_keys=True,
+            ensure_ascii=False,
+            allow_nan=False,
+            indent=indent,
+            separators=separators,
+        )
+        # json.dumps can return a Python string containing lone surrogates when
+        # ensure_ascii=False. Force the exact wire encoding here.
+        rendered.encode("utf-8")
+    except (TypeError, ValueError, UnicodeEncodeError) as exc:
+        raise ProofError("value cannot be serialized as strict UTF-8 JSON") from exc
+    return rendered
+
+
 def _canonical_json(value: Any) -> str:
-    return json.dumps(value, sort_keys=True, ensure_ascii=False, separators=(",", ":"))
+    return _strict_json_dumps(value, separators=(",", ":"))
 
 
 def _money(amount_minor: int, currency: str, decimals: int) -> str:
-    if decimals == 0:
-        return f"{currency} {amount_minor}"
-    scale = 10**decimals
-    major, minor = divmod(amount_minor, scale)
-    return f"{currency} {major}.{minor:0{decimals}d}"
+    try:
+        if decimals == 0:
+            return f"{currency} {amount_minor}"
+        scale = 10**decimals
+        major, minor = divmod(amount_minor, scale)
+        return f"{currency} {major}.{minor:0{decimals}d}"
+    except (ValueError, OverflowError) as exc:
+        raise ProofError("amount cannot be rendered as money") from exc
 
 
 def _public_proof_id(engagement_id: str) -> str:
@@ -199,4 +282,4 @@ class CompiledProof:
     receipt_sha256: str
 
     def proof_json(self) -> str:
-        return json.dumps(self.proof, sort_keys=True, ensure_ascii=False, indent=2) + "\n"
+        return _strict_json_dumps(self.proof, indent=2) + "\n"
