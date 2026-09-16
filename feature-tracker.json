@@ -5,7 +5,7 @@
     "id_pattern": "^[A-Za-z0-9._-]{8,80}$",
     "proof": "python3 test_feature_tracker.py",
     "registry": "features/registry/{id}.json",
-    "same_id_different_bytes": "CONFLICT \u2014 never overwrite; add evidence or a new id",
+    "same_id_different_bytes": "CONFLICT — never overwrite; add evidence or a new id",
     "same_id_same_bytes": "idempotent"
   },
   "counts": {
@@ -2953,7 +2953,7 @@
       "last_change": "2026-09-02",
       "live_status": "UNMEASURED",
       "main_sha": "",
-      "name": "H1 Grok\u2190Claude plugin inherit probe",
+      "name": "H1 Grok←Claude plugin inherit probe",
       "next_gap": "Owner-machine Grok Build live grok inspect --json remains FINDER-UNVERIFIED from cloud seats without that CLI. Do not rewrite Claude settings.",
       "owner_subsystem": "hygiene",
       "public_entrypoint": "host/h1_plugin_inherit.py",
@@ -4154,7 +4154,7 @@
       "live_status": "UNMEASURED",
       "main_sha": "",
       "name": "Muhlnickel free sample page",
-      "next_gap": "Do not invent buyers, cash, Stripe, Shopify, live 70B, or Titan walks. Seth\u2019s GRBN + whitebox sample stays a separate leftover.",
+      "next_gap": "Do not invent buyers, cash, Stripe, Shopify, live 70B, or Titan walks. Seth’s GRBN + whitebox sample stays a separate leftover.",
       "owner_subsystem": "muhlnickel-sales-sample",
       "public_entrypoint": "muhlnickel-free-sample.html",
       "receipts": [],
@@ -4611,7 +4611,7 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
-      "capability": "Paragon B6\u2013B20 biodiesel sample-to-CoA LIMS: a frozen 120-row synthetic manifest accessions 100 valid blends once, holds 5 incomplete CoC, 5 incomplete SDS, 5 duplicate IDs, and 5 OOS, matches signed golden values/units/qualifiers/report fields/source hashes, replays with zero new accessions, and requires a named human before CoA release. Adapters stay simulated/read-only.",
+      "capability": "Paragon B6–B20 biodiesel sample-to-CoA LIMS: a frozen 120-row synthetic manifest accessions 100 valid blends once, holds 5 incomplete CoC, 5 incomplete SDS, 5 duplicate IDs, and 5 OOS, matches signed golden values/units/qualifiers/report fields/source hashes, replays with zero new accessions, and requires a named human before CoA release. Adapters stay simulated/read-only.",
       "carrier": "CURSOR",
       "chat_ignored": false,
       "claimed_paths": [
@@ -4644,7 +4644,7 @@
       "last_change": "2026-08-31",
       "live_status": "UNMEASURED",
       "main_sha": "",
-      "name": "Paragon B6\u2013B20 biodiesel sample-to-CoA LIMS",
+      "name": "Paragon B6–B20 biodiesel sample-to-CoA LIMS",
       "next_gap": "Buyer-owned CoC/SDS schema, D7467 method map, and de-identified golden files after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
       "owner_subsystem": "revenue",
       "public_entrypoint": "paragon-biodiesel-sample-coa-lims.html",
@@ -6195,7 +6195,7 @@
       "last_change": "2026-09-05",
       "live_status": "UNMEASURED",
       "main_sha": "",
-      "name": "Autopsy \u2192 G2 case submit helper",
+      "name": "Autopsy → G2 case submit helper",
       "next_gap": "When a real paid Autopsy case is assigned, coordinator calls grokbot_submit with case_from_autopsy_offer. No Autopsy plink remint. Hands off #8802.",
       "owner_subsystem": "grokbot-control",
       "public_entrypoint": "integrations/grokbot_control/paid_case.py",
@@ -6464,7 +6464,7 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
-      "capability": "RUNBOOK \u00a710 documents peer equipment paid-case path + receipt bind; hermetic live-echo e2e in test_grokbot_shared_equipment.test_paid_case_equipment_live_e2e chains case_from_autopsy_offer \u2192 grokbot_submit(case) \u2192 receipt_row_from_case(submit_response). No Stripe remint.",
+      "capability": "RUNBOOK §10 documents peer equipment paid-case path + receipt bind; hermetic live-echo e2e in test_grokbot_shared_equipment.test_paid_case_equipment_live_e2e chains case_from_autopsy_offer → grokbot_submit(case) → receipt_row_from_case(submit_response). No Stripe remint.",
       "carrier": "SPARK",
       "chat_ignored": false,
       "claimed_paths": [
@@ -6492,7 +6492,7 @@
       "live_status": "UNMEASURED",
       "main_sha": "",
       "name": "G2 runbook equipment receipt e2e",
-      "next_gap": "When REAL_STRIPE_PAYMENT_OBSERVED, follow RUNBOOK \u00a710 equipment path and append opaque case_row. No Autopsy plink remint. Hands off #8802.",
+      "next_gap": "When REAL_STRIPE_PAYMENT_OBSERVED, follow RUNBOOK §10 equipment path and append opaque case_row. No Autopsy plink remint. Hands off #8802.",
       "owner_subsystem": "grokbot-control",
       "public_entrypoint": "revenue/agent_failure_autopsy/RUNBOOK.md",
       "receipts": [],
@@ -7528,5 +7528,40 @@
     "todo.html": "DIRECTIVES.md view. Historical."
   },
   "problems": [],
-  "schema": "commons-feature-tracker-v1"
+  "schema": "commons-feature-tracker-v1",
+  "live_cash": {
+    "cite": [
+      "newbot-json-doors-live-cash-20260916-05",
+      "goat-skills-json-live-cash-20260916-01",
+      "feature-tracker.html Live cash"
+    ],
+    "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Canonical payload above stays authoritative. feature-tracker.html already surfaces Live cash and loads this JSON. No invent Stripe URLs.",
+    "products": [
+      {
+        "name": "Agent Failure Autopsy",
+        "price_usd": 29,
+        "path": "agent-rescue.html"
+      },
+      {
+        "name": "Dealer Service Lead Rescue",
+        "price_usd": 199,
+        "path": "dealer-service-lead-rescue.html"
+      },
+      {
+        "name": "Referral Intake Completeness",
+        "price_usd": 199,
+        "path": "referral-intake-completeness.html"
+      },
+      {
+        "name": "Repair Booking Preflight",
+        "price_usd": 199,
+        "path": "repair-booking-preflight.html"
+      },
+      {
+        "name": "Plant Downtime Handoff",
+        "price_usd": 199,
+        "path": "plant-downtime-handoff.html"
+      }
+    ]
+  }
 }
