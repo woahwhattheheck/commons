@@ -1,0 +1,74 @@
+name: ohsu-ap-ai-rfi-approof
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/ohsu-ap-ai-rfi-approof.yml'
+      - 'revenue/ohsu_ap_ai_rfi_approof/**'
+      - 'test_ohsu_ap_ai_rfi_approof.py'
+      - 'test_ohsu_ap_ai_rfi_approof_authority.py'
+  pull_request:
+    paths:
+      - '.github/workflows/ohsu-ap-ai-rfi-approof.yml'
+      - 'revenue/ohsu_ap_ai_rfi_approof/**'
+      - 'test_ohsu_ap_ai_rfi_approof.py'
+      - 'test_ohsu_ap_ai_rfi_approof_authority.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: syntax
+        run: |
+          python -m py_compile \
+            revenue/ohsu_ap_ai_rfi_approof/*.py \
+            test_ohsu_ap_ai_rfi_approof.py \
+            test_ohsu_ap_ai_rfi_approof_authority.py
+      - name: normal semantics
+        run: |
+          python -m unittest -v \
+            test_ohsu_ap_ai_rfi_approof.py \
+            test_ohsu_ap_ai_rfi_approof_authority.py
+      - name: optimized semantics
+        run: |
+          python -O -m unittest -v \
+            test_ohsu_ap_ai_rfi_approof.py \
+            test_ohsu_ap_ai_rfi_approof_authority.py
+      - name: authority predecessor smoke
+        run: |
+          python - <<'PY'
+          import copy, json
+          from pathlib import Path
+          import revenue.ohsu_ap_ai_rfi_approof.approof as api
+          import revenue.ohsu_ap_ai_rfi_approof.engine as engine
+          packet=json.loads(Path('revenue/ohsu_ap_ai_rfi_approof/fixture.json').read_text())
+          original_api=api.AUTHORITY
+          original_engine=engine.AUTHORITY
+          try:
+              api.AUTHORITY={'payment_authorized': True}
+              engine.AUTHORITY={'payment_authorized': True}
+              projection=api.compile_packet(packet)
+              assert projection['authority']
+              assert all(value is False for value in projection['authority'].values())
+              assert all(row['posting_authorized'] is False for row in projection['oracle_shadow_rows'])
+              promoted=copy.deepcopy(projection)
+              promoted['authority']['payment_authorized']=True
+              assert api.verify_projection(packet, promoted) is False
+          finally:
+              api.AUTHORITY=original_api
+              engine.AUTHORITY=original_engine
+          PY
+      - name: whitespace guard
+        run: git diff --check HEAD^
