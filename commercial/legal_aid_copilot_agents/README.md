@@ -44,7 +44,7 @@ The included example intentionally remains `HOLD` because it contains no fabrica
 ## Test
 
 ```bash
-python -m unittest tests.test_legal_aid_copilot_agents -v
+python -m unittest discover -s tests -p 'test_legal_aid_copilot_agents.py' -v
 ```
 
 Tests cover truth-preserving proposal holds, delivery-window mismatch, governance gaps, rubric validation, duplicate case identifiers, functioning-agent outcomes, deterministic receipts, and a complete synthetic acceptance-ready path. Synthetic fixtures demonstrate software behavior only.
