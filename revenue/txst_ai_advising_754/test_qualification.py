@@ -31,6 +31,7 @@ def official():
         "packet_generation": "event-1443681-v1",
         "packet_complete": True,
         "captured_at_utc": "2026-09-16T22:00:00Z",
+        "deadline_utc": "2026-09-28T22:00:00Z",
         "source_url": "https://bids.sciquest.com/example",
         "documents": [
             {
@@ -165,6 +166,19 @@ class QualificationTests(unittest.TestCase):
         c["extra"] = True
         with self.assertRaises(q.ContractError):
             q.compile_current(b(c))
+
+
+    def test_unverified_discovery_deadline_never_closes_current_carrier(self):
+        report = q._compile_at(
+            b(candidate()), None, None, None,
+            now=datetime(2026, 9, 29, 1, 0, tzinfo=timezone.utc),
+            trusted_official_sha=None,
+            trusted_owner_sha=None,
+            trusted_partner_sha=None,
+            historical=True,
+        )
+        self.assertEqual(report["state"], "HOLD_OFFICIAL_PACKET_REQUIRED")
+        self.assertIsNone(report["solicitation"]["official_deadline_utc"])
 
     def test_deadline_closes_routes_even_with_complete_evidence(self):
         o_raw = b(official())
