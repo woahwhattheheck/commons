@@ -67,6 +67,69 @@ class CreativeReviewDeskHostileTests(CreativeReviewDeskTestCase):
         self.assertEqual(hero["state"], "HOLD")
         self.assertIn("DISPOSITION_NOT_AUDIT_BOUND:brand", hero["holds"])
 
+    def test_historical_asset_version_cannot_be_resurrected(self) -> None:
+        self.make_ready()
+        successor = self.root / "hero-generation-2.bin"
+        successor.write_bytes(b"synthetic hero generation 2")
+        self.submit_hero("submit-hero-generation-2", successor)
+        with sqlite3.connect(self.db) as connection:
+            connection.execute(
+                "DELETE FROM asset_versions WHERE campaign_id='fall-launch' AND asset_id='hero-image' AND version=2"
+            )
+        status = self.desk.status("fall-launch")["derived"]
+        hero = next(item for item in status["assets"] if item["asset_id"] == "hero-image")
+        self.assertEqual(hero["state"], "HOLD")
+        self.assertIn("ASSET_STATE_NOT_LATEST_AUDIT", hero["holds"])
+
+    def test_historical_campaign_revision_cannot_be_resurrected(self) -> None:
+        self.make_ready()
+        with sqlite3.connect(self.db) as connection:
+            original = connection.execute(
+                "SELECT name,spec_json,spec_sha256,revision,updated_at FROM campaigns WHERE campaign_id='fall-launch'"
+            ).fetchone()
+        revised = json.loads(json.dumps(self.spec))
+        revised["name"] = "Synthetic Fall Launch Revised"
+        self.desk.revise_campaign("revise-campaign", 1, revised)
+        with sqlite3.connect(self.db) as connection:
+            connection.execute(
+                "UPDATE campaigns SET name=?,spec_json=?,spec_sha256=?,revision=?,updated_at=? WHERE campaign_id='fall-launch'",
+                original,
+            )
+        status = self.desk.status("fall-launch")["derived"]
+        self.assertEqual(status["campaign_state"], "HOLD")
+        self.assertIn("CAMPAIGN_STATE_NOT_LATEST_AUDIT", status["campaign_holds"])
+
+    def test_historical_assignment_and_approval_cannot_be_resurrected(self) -> None:
+        self.make_ready()
+        with sqlite3.connect(self.db) as connection:
+            assignment = connection.execute(
+                "SELECT reviewer_id,assigned_at FROM assignments WHERE campaign_id='fall-launch' AND asset_id='hero-image' AND campaign_revision=1 AND asset_version=1 AND role='brand'"
+            ).fetchone()
+            disposition = connection.execute(
+                "SELECT campaign_id,asset_id,campaign_revision,asset_version,role,reviewer_id,decision,note,event_ordinal,decided_at FROM dispositions WHERE campaign_id='fall-launch' AND asset_id='hero-image' AND campaign_revision=1 AND asset_version=1 AND role='brand'"
+            ).fetchone()
+        self.desk.assign_reviewer(
+            "reassign-brand",
+            "fall-launch",
+            "hero-image",
+            "brand",
+            "reviewer-brand-two",
+        )
+        with sqlite3.connect(self.db) as connection:
+            connection.execute(
+                "UPDATE assignments SET reviewer_id=?,assigned_at=? WHERE campaign_id='fall-launch' AND asset_id='hero-image' AND campaign_revision=1 AND asset_version=1 AND role='brand'",
+                assignment,
+            )
+            connection.execute(
+                "INSERT INTO dispositions(campaign_id,asset_id,campaign_revision,asset_version,role,reviewer_id,decision,note,event_ordinal,decided_at) VALUES(?,?,?,?,?,?,?,?,?,?)",
+                disposition,
+            )
+        status = self.desk.status("fall-launch")["derived"]
+        hero = next(item for item in status["assets"] if item["asset_id"] == "hero-image")
+        self.assertEqual(hero["state"], "HOLD")
+        self.assertIn("ASSIGNMENT_NOT_LATEST_AUDIT:brand", hero["holds"])
+        self.assertIn("DISPOSITION_NOT_LATEST_AUDIT:brand", hero["holds"])
+
     def test_export_is_deterministic_and_semantically_verifiable(self) -> None:
         self.make_ready()
         out_a = self.root / "out-a"
@@ -202,7 +265,6 @@ class CreativeReviewDeskHostileTests(CreativeReviewDeskTestCase):
         self.assertEqual([event["ordinal"] for event in manifest["events"]], list(range(1, len(manifest["events"]) + 1)))
         self.assertEqual(manifest["events"][0]["previous_hash"], "0" * 64)
         self.assertEqual(manifest["derived"]["campaign_holds"], [])
-
 
 
 if __name__ == "__main__":
