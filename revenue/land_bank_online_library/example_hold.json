@@ -1,0 +1,41 @@
+{
+  "source_custody": {
+    "candidate_buyer_source_path": null,
+    "candidate_buyer_source_label": "Land Bank T12-09-26 tender candidate",
+    "candidate_buyer_source_locator": "https://www.etenders.gov.za/",
+    "expected_sha256": "",
+    "secondary_listing_refs": [
+      {
+        "label": "EasyTenders discovery listing",
+        "locator": "https://easytenders.co.za/tenders/t12-09-26-centurion-online-library-system",
+        "note": "Discovery only; not buyer-byte or procurement authority"
+      }
+    ]
+  },
+  "prime": {
+    "legal_name": "",
+    "evidence": {}
+  },
+  "paid_workshare": {
+    "owner": "TJLabs",
+    "deliverables": [
+      "content_migration_metadata_acceptance",
+      "rbac_entitlement_acceptance",
+      "search_retrieval_regression",
+      "integration_data_contract_qa",
+      "security_dr_evidence_matrix",
+      "training_handover_acceptance",
+      "requirements_traceability_pack"
+    ],
+    "acceptance_criteria": [
+      "every agreed requirement maps to retained evidence",
+      "unresolved facts remain HOLD"
+    ],
+    "exclusions": [
+      "prime procurement returnables",
+      "legal-content licensing rights",
+      "buyer submission"
+    ],
+    "commercial_state": "PAID_SCOPE_TO_BE_AGREED"
+  }
+}
