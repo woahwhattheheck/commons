@@ -18,20 +18,20 @@ class PursuitCarrierTests(unittest.TestCase):
         self.assertEqual(out["prime_status"],"PRIME_HOLD")
         self.assertEqual(out["teaming_status"],"TEAMING_ROUTE_OPEN_INTERNAL")
         self.assertEqual(out["attachments_status"],"PARTIAL")
-        self.assertEqual(out["proposal_budget_state"],"HOLD_UNPRICED_ATTACHMENTS_INCOMPLETE")
+        self.assertEqual(out["proposal_budget_status"],"HOLD_UNPRICED_ATTACHMENTS_INCOMPLETE")
         self.assertFalse(out["proposal_budget_within_cap"])
         self.assertFalse(out["deadline_currentness_authoritative"])
         self.assertTrue(out["fresh_deadline_recensus_required_before_action"])
         self.assertFalse(out["submission_authorized"]);self.assertFalse(out["award_or_revenue_asserted"])
 
-    def test_unpriced_incomplete_generation_never_asserts_budget_fit(self):
+    def test_unpriced_incomplete_generation_cannot_assert_budget_within_cap(self):
         p=self.packet()
         self.assertEqual(p["proposal"]["proposed_total_usd"],0)
         self.assertEqual(p["proposal"]["year1_license_usd"],0)
         self.assertFalse(p["proposal"]["attachments_complete"])
         out=evaluate(p)
-        self.assertEqual(out["proposal_budget_state"],"HOLD_UNPRICED_ATTACHMENTS_INCOMPLETE")
-        self.assertFalse(out["proposal_budget_within_cap"])
+        self.assertEqual(out["proposal_budget_status"],"HOLD_UNPRICED_ATTACHMENTS_INCOMPLETE")
+        self.assertIs(out["proposal_budget_within_cap"],False)
 
     def test_calendar_clear_does_not_verify_project_start_capacity(self):
         gate=self.packet()["qualification"]["start_capacity_2026_10_13"]

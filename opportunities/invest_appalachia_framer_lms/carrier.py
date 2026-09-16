@@ -58,9 +58,10 @@ def normalize(raw:Any)->dict[str,Any]:
 def evaluate(raw:Any)->dict[str,Any]:
  n=normalize(raw)
  missing=sorted(k for k,v in n["qualification"].items() if v["state"]!="VERIFIED")
- # The retained generation is deliberately unpriced and Attachment C is not
- # materialized. Zero placeholders are not evidence that a proposal fits the cap.
- out={"schema":"invest_appalachia_framer_lms.pursuit_receipt.v3","opportunity_id":OPPORTUNITY_ID,"prime_status":"PRIME_HOLD","teaming_status":"TEAMING_ROUTE_OPEN_INTERNAL","unverified_or_missing_gates":missing,"attachments_status":"PARTIAL","proposal_budget_state":"HOLD_UNPRICED_ATTACHMENTS_INCOMPLETE","proposal_budget_within_cap":False,"submission_deadline_utc":DEADLINE,"deadline_currentness_authoritative":False,"fresh_deadline_recensus_required_before_action":True,"qualification_generation_sha256":CURRENT_PACKET_SHA256,**{k:False for k in AUTH},"normalized_input_sha256":digest(n)}
+ # Current retained generation is intentionally unpriced and lacks buyer
+ # Attachment C, so it cannot truthfully assert a positive within-cap result.
+ budget_status="HOLD_UNPRICED_ATTACHMENTS_INCOMPLETE"
+ out={"schema":"invest_appalachia_framer_lms.pursuit_receipt.v2","opportunity_id":OPPORTUNITY_ID,"prime_status":"PRIME_HOLD","teaming_status":"TEAMING_ROUTE_OPEN_INTERNAL","unverified_or_missing_gates":missing,"attachments_status":"PARTIAL","proposal_budget_status":budget_status,"proposal_budget_within_cap":False,"submission_deadline_utc":DEADLINE,"deadline_currentness_authoritative":False,"fresh_deadline_recensus_required_before_action":True,"qualification_generation_sha256":CURRENT_PACKET_SHA256,**{k:False for k in AUTH},"normalized_input_sha256":digest(n)}
  out["receipt_sha256"]=digest(out);return out
 
 def load_json(path:Path)->Any:

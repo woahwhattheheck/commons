@@ -8,8 +8,6 @@ Internal proposal-readiness and teaming carrier for Commons issue #14857.
 
 The official RFP is due **2026-09-22 5:00 PM ET**, capped at **$60,000** inclusive of Year-1 implementation/license costs, with work expected **2026-10-13 through 2027-04-30**. The main RFP is recovered from the buyer's official site. The linked ZIP containing Attachments A-D is publicly linked but has not yet been materialized by the available browser connector, so attachment-dependent technical/platform/pricing claims remain HOLD. The buyer page also schedules an FAQ for September 16, but the live page checked that morning still exposed no FAQ link/content; no absent FAQ is treated as evidence of no change.
 
-The retained current proposal generation is deliberately **unpriced**: its zero dollar fields are placeholders, Attachment C is not retained, and no platform is selected. The receipt therefore reports `proposal_budget_state=HOLD_UNPRICED_ATTACHMENTS_INCOMPLETE` and `proposal_budget_within_cap=false`. A positive within-cap assertion requires a later reviewed priced generation bound to the actual admitted buyer budget structure; zero placeholders are never treated as budget evidence.
-
 ## Prime blockers
 
 The RFP screens for evidence of at least two prior LMS platform implementations, adult-learning packaging experience, October 13 capacity, and ability to provide W-9 plus general liability, E&O/professional liability, and cybersecurity insurance. It also asks for two relevant project examples/work samples and two prior-client references.
