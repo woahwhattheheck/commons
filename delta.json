@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -778,6 +778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1010,12 +1016,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -1900,6 +1900,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2132,12 +2138,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -3715,6 +3715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3947,12 +3953,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -4741,6 +4741,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4973,12 +4979,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -5026,6 +5026,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5258,12 +5264,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -5305,6 +5305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5537,12 +5543,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -5572,6 +5572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5804,12 +5810,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -8395,6 +8395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8627,12 +8633,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -8650,6 +8650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8882,12 +8888,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -8971,6 +8971,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9203,12 +9209,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -9292,6 +9292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9524,12 +9530,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -9547,6 +9547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9779,12 +9785,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -9868,6 +9868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10100,12 +10106,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -10189,6 +10189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10421,12 +10427,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -10510,6 +10510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10742,12 +10748,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -10777,6 +10777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11009,12 +11015,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -11038,6 +11038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11270,12 +11276,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -11293,6 +11293,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11525,12 +11531,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -11614,6 +11614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11846,12 +11852,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -11887,6 +11887,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12119,12 +12125,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -12718,6 +12718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12950,12 +12956,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -12973,6 +12973,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13205,12 +13211,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -13495,6 +13495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13727,12 +13733,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -13816,6 +13816,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14048,12 +14054,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -14077,6 +14077,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14309,12 +14315,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -14344,6 +14344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14576,12 +14582,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -14665,6 +14665,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14897,12 +14903,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -14938,6 +14938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15170,12 +15176,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -15193,6 +15193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15425,12 +15431,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -15454,6 +15454,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15686,12 +15692,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -15709,6 +15709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15941,12 +15947,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -15964,6 +15964,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16196,12 +16202,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -16267,6 +16267,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16499,12 +16505,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -16522,6 +16522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16754,12 +16760,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -16789,6 +16789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17021,12 +17027,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -17044,6 +17044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17276,12 +17282,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -17305,6 +17305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17537,12 +17543,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -17560,6 +17560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17792,12 +17798,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -17881,6 +17881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18113,12 +18119,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -18142,6 +18142,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18374,12 +18380,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -18397,6 +18397,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18629,12 +18635,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -18652,6 +18652,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18884,12 +18890,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -18907,6 +18907,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19139,12 +19145,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -19162,6 +19162,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19394,12 +19400,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -19417,6 +19417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19649,12 +19655,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -19738,6 +19738,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19970,12 +19976,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -20029,6 +20029,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20261,12 +20267,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -20296,6 +20296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20528,12 +20534,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -20617,6 +20617,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20849,12 +20855,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -20872,6 +20872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21104,12 +21110,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -21190,8 +21190,14 @@
     "COMMONS": {
       "last_id": "discord-1549330310540300361",
       "last_ts": "2026-09-15T08:05:31.198000Z",
-      "n": 18,
+      "n": 19,
       "since": [
+        {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
         {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
@@ -21382,6 +21388,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21614,12 +21626,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -21703,6 +21709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21935,12 +21947,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -21958,6 +21964,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22190,12 +22202,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -22213,6 +22219,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22445,12 +22457,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -22534,6 +22540,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22766,12 +22778,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -22855,6 +22861,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23087,12 +23099,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -23128,6 +23134,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23360,12 +23372,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -23401,6 +23407,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23633,12 +23645,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -23680,6 +23686,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23912,12 +23924,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -23935,6 +23941,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24167,12 +24179,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -24256,6 +24262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24488,12 +24500,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -24511,6 +24517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24743,12 +24755,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -24766,6 +24772,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24998,12 +25010,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -25021,6 +25027,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25253,12 +25265,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -25276,6 +25282,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25508,12 +25520,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -25531,6 +25537,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25763,12 +25775,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -25852,6 +25858,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26084,12 +26096,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -26173,6 +26179,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26405,12 +26417,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -26428,6 +26434,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26660,12 +26672,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -26749,6 +26755,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26981,12 +26993,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -27058,6 +27064,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27290,12 +27302,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -27379,6 +27385,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27611,12 +27623,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -27640,6 +27646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27872,12 +27884,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -27943,6 +27949,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28175,12 +28187,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -28210,6 +28216,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28442,12 +28454,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -28477,6 +28483,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28709,12 +28721,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -28732,6 +28738,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28964,12 +28976,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -29053,6 +29059,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29285,12 +29297,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -29308,6 +29314,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29540,12 +29552,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -29569,6 +29575,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29801,12 +29813,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -29890,6 +29896,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30122,12 +30134,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -30145,6 +30151,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30377,12 +30389,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -30400,6 +30406,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30632,12 +30644,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -30721,6 +30727,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30953,12 +30965,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -30988,6 +30994,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31220,12 +31232,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -31243,6 +31249,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31475,12 +31487,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -31522,6 +31528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31754,12 +31766,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -31783,6 +31789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32015,12 +32027,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -32038,6 +32044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32270,12 +32282,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -32293,6 +32299,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32525,12 +32537,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -32545,8 +32551,14 @@
     "GEMINI": {
       "last_id": "grokbuild-pr14619-73d91535-receipt",
       "last_ts": "2026-09-15T04:32:57Z",
-      "n": 37,
+      "n": 38,
       "since": [
+        {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
         {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
@@ -32851,6 +32863,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33083,12 +33101,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -33106,6 +33118,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33338,12 +33356,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -33361,6 +33373,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33593,12 +33611,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -33682,6 +33694,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33914,12 +33932,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -33937,6 +33949,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34169,12 +34187,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -34258,6 +34270,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34490,12 +34508,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -34579,6 +34591,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34811,12 +34829,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -34840,6 +34852,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35072,12 +35090,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -35107,6 +35119,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35339,12 +35357,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -35362,6 +35374,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35594,12 +35612,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -35629,6 +35641,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35861,12 +35879,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -35890,6 +35902,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36122,12 +36140,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -36151,6 +36163,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36383,12 +36401,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -36469,8 +36481,14 @@
     "GROK": {
       "last_id": "mcp-gemini-9d455496f47eccd4f48f2c1e",
       "last_ts": "2026-09-16T11:34:04Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
         {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
@@ -36583,6 +36601,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36815,12 +36839,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -36874,6 +36892,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37106,12 +37130,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -37141,6 +37159,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37373,12 +37397,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -37399,8 +37417,14 @@
     "GROKBUILD": {
       "last_id": "grokbuild-14765-paceboard-landed-20260916",
       "last_ts": "2026-09-16T00:23:58Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
         {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
@@ -37543,6 +37567,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37775,12 +37805,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -37801,8 +37825,14 @@
     "GROK_BUILD": {
       "last_id": "grok-build-stripe-census-pad-20260915",
       "last_ts": "2026-09-15T21:13:19Z",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
         {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
@@ -37969,6 +37999,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38201,12 +38237,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -38224,6 +38254,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38456,12 +38492,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -38491,6 +38521,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38723,12 +38759,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -38746,6 +38776,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38978,12 +39014,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -39013,6 +39043,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39245,12 +39281,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -39334,6 +39364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39566,12 +39602,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -39589,6 +39619,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39821,12 +39857,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -39910,6 +39940,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40142,12 +40178,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -40231,6 +40261,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40463,12 +40499,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -40534,6 +40564,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40766,12 +40802,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -40807,6 +40837,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41039,12 +41075,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -41092,6 +41122,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41324,12 +41360,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -41347,6 +41377,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41579,12 +41615,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -41668,6 +41698,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41900,12 +41936,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -41923,6 +41953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42155,12 +42191,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -42208,6 +42238,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42440,12 +42476,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -42463,6 +42493,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42695,12 +42731,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -42718,6 +42748,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42950,12 +42986,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -42973,6 +43003,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43205,12 +43241,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -43228,6 +43258,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43460,12 +43496,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -43483,6 +43513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43715,12 +43751,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -43804,6 +43834,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44036,12 +44072,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -44059,6 +44089,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44291,12 +44327,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -44314,6 +44344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44546,12 +44582,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -44569,6 +44599,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44801,12 +44837,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -44824,6 +44854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45056,12 +45092,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -45079,6 +45109,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45311,12 +45347,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -45352,6 +45382,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45584,12 +45620,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -45673,6 +45703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45905,12 +45941,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -45928,6 +45958,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46160,12 +46196,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -46213,6 +46243,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46445,12 +46481,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -46522,6 +46552,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46754,12 +46790,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -46777,6 +46807,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47009,12 +47045,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -47044,6 +47074,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47276,12 +47312,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -47299,6 +47329,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47531,12 +47567,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -47554,6 +47584,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47786,12 +47822,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -47809,6 +47839,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48041,12 +48077,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -48064,6 +48094,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48296,12 +48332,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -48319,6 +48349,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48551,12 +48587,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -48574,6 +48604,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48806,12 +48842,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -48895,6 +48925,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49127,12 +49163,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -49216,6 +49246,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49448,12 +49484,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -49537,6 +49567,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49769,12 +49805,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -49816,6 +49846,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50048,12 +50084,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -50137,6 +50167,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50369,12 +50405,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -50392,6 +50422,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50624,12 +50660,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -50647,6 +50677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50879,12 +50915,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -50914,6 +50944,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51146,12 +51182,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -51235,6 +51265,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51467,12 +51503,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -51496,6 +51526,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51728,12 +51764,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -51763,6 +51793,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51995,12 +52031,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -52030,6 +52060,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52262,12 +52298,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -52351,6 +52381,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52583,12 +52619,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -52672,6 +52702,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52904,12 +52940,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -52975,6 +53005,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53207,12 +53243,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -53236,6 +53266,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53468,12 +53504,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -53491,6 +53521,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53723,12 +53759,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -53746,6 +53776,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53978,12 +54014,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -54067,6 +54097,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54299,12 +54335,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -54322,6 +54352,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54554,12 +54590,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -54643,6 +54673,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54875,12 +54911,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -54910,6 +54940,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55142,12 +55178,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -55165,6 +55195,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55397,12 +55433,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -55486,6 +55516,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55718,12 +55754,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -55741,6 +55771,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55973,12 +56009,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -55996,6 +56026,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56228,12 +56264,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -56317,6 +56347,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56549,12 +56585,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -56572,6 +56602,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56804,12 +56840,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -56845,6 +56875,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57077,12 +57113,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -57100,6 +57130,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57332,12 +57368,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -57361,6 +57391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57593,12 +57629,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -57616,6 +57646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57848,12 +57884,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -57877,6 +57907,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58109,12 +58145,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -58132,6 +58162,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58364,12 +58400,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -58387,6 +58417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58619,12 +58655,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -58648,6 +58678,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58880,12 +58916,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -58903,6 +58933,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59135,12 +59171,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -59164,6 +59194,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59396,12 +59432,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -59485,6 +59515,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59717,12 +59753,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -59740,6 +59770,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59972,12 +60008,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -59995,6 +60025,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60227,12 +60263,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -60250,6 +60280,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60482,12 +60518,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -60517,6 +60547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60749,12 +60785,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -60838,6 +60868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61070,12 +61106,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -61159,6 +61189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61391,12 +61427,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -61480,6 +61510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61712,12 +61748,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -61801,6 +61831,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62033,12 +62069,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -62062,6 +62092,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62294,12 +62330,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -62383,6 +62413,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62615,12 +62651,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -62704,6 +62734,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62936,12 +62972,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -63019,6 +63049,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63251,12 +63287,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -63310,6 +63340,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63542,12 +63578,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -63631,6 +63661,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63863,12 +63899,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -63947,11 +63977,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
-      "last_ts": "2026-09-16T14:07:05Z",
+      "last_id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+      "last_ts": "2026-09-16T14:07:08Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
         {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
@@ -64017,12 +64053,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-15T07:56:30Z"
-        },
-        {
-          "id": "Learn2Design-v3--depth-throughput-hybrid-with-organizer-backed-benchmark-matrix",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-15T07:29:33Z"
         }
       ]
     },
@@ -64031,6 +64061,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
         {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
@@ -64264,12 +64300,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -64293,6 +64323,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64525,12 +64561,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -64614,6 +64644,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64846,12 +64882,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -64935,6 +64965,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65167,12 +65203,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -65190,6 +65220,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65422,12 +65458,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -65451,6 +65481,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65683,12 +65719,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -65706,6 +65736,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65938,12 +65974,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [
@@ -65961,6 +65991,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Add-Muse-backed-outbound-single-writer-preflight-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-16T14:07:08Z"
+        },
+        {
           "id": "Revenue--Columbia-Association-ERP-migration---integration-acceptance-workshare--",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66193,12 +66229,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-14T22:17:27Z"
-        },
-        {
-          "id": "grokbuild-stripe-scan-remain-20260914-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-14T19:12:00Z"
         }
       ],
       "mine": [

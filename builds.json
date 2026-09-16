@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 76,
+ "n_open_prs": 78,
  "open_prs": [
   {
    "number": 13779,
@@ -1169,22 +1169,6 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 14784,
-   "author": "woahwhattheheck",
-   "title": "Recover Teaming Conversion Control with independently rooted evidence",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14784",
-   "base_freshness": {
-    "base_sha": "76265a2f09c98413d0706e9e472cb04a9163f0c0",
-    "main_sha": "41d76a33cae55baee5bbb2b05a0f8a28701eac76",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 14807,
    "author": "woahwhattheheck",
    "title": "Revenue: build OSU-CHS GME resident-data pursuit prototype",
@@ -1489,22 +1473,6 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 14865,
-   "author": "woahwhattheheck",
-   "title": "Freeze Service Deal Economics CURRENT authority runtime",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14865",
-   "base_freshness": {
-    "base_sha": "1ee33b0d58c0b951c717acebd1c7b32671bee3a0",
-    "main_sha": "41d76a33cae55baee5bbb2b05a0f8a28701eac76",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 14877,
    "author": "woahwhattheheck",
    "title": "revenue: Land Bank T12-09-26 fail-closed teaming readiness carrier",
@@ -1563,6 +1531,70 @@
     "ahead_by": null,
     "behind_by": null,
     "label": "FRESH"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14880,
+   "author": "woahwhattheheck",
+   "title": "fix(revenue): recover commercial funnel on current main",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14880",
+   "base_freshness": {
+    "base_sha": "dc32225899125db0039ae3509521c438ba512f40",
+    "main_sha": "41d76a33cae55baee5bbb2b05a0f8a28701eac76",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14784,
+   "author": "woahwhattheheck",
+   "title": "Recover Teaming Conversion Control with independently rooted evidence",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14784",
+   "base_freshness": {
+    "base_sha": "76265a2f09c98413d0706e9e472cb04a9163f0c0",
+    "main_sha": "41d76a33cae55baee5bbb2b05a0f8a28701eac76",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14865,
+   "author": "woahwhattheheck",
+   "title": "Freeze Service Deal Economics CURRENT authority runtime",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14865",
+   "base_freshness": {
+    "base_sha": "1ee33b0d58c0b951c717acebd1c7b32671bee3a0",
+    "main_sha": "41d76a33cae55baee5bbb2b05a0f8a28701eac76",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 14882,
+   "author": "woahwhattheheck",
+   "title": "Revenue: ship public-sector integration workshare pack + IL/NC overlays",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/14882",
+   "base_freshness": {
+    "base_sha": "dc32225899125db0039ae3509521c438ba512f40",
+    "main_sha": "41d76a33cae55baee5bbb2b05a0f8a28701eac76",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
    },
    "status": "PR_OPEN",
    "road": "pr",
