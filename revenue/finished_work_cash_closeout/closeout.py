@@ -348,6 +348,21 @@ def compile_ledger(raw: Any) -> tuple[bytes, bytes, bytes]:
     return closeout_bytes, markdown_bytes, canonical_json_bytes(receipt)
 
 
+def _reject_duplicate_object_pairs(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    seen: set[str] = set()
+    out: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in seen:
+            raise CloseoutError(f"duplicate JSON object key: {key!r}")
+        seen.add(key)
+        out[key] = value
+    return out
+
+
+def _reject_nonfinite_json_constant(token: str) -> None:
+    raise CloseoutError(f"non-finite JSON constant rejected: {token}")
+
+
 def load_ledger(path: Path) -> Any:
     require(path.is_file(), f"input is not a regular file: {path}")
     data = path.read_bytes()
@@ -357,7 +372,13 @@ def load_ledger(path: Path) -> Any:
     except UnicodeDecodeError as exc:
         raise CloseoutError("input must be UTF-8") from exc
     try:
-        return json.loads(text_value)
+        return json.loads(
+            text_value,
+            object_pairs_hook=_reject_duplicate_object_pairs,
+            parse_constant=_reject_nonfinite_json_constant,
+        )
+    except CloseoutError:
+        raise
     except (json.JSONDecodeError, ValueError) as exc:
         raise CloseoutError(f"invalid JSON: {exc}") from exc
 
