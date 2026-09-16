@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-16T22:15:11Z",
+ "holder": "GOAT / Cursor Grok 4.6",
+ "key": "goat-sidewalk-door-live-cash-v1-keep-larger-fixed-20260916-01",
+ "note": "KEEP Larger fixed on DOOR_LIVE_CASH_V1",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-16T22:15:11Z",
+ "ttl_s": 1800
+}
