@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import copy
+import inspect
 import unittest
 
 from .core import DataError, MigrationPlan, ResidentStore, compile_migration, digest
@@ -71,6 +73,36 @@ class HardeningTests(unittest.TestCase):
         store = ResidentStore(conflicting_rows)
         with self.assertRaisesRegex(DataError, "does not match retained source generation"):
             store.apply_migration(forged)
+
+    def test_equal_plan_cannot_select_alternate_source_generation(self):
+        # Provenance-only mutation: same records/count, different source/row labels.
+        source_a = synthetic_rows()
+        source_b = copy.deepcopy(source_a)
+        source_b[0]["source"] = "alternate_roster.csv"
+        source_b[0]["row"] = 99
+        plan_a = compile_migration(source_a)
+        plan_b = compile_migration(source_b)
+        self.assertEqual(plan_a, plan_b)
+        self.assertEqual(plan_a.plan_digest, plan_b.plan_digest)
+        self.assertNotEqual(source_a[0]["source"], source_b[0]["source"])
+
+        store = ResidentStore(source_a)
+        with self.assertRaises(TypeError):
+            store.apply_migration(plan_a, source_generation=source_b)
+        store.apply_migration(plan_a)
+        self.assertEqual(store.receipt()["record_count"], 2)
+
+    def test_audit_and_receipt_reject_caller_source_selection(self):
+        rows = synthetic_rows()
+        store = ResidentStore(rows)
+        store.apply_migration(compile_migration(rows))
+        self.assertNotIn("source_generation", inspect.signature(store.verify_audit).parameters)
+        self.assertNotIn("source_generation", inspect.signature(store.receipt).parameters)
+        self.assertNotIn("source_generation", inspect.signature(store.apply_migration).parameters)
+        with self.assertRaises(TypeError):
+            store.verify_audit(source_generation=["truthy-but-unbound"])
+        with self.assertRaises(TypeError):
+            store.receipt(source_generation=["truthy-but-unbound"])
 
 
 if __name__ == "__main__":
