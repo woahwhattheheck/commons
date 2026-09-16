@@ -30,7 +30,7 @@ from .evidence_validation import _validate_commercial, _validate_concept_and_evi
 from .source_validation import _validate_sources
 
 
-def _status_from_reasons(groups: Mapping[str, Sequence[Dict[str, Any]]]) -> str:
+def _hold_status_from_reasons(groups: Mapping[str, Sequence[Dict[str, Any]]]) -> str:
     if groups["source"]:
         if any(reason["code"] == "DEADLINE_SOURCE_CONFLICT" for reason in groups["source"]):
             return "HOLD_DEADLINE_SOURCE_CONFLICT"
@@ -45,7 +45,19 @@ def _status_from_reasons(groups: Mapping[str, Sequence[Dict[str, Any]]]) -> str:
         return "HOLD_PARTNER_RESEARCH"
     if groups["commercial"]:
         return "HOLD_COMMERCIAL_AUTHORITY"
-    return "READY_FOR_OWNER_REVIEW"
+    return "HISTORICAL_INTEGRITY_ONLY"
+
+
+def _current_status_from_reasons(
+    groups: Mapping[str, Sequence[Dict[str, Any]]],
+    authority_root: Any,
+) -> str:
+    held = _hold_status_from_reasons(groups)
+    if held != "HISTORICAL_INTEGRITY_ONLY":
+        return held
+    if authority_root:
+        return "READY_FOR_OWNER_REVIEW"
+    return "HISTORICAL_INTEGRITY_ONLY"
 
 
 def _semantic_projection(packet: Mapping[str, Any]) -> Dict[str, Any]:
@@ -61,14 +73,7 @@ def _semantic_projection(packet: Mapping[str, Any]) -> Dict[str, Any]:
     }
 
 
-def _compile_at_trusted(input_value: Any, evaluated_at: _dt.datetime, mode: str) -> Dict[str, Any]:
-    """Internal deterministic compiler at an already trusted timestamp.
-
-    This is used for historical compilation and exact bundle replay. Public
-    CURRENT compilation never accepts this timestamp from a payload/caller.
-    """
-    if mode not in {"CURRENT", "HISTORICAL"}:
-        raise ReadinessError("mode must be CURRENT or HISTORICAL")
+def _collect_input_facts(input_value: Any, evaluated_at: _dt.datetime, current_mode: bool) -> Dict[str, Any]:
     if evaluated_at.tzinfo is None:
         raise ReadinessError("evaluation time must be timezone-aware")
     evaluated_at = evaluated_at.astimezone(_dt.timezone.utc).replace(microsecond=0)
@@ -78,12 +83,12 @@ def _compile_at_trusted(input_value: Any, evaluated_at: _dt.datetime, mode: str)
         raise ReadinessError("unsupported input schema")
 
     sources, source_reasons, controlling_deadline, planning_deadline, source_generation = _validate_sources(
-        root.get("official_sources"), evaluated_at, mode == "CURRENT"
+        root.get("official_sources"), evaluated_at, current_mode
     )
     consortium, consortium_reasons, consortium_by_id = _validate_consortium(root.get("consortium"))
     applicant, applicant_reasons = _validate_applicant(root.get("applicant"), consortium_by_id)
     concept_and_evidence, technical_reasons = _validate_concept_and_evidence(
-        root.get("concept"), root.get("technical_evidence"), evaluated_at, mode == "CURRENT"
+        root.get("concept"), root.get("technical_evidence"), evaluated_at, current_mode
     )
     partner_shortlist, partner_reasons = _validate_partner_shortlist(root.get("partner_shortlist"))
     commercial, commercial_reasons = _validate_commercial(root.get("commercial"))
@@ -103,28 +108,45 @@ def _compile_at_trusted(input_value: Any, evaluated_at: _dt.datetime, mode: str)
             enriched = dict(item)
             enriched["group"] = group_name
             all_reasons.append(enriched)
-
-    packet: Dict[str, Any] = {
-        "schema": PACKET_SCHEMA,
-        "mode": mode,
-        "generated_at": format_time(evaluated_at),
-        "input_sha256": sha256_hex(root),
-        "source_generation_sha256": source_generation,
-        "official_sources": sources,
-        "deadline_authority": {
-            "controlling_preproposal_deadline_at": controlling_deadline,
-            "planning_only_earliest_deadline_at": planning_deadline,
-            "planning_only": controlling_deadline is None,
-        },
+    return {
+        "evaluated_at": evaluated_at,
+        "root": root,
+        "sources": sources,
+        "controlling_deadline": controlling_deadline,
+        "planning_deadline": planning_deadline,
+        "source_generation": source_generation,
         "consortium": consortium,
         "applicant": applicant,
         "concept_and_evidence": concept_and_evidence,
         "partner_shortlist": partner_shortlist,
         "commercial": commercial,
+        "groups": groups,
+        "all_reasons": all_reasons,
+    }
+
+
+def _bundle_from_evaluation(evaluation: Mapping[str, Any], mode: str, status: str) -> Dict[str, Any]:
+    packet: Dict[str, Any] = {
+        "schema": PACKET_SCHEMA,
+        "mode": mode,
+        "generated_at": format_time(evaluation["evaluated_at"]),
+        "input_sha256": sha256_hex(evaluation["root"]),
+        "source_generation_sha256": evaluation["source_generation"],
+        "official_sources": evaluation["sources"],
+        "deadline_authority": {
+            "controlling_preproposal_deadline_at": evaluation["controlling_deadline"],
+            "planning_only_earliest_deadline_at": evaluation["planning_deadline"],
+            "planning_only": evaluation["controlling_deadline"] is None,
+        },
+        "consortium": evaluation["consortium"],
+        "applicant": evaluation["applicant"],
+        "concept_and_evidence": evaluation["concept_and_evidence"],
+        "partner_shortlist": evaluation["partner_shortlist"],
+        "commercial": evaluation["commercial"],
         "decision": {
-            "status": _status_from_reasons(groups),
-            "reason_count": len(all_reasons),
-            "reasons": all_reasons,
+            "status": status,
+            "reason_count": len(evaluation["all_reasons"]),
+            "reasons": evaluation["all_reasons"],
         },
         "authority": {
             "integrity_receipt_is_signature": False,
@@ -152,10 +174,18 @@ def _compile_at_trusted(input_value: Any, evaluated_at: _dt.datetime, mode: str)
     }
 
 
-def _consume_independent_authority(authority: Any) -> Any:
-    if authority is None:
-        raise ReadinessError("independent authority is required")
-    return authority
+def _compile_historical_at(input_value: Any, evaluated_at: _dt.datetime) -> Dict[str, Any]:
+    evaluation = _collect_input_facts(input_value, evaluated_at, False)
+    return _bundle_from_evaluation(evaluation, "HISTORICAL", _hold_status_from_reasons(evaluation["groups"]))
+
+
+def _compile_current_at(input_value: Any, evaluated_at: _dt.datetime, authority_root: Any) -> Dict[str, Any]:
+    evaluation = _collect_input_facts(input_value, evaluated_at, True)
+    return _bundle_from_evaluation(
+        evaluation,
+        "CURRENT",
+        _current_status_from_reasons(evaluation["groups"], authority_root),
+    )
 
 
 def compile_at(input_value: Any, evaluated_at: _dt.datetime, mode: str) -> Dict[str, Any]:
@@ -163,36 +193,36 @@ def compile_at(input_value: Any, evaluated_at: _dt.datetime, mode: str) -> Dict[
 
     CURRENT compilation is not available here. Callers that need live time
     must use compile_current, which samples process UTC and consumes an
-    independent authority value.
+    independent authority_root. Historical compilation never mints
+    READY_FOR_OWNER_REVIEW.
     """
     if mode == "CURRENT":
         raise ReadinessError("compile_at cannot mint CURRENT packets; use compile_current")
     if mode != "HISTORICAL":
         raise ReadinessError("mode must be CURRENT or HISTORICAL")
-    return _compile_at_trusted(input_value, evaluated_at, "HISTORICAL")
+    return _compile_historical_at(input_value, evaluated_at)
 
 
 def compile_historical(input_value: Any, evaluated_at: Any) -> Dict[str, Any]:
     when = parse_time(evaluated_at, "evaluated_at") if not isinstance(evaluated_at, _dt.datetime) else evaluated_at
-    return _compile_at_trusted(input_value, when, "HISTORICAL")
+    return _compile_historical_at(input_value, when)
 
 
-def compile_current(input_value: Any, authority: Any) -> Dict[str, Any]:
-    retained = _consume_independent_authority(authority)
-    bundle = _compile_at_trusted(input_value, utc_now(), "CURRENT")
-    if bundle["packet"]["decision"]["status"] == "READY_FOR_OWNER_REVIEW" and retained is None:
+def compile_current(input_value: Any, authority_root: Any) -> Dict[str, Any]:
+    if not authority_root:
         raise ReadinessError("independent authority is required")
-    return bundle
+    return _compile_current_at(input_value, utc_now(), authority_root)
 
 
-def verify_bundle(input_value: Any, bundle_value: Any, authority: Any = True) -> Dict[str, Any]:
+def verify_bundle(input_value: Any, bundle_value: Any, authority_root: Any) -> Dict[str, Any]:
     """Verify integrity and live CURRENT semantics.
 
     Caller time is not authority for CURRENT packets. The verifier samples
-    process UTC itself. An independent authority value is consumed on every
-    current-accepting path.
+    process UTC itself. An independent authority_root is the controlling
+    condition on every current-accepting path.
     """
-    retained = _consume_independent_authority(authority)
+    if not authority_root:
+        raise ReadinessError("independent authority is required")
     bundle = _expect_dict(copy.deepcopy(bundle_value), "bundle")
     if bundle.get("schema") != BUNDLE_SCHEMA:
         raise ReadinessError("unsupported bundle schema")
@@ -208,7 +238,12 @@ def verify_bundle(input_value: Any, bundle_value: Any, authority: Any = True) ->
 
     mode = _expect_str(packet.get("mode"), "bundle.packet.mode")
     generated_at = parse_time(packet.get("generated_at"), "bundle.packet.generated_at")
-    exact = _compile_at_trusted(input_value, generated_at, mode)
+    if mode == "CURRENT":
+        exact = _compile_current_at(input_value, generated_at, authority_root)
+    elif mode == "HISTORICAL":
+        exact = _compile_historical_at(input_value, generated_at)
+    else:
+        raise ReadinessError("mode must be CURRENT or HISTORICAL")
     if canonical_bytes(exact) != canonical_bytes(bundle):
         raise ReadinessError("bundle does not exactly replay from input at retained generation")
 
@@ -225,11 +260,9 @@ def verify_bundle(input_value: Any, bundle_value: Any, authority: Any = True) ->
             raise ReadinessError("current packet was generated in the future")
         if now - generated_at > _dt.timedelta(seconds=CURRENT_PACKET_MAX_AGE_SECONDS):
             raise ReadinessError("current packet exceeds verifier freshness window")
-        live = _compile_at_trusted(input_value, now, "CURRENT")
+        live = _compile_current_at(input_value, now, authority_root)
         if live["packet"]["semantic_sha256"] != packet.get("semantic_sha256"):
             raise ReadinessError("current semantics drifted since packet generation")
-        if retained is None:
-            raise ReadinessError("independent authority is required")
         result["current_semantics"] = True
     else:
         result["historical_integrity_only"] = True
