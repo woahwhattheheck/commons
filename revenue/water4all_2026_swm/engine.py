@@ -19,7 +19,10 @@ from .common import (
     canonical_bytes,
     format_time,
     parse_time,
+    seal_source,
     sha256_hex,
+    source_fact_commitment,
+    strict_json_loads,
     utc_now,
 )
 from .consortium_validation import _validate_applicant, _validate_consortium

@@ -67,12 +67,12 @@ class ApplicantAndEvidenceTests(unittest.TestCase):
     def test_missing_capability_holds(self):
         value = base_valid()
         value["technical_evidence"][0]["capability_tags"].remove("uncertainty_quantification")
-        self.assertIn("TECHNICAL_CAPABILITY_GAPS", reason_codes(compile_valid(value)))
+        self.assertIn("TECHNICAL_TOPIC_TAG_GAPS", reason_codes(compile_valid(value)))
 
     def test_stale_evidence_holds_current_only(self):
         value = base_valid()
         value["technical_evidence"][0]["observed_at"] = "2026-06-01T00:00:00Z"
-        current = compile_at(value, T0, "CURRENT")
+        current = compile_current(value, value)
         historical = compile_at(value, T0, "HISTORICAL")
         self.assertIn("TECHNICAL_EVIDENCE_STALE", reason_codes(current))
         self.assertNotIn("TECHNICAL_EVIDENCE_STALE", reason_codes(historical))
@@ -86,7 +86,7 @@ class ApplicantAndEvidenceTests(unittest.TestCase):
         value = base_valid()
         value["concept"]["topic_ids"] = [2]
         value["technical_evidence"][0]["capability_tags"] = []
-        self.assertIn("TOPIC_CAPABILITY_MODEL_UNSUPPORTED", reason_codes(compile_valid(value)))
+        self.assertIn("TOPIC_TAG_MODEL_UNSUPPORTED", reason_codes(compile_valid(value)))
 
     def test_empty_partner_shortlist_holds(self):
         value = base_valid()
@@ -184,7 +184,7 @@ class ParsingAndCliTests(unittest.TestCase):
 
     def test_example_remains_fail_closed(self):
         example = load_json("example_input.json")
-        bundle = compile_at(example, T0, "CURRENT")
+        bundle = compile_current(example, example)
         self.assertEqual(bundle["packet"]["decision"]["status"], "HOLD_DEADLINE_SOURCE_CONFLICT")
         authority = bundle["packet"]["authority"]
         self.assertFalse(authority["external_contact_authorized"])

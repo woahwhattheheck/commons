@@ -26,25 +26,25 @@ class AuthorityBoundaryRegressionTests(unittest.TestCase):
         value["technical_evidence"][0]["verified"] = True
         codes = reason_codes(compile_valid(value))
         self.assertIn("TECHNICAL_EVIDENCE_NOT_RETAINED", codes)
-        self.assertIn("TECHNICAL_CAPABILITY_GAPS", codes)
+        self.assertIn("TECHNICAL_TOPIC_TAG_GAPS", codes)
 
     def test_retained_evidence_descriptor_mismatch_holds(self):
         value = base_valid()
         value["technical_evidence"][0]["content_sha256"] = "c" * 64
         codes = reason_codes(compile_valid(value))
         self.assertIn("TECHNICAL_EVIDENCE_REGISTRY_MISMATCH", codes)
-        self.assertIn("TECHNICAL_CAPABILITY_GAPS", codes)
+        self.assertIn("TECHNICAL_TOPIC_TAG_GAPS", codes)
 
     def test_current_compile_ignores_backdated_caller_clock(self):
         value = base_valid()
         with patch("revenue.water4all_2026_swm.engine.utc_now", return_value=T0):
-            bundle = compile_at(value, T0 - dt.timedelta(days=365), "CURRENT")
+            bundle = compile_current(value, value)
         self.assertEqual(bundle["packet"]["generated_at"], "2026-09-14T04:00:00Z")
 
     def test_current_verify_ignores_backdated_trusted_now(self):
         value = base_valid()
         with patch("revenue.water4all_2026_swm.engine.utc_now", return_value=T0):
-            bundle = compile_at(value, T0, "CURRENT")
+            bundle = compile_current(value, value)
         with patch("revenue.water4all_2026_swm.engine.utc_now", return_value=T0 + dt.timedelta(seconds=301)):
             with self.assertRaisesRegex(ReadinessError, "freshness"):
                 verify_bundle(value, bundle, T0 - dt.timedelta(days=365))

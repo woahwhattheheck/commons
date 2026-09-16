@@ -3,15 +3,22 @@ from __future__ import annotations
 import copy
 import datetime as dt
 import json
+import os
+import tempfile
+import unittest
 from pathlib import Path
 
-from revenue.water4all_2026_swm import authority_registry
+from revenue.water4all_2026_swm import authority_registry, cli
 from revenue.water4all_2026_swm.engine import (
+    ReadinessError,
+    canonical_bytes,
     compile_at,
     compile_current,
     compile_historical,
+    render_owner_markdown,
+    verify_bundle,
 )
-from revenue.water4all_2026_swm.common import seal_source
+from revenue.water4all_2026_swm.common import seal_source, sha256_hex, strict_json_loads
 
 UTC = dt.timezone.utc
 T0 = dt.datetime(2026, 9, 14, 4, 0, 0, tzinfo=UTC)

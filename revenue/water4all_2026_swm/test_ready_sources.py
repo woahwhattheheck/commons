@@ -32,13 +32,13 @@ class ReadyPathTests(unittest.TestCase):
     def test_current_uses_process_time_not_caller_backdate(self):
         value = base_valid()
         with patch("revenue.water4all_2026_swm.engine.utc_now", return_value=T0):
-            bundle = compile_at(value, T0 - dt.timedelta(days=100), "CURRENT")
+            bundle = compile_current(value, value)
         self.assertEqual(bundle["packet"]["generated_at"], "2026-09-14T04:00:00Z")
 
     def test_current_verify_recompiles_live_semantics(self):
         value = base_valid()
         with patch("revenue.water4all_2026_swm.engine.utc_now", return_value=T0):
-            bundle = compile_at(value, T0 - dt.timedelta(days=100), "CURRENT")
+            bundle = compile_current(value, value)
         with patch("revenue.water4all_2026_swm.engine.utc_now", return_value=T0 + dt.timedelta(seconds=60)):
             result = verify_bundle(value, bundle, T0 - dt.timedelta(days=100))
         self.assertTrue(result["current_semantics"])
@@ -46,7 +46,7 @@ class ReadyPathTests(unittest.TestCase):
     def test_current_verify_rejects_stale_packet_even_with_backdated_argument(self):
         value = base_valid()
         with patch("revenue.water4all_2026_swm.engine.utc_now", return_value=T0):
-            bundle = compile_at(value, T0, "CURRENT")
+            bundle = compile_current(value, value)
         with patch("revenue.water4all_2026_swm.engine.utc_now", return_value=T0 + dt.timedelta(seconds=301)):
             with self.assertRaisesRegex(ReadinessError, "freshness"):
                 verify_bundle(value, bundle, T0)
@@ -76,7 +76,7 @@ class SourceAuthorityTests(unittest.TestCase):
     def test_live_official_deadline_conflict_holds(self):
         value = load_json("example_input.json")
         with patch("revenue.water4all_2026_swm.engine.utc_now", return_value=T0):
-            bundle = compile_at(value, T0 - dt.timedelta(days=10), "CURRENT")
+            bundle = compile_current(value, value)
         self.assertEqual(bundle["packet"]["decision"]["status"], "HOLD_DEADLINE_SOURCE_CONFLICT")
         self.assertIn("DEADLINE_SOURCE_CONFLICT", reason_codes(bundle))
         self.assertIsNone(bundle["packet"]["deadline_authority"]["controlling_preproposal_deadline_at"])
@@ -86,7 +86,7 @@ class SourceAuthorityTests(unittest.TestCase):
         value = load_json("example_input.json")
         value["official_sources"].reverse()
         with patch("revenue.water4all_2026_swm.engine.utc_now", return_value=T0):
-            bundle = compile_at(value, T0, "CURRENT")
+            bundle = compile_current(value, value)
         self.assertIsNone(bundle["packet"]["deadline_authority"]["controlling_preproposal_deadline_at"])
         self.assertEqual(bundle["packet"]["deadline_authority"]["planning_only_earliest_deadline_at"], "2026-11-10T14:00:00Z")
 
@@ -108,7 +108,7 @@ class SourceAuthorityTests(unittest.TestCase):
             source["observed_at"] = "2026-08-01T00:00:00Z"
             reseal(source)
         with patch("revenue.water4all_2026_swm.engine.utc_now", return_value=T0):
-            bundle = compile_at(value, T0, "CURRENT")
+            bundle = compile_current(value, value)
         self.assertIn("SOURCE_OBSERVATION_STALE", reason_codes(bundle))
         self.assertIn("SOURCE_GENERATION_REGISTRY_MISMATCH", reason_codes(bundle))
 
