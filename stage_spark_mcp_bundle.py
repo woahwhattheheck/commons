@@ -29,6 +29,8 @@ RUNTIME_FILES = (
     "owner_net.py",
     "host/observatory.py",
     "host/owner_context.py",
+    "hub_pages.py",  # static import from host/observatory.py
+    "memory_board.py",  # continue_from_observation session-memory opt-in
     "vercel.json",
 )
 
