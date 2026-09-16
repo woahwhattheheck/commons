@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 121,
-    "open_pull_requests": 73,
-    "runs_in_progress": 15,
-    "runs_queued": 491
+    "open_issues": 122,
+    "open_pull_requests": 75,
+    "runs_in_progress": 19,
+    "runs_queued": 536
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,46 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zam-b4k7/media-rights-final-main-20260916",
+      "created_at": "2026-09-16T13:50:56Z",
+      "draft": false,
+      "head_sha": "0fad5b2799788088919c1e8ae8a30bcab494f3de",
+      "number": 14863,
+      "title": "Revenue: finalize Content Rights & Usage-Window Ops on current main",
+      "updated_at": "2026-09-16T13:50:56Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-switchyard/slack-thread-visibility-14710",
+      "created_at": "2026-09-16T13:41:42Z",
+      "draft": false,
+      "head_sha": "94662453a1284ec3a29f6527f061edf42c08c7d5",
+      "number": 14861,
+      "title": "Command center: recover bounded Slack thread visibility",
+      "updated_at": "2026-09-16T13:46:27Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zca-k6v2/invest-appalachia-framer-lms-20260916",
+      "created_at": "2026-09-16T13:38:04Z",
+      "draft": false,
+      "head_sha": "a7b5d66d5611605b788e3a8f5be1001f1065433d",
+      "number": 14859,
+      "title": "Revenue: capture Invest Appalachia Framer LMS pursuit with fail-closed prime/team gate",
+      "updated_at": "2026-09-16T13:46:35Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zov-k8r6/niwc-evidenceaar-recovery-20260916",
       "created_at": "2026-09-16T13:31:53Z",
       "draft": false,
-      "head_sha": "48ee5b8ee72692fea7d00f14f7dff5ed2816660e",
+      "head_sha": "438b7d4aff22d6f131272a3dd1c6a8ca05ed120c",
       "number": 14858,
       "title": "Build EvidenceAAR NIWC Digital Scribe source carrier",
-      "updated_at": "2026-09-16T13:35:28Z"
+      "updated_at": "2026-09-16T13:50:32Z"
     },
     {
       "author": "woahwhattheheck",
@@ -86,7 +119,7 @@
       "head_sha": "90db7d58103130638f27ba62778151ec41775d61",
       "number": 14856,
       "title": "Recover Service Deal Economics authority and restore quote-expiry fence",
-      "updated_at": "2026-09-16T13:35:36Z"
+      "updated_at": "2026-09-16T13:40:22Z"
     },
     {
       "author": "woahwhattheheck",
@@ -105,10 +138,10 @@
       "branch": "zpb-h7n4/pinellas-current-authority-v4-20260916",
       "created_at": "2026-09-16T13:24:06Z",
       "draft": false,
-      "head_sha": "bfb51b4e80b73b24e42bfe89c281eb23d173551b",
+      "head_sha": "a38ba906140557b32bb2c618bb0b942a2becc605",
       "number": 14853,
       "title": "Revenue: finalize Pinellas current custody authority boundary",
-      "updated_at": "2026-09-16T13:35:13Z"
+      "updated_at": "2026-09-16T13:49:40Z"
     },
     {
       "author": "woahwhattheheck",
@@ -124,24 +157,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zcal-l9v6/dv026-external-action-eval",
-      "created_at": "2026-09-16T13:19:58Z",
-      "draft": false,
-      "head_sha": "09929ce23670d855b19c47befa1182972d4f0fd5",
-      "number": 14850,
-      "title": "feat(dv026): evaluate externally supplied black-box actions",
-      "updated_at": "2026-09-16T13:35:45Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "ztsw-h6q8/right-now-human-authority-recovery",
       "created_at": "2026-09-16T13:16:14Z",
       "draft": false,
-      "head_sha": "64f6bc6e05e3e830baa68f1541bb49c82537cf35",
+      "head_sha": "8a77929b833d93ce052ebbdbd35a7625afd50d35",
       "number": 14849,
       "title": "Recover right-now human reply authority on live revenue control",
-      "updated_at": "2026-09-16T13:34:42Z"
+      "updated_at": "2026-09-16T13:49:41Z"
     },
     {
       "author": "woahwhattheheck",
@@ -153,28 +175,6 @@
       "number": 14842,
       "title": "Sasria RFP2026/22: add AI-training teaming readiness carrier",
       "updated_at": "2026-09-16T13:26:40Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsm-d3p8/opportunity-qualifier-authority-13741",
-      "created_at": "2026-09-16T12:52:21Z",
-      "draft": false,
-      "head_sha": "4b2b2d40246e45e2ef84b637dc5a6c28e4e66707",
-      "number": 14838,
-      "title": "fix(revenue): bind opportunity qualifier source authority",
-      "updated_at": "2026-09-16T13:21:36Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zmk-r6q2/service-deal-quote-expiry-recovery-20260916",
-      "created_at": "2026-09-16T12:51:32Z",
-      "draft": false,
-      "head_sha": "6a75e5568d805b47a803e29003584ed59cfd9d47",
-      "number": 14837,
-      "title": "fix(revenue): recover Service Deal authority and enforce quote expiry",
-      "updated_at": "2026-09-16T13:20:48Z"
     }
   ],
   "open_heads": {
@@ -206,7 +206,7 @@
     "14684": "5804490ae2a883bc492f7fe975921b62fdc25216",
     "14700": "d8a38da9c1042c157ccd49729809ae923915f66c",
     "14705": "6e8761343b10ec3518fd1a6a002594ac6076d38a",
-    "14709": "c7cec8e8e110f78d43fb52f68339a85468cb57f7",
+    "14709": "f032b45d7dda0ddca9a8436636bbcd8de6c7d972",
     "14715": "d21e068298412497d04c86225747d640af59b5e6",
     "14720": "4b52d0529fcf5d658267b06144b0da153275a562",
     "14724": "b97d2acc3f8839fd41e70631f6f782a6dab1e67b",
@@ -244,18 +244,42 @@
     "14837": "6a75e5568d805b47a803e29003584ed59cfd9d47",
     "14838": "4b2b2d40246e45e2ef84b637dc5a6c28e4e66707",
     "14842": "8603597d72d08f537c8df01dadb505c6d2d9385e",
-    "14849": "64f6bc6e05e3e830baa68f1541bb49c82537cf35",
-    "14850": "09929ce23670d855b19c47befa1182972d4f0fd5",
+    "14849": "8a77929b833d93ce052ebbdbd35a7625afd50d35",
     "14851": "7693bb7d89a18d5ea98d0a74830da0aab1301efe",
-    "14853": "bfb51b4e80b73b24e42bfe89c281eb23d173551b",
+    "14853": "a38ba906140557b32bb2c618bb0b942a2becc605",
     "14855": "e733ef5fb004c1d14e5a6cb5c01c4a531f83520c",
     "14856": "90db7d58103130638f27ba62778151ec41775d61",
-    "14858": "48ee5b8ee72692fea7d00f14f7dff5ed2816660e"
+    "14858": "438b7d4aff22d6f131272a3dd1c6a8ca05ed120c",
+    "14859": "a7b5d66d5611605b788e3a8f5be1001f1065433d",
+    "14861": "94662453a1284ec3a29f6527f061edf42c08c7d5",
+    "14863": "0fad5b2799788088919c1e8ae8a30bcab494f3de"
   },
-  "pulls_listed": 73,
+  "pulls_listed": 75,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 32.7,
+  "queue_depth_per_runner": 28.2,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "z-sol/media-rights-export-generation-20260915",
+      "branch": "zam-b4k7/media-rights-fd-finalization-20260916",
+      "closed_at": "2026-09-16T13:47:27Z",
+      "head_sha": "7a11449f262934e01de8d6ad789114d21863c620",
+      "merged_at": "2026-09-16T13:47:27Z",
+      "number": 14860,
+      "state": "MERGED",
+      "title": "fix(media-rights): close post-open leaf descriptor leak"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zcal-l9v6/dv026-external-action-eval",
+      "closed_at": "2026-09-16T13:47:18Z",
+      "head_sha": "2bb726fbb6e25b7e8e5b502c8be369024793e10c",
+      "merged_at": "2026-09-16T13:47:18Z",
+      "number": 14850,
+      "state": "MERGED",
+      "title": "feat(dv026): evaluate externally supplied black-box actions"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -398,32 +422,10 @@
       "number": 14835,
       "state": "MERGED",
       "title": "revenue: add VCTC ERP/GMS teaming pursuit carrier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zlb/san-bernardino-budget-rfi-14834",
-      "closed_at": "2026-09-16T12:53:17Z",
-      "head_sha": "f21fb74ec84bdcd1bdaea62f1c42f2a5a85d62ea",
-      "merged_at": "2026-09-16T12:53:17Z",
-      "number": 14840,
-      "state": "MERGED",
-      "title": "Revenue: qualify San Bernardino budgeting-system RFI"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zlb/colorado-springs-erp-bid-readiness-14829",
-      "closed_at": "2026-09-16T12:44:38Z",
-      "head_sha": "7a1b5dc7ed469a144dd45ec5cfc73eeeeac9e7a7",
-      "merged_at": "2026-09-16T12:44:38Z",
-      "number": 14831,
-      "state": "MERGED",
-      "title": "Revenue: qualify Colorado Springs ERP Consultant Services"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-16T13:36:23Z",
+  "unchanged_since": "2026-09-16T13:51:17Z",
   "undatable_pulls": []
 }
