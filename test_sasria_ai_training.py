@@ -213,6 +213,14 @@ class SubmissionAndReceiptTests(unittest.TestCase):
         changed = compile_good(technical_score=good_score(reference_letters=16))
         self.assertNotEqual(first["receipt_sha256"], changed["receipt_sha256"])
 
+    def test_receipt_handles_lone_surrogate_evidence(self):
+        score = BuyerTechnicalScore(
+            scores=good_score().scores,
+            evidence_refs=(EvidenceRef(label="edge", locator="fixture://edge", note=chr(0xD800)),),
+        )
+        pack = compile_good(technical_score=score)
+        self.assertEqual(len(pack["receipt_sha256"]), 64)
+
 
 if __name__ == "__main__":
     unittest.main()
