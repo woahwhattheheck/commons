@@ -1,5 +1,5 @@
 {
-  "share": "Share the machine. One job per PC button press. Oldest open job first. Prefer a claim that is not already waiting on another open job. Not a hard ceiling \u2014 you may post more than one. Refuse 9000x parallel, 10-wide, tensor scrapes, titan/dc mmap storms, inject 0x01, pulse 78, light 7913. HTTP is not the computer. CUT ports stay on 127.0.0.1. White Box fabrication is one-and-done; this board does not start :7862.",
+  "share": "Share the machine. One job per PC button press. Oldest open job first. Prefer a claim that is not already waiting on another open job. Not a hard ceiling — you may post more than one. Refuse 9000x parallel, 10-wide, tensor scrapes, titan/dc mmap storms, inject 0x01, pulse 78, light 7913. HTTP is not the computer. CUT ports stay on 127.0.0.1. White Box fabrication is one-and-done; this board does not start :7862.",
   "button": "python host/muhl_tools_once.py --go",
   "job": {
     "door": "./job.html",
@@ -18,7 +18,7 @@
       "op"
     ],
     "law": "One job per PC button press. Oldest open job first. Prefer a claim not already waiting on another open job. Not a hard ceiling.",
-    "note": "Machine-readable job hook for the tools catalog. Cite share/button \u2014 do not remint muhl_tools_once."
+    "note": "Machine-readable job hook for the tools catalog. Cite share/button — do not remint muhl_tools_once."
   },
   "tools": [
     {
@@ -218,7 +218,7 @@
     "note": "One shared public MCP. Harness-gap fills post durable work here. Do not remint a second /mcp."
   },
   "cash": {
-    "note": "Verified product pages only \u2014 no invented Stripe links. Cite forge tip-shelf / spark autopsy.",
+    "note": "Verified product pages only — no invented Stripe links. Cite forge tip-shelf / spark autopsy. Larger fixed doors are separate product pages (checkout/intent stays there).",
     "shelf": "./tools-cash.html",
     "commerce": "./commerce.html",
     "doors": [
@@ -246,6 +246,18 @@
         "href": "./plant-downtime-handoff.html",
         "label": "$199 plant diagnostic",
         "sku": "plant-downtime-handoff"
+      }
+    ],
+    "larger_fixed": [
+      {
+        "href": "./diagnostic.html",
+        "label": "GGUF diagnostic · $12,000 / 10 days",
+        "sku": "gguf-diagnostic-12000"
+      },
+      {
+        "href": "./commercial.html",
+        "label": "White Box pilot · $30,000 / 30 days",
+        "sku": "white-box-pilot-30000"
       }
     ]
   }
