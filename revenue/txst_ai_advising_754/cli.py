@@ -14,17 +14,46 @@ MAX_INPUT = 1_000_000
 def _read_regular(path: str) -> bytes:
     p = Path(path)
     try:
-        st = p.lstat()
+        before = p.lstat()
     except OSError as exc:
         raise ContractError(f"cannot stat input: {path}") from exc
-    if stat.S_ISLNK(st.st_mode) or not stat.S_ISREG(st.st_mode):
+    if stat.S_ISLNK(before.st_mode) or not stat.S_ISREG(before.st_mode):
         raise ContractError(f"input must be regular non-symlink file: {path}")
-    if st.st_size > MAX_INPUT:
-        raise ContractError(f"input too large: {path}")
-    data = p.read_bytes()
-    if len(data) != st.st_size:
-        raise ContractError(f"input changed while reading: {path}")
-    return data
+    flags = os.O_RDONLY
+    for name in ("O_NOFOLLOW", "O_NONBLOCK", "O_CLOEXEC"):
+        flags |= getattr(os, name, 0)
+    try:
+        fd = os.open(p, flags)
+    except OSError as exc:
+        raise ContractError(f"cannot open stable input: {path}") from exc
+    try:
+        opened = os.fstat(fd)
+        if not stat.S_ISREG(opened.st_mode) or opened.st_size > MAX_INPUT:
+            raise ContractError(f"input must be bounded regular file: {path}")
+        chunks: list[bytes] = []
+        total = 0
+        while True:
+            chunk = os.read(fd, min(65536, MAX_INPUT + 1 - total))
+            if not chunk:
+                break
+            chunks.append(chunk)
+            total += len(chunk)
+            if total > MAX_INPUT:
+                raise ContractError(f"input too large: {path}")
+        after = os.fstat(fd)
+        stable = (
+            opened.st_dev == after.st_dev
+            and opened.st_ino == after.st_ino
+            and opened.st_mode == after.st_mode
+            and opened.st_size == after.st_size == total
+            and opened.st_mtime_ns == after.st_mtime_ns
+            and opened.st_ctime_ns == after.st_ctime_ns
+        )
+        if not stable:
+            raise ContractError(f"input changed while reading: {path}")
+        return b"".join(chunks)
+    finally:
+        os.close(fd)
 
 
 def _write_exclusive(path: str, value: object) -> None:
@@ -33,17 +62,10 @@ def _write_exclusive(path: str, value: object) -> None:
     if hasattr(os, "O_NOFOLLOW"):
         flags |= os.O_NOFOLLOW
     fd = os.open(path, flags, 0o600)
-    try:
-        with os.fdopen(fd, "wb", closefd=True) as handle:
-            handle.write(raw)
-            handle.flush()
-            os.fsync(handle.fileno())
-    except Exception:
-        try:
-            os.unlink(path)
-        except OSError:
-            pass
-        raise
+    with os.fdopen(fd, "wb", closefd=True) as handle:
+        handle.write(raw)
+        handle.flush()
+        os.fsync(handle.fileno())
 
 
 def _optional(path: str | None) -> bytes | None:
