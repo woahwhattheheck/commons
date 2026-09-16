@@ -191,6 +191,12 @@ def _validate_reserved(item: dict[str, Any], expected_size: int) -> None:
         raise ParityError(f"output ancestor generation changed during publication: {item['path']}")
 
 
+def _validate_output_set(opened: list[dict[str, Any]], payloads: tuple[tuple[Path, bytes], ...]) -> None:
+    """Validate every retained inode, visible leaf, and visible parent generation."""
+    for item, (_, data) in zip(opened, payloads, strict=True):
+        _validate_reserved(item, len(data))
+
+
 def write_pair_exclusive(json_path: Path, json_data: bytes, md_path: Path, md_data: bytes) -> None:
     if os.path.abspath(os.fspath(json_path)) == os.path.abspath(os.fspath(md_path)):
         raise ParityError("report JSON and Markdown paths must differ")
@@ -202,14 +208,17 @@ def write_pair_exclusive(json_path: Path, json_data: bytes, md_path: Path, md_da
             opened.append(_reserve_output(path))
         for item, (_, data) in zip(opened, payloads, strict=True):
             _write_all(item["fd"], data)
-        for item, (_, data) in zip(opened, payloads, strict=True):
-            _validate_reserved(item, len(data))
+        _validate_output_set(opened, payloads)
         # Persist directory entries while the retained directory generations are held.
         for item in opened:
             try:
                 os.fsync(item["parent_fd"])
             except OSError:
                 pass
+        # Directory fsync may block, which creates one final substitution seam after
+        # the pre-persistence checks. Revalidate the complete visible output set
+        # immediately after persistence and before descriptor close/success.
+        _validate_output_set(opened, payloads)
     except Exception:
         for item in reversed(opened):
             _cleanup_reserved(item)
