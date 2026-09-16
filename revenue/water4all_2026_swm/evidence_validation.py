@@ -3,8 +3,11 @@
 from __future__ import annotations
 
 import datetime as _dt
+import re
 from typing import Any, Dict, Iterable, List, Set, Tuple
+from urllib.parse import unquote, urlsplit
 
+from . import authority_registry
 from .common import (
     COMMERCIAL_STATES,
     EVIDENCE_MAX_AGE_SECONDS,
@@ -22,18 +25,40 @@ from .common import (
     _expect_int,
     _expect_list,
     _expect_str,
-    _https_url,
     _reason,
     format_time,
     parse_time,
     sha256_hex,
 )
 
+_PARTNER_KEYS = {
+    "profile_id",
+    "organization_label",
+    "country_code",
+    "topic_ids",
+    "public_profile_url",
+    "public_fit_summary",
+    "status",
+}
+_PARTNER_PATH = re.compile(r"^/water4all/2026/partner-search-entry/[0-9]+$")
+
+
 def _required_capabilities(topic_ids: Iterable[int]) -> Set[str]:
     required: Set[str] = set()
     for topic_id in topic_ids:
         required.update(_TOPIC_REQUIREMENTS.get(topic_id, set()))
     return required
+
+
+def _retained_descriptor(item: Dict[str, Any]) -> Dict[str, Any]:
+    return {
+        "repo_full_name": item["repo_full_name"],
+        "commit_sha": item["commit_sha"],
+        "path": item["path"],
+        "content_sha256": item["content_sha256"],
+        "publicability": item["publicability"],
+        "capability_tags": item["capability_tags"],
+    }
 
 
 def _validate_concept_and_evidence(
@@ -44,15 +69,9 @@ def _validate_concept_and_evidence(
 ) -> Tuple[Dict[str, Any], List[Dict[str, Any]]]:
     concept = _expect_dict(raw_concept, "$.concept")
     raw_topics = _expect_list(concept.get("topic_ids"), "$.concept.topic_ids")
-    topic_ids: List[int] = []
-    for index, raw_topic in enumerate(raw_topics):
-        topic = _expect_int(raw_topic, "$.concept.topic_ids[%d]" % index, 1)
-        if topic not in (1, 2, 3, 4):
-            raise ReadinessError("topic id must be 1 through 4")
-        topic_ids.append(topic)
-    topic_ids = sorted(set(topic_ids))
-    if not topic_ids:
-        raise ReadinessError("at least one topic is required")
+    topic_ids = sorted(set(_expect_int(raw, "$.concept.topic_ids", 1) for raw in raw_topics))
+    if not topic_ids or any(topic not in (1, 2, 3, 4) for topic in topic_ids):
+        raise ReadinessError("topic id must be 1 through 4 and at least one topic is required")
     concept_title = _expect_str(concept.get("concept_title"), "$.concept.concept_title")
     concept_status = _expect_str(concept.get("status"), "$.concept.status")
     if concept_status != "PROPOSED_NOT_ACCEPTED":
@@ -84,12 +103,7 @@ def _validate_concept_and_evidence(
         publicability = _expect_str(evidence.get("publicability"), path + ".publicability")
         if publicability not in PUBLICABILITY:
             raise ReadinessError("unsupported publicability")
-        raw_tags = _expect_list(evidence.get("capability_tags"), path + ".capability_tags")
-        tags: List[str] = []
-        for tag_index, raw_tag in enumerate(raw_tags):
-            tag = _expect_id(raw_tag, "%s.capability_tags[%d]" % (path, tag_index))
-            tags.append(tag)
-        tags = sorted(set(tags))
+        tags = sorted(set(_expect_id(raw_tag, "%s.capability_tags" % path) for raw_tag in _expect_list(evidence.get("capability_tags"), path + ".capability_tags")))
         item = {
             "evidence_id": evidence_id,
             "repo_full_name": repo_full_name,
@@ -102,13 +116,20 @@ def _validate_concept_and_evidence(
             "capability_tags": tags,
         }
         normalized_evidence.append(item)
+
+        retained = authority_registry.retained_evidence(evidence_id)
+        retained_match = retained is not None and _retained_descriptor(item) == dict(retained)
+        if retained is None:
+            reasons.append(_reason("TECHNICAL_EVIDENCE_NOT_RETAINED", "technical evidence is absent from the repository-pinned manifest", [evidence_id]))
+        elif not retained_match:
+            reasons.append(_reason("TECHNICAL_EVIDENCE_REGISTRY_MISMATCH", "technical evidence differs from the repository-pinned descriptor", [evidence_id]))
         if observed_dt > evaluated_at + _dt.timedelta(seconds=FUTURE_SKEW_SECONDS):
             reasons.append(_reason("TECHNICAL_EVIDENCE_FUTURE", "technical evidence observation is beyond future skew", [evidence_id]))
         if current_mode and evaluated_at - observed_dt > _dt.timedelta(seconds=EVIDENCE_MAX_AGE_SECONDS):
             reasons.append(_reason("TECHNICAL_EVIDENCE_STALE", "technical evidence observation exceeds the currentness window", [evidence_id]))
         if not verified:
-            reasons.append(_reason("TECHNICAL_EVIDENCE_UNVERIFIED", "technical evidence descriptor is not verified", [evidence_id]))
-        if verified and observed_dt <= evaluated_at + _dt.timedelta(seconds=FUTURE_SKEW_SECONDS) and (
+            reasons.append(_reason("TECHNICAL_EVIDENCE_UNVERIFIED", "caller marks the retained evidence descriptor unverified", [evidence_id]))
+        if retained_match and verified and observed_dt <= evaluated_at + _dt.timedelta(seconds=FUTURE_SKEW_SECONDS) and (
             not current_mode or evaluated_at - observed_dt <= _dt.timedelta(seconds=EVIDENCE_MAX_AGE_SECONDS)
         ):
             verified_tags.update(tags)
@@ -121,7 +142,7 @@ def _validate_concept_and_evidence(
         reasons.append(_reason("TECHNICAL_CAPABILITY_GAPS", "required capability evidence is missing", missing))
 
     normalized_evidence.sort(key=lambda item: item["evidence_id"])
-    summary = {
+    return {
         "concept_title": concept_title,
         "status": concept_status,
         "topic_ids": topic_ids,
@@ -130,8 +151,26 @@ def _validate_concept_and_evidence(
         "missing_capability_tags": missing,
         "evidence": normalized_evidence,
         "evidence_generation_sha256": sha256_hex(normalized_evidence),
-    }
-    return summary, reasons
+    }, reasons
+
+
+def _canonical_partner_url(value: Any, path: str) -> str:
+    text = _expect_str(value, path)
+    if any(ord(ch) < 0x20 or ord(ch) == 0x7F for ch in text) or "\\" in text or "%" in text:
+        raise ReadinessError("%s is not a canonical public-profile URL" % path)
+    try:
+        parts = urlsplit(text)
+        port = parts.port
+    except ValueError as exc:
+        raise ReadinessError("%s has invalid URL authority" % path) from exc
+    if parts.scheme != "https" or parts.netloc != "proposals.etag.ee" or parts.hostname != "proposals.etag.ee":
+        raise ReadinessError("%s must use the canonical proposals.etag.ee HTTPS authority" % path)
+    if parts.username is not None or parts.password is not None or port is not None or parts.query or parts.fragment:
+        raise ReadinessError("%s must not contain userinfo, port, query, or fragment" % path)
+    decoded = unquote(parts.path)
+    if decoded != parts.path or "//" in decoded or "/./" in decoded or "/../" in decoded or not _PARTNER_PATH.fullmatch(decoded):
+        raise ReadinessError("%s must be a canonical Water4All partner-search entry URL" % path)
+    return text
 
 
 def _validate_partner_shortlist(raw_shortlist: Any) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
@@ -139,25 +178,23 @@ def _validate_partner_shortlist(raw_shortlist: Any) -> Tuple[List[Dict[str, Any]
     normalized: List[Dict[str, Any]] = []
     reasons: List[Dict[str, Any]] = []
     seen: Set[str] = set()
-    forbidden_keys = {"email", "phone", "contact_email", "contact_phone", "message", "outreach_body"}
     for index, raw in enumerate(shortlist):
         path = "$.partner_shortlist[%d]" % index
         item = _expect_dict(raw, path)
-        found_forbidden = sorted(forbidden_keys.intersection(item.keys()))
-        if found_forbidden:
-            raise ReadinessError("%s contains forbidden contact/outreach keys: %s" % (path, ", ".join(found_forbidden)))
+        unknown = sorted(set(item) - _PARTNER_KEYS)
+        if unknown:
+            raise ReadinessError("%s contains non-research/contact/secret fields: %s" % (path, ", ".join(unknown)))
         profile_id = _expect_id(item.get("profile_id"), path + ".profile_id")
         if profile_id in seen:
             raise ReadinessError("duplicate partner profile_id: %s" % profile_id)
         seen.add(profile_id)
-        raw_topics = _expect_list(item.get("topic_ids"), path + ".topic_ids")
-        topics = sorted(set(_expect_int(value, path + ".topic_ids", 1) for value in raw_topics))
+        topics = sorted(set(_expect_int(value, path + ".topic_ids", 1) for value in _expect_list(item.get("topic_ids"), path + ".topic_ids")))
         normalized_item = {
             "profile_id": profile_id,
             "organization_label": _expect_str(item.get("organization_label"), path + ".organization_label"),
             "country_code": _expect_country(item.get("country_code"), path + ".country_code"),
             "topic_ids": topics,
-            "public_profile_url": _https_url(item.get("public_profile_url"), path + ".public_profile_url", "proposals.etag.ee"),
+            "public_profile_url": _canonical_partner_url(item.get("public_profile_url"), path + ".public_profile_url"),
             "public_fit_summary": _expect_str(item.get("public_fit_summary"), path + ".public_fit_summary"),
             "status": _expect_str(item.get("status"), path + ".status"),
         }
@@ -189,6 +226,4 @@ def _validate_commercial(raw_commercial: Any) -> Tuple[Dict[str, Any], List[Dict
         reasons.append(_reason("COMMERCIAL_PATH_NOT_OWNER_APPROVED", "paid participation path remains proposed and not owner-approved"))
     if status == "ACCEPTED_EXTERNAL" and not normalized["accepted_external"]:
         reasons.append(_reason("COMMERCIAL_ACCEPTANCE_CONTRADICTION", "commercial status claims external acceptance without matching evidence flag"))
-    # Even when these inputs are true, this compiler never turns them into provider
-    # or submission authority.  They are facts for owner review only.
     return normalized, reasons
