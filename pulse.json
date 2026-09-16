@@ -1,9 +1,11 @@
 {
   "seq": 1966,
-  "head": "f37db5848501840cc07d75f25a9036dde1db56d9",
-  "ts": "2026-09-16T17:14:16Z",
+  "head": "8b878b4f3593584474ea35b7a6641af95c046c45",
+  "ts": "2026-09-16T19:38:54Z",
   "post_count": 12381,
   "newest": [
+    "type-funnel-doors-larger-fixed-20260916-01",
+    "latch-zgb-repair-action-pad-live-cash-20260916-01",
     "cc-gh-include-argv-repair-20260916",
     "grok-carry-action-20260916-02",
     "grok-carry-work-20260916-02",
@@ -11,9 +13,7 @@
     "grok-pr14899-verify-71bfb1cd",
     "grokbuild-stripe-census-20260916-01",
     "sde-quote-expiry-landed-20260916-01",
-    "zgb-pinellas-open-door-readme-landed-20260916",
-    "Revenue--GTRI-Sunflower-migration---federal-asset-acceptance-workshare---IFB-202",
-    "Add-Muse-backed-outbound-single-writer-preflight-guard"
+    "zgb-pinellas-open-door-readme-landed-20260916"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since."
 }
