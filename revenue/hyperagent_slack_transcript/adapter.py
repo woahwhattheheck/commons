@@ -35,6 +35,7 @@ _APPROVAL_KEYS = {
     "run_id",
     "action_id",
     "generation",
+    "event_semantics_sha256",
     "decision",
     "issued_at",
     "expires_at",
@@ -50,6 +51,7 @@ class Approval:
     run_id: str
     action_id: str
     generation: int
+    event_semantics_sha256: str
     decision: str
     issued_at: datetime
     expires_at: datetime
@@ -72,6 +74,9 @@ def _signed_approval_fields(obj: Mapping[str, Any]) -> tuple[dict[str, Any], dat
     run_id = _legacy._text(obj["run_id"], "run_id", max_len=64)
     action_id = _legacy._opaque_id(obj["action_id"], "action_id")
     generation = _legacy._int(obj["generation"], "generation", minimum=1, maximum=1_000_000)
+    event_semantics_sha256 = _legacy._sha256(
+        obj["event_semantics_sha256"], "event_semantics_sha256"
+    )
     decision = _legacy._text(obj["decision"], "decision", max_len=16)
     if decision not in {"APPROVE", "DENY"}:
         raise ApprovalError("approval decision must be APPROVE or DENY")
@@ -85,6 +90,7 @@ def _signed_approval_fields(obj: Mapping[str, Any]) -> tuple[dict[str, Any], dat
         "run_id": run_id,
         "action_id": action_id,
         "generation": generation,
+        "event_semantics_sha256": event_semantics_sha256,
         "decision": decision,
         "issued_at": issued.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "expires_at": expires.strftime("%Y-%m-%dT%H:%M:%SZ"),
@@ -96,12 +102,14 @@ def _signed_approval_fields(obj: Mapping[str, Any]) -> tuple[dict[str, Any], dat
 
 
 def normalize_approval(raw: Any, *, approval_auth_key: bytes) -> Approval:
-    """Validate one approval and authenticate the exact canonical generation.
+    """Validate one approval and authenticate one exact event generation.
 
     ``authority_tag`` is lowercase HMAC-SHA256 over the canonical JSON bytes of
-    all other approval fields.  The key is retained runtime authority supplied
-    outside this repository.  Possessing an approval object is therefore not
-    sufficient to mint or alter authority.
+    all other approval fields.  The signed event-semantics digest binds source
+    identity, thread, sequence, text, action and generation.  The key is
+    retained runtime authority supplied outside this repository.  Possessing an
+    approval object is therefore not sufficient to mint, alter or amplify
+    authority across distinct events.
     """
 
     obj = _legacy._plain_dict(raw, "approval")
@@ -118,6 +126,7 @@ def normalize_approval(raw: Any, *, approval_auth_key: bytes) -> Approval:
         run_id=signed["run_id"],
         action_id=signed["action_id"],
         generation=signed["generation"],
+        event_semantics_sha256=signed["event_semantics_sha256"],
         decision=signed["decision"],
         issued_at=issued,
         expires_at=expires,
@@ -154,12 +163,14 @@ class TranscriptProjector:
         approvals: Iterable[Approval],
         now: datetime,
     ) -> Approval | None:
+        event_semantics_sha256 = _legacy._sha(event.semantics())
         matches = [
             approval
             for approval in approvals
             if approval.run_id == event.run_id
             and approval.action_id == event.action_id
             and approval.generation == event.generation
+            and approval.event_semantics_sha256 == event_semantics_sha256
         ]
         if len(matches) != 1:
             return None
@@ -196,6 +207,7 @@ class TranscriptProjector:
                 "run_id": approval.run_id,
                 "action_id": approval.action_id,
                 "generation": approval.generation,
+                "event_semantics_sha256": approval.event_semantics_sha256,
                 "decision": approval.decision,
                 "issued_at": approval.issued_at.strftime("%Y-%m-%dT%H:%M:%SZ"),
                 "expires_at": approval.expires_at.strftime("%Y-%m-%dT%H:%M:%SZ"),
@@ -233,7 +245,7 @@ class TranscriptProjector:
                     reason = (
                         "APPROVAL_AUTHORITY_UNAVAILABLE"
                         if self._approval_auth_key is None and raw_approval_list
-                        else "APPROVAL_NOT_CURRENT_FOR_EXACT_ACTION_GENERATION"
+                        else "APPROVAL_NOT_CURRENT_FOR_EXACT_EVENT_GENERATION"
                     )
                     held.append({"event_id": event.event_id, "reason": reason})
                     continue
