@@ -54,8 +54,9 @@ def synthetic_rows():
 
 
 def build_demo_receipt() -> dict:
-    plan = compile_migration(synthetic_rows())
-    store = ResidentStore()
+    rows = synthetic_rows()
+    plan = compile_migration(rows)
+    store = ResidentStore(rows)
     initial = store.apply_migration(plan)
     store.update("R002", expected_version=1, patch={"license_status": "CURRENT"}, actor_role="coordinator")
     return {
