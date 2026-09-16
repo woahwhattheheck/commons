@@ -1,13 +1,16 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Any
 
 from .schema import (
-    REPORT_SCHEMA, LedgerError, _canonical_time, _dt, _utc_now_string, canonical_bytes,
+    REPORT_SCHEMA, LedgerError, _canonical_time, _dt, canonical_bytes,
     sha256_bytes, validate_packet,
 )
+
+Owner = tuple[str, str]
+
 
 @dataclass(frozen=True)
 class CandidateAnalysis:
@@ -19,15 +22,53 @@ class CandidateAnalysis:
     latest_event_at: str | None
 
 
+def _provider_replay_owners(normalized: dict[str, Any]) -> tuple[set[Owner], set[Owner]]:
+    """Return every candidate affected by message/thread identity replay.
+
+    Provider message ids are event identities and therefore single-use across the
+    whole packet, including within one candidate. Provider thread ids are allowed
+    to repeat inside one candidate for conversation continuity, but a thread that
+    appears under multiple candidates holds every owner rather than blessing the
+    canonical first owner.
+    """
+    message_occurrences: dict[str, list[Owner]] = {}
+    thread_owners: dict[str, set[Owner]] = {}
+    for opp in normalized["opportunities"]:
+        opp_id = opp["opportunity_id"]
+        for cand in opp["candidates"]:
+            owner = (opp_id, cand["candidate_id"])
+            for event in cand["events"]:
+                if event["type"] not in {"SENT", "REPLY"}:
+                    continue
+                message_occurrences.setdefault(event["provider_message_id"], []).append(owner)
+                thread_owners.setdefault(event["provider_thread_id"], set()).add(owner)
+
+    message_replay: set[Owner] = set()
+    for owners in message_occurrences.values():
+        if len(owners) > 1:
+            message_replay.update(owners)
+
+    thread_replay: set[Owner] = set()
+    for owners in thread_owners.values():
+        if len(owners) > 1:
+            thread_replay.update(owners)
+    return message_replay, thread_replay
+
+
 def _analyze_candidate(
     opp_id: str,
     cand: dict[str, Any],
     now: datetime,
     qualification: dict[str, Any],
-    message_owners: dict[str, tuple[str, str]],
-    thread_owners: dict[str, tuple[str, str]],
+    *,
+    provider_message_replay: bool = False,
+    provider_thread_replay: bool = False,
 ) -> CandidateAnalysis:
     reasons: set[str] = set()
+    if provider_message_replay:
+        reasons.add("PROVIDER_MESSAGE_REPLAY")
+    if provider_thread_replay:
+        reasons.add("PROVIDER_THREAD_REPLAY")
     if _dt(qualification["captured_at"]) > now:
         reasons.add("QUALIFICATION_FROM_FUTURE")
     if _dt(qualification["valid_until"]) < now:
@@ -46,20 +87,6 @@ def _analyze_candidate(
             reasons.add("EVENT_AFTER_TERMINAL")
         if event_time > now:
             reasons.add("EVENT_FROM_FUTURE")
-        if event["type"] in {"SENT", "REPLY"}:
-            mid = event["provider_message_id"]
-            owner = message_owners.get(mid)
-            this_owner = (opp_id, cand["candidate_id"])
-            if owner is not None and owner != this_owner:
-                reasons.add("PROVIDER_MESSAGE_REPLAY")
-            else:
-                message_owners[mid] = this_owner
-            tid = event["provider_thread_id"]
-            owner = thread_owners.get(tid)
-            if owner is not None and owner != this_owner:
-                reasons.add("PROVIDER_THREAD_REPLAY")
-            else:
-                thread_owners[tid] = this_owner
 
         if event["type"] == "SENT":
             if event_time < _dt(qualification["captured_at"]):
@@ -136,8 +163,7 @@ def _compile_at(packet: Any, evaluated_at: str) -> dict[str, Any]:
     now = _dt(evaluated_at)
     normalized = validate_packet(packet)
     input_sha = sha256_bytes(canonical_bytes(normalized))
-    message_owners: dict[str, tuple[str, str]] = {}
-    thread_owners: dict[str, tuple[str, str]] = {}
+    message_replay, thread_replay = _provider_replay_owners(normalized)
     opp_reports: list[dict[str, Any]] = []
     queue: list[dict[str, Any]] = []
     counts = {state: 0 for state in ["READY_FOR_OWNER_REVIEW", "AWAITING_REPLY", "REPLY_REVIEW_REQUIRED", "HANDOFF_COMPLETE", "TERMINAL", "HOLD"]}
@@ -145,8 +171,11 @@ def _compile_at(packet: Any, evaluated_at: str) -> dict[str, Any]:
     for opp in normalized["opportunities"]:
         candidate_reports: list[dict[str, Any]] = []
         for cand in opp["candidates"]:
+            owner = (opp["opportunity_id"], cand["candidate_id"])
             analysis = _analyze_candidate(
-                opp["opportunity_id"], cand, now, opp["qualification"], message_owners, thread_owners
+                opp["opportunity_id"], cand, now, opp["qualification"],
+                provider_message_replay=owner in message_replay,
+                provider_thread_replay=owner in thread_replay,
             )
             counts[analysis.state] += 1
             report = {
@@ -213,8 +242,15 @@ def _compile_at(packet: Any, evaluated_at: str) -> dict[str, Any]:
     return report
 
 
-def compile_current(packet: Any) -> dict[str, Any]:
-    return _compile_at(packet, _utc_now_string())
+def _make_current_compiler(_compile=_compile_at, _datetime=datetime, _timezone=timezone):
+    """Bind process-UTC primitives once so helper-global rebinding cannot select time."""
+    def current(packet: Any) -> dict[str, Any]:
+        evaluated_at = _datetime.now(_timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        return _compile(packet, evaluated_at)
+    return current
+
+
+compile_current = _make_current_compiler()
 
 
 def verify_historical(packet: Any, report: Any) -> bool:
@@ -235,14 +271,25 @@ def _semantic_projection(report: dict[str, Any]) -> dict[str, Any]:
     return {key: report.get(key) for key in keys}
 
 
-def verify_current(packet: Any, report: Any) -> bool:
-    if not verify_historical(packet, report):
-        return False
-    try:
-        current = compile_current(packet)
-    except LedgerError:
-        return False
-    return canonical_bytes(_semantic_projection(current)) == canonical_bytes(_semantic_projection(report))
+def _make_current_verifier(
+    _verify_historical=verify_historical,
+    _current=compile_current,
+    _canonical=canonical_bytes,
+    _projection=_semantic_projection,
+):
+    """Bind the current compiler once; ordinary module-global rebinding cannot stale it."""
+    def current(packet: Any, report: Any) -> bool:
+        if not _verify_historical(packet, report):
+            return False
+        try:
+            fresh = _current(packet)
+        except LedgerError:
+            return False
+        return _canonical(_projection(fresh)) == _canonical(_projection(report))
+    return current
+
+
+verify_current = _make_current_verifier()
 
 
 def render_markdown_core(core: dict[str, Any]) -> str:

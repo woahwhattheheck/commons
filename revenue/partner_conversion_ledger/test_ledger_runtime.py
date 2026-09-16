@@ -6,6 +6,7 @@ from .test_support import (
     ledger, mock, os, reply, sent, subprocess, sys, tempfile, unittest,
 )
 
+
 class LedgerRuntimeTests(PartnerLedgerTestCase):
     def test_input_order_invariance(self):
         p = base_packet(2)
@@ -28,13 +29,43 @@ class LedgerRuntimeTests(PartnerLedgerTestCase):
         p2["opportunities"][0]["qualification"]["digest"] = D("0")
         self.assertFalse(ledger.verify_historical(p2, report))
 
-    def test_current_verifier_detects_expiry_drift(self):
+    def test_current_verifier_closes_over_current_compiler_and_time_sampler(self):
         p = base_packet()
-        report = ledger._compile_at(p, "2026-09-15T20:30:00Z")
-        with mock.patch.object(engine, "_utc_now_string", return_value="2026-09-15T20:30:00Z"):
+        # The predecessor looked up engine._utc_now_string dynamically. A caller
+        # could therefore select a stale/current instant by rebinding that helper.
+        with mock.patch.object(engine, "_utc_now_string", side_effect=AssertionError("mutable time helper used"), create=True):
+            report = ledger.compile_current(p)
+        self.assertTrue(ledger.verify_current(p, report))
+
+        # verify_current likewise must use the compiler captured at construction,
+        # not a later module-global replacement selected by the caller.
+        with mock.patch.object(engine, "compile_current", side_effect=AssertionError("mutable compiler used")):
             self.assertTrue(ledger.verify_current(p, report))
-        with mock.patch.object(engine, "_utc_now_string", return_value="2027-01-01T00:00:00Z"):
-            self.assertFalse(ledger.verify_current(p, report))
+
+    def test_provider_replay_holds_every_owner_and_same_candidate_message_reuse(self):
+        p = base_packet(2)
+        c1, c2 = p["opportunities"][0]["candidates"]
+        c1["events"] = [sent(message="msg-shared", thread="thr-shared")]
+        c2["events"] = [sent(event_id="send-2", message="msg-shared", thread="thr-shared")]
+        report = self.compile(p)
+        for index in (0, 1):
+            self.assertEqual(self.state(report, index), "HOLD")
+            self.assertIn("PROVIDER_MESSAGE_REPLAY", self.reasons(report, index))
+            self.assertIn("PROVIDER_THREAD_REPLAY", self.reasons(report, index))
+        self.assertEqual(report["owner_review_queue"], [
+            {"opportunity_id": "opp-1", "candidate_id": "cand-1", "action": "RECONCILE_EVIDENCE", "reasons": ["PROVIDER_MESSAGE_REPLAY", "PROVIDER_THREAD_REPLAY"]},
+            {"opportunity_id": "opp-1", "candidate_id": "cand-2", "action": "RECONCILE_EVIDENCE", "reasons": ["PROVIDER_MESSAGE_REPLAY", "PROVIDER_THREAD_REPLAY"]},
+        ])
+
+        p2 = base_packet()
+        p2["opportunities"][0]["candidates"][0]["events"] = [
+            sent(message="msg-impossible", thread="thr-one"),
+            reply(message="msg-impossible", thread="thr-one"),
+        ]
+        report2 = self.compile(p2)
+        self.assertEqual(self.state(report2), "HOLD")
+        self.assertIn("PROVIDER_MESSAGE_REPLAY", self.reasons(report2))
+        self.assertNotIn("PROVIDER_THREAD_REPLAY", self.reasons(report2))
 
     def test_markdown_is_bound(self):
         report = self.compile(base_packet())
@@ -92,6 +123,43 @@ class LedgerRuntimeTests(PartnerLedgerTestCase):
             from revenue.partner_conversion_ledger.cli import _write_exclusive
             with self.assertRaises(ledger.LedgerError):
                 _write_exclusive(str(out_link), b"no")
+
+    def test_single_output_failure_never_unlinks_foreign_successor(self):
+        from revenue.partner_conversion_ledger import cli
+        with tempfile.TemporaryDirectory() as td:
+            td = Path(td)
+            out = td / "report.json"
+            moved_owned = td / "owned-report.json"
+            real_fsync = cli.os.fsync
+            triggered = False
+
+            def substitute_then_fail(fd):
+                nonlocal triggered
+                real_fsync(fd)
+                if not triggered:
+                    triggered = True
+                    out.rename(moved_owned)
+                    out.write_bytes(b"FOREIGN-SUCCESSOR")
+                    raise OSError("injected post-substitution failure")
+
+            with mock.patch.object(cli.os, "fsync", side_effect=substitute_then_fail):
+                with self.assertRaises(ledger.LedgerError):
+                    cli._write_exclusive(str(out), b"owned-report")
+
+            self.assertEqual(out.read_bytes(), b"FOREIGN-SUCCESSOR")
+            self.assertEqual(moved_owned.read_bytes(), b"")
+
+    def test_pair_reservation_failure_leaves_owned_tombstone_without_deleting_existing_output(self):
+        from revenue.partner_conversion_ledger import cli
+        with tempfile.TemporaryDirectory() as td:
+            td = Path(td)
+            first = td / "report.json"
+            occupied = td / "report.md"
+            occupied.write_bytes(b"EXISTING")
+            with self.assertRaises(ledger.LedgerError):
+                cli._write_pair_exclusive(str(first), b"json", str(occupied), b"markdown")
+            self.assertEqual(first.read_bytes(), b"")
+            self.assertEqual(occupied.read_bytes(), b"EXISTING")
 
     def test_send_before_qualification_holds(self):
         p = base_packet()
