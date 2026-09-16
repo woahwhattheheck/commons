@@ -108,5 +108,63 @@ class WorkflowSurfaceTests(unittest.TestCase):
             self.assertIn('source workflow inventory is incomplete', surface.check(root)['errors'])
 
 
+
+    def test_live_inventory_is_json_object_not_placeholder_stub(self):
+        raw = Path('ci/workflow-surface.json').read_bytes()
+        self.assertNotEqual(raw.strip(), b'PLACEHOLDER')
+        data = json.loads(raw.decode('utf-8'))
+        self.assertIsInstance(data, dict)
+        self.assertEqual(data.get('schema'), 'commons.workflow-surface.v1')
+        row = next(item for item in data['archived'] if item['archive'].endswith('service-deal-economics.yml'))
+        recipe = Path(row['archive']).read_bytes()
+        self.assertEqual(len(recipe), row['bytes'])
+        self.assertEqual(hashlib.sha256(recipe).hexdigest(), row['sha256'])
+
+    def test_live_archived_recipes_match_inventory_hashes(self):
+        data = json.loads(Path('ci/workflow-surface.json').read_text(encoding='utf-8'))
+        mismatches = []
+        for row in data['archived']:
+            recipe = Path(row['archive']).read_bytes()
+            digest = hashlib.sha256(recipe).hexdigest()
+            if len(recipe) != row['bytes'] or digest != row['sha256']:
+                mismatches.append(row['archive'])
+        self.assertEqual(mismatches, [])
+
+    def test_live_checkout_fits_budget_and_passes_structural_check(self):
+        result = surface.check(Path('.'))
+        self.assertLessEqual(result['active'], json.loads(Path('ci/workflow-surface.json').read_text(encoding='utf-8'))['max_active_workflows'])
+        self.assertEqual(result['status'], 'PASS', result['errors'])
+
+    def test_opportunity_deadline_command_recipe_stays_archived_not_active(self):
+        """Regress run 35107222479: overlapping feature push+PR must not be live."""
+        self.assertFalse(Path('.github/workflows/opportunity-deadline-command.yml').exists())
+        data = json.loads(Path('ci/workflow-surface.json').read_text(encoding='utf-8'))
+        row = next(item for item in data['archived'] if item['archive'].endswith('opportunity-deadline-command.yml'))
+        recipe = Path(row['archive']).read_bytes()
+        self.assertEqual(len(recipe), row['bytes'])
+        self.assertEqual(hashlib.sha256(recipe).hexdigest(), row['sha256'])
+        parsed = surface.workflow(recipe)
+        self.assertTrue(surface.duplicate_branch_events(parsed))
+
+    def test_ohsu_digital_pathology_evidence_workflow_is_retained_active(self):
+        """Regress #14904: recovered OHSU current-authority workflow occupies the retained slot."""
+        path = Path('.github/workflows/ohsu-digital-pathology-evidence.yml')
+        self.assertTrue(path.is_file())
+        self.assertFalse(Path('ci/workflow-recipes/ohsu-digital-pathology-evidence.yml').exists())
+        data = json.loads(Path('ci/workflow-surface.json').read_text(encoding='utf-8'))
+        self.assertIn('.github/workflows/ohsu-digital-pathology-evidence.yml', data['retained'])
+        self.assertFalse(any(
+            row['archive'].endswith('ohsu-digital-pathology-evidence.yml') for row in data['archived']
+        ))
+        raw = path.read_bytes()
+        parsed = surface.workflow(raw)
+        self.assertFalse(surface.duplicate_branch_events(parsed))
+        text = raw.decode('utf-8')
+        self.assertIn('current_authority.py', text)
+        self.assertIn('unrecognized arguments: --evaluated-at', text)
+
+
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -17,6 +17,7 @@ from time import monotonic
 from urllib.parse import quote, urlencode
 
 from .request_budget import RequestBudget, RequestDeferred
+from .slack_threads import read_channel
 
 REPO = re.compile(r"^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$")
 HOUSEKEEPING = {"channel_join", "channel_leave", "channel_topic", "channel_purpose",
@@ -77,6 +78,8 @@ class LiveCollectors:
             raise ValueError("documents config must be a list.")
         self.page_size = self._bound(self.config.get("page_size", 30), 1, 100)
         self.max_pages = self._bound(self.config.get("max_pages", 2), 1, 10)
+        self.max_threads = self._bound(self.slack_config.get("max_threads_per_channel", 0), 0, 8)
+        self.max_thread_pages = self._bound(self.slack_config.get("max_thread_pages", 2), 1, 10)
         self.max_workers = self._bound(self.config.get("max_workers", 4), 1, 4)
         self.refresh_deadline_seconds = self._bound(self.config.get("refresh_deadline_seconds", 180), 1, 600)
         self.cancel_event, self.deadline = cancel_event, None
@@ -281,33 +284,10 @@ class LiveCollectors:
     def _slack(self, channel):
         channel_id, label = channel["id"], channel.get("label", channel["id"])
         source = self._source("slack:" + channel_id, "Slack", label, {"channel_id": channel_id})
-        rows, cursor, complete = [], "", False
-        for _ in range(self.max_pages):
-            payload = {"channel": channel_id, "limit": self.page_size}
-            if cursor:
-                payload["cursor"] = cursor
-            self._check_deadline()
-            response = self._slack_read("conversations.history", payload)
-            if not isinstance(response, dict) or response.get("ok") is not True:
-                raise SourceFailure(response.get("error", "slack_response_shape") if isinstance(response, dict) else "slack_response_shape")
-            # Missing/malformed history is unknown, not a complete empty source.
-            # Validate before rows can be omitted and the store replaces old work.
-            messages = response.get("messages")
-            if (not isinstance(messages, list) or any(
-                    not isinstance(row, dict) or not row.get("ts") for row in messages)):
-                raise SourceFailure("slack_messages_shape")
-            metadata = response.get("response_metadata", {})
-            has_more = response.get("has_more", False)
-            if (not isinstance(metadata, dict)
-                    or not isinstance(metadata.get("next_cursor", ""), str)
-                    or type(has_more) is not bool):
-                raise SourceFailure("slack_pagination_shape")
-            rows.extend(messages)
-            cursor = metadata.get("next_cursor", "")
-            if not cursor:
-                complete = not has_more
-                break
-        items, threads = [], []
+        rows, metadata, complete = read_channel(self._slack_read, channel_id,
+            page_size=self.page_size, max_pages=self.max_pages,
+            max_threads=self.max_threads, max_thread_pages=self.max_thread_pages)
+        items = []
         workspace = self.slack_config.get("workspace_url", "")
         for row in {str(row.get("ts")): row for row in rows if isinstance(row, dict)}.values():
             if row.get("subtype") in HOUSEKEEPING or not row.get("ts"):
@@ -316,9 +296,6 @@ class LiveCollectors:
             body = text(row.get("text"))
             url = workspace.rstrip("/") + "/archives/" + channel_id + "/p" + ts.replace(".", "") if workspace else None
             updated = timestamp(row.get("edited", {}).get("ts") or ts)
-            if row.get("reply_count"):
-                threads.append({"thread_ts": ts, "reply_count": row["reply_count"],
-                                "latest_reply": row.get("latest_reply")})
             items.append({"id": "slack:" + channel_id + ":" + ts, "kind": "slack_thread",
                 "title": body.splitlines()[0][:500] if body else "Slack message",
                 "status": "posted", "owner": row.get("user") or row.get("bot_id"),
@@ -327,12 +304,17 @@ class LiveCollectors:
                 "next_action": None, "refs": {"channel_id": channel_id, "message_ts": ts,
                     "thread_ts": row.get("thread_ts") or ts, "reply_count": row.get("reply_count", 0),
                     "latest_reply": row.get("latest_reply")}, "actions": link(url)})
-        batch = self._batch(source, items, complete and not threads,
+        batch = self._batch({**source, "metadata": metadata}, items, complete,
             ["Membership housekeeping omitted from work view; original Slack history remains unchanged.",
-             "Thread replies are not imported by channel history; thread references and reply coverage remain explicit."])
-        batch["source"]["metadata"] = {"history_complete": complete, "next_cursor": cursor,
-                                       "threads_pending": threads[:100],
-                                       "threads_pending_count": len(threads)}
+             "Reply coverage applies only to threads discovered in this bounded channel history.",
+             "Partial valid pages are ingested; missing pages and threads never authorize removal."])
+        if metadata["history"]["error"] or any(row["error"] for row in metadata["thread_coverage"]):
+            # source.error would make WorkstreamStore discard even valid rows.
+            # Preserve per-slice failures in metadata, with incomplete coverage.
+            batch["source"]["status"] = "degraded"
+        payload = {key: value for key, value in batch.items() if key != "operation_id"}
+        batch["operation_id"] = "collect:" + hashlib.sha256(
+            json.dumps(payload, sort_keys=True, default=str).encode()).hexdigest()
         return batch
 
     def _document(self, spec):
