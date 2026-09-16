@@ -14,7 +14,7 @@ MAX_SAFE_SNIPPET = 1_024
 
 _REF_RE = re.compile(r"[A-Za-z0-9][A-Za-z0-9._:/@+\-]{0,127}\Z")
 _SHA256_RE = re.compile(r"[0-9a-f]{64}\Z")
-_TIMESTAMP_RE = re.compile(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z\Z")
+_TIMESTAMP_RE = re.compile(r"\d{4}-\d{2}T\d{2}:\d{2}:\d{2}Z\Z")
 
 
 class ControlError(ValueError):
@@ -38,6 +38,14 @@ def _reject_constant(value: str) -> None:
     raise ControlError(f"non-finite JSON number is not allowed: {value}")
 
 
+def _require_unicode_scalars(value: str, label: str) -> str:
+    for char in value:
+        code = ord(char)
+        if 0xD800 <= code <= 0xDFFF:
+            raise ControlError(f"{label} contains non-scalar Unicode")
+    return value
+
+
 def parse_json_bytes(data: bytes, *, label: str = "json") -> Any:
     if type(data) is not bytes:
         raise ControlError(f"{label} must be bytes")
@@ -55,10 +63,14 @@ def parse_json_bytes(data: bytes, *, label: str = "json") -> Any:
         )
     except DuplicateKeyError:
         raise
-    except (json.JSONDecodeError, ControlError) as exc:
-        if isinstance(exc, ControlError):
-            raise
+    except ControlError:
+        raise
+    except json.JSONDecodeError as exc:
         raise ControlError(f"{label} is not valid strict JSON: {exc.msg}") from exc
+    except (ValueError, TypeError, RecursionError) as exc:
+        raise ControlError(
+            f"{label} is not valid strict JSON: {type(exc).__name__}"
+        ) from exc
 
 
 def _jsonable(value: Any) -> Any:
@@ -69,11 +81,14 @@ def _jsonable(value: Any) -> Any:
         for key, item in value.items():
             if type(key) is not str:
                 raise ControlError("canonical JSON object keys must be strings")
+            _require_unicode_scalars(key, "canonical JSON object key")
             converted[key] = _jsonable(item)
         return converted
     if isinstance(value, (list, tuple)):
         return [_jsonable(item) for item in value]
-    if value is None or type(value) in {str, bool, int, float}:
+    if type(value) is str:
+        return _require_unicode_scalars(value, "canonical JSON string")
+    if value is None or type(value) in {bool, int, float}:
         return value
     raise ControlError(f"value contains unsupported canonical JSON type: {type(value).__name__}")
 
@@ -87,9 +102,11 @@ def canonical_bytes(value: Any) -> bytes:
             sort_keys=True,
             separators=(",", ":"),
         )
-    except (TypeError, ValueError) as exc:
+        return (text + "\n").encode("utf-8")
+    except ControlError:
+        raise
+    except (TypeError, ValueError, UnicodeEncodeError, RecursionError) as exc:
         raise ControlError(f"value is not canonical-JSON serializable: {exc}") from exc
-    return (text + "\n").encode("utf-8")
 
 
 def sha256_bytes(data: bytes) -> str:
@@ -144,6 +161,7 @@ def require_string(
 ) -> str:
     if type(value) is not str:
         raise ControlError(f"{label} must be a string")
+    _require_unicode_scalars(value, label)
     if not minimum <= len(value) <= maximum:
         raise ControlError(f"{label} length must be {minimum}..{maximum}")
     for char in value:
