@@ -113,6 +113,42 @@ class RollbackCustodyTests(unittest.TestCase):
             self.assertEqual(moved_owned.read_bytes(), b"")
             self.assertEqual(markdown.read_bytes(), b"")
 
+    def test_post_validation_parent_fsync_substitution_fails_closed(self):
+        with tempfile.TemporaryDirectory() as td:
+            td = Path(td)
+            report = td / "report.json"
+            markdown = td / "report.md"
+            moved_owned = td / "owned-report.json"
+            swapped = False
+            original_fsync = secure_io.os.fsync
+
+            def substitute_from_parent_fsync(fd):
+                nonlocal swapped
+                is_directory = secure_io.stat.S_ISDIR(secure_io.os.fstat(fd).st_mode)
+                try:
+                    result = original_fsync(fd)
+                except OSError:
+                    if not is_directory:
+                        raise
+                    # Production intentionally tolerates directory-fsync rejection on
+                    # filesystems that do not implement it. Preserve that behavior in
+                    # the injected hook while still exercising the post-check seam.
+                    result = None
+                if is_directory and not swapped:
+                    swapped = True
+                    report.rename(moved_owned)
+                    report.write_bytes(b"FOREIGN-SUCCESSOR")
+                return result
+
+            with mock.patch.object(secure_io.os, "fsync", side_effect=substitute_from_parent_fsync):
+                with self.assertRaises(parity.ParityError):
+                    secure_io.write_pair_exclusive(report, b"owned-json", markdown, b"owned-md")
+
+            self.assertTrue(swapped)
+            self.assertEqual(report.read_bytes(), b"FOREIGN-SUCCESSOR")
+            self.assertEqual(moved_owned.read_bytes(), b"")
+            self.assertEqual(markdown.read_bytes(), b"")
+
 
 def load_tests(loader: unittest.TestLoader, tests: unittest.TestSuite, pattern: str | None) -> unittest.TestSuite:
     combined = unittest.TestSuite()
