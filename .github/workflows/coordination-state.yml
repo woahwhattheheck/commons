@@ -22,7 +22,9 @@ on:
       - "host/swarm_review.py"
       - "host/swarm_review_core.py"
       - "test_swarm_review.py"
+      - "test_swarm_review_pr_binding.py"
       - "ground/SWARM_ORDER.md"
+      - "ground/SWARM_EXECUTION_AUTHORITY.md"
       - "test_coordination_state.py"
       - ".github/workflows/coordination-state.yml"
 
@@ -48,9 +50,10 @@ jobs:
             /host/swarm_review.py
             /host/swarm_review_core.py
             /test_swarm_review.py
+            /test_swarm_review_pr_binding.py
             /test_coordination_state.py
       - name: Contract tests
-        run: python3 -m unittest -v test_coordination_state.py test_swarm_review.py
+        run: python3 -m unittest -v test_coordination_state.py test_swarm_review.py test_swarm_review_pr_binding.py
 
   publish:
     if: github.event_name != 'pull_request'
