@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 116,
-    "open_pull_requests": 69,
-    "runs_in_progress": 16,
-    "runs_queued": 216
+    "open_issues": 117,
+    "open_pull_requests": 70,
+    "runs_in_progress": 19,
+    "runs_queued": 224
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,24 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zmq-v5r9/vctc-erp-gms-20260916",
+      "created_at": "2026-09-16T12:51:00Z",
+      "draft": false,
+      "head_sha": "b9e7b5955093a562cc5e60c46db0ed98f8d8c2d8",
+      "number": 14835,
+      "title": "revenue: add VCTC ERP/GMS teaming pursuit carrier",
+      "updated_at": "2026-09-16T12:51:00Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "zpb-h7n4/pinellas-current-trust-recovery-20260916",
       "created_at": "2026-09-16T12:48:36Z",
       "draft": false,
-      "head_sha": "22758f549a4dd28ed2cb35aac126039e998d6e09",
+      "head_sha": "52b7b031e9dd76d1dc25f6805906d65db9e3528b",
       "number": 14833,
       "title": "Revenue: recover Pinellas current custody trust boundary",
-      "updated_at": "2026-09-16T12:48:36Z"
+      "updated_at": "2026-09-16T12:49:57Z"
     },
     {
       "author": "woahwhattheheck",
@@ -116,10 +127,10 @@
       "branch": "zrs-j6m4/sun-a308734-current-main-recovery-20260916",
       "created_at": "2026-09-16T12:36:30Z",
       "draft": false,
-      "head_sha": "53b23dd0ef794385926208a6d196ef06c5c62ee0",
+      "head_sha": "d092e81a4e111e480a4b4010c7017e3687f43068",
       "number": 14826,
       "title": "Recover Sun A308734 P18 frontier on current main",
-      "updated_at": "2026-09-16T12:40:55Z"
+      "updated_at": "2026-09-16T12:49:22Z"
     },
     {
       "author": "woahwhattheheck",
@@ -138,10 +149,10 @@
       "branch": "zoc-r6v3/hyperagent-paid-pilot-20260916",
       "created_at": "2026-09-16T12:28:37Z",
       "draft": false,
-      "head_sha": "d427fd34fe73e6bef7e9c038131f59e3a4191d1f",
+      "head_sha": "e9db9c491a8533caf9af5de87465cadac45fdfb7",
       "number": 14823,
       "title": "feat(revenue): ship Hyperagent deterministic transcript pilot proof",
-      "updated_at": "2026-09-16T12:47:51Z"
+      "updated_at": "2026-09-16T12:50:58Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 14821,
       "title": "fix(slack-canary): require regular-file entry types on current main",
       "updated_at": "2026-09-16T12:46:12Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-cobaltfurnace-0707/slack-mirror-receipts-current-main-r2",
-      "created_at": "2026-09-16T11:21:34Z",
-      "draft": false,
-      "head_sha": "435ba514f4966eb74a6068c1c91477f8adf7f159",
-      "number": 14820,
-      "title": "feat(slack): land durable mirror receipts on current main",
-      "updated_at": "2026-09-16T11:31:57Z"
     }
   ],
   "open_heads": {
@@ -240,17 +240,18 @@
     "14820": "435ba514f4966eb74a6068c1c91477f8adf7f159",
     "14821": "e2030f7a46a996ca683684b4325c2879a638f08d",
     "14822": "4c33a3723fe5ae302fd16e539e12c9b5430046fb",
-    "14823": "d427fd34fe73e6bef7e9c038131f59e3a4191d1f",
+    "14823": "e9db9c491a8533caf9af5de87465cadac45fdfb7",
     "14824": "da8cc45aa63934fe741e415381d2127c7e2afe4a",
-    "14826": "53b23dd0ef794385926208a6d196ef06c5c62ee0",
+    "14826": "d092e81a4e111e480a4b4010c7017e3687f43068",
     "14827": "f1b87ee6dc1e5b5242c660c0c7f1bca250e18511",
     "14828": "1a3ce1a6a9960eaf357efd640972dea2bd2ff137",
     "14832": "14ce2f29a4e3284628d0391f24a3aa96688c2f51",
-    "14833": "22758f549a4dd28ed2cb35aac126039e998d6e09"
+    "14833": "52b7b031e9dd76d1dc25f6805906d65db9e3528b",
+    "14835": "b9e7b5955093a562cc5e60c46db0ed98f8d8c2d8"
   },
-  "pulls_listed": 69,
+  "pulls_listed": 70,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 13.5,
+  "queue_depth_per_runner": 11.8,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -420,6 +421,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-16T12:48:51Z",
+  "unchanged_since": "2026-09-16T12:51:17Z",
   "undatable_pulls": []
 }
