@@ -1,6 +1,14 @@
+import json
+import tempfile
 import unittest
+from pathlib import Path
 
-from revenue.finished_work_cash_closeout.closeout import SCHEMA, build_closeout
+from revenue.finished_work_cash_closeout.closeout import (
+    SCHEMA,
+    CloseoutError,
+    build_closeout,
+    load_ledger,
+)
 
 
 def item(**overrides):
@@ -51,6 +59,47 @@ class CashCloseoutTruthHardeningTests(unittest.TestCase):
         self.assertEqual(group["status"], "READY_FOR_MUSE_ELECTION")
         self.assertEqual(group["reason_codes"], ["PAYABLE_EVIDENCE_COMPLETE", "UNPAID_EVIDENCE_RETAINED"])
         self.assertTrue(all(value is False for value in group["authority"].values()))
+
+    def _write_ready_ledger_text(self, item_overrides: str) -> Path:
+        """Write a READY-shaped ledger file, then splice hostile duplicate keys."""
+        body = {
+            "schema": SCHEMA,
+            "items": [item()],
+        }
+        text = json.dumps(body, ensure_ascii=False)
+        text = text.replace('"dnr": false', item_overrides, 1)
+        root = Path(tempfile.mkdtemp())
+        path = root / "ledger.json"
+        path.write_text(text, encoding="utf-8")
+        return path
+
+    def test_load_ledger_rejects_duplicate_dnr_then_false(self):
+        path = self._write_ready_ledger_text('"dnr": true, "dnr": false')
+        with self.assertRaises(CloseoutError) as ctx:
+            load_ledger(path)
+        self.assertIn("duplicate JSON object key", str(ctx.exception))
+        self.assertIn("dnr", str(ctx.exception))
+
+    def test_load_ledger_rejects_duplicate_paid_then_unpaid(self):
+        path = Path(tempfile.mkdtemp()) / "ledger.json"
+        raw = json.dumps({"schema": SCHEMA, "items": [item()]}, ensure_ascii=False)
+        raw = raw.replace(
+            '"payment_state": "UNPAID"',
+            '"payment_state": "PAID", "payment_state": "UNPAID"',
+            1,
+        )
+        path.write_text(raw, encoding="utf-8")
+        with self.assertRaises(CloseoutError) as ctx:
+            load_ledger(path)
+        self.assertIn("duplicate JSON object key", str(ctx.exception))
+        self.assertIn("payment_state", str(ctx.exception))
+
+    def test_load_ledger_rejects_nan_constant(self):
+        path = Path(tempfile.mkdtemp()) / "ledger.json"
+        path.write_text('{"schema": "finished-work-cash-closeout/v1", "items": [NaN]}', encoding="utf-8")
+        with self.assertRaises(CloseoutError) as ctx:
+            load_ledger(path)
+        self.assertIn("non-finite JSON constant rejected", str(ctx.exception))
 
 
 if __name__ == "__main__":
