@@ -1,0 +1,29 @@
+name: invest-appalachia-framer-lms
+on:
+  pull_request:
+    paths:
+      - 'opportunities/invest_appalachia_framer_lms/**'
+      - 'tests/test_invest_appalachia_framer_lms.py'
+      - '.github/workflows/invest-appalachia-framer-lms.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'opportunities/invest_appalachia_framer_lms/**'
+      - 'tests/test_invest_appalachia_framer_lms.py'
+      - '.github/workflows/invest-appalachia-framer-lms.yml'
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m py_compile opportunities/invest_appalachia_framer_lms/carrier.py tests/test_invest_appalachia_framer_lms.py
+      - run: python -m unittest -v tests.test_invest_appalachia_framer_lms
+      - run: python -O -m unittest -v tests.test_invest_appalachia_framer_lms
