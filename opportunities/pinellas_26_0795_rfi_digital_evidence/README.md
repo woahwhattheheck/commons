@@ -30,7 +30,7 @@ The CURRENT graph intentionally does not delegate authority semantics to mutable
 
 This is a composition-integrity boundary, not an interpreter sandbox. A malicious host provider, arbitrary closure-cell surgery, debugger/interpreter compromise, source replacement, or equivalent reflective runtime takeover is outside the reference claim and belongs to the deployment boundary.
 
-This code does **not** add login, credentials, identity admission, ACLs or another permission gate. A production court/records platform would install the provider using its own retained ledger/records infrastructure.
+This code does not add login or credentials. No identity, permission, or admission gate applies. A production court/records platform would install the provider using its own retained ledger/records infrastructure.
 
 ## Files
 
