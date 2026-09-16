@@ -1,4 +1,4 @@
-"""Root-level CI bridge for the SaaS Migration Parity Pilot hostile suite."""
+"""Root-level CI bridge for the SaaS Migration Parity Pilot hostile suites."""
 from __future__ import annotations
 
 import importlib.util
@@ -7,19 +7,31 @@ import sys
 import unittest
 
 SUITE_DIR = Path(__file__).resolve().parent / "commercial" / "saas-migration-parity-pilot"
-SUITE_FILE = SUITE_DIR / "test_parity.py"
+SUITE_FILES = (
+    SUITE_DIR / "test_parity.py",
+    SUITE_DIR / "test_strict_input_hostiles.py",
+)
 if str(SUITE_DIR) not in sys.path:
     sys.path.insert(0, str(SUITE_DIR))
 
-_SPEC = importlib.util.spec_from_file_location("saas_migration_parity_pilot_hostile_suite", SUITE_FILE)
-if _SPEC is None or _SPEC.loader is None:
-    raise RuntimeError(f"cannot load parity suite: {SUITE_FILE}")
-_SUITE_MODULE = importlib.util.module_from_spec(_SPEC)
-_SPEC.loader.exec_module(_SUITE_MODULE)
+
+def _load_suite_module(path: Path, index: int):
+    spec = importlib.util.spec_from_file_location(f"saas_migration_parity_pilot_suite_{index}", path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"cannot load parity suite: {path}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+_SUITE_MODULES = tuple(_load_suite_module(path, idx) for idx, path in enumerate(SUITE_FILES))
 
 
 def load_tests(loader: unittest.TestLoader, tests: unittest.TestSuite, pattern: str | None) -> unittest.TestSuite:
-    return loader.loadTestsFromModule(_SUITE_MODULE)
+    combined = unittest.TestSuite()
+    for module in _SUITE_MODULES:
+        combined.addTests(loader.loadTestsFromModule(module))
+    return combined
 
 
 if __name__ == "__main__":
