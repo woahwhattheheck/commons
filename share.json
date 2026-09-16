@@ -2899,11 +2899,12 @@
   "button": "python host/muhl_tools_once.py --go",
   "live_cash": {
     "cite": [
+      "newbot-json-keep-larger-fixed-20260916-20",
       "newbot-json-doors-live-cash-20260916-06",
       "newbot-json-doors-live-cash-20260916-05",
       "data.html Live cash"
     ],
-    "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Canonical payload above stays authoritative. data.html already surfaces Live cash and loads this JSON. No invent Stripe URLs.",
+    "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Larger fixed engagements are separate product pages (checkout/intent stays there). Canonical payload above stays authoritative. data.html already surfaces Live cash and Larger fixed and loads this JSON (or sibling tip door). Host remint KEEP via _preserve_live_cash. No invent Stripe URLs.",
     "products": [
       {
         "name": "Agent Failure Autopsy",
@@ -2929,6 +2930,20 @@
         "name": "Plant Downtime Handoff",
         "price_usd": 199,
         "path": "plant-downtime-handoff.html"
+      }
+    ],
+    "larger_fixed": [
+      {
+        "days": 10,
+        "name": "GGUF diagnostic",
+        "path": "diagnostic.html",
+        "price_usd": 12000
+      },
+      {
+        "days": 30,
+        "name": "White Box pilot",
+        "path": "commercial.html",
+        "price_usd": 30000
       }
     ]
   }

@@ -18,12 +18,13 @@
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "live_cash": {
     "cite": [
+      "newbot-json-keep-larger-fixed-20260916-20",
       "newbot-bake-keep-live-cash-20260916-12",
       "newbot-json-doors-live-cash-20260916-06",
       "newbot-json-doors-live-cash-20260916-05",
       "agent-control.html Live cash"
     ],
-    "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Canonical payload above stays authoritative. agent-control.html already surfaces Live cash and loads this JSON. Bake KEEP via llms_txt write_head_pulse. No invent Stripe URLs.",
+    "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Larger fixed engagements are separate product pages (checkout/intent stays there). Canonical payload above stays authoritative. agent-control.html already surfaces Live cash and Larger fixed and loads this JSON (or sibling tip door). Host remint KEEP via _preserve_live_cash. No invent Stripe URLs.",
     "products": [
       {
         "name": "Agent Failure Autopsy",
@@ -49,6 +50,20 @@
         "name": "Plant Downtime Handoff",
         "price_usd": 199,
         "path": "plant-downtime-handoff.html"
+      }
+    ],
+    "larger_fixed": [
+      {
+        "days": 10,
+        "name": "GGUF diagnostic",
+        "path": "diagnostic.html",
+        "price_usd": 12000
+      },
+      {
+        "days": 30,
+        "name": "White Box pilot",
+        "path": "commercial.html",
+        "price_usd": 30000
       }
     ]
   }
