@@ -14,7 +14,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Any
 
-POLICY_VERSION = "verified-paid-proof/v2"
+POLICY_VERSION = "verified-paid-proof/v3"
 STATUSES = {"HOLD", "PRIVATE_VERIFIED", "PUBLIC_ANONYMOUS", "PUBLIC_NAMED"}
 PAYMENT_STATES = {"NONE", "PENDING", "SETTLED", "REFUNDED"}
 DELIVERY_STATES = {"NOT_DELIVERED", "DELIVERED", "ACCEPTED"}

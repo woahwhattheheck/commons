@@ -1,5 +1,19 @@
 """Verified paid-proof compiler."""
 from .core import ProofError, strict_json_loads
-from .compiler import CompiledProof, compile_proof, compile_text
+from .compiler import (
+    compile_proof,
+    compile_text,
+    public_json,
+    public_payload,
+    write_outputs,
+)
 
-__all__ = ["CompiledProof", "ProofError", "compile_proof", "compile_text", "strict_json_loads"]
+__all__ = [
+    "ProofError",
+    "compile_proof",
+    "compile_text",
+    "public_json",
+    "public_payload",
+    "strict_json_loads",
+    "write_outputs",
+]
