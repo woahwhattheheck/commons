@@ -9,6 +9,43 @@ class ReviewClosureV3Tests(unittest.TestCase):
     def rules(self, source: str) -> list[str]:
         return [finding.rule for finding in analyze_source(source, path="revenue/x.py")]
 
+    def test_overlay_literal_ready_collapses_to_one_crg003(self):
+        source = '''
+def evaluate(packet):
+    return "PRIME_READY"
+'''
+        self.assertEqual(self.rules(source), ["CRG003"])
+
+    def test_if_without_else_fallthrough_keeps_false_branch_authority(self):
+        source = '''
+def evaluate(packet, authority_root):
+    if not authority_root:
+        return "HOLD"
+    state = "PRIME_" + "READY"
+    return state
+'''
+        self.assertNotIn("CRG003", self.rules(source))
+
+    def test_reaching_overwrite_kills_composed_positive(self):
+        source = '''
+def evaluate(packet):
+    state = "PRIME_" + "READY"
+    state = "HOLD"
+    return state
+'''
+        self.assertNotIn("CRG003", self.rules(source))
+
+    def test_branch_assignment_authority_survives_composed_overlay(self):
+        source = '''
+def evaluate(packet, authority_root):
+    if authority_root:
+        state = "PRIME_" + "READY"
+    else:
+        state = "HOLD"
+    return state
+'''
+        self.assertNotIn("CRG003", self.rules(source))
+
     def test_local_composed_readiness_strings_fail_closed(self):
         samples = (
             '''

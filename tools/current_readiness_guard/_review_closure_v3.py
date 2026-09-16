@@ -21,7 +21,7 @@ from ._review_closure_v2 import (
     _boolean_positive_expression,
     _call_argument_by_param,
     _direct_authority_facts,
-    _direct_return_paths,
+    _iter_return_paths,
     _module_static_strings,
     _resolve_call,
     _truth_controlled_by_parameter,
@@ -240,6 +240,29 @@ def _condition_facts_factory(
     return condition
 
 
+def _expand_return(
+    expression: ast.AST | None,
+    env: Mapping[str, tuple[tuple[ast.AST, frozenset[str]], ...]],
+    facts: frozenset[str],
+    *,
+    seen: frozenset[str] = frozenset(),
+) -> list[tuple[ast.AST | None, frozenset[str]]]:
+    if isinstance(expression, ast.Name) and expression.id in env and expression.id not in seen:
+        out: list[tuple[ast.AST | None, frozenset[str]]] = []
+        next_seen = seen | {expression.id}
+        for bound_expression, bound_facts in env[expression.id]:
+            out.extend(
+                _expand_return(
+                    bound_expression,
+                    env,
+                    frozenset(set(facts) | set(bound_facts)),
+                    seen=next_seen,
+                )
+            )
+        return out
+    return [(expression, facts)]
+
+
 def additional_findings(source: str | bytes, *, path: str = "<memory>") -> list[Finding]:
     if isinstance(source, bytes):
         try:
@@ -267,23 +290,32 @@ def additional_findings(source: str | bytes, *, path: str = "<memory>") -> list[
         if not spec.surface or not _public(fn) or _historical_surface(fn):
             continue
         authority_params = {name for name in _function_params(fn) if _authority_name(name)}
-        local_defs = _local_defs(fn)
         aliases, ambiguous = _aliases_for_function(fn, base_aliases, base_ambiguous)
         condition = _condition_facts_factory(spec, specs_by_key, aliases, ambiguous)
-        paths = _direct_return_paths(fn.body, authority_params, condition_facts=condition)
+        paths, _, _, _ = _iter_return_paths(
+            fn.body, authority_params, condition_facts=condition
+        )
 
         risky = False
-        for expression, facts in paths:
-            static_positive = any(
-                _positive_state(value)
-                for value in _static_values(expression, local_defs, globals_)
-            )
-            boolean_positive = False
-            boolean_facts: set[str] = set()
-            if any(word in fn.name.lower() for word in _BOOLEAN_SURFACE_WORDS):
-                boolean_positive, boolean_facts = _boolean_positive_expression(expression, authority_params)
-            if (static_positive or boolean_positive) and not facts and not boolean_facts:
-                risky = True
+        for expression, facts, env in paths:
+            local_map = {
+                name: tuple(item[0] for item in bounds) for name, bounds in env.items()
+            }
+            for expanded, expanded_facts in _expand_return(expression, env, facts):
+                static_positive = any(
+                    _positive_state(value)
+                    for value in _static_values(expanded, local_map, globals_)
+                )
+                boolean_positive = False
+                boolean_facts: set[str] = set()
+                if any(word in fn.name.lower() for word in _BOOLEAN_SURFACE_WORDS):
+                    boolean_positive, boolean_facts = _boolean_positive_expression(
+                        expanded, authority_params
+                    )
+                if (static_positive or boolean_positive) and not expanded_facts and not boolean_facts:
+                    risky = True
+                    break
+            if risky:
                 break
 
         if risky:
