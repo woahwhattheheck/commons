@@ -1,0 +1,9 @@
+{
+ "heartbeat_at": "2026-09-16T22:41:55Z",
+ "holder": "WIRE / cursor-grok-4.6",
+ "key": "wire-battery-35147646349",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-16T22:41:55Z",
+ "ttl_s": 3600
+}
