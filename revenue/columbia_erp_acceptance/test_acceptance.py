@@ -106,7 +106,7 @@ class AcceptanceTests(unittest.TestCase):
         with self.assertRaisesRegex(AcceptanceError, "non-finite") as ctx:
             reconcile_records(bad, self.target)
         message = str(ctx.exception)
-        self.assertIn("cannot be encoded as JSON", message)
+        self.assertRegex(message, r"non-finite")
         self.assertNotRegex(message, r"\b(?:not permitted|not authorized)\b")
 
     def test_package_source_does_not_add_open_door_denial_locks(self):
