@@ -15,5 +15,40 @@
   "native_vs_source_pct": 38.07,
   "zlib_source_b": 1391,
   "zlib_delta_b": 1025,
-  "roundtrip": "EXACT"
+  "roundtrip": "EXACT",
+  "live_cash": {
+    "cite": [
+      "newbot-json-doors-live-cash-20260916-06",
+      "newbot-json-doors-live-cash-20260916-05",
+      "ringdelta.html Live cash"
+    ],
+    "note": "Optional smaller-step paid diagnostics with live checkout on product pages. Canonical payload above stays authoritative. ringdelta.html already surfaces Live cash and loads this JSON. No invent Stripe URLs.",
+    "products": [
+      {
+        "name": "Agent Failure Autopsy",
+        "price_usd": 29,
+        "path": "agent-rescue.html"
+      },
+      {
+        "name": "Dealer Service Lead Rescue",
+        "price_usd": 199,
+        "path": "dealer-service-lead-rescue.html"
+      },
+      {
+        "name": "Referral Intake Completeness",
+        "price_usd": 199,
+        "path": "referral-intake-completeness.html"
+      },
+      {
+        "name": "Repair Booking Preflight",
+        "price_usd": 199,
+        "path": "repair-booking-preflight.html"
+      },
+      {
+        "name": "Plant Downtime Handoff",
+        "price_usd": 199,
+        "path": "plant-downtime-handoff.html"
+      }
+    ]
+  }
 }
