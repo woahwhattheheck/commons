@@ -1,9 +1,16 @@
 #!/usr/bin/env python3
 """Fail-closed currentness facade for the UArk RFP09112026 qualifier.
 
-The original deterministic compiler is retained in ``_qualifier_core.py``.  This
-facade adds the trusted-time and frozen-source expiry rules required for
-production use while preserving the published packet schema and receipts.
+The original deterministic compiler is retained in ``_qualifier_core.py``. This
+facade adds source-expiry rules plus a supported CURRENT API whose clock is
+captured from process-owned builtin callables during module initialization.
+
+``compile_qualification`` and ``verify_packet`` remain deterministic historical /
+integrity surfaces: their explicit ``evaluated_at_utc`` is data, not current-time
+authority. ``compile_production`` and ``verify_packet_current`` accept no caller
+time or clock override. Ordinary post-import rebinding of module globals therefore
+cannot backdate CURRENT decisions. Arbitrary interpreter takeover (closure-cell or
+code-object surgery before/after trusted import) is outside this library boundary.
 """
 from __future__ import annotations
 
@@ -13,7 +20,7 @@ import os
 import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any
 
 _CORE_PATH = Path(__file__).with_name("_qualifier_core.py")
 _SPEC = importlib.util.spec_from_file_location(
@@ -24,7 +31,7 @@ if _SPEC is None or _SPEC.loader is None:  # pragma: no cover - import contract
 _core = importlib.util.module_from_spec(_SPEC)
 _SPEC.loader.exec_module(_core)
 
-# Preserve the original public/library surface.  Definitions below deliberately
+# Preserve the original public/library surface. Definitions below deliberately
 # replace the compiler, verifier, renderer, and CLI entry point.
 for _name in dir(_core):
     if not _name.startswith("__"):
@@ -32,20 +39,39 @@ for _name in dir(_core):
 
 ADDENDUM_RECHECK_BOUNDARY_UTC = "2026-10-06T05:00:00Z"
 _FUTURE_SKEW = timedelta(minutes=5)
-Clock = Callable[[], datetime]
 
 
-def _trusted_now(now: datetime | None = None) -> datetime:
-    value = datetime.now(timezone.utc) if now is None else now
+def _make_process_utc_now():
+    """Capture process clock primitives once, outside mutable module globals."""
+    # ``datetime`` / ``timezone`` are imported module globals for historical
+    # compatibility, but CURRENT authority does not resolve through those names.
+    from datetime import datetime as _clock_datetime
+    from datetime import timezone as _clock_timezone
+
+    builtin_now = _clock_datetime.now
+    utc = _clock_timezone.utc
+
+    def process_utc_now() -> datetime:
+        value = builtin_now(utc)
+        return value.astimezone(utc).replace(microsecond=0)
+
+    return process_utc_now
+
+
+_PROCESS_UTC_NOW = _make_process_utc_now()
+del _make_process_utc_now
+
+
+def _normalize_aware_utc(value: datetime) -> datetime:
     if not isinstance(value, datetime):
-        raise InputError("trusted clock must return datetime")
+        raise InputError("time value must be datetime")
     if value.tzinfo is None or value.utcoffset() is None:
-        raise InputError("trusted clock must be timezone-aware")
+        raise InputError("time value must be timezone-aware")
     return value.astimezone(timezone.utc).replace(microsecond=0)
 
 
 def _utc_text(value: datetime) -> str:
-    return _trusted_now(value).isoformat().replace("+00:00", "Z")
+    return _normalize_aware_utc(value).isoformat().replace("+00:00", "Z")
 
 
 def _refresh_receipts(packet: dict[str, Any]) -> dict[str, Any]:
@@ -88,29 +114,12 @@ def _apply_currentness(packet: dict[str, Any]) -> dict[str, Any]:
 
 
 def compile_qualification(intake: Any) -> dict[str, Any]:
-    """Compile deterministic intake and enforce source/evaluation chronology."""
+    """Historical/integrity compile using intake ``evaluated_at_utc`` as data."""
     return _apply_currentness(_core.compile_qualification(intake))
 
 
-def compile_production(
-    intake: Any,
-    *,
-    now: datetime | None = None,
-    clock: Clock | None = None,
-) -> dict[str, Any]:
-    """Compile using trusted process time, never caller-supplied evaluation time."""
-    if now is not None and clock is not None:
-        raise InputError("provide now or clock, not both")
-    trusted = _trusted_now(clock() if clock is not None else now)
-    stamped = copy.deepcopy(intake)
-    if not isinstance(stamped, dict):
-        raise InputError("intake must be an object")
-    stamped["evaluated_at_utc"] = _utc_text(trusted)
-    return compile_qualification(stamped)
-
-
 def verify_packet(packet: Any) -> bool:
-    """Verify receipt integrity and the currentness-aware deterministic semantics."""
+    """Verify receipt integrity and deterministic historical semantics."""
     required = {
         "schema", "operation", "owner", "model", "evaluated_at_utc", "buyer",
         "rfp_number", "question_deadline_utc", "proposal_deadline_utc",
@@ -145,30 +154,62 @@ def _decision_body(decision: dict[str, Any]) -> dict[str, Any]:
     return body
 
 
-def verify_packet_current(
-    packet: Any,
-    *,
-    now: datetime | None = None,
-    clock: Clock | None = None,
-) -> bool:
-    """Verify semantics and ensure trusted current time reproduces the decision."""
-    verify_packet(packet)
-    if now is not None and clock is not None:
-        raise InputError("provide now or clock, not both")
-    trusted = _trusted_now(clock() if clock is not None else now)
-    evaluated = _dt(packet["evaluated_at_utc"])
-    if evaluated > trusted + _FUTURE_SKEW:
-        raise InputError("packet evaluation time is ahead of trusted current time")
-    current_intake = {
-        "schema": SCHEMA,
-        "evaluated_at_utc": _utc_text(trusted),
-        "source_generation": packet["source_generation"],
-        "candidate": packet["candidate"],
-    }
-    current = compile_qualification(current_intake)
-    if _decision_body(packet["decision"]) != _decision_body(current["decision"]):
-        raise InputError("packet decision is no longer current")
-    return True
+def _make_current_api(
+    process_now,
+    compile_historical,
+    verify_historical,
+    parse_dt,
+    utc_text,
+    decision_body,
+    deep_copy,
+    input_error,
+    future_skew,
+):
+    """Bind every CURRENT dependency so module-global rebinding is irrelevant."""
+
+    def compile_production(intake: Any) -> dict[str, Any]:
+        """Compile with process-owned UTC; caller cannot select evaluation time."""
+        trusted = process_now()
+        stamped = deep_copy(intake)
+        if not isinstance(stamped, dict):
+            raise input_error("intake must be an object")
+        stamped["evaluated_at_utc"] = utc_text(trusted)
+        return compile_historical(stamped)
+
+    def verify_packet_current(packet: Any) -> bool:
+        """Verify semantics, then reacquire process-owned UTC for currentness."""
+        verify_historical(packet)
+        trusted = process_now()
+        evaluated = parse_dt(packet["evaluated_at_utc"])
+        if evaluated > trusted + future_skew:
+            raise input_error("packet evaluation time is ahead of trusted current time")
+        current_intake = {
+            "schema": SCHEMA,
+            "evaluated_at_utc": utc_text(trusted),
+            "source_generation": packet["source_generation"],
+            "candidate": packet["candidate"],
+        }
+        current = compile_historical(current_intake)
+        if decision_body(packet["decision"]) != decision_body(current["decision"]):
+            raise input_error("packet decision is no longer current")
+        return True
+
+    return compile_production, verify_packet_current
+
+
+compile_production, verify_packet_current = _make_current_api(
+    _PROCESS_UTC_NOW,
+    compile_qualification,
+    verify_packet,
+    _dt,
+    _utc_text,
+    _decision_body,
+    copy.deepcopy,
+    InputError,
+    _FUTURE_SKEW,
+)
+del _make_current_api
+del _PROCESS_UTC_NOW
 
 
 def render_markdown(packet: dict[str, Any]) -> str:
