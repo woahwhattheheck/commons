@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 112,
-    "open_pull_requests": 53,
-    "runs_in_progress": 1,
-    "runs_queued": 72
+    "open_issues": 113,
+    "open_pull_requests": 56,
+    "runs_in_progress": 18,
+    "runs_queued": 73
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,24 +69,57 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "aegis/titan-descriptor-root-custody-20260915",
-      "created_at": "2026-09-16T02:57:45Z",
+      "branch": "zic/osuchsh-gme-resident-data-20260916",
+      "created_at": "2026-09-16T10:33:41Z",
       "draft": false,
-      "head_sha": "ff556e49d1048d9d758d568051e42bfba2908614",
-      "number": 14793,
-      "title": "TITAN V4: close descriptor custody root acquisition",
-      "updated_at": "2026-09-16T04:54:06Z"
+      "head_sha": "e987e57958c63100904dc71d18bffc757ddab46d",
+      "number": 14807,
+      "title": "Revenue: build OSU-CHS GME resident-data pursuit prototype",
+      "updated_at": "2026-09-16T10:33:41Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zrwf-p4c7/numih-evidence-authority-recovery-20260915",
-      "created_at": "2026-09-16T02:21:39Z",
+      "branch": "zvm-r4x8/numih-cf-postmerge-fix-20260916",
+      "created_at": "2026-09-16T10:29:14Z",
       "draft": false,
-      "head_sha": "5cf536092e6312c80f548775b918cb1f0b1497dc",
-      "number": 14791,
-      "title": "feat(numih): bind packet readiness to retained source bytes",
-      "updated_at": "2026-09-16T02:50:41Z"
+      "head_sha": "97bf0f38109b2a55eaf4a57347120d72a1d8cfda",
+      "number": 14806,
+      "title": "Fix NUMIH Unicode format-control authority escape",
+      "updated_at": "2026-09-16T10:32:05Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-cobaltharbor/learn2design-dual-input-recovery-20260916",
+      "created_at": "2026-09-16T10:21:26Z",
+      "draft": false,
+      "head_sha": "9c554591863d42fae5c8c4c90dbc0ac7a8352c67",
+      "number": 14802,
+      "title": "Learn2Design: strict retained-evidence boundary + stale finalization",
+      "updated_at": "2026-09-16T10:22:38Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zct-m4r7/right-now-human-truth-recovery-20260916",
+      "created_at": "2026-09-16T10:20:42Z",
+      "draft": false,
+      "head_sha": "ca2a9c372b51d492e50025254e034e0def6f7ffd",
+      "number": 14801,
+      "title": "[ZCT-M4R7] Bind right-now human truth to canonical reply evidence",
+      "updated_at": "2026-09-16T10:34:46Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "codex/titan-v4-reset-consecutive-absence-20260916",
+      "created_at": "2026-09-16T09:05:02Z",
+      "draft": false,
+      "head_sha": "8851163e0a5df417d494d3daffb1e21ffd419f31",
+      "number": 14798,
+      "title": "test: certify consecutive reset absence fail-closed",
+      "updated_at": "2026-09-16T09:20:50Z"
     },
     {
       "author": "woahwhattheheck",
@@ -142,39 +175,6 @@
       "number": 14780,
       "title": "Repair creative-review input custody predecessor failures",
       "updated_at": "2026-09-16T01:05:50Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "z-quorum/learn2design-provenance-20260915",
-      "branch": "zsk-h4q9/learn2design-unicode-closure",
-      "created_at": "2026-09-16T00:37:37Z",
-      "draft": false,
-      "head_sha": "ad8a22b25efa67111d34f72a9bdfe85be7e864da",
-      "number": 14776,
-      "title": "Learn2Design: fail closed on non-scalar Unicode evidence",
-      "updated_at": "2026-09-16T00:43:37Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zlh-p6r8/uark-current-authority-recovery-20260915",
-      "created_at": "2026-09-16T00:27:58Z",
-      "draft": false,
-      "head_sha": "68049d74646c9a09b4e3d3275f2f6aea3bd5bdba",
-      "number": 14770,
-      "title": "UArk: freeze direct CLI authority and truth labels",
-      "updated_at": "2026-09-16T01:17:52Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zcp-w8q4/slack-mirror-receipts-current-main-20260915",
-      "created_at": "2026-09-16T00:19:03Z",
-      "draft": false,
-      "head_sha": "3ffd216de22d76838863e9c9aa09960c61ef1560",
-      "number": 14768,
-      "title": "feat(slack): land durable mirror receipts on current main",
-      "updated_at": "2026-09-16T00:25:37Z"
     }
   ],
   "open_heads": {
@@ -229,13 +229,115 @@
     "14784": "34d554e66a6c3317c8ff64861802bcc30ca9cea3",
     "14785": "3c2919782b6d8f14e8d5f6a99369c37a7e61496a",
     "14788": "ffaff5aa571aaccedd41f82c0eba85b09586f230",
-    "14791": "5cf536092e6312c80f548775b918cb1f0b1497dc",
-    "14793": "ff556e49d1048d9d758d568051e42bfba2908614"
+    "14798": "8851163e0a5df417d494d3daffb1e21ffd419f31",
+    "14801": "ca2a9c372b51d492e50025254e034e0def6f7ffd",
+    "14802": "9c554591863d42fae5c8c4c90dbc0ac7a8352c67",
+    "14806": "97bf0f38109b2a55eaf4a57347120d72a1d8cfda",
+    "14807": "e987e57958c63100904dc71d18bffc757ddab46d"
   },
-  "pulls_listed": 53,
+  "pulls_listed": 56,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 72.0,
+  "queue_depth_per_runner": 4.1,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "zqa-h9v2/numih-red-recovery-20260916",
+      "branch": "zvm-r4x8/numih-format-control-repair-20260916",
+      "closed_at": "2026-09-16T10:29:24Z",
+      "head_sha": "557c95605110f4010cb4bf7c68f64d8a244b6512",
+      "merged_at": null,
+      "number": 14804,
+      "state": "CLOSED",
+      "title": "[SUPERSEDED] Reject Unicode format controls in NUMIH authority text"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zrwf-p4c7/numih-evidence-authority-recovery-20260915",
+      "closed_at": "2026-09-16T10:26:52Z",
+      "head_sha": "5cf536092e6312c80f548775b918cb1f0b1497dc",
+      "merged_at": null,
+      "number": 14791,
+      "state": "CLOSED",
+      "title": "feat(numih): bind packet readiness to retained source bytes"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zqa-h9v2/numih-red-recovery-20260916",
+      "closed_at": "2026-09-16T10:25:46Z",
+      "head_sha": "4f768c268adda14ec5739afef391c17daa17eae5",
+      "merged_at": "2026-09-16T10:25:45Z",
+      "number": 14799,
+      "state": "MERGED",
+      "title": "fix(numih): close render and hostile-input authority gaps"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "zqa-h9v2/numih-red-recovery-20260916",
+      "branch": "zvm-r4x8/numih-surrogate-diagnostic-repair-20260916",
+      "closed_at": "2026-09-16T10:23:36Z",
+      "head_sha": "21569622e3e6afcaff4c328c57f81b9df5405803",
+      "merged_at": "2026-09-16T10:23:35Z",
+      "number": 14803,
+      "state": "MERGED",
+      "title": "Fix NUMIH duplicate-surrogate diagnostic escape"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zbc-p8n3/learn2design-provenance-finalize-20260916",
+      "closed_at": "2026-09-16T10:12:16Z",
+      "head_sha": "c75395da4c0fe126049e90b77b7c5dd9607866d1",
+      "merged_at": null,
+      "number": 14800,
+      "state": "CLOSED",
+      "title": "DO NOT MERGE \u2014 Learn2Design fresh-main donor snapshot"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "bounty/1579-commons-rustchain-link-20260916",
+      "closed_at": "2026-09-16T08:31:58Z",
+      "head_sha": "8bf0518ce053dc4c9984b671e040a620e36cd9aa",
+      "merged_at": "2026-09-16T08:31:58Z",
+      "number": 14797,
+      "state": "MERGED",
+      "title": "docs: link RustChain as related agent-economy infrastructure"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "aegis/crg-overlay-reaching-defs-20260916",
+      "closed_at": "2026-09-16T07:09:59Z",
+      "head_sha": "af0a712ba70ffba708c9dc1c08d7f9c515bd382a",
+      "merged_at": "2026-09-16T07:09:58Z",
+      "number": 14796,
+      "state": "MERGED",
+      "title": "fix(crg): bind overlay CRG003 to reaching defs and if-fallthrough"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "grok/titan-canonical-evaluator-package-rebuild-20260916-01",
+      "closed_at": "2026-09-16T07:09:45Z",
+      "head_sha": "b063dadc79193f4c018521e4ca9379c1fa7cf88d",
+      "merged_at": "2026-09-16T07:09:45Z",
+      "number": 14795,
+      "state": "MERGED",
+      "title": "TITAN: rebuild canonical package for landed evaluator generation"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "aegis/titan-descriptor-root-custody-20260915",
+      "closed_at": "2026-09-16T07:01:20Z",
+      "head_sha": "697df8ca5bb40e74239a058fc20e43e5e845ecae",
+      "merged_at": "2026-09-16T07:01:20Z",
+      "number": 14793,
+      "state": "MERGED",
+      "title": "TITAN V4: close descriptor custody root acquisition"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -301,109 +403,10 @@
       "number": 14790,
       "state": "MERGED",
       "title": "fix: close strict JSON exception escapes in paid proof"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "z-sol-01a/saas-migration-parity-14205-recovery",
-      "branch": "cairn56/saas-parity-final-visibility-14762",
-      "closed_at": "2026-09-16T02:08:25Z",
-      "head_sha": "fbdb6cb8c61b65a40081432f9a4e53d470c03610",
-      "merged_at": "2026-09-16T02:08:25Z",
-      "number": 14787,
-      "state": "MERGED",
-      "title": "fix: close post-fsync publication substitution seam"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zrwf-p4c7/proposal-gate-lifecycle-recovery-14270",
-      "closed_at": "2026-09-16T01:59:42Z",
-      "head_sha": "a14d6ecf2956bdab20ac463c8fee9e597872ac4d",
-      "merged_at": "2026-09-16T01:59:42Z",
-      "number": 14786,
-      "state": "MERGED",
-      "title": "feat(proposal-gate): recover lifecycle readiness with fail-closed evidence"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zns-r8k5/commercial-waste-postmerge-authority-20260914",
-      "closed_at": "2026-09-16T01:56:28Z",
-      "head_sha": "13737e89e4cb775929939385a9d92eaaaf516555",
-      "merged_at": "2026-09-16T01:56:28Z",
-      "number": 14651,
-      "state": "MERGED",
-      "title": "Fix commercial-waste invoice custody and current-service authority"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zss-k7v2/proposal-gate-lifecycle-14251",
-      "closed_at": "2026-09-16T01:55:46Z",
-      "head_sha": "86c47a9e32a67eece1382899a898d9ccf40e26da",
-      "merged_at": null,
-      "number": 14270,
-      "state": "CLOSED",
-      "title": "feat(proposal-gate): model submission and award readiness"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zvk-r6m8/adia-structural-break-realtime-20260914",
-      "closed_at": "2026-09-16T01:44:08Z",
-      "head_sha": "bd6b45abe92c563360cd02a2cd138dd55ff9f413",
-      "merged_at": null,
-      "number": 14530,
-      "state": "CLOSED",
-      "title": "research: add ADIA real-time structural-break carrier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-kh-h6q2/teaming-conversion-control-20260913",
-      "closed_at": "2026-09-16T01:29:04Z",
-      "head_sha": "51a23e49c939f3090aedd852539fa2f1806ae630",
-      "merged_at": null,
-      "number": 13844,
-      "state": "CLOSED",
-      "title": "feat(revenue): evidence-bound teaming conversion control"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ztk-m7q3/paid-proof-provenance-v2",
-      "closed_at": "2026-09-16T01:28:45Z",
-      "head_sha": "40043254cc8aae3495b7bd4fcfc4eedc2e02b20b",
-      "merged_at": null,
-      "number": 14533,
-      "state": "CLOSED",
-      "title": "Revenue: fail closed on self-attested paid-proof provenance"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsf-k7m3/sophelio-dual-award-20260913",
-      "closed_at": "2026-09-16T01:26:17Z",
-      "head_sha": "61b6955c3db6ae10a71d54238243c87576a77166",
-      "merged_at": null,
-      "number": 14209,
-      "state": "CLOSED",
-      "title": "Build Sophelio dual-award shot-group transfer carrier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zck-m6v2/call-e-routescout-20260913",
-      "closed_at": "2026-09-16T01:26:04Z",
-      "head_sha": "2182d07cd8750087a73f2aea2455890d75daf251",
-      "merged_at": null,
-      "number": 13999,
-      "state": "CLOSED",
-      "title": "CALL-E RouteScout: approval-gated procurement routing agent"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-16T06:44:35Z",
+  "unchanged_since": "2026-09-16T10:34:52Z",
   "undatable_pulls": []
 }
