@@ -213,52 +213,86 @@ class AcceptanceTests(unittest.TestCase):
         with self.assertRaisesRegex(AcceptanceError, "key_field must be a non-empty string"):
             reconcile_records(self.source, self.target, key_field=7)
 
-    def test_lone_surrogate_cli_fails_bounded_in_normal_and_optimized_modes(self):
+    def _write_cli_support_files(self, tmp: Path):
+        target = tmp / "target.json"
+        phases = tmp / "phases.json"
+        interface_evidence = tmp / "interfaces.json"
+        expected = tmp / "expected_interfaces.json"
+        target.write_text(json.dumps(self.target), encoding="utf-8")
+        phases.write_text(json.dumps(phase_evidence()), encoding="utf-8")
+        interface_evidence.write_text(json.dumps(interfaces()), encoding="utf-8")
+        expected.write_text(json.dumps(expected_interfaces()), encoding="utf-8")
+        return target, phases, interface_evidence, expected
+
+    def _run_cli(self, source, target, phases, interface_evidence, expected, optimized):
         repo_root = Path(__file__).resolve().parents[2]
+        command = [sys.executable]
+        if optimized:
+            command.append("-O")
+        command.extend(
+            [
+                "-m",
+                "revenue.columbia_erp_acceptance.acceptance",
+                "--source",
+                str(source),
+                "--target",
+                str(target),
+                "--phases",
+                str(phases),
+                "--interfaces",
+                str(interface_evidence),
+                "--expected-interfaces",
+                str(expected),
+            ]
+        )
+        return subprocess.run(
+            command,
+            cwd=repo_root,
+            capture_output=True,
+            text=True,
+            timeout=20,
+            check=False,
+        )
+
+    def test_lone_surrogate_cli_fails_bounded_in_normal_and_optimized_modes(self):
         with tempfile.TemporaryDirectory() as tmpdir:
             tmp = Path(tmpdir)
             source = tmp / "source.json"
-            target = tmp / "target.json"
-            phases = tmp / "phases.json"
-            interface_evidence = tmp / "interfaces.json"
-            expected = tmp / "expected_interfaces.json"
             surrogate_fixture = '[{"key":"GL-100","amount":"\\ud800"}]'
             source.write_text(surrogate_fixture, encoding="ascii")
-            target.write_text(surrogate_fixture, encoding="ascii")
-            phases.write_text(json.dumps(phase_evidence()), encoding="utf-8")
-            interface_evidence.write_text(json.dumps(interfaces()), encoding="utf-8")
-            expected.write_text(json.dumps(expected_interfaces()), encoding="utf-8")
+            target, phases, interface_evidence, expected = self._write_cli_support_files(tmp)
 
             for optimized in (False, True):
-                command = [sys.executable]
-                if optimized:
-                    command.append("-O")
-                command.extend(
-                    [
-                        "-m",
-                        "revenue.columbia_erp_acceptance.acceptance",
-                        "--source",
-                        str(source),
-                        "--target",
-                        str(target),
-                        "--phases",
-                        str(phases),
-                        "--interfaces",
-                        str(interface_evidence),
-                        "--expected-interfaces",
-                        str(expected),
-                    ]
-                )
-                result = subprocess.run(
-                    command,
-                    cwd=repo_root,
-                    capture_output=True,
-                    text=True,
-                    timeout=20,
-                    check=False,
+                result = self._run_cli(
+                    source,
+                    target,
+                    phases,
+                    interface_evidence,
+                    expected,
+                    optimized,
                 )
                 self.assertEqual(result.returncode, 2, result.stderr)
                 self.assertIn("string is not valid UTF-8", result.stderr)
+                self.assertNotIn("Traceback", result.stderr)
+
+    def test_raw_invalid_utf8_cli_fails_bounded_in_normal_and_optimized_modes(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp = Path(tmpdir)
+            source = tmp / "source.json"
+            source.write_bytes(b'[{"key":"GL-100","amount":"\xff"}]')
+            target, phases, interface_evidence, expected = self._write_cli_support_files(tmp)
+
+            for optimized in (False, True):
+                result = self._run_cli(
+                    source,
+                    target,
+                    phases,
+                    interface_evidence,
+                    expected,
+                    optimized,
+                )
+                self.assertEqual(result.returncode, 2, result.stderr)
+                self.assertIn("input is not valid UTF-8", result.stderr)
                 self.assertNotIn("Traceback", result.stderr)
 
 
