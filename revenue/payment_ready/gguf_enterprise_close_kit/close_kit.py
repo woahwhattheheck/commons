@@ -7,28 +7,30 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
 
-AUTHORITY_SCHEMA = "tjlabs.gguf-12k-authority/v1"
-INTAKE_SCHEMA = "tjlabs.gguf-12k-intake/v1"
-EVIDENCE_SCHEMA = "tjlabs.gguf-12k-delivery-evidence/v1"
-ACCEPTANCE_SCHEMA = "tjlabs.gguf-12k-acceptance/v1"
-CLOSE_PACKET_SCHEMA = "tjlabs.gguf-12k-close-packet/v1"
+AUTHORITY_SCHEMA = "tjlabs.gguf-12k-authority/v2"
+INTAKE_SCHEMA = "tjlabs.gguf-12k-intake/v2"
+EVIDENCE_SCHEMA = "tjlabs.gguf-12k-delivery-evidence/v2"
+ACCEPTANCE_SCHEMA = "tjlabs.gguf-12k-acceptance/v2"
+CLOSE_PACKET_SCHEMA = "tjlabs.gguf-12k-close-packet/v2"
 
 OFFER_ID = "gguf-diagnostic-10d-12k"
 PUBLIC_PRODUCT_NAME = "White Box diagnostic"
+CURRENCY = "USD"
 FIXED_AMOUNT_USD = 12000
 TERM_CALENDAR_DAYS = 10
 M1_AMOUNT_USD = 6000
 M2_AMOUNT_USD = 6000
-M2_DUE = "on AT1-AT6 acceptance"
 M1_DUE = "before customer file exchange; after NDA and SOW signing"
+M2_DUE = "on AT1-AT6 acceptance"
 ACCEPTANCE_RULE = "rollback evidence, not metric lift"
 ACCEPTANCE_IDS = ("AT1", "AT2", "AT3", "AT4", "AT5", "AT6")
 PUBLIC_SURFACE = "diagnostic.html"
 CANONICAL_PACK = "revenue/payment_ready/pack.json"
 CANONICAL_RECOVERY = "revenue/payment_ready/recovery.json"
+RECOVERY_RECEIPT_SCHEMA = "revenue-recovery/v1"
 SAFE_EVIDENCE_NONE = "NONE"
-CURRENCY = "USD"
-DEFAULT_REPO_ROOT = Path(__file__).resolve().parents[3]
+SYNTHETIC_MODE = "SYNTHETIC_REHEARSAL"
+PRODUCTION_MODE = "PRODUCTION"
 
 AUTHORITY_FALSE = {
     "buyer_contact_authorized": False,
@@ -48,22 +50,9 @@ SENSITIVE_KEY_ALLOWLIST = {
     "raw_model_public_allowed",
 }
 SENSITIVE_KEY_PARTS = {
-    "password",
-    "passwd",
-    "secret_value",
-    "credential_value",
-    "private_key",
-    "api_key",
-    "auth_token",
-    "access_token",
-    "routing_number",
-    "account_number",
-    "card_number",
-    "cvv",
-    "tax_id",
-    "model_bytes",
-    "gguf_bytes",
-    "raw_model",
+    "password", "passwd", "secret_value", "credential_value", "private_key",
+    "api_key", "auth_token", "access_token", "routing_number", "account_number",
+    "card_number", "cvv", "tax_id", "model_bytes", "gguf_bytes", "raw_model",
     "signed_document_bytes",
 }
 
@@ -96,7 +85,16 @@ def strict_load(path: str | Path) -> Any:
 
 
 def canonical_json(value: Any) -> bytes:
-    return (json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n").encode("utf-8")
+    return (
+        json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+        + "\n"
+    ).encode("utf-8")
+
+
+def canonical_compact_json(value: Any) -> bytes:
+    return json.dumps(
+        value, sort_keys=True, separators=(",", ":"), ensure_ascii=False
+    ).encode("utf-8")
 
 
 def sha256_hex(data: bytes) -> str:
@@ -188,46 +186,46 @@ def _add_receipt(packet: dict[str, Any]) -> dict[str, Any]:
     return out
 
 
-def _validate_authority_packet(authority: Any) -> dict[str, Any]:
-    auth = _dict(authority, "authority")
-    if auth.get("schema") != AUTHORITY_SCHEMA:
-        raise ContractError("authority: unsupported schema")
-    expected = {
-        "offer_id": OFFER_ID,
-        "public_product_name": PUBLIC_PRODUCT_NAME,
-        "fixed_amount_usd": FIXED_AMOUNT_USD,
-        "term_calendar_days": TERM_CALENDAR_DAYS,
-        "m1_amount_usd": M1_AMOUNT_USD,
-        "m1_due": M1_DUE,
-        "m2_amount_usd": M2_AMOUNT_USD,
-        "m2_due": M2_DUE,
-        "currency": CURRENCY,
-        "acceptance_rule": ACCEPTANCE_RULE,
-        "acceptance_ids": list(ACCEPTANCE_IDS),
-        "public_surface": PUBLIC_SURFACE,
-        "public_surface_kind": "PURCHASE_INTENT_ONLY",
-        "payment_collection_on_public_surface": False,
+def _terms_record(pack: dict[str, Any]) -> dict[str, Any]:
+    offer = _dict(pack.get("offer"), "pack.offer")
+    tests = _list(pack.get("acceptance_tests"), "pack.acceptance_tests", min_items=6, max_items=6)
+    milestones = _list(offer.get("milestones"), "pack.offer.milestones", min_items=2, max_items=2)
+    return {
+        "acceptance_rule": offer.get("acceptance_rule"),
+        "acceptance_tests": [_dict(row, "pack.acceptance_tests[]").get("id") for row in tests],
+        "currency": offer.get("currency"),
+        "fixed_amount": offer.get("fixed_amount"),
+        "milestones": [
+            {
+                "amount": _dict(row, "pack.offer.milestones[]").get("amount"),
+                "due": _dict(row, "pack.offer.milestones[]").get("due"),
+                "id": _dict(row, "pack.offer.milestones[]").get("id"),
+            }
+            for row in milestones
+        ],
+        "offer_id": offer.get("offer_id"),
+        "term_calendar_days": offer.get("term_calendar_days"),
     }
-    for key, value in expected.items():
-        if auth.get(key) != value:
-            raise ContractError(f"authority.{key}: canonical authority drift")
-    for field in AUTHORITY_FALSE:
-        if auth.get(field) is not False:
-            raise ContractError(f"authority.{field}: must remain false")
-    for digest_field in ("pack_sha256", "recovery_sha256"):
-        _sha(auth.get(digest_field), f"authority.{digest_field}")
-    _text(auth.get("canonical_demand"), "authority.canonical_demand", max_len=64)
-    _text(auth.get("canonical_cash_state"), "authority.canonical_cash_state", max_len=64)
-    _int(auth.get("canonical_collected_cash_usd"), "authority.canonical_collected_cash_usd", 0)
-    receipt = _sha(auth.get("receipt_sha256"), "authority.receipt_sha256")
-    unsigned = dict(auth)
-    unsigned.pop("receipt_sha256", None)
-    if receipt != sha256_hex(canonical_json(unsigned)):
-        raise ContractError("authority.receipt_sha256: receipt mismatch")
-    return auth
 
 
-def _authority_packet(pack: Any, recovery: Any) -> dict[str, Any]:
+def _stage_state(recovery: dict[str, Any], stage_name: str) -> str:
+    matches = [
+        _dict(row, "recovery.stages[]")
+        for row in _list(recovery.get("stages"), "recovery.stages", min_items=1, max_items=32)
+        if _dict(row, "recovery.stages[]").get("stage") == stage_name
+    ]
+    if len(matches) != 1:
+        raise ContractError(f"recovery.stages: exactly one {stage_name} stage required")
+    return _text(matches[0].get("state"), f"recovery.stages.{stage_name}.state", max_len=64)
+
+
+def _authority_packet(
+    pack: Any,
+    recovery: Any,
+    *,
+    pack_text: str | None = None,
+    recovery_text: str | None = None,
+) -> dict[str, Any]:
     p = _dict(pack, "pack")
     r = _dict(recovery, "recovery")
     offer = _dict(p.get("offer"), "pack.offer")
@@ -237,6 +235,8 @@ def _authority_packet(pack: Any, recovery: Any) -> dict[str, Any]:
         raise ContractError("canonical offer id drift")
     if offer.get("public_product_name") != PUBLIC_PRODUCT_NAME:
         raise ContractError("canonical public product name drift")
+    if offer.get("currency") != CURRENCY or rec_offer.get("currency") != CURRENCY:
+        raise ContractError("canonical currency drift")
     if offer.get("fixed_amount") != FIXED_AMOUNT_USD or rec_offer.get("fixed_amount") != FIXED_AMOUNT_USD:
         raise ContractError("canonical fixed amount drift")
     if offer.get("term_calendar_days") != TERM_CALENDAR_DAYS or rec_offer.get("term_calendar_days") != TERM_CALENDAR_DAYS:
@@ -245,16 +245,28 @@ def _authority_packet(pack: Any, recovery: Any) -> dict[str, Any]:
         raise ContractError("canonical acceptance rule drift")
     if offer.get("payment_collection") != "NOT_PROVIDED_ON_THIS_PAGE":
         raise ContractError("canonical payment-collection boundary drift")
-    if offer.get("currency") != CURRENCY or rec_offer.get("currency") != CURRENCY:
-        raise ContractError("canonical currency drift")
 
     milestones = _list(offer.get("milestones"), "pack.offer.milestones", min_items=2, max_items=2)
     m1 = _dict(milestones[0], "pack.offer.milestones[0]")
     m2 = _dict(milestones[1], "pack.offer.milestones[1]")
-    if (m1.get("id"), m1.get("amount"), m1.get("due")) != ("M1_BEFORE_FILE", M1_AMOUNT_USD, M1_DUE):
+    if (m1.get("id"), m1.get("amount"), m1.get("due")) != (
+        "M1_BEFORE_FILE", M1_AMOUNT_USD, M1_DUE
+    ):
         raise ContractError("canonical M1 drift")
-    if (m2.get("id"), m2.get("amount"), m2.get("due")) != ("M2_AT1_AT6", M2_AMOUNT_USD, M2_DUE):
+    if (m2.get("id"), m2.get("amount"), m2.get("due")) != (
+        "M2_AT1_AT6", M2_AMOUNT_USD, M2_DUE
+    ):
         raise ContractError("canonical M2 drift")
+
+    rec_milestones = _list(rec_offer.get("milestones"), "recovery.offer.milestones", min_items=2, max_items=2)
+    rec_m1 = _dict(rec_milestones[0], "recovery.offer.milestones[0]")
+    rec_m2 = _dict(rec_milestones[1], "recovery.offer.milestones[1]")
+    if (rec_m1.get("id"), rec_m1.get("amount"), rec_m1.get("due")) != (
+        "M1_BEFORE_FILE", M1_AMOUNT_USD, M1_DUE
+    ):
+        raise ContractError("canonical recovery M1 drift")
+    if (rec_m2.get("id"), rec_m2.get("amount")) != ("M2_AT1_AT6", M2_AMOUNT_USD):
+        raise ContractError("canonical recovery M2 drift")
 
     pack_tests = tuple(
         _dict(row, "pack.acceptance_tests[]").get("id")
@@ -265,6 +277,21 @@ def _authority_packet(pack: Any, recovery: Any) -> dict[str, Any]:
     )
     if pack_tests != ACCEPTANCE_IDS or recovery_tests != ACCEPTANCE_IDS:
         raise ContractError("canonical AT1-AT6 set/order drift")
+
+    if rec_offer.get("source") != CANONICAL_PACK:
+        raise ContractError("canonical recovery source path drift")
+    terms_sha = sha256_hex(canonical_compact_json(_terms_record(p)))
+    if rec_offer.get("terms_sha256") != terms_sha:
+        raise ContractError("canonical recovery terms digest drift")
+
+    pack_source_sha = None
+    recovery_text_sha = None
+    if pack_text is not None:
+        pack_source_sha = sha256_hex(pack_text.encode("utf-8"))
+        if rec_offer.get("source_sha256") != pack_source_sha:
+            raise ContractError("canonical recovery exact source digest drift")
+    if recovery_text is not None:
+        recovery_text_sha = sha256_hex(recovery_text.encode("utf-8"))
 
     public = _dict(r.get("public_surface"), "recovery.public_surface")
     if public.get("path") != PUBLIC_SURFACE:
@@ -279,40 +306,78 @@ def _authority_packet(pack: Any, recovery: Any) -> dict[str, Any]:
     if processor.get("recommended_provider") != "Stripe":
         raise ContractError("processor recommendation drift")
 
+    contract = _dict(r.get("receipt_contract"), "recovery.receipt_contract")
+    required_contract = {
+        "schema": "revenue/payment_ready/receipt.schema.json",
+        "instrument": "host/revenue_recovery.py",
+        "artifact_digest_verified_against_exact_bytes": True,
+        "private_artifact_bytes_require_disjoint_external_evidence_root": True,
+        "predecessor_source_digest_verified_against_exact_bytes": True,
+        "runtime_deterministic_replay_is_transition_authority": True,
+        "schema_binds_later_stage_state_and_facts": True,
+        "nda_sow_m1_evidence_distinct": True,
+        "real_world_nda_sow_m1_order_is_owner_reported": True,
+    }
+    for key, expected in required_contract.items():
+        if contract.get(key) != expected:
+            raise ContractError(f"canonical recovery receipt contract drift: {key}")
+
     truth = _dict(r.get("truth"), "recovery.truth")
     collected_cash = _int(truth.get("collected_cash_usd"), "recovery.truth.collected_cash_usd", 0)
+    if rec_offer.get("collected_cash_usd") != collected_cash:
+        raise ContractError("canonical recovery cash disagreement")
+    if rec_offer.get("demand") != truth.get("demand"):
+        raise ContractError("canonical recovery demand disagreement")
+
     packet = {
         "schema": AUTHORITY_SCHEMA,
         "offer_id": OFFER_ID,
         "public_product_name": PUBLIC_PRODUCT_NAME,
+        "currency": CURRENCY,
         "fixed_amount_usd": FIXED_AMOUNT_USD,
         "term_calendar_days": TERM_CALENDAR_DAYS,
         "m1_amount_usd": M1_AMOUNT_USD,
         "m1_due": M1_DUE,
         "m2_amount_usd": M2_AMOUNT_USD,
         "m2_due": M2_DUE,
-        "currency": CURRENCY,
         "acceptance_rule": ACCEPTANCE_RULE,
         "acceptance_ids": list(ACCEPTANCE_IDS),
         "public_surface": PUBLIC_SURFACE,
         "public_surface_kind": "PURCHASE_INTENT_ONLY",
         "payment_collection_on_public_surface": False,
         "canonical_demand": _text(rec_offer.get("demand"), "recovery.offer.demand", max_len=64),
+        "canonical_buyer_truth": _text(truth.get("buyer"), "recovery.truth.buyer", max_len=64),
+        "canonical_legal_acceptance": _text(truth.get("legal_acceptance"), "recovery.truth.legal_acceptance", max_len=64),
+        "canonical_delivery": _text(truth.get("delivery"), "recovery.truth.delivery", max_len=64),
         "canonical_cash_state": _text(rec_offer.get("cash_state"), "recovery.offer.cash_state", max_len=64),
         "canonical_collected_cash_usd": collected_cash,
-        "pack_sha256": sha256_hex(canonical_json(p)),
-        "recovery_sha256": sha256_hex(canonical_json(r)),
+        "canonical_purchase_intent_stage": _stage_state(r, "PURCHASE_INTENT"),
+        "canonical_acceptance_stage": _stage_state(r, "ACCEPTANCE"),
+        "canonical_delivery_stage": _stage_state(r, "DELIVERY"),
+        "canonical_offer_source_sha256": _sha(rec_offer.get("source_sha256"), "recovery.offer.source_sha256"),
+        "canonical_terms_sha256": _sha(rec_offer.get("terms_sha256"), "recovery.offer.terms_sha256"),
+        "pack_text_sha256": pack_source_sha or SAFE_EVIDENCE_NONE,
+        "recovery_text_sha256": recovery_text_sha or SAFE_EVIDENCE_NONE,
         **AUTHORITY_FALSE,
     }
     return _add_receipt(packet)
 
 
 def load_authority(repo_root: str | Path) -> dict[str, Any]:
-    root = Path(repo_root)
-    return _authority_packet(strict_load(root / CANONICAL_PACK), strict_load(root / CANONICAL_RECOVERY))
+    root = Path(repo_root).resolve()
+    try:
+        pack_text = (root / CANONICAL_PACK).read_text(encoding="utf-8")
+        recovery_text = (root / CANONICAL_RECOVERY).read_text(encoding="utf-8")
+    except OSError as exc:
+        raise ContractError("canonical authority files unavailable") from exc
+    return _authority_packet(
+        strict_loads(pack_text), strict_loads(recovery_text),
+        pack_text=pack_text, recovery_text=recovery_text,
+    )
 
 
 def validate_authority_docs(pack: Any, recovery: Any) -> dict[str, Any]:
+    """Review helper only. Production compilation always calls load_authority(repo_root)."""
     return _authority_packet(pack, recovery)
 
 
@@ -320,11 +385,14 @@ def validate_intake(document: Any) -> dict[str, Any]:
     _assert_no_sensitive_keys(document)
     row = _exact_keys(
         document,
-        {"schema", "engagement_id", "customer_reference", "gguf", "harness", "scope", "security", "external_evidence"},
+        {"schema", "mode", "engagement_id", "customer_reference", "gguf", "harness", "scope", "security", "recovery_authority"},
         "intake",
     )
     if row["schema"] != INTAKE_SCHEMA:
         raise ContractError("intake.schema: unsupported")
+    mode = _text(row["mode"], "intake.mode", max_len=32)
+    if mode not in {SYNTHETIC_MODE, PRODUCTION_MODE}:
+        raise ContractError("intake.mode: unsupported")
     engagement_id = _ident(row["engagement_id"], "intake.engagement_id")
     customer_reference = _ident(row["customer_reference"], "intake.customer_reference")
 
@@ -366,14 +434,16 @@ def validate_intake(document: Any) -> dict[str, Any]:
         raise ContractError("intake.security.credentials_required: this carrier accepts no credentials")
     public_contact_url = _https(security["public_contact_url"], "intake.security.public_contact_url")
 
-    external = _exact_keys(
-        row["external_evidence"],
-        {"nda_receipt_sha256", "sow_receipt_sha256", "m1_payment_receipt_sha256"},
-        "intake.external_evidence",
+    recovery = _exact_keys(
+        row["recovery_authority"],
+        {"receipt_schema_version", "acceptance_receipt_sha256", "offer_source_sha256", "terms_sha256"},
+        "intake.recovery_authority",
     )
-    nda = _sha(external["nda_receipt_sha256"], "intake.external_evidence.nda_receipt_sha256", allow_none=True)
-    sow = _sha(external["sow_receipt_sha256"], "intake.external_evidence.sow_receipt_sha256", allow_none=True)
-    m1 = _sha(external["m1_payment_receipt_sha256"], "intake.external_evidence.m1_payment_receipt_sha256", allow_none=True)
+    if recovery["receipt_schema_version"] != RECOVERY_RECEIPT_SCHEMA:
+        raise ContractError("intake.recovery_authority.receipt_schema_version: unsupported")
+    acceptance_receipt = _sha(recovery["acceptance_receipt_sha256"], "intake.recovery_authority.acceptance_receipt_sha256", allow_none=True)
+    offer_source_sha = _sha(recovery["offer_source_sha256"], "intake.recovery_authority.offer_source_sha256", allow_none=True)
+    terms_sha = _sha(recovery["terms_sha256"], "intake.recovery_authority.terms_sha256", allow_none=True)
 
     holds: list[str] = []
     if not control:
@@ -382,15 +452,12 @@ def validate_intake(document: Any) -> dict[str, Any]:
         holds.append("HOLD_HARNESS_NOT_READY")
     if not bounded_intervention:
         holds.append("HOLD_UNBOUNDED_SCOPE")
-    if nda == SAFE_EVIDENCE_NONE:
-        holds.append("HOLD_NDA_EXTERNAL_EVIDENCE")
-    if sow == SAFE_EVIDENCE_NONE:
-        holds.append("HOLD_SOW_EXTERNAL_EVIDENCE")
-    if m1 == SAFE_EVIDENCE_NONE:
-        holds.append("HOLD_M1_EXTERNAL_EVIDENCE")
+    if mode == PRODUCTION_MODE:
+        holds.append("HOLD_RECOVERY_REPLAY_REQUIRED")
 
     packet = {
         "schema": INTAKE_SCHEMA,
+        "mode": mode,
         "engagement_id": engagement_id,
         "customer_reference": customer_reference,
         "gguf_sha256": gguf_sha,
@@ -402,16 +469,42 @@ def validate_intake(document: Any) -> dict[str, Any]:
         "objective": objective,
         "retention_days": retention_days,
         "public_contact_url": public_contact_url,
-        "external_prerequisite_receipts_present": {
-            "nda": nda != SAFE_EVIDENCE_NONE,
-            "sow": sow != SAFE_EVIDENCE_NONE,
-            "m1_payment": m1 != SAFE_EVIDENCE_NONE,
-        },
-        "qualification_state": "READY_FOR_OWNER_PRIVATE_REVIEW" if not holds else "HOLD",
+        "recovery_receipt_shape_present": acceptance_receipt != SAFE_EVIDENCE_NONE,
+        "recovery_source_generation_present": offer_source_sha != SAFE_EVIDENCE_NONE and terms_sha != SAFE_EVIDENCE_NONE,
+        "recovery_runtime_replay_verified": False,
+        "qualification_state": "SYNTHETIC_EVIDENCE_SHAPE_ONLY" if mode == SYNTHETIC_MODE and not holds else "HOLD",
         "holds": holds,
         **AUTHORITY_FALSE,
     }
     return _add_receipt(packet)
+
+
+def _validated_run(raw: Any, *, where: str, expected_kind: str, expected_input_sha: str, intake_result: dict[str, Any]) -> dict[str, Any]:
+    run = _exact_keys(
+        raw,
+        {"run_kind", "input_artifact_sha256", "harness_command_sha256", "eval_suite_sha256", "outcome_summary_sha256", "receipt_sha256"},
+        where,
+    )
+    payload = {
+        "run_kind": _text(run["run_kind"], f"{where}.run_kind", max_len=32),
+        "input_artifact_sha256": _sha(run["input_artifact_sha256"], f"{where}.input_artifact_sha256"),
+        "harness_command_sha256": _sha(run["harness_command_sha256"], f"{where}.harness_command_sha256"),
+        "eval_suite_sha256": _sha(run["eval_suite_sha256"], f"{where}.eval_suite_sha256"),
+        "outcome_summary_sha256": _sha(run["outcome_summary_sha256"], f"{where}.outcome_summary_sha256"),
+    }
+    receipt = _sha(run["receipt_sha256"], f"{where}.receipt_sha256")
+    if payload["run_kind"] != expected_kind:
+        raise ContractError(f"{where}.run_kind: expected {expected_kind}")
+    if payload["input_artifact_sha256"] != expected_input_sha:
+        raise ContractError(f"{where}: input artifact binding mismatch")
+    if payload["harness_command_sha256"] != intake_result["harness_command_sha256"]:
+        raise ContractError(f"{where}: harness command generation mismatch")
+    if payload["eval_suite_sha256"] != intake_result["eval_suite_sha256"]:
+        raise ContractError(f"{where}: eval suite generation mismatch")
+    expected_receipt = sha256_hex(canonical_json(payload))
+    if receipt != expected_receipt:
+        raise ContractError(f"{where}.receipt_sha256: semantic receipt mismatch")
+    return {**payload, "receipt_sha256": receipt}
 
 
 def evaluate_acceptance(intake: Any, evidence: Any) -> dict[str, Any]:
@@ -419,11 +512,13 @@ def evaluate_acceptance(intake: Any, evidence: Any) -> dict[str, Any]:
     _assert_no_sensitive_keys(evidence)
     row = _exact_keys(
         evidence,
-        {"schema", "engagement_id", "artifacts", "harness_runs", "finding", "delivery_receipt", "payment_reference_sha256"},
+        {"schema", "mode", "engagement_id", "artifacts", "harness_runs", "finding", "delivery_receipt", "payment_reference_sha256"},
         "evidence",
     )
     if row["schema"] != EVIDENCE_SCHEMA:
         raise ContractError("evidence.schema: unsupported")
+    if row["mode"] != intake_result["mode"]:
+        raise ContractError("evidence.mode: intake mismatch")
     engagement_id = _ident(row["engagement_id"], "evidence.engagement_id")
     if engagement_id != intake_result["engagement_id"]:
         raise ContractError("evidence.engagement_id: intake mismatch")
@@ -436,17 +531,15 @@ def evaluate_acceptance(intake: Any, evidence: Any) -> dict[str, Any]:
             _sha(artifact["sha256"], f"evidence.artifacts.{name}.sha256"),
             _int(artifact["size_bytes"], f"evidence.artifacts.{name}.size_bytes", 1),
         )
+    original_sha, original_size = parsed["original"]
+    ablated_sha, _ = parsed["ablated"]
+    restored_sha, restored_size = parsed["restored"]
 
-    runs = _exact_keys(
-        row["harness_runs"],
-        {"baseline_receipt_sha256", "ablation_receipt_sha256", "restore_receipt_sha256"},
-        "evidence.harness_runs",
-    )
-    run_hashes = [
-        _sha(runs["baseline_receipt_sha256"], "evidence.harness_runs.baseline_receipt_sha256"),
-        _sha(runs["ablation_receipt_sha256"], "evidence.harness_runs.ablation_receipt_sha256"),
-        _sha(runs["restore_receipt_sha256"], "evidence.harness_runs.restore_receipt_sha256"),
-    ]
+    runs = _exact_keys(row["harness_runs"], {"baseline", "ablation", "restore"}, "evidence.harness_runs")
+    baseline = _validated_run(runs["baseline"], where="evidence.harness_runs.baseline", expected_kind="BASELINE", expected_input_sha=original_sha, intake_result=intake_result)
+    ablation = _validated_run(runs["ablation"], where="evidence.harness_runs.ablation", expected_kind="ABLATION", expected_input_sha=ablated_sha, intake_result=intake_result)
+    restore = _validated_run(runs["restore"], where="evidence.harness_runs.restore", expected_kind="RESTORE", expected_input_sha=restored_sha, intake_result=intake_result)
+    run_receipts = [baseline["receipt_sha256"], ablation["receipt_sha256"], restore["receipt_sha256"]]
 
     finding = _exact_keys(row["finding"], {"report_sha256", "statement", "limitations"}, "evidence.finding")
     report_sha = _sha(finding["report_sha256"], "evidence.finding.report_sha256")
@@ -456,114 +549,129 @@ def evaluate_acceptance(intake: Any, evidence: Any) -> dict[str, Any]:
         for index, value in enumerate(_list(finding["limitations"], "evidence.finding.limitations", min_items=1, max_items=20))
     ]
 
-    delivery = _exact_keys(row["delivery_receipt"], {"receipt_sha256", "artifact_hashes"}, "evidence.delivery_receipt")
-    delivery_sha = _sha(delivery["receipt_sha256"], "evidence.delivery_receipt.receipt_sha256")
-    manifest_hashes = [
-        _sha(value, f"evidence.delivery_receipt.artifact_hashes[{index}]")
-        for index, value in enumerate(
-            _list(delivery["artifact_hashes"], "evidence.delivery_receipt.artifact_hashes", min_items=7, max_items=32)
-        )
-    ]
-    if len(manifest_hashes) != len(set(manifest_hashes)):
-        raise ContractError("evidence.delivery_receipt.artifact_hashes: duplicate hashes forbidden")
-
-    expected_delivery_sha = sha256_hex(
-        canonical_json(
-            {
-                "engagement_id": engagement_id,
-                "artifact_hashes": manifest_hashes,
-                "harness_command_sha256": intake_result["harness_command_sha256"],
-                "eval_suite_sha256": intake_result["eval_suite_sha256"],
-            }
-        )
+    delivery = _exact_keys(row["delivery_receipt"], {"manifest", "receipt_sha256"}, "evidence.delivery_receipt")
+    manifest = _exact_keys(
+        delivery["manifest"],
+        {"engagement_id", "original_sha256", "ablated_sha256", "restored_sha256", "baseline_run_receipt_sha256", "ablation_run_receipt_sha256", "restore_run_receipt_sha256", "report_sha256"},
+        "evidence.delivery_receipt.manifest",
     )
-    delivery_shape_bound = delivery_sha == expected_delivery_sha
+    normalized_manifest = {
+        "engagement_id": _ident(manifest["engagement_id"], "evidence.delivery_receipt.manifest.engagement_id"),
+        "original_sha256": _sha(manifest["original_sha256"], "evidence.delivery_receipt.manifest.original_sha256"),
+        "ablated_sha256": _sha(manifest["ablated_sha256"], "evidence.delivery_receipt.manifest.ablated_sha256"),
+        "restored_sha256": _sha(manifest["restored_sha256"], "evidence.delivery_receipt.manifest.restored_sha256"),
+        "baseline_run_receipt_sha256": _sha(manifest["baseline_run_receipt_sha256"], "evidence.delivery_receipt.manifest.baseline_run_receipt_sha256"),
+        "ablation_run_receipt_sha256": _sha(manifest["ablation_run_receipt_sha256"], "evidence.delivery_receipt.manifest.ablation_run_receipt_sha256"),
+        "restore_run_receipt_sha256": _sha(manifest["restore_run_receipt_sha256"], "evidence.delivery_receipt.manifest.restore_run_receipt_sha256"),
+        "report_sha256": _sha(manifest["report_sha256"], "evidence.delivery_receipt.manifest.report_sha256"),
+    }
+    expected_manifest = {
+        "engagement_id": engagement_id,
+        "original_sha256": original_sha,
+        "ablated_sha256": ablated_sha,
+        "restored_sha256": restored_sha,
+        "baseline_run_receipt_sha256": baseline["receipt_sha256"],
+        "ablation_run_receipt_sha256": ablation["receipt_sha256"],
+        "restore_run_receipt_sha256": restore["receipt_sha256"],
+        "report_sha256": report_sha,
+    }
+    if normalized_manifest != expected_manifest:
+        raise ContractError("evidence.delivery_receipt.manifest: semantic binding mismatch")
+    delivery_receipt_sha = _sha(delivery["receipt_sha256"], "evidence.delivery_receipt.receipt_sha256")
+    if delivery_receipt_sha != sha256_hex(canonical_json(normalized_manifest)):
+        raise ContractError("evidence.delivery_receipt.receipt_sha256: semantic receipt mismatch")
 
     payment_reference = _sha(row["payment_reference_sha256"], "evidence.payment_reference_sha256", allow_none=True)
-    original_sha, original_size = parsed["original"]
-    ablated_sha, _ = parsed["ablated"]
-    restored_sha, restored_size = parsed["restored"]
-    required_hashes = {original_sha, ablated_sha, restored_sha, *run_hashes, report_sha}
-
     tests = {
         "AT1": original_sha == intake_result["gguf_sha256"] and original_size == intake_result["gguf_size_bytes"],
         "AT2": ablated_sha != original_sha,
         "AT3": restored_sha == original_sha and restored_size == original_size,
-        "AT4": len(set(run_hashes)) == 3,
+        "AT4": len(set(run_receipts)) == 3,
         "AT5": bool(statement.strip()) and bool(limitations),
-        "AT6": required_hashes.issubset(set(manifest_hashes)) and delivery_shape_bound,
+        "AT6": True,
     }
     failed = [test_id for test_id in ACCEPTANCE_IDS if not tests[test_id]]
-    if intake_result["qualification_state"] != "READY_FOR_OWNER_PRIVATE_REVIEW":
-        verdict = "HOLD_INTAKE_PREREQUISITES"
-    elif failed:
-        verdict = "HOLD_ACCEPTANCE_EVIDENCE"
+    if intake_result["mode"] == SYNTHETIC_MODE:
+        verdict = "SYNTHETIC_AT1_AT6_COMPLETE_NON_PRODUCTION" if not failed else "SYNTHETIC_HOLD_ACCEPTANCE_EVIDENCE"
     else:
-        verdict = "AT1_AT6_EVIDENCE_READY_FOR_CUSTOMER_REVIEW"
+        verdict = "HOLD_RECOVERY_REPLAY_REQUIRED"
 
-    return _add_receipt(
-        {
-            "schema": ACCEPTANCE_SCHEMA,
-            "engagement_id": engagement_id,
-            "acceptance_rule": ACCEPTANCE_RULE,
-            "tests": tests,
-            "failed_tests": failed,
-            "verdict": verdict,
-            "payment_reference_present": payment_reference != SAFE_EVIDENCE_NONE,
-            "payment_reference_proves_acceptance": False,
-            "AT4_verified_receipt_binding": False,
-            "AT6_verified_receipt_binding": False,
-            "delivery_receipt_sha256": delivery_sha,
-            "finding_report_sha256": report_sha,
-            **AUTHORITY_FALSE,
-        }
-    )
+    return _add_receipt({
+        "schema": ACCEPTANCE_SCHEMA,
+        "mode": intake_result["mode"],
+        "engagement_id": engagement_id,
+        "acceptance_rule": ACCEPTANCE_RULE,
+        "tests": tests,
+        "failed_tests": failed,
+        "verdict": verdict,
+        "payment_reference_present": payment_reference != SAFE_EVIDENCE_NONE,
+        "payment_reference_proves_acceptance": False,
+        "delivery_receipt_sha256": delivery_receipt_sha,
+        "finding_report_sha256": report_sha,
+        **AUTHORITY_FALSE,
+    })
 
 
-def compile_close_packet(
-    authority: Any,
-    intake: Any,
-    evidence: Any | None = None,
-    *,
-    repo_root: str | Path | None = None,
-) -> dict[str, Any]:
-    live = load_authority(repo_root or DEFAULT_REPO_ROOT)
-    auth = _validate_authority_packet(authority)
-    if canonical_json(auth) != canonical_json(live):
-        raise ContractError("authority: live pack/recovery mismatch")
+def _canonical_blocker(authority: dict[str, Any]) -> str | None:
+    if authority["canonical_purchase_intent_stage"] == "NEEDS_BUYER":
+        return "HOLD_CANONICAL_NEEDS_BUYER"
+    if authority["canonical_acceptance_stage"] == "NEEDS_BUYER":
+        return "HOLD_CANONICAL_NEEDS_ACCEPTANCE"
+    if authority["canonical_delivery_stage"] in {"NEEDS_ACCEPTANCE", "NEEDS_BUYER"}:
+        return "HOLD_CANONICAL_NEEDS_DELIVERY"
+    if authority["canonical_legal_acceptance"] != "OWNER_REPORTED":
+        return "HOLD_CANONICAL_LEGAL_ACCEPTANCE"
+    if authority["canonical_delivery"] != "OWNER_REPORTED":
+        return "HOLD_CANONICAL_DELIVERY"
+    return None
+
+
+def compile_close_packet(repo_root: str | Path, intake: Any, evidence: Any | None = None) -> dict[str, Any]:
+    """Compile from current canonical repo authority. Caller authority packets are not accepted."""
+    auth = load_authority(repo_root)
     intake_result = validate_intake(intake)
     acceptance = evaluate_acceptance(intake, evidence) if evidence is not None else None
-    if acceptance is None:
-        state = "READY_FOR_OWNER_PRIVATE_REVIEW" if intake_result["qualification_state"] == "READY_FOR_OWNER_PRIVATE_REVIEW" else "HOLD"
-    elif acceptance["verdict"] == "AT1_AT6_EVIDENCE_READY_FOR_CUSTOMER_REVIEW":
-        state = "READY_FOR_CUSTOMER_ACCEPTANCE_REVIEW"
+    canonical_blocker = _canonical_blocker(auth)
+
+    if intake_result["mode"] == SYNTHETIC_MODE:
+        state = (
+            "SYNTHETIC_EVIDENCE_COMPLETE_NON_PRODUCTION"
+            if acceptance and acceptance["verdict"] == "SYNTHETIC_AT1_AT6_COMPLETE_NON_PRODUCTION"
+            else "SYNTHETIC_HOLD"
+        )
+    elif canonical_blocker is not None:
+        state = canonical_blocker
     else:
-        state = "HOLD"
-    return _add_receipt(
-        {
-            "schema": CLOSE_PACKET_SCHEMA,
-            "offer_id": OFFER_ID,
-            "authority_receipt_sha256": auth["receipt_sha256"],
-            "intake_receipt_sha256": intake_result["receipt_sha256"],
-            "acceptance_receipt_sha256": acceptance["receipt_sha256"] if acceptance else SAFE_EVIDENCE_NONE,
-            "state": state,
-            "customer_acceptance_required": True,
-            "customer_acceptance_is_external_event": True,
-            "public_purchase_intent_is_not_payment": True,
-            "payment_reference_is_not_acceptance": True,
-            "metric_lift_is_not_acceptance": True,
-            "rollback_evidence_is_required": True,
-            "expansion_path": "same-GGUF $30k / 30d pilot only after real AT1-AT6 acceptance; license only after paid delivery",
-            **AUTHORITY_FALSE,
-        }
-    )
+        state = "HOLD_RECOVERY_REPLAY_REQUIRED"
+
+    return _add_receipt({
+        "schema": CLOSE_PACKET_SCHEMA,
+        "offer_id": OFFER_ID,
+        "authority_receipt_sha256": auth["receipt_sha256"],
+        "canonical_offer_source_sha256": auth["canonical_offer_source_sha256"],
+        "canonical_terms_sha256": auth["canonical_terms_sha256"],
+        "intake_receipt_sha256": intake_result["receipt_sha256"],
+        "acceptance_receipt_sha256": acceptance["receipt_sha256"] if acceptance else SAFE_EVIDENCE_NONE,
+        "state": state,
+        "canonical_blocker": canonical_blocker or SAFE_EVIDENCE_NONE,
+        "recovery_runtime_replay_required_for_production": True,
+        "customer_acceptance_required": True,
+        "customer_acceptance_is_external_event": True,
+        "public_purchase_intent_is_not_payment": True,
+        "payment_reference_is_not_acceptance": True,
+        "metric_lift_is_not_acceptance": True,
+        "rollback_evidence_is_required": True,
+        "synthetic_mode_is_never_production_ready": True,
+        "expansion_path": "same-GGUF $30k / 30d pilot only after real AT1-AT6 acceptance; license only after paid delivery",
+        **AUTHORITY_FALSE,
+    })
 
 
-def verify_close_packet(packet: Any, authority: Any, intake: Any, evidence: Any | None = None) -> bool:
+def verify_close_packet(packet: Any, repo_root: str | Path, intake: Any, evidence: Any | None = None) -> bool:
     if type(packet) is not dict:
         return False
     try:
-        expected = compile_close_packet(authority, intake, evidence)
-    except (ContractError, KeyError, TypeError, ValueError):
+        expected = compile_close_packet(repo_root, intake, evidence)
+    except (ContractError, KeyError, TypeError, ValueError, OSError):
         return False
     return canonical_json(packet) == canonical_json(expected)
