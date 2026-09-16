@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 127,
-    "open_pull_requests": 81,
-    "runs_in_progress": 13,
-    "runs_queued": 671
+    "open_pull_requests": 80,
+    "runs_in_progress": 16,
+    "runs_queued": 662
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,24 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zsd-k7q3/muse-arbitration-liveness-20260916",
+      "created_at": "2026-09-16T14:48:10Z",
+      "draft": false,
+      "head_sha": "aa3148bf3a33fc15f1cb683185ca8e4e93fdacf4",
+      "number": 14895,
+      "title": "Muse arbitration liveness ledger: exact retry, binding, stale-selection evidence",
+      "updated_at": "2026-09-16T14:48:10Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "ztsy-n7q4/gtri-inventory-acceptance-20260916",
       "created_at": "2026-09-16T14:42:04Z",
       "draft": false,
       "head_sha": "8f7753643fe0a45e82cbf6be81946e33efc9fe13",
       "number": 14894,
       "title": "Revenue: GTRI Sunflower migration acceptance workshare",
-      "updated_at": "2026-09-16T14:42:04Z"
+      "updated_at": "2026-09-16T14:45:54Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 14880,
       "title": "fix(revenue): recover commercial funnel on current main",
       "updated_at": "2026-09-16T14:24:20Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol/land-bank-t12-09-26-readiness-20260916",
-      "created_at": "2026-09-16T14:15:04Z",
-      "draft": false,
-      "head_sha": "c80abd4e90a4c80c33adf7aec25bb102cdea7ccb",
-      "number": 14877,
-      "title": "revenue: Land Bank T12-09-26 fail-closed teaming readiness carrier",
-      "updated_at": "2026-09-16T14:20:37Z"
     }
   ],
   "open_heads": {
@@ -187,7 +187,6 @@
     "14395": "1b6907c68885d2feac44c15c2dd39f128864640d",
     "14454": "69b1cc3a9a3133ba6c5441eda3ad41712406f3fb",
     "14464": "e8b319f1300f64eca6cbcdbcd4330077574fdb0a",
-    "14553": "a04ac7399fba7ba8906ba63732a72af5f440b475",
     "14568": "d374fbe3553da4b1b4c1e512b9107e162cd92402",
     "14589": "c534accfe4842a0c4e4acf2ece9b5a21eb6a3b4e",
     "14632": "ec91a123231b3ad8f8813c22dd9751b1a7c2b6b4",
@@ -203,7 +202,6 @@
     "14715": "d21e068298412497d04c86225747d640af59b5e6",
     "14724": "b97d2acc3f8839fd41e70631f6f782a6dab1e67b",
     "14728": "33e117064c336cefc947c52b38dee311e8ca0818",
-    "14757": "ee474ce046917b3963ef18622915021ca2845def",
     "14762": "aa17ab8ec10cacb46370e9f36627311c990e335c",
     "14763": "d4bfb36dd3ebd277b418aa6f11979d2bedca4c65",
     "14764": "6d6dd3f82ec720dd024a92486865d6794edc3eaf",
@@ -258,12 +256,35 @@
     "14889": "ecc576d3de46a50ef3ea55c7aa9bd0f019692c46",
     "14890": "059027345fa93c5bcdaccc7a1d26dfc53b8b6727",
     "14891": "9ff1ac9a6cd77ef0863ddb5edf27b75f6b379622",
-    "14894": "8f7753643fe0a45e82cbf6be81946e33efc9fe13"
+    "14894": "8f7753643fe0a45e82cbf6be81946e33efc9fe13",
+    "14895": "aa3148bf3a33fc15f1cb683185ca8e4e93fdacf4"
   },
-  "pulls_listed": 81,
+  "pulls_listed": 80,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 51.6,
+  "queue_depth_per_runner": 41.4,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zik-m7q4/uiowa-workbench-recovery-20260915",
+      "closed_at": "2026-09-16T14:45:26Z",
+      "head_sha": "ee474ce046917b3963ef18622915021ca2845def",
+      "merged_at": null,
+      "number": 14757,
+      "state": "CLOSED",
+      "title": "feat(uiowa): recover local RFQ 18649 analyst workbench"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zvl-p8r6/uark-currentness-fixforward-20260914",
+      "closed_at": "2026-09-16T14:45:12Z",
+      "head_sha": "a04ac7399fba7ba8906ba63732a72af5f440b475",
+      "merged_at": null,
+      "number": 14553,
+      "state": "CLOSED",
+      "title": "Fix UArk RFP 09112026 currentness authority"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -406,32 +427,10 @@
       "number": 14709,
       "state": "CLOSED",
       "title": "Donor: make media-rights export generation + path custody atomic"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zym-l4v8/media-rights-ops-20260915",
-      "closed_at": "2026-09-16T14:13:28Z",
-      "head_sha": "6e3b3fe0f15b6d067712af533a27bff8f80c8390",
-      "merged_at": null,
-      "number": 14670,
-      "state": "CLOSED",
-      "title": "revenue: add content rights usage-window operations desk"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "ziq-k4r9/muse-election-v2-consolidation-14503",
-      "closed_at": "2026-09-16T14:10:17Z",
-      "head_sha": "3fcca188c872b35a64ec62c7fcfc991bf9fbe7b3",
-      "merged_at": null,
-      "number": 14866,
-      "state": "CLOSED",
-      "title": "Outbound: recover canonical Muse election v2 consolidation"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-16T14:44:40Z",
+  "unchanged_since": "2026-09-16T14:48:42Z",
   "undatable_pulls": []
 }
