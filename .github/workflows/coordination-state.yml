@@ -13,16 +13,16 @@ name: coordination-state
 
 on:
   schedule:
-    # Offset off :00 — scheduled runs are delayed hardest at the top of the hour.
     - cron: "7,37 * * * *"
   workflow_dispatch:
   pull_request:
     paths:
       - "host/coordination_state.py"
       - "host/swarm_review.py"
-      - "host/swarm_review_core.py"
       - "test_swarm_review.py"
+      - "test_swarm_review_pr_binding.py"
       - "ground/SWARM_ORDER.md"
+      - "ground/SWARM_EXECUTION_AUTHORITY.md"
       - "test_coordination_state.py"
       - ".github/workflows/coordination-state.yml"
 
@@ -46,11 +46,13 @@ jobs:
           sparse-checkout: |
             /host/coordination_state.py
             /host/swarm_review.py
-            /host/swarm_review_core.py
             /test_swarm_review.py
+            /test_swarm_review_pr_binding.py
             /test_coordination_state.py
       - name: Contract tests
-        run: python3 -m unittest -v test_coordination_state.py test_swarm_review.py
+        run: python3 -m unittest -v test_coordination_state.py test_swarm_review.py test_swarm_review_pr_binding.py
+      - name: Contract tests optimized
+        run: python3 -O -m unittest -v test_coordination_state.py test_swarm_review.py test_swarm_review_pr_binding.py
 
   publish:
     if: github.event_name != 'pull_request'
@@ -72,8 +74,8 @@ jobs:
           sparse-checkout: |
             /host/coordination_state.py
             /host/swarm_review.py
-            /host/swarm_review_core.py
             /ground/SWARM_ORDER.md
+            /ground/SWARM_EXECUTION_AUTHORITY.md
             /ground/SWARM_RELIABILITY.json
       - name: Publish coordination state to state/coordination
         env:

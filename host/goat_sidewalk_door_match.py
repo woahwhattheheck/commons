@@ -17,18 +17,17 @@ ROOT = Path(__file__).resolve().parent.parent
 PACK = ROOT / "packs" / "sidewalk-signal-web-desk-20260902-01"
 DOOR_REL = "packs/sidewalk-signal-web-desk-20260902-01/index.html"
 DOOR_BLOB = "638e60b4"
-# Larger-fixed KEEP (goat-sidewalk-door-live-cash-v1-keep-larger-fixed-20260916-01)
-# is additive — do not remint the Autopsy/$199 block. Paths only; no invented Stripe.
 DOOR_LIVE_CASH_V1 = (
     '<p id="live-cash" class="note"><strong>Live cash</strong> — '
     '<a href="../../agent-rescue.html">$29 Autopsy</a> · '
     '<a href="../../dealer-service-lead-rescue.html">$199 dealer</a> · '
     '<a href="../../referral-intake-completeness.html">$199 referral</a> · '
     '<a href="../../repair-booking-preflight.html">$199 repair</a> · '
-    '<a href="../../plant-downtime-handoff.html">$199 plant</a>. '
-    'Larger fixed: '
+    '<a href="../../plant-downtime-handoff.html">$199 plant</a>.</p>\n'
+    '<p class="note"><strong>Larger fixed engagements</strong> (separate product pages; checkout/intent stays there): '
     '<a href="../../diagnostic.html">GGUF diagnostic · $12,000 / 10 days</a> · '
-    '<a href="../../commercial.html">White Box pilot · $30,000 / 30 days</a>.</p>\n\n'
+    '<a href="../../commercial.html">White Box pilot · $30,000 / 30 days</a>. '
+    'Not remints of tip SKUs.</p>\n\n'
 ).encode("utf-8")
 DOOR_TITANMCP_PAD_POINTER_V1 = (
     '<section id="titanmcp-pad-pointer" class="law" aria-label="titanmcp contest pad">\n'
