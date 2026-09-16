@@ -41,3 +41,13 @@ Produce a short reproducible notebook/script + machine-readable result table con
 - limitations and plausible denominator/measurement confounds.
 
 No demographic or geographic group should be described as intrinsically deficient. Findings are about **mapping/data coverage and measurement systems**, not about the people living in a tract.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../agent-rescue.html)
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
