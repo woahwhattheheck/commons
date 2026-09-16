@@ -9,6 +9,21 @@ from pathlib import Path
 import board_ingest
 
 
+def live_cash_section(text: str, name: str) -> str:
+    """Return the live-cash door section. Posts on the same page stay speakable."""
+    marker = 'id="live-cash"'
+    start = text.find(marker)
+    if start < 0:
+        raise AssertionError("%s missing live-cash door" % name)
+    open_tag = text.rfind("<section", 0, start)
+    if open_tag < 0:
+        open_tag = start
+    end = text.find("</section>", start)
+    if end < 0:
+        raise AssertionError("%s live-cash door unclosed" % name)
+    return text[open_tag:end + len("</section>")]
+
+
 class BoardIngestLiveCashTests(unittest.TestCase):
     def test_helper_has_product_doors(self) -> None:
         root = board_ingest.live_cash_html()
@@ -55,9 +70,22 @@ class BoardIngestLiveCashTests(unittest.TestCase):
         for path, prefix in cases:
             text = path.read_text(encoding="utf-8")
             self.assertIn('id="live-cash"', text, path.name)
-            self.assertIn(prefix + "agent-rescue.html", text, path.name)
-            self.assertIn("$29 Autopsy", text, path.name)
-            self.assertNotIn("buy.stripe.com", text)
+            section = live_cash_section(text, path.name)
+            self.assertIn(prefix + "agent-rescue.html", section, path.name)
+            self.assertIn("$29 Autopsy", section, path.name)
+            self.assertNotIn("buy.stripe.com", section)
+
+    def test_live_cash_door_ignores_speakable_stripe_posts(self) -> None:
+        helper = board_ingest.live_cash_html()
+        page = (
+            helper
+            + '<article data-id="example-census"><pre>'
+            + "Existing rails only: https://buy.stripe.com/example-not-a-door"
+            + "</pre></article>"
+        )
+        section = live_cash_section(page, "synthetic-board")
+        self.assertNotIn("buy.stripe.com", section)
+        self.assertIn("buy.stripe.com", page)
 
 
 if __name__ == "__main__":
