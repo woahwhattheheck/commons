@@ -1,0 +1,41 @@
+name: Creative review approval desk evidence
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/hive/creative-review-approval-desk/**'
+      - '.github/workflows/creative-review-approval-desk.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'revenue/hive/creative-review-approval-desk/**'
+      - '.github/workflows/creative-review-approval-desk.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
+    defaults:
+      run:
+        working-directory: revenue/hive/creative-review-approval-desk
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile and whitespace audit
+        run: |
+          python -m py_compile *.py
+          python -m tabnanny *.py
+      - name: Focused and hostile tests
+        run: python -m unittest -v test_desk_core.py test_desk_hostile.py
+      - name: Optimized focused and hostile tests
+        run: python -O -m unittest -v test_desk_core.py test_desk_hostile.py
+      - name: Synthetic end-to-end demo and independent verification
+        run: python demo.py --workspace "$RUNNER_TEMP/creative-review-demo-${{ matrix.python-version }}" --replace
