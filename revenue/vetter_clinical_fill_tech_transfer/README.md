@@ -16,11 +16,19 @@ A candidate is not a current owner-review authorization. It is a sealed input/de
 
 ### Current owner-review authority
 
-`verify_report_current(candidate)` accepts no clock override. It re-evaluates the candidate snapshots and policy at newly sampled process UTC and requires the entire semantic decision projection—not merely READY/HOLD—to remain identical. Only this verifier emits schema `vetter-clinical-fill-tech-transfer-current-verification/v3` with authority mode `CURRENT_OWNER_REVIEW`.
+`verify_report_current(candidate)` accepts no clock override. Under the declared trusted-host runtime, it re-evaluates the candidate snapshots and policy at newly sampled process UTC and requires the entire semantic decision projection—not merely READY/HOLD—to remain identical. Only this verifier emits schema `vetter-clinical-fill-tech-transfer-current-verification/v3` with authority mode `CURRENT_OWNER_REVIEW`.
 
-`render_markdown(candidate)` is also a current-authority operation: it performs the same fresh process-time semantic gate before rendering. A stale/backdated READY candidate therefore cannot be rendered as current owner-review evidence.
+`render_markdown(candidate)` traverses the same fresh process-time semantic gate before rendering. A stale/backdated candidate therefore fails under an unmodified trusted runtime when its decision projection changes at real process UTC.
 
-This design intentionally does **not** pretend Python same-process reflection is a secrecy boundary. An importer may inspect closure cells and recover the retained deterministic classifier. That recovered explicit-time classifier can produce raw/historical decisions or candidate-shaped data, but it cannot make a stale decision pass fresh current verification/rendering.
+### Runtime trust contract
+
+The current Python library is an **application trust boundary, not a pure-Python sandbox**. `contract.json` is the controlling truth contract.
+
+The package does **not** claim resistance to arbitrary same-process monkeypatching or mutation of private helper globals. Python runtime state, private module state, the process environment, carrier source bytes, input acquisition, and policy custody are trusted host requirements. In particular, the retained classifier is an ordinary Python function and its `__globals__` dictionary is mutable; SHA-256 receipts bind data generations but do not attest runtime integrity.
+
+For a current owner-review run, the recommended operational boundary is a **controlled fresh interpreter CLI** using trusted carrier bytes and environment. Same-process private-helper mutation is explicitly outside the current authority claim. This is an intentional, executable scope statement, not a claim that reflection or Python objects are secret.
+
+This contract closes the latest review defect by removing the overbroad assertion that recovered mutable Python internals are mechanically tamper-resistant. The currentness guarantee is: with the declared host runtime trusted, the supported current API owns the clock, historical replay cannot emit the current schema, and current verification re-evaluates the candidate at process UTC.
 
 ### Historical/test replay
 
@@ -42,18 +50,18 @@ The canonical packet key is `project_id + molecule_id + batch_id + site_id`. Pri
 
 `synthetic_acceptance.py` is deliberately historical/test-only. Its deterministic envelope contains 144 synthetic/deidentified transfer packets: 120 `TRANSFER_READY` and four packets in each of six named HOLD families. The predecessor corpus proves exact distribution, field commitments, deterministic receipts, order invariance, strict generation/schema/role/digest custody, stale/future-time handling, duplicate JSON-key and non-finite JSON rejection, target-only handling, receipt tamper resistance, and create-exclusive outputs.
 
-The recovery corpus additionally proves current/historical schema separation, absence of caller-clock current API parameters, candidate-vs-authority separation, closure-introspection attack handling, fresh render/verify expiry, row-before-capture chronology, final-symlink rejection, retained-descriptor pathname-swap resistance, and in-read byte-cap enforcement.
+The recovery corpus additionally proves current/historical schema separation, absence of caller-clock current API parameters, candidate-vs-authority separation, closure-introspection attack handling under the declared trusted runtime, fresh render/verify expiry, row-before-capture chronology, final-symlink rejection, retained-descriptor pathname-swap resistance, and in-read byte-cap enforcement. `test_contract.py` separately proves the exact same-process mutation limitation is declared rather than hidden.
 
 ```bash
 python -m compileall -q .
-python -m unittest -v test_engine.py test_recovery.py
-python -O -m unittest -v test_engine.py test_recovery.py
+python -m unittest -v test_engine.py test_recovery.py test_contract.py
+python -O -m unittest -v test_engine.py test_recovery.py test_contract.py
 python synthetic_acceptance.py
 ```
 
 ## Production CLI
 
-Production candidate compilation and current verification sample process UTC internally:
+Production candidate compilation and current verification sample process UTC internally. Run the current lane from a controlled fresh interpreter when `CURRENT_OWNER_REVIEW` is being relied on:
 
 ```bash
 python engine.py compile --input request.json --report candidate.json --markdown current.md
