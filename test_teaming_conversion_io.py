@@ -75,8 +75,11 @@ class TeamingConversionIoTests(unittest.TestCase):
 
     def test_strict_json_normalizes_resource_errors_and_non_scalar_unicode(self):
         huge_integer = b'{"n":' + (b"9" * 5000) + b"}\n"
+        nested = (b"[" * 2000) + (b"]" * 2000) + b"\n"
         with self.assertRaises(ControlError):
             parse_json_bytes(huge_integer)
+        with self.assertRaises(ControlError):
+            parse_json_bytes(nested)
         with self.assertRaises(ControlError):
             canonical_bytes({"bad": "\ud800"})
 
