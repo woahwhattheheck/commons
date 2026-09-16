@@ -42,10 +42,18 @@ def _strict_list(value: Any, where: str) -> list[Any]:
     return value
 
 
+def _scalar_unicode(value: str, where: str) -> str:
+    try:
+        value.encode("utf-8", "strict")
+    except UnicodeEncodeError as exc:
+        raise ValidationError(f"{where} must contain scalar Unicode") from exc
+    return value
+
+
 def _string(value: Any, where: str) -> str:
     if type(value) is not str or not value.strip():
         raise ValidationError(f"{where} must be a non-empty string")
-    return value
+    return _scalar_unicode(value, where)
 
 
 def _keys(obj: dict[str, Any], required: set[str], optional: set[str], where: str) -> None:
@@ -70,9 +78,12 @@ def _utc(value: Any, where: str) -> datetime:
 
 
 def canonical_bytes(value: Any) -> bytes:
-    """Canonical JSON with booleans/ints/strings only; reject float authority."""
+    """Canonical JSON with booleans/ints/scalar-Unicode strings only; reject float authority."""
     def check(node: Any, where: str = "$") -> None:
-        if node is None or type(node) in (str, bool, int):
+        if node is None or type(node) in (bool, int):
+            return
+        if type(node) is str:
+            _scalar_unicode(node, where)
             return
         if type(node) is float:
             raise ValidationError(f"{where}: floats are forbidden; use integer scaled units")
@@ -84,6 +95,7 @@ def canonical_bytes(value: Any) -> bytes:
             for key, item in node.items():
                 if type(key) is not str:
                     raise ValidationError(f"{where}: object keys must be strings")
+                _scalar_unicode(key, f"{where} object key")
                 check(item, f"{where}.{key}")
             return
         raise ValidationError(f"{where}: unsupported JSON type {type(node).__name__}")
@@ -415,7 +427,7 @@ def main(argv: list[str] | None = None) -> int:
             output = verify_refresh(_read_json(args.previous), _read_json(args.current))
         sys.stdout.buffer.write(canonical_bytes(output))
         return 0
-    except (OSError, json.JSONDecodeError, ValidationError) as exc:
+    except (OSError, ValueError, TypeError, RecursionError) as exc:
         print(f"INVALID: {exc}", file=sys.stderr)
         return 2
 

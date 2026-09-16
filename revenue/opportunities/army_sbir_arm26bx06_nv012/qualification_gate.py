@@ -106,7 +106,7 @@ def main(argv=None) -> int:
         raw = _load(args.qualification)
         sys.stdout.buffer.write(canonical_bytes(evaluate(raw)))
         return 0
-    except (OSError, json.JSONDecodeError, ValidationError) as exc:
+    except (OSError, ValueError, TypeError, RecursionError) as exc:
         print(f"INVALID: {exc}", file=sys.stderr)
         return 2
 
