@@ -230,9 +230,11 @@ duplicate-event/incident injection, strict JSON/time/hash/type boundaries,
 fixed-key permissions/symlinks, alternate-`HOME` trust-root relocation, seam
 normalization, and deterministic receipts.
 
-The repository workflow `.github/workflows/outbound-send-forensics.yml` executes
-compile plus both hostile suites in normal and optimized Python whenever this
-package or its workflow changes.
+The consolidated Commons root battery bridge `test_outbound_send_forensics.py`
+enrolls both hostile suites without adding another active workflow. The earlier
+exact-head focused workflow proved the same production/test blobs in both normal
+and optimized Python; current integration deliberately uses the retained shared
+battery instead of a product-specific workflow.
 
 ## Authority ceiling
 
