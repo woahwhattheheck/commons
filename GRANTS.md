@@ -58,6 +58,7 @@ Verified product pages only — no invented Stripe links.
 
 Shelf: [tools-cash.html](./tools-cash.html) · [commerce.html](./commerce.html).
 
+Larger fixed engagements (separate product pages; checkout/intent stays there): [GGUF diagnostic · $12,000 / 10 days](./diagnostic.html) · [White Box pilot · $30,000 / 30 days](./commercial.html). Not remints of tip SKUs.
 
 ## Standing grants
 
