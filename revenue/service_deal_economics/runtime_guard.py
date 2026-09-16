@@ -13,23 +13,39 @@ def freeze_call_graph(
 ) -> Callable[[], bool]:
     """Capture a transitive Python call graph and return a closure-only guard.
 
-    Every global used by the supplied Python function roots is identity-bound.
-    Module/class attributes named by bytecode are identity-bound too, and any
-    Python function-valued dependency is traversed recursively. This detects the
-    important case where a stable function object still resolves mutable values
-    from its live ``__globals__`` mapping.
+    The guard identity-binds globals and referenced attributes, recursively
+    traverses Python function-valued dependencies, and snapshots namespaces for
+    reachable modules/classes/instances. Namespace snapshots matter because a
+    class or cached singleton can keep the same identity while an attacker
+    replaces an authority-bearing method in place (for example
+    ``json.JSONEncoder.encode`` or ``json._default_encoder.encode``).
 
-    The returned guard accepts no arguments and keeps its snapshots plus the
-    builtins it needs in closure cells, so callers cannot supply alternate
-    snapshots/check primitives through Python keyword/default injection.
+    The returned guard accepts no arguments. Snapshots and check primitives are
+    held only in closure cells, so callers cannot inject alternate trust/time
+    dependencies through keyword/default parameters.
     """
 
     global_bindings: list[tuple[dict[str, Any], str, object]] = []
     attr_bindings: list[tuple[object, str, object, bool]] = []
     function_bindings: list[tuple[FunctionType, object, object, object]] = []
+    namespace_bindings: list[tuple[object, tuple[tuple[str, object], ...]]] = []
     seen_globals: set[tuple[int, str]] = set()
     seen_attrs: set[tuple[int, str, bool]] = set()
     seen_functions: set[int] = set()
+    seen_namespaces: set[int] = set()
+
+    def capture_namespace(owner: object) -> None:
+        if isinstance(owner, FunctionType):
+            return
+        marker = id(owner)
+        if marker in seen_namespaces:
+            return
+        try:
+            namespace = vars(owner)
+        except TypeError:
+            return
+        seen_namespaces.add(marker)
+        namespace_bindings.append((owner, tuple(namespace.items())))
 
     def capture_attr(owner: object, name: str) -> object:
         is_namespace = isinstance(owner, (ModuleType, type))
@@ -39,11 +55,13 @@ def freeze_call_graph(
                 return vars(owner).get(name, _MISSING)
             return getattr(owner, name, _MISSING)
         seen_attrs.add(key)
+        capture_namespace(owner)
         if is_namespace:
             value = vars(owner).get(name, _MISSING)
         else:
             value = getattr(owner, name, _MISSING)
         attr_bindings.append((owner, name, value, is_namespace))
+        capture_namespace(value)
         if isinstance(value, FunctionType):
             capture_function(value)
         return value
@@ -64,12 +82,13 @@ def freeze_call_graph(
             if gkey not in seen_globals:
                 seen_globals.add(gkey)
                 global_bindings.append((namespace, name, value))
+            capture_namespace(value)
             if isinstance(value, FunctionType):
                 capture_function(value)
             elif isinstance(value, (ModuleType, type)):
                 # co_names mixes global and attribute names. Conservative
-                # over-binding is intentional: it may fail closed on an
-                # irrelevant monkeypatch, but it cannot mint CURRENT.
+                # over-binding is intentional: an irrelevant monkeypatch may
+                # fail closed, but a mutated trust dependency cannot mint CURRENT.
                 for attr_name in names:
                     if attr_name == name:
                         continue
@@ -86,6 +105,7 @@ def freeze_call_graph(
     globals_snapshot = tuple(global_bindings)
     attrs_snapshot = tuple(attr_bindings)
     functions_snapshot = tuple(function_bindings)
+    namespaces_snapshot = tuple(namespace_bindings)
     missing = _MISSING
     get_attr = getattr
     get_vars = vars
@@ -104,6 +124,16 @@ def freeze_call_graph(
         for fn, code, defaults, kwdefaults in functions_snapshot:
             if fn.__code__ is not code or fn.__defaults__ is not defaults or fn.__kwdefaults__ is not kwdefaults:
                 return False
+        for owner, expected_items in namespaces_snapshot:
+            try:
+                current = get_vars(owner)
+            except TypeError:
+                return False
+            if len(current) != len(expected_items):
+                return False
+            for name, expected in expected_items:
+                if current.get(name, missing) is not expected:
+                    return False
         return True
 
     return intact

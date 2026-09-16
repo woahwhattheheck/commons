@@ -59,11 +59,24 @@ class FrozenCurrentRuntimeTests(unittest.TestCase):
             with self.subTest(name=f"{getattr(owner, '__name__', type(owner).__name__)}.{name}"), patch.object(owner, name, replacement):
                 self._both_fail_closed()
 
-    def test_post_import_rebinding_of_mac_graph_fails_closed(self):
+    def test_in_place_json_class_and_cached_encoder_mutation_fails_closed(self):
+        mutations = (
+            (strict_json.json.JSONEncoder, "encode", lambda self, _obj: "{}"),
+            (strict_json.json.JSONDecoder, "decode", lambda self, _text, **_kw: {}),
+            (strict_json.json._default_encoder, "encode", lambda _obj: "{}"),
+            (strict_json.json._default_decoder, "decode", lambda _text, **_kw: {}),
+        )
+        for owner, name, replacement in mutations:
+            with self.subTest(owner=type(owner).__name__, name=name), patch.object(owner, name, replacement):
+                self._both_fail_closed()
+
+    def test_post_import_rebinding_and_in_place_mac_graph_mutation_fails_closed(self):
         mutations = (
             (a.hmac, "new", lambda *_a, **_k: None),
             (a.hmac, "compare_digest", lambda *_a, **_k: True),
             (a.hashlib, "sha256", lambda *_a, **_k: None),
+            (a.hmac.HMAC, "__init__", lambda self, *_a, **_k: None),
+            (a.hmac.HMAC, "digest", lambda self: b"x" * 32),
         )
         for owner, name, replacement in mutations:
             with self.subTest(name=name), patch.object(owner, name, replacement):
