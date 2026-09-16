@@ -37,10 +37,10 @@ jobs:
           node --check integrations/command_center/web/deathstar.js
           node --check integrations/command_center/web/mail.js
       - name: Dashboard presentation contracts
-        run: node --test integrations/command_center/test_mail_render.cjs integrations/command_center/test_deathstar_render.cjs integrations/command_center/test_web.cjs integrations/command_center/test_work_detail.cjs integrations/command_center/test_work_activity_timestamp.cjs integrations/command_center/test_work_continuous_refresh.cjs integrations/command_center/test_command_page_refresh.cjs
+        run: node --test integrations/command_center/test_mail_render.cjs integrations.command_center/test_deathstar_render.cjs integrations/command_center/test_web.cjs integrations/command_center/test_work_detail.cjs integrations/command_center/test_work_activity_timestamp.cjs integrations/command_center/test_work_continuous_refresh.cjs integrations/command_center/test_command_page_refresh.cjs
 
       - name: Prepare exact-change GPT review packet
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' && github.event.pull_request.state == 'open'
         env:
           GITHUB_TOKEN: ${{ github.token }}
           REVIEW_PR: ${{ github.event.pull_request.number }}
@@ -48,8 +48,9 @@ jobs:
           python3 host/swarm_review.py packet --prs "$REVIEW_PR" --out "$RUNNER_TEMP/deathstar-review.json"
           python3 -c 'import json,os; p=json.load(open(os.environ["RUNNER_TEMP"]+"/deathstar-review.json")); print(json.dumps({"review_template":p["prs"][0]["review_template"],"review":p["prs"][0]["review"],"diff_truncated":p["prs"][0]["diff_truncated"]}))'
       - uses: actions/upload-artifact@v4
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' && github.event.pull_request.state == 'open'
         with:
           name: deathstar-review-${{ github.event.pull_request.number }}
           path: ${{ runner.temp }}/deathstar-review.json
           retention-days: 7
+          if-no-files-found: ignore

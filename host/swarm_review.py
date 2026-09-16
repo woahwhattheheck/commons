@@ -294,6 +294,18 @@ def verify_live(git, github, number):
     return subject, decision(git, subject, pull["reviews"])
 
 
+def closed_packet(number, pull):
+    reason = "PR is no longer open"
+    state = "ALREADY_PRESENT" if pull.get("merged") else "UNKNOWN"
+    return {
+        "number": number,
+        "review": {"state": state, "reason": reason},
+        "review_template": {},
+        "diff": "",
+        "diff_truncated": False,
+    }
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo", default=cs.DEFAULT_REPO)
@@ -316,6 +328,10 @@ def main(argv=None):
                 raise ValueError("one packet holds 1–10 PRs")
             entries = []
             for number in numbers:
+                pull = live_pull(github, number)
+                if pull.get("state") != "open" or pull.get("merged"):
+                    entries.append(closed_packet(number, pull))
+                    continue
                 subject, verdict = verify_live(git, github, number)
                 diff = git.out("diff", "--no-ext-diff", "--no-textconv",
                                subject["merge_base"], subject["head"], "--", *subject["paths"])
