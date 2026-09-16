@@ -26,3 +26,13 @@ This receipt is synthetic/approved evidence only. It does not establish clinical
 
 Packet SHA-256: `c48f230dfcfbb1195192639e5dab572e04ad7dfb90b9d875fa0e2d36648a37cb`
 Receipt SHA-256: `932373a8376640ab3df27b1aa94b36d6b94692e9f7a69321aa3aa9ff29b080ac`
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../../../agent-rescue.html)
+- [$199 dealer diagnostic](../../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../../plant-downtime-handoff.html)
