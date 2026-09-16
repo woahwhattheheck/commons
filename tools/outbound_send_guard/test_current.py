@@ -60,9 +60,13 @@ class CurrentBoundaryTests(unittest.TestCase):
             "payload": {"decision": "ALLOW_NEW", "side_effects_authorized": False},
             "receipt_sha256": "0" * 64,
         }
-        result = current.compile_current(intent(), evidence())
-        self.assertEqual(result["payload"]["decision"], "HOLD")
-        self.assertFalse(result["payload"]["current_preflight_clear"])
+        try:
+            result = current.compile_current(intent(), evidence())
+            self.assertEqual(result["payload"]["decision"], "HOLD")
+            self.assertFalse(result["payload"]["current_preflight_clear"])
+        finally:
+            current.__dict__.pop("_utc_now", None)
+            current.__dict__.pop("_core", None)
 
     def test_compatibility_guard_preserves_shape_but_never_positive_embedded(self):
         receipt = guard.evaluate(

@@ -31,10 +31,14 @@ class CurrentClockBoundaryTests(unittest.TestCase):
             lambda: datetime(2099, 1, 1, tzinfo=timezone.utc),
             lambda *a, **k: {"payload": {"decision": "ALLOW_NEW"}},
         )
-        result = current.compile_current(intent(), evidence())
-        self.assertEqual(result["payload"]["decision"], "HOLD")
-        self.assertEqual(result["payload"]["mode"], current.MODE_EMBEDDED)
-        self.assertFalse(result["payload"]["current_preflight_clear"])
+        try:
+            result = current.compile_current(intent(), evidence())
+            self.assertEqual(result["payload"]["decision"], "HOLD")
+            self.assertEqual(result["payload"]["mode"], current.MODE_EMBEDDED)
+            self.assertFalse(result["payload"]["current_preflight_clear"])
+        finally:
+            for name in ("_utc_now", "_core", "_sync_impl"):
+                current.__dict__.pop(name, None)
 
     def test_compatibility_facade_does_not_replay_historical_positive(self):
         result = guard.evaluate(intent(), evidence())

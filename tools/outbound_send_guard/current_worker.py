@@ -13,10 +13,11 @@ from . import current_impl as _impl
 
 
 def _bind_internal_engine() -> None:
-    # current_impl imports the public fail-closed guard by default. Rebinding to
-    # the deterministic core is performed only inside the clean direct runtime.
+    # current_impl imports the public fail-closed guard by default. Rebind the
+    # module's guard namespace to the deterministic core. Do not replace
+    # current_impl._core: that helper inspects evaluate() and must keep its
+    # four-argument wrapper shape.
     _impl.guard = _core
-    _impl._core = _core.evaluate
 
 
 def compile_current(
