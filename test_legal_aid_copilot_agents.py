@@ -206,6 +206,16 @@ class AdoptionAndPackTests(unittest.TestCase):
         )
         self.assertNotEqual(first["receipt_sha256"], changed["receipt_sha256"])
 
+    def test_receipt_handles_lone_surrogate_evidence(self):
+        controls = good_governance().controls
+        pack = compile_delivery_pack(
+            partner=good_partner(),
+            governance=GovernanceReview(controls=controls, notes={"edge": chr(0xD800)}),
+            evaluations=(good_eval(),),
+            adoption=good_adoption(),
+        )
+        self.assertEqual(len(pack["receipt_sha256"]), 64)
+
 
 if __name__ == "__main__":
     unittest.main()
