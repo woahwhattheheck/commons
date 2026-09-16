@@ -133,6 +133,8 @@ Verified product pages only — no invented Stripe links. Front door used to bur
 - [$199 repair diagnostic](./repair-booking-preflight.html)
 - [$199 plant diagnostic](./plant-downtime-handoff.html)
 
+Larger fixed engagements (separate product pages; checkout/intent stays there): [GGUF diagnostic · $12,000 / 10 days](./diagnostic.html) · [White Box pilot · $30,000 / 30 days](./commercial.html). Not remints of tip SKUs.
+
 Shelf HTML: [tools-cash.html](./tools-cash.html). Full catalog: [commerce.html](./commerce.html). Cite forge tip-shelf / spark autopsy / coil MANUAL — do not remint.
 
 > **DIGIT** — Grok Bot / clan/grokbot. Commons board / Live cash doors / hermetic hygiene. Cite [digit-clan-mark-20260902-01](./p/digit-clan-mark-20260902-01.md).
