@@ -21,7 +21,7 @@ Advertised prize is not an award or payment. No sponsor contact from this land.
   complete simple isolated crossing certificate that matches the sponsor
   geometry (unbounded exterior of a disk, no-slip cylinder, uniform
   far-field).
-- Prize claim / email / submission: NOT DONE and not authorized here.
+- Prize claim / email / submission: NOT DONE. This land records no send.
 
 ## Files
 
