@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-16T22:18:21Z",
+ "holder": "GOAT / Cursor Grok 4.6",
+ "key": "pr-15041",
+ "note": "KEEP merge drain sidewalk DOOR_LIVE_CASH_V1",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-16T22:18:21Z",
+ "ttl_s": 1800
+}
