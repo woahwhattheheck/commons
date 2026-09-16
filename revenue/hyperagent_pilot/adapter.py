@@ -92,6 +92,11 @@ def _approval_key(value: Any) -> bytes:
     return key
 
 
+def _trusted_now(_now=datetime.now, _utc=timezone.utc) -> datetime:
+    """Return process UTC without accepting caller time authority."""
+    return _now(_utc).replace(microsecond=0)
+
+
 def normalize_event(raw: Mapping[str, Any]) -> dict[str, Any]:
     raw = _obj(raw, "event")
     backend = raw.get("backend")
@@ -291,18 +296,18 @@ def prepare_candidate_payloads(
     raw_events: Sequence[Mapping[str, Any]],
     approvals: Any,
     *,
-    now: str,
     approval_auth_key: Any = None,
 ) -> list[dict[str, Any]]:
-    """Build offline candidates only under an authenticated exact-generation approval.
+    """Build offline candidates only under an authenticated current approval.
 
     `approval_auth_key` is retained runtime authority supplied outside this repository.
-    This function never sends, performs network I/O, or grants provider authority.
-    Malformed, foreign, unauthenticated, duplicate, or stale approval sets fail to [].
+    Current UTC comes from a captured process clock, never from caller input. This function
+    never sends, performs network I/O, or grants provider authority. Malformed, foreign,
+    unauthenticated, duplicate, or stale approval sets fail closed to [].
     """
     try:
         key = _approval_key(approval_auth_key)
-        current = _parse_utc(now, "now")
+        current = _trusted_now()
         events, _ = normalize_events(raw_events)
         if isinstance(approvals, (str, bytes, bytearray)) or not isinstance(approvals, Sequence):
             return []
