@@ -111,8 +111,9 @@ def _build_current_surface(guard, clock, compile_at, verify_at, render, error_ty
     render_current_markdown,
 ) = _build_current_surface(_guard, _clock, _compile_at, _verify_at, _render, AuthorityError)
 
-# Keep historical/test helpers in authority.py injectable, but replace its
-# public CURRENT names so importing the submodule cannot bypass this boundary.
+# Historical/test helpers stay injectable in authority.py. Public CURRENT names
+# are installed here so the authority submodule has no AST-visible public
+# current-positive verifier of its own.
 _authority.compile_current = compile_current
 _authority.verify_current_authority = verify_current_authority
 _authority.render_current_markdown = render_current_markdown

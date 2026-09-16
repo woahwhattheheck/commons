@@ -116,6 +116,18 @@ class FrozenCurrentRuntimeTests(unittest.TestCase):
         except AuthorityError as exc:
             self.assertNotIn("dependency graph changed", str(exc))
 
+    def test_authority_source_has_no_public_current_verifier_surface(self):
+        from pathlib import Path
+
+        from tools.current_readiness_guard.guard import analyze_source
+
+        source = Path(__file__).with_name("authority.py").read_text(encoding="utf-8")
+        findings = analyze_source(
+            source, path="revenue/service_deal_economics/authority.py"
+        )
+        self.assertEqual([(finding.rule, finding.function) for finding in findings], [])
+        self.assertIs(a.verify_current_authority, verify_current_authority)
+
 
 if __name__ == "__main__":
     unittest.main()
