@@ -61,8 +61,8 @@ CASE_KEYS = {
     "po_total_cents",
     "tolerance_cents",
     "duplicate",
-    "approval_required",
-    "approval_present",
+    "routing_signoff_needed",
+    "routing_signoff_present",
     "oracle_sync_evidenced",
     "audit_trail_complete",
     "dashboard_fresh",
@@ -194,8 +194,8 @@ def evaluate_case(case: Any) -> dict[str, Any]:
     po_present = _bool(row["po_present"], "case.po_present")
     vendor_match = _bool(row["vendor_match"], "case.vendor_match")
     duplicate = _bool(row["duplicate"], "case.duplicate")
-    approval_required = _bool(row["approval_required"], "case.approval_required")
-    approval_present = _bool(row["approval_present"], "case.approval_present")
+    routing_signoff_needed = _bool(row["routing_signoff_needed"], "case.routing_signoff_needed")
+    routing_signoff_present = _bool(row["routing_signoff_present"], "case.routing_signoff_present")
     oracle_sync_evidenced = _bool(row["oracle_sync_evidenced"], "case.oracle_sync_evidenced")
     audit_trail_complete = _bool(row["audit_trail_complete"], "case.audit_trail_complete")
     dashboard_fresh = _bool(row["dashboard_fresh"], "case.dashboard_fresh")
@@ -218,7 +218,7 @@ def evaluate_case(case: Any) -> dict[str, Any]:
         decision = "HOLD_VENDOR_MISMATCH"
     elif po_required and variance_cents > tolerance:
         decision = "HOLD_AMOUNT_VARIANCE"
-    elif approval_required and not approval_present:
+    elif routing_signoff_needed and not routing_signoff_present:
         decision = "HOLD_APPROVAL"
     elif cycle_seconds >= TARGET_CYCLE_SECONDS:
         decision = "HOLD_CYCLE_TIME"
