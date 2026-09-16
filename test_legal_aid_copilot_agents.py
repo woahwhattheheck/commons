@@ -1,4 +1,7 @@
 from datetime import date
+import json
+import subprocess
+import sys
 import unittest
 
 from commercial.legal_aid_copilot_agents import (
@@ -214,6 +217,25 @@ class AdoptionAndPackTests(unittest.TestCase):
             evaluations=(good_eval(),),
             adoption=good_adoption(),
         )
+        self.assertEqual(len(pack["receipt_sha256"]), 64)
+
+    def test_real_cli_hold_fixture_fails_closed_without_traceback(self):
+        result = subprocess.run(
+            [
+                sys.executable,
+                "-m",
+                "commercial.legal_aid_copilot_agents.cli",
+                "commercial/legal_aid_copilot_agents/example_hold.json",
+            ],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(result.returncode, 2, msg=result.stderr)
+        self.assertNotIn("Traceback", result.stderr)
+        pack = json.loads(result.stdout)
+        self.assertEqual(pack["delivery_status"], "HOLD")
+        self.assertIn("proposal_evidence_gate", pack["delivery_blockers"])
         self.assertEqual(len(pack["receipt_sha256"]), 64)
 
 
