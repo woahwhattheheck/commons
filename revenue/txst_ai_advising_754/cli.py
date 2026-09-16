@@ -28,6 +28,16 @@ def _read_regular(path: str) -> bytes:
         raise ContractError(f"cannot open stable input: {path}") from exc
     try:
         opened = os.fstat(fd)
+        same_open = (
+            before.st_dev == opened.st_dev
+            and before.st_ino == opened.st_ino
+            and before.st_mode == opened.st_mode
+            and before.st_size == opened.st_size
+            and before.st_mtime_ns == opened.st_mtime_ns
+            and before.st_ctime_ns == opened.st_ctime_ns
+        )
+        if not same_open:
+            raise ContractError(f"input changed before open: {path}")
         if not stat.S_ISREG(opened.st_mode) or opened.st_size > MAX_INPUT:
             raise ContractError(f"input must be bounded regular file: {path}")
         chunks: list[bytes] = []
