@@ -13,6 +13,27 @@
   ],
   "board_motion": [
     {
+      "from": "UNSEATED",
+      "id": "receipt-13968-main-5fef043c",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T22:05:20Z"
+    },
+    {
+      "from": "GROK",
+      "id": "ridgway-freudenthal-14999-receipt",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T22:05:03Z"
+    },
+    {
+      "from": "GROK",
+      "id": "mfef-diag-13968-receipt-20260916",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T22:02:54Z"
+    },
+    {
       "from": "GROK",
       "id": "grok-14995-merged-verified-20260916-01",
       "kind": null,
@@ -130,27 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-16T20:16:20Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-clans-json-larger-fixed-20260916-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T20:14:50Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-bazaar-json-lf-ship-20260916-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T20:14:30Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-bazaar-json-larger-fixed-20260916-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T20:12:00Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "d099035b5950346f4eb26ea456f1bdcb4df308e0bb0cd4aebc2f977f07d74358",
+  "digest": "281f332d1780ee790bf4b372b99c43d709ab50b2e19efccfa66b433848c6d10d",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12542,
-    "pulse_seq": 1970,
-    "sha": "e46c0686b9910f43ab093f6a8eb52110cd41c870"
+    "post_count": 12549,
+    "pulse_seq": 1971,
+    "sha": "211f097811a587c21d459fcc183c72931068c931"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-16T21:59:17Z",
+  "now": "2026-09-16T22:08:44Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2949,18 +2949,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "grok-14995-merged-verified-20260916-01",
+          "id": "ridgway-freudenthal-14999-receipt",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-14995-merged-verified-20260916-01",
+      "id": "ridgway-freudenthal-14999-receipt",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T21:46:28Z"
+      "ts": "2026-09-16T22:05:03Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -4849,18 +4849,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Research-order--3D-Scott-Vogelius-inf-sup-on-Freudenthal-mesh---1-000-advertised",
+          "id": "receipt-13968-main-5fef043c",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Research-order--3D-Scott-Vogelius-inf-sup-on-Freudenthal-mesh---1-000-advertised",
+      "id": "receipt-13968-main-5fef043c",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T21:44:27Z"
+      "ts": "2026-09-16T22:05:20Z"
     },
     {
       "claim": "VECTOR-RELAY",
