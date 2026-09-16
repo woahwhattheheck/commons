@@ -2,8 +2,8 @@
 """Fail-closed currentness facade for the UArk RFP09112026 qualifier.
 
 The original deterministic compiler is retained in ``_qualifier_core.py``. This
-facade adds source-expiry rules plus a supported CURRENT API whose clock is
-captured from process-owned builtin callables during module initialization.
+facade adds source-expiry rules plus a supported CURRENT API whose clock and
+semantic dependencies are retained during trusted module initialization.
 
 ``compile_qualification`` and ``verify_packet`` remain deterministic historical /
 integrity surfaces: their explicit ``evaluated_at_utc`` is data, not current-time
@@ -43,8 +43,6 @@ _FUTURE_SKEW = timedelta(minutes=5)
 
 def _make_process_utc_now():
     """Capture process clock primitives once, outside mutable module globals."""
-    # ``datetime`` / ``timezone`` are imported module globals for historical
-    # compatibility, but CURRENT authority does not resolve through those names.
     from datetime import datetime as _clock_datetime
     from datetime import timezone as _clock_timezone
 
@@ -62,31 +60,42 @@ _PROCESS_UTC_NOW = _make_process_utc_now()
 del _make_process_utc_now
 
 
-def _normalize_aware_utc(value: datetime) -> datetime:
-    if not isinstance(value, datetime):
+def _normalize_aware_utc(
+    value: datetime,
+    _datetime_type=datetime,
+    _utc=timezone.utc,
+) -> datetime:
+    if not isinstance(value, _datetime_type):
         raise InputError("time value must be datetime")
     if value.tzinfo is None or value.utcoffset() is None:
         raise InputError("time value must be timezone-aware")
-    return value.astimezone(timezone.utc).replace(microsecond=0)
+    return value.astimezone(_utc).replace(microsecond=0)
 
 
-def _utc_text(value: datetime) -> str:
-    return _normalize_aware_utc(value).isoformat().replace("+00:00", "Z")
+def _utc_text(value: datetime, _normalize=_normalize_aware_utc) -> str:
+    return _normalize(value).isoformat().replace("+00:00", "Z")
 
 
-def _refresh_receipts(packet: dict[str, Any]) -> dict[str, Any]:
+def _refresh_receipts(
+    packet: dict[str, Any],
+    _sha256_obj=sha256_obj,
+) -> dict[str, Any]:
     decision = packet["decision"]
     decision.pop("decision_receipt_sha256", None)
-    decision["decision_receipt_sha256"] = sha256_obj(decision)
+    decision["decision_receipt_sha256"] = _sha256_obj(decision)
     packet.pop("packet_receipt_sha256", None)
-    packet["packet_receipt_sha256"] = sha256_obj(packet)
+    packet["packet_receipt_sha256"] = _sha256_obj(packet)
     return packet
 
 
-def _apply_currentness(packet: dict[str, Any]) -> dict[str, Any]:
-    evaluated = _dt(packet["evaluated_at_utc"])
-    source_checked = _dt(packet["source_generation"]["hogbid_checked_at_utc"])
-    recheck_boundary = _dt(ADDENDUM_RECHECK_BOUNDARY_UTC)
+def _apply_currentness(
+    packet: dict[str, Any],
+    _parse_dt=_dt,
+    _refresh=_refresh_receipts,
+) -> dict[str, Any]:
+    evaluated = _parse_dt(packet["evaluated_at_utc"])
+    source_checked = _parse_dt(packet["source_generation"]["hogbid_checked_at_utc"])
+    recheck_boundary = _parse_dt(ADDENDUM_RECHECK_BOUNDARY_UTC)
     blockers: list[str] = []
 
     if evaluated < source_checked:
@@ -110,15 +119,24 @@ def _apply_currentness(packet: dict[str, Any]) -> dict[str, Any]:
     if decision["status"] != "NO_BID":
         decision["status"] = "HOLD"
     decision["submission_ready"] = False
-    return _refresh_receipts(packet)
+    return _refresh(packet)
 
 
-def compile_qualification(intake: Any) -> dict[str, Any]:
+def compile_qualification(
+    intake: Any,
+    _core_compile=_core.compile_qualification,
+    _apply=_apply_currentness,
+) -> dict[str, Any]:
     """Historical/integrity compile using intake ``evaluated_at_utc`` as data."""
-    return _apply_currentness(_core.compile_qualification(intake))
+    return _apply(_core_compile(intake))
 
 
-def verify_packet(packet: Any) -> bool:
+def verify_packet(
+    packet: Any,
+    _deepcopy=copy.deepcopy,
+    _sha256_obj=sha256_obj,
+    _compile=compile_qualification,
+) -> bool:
     """Verify receipt integrity and deterministic historical semantics."""
     required = {
         "schema", "operation", "owner", "model", "evaluated_at_utc", "buyer",
@@ -132,9 +150,9 @@ def verify_packet(packet: Any) -> bool:
     receipt = packet["packet_receipt_sha256"]
     if not isinstance(receipt, str) or not SHA_RE.fullmatch(receipt):
         raise InputError("packet receipt invalid")
-    unsigned = copy.deepcopy(packet)
+    unsigned = _deepcopy(packet)
     unsigned.pop("packet_receipt_sha256")
-    if sha256_obj(unsigned) != receipt:
+    if _sha256_obj(unsigned) != receipt:
         raise InputError("packet receipt mismatch")
     intake = {
         "schema": SCHEMA,
@@ -142,14 +160,17 @@ def verify_packet(packet: Any) -> bool:
         "source_generation": packet["source_generation"],
         "candidate": packet["candidate"],
     }
-    expected = compile_qualification(intake)
+    expected = _compile(intake)
     if packet != expected:
         raise InputError("packet semantic verification failed")
     return True
 
 
-def _decision_body(decision: dict[str, Any]) -> dict[str, Any]:
-    body = copy.deepcopy(decision)
+def _decision_body(
+    decision: dict[str, Any],
+    _deepcopy=copy.deepcopy,
+) -> dict[str, Any]:
+    body = _deepcopy(decision)
     body.pop("decision_receipt_sha256", None)
     return body
 
