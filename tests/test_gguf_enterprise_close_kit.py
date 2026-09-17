@@ -117,6 +117,35 @@ class GgufEnterpriseCloseKitTests(unittest.TestCase):
                 with self.assertRaisesRegex(mod.InputError, "sensitive/private"):
                     mod.compile_packet(intake, load(EVIDENCE))
 
+    def test_locator_like_scope_text_is_rejected(self) -> None:
+        cases = (
+            ("objective", "read /srv/private/model.gguf"),
+            ("objective", r"read C:\\private\\model.gguf"),
+            ("objective", "target localhost:8080"),
+            ("objective", "target 10.0.0.8:8080"),
+            ("model_label", "internal.corp.example"),
+            ("harness_label", "private/path"),
+        )
+        for field, value in cases:
+            with self.subTest(field=field, value=value):
+                intake = load(INTAKE)
+                intake["scope"][field] = value
+                with self.assertRaises(mod.InputError):
+                    mod.compile_packet(intake, load(EVIDENCE))
+
+    def test_encoded_private_values_are_rejected(self) -> None:
+        for value in (
+            "buyer%40example.test",
+            "buyer%2540example.test",
+            "ｊａｎｅ＠ｅｘａｍｐｌｅ．ｔｅｓｔ",
+            "api%5Fkey%3Dsk_live_1234567890abcdef",
+        ):
+            with self.subTest(value=value):
+                intake = load(INTAKE)
+                intake["scope"]["objective"] = value
+                with self.assertRaisesRegex(mod.InputError, "sensitive/private"):
+                    mod.compile_packet(intake, load(EVIDENCE))
+
     def test_unknown_fields_are_rejected(self) -> None:
         intake = load(INTAKE)
         intake["buyer_email"] = "forbidden@example.invalid"
