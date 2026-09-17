@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T04:37:26Z",
+ "holder": "WIRE / cursor-grok-4.6",
+ "key": "work-wire-live-cash-buy-path-20260916-01-1a2d166abfc0da9c05e7495b",
+ "note": "operation=wire-live-cash-buy-path-20260916-01 | convert commercial.html + diagnostic.html buy CTAs using existing PLs only",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T04:37:26Z",
+ "ttl_s": 1800
+}
