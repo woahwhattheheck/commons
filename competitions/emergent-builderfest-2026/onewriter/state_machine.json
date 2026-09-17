@@ -1,32 +1,149 @@
 {
-  "contract_version": "onewriter-v1",
-  "collision_key_fields": ["organization", "domain", "route", "purpose", "opportunity"],
+  "contract_version": "onewriter-v2",
+  "authority_boundary": {
+    "offline_fixture": "Bundled roles, timestamps, and evidence references are trusted synthetic replay facts only.",
+    "production": "The authenticated backend derives actor, role, and event time; clients cannot self-assert them. Provider and human evidence references require separately authenticated adapters before operational use.",
+    "receipt": "Hash chaining detects mutation of retained bytes; it is not a signature or provider authentication."
+  },
+  "collision_key_fields": [
+    "organization",
+    "domain",
+    "route",
+    "purpose",
+    "opportunity"
+  ],
+  "roles": {
+    "WORKER": [
+      "PROPOSE",
+      "ACQUIRE_LEASE",
+      "RELEASE_LEASE",
+      "PROVIDER_SENT",
+      "PROVIDER_BOUNCE"
+    ],
+    "SYSTEM": [
+      "EXPIRE_LEASE"
+    ],
+    "HUMAN_SOURCE": [
+      "HUMAN_EVENT"
+    ],
+    "OPERATOR": [
+      "PLACE_HOLD"
+    ]
+  },
   "states": {
-    "CLEAR": "No active writer and no hard provider fence.",
-    "LEASED": "Exactly one writer owns the bounded lane until release or expiry.",
-    "SENT_DNR": "Provider accepted a send; exact lane is do-not-resend until a genuine human event.",
-    "DEAD_ROUTE": "Provider rejected the route; route failure is not buyer rejection and the exact route remains blocked.",
-    "HUMAN_EVENT_REOPEN": "A genuine human event reopened one bounded next action.",
-    "HOLD": "Manual or policy hold; no lease acquisition is allowed."
+    "CLEAR": "No active writer and no prior-send reopen fence.",
+    "LEASED": "Exactly one authenticated worker owns a bounded lane until release, system expiry, provider outcome, or hold.",
+    "SENT_DNR": "Provider evidence was retained for a send; exact lane is do-not-resend until a genuine human event.",
+    "DEAD_ROUTE": "Provider evidence was retained for route failure; route failure is not buyer rejection and the exact route remains blocked.",
+    "HUMAN_EVENT_REOPEN": "One evidenced human event reopened one bounded next-action slot; release or expiry returns here rather than CLEAR.",
+    "HOLD": "Authenticated operator fence; no lease acquisition is allowed."
   },
   "transitions": [
-    {"action": "PROPOSE", "from": [null], "to": "CLEAR"},
-    {"action": "ACQUIRE_LEASE", "from": ["CLEAR", "HUMAN_EVENT_REOPEN"], "to": "LEASED"},
-    {"action": "RELEASE_LEASE", "from": ["LEASED"], "to": "CLEAR", "requires": "lease_holder"},
-    {"action": "EXPIRE_LEASE", "from": ["LEASED"], "to": "CLEAR", "requires": "event_time >= lease_expires_at"},
-    {"action": "PROVIDER_SENT", "from": ["LEASED"], "to": "SENT_DNR", "requires": "lease_holder"},
-    {"action": "PROVIDER_BOUNCE", "from": ["LEASED"], "to": "DEAD_ROUTE", "requires": "lease_holder"},
-    {"action": "HUMAN_EVENT", "from": ["SENT_DNR"], "to": "HUMAN_EVENT_REOPEN"},
-    {"action": "PLACE_HOLD", "from": ["CLEAR", "LEASED", "SENT_DNR", "DEAD_ROUTE", "HUMAN_EVENT_REOPEN"], "to": "HOLD"}
+    {
+      "action": "PROPOSE",
+      "role": "WORKER",
+      "from": [
+        null
+      ],
+      "to": "CLEAR"
+    },
+    {
+      "action": "ACQUIRE_LEASE",
+      "role": "WORKER",
+      "from": [
+        "CLEAR",
+        "HUMAN_EVENT_REOPEN"
+      ],
+      "to": "LEASED",
+      "requires": "1 <= lease_seconds <= 3600"
+    },
+    {
+      "action": "RELEASE_LEASE",
+      "role": "WORKER",
+      "from": [
+        "LEASED"
+      ],
+      "to": "lease_return_state",
+      "requires": "active_unexpired_lease_holder"
+    },
+    {
+      "action": "EXPIRE_LEASE",
+      "role": "SYSTEM",
+      "from": [
+        "LEASED"
+      ],
+      "to": "lease_return_state",
+      "requires": "backend_time >= lease_expires_at"
+    },
+    {
+      "action": "PROVIDER_SENT",
+      "role": "WORKER",
+      "from": [
+        "LEASED"
+      ],
+      "to": "SENT_DNR",
+      "requires": "active_unexpired_lease_holder + provider_evidence_ref"
+    },
+    {
+      "action": "PROVIDER_BOUNCE",
+      "role": "WORKER",
+      "from": [
+        "LEASED"
+      ],
+      "to": "DEAD_ROUTE",
+      "requires": "active_unexpired_lease_holder + provider_evidence_ref"
+    },
+    {
+      "action": "HUMAN_EVENT",
+      "role": "HUMAN_SOURCE",
+      "from": [
+        "SENT_DNR"
+      ],
+      "to": "HUMAN_EVENT_REOPEN",
+      "requires": "human_event_evidence_ref"
+    },
+    {
+      "action": "PLACE_HOLD",
+      "role": "OPERATOR",
+      "from": [
+        "CLEAR",
+        "LEASED",
+        "SENT_DNR",
+        "DEAD_ROUTE",
+        "HUMAN_EVENT_REOPEN"
+      ],
+      "to": "HOLD"
+    }
+  ],
+  "receipt_fields": [
+    "seq",
+    "event_id",
+    "at",
+    "actor",
+    "role",
+    "collision_key",
+    "action",
+    "accepted",
+    "prior_state",
+    "next_state",
+    "reason",
+    "decision_input",
+    "event_digest",
+    "prior_digest",
+    "digest"
   ],
   "invariants": [
-    "collision keys are deterministic after normalization",
+    "lane identity is exact-field, NFKC-normalized, control-free, and deterministic",
+    "event ids are unique at the engine boundary and event time never moves backward",
+    "production actor role and event time are backend-derived rather than client-authored",
     "at most one unexpired lease exists for a collision key",
-    "provider SENT hard-fences the exact lane against duplicate acquisition",
+    "only the active unexpired lease holder may release or record provider SENT or BOUNCE",
+    "only SYSTEM may expire a lease and expiry requires backend time at or after lease_expires_at",
+    "an expired lease blocks new acquisition until SYSTEM performs explicit recovery",
+    "SENT hard-fences the exact lane against duplicate acquisition",
+    "HUMAN_EVENT opens one next-action slot; release or expiry preserves that reopen fence",
     "provider bounce is DEAD_ROUTE, never buyer rejection",
-    "only the active lease holder may record provider SENT or BOUNCE",
-    "lease expiry must be time-valid before recovery",
-    "HUMAN_EVENT may reopen SENT_DNR but does not resurrect DEAD_ROUTE",
-    "every event emits a hash-chained receipt, including denied transitions"
+    "every accepted or denied semantic event emits a hash-chained receipt binding normalized lane and all decision evidence",
+    "receipt digests are integrity checks, not signatures or external-provider truth"
   ]
 }
