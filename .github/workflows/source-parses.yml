@@ -2,6 +2,13 @@ name: source-parses
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "revenue/multi_framework_evidence_freshness/**"
+      - "tests/test_multi_framework_evidence_freshness*.py"
+      - ".github/workflows/source-parses.yml"
   pull_request:
     paths:
       - "**/*.py"
@@ -45,3 +52,50 @@ jobs:
             python3 -m unittest -v test_slack_mirror test_slack_mirror_state test_slack_mirror_delivery test_slack_mirror_receipt_commit
             python3 -O -m unittest -v test_slack_mirror test_slack_mirror_state test_slack_mirror_delivery test_slack_mirror_receipt_commit
           fi
+
+  multi-framework-evidence-freshness:
+    name: multi-framework-evidence-freshness
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out exact event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Compile freshness gate and custody tests
+        run: |
+          python -m py_compile \
+            revenue/multi_framework_evidence_freshness/__init__.py \
+            revenue/multi_framework_evidence_freshness/gate.py \
+            revenue/multi_framework_evidence_freshness/custody.py \
+            revenue/multi_framework_evidence_freshness/golden.py \
+            revenue/multi_framework_evidence_freshness/cli.py \
+            tests/test_multi_framework_evidence_freshness.py \
+            tests/test_multi_framework_evidence_freshness_custody.py
+
+      - name: Prove focused discovery is non-vacuous
+        run: |
+          python - <<'PY'
+          import unittest
+          suite = unittest.defaultTestLoader.discover(
+              "tests", pattern="test_multi_framework_evidence_freshness*.py"
+          )
+          count = suite.countTestCases()
+          print(f"multi-framework freshness tests discovered: {count}")
+          if count < 1:
+              raise SystemExit("NO TESTS DISCOVERED")
+          PY
+
+      - name: Normal Python freshness battery
+        run: python -B -m unittest discover -s tests -p 'test_multi_framework_evidence_freshness*.py' -v
+
+      - name: Optimized Python freshness battery
+        run: python -O -B -m unittest discover -s tests -p 'test_multi_framework_evidence_freshness*.py' -v
