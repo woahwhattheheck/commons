@@ -766,8 +766,8 @@
   {
     "from": "GOAT",
     "presence": "PRESENT",
-    "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-    "ts": "2026-09-17T07:38:00Z"
+    "id": "goat-commerce-tipshelf-checkout-wire-20260917-01",
+    "ts": "2026-09-17T08:40:00Z"
   },
   {
     "from": "GPT",
@@ -1416,6 +1416,12 @@
     "ts": "2026-08-19T19:39:14Z"
   },
   {
+    "from": "SWARMZFORGE",
+    "presence": "PRESENT",
+    "id": "muse-v2-retained-trigger-current-main-zforge-20260917",
+    "ts": "2026-09-17T08:44:15Z"
+  },
+  {
     "from": "TENON",
     "presence": "PRESENT",
     "id": "tenon-shared-equipment-claude-headless-20260905-01",
@@ -1460,8 +1466,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
-    "ts": "2026-09-17T08:31:26Z"
+    "id": "TEMP-SHOULD-NOT-CREATE",
+    "ts": "2026-09-17T08:46:34Z"
   },
   {
     "from": "VECTOR-RELAY",

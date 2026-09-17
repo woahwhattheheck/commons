@@ -1,19 +1,19 @@
 {
-  "seq": 2016,
-  "head": "fabdef8a1da5ed067a54cc6169bd879eace4bdfd",
-  "ts": "2026-09-17T08:44:47Z",
-  "post_count": 12767,
+  "seq": 2017,
+  "head": "824305d4c2a18422f86df08d784ca83655a58bae",
+  "ts": "2026-09-17T08:56:30Z",
+  "post_count": 12774,
   "newest": [
+    "TEMP-SHOULD-NOT-CREATE",
+    "muse-v2-retained-trigger-current-main-zforge-20260917",
+    "goat-commerce-tipshelf-checkout-wire-20260917-01",
+    "hamilton-15382-root-authority-zforge-20260917",
+    "Revenue--TDEM-RFP-1548-Euna-Grants-migration-integration-acceptance-workshare",
     "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
     "goat-pay-tipshelf-checkout-wire-20260917-01",
     "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
     "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
-    "quill-invoice-exception-hero-buy-convert-20260917-10",
-    "goat-owner-now-revenue-checkout-wire-20260917-01",
-    "Accepted-Work-to-Cash-Reconciler",
-    "Procurement-win-loss-evidence-loop--source-bound-outcome-compiler",
-    "Revenue--compile-source-bound-procurement-submission-assembly-manifests",
-    "Revenue--recover-procurement-runway---partner-capacity-gate"
+    "quill-invoice-exception-hero-buy-convert-20260917-10"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {

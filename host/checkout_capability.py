@@ -125,10 +125,18 @@ def account_ready(provider: dict[str, Any]) -> bool:
 
 
 def catalog_checkouts(catalog: dict[str, Any]) -> dict[str, str]:
-    """Return only catalog entries that carry a fully proven Stripe checkout."""
+    """Return active Stripe checkouts, failing closed on duplicate SKU ids."""
+    counts: dict[str, int] = {}
+    for listing in catalog.get("listings") or []:
+        if isinstance(listing, dict) and isinstance(listing.get("id"), str):
+            sku = listing["id"]
+            counts[sku] = counts.get(sku, 0) + 1
     out: dict[str, str] = {}
     for listing in catalog.get("listings") or []:
         if not isinstance(listing, dict) or not isinstance(listing.get("id"), str):
+            continue
+        sku = listing["id"]
+        if counts.get(sku) != 1:
             continue
         checkout = listing.get("checkout") if isinstance(listing.get("checkout"), dict) else {}
         url = checkout.get("url")
@@ -141,7 +149,98 @@ def catalog_checkouts(catalog: dict[str, Any]) -> dict[str, str]:
             and isinstance(url, str)
             and STRIPE_URL_RE.fullmatch(url)
         ):
-            out[listing["id"]] = url
+            out[sku] = url
+    return out
+
+
+def catalog_checkout_evidence(catalog: dict[str, Any]) -> dict[str, dict[str, str]]:
+    """Return evidence from the same unique listing admitted as active."""
+    active = catalog_checkouts(catalog)
+    out: dict[str, dict[str, str]] = {}
+    for listing in catalog.get("listings") or []:
+        if not isinstance(listing, dict) or not isinstance(listing.get("id"), str):
+            continue
+        sku = listing["id"]
+        checkout = listing.get("checkout") if isinstance(listing.get("checkout"), dict) else {}
+        url = checkout.get("url")
+        if active.get(sku) != url:
+            continue
+        evidence = checkout.get("capability_evidence") if isinstance(checkout.get("capability_evidence"), dict) else {}
+        reference = evidence.get("reference")
+        observed_at = evidence.get("observed_at")
+        if not isinstance(reference, str) or not reference.strip():
+            continue
+        if not isinstance(observed_at, str) or not observed_at:
+            continue
+        try:
+            _timestamp(observed_at, "%s.checkout.capability_evidence.observed_at" % sku)
+        except CapabilityError:
+            continue
+        out[sku] = {
+            "url": str(url),
+            "reference": reference,
+            "observed_at": observed_at,
+        }
+    return out
+
+
+def canonical_checkout_authority() -> dict[str, dict[str, str]]:
+    """Caller-independent provider root from repository-canonical evidence."""
+    try:
+        snapshot = _load(ROOT_DEFAULT, SNAPSHOT)
+        catalog = _load(ROOT_DEFAULT, CATALOG)
+        _timestamp(snapshot.get("observed_at"), "canonical.observed_at")
+    except (OSError, ValueError, json.JSONDecodeError, CapabilityError):
+        return {}
+    provider = snapshot.get("provider") if isinstance(snapshot.get("provider"), dict) else {}
+    if not account_ready(provider):
+        return {}
+    checkouts = catalog_checkouts(catalog)
+    checkout_evidence = catalog_checkout_evidence(catalog)
+    snapshot_evidence = snapshot.get("evidence") if isinstance(snapshot.get("evidence"), dict) else {}
+    default_evidence = {
+        "reference": snapshot_evidence.get("reference"),
+        "observed_at": snapshot.get("observed_at"),
+    }
+    out: dict[str, dict[str, str]] = {}
+    duplicate: set[str] = set()
+    for rail in snapshot.get("canonical_rails") or []:
+        if not isinstance(rail, dict) or not isinstance(rail.get("sku"), str):
+            continue
+        sku = rail["sku"]
+        if sku in out:
+            duplicate.add(sku)
+            continue
+        url = str(rail.get("url") or "")
+        evidence = rail.get("evidence") if isinstance(rail.get("evidence"), dict) else default_evidence
+        reference = evidence.get("reference")
+        observed_at = evidence.get("observed_at")
+        catalog_evidence = checkout_evidence.get(sku) or {}
+        if not (
+            rail.get("link_active") is True
+            and rail.get("livemode") is True
+            and bool(STRIPE_URL_RE.fullmatch(url))
+            and checkouts.get(sku) == url
+            and isinstance(reference, str)
+            and bool(reference.strip())
+            and isinstance(observed_at, str)
+            and catalog_evidence.get("url") == url
+            and catalog_evidence.get("reference") == reference
+            and catalog_evidence.get("observed_at") == observed_at
+        ):
+            continue
+        try:
+            _timestamp(observed_at, "%s.canonical.evidence.observed_at" % sku)
+        except CapabilityError:
+            continue
+        out[sku] = {
+            "url": url,
+            "reference": reference,
+            "observed_at": observed_at,
+            "exposure": str(rail.get("exposure") or ""),
+        }
+    for sku in duplicate:
+        out.pop(sku, None)
     return out
 
 
@@ -151,6 +250,8 @@ def project_rail(
     inert: set[str],
     checkouts: dict[str, str],
     default_evidence: dict[str, Any],
+    checkout_evidence: dict[str, dict[str, str]],
+    authority: dict[str, dict[str, str]],
 ) -> dict[str, Any]:
     url = str(rail.get("url") or "")
     sku = str(rail.get("sku") or "")
@@ -161,6 +262,20 @@ def project_rail(
             _timestamp(evidence["observed_at"], "%s.evidence.observed_at" % sku)
         except CapabilityError:
             evidence_ready = False
+    catalog_evidence = checkout_evidence.get(sku) or {}
+    evidence_matches = (
+        catalog_evidence.get("url") == url
+        and catalog_evidence.get("reference") == evidence.get("reference")
+        and catalog_evidence.get("observed_at") == evidence.get("observed_at")
+    )
+    exposure = str(rail.get("exposure") or "")
+    canonical = authority.get(sku) or {}
+    authority_matches = (
+        canonical.get("url") == url
+        and canonical.get("reference") == evidence.get("reference")
+        and canonical.get("observed_at") == evidence.get("observed_at")
+        and canonical.get("exposure") == exposure
+    )
     ready = (
         account_ready(provider)
         and rail.get("link_active") is True
@@ -169,8 +284,9 @@ def project_rail(
         and url not in inert
         and checkouts.get(sku) == url
         and evidence_ready
+        and evidence_matches
+        and authority_matches
     )
-    exposure = str(rail.get("exposure") or "")
     if ready and exposure == "CHECKOUT_FIRST":
         public = "EXPOSE_CHECKOUT"
     elif ready and exposure == "INTAKE_FIRST":
@@ -208,8 +324,18 @@ def project(snapshot: dict[str, Any], catalog: dict[str, Any]) -> dict[str, Any]
         "observed_at": snapshot.get("observed_at"),
     }
     checkouts = catalog_checkouts(catalog)
+    checkout_evidence = catalog_checkout_evidence(catalog)
+    authority = canonical_checkout_authority()
     projected = [
-        project_rail(provider, rail, inert, checkouts, default_evidence)
+        project_rail(
+            provider,
+            rail,
+            inert,
+            checkouts,
+            default_evidence,
+            checkout_evidence,
+            authority,
+        )
         for rail in rails
         if isinstance(rail, dict)
     ]
