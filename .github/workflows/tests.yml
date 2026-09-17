@@ -100,6 +100,8 @@ on:
       - 'tests/test_outbound_collision_guard_release_boundary.py'
       - 'tools/runtime_provenance/**'
       - 'runtime/agent_runtime_registry.json'
+      - 'competitions/opencv-ai-2026/visual-evidence-gate/**'
+      - 'test_opencv_visual_evidence_gate.py'
       - 'docs/commons-gateway/**'
       - 'hub_pages.py'
       - 'owner_pin.py'
@@ -209,6 +211,8 @@ on:
       - 'tests/test_outbound_collision_guard_release_boundary.py'
       - 'tools/runtime_provenance/**'
       - 'runtime/agent_runtime_registry.json'
+      - 'competitions/opencv-ai-2026/visual-evidence-gate/**'
+      - 'test_opencv_visual_evidence_gate.py'
       - 'docs/commons-gateway/**'
       - 'hub_pages.py'
       - 'owner_pin.py'
@@ -351,6 +355,84 @@ jobs:
 
       - name: Emit canonical registry digest
         run: python -m tools.runtime_provenance.runtime_registry digest runtime/agent_runtime_registry.json
+
+  opencv-visual-evidence:
+    name: opencv-visual-evidence (${{ matrix.python-version }})
+    if: ${{ github.event_name != 'pull_request' || github.base_ref == 'main' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Detect OpenCV proof-surface changes
+        id: scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            base='${{ github.event.pull_request.base.sha }}'
+            head='${{ github.event.pull_request.head.sha }}'
+          else
+            base='${{ github.event.before }}'
+            head='${{ github.sha }}'
+          fi
+          if git diff --name-only "$base" "$head" -- \
+              'competitions/opencv-ai-2026/visual-evidence-gate/**' \
+              'test_opencv_visual_evidence_gate.py' \
+              '.github/workflows/tests.yml' \
+              '.github/workflows/opencv-visual-evidence-gate.yml' | grep -q .; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Set up Python
+        if: ${{ steps.scope.outputs.run == 'true' }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install isolated OpenCV test runtime
+        if: ${{ steps.scope.outputs.run == 'true' }}
+        run: python -m pip install --disable-pip-version-check -r competitions/opencv-ai-2026/visual-evidence-gate/requirements-test.txt
+
+      - name: Compile source
+        if: ${{ steps.scope.outputs.run == 'true' }}
+        run: python -m py_compile competitions/opencv-ai-2026/visual-evidence-gate/visual_gate.py competitions/opencv-ai-2026/visual-evidence-gate/aws_lambda.py competitions/opencv-ai-2026/visual-evidence-gate/evaluate.py test_opencv_visual_evidence_gate.py
+
+      - name: Normal hostile proof
+        if: ${{ steps.scope.outputs.run == 'true' }}
+        run: PYTHONNOUSERSITE=1 python test_opencv_visual_evidence_gate.py
+
+      - name: Optimized hostile proof
+        if: ${{ steps.scope.outputs.run == 'true' }}
+        run: PYTHONNOUSERSITE=1 python -O test_opencv_visual_evidence_gate.py
+
+      - name: Synthetic evaluation truth ceiling
+        if: ${{ steps.scope.outputs.run == 'true' }}
+        run: |
+          PYTHONNOUSERSITE=1 python competitions/opencv-ai-2026/visual-evidence-gate/evaluate.py > /tmp/eval.json
+          python - <<'PY'
+          import json
+          d=json.load(open('/tmp/eval.json'))
+          assert d['passed'] == 4
+          assert d['success_ppm'] == 1_000_000
+          assert d['claims']['natural_video_accuracy_measured'] is False
+          assert d['claims']['aws_runtime_evidenced'] is False
+          assert d['claims']['competition_submission_evidenced'] is False
+          PY
 
   non-main-base:
     if: ${{ github.event_name == 'pull_request' && github.base_ref != 'main' }}
