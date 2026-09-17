@@ -1,0 +1,26 @@
+{
+  "schema": "indiana-iot-observability-paid-specialist-scope/v1",
+  "opportunity_id": "27-87814",
+  "status": "TEMPLATE_NOT_OFFER",
+  "commercial_model": "fixed-price work package after partner discovery",
+  "price_usd": null,
+  "deliverables": [
+    "telemetry/source inventory and OpenTelemetry coverage map",
+    "deterministic acceptance harness for detection, resolution, and alert-quality service levels",
+    "synthetic incident and regression test pack",
+    "ServiceNow/integration contract-test evidence",
+    "rollout/cutover evidence and reproducible observability quality scorecards",
+    "AI/agent observability evaluation only if allowed by controlling RFP"
+  ],
+  "excluded_authority": [
+    "represent platform vendor",
+    "represent Indiana IOT",
+    "submit proposal",
+    "set partner price",
+    "bind subcontract",
+    "sign contract",
+    "claim award",
+    "claim payment",
+    "claim revenue"
+  ]
+}
