@@ -593,22 +593,6 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 15725,
-   "author": "woahwhattheheck",
-   "title": "Revenue: complete Alcorn RFP 5588 internal response pack without widening authority",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15725",
-   "base_freshness": {
-    "base_sha": "e182cad7382b7d7b49dab7bcbed14eea54cfa0c0",
-    "main_sha": "97bf672f17685aa0f35e9627df508a85dde443d4",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 15643,
    "author": "woahwhattheheck",
    "title": "Fix pilot-renewal receipt reseal and current-clock authority",
@@ -647,22 +631,6 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15714",
    "base_freshness": {
     "base_sha": "d5ffb66144424a0c6c652e5bee5517ee940c810c",
-    "main_sha": "97bf672f17685aa0f35e9627df508a85dde443d4",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 15729,
-   "author": "woahwhattheheck",
-   "title": "policy: enforce public surface isolation from Commons (#15713)",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15729",
-   "base_freshness": {
-    "base_sha": "e182cad7382b7d7b49dab7bcbed14eea54cfa0c0",
     "main_sha": "97bf672f17685aa0f35e9627df508a85dde443d4",
     "ahead_by": null,
     "behind_by": null,
@@ -753,22 +721,6 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 15733,
-   "author": "woahwhattheheck",
-   "title": "research: prove pressure-trace consistency blocker for #14998",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15733",
-   "base_freshness": {
-    "base_sha": "e182cad7382b7d7b49dab7bcbed14eea54cfa0c0",
-    "main_sha": "97bf672f17685aa0f35e9627df508a85dde443d4",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 15734,
    "author": "woahwhattheheck",
    "title": "OneWriter: restore strict deployment identifier contract",
@@ -817,44 +769,12 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 15629,
-   "author": "woahwhattheheck",
-   "title": "Revenue: gate pilot delivery into renewal/expansion review",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15629",
-   "base_freshness": {
-    "base_sha": "be8d6f6cd2db4c36f6c9fb90e6502e71756cb2d7",
-    "main_sha": "97bf672f17685aa0f35e9627df508a85dde443d4",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 15662,
    "author": "woahwhattheheck",
    "title": "Muse: atomically consume session-bound send leases (#15659)",
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15662",
    "base_freshness": {
     "base_sha": "a18de051b158c5a1e8bc60caf4ae977e35f10fb8",
-    "main_sha": "97bf672f17685aa0f35e9627df508a85dde443d4",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 15731,
-   "author": "woahwhattheheck",
-   "title": "feat: exact-head ship fence for moving-main + CI truth",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15731",
-   "base_freshness": {
-    "base_sha": "e182cad7382b7d7b49dab7bcbed14eea54cfa0c0",
     "main_sha": "97bf672f17685aa0f35e9627df508a85dde443d4",
     "ahead_by": null,
     "behind_by": null,
@@ -897,6 +817,22 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
+   "number": 15645,
+   "author": "woahwhattheheck",
+   "title": "Close Hamilton qualification and retained-evidence trust roots",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15645",
+   "base_freshness": {
+    "base_sha": "7664850a6976ac2e9e752428aa42062d3181ce73",
+    "main_sha": "97bf672f17685aa0f35e9627df508a85dde443d4",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
    "number": 15717,
    "author": "woahwhattheheck",
    "title": "Fix relationship contact guard lineage and current-time trust",
@@ -913,12 +849,76 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 15645,
+   "number": 15725,
    "author": "woahwhattheheck",
-   "title": "Close Hamilton qualification and retained-evidence trust roots",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15645",
+   "title": "Revenue: complete Alcorn RFP 5588 internal response pack without widening authority",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15725",
    "base_freshness": {
-    "base_sha": "7664850a6976ac2e9e752428aa42062d3181ce73",
+    "base_sha": "e182cad7382b7d7b49dab7bcbed14eea54cfa0c0",
+    "main_sha": "97bf672f17685aa0f35e9627df508a85dde443d4",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15729,
+   "author": "woahwhattheheck",
+   "title": "policy: enforce public surface isolation from Commons (#15713)",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15729",
+   "base_freshness": {
+    "base_sha": "e182cad7382b7d7b49dab7bcbed14eea54cfa0c0",
+    "main_sha": "97bf672f17685aa0f35e9627df508a85dde443d4",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15629,
+   "author": "woahwhattheheck",
+   "title": "Revenue: gate pilot delivery into renewal/expansion review",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15629",
+   "base_freshness": {
+    "base_sha": "be8d6f6cd2db4c36f6c9fb90e6502e71756cb2d7",
+    "main_sha": "97bf672f17685aa0f35e9627df508a85dde443d4",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15731,
+   "author": "woahwhattheheck",
+   "title": "feat: exact-head ship fence for moving-main + CI truth",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15731",
+   "base_freshness": {
+    "base_sha": "e182cad7382b7d7b49dab7bcbed14eea54cfa0c0",
+    "main_sha": "97bf672f17685aa0f35e9627df508a85dde443d4",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15733,
+   "author": "woahwhattheheck",
+   "title": "research: prove pressure-trace consistency blocker for #14998",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15733",
+   "base_freshness": {
+    "base_sha": "e182cad7382b7d7b49dab7bcbed14eea54cfa0c0",
     "main_sha": "97bf672f17685aa0f35e9627df508a85dde443d4",
     "ahead_by": null,
     "behind_by": null,
