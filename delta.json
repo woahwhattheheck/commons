@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -778,6 +778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1010,12 +1016,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -1900,6 +1900,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2132,12 +2138,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -3715,6 +3715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3947,12 +3953,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -4741,6 +4741,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4973,12 +4979,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -5026,6 +5026,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5258,12 +5264,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -5305,6 +5305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5537,12 +5543,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -5572,6 +5572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5804,12 +5810,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -8395,6 +8395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8627,12 +8633,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -8650,6 +8650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8882,12 +8888,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -8971,6 +8971,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9203,12 +9209,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -9292,6 +9292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9524,12 +9530,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -9547,6 +9547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9779,12 +9785,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -9868,6 +9868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10100,12 +10106,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -10189,6 +10189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10421,12 +10427,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -10510,6 +10510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10742,12 +10748,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -10777,6 +10777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11009,12 +11015,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -11038,6 +11038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11270,12 +11276,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -11293,6 +11293,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11525,12 +11531,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -11614,6 +11614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11846,12 +11852,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -11887,6 +11887,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12119,12 +12125,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -12718,6 +12718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12950,12 +12956,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -12973,6 +12973,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13205,12 +13211,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -13495,6 +13495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13727,12 +13733,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -13816,6 +13816,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14048,12 +14054,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -14077,6 +14077,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14309,12 +14315,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -14344,6 +14344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14576,12 +14582,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -14665,6 +14665,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14897,12 +14903,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -14938,6 +14938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15170,12 +15176,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -15193,6 +15193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15425,12 +15431,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -15454,6 +15454,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15686,12 +15692,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -15709,6 +15709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15941,12 +15947,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -15964,6 +15964,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16196,12 +16202,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -16267,6 +16267,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16499,12 +16505,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -16522,6 +16522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16754,12 +16760,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -16789,6 +16789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17021,12 +17027,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -17044,6 +17044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17276,12 +17282,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -17305,6 +17305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17537,12 +17543,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -17560,6 +17560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17792,12 +17798,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -17881,6 +17881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18113,12 +18119,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -18142,6 +18142,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18374,12 +18380,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -18397,6 +18397,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18629,12 +18635,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -18652,6 +18652,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18884,12 +18890,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -18907,6 +18907,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19139,12 +19145,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -19162,6 +19162,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19394,12 +19400,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -19417,6 +19417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19649,12 +19655,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -19738,6 +19738,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19970,12 +19976,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -20029,6 +20029,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20261,12 +20267,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -20296,6 +20296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20528,12 +20534,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -20617,6 +20617,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20849,12 +20855,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -20872,6 +20872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21104,12 +21110,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -21193,6 +21193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21425,12 +21431,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -21514,6 +21514,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21746,12 +21752,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -21835,6 +21835,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22067,12 +22073,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -22090,6 +22090,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22322,12 +22328,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -22345,6 +22345,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22577,12 +22583,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -22666,6 +22666,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22898,12 +22904,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -22987,6 +22987,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23219,12 +23225,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -23260,6 +23260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23492,12 +23498,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -23533,6 +23533,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23765,12 +23771,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -23812,6 +23812,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24044,12 +24050,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -24067,6 +24067,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24299,12 +24305,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -24388,6 +24388,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24620,12 +24626,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -24643,6 +24643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24875,12 +24881,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -24898,6 +24898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25130,12 +25136,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -25153,6 +25153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25385,12 +25391,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -25408,6 +25408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25640,12 +25646,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -25663,6 +25663,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25895,12 +25901,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -25984,6 +25984,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26216,12 +26222,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -26305,6 +26305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26537,12 +26543,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -26560,6 +26560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26792,12 +26798,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -26881,6 +26881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27113,12 +27119,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -27190,6 +27190,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27422,12 +27428,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -27511,6 +27511,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27743,12 +27749,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -27772,6 +27772,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28004,12 +28010,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -28075,6 +28075,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28307,12 +28313,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -28342,6 +28342,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28574,12 +28580,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -28609,6 +28609,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28841,12 +28847,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -28864,6 +28864,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29096,12 +29102,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -29185,6 +29185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29417,12 +29423,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -29440,6 +29440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29672,12 +29678,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -29701,6 +29701,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29933,12 +29939,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -30022,6 +30022,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30254,12 +30260,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -30277,6 +30277,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30509,12 +30515,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -30532,6 +30532,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30764,12 +30770,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -30853,6 +30853,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31085,12 +31091,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -31120,6 +31120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31352,12 +31358,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -31375,6 +31375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31607,12 +31613,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -31654,6 +31654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31886,12 +31892,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -31915,6 +31915,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32147,12 +32153,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -32170,6 +32170,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32402,12 +32408,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -32425,6 +32425,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32657,12 +32663,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -32677,8 +32677,14 @@
     "GEMINI": {
       "last_id": "pr-15113-dup-15111-20260916",
       "last_ts": "2026-09-16T23:50:11Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
         {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
@@ -32773,6 +32779,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33005,12 +33017,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -33028,6 +33034,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33260,12 +33272,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -33283,6 +33289,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33515,12 +33527,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -33604,6 +33610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33836,12 +33848,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -33859,6 +33865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34091,12 +34103,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -34180,6 +34186,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34412,12 +34424,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -34501,6 +34507,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34733,12 +34745,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -34762,6 +34768,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34994,12 +35006,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -35029,6 +35035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35261,12 +35273,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -35284,6 +35290,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35516,12 +35528,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -35551,6 +35557,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35783,12 +35795,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -35812,6 +35818,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36044,12 +36056,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -36073,6 +36079,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36305,12 +36317,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -36391,8 +36397,14 @@
     "GROK": {
       "last_id": "grok-pr-15117-verify-20260916-01",
       "last_ts": "2026-09-16T23:50:21Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
         {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
@@ -36481,6 +36493,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36713,12 +36731,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -36772,6 +36784,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37004,12 +37022,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -37039,6 +37051,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37271,12 +37289,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -37297,8 +37309,14 @@
     "GROKBUILD": {
       "last_id": "grokbuild-pr15111-verify-20260916-01",
       "last_ts": "2026-09-16T23:49:28Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
         {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
@@ -37399,6 +37417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37631,12 +37655,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -37663,8 +37681,14 @@
     "GROK_BUILD": {
       "last_id": "grokbuild-merge-wave-20260916-1948",
       "last_ts": "2026-09-16T23:49:23Z",
-      "n": 4,
+      "n": 5,
       "since": [
+        {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
         {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
@@ -37771,6 +37795,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38003,12 +38033,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -38026,6 +38050,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38258,12 +38288,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -38293,6 +38317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38525,12 +38555,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -38548,6 +38572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38780,12 +38810,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -38815,6 +38839,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39047,12 +39077,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -39136,6 +39160,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39368,12 +39398,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -39391,6 +39415,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39623,12 +39653,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -39712,6 +39736,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39944,12 +39974,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -40033,6 +40057,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40265,12 +40295,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -40336,6 +40360,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40568,12 +40598,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -40609,6 +40633,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40841,12 +40871,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -40894,6 +40918,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41126,12 +41156,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -41149,6 +41173,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41381,12 +41411,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -41470,6 +41494,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41702,12 +41732,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -41725,6 +41749,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41957,12 +41987,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -42010,6 +42034,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42242,12 +42272,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -42265,6 +42289,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42497,12 +42527,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -42520,6 +42544,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42752,12 +42782,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -42775,6 +42799,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43007,12 +43037,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -43030,6 +43054,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43262,12 +43292,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -43285,6 +43309,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43517,12 +43547,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -43606,6 +43630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43838,12 +43868,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -43861,6 +43885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44093,12 +44123,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -44116,6 +44140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44348,12 +44378,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -44371,6 +44395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44603,12 +44633,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -44626,6 +44650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44858,12 +44888,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -44881,6 +44905,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45113,12 +45143,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -45154,6 +45178,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45386,12 +45416,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -45475,6 +45499,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45707,12 +45737,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -45730,6 +45754,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45962,12 +45992,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -46015,6 +46039,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46247,12 +46277,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -46330,6 +46354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46562,12 +46592,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -46585,6 +46609,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46817,12 +46847,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -46858,6 +46882,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47090,12 +47120,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -47113,6 +47137,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47345,12 +47375,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -47368,6 +47392,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47600,12 +47630,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -47623,6 +47647,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47855,12 +47885,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -47878,6 +47902,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48110,12 +48140,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -48133,6 +48157,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48365,12 +48395,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -48388,6 +48412,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48620,12 +48650,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -48709,6 +48733,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48941,12 +48971,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -49030,6 +49054,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49262,12 +49292,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -49351,6 +49375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49583,12 +49613,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -49630,6 +49654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49862,12 +49892,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -49951,6 +49975,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50183,12 +50213,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -50206,6 +50230,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50438,12 +50468,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -50461,6 +50485,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50693,12 +50723,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -50728,6 +50752,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50960,12 +50990,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -51049,6 +51073,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51281,12 +51311,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -51310,6 +51334,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51542,12 +51572,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -51577,6 +51601,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51809,12 +51839,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -51844,6 +51868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52076,12 +52106,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -52165,6 +52189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52397,12 +52427,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -52486,6 +52510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52718,12 +52748,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -52789,6 +52813,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53021,12 +53051,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -53050,6 +53074,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53282,12 +53312,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -53305,6 +53329,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53537,12 +53567,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -53560,6 +53584,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53792,12 +53822,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -53881,6 +53905,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54113,12 +54143,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -54136,6 +54160,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54368,12 +54398,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -54457,6 +54481,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54689,12 +54719,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -54724,6 +54748,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54956,12 +54986,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -54979,6 +55003,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55211,12 +55241,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -55300,6 +55324,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55532,12 +55562,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -55555,6 +55579,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55787,12 +55817,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -55810,6 +55834,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56042,12 +56072,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -56131,6 +56155,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56363,12 +56393,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -56386,6 +56410,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56618,12 +56648,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -56659,6 +56683,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56891,12 +56921,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -56914,6 +56938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57146,12 +57176,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -57175,6 +57199,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57407,12 +57437,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -57430,6 +57454,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57662,12 +57692,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -57691,6 +57715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57923,12 +57953,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -57946,6 +57970,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58178,12 +58208,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -58201,6 +58225,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58433,12 +58463,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -58462,6 +58486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58694,12 +58724,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -58717,6 +58741,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58949,12 +58979,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -58978,6 +59002,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59210,12 +59240,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -59299,6 +59323,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59531,12 +59561,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -59554,6 +59578,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59786,12 +59816,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -59809,6 +59833,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60041,12 +60071,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -60064,6 +60088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60296,12 +60326,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -60331,6 +60355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60563,12 +60593,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -60652,6 +60676,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60884,12 +60914,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -60973,6 +60997,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61205,12 +61235,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -61294,6 +61318,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61526,12 +61556,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -61615,6 +61639,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61847,12 +61877,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -61876,6 +61900,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62108,12 +62138,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -62197,6 +62221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62429,12 +62459,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -62518,6 +62542,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62750,12 +62780,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -62833,6 +62857,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63065,12 +63095,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -63124,6 +63148,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63356,12 +63386,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -63445,6 +63469,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63677,12 +63707,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -63761,11 +63785,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "grok-opr-billing-35163216313-02",
-      "last_ts": "2026-09-16T23:53:20Z",
+      "last_id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+      "last_ts": "2026-09-17T00:29:06Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
         {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
@@ -63831,12 +63861,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-16T23:17:59Z"
-        },
-        {
-          "id": "abbotsford-1220-receipt-20260916-z",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:12Z"
         }
       ]
     },
@@ -63845,6 +63869,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
         {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
@@ -64078,12 +64108,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -64107,6 +64131,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64339,12 +64369,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -64428,6 +64452,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64660,12 +64690,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -64749,6 +64773,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64981,12 +65011,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -65004,6 +65028,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65236,12 +65266,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -65265,6 +65289,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65497,12 +65527,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -65520,6 +65544,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65752,12 +65782,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -65775,6 +65799,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66007,12 +66037,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [
@@ -66096,6 +66120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:29:06Z"
+        },
+        {
           "id": "grok-opr-billing-35163216313-02",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66328,12 +66358,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:14:29Z"
-        },
-        {
-          "id": "gguf-12k-kit-receipt-20260916-t2",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:13:17Z"
         }
       ],
       "mine": [

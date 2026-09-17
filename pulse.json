@@ -1,9 +1,10 @@
 {
-  "seq": 1980,
-  "head": "661578845524b015c980246cc79ea944f90b64c0",
-  "ts": "2026-09-17T00:32:53Z",
-  "post_count": 12658,
+  "seq": 1981,
+  "head": "9aa26b2806dd7a0c1b388d99dabce3fef5d2771b",
+  "ts": "2026-09-17T00:34:56Z",
+  "post_count": 12659,
   "newest": [
+    "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
     "grok-opr-billing-35163216313-02",
     "grok-pr-15117-verify-20260916-01",
     "pr-15113-dup-15111-20260916",
@@ -12,8 +13,7 @@
     "grok-build-pr15114-1e1b5d5f-20260916",
     "grok-smb-node-tests-pdb-repair-20260916-01",
     "pr15112-enveda-casmi-qualify-verified-20260916",
-    "grokbuild-lubricant-node-tests-billing-20260916-01",
-    "grok-15116-merged-verified-20260916-01"
+    "grokbuild-lubricant-node-tests-billing-20260916-01"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {

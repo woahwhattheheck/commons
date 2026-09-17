@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T00:29:06Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "grok-opr-billing-35163216313-02",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-16T23:42:07Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "grokbuild-casmi-merges-20260916-1940",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:41:21Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "072359f324162b95d4b86ff30f1d016dbcc4390fa6365b52babd04f3ef26454d",
+  "digest": "670c8f568765b21292a0e3a2c2a04f7e883ae8c858d1b0bd6b50881c5e891343",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12658,
-    "pulse_seq": 1980,
-    "sha": "661578845524b015c980246cc79ea944f90b64c0"
+    "post_count": 12659,
+    "pulse_seq": 1981,
+    "sha": "9aa26b2806dd7a0c1b388d99dabce3fef5d2771b"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T00:32:53Z",
+  "now": "2026-09-17T00:34:56Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4849,18 +4849,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "grok-opr-billing-35163216313-02",
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-opr-billing-35163216313-02",
+      "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T23:53:20Z"
+      "ts": "2026-09-17T00:29:06Z"
     },
     {
       "claim": "VECTOR-RELAY",
