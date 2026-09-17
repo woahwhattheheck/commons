@@ -69,6 +69,14 @@ class RuntimeProvenanceRetainedTests(unittest.TestCase):
         self.assertGreater(count, 0, f"focused discovery executed zero tests:\n{self.child_output(proc)}")
         return count
 
+    def assert_child_rejected_as_nonvacuous(self, proc: subprocess.CompletedProcess[str]) -> None:
+        """Require a child result to fail the positive non-vacuity contract."""
+        try:
+            self.assert_child_nonvacuous(proc)
+        except (AssertionError, ValueError):
+            return
+        self.fail(f"zero-test child unexpectedly satisfied non-vacuity:\n{self.child_output(proc)}")
+
     def test_focused_suite_normal_and_optimized_is_nonvacuous(self) -> None:
         counts: list[int] = []
         for optimized in (False, True):
@@ -92,10 +100,27 @@ class RuntimeProvenanceRetainedTests(unittest.TestCase):
             for optimized in (False, True):
                 with self.subTest(optimized=optimized):
                     proc = self.run_child(*empty_discover, optimized=optimized)
-                    self.assertEqual(proc.returncode, 0, self.child_output(proc))
-                    self.assertEqual(reported_test_count(proc.stderr), 0)
-                    with self.assertRaisesRegex(AssertionError, "executed zero tests"):
-                        self.assert_child_nonvacuous(proc)
+                    self.assertIn("Ran 0 tests", proc.stderr, self.child_output(proc))
+                    self.assert_child_rejected_as_nonvacuous(proc)
+
+    def test_known_zero_discovery_result_variants_fail_closed(self) -> None:
+        variants = (
+            subprocess.CompletedProcess(
+                args=[sys.executable, *DISCOVER],
+                returncode=0,
+                stdout="",
+                stderr="----------------------------------------------------------------------\nRan 0 tests in 0.000s\n\nOK\n",
+            ),
+            subprocess.CompletedProcess(
+                args=[sys.executable, *DISCOVER],
+                returncode=5,
+                stdout="",
+                stderr="----------------------------------------------------------------------\nRan 0 tests in 0.000s\n\nNO TESTS RAN\n",
+            ),
+        )
+        for proc in variants:
+            with self.subTest(returncode=proc.returncode):
+                self.assert_child_rejected_as_nonvacuous(proc)
 
     def test_stdout_cannot_override_real_zero_test_stderr_summary(self) -> None:
         proc = subprocess.CompletedProcess(
