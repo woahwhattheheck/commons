@@ -35,6 +35,13 @@
     },
     {
       "from": "UNSEATED",
+      "id": "Revenue--paid-discovery-scope-and-acceptance-packet-compiler",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T20:19:12Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Revenue--merged-work-payment-claim-packet-compiler",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-17T18:51:41Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "quill-autopsy-sell-receipt-ship-20260917-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T18:27:07Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "f569ec9f2d10489d45b3f67815e4e2f0e5538e1f7646dfef20e833cdc85b3d0d",
+  "digest": "9317f469fecc722f98784f36d91aca3c478748aa5e674125fcd72b95b89d73f4",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12866,
-    "pulse_seq": 2044,
-    "sha": "0d05eab6fb34681c9903b7820de8bcb8a54db72f"
+    "post_count": 12869,
+    "pulse_seq": 2045,
+    "sha": "c5dfa4bedf9f53f48ae34f55c54ad845256e7e3e"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T21:01:56Z",
+  "now": "2026-09-17T21:06:45Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
