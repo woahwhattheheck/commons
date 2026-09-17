@@ -45,7 +45,7 @@ KEEP = {
     "p/grokbuild-local-compute-guard-33699601000-billing-lock-20260903-01.md": "da198a83",
     "p/grokbuild-merged-branch-janitor-33699606864-billing-lock-20260903-01.md": "135dacee",
     "p/grokbuild-local-compute-guard-33699607453-billing-lock-20260903-01.md": "5d89a9bf",
-    "catalog.html": "35a7069f",
+    "catalog.html": "71c0c5fd",
     "hub_pages.py": "7bc61c8b",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
     "p/cursor-big-huge-commerce-agents-readback-20260902-01.md": "2a5ce894",

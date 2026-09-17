@@ -17,7 +17,7 @@ HUB = ROOT / "hub_pages.py"
 
 KEEP = {
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
-    "catalog.html": "35a7069f",
+    "catalog.html": "71c0c5fd",
     "boards.html": "c7531a1e",
     "wire.html": "3f030862",
     "ground/WIRE_SUPER_MCP.md": "6a50f614",
@@ -68,7 +68,8 @@ class TestCursorGoatPagesSuperMcpLandReadback(unittest.TestCase):
         self.assertIn("Shared super MCP", leftover)
         self.assertIn("./wire.html", leftover)
         self.assertIn("catalog.html", leftover)
-        self.assertNotIn("buy.stripe.com", text)
+        # Convert shelf reuses existing live buys; exact allowlist is
+        # test_type_resources_catalog_convert_shelf_20260917_01.py.
         self.assertNotIn("buy.stripe.com", leftover)
 
     def test_boards_row_hit_generator_keep_unread(self) -> None:

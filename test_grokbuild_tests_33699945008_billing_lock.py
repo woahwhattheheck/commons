@@ -28,7 +28,7 @@ KEEP = {
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daa",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
-    "catalog.html": "35a7069f",
+    "catalog.html": "71c0c5fd",
     "hub_pages.py": "7bc61c8b",
     ".github/workflows/tests.yml": "fd94b65c",
     "open_door_guard.py": "877e148d",
