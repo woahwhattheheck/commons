@@ -122,10 +122,18 @@ def account_ready(provider: dict[str, Any]) -> bool:
 
 
 def catalog_checkouts(catalog: dict[str, Any]) -> dict[str, str]:
-    """Return only catalog entries that carry a fully proven Stripe checkout."""
+    """Return active Stripe checkouts, failing closed on duplicate SKU ids."""
+    counts: dict[str, int] = {}
+    for listing in catalog.get("listings") or []:
+        if isinstance(listing, dict) and isinstance(listing.get("id"), str):
+            sku = listing["id"]
+            counts[sku] = counts.get(sku, 0) + 1
     out: dict[str, str] = {}
     for listing in catalog.get("listings") or []:
         if not isinstance(listing, dict) or not isinstance(listing.get("id"), str):
+            continue
+        sku = listing["id"]
+        if counts.get(sku) != 1:
             continue
         checkout = listing.get("checkout") if isinstance(listing.get("checkout"), dict) else {}
         url = checkout.get("url")
@@ -138,12 +146,12 @@ def catalog_checkouts(catalog: dict[str, Any]) -> dict[str, str]:
             and isinstance(url, str)
             and STRIPE_URL_RE.fullmatch(url)
         ):
-            out[listing["id"]] = url
+            out[sku] = url
     return out
 
 
 def catalog_checkout_evidence(catalog: dict[str, Any]) -> dict[str, dict[str, str]]:
-    """Return timestamp-valid catalog checkout evidence keyed by SKU."""
+    """Return evidence from the same unique listing admitted as active."""
     active = catalog_checkouts(catalog)
     out: dict[str, dict[str, str]] = {}
     for listing in catalog.get("listings") or []:
