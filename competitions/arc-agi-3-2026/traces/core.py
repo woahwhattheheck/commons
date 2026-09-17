@@ -59,11 +59,15 @@ def _sha(value: Any, name: str) -> str:
 
 
 def _canonical_value(value: Any, path: str = "$", *, max_depth: int = MAX_JSON_DEPTH) -> None:
-    """Reject alias-prone or excessively nested values without recursive descent."""
-    stack: list[tuple[Any, str, int]] = [(value, path, 0)]
+    """Reject alias-prone, cyclic, or excessively nested values iteratively."""
+    stack: list[tuple[Any, str, int, bool]] = [(value, path, 0, False)]
+    active_containers: set[int] = set()
     nodes = 0
     while stack:
-        current, current_path, depth = stack.pop()
+        current, current_path, depth, exiting = stack.pop()
+        if exiting:
+            active_containers.discard(id(current))
+            continue
         nodes += 1
         if nodes > MAX_JSON_NODES:
             raise TraceError("canonical JSON node bound exceeded")
@@ -76,15 +80,25 @@ def _canonical_value(value: Any, path: str = "$", *, max_depth: int = MAX_JSON_D
                 raise TraceError(f"{current_path} integer outside interoperable bound")
             continue
         if type(current) is list:
+            container_id = id(current)
+            if container_id in active_containers:
+                raise TraceError(f"{current_path} contains a cyclic list")
+            active_containers.add(container_id)
+            stack.append((current, current_path, depth, True))
             for idx in range(len(current) - 1, -1, -1):
-                stack.append((current[idx], f"{current_path}[{idx}]", depth + 1))
+                stack.append((current[idx], f"{current_path}[{idx}]", depth + 1, False))
             continue
         if type(current) is dict:
+            container_id = id(current)
+            if container_id in active_containers:
+                raise TraceError(f"{current_path} contains a cyclic object")
+            active_containers.add(container_id)
+            stack.append((current, current_path, depth, True))
             items = list(current.items())
             for key, item in reversed(items):
                 if type(key) is not str:
                     raise TraceError(f"{current_path} has non-string key")
-                stack.append((item, f"{current_path}.{key}", depth + 1))
+                stack.append((item, f"{current_path}.{key}", depth + 1, False))
             continue
         raise TraceError(f"{current_path} contains unsupported value type {type(current).__name__}")
 
