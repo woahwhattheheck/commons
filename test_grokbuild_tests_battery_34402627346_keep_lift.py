@@ -45,13 +45,13 @@ DEDUPE = (
 )
 TOOLS = "2da97f56"
 STALE_TOOLS = "e970539c"
-BUILDS = "eb246f6e"
+BUILDS = "0e077fb3"
 STALE_BUILDS = "fb89efb7"
 FEATURES = "b0128863"
 STALE_FEATURES = "5a37e0a8"
-INGEST = "047109e0"
+INGEST = "63c86ed3"
 LEDGER = "d46d4c1c"
-HUB = "4c31e2df"
+HUB = "2e7c54a2"
 
 
 def git_blob(rel: str) -> str:
@@ -175,7 +175,7 @@ class TestGrokbuildTestsBattery34402627346KeepLift(unittest.TestCase):
         # Convert shelf on tools/builds reuses existing live buys; Live cash
         # product-page doors stay relative (wire-tools-toolbench +
         # wire-boards-builds-convert-shelf-20260917-01).
-        for page_name in ("tools.html", "builds.html", "boards.html"):
+        for page_name in ("tools.html", "builds.html", "boards.html", "arbitrage.html", "attested-inference.html"):
             page_html = (ROOT / page_name).read_text(encoding="utf-8")
             live_cash = page_html.split('id="live-cash"', 1)[1].split("</section>", 1)[0]
             self.assertNotIn("buy.stripe.com", live_cash)
