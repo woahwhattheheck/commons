@@ -200,6 +200,10 @@ def verify_handoff(
 
     bundle, bundle_errors = _load_bundle_no_duplicates(bundle_path)
     errors.extend(bundle_errors)
+    # Freeze the duplicate-checked semantic generation before any path-backed
+    # validation. Delegated v1 must consume these exact semantics rather than
+    # reopening a caller-controlled bundle pathname after v2 root validation.
+    bundle_snapshot = _legacy._canon(bundle) if isinstance(bundle, dict) else b"{}"
     root_errors, version_bytes, version_count = _validate_version_roots(manifest, bundle, root)
     errors.extend(root_errors)
 
@@ -207,9 +211,11 @@ def verify_handoff(
     legacy_raw = canonical_manifest_bytes(legacy_manifest)
     with tempfile.TemporaryDirectory(prefix="inprs-accept-v2-") as tmp:
         legacy_path = Path(tmp) / "manifest-v1.json"
+        legacy_bundle_path = Path(tmp) / "candidate-bundle-v1.json"
         legacy_path.write_bytes(legacy_raw)
+        legacy_bundle_path.write_bytes(bundle_snapshot)
         legacy_receipt = _legacy.verify_handoff(
-            legacy_path, _sha(legacy_raw), bundle_path, root
+            legacy_path, _sha(legacy_raw), legacy_bundle_path, root
         )
 
     errors.extend(str(item) for item in legacy_receipt.get("errors", []))
