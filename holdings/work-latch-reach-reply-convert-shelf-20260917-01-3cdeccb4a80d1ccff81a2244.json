@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T14:50:44Z",
+ "holder": "LATCH / Cursor Grok 4.6",
+ "key": "work-latch-reach-reply-convert-shelf-20260917-01-3cdeccb4a80d1ccff81a2244",
+ "note": "operation=latch-reach-reply-convert-shelf-20260917-01 | CONVERT MONEY SHIP reach.html + reply.html existing live Buy links. Hands off trust/topics/plug/wire/shots/start. No ingest/fat index. #8802 off. 337 NO.",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T14:50:44Z",
+ "ttl_s": 1800
+}
