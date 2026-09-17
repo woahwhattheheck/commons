@@ -2,21 +2,23 @@
 """Truth-narrowed, source-bound healthcare-prime readiness for CPCA HCCN Connect.
 
 The legacy qualifier's subcontract ``TEAMING_READY`` value is retained only as a
-bounded workshare-discussion signal.  This wrapper code-owns the exact legacy
-qualifier and canonical CPCA qualification specification, binds every receipt to
-the exact evidence/prime/source identities it evaluated, and independently keeps
-CPCA application readiness at HOLD until provider-authenticated evidence exists.
+diagnostic predecessor signal. This wrapper code-owns the exact legacy qualifier
+and canonical CPCA qualification specification, freezes all caller inputs into one
+strict plain-JSON snapshot, binds every receipt to the exact evaluated identities,
+and keeps both workshare and application readiness at HOLD until separately
+provider-authenticated evidence exists.
 """
 from __future__ import annotations
 
 import argparse
 import hashlib
 import json
+import math
 import re
 from pathlib import Path
 from typing import Any, Callable, Dict, Iterable, List, Mapping, Sequence, Tuple
 
-SCHEMA = "cpca-partner-readiness/v2"
+SCHEMA = "cpca-partner-readiness/v3"
 MAX_JSON_BYTES = 1_048_576
 MAX_PYTHON_BYTES = 1_048_576
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
@@ -43,14 +45,49 @@ def _pairs_no_duplicates(pairs: Sequence[tuple[str, Any]]) -> Dict[str, Any]:
     return out
 
 
-def _load(path: Path) -> Dict[str, Any]:
-    raw = path.read_bytes()
+def _reject_json_constant(value: str) -> None:
+    raise ValueError(f"non-finite JSON number is forbidden: {value}")
+
+
+def _decode_json_object(raw: bytes, label: str) -> Dict[str, Any]:
     if len(raw) > MAX_JSON_BYTES:
-        raise ValueError(f"{path}: JSON exceeds {MAX_JSON_BYTES} bytes")
-    value = json.loads(raw.decode("utf-8"), object_pairs_hook=_pairs_no_duplicates)
-    if not isinstance(value, dict):
-        raise ValueError(f"{path}: top-level JSON must be an object")
+        raise ValueError(f"{label}: JSON exceeds {MAX_JSON_BYTES} bytes")
+    value = json.loads(
+        raw.decode("utf-8"),
+        object_pairs_hook=_pairs_no_duplicates,
+        parse_constant=_reject_json_constant,
+    )
+    if type(value) is not dict:
+        raise ValueError(f"{label}: top-level JSON must be a plain object")
     return value
+
+
+def _load(path: Path) -> Dict[str, Any]:
+    return _decode_json_object(path.read_bytes(), str(path))
+
+
+def _validate_plain_json(value: Any, label: str = "value") -> None:
+    """Reject stateful/custom containers before any trusted semantic read."""
+    if value is None or type(value) in (str, bool, int):
+        return
+    if type(value) is float:
+        if not math.isfinite(value):
+            raise ValueError(f"{label}: non-finite number is forbidden")
+        return
+    if type(value) is list:
+        for index, item in enumerate(value):
+            _validate_plain_json(item, f"{label}[{index}]")
+        return
+    if type(value) is dict:
+        for key, item in value.items():
+            if type(key) is not str:
+                raise ValueError(f"{label}: JSON object keys must be plain strings")
+            _validate_plain_json(item, f"{label}.{key}")
+        return
+    raise ValueError(
+        f"{label}: trusted inputs must use only exact plain JSON types; "
+        f"got {type(value).__name__}"
+    )
 
 
 def canonical_bytes(value: Any) -> bytes:
@@ -67,6 +104,21 @@ def canonical_digest(value: Any) -> str:
     return hashlib.sha256(canonical_bytes(value)).hexdigest()
 
 
+def _freeze_json_object(value: Any, label: str) -> Tuple[Dict[str, Any], bytes]:
+    """Freeze one caller object into canonical bytes before any semantic read."""
+    if type(value) is not dict:
+        raise ValueError(f"{label}: trusted input must be a plain JSON object")
+    _validate_plain_json(value, label)
+    raw = canonical_bytes(value)
+    frozen = _decode_json_object(raw, label)
+    return frozen, raw
+
+
+def _clone_frozen_object(raw: bytes, label: str) -> Dict[str, Any]:
+    """Return an independent plain-data copy of an already-frozen snapshot."""
+    return _decode_json_object(raw, label)
+
+
 def _canonical_spec_path() -> Path:
     return Path(__file__).resolve().with_name("qualification_spec.json")
 
@@ -76,31 +128,17 @@ def _canonical_legacy_path() -> Path:
 
 
 def _assert_canonical_spec(spec: Mapping[str, Any]) -> Tuple[str, str]:
-    """Require the supplied semantic spec to equal the repository-owned spec.
-
-    Return (canonical-json digest, exact source-file byte digest).  This keeps
-    library callers from swapping a weaker specification while preserving the
-    explicit spec argument used by deterministic tests and verifiers.
-    """
+    """Require semantic equality to the repository-owned qualification spec."""
     path = _canonical_spec_path()
     raw = path.read_bytes()
-    if len(raw) > MAX_JSON_BYTES:
-        raise ValueError("canonical qualification specification is too large")
-    owned = json.loads(raw.decode("utf-8"), object_pairs_hook=_pairs_no_duplicates)
-    if not isinstance(owned, dict):
-        raise ValueError("canonical qualification specification must be an object")
+    owned = _decode_json_object(raw, "canonical qualification specification")
     if canonical_bytes(spec) != canonical_bytes(owned):
         raise ValueError("qualification spec differs from code-owned canonical specification")
     return canonical_digest(owned), hashlib.sha256(raw).hexdigest()
 
 
 def _load_code_owned_legacy() -> Tuple[Callable[[Dict[str, Any], Dict[str, Any]], Dict[str, Any]], str]:
-    """Load exactly the repository-owned predecessor bytes and return its digest.
-
-    There is deliberately no caller-selectable legacy path.  The bytes are read
-    once, hashed, compiled, and executed from that same in-memory snapshot so a
-    path swap cannot create a digest/execution split.
-    """
+    """Load/hash/execute one exact snapshot of the repository-owned predecessor."""
     path = _canonical_legacy_path()
     raw = path.read_bytes()
     if len(raw) > MAX_PYTHON_BYTES:
@@ -305,6 +343,7 @@ def _compile_trusted_partner_readiness(
     spec_sha256: str,
     spec_file_sha256: str,
     legacy_sha256: str,
+    evidence_sha256: str,
 ) -> Dict[str, Any]:
     if evidence.get("bid_model") != "healthcare_prime_subcontract":
         raise ValueError("partner readiness requires bid_model=healthcare_prime_subcontract")
@@ -327,15 +366,18 @@ def _compile_trusted_partner_readiness(
 
     if legacy_state == "NO_BID":
         workshare_state = "NO_BID"
+        workshare_blockers: List[str] = []
         application_state = "NO_BID"
         application_blockers: List[str] = []
         state = "NO_BID"
         reason = "legacy_deadline_or_hard_stop"
     else:
-        discussion_ready = legacy_state == "TEAMING_READY"
-        workshare_state = "DISCUSSION_READY" if discussion_ready else "HOLD"
         manifest_blockers = _application_manifest_blockers(spec, evidence, required_ids)
-        manifest_complete = not manifest_blockers
+        workshare_state = "HOLD"
+        workshare_blockers = sorted(
+            set(legacy_blockers + non_proven + ["provider_authenticated_workshare_evidence"])
+        )
+        application_state = "HOLD"
         application_blockers = sorted(
             set(
                 legacy_blockers
@@ -344,17 +386,12 @@ def _compile_trusted_partner_readiness(
                 + ["provider_authenticated_prime_application_evidence"]
             )
         )
-        application_state = "HOLD"
-        if discussion_ready:
-            state = "WORKSHARE_DISCUSSION_READY"
-            reason = (
-                "workshare_signal_and_manifest_complete_but_application_evidence_unauthenticated"
-                if manifest_complete and not legacy_blockers and not non_proven
-                else "workshare_signal_only_application_gates_unresolved"
-            )
-        else:
-            state = "HOLD"
-            reason = "workshare_or_prime_signal_unresolved"
+        state = "HOLD"
+        reason = (
+            "legacy_workshare_signal_unauthenticated"
+            if legacy_state == "TEAMING_READY"
+            else "workshare_or_prime_signal_unresolved"
+        )
 
     result: Dict[str, Any] = {
         "schema": SCHEMA,
@@ -368,11 +405,18 @@ def _compile_trusted_partner_readiness(
             "reason": legacy_reason,
             "blockers": legacy_blockers,
             "application_authority": False,
+            "discussion_authority": False,
+            "trusted_code_origin": True,
+            "provider_authenticated_evidence": False,
         },
         "workshare": {
             "state": workshare_state,
-            "discussion_artifact_only": workshare_state == "DISCUSSION_READY",
-            "source_bound": True,
+            "blockers": workshare_blockers,
+            "discussion_artifact_only": False,
+            "source_bound": False,
+            "receipt_bound": True,
+            "provider_authenticated_evidence_available": False,
+            "caller_evidence_can_authorize_readiness": False,
         },
         "application": {
             "state": application_state,
@@ -384,7 +428,7 @@ def _compile_trusted_partner_readiness(
         "binding": {
             "qualification_spec_sha256": spec_sha256,
             "qualification_spec_file_sha256": spec_file_sha256,
-            "evidence_sha256": canonical_digest(evidence),
+            "evidence_sha256": evidence_sha256,
             "prime": _prime_identity(evidence),
             "application_manifest": manifest_identity,
             "qualification_source_packet": _source_packet_identity(spec),
@@ -396,8 +440,10 @@ def _compile_trusted_partner_readiness(
         },
         "authority": dict(AUTHORITY),
     }
-    if result["application"]["state"] == "TEAMING_READY" and result["application"]["blockers"]:
-        raise ValueError("internal invariant: application readiness cannot carry blockers")
+    if result["workshare"]["state"] == "DISCUSSION_READY":
+        raise ValueError("internal invariant: unauthenticated workshare cannot be discussion-ready")
+    if result["application"]["state"] == "TEAMING_READY":
+        raise ValueError("internal invariant: application readiness is not authorized")
     return result
 
 
@@ -406,38 +452,38 @@ def compile_partner_readiness(
     evidence: Mapping[str, Any],
     legacy_result: Mapping[str, Any],
 ) -> Dict[str, Any]:
-    """Compile a caller-supplied predecessor result as NON-AUTHORIZING diagnostics.
-
-    Raw legacy-result compilation is intentionally incapable of emitting the
-    product-significant workshare-discussion state.  Trusted compilation must go
-    through ``compile_from_evidence()``, which executes the code-owned predecessor
-    and binds its exact implementation/evidence/spec identities.
-    """
-    if evidence.get("bid_model") != "healthcare_prime_subcontract":
+    """Compile caller-supplied predecessor data as NON-AUTHORIZING diagnostics."""
+    frozen_spec, _ = _freeze_json_object(spec, "spec")
+    frozen_evidence, _ = _freeze_json_object(evidence, "evidence")
+    frozen_legacy, _ = _freeze_json_object(legacy_result, "legacy_result")
+    if frozen_evidence.get("bid_model") != "healthcare_prime_subcontract":
         raise ValueError("partner readiness requires bid_model=healthcare_prime_subcontract")
-    if not isinstance(legacy_result, dict):
-        raise ValueError("legacy_result must be an object")
-    blockers = legacy_result.get("blockers", [])
+    blockers = frozen_legacy.get("blockers", [])
     if not isinstance(blockers, list) or not all(isinstance(x, str) and x for x in blockers):
         raise ValueError("legacy blockers must be a list of nonempty strings")
     return {
         "schema": SCHEMA,
         "state": "HOLD",
         "reason": "untrusted_caller_legacy_result",
-        "domain": evidence.get("domain"),
-        "service_type": evidence.get("service_type"),
-        "bid_model": evidence.get("bid_model"),
+        "domain": frozen_evidence.get("domain"),
+        "service_type": frozen_evidence.get("service_type"),
+        "bid_model": frozen_evidence.get("bid_model"),
         "legacy_workshare_signal": {
-            "state": legacy_result.get("state"),
-            "reason": legacy_result.get("reason"),
+            "state": frozen_legacy.get("state"),
+            "reason": frozen_legacy.get("reason"),
             "blockers": sorted(set(blockers)),
             "application_authority": False,
-            "trusted_origin": False,
+            "discussion_authority": False,
+            "trusted_code_origin": False,
+            "provider_authenticated_evidence": False,
         },
         "workshare": {
             "state": "HOLD",
+            "blockers": ["trusted_legacy_predecessor_required", "provider_authenticated_workshare_evidence"],
             "discussion_artifact_only": False,
             "source_bound": False,
+            "provider_authenticated_evidence_available": False,
+            "caller_evidence_can_authorize_readiness": False,
         },
         "application": {
             "state": "HOLD",
@@ -446,22 +492,40 @@ def compile_partner_readiness(
             "provider_authenticated_evidence_available": False,
             "caller_manifest_can_authorize_readiness": False,
         },
-        "binding": None,
+        "binding": {
+            "diagnostic_spec_sha256": canonical_digest(frozen_spec),
+            "diagnostic_evidence_sha256": canonical_digest(frozen_evidence),
+            "diagnostic_legacy_result_sha256": canonical_digest(frozen_legacy),
+        },
         "authority": dict(AUTHORITY),
     }
 
 
 def compile_from_evidence(spec: Mapping[str, Any], evidence: Mapping[str, Any]) -> Dict[str, Any]:
-    spec_sha256, spec_file_sha256 = _assert_canonical_spec(spec)
+    # Freeze public caller inputs before any semantic read. The predecessor and
+    # binder receive independent plain-data clones derived from the same exact
+    # canonical byte snapshots so neither caller state nor evaluator mutation can
+    # create an evaluation-vs-binding split.
+    frozen_spec, spec_snapshot = _freeze_json_object(spec, "spec")
+    frozen_evidence, evidence_snapshot = _freeze_json_object(evidence, "evidence")
+    spec_sha256, spec_file_sha256 = _assert_canonical_spec(frozen_spec)
     evaluate, legacy_sha256 = _load_code_owned_legacy()
-    legacy_result = evaluate(dict(spec), dict(evidence))
+
+    eval_spec = _clone_frozen_object(spec_snapshot, "frozen spec evaluation snapshot")
+    eval_evidence = _clone_frozen_object(evidence_snapshot, "frozen evidence evaluation snapshot")
+    legacy_result = evaluate(eval_spec, eval_evidence)
+
+    bound_spec = _clone_frozen_object(spec_snapshot, "frozen spec binding snapshot")
+    bound_evidence = _clone_frozen_object(evidence_snapshot, "frozen evidence binding snapshot")
+    frozen_legacy, _ = _freeze_json_object(legacy_result, "legacy_result")
     return _compile_trusted_partner_readiness(
-        spec,
-        evidence,
-        legacy_result,
+        bound_spec,
+        bound_evidence,
+        frozen_legacy,
         spec_sha256=spec_sha256,
         spec_file_sha256=spec_file_sha256,
         legacy_sha256=legacy_sha256,
+        evidence_sha256=hashlib.sha256(evidence_snapshot).hexdigest(),
     )
 
 
@@ -474,15 +538,14 @@ def make_receipt(spec: Mapping[str, Any], evidence: Mapping[str, Any]) -> Dict[s
 def verify_receipt(
     spec: Mapping[str, Any], evidence: Mapping[str, Any], receipt: Mapping[str, Any]
 ) -> bool:
-    if not isinstance(receipt, dict) or not isinstance(receipt.get("receipt_sha256"), str):
-        return False
     try:
-        supplied = dict(receipt)
+        frozen_receipt, _ = _freeze_json_object(receipt, "receipt")
+        supplied = dict(frozen_receipt)
         supplied_digest = supplied.pop("receipt_sha256", None)
-        if supplied_digest != canonical_digest(supplied):
+        if not isinstance(supplied_digest, str) or supplied_digest != canonical_digest(supplied):
             return False
         expected = make_receipt(spec, evidence)
-        return canonical_bytes(expected) == canonical_bytes(receipt)
+        return canonical_bytes(expected) == canonical_bytes(frozen_receipt)
     except (TypeError, ValueError, UnicodeError, OSError):
         return False
 
