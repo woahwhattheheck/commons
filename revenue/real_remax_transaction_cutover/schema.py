@@ -190,6 +190,7 @@ def _validate_snapshot(snapshot: Any, *, name: str, expected_system: str) -> Map
 
     transactions = _list(s["transactions"], name=f"{name}.transactions")
     parsed_transactions: list[Mapping[str, Any]] = []
+    relationship_count = 0
     for i, raw in enumerate(transactions):
         txn = _obj(
             raw,
@@ -201,6 +202,9 @@ def _validate_snapshot(snapshot: Any, *, name: str, expected_system: str) -> Map
         _text(txn["status"], name=f"{name}.transactions[{i}].status")
         gross = _int(txn["gross_commission_cents"], name=f"{name}.transactions[{i}].gross_commission_cents")
         rels = _list(txn["relationships"], name=f"{name}.transactions[{i}].relationships", limit=64)
+        relationship_count += len(rels)
+        if len(offices) + len(agents) + len(transactions) + relationship_count > MAX_ITEMS:
+            _fail(f"{name} exceeds aggregate {MAX_ITEMS} row limit")
         parsed_rels = [_validate_relationship(rel, name=f"{name}.transactions[{i}].relationships[{j}]") for j, rel in enumerate(rels)]
         role_agent = [(rel["role"], rel["agent_id"]) for rel in parsed_rels]
         if len(role_agent) != len(set(role_agent)):
@@ -244,5 +248,6 @@ def _validate_identity_map(identity_map: Any, source_snapshot: Mapping[str, Any]
     office_map = _parse_map_rows(m["offices"], name="identity_map.offices", source_key="source_office_id", target_key="target_office_id")
     agent_map = _parse_map_rows(m["agents"], name="identity_map.agents", source_key="source_agent_id", target_key="target_agent_id")
     txn_map = _parse_map_rows(m["transactions"], name="identity_map.transactions", source_key="source_transaction_id", target_key="target_transaction_id")
+    if len(office_map) + len(agent_map) + len(txn_map) > MAX_ITEMS:
+        _fail(f"identity_map exceeds aggregate {MAX_ITEMS} row limit")
     return m, office_map, agent_map, txn_map
-
