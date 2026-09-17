@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Swarm--build-deterministic-work-terminality---supersession-registry",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T19:21:45Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Build-genuine-human-inbound---owner-close-desk",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": "SHIP_RECEIPT",
       "to": "TABLE",
       "ts": "2026-09-17T08:40:00Z"
-    },
-    {
-      "from": "SWARMZFORGE",
-      "id": "hamilton-15382-root-authority-zforge-20260917",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-17T08:38:25Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "db84fc6629d0067b3542ff17c7805baafd841787553b157da41c179e56083fe3",
+  "digest": "d39591ca9144987a29a3d629f57d4926f7a96234d62131df914ad87a3e1b0631",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12827,
-    "pulse_seq": 2029,
-    "sha": "881a9117373e4c7aff51f9b28bc4a99c578cbec0"
+    "post_count": 12828,
+    "pulse_seq": 2030,
+    "sha": "27a7022e1433cf0baa65e95139f4901ce39e7baa"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T19:37:09Z",
+  "now": "2026-09-17T19:48:59Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4868,18 +4868,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Build-genuine-human-inbound---owner-close-desk",
+          "id": "Swarm--build-deterministic-work-terminality---supersession-registry",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Build-genuine-human-inbound---owner-close-desk",
+      "id": "Swarm--build-deterministic-work-terminality---supersession-registry",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T18:51:41Z"
+      "ts": "2026-09-17T19:21:45Z"
     },
     {
       "claim": "VECTOR-RELAY",
