@@ -51,13 +51,14 @@ class TestWireAutopsyXStorefront2026091701(unittest.TestCase):
         self.assertIn(WHITEBOX_HOUR_PL, html)
         self.assertNotIn("donate.stripe.com", html)
         self.assertIsNone(re.search(r"\blogin\b", html, flags=re.I))
-        # Primary CTA appears before secondary and before detail link.
+        # First-screen order: primary CTA, then secondary, then fine-print detail.
         primary_at = html.find("Buy Autopsy $29")
         secondary_at = html.find("Buy one White Box hour $250")
-        detail_at = html.find("./agent-rescue.html")
+        fine_at = html.find('Detail and intake:')
         self.assertGreater(primary_at, -1)
         self.assertGreater(secondary_at, primary_at)
-        self.assertGreater(detail_at, primary_at)
+        self.assertGreater(fine_at, secondary_at)
+        self.assertIn("./agent-rescue.html", html[fine_at : fine_at + 200])
 
     def test_agent_rescue_already_has_exact_autopsy_pl(self) -> None:
         html = RESCUE.read_text(encoding="utf-8")
