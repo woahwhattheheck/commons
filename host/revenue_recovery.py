@@ -659,7 +659,12 @@ def _contains_sensitive_value(text: str, query_depth: int) -> bool:
     source, decoding_overflow = decode_percent_layers(raw_source)
     if decoding_overflow:
         return True
-    assignment_source = unicodedata.normalize("NFKC", source).casefold()
+    if any(unicodedata.category(character) == "Cf" for character in source):
+        return True
+    source = unicodedata.normalize("NFKC", source)
+    if any(unicodedata.category(character) == "Cf" for character in source):
+        return True
+    assignment_source = source.casefold()
     if any(pattern.search(source) for pattern in SENSITIVE_PATTERNS):
         return True
     if _json_assignment_has_sensitive_value(assignment_source, query_depth):
