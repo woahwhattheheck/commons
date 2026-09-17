@@ -17,11 +17,16 @@ Imported Python is deliberately not positive CURRENT authority:
 
 - package `evaluate` / `current.compile_current` return an explicit `EMBEDDED_CURRENT_UNAVAILABLE` receipt and HOLD historically positive decisions;
 - `current.verify_current` is always invalid/non-authorizing;
-- compatibility `guard.evaluate` preserves the v1 payload shape and exact digest kwargs but forces historical `ALLOW_NEW` / `REPLY_ONLY` to HOLD;
+- compatibility `guard.evaluate` preserves the v1 payload shape, snapshots caller-owned objects through strict JSON, derives canonical-object digests internally, and forces historical `ALLOW_NEW` / `REPLY_ONLY` to HOLD;
+- legacy `intent_sha256` / `evidence_sha256` keyword arguments on that compatibility surface are inert migration inputs: their values are ignored and cannot replace provenance;
+- `guard.evaluate_bytes(intent_bytes, evidence_bytes)` is the compatibility facade's exact-byte custody path: it strict-parses those bytes itself and derives the exact byte digests internally;
+- compatibility receipts add `source_custody.mode` as either `CANONICAL_OBJECT_SNAPSHOT` or `EXACT_CONSUMED_BYTES`, with canonical object digests always present and exact byte digests present only when exact bytes were actually consumed;
 - `guard.main` and package `python -m tools.outbound_send_guard` are non-authorizing;
 - explicit historical replay is `HISTORICAL_INTEGRITY_ONLY` and outward HOLD.
 
-This closes the predecessor in which caller-writable `current._utc_now` and `current._core` were synchronized into the verifier before supported calls. Those names are no longer authority dependencies; even dynamically assigning them cannot make the embedded surface positive.
+A caller cannot upgrade object custody into byte custody by supplying a precomputed hash. Exact-byte custody exists only when the facade itself receives and parses both byte strings. The retained legacy evidence digest fields remain for receipt-shape compatibility, but their values are now derived from the custody mode rather than trusted from the caller.
+
+This closes the predecessor in which caller-writable `current._utc_now` and `current._core` were synchronized into the verifier before supported calls, and the later provenance seam in which compatibility callers could overwrite receipt digest fields with arbitrary precomputed values. Those names and values are no longer authority dependencies; even dynamically assigning them cannot make the embedded surface positive or forge its source custody.
 
 `current_worker.py` and `current_impl.py` are internal implementation/testing primitives. Calling or mutating them from an arbitrary already-running interpreter does not establish production CURRENT authority. The product's supported trust boundary starts before caller-authored Python, at the direct `-I -S` CLI process.
 
