@@ -11,6 +11,7 @@ Muse, lead spam, PUT ingest, fat index, #8802.
 """
 from __future__ import annotations
 
+import importlib.util
 import re
 import unittest
 from pathlib import Path
@@ -20,6 +21,7 @@ ROOT = Path(__file__).resolve().parent
 SKILLS = ROOT / "skills.html"
 SWARM = ROOT / "swarm.html"
 RECEIPT = ROOT / "p" / "type-skills-swarm-convert-shelf-20260917-01.md"
+FIX_RECEIPT = ROOT / "p" / "type-skills-swarm-https-exact-enroll-20260917-01.md"
 
 ALLOWED_LIVE_BUY_URLS = frozenset(
     {
@@ -27,10 +29,9 @@ ALLOWED_LIVE_BUY_URLS = frozenset(
         "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
     }
 )
-BUY_HOST_PATH = re.compile(
-    r"https?://buy\.stripe\.com/([A-Za-z0-9_-]+)",
-    re.IGNORECASE,
-)
+BUY_HTTPS_URL = re.compile(r"https://buy\.stripe\.com/[A-Za-z0-9_-]+")
+HTTP_BUY_DUP = re.compile(r"http://buy\.stripe\.com/", re.IGNORECASE)
+HTTP_DUP_HREF = "http://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g"
 BUY_LABELS = (
     "Buy Autopsy $29",
     "Buy one White Box hour $250",
@@ -43,7 +44,9 @@ LIVE_CASH_DOORS = (
     "plant-downtime-handoff.html",
 )
 PAGES = (SKILLS, SWARM)
+ALLOWLIST_PAGES = ("skills.html", "swarm.html")
 CITE = "type-skills-swarm-convert-shelf-20260917-01"
+FIX_CITE = "type-skills-swarm-https-exact-enroll-20260917-01"
 ABOVE_FOLD_MAX = 4500
 NINE_LINK_EXCLUDED = (
     "https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b",
@@ -56,12 +59,28 @@ NINE_LINK_EXCLUDED = (
 )
 
 
+def _load_host(name: str):
+    path = ROOT / "host" / f"{name}.py"
+    spec = importlib.util.spec_from_file_location(
+        f"type_skills_swarm_{name}", path
+    )
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"cannot load {path}")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+payment_capability = _load_host("payment_capability")
+
+
 def live_buy_urls(html: str) -> set[str]:
-    """Canonical https://buy.stripe.com/<path> identities found in HTML."""
-    return {
-        f"https://buy.stripe.com/{path}"
-        for path in BUY_HOST_PATH.findall(html)
-    }
+    """Exact https://buy.stripe.com/<path> hrefs. Does not reconstruct http://."""
+    return set(BUY_HTTPS_URL.findall(html))
+
+
+def http_buy_duplicate(html: str) -> bool:
+    return HTTP_BUY_DUP.search(html) is not None
 
 
 def convert_shelf(html: str) -> str:
@@ -95,10 +114,18 @@ class TestTypeSkillsSwarmConvertShelf2026091701(unittest.TestCase):
                 self.assertIn("data-checkout", html)
                 found = live_buy_urls(html)
                 self.assertEqual(found, ALLOWED_LIVE_BUY_URLS)
+                self.assertEqual(
+                    payment_capability.https_buy_checkout_urls(html),
+                    ALLOWED_LIVE_BUY_URLS,
+                )
+                self.assertFalse(http_buy_duplicate(html))
+                self.assertFalse(payment_capability.http_buy_duplicate(html))
+                self.assertNotIn("http://buy.stripe.com/", html.lower())
                 self.assertNotIn("donate.stripe.com", html)
                 for url in ALLOWED_LIVE_BUY_URLS:
                     self.assertIn(url, html)
                     self.assertEqual(html.count(url), 1, url)
+                    self.assertEqual(html.count(url.replace("https://", "http://", 1)), 0)
                 for url in NINE_LINK_EXCLUDED:
                     self.assertNotIn(url, html, url)
                 shelf = convert_shelf(html)
@@ -187,6 +214,72 @@ class TestTypeSkillsSwarmConvertShelf2026091701(unittest.TestCase):
         self.assertNotIn("nojs.html", text)
         self.assertNotIn("post.html", text)
         self.assertNotIn("index.html", text)
+
+    def test_payment_capability_enrolls_https_exact_and_rejects_http_duplicate(self) -> None:
+        text = FIX_RECEIPT.read_text(encoding="utf-8")
+        self.assertIn(f"id: {FIX_CITE}", text)
+        self.assertIn(FIX_CITE, text)
+        self.assertIn(CITE, text)
+        self.assertIn("skills.html", text)
+        self.assertIn("swarm.html", text)
+        self.assertIn("HTTPS-exact", text)
+        self.assertIn("http://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g", text)
+        original = RECEIPT.read_text(encoding="utf-8")
+        self.assertIn(f"id: {CITE}", original)
+        self.assertNotIn(FIX_CITE, original)
+        http_error = "convert shelf must not duplicate live buys over http://"
+        reuse_error = "convert shelf must reuse exactly the existing live buy.stripe.com URLs"
+        for name in ALLOWLIST_PAGES:
+            allowed = payment_capability.CONVERT_SHELF_LIVE_BUYS[name]
+            self.assertEqual(allowed, ALLOWED_LIVE_BUY_URLS)
+            self.assertIs(
+                allowed, payment_capability.PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS
+            )
+            self.assertIn(name, payment_capability.PUBLIC_HTML)
+            page_html = (ROOT / name).read_text(encoding="utf-8")
+            self.assertEqual(
+                payment_capability.html_stripe_url_errors(name, page_html),
+                [],
+            )
+            self.assertEqual(
+                live_buy_urls(page_html),
+                ALLOWED_LIVE_BUY_URLS,
+            )
+            forged = page_html.replace(
+                "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
+                "https://buy.stripe.com/not-a-canonical-link",
+                1,
+            )
+            self.assertEqual(
+                payment_capability.html_stripe_url_errors(name, forged),
+                ["%s %s" % (name, reuse_error)],
+            )
+            poisoned = (
+                page_html
+                + '<a href="http://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g">dup</a>'
+            )
+            self.assertEqual(live_buy_urls(poisoned), ALLOWED_LIVE_BUY_URLS)
+            self.assertEqual(
+                payment_capability.https_buy_checkout_urls(poisoned),
+                ALLOWED_LIVE_BUY_URLS,
+            )
+            self.assertTrue(http_buy_duplicate(poisoned))
+            self.assertTrue(payment_capability.http_buy_duplicate(poisoned))
+            self.assertEqual(
+                payment_capability.html_stripe_url_errors(name, poisoned),
+                ["%s %s" % (name, http_error)],
+            )
+            http_only = page_html.replace(
+                "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
+                HTTP_DUP_HREF,
+                1,
+            )
+            self.assertNotEqual(live_buy_urls(http_only), ALLOWED_LIVE_BUY_URLS)
+            self.assertTrue(payment_capability.http_buy_duplicate(http_only))
+            self.assertEqual(
+                payment_capability.html_stripe_url_errors(name, http_only),
+                ["%s %s" % (name, reuse_error)],
+            )
 
 
 if __name__ == "__main__":

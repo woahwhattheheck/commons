@@ -28,6 +28,8 @@ STRIPE_URL_RE = re.compile(r"^https://(?:buy|donate)\.stripe\.com/[A-Za-z0-9_-]+
 STRIPE_HTML_URL_RE = re.compile(r"https://(?:buy|donate)\.stripe\.com/")
 BUY_HOST_PATH_RE = re.compile(r"https?://buy\.stripe\.com/([A-Za-z0-9_-]+)", re.I)
 DONATE_HOST_PATH_RE = re.compile(r"https?://donate\.stripe\.com/([A-Za-z0-9_-]+)", re.I)
+BUY_HTTPS_URL_RE = re.compile(r"https://buy\.stripe\.com/[A-Za-z0-9_-]+")
+HTTP_BUY_URL_RE = re.compile(r"http://buy\.stripe\.com/", re.I)
 PAY_CONVERT_SHELF_LIVE_BUYS = frozenset(
     {
         "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
@@ -77,6 +79,8 @@ CONVERT_SHELF_LIVE_BUYS = {
     "paperwork-included.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "unbuilt-items.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "webmcp.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "skills.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "swarm.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -133,6 +137,8 @@ PUBLIC_HTML = (
     "paperwork-included.html",
     "unbuilt-items.html",
     "webmcp.html",
+    "skills.html",
+    "swarm.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
@@ -543,6 +549,16 @@ def live_stripe_checkout_urls(html: str) -> set[str]:
     }
 
 
+def https_buy_checkout_urls(html: str) -> set[str]:
+    """Exact https://buy.stripe.com/<path> hrefs. Does not reconstruct http://."""
+    return set(BUY_HTTPS_URL_RE.findall(html))
+
+
+def http_buy_duplicate(html: str) -> bool:
+    """True when an http://buy.stripe.com/ href is present beside live buys."""
+    return HTTP_BUY_URL_RE.search(html or "") is not None
+
+
 def html_stripe_url_errors(name: str, text: str) -> list[str]:
     """tips/pay/commerce convert shelves reuse existing Stripe URLs; payment-capability stays Type live buys."""
     if name == "tips.html":
@@ -571,14 +587,15 @@ def html_stripe_url_errors(name: str, text: str) -> list[str]:
         return []
     allowed = CONVERT_SHELF_LIVE_BUYS.get(name)
     if allowed is not None:
-        found = {
-            "https://buy.stripe.com/%s" % path
-            for path in BUY_HOST_PATH_RE.findall(text)
-        }
+        found = https_buy_checkout_urls(text)
         if found != allowed:
             return [
                 "%s convert shelf must reuse exactly the existing live buy.stripe.com URLs"
                 % name
+            ]
+        if http_buy_duplicate(text):
+            return [
+                "%s convert shelf must not duplicate live buys over http://" % name
             ]
         if "donate.stripe.com" in text.lower():
             return ["%s must not invent donate.stripe.com URLs" % name]
