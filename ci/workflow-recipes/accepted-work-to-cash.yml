@@ -1,0 +1,38 @@
+name: Accepted Work to Cash Reconciler
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/accepted_work_to_cash/**'
+      - 'ci/workflow-recipes/accepted-work-to-cash.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'revenue/accepted_work_to_cash/**'
+      - 'ci/workflow-recipes/accepted-work-to-cash.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile
+        run: python -m py_compile revenue/accepted_work_to_cash/*.py
+      - name: Unit and hostile tests
+        run: python -m unittest -q revenue.accepted_work_to_cash.test_money revenue.accepted_work_to_cash.test_guardrails
+      - name: Optimized unit and hostile tests
+        run: python -O -m unittest -q revenue.accepted_work_to_cash.test_money revenue.accepted_work_to_cash.test_guardrails
+      - name: Synthetic compile and verify
+        run: |
+          d="$(mktemp -d)"
+          python -m revenue.accepted_work_to_cash compile revenue/accepted_work_to_cash/fixtures/portfolio.json "$d/bundle.json"
+          python -m revenue.accepted_work_to_cash verify "$d/bundle.json"
