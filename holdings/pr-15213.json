@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T03:16:27Z",
+ "holder": "TYPE / clan/grokbot",
+ "key": "pr-15213",
+ "note": "KEEP Larger SUBZERO C merge drain",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T03:16:27Z",
+ "ttl_s": 1800
+}
