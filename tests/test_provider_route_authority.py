@@ -24,8 +24,13 @@ class ProviderRouteAuthorityTests(unittest.TestCase):
                 event("route", "ROUTE_VERIFIED", "PUBLIC_EVIDENCE", "2026-09-17T02:01:00-04:00"),
                 event("muse", "MUSE_CLEAR", "MUSE", "2026-09-17T02:02:00-04:00")]
 
-    def test_allow_requires_three_current_gates(self):
-        self.assertEqual(compile_authority(packet(self.allow_events()))["decision"], "ALLOW_ONE_SEND")
+    def test_correctly_labeled_caller_asserted_gates_are_candidate_only(self):
+        out = compile_authority(packet(self.allow_events()))
+        self.assertEqual(out["decision"], "CANDIDATE_ONE_SEND")
+        self.assertEqual(out["evidence_trust"], "CALLER_ASSERTED_UNAUTHENTICATED")
+        self.assertFalse(out["authority"]["external_send_authorized"])
+        self.assertFalse(out["authority"]["muse_request_authorized"])
+        self.assertIn("LIVE_SLACK_MUSE_PROVIDER_RECENSUS_REQUIRED", out["reasons"])
 
     def test_provider_sent_hard_dnr_even_after_new_muse(self):
         events = self.allow_events() + [event("sent", "PROVIDER_SENT", "PROVIDER", "2026-09-17T02:03:00-04:00"),
@@ -57,7 +62,7 @@ class ProviderRouteAuthorityTests(unittest.TestCase):
 
     def test_one_other_route_hard_bounce_does_not_block_clean_exact_route(self):
         events = self.allow_events() + [event("d1", "HARD_BOUNCE", "PROVIDER", "2026-09-17T01:00:00-04:00", "old@example.com")]
-        self.assertEqual(compile_authority(packet(events))["decision"], "ALLOW_ONE_SEND")
+        self.assertEqual(compile_authority(packet(events))["decision"], "CANDIDATE_ONE_SEND")
 
     def test_soft_bounce_holds_retry(self):
         events = self.allow_events() + [event("sent", "PROVIDER_SENT", "PROVIDER", "2026-09-17T02:03:00-04:00"),
@@ -101,7 +106,7 @@ class ProviderRouteAuthorityTests(unittest.TestCase):
     def test_other_org_provider_event_does_not_poison_subject(self):
         events = self.allow_events() + [event("sent", "PROVIDER_SENT", "PROVIDER", "2026-09-17T01:30:00-04:00",
                                             org="other.example", route="sales@other.example")]
-        self.assertEqual(compile_authority(packet(events))["decision"], "ALLOW_ONE_SEND")
+        self.assertEqual(compile_authority(packet(events))["decision"], "CANDIDATE_ONE_SEND")
 
     def test_source_binding_rejects_forged_provider_event(self):
         bad = packet(self.allow_events() + [event("sent", "PROVIDER_SENT", "SLACK", "2026-09-17T02:03:00-04:00")])
@@ -117,18 +122,26 @@ class ProviderRouteAuthorityTests(unittest.TestCase):
         p = packet(self.allow_events()); p["subject"]["route"] = "Sales@Example.COM"
         for e in p["events"]:
             e["route"] = "SALES@example.com"
-        self.assertEqual(compile_authority(p)["decision"], "ALLOW_ONE_SEND")
+        self.assertEqual(compile_authority(p)["decision"], "CANDIDATE_ONE_SEND")
 
     def test_org_normalizes_case(self):
         p = packet(self.allow_events()); p["subject"]["org"] = "Example.COM"
         for e in p["events"]:
             e["org"] = "EXAMPLE.com"
-        self.assertEqual(compile_authority(p)["decision"], "ALLOW_ONE_SEND")
+        self.assertEqual(compile_authority(p)["decision"], "CANDIDATE_ONE_SEND")
 
     def test_naive_timestamp_rejected(self):
         p = packet(self.allow_events()); p["events"][0]["at"] = "2026-09-17T02:00:00"
         with self.assertRaises(AuthorityError):
             compile_authority(p)
+
+    def test_equivalent_timestamp_offsets_canonicalize_to_same_receipt(self):
+        left = packet(self.allow_events())
+        right = copy.deepcopy(left)
+        right["events"][0]["at"] = "2026-09-17T06:00:00Z"
+        right["events"][1]["at"] = "2026-09-17T06:01:00Z"
+        right["events"][2]["at"] = "2026-09-17T06:02:00Z"
+        self.assertEqual(compile_authority(left), compile_authority(right))
 
     def test_duplicate_json_key_rejected(self):
         with self.assertRaises(AuthorityError):
