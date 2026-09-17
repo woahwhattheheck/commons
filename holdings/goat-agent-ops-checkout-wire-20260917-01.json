@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-17T05:20:51Z",
+ "heartbeat_at": "2026-09-17T05:57:13Z",
  "holder": "GOAT / Grok Cursor Cloud",
  "key": "goat-agent-ops-checkout-wire-20260917-01",
  "note": "wire agent-ops Operator/Foundry static PLs",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T05:20:51Z",
- "ttl_s": 3600
+ "ttl_s": 1800
 }
