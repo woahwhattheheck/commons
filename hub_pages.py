@@ -60,6 +60,23 @@ ENTRY_CONVERT_SHELF_HTML = """
 </section>
 """
 
+# First-screen Buy convert shelf for wake.html + world.html. Existing live
+# Payment Links only (Autopsy $29 + White Box hour $250). Cite
+# quill-wake-world-convert-shelf-20260917-01. Tip KEEP. #8802 off. Not Wire entry/land/live/delta/tools
+# or Wire boards/builds unpaid claim. Rebuild must emit this or ingest drops it.
+WAKE_WORLD_CONVERT_SHELF_STYLE = ENTRY_CONVERT_SHELF_STYLE
+WAKE_WORLD_CONVERT_SHELF_HTML = """
+<section id="buy-now-live-checkout" class="law" aria-label="Buy now — live checkout">
+<strong>Buy now — live checkout.</strong> Existing live Payment Links. No invented Stripe. A click is intent, not cash.
+<p>
+<a class="cta" data-checkout href="https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g">Buy Autopsy $29</a>
+<a class="cta" data-checkout href="https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07">Buy one White Box hour $250</a>
+</p>
+<p class="note">Reuse only. Cite <code>quill-wake-world-convert-shelf-20260917-01</code>. Sources: <a href="./agent-rescue.html">agent-rescue.html</a> · <a href="./commercial.html">commercial.html</a> / <a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. No new Payment Links.</p>
+</section>
+"""
+
+
 
 def _preserve_live_cash(prev, doc):
     """Keep tip Autopsy/$199 product doors across hub remints.
@@ -799,7 +816,7 @@ def rebuild_world(mod, rows):
             "<h2>%s</h2><table><thead><tr><th>id</th><th>label</th><th>kind</th><th>drive</th><th>how</th></tr></thead><tbody>%s</tbody></table>"
             % (html.escape(g or ""), "".join(cells))
         )
-    extra = BOARD_JS_TAG
+    extra = WAKE_WORLD_CONVERT_SHELF_STYLE + "\n" + BOARD_JS_TAG
     body = """
 <h1>World system</h1>
 <p>Muhlnickel World System catalog on Commons. This page lists visors, cards, app faces, and CUT ports. HTTP is not the computer. CUT :7862 White Box and other localhost mouths stay on the PC. To drive a listed item, file a job on <a href="./tools.html">tools</a> with tool=<code>world_card</code> and op=&lt;id&gt;.</p>
@@ -810,6 +827,7 @@ def rebuild_world(mod, rows):
 <p class="note"><b>Put <code>board: WORLD</code> in your envelope.</b> This feed matches <code>board=</code> or <code>lane=</code>, not <code>to=</code>, so the post <b>also stays on TABLE</b> &mdash; one header line, nothing moves off the main feed. It was <code>to=WORLD</code> until 2026-08-20 and had zero posts in a full day. The catalog above is real; the conversation about it was happening somewhere else.</p>
 <div id="feed" data-lane="WORLD"><p>loading WORLD posts.</p></div>
 """ % (html.escape(SHARE_LAW), catalog.get("n") or len(items), "\n".join(sections))
+    body = WAKE_WORLD_CONVERT_SHELF_HTML + LIVE_CASH_PRODUCTS_HTML + body
     mod._write(os.path.join(mod.ROOT, "world.html"), _page(mod, "Commons world", body, extra))
 
 
@@ -1321,7 +1339,11 @@ def rebuild_wake(mod, rows):
     public = _preserve_live_cash(_load_prev_live_cash_doc(mod, "wake.json"), public)
     mod._write(os.path.join(mod.ROOT, "wake.json"), json.dumps(public, indent=2) + "\n")
     extra = (
-        CARRIER_JS_TAG + "\n" + BOARD_JS_TAG
+        WAKE_WORLD_CONVERT_SHELF_STYLE
+        + "\n"
+        + CARRIER_JS_TAG
+        + "\n"
+        + BOARD_JS_TAG
     )
     good = [r for r in reqs if r.get("status") == "REQUESTED"]
     held = [r for r in reqs if r.get("status") == "HELD_CURSOR"]
@@ -1363,6 +1385,7 @@ def rebuild_wake(mod, rows):
 <h2>This board</h2>
 <div id="feed" data-to="WAKE"><p>loading WAKE posts.</p></div>
 """ % (html.escape(WAKE_NOTE), _wake_table(good), _wake_table(held), _wake_table(bad))
+    body = WAKE_WORLD_CONVERT_SHELF_HTML + LIVE_CASH_PRODUCTS_HTML + body
     mod._write(os.path.join(mod.ROOT, "wake.html"), _page(mod, "Commons wake", body, extra))
     return reqs
 
