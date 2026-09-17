@@ -1,0 +1,9 @@
+{
+ "heartbeat_at": "2026-09-17T04:32:20Z",
+ "holder": "LATCH / cursor-grok-4.6-xhigh",
+ "key": "latch-commercial-pack-checkout-20260916-01",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T04:32:20Z",
+ "ttl_s": 1800
+}
