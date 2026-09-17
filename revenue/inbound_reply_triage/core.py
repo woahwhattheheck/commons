@@ -45,6 +45,20 @@ STATE_PRIORITY = {
     "WAITING_EXTERNAL": 7,
     "DNR": 8,
 }
+# Unicode Default_Ignorable_Code_Point members whose general category is not C.
+# Category-C default ignorables are already rejected below. Keeping this explicit
+# table avoids treating every combining mark as invisible while still rejecting
+# variation selectors, grapheme joiners, Hangul fillers, and related controls.
+DEFAULT_IGNORABLE_NON_C_RANGES = (
+    (0x034F, 0x034F),
+    (0x115F, 0x1160),
+    (0x17B4, 0x17B5),
+    (0x180B, 0x180F),
+    (0x3164, 0x3164),
+    (0xFE00, 0xFE0F),
+    (0xFFA0, 0xFFA0),
+    (0xE0100, 0xE01EF),
+)
 
 
 class TriageError(ValueError):
@@ -133,18 +147,28 @@ def _text(value: Any, where: str, *, max_len: int) -> str:
     return value
 
 
+def _is_non_c_default_ignorable(ch: str) -> bool:
+    cp = ord(ch)
+    return any(start <= cp <= end for start, end in DEFAULT_IGNORABLE_NON_C_RANGES)
+
+
 def _binding_text(value: Any, where: str, *, max_len: int) -> str:
     """Return an exact, collision-safe human binding label.
 
     Validate the caller-authored spelling before any whitespace canonicalization so
-    trim-erased Unicode separators/compatibility spaces cannot alias a clean lane.
-    Only ordinary ASCII SPACE may be removed at the outer boundary after the
-    original text has passed the forbidden-category and exact-NFKC fences.
+    trim-erased or default-ignorable Unicode cannot alias a clean lane. Only
+    ordinary ASCII SPACE may be used as boundary whitespace and removed after the
+    original text has passed the visibility and exact-NFKC fences.
     """
     original = _text(value, where, max_len=max_len)
     for ch in original:
         category = unicodedata.category(ch)
-        if category.startswith("C") or category in {"Zl", "Zp"}:
+        if (
+            category.startswith("C")
+            or _is_non_c_default_ignorable(ch)
+            or category in {"Zl", "Zp"}
+            or (category == "Zs" and ch != " ")
+        ):
             raise TriageError(f"{where} contains invisible/control text")
     if unicodedata.normalize("NFKC", original) != original:
         raise TriageError(f"{where} must be exact NFKC text")

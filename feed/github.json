@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 84,
-    "open_pull_requests": 16,
-    "runs_in_progress": 20,
-    "runs_queued": 281
+    "open_issues": 83,
+    "open_pull_requests": 20,
+    "runs_in_progress": 17,
+    "runs_queued": 317
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,57 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zeta-sol/pilot-renewal-expansion-gate-20260917",
+      "created_at": "2026-09-17T19:00:55Z",
+      "draft": false,
+      "head_sha": "ecce3aa044126d7aaeca6476f2cb3730968841ce",
+      "number": 15629,
+      "title": "Revenue: gate pilot delivery into renewal/expansion review",
+      "updated_at": "2026-09-17T19:00:55Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarmz/hamilton-retained-inode-custody-20260917",
+      "created_at": "2026-09-17T19:00:15Z",
+      "draft": false,
+      "head_sha": "f2fdb2132cc5c391c55d89c5b0b02f010d98ca3e",
+      "number": 15628,
+      "title": "Harden Hamilton retained-evidence inode custody",
+      "updated_at": "2026-09-17T19:00:57Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-z/commercial-laundry-ops-14558-20260917",
+      "created_at": "2026-09-17T18:59:49Z",
+      "draft": false,
+      "head_sha": "01244f3d6befbe78cdbd82b140e2278dc2452abe",
+      "number": 15627,
+      "title": "Build Commercial Laundry Route & Linen Custody Operations Desk",
+      "updated_at": "2026-09-17T18:59:49Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "sol-z/cpca-provenance-current-main-20260917",
+      "created_at": "2026-09-17T18:59:39Z",
+      "draft": false,
+      "head_sha": "a1c51bdf68f8c7bb0ca7a4ea491b82793be483ea",
+      "number": 15626,
+      "title": "CPCA: bind partner-readiness receipts to reviewed source provenance",
+      "updated_at": "2026-09-17T18:59:39Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "z-axiom-1442/proposal-validity-requote-current-main-15608",
       "created_at": "2026-09-17T18:58:14Z",
       "draft": false,
-      "head_sha": "748c483970c7d2246aae4d3da73dabdfc1325a3f",
+      "head_sha": "16fb65abc0da62d189ce6d6223a27baa1ad4753a",
       "number": 15624,
       "title": "Revenue: current-main proposal validity / requote gate",
-      "updated_at": "2026-09-17T18:58:14Z"
+      "updated_at": "2026-09-17T19:01:04Z"
     },
     {
       "author": "woahwhattheheck",
@@ -83,10 +127,10 @@
       "branch": "zsol17/cpca-15459-current-main-recovery-20260917",
       "created_at": "2026-09-17T18:52:00Z",
       "draft": false,
-      "head_sha": "9e4fb086b01c2a194a50d8db3a3a24d5ecad095a",
+      "head_sha": "11497aec1d1b61e5fc425b551c2f8879c96a6c6d",
       "number": 15617,
       "title": "Recover CPCA partner-readiness truth boundary on current main",
-      "updated_at": "2026-09-17T18:56:58Z"
+      "updated_at": "2026-09-17T19:00:58Z"
     },
     {
       "author": "woahwhattheheck",
@@ -97,7 +141,7 @@
       "head_sha": "7e646edc22b3c105d8e8719496393f96a636b8c4",
       "number": 15613,
       "title": "SwarmOps: make current readiness verifier-clock owned",
-      "updated_at": "2026-09-17T18:58:22Z"
+      "updated_at": "2026-09-17T19:01:02Z"
     },
     {
       "author": "woahwhattheheck",
@@ -108,7 +152,7 @@
       "head_sha": "8745584bbddd52359f84c7f8bda956df0713d05f",
       "number": 15612,
       "title": "Revenue: add source-bound partner opportunity qualification gate",
-      "updated_at": "2026-09-17T18:55:37Z"
+      "updated_at": "2026-09-17T19:00:34Z"
     },
     {
       "author": "woahwhattheheck",
@@ -119,7 +163,7 @@
       "head_sha": "b3db151fa171c0af6d2b051b27c21c5849cb9ede",
       "number": 15602,
       "title": "Build OneWriter atomic outreach-control packet for Emergent Builder Fest",
-      "updated_at": "2026-09-17T18:56:59Z"
+      "updated_at": "2026-09-17T18:59:55Z"
     },
     {
       "author": "woahwhattheheck",
@@ -131,50 +175,6 @@
       "number": 15598,
       "title": "Close Hamilton retained-evidence trust root",
       "updated_at": "2026-09-17T18:56:50Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zironwood/procurement-loss-remediation-15154",
-      "created_at": "2026-09-17T18:24:59Z",
-      "draft": false,
-      "head_sha": "45ef55442471a64293a6e7cfa1eea2b32306fce0",
-      "number": 15593,
-      "title": "revenue: turn procurement outcome evidence into remediation gaps (#15154)",
-      "updated_at": "2026-09-17T18:55:07Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "fix/titan-v5-d2-runtime-binding",
-      "created_at": "2026-09-17T18:24:24Z",
-      "draft": false,
-      "head_sha": "34800c7d618cdf88c57a415f57c8227262a46700",
-      "number": 15592,
-      "title": "TITAN V5: correct D2 archive authority runtime member binding and status",
-      "updated_at": "2026-09-17T18:58:09Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/okaloosa-openworld-authority-15507-20260917",
-      "created_at": "2026-09-17T18:11:52Z",
-      "draft": false,
-      "head_sha": "900a39aeff21104ec4601c9ebc310fbc5457e872",
-      "number": 15586,
-      "title": "Close Okaloosa root-schema authority bypass on current main",
-      "updated_at": "2026-09-17T18:21:39Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol/onewriter-retained-source-parses-clean-20260917",
-      "created_at": "2026-09-17T09:13:01Z",
-      "draft": false,
-      "head_sha": "613b8fbeeb8965fd37fb0c17d1e25d0c741750ee",
-      "number": 15536,
-      "title": "ci: retain OneWriter normal and optimized contract",
-      "updated_at": "2026-09-17T09:13:01Z"
     }
   ],
   "open_heads": {
@@ -186,19 +186,34 @@
     "15534": "2898aa00c66d5788b0d42c3f392d732b1587d8c9",
     "15536": "613b8fbeeb8965fd37fb0c17d1e25d0c741750ee",
     "15586": "900a39aeff21104ec4601c9ebc310fbc5457e872",
-    "15592": "34800c7d618cdf88c57a415f57c8227262a46700",
+    "15592": "7cbc7b32cb0242c28ae7b4933ae2c03cce3a5875",
     "15593": "45ef55442471a64293a6e7cfa1eea2b32306fce0",
     "15598": "d324fe85bc9dfa1ebca6e798878998c80bd1aa2f",
     "15602": "b3db151fa171c0af6d2b051b27c21c5849cb9ede",
     "15612": "8745584bbddd52359f84c7f8bda956df0713d05f",
     "15613": "7e646edc22b3c105d8e8719496393f96a636b8c4",
-    "15617": "9e4fb086b01c2a194a50d8db3a3a24d5ecad095a",
-    "15624": "748c483970c7d2246aae4d3da73dabdfc1325a3f"
+    "15617": "11497aec1d1b61e5fc425b551c2f8879c96a6c6d",
+    "15624": "16fb65abc0da62d189ce6d6223a27baa1ad4753a",
+    "15626": "a1c51bdf68f8c7bb0ca7a4ea491b82793be483ea",
+    "15627": "01244f3d6befbe78cdbd82b140e2278dc2452abe",
+    "15628": "f2fdb2132cc5c391c55d89c5b0b02f010d98ca3e",
+    "15629": "ecce3aa044126d7aaeca6476f2cb3730968841ce"
   },
-  "pulls_listed": 16,
+  "pulls_listed": 20,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 14.1,
+  "queue_depth_per_runner": 18.6,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol/inbound-reply-zs-boundary-postmerge-20260917",
+      "closed_at": "2026-09-17T19:00:38Z",
+      "head_sha": "3dd72ce329ce56480f29143ce7436cb586923402",
+      "merged_at": "2026-09-17T19:00:38Z",
+      "number": 15625,
+      "state": "MERGED",
+      "title": "Reject non-ASCII Zs in inbound binding keys"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -352,21 +367,10 @@
       "number": 15610,
       "state": "CLOSED",
       "title": "Recover TITAN reset deadline guard on current main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "cursor/latch-net159-wakeup-convert-shelf-42a2",
-      "closed_at": "2026-09-17T18:41:14Z",
-      "head_sha": "6a9ddd3bb939101f6d78e872a1f97f5294ea5ffe",
-      "merged_at": "2026-09-17T18:41:14Z",
-      "number": 15603,
-      "state": "MERGED",
-      "title": "Wire existing $29 and $250 Buy links onto net159 and wakeup shelves"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T18:58:47Z",
+  "unchanged_since": "2026-09-17T19:01:15Z",
   "undatable_pulls": []
 }
