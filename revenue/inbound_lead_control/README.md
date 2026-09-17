@@ -61,10 +61,20 @@ The compiler rejects:
 - wrong route/thread events;
 - duplicate lead scopes;
 - noncanonical timestamps;
-- non-boolean census flags and bool-as-int policy values.
+- non-boolean census flags and bool-as-int policy values;
+- any two state-driving `HUMAN_INBOUND`, `OUTBOUND_SENT`, or `BOUNCE` facts on
+  the same route/thread at the same retained UTC second.
+
+That final fence is intentionally strict. The retained event schema has only
+second-precision time and no authenticated provider sequence. Therefore a
+same-second pair has no trustworthy causal order. Compilation fails closed with
+`InputError` instead of treating list order or a fixed event-kind precedence as
+causality. A later generation may preserve both facts once the provider supplies
+a finer trusted sequence/key.
 
 The compiled queue retains exact latest inbound/outbound/bounce event IDs and
-provider references for reviewer reconstruction.
+provider references for reviewer reconstruction whenever chronology is
+unambiguous.
 
 ## SLA semantics
 
@@ -122,7 +132,10 @@ The retained suite includes normal and hostile cases for reply/DNR transitions,
 new-human reopen, meeting/terms boundaries, simultaneous writers, stale and
 incomplete census, future evidence, route-scope transplants, provider-ID and
 semantic duplicate remints, bounce quarantine, strict type/timestamp parsing,
-receipt tamper, and create-exclusive CLI behavior.
+receipt tamper, create-exclusive CLI behavior, and same-second chronology
+permutations (human intent escalation, inbound/outbound, and inbound/bounce).
+The chronology suite also launches a real optimized child interpreter so the
+fail-closed fence is exercised even when Python assertions are removed.
 
 ## Authority ceiling
 
