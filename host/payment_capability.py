@@ -65,6 +65,8 @@ CONVERT_SHELF_LIVE_BUYS = {
     "mcp-tool-drift.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "failed.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "task-forge.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "subzero-receipt.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "subzero-quote.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -109,6 +111,8 @@ PUBLIC_HTML = (
     "mcp-tool-drift.html",
     "failed.html",
     "task-forge.html",
+    "subzero-receipt.html",
+    "subzero-quote.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
