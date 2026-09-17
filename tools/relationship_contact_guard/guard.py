@@ -88,27 +88,37 @@ def _json_string_size(value: str, path: str, remaining: int) -> int:
     return total
 
 
-def _freeze_plain_json(value: Any, path: str) -> Any:
+def _freeze_plain_json(
+    value: Any,
+    path: str,
+    *,
+    _max_json_bytes: int = MAX_JSON_BYTES,
+    _max_safe_integer: int = MAX_SAFE_INTEGER,
+    _max_json_depth: int = MAX_JSON_DEPTH,
+    _max_json_nodes: int = MAX_JSON_NODES,
+    _isfinite=math.isfinite,
+    _json_dumps=json.dumps,
+) -> Any:
     """Detach one bounded exact-JSON generation before canonical serialization.
 
     Container cardinality is checked against the remaining node budget before
     child iteration/copy. String/key canonical bytes are charged incrementally,
-    so over-budget direct objects fail before the full value reaches json.dumps.
+    so over-budget direct objects fail before the full value reaches _json_dumps.
     """
     state = {"nodes": 0, "bytes": 0}
 
     def charge_bytes(amount: int, item_path: str) -> None:
-        if amount < 0 or state["bytes"] + amount > MAX_JSON_BYTES:
+        if amount < 0 or state["bytes"] + amount > _max_json_bytes:
             raise GuardError(f"{item_path}: canonical bytes limit exceeded")
         state["bytes"] += amount
 
     def take_node(item_path: str) -> None:
-        if state["nodes"] >= MAX_JSON_NODES:
+        if state["nodes"] >= _max_json_nodes:
             raise GuardError(f"{item_path}: JSON node limit exceeded")
         state["nodes"] += 1
 
     def visit(item: Any, item_path: str, depth: int) -> Any:
-        if depth > MAX_JSON_DEPTH:
+        if depth > _max_json_depth:
             raise GuardError(f"{item_path}: JSON depth limit exceeded")
         take_node(item_path)
 
@@ -119,29 +129,29 @@ def _freeze_plain_json(value: Any, path: str) -> Any:
             charge_bytes(4 if item else 5, item_path)
             return item
         if type(item) is int:
-            if item < -MAX_SAFE_INTEGER or item > MAX_SAFE_INTEGER:
+            if item < -_max_safe_integer or item > _max_safe_integer:
                 raise GuardError(f"{item_path}: integer outside supported exact JSON range")
             charge_bytes(len(str(item)), item_path)
             return item
         if type(item) is float:
-            if not math.isfinite(item):
+            if not _isfinite(item):
                 raise GuardError(f"{item_path}: non-finite number")
             # A finite float's scalar representation is intrinsically tiny;
             # using the serializer here cannot bypass aggregate work bounds.
             try:
-                scalar = json.dumps(item, ensure_ascii=True, allow_nan=False)
+                scalar = _json_dumps(item, ensure_ascii=True, allow_nan=False)
             except (ValueError, TypeError, OverflowError) as exc:
                 raise GuardError(f"{item_path}: canonical float serialization failed") from exc
             charge_bytes(len(scalar.encode("ascii")), item_path)
             return item
         if type(item) is str:
-            remaining = MAX_JSON_BYTES - state["bytes"]
+            remaining = _max_json_bytes - state["bytes"]
             charge_bytes(_json_string_size(item, item_path, remaining), item_path)
             return item
 
         if type(item) is list:
             count = len(item)
-            if state["nodes"] + count > MAX_JSON_NODES:
+            if state["nodes"] + count > _max_json_nodes:
                 raise GuardError(f"{item_path}: JSON node limit exceeded before child traversal")
             charge_bytes(2 + max(0, count - 1), item_path)  # [] plus commas
             out: list[Any] = []
@@ -157,7 +167,7 @@ def _freeze_plain_json(value: Any, path: str) -> Any:
         if type(item) is dict:
             count = len(item)
             # Each pair costs one string-key work node and one value work node.
-            if state["nodes"] + (2 * count) > MAX_JSON_NODES:
+            if state["nodes"] + (2 * count) > _max_json_nodes:
                 raise GuardError(f"{item_path}: JSON node limit exceeded before child traversal")
             charge_bytes(2 + max(0, count - 1) + count, item_path)  # {}, commas, colons
             out: dict[str, Any] = {}
@@ -170,7 +180,7 @@ def _freeze_plain_json(value: Any, path: str) -> Any:
                     if type(key) is not str:
                         raise GuardError(f"{item_path}: non-string JSON key")
                     take_node(f"{item_path}.<key>")
-                    remaining = MAX_JSON_BYTES - state["bytes"]
+                    remaining = _max_json_bytes - state["bytes"]
                     charge_bytes(_json_string_size(key, f"{item_path}.<key>", remaining), f"{item_path}.<key>")
                     out[key] = visit(child, f"{item_path}.{key}", depth + 1)
             except RuntimeError as exc:
@@ -184,9 +194,9 @@ def _freeze_plain_json(value: Any, path: str) -> Any:
     return visit(value, path, 0)
 
 
-def canonical_bytes(value: Any) -> bytes:
+def canonical_bytes(value: Any, *, _json_dumps=json.dumps) -> bytes:
     try:
-        return json.dumps(
+        return _json_dumps(
             value,
             sort_keys=True,
             separators=(",", ":"),
@@ -197,43 +207,64 @@ def canonical_bytes(value: Any) -> bytes:
         raise GuardError("canonical JSON serialization failed") from exc
 
 
-def digest(value: Any) -> str:
-    return hashlib.sha256(canonical_bytes(value)).hexdigest()
+def digest(value: Any, *, _sha256=hashlib.sha256, _canonical_bytes=canonical_bytes) -> str:
+    return _sha256(_canonical_bytes(value)).hexdigest()
 
 
-def _decode_json_bytes(raw: bytes, label: str) -> Any:
+def _decode_json_bytes(
+    raw: bytes,
+    label: str,
+    *,
+    _json_loads=json.loads,
+    _pairs_hook=_pairs,
+    _bad_constant_hook=_bad_constant,
+) -> Any:
     try:
         text = raw.decode("utf-8")
-        return json.loads(text, object_pairs_hook=_pairs, parse_constant=_bad_constant)
+        return _json_loads(text, object_pairs_hook=_pairs_hook, parse_constant=_bad_constant_hook)
     except GuardError:
         raise
     except (UnicodeDecodeError, json.JSONDecodeError, ValueError) as exc:
         raise GuardError(f"{label}: invalid strict JSON") from exc
 
 
-def _freeze(value: Any, label: str) -> dict[str, Any]:
+def _freeze(
+    value: Any,
+    label: str,
+    *,
+    _freeze_plain_json_fn=_freeze_plain_json,
+    _canonical_bytes_fn=canonical_bytes,
+    _decode_json_bytes_fn=_decode_json_bytes,
+    _max_json_bytes: int = MAX_JSON_BYTES,
+) -> dict[str, Any]:
     if type(value) is not dict:
         raise GuardError(f"{label}: top level must be a plain object")
-    frozen_plain = _freeze_plain_json(value, label)
+    frozen_plain = _freeze_plain_json_fn(value, label)
     if type(frozen_plain) is not dict:
         raise GuardError(f"{label}: top level must be a plain object")
-    raw = canonical_bytes(frozen_plain)
-    if len(raw) > MAX_JSON_BYTES:
+    raw = _canonical_bytes_fn(frozen_plain)
+    if len(raw) > _max_json_bytes:
         # Defensive consistency check: bounded preflight should have rejected
         # before serializer entry if its byte accounting ever drifts.
-        raise GuardError(f"{label}: exceeds {MAX_JSON_BYTES} canonical bytes")
-    frozen = _decode_json_bytes(raw, label)
+        raise GuardError(f"{label}: exceeds {_max_json_bytes} canonical bytes")
+    frozen = _decode_json_bytes_fn(raw, label)
     if type(frozen) is not dict:
         raise GuardError(f"{label}: top level must be a plain object")
     return frozen
 
 
-def load_json(path: Path) -> dict[str, Any]:
+def load_json(
+    path: Path,
+    *,
+    _max_json_bytes: int = MAX_JSON_BYTES,
+    _decode_json_bytes_fn=_decode_json_bytes,
+    _freeze_fn=_freeze,
+) -> dict[str, Any]:
     raw = path.read_bytes()
-    if len(raw) > MAX_JSON_BYTES:
-        raise GuardError(f"{path}: exceeds {MAX_JSON_BYTES} bytes")
-    value = _decode_json_bytes(raw, str(path))
-    return _freeze(value, str(path))
+    if len(raw) > _max_json_bytes:
+        raise GuardError(f"{path}: exceeds {_max_json_bytes} bytes")
+    value = _decode_json_bytes_fn(raw, str(path))
+    return _freeze_fn(value, str(path))
 
 
 def _keys(obj: Mapping[str, Any], required: set[str], allowed: set[str], label: str) -> None:
@@ -246,14 +277,14 @@ def _keys(obj: Mapping[str, Any], required: set[str], allowed: set[str], label: 
         raise GuardError(f"{label}: unknown keys: {', '.join(unknown)}")
 
 
-def _ident(value: Any, label: str) -> str:
-    if type(value) is not str or not IDENT_RE.fullmatch(value):
+def _ident(value: Any, label: str, *, _fullmatch=IDENT_RE.fullmatch) -> str:
+    if type(value) is not str or not _fullmatch(value):
         raise GuardError(f"{label}: canonical lowercase ASCII identifier required")
     return value
 
 
-def _opaque(value: Any, label: str) -> str:
-    if type(value) is not str or not OPAQUE_RE.fullmatch(value):
+def _opaque(value: Any, label: str, *, _fullmatch=OPAQUE_RE.fullmatch) -> str:
+    if type(value) is not str or not _fullmatch(value):
         raise GuardError(f"{label}: bounded ASCII identifier required")
     return value
 
@@ -284,29 +315,48 @@ def _cooldown(value: Any, minimum: int, label: str) -> int:
     return value
 
 
-def _candidate(raw: Mapping[str, Any]) -> dict[str, Any]:
+def _candidate(
+    raw: Mapping[str, Any],
+    *,
+    _relationship_floor: int = MIN_RELATIONSHIP_COOLDOWN_SECONDS,
+    _pursuit_floor: int = MIN_PURSUIT_COOLDOWN_SECONDS,
+    _keys_fn=_keys,
+    _ident_fn=_ident,
+    _cooldown_fn=_cooldown,
+) -> dict[str, Any]:
     required = {"counterparty_id", "opportunity_id", "route", "purpose"}
     allowed = required | {"relationship_cooldown_seconds", "pursuit_cooldown_seconds"}
-    _keys(raw, required, allowed, "candidate")
+    _keys_fn(raw, required, allowed, "candidate")
     return {
-        "counterparty_id": _ident(raw["counterparty_id"], "candidate.counterparty_id"),
-        "opportunity_id": _ident(raw["opportunity_id"], "candidate.opportunity_id"),
-        "route": _ident(raw["route"], "candidate.route"),
-        "purpose": _ident(raw["purpose"], "candidate.purpose"),
-        "relationship_cooldown_seconds": _cooldown(
-            raw.get("relationship_cooldown_seconds", MIN_RELATIONSHIP_COOLDOWN_SECONDS),
-            MIN_RELATIONSHIP_COOLDOWN_SECONDS,
+        "counterparty_id": _ident_fn(raw["counterparty_id"], "candidate.counterparty_id"),
+        "opportunity_id": _ident_fn(raw["opportunity_id"], "candidate.opportunity_id"),
+        "route": _ident_fn(raw["route"], "candidate.route"),
+        "purpose": _ident_fn(raw["purpose"], "candidate.purpose"),
+        "relationship_cooldown_seconds": _cooldown_fn(
+            raw.get("relationship_cooldown_seconds", _relationship_floor),
+            _relationship_floor,
             "candidate.relationship_cooldown_seconds",
         ),
-        "pursuit_cooldown_seconds": _cooldown(
-            raw.get("pursuit_cooldown_seconds", MIN_PURSUIT_COOLDOWN_SECONDS),
-            MIN_PURSUIT_COOLDOWN_SECONDS,
+        "pursuit_cooldown_seconds": _cooldown_fn(
+            raw.get("pursuit_cooldown_seconds", _pursuit_floor),
+            _pursuit_floor,
             "candidate.pursuit_cooldown_seconds",
         ),
     }
 
 
-def _event(raw: Mapping[str, Any], index: int, counterparty: str) -> dict[str, Any]:
+def _event(
+    raw: Mapping[str, Any],
+    index: int,
+    counterparty: str,
+    *,
+    _kinds=frozenset(KINDS),
+    _scopes=frozenset(SCOPES),
+    _keys_fn=_keys,
+    _opaque_fn=_opaque,
+    _ident_fn=_ident,
+    _time_fn=_time,
+) -> dict[str, Any]:
     label = f"events[{index}]"
     required = {"event_id", "kind", "occurred_at", "counterparty_id", "opportunity_id", "route", "purpose"}
     allowed = required | {
@@ -316,25 +366,25 @@ def _event(raw: Mapping[str, Any], index: int, counterparty: str) -> dict[str, A
         "in_reply_to_message_id",
         "reopens_event_id",
     }
-    _keys(raw, required, allowed, label)
+    _keys_fn(raw, required, allowed, label)
     kind = raw["kind"]
-    if type(kind) is not str or kind not in KINDS:
+    if type(kind) is not str or kind not in _kinds:
         raise GuardError(f"{label}.kind: unsupported event kind")
     out = {
-        "event_id": _opaque(raw["event_id"], f"{label}.event_id"),
+        "event_id": _opaque_fn(raw["event_id"], f"{label}.event_id"),
         "kind": kind,
         "occurred_at": raw["occurred_at"],
-        "counterparty_id": _ident(raw["counterparty_id"], f"{label}.counterparty_id"),
-        "opportunity_id": _ident(raw["opportunity_id"], f"{label}.opportunity_id"),
-        "route": _ident(raw["route"], f"{label}.route"),
-        "purpose": _ident(raw["purpose"], f"{label}.purpose"),
+        "counterparty_id": _ident_fn(raw["counterparty_id"], f"{label}.counterparty_id"),
+        "opportunity_id": _ident_fn(raw["opportunity_id"], f"{label}.opportunity_id"),
+        "route": _ident_fn(raw["route"], f"{label}.route"),
+        "purpose": _ident_fn(raw["purpose"], f"{label}.purpose"),
     }
-    _time(out["occurred_at"], f"{label}.occurred_at")
+    _time_fn(out["occurred_at"], f"{label}.occurred_at")
     if out["counterparty_id"] != counterparty:
         raise GuardError(f"{label}: cross-counterparty event transplant")
     for field in ("provider_message_id", "provider_thread_id", "in_reply_to_message_id", "reopens_event_id"):
         if field in raw:
-            out[field] = _opaque(raw[field], f"{label}.{field}")
+            out[field] = _opaque_fn(raw[field], f"{label}.{field}")
 
     if kind == "PROVIDER_SENT":
         if "provider_message_id" not in out:
@@ -355,7 +405,7 @@ def _event(raw: Mapping[str, Any], index: int, counterparty: str) -> dict[str, A
         if "in_reply_to_message_id" not in out:
             raise GuardError(f"{label}: HUMAN_NEGATIVE requires in_reply_to_message_id")
         scope = raw.get("scope")
-        if type(scope) is not str or scope not in SCOPES:
+        if type(scope) is not str or scope not in _scopes:
             raise GuardError(f"{label}: HUMAN_NEGATIVE requires valid scope")
         out["scope"] = scope
         if "reopens_event_id" in out:
@@ -364,7 +414,7 @@ def _event(raw: Mapping[str, Any], index: int, counterparty: str) -> dict[str, A
         if "in_reply_to_message_id" not in out or "reopens_event_id" not in out:
             raise GuardError(f"{label}: HUMAN_REOPEN requires in_reply_to_message_id and reopens_event_id")
         scope = raw.get("scope")
-        if type(scope) is not str or scope not in SCOPES:
+        if type(scope) is not str or scope not in _scopes:
             raise GuardError(f"{label}: HUMAN_REOPEN requires valid scope")
         out["scope"] = scope
 
@@ -389,14 +439,25 @@ def _semantic_event_key(event: Mapping[str, Any]) -> tuple[tuple[str, Any], ...]
     return tuple((key, event[key]) for key in sorted(event) if key not in excluded)
 
 
-def _validate(packet: Mapping[str, Any], now) -> tuple[dict[str, Any], list[dict[str, Any]]]:
-    _keys(packet, {"candidate", "events"}, {"candidate", "events"}, "packet")
+def _validate(
+    packet: Mapping[str, Any],
+    now,
+    *,
+    _max_events: int = MAX_EVENTS,
+    _keys_fn=_keys,
+    _candidate_fn=_candidate,
+    _event_fn=_event,
+    _time_fn=_time,
+    _semantic_event_key_fn=_semantic_event_key,
+    _bind_response_fn=_bind_response,
+) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    _keys_fn(packet, {"candidate", "events"}, {"candidate", "events"}, "packet")
     if type(packet["candidate"]) is not dict or type(packet["events"]) is not list:
         raise GuardError("packet candidate/events types invalid")
-    candidate = _candidate(packet["candidate"])
-    if len(packet["events"]) > MAX_EVENTS:
+    candidate = _candidate_fn(packet["candidate"])
+    if len(packet["events"]) > _max_events:
         raise GuardError("too many events")
-    events = [_event(raw, i, candidate["counterparty_id"]) for i, raw in enumerate(packet["events"])]
+    events = [_event_fn(raw, i, candidate["counterparty_id"]) for i, raw in enumerate(packet["events"])]
 
     seen_event: set[str] = set()
     seen_provider: set[str] = set()
@@ -407,7 +468,7 @@ def _validate(packet: Mapping[str, Any], now) -> tuple[dict[str, Any], list[dict
 
     for i, event in enumerate(events):
         label = f"events[{i}]"
-        dt = _time(event["occurred_at"], f"{label}.occurred_at")
+        dt = _time_fn(event["occurred_at"], f"{label}.occurred_at")
         if dt > now:
             raise GuardError(f"{label}: future-dated event")
         if last is not None and dt < last:
@@ -418,7 +479,7 @@ def _validate(packet: Mapping[str, Any], now) -> tuple[dict[str, Any], list[dict
             raise GuardError("duplicate event_id")
         seen_event.add(event["event_id"])
 
-        semantic_key = _semantic_event_key(event)
+        semantic_key = _semantic_event_key_fn(event)
         if semantic_key in seen_semantic:
             raise GuardError("duplicate semantic event")
         seen_semantic.add(semantic_key)
@@ -436,7 +497,7 @@ def _validate(packet: Mapping[str, Any], now) -> tuple[dict[str, Any], list[dict
             send = send_by_message.get(ref)
             if send is None:
                 raise GuardError(f"{label}: orphan response/bounce reference")
-            _bind_response(event, send, label)
+            _bind_response_fn(event, send, label)
 
         if event["kind"] == "HUMAN_REOPEN":
             blocker = event_by_id.get(event["reopens_event_id"])
@@ -465,14 +526,19 @@ def _send_state(send: Mapping[str, Any], events: Sequence[Mapping[str, Any]]) ->
     return "DELIVERED_UNANSWERED"
 
 
-def _reopened_after(events: Sequence[Mapping[str, Any]], blocker: Mapping[str, Any]) -> bool:
-    blocker_time = _time(blocker["occurred_at"], "blocker.occurred_at")
+def _reopened_after(
+    events: Sequence[Mapping[str, Any]],
+    blocker: Mapping[str, Any],
+    *,
+    _time_fn=_time,
+) -> bool:
+    blocker_time = _time_fn(blocker["occurred_at"], "blocker.occurred_at")
     for event in events:
         if event["kind"] != "HUMAN_REOPEN":
             continue
         if event.get("reopens_event_id") != blocker["event_id"]:
             continue
-        if _time(event["occurred_at"], "reopen.occurred_at") > blocker_time:
+        if _time_fn(event["occurred_at"], "reopen.occurred_at") > blocker_time:
             return True
     return False
 
@@ -481,6 +547,8 @@ def _active_scoped_negative(
     events: Sequence[Mapping[str, Any]],
     scope: str,
     candidate: Mapping[str, Any],
+    *,
+    _reopened_after_fn=_reopened_after,
 ):
     active = []
     for event in events:
@@ -490,19 +558,32 @@ def _active_scoped_negative(
             event["route"] != candidate["route"] or event["purpose"] != candidate["purpose"]
         ):
             continue
-        if not _reopened_after(events, event):
+        if not _reopened_after_fn(events, event):
             active.append(event)
     return active[-1] if active else None
 
 
-def _compile_at(frozen: Mapping[str, Any], now, evaluation_mode: str) -> dict[str, Any]:
-    candidate, events = _validate(frozen, now)
+def _compile_at(
+    frozen: Mapping[str, Any],
+    now,
+    evaluation_mode: str,
+    *,
+    _schema: str = SCHEMA,
+    _artifact_schema: str = ARTIFACT_SCHEMA,
+    _validate_fn=_validate,
+    _active_scoped_negative_fn=_active_scoped_negative,
+    _send_state_fn=_send_state,
+    _time_fn=_time,
+    _format_time_fn=_format_time,
+    _digest_fn=digest,
+) -> dict[str, Any]:
+    candidate, events = _validate_fn(frozen, now)
     status = "NO_CONFLICT_FOUND"
     reasons: list[str] = []
     blockers: list[str] = []
 
-    org_negative = _active_scoped_negative(events, "COUNTERPARTY", candidate)
-    route_negative = _active_scoped_negative(events, "ROUTE_PURPOSE", candidate)
+    org_negative = _active_scoped_negative_fn(events, "COUNTERPARTY", candidate)
+    route_negative = _active_scoped_negative_fn(events, "ROUTE_PURPOSE", candidate)
     if org_negative is not None:
         status = "HOLD_COUNTERPARTY_OPT_OUT"
         reasons.append("retained human negative event applies to the whole counterparty")
@@ -512,7 +593,7 @@ def _compile_at(frozen: Mapping[str, Any], now, evaluation_mode: str) -> dict[st
         reasons.append("retained human negative event applies to this route/purpose")
         blockers.append(route_negative["event_id"])
 
-    sends = [(e, _send_state(e, events)) for e in events if e["kind"] == "PROVIDER_SENT"]
+    sends = [(e, _send_state_fn(e, events)) for e in events if e["kind"] == "PROVIDER_SENT"]
     if status == "NO_CONFLICT_FOUND":
         bounced = [e for e, state in sends if state == "BOUNCED" and e["route"] == candidate["route"]]
         if bounced:
@@ -536,7 +617,7 @@ def _compile_at(frozen: Mapping[str, Any], now, evaluation_mode: str) -> dict[st
         for send, state in sends:
             if state == "BOUNCED":
                 continue
-            age = int((now - _time(send["occurred_at"], "send.occurred_at")).total_seconds())
+            age = int((now - _time_fn(send["occurred_at"], "send.occurred_at")).total_seconds())
             if age < candidate["relationship_cooldown_seconds"]:
                 recent.append((send, age))
         if recent:
@@ -556,7 +637,7 @@ def _compile_at(frozen: Mapping[str, Any], now, evaluation_mode: str) -> dict[st
                 or send["purpose"] != candidate["purpose"]
             ):
                 continue
-            age = int((now - _time(send["occurred_at"], "send.occurred_at")).total_seconds())
+            age = int((now - _time_fn(send["occurred_at"], "send.occurred_at")).total_seconds())
             if age < candidate["pursuit_cooldown_seconds"]:
                 recent.append((send, age))
         if recent:
@@ -596,15 +677,15 @@ def _compile_at(frozen: Mapping[str, Any], now, evaluation_mode: str) -> dict[st
         "revenue_recognized": False,
     }
     decision = {
-        "schema": SCHEMA,
+        "schema": _schema,
         "evaluation_mode": evaluation_mode,
-        "evaluated_at": _format_time(now),
+        "evaluated_at": _format_time_fn(now),
         "status": status,
         "candidate": candidate,
         "blocker_event_ids": blockers,
         "reasons": reasons,
         "retained_event_count": len(events),
-        "input_sha256": digest(frozen),
+        "input_sha256": _digest_fn(frozen),
         "authority": authority,
         "next_gate": (
             "HOLD_AND_RECONCILE"
@@ -620,21 +701,37 @@ def _compile_at(frozen: Mapping[str, Any], now, evaluation_mode: str) -> dict[st
             "retained_replay_establishes_currentness": False,
         },
     }
-    core = {"artifact_schema": ARTIFACT_SCHEMA, "decision": decision}
-    return {**core, "receipt_sha256": digest(core)}
+    core = {"artifact_schema": _artifact_schema, "decision": decision}
+    return {**core, "receipt_sha256": _digest_fn(core)}
 
 
-def compile_guard(packet: Mapping[str, Any]) -> dict[str, Any]:
+def compile_guard(
+    packet: Mapping[str, Any],
+    *,
+    _freeze_fn=_freeze,
+    _compile_at_fn=_compile_at,
+) -> dict[str, Any]:
     # Sample process wall time directly in the public current compiler rather
     # than through a mutable module-level clock callback.
     from datetime import datetime as _datetime, timezone as _timezone
 
-    frozen = _freeze(packet, "packet")
+    frozen = _freeze_fn(packet, "packet")
     now = _datetime.now(_timezone.utc).replace(microsecond=0)
-    return _compile_at(frozen, now, "PROCESS_UTC_SNAPSHOT")
+    return _compile_at_fn(frozen, now, "PROCESS_UTC_SNAPSHOT")
 
 
-def verify_guard(packet: Mapping[str, Any], artifact: Mapping[str, Any]) -> dict[str, Any]:
+def verify_guard(
+    packet: Mapping[str, Any],
+    artifact: Mapping[str, Any],
+    *,
+    _verification_schema: str = VERIFICATION_SCHEMA,
+    _hex64_fullmatch=HEX64_RE.fullmatch,
+    _freeze_fn=_freeze,
+    _time_fn=_time,
+    _compile_at_fn=_compile_at,
+    _canonical_bytes_fn=canonical_bytes,
+    _digest_fn=digest,
+) -> dict[str, Any]:
     """Verify retained artifact integrity, then freshly re-evaluate current semantics.
 
     A semantic receipt is not a signature. The retained artifact cannot prove
@@ -642,13 +739,13 @@ def verify_guard(packet: Mapping[str, Any], artifact: Mapping[str, Any]) -> dict
     verifier never upgrades that retained clock claim. Current diagnostic
     status comes only from a fresh process-time evaluation performed here.
     """
-    frozen_artifact = _freeze(artifact, "artifact")
+    frozen_artifact = _freeze_fn(artifact, "artifact")
     decision = frozen_artifact.get("decision")
     if type(decision) is not dict:
         raise GuardError("artifact decision missing")
     if decision.get("evaluation_mode") != "PROCESS_UTC_SNAPSHOT":
         raise GuardError("artifact evaluation_mode must be PROCESS_UTC_SNAPSHOT")
-    evaluated_at = _time(decision.get("evaluated_at"), "artifact.decision.evaluated_at")
+    evaluated_at = _time_fn(decision.get("evaluated_at"), "artifact.decision.evaluated_at")
 
     from datetime import datetime as _datetime, timezone as _timezone
 
@@ -656,25 +753,25 @@ def verify_guard(packet: Mapping[str, Any], artifact: Mapping[str, Any]) -> dict
     if evaluated_at > verify_now:
         raise GuardError("artifact evaluated_at is in the future")
 
-    frozen_packet = _freeze(packet, "packet")
-    expected = _compile_at(frozen_packet, evaluated_at, "PROCESS_UTC_SNAPSHOT")
-    if canonical_bytes(frozen_artifact) != canonical_bytes(expected):
+    frozen_packet = _freeze_fn(packet, "packet")
+    expected = _compile_at_fn(frozen_packet, evaluated_at, "PROCESS_UTC_SNAPSHOT")
+    if _canonical_bytes_fn(frozen_artifact) != _canonical_bytes_fn(expected):
         raise GuardError("artifact does not exactly match deterministic retained-time recompile")
     receipt = frozen_artifact.get("receipt_sha256")
-    if type(receipt) is not str or not HEX64_RE.fullmatch(receipt):
+    if type(receipt) is not str or not _hex64_fullmatch(receipt):
         raise GuardError("artifact receipt_sha256 malformed")
     core = {"artifact_schema": frozen_artifact["artifact_schema"], "decision": frozen_artifact["decision"]}
-    if digest(core) != receipt:
+    if _digest_fn(core) != receipt:
         raise GuardError("artifact receipt mismatch")
     if any(frozen_artifact["decision"]["authority"].values()):
         raise GuardError("artifact authority ceiling widened")
 
-    fresh = _compile_at(frozen_packet, verify_now, "PROCESS_UTC_VERIFY_FRESH")
+    fresh = _compile_at_fn(frozen_packet, verify_now, "PROCESS_UTC_VERIFY_FRESH")
     if any(fresh["decision"]["authority"].values()):
         raise GuardError("fresh verification authority ceiling widened")
 
     return {
-        "verification_schema": VERIFICATION_SCHEMA,
+        "verification_schema": _verification_schema,
         "retained_integrity_verified": True,
         "retained_time_process_origin_verified": False,
         "retained_status_is_current": False,
