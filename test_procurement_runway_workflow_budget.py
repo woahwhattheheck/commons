@@ -32,6 +32,33 @@ class ProcurementRunwayWorkflowBudgetTests(unittest.TestCase):
             manifest["retained"],
         )
 
+    def test_retained_path_manifest_preserves_direct_main_push_trigger(self) -> None:
+        workflow = PATH_MANIFEST.read_text(encoding="utf-8")
+
+        # Bind the retired standalone workflow's direct-main-push coverage to the
+        # retained in-slot workflow. A generic product-path substring is not enough:
+        # deleting the entire push event must make this predecessor fail.
+        push_start = workflow.index("  push:\n")
+        workflow_dispatch_start = workflow.index("  workflow_dispatch:\n", push_start)
+        push_block = workflow[push_start:workflow_dispatch_start]
+        self.assertIn("    branches:\n      - main\n", push_block)
+        for path in (
+            "revenue/procurement_runway_gate/**",
+            "test_procurement_runway_workflow_budget.py",
+            ".github/workflows/path-manifest.yml",
+        ):
+            self.assertIn(f"      - '{path}'\n", push_block)
+
+        detect_start = workflow.index("      - name: detect procurement runway gate delta\n")
+        setup_start = workflow.index("      - uses: actions/setup-python@v5\n", detect_start)
+        detect_block = workflow[detect_start:setup_start]
+        self.assertIn("EVENT_NAME: ${{ github.event_name }}", detect_block)
+        self.assertIn(
+            'if [ "$EVENT_NAME" = "workflow_dispatch" ] || [ "$EVENT_NAME" = "push" ]; then',
+            detect_block,
+        )
+        self.assertIn("echo 'changed=true' >> \"$GITHUB_OUTPUT\"", detect_block)
+
     def test_retained_path_manifest_preserves_full_product_proof(self) -> None:
         workflow = PATH_MANIFEST.read_text(encoding="utf-8")
         required = (
