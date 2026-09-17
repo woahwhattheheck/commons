@@ -13,7 +13,13 @@ class LatchMiscDoorsLiveCashTest(unittest.TestCase):
                 text = (ROOT / name).read_text(encoding="utf-8")
                 for n in REQUIRED:
                     self.assertIn(n, text, f"{name} missing {n}")
-                self.assertNotIn("buy.stripe.com", text)
+                if name == "8walk.html":
+                    # Convert shelf reuses existing live buys; Live cash product-page
+                    # doors stay relative (latch-8bit-8walk-convert-shelf-20260917-01).
+                    live_cash = text.split('id="live-cash"', 1)[1].split("</section>", 1)[0]
+                    self.assertNotIn("buy.stripe.com", live_cash)
+                else:
+                    self.assertNotIn("buy.stripe.com", text)
                 self.assertNotIn("tools-cash.html", text)
 if __name__ == "__main__":
     unittest.main()
