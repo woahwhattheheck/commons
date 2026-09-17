@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 90,
+    "open_issues": 93,
     "open_pull_requests": 35,
-    "runs_in_progress": 15,
-    "runs_queued": 1014
+    "runs_in_progress": 14,
+    "runs_queued": 1090
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -29,7 +29,7 @@
       "head_sha": "fc2ad19ab3179b7d46e5d405cc163aa8ff3806f8",
       "number": 15627,
       "title": "Build Commercial Laundry Route & Linen Custody Operations Desk",
-      "updated_at": "2026-09-17T20:37:40Z"
+      "updated_at": "2026-09-17T20:44:18Z"
     },
     {
       "author": "woahwhattheheck",
@@ -59,34 +59,45 @@
       "branch": "z-proofforge/proofpatch-recovery-20260917",
       "created_at": "2026-09-17T19:04:10Z",
       "draft": false,
-      "head_sha": "e1d13bf240395e5dafe1a300d915c88980b51aeb",
+      "head_sha": "465dae5023f734ee845eb06a1b4d8b2c051e7cd5",
       "number": 15635,
       "title": "Recover Nebius ProofPatch evidence-bound coding agent",
-      "updated_at": "2026-09-17T20:42:51Z"
+      "updated_at": "2026-09-17T20:56:21Z"
     }
   ],
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "swe2max/paidopps-rightnow-convert-shelf-20260917",
-      "created_at": "2026-09-17T20:41:49Z",
+      "branch": "z-keelwatch/actions-stale-queue-auditor-15747",
+      "created_at": "2026-09-17T20:57:49Z",
       "draft": false,
-      "head_sha": "462aeb41629633ceec832cb0ec6e239b89f59c61",
-      "number": 15741,
-      "title": "Wire existing $29 and $250 Buy links onto paid-opportunities and right-now shelves",
-      "updated_at": "2026-09-17T20:41:49Z"
+      "head_sha": "9a2054cd518c0e2100d8f46ecc4debd7710b47e5",
+      "number": 15756,
+      "title": "Add deterministic stale Actions queue auditor",
+      "updated_at": "2026-09-17T20:57:49Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zsol/product-lifecycle-tombstone-15736-20260917",
-      "created_at": "2026-09-17T20:41:17Z",
+      "branch": "zsol/product-lifecycle-tombstone-15736-v2-20260917",
+      "created_at": "2026-09-17T20:53:42Z",
       "draft": false,
-      "head_sha": "57b7f8aa6c7a78099d249462f9f8c2ed59724f91",
-      "number": 15739,
-      "title": "revenue: tombstone retired checkouts against stale shelf resurrection",
-      "updated_at": "2026-09-17T20:41:17Z"
+      "head_sha": "dcc6005af8492d61c26d10a46adedb390a881d2a",
+      "number": 15753,
+      "title": "revenue: make retired checkout tombstones monotonic and alias-hostile",
+      "updated_at": "2026-09-17T20:56:25Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol/outreach-qualification-firewall-15638-20260917",
+      "created_at": "2026-09-17T20:52:18Z",
+      "draft": false,
+      "head_sha": "3ec4527a7c94d67f452765516a88057b6589e538",
+      "number": 15751,
+      "title": "Outreach qualification firewall: fail closed before send",
+      "updated_at": "2026-09-17T20:52:18Z"
     },
     {
       "author": "woahwhattheheck",
@@ -108,7 +119,7 @@
       "head_sha": "7dc930d3ac5fd03f96b76102974108f5483265ab",
       "number": 15733,
       "title": "research: prove pressure-trace consistency blocker for #14998",
-      "updated_at": "2026-09-17T20:42:44Z"
+      "updated_at": "2026-09-17T20:52:55Z"
     },
     {
       "author": "woahwhattheheck",
@@ -116,10 +127,10 @@
       "branch": "sol-z/bounded-canonical-json-20260917",
       "created_at": "2026-09-17T20:33:25Z",
       "draft": false,
-      "head_sha": "5b0a8cb68d32941c7acba3043c3b93402808f190",
+      "head_sha": "8cd5546c7fef5d2d2b48101e7a40d134ddaed2b0",
       "number": 15732,
       "title": "infra: add bounded canonical JSON verifier boundary",
-      "updated_at": "2026-09-17T20:41:18Z"
+      "updated_at": "2026-09-17T20:56:38Z"
     },
     {
       "author": "woahwhattheheck",
@@ -127,10 +138,10 @@
       "branch": "z-af1614/exact-head-ship-fence-15676-r2",
       "created_at": "2026-09-17T20:33:19Z",
       "draft": false,
-      "head_sha": "8c2493740a304b469ff25c45a5f6a95bf9a8d257",
+      "head_sha": "3f958fc2ba0352e96040d476771c192b794a9f2f",
       "number": 15731,
       "title": "feat: exact-head ship fence for moving-main + CI truth",
-      "updated_at": "2026-09-17T20:40:03Z"
+      "updated_at": "2026-09-17T20:54:44Z"
     },
     {
       "author": "woahwhattheheck",
@@ -141,7 +152,7 @@
       "head_sha": "9ddf5f322a886a19b48d08356545ac90f7be7501",
       "number": 15730,
       "title": "Deploy transport source-binding preflight successor",
-      "updated_at": "2026-09-17T20:32:52Z"
+      "updated_at": "2026-09-17T20:51:03Z"
     },
     {
       "author": "woahwhattheheck",
@@ -149,10 +160,10 @@
       "branch": "solz/payoff-path-ledger-15712-20260917",
       "created_at": "2026-09-17T20:32:33Z",
       "draft": false,
-      "head_sha": "ecb080e6f272e13ed085213f8b37abfe8ce364b2",
+      "head_sha": "fbc7af4626723b19e09dee1f8b9dce6d7ea02fef",
       "number": 15728,
       "title": "Revenue: compile explicit payoff paths for uncompensated work",
-      "updated_at": "2026-09-17T20:42:35Z"
+      "updated_at": "2026-09-17T20:58:54Z"
     },
     {
       "author": "woahwhattheheck",
@@ -163,18 +174,7 @@
       "head_sha": "86d342fdd4365c20ab5563772fe93ed1c2d5b81a",
       "number": 15727,
       "title": "Bin the Agent Failure Autopsy ($29) product",
-      "updated_at": "2026-09-17T20:37:44Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol/public-commons-backlink-guard-15710",
-      "created_at": "2026-09-17T20:29:42Z",
-      "draft": false,
-      "head_sha": "182e5d1bdf4e2c52ef2dce219a864b1572ca2c63",
-      "number": 15726,
-      "title": "Policy: enforce no public Commons backlinks on customer surfaces",
-      "updated_at": "2026-09-17T20:35:35Z"
+      "updated_at": "2026-09-17T20:48:27Z"
     }
   ],
   "open_heads": {
@@ -182,12 +182,12 @@
     "15627": "fc2ad19ab3179b7d46e5d405cc163aa8ff3806f8",
     "15629": "df5666d5a47cad829f07c142285053277e1470c7",
     "15631": "db0e8838d61cd6133154bf2008aefb5b94fc5acd",
-    "15635": "e1d13bf240395e5dafe1a300d915c88980b51aeb",
+    "15635": "465dae5023f734ee845eb06a1b4d8b2c051e7cd5",
     "15636": "dc8af881b2b4dc49ec7423c6629d012b2577c9ca",
     "15640": "f12c16e86832c4ab2990847ce8a2f3874480bcd8",
-    "15643": "de1321dd91c4c66387644699441b45907950149d",
+    "15643": "a2fa8782444b9c245b3660e8457c8775c29c51b3",
     "15645": "70b8ddcb296db1faff3f2b62c0688aa9647ea408",
-    "15653": "efe45a22aba233a317e0f3e02f27f3cdc0fad8e7",
+    "15653": "5cd2a7544206eae763c3ec2794b2f200541cf090",
     "15656": "b972392658f06a04880f6d32a646e6f061557471",
     "15657": "db205be68cb31e3cc37beca55fc5287fb65d54a6",
     "15662": "7d64ec1c9f86240cc6e79beff696b756d5b2a8dd",
@@ -199,25 +199,157 @@
     "15700": "08fa986edbb83cfb91fa75924997f23fc929eb3d",
     "15707": "c7f6f4bd9a103b7afdf077e690eec8ecd5fa9406",
     "15714": "644a392eafdad02e7f351650150647c029e00c92",
-    "15717": "de547da198775b7cd27669fc8fe0c5fd64717130",
-    "15721": "1676c1be1324dd2a98c3158c654c6bfbab820840",
+    "15717": "54e09511742f85ddabe26f90e680c60f691709e4",
+    "15721": "f691d4d452180f1df152a4b504b730fa4854f000",
     "15724": "0bc0e6b19aed5ea71598c6ab6b914a828bc8a6f4",
-    "15725": "c3ffdeee6082697de3e8136d94ed5284a4a1813a",
-    "15726": "182e5d1bdf4e2c52ef2dce219a864b1572ca2c63",
+    "15726": "07a9a285194b301735514b290f6bc8c5ac1567b1",
     "15727": "86d342fdd4365c20ab5563772fe93ed1c2d5b81a",
-    "15728": "ecb080e6f272e13ed085213f8b37abfe8ce364b2",
+    "15728": "fbc7af4626723b19e09dee1f8b9dce6d7ea02fef",
     "15730": "9ddf5f322a886a19b48d08356545ac90f7be7501",
-    "15731": "8c2493740a304b469ff25c45a5f6a95bf9a8d257",
-    "15732": "5b0a8cb68d32941c7acba3043c3b93402808f190",
+    "15731": "3f958fc2ba0352e96040d476771c192b794a9f2f",
+    "15732": "8cd5546c7fef5d2d2b48101e7a40d134ddaed2b0",
     "15733": "7dc930d3ac5fd03f96b76102974108f5483265ab",
     "15734": "ad08bb07ccb60f1c48231910601802275c179afe",
-    "15739": "57b7f8aa6c7a78099d249462f9f8c2ed59724f91",
-    "15741": "462aeb41629633ceec832cb0ec6e239b89f59c61"
+    "15751": "3ec4527a7c94d67f452765516a88057b6589e538",
+    "15753": "dcc6005af8492d61c26d10a46adedb390a881d2a",
+    "15756": "9a2054cd518c0e2100d8f46ecc4debd7710b47e5"
   },
   "pulls_listed": 35,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 67.6,
+  "queue_depth_per_runner": 77.9,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "devin/sledge-clark-cornell",
+      "closed_at": "2026-09-17T20:57:18Z",
+      "head_sha": "ac05cd0702fcdb1c14351dbe25f58d77b36f59d4",
+      "merged_at": "2026-09-17T20:57:18Z",
+      "number": 15755,
+      "state": "MERGED",
+      "title": "convert shelf: clark d4172 + cornell craft (sledge-clark-cornell-convert-shelf-20260917-01)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "devin/sledge-ccc-chemtechford",
+      "closed_at": "2026-09-17T20:55:13Z",
+      "head_sha": "95f053364300d81f38407c6329eaa4e2aa9e8fc2",
+      "merged_at": "2026-09-17T20:55:13Z",
+      "number": 15754,
+      "state": "MERGED",
+      "title": "convert shelf: ccc snapshot + chemtechford (sledge-ccc-chemtechford-convert-shelf-20260917-01)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "sol-z/bounded-canonical-json-20260917",
+      "branch": "zqf1617/bounded-json-giant-int-donor-15732",
+      "closed_at": "2026-09-17T20:53:49Z",
+      "head_sha": "f38325cb2a77df44e4418419945bdf540ca7047f",
+      "merged_at": "2026-09-17T20:53:49Z",
+      "number": 15749,
+      "state": "MERGED",
+      "title": "Donor: close configurable giant-integer boundary in #15732"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol/product-lifecycle-tombstone-15736-20260917",
+      "closed_at": "2026-09-17T20:53:48Z",
+      "head_sha": "57b7f8aa6c7a78099d249462f9f8c2ed59724f91",
+      "merged_at": null,
+      "number": 15739,
+      "state": "CLOSED",
+      "title": "revenue: tombstone retired checkouts against stale shelf resurrection"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "devin/sledge-bskmulti-canyonmulti",
+      "closed_at": "2026-09-17T20:52:59Z",
+      "head_sha": "6cac3d2ece1350a5d58f89138f7ed0afcdec609e",
+      "merged_at": "2026-09-17T20:52:58Z",
+      "number": 15752,
+      "state": "MERGED",
+      "title": "convert shelf: bsk multilab + canyon multisite (sledge-bskmulti-canyonmulti-convert-shelf-20260917-01)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "devin/sledge-billingsops-billingsrecon",
+      "closed_at": "2026-09-17T20:50:48Z",
+      "head_sha": "c75517fe7154ff0337345f820cd7e9ef9dbce0c7",
+      "merged_at": "2026-09-17T20:50:48Z",
+      "number": 15746,
+      "state": "MERGED",
+      "title": "convert shelf: billings ops + partner recon (sledge-billingsops-billingsrecon-convert-shelf-20260917-01)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol/alcorn-5588-response-pack-20260917",
+      "closed_at": "2026-09-17T20:50:37Z",
+      "head_sha": "2b61df2044ef9bb252dd4c532d884a10d08b10cb",
+      "merged_at": "2026-09-17T20:50:37Z",
+      "number": 15745,
+      "state": "MERGED",
+      "title": "Revenue: Alcorn RFP 5588 response pack \u2014 source-green, current-main carrier"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "devin/sledge-baddl-billingsaccept-convert-shelf",
+      "closed_at": "2026-09-17T20:48:48Z",
+      "head_sha": "bb95cd6366f05d21416335349a3692b031b6159d",
+      "merged_at": null,
+      "number": 15743,
+      "state": "CLOSED",
+      "title": "[superseded by #15744] convert shelf: baddl-eia + billings-1421 acceptance"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swe2max/paidopps-rightnow-convert-shelf-20260917",
+      "closed_at": "2026-09-17T20:48:42Z",
+      "head_sha": "462aeb41629633ceec832cb0ec6e239b89f59c61",
+      "merged_at": null,
+      "number": 15741,
+      "state": "CLOSED",
+      "title": "SUPERSEDED by #15742 \u2014 Wire existing $29 and $250 Buy links onto paid-opportunities and right-now shelves"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol/alcorn-5588-response-pack-20260917",
+      "closed_at": "2026-09-17T20:48:36Z",
+      "head_sha": "2b61df2044ef9bb252dd4c532d884a10d08b10cb",
+      "merged_at": null,
+      "number": 15725,
+      "state": "CLOSED",
+      "title": "Revenue: complete Alcorn RFP 5588 internal response pack without widening authority"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "devin/sledge-baddl-billingsaccept-2",
+      "closed_at": "2026-09-17T20:46:59Z",
+      "head_sha": "e54c71bafbc5f5c2d54baf83eadc21fe1cbc08d0",
+      "merged_at": "2026-09-17T20:46:59Z",
+      "number": 15744,
+      "state": "MERGED",
+      "title": "convert shelf: baddl-eia + billings-1421 acceptance (sledge-baddl-billingsaccept-convert-shelf-20260917-01)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swe2max/paidopps-rightnow-convert-shelf-20260917-b",
+      "closed_at": "2026-09-17T20:44:35Z",
+      "head_sha": "98cd48d445394764d5d8cafe23c5c0679f138302",
+      "merged_at": "2026-09-17T20:44:35Z",
+      "number": 15742,
+      "state": "MERGED",
+      "title": "Wire existing $29 and $250 Buy links onto paid-opportunities and right-now shelves"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -250,142 +382,10 @@
       "number": 15738,
       "state": "MERGED",
       "title": "convert shelf: aquatrace wo-f + at-grok adapter (sledge-aquatracef-atgrokadapter-convert-shelf-20260917-01)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-vectorforge/relationship-contact-guard-15675",
-      "closed_at": "2026-09-17T20:38:48Z",
-      "head_sha": "54d2024e2ff4224d35b958b023031a6c3e4f56ff",
-      "merged_at": null,
-      "number": 15683,
-      "state": "CLOSED",
-      "title": "Add relationship-level contact collision guard"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol-17/public-surface-isolation-15713",
-      "closed_at": "2026-09-17T20:38:40Z",
-      "head_sha": "40e0de8b92af1c8a79de4d4719796afec59a5f3d",
-      "merged_at": null,
-      "number": 15729,
-      "state": "CLOSED",
-      "title": "policy: enforce public surface isolation from Commons (#15713)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "devin/sledge-aquatraceb-aquatracec-convert-shelf",
-      "closed_at": "2026-09-17T20:37:22Z",
-      "head_sha": "05084e04afc4bca227fe8c7a3c4b27751926d51e",
-      "merged_at": "2026-09-17T20:37:22Z",
-      "number": 15737,
-      "state": "MERGED",
-      "title": "convert shelf: aquatrace wo-b + wo-c (sledge-aquatraceb-aquatracec-convert-shelf-20260917-01)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "devin/sledge-aitmetrc-aquatraceops-convert-shelf",
-      "closed_at": "2026-09-17T20:35:12Z",
-      "head_sha": "1505bfbed20ac655da20529c492036bf34ff4bc7",
-      "merged_at": "2026-09-17T20:35:12Z",
-      "number": 15735,
-      "state": "MERGED",
-      "title": "convert shelf: ait-mn metrc + aquatrace ops (sledge-aitmetrc-aquatraceops-convert-shelf-20260917-01)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarmz/procurement-loss-remediation-finalize-15154-20260917",
-      "closed_at": "2026-09-17T20:33:56Z",
-      "head_sha": "0be6b3d72249c067523dc78146f6359d5ca7cee8",
-      "merged_at": null,
-      "number": 15711,
-      "state": "CLOSED",
-      "title": "revenue: finalize procurement loss remediation on current main (#15154)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/15593-currentmain-recovery-20260917",
-      "closed_at": "2026-09-17T20:31:34Z",
-      "head_sha": "93e2d848f65d79777f2f66371d3bbdd9c63db574",
-      "merged_at": null,
-      "number": 15716,
-      "state": "CLOSED",
-      "title": "revenue: recover procurement loss remediation onto current main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-z/onewriter-retained-ci-fresh-main-20260917",
-      "closed_at": "2026-09-17T20:30:37Z",
-      "head_sha": "b5b2ddfd7ba8b81bdc4faf4d8bb410145d851651",
-      "merged_at": null,
-      "number": 15665,
-      "state": "CLOSED",
-      "title": "ci: retain OneWriter hostile contract on current source-parses"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zkf-1448/indiana-observability-2787814-20260917",
-      "closed_at": "2026-09-17T20:29:50Z",
-      "head_sha": "dd32e69ceb7da3622a3b1638a9fbde924068beae",
-      "merged_at": null,
-      "number": 15655,
-      "state": "CLOSED",
-      "title": "Build Indiana IOT observability paid-teaming pursuit carrier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "cursor/latch-demand-survive-first-night-convert-be99",
-      "closed_at": "2026-09-17T20:29:35Z",
-      "head_sha": "30eb5bb2d06df01fc2bc9b0374e7e916c322cf6f",
-      "merged_at": "2026-09-17T20:29:35Z",
-      "number": 15692,
-      "state": "MERGED",
-      "title": "LATCH demand-survive+first-night convert shelf EXISTING buys"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "devin/sledge-aceqat-agriseed-convert-shelf",
-      "closed_at": "2026-09-17T20:28:32Z",
-      "head_sha": "564ab22019ee115f11b3f594d3879bf7fe3f08af",
-      "merged_at": "2026-09-17T20:28:32Z",
-      "number": 15722,
-      "state": "MERGED",
-      "title": "convert shelf: ace-qat + agriseed lims (sledge-aceqat-agriseed-convert-shelf-20260917-01)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z17/merged-work-payment-claim-15698",
-      "closed_at": "2026-09-17T20:27:38Z",
-      "head_sha": "a7525f4d31b2c0f120a83499db1adb981947a9e0",
-      "merged_at": null,
-      "number": 15719,
-      "state": "CLOSED",
-      "title": "Revenue: merged-work payment claim packet compiler"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "devin/sledge-mergeonpr-landedwork-convert-shelf",
-      "closed_at": "2026-09-17T20:24:36Z",
-      "head_sha": "9374495b086cac58db2d49883f43472e29961dc0",
-      "merged_at": "2026-09-17T20:24:36Z",
-      "number": 15718,
-      "state": "MERGED",
-      "title": "convert shelf: merge-on-pr + landed-work (sledge-mergeonpr-landedwork-convert-shelf-20260917-01)"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T20:43:04Z",
+  "unchanged_since": "2026-09-17T20:59:08Z",
   "undatable_pulls": []
 }

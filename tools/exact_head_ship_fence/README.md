@@ -54,13 +54,19 @@ A check observation tied to another head is rejected as cross-head evidence rath
 
 ### Reviews
 
-A review on head A never authorizes head B. The packet can require N exact-head PASS reviews. Stale-head reviews do not count. An exact-head STOP produces `HOLD_REVIEW_STALE` with reason `EXACT_HEAD_REVIEW_STOP`; this taxonomy intentionally uses the review hold class for both stale/missing positive review and a current STOP because v1 has no separate `HOLD_REVIEW_RED` state.
+A review on head A never authorizes head B. The packet can require N exact-head PASS reviews. Current-head reviewer identities are case-normalized before quorum counting, so case variants cannot manufacture independent seats; the same reviewer may legitimately rereview a later head. Stale-head reviews do not count. An exact-head STOP produces `HOLD_REVIEW_STALE` with reason `EXACT_HEAD_REVIEW_STOP`; this taxonomy intentionally uses the review hold class for both stale/missing positive review and a current STOP because v1 has no separate `HOLD_REVIEW_RED` state.
 
 ## Strict boundary
 
 JSON ingestion rejects duplicate keys, floats/non-finite values, unsafe integers, invalid Unicode scalars, unknown fields, malformed SHAs, duplicate identities, impossible check state/conclusion pairs, future/stale observations, and non-plain Python container subclasses. Public current compilation captures its UTC clock at initialization; ordinary module-global rebinding cannot substitute a historical clock.
 
 A report is self-hashed, but self-hashing is not semantic verification. `verify_current()` first exact-recompiles the complete report at its recorded evaluation second, then re-evaluates the source packet against current process UTC. A semantically modified-and-resealed report fails.
+
+### Sealed core source
+
+The validated compiler core is retained as non-importable `_core.src`, not as a second callable Python module. `fence.py` verifies that source asset against a pinned SHA-256 before executing it into a private namespace, then exposes only the sealed public API. The public authority view is read-only and all authority bits remain false. Rebinding presentation globals or inventing helper names on `fence` does not reach the private semantic graph, while a facade reload rebuilds a fresh private generation from the same hash-verified source bytes.
+
+This split is deliberate: it keeps the audited core bytes stable while preventing callers from bypassing the seal through `tools.exact_head_ship_fence._core`. The hardening suite retains a direct-import rejection, public-helper rebinding hostiles, source-digest/clock rebinding hostiles, and reload reconstruction checks under normal and real `python -O`.
 
 ## CLI
 

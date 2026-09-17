@@ -111,6 +111,14 @@ CONVERT_SHELF_LIVE_BUYS = {
     "right-now.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "baddl-eia-accession-release-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "billings-bid-1421-acceptance-runner.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "billings-bid-1421-operations-runner.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "billings-bid-1421-partner-recon.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "bsk-multilab-accession-parity-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "canyon-multisite-regulated-intake.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "ccc-snapshot-toolchain.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "chemtechford-short-hold-intake-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "clark-d4172-proficiency-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "cornell-craft-beverage-intake-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -199,6 +207,14 @@ PUBLIC_HTML = (
     "right-now.html",
     "baddl-eia-accession-release-lims.html",
     "billings-bid-1421-acceptance-runner.html",
+    "billings-bid-1421-operations-runner.html",
+    "billings-bid-1421-partner-recon.html",
+    "bsk-multilab-accession-parity-lims.html",
+    "canyon-multisite-regulated-intake.html",
+    "ccc-snapshot-toolchain.html",
+    "chemtechford-short-hold-intake-lims.html",
+    "clark-d4172-proficiency-lims.html",
+    "cornell-craft-beverage-intake-lims.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",

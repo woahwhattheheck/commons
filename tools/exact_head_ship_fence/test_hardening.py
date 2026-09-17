@@ -2,19 +2,23 @@ from __future__ import annotations
 
 from copy import deepcopy
 from datetime import datetime, timezone
+import importlib
 import os
 from pathlib import Path
 import tempfile
 import unittest
 
 from tools.exact_head_ship_fence import fence
-from tools.exact_head_ship_fence import _core
 from tools.exact_head_ship_fence.cli import _write_bundle
 from tools.exact_head_ship_fence.test_fence import packet
 
 
-class AuthoritySeal(unittest.TestCase):
-    def test_public_authority_is_immutable_and_rebind_is_ignored(self):
+class SealedGeneration(unittest.TestCase):
+    def test_no_importable_core_module(self):
+        with self.assertRaises(ModuleNotFoundError):
+            importlib.import_module("tools.exact_head_ship_fence._core")
+
+    def test_public_authority_is_immutable_and_rebind_irrelevant(self):
         with self.assertRaises(TypeError):
             fence.AUTHORITY["merge_authorized"] = True
         old = fence.AUTHORITY
@@ -25,46 +29,20 @@ class AuthoritySeal(unittest.TestCase):
         finally:
             fence.AUTHORITY = old
 
-    def test_core_authority_in_place_mutation_fails_closed(self):
-        old = dict(_core.AUTHORITY)
+    def test_public_helper_names_are_not_semantic_dependencies(self):
+        injected = []
         try:
-            _core.AUTHORITY["merge_authorized"] = True
-            with self.assertRaises(fence.EvidenceError):
-                fence.compile_current(packet())
-        finally:
-            _core.AUTHORITY.clear(); _core.AUTHORITY.update(old)
-
-    def test_core_authority_rebind_fails_closed(self):
-        old = _core.AUTHORITY
-        try:
-            _core.AUTHORITY = {**old, "merge_authorized": True}
-            with self.assertRaises(fence.EvidenceError):
-                fence.compile_current(packet())
-        finally:
-            _core.AUTHORITY = old
-
-    def test_core_builder_classifier_and_helper_rebind_fail_closed(self):
-        for name in ("_build", "_class", "_sha"):
-            with self.subTest(name=name):
-                old = getattr(_core, name)
-                try:
-                    setattr(_core, name, lambda *a, **k: None)
-                    with self.assertRaises(fence.EvidenceError):
-                        fence.compile_current(packet())
-                finally:
-                    setattr(_core, name, old)
-
-    def test_public_integrity_helper_rebind_does_not_change_semantics(self):
-        old = fence._freeze
-        try:
-            fence._freeze = lambda value: ("forged",)
+            for name in ("_build", "_class", "_sha"):
+                setattr(fence, name, lambda *a, **k: None)
+                injected.append(name)
             report = fence.compile_current(packet())
             self.assertEqual(report["verdict"], "READY_TO_MERGE_EVIDENCE")
             self.assertFalse(any(report["authority"].values()))
         finally:
-            fence._freeze = old
+            for name in injected:
+                delattr(fence, name)
 
-    def test_reviewer_quorum_requires_distinct_identities(self):
+    def test_reviewer_quorum_uses_current_head_canonical_identity(self):
         evidence = packet(); evidence["review_policy"]["min_passes"] = 2
         replay = deepcopy(evidence["reviews"][0]); replay["review_id"] = "review-2"
         evidence["reviews"].append(replay)
@@ -76,16 +54,27 @@ class AuthoritySeal(unittest.TestCase):
         evidence["reviews"][1]["reviewer"] = "second-independent-reviewer"
         self.assertEqual(fence.compile_current(evidence)["verdict"], "READY_TO_MERGE_EVIDENCE")
 
-    def test_public_clock_rebind_cannot_supply_historical_time(self):
-        old = fence._CURRENT_CLOCK
+    def test_same_reviewer_may_rereview_after_head_move(self):
+        evidence = packet()
+        stale = deepcopy(evidence["reviews"][0])
+        stale["review_id"] = "review-old-head"
+        stale["head_sha"] = "9" * 40
+        stale["reviewer"] = stale["reviewer"].upper()
+        evidence["reviews"].insert(0, stale)
+        self.assertEqual(fence.compile_current(evidence)["verdict"], "READY_TO_MERGE_EVIDENCE")
+
+    def test_public_clock_and_source_digest_rebind_are_irrelevant_after_load(self):
+        old_clock = fence._CURRENT_CLOCK
+        old_digest = fence._CORE_SOURCE_SHA256
         try:
             fence._CURRENT_CLOCK = lambda: datetime(2000, 1, 1, tzinfo=timezone.utc)
+            fence._CORE_SOURCE_SHA256 = "0" * 64
             self.assertEqual(fence.compile_current(packet())["verdict"], "READY_TO_MERGE_EVIDENCE")
-            with self.assertRaises(TypeError):
-                fence.compile_current(packet(), _clock=fence._CURRENT_CLOCK)
         finally:
-            fence._CURRENT_CLOCK = old
-
+            fence._CURRENT_CLOCK = old_clock
+            fence._CORE_SOURCE_SHA256 = old_digest
+        with self.assertRaises(TypeError):
+            fence.compile_current(packet(), _clock=lambda: datetime(2000, 1, 1, tzinfo=timezone.utc))
 
 
 class OutputCustody(unittest.TestCase):
@@ -118,28 +107,19 @@ class OutputCustody(unittest.TestCase):
 
 
 class ZZReloadStability(unittest.TestCase):
-    def test_zz_reload_restores_core_before_resealing(self):
-        import importlib
+    def test_reload_rebuilds_canonical_private_generation(self):
         old_compile = fence.compile_current
-        old_class = _core._class
-        try:
-            _core._class = lambda *_a, **_k: ("READY_TO_MERGE_EVIDENCE", "MERGE_AFTER_LIVE_RECENSUS", ["FORGED"])
-            reloaded = importlib.reload(fence)
-            report = reloaded.compile_current(packet())
-            self.assertEqual(report["reason_codes"], ["RETAINED_PACKET_SATISFIES_V1_EVIDENCE_POLICY"])
-            self.assertFalse(any(report["authority"].values()))
-            evidence = packet(); evidence["review_policy"]["min_passes"] = 2
-            replay = deepcopy(evidence["reviews"][0]); replay["review_id"] = "review-2"; replay["reviewer"] = replay["reviewer"].upper()
-            evidence["reviews"].append(replay)
-            with self.assertRaises(reloaded.EvidenceError):
-                reloaded.compile_current(evidence)
-            # Old facade generation sees the core generation change and fails closed.
-            with self.assertRaises(Exception):
-                old_compile(packet())
-        finally:
-            # facade reload already restores core source; preserve a safe module generation.
-            if _core._class is not old_class:
-                importlib.reload(fence)
+        fence.AUTHORITY = {"merge_authorized": True}
+        fence._build = lambda *_a, **_k: None
+        reloaded = importlib.reload(fence)
+        new_report = reloaded.compile_current(packet())
+        old_report = old_compile(packet())
+        self.assertEqual(new_report["verdict"], "READY_TO_MERGE_EVIDENCE")
+        self.assertEqual(old_report["verdict"], "READY_TO_MERGE_EVIDENCE")
+        self.assertFalse(any(new_report["authority"].values()))
+        self.assertFalse(any(old_report["authority"].values()))
+        self.assertFalse(hasattr(reloaded, "_build"))
+
 
 if __name__ == "__main__":
     unittest.main()
