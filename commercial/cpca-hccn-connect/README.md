@@ -41,8 +41,10 @@ The direct-prime `HOLD` has a bounded follow-on that does not weaken the evidenc
 
 - [`teaming_shortlist.md`](./teaming_shortlist.md) ranks public-evidence healthcare-prime candidates by buyer-gate overlap, TJLabs complementarity, and competitor/self-sufficiency risk.
 - [`teaming_outreach_packets.md`](./teaming_outreach_packets.md) stages exact candidate-specific messages and a Muse single-writer arbitration template. Its state is **DRAFT ONLY / NOT SENT**.
+- [`partner_ai_workshare.md`](./partner_ai_workshare.md) is the reply-ready division-of-responsibility and technical-delivery pack promised to an interested healthcare prime: four bounded AI workstreams, acceptance evidence, role split, data boundary, and commercial/authority ceiling.
+- [`partner_intake_and_authority.md`](./partner_intake_and_authority.md) converts a positive reply into a fast evidence/authority intake without collecting unnecessary private material or bypassing the controlling qualification engine.
 
-These files do not make any candidate a partner and do not authorize contact. Before any outbound email, re-run Slack + Gmail collision checks, obtain Muse `SELECT`, and re-fence again immediately before send. A positive response still does not satisfy `TEAMING_READY` until explicit relationship authority and source-bound prime/support evidence are entered into the qualification carrier.
+These files do not make any candidate a partner and do not authorize contact. Before any outbound email or contact-form message, re-run Slack + Gmail collision checks, obtain Muse `SELECT`, and re-fence again immediately before send. A positive response still does not satisfy `TEAMING_READY` until explicit relationship authority and source-bound prime/support evidence are entered into the qualification carrier.
 
 ## Use
 
