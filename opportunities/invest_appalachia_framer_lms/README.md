@@ -26,6 +26,20 @@ A qualified LMS prime can potentially cure the missing experience/reference/insu
 
 The qualified prime and Invest Appalachia retain platform-selection approval, instructional-design/content authority, references, insurance, staffing representations, buyer contact, final acceptance and contractual authority unless explicitly delegated later.
 
+## Bounded specialist workshare generation
+
+A separate reviewed commercial generation now materializes the previously-unpriced teaming seam without changing the prime carrier:
+
+- `partner_workshare.json` proposes **$24,000 fixed** for TJLabs implementation/acceptance engineering under a qualified LMS prime;
+- status remains `PROPOSED_NOT_ACCEPTED` and buyer-budget fit remains `UNRESOLVED_QUALIFIED_PRIME_MUST_INTEGRATE_WITH_60000_CAP`;
+- `workshare.py` binds this offer to retained qualification generation SHA-256 `13018ee1b2fe14b3b8171acc734e0ea57a52006a5e96f095600e88bcbca63a02` and invalidates itself if that generation moves;
+- the prime must still own LMS track record, adult-learning credentials, references/work samples, W-9/insurance, licensing/platform recommendation, full proposal budget, submission, signature and contract obligations;
+- all buyer/partner contact, submission, signature, payment, award and revenue authority remains false.
+
+This is a priced **partner workshare**, not buyer pricing. It deliberately does not convert the top-level unpriced prime packet into a budget-compliant proposal. Before any partner/buyer contact, run a fresh opportunity+route collision census and obtain Muse DM single-writer clearance; the generation permits at most one cleared external message.
+
+Focused tests: `python -m unittest -v tests.test_invest_appalachia_framer_lms_workshare` and the same suite under `python -O`.
+
 ## Authority ceiling
 
 Internal research/drafting/testing only. Buyer/partner contact, proposal submission, signature, contract acceptance, spend, payment, award and revenue authority remain false. The receipt deliberately marks deadline currentness non-authoritative; any action requires a fresh deadline/source check plus fresh route dedupe and Muse single-writer adjudication immediately before send.
