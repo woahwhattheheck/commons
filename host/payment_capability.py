@@ -139,6 +139,8 @@ CONVERT_SHELF_LIVE_BUYS = {
     "ptl-controlled-sample-order-preflight.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "qlabs-qconnect-cutover-verification-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "rmb-crosssite-courier-accession-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "rosecity-olcc-metrc-sampling-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "roslinct-hopkinton-paperless-qc-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -255,6 +257,8 @@ PUBLIC_HTML = (
     "ptl-controlled-sample-order-preflight.html",
     "qlabs-qconnect-cutover-verification-lims.html",
     "rmb-crosssite-courier-accession-lims.html",
+    "rosecity-olcc-metrc-sampling-lims.html",
+    "roslinct-hopkinton-paperless-qc-lims.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
