@@ -1,9 +1,10 @@
 {
-  "schema": "commons-payoff-path-input/v1",
+  "schema": "commons-payoff-path-input/v2",
   "subject_work_id": "example-strategic-lane",
   "subject_generation_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
   "payoff_class": "STRATEGIC_UNPAID",
-  "evidence_scope_status": "COMPLETE",
+  "evidence_scope_status": "PARTIAL",
+  "scope_attestation": null,
   "term_evidence": [],
   "outcome_evidence": [],
   "conversion_plan": {
