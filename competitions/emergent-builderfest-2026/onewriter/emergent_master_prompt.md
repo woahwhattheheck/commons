@@ -43,6 +43,8 @@ Use one workspace-wide uniqueness registry (or an equivalent database uniqueness
 - provider receipt ids;
 - human evidence ids.
 
+All three identifier classes use the same admission validator before reservation: exact trimmed nonempty text of 1–240 characters; no ASCII controls; no Unicode category-C codepoints; no non-category-C Default_Ignorable codepoints; and at least one visible base codepoint outside Unicode C/M/Z categories. Reject whitespace-only, padded, overlong, control/format/private/unassigned, grapheme-joiner, Hangul-filler, variation-selector, other Default_Ignorable-bearing, or combining-mark-only values. Do not silently trim or normalize admitted identifiers. Ordinary combining marks are allowed when attached to a visible base.
+
 Cross-type reuse is forbidden. An id used as a provider receipt cannot later be human evidence or an event id, and vice versa.
 
 ### events
@@ -84,13 +86,13 @@ Preferred PostgreSQL/Supabase pattern:
 - before processing any later event, if a human-reopen lease is expired, atomically restore the retained prior fence and clear lease/reopen metadata; it is not generic stale recovery;
 - on grant, store holder + selected normalized route + expiry in the same transaction;
 - otherwise return typed denial;
-- reserve event/evidence ids in one shared uniqueness namespace before mutation;
+- validate and reserve event/evidence ids in one shared uniqueness namespace before mutation;
 - insert transition receipt atomically with the lane mutation;
 - use database/server current time.
 
 If another datastore is used, preserve equivalent CAS/transaction semantics.
 
-## Normalization and retained evidence
+## Normalization and retained identifiers
 
 Server-side:
 - org / route / purpose / opportunity: trim, collapse whitespace, consistent Unicode case-fold/lower;
@@ -99,7 +101,7 @@ Server-side:
 - display normalized writer-lane identity and proposed normalized route before claim;
 - never trust a client-supplied collision key.
 
-`provider_receipt` and `human_evidence_id` are opaque retained-evidence identifiers, not notes. Validate before any state transition: exact trimmed nonempty text, 1–240 characters, no ASCII control characters. Reject whitespace-only, padded, overlong, or control-character values rather than silently normalizing them. Do not use language truthiness as the evidence gate. Enforce the shared workspace identifier namespace after admission.
+Event ids, `provider_receipt`, and `human_evidence_id` are opaque workspace identifiers, not notes. Before any state transition, apply the exact shared validator above. In particular, reject U+200B ZERO WIDTH SPACE; U+034F COMBINING GRAPHEME JOINER; U+FE0F VARIATION SELECTOR-16; U+115F HANGUL CHOSEONG FILLER; and combining-mark-only U+0301. Admit a value such as `provider-cafe\u0301-001` because the combining mark is attached to visible base text. Do not use language truthiness as the identifier gate. Enforce the shared namespace only after successful admission.
 
 ## State rules
 
@@ -171,7 +173,7 @@ Implement tests proving:
 5. non-holder, expired-holder, and wrong-route SENT/BOUNCE are rejected;
 6. SENT hard-fences all routes; BOUNCE is route failure and does not enable fallback;
 7. HUMAN_EVENT requires unique admitted evidence and reopens only one bounded lease attempt;
-8. whitespace-only, padded, overlong, and control-character provider/human evidence ids are rejected before transition;
+8. event/provider/human ids reject whitespace-only, padded, overlong, ASCII-control, category-C, Default_Ignorable-bearing, and combining-mark-only values before transition; the deployed-app proof matrix must include U+200B, U+034F, U+FE0F, U+115F, and combining-only U+0301 rejection plus a visible-base+combining positive;
 9. event/provider/human identifiers share one workspace namespace; provider->human, human->provider, and event<->evidence reuse fail;
 10. changing admitted provider/human evidence, lease seconds, reason, identity, route, actor, kind, or timestamp changes the transition receipt digest;
 11. HOLD blocks claims and cannot revoke live lease;
@@ -193,7 +195,7 @@ When finished:
 1. deploy the app;
 2. provide deployed URL;
 3. provide build summary;
-4. provide test results, especially cross-route race, bounded human-reopen expiry, cross-type identifier rejection, and receipt-causation cases;
+4. provide test results, especially cross-route race, bounded human-reopen expiry, strict Unicode identifier admission across event/provider/human ids, cross-type identifier rejection, and receipt-causation cases;
 5. provide screenshots/walkthrough of seeded demo;
 6. state whether any paid plan/upgrade was required;
 7. **do not submit the contest entry**.
