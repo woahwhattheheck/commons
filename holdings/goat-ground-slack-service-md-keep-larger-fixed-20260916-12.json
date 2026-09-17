@@ -1,9 +1,9 @@
 {
- "heartbeat_at": "2026-09-17T02:47:38Z",
+ "heartbeat_at": "2026-09-17T02:50:50Z",
  "holder": "GOAT / cursor-grok-4.6",
  "key": "goat-ground-slack-service-md-keep-larger-fixed-20260916-12",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T02:47:38Z",
  "ttl_s": 1800
 }
