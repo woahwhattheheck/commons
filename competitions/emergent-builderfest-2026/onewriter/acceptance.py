@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Offline acceptance verifier for OneWriter's synthetic coordination demo."""
 from __future__ import annotations
-import argparse, hashlib, json, re, sys
+import argparse, hashlib, json, re, sys, unicodedata
 from dataclasses import dataclass
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
@@ -16,6 +16,7 @@ EVENTS=["CLAIM","SENT","BOUNCE","HUMAN_EVENT","HOLD"]
 FIELDS=["org","domain","purpose","opportunity"]
 NORMALIZATION={"org":"unicode-casefold-trim-collapse-space","domain":"idna-host-lower-strip-scheme-www-path-trailing-dot","route":"unicode-casefold-trim-collapse-space","purpose":"unicode-casefold-trim-collapse-space","opportunity":"unicode-casefold-trim-collapse-space"}
 EVIDENCE_ID_MAX=240
+_DEFAULT_IGNORABLE_NON_C_RANGES=((0x034F,0x034F),(0x115F,0x1160),(0x17B4,0x17B5),(0x180B,0x180D),(0x180F,0x180F),(0x3164,0x3164),(0xFE00,0xFE0F),(0xFFA0,0xFFA0),(0xE0100,0xE01EF))
 INVARIANTS=["exactly_one_active_lease_per_collision_key","active_lease_blocks_parallel_claims_across_routes","expired_lease_may_be_recovered_with_an_explicit_route","sent_requires_current_lease_holder_matching_leased_route_and_provider_receipt","sent_hard_fences_lane_until_genuine_human_event","bounce_requires_current_lease_holder_matching_leased_route_and_provider_receipt","bounce_is_route_failure_not_buyer_rejection","human_event_requires_distinct_retained_evidence","human_event_reopens_only_a_bounded_next_action","hold_blocks_claims_until_new_human_event","event_ids_provider_receipts_and_human_evidence_ids_are_single_use","timestamps_are_strictly_monotone_utc","no_event_grants_external_send_authority"]
 
 class ContractError(ValueError): pass
@@ -60,10 +61,14 @@ def norm_domain(v):
     except UnicodeError as exc: raise ContractError("domain IDNA invalid") from exc
     require(bool(host) and " " not in host and "@" not in host and len(host)<=253 and "." in host,"domain shape invalid")
     return host
+def _default_ignorable_non_c(ch):
+    cp=ord(ch); return any(lo<=cp<=hi for lo,hi in _DEFAULT_IGNORABLE_NON_C_RANGES)
 def evidence_id(v,name):
     require(type(v) is str,f"{name} must be a string")
     require(v==v.strip() and 1<=len(v)<=EVIDENCE_ID_MAX,f"{name} must be trimmed nonempty text <= {EVIDENCE_ID_MAX} chars")
     require(not any(ord(ch)<32 or ord(ch)==127 for ch in v),f"{name} contains control characters")
+    require(not any(ord(ch)>127 and unicodedata.category(ch).startswith("C") for ch in v),f"{name} contains non-visible Unicode control/format/private/unassigned codepoints")
+    require(not any(_default_ignorable_non_c(ch) for ch in v),f"{name} contains Unicode Default_Ignorable codepoints")
     return v
 def identity(e): return {"org":norm_text(e["org"],"org"),"domain":norm_domain(e["domain"]),"purpose":norm_text(e["purpose"],"purpose"),"opportunity":norm_text(e["opportunity"],"opportunity")}
 def event_route(e): return norm_text(e["route"],"route")
