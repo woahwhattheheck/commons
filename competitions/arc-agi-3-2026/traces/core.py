@@ -21,6 +21,8 @@ MAX_EVENTS = 20_001
 MAX_ACTIONS = 10_000
 MAX_TEXT = 16_384
 MAX_SOURCE_REF = 512
+MAX_JSON_DEPTH = 128
+MAX_JSON_NODES = 1_000_000
 ZERO_SHA256 = "0" * 64
 _SECRET_PATTERNS = (
     re.compile(r"(?i)authorization\s*:\s*bearer\s+\S+"),
@@ -56,25 +58,35 @@ def _sha(value: Any, name: str) -> str:
     return value
 
 
-def _canonical_value(value: Any, path: str = "$") -> None:
-    """Reject values whose Python equality can hide serialized-byte differences."""
-    if value is None or type(value) in (str, bool):
-        return
-    if type(value) is int:
-        if abs(value) > 9_007_199_254_740_991:
-            raise TraceError(f"{path} integer outside interoperable bound")
-        return
-    if type(value) is list:
-        for idx, item in enumerate(value):
-            _canonical_value(item, f"{path}[{idx}]")
-        return
-    if type(value) is dict:
-        for key, item in value.items():
-            if type(key) is not str:
-                raise TraceError(f"{path} has non-string key")
-            _canonical_value(item, f"{path}.{key}")
-        return
-    raise TraceError(f"{path} contains unsupported value type {type(value).__name__}")
+def _canonical_value(value: Any, path: str = "$", *, max_depth: int = MAX_JSON_DEPTH) -> None:
+    """Reject alias-prone or excessively nested values without recursive descent."""
+    stack: list[tuple[Any, str, int]] = [(value, path, 0)]
+    nodes = 0
+    while stack:
+        current, current_path, depth = stack.pop()
+        nodes += 1
+        if nodes > MAX_JSON_NODES:
+            raise TraceError("canonical JSON node bound exceeded")
+        if depth > max_depth:
+            raise TraceError("canonical JSON depth bound exceeded")
+        if current is None or type(current) in (str, bool):
+            continue
+        if type(current) is int:
+            if abs(current) > 9_007_199_254_740_991:
+                raise TraceError(f"{current_path} integer outside interoperable bound")
+            continue
+        if type(current) is list:
+            for idx in range(len(current) - 1, -1, -1):
+                stack.append((current[idx], f"{current_path}[{idx}]", depth + 1))
+            continue
+        if type(current) is dict:
+            items = list(current.items())
+            for key, item in reversed(items):
+                if type(key) is not str:
+                    raise TraceError(f"{current_path} has non-string key")
+                stack.append((item, f"{current_path}.{key}", depth + 1))
+            continue
+        raise TraceError(f"{current_path} contains unsupported value type {type(current).__name__}")
 
 
 def canonical_json_bytes(value: Any) -> bytes:
@@ -87,8 +99,18 @@ def canonical_json_bytes(value: Any) -> bytes:
             ensure_ascii=False,
             allow_nan=False,
         ).encode("utf-8")
-    except (TypeError, ValueError, UnicodeEncodeError) as exc:
+    except (TypeError, ValueError, UnicodeEncodeError, RecursionError) as exc:
         raise TraceError("value is not canonical-json serializable") from exc
+
+
+def _parse_int(raw: str) -> int:
+    digits = raw[1:] if raw.startswith("-") else raw
+    if len(digits) > 16:
+        raise TraceError("JSON integer outside interoperable bound")
+    try:
+        return int(raw)
+    except ValueError as exc:
+        raise TraceError("invalid JSON integer") from exc
 
 
 def _no_float(_: str) -> Any:
@@ -117,19 +139,23 @@ def strict_json_loads(data: bytes | str, *, require_canonical: bool = False) -> 
         original = data
     elif type(data) is str:
         text = data
-        original = data.encode("utf-8")
+        try:
+            original = data.encode("utf-8", errors="strict")
+        except UnicodeEncodeError as exc:
+            raise TraceError("manifest string is not strict UTF-8") from exc
     else:
         raise TraceError("JSON input must be bytes or str")
     try:
         value = json.loads(
             text,
             object_pairs_hook=_pairs,
+            parse_int=_parse_int,
             parse_float=_no_float,
             parse_constant=_no_constant,
         )
     except TraceError:
         raise
-    except (json.JSONDecodeError, UnicodeEncodeError) as exc:
+    except (json.JSONDecodeError, UnicodeEncodeError, ValueError, RecursionError) as exc:
         raise TraceError("invalid JSON") from exc
     _canonical_value(value)
     if require_canonical and canonical_json_bytes(value) != original:
