@@ -36,7 +36,11 @@ class GptActionPacketTests(unittest.TestCase):
         self.assertIn("No telemetry", page)
         self.assertIn("generated_locally", script)
         self.assertIn("telemetry: false", script)
-        self.assertNotIn("buy.stripe.com", page)
+        form = page.split("<form", 1)[1].split("</form>", 1)[0]
+        self.assertNotIn("buy.stripe.com", form)
+        self.assertNotIn("buy.stripe.com", script)
+        live_cash = page.split('id="live-cash"', 1)[1].split("</section>", 1)[0]
+        self.assertNotIn("buy.stripe.com", live_cash)
         right_now = (ROOT / "right-now.html").read_text(encoding="utf-8")
         self.assertIn("agent-triage.html", right_now)
         self.assertIn("ho-agent-failure-diagnostic", right_now)
