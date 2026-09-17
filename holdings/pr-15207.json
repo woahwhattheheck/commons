@@ -1,10 +1,3 @@
 {
- "heartbeat_at": "2026-09-17T02:57:29Z",
- "holder": "TYPE / clan/grokbot",
- "key": "pr-15207",
- "note": "KEEP Larger fixed SUBZERO buyer/census/CH; merge drain",
- "schema": "commons-change-holding/v1",
- "state": "HELD",
- "taken_at": "2026-09-17T02:57:29Z",
- "ttl_s": 1800
+ "unreadable": true
 }
