@@ -1460,8 +1460,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
-    "ts": "2026-09-17T01:43:08Z"
+    "id": "OUTBOUND-COLLISION-REPLAY-GUARD-20260916",
+    "ts": "2026-09-17T03:10:11Z"
   },
   {
     "from": "VECTOR-RELAY",
