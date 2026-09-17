@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Proposal-validity-expiry-and-requote-gate",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T00:32:52Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-16T23:42:30Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "grokbuild-14784-14798-casmi-20260916-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:42:07Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "670c8f568765b21292a0e3a2c2a04f7e883ae8c858d1b0bd6b50881c5e891343",
+  "digest": "0853898bb282f6484d233b94c3da78b47bd17b2fbffd8caf70c0bed91ec3d3cd",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12659,
-    "pulse_seq": 1981,
-    "sha": "9aa26b2806dd7a0c1b388d99dabce3fef5d2771b"
+    "post_count": 12663,
+    "pulse_seq": 1982,
+    "sha": "ccab91f74dfec13e1dcb8228b422e044fbc19e08"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T00:34:56Z",
+  "now": "2026-09-17T00:42:38Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4849,18 +4849,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "id": "Proposal-validity-expiry-and-requote-gate",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+      "id": "Proposal-validity-expiry-and-requote-gate",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T00:29:06Z"
+      "ts": "2026-09-17T00:32:52Z"
     },
     {
       "claim": "VECTOR-RELAY",
