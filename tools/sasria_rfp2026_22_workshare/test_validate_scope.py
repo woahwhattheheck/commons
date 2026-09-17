@@ -1,11 +1,15 @@
 import copy
 import json
+import sys
 import unittest
 from pathlib import Path
 
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+
 import validate_scope
 
-BASE = json.loads((Path(__file__).parent / "scope.json").read_text(encoding="utf-8"))
+BASE = json.loads((HERE / "scope.json").read_text(encoding="utf-8"))
 
 
 class ScopeTests(unittest.TestCase):
