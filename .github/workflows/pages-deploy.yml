@@ -12,6 +12,7 @@ on:
     branches:
       - main
     paths:
+      - 'autopsy-buy.html'
       - 'pay.html'
       - 'commerce.html'
       - 'chargeback-evidence-readiness.html'
