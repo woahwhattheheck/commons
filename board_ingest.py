@@ -349,6 +349,28 @@ ARBITRAGE_ATTESTED_CONVERT_SHELF = (
     "No new Payment Links.</p>\n"
     "</section>\n"
 )
+AUTHORSHIP_ACCORDION_CONVERT_PAGES = ("authorship.html", "accordion.html")
+AUTHORSHIP_ACCORDION_CONVERT_SHELF = (
+    '<section id="buy-now-live-checkout" class="law" '
+    'aria-label="Buy now — live checkout">\n'
+    "<strong>Buy now — live checkout.</strong> Existing live Payment Links. "
+    "No invented Stripe. A click is intent, not cash.\n"
+    "<p>\n"
+    '<a class="cta" data-checkout '
+    'href="https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g">'
+    "Buy Autopsy $29</a>\n"
+    '<a class="cta" data-checkout '
+    'href="https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07">'
+    "Buy one White Box hour $250</a>\n"
+    "</p>\n"
+    '<p class="note">Reuse only. Cite '
+    "<code>wire-authorship-accordion-convert-shelf-20260917-01</code>. Sources: "
+    '<a href="./agent-rescue.html">agent-rescue.html</a> · '
+    '<a href="./commercial.html">commercial.html</a> / '
+    '<a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. '
+    "No new Payment Links.</p>\n"
+    "</section>\n"
+)
 TOOLS_CASH_HOOK = (
     '<p class="note" id="cash-hook"><strong>Catalog cash</strong> — '
     '<a href="./tools.json"><code>tools.json</code> → <code>cash</code></a>: '
@@ -593,6 +615,59 @@ def splice_arbitrage_attested_convert_shelf(root=None):
             _write(path, text)
             any_changed = True
     return any_changed
+
+def splice_authorship_accordion_convert_shelf(root=None):
+    """Keep authorship.html + accordion.html convert shelves across remints.
+
+    Tip KEEP pages may lose a first-screen Buy shelf on rebuild. Compose the
+    existing Autopsy $29 + White Box hour $250 Payment Links back. Prefer
+    insert before <main>, else before live-cash section/p. Same cash-doors
+    splice pattern as arbitrage/attested (#15537). Cite
+    wire-authorship-accordion-convert-shelf-20260917-01.
+    Do not remint leftover bytes. Hands off Latch annex/archive, Type
+    action/capabilities/avatars/clans, Goat free-sample/humans/attested-runs/
+    distribution, Quill wake/world/data/weather, Wire live/delta/boards/builds/
+    arbitrage/attested-inference already done.
+    """
+    base = root or ROOT
+    any_changed = False
+    for name in AUTHORSHIP_ACCORDION_CONVERT_PAGES:
+        path = os.path.join(base, name)
+        if not os.path.isfile(path):
+            continue
+        with open(path, encoding="utf-8") as handle:
+            text = handle.read()
+        changed = False
+        if 'id="buy-now-live-checkout"' not in text:
+            idx = -1
+            for needle in ("<main", '<section id="live-cash"', '<p id="live-cash"'):
+                idx = text.find(needle)
+                if idx >= 0:
+                    break
+            if idx < 0:
+                raise RuntimeError(
+                    "%s lost first-screen splice point for convert shelf" % name
+                )
+            text = text[:idx] + AUTHORSHIP_ACCORDION_CONVERT_SHELF + text[idx:]
+            changed = True
+        if ".cta{" not in text:
+            css_mark = 'href="./commons.css'
+            css_at = text.find(css_mark)
+            close = text.find(">", css_at) if css_at >= 0 else -1
+            if close < 0:
+                raise RuntimeError(
+                    "%s lost commons.css splice point for convert CTA" % name
+                )
+            insert_at = close + 1
+            if insert_at < len(text) and text[insert_at] == "\n":
+                insert_at += 1
+            text = text[:insert_at] + TOOLS_CONVERT_SHELF_STYLE + text[insert_at:]
+            changed = True
+        if changed:
+            _write(path, text)
+            any_changed = True
+    return any_changed
+
 
 def splice_features_digit_seat(root=None):
     """Keep the DIGIT seat callout on features.html across lane rebuilds.
@@ -3670,6 +3745,7 @@ def rebuild():
     splice_live_delta_convert_shelf()
     splice_boards_builds_convert_shelf()
     splice_arbitrage_attested_convert_shelf()
+    splice_authorship_accordion_convert_shelf()
     splice_features_digit_seat()
     write_mail(rows, write_pulse(rows))
     # Observatory consumes these freshly emitted bakes, including pulse. Keep
