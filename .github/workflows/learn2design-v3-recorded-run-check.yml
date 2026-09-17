@@ -1,0 +1,22 @@
+name: Learn2Design V3 recorded-run check
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/learn2design2026/PUBLIC_EVIDENCE.md'
+      - 'revenue/learn2design2026/recorded_runs/34942764610/**'
+      - 'revenue/learn2design2026/rejected/v3_depth_throughput.py'
+      - 'test_learn2design2026_v3_recorded_run.py'
+      - '.github/workflows/learn2design-v3-recorded-run-check.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  recorded-run-integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Recompute V3 rejection evidence
+        run: python3 -m unittest -v test_learn2design2026_v3_recorded_run.py
