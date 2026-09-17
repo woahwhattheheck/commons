@@ -1,10 +1,11 @@
 {
   "schema": "alcorn-rfp5588-pricing-basis/v1",
-  "purpose": "internal cost-basis collection only; not a quote, offer, bid price, or released customer price",
+  "purpose": "internal public-safe cost-basis collection only; approved customer price amount remains private and is never stored here",
   "currency_context": "USD",
   "customer_price_amount": null,
   "customer_price_released": false,
   "pricing_approved": false,
+  "pricing_approval_evidence_id": null,
   "buyer_cost_form_present": false,
   "buyer_cost_form_blocker": "section_viii_cost_information remains MISSING_BUYER_ARTIFACT",
   "cost_buckets": [
@@ -61,7 +62,7 @@
   },
   "forbidden_in_this_ledger": [
     "invented supplier prices",
-    "invented customer price",
+    "public storage of a customer price amount",
     "unapproved margin",
     "claim that pricing is buyer-accepted",
     "claim that a missing buyer cost form has been reconstructed",
