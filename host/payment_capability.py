@@ -133,6 +133,8 @@ CONVERT_SHELF_LIVE_BUYS = {
     "made-scientific-princeton-rapid-qc-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "oregon-brewlab-sample-report-reconciliation-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "pace-lebanon-microbial-volume-evidence-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "paragon-biodiesel-sample-coa-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "pcl-scope-sla-routing-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -243,6 +245,8 @@ PUBLIC_HTML = (
     "made-scientific-princeton-rapid-qc-lims.html",
     "oregon-brewlab-sample-report-reconciliation-lims.html",
     "pace-lebanon-microbial-volume-evidence-lims.html",
+    "paragon-biodiesel-sample-coa-lims.html",
+    "pcl-scope-sla-routing-lims.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
