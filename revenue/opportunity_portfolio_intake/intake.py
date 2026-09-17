@@ -13,13 +13,18 @@ the canonical opportunity/event projection.
 from __future__ import annotations
 from datetime import datetime, timezone
 from hashlib import sha256
+import hmac
 import json
+import os
 import re
 from typing import Any
 from revenue.opportunity_portfolio.portfolio import PortfolioError, compile_portfolio, normalize_input as normalize_portfolio_input
 INTAKE_SCHEMA = 'commons-opportunity-portfolio-intake/v1'
 RECEIPT_SCHEMA = 'commons-opportunity-portfolio-intake-receipt/v2'
 SNAPSHOT_AUTHORITY_SCHEMA = 'commons-opportunity-portfolio-intake-snapshot-authority/v1'
+SNAPSHOT_AUTHORITY_KEY_ID = 'opportunity-intake-host-v1'
+SNAPSHOT_AUTHORITY_KEY_ENV = 'OPPORTUNITY_INTAKE_SNAPSHOT_AUTHORITY_KEY_HEX'
+MIN_SNAPSHOT_AUTHORITY_KEY_BYTES = 32
 PORTFOLIO_SCHEMA = 'commons-opportunity-portfolio/v1'
 MAX_OPPORTUNITIES = 64
 MAX_EVENTS_PER_OPPORTUNITY = 512
@@ -217,25 +222,102 @@ def _snapshot_projection(normalized: dict[str, Any]) -> list[dict[str, Any]]:
 def _snapshot_projection_sha256(normalized: dict[str, Any]) -> str:
     return _digest(_snapshot_projection(normalized))
 
+def _load_snapshot_authority_key() -> bytes:
+    raw = os.environ.get(SNAPSHOT_AUTHORITY_KEY_ENV)
+    if raw is None:
+        raise IntakeError('host snapshot authority capability is not provisioned')
+    if type(raw) is not str or len(raw) % 2:
+        raise IntakeError('host snapshot authority capability must be canonical lowercase hex')
+    try:
+        key = bytes.fromhex(raw)
+    except ValueError as exc:
+        raise IntakeError('host snapshot authority capability must be canonical lowercase hex') from exc
+    if raw != raw.lower() or key.hex() != raw:
+        raise IntakeError('host snapshot authority capability must be canonical lowercase hex')
+    if len(key) < MIN_SNAPSHOT_AUTHORITY_KEY_BYTES:
+        raise IntakeError(f'host snapshot authority capability must be at least {MIN_SNAPSHOT_AUTHORITY_KEY_BYTES} bytes')
+    return key
+
+def _snapshot_authority_payload(authority: dict[str, Any]) -> dict[str, Any]:
+    return {key: authority[key] for key in (
+        'schema', 'authorityId', 'generation', 'keyId', 'issuedAtUtc',
+        'snapshotSource', 'eventProjectionSha256', 'opportunityCount',
+        'eventCount', 'custodyComplete', 'statusComplete',
+    )}
+
 def _normalize_snapshot_authority(value: Any) -> dict[str, Any]:
     raw = _dict(value, 'trusted_snapshot_authority')
-    expected = {'schema', 'authorityId', 'generation', 'snapshotSource', 'eventProjectionSha256', 'opportunityCount', 'eventCount', 'custodyComplete', 'statusComplete'}
+    expected = {'schema', 'authorityId', 'generation', 'keyId', 'issuedAtUtc', 'snapshotSource', 'eventProjectionSha256', 'opportunityCount', 'eventCount', 'custodyComplete', 'statusComplete', 'macSha256'}
     if set(raw) != expected:
         raise IntakeError('trusted_snapshot_authority: fields differ from authority contract')
     if raw['schema'] != SNAPSHOT_AUTHORITY_SCHEMA:
         raise IntakeError(f'trusted_snapshot_authority.schema: expected {SNAPSHOT_AUTHORITY_SCHEMA}')
     authority_id = _str(raw['authorityId'], 'trusted_snapshot_authority.authorityId', pattern=_ID)
     generation = _str(raw['generation'], 'trusted_snapshot_authority.generation', pattern=_ID)
+    key_id = _str(raw['keyId'], 'trusted_snapshot_authority.keyId', pattern=_ID)
+    if key_id != SNAPSHOT_AUTHORITY_KEY_ID:
+        raise IntakeError('trusted_snapshot_authority.keyId: untrusted key id')
+    issued = _fmt_utc(_parse_utc(raw['issuedAtUtc'], 'trusted_snapshot_authority.issuedAtUtc'))
     source = _source(raw['snapshotSource'], 'trusted_snapshot_authority.snapshotSource')
     projection = _str(raw['eventProjectionSha256'], 'trusted_snapshot_authority.eventProjectionSha256', pattern=_SHA256)
-    return {'schema': SNAPSHOT_AUTHORITY_SCHEMA, 'authorityId': authority_id, 'generation': generation, 'snapshotSource': source, 'eventProjectionSha256': projection, 'opportunityCount': _int(raw['opportunityCount'], 'trusted_snapshot_authority.opportunityCount'), 'eventCount': _int(raw['eventCount'], 'trusted_snapshot_authority.eventCount'), 'custodyComplete': _bool(raw['custodyComplete'], 'trusted_snapshot_authority.custodyComplete'), 'statusComplete': _bool(raw['statusComplete'], 'trusted_snapshot_authority.statusComplete')}
+    mac = _str(raw['macSha256'], 'trusted_snapshot_authority.macSha256', pattern=_SHA256)
+    return {'schema': SNAPSHOT_AUTHORITY_SCHEMA, 'authorityId': authority_id, 'generation': generation, 'keyId': key_id, 'issuedAtUtc': issued, 'snapshotSource': source, 'eventProjectionSha256': projection, 'opportunityCount': _int(raw['opportunityCount'], 'trusted_snapshot_authority.opportunityCount'), 'eventCount': _int(raw['eventCount'], 'trusted_snapshot_authority.eventCount'), 'custodyComplete': _bool(raw['custodyComplete'], 'trusted_snapshot_authority.custodyComplete'), 'statusComplete': _bool(raw['statusComplete'], 'trusted_snapshot_authority.statusComplete'), 'macSha256': mac}
 
-def _resolve_snapshot_authority(normalized: dict[str, Any], trusted_snapshot_authority: Any | None) -> tuple[bool, bool, dict[str, Any]]:
+def _verify_snapshot_authority_capability(authority: dict[str, Any]) -> None:
+    key = _load_snapshot_authority_key()
+    expected = hmac.new(key, _canonical(_snapshot_authority_payload(authority)), sha256).hexdigest()
+    if not hmac.compare_digest(authority['macSha256'], expected):
+        raise IntakeError('trusted snapshot authority MAC does not match host capability')
+
+def issue_host_snapshot_authority(
+    payload: Any, *, authority_id: str, generation: str, issued_at_utc: str
+) -> dict[str, Any]:
+    """Mint one snapshot authority inside a protected host process.
+
+    The HMAC capability is loaded only from process configuration and is never
+    accepted from packet bytes, authority bytes, function arguments, or CLI.
+    Calling code must independently establish that the snapshot is complete;
+    this helper authenticates that host attestation, it does not discover truth.
+    """
+    normalized = normalize_intake(payload)
+    authority_id = _str(authority_id, 'authority_id', pattern=_ID)
+    generation = _str(generation, 'generation', pattern=_ID)
+    issued = _parse_utc(issued_at_utc, 'issued_at_utc')
+    snapshot_at = _parse_utc(normalized['snapshot']['source']['observedAt'], 'snapshot.source.observedAt')
+    if issued < snapshot_at:
+        raise IntakeError('snapshot authority cannot predate its snapshot generation')
+    if issued > datetime.now(timezone.utc).replace(microsecond=0):
+        raise IntakeError('snapshot authority issued_at cannot be in the future')
+    body = {
+        'schema': SNAPSHOT_AUTHORITY_SCHEMA,
+        'authorityId': authority_id,
+        'generation': generation,
+        'keyId': SNAPSHOT_AUTHORITY_KEY_ID,
+        'issuedAtUtc': _fmt_utc(issued),
+        'snapshotSource': normalized['snapshot']['source'],
+        'eventProjectionSha256': _snapshot_projection_sha256(normalized),
+        'opportunityCount': len(normalized['opportunities']),
+        'eventCount': sum(len(item['events']) for item in normalized['opportunities']),
+        'custodyComplete': normalized['snapshot']['custodyComplete'],
+        'statusComplete': normalized['snapshot']['statusComplete'],
+    }
+    key = _load_snapshot_authority_key()
+    mac = hmac.new(key, _canonical(body), sha256).hexdigest()
+    return {**body, 'macSha256': mac}
+
+def _resolve_snapshot_authority(normalized: dict[str, Any], trusted_snapshot_authority: Any | None, *, trusted_as_of: datetime) -> tuple[bool, bool, dict[str, Any]]:
     projection_sha = _snapshot_projection_sha256(normalized)
     event_count = sum((len(item['events']) for item in normalized['opportunities']))
     if trusted_snapshot_authority is None:
-        return (False, False, {'trusted': False, 'authorityId': None, 'generation': None, 'authorityDigestSha256': None, 'eventProjectionSha256': projection_sha, 'effectiveCustodyComplete': False, 'effectiveStatusComplete': False})
+        return (False, False, {'trusted': False, 'authorityId': None, 'generation': None, 'keyId': None, 'issuedAtUtc': None, 'authorityDigestSha256': None, 'eventProjectionSha256': projection_sha, 'effectiveCustodyComplete': False, 'effectiveStatusComplete': False})
     authority = _normalize_snapshot_authority(trusted_snapshot_authority)
+    _verify_snapshot_authority_capability(authority)
+    issued = _parse_utc(authority['issuedAtUtc'], 'trusted_snapshot_authority.issuedAtUtc')
+    snapshot_at = _parse_utc(authority['snapshotSource']['observedAt'], 'trusted_snapshot_authority.snapshotSource.observedAt')
+    if issued < snapshot_at:
+        raise IntakeError('trusted snapshot authority predates its snapshot generation')
+    if issued > trusted_as_of:
+        raise IntakeError('trusted snapshot authority is newer than trusted_as_of')
     if _canonical(authority['snapshotSource']) != _canonical(normalized['snapshot']['source']):
         raise IntakeError('trusted snapshot authority source does not match packet snapshot generation')
     if authority['eventProjectionSha256'] != projection_sha:
@@ -248,7 +330,7 @@ def _resolve_snapshot_authority(normalized: dict[str, Any], trusted_snapshot_aut
         raise IntakeError('packet custodyComplete disagrees with trusted snapshot authority')
     if authority['statusComplete'] != normalized['snapshot']['statusComplete']:
         raise IntakeError('packet statusComplete disagrees with trusted snapshot authority')
-    return (authority['custodyComplete'], authority['statusComplete'], {'trusted': True, 'authorityId': authority['authorityId'], 'generation': authority['generation'], 'authorityDigestSha256': _digest(authority), 'eventProjectionSha256': projection_sha, 'effectiveCustodyComplete': authority['custodyComplete'], 'effectiveStatusComplete': authority['statusComplete']})
+    return (authority['custodyComplete'], authority['statusComplete'], {'trusted': True, 'authorityId': authority['authorityId'], 'generation': authority['generation'], 'keyId': authority['keyId'], 'issuedAtUtc': authority['issuedAtUtc'], 'authorityDigestSha256': _digest(authority), 'eventProjectionSha256': projection_sha, 'effectiveCustodyComplete': authority['custodyComplete'], 'effectiveStatusComplete': authority['statusComplete']})
 
 def _evidence_digest(event: dict[str, Any]) -> str:
     return event['source']['digestSha256']
@@ -360,7 +442,7 @@ def _compile_normalized(normalized: dict[str, Any], trusted_as_of_text: str, tru
     snapshot_at = _parse_utc(normalized['snapshot']['source']['observedAt'], 'snapshot.source.observedAt')
     if snapshot_at > trusted_as_of:
         raise IntakeError('snapshot.source.observedAt: future relative to trusted_as_of')
-    custody_complete, status_complete, authority_binding = _resolve_snapshot_authority(normalized, trusted_snapshot_authority)
+    custody_complete, status_complete, authority_binding = _resolve_snapshot_authority(normalized, trusted_snapshot_authority, trusted_as_of=trusted_as_of)
     portfolio_items: list[dict[str, Any]] = []
     folds: list[dict[str, Any]] = []
     for item in normalized['opportunities']:
@@ -379,9 +461,11 @@ def _compile_normalized(normalized: dict[str, Any], trusted_as_of_text: str, tru
 def compile_intake(payload: Any, *, trusted_as_of: str, trusted_snapshot_authority: Any | None=None) -> dict[str, Any]:
     """Normalize/fold intake evidence and validate it through the real allocator.
 
-    ``trusted_snapshot_authority`` is a host-library trust input. It is not exposed
-    by the public CLI. Without it, packet completeness assertions are ignored and
-    the result fails closed with incomplete snapshot posture.
+    ``trusted_snapshot_authority`` is a host-authenticated attestation, not merely
+    a second caller mapping. Its HMAC must verify under a capability loaded only
+    from trusted process configuration. The public CLI exposes neither the
+    authority nor the capability. Without authenticated authority, packet
+    completeness assertions are ignored and the result fails closed.
     """
     return _compile_normalized(normalize_intake(payload), trusted_as_of, trusted_snapshot_authority)
 
