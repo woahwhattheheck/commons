@@ -81,7 +81,8 @@ def utc(v):
     except ValueError as exc: raise ContractError("at_utc must be real ISO-8601") from exc
 def validate_event(e):
     require(isinstance(e,dict) and set(e)==EVENT_KEYS,"event key set changed")
-    for f in ("id","kind","actor","org","domain","route","purpose","opportunity","reason"): require(isinstance(e[f],str) and e[f].strip(),f"{f} must be nonempty")
+    for f in ("kind","actor","org","domain","route","purpose","opportunity","reason"): require(isinstance(e[f],str) and e[f].strip(),f"{f} must be nonempty")
+    evidence_id(e["id"],"event id")
     require(e["kind"] in EVENTS,"unknown event kind"); utc(e["at_utc"]); identity(e); event_route(e)
     lease=e["lease_seconds"]; provider=e["provider_receipt"]; human=e["human_evidence_id"]
     require(lease is None or type(lease) is int,"lease_seconds must be null or integer (bool forbidden)")
