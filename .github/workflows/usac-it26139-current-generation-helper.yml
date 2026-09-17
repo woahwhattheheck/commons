@@ -1,0 +1,113 @@
+name: USAC IT-26-139 current generation custody helper
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  recover-current-generation:
+    if: github.event_name == 'workflow_dispatch' || github.head_ref == 'sol17/usac-it26139-current-generation-helper-20260917'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Fetch current buyer page and exact linked artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p evidence
+          curl --proto '=https' --tlsv1.2 --fail --location --retry 3 --retry-all-errors \
+            --connect-timeout 20 --max-time 120 \
+            --user-agent 'TokenJunkieLabs-USAC-current-generation-custody/1.0' \
+            'https://www.usac.org/about/procurement/rfp-it-26-139-artificial-intelligence-ai-consulting-and-support-services/' \
+            -o evidence/buyer-page.html
+          test -s evidence/buyer-page.html
+          fetch() {
+            local url="$1" out="$2"
+            curl --proto '=https' --tlsv1.2 --fail --location --retry 3 --retry-all-errors \
+              --connect-timeout 20 --max-time 120 \
+              --user-agent 'TokenJunkieLabs-USAC-current-generation-custody/1.0' \
+              "$url" -o "evidence/$out"
+            test -s "evidence/$out"
+          }
+          fetch 'https://www.usac.org/wp-content/uploads/about/documents/Procurement/RFP-IT-26-139-AI-Consulting-and-Support-Services.pdf' 'RFP-IT-26-139-AI-Consulting-and-Support-Services.pdf'
+          fetch 'https://www.usac.org/wp-content/uploads/about/documents/Procurement/IT-26-139-Attachment-1-Bid-Sheet.xlsx' 'IT-26-139-Attachment-1-Bid-Sheet.xlsx'
+          fetch 'https://www.usac.org/wp-content/uploads/about/documents/Procurement/IT-26-139-Attachment-2-USAC-Confidentiality-Agreement.pdf' 'IT-26-139-Attachment-2-USAC-Confidentiality-Agreement.pdf'
+          fetch 'https://www.usac.org/wp-content/uploads/about/documents/Procurement/IT-26-139-Questions-and-Answers.pdf' 'IT-26-139-Questions-and-Answers.pdf'
+
+      - name: Build exact current-generation manifest
+        shell: python
+        run: |
+          import hashlib, html.parser, json, pathlib, re, zipfile
+          from datetime import datetime, timezone
+          from urllib.parse import urljoin, urlparse
+
+          root = pathlib.Path('evidence')
+          page_url = 'https://www.usac.org/about/procurement/rfp-it-26-139-artificial-intelligence-ai-consulting-and-support-services/'
+          expected = {
+            'RFP-IT-26-139-AI-Consulting-and-Support-Services.pdf': 'https://www.usac.org/wp-content/uploads/about/documents/Procurement/RFP-IT-26-139-AI-Consulting-and-Support-Services.pdf',
+            'IT-26-139-Attachment-1-Bid-Sheet.xlsx': 'https://www.usac.org/wp-content/uploads/about/documents/Procurement/IT-26-139-Attachment-1-Bid-Sheet.xlsx',
+            'IT-26-139-Attachment-2-USAC-Confidentiality-Agreement.pdf': 'https://www.usac.org/wp-content/uploads/about/documents/Procurement/IT-26-139-Attachment-2-USAC-Confidentiality-Agreement.pdf',
+            'IT-26-139-Questions-and-Answers.pdf': 'https://www.usac.org/wp-content/uploads/about/documents/Procurement/IT-26-139-Questions-and-Answers.pdf',
+          }
+
+          class Links(html.parser.HTMLParser):
+            def __init__(self):
+              super().__init__(); self.hrefs=[]
+            def handle_starttag(self, tag, attrs):
+              if tag.lower() == 'a':
+                for key, value in attrs:
+                  if key.lower() == 'href' and value:
+                    self.hrefs.append(urljoin(page_url, value))
+
+          page = (root / 'buyer-page.html').read_bytes()
+          text = page.decode('utf-8', errors='strict')
+          parser = Links(); parser.feed(text)
+          links = sorted(set(parser.hrefs))
+          procurement_links = [u for u in links if '/wp-content/uploads/about/documents/Procurement/' in u]
+          missing = sorted(set(expected.values()) - set(links))
+          if missing:
+            raise SystemExit('current buyer page is missing expected controlling links: ' + json.dumps(missing))
+
+          rows=[]
+          for name, url in expected.items():
+            p=root/name; b=p.read_bytes()
+            if name.endswith('.pdf') and not b.startswith(b'%PDF-'):
+              raise SystemExit(f'not PDF: {name}')
+            if name.endswith('.xlsx'):
+              if not b.startswith(b'PK'):
+                raise SystemExit(f'not XLSX ZIP: {name}')
+              with zipfile.ZipFile(p) as z:
+                names=set(z.namelist())
+                if not {'[Content_Types].xml','xl/workbook.xml'}.issubset(names):
+                  raise SystemExit(f'invalid XLSX: {name}')
+                if len(names)>1000 or sum(i.file_size for i in z.infolist())>50_000_000:
+                  raise SystemExit('XLSX safety fence exceeded')
+            rows.append({'filename':name,'source_url':url,'size_bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()})
+
+          manifest={
+            'schema':'usac-it-26-139-current-generation-custody/v1',
+            'observed_at_utc':datetime.now(timezone.utc).isoformat(timespec='seconds').replace('+00:00','Z'),
+            'authority':'first-party public buyer page and linked buyer artifacts only',
+            'buyer_page':{
+              'url':page_url,
+              'size_bytes':len(page),
+              'sha256':hashlib.sha256(page).hexdigest(),
+              'procurement_links':procurement_links,
+              'expected_controlling_links_present':True,
+            },
+            'files':rows,
+          }
+          (root/'MANIFEST-CURRENT.json').write_text(json.dumps(manifest,sort_keys=True,indent=2)+'\n',encoding='utf-8')
+          print(json.dumps(manifest,sort_keys=True,indent=2))
+
+      - name: Upload current generation bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: usac-it-26-139-current-generation-custody
+          path: evidence/
+          if-no-files-found: error
+          retention-days: 30
