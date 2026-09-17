@@ -9,6 +9,7 @@ on:
       - 'host/revenue_recovery.py'
       - 'diagnostic.html'
       - 'tests/test_gguf_enterprise_close_kit.py'
+      - 'tests/test_gguf_enterprise_close_kit_script_confusables.py'
       - '.github/workflows/gguf-enterprise-close-kit.yml'
   push:
     branches: [main]
@@ -19,6 +20,7 @@ on:
       - 'host/revenue_recovery.py'
       - 'diagnostic.html'
       - 'tests/test_gguf_enterprise_close_kit.py'
+      - 'tests/test_gguf_enterprise_close_kit_script_confusables.py'
       - '.github/workflows/gguf-enterprise-close-kit.yml'
 
 permissions:
@@ -35,9 +37,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-      - run: python -m py_compile revenue/gguf_enterprise_close_kit/close_kit.py tests/test_gguf_enterprise_close_kit.py
-      - run: python -m unittest tests.test_gguf_enterprise_close_kit
-      - run: python -O -m unittest tests.test_gguf_enterprise_close_kit
+      - run: python -m py_compile revenue/gguf_enterprise_close_kit/close_kit.py tests/test_gguf_enterprise_close_kit.py tests/test_gguf_enterprise_close_kit_script_confusables.py
+      - run: python -m unittest tests.test_gguf_enterprise_close_kit tests.test_gguf_enterprise_close_kit_script_confusables
+      - run: python -O -m unittest tests.test_gguf_enterprise_close_kit tests.test_gguf_enterprise_close_kit_script_confusables
       - name: Compile and verify synthetic sample
         run: |
           tmpdir="$(mktemp -d)"
