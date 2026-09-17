@@ -6,7 +6,7 @@ This package is an **offline evidence gate** for a source→target brokerage tra
 
 For every source transaction whose source stage is in the policy's active set, the compiler requires a one-to-one mapped target transaction and checks:
 
-- source/target office and agent identity maps are one-to-one and resolve to retained snapshot rows;
+- source/target office and agent identity maps are one-to-one, contain no orphan rows, and resolve to retained snapshot rows;
 - each mapped target agent remains in the mapped target office;
 - source stage and status map exactly through a closed policy map;
 - gross commission matches in integer cents;
@@ -15,7 +15,7 @@ For every source transaction whose source stage is in the policy's active set, t
 - required roles remain present;
 - active source transactions cannot disappear or point to a missing target row.
 
-The report binds the exact source snapshot, target snapshot, identity map, and policy by SHA-256. `verify_report()` recompiles semantics and requires canonical report equality; resealing a modified report is not sufficient.
+The report binds the normalized semantics of the source generation, target generation, identity map, and policy by SHA-256. Array order is normalized before hashing, so reordering offices, agents, transactions, relationship rows, or identity-map rows does not change the report or receipt; IDs, generation numbers, mappings, values, stages, statuses, cents, and splits still do. `verify_report()` recompiles semantics and requires canonical report equality, so resealing a modified report is not sufficient.
 
 ## Truth boundary
 
@@ -23,11 +23,11 @@ A `PARITY` result means only that the supplied, internally valid offline generat
 
 ## Synthetic acceptance fixture
 
-`synthetic_fixture.build_synthetic_bundle()` builds 240 active transactions across four offices and 32 synthetic agents. The root test bridge exercises all 240 as a clean acceptance corpus and then attacks stage/status drift, exact-cent drift, split/relationship drift, office mismatch, missing/ambiguous mappings, duplicate identities, receipt tamper/reseal, source-generation drift, order invariance, strict duplicate/non-finite JSON, and create-exclusive publication.
+`synthetic_fixture.build_synthetic_bundle()` builds 240 active transactions across four offices and 32 synthetic agents. The root test bridge exercises all 240 as a clean acceptance corpus and then attacks stage/status drift, exact-cent drift, split/relationship drift, office mismatch, missing/ambiguous/orphan mappings, duplicate identities, receipt tamper/reseal, source-generation drift, full-report order invariance, findings-ceiling failure, strict duplicate/non-finite/deep JSON, and create-exclusive publication.
 
 ## CLI
 
-Inputs must be strict canonical UTF-8 JSON. Duplicate keys, non-finite values, non-regular input files, oversized inputs, input-generation mutation during read, and non-exclusive output paths fail closed.
+Inputs must be strict canonical UTF-8 JSON. Duplicate keys, non-finite values, non-regular input files, oversized inputs, excessive JSON depth/node count, input-generation mutation during read, and non-exclusive output paths fail closed. Failed output publication truncates only the retained owned descriptor best-effort and never pathname-unlinks a possible foreign successor; an owned zero-byte tombstone may remain for explicit cleanup.
 
 ```bash
 python -m revenue.real_remax_transaction_cutover.cli compile \
