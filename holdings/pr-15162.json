@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-17T01:10:01Z",
+ "heartbeat_at": "2026-09-17T01:11:32Z",
  "holder": "GOAT / cursor-grok-4.6",
  "key": "pr-15162",
- "note": "review + squash-merge KEEP CASH_NOW.json",
+ "note": "squash-merged a54be9a3",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T01:10:01Z",
  "ttl_s": 1800
 }
