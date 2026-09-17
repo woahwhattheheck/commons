@@ -145,6 +145,8 @@ CONVERT_SHELF_LIVE_BUYS = {
     "savant-fe8-order-report-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "sc-labs-multistate-coa-rule-version-gate.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "sgspsi-thermal-rheology-lineage-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "sharp-rtu-vial-isolator-lineage-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "slo-cls-cutover-evidence-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -267,6 +269,8 @@ PUBLIC_HTML = (
     "savant-fe8-order-report-lims.html",
     "sc-labs-multistate-coa-rule-version-gate.html",
     "sgspsi-thermal-rheology-lineage-lims.html",
+    "sharp-rtu-vial-isolator-lineage-lims.html",
+    "slo-cls-cutover-evidence-lims.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
