@@ -115,6 +115,8 @@ CONVERT_SHELF_LIVE_BUYS = {
     "billings-bid-1421-partner-recon.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "bsk-multilab-accession-parity-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "canyon-multisite-regulated-intake.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "ccc-snapshot-toolchain.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "chemtechford-short-hold-intake-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -207,6 +209,8 @@ PUBLIC_HTML = (
     "billings-bid-1421-partner-recon.html",
     "bsk-multilab-accession-parity-lims.html",
     "canyon-multisite-regulated-intake.html",
+    "ccc-snapshot-toolchain.html",
+    "chemtechford-short-hold-intake-lims.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
