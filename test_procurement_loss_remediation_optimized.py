@@ -30,14 +30,37 @@ raw = {
     **fixture,
 }
 receipt = compile_plan(raw)
-if receipt.get("status") != "ACTIONABLE_GAPS":
-    raise SystemExit("optimized compile did not preserve ACTIONABLE_GAPS")
+if receipt.get("status") != "HOLD_CONTRADICTION":
+    raise SystemExit("optimized caller-stated packet became actionable")
 if any(receipt.get("authority", {}).values()):
     raise SystemExit("optimized compile raised external authority")
 if verify_plan(raw, receipt).get("status") != "VERIFIED":
     raise SystemExit("optimized semantic verification failed")
-if receipt["buyer_reasons"][0]["statement_attribution"] != "BUYER_STATED_SOURCE_BOUND":
-    raise SystemExit("optimized buyer attribution changed")
+reason = receipt["buyer_reasons"][0]
+if reason["statement_attribution"] != "CALLER_RETAINED_STATED_SOURCE_BOUND_NOT_BUYER_AUTHENTICATED":
+    raise SystemExit("optimized buyer attribution was not truth-narrowed")
+if reason.get("buyer_source_authenticated") is not False:
+    raise SystemExit("optimized caller source became buyer-authenticated")
+if receipt["remediation_gaps"][0].get("basis_valid") is not False:
+    raise SystemExit("optimized unauthenticated buyer reason authorized a gap")
+if not any(item.startswith("buyer_reason_not_authenticated:") for item in receipt["hold_reasons"]):
+    raise SystemExit("optimized unauthenticated-buyer hold missing")
+
+# Direct predecessor requested by review: a caller can self-author BUYER_NOTICE,
+# a well-formed arbitrary digest, and STATED rationale that verifies upstream.
+forged = copy.deepcopy(raw)
+forged_fact = forged["outcome_record"]["evidence"][0]
+forged_fact["source_kind"] = "BUYER_NOTICE"
+forged_fact["source_digest_sha256"] = "a" * 64
+forged["buyer_reason_mappings"][0]["source_digest_sha256"] = "a" * 64
+forged["outcome_receipt"] = compile_record(forged["outcome_record"])
+forged_receipt = compile_plan(forged)
+if forged_receipt.get("status") != "HOLD_CONTRADICTION":
+    raise SystemExit("forged BUYER_NOTICE packet became actionable")
+if forged_receipt["buyer_reasons"][0].get("buyer_source_authenticated") is not False:
+    raise SystemExit("forged BUYER_NOTICE became authenticated")
+if forged_receipt["remediation_gaps"][0].get("basis_valid") is not False:
+    raise SystemExit("forged BUYER_NOTICE authorized remediation")
 
 hostile = copy.deepcopy(raw)
 hostile["buyer_reason_mappings"][0]["source_digest_sha256"] = "9" * 64
@@ -53,6 +76,12 @@ hyp_raw = {
     "outcome_receipt": compile_record(hyp_source),
     **hyp,
 }
+hyp_receipt_ok = compile_plan(hyp_raw)
+if hyp_receipt_ok.get("status") != "ACTIONABLE_GAPS":
+    raise SystemExit("optimized internal hypothesis lost its separate actionability")
+if hyp_receipt_ok["internal_hypotheses"][0].get("attribution") != "INTERNAL_HYPOTHESIS_NOT_BUYER_FACT":
+    raise SystemExit("optimized internal hypothesis attribution widened")
+
 hyp_raw["internal_hypotheses"][0]["evidence_basis"][0]["observed_at"] = "2026-09-17T11:29:59Z"
 hyp_receipt = compile_plan(hyp_raw)
 if hyp_receipt.get("status") != "HOLD_CONTRADICTION":
