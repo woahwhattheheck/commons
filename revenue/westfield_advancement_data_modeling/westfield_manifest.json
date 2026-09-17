@@ -9,25 +9,69 @@
     "revenue_recognized": false
   },
   "commercial": {
-    "pricing_basis": "scope-and-deliverables to be agreed with qualified prime before any work starts",
+    "pricing_posture": "UNPRICED_SCOPE_NEGOTIATION_REQUIRED",
     "role": "paid_subcontract_workshare",
     "state": "PROPOSED_NOT_ACCEPTED"
   },
   "model_acceptance": {
-    "entity_key_policy": "split and score only after constituent/household grouping prevents cross-fold identity leakage",
-    "handoff_artifacts": ["data dictionary/provenance map", "split manifest", "metric definitions", "model/config digest", "acceptance exception log"],
-    "metrics": {"calibration": "brier_and_reliability", "evaluation_split": "temporal_holdout", "ranking": "lift_at_k"},
-    "required_checks": ["source_provenance", "entity_deduplication", "household_leakage", "temporal_leakage", "target_window", "calibration", "ranking_lift", "reproducible_handoff"],
-    "time_anchor_policy": "all features must be knowable as of the scoring cutoff; outcomes occur strictly after cutoff"
+    "entity_key_policy": "CONSTITUENT_HOUSEHOLD_GROUP_BEFORE_SPLIT_V1",
+    "handoff_artifacts": [
+      "data dictionary/provenance map",
+      "split manifest",
+      "metric definitions",
+      "model/config digest",
+      "acceptance exception log"
+    ],
+    "metrics": {
+      "calibration": "brier_and_reliability",
+      "evaluation_split": "temporal_holdout",
+      "ranking": "lift_at_k"
+    },
+    "required_checks": [
+      "source_provenance",
+      "entity_deduplication",
+      "household_leakage",
+      "temporal_leakage",
+      "target_window",
+      "calibration",
+      "ranking_lift",
+      "reproducible_handoff"
+    ],
+    "time_anchor_policy": "FEATURES_KNOWABLE_AT_CUTOFF_OUTCOMES_STRICTLY_AFTER_V1"
   },
-  "opportunity": {"buyer": "Westfield State University", "deadline": "2026-09-25", "solicitation": "RFP #2027-002 Advancement Data Modeling", "submission_route": "Bonfire/Euna"},
-  "schema": "advancement-model-acceptance/v1",
+  "opportunity": {
+    "buyer": "Westfield State University",
+    "deadline": "2026-09-25",
+    "solicitation": "RFP #2027-002 Advancement Data Modeling",
+    "submission_route": "Bonfire/Euna"
+  },
+  "schema": "advancement-model-acceptance/v2",
   "sources": [
-    {"kind": "buyer_official", "note": "Official source; RFP #2027-002 listed open via Bonfire/Euna for September 25, 2026.", "url": "https://www.westfield.ma.edu/offices/open-general-bids"},
-    {"kind": "partner_public", "note": "Public advancement strategy/analytics profile only; does not establish pursuit or partnership.", "url": "https://khowconsulting.com/"}
+    {
+      "kind": "buyer_official",
+      "note": "Pinned public source identity only; compiler does not authenticate live availability.",
+      "url": "https://www.westfield.ma.edu/offices/open-general-bids"
+    },
+    {
+      "kind": "partner_public",
+      "note": "Pinned public profile identity only; not evidence of pursuit, partnership, or solicitation-specific qualification.",
+      "url": "https://khowconsulting.com/"
+    }
   ],
   "workshare": {
-    "deliverables": ["source-to-feature provenance ledger", "entity and household duplicate-control report", "time-anchored training and holdout contract", "calibration and ranked-lift acceptance report", "reproducible model-card and handoff receipt"],
-    "exclusions": ["buyer portal submission", "prime responsibility", "reference ownership", "production-data custody", "campaign strategy representation"]
+    "deliverables": [
+      "source-to-feature provenance ledger",
+      "entity and household duplicate-control report",
+      "time-anchored training and holdout contract",
+      "calibration and ranked-lift acceptance report",
+      "reproducible model-card and handoff receipt"
+    ],
+    "exclusions": [
+      "buyer portal submission",
+      "prime responsibility",
+      "reference ownership",
+      "production-data custody",
+      "campaign strategy representation"
+    ]
   }
 }
