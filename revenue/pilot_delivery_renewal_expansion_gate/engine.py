@@ -179,11 +179,12 @@ def _build_current_api(
     container views. The snapshot below gives the normalizer and helpers private global
     dictionaries captured at import, freezes mutable enum sets, and closes current APIs
     over that generation. Current entrypoints also freeze packet/receipt inputs exactly
-    once to exact built-in plain-JSON containers before any semantic read, so stateful
-    mapping/list subclasses cannot present different views to authentication and
-    recompilation phases. Ordinary module/global rebinding therefore cannot substitute
-    caller-selected current time or semantics. Direct function/closure surgery remains
-    outside this cooperative in-process boundary.
+    once to exact built-in plain-JSON containers and UTF-8 scalar text before any
+    semantic read, so stateful mapping/list subclasses cannot present different views to
+    authentication and recompilation phases and Python-only surrogate text cannot leak
+    into canonical serialization. Ordinary module/global rebinding therefore cannot
+    substitute caller-selected current time or semantics. Direct function/closure
+    surgery remains outside this cooperative in-process boundary.
     """
 
     def _clone_function(fn, private_globals):
@@ -230,6 +231,7 @@ def _build_current_api(
     builtin_int = int
     builtin_bool = bool
     builtin_enumerate = enumerate
+    max_abs_integer = 10**15
 
     def _canonical(value: Any) -> bytes:
         return (json_dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n").encode("utf-8")
@@ -239,6 +241,13 @@ def _build_current_api(
 
     def _authority_flags_fn() -> dict[str, bool]:
         return {key: False for key in authority_keys}
+
+    def _checked_text(value: str, label: str) -> str:
+        try:
+            value.encode("utf-8")
+        except UnicodeEncodeError:
+            raise _gate_error(f"{label}: valid UTF-8 text required") from None
+        return value
 
     def _freeze_plain_json(value: Any, label: str, depth: int = 0) -> Any:
         """Copy one exact built-in JSON tree without consulting subclass hooks."""
@@ -250,14 +259,21 @@ def _build_current_api(
             for key, item in value.items():
                 if builtin_type(key) is not builtin_str:
                     raise _gate_error(f"{label}: string object keys required")
-                frozen[key] = _freeze_plain_json(item, f"{label}.{key}", depth + 1)
+                _checked_text(key, f"{label}: object key")
+                frozen[key] = _freeze_plain_json(item, f"{label}.<field>", depth + 1)
             return frozen
         if kind is builtin_list:
             return [
                 _freeze_plain_json(item, f"{label}[{index}]", depth + 1)
                 for index, item in builtin_enumerate(value)
             ]
-        if value is None or kind is builtin_str or kind is builtin_int or kind is builtin_bool:
+        if value is None or kind is builtin_bool:
+            return value
+        if kind is builtin_str:
+            return _checked_text(value, label)
+        if kind is builtin_int:
+            if value < -max_abs_integer or value > max_abs_integer:
+                raise _gate_error(f"{label}: integer outside supported range")
             return value
         raise _gate_error(f"{label}: exact built-in plain-JSON value required")
 
