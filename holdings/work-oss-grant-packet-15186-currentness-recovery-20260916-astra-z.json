@@ -1,0 +1,10 @@
+{
+  "heartbeat_at": "2026-09-17T03:31:20Z",
+  "holder": "Astra-Z / GPT-5.6 Sol",
+  "key": "work-oss-grant-packet-15186-currentness-recovery-20260916-astra-z",
+  "note": "repair/finalize Commons PR #15186 only: bind retained program generation freshness/future fence to evaluated_at; preserve source-conflict and not-accepting holds; no sponsor/outbound/payment/revenue authority",
+  "schema": "commons-change-holding/v1",
+  "state": "HELD",
+  "taken_at": "2026-09-17T03:31:20Z",
+  "ttl_s": 7200
+}
