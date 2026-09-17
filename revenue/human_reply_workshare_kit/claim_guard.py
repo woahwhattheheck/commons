@@ -12,7 +12,7 @@ import unicodedata
 
 
 _SENTINEL = "_human_reply_claim_guard_installed"
-_GUARD_VERSION = "human-reply-claim-guard/v6"
+_GUARD_VERSION = "human-reply-claim-guard/v7"
 _RELOAD_FINDER_SENTINEL = "_human_reply_claim_guard_reload_finder"
 _CORE_NAME = "revenue.human_reply_workshare_kit.core"
 _UNSAFE_UNICODE_CATEGORIES = {"Cc", "Cf", "Cs", "Zl", "Zp"}
@@ -36,20 +36,26 @@ _DEFAULT_IGNORABLE_NON_CF_RANGES = (
     (0xE0080, 0xE0FFF),  # includes variation selector supplement
 )
 _HTML_MARKUP = re.compile(r"<(?:/?[A-Za-z][^<>]*|![^<>]*|\?[^<>]*)>")
-# Markdown destinations can be semantically invisible in rendered text.  For
+# Markdown destinations can be semantically invisible in rendered text. For
 # example, ``Buyer [](https://example.invalid) accepted`` screens as source text
-# containing URL tokens but renders visibly as ``Buyer accepted``.  Reject the
+# containing URL tokens but renders visibly as ``Buyer accepted``. Reject the
 # destination-bearing syntax itself instead of attempting to predict every
-# downstream Markdown renderer.  The boundary is deliberately conservative:
+# downstream Markdown renderer. The boundary is deliberately conservative:
 # images, inline links, full/collapsed reference links, and reference definitions
 # are not needed in these one-line caller-authored commercial fields.
 _MARKDOWN_DESTINATION_SYNTAX = re.compile(
     r"(?:!\[|\]\s*(?:\(|\[)|^\s*\[[^\]\r\n]+\]\s*:)", re.MULTILINE
 )
+# Common Markdown inline-format delimiters can disappear while their enclosed
+# text remains visible. The commercial skeleton therefore treats these as
+# renderer-ignorable rather than token boundaries: ``rece**iv**ed`` must screen
+# exactly like its visible ``received`` rendering. This is deliberately used for
+# semantic screening only; caller text is preserved byte-for-byte for rendering.
+_MARKDOWN_INLINE_RENDER_DELIMITERS = frozenset("*_~`")
 
-# Run these over a punctuation-folded semantic skeleton. The original v1
-# patterns remain authoritative too; this closes buyer-facing Markdown and
-# punctuation splits without rejecting nonassertive phrases such as
+# Run these over a renderer-aware punctuation-folded semantic skeleton. The
+# original v1 patterns remain authoritative too; this closes buyer-facing
+# Markdown and punctuation splits without rejecting nonassertive phrases such as
 # "acceptance evidence".
 _FORBIDDEN_RENDERED_ASSERTIONS = (
     re.compile(r"\bbuyer\s+(?:has\s+)?accepted\b", re.I),
@@ -113,7 +119,12 @@ def _screen_form(core: ModuleType, text: str, where: str) -> str:
 
 def _commercial_skeleton(text: str) -> str:
     folded = text.casefold()
-    return " ".join("".join(char if char.isalnum() else " " for char in folded).split())
+    renderer_equivalent = "".join(
+        "" if char in _MARKDOWN_INLINE_RENDER_DELIMITERS else char for char in folded
+    )
+    return " ".join(
+        "".join(char if char.isalnum() else " " for char in renderer_equivalent).split()
+    )
 
 
 def _guard_emitted_text(core: ModuleType, text: str, where: str) -> str:
