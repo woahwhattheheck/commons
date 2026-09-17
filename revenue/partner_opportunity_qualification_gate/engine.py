@@ -68,6 +68,20 @@ def _state(partner, gates, sources, runway, as_of, selected_timing, controls_cur
     return "READY_FOR_MUSE_ELECTION_ONLY", ["runway, contact policy, registration, pre-outreach gates, and paid seam are bounded"] + later
 
 
+def _validate_disposition_source_binding(partner: dict[str, Any], gates: dict[str, dict[str, Any]]) -> None:
+    for disposition in partner["gate_dispositions"]:
+        if disposition["state"] == "UNKNOWN":
+            continue
+        gate = gates[disposition["gate_id"]]
+        gate_sources = {(ref["source_id"], ref["source_sha256"]) for ref in gate["source_refs"]}
+        disposition_sources = {(ref["source_id"], ref["source_sha256"]) for ref in disposition["evidence_refs"]}
+        if not (gate_sources & disposition_sources):
+            raise QualificationError(
+                f"partner {partner['name']} gate {disposition['gate_id']} disposition evidence "
+                "must be explicitly bound in that gate's source_refs"
+            )
+
+
 def compile_qualification(raw: Any) -> dict[str, Any]:
     doc = normalize_input(raw)
     try:
@@ -100,6 +114,7 @@ def compile_qualification(raw: Any) -> dict[str, Any]:
     gates = {g["gate_id"]: g for g in doc["hard_gates"]}
     partner_rows = []
     for partner in doc["partners"]:
+        _validate_disposition_source_binding(partner, gates)
         state, reasons = _state(partner, gates, sources, runway, doc["as_of"], selected_timing, all(s["status"] == "CURRENT" for s in controls))
         partner_rows.append({
             "name": partner["name"],
