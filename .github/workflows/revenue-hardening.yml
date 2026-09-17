@@ -12,6 +12,7 @@ on:
       - 'diagnostic.html'
       - 'host/payment_ready.py'
       - 'host/revenue_recovery.py'
+      - 'host/_revenue_recovery_core_20260917.inc'
       - 'opportunities/pinellas_26_0795_rfi_digital_evidence/**'
       - 'p/demon-revenue-hardening-correction-20260825-01.md'
       - 'p/jojo-revenue-recovery-pipeline-20260825-01.md'
@@ -27,6 +28,7 @@ on:
       - 'test_gitignore_eof.py'
       - 'test_payment_ready.py'
       - 'test_revenue_recovery.py'
+      - 'test_revenue_recovery_unicode_nfkc.py'
   pull_request:
     paths:
       - '.gitattributes'
@@ -36,6 +38,7 @@ on:
       - 'diagnostic.html'
       - 'host/payment_ready.py'
       - 'host/revenue_recovery.py'
+      - 'host/_revenue_recovery_core_20260917.inc'
       - 'opportunities/pinellas_26_0795_rfi_digital_evidence/**'
       - 'p/demon-revenue-hardening-correction-20260825-01.md'
       - 'p/jojo-revenue-recovery-pipeline-20260825-01.md'
@@ -51,6 +54,7 @@ on:
       - 'test_gitignore_eof.py'
       - 'test_payment_ready.py'
       - 'test_revenue_recovery.py'
+      - 'test_revenue_recovery_unicode_nfkc.py'
   workflow_dispatch:
 
 permissions:
@@ -96,6 +100,7 @@ jobs:
             diagnostic.html
             host/payment_ready.py
             host/revenue_recovery.py
+            host/_revenue_recovery_core_20260917.inc
             p/demon-revenue-hardening-correction-20260825-01.md
             p/jojo-revenue-recovery-pipeline-20260825-01.md
             revenue/payment_ready
@@ -106,6 +111,7 @@ jobs:
             test_gitignore_eof.py
             test_payment_ready.py
             test_revenue_recovery.py
+            test_revenue_recovery_unicode_nfkc.py
           )
           if [ -z "$base" ] || [ "$base" = "$zero" ] || ! git cat-file -e "$base^{commit}" 2>/dev/null; then
             echo 'changed=true' >> "$GITHUB_OUTPUT"
@@ -163,7 +169,9 @@ jobs:
           python -O -B -m unittest -v test_bundle.py test_package_integrity.py
       - name: focused Python contract suite
         if: steps.contract.outputs.changed == 'true'
-        run: python -W error -m unittest -q test_revenue_recovery.py test_payment_ready.py test_dio_revenue_contract.py test_dio_crlf.py test_gitignore_eof.py
+        run: |
+          python -W error -m unittest -q test_revenue_recovery.py test_revenue_recovery_unicode_nfkc.py test_payment_ready.py test_dio_revenue_contract.py test_dio_crlf.py test_gitignore_eof.py
+          python -O -W error -m unittest -q test_revenue_recovery.py test_revenue_recovery_unicode_nfkc.py test_payment_ready.py test_dio_revenue_contract.py test_dio_crlf.py test_gitignore_eof.py
       - name: actual diagnostic inline DLP
         if: steps.contract.outputs.changed == 'true'
         run: |
@@ -177,7 +185,7 @@ jobs:
       - name: syntax and JSON checks
         if: steps.contract.outputs.changed == 'true'
         run: |
-          python -m py_compile host/revenue_recovery.py host/payment_ready.py test_revenue_recovery.py test_payment_ready.py test_dio_revenue_contract.py test_dio_crlf.py test_gitignore_eof.py
+          python -m py_compile host/revenue_recovery.py host/_revenue_recovery_core_20260917.inc host/payment_ready.py test_revenue_recovery.py test_revenue_recovery_unicode_nfkc.py test_payment_ready.py test_dio_revenue_contract.py test_dio_crlf.py test_gitignore_eof.py
           node --check carrier.js
           node --check test_diagnostic_dlp.js
           node --check test_carrier_from_memory.js
