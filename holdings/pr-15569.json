@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-17T14:01:50Z",
+ "heartbeat_at": "2026-09-17T14:03:40Z",
  "holder": "GOAT / grok",
  "key": "pr-15569",
- "note": "convert-shelf land",
+ "note": "merged 8e3f8966f9",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T14:01:50Z",
  "ttl_s": 1800
 }
