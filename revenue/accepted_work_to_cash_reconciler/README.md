@@ -51,7 +51,9 @@ The document contains:
 
 1. `funnel_input`: the ordinary `TJL_REVENUE_FUNNEL_V1` source ledger. This module
    calls the merged upstream compiler itself rather than trusting caller-authored
-   stage labels.
+   stage labels. The upstream engine module is sealed on first normal import before
+   a downstream first import can capture its compiler/verifier exports; ordinary
+   pre-import export reassignment/deletion therefore fails closed.
 2. `routes`: zero or one evidence-bound route per opportunity. Route evidence must
    be a buyer/sponsor message, provider directory, or organizer rules source.
 3. `payment_confirmations`: zero or one retained, unauthenticated confirmation
@@ -68,6 +70,13 @@ The packet truth boundary is
 `provider_authenticated_payment_evidence_available=false` and
 `terminal_paid_requires_provider_authenticated_evidence=true` so downstream code
 cannot silently reinterpret retained confirmation assertions as provider truth.
+
+The ordinary-module semantic-root boundary is documented in
+`SEMANTIC_ROOT_BOUNDARY.md`. It covers both post-import reconciler-global rebinding
+and review `5233132461`'s pre-import upstream-export poisoning predecessor. Direct
+module-`__dict__` mutation, custom/meta-path loaders, installed-source replacement,
+function default/closure/code mutation, interpreter replacement, and host takeover
+remain outside this metadata boundary.
 
 ## Terminal actions
 
@@ -107,19 +116,29 @@ mode `0600` and is never silently overwritten.
 ## Tests
 
 ```bash
-python -m py_compile revenue/accepted_work_to_cash_reconciler/*.py \
+python -m py_compile \
+  revenue/revenue_funnel_control/__init__.py \
+  revenue/accepted_work_to_cash_reconciler/*.py \
   test_accepted_work_to_cash_reconciler.py \
-  test_accepted_work_to_cash_reconciler_hostile.py
+  test_accepted_work_to_cash_reconciler_hostile.py \
+  test_accepted_work_to_cash_reconciler_semantic_root.py \
+  test_accepted_work_to_cash_reconciler_preimport_upstream_seal.py
 python -m unittest -v \
   test_accepted_work_to_cash_reconciler.py \
-  test_accepted_work_to_cash_reconciler_hostile.py
+  test_accepted_work_to_cash_reconciler_hostile.py \
+  test_accepted_work_to_cash_reconciler_semantic_root.py \
+  test_accepted_work_to_cash_reconciler_preimport_upstream_seal.py
 python -O -m unittest -v \
   test_accepted_work_to_cash_reconciler.py \
-  test_accepted_work_to_cash_reconciler_hostile.py
+  test_accepted_work_to_cash_reconciler_hostile.py \
+  test_accepted_work_to_cash_reconciler_semantic_root.py \
+  test_accepted_work_to_cash_reconciler_preimport_upstream_seal.py
 ```
 
-The hostile suite retains exact predecessors for arbitrary invented confirmation
-bindings, route-evidence relabeling, copied payment digests, exact self-copy, and
-same-second contact ambiguity. The root tests are enrolled by the existing Commons
-`test_*.py` retained-test path. This product intentionally adds no new standalone
-workflow slot; exact-head CI is read from the retained Commons battery before merge.
+The hostile suites retain exact predecessors for arbitrary invented confirmation
+bindings, route-evidence relabeling, copied payment digests, exact self-copy,
+same-second contact ambiguity, post-import semantic-root rebinding, and pre-import
+upstream compiler/verifier/factory export poisoning. The root tests are enrolled by
+the existing Commons `test_*.py` retained-test path. This product intentionally adds
+no new standalone workflow slot; exact-head CI is read from the retained Commons
+battery before merge.
