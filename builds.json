@@ -350,8 +350,249 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 0,
- "open_prs": [],
+ "n_open_prs": 15,
+ "open_prs": [
+  {
+   "number": 15266,
+   "author": "woahwhattheheck",
+   "title": "Measure Learn2Design curvature on pinned public organizer problem",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15266",
+   "base_freshness": {
+    "base_sha": "08485af56317e2a43f8b400f8d32b88e66570c5b",
+    "main_sha": "188996cd34dc78986b0ace26b504acf18067cb4b",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15293,
+   "author": "woahwhattheheck",
+   "title": "Disposable helper: retain current USAC IT-26-139 generation",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15293",
+   "base_freshness": {
+    "base_sha": "4ef13e33d87946973cce01a47fafa8a3240d5587",
+    "main_sha": "188996cd34dc78986b0ace26b504acf18067cb4b",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15301,
+   "author": "woahwhattheheck",
+   "title": "USAC IT-26-139: bind recovered controlling buyer bytes",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15301",
+   "base_freshness": {
+    "base_sha": "57a379abaa9d8a02e1855371bb80ad64d75afa83",
+    "main_sha": "188996cd34dc78986b0ace26b504acf18067cb4b",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15318,
+   "author": "woahwhattheheck",
+   "title": "Rule 30: exact period-two trace frontier and bounded fiber engine",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15318",
+   "base_freshness": {
+    "base_sha": "5b49ee7ee5ff731d1f94ef6d296f944cfd5e529a",
+    "main_sha": "188996cd34dc78986b0ace26b504acf18067cb4b",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15317,
+   "author": "woahwhattheheck",
+   "title": "Revenue: recover Linden RFP 26-07 procurement readiness",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15317",
+   "base_freshness": {
+    "base_sha": "74c12162bff05f23614f03f7e13d44dfa7b0f9b0",
+    "main_sha": "188996cd34dc78986b0ace26b504acf18067cb4b",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15359,
+   "author": "woahwhattheheck",
+   "title": "Fix Invest Appalachia attachment recovery resource bounds",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15359",
+   "base_freshness": {
+    "base_sha": "cb17ab489b0752cc57f5fdb45fe7395ed0d1b72c",
+    "main_sha": "188996cd34dc78986b0ace26b504acf18067cb4b",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15355,
+   "author": "woahwhattheheck",
+   "title": "CI: keep procurement runway gate inside the retained 67-slot surface",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15355",
+   "base_freshness": {
+    "base_sha": "cb17ab489b0752cc57f5fdb45fe7395ed0d1b72c",
+    "main_sha": "188996cd34dc78986b0ace26b504acf18067cb4b",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15356,
+   "author": "woahwhattheheck",
+   "title": "Fix live human-reply workshare commercial-claim and receipt gaps",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15356",
+   "base_freshness": {
+    "base_sha": "fd8dc22f89d42348a4b6fd06573df7e93c473ae0",
+    "main_sha": "188996cd34dc78986b0ace26b504acf18067cb4b",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15341,
+   "author": "woahwhattheheck",
+   "title": "Add evidence-bound revenue funnel realization control",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15341",
+   "base_freshness": {
+    "base_sha": "11be28220ebaf288906da6de968c0c18770c2b7a",
+    "main_sha": "188996cd34dc78986b0ace26b504acf18067cb4b",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15364,
+   "author": "woahwhattheheck",
+   "title": "GOAT: wire existing owner-now-revenue Payment Links",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15364",
+   "base_freshness": {
+    "base_sha": "ff69c5676ad9ef92182179416672e0599d7ec9ff",
+    "main_sha": "188996cd34dc78986b0ace26b504acf18067cb4b",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15346,
+   "author": "woahwhattheheck",
+   "title": "Human workshare: close post-merge commercial-truth RED",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15346",
+   "base_freshness": {
+    "base_sha": "aebde6684aa1bdcd77fcadd440010a8c899e505e",
+    "main_sha": "188996cd34dc78986b0ace26b504acf18067cb4b",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15363,
+   "author": "woahwhattheheck",
+   "title": "TrafficFlowBench: make submission receipts exact-recompile evidence",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15363",
+   "base_freshness": {
+    "base_sha": "ff69c5676ad9ef92182179416672e0599d7ec9ff",
+    "main_sha": "188996cd34dc78986b0ace26b504acf18067cb4b",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15349,
+   "author": "woahwhattheheck",
+   "title": "Recover TrafficFlowBench 2026 source-safe competition carrier",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15349",
+   "base_freshness": {
+    "base_sha": "f499f518ea732ed306b9c2d8dfe81c5da6d9e4c8",
+    "main_sha": "188996cd34dc78986b0ace26b504acf18067cb4b",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15331,
+   "author": "woahwhattheheck",
+   "title": "USAC IT-26-139: keep recovered hashes distinct from durable custody",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15331",
+   "base_freshness": {
+    "base_sha": "a156eacefecbbd44298615eb17b9dc3db1d48ab2",
+    "main_sha": "188996cd34dc78986b0ace26b504acf18067cb4b",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15367,
+   "author": "woahwhattheheck",
+   "title": "Revenue: add evidence-bound outreach cohort attribution",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15367",
+   "base_freshness": {
+    "base_sha": "a156eacefecbbd44298615eb17b9dc3db1d48ab2",
+    "main_sha": "188996cd34dc78986b0ace26b504acf18067cb4b",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  }
+ ],
  "live_cash": {
   "cite": [
    "newbot-json-doors-live-cash-20260916-06",
