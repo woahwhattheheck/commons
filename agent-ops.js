@@ -71,15 +71,15 @@
     var stripeUrl = /^https:\/\/(?:buy|donate)\.stripe\.com\/[A-Za-z0-9]+$/.test(url);
     var noDue = Array.isArray(provider.currently_due) && provider.currently_due.length === 0;
     var chargeable = provider.name === "stripe" && provider.livemode === true && provider.account_charges_enabled === true && provider.account_payouts_enabled === true && noDue && provider.card_payments === "active" && provider.transfers === "active" && link.status === "ACTIVE" && link.active === true && stripeUrl;
-    var reason = "Checkout state unavailable.";
-    if (catalog && provider.livemode !== true) reason = "Stripe live account is not connected.";
-    else if (provider.account_charges_enabled !== true) reason = "Stripe live charges are not enabled.";
-    else if (provider.account_payouts_enabled !== true) reason = "Stripe live payouts are not enabled.";
-    else if (!noDue) reason = "Stripe account requirements are not complete.";
-    else if (provider.card_payments !== "active") reason = "Stripe card payments capability is not active.";
-    else if (provider.transfers !== "active") reason = "Stripe transfers capability is not active.";
-    else if (link.status !== "ACTIVE" || link.active !== true || !stripeUrl) reason = "Checkout " + String(link.status || "NOT_MINTED") + ".";
-    else reason = "Chargeable Stripe checkout active.";
+    var reason = "Recorded checkout state is unavailable.";
+    if (catalog && provider.livemode !== true) reason = "Recorded Stripe state is not livemode connected.";
+    else if (provider.account_charges_enabled !== true) reason = "Recorded Stripe state has charges disabled.";
+    else if (provider.account_payouts_enabled !== true) reason = "Recorded Stripe state has payouts disabled.";
+    else if (!noDue) reason = "Recorded Stripe state has outstanding account requirements.";
+    else if (provider.card_payments !== "active") reason = "Recorded card-payments capability is not active.";
+    else if (provider.transfers !== "active") reason = "Recorded transfers capability is not active.";
+    else if (link.status !== "ACTIVE" || link.active !== true || !stripeUrl) reason = "Recorded checkout is " + String(link.status || "NOT_MINTED") + ".";
+    else reason = "Recorded checkout state is chargeable.";
     return {
       chargeable: chargeable,
       reason: reason,
@@ -96,7 +96,7 @@
       href: state.chargeable ? state.url : state.fallbackUrl,
       label: state.chargeable ? "Buy " + sku + " now" : state.fallbackLabel,
       checkoutState: state.chargeable ? "CHARGEABLE" : "CONTACT_ONLY",
-      status: state.chargeable ? "Chargeable Stripe checkout" : state.reason
+      status: state.reason
     };
   }
 
@@ -220,7 +220,9 @@
       hero.dataset.checkoutState = foundryPresentation.checkoutState;
     }
     var liveCount = checkoutPresentations.filter(function (presentation) { return presentation.state.chargeable; }).length;
-    text(document.getElementById("checkout-truth"), liveCount ? liveCount + " provider-verified checkout route" + (liveCount === 1 ? " is" : "s are") + " active. A click is not payment; cash remains separately measured. No purchase or buyer is claimed by this page." : "Checkout state did not confirm a chargeable route this load; primary CTAs were demoted to contact-only. A click is not payment; cash remains separately measured. No purchase or buyer is claimed by this page.");
+    var providerObservedAt = view.checkout && view.checkout.measured_at || "UNKNOWN";
+    var linkObservedAt = view.checkout && view.checkout.link_measured_at || "UNKNOWN";
+    text(document.getElementById("checkout-truth"), liveCount ? liveCount + " checkout route" + (liveCount === 1 ? " was" : "s were") + " chargeable in the checked-in snapshot (provider observed " + providerObservedAt + "; links observed " + linkObservedAt + "). The browser does not live-query Stripe; current provider state may differ. A click is not payment; cash remains separately measured. No purchase or buyer is claimed by this page." : "Checked-in checkout state did not record a chargeable route; primary CTAs were demoted to contact-only. Snapshot timestamps: provider " + providerObservedAt + "; links " + linkObservedAt + ". The browser does not live-query Stripe; current provider state may differ. A click is not payment; cash remains separately measured. No purchase or buyer is claimed by this page.");
   }
 
   function renderReceipts(document, receipts) {
@@ -241,7 +243,7 @@
       .then(function (values) { var data = {}; keys.forEach(function (key, i) { data[key] = values[i]; }); var now = Date.now(); render(document, snapshot(data, now), now); })
       .catch(function (error) {
         text(document.getElementById("snapshot-note"), "Live projection unavailable: " + error.message + ". Existing links remain usable.");
-        text(document.getElementById("checkout-truth"), "Checked-in Payment Links remain visible because live projection did not load; current chargeability is unconfirmed. A click is not payment; cash remains separately measured. No purchase or buyer is claimed by this page.");
+        text(document.getElementById("checkout-truth"), "Checked-in Payment Links remain visible because the checkout-state projection did not load; current chargeability is unconfirmed. A click is not payment; cash remains separately measured. No purchase or buyer is claimed by this page.");
       });
 
     var storage = typeof localStorage !== "undefined" ? localStorage : { getItem: function () { return null; }, setItem: function () {} };
