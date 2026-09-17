@@ -65,13 +65,24 @@ def selected_text(req, kind="SELECTED"):
 
 
 class FakeSlack:
-    def __init__(self, req, *, selected=True, control=None, ambiguous=False, paginated=False, malformed=False):
+    def __init__(
+        self,
+        req,
+        *,
+        selected=True,
+        control=None,
+        ambiguous=False,
+        paginated=False,
+        malformed=False,
+        web_edited=False,
+    ):
         self.req = req
         self.selected = selected
         self.control = control
         self.ambiguous = ambiguous
         self.paginated = paginated
         self.malformed = malformed
+        self.web_edited = web_edited
         self.calls = []
 
     def __call__(self, method, params, token):
@@ -103,6 +114,8 @@ class FakeSlack:
                 "text": self.req["message"],
                 "reply_count": 1 if self.selected else 0,
             }
+            if self.web_edited:
+                parent["edited"] = {"user": SENDER, "ts": sts(6)}
             extra = []
             if self.control:
                 extra.append({
@@ -159,12 +172,15 @@ class MuseSlackProviderV1Tests(unittest.TestCase):
         with mock.patch.object(provider, "_slack_api", side_effect=fake):
             return provider.verify_provider_evidence(self.req, receipt)
 
-    def test_selected_provider_observation_is_authenticated_but_never_terminal_authority(self):
+    def test_selected_provider_observation_is_current_visible_but_never_terminal_authority(self):
         fake = FakeSlack(self.req, selected=True)
         receipt = self.compile(fake)
         p = receipt["payload"]
         self.assertEqual(p["muse_observed_decision"], "SELECTED")
-        self.assertEqual(p["effective_observation"], "SELECTED")
+        self.assertEqual(p["current_visible_effective_observation"], "SELECTED")
+        self.assertEqual(p["visibility_model"], provider.VISIBILITY_MODEL)
+        self.assertFalse(p["deleted_history_authenticated"])
+        self.assertFalse(p["requester_control_history_authenticated"])
         self.assertFalse(p["prior_receipt_ledger_authenticated"])
         self.assertFalse(p["terminal_election_authorized"])
         self.assertFalse(p["external_send_authorized"])
@@ -172,6 +188,7 @@ class MuseSlackProviderV1Tests(unittest.TestCase):
         self.assertTrue(p["requires_current_worker_lease_possession"])
         self.assertTrue(p["requires_fresh_provider_preflight"])
         self.assertEqual(p["requester_user_id"], SENDER)
+        self.assertIn("SLACK_WEB_API_HISTORY_CURRENT_VISIBLE_ONLY", p["provider_reasons"])
         self.assertNotIn("x-test-token", json.dumps(receipt, sort_keys=True))
 
     def test_verifier_rereads_provider_and_reproduces_exact_boundary(self):
@@ -189,32 +206,49 @@ class MuseSlackProviderV1Tests(unittest.TestCase):
         changed = FakeSlack(self.req, selected=False)
         self.assertFalse(self.verify(changed, receipt))
 
-    def test_requester_hold_dominates_later_muse_selection(self):
+    def test_requester_hold_dominates_later_visible_muse_selection(self):
         receipt = self.compile(FakeSlack(self.req, selected=True, control="HOLD"))
         p = receipt["payload"]
         self.assertEqual(p["muse_observed_decision"], "SELECTED")
-        self.assertEqual(p["effective_observation"], "HOLD")
+        self.assertEqual(p["current_visible_effective_observation"], "HOLD")
         self.assertEqual(p["control_action"], "HOLD")
         self.assertIn("REQUESTER_CONTROL_HOLD", p["provider_reasons"])
 
-    def test_requester_withdraw_and_cancel_dominate(self):
+    def test_requester_withdraw_and_cancel_dominate_while_visible(self):
         for action in ("WITHDRAW", "CANCEL"):
             with self.subTest(action=action):
                 receipt = self.compile(FakeSlack(self.req, selected=True, control=action))
-                self.assertEqual(receipt["payload"]["effective_observation"], "HOLD")
+                self.assertEqual(receipt["payload"]["current_visible_effective_observation"], "HOLD")
                 self.assertEqual(receipt["payload"]["control_action"], action)
 
     def test_ambiguous_requester_followup_mentioning_exact_request_fails_closed(self):
         receipt = self.compile(FakeSlack(self.req, selected=True, ambiguous=True))
         p = receipt["payload"]
-        self.assertEqual(p["effective_observation"], "HOLD")
+        self.assertEqual(p["current_visible_effective_observation"], "HOLD")
         self.assertTrue(any(x.startswith("AMBIGUOUS_REQUESTER_FOLLOWUP:") for x in p["provider_reasons"]))
 
-    def test_resume_requires_newer_muse_decision(self):
+    def test_resume_requires_newer_visible_muse_decision(self):
         receipt = self.compile(FakeSlack(self.req, selected=True, control="RESUME"))
         p = receipt["payload"]
-        self.assertEqual(p["effective_observation"], "HOLD")
+        self.assertEqual(p["current_visible_effective_observation"], "HOLD")
         self.assertIn("REQUESTER_RESUME_REQUIRES_LATER_MUSE_DECISION", p["provider_reasons"])
+
+    def test_web_api_edited_metadata_fails_closed(self):
+        with mock.patch.object(provider, "_slack_api", side_effect=FakeSlack(self.req, web_edited=True)):
+            with self.assertRaisesRegex(provider.MuseSlackProviderError, "edited Slack message unsupported"):
+                provider.compile_provider_evidence(self.req)
+
+    def test_deleted_control_cannot_be_authenticated_by_history_transport(self):
+        visible_hold = self.compile(FakeSlack(self.req, selected=True, control="HOLD"))["payload"]
+        absent_control = self.compile(FakeSlack(self.req, selected=True))["payload"]
+        self.assertEqual(visible_hold["current_visible_effective_observation"], "HOLD")
+        self.assertEqual(absent_control["current_visible_effective_observation"], "SELECTED")
+        for payload in (visible_hold, absent_control):
+            self.assertFalse(payload["deleted_history_authenticated"])
+            self.assertFalse(payload["requester_control_history_authenticated"])
+            self.assertFalse(payload["terminal_election_authorized"])
+            self.assertFalse(payload["external_send_authorized"])
+            self.assertFalse(payload["side_effects_authorized"])
 
     def test_thread_reply_is_included_in_provider_snapshot(self):
         receipt = self.compile(FakeSlack(self.req, selected=True))
@@ -247,7 +281,7 @@ class MuseSlackProviderV1Tests(unittest.TestCase):
             with self.assertRaises(provider.MuseSlackProviderError):
                 provider.compile_provider_evidence(self.req)
 
-    def test_unattributable_or_edited_provider_message_fails_closed(self):
+    def test_events_api_changed_subtype_fails_closed(self):
         with mock.patch.object(provider, "_slack_api", side_effect=FakeSlack(self.req, malformed=True)):
             with self.assertRaises(provider.MuseSlackProviderError):
                 provider.compile_provider_evidence(self.req)
@@ -256,6 +290,13 @@ class MuseSlackProviderV1Tests(unittest.TestCase):
         receipt = self.compile(FakeSlack(self.req, selected=True))
         forged = copy.deepcopy(receipt)
         forged["payload"]["terminal_election_authorized"] = True
+        forged["receipt_sha256"] = provider._digest(forged["payload"])
+        self.assertFalse(self.verify(FakeSlack(self.req, selected=True), forged))
+
+    def test_forged_deleted_history_authentication_fails_even_if_rehashed(self):
+        receipt = self.compile(FakeSlack(self.req, selected=True))
+        forged = copy.deepcopy(receipt)
+        forged["payload"]["deleted_history_authenticated"] = True
         forged["receipt_sha256"] = provider._digest(forged["payload"])
         self.assertFalse(self.verify(FakeSlack(self.req, selected=True), forged))
 
