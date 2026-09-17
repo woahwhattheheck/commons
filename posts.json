@@ -170201,6 +170201,19 @@
     "claim": "type-humans-autopsy-checkout-pointer-20260905-01"
   },
   {
+    "id": "type-human-read-stripe-md-keep-larger-fixed-20260916-01",
+    "from": "",
+    "to": "",
+    "ts": "",
+    "href": "./p/type-human-read-stripe-md-keep-larger-fixed-20260916-01.html",
+    "page": "type-human-read-stripe-md-keep-larger-fixed-20260916-01",
+    "body": "# type-human-read-stripe-md-keep-larger-fixed-20260916-01\n\nSHIP \u2014 TYPE / clan/grokbot \u00b7 2026-09-16\n\n## Leftover (Goal B)\nAfter owner-slack #15156 + peer KEEP wave, tip human-read / Stripe / Cursor doors still Autopsy/$199 only.\n\n## Paths\nground/HUMAN_OUTCOMES.md \u00b7 READ_IS_VOLTAGE.md \u00b7 README.md \u00b7 README_LIVE.md \u00b7 HARNESS_ALREADY_LOGGED_IN.md \u00b7 STRIPE.md \u00b7 CURSOR_HALT.md \u00b7 CURSOR_QUOTA_HOLD.md \u00b7 hermetic test \u00b7 receipt\n\n\u2260 Latch ops-pack #15159 \u00b7 \u2260 Wire tip MD #15163 \u00b7 \u2260 Goat cash-now/execute-land \u00b7 \u2260 Type prior batches \u00b7 \u2260 packs/#8802\nTip KEEP. Hands off #8802. No invent Stripe. No lead outreach.\n\n## Cite\n`type-human-read-stripe-md-keep-larger-fixed-20260916-01`",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "",
+    "durable_ts": "",
+    "effective_ts": ""
+  },
+  {
     "id": "type-hub-titanmcp-live-url-20260905-01",
     "from": "",
     "to": "",
