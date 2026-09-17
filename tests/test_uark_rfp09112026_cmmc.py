@@ -225,6 +225,8 @@ class UarkRfp09112026Tests(unittest.TestCase):
     def test_markdown_preserves_not_offered_boundary(self) -> None:
         packet = mod.compile_qualification(fixture())
         md = mod.render_markdown(packet)
+        self.assertIn("HISTORICAL / INTEGRITY ONLY", md)
+        self.assertIn("NOT CURRENT", md)
         self.assertIn("INTERNAL_HYPOTHESIS_NOT_OFFERED", md)
         self.assertIn("authorizes no buyer or partner contact", md)
 
@@ -232,8 +234,22 @@ class UarkRfp09112026Tests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             out = Path(td) / "packet.json"
             md = Path(td) / "packet.md"
-            subprocess.run([sys.executable, str(MODULE_PATH), "compile", str(FIXTURE_PATH),
-                            "--json-out", str(out), "--markdown-out", str(md)], check=True, cwd=ROOT)
+
+            refused = subprocess.run(
+                [sys.executable, str(MODULE_PATH), "compile", str(FIXTURE_PATH),
+                 "--json-out", str(out), "--markdown-out", str(md)],
+                cwd=ROOT, capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(refused.returncode, 2, refused.stdout + refused.stderr)
+            self.assertIn("refuses persisted Markdown", refused.stderr)
+            self.assertFalse(out.exists(), "historical Markdown refusal must precede JSON publication")
+            self.assertFalse(md.exists(), "historical Markdown must not be persisted")
+
+            subprocess.run(
+                [sys.executable, str(MODULE_PATH), "compile", str(FIXTURE_PATH),
+                 "--json-out", str(out)],
+                check=True, cwd=ROOT,
+            )
             verified = subprocess.run([sys.executable, str(MODULE_PATH), "verify", str(out)],
                                       check=True, cwd=ROOT, capture_output=True, text=True)
             self.assertEqual(verified.stdout.strip(), "VERIFIED")
