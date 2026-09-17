@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 93,
     "open_pull_requests": 36,
-    "runs_in_progress": 15,
-    "runs_queued": 1171
+    "runs_in_progress": 12,
+    "runs_queued": 1177
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -217,8 +217,19 @@
   },
   "pulls_listed": 36,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 78.1,
+  "queue_depth_per_runner": 98.1,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "devin/sledge-torrent-tracesila",
+      "closed_at": "2026-09-17T21:30:16Z",
+      "head_sha": "de2a10593484f057d78eff4fcfe27e547e0653d9",
+      "merged_at": "2026-09-17T21:30:16Z",
+      "number": 15775,
+      "state": "MERGED",
+      "title": "convert shelf: torrent workorder + trace sila (sledge-torrent-tracesila-convert-shelf-20260917-01)"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -372,21 +383,10 @@
       "number": 15760,
       "state": "MERGED",
       "title": "convert shelf: discount leak + eagletrax (sledge-discountleak-eagletrax-convert-shelf-20260917-01)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "devin/sledge-csplabs-ddlcrosssite",
-      "closed_at": "2026-09-17T21:02:19Z",
-      "head_sha": "f0bdb1dd1ffb16207ce1f955c8e86bbeb3573702",
-      "merged_at": "2026-09-17T21:02:19Z",
-      "number": 15759,
-      "state": "MERGED",
-      "title": "convert shelf: csplabs express + ddl crosssite (sledge-csplabs-ddlcrosssite-convert-shelf-20260917-01)"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T21:30:08Z",
+  "unchanged_since": "2026-09-17T21:31:32Z",
   "undatable_pulls": []
 }
