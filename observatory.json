@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "62f4930aaba3f86ee5d6546d2373abc78c19a6a2bb360f5f44422b60327f1a84",
+  "digest": "1610565856a00656b102b6f01519f4a82560b4fcfe2426eeac4f9f3e4370922b",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12880,
-    "pulse_seq": 2047,
-    "sha": "77ab0a90e4115aaa63c4f5a5ec098a5700ae190c"
+    "post_count": 12881,
+    "pulse_seq": 2048,
+    "sha": "2531efc7c78a22b43c964d48807f32cea482fbcf"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T21:22:21Z",
+  "now": "2026-09-17T21:24:41Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4393,12 +4393,12 @@
         {
           "claim": "SLEDGE",
           "grade": "OBSERVED",
-          "id": "sledge-qlabs-rmb-convert-shelf-20260917-01",
+          "id": "sledge-rosecity-roslinct-convert-shelf-20260917-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "sledge-qlabs-rmb-convert-shelf-20260917-01",
+      "id": "sledge-rosecity-roslinct-convert-shelf-20260917-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "UNKNOWN",
