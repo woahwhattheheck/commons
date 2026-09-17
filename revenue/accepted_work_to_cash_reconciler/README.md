@@ -19,14 +19,19 @@ provider cash evidence. It is deliberately stricter than "merged = paid".
   `BUYER_MESSAGE` or `SPONSOR_MESSAGE`.
 - A retained `PAYMENT_RECEIVED` event is **not** enough for `DONE_PAID`.
   Every payment event must also have a separately bound provider confirmation.
-- Provider confirmation remains retained evidence, not a live bank/Stripe/provider
-  query. The output truth boundary says so explicitly.
+- Provider confirmation must be independently bound: copying the same retained
+  provider ref + digest from the upstream payment event does not create a second
+  confirmation. Confirmation remains retained evidence, not a live bank/Stripe/
+  provider query or authentication.
 - New contact is never authorized. If contact is the next step and a source-bound
   route exists, the product emits `MUSE_REQUIRED` with exact recipient + purpose.
   Even a historical `MUSE_CLEAR` event does not become reusable send authority.
 - A prior outbound becomes `WAIT_EXTERNAL`; `DNR` becomes `INBOUND_ONLY`;
   collision becomes `HOLD_COLLISION`; a later human inbound becomes
   `INBOUND_REVIEW`.
+- Same-second contact evidence is fail-closed instead of ordered by arbitrary
+  lexical event ids: DNR wins, collision wins, and simultaneous inbound+outbound
+  becomes `HOLD_CONTACT_AMBIGUITY` until separately resolved.
 - Queue order is by deterministic realizability band, then opportunity id. Headline
   amount is reported but never used to rank the queue.
 - All authority bits are hard false.
@@ -42,8 +47,8 @@ The document contains:
    stage labels.
 2. `routes`: zero or one evidence-bound route per opportunity. Route evidence must
    be a buyer/sponsor message, provider directory, or organizer rules source.
-3. `payment_confirmations`: zero or one provider confirmation per upstream
-   `PAYMENT_RECEIVED` event, bound by opportunity id + payment event id.
+3. `payment_confirmations`: zero or one independently bound provider confirmation
+   per upstream `PAYMENT_RECEIVED` event, keyed by opportunity id + payment event id.
 
 The compiler emits a content-addressed
 `TJL_ACCEPTED_WORK_TO_CASH_BUNDLE_V1` and the verifier recompiles both the upstream
@@ -60,6 +65,7 @@ Representative terminal actions are:
 - `WAIT_EXTERNAL`
 - `INBOUND_ONLY`
 - `HOLD_COLLISION`
+- `HOLD_CONTACT_AMBIGUITY`
 - `OWNER_INVOICE_PREPARATION_REVIEW`
 - `ACCEPTANCE_EVIDENCE_REQUIRED`
 - `ROUTE_EVIDENCE_REQUIRED`
@@ -86,11 +92,17 @@ mode `0600` and is never silently overwritten.
 ## Tests
 
 ```bash
-python -m py_compile revenue/accepted_work_to_cash_reconciler/*.py test_accepted_work_to_cash_reconciler.py
-python -m unittest -v test_accepted_work_to_cash_reconciler.py
-python -O -m unittest -v test_accepted_work_to_cash_reconciler.py
+python -m py_compile revenue/accepted_work_to_cash_reconciler/*.py \
+  test_accepted_work_to_cash_reconciler.py \
+  test_accepted_work_to_cash_reconciler_hostile.py
+python -m unittest -v \
+  test_accepted_work_to_cash_reconciler.py \
+  test_accepted_work_to_cash_reconciler_hostile.py
+python -O -m unittest -v \
+  test_accepted_work_to_cash_reconciler.py \
+  test_accepted_work_to_cash_reconciler_hostile.py
 ```
 
-The root test is enrolled by the existing Commons `test_*.py` retained-test path.
+The root tests are enrolled by the existing Commons `test_*.py` retained-test path.
 This product intentionally adds no new standalone workflow slot; exact-head CI is
 read from the retained Commons battery before merge.
