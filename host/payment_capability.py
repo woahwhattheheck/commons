@@ -245,10 +245,80 @@ def catalog_checkout_evidence(catalog: dict[str, Any]) -> dict[str, dict[str, st
     return out
 
 
+def canonical_payment_authority() -> dict[str, dict[str, str]]:
+    """Caller-independent Stripe authority from canonical registry + catalog."""
+    try:
+        registry = _load(ROOT_DEFAULT, REGISTRY)
+        catalog = _load(ROOT_DEFAULT, CATALOG)
+        if registry.get("kind") != "PAYMENT_CAPABILITY_REGISTRY":
+            return {}
+        if registry.get("schema_version") != "commons-payment-capability/v1":
+            return {}
+        _timestamp(registry.get("observed_at"), "canonical.observed_at")
+    except (OSError, ValueError, json.JSONDecodeError, RegistryError):
+        return {}
+    checkouts = catalog_checkouts(catalog)
+    checkout_evidence = catalog_checkout_evidence(catalog)
+    out: dict[str, dict[str, str]] = {}
+    duplicate: set[str] = set()
+    for rail in registry.get("rails") or []:
+        if not isinstance(rail, dict):
+            continue
+        if rail.get("provider") != "stripe" or not public_storefront_eligible(rail):
+            continue
+        rail_id = str(rail.get("id") or "")
+        supported = {
+            sku for sku in rail.get("supported_skus") or [] if isinstance(sku, str)
+        }
+        rail_evidence = rail.get("evidence") if isinstance(rail.get("evidence"), dict) else {}
+        for link in rail.get("canonical_links") or []:
+            if not isinstance(link, dict) or not isinstance(link.get("sku"), str):
+                continue
+            sku = link["sku"]
+            if sku in out:
+                duplicate.add(sku)
+                continue
+            url = str(link.get("url") or "")
+            exposure = str(link.get("exposure") or "")
+            evidence = link.get("evidence") if isinstance(link.get("evidence"), dict) else rail_evidence
+            reference = evidence.get("reference")
+            observed_at = evidence.get("observed_at")
+            catalog_evidence = checkout_evidence.get(sku) or {}
+            if not (
+                link.get("link_active") is True
+                and link.get("livemode") is True
+                and sku in supported
+                and checkouts.get(sku) == url
+                and bool(STRIPE_URL_RE.fullmatch(url))
+                and isinstance(reference, str)
+                and bool(reference.strip())
+                and isinstance(observed_at, str)
+                and catalog_evidence.get("url") == url
+                and catalog_evidence.get("reference") == reference
+                and catalog_evidence.get("observed_at") == observed_at
+            ):
+                continue
+            try:
+                _timestamp(observed_at, "%s.canonical.evidence.observed_at" % sku)
+            except RegistryError:
+                continue
+            out[sku] = {
+                "rail_id": rail_id,
+                "url": url,
+                "reference": reference,
+                "observed_at": observed_at,
+                "exposure": exposure,
+            }
+    for sku in duplicate:
+        out.pop(sku, None)
+    return out
+
+
 def project_rail(
     rail: dict[str, Any],
     checkouts: dict[str, str],
     checkout_evidence: dict[str, dict[str, str]],
+    authority: dict[str, dict[str, str]],
 ) -> dict[str, Any]:
     eligible = public_storefront_eligible(rail)
     links = rail.get("canonical_links") if isinstance(rail.get("canonical_links"), list) else []
@@ -256,12 +326,14 @@ def project_rail(
         sku for sku in rail.get("supported_skus") or [] if isinstance(sku, str)
     }
     public_links = []
+    rail_id = str(rail.get("id") or "")
     if eligible and rail.get("provider") == "stripe":
         for link in links:
             if not isinstance(link, dict):
                 continue
             url = str(link.get("url") or "")
             sku = str(link.get("sku") or "")
+            exposure = str(link.get("exposure") or "")
             evidence = link.get("evidence") if isinstance(link.get("evidence"), dict) else rail.get("evidence") or {}
             evidence_ready = bool(evidence.get("reference") and evidence.get("observed_at"))
             if evidence_ready:
@@ -275,6 +347,14 @@ def project_rail(
                 and catalog_evidence.get("reference") == evidence.get("reference")
                 and catalog_evidence.get("observed_at") == evidence.get("observed_at")
             )
+            canonical = authority.get(sku) or {}
+            authority_matches = (
+                canonical.get("rail_id") == rail_id
+                and canonical.get("url") == url
+                and canonical.get("reference") == evidence.get("reference")
+                and canonical.get("observed_at") == evidence.get("observed_at")
+                and canonical.get("exposure") == exposure
+            )
             if (
                 link.get("link_active") is True
                 and link.get("livemode") is True
@@ -283,6 +363,7 @@ def project_rail(
                 and STRIPE_URL_RE.fullmatch(url)
                 and evidence_ready
                 and evidence_matches
+                and authority_matches
             ):
                 public_links.append(
                     {
@@ -306,7 +387,7 @@ def project_rail(
             )
     dest = rail.get("settlement_destination") if isinstance(rail.get("settlement_destination"), dict) else {}
     return {
-        "id": str(rail.get("id") or ""),
+        "id": rail_id,
         "provider": str(rail.get("provider") or ""),
         "capability_state": str(rail.get("capability_state") or ""),
         "public_presentation": "EXPOSE" if eligible and public_links else "INERT",
@@ -332,8 +413,9 @@ def project(registry: dict[str, Any], catalog: dict[str, Any]) -> dict[str, Any]
     rails = registry.get("rails") if isinstance(registry.get("rails"), list) else []
     checkouts = catalog_checkouts(catalog)
     checkout_evidence = catalog_checkout_evidence(catalog)
+    authority = canonical_payment_authority()
     projected = [
-        project_rail(rail, checkouts, checkout_evidence)
+        project_rail(rail, checkouts, checkout_evidence, authority)
         for rail in rails
         if isinstance(rail, dict)
     ]
