@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 93,
-    "open_pull_requests": 36,
-    "runs_in_progress": 21,
-    "runs_queued": 814
+    "open_pull_requests": 37,
+    "runs_in_progress": 20,
+    "runs_queued": 514
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -66,6 +66,17 @@
     }
   ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "riot/bin-autopsy-product-20260917",
+      "created_at": "2026-09-17T21:58:30Z",
+      "draft": false,
+      "head_sha": "b52aa7ba1368d23331dae30579863c18ece4eacb",
+      "number": 15784,
+      "title": "Bin Agent Autopsy product (remove $29 Autopsy pages, CTAs, fulfillment)",
+      "updated_at": "2026-09-17T21:58:30Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -164,17 +175,6 @@
       "number": 15731,
       "title": "feat: exact-head ship fence for moving-main + CI truth",
       "updated_at": "2026-09-17T21:02:51Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "relay-z/deploy-transport-preflight-15671",
-      "created_at": "2026-09-17T20:32:52Z",
-      "draft": false,
-      "head_sha": "9ddf5f322a886a19b48d08356545ac90f7be7501",
-      "number": 15730,
-      "title": "Deploy transport source-binding preflight successor",
-      "updated_at": "2026-09-17T20:51:03Z"
     }
   ],
   "open_heads": {
@@ -213,11 +213,12 @@
     "15753": "dcc6005af8492d61c26d10a46adedb390a881d2a",
     "15756": "48c8eeb97aff1485e3cae4f518a6a03b89304cf0",
     "15758": "e9021d91fbc7e4f61afc5cba904674d0be99b7cc",
-    "15761": "6bd10e7d848ced3a14bfb8f557af849cdfd4ae9f"
+    "15761": "6bd10e7d848ced3a14bfb8f557af849cdfd4ae9f",
+    "15784": "b52aa7ba1368d23331dae30579863c18ece4eacb"
   },
-  "pulls_listed": 36,
+  "pulls_listed": 37,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 38.8,
+  "queue_depth_per_runner": 25.7,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -387,6 +388,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T21:57:11Z",
+  "unchanged_since": "2026-09-17T22:01:45Z",
   "undatable_pulls": []
 }
