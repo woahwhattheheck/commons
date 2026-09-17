@@ -1,0 +1,65 @@
+{
+  "families": [
+    {
+      "family_id": "proposal",
+      "setup_cash_minor": 0,
+      "setup_effort_cost_minor": 4000,
+      "setup_minutes": 30
+    },
+    {
+      "family_id": "merged-work-collection",
+      "setup_cash_minor": 0,
+      "setup_effort_cost_minor": 1000,
+      "setup_minutes": 10
+    }
+  ],
+  "jobs": [
+    {
+      "already_owned": false,
+      "available": true,
+      "cash_cost_minor": 0,
+      "collection_probability_ppm": 900000,
+      "deadline_minutes": 180,
+      "duration_minutes": 60,
+      "effort_cost_minor": 6000,
+      "family_id": "proposal",
+      "operation_id": "qualified-proposal-A",
+      "payout_minor": 250000,
+      "success_probability_ppm": 250000
+    },
+    {
+      "already_owned": false,
+      "available": true,
+      "cash_cost_minor": 0,
+      "collection_probability_ppm": 900000,
+      "deadline_minutes": 120,
+      "duration_minutes": 15,
+      "effort_cost_minor": 1500,
+      "family_id": "merged-work-collection",
+      "operation_id": "merged-work-followup-B",
+      "payout_minor": 9000,
+      "success_probability_ppm": 950000
+    },
+    {
+      "already_owned": false,
+      "available": true,
+      "cash_cost_minor": 0,
+      "collection_probability_ppm": null,
+      "deadline_minutes": 90,
+      "duration_minutes": 10,
+      "effort_cost_minor": 1000,
+      "family_id": "merged-work-collection",
+      "operation_id": "unknown-bounty-C",
+      "payout_minor": null,
+      "success_probability_ppm": null
+    }
+  ],
+  "limits": {
+    "cash_limit_minor": 10000,
+    "effort_limit_minutes": 180,
+    "horizon_minutes": 240,
+    "minimum_batch_net_minor": 25000,
+    "node_budget": 200000
+  },
+  "schema": "costed-work-batch/v1"
+}
