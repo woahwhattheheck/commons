@@ -7,7 +7,7 @@ from unittest import mock
 
 import revenue.swarmops_dossier.current as current_module
 from revenue.swarmops_dossier.acceptance import fixture
-from revenue.swarmops_dossier.engine import compile_dossier, digest
+from revenue.swarmops_dossier.engine import DossierError, compile_dossier, digest
 
 
 def _utc_text(value: datetime) -> str:
@@ -80,7 +80,7 @@ class CurrentVerifierHardeningTests(unittest.TestCase):
         ), mock.patch.object(
             current_module, "_current_semantics", new=lambda _value: b"constant"
         ), mock.patch.object(
-            current_module, "_freeze_plain_json", new=lambda _value: {}
+            current_module, "_freeze_plain_json", new=lambda *_args: {}
         ), mock.patch.object(
             current_module,
             "_parse_utc",
@@ -103,10 +103,35 @@ class CurrentVerifierHardeningTests(unittest.TestCase):
         packet = _freshen(self.packet, _utc_text(datetime.now(timezone.utc)))
         candidate = current_module.compile_current_dossier(packet, self.policy)
         with mock.patch.object(
-            current_module, "_freeze_plain_json", new=lambda _value: {}
+            current_module, "_freeze_plain_json", new=lambda *_args: {}
         ):
             self.assertTrue(
                 current_module.verify_current_dossier(packet, self.policy, candidate)
+            )
+
+    def test_verifier_freezes_all_multi_pass_inputs(self):
+        packet = _freshen(self.packet, _utc_text(datetime.now(timezone.utc)))
+        candidate = current_module.compile_current_dossier(packet, self.policy)
+
+        self.assertFalse(
+            current_module.verify_current_dossier(
+                _EvilDict(packet), self.policy, candidate
+            )
+        )
+        self.assertFalse(
+            current_module.verify_current_dossier(
+                packet, _EvilDict(self.policy), candidate
+            )
+        )
+        self.assertFalse(
+            current_module.verify_current_dossier(
+                packet, self.policy, candidate, _EvilDict({})
+            )
+        )
+
+        with self.assertRaises(DossierError):
+            current_module.compile_current_dossier(
+                _EvilDict(packet), self.policy
             )
 
     def test_clock_is_sampled_after_candidate_authentication(self):
