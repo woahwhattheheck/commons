@@ -137,8 +137,12 @@ class GgufEnterpriseCloseKitTests(unittest.TestCase):
         for value in (
             "buyer%40example.test",
             "buyer%2540example.test",
+            "contact jane＠example.test for the harness",
             "ｊａｎｅ＠ｅｘａｍｐｌｅ．ｔｅｓｔ",
+            "api_key＝sk_live_1234567890abcdef",
+            "account_number：123456789012",
             "api%5Fkey%3Dsk_live_1234567890abcdef",
+            "zero\u200bwidth@example.test",
         ):
             with self.subTest(value=value):
                 intake = load(INTAKE)
