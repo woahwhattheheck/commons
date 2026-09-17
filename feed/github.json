@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 93,
     "open_pull_requests": 36,
-    "runs_in_progress": 16,
-    "runs_queued": 1183
+    "runs_in_progress": 21,
+    "runs_queued": 814
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -108,7 +108,7 @@
       "head_sha": "dcc6005af8492d61c26d10a46adedb390a881d2a",
       "number": 15753,
       "title": "revenue: make retired checkout tombstones monotonic and alias-hostile",
-      "updated_at": "2026-09-17T20:56:25Z"
+      "updated_at": "2026-09-17T21:48:09Z"
     },
     {
       "author": "woahwhattheheck",
@@ -217,8 +217,74 @@
   },
   "pulls_listed": 36,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 73.9,
+  "queue_depth_per_runner": 38.8,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "devin/sledge-muhltrain-posthttp",
+      "closed_at": "2026-09-17T21:49:30Z",
+      "head_sha": "922e2a1e5c0aafac1dbf73c7fd448ce14d39bcff",
+      "merged_at": "2026-09-17T21:49:30Z",
+      "number": 15783,
+      "state": "MERGED",
+      "title": "convert shelf: muhl-train + post-http (sledge-muhltrain-posthttp-convert-shelf-20260917-01)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "devin/sledge-fleetworkorder-imagedrop",
+      "closed_at": "2026-09-17T21:47:40Z",
+      "head_sha": "0d9b3503094c4664467bc4dce85714a25d9786ca",
+      "merged_at": "2026-09-17T21:47:40Z",
+      "number": 15782,
+      "state": "MERGED",
+      "title": "convert shelf: fleet work order + image drop (sledge-fleetworkorder-imagedrop-convert-shelf-20260917-01)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "devin/sledge-prooftoproposal-theworld",
+      "closed_at": "2026-09-17T21:44:22Z",
+      "head_sha": "8f53d1bc124abe23565ffb0a76e04b0d4f8926a6",
+      "merged_at": "2026-09-17T21:44:22Z",
+      "number": 15781,
+      "state": "MERGED",
+      "title": "convert shelf: proof-to-proposal + the-world (sledge-prooftoproposal-theworld-convert-shelf-20260917-01)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "devin/sledge-freesamplepair",
+      "closed_at": "2026-09-17T21:40:13Z",
+      "head_sha": "0fc13ead242a5e2e1342f227a9065e8d652ba829",
+      "merged_at": "2026-09-17T21:40:13Z",
+      "number": 15780,
+      "state": "MERGED",
+      "title": "convert shelf: muhlnickel + titan-hands free-sample (sledge-freesamplepair-convert-shelf-20260917-01)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "devin/sledge-pixelunify-proofspiral",
+      "closed_at": "2026-09-17T21:37:31Z",
+      "head_sha": "7a134d8bca27715f9714c0ca77534eb7aae2b693",
+      "merged_at": "2026-09-17T21:37:31Z",
+      "number": 15779,
+      "state": "MERGED",
+      "title": "convert shelf: pixel unify + proof spiral (sledge-pixelunify-proofspiral-convert-shelf-20260917-01)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "devin/sledge-organabio-subzero",
+      "closed_at": "2026-09-17T21:35:46Z",
+      "head_sha": "1eba73f1ac49d45a2760e90a1d017c08c4cb4b15",
+      "merged_at": "2026-09-17T21:35:46Z",
+      "number": 15778,
+      "state": "MERGED",
+      "title": "convert shelf: organabio donor coa + subzero proof (sledge-organabio-subzero-convert-shelf-20260917-01)"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -317,76 +383,10 @@
       "number": 15768,
       "state": "MERGED",
       "title": "convert shelf: preinnewhof pfas + ptl controlled sample (sledge-preinnewhof-ptl-convert-shelf-20260917-01)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "devin/sledge-paragon-pcl",
-      "closed_at": "2026-09-17T21:18:01Z",
-      "head_sha": "09f507f832845b40eeca41ab4d9153f39bae6277",
-      "merged_at": "2026-09-17T21:18:01Z",
-      "number": 15767,
-      "state": "MERGED",
-      "title": "convert shelf: paragon biodiesel + pcl scope sla (sledge-paragon-pcl-convert-shelf-20260917-01)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "devin/sledge-oregonbrewlab-pacelebanon",
-      "closed_at": "2026-09-17T21:16:11Z",
-      "head_sha": "3efc15e33fadafe13597dca376d540d9eb9c529f",
-      "merged_at": "2026-09-17T21:16:11Z",
-      "number": 15766,
-      "state": "MERGED",
-      "title": "convert shelf: oregon brewlab + pace lebanon (sledge-oregonbrewlab-pacelebanon-convert-shelf-20260917-01)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "cursor/latch-current-work-close-cb09",
-      "closed_at": "2026-09-17T21:15:54Z",
-      "head_sha": "4753453c438c4ba3785c70965b5b72703ee48509",
-      "merged_at": "2026-09-17T21:15:54Z",
-      "number": 15765,
-      "state": "MERGED",
-      "title": "LATCH close CURRENT_WORK BUILDABLE rows met on main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol/public-commons-backlink-guard-15710",
-      "closed_at": "2026-09-17T21:15:27Z",
-      "head_sha": "70b65b98948ccd0893395ba6d08fd6c037238d77",
-      "merged_at": null,
-      "number": 15726,
-      "state": "CLOSED",
-      "title": "Policy: enforce no public Commons backlinks on customer surfaces"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "devin/sledge-luvak-madescientific",
-      "closed_at": "2026-09-17T21:12:37Z",
-      "head_sha": "8234d91bb0c9dc551026c73bdfec92fde8bf5d77",
-      "merged_at": "2026-09-17T21:12:37Z",
-      "number": 15764,
-      "state": "MERGED",
-      "title": "convert shelf: luvak + made scientific (sledge-luvak-madescientific-convert-shelf-20260917-01)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "devin/sledge-kincell-lexington",
-      "closed_at": "2026-09-17T21:10:26Z",
-      "head_sha": "96d020942df7e77a47b4d831034adc7152a97cda",
-      "merged_at": "2026-09-17T21:10:25Z",
-      "number": 15763,
-      "state": "MERGED",
-      "title": "convert shelf: kincell + lexington (sledge-kincell-lexington-convert-shelf-20260917-01)"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T21:35:04Z",
+  "unchanged_since": "2026-09-17T21:57:11Z",
   "undatable_pulls": []
 }
