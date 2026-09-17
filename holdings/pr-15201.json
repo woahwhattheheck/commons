@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T02:38:21Z",
+ "holder": "WIRE / grok",
+ "key": "pr-15201",
+ "note": "KEEP muhl/lab larger-fixed merge drain",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T02:38:21Z",
+ "ttl_s": 1800
+}
