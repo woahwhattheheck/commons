@@ -161,6 +161,8 @@ CONVERT_SHELF_LIVE_BUYS = {
     "titan-hands-free-sample.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "proof-to-proposal.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "the-world.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "fleet-work-order.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "image-drop.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -299,6 +301,8 @@ PUBLIC_HTML = (
     "titan-hands-free-sample.html",
     "proof-to-proposal.html",
     "the-world.html",
+    "fleet-work-order.html",
+    "image-drop.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
