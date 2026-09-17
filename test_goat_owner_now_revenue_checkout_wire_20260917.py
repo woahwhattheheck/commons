@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
-"""Hermetic: owner-now-revenue.html buy-path uses existing tip-shelf + hour Payment Links."""
+"""Owner-now checkout identities stay exact while publication stays fail-closed."""
 from __future__ import annotations
 
+import copy
 import importlib.util
 import json
 import re
 import unittest
-from html import unescape
 from pathlib import Path
-from urllib.parse import urlsplit
 
 import test_checkout_landing_integrity as cli
 
@@ -37,35 +36,30 @@ SHELF = (
         "sku": "sku-tip-20260826",
         "url": "https://donate.stripe.com/fZucN40Ch9fj7mxgJs43S08",
         "plink": "plink_1U8lgOATH4EDE7XDZobVyXvE",
-        "cta": "Buy tip — $5",
         "card": "land/sku-tip-20260826.md",
     },
     {
         "sku": "sku-seat-20260826",
         "url": "https://buy.stripe.com/3cIeVc5WB1MRgX7al443S03",
         "plink": "plink_1U8lgDATH4EDE7XDHtJcyv60",
-        "cta": "Buy seat — $5 / month",
         "card": "land/sku-seat-20260826.md",
     },
     {
         "sku": "sku-unlock-20260826",
         "url": "https://buy.stripe.com/3cIbJ0ckZgHL36h8cW43S04",
         "plink": "plink_1U8lgEATH4EDE7XDB4w8xZu5",
-        "cta": "Buy unlock — $5",
         "card": "land/sku-unlock-20260826.md",
     },
     {
         "sku": "sku-monthly-tip-20260826",
         "url": "https://buy.stripe.com/bJe28qacR4Z3gX7bp843S05",
         "plink": "plink_1U8lgFATH4EDE7XDGfz9Ax3S",
-        "cta": "Buy monthly tip — $3 / month",
         "card": "land/sku-monthly-tip-20260826.md",
     },
     {
         "sku": "sku-boost-20260826",
         "url": "https://buy.stripe.com/3cIfZgacRezDfT39h043S06",
         "plink": "plink_1U8lgFATH4EDE7XD1Ho7KkA2",
-        "cta": "Buy boost — $4.99 / month",
         "card": "land/sku-boost-20260826.md",
     },
 )
@@ -78,52 +72,44 @@ SIBLING_RAILS = {
     "repair-booking-preflight.html": "https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d",
     "plant-downtime-handoff.html": "https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e",
 }
-STRIPE_HREF_RE = re.compile(r'href="(https://(?:buy|donate)\.stripe\.com/[^"]+)"')
+STRIPE_HREF_RE = re.compile(r'href="https://(?:buy|donate)\.stripe\.com/[^"]+"')
+
+
+def _public_skus(snapshot: dict, catalog: dict) -> set[str]:
+    return {row["sku"] for row in checkout_capability.project(snapshot, catalog)["public_rails"]}
 
 
 class GoatOwnerNowRevenueCheckoutWire(unittest.TestCase):
-    def test_door_and_catalog_carry_the_verified_payment_links(self) -> None:
+    def test_exact_links_are_stored_inert_and_visible_checkout_is_renderer_owned(self) -> None:
         html = PAGE.read_text(encoding="utf-8")
-        self.assertIn("<noscript>", html)
+        self.assertIn('<template id="owner-now-stripe-identities">', html)
+        before, tail = html.split('<template id="owner-now-stripe-identities">', 1)
+        template, after = tail.split("</template>", 1)
+        active_html = before + after
         noscript = html.split("<noscript>", 1)[1].split("</noscript>", 1)[0]
-        self.assertNotIn("Loading", html)
-        self.assertNotIn(
-            "provider-inert",
-            html.split("<style>", 1)[0] + html.split("</style>", 1)[1],
-        )
+
         self.assertGreaterEqual(html.count("js-checkout-slot"), 7)
         self.assertIn('src="./pay.js?v=20260902b"', html)
         self.assertIn('data-checkout-first="1"', html)
-        self.assertIn(HOUR_URL, html)
-        self.assertIn("Buy White Box hour — $250", html)
-        self.assertGreaterEqual(html.count("Buy White Box hour — $250"), 2)
-        self.assertIn(HOUR_URL, noscript)
+        self.assertIn("provider-inert", active_html)
+        self.assertNotRegex(active_html, STRIPE_HREF_RE)
+        self.assertNotRegex(noscript, STRIPE_HREF_RE)
+        self.assertNotIn("https://buy.stripe.com/", active_html)
+        self.assertNotIn("https://donate.stripe.com/", active_html)
+        self.assertIn("./land/sku-whitebox-hour-20260826.md", noscript)
         self.assertIn("./land/sku-muhlnickel-titan-20260826.md", html)
         self.assertIn("Open Muhlnickel / Titan — $45,000", html)
         self.assertNotIn(MUHL_URL, html)
-        self.assertEqual(
-            checkout_capability.html_stripe_url_errors("owner-now-revenue.html", html),
-            [],
-        )
-        self.assertEqual(
-            payment_capability.html_stripe_url_errors("owner-now-revenue.html", html),
-            [],
-        )
-        self.assertEqual(
-            checkout_capability.live_stripe_checkout_urls(html),
-            OWNER_NOW_URLS,
-        )
 
-        hrefs = [unescape(value) for value in STRIPE_HREF_RE.findall(html)]
-        self.assertGreaterEqual(len(hrefs), 12)
-        seen = set()
-        for href in hrefs:
-            parsed = urlsplit(href)
-            canonical = f"{parsed.scheme}://{parsed.netloc}{parsed.path}"
-            self.assertIn(canonical, OWNER_NOW_URLS)
-            self.assertEqual(parsed.query, "")
-            seen.add(canonical)
-        self.assertEqual(seen, OWNER_NOW_URLS)
+        self.assertEqual(
+            checkout_capability.live_stripe_checkout_urls(html), OWNER_NOW_URLS
+        )
+        self.assertEqual(
+            checkout_capability.html_stripe_url_errors("owner-now-revenue.html", html), []
+        )
+        self.assertEqual(
+            payment_capability.html_stripe_url_errors("owner-now-revenue.html", html), []
+        )
 
         catalog = json.loads(CATALOG.read_text(encoding="utf-8"))
         listings = {row["id"]: row for row in catalog["listings"]}
@@ -131,12 +117,8 @@ class GoatOwnerNowRevenueCheckoutWire(unittest.TestCase):
         rails = {row["sku"]: row for row in snapshot["canonical_rails"]}
         for row in SHELF:
             with self.subTest(sku=row["sku"]):
-                self.assertIn(row["url"], html)
-                self.assertGreaterEqual(html.count(row["url"]), 2)
-                self.assertIn(row["cta"], html)
-                self.assertGreaterEqual(html.count(row["cta"]), 2)
-                self.assertIn(row["url"], noscript)
-                self.assertIn(row["cta"], noscript)
+                self.assertIn(row["url"], template)
+                self.assertNotIn(row["url"], active_html)
                 sku_card = (ROOT / row["card"]).read_text(encoding="utf-8")
                 self.assertIn(row["url"], sku_card)
                 self.assertIn(row["plink"], sku_card)
@@ -148,6 +130,8 @@ class GoatOwnerNowRevenueCheckoutWire(unittest.TestCase):
                 self.assertEqual(rail["plink"], row["plink"])
                 self.assertTrue(rail["livemode"])
 
+        self.assertIn(HOUR_URL, template)
+        self.assertNotIn(HOUR_URL, active_html)
         hour_card = (ROOT / "land/sku-whitebox-hour-20260826.md").read_text(
             encoding="utf-8"
         )
@@ -167,12 +151,59 @@ class GoatOwnerNowRevenueCheckoutWire(unittest.TestCase):
             SHELF[0]["url"] + "\nhttps://buy.stripe.com/not-a-canonical-link",
             1,
         )
+        expected = [
+            "owner-now-revenue.html convert shelf must reuse exactly the existing owner-now Stripe URLs"
+        ]
         self.assertEqual(
             checkout_capability.html_stripe_url_errors("owner-now-revenue.html", extra),
-            [
-                "owner-now-revenue.html convert shelf must reuse exactly the existing owner-now Stripe URLs"
-            ],
+            expected,
         )
+        self.assertEqual(
+            payment_capability.html_stripe_url_errors("owner-now-revenue.html", extra),
+            expected,
+        )
+
+    def test_provider_and_catalog_failure_predecessors_cannot_publish_owner_now(self) -> None:
+        html = PAGE.read_text(encoding="utf-8")
+        before, tail = html.split('<template id="owner-now-stripe-identities">', 1)
+        _template, after = tail.split("</template>", 1)
+        active_html = before + after
+        self.assertNotRegex(active_html, STRIPE_HREF_RE)
+
+        catalog = json.loads(CATALOG.read_text(encoding="utf-8"))
+        snapshot = json.loads(SNAPSHOT.read_text(encoding="utf-8"))
+        sku = SHELF[0]["sku"]
+        url = SHELF[0]["url"]
+        self.assertIn(sku, _public_skus(snapshot, catalog))
+
+        provider_not_ready = copy.deepcopy(snapshot)
+        provider_not_ready["provider"]["payouts_enabled"] = False
+        self.assertNotIn(sku, _public_skus(provider_not_ready, catalog))
+
+        listing_inactive = copy.deepcopy(catalog)
+        listing = next(row for row in listing_inactive["listings"] if row["id"] == sku)
+        listing["checkout"]["status"] = "INERT"
+        self.assertNotIn(sku, _public_skus(snapshot, listing_inactive))
+
+        link_inactive = copy.deepcopy(snapshot)
+        rail = next(row for row in link_inactive["canonical_rails"] if row["sku"] == sku)
+        rail["link_active"] = False
+        self.assertNotIn(sku, _public_skus(link_inactive, catalog))
+
+        duplicate = copy.deepcopy(snapshot)
+        duplicate["inert_duplicate_urls"] = list(duplicate["inert_duplicate_urls"]) + [url]
+        self.assertNotIn(sku, _public_skus(duplicate, catalog))
+
+        mismatch = copy.deepcopy(snapshot)
+        rail = next(row for row in mismatch["canonical_rails"] if row["sku"] == sku)
+        rail["url"] = "https://buy.stripe.com/canonical-mismatch"
+        self.assertNotIn(sku, _public_skus(mismatch, catalog))
+
+        pay_js = (ROOT / "pay.js").read_text(encoding="utf-8")
+        self.assertIn("if (!railEligible(snapshot, listing))", pay_js)
+        self.assertIn("Provider rail is inert. Unverified URLs stay unpublished.", pay_js)
+        self.assertIn("Catalog unavailable:", pay_js)
+        self.assertIn("Stripe URLs stay inert.", pay_js)
 
     def test_autopsy_and_199_sibling_doors_keep_their_existing_rails(self) -> None:
         page = PAGE.read_text(encoding="utf-8")

@@ -30,34 +30,50 @@
   <p>Full catalog: <a href="./commerce.html">commerce.html</a>. Cite forge tip-shelf / spark autopsy — do not remint.</p>
 </section>
 
-<p class="law">Owner spoken rule 2026-09-02: point is generate revenue. Stop zero-cash signoffs. This door asks for the sale on rails already proven CHARGEABLE. LOW+WIDE tip-shelf SKUs and the White Box hour use existing livemode Payment Links from <code>land/sku-*-20260826.md</code>. Catalog hydrate stays; the buy path does not wait on it. Muhlnickel / Titan deep-links to its land SKU card. Do not invent Stripe URLs. <code>NOT_MINTED</code> is a measurement, not a freeze. Fallback if Stripe later fails closed: <a href="mailto:tokenjunkielabs@gmail.com">tokenjunkielabs@gmail.com</a>. Cite <code>goat-owner-now-revenue-checkout-wire-20260917-01</code>.</p>
+<p class="law">Owner spoken rule 2026-09-02: point is generate revenue. Stop zero-cash signoffs. This door asks for the sale on rails already proven CHARGEABLE. LOW+WIDE tip-shelf SKUs and the White Box hour retain the exact existing livemode Payment Link identities from <code>land/sku-*-20260826.md</code>, but <code>pay.js</code> publishes an actionable checkout only after the current snapshot, catalog, canonical-rail, duplicate, charges, payouts, and link-active gates all pass. If that evidence cannot be loaded or revalidated, the visible slots stay inert. Muhlnickel / Titan deep-links to its land SKU card. Do not invent Stripe URLs. <code>NOT_MINTED</code> is a measurement, not a freeze. Fallback if Stripe later fails closed: <a href="mailto:tokenjunkielabs@gmail.com">tokenjunkielabs@gmail.com</a>. Cite <code>goat-owner-now-revenue-checkout-wire-20260917-01</code> plus hotfix <code>GOAT-OWNER-NOW-15364-RAIL-ELIGIBILITY-CLOSURE-ZFA0302-20260917</code>.</p>
 <p>Independent MATCH leftover <a href="./p/cursor-owner-now-readback-20260902-01.md"><code>cursor-owner-now-readback-20260902-01</code></a> land <code>348ffcc2a</code> blob <code>1b3cd631</code>. Owner card <code>ground/OWNER_NOW.md</code> <code>6b8ee988</code> was not reminted. Helper <code>python3 host/owner_now_revenue.py --json</code>.</p>
 <section id="owner-action" class="law" aria-label="Remaining owner action"></section>
 <section id="rail-failover" class="law" aria-label="Storefront failover"></section>
+
+<!-- Stored identities are deliberately non-actionable. host/* validators use these exact
+     strings to reject reminted URLs; pay.js obtains the actionable URL from the current
+     catalog only after railEligible(snapshot, listing) succeeds. -->
+<template id="owner-now-stripe-identities">
+  <code data-sku="sku-tip-20260826">https://donate.stripe.com/fZucN40Ch9fj7mxgJs43S08</code>
+  <code data-sku="sku-seat-20260826">https://buy.stripe.com/3cIeVc5WB1MRgX7al443S03</code>
+  <code data-sku="sku-unlock-20260826">https://buy.stripe.com/3cIbJ0ckZgHL36h8cW43S04</code>
+  <code data-sku="sku-monthly-tip-20260826">https://buy.stripe.com/bJe28qacR4Z3gX7bp843S05</code>
+  <code data-sku="sku-boost-20260826">https://buy.stripe.com/3cIfZgacRezDfT39h043S06</code>
+  <code data-sku="sku-whitebox-hour-20260826">https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07</code>
+</template>
+
 <h2>LOW + WIDE — ask for the sale</h2>
 <ul>
-<li><strong>tip</strong> — $5 once<p><a class="checkout-active" href="https://donate.stripe.com/fZucN40Ch9fj7mxgJs43S08" target="_blank" rel="noopener noreferrer">Buy tip — $5</a></p><div class="js-checkout-slot" data-sku="sku-tip-20260826"><p class="note">Catalog hydrate stays available; the Payment Link does not wait on it.</p></div></li>
-<li><strong>seat</strong> — $5 / month<p><a class="checkout-active" href="https://buy.stripe.com/3cIeVc5WB1MRgX7al443S03" target="_blank" rel="noopener noreferrer">Buy seat — $5 / month</a></p><div class="js-checkout-slot" data-sku="sku-seat-20260826"><p class="note">Catalog hydrate stays available; the Payment Link does not wait on it.</p></div></li>
-<li><strong>unlock</strong> — $5 once<p><a class="checkout-active" href="https://buy.stripe.com/3cIbJ0ckZgHL36h8cW43S04" target="_blank" rel="noopener noreferrer">Buy unlock — $5</a></p><div class="js-checkout-slot" data-sku="sku-unlock-20260826"><p class="note">Catalog hydrate stays available; the Payment Link does not wait on it.</p></div></li>
-<li><strong>monthly tip</strong> — $3 / month<p><a class="checkout-active" href="https://buy.stripe.com/bJe28qacR4Z3gX7bp843S05" target="_blank" rel="noopener noreferrer">Buy monthly tip — $3 / month</a></p><div class="js-checkout-slot" data-sku="sku-monthly-tip-20260826"><p class="note">Catalog hydrate stays available; the Payment Link does not wait on it.</p></div></li>
-<li><strong>boost</strong> — $4.99 / month<p><a class="checkout-active" href="https://buy.stripe.com/3cIfZgacRezDfT39h043S06" target="_blank" rel="noopener noreferrer">Buy boost — $4.99 / month</a></p><div class="js-checkout-slot" data-sku="sku-boost-20260826"><p class="note">Catalog hydrate stays available; the Payment Link does not wait on it.</p></div></li>
+<li><strong>tip</strong> — $5 once<div class="js-checkout-slot" data-sku="sku-tip-20260826"><p class="provider-inert">Current provider/catalog evidence is checked before this checkout is published.</p></div></li>
+<li><strong>seat</strong> — $5 / month<div class="js-checkout-slot" data-sku="sku-seat-20260826"><p class="provider-inert">Current provider/catalog evidence is checked before this checkout is published.</p></div></li>
+<li><strong>unlock</strong> — $5 once<div class="js-checkout-slot" data-sku="sku-unlock-20260826"><p class="provider-inert">Current provider/catalog evidence is checked before this checkout is published.</p></div></li>
+<li><strong>monthly tip</strong> — $3 / month<div class="js-checkout-slot" data-sku="sku-monthly-tip-20260826"><p class="provider-inert">Current provider/catalog evidence is checked before this checkout is published.</p></div></li>
+<li><strong>boost</strong> — $4.99 / month<div class="js-checkout-slot" data-sku="sku-boost-20260826"><p class="provider-inert">Current provider/catalog evidence is checked before this checkout is published.</p></div></li>
 </ul>
 <h2>HIGH + NARROW — ask for the sale</h2>
 <ul>
-<li><strong>whitebox hour</strong> — $250 / hour<p><a class="checkout-active" href="https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07" target="_blank" rel="noopener noreferrer">Buy White Box hour — $250</a></p><div class="js-checkout-slot" data-sku="sku-whitebox-hour-20260826"><p class="note">Catalog hydrate stays available; the Payment Link does not wait on it.</p></div></li>
-<li><strong>muhlnickel / titan</strong> — $45,000<p><a class="funnel-intake" href="./land/sku-muhlnickel-titan-20260826.md">Open Muhlnickel / Titan — $45,000</a></p><div class="js-checkout-slot" data-sku="sku-muhlnickel-titan-20260826"><p class="note">Catalog hydrate stays available; live checkout is on the land SKU card.</p></div></li>
+<li><strong>whitebox hour</strong> — $250 / hour<div class="js-checkout-slot" data-sku="sku-whitebox-hour-20260826"><p class="provider-inert">Current provider/catalog evidence is checked before this checkout is published.</p></div></li>
+<li><strong>muhlnickel / titan</strong> — $45,000<p><a class="funnel-intake" href="./land/sku-muhlnickel-titan-20260826.md">Open Muhlnickel / Titan — $45,000</a></p><div class="js-checkout-slot" data-sku="sku-muhlnickel-titan-20260826"><p class="note">Catalog hydrate stays available; live checkout remains governed by the catalog/provider gate.</p></div></li>
 </ul>
 <p class="note">A click is intent, not cash. Collected cash stays USD 0 until BANK_AVAILABLE. Did not ACK hourly. Did not spawn Muse Spark / gpt-6 / gpt-5.7. HTTP is not the computer.</p>
 <noscript>
 <section class="law" aria-label="JavaScript is off">
   <h2>JavaScript is off</h2>
-  <p>Checkout does not wait on catalog hydration. These are the existing livemode owner-now Payment Links.</p>
-  <p><a class="checkout-active" href="https://donate.stripe.com/fZucN40Ch9fj7mxgJs43S08" target="_blank" rel="noopener noreferrer">Buy tip — $5</a></p>
-  <p><a class="checkout-active" href="https://buy.stripe.com/3cIeVc5WB1MRgX7al443S03" target="_blank" rel="noopener noreferrer">Buy seat — $5 / month</a></p>
-  <p><a class="checkout-active" href="https://buy.stripe.com/3cIbJ0ckZgHL36h8cW43S04" target="_blank" rel="noopener noreferrer">Buy unlock — $5</a></p>
-  <p><a class="checkout-active" href="https://buy.stripe.com/bJe28qacR4Z3gX7bp843S05" target="_blank" rel="noopener noreferrer">Buy monthly tip — $3 / month</a></p>
-  <p><a class="checkout-active" href="https://buy.stripe.com/3cIfZgacRezDfT39h043S06" target="_blank" rel="noopener noreferrer">Buy boost — $4.99 / month</a></p>
-  <p><a class="checkout-active" href="https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07" target="_blank" rel="noopener noreferrer">Buy White Box hour — $250</a></p>
+  <p>Current checkout eligibility cannot be revalidated without JavaScript, so Stripe links stay unpublished. Use the local product cards or contact Token Junkie Labs instead.</p>
+  <ul>
+    <li><a href="./land/sku-tip-20260826.md">Tip — $5 once</a></li>
+    <li><a href="./land/sku-seat-20260826.md">Seat — $5 / month</a></li>
+    <li><a href="./land/sku-unlock-20260826.md">Unlock — $5 once</a></li>
+    <li><a href="./land/sku-monthly-tip-20260826.md">Monthly tip — $3 / month</a></li>
+    <li><a href="./land/sku-boost-20260826.md">Boost — $4.99 / month</a></li>
+    <li><a href="./land/sku-whitebox-hour-20260826.md">White Box hour — $250</a></li>
+  </ul>
+  <p><a href="mailto:tokenjunkielabs@gmail.com">tokenjunkielabs@gmail.com</a></p>
 </section>
 </noscript>
 <script src="./pay.js?v=20260902b"></script>
