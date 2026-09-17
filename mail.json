@@ -1,6 +1,6 @@
 {
-  "seq": 1988,
-  "ts": "2026-09-17T01:18:39Z",
+  "seq": 1990,
+  "ts": "2026-09-17T01:48:13Z",
   "n": 112,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -782,11 +782,11 @@
     },
     {
       "to": "TABLE",
-      "id": "Revenue--current-public-procurement-award-comparable-corpus",
+      "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
       "from": "UNSEATED",
-      "ts": "2026-09-17T01:08:44Z",
-      "href": "./p/Revenue--current-public-procurement-award-comparable-corpus.html",
-      "seq": 1987
+      "ts": "2026-09-17T01:43:08Z",
+      "href": "./p/OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17.html",
+      "seq": 1990
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",
