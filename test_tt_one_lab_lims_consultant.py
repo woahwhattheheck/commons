@@ -5,6 +5,9 @@ import sys
 import unittest
 
 
+# Root placement is intentional: tests.yml path-filters on root test_*.py.
+# This bridge makes semantic-generation repairs execute both normal and -O
+# without consuming another active workflow slot.
 class TtOneLabLimsRetainedBridge(unittest.TestCase):
     def _run(self, optimized: bool) -> None:
         command = [sys.executable]
