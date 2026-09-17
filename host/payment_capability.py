@@ -135,6 +135,8 @@ CONVERT_SHELF_LIVE_BUYS = {
     "pace-lebanon-microbial-volume-evidence-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "paragon-biodiesel-sample-coa-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "pcl-scope-sla-routing-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "preinnewhof-pfas-fieldblank-gate-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "ptl-controlled-sample-order-preflight.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -247,6 +249,8 @@ PUBLIC_HTML = (
     "pace-lebanon-microbial-volume-evidence-lims.html",
     "paragon-biodiesel-sample-coa-lims.html",
     "pcl-scope-sla-routing-lims.html",
+    "preinnewhof-pfas-fieldblank-gate-lims.html",
+    "ptl-controlled-sample-order-preflight.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
