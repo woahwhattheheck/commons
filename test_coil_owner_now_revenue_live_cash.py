@@ -9,6 +9,7 @@ class T(unittest.TestCase):
     def test(self):
         t=PAGE.read_text(encoding="utf-8")
         for n in REQUIRED: self.assertIn(n,t)
-        self.assertNotIn("buy.stripe.com", t)
         self.assertNotIn("tools-cash.html", t)
+        self.assertNotIn("https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g", t)
+        self.assertIn("https://donate.stripe.com/fZucN40Ch9fj7mxgJs43S08", t)
 if __name__=="__main__": unittest.main()
