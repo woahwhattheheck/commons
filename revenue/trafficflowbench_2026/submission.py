@@ -6,7 +6,7 @@ import io
 import math
 from collections.abc import Iterable, Mapping
 
-from .contract import UPSTREAM, canonical_json_bytes
+from .contract import UPSTREAM, authority_ceiling, canonical_json_bytes
 
 OUT_COLUMNS = ("submission_id", "task", "speed_kmh", "flow_vph", "queue_pred", "path_flow")
 KEYS = {
@@ -17,13 +17,6 @@ KEYS = {
 VALUES = {"state": ("speed_kmh", "flow_vph"), "queue": ("queue_pred",), "odme": ("path_flow",)}
 _RECEIPT_SCHEMA = "trafficflowbench-local-submission/v2"
 _BINDING_SCHEMA = "trafficflowbench-local-submission-input/v1"
-_AUTHORITY = {
-    "submissionSent": False,
-    "officialScoreEstablished": False,
-    "leaderboardRankEstablished": False,
-    "prizeAwarded": False,
-    "paymentReceived": False,
-}
 _RECEIPT_KEYS = {
     "schema",
     "upstreamCommit",
@@ -87,7 +80,7 @@ def _compiler_contract_sha256() -> str:
         "outColumns": OUT_COLUMNS,
         "keys": KEYS,
         "values": VALUES,
-        "authority": _AUTHORITY,
+        "authority": authority_ceiling(),
         "completeDefault": True,
     }
     return hashlib.sha256(canonical_json_bytes(contract)).hexdigest()
@@ -189,7 +182,7 @@ def compile_submission(
         "csvSha256": hashlib.sha256(payload.encode("utf-8")).hexdigest(),
         "compileInputSha256": input_digest,
         "compilerContractSha256": _compiler_contract_sha256(),
-        "authority": dict(_AUTHORITY),
+        "authority": authority_ceiling(),
     }
     receipt["receiptSha256"] = hashlib.sha256(canonical_json_bytes(receipt)).hexdigest()
     return payload, receipt
@@ -219,9 +212,7 @@ def _receipt_semantics_valid(receipt: Mapping[str, object]) -> bool:
     if receipt["requireComplete"] and any(gaps.values()):
         return False
     authority = receipt.get("authority")
-    if type(authority) is not dict or set(authority) != set(_AUTHORITY):
-        return False
-    if any(type(authority[key]) is not bool or authority[key] is not False for key in _AUTHORITY):
+    if type(authority) is not dict or authority != authority_ceiling():
         return False
     body = dict(receipt)
     claimed = body.pop("receiptSha256")
