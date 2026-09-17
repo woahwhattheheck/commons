@@ -1,0 +1,50 @@
+{
+  "schema": "buyer-redline-draft/v1",
+  "document_id": "synthetic-paid-pilot",
+  "generation_id": "baseline-g1",
+  "observed_at": "2026-09-16T20:00:00Z",
+  "clauses": [
+    {
+      "id": "accept.demo",
+      "category": "acceptance",
+      "metric": "criterion",
+      "statement": "Synthetic demo and verifier pass the agreed fixture",
+      "value": "PASS"
+    },
+    {
+      "id": "commercial.currency",
+      "category": "price_payment",
+      "metric": "currency",
+      "statement": "Currency",
+      "value": "USD"
+    },
+    {
+      "id": "commercial.net",
+      "category": "price_payment",
+      "metric": "net_days",
+      "statement": "Payment timing",
+      "value": 15
+    },
+    {
+      "id": "commercial.price",
+      "category": "price_payment",
+      "metric": "fixed_price_minor",
+      "statement": "Fixed pilot price in minor units",
+      "value": 1250000
+    },
+    {
+      "id": "schedule.duration",
+      "category": "schedule",
+      "metric": "duration_days",
+      "statement": "Pilot duration in business days",
+      "value": 10
+    },
+    {
+      "id": "scope.compiler",
+      "category": "scope",
+      "metric": "work",
+      "statement": "Deliver deterministic evidence compiler",
+      "value": "evidence-compiler"
+    }
+  ]
+}

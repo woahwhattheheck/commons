@@ -1,89 +1,53 @@
-# Buyer / Prime Redline → Paid-Scope Delta
+# Buyer Redline → Paid Scope Delta
 
-Operation: `BUYER-REDLINE-TO-PAID-SCOPE-DELTA-20260916-AEGISZ`
+Deterministic owner-review tooling for comparing a **structured, human-reviewed baseline offer/SOW** to a **structured counterdraft** without silently absorbing expanded work.
 
-A deterministic internal compiler for comparing one retained **proposed-not-accepted** SOW/offer against a buyer or prime counter-draft. It turns source-bound commercial/contract deltas into an owner-review packet without accepting terms, signing anything, giving legal advice, or silently absorbing expanded scope.
+This is deliberately *not* a contract parser and not legal advice. It never signs, accepts, sends, changes a live price/payment rail, or recognizes revenue. Raw contract prose should first be extracted/reviewed by a human into the narrow JSON clause schema used here.
 
 ## Decisions
 
-Only five machine decisions exist:
+- `ACCEPTABLE_AS_WRITTEN` — structured clause facts are unchanged and exact baseline binding holds.
+- `OWNER_REVIEW` — a material non-legal delta needs owner judgment.
+- `REQUOTE_REQUIRED` — price/currency/payment timing or obvious cost/effort pressure changed.
+- `LEGAL_REVIEW_REQUIRED` — IP, liability/warranty, or termination changed.
+- `HOLD_CONTRADICTION` — source generation/binding or chronology conflicts; do not negotiate from this packet.
 
-- `ACCEPTABLE_AS_WRITTEN` — no semantic clause or commercial-header delta was detected. This is **not acceptance or signature authority**.
-- `OWNER_REVIEW` — operational/commercial semantics changed and a human owner must decide.
-- `REQUOTE_REQUIRED` — scope, deliverables, schedule, price/currency, or adverse payment timing changed; prior economics must not be silently reused.
-- `LEGAL_REVIEW_REQUIRED` — IP, liability/warranty, or termination language changed. This is routing to qualified human review, **not legal advice**.
-- `HOLD_CONTRADICTION` — source generation/category/currency/logical-key contradictions prevent a trustworthy decision.
+The counterdraft must name the exact `baseline_semantic_sha256`. Same-generation changed semantics and counterdraft chronology before the baseline fail closed.
 
-Precedence is HOLD → LEGAL → REQUOTE → OWNER → unchanged.
+## Clause identity
 
-## Source contract
+Each clause has an `id`, `category`, and `metric`. The **semantic identity is the triple `(id, category, metric)`**. Reusing an existing clause ID while changing category or metric is evaluated as removal of the old semantic clause plus addition of the new one. That prevents a counterdraft from relabeling an assumption/dependency as scope (or vice versa) to evade the applicable commercial rule.
 
-Each document carries:
+## Hard gates
 
-- stable document ID and generation;
-- exact source URL/repository-relative locator;
-- retained source SHA-256;
-- observed timestamp with timezone;
-- `truth_state=PROPOSED_NOT_ACCEPTED`;
-- document currency, proposed total price in minor units, and payment days;
-- categorized clauses with stable logical keys and structured scalar terms.
+- duplicate JSON keys rejected;
+- strict UTF-8, NFC strings, no surrogate text;
+- floats/non-finite numbers rejected;
+- money uses integer minor units and bool-as-int is rejected;
+- `net_days` is a non-negative integer; `duration_days` is a positive integer;
+- duplicate clause IDs and contradictory singleton commercial metrics rejected;
+- raw and semantic SHA-256 identities retained;
+- exact baseline semantic binding required;
+- chronology compares parsed UTC instants rather than timestamp spellings;
+- packet verification **recompiles from the exact baseline + counter source bytes** and requires exact packet equality;
+- a caller cannot change status/deltas and regain validity by recomputing the packet's self-hash;
+- all mutation/acceptance/legal/payment/revenue authority flags stay false.
 
-The counter must name the exact baseline generation it edits. A stale generation is a HOLD. The compiler never fetches or mutates a provider; source hashes are retained evidence bindings for an upstream custody process.
+The packet schema is `buyer-redline-scope-delta/v2`.
 
-## Categories
-
-`SCOPE`, `DELIVERABLES`, `ACCEPTANCE`, `PRICE_PAYMENT`, `SCHEDULE`, `DATA_SECURITY`, `IP`, `LIABILITY_WARRANTY`, `TERMINATION`, `DEPENDENCIES`, `ASSUMPTIONS`.
-
-Changed IP/liability/warranty/termination language routes to legal review. Changed scope/deliverables/schedule or document/currency/price/payment economics can force a requote. Deleted/modified acceptance criteria are always surfaced.
-
-## Strictness
-
-CLI JSON uses a strict loader:
-
-- duplicate object keys are rejected;
-- `NaN`/`Infinity` are rejected;
-- booleans cannot masquerade as integer money/timing values;
-- unsafe traversal paths and HTTPS userinfo are rejected;
-- Unicode is not silently normalized, so byte/semantic differences stay visible;
-- duplicate logical keys produce `HOLD_CONTRADICTION`;
-- clause-category drift across one logical key produces `HOLD_CONTRADICTION`;
-- conflicting clause/header currencies produce `HOLD_CONTRADICTION`.
-
-No `assert` carries production safety logic. Tests run both normal and `python -O`.
-
-## Five-minute synthetic demo
+## CLI
 
 ```bash
-python revenue/buyer_redline_scope_delta/compile_redline.py compile \
-  --input revenue/buyer_redline_scope_delta/fixtures/requote.synthetic.json \
-  --out-dir /tmp/redline-demo
-
-python revenue/buyer_redline_scope_delta/compile_redline.py verify \
-  --input revenue/buyer_redline_scope_delta/fixtures/requote.synthetic.json \
-  --packet /tmp/redline-demo/packet.md \
-  --receipt /tmp/redline-demo/receipt.json
+python -m revenue.buyer_redline_scope_delta.cli compile baseline.json counter.json packet.json --markdown owner.md
+python -m revenue.buyer_redline_scope_delta.cli verify baseline.json counter.json packet.json
 ```
 
-The fixture expands one workflow to two while holding price flat and widens payment from net-30 to net-45. Expected machine decision: `REQUOTE_REQUIRED`.
+CLI inputs must be bounded regular files (2 MiB max each). Outputs are create-exclusive: the CLI refuses to overwrite an existing packet or Markdown path.
 
-## Tests
+## Verification boundary
 
-```bash
-python -m unittest discover -s revenue/buyer_redline_scope_delta/tests -p 'test_*.py' -v
-python -O -m unittest discover -s revenue/buyer_redline_scope_delta/tests -p 'test_*.py' -v
-```
+The SHA-256 stored in the packet is a deterministic receipt, not an authentication signature. Trust comes from retaining the exact human-reviewed baseline/counter bytes and replaying the compiler against them. `verify` therefore requires both source files and refuses a packet that is merely internally self-consistent.
 
-Hostiles include deleted acceptance, scope expansion without price change, currency drift, wider payment terms, unlimited liability, IP changes, stale baseline generation, duplicate/conflicting logical keys, category drift, header/clause currency conflict, boolean money, unsafe paths, URL userinfo, Unicode normalization differences, duplicate JSON keys, non-finite JSON, receipt/packet tampering, fail-on-HOLD behavior, and optimized-Python execution.
+## Authority ceiling
 
-## Authority boundary
-
-The output is an internal owner-review artifact. It cannot:
-
-- sign or accept a buyer/prime draft;
-- provide a legal opinion;
-- send email, Slack, portal submissions, forms, or DMs;
-- create an invoice or payment link;
-- mutate CRM, provider, accounting, payment, or contract state;
-- infer award, accepted work, cash, payment, or revenue.
-
-Any later external message remains a separate owner-controlled workflow and, under the current swarm operating model, requires a fresh Muse single-writer collision election immediately before send.
+This package only emits owner-review decision support. It does not parse raw contracts, provide legal advice, accept or sign terms, contact a buyer/prime, mutate price or payment rails, recognize revenue, or prove that any counterparty has accepted a commercial position.
