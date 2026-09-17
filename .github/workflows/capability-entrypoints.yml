@@ -12,6 +12,11 @@ on:
       - 'index.html'
       - 'resources.html'
       - 'commerce.html'
+      - '*.html'
+      - 'host/payment_capability.py'
+      - 'host/product_lifecycle_guard.py'
+      - 'revenue/product_lifecycle/**'
+      - 'revenue/agent_failure_autopsy/offer.json'
       - 'revenue/outcome_commerce/manifest.json'
       - 'revenue/outcome_commerce/catalog.json'
       - 'orchestration.html'
@@ -49,6 +54,48 @@ jobs:
         run: git show --format= --no-ext-diff HEAD | python open_door_guard.py --diff-file -
       - name: whitespace guard
         run: git diff --check HEAD^
+
+  product-lifecycle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile product lifecycle guard
+        run: python -m py_compile host/product_lifecycle_guard.py revenue/product_lifecycle/test_guard.py
+      - name: Product lifecycle hostile tests
+        run: python -m unittest -v revenue.product_lifecycle.test_guard
+      - name: Product lifecycle optimized hostile tests
+        run: python -O -m unittest -v revenue.product_lifecycle.test_guard
+      - name: Materialize trusted lifecycle base
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ "${GITHUB_EVENT_NAME}" == "pull_request" ]]; then
+            if [[ -z "${GITHUB_BASE_REF}" ]]; then
+              echo "pull_request event missing GITHUB_BASE_REF" >&2
+              exit 2
+            fi
+            git fetch --no-tags origin "${GITHUB_BASE_REF}"
+            TRUSTED_REF="origin/${GITHUB_BASE_REF}"
+          else
+            TRUSTED_REF="HEAD^"
+          fi
+          git rev-parse --verify "${TRUSTED_REF}^{commit}" >/dev/null
+          BASE_REGISTRY="${RUNNER_TEMP}/product-lifecycle-base.json"
+          if git cat-file -e "${TRUSTED_REF}:revenue/product_lifecycle/registry.json" 2>/dev/null; then
+            git show "${TRUSTED_REF}:revenue/product_lifecycle/registry.json" > "${BASE_REGISTRY}"
+          else
+            printf '%s\n' '{"schema":"commons.product-lifecycle.v1","products":[]}' > "${BASE_REGISTRY}"
+          fi
+          printf 'PRODUCT_LIFECYCLE_BASE=%s\n' "${BASE_REGISTRY}" >> "${GITHUB_ENV}"
+      - name: Active-surface retirement guard
+        run: python host/product_lifecycle_guard.py --repo-root . --base-registry "${PRODUCT_LIFECYCLE_BASE}"
+      - name: Active-surface retirement guard optimized
+        run: python -O host/product_lifecycle_guard.py --repo-root . --base-registry "${PRODUCT_LIFECYCLE_BASE}"
 
   connector-preflight:
     runs-on: ubuntu-latest
