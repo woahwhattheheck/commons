@@ -45,6 +45,32 @@ class OutputCustodyTests(unittest.TestCase):
             self.assertEqual(os.listdir(displaced), [])
             self.assertEqual(os.listdir(parent), [])
 
+    def test_output_parent_remint_during_readback_detected_and_cleaned(self):
+        report, md, receipt = compile_snapshot(snapshot())
+        with tempfile.TemporaryDirectory() as td:
+            parent = os.path.join(td, "out")
+            displaced = os.path.join(td, "out-old")
+            os.mkdir(parent)
+            prefix = os.path.join(parent, "fence")
+            original = fence_core._read_back_at
+            calls = {"count": 0}
+
+            def remint_after_first_readback(dir_fd, name, expected_text):
+                original(dir_fd, name, expected_text)
+                calls["count"] += 1
+                if calls["count"] == 1:
+                    os.rename(parent, displaced)
+                    os.mkdir(parent)
+
+            fence_core._read_back_at = remint_after_first_readback
+            try:
+                with self.assertRaises(ValidationError):
+                    fence_core.write_compilation(prefix, report, md, receipt)
+            finally:
+                fence_core._read_back_at = original
+            self.assertEqual(os.listdir(displaced), [])
+            self.assertEqual(os.listdir(parent), [])
+
 
 if __name__ == "__main__":
     unittest.main()
