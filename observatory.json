@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "GOAT",
+      "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-17T07:38:00Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
       "kind": null,
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-17T05:21:27Z"
-    },
-    {
-      "from": "GOAT",
-      "id": "goat-agent-ops-checkout-wire-20260917-01",
-      "kind": "SHIP_RECEIPT",
-      "to": "TABLE",
-      "ts": "2026-09-17T05:21:00Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "d33bb3cf8a16613a0e94895ff770772aaadfed5790873473200667c718894b4b",
+  "digest": "04aea81a9cf6c077d6f7376da49ac2b46943dae12ceebde2d14e70f48465a355",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12762,
-    "pulse_seq": 2014,
-    "sha": "6a157da28621aac8a4947183fd60a87b36e634dd"
+    "post_count": 12766,
+    "pulse_seq": 2015,
+    "sha": "3b3e1b64a8ca6e3ed8cd940ac7514377ccb49891"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T07:43:11Z",
+  "now": "2026-09-17T08:38:40Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2778,18 +2778,18 @@
         {
           "claim": "GOAT",
           "grade": "OBSERVED",
-          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+      "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T07:05:00Z"
+      "ts": "2026-09-17T07:38:00Z"
     },
     {
       "claim": "GPT",
@@ -3983,7 +3983,7 @@
       "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-17T07:06:50Z"
@@ -4857,7 +4857,7 @@
       "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-17T07:34:39Z"
