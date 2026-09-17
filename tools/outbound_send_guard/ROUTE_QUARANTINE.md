@@ -40,13 +40,17 @@ Extra checks, missing checks, duplicate checks, route/recipient drift, provider-
 
 `DELIVERED` and `UNCONFIRMED` never upgrade a restrictive send-guard decision.
 
-A blocked route emits a deterministic human-research obligation `FIND_INDEPENDENT_PUBLIC_BUSINESS_ROUTE`. It explicitly forbids automatic replacement and says any candidate alternate route needs an independent source and a **fresh send preflight**. No address is guessed or contacted.
+A blocked route is transport truth about the **exact recipient route only**. It does not create an alternate-contact task, permission, or obligation: receipts keep `alternate_route_research_required=false` and `research_obligation=null` for blocked, held, and clear routes alike. This prevents a bounce from mechanically turning into alias hunting and preserves the distinction between delivery failure and buyer intent.
+
+If a human/operator later decides there is a legitimate reason to research another route, that work starts as a **separate generation outside this receipt**. The candidate must be independently sourced, collision-fenced, and subjected to the then-current send/Muse/provider preflight before any mutation. `alternate_route_send_requires_fresh_preflight=true` remains invariant; this gate never supplies or selects the replacement route.
 
 ## Authority ceiling
 
 This module is read-only and offline. Every receipt sets:
 
 - `same_route_send_authorized=false`;
+- `alternate_route_research_required=false`;
+- `research_obligation=null`;
 - `alternate_route_send_requires_fresh_preflight=true`;
 - `side_effects_authorized=false`.
 
@@ -56,7 +60,7 @@ Route checks must obey the authority contract documented by `DSN_NORMALIZER.md` 
 
 ## Durable receipt / verification
 
-The output schema is `outbound-route-aware-send-receipt/v1`. It binds SHA-256 of the intent, send evidence, route bundle, ordinary send-guard receipt, and each recomputed route-lifecycle receipt. `verify()` fully recomputes from all supplied sources and requires exact canonical equality; refreshing the output hash after changing a decision does not verify.
+The output schema is `outbound-route-aware-send-receipt/v1`. It binds SHA-256 of the intent, send evidence, route bundle, ordinary send-guard receipt, and each recomputed route-lifecycle receipt. `verify()` fully recomputes from all supplied sources and requires exact canonical equality; refreshing the output hash after changing a decision—or after inserting an alternate-route research instruction—does not verify.
 
 The CLI prints the canonical receipt to stdout and performs no output-file mutation:
 
@@ -81,4 +85,4 @@ python -m unittest -v tools.outbound_send_guard.test_route_quarantine
 python -O -m unittest -v tools.outbound_send_guard.test_route_quarantine
 ```
 
-Hostiles cover: a 30-day-old different offer whose route later proves `5.1.1`; policy-rejection / mailbox-full / transient DSN holds; same-offer DNR preservation; delivery and unconfirmed non-upgrade behavior; missing/extra/duplicate lifecycle coverage; mismatched send generation and capture boundary; conflicting delivery/failure evidence; Slack sends without provider identity; Slack provider identity absent from mailbox truth; source-bound verification; duplicate JSON keys; and non-regular CLI ingress.
+Hostiles cover: a 30-day-old different offer whose route later proves `5.1.1` without creating any alias-hunt obligation; verifier rejection of a re-hashed injected alternate-route research instruction; policy-rejection / mailbox-full / transient DSN holds; same-offer DNR preservation; delivery and unconfirmed non-upgrade behavior; missing/extra/duplicate lifecycle coverage; mismatched send generation and capture boundary; conflicting delivery/failure evidence; Slack sends without provider identity; Slack provider identity absent from mailbox truth; source-bound verification; duplicate JSON keys; and non-regular CLI ingress.
