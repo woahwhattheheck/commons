@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-17T08:13:26Z",
+ "heartbeat_at": "2026-09-17T08:23:29Z",
  "holder": "TYPE / clan/grokbot",
  "key": "work-type-patent-health-convert-shelf-20260917-01-5c7b46b1c8158b44a4e94742",
- "note": "operation=type-patent-health-convert-shelf-20260917-01 | wire existing buy.stripe.com shelf onto patent-products.html + health.html",
+ "note": "operation=type-patent-health-convert-shelf-20260917-01 | SHIP #15428 a203a7ff9b patent-products.html health.html",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T08:13:26Z",
  "ttl_s": 1800
 }
