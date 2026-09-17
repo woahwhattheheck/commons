@@ -26,6 +26,7 @@ CALLER_RETAINED_ATTRIBUTION = (
 def derive_semantics(normalized: dict[str, Any]) -> dict[str, Any]:
     semantics = _predecessor_derive_semantics(normalized)
     local_holds = set(semantics["hold_reasons"])
+    authentication_holds: set[str] = set()
 
     # The predecessor's evidence-id + digest binding remains valuable integrity
     # evidence, but it cannot establish who authored the underlying bytes.
@@ -36,7 +37,9 @@ def derive_semantics(normalized: dict[str, Any]) -> dict[str, Any]:
         narrowed["statement_attribution"] = CALLER_RETAINED_ATTRIBUTION
         narrowed["buyer_source_authenticated"] = False
         diagnostic_reasons.append(narrowed)
-        local_holds.add(f"buyer_reason_not_authenticated:{reason['reason_id']}")
+        authentication_holds.add(
+            f"buyer_reason_not_authenticated:{reason['reason_id']}"
+        )
 
     # No BUYER_REASON may authorize a gap while the product has no independent
     # buyer/provider retained-source authentication boundary. Internal
@@ -45,30 +48,27 @@ def derive_semantics(normalized: dict[str, Any]) -> dict[str, Any]:
     gaps: list[dict[str, Any]] = []
     for gap in semantics["remediation_gaps"]:
         narrowed = dict(gap)
-        if narrowed["basis_type"] == "BUYER_REASON":
+        if narrowed["basis_type"] == "BUYER_REASON" and narrowed["basis_valid"]:
             narrowed["basis_valid"] = False
-            local_holds.add(
+            authentication_holds.add(
                 f"buyer_reason_gap_not_authenticated:{narrowed['gap_id']}@{narrowed['version']}"
             )
         gaps.append(narrowed)
 
+    local_holds.update(authentication_holds)
     source_hold = (
         semantics["source_outcome"] == "UNKNOWN"
         or bool(semantics["source_hold_reasons"])
     )
     if source_hold:
         status = "HOLD_SOURCE"
-    elif local_holds:
+    elif authentication_holds:
         status = "HOLD_CONTRADICTION"
-    elif semantics["unattributed_source_statement_ids"]:
-        # Normally already represented by a predecessor hold reason, but keep
-        # the precedence explicit if that implementation changes later.
-        status = "HOLD_UNATTRIBUTED_REASON"
-        local_holds.add("source_rationale_requires_category_binding")
-    elif gaps:
-        status = "ACTIONABLE_GAPS"
     else:
-        status = "NO_ACTIONABLE_GAP"
+        # Preserve every predecessor status that does not rely on an
+        # unauthenticated buyer-reason upgrade: digest mismatches, missing
+        # taxonomy mappings, internal hypotheses, and no-gap states.
+        status = semantics["status"]
 
     return {
         **semantics,
