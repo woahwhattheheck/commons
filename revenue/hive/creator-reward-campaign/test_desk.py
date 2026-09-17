@@ -14,7 +14,7 @@ import zipfile
 from pathlib import Path
 
 import server
-from server import ADMIN_FEE_BPS, HANDOFF_MODE, Desk, DeskError, admin_fee, compute_reward, load_example, loopback_host, make_server, normalize_url, opaque_ref, operation_key, strict_json
+from server import ADMIN_FEE_BPS, HANDOFF_MODE, Desk, DeskError, admin_fee, canonical_path, compute_reward, load_example, loopback_host, make_server, normalize_url, opaque_ref, operation_key, strict_json
 
 ROOT = Path(__file__).resolve().parent
 
@@ -217,6 +217,66 @@ class DeskTests(unittest.TestCase):
                     'https://youtu.be:8443/AAAAAAAAAAA'):
             with self.subTest(bad=bad), self.assertRaises(DeskError):
                 normalize_url(bad)
+
+    def test_exact_fields_case_insensitive_handles_canonical_paths_and_control_characters(self):
+        for operation, payload in (
+            ('brand/create', {'name': 'Extra brand', 'website': 'https://example.invalid'}),
+            ('creator/create', {'handle': 'extra.creator', 'consent_on': '2026-09-01', 'payout_route_ref': 'ROUTE-X', 'email': 'x'}),
+            ('payable/handoff', {'campaign_id': 'x', 'force': True}),
+        ):
+            with self.subTest(operation=operation), self.assertRaises(DeskError) as caught:
+                self.write(operation, **payload)
+            self.assertEqual(caught.exception.status, 400)
+            self.assertIn('does not accept fields', str(caught.exception))
+        with self.assertRaises(DeskError) as caught:
+            self.write('brand/rename', name='x')
+        self.assertEqual(caught.exception.status, 404)
+        self.assertEqual(len(self.desk.snapshot()['brands']), 1)
+        mixed = self.write('creator/create', handle='Demo.Alder', consent_on='2026-09-01', payout_route_ref='ROUTE-A')['id']
+        self.assertEqual(self.item('creators', mixed)['handle'], 'demo.alder')
+        for alias in ('demo.alder', 'DEMO.ALDER', 'Demo.Alder'):
+            with self.subTest(alias=alias), self.assertRaises(DeskError) as caught:
+                self.write('creator/create', handle=alias, consent_on='2026-09-01', payout_route_ref='ROUTE-B')
+            self.assertEqual(caught.exception.status, 409)
+        self.assertEqual(canonical_path('/video/%31/a%2fb/%7Ename/~name/'), '/video/1/a%2Fb/~name/~name')
+        self.assertEqual(canonical_path('/sp ace/caf\u00e9'), '/sp%20ace/caf%C3%A9')
+        self.assertEqual(canonical_path(''), '/')
+        self.assertEqual(normalize_url('https://example.invalid/video/%31'), 'https://example.invalid/video/1')
+        self.assertEqual(normalize_url('https://example.invalid/video/1'), normalize_url('https://EXAMPLE.invalid/video/%31/'))
+        for bad in ('/video//1', '/video/./1', '/video/../1', '/video/%zz', '/video/%4', 'video/1'):
+            with self.subTest(bad=bad), self.assertRaises(DeskError):
+                canonical_path(bad)
+        for bad in ('https://exampl\u00e9.invalid/video/1', 'https://example.invalid/video//1', 'https://example.invalid/video/../1', 'https://example.invalid/%zz'):
+            with self.subTest(bad=bad), self.assertRaises(DeskError):
+                normalize_url(bad)
+        campaign = self.campaign()
+        first = self.submit(campaign, url='https://example.invalid/video/%31')
+        with self.assertRaises(DeskError) as caught:
+            self.submit(campaign, url='https://example.invalid/video/1/')
+        self.assertEqual(caught.exception.status, 409)
+        self.assertEqual(self.item('submissions', first)['url'], 'https://example.invalid/video/1')
+        for bad_title in ('bad\x00title', 'bad\x1btitle', 'bad\x7ftitle'):
+            with self.subTest(title=bad_title), self.assertRaises(DeskError) as caught:
+                self.campaign(title=bad_title, open_now=False)
+            self.assertIn('control characters', str(caught.exception))
+        self.campaign(title='fine title', brief='line one\nline two\ttabbed\r\nwindows line', open_now=False)
+        self.assert_never_retained('bad\x00title', 'bad\x1btitle')
+
+    def test_database_path_must_be_a_regular_file(self):
+        folder = Path(self.tmp.name) / 'a-directory.sqlite3'
+        folder.mkdir()
+        with self.assertRaises(DeskError):
+            Desk(folder)
+        target = Path(self.tmp.name) / 'real.sqlite3'
+        link = Path(self.tmp.name) / 'link.sqlite3'
+        Desk(target)
+        try:
+            link.symlink_to(target)
+        except (OSError, NotImplementedError):
+            self.skipTest('symbolic links are not available to this process')
+        with self.assertRaises(DeskError):
+            Desk(link)
+        self.assertEqual(server.main(['--db', str(link), '--port', '0']), 2)
 
     def test_ported_urls_keep_their_identity_and_malformed_ports_are_refused(self):
         campaign = self.campaign()

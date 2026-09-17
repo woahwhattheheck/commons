@@ -14,7 +14,7 @@ from contextlib import closing
 from datetime import date, datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from urllib.parse import parse_qsl, urlsplit
+from urllib.parse import parse_qsl, quote, urlsplit
 
 ROOT = Path(__file__).resolve().parent
 PLATFORMS = ('TIKTOK', 'INSTAGRAM', 'YOUTUBE', 'X', 'OTHER')
@@ -61,6 +61,20 @@ REF_CARD_GROUP_SHAPE = re.compile(r'(?<!\d)\d{4}(?:[-.:/]\d{4}){2,4}(?!\d)')
 REF_DIGIT_ONLY_MINIMUM = 9  # a value with no letters and this many digits is a number, not a reference
 OPERATION_ID = re.compile(r'[A-Za-z0-9][A-Za-z0-9._:/-]{0,199}')
 METRIC_KEYS = ('views', 'likes', 'comments', 'shares', 'saves')
+# Exact field sets per operation: a payload with any other field is refused rather than partially applied.
+OPERATION_FIELDS = {
+    'brand/create': frozenset(('name',)),
+    'creator/create': frozenset(('handle', 'consent_on', 'payout_route_ref')),
+    'campaign/create': frozenset(('brand_id', 'title', 'brief', 'rights_terms', 'currency', 'budget_minor', 'rule', 'eligibility')),
+    'campaign/action': frozenset(('id', 'version', 'action', 'name', 'license', 'content')),
+    'submission/create': frozenset(('campaign_id', 'creator_id', 'platform', 'url', 'posted_on', 'disclosure_present', 'rights_accepted')),
+    'submission/review': frozenset(('id', 'version', 'decision', 'note', 'metrics')),
+    'payable/handoff': frozenset(('campaign_id',)),
+    'payable/settle': frozenset(('id', 'version', 'settlement_ref')),
+}
+PERCENT_ESCAPE = re.compile(r'%([0-9A-Fa-f]{2})')
+UNRESERVED = frozenset('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~')
+PATH_SAFE = "%-._~!$&'()*+,;=:@"
 REF_DIGIT_RUN = re.compile(r'\d{13,}')
 REF_DIGIT_TOKEN = re.compile(r'(?<![A-Za-z0-9])\d{9,}(?![A-Za-z0-9])')
 REF_IBAN_SHAPE = re.compile(r'(?<![A-Za-z0-9])[A-Za-z]{2}\d{2}[A-Za-z0-9]{11,30}(?![A-Za-z0-9])')
@@ -76,6 +90,8 @@ class DeskError(ValueError):
 def text(value, name, maximum=100000):
     if not isinstance(value, str) or not value.strip() or len(value) > maximum:
         raise DeskError(f'{name} must be nonempty text (maximum {maximum} characters)')
+    if any((ord(ch) < 32 and ch not in '\n\r\t') or ord(ch) == 127 for ch in value):
+        raise DeskError(f'{name} must not contain control characters')
     return value
 
 
@@ -208,8 +224,8 @@ def normalize_url(value):
     if parts.scheme.lower() not in ('http', 'https') or not parts.netloc or '@' in parts.netloc:
         raise DeskError('url must be an http(s) content link with a host and no credentials')
     host = (parts.hostname or '').lower()
-    if not host or any(ord(ch) < 0x21 for ch in host):
-        raise DeskError('url host is invalid')
+    if not host or not host.isascii() or any(ord(ch) < 0x21 for ch in host):
+        raise DeskError('url host must be a non-empty ASCII host name (use the punycode form for internationalized hosts)')
     try:
         port = parts.port  # raises for non-numeric or out-of-range ports instead of silently dropping them
     except ValueError as exc:
@@ -220,7 +236,7 @@ def normalize_url(value):
     authority = f'[{host}]' if ':' in host else host
     if port is not None and port != {'http': 80, 'https': 443}[scheme]:
         authority = f'{authority}:{port}'  # an explicit non-default port is part of the content identity
-    path = parts.path.rstrip('/') or '/'
+    path = canonical_path(parts.path)
     query = {}
     for key, item in parse_qsl(parts.query, keep_blank_values=True):
         lowered = key.lower()
@@ -250,6 +266,31 @@ def normalize_url(value):
     if query:
         raise DeskError(f'url carries query material that is not a supported content identity {sorted(query)}; supply the canonical content link')
     return f'{scheme}://{authority}{path}'
+
+
+def canonical_path(raw_path):
+    """One spelling per path: dot and empty segments are refused, percent-escapes are uppercase, unreserved octets are literal."""
+    if not raw_path:
+        return '/'
+    if not raw_path.startswith('/'):
+        raise DeskError('url path must start with /')
+    segments = raw_path[1:].split('/')
+    if segments and segments[-1] == '':
+        segments = segments[:-1]  # a trailing slash is not part of the identity
+    canonical = []
+    for segment in segments:
+        if segment in ('', '.', '..'):
+            raise DeskError('url path must not contain empty or dot segments')
+        if len(PERCENT_ESCAPE.findall(segment)) != segment.count('%'):
+            raise DeskError('url path percent-escapes must be well formed')
+
+        def _escape(match):
+            octet = int(match.group(1), 16)
+            char = chr(octet)
+            return char if char in UNRESERVED else f'%{octet:02X}'
+
+        canonical.append(quote(PERCENT_ESCAPE.sub(_escape, segment), safe=PATH_SAFE))
+    return '/' + '/'.join(canonical) if canonical else '/'
 
 
 def loopback_host(value):
@@ -327,7 +368,10 @@ def admin_fee(amount_minor):
 class Desk:
     def __init__(self, path):
         self.path = str(path)
-        Path(self.path).parent.mkdir(parents=True, exist_ok=True)
+        target = Path(self.path)
+        if target.is_symlink() or (target.exists() and not target.is_file()):
+            raise DeskError('database path must be a regular file (existing or new), never a link or a special file')
+        target.parent.mkdir(parents=True, exist_ok=True)
         with closing(self.connect()) as db:
             db.executescript('''
                 CREATE TABLE IF NOT EXISTS brands (
@@ -427,6 +471,12 @@ class Desk:
         if not isinstance(data, dict):
             raise DeskError('Payload must be an object')
         key_digest = operation_key(data.get('operation_id'))
+        allowed = OPERATION_FIELDS.get(operation)
+        if allowed is None:
+            raise DeskError('Unknown operation', 404)
+        unknown = sorted(set(data) - allowed - {'operation_id'})
+        if unknown:
+            raise DeskError(f'{operation} does not accept fields {unknown}')
         # Write receipts keep only digests of the idempotency key and the request payload: exact replay
         # still matches and a different payload is still refused, but no raw request text is retained.
         payload_digest = hashlib.sha256(encoded({'operation': operation, 'data': data}).encode('utf-8')).hexdigest()
@@ -460,6 +510,7 @@ class Desk:
             handle = text(data.get('handle'), 'handle', 64)
             if not HANDLE.fullmatch(handle):
                 raise DeskError('handle uses letters, digits, dots, underscores or hyphens')
+            handle = handle.lower()  # platform handles are case-insensitive; one spelling per creator
             if numeric_identity_shape(handle):
                 raise DeskError('handle must be a creator handle, not a phone, SSN, card, account or IBAN number')
             consent_on = day(data.get('consent_on'), 'consent_on')
@@ -753,10 +804,10 @@ def main(argv=None):
     args = parser.parse_args(argv)
     try:
         bind_host = loopback_host(args.host)
+        desk = Desk(args.db)
     except DeskError as exc:
         print(f'ERROR: {exc}', file=sys.stderr)
         return 2
-    desk = Desk(args.db)
     if args.demo:
         load_example(desk)
     server = make_server(desk, bind_host, args.port)
