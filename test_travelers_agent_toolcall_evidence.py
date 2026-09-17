@@ -5,7 +5,10 @@ import sys
 import unittest
 
 
-MODULE = "revenue.travelers_agent_toolcall_evidence.test_gate"
+MODULES = (
+    "revenue.travelers_agent_toolcall_evidence.test_gate",
+    "revenue.travelers_agent_toolcall_evidence.test_trace_states",
+)
 
 
 # Root placement is intentional: Commons tests.yml path-filters on root test_*.py.
@@ -16,7 +19,7 @@ class TravelersAgentToolCallEvidenceRetainedBridge(unittest.TestCase):
         command = [sys.executable]
         if optimized:
             command.append("-O")
-        command.extend(["-m", "unittest", "-v", MODULE])
+        command.extend(["-m", "unittest", "-v", *MODULES])
         completed = subprocess.run(
             command,
             capture_output=True,
