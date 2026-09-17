@@ -25,7 +25,7 @@ def field(text: str, name: str) -> str:
 
 
 class TitanHourCheckoutGate(unittest.TestCase):
-    def test_page_uses_canonical_slot_without_raw_stripe_url_or_checkout_override(self):
+    def test_page_uses_canonical_slot_and_verified_static_payment_link(self):
         html = (ROOT / "titan-hour.html").read_text(encoding="utf-8")
         pay_js = (ROOT / "pay.js").read_text(encoding="utf-8")
         sku = (ROOT / "land" / "sku-whitebox-hour-20260826.md").read_text(
@@ -40,8 +40,8 @@ class TitanHourCheckoutGate(unittest.TestCase):
         self.assertIn('data-sku="sku-whitebox-hour-20260826"', html)
         self.assertIn('src="./pay.js?v=20260902a"', html)
         self.assertIn("mailto:tokenjunkielabs@gmail.com", html)
-        self.assertNotRegex(html, r"https://(?:buy|donate)\.stripe\.com/")
-        self.assertNotIn(checkout, html)
+        self.assertIn(checkout, html)
+        self.assertNotIn("Loading verified White Box-hour purchase route", html)
 
         self.assertIn("if (!railEligible(snapshot, listing))", pay_js)
         self.assertIn("Provider rail is inert. Unverified URLs stay unpublished.", pay_js)
