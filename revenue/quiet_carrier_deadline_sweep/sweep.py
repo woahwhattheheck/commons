@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Deterministic quiet-carrier deadline sweep.
 
-Ranks only stale HOLD carriers that satisfy the reset-wave lane contract. It
+Ranks only stale HOLD carriers that satisfy the reset-wave lane contract.  It
 never sends, contacts, registers, signs, prices, or submits anything.
 """
 from __future__ import annotations
@@ -15,8 +15,12 @@ from typing import Any, Mapping, Sequence
 
 SCHEMA = "quiet-carrier-deadline-sweep/v1"
 OUTPUT_SCHEMA = "quiet-carrier-actionability/v1"
-SOURCE_STATES = {"PUBLIC_CURRENT", "PUBLIC_NOT_RETAINED", "AUTH_REQUIRED", "UNRESOLVED"}
-
+SOURCE_STATES = {
+    "PUBLIC_CURRENT",
+    "PUBLIC_NOT_RETAINED",
+    "AUTH_REQUIRED",
+    "UNRESOLVED",
+}
 
 class SweepError(ValueError):
     pass
@@ -134,7 +138,15 @@ def compile_sweep(payload: Mapping[str, Any]) -> dict[str, Any]:
         if reasons:
             excluded.append({**base, "excluded_reasons": reasons})
             continue
-        source_rank = {"PUBLIC_CURRENT": 0, "PUBLIC_NOT_RETAINED": 1, "AUTH_REQUIRED": 2, "UNRESOLVED": 3}[source_state]
+        # Deterministic actionability: public-current source beats public missing,
+        # which beats auth-required/unresolved; fewer owner facts next; then
+        # sooner deadline; then larger known value; then stable ID tie-break.
+        source_rank = {
+            "PUBLIC_CURRENT": 0,
+            "PUBLIC_NOT_RETAINED": 1,
+            "AUTH_REQUIRED": 2,
+            "UNRESOLVED": 3,
+        }[source_state]
         value_rank = -(value_minor if value_minor is not None else -1)
         sort_key = (source_rank, len(blockers), deadline, value_rank, cid)
         qualified.append({**base, "_sort_key": sort_key})
@@ -168,13 +180,18 @@ def compile_sweep(payload: Mapping[str, Any]) -> dict[str, Any]:
 
 def render_markdown(report: Mapping[str, Any]) -> str:
     lines = [
-        "# Quiet-carrier deadline sweep — actionability", "",
-        "No row authorizes external contact, registration, pricing, signature, or submission.", "",
+        "# Quiet-carrier deadline sweep — actionability",
+        "",
+        "No row authorizes external contact, registration, pricing, signature, or submission.",
+        "",
         "| Rank | Carrier | Deadline (UTC) | Value path | One blocker | Owner-only step | Executable next action |",
         "|---:|---|---|---|---|---|---|",
     ]
     for row in report["ranked_actionability"]:
-        vals = [str(row["rank"]), row["id"], row["deadline"], row["value_path"], row["primary_blocker"], row["owner_only_step"], row["executable_next_action"]]
+        vals = [
+            str(row["rank"]), row["id"], row["deadline"], row["value_path"],
+            row["primary_blocker"], row["owner_only_step"], row["executable_next_action"],
+        ]
         vals = [v.replace("|", "\\|").replace("\n", " ") for v in vals]
         lines.append("| " + " | ".join(vals) + " |")
     lines.extend(["", "## Excluded by lane contract", ""])
@@ -199,7 +216,6 @@ def main(argv: Sequence[str] | None = None) -> int:
     else:
         print(json.dumps(report, sort_keys=True, indent=2))
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())
