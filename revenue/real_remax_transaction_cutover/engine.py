@@ -21,6 +21,41 @@ def _relationship_key(rel: Mapping[str, Any], agent_map: Mapping[str, str]) -> t
     return (str(rel["role"]), target_agent, int(rel["split_bps"]), int(rel["commission_cents"]))
 
 
+def _policy_evidence(policy: Mapping[str, Any]) -> dict[str, Any]:
+    return {
+        **policy,
+        "active_source_stages": sorted(policy["active_source_stages"]),
+        "required_relationship_roles": sorted(policy["required_relationship_roles"]),
+    }
+
+
+def _snapshot_evidence(snapshot: Mapping[str, Any]) -> dict[str, Any]:
+    transactions = []
+    for txn in snapshot["transactions"]:
+        transactions.append({
+            **txn,
+            "relationships": sorted(
+                (dict(rel) for rel in txn["relationships"]),
+                key=lambda rel: (rel["role"], rel["agent_id"], rel["split_bps"], rel["commission_cents"]),
+            ),
+        })
+    return {
+        **snapshot,
+        "offices": sorted((dict(row) for row in snapshot["offices"]), key=lambda row: row["office_id"]),
+        "agents": sorted((dict(row) for row in snapshot["agents"]), key=lambda row: row["agent_id"]),
+        "transactions": sorted(transactions, key=lambda row: row["transaction_id"]),
+    }
+
+
+def _map_evidence(mapping: Mapping[str, Any]) -> dict[str, Any]:
+    return {
+        **mapping,
+        "offices": sorted((dict(row) for row in mapping["offices"]), key=lambda row: (row["source_office_id"], row["target_office_id"])),
+        "agents": sorted((dict(row) for row in mapping["agents"]), key=lambda row: (row["source_agent_id"], row["target_agent_id"])),
+        "transactions": sorted((dict(row) for row in mapping["transactions"]), key=lambda row: (row["source_transaction_id"], row["target_transaction_id"])),
+    }
+
+
 def compile_cutover(
     source_snapshot: Any,
     target_snapshot: Any,
@@ -165,10 +200,10 @@ def compile_cutover(
             "revenue_proven": False,
         },
         "evidence": {
-            "policy_sha256": digest(p),
-            "source_snapshot_sha256": digest(source),
-            "target_snapshot_sha256": digest(target),
-            "identity_map_sha256": digest(mapping),
+            "policy_sha256": digest(_policy_evidence(p)),
+            "source_snapshot_sha256": digest(_snapshot_evidence(source)),
+            "target_snapshot_sha256": digest(_snapshot_evidence(target)),
+            "identity_map_sha256": digest(_map_evidence(mapping)),
         },
         "summary": {
             "active_source_transactions": len(active_ids),
