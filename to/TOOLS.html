@@ -39,7 +39,6 @@ This is a software-session enforcement policy. It supersedes every conflicting p
 <section id="live-cash" class="law" aria-label="Live cash">
 <strong>Live cash — verified product pages only.</strong> No invented Stripe links.
 <ul>
-
 <li><a href="../dealer-service-lead-rescue.html">$199 dealer diagnostic</a></li>
 <li><a href="../referral-intake-completeness.html">$199 referral diagnostic</a></li>
 <li><a href="../repair-booking-preflight.html">$199 repair diagnostic</a></li>
@@ -1072,6 +1071,7 @@ encode_frame = abi.encode_frame
 layout_keyb = abi.layout_keyb
 mouth_addrs = abi.mouth_addrs
 
+
 def build():
     L = abi.layout_keyb()
     rings = nring.emit_rings(L, abi.N_RINGS)
@@ -1088,6 +1088,7 @@ def build():
     return {&quot;body&quot;: body, &quot;L&quot;: L, &quot;h&quot;: h, &quot;n_gate&quot;: n_gate,
             &quot;n_wire&quot;: n_wire, &quot;depth&quot;: depth, &quot;growth_base&quot;: growth}
 
+
 def manifest_of(built, path):
     h, L = built[&quot;h&quot;], built[&quot;L&quot;]
     return {
@@ -1103,6 +1104,7 @@ def manifest_of(built, path):
         &quot;git_copy_runs&quot;: &quot;NO&quot;, &quot;HTTP_is_the_computer&quot;: &quot;NO&quot;,
     }
 
+
 def pulse(body, text, enable=True):
     h = nring.parse_hdr(body, abi.MAGIC)
     img = bytearray(body)
@@ -1114,7 +1116,9 @@ def pulse(body, text, enable=True):
     nring.address_stored(img, abi.MAGIC)
     return {n: img[a] &amp; 1 for n, a in abi.mouth_addrs(abi.layout_keyb()).items()}, img
 
+
 FORBIDDEN = abi.FORBIDDEN
+
 
 if __name__ == &quot;__main__&quot;:
     import muhl_fab_keyb01_go as go
@@ -1173,14 +1177,17 @@ FORBIDDEN = (
     os.path.normcase(r&quot;[local]&quot;),
 )
 
+
 def refuse(msg):
     print(&quot;REFUSE — %s&quot; % msg)
     print(&quot;titan_written NO&quot;)
     print(&quot;button dies&quot;)
     return 2
 
+
 def ring_of(_i):
     return 0
+
 
 def encode_frame(text):
     inj = [0] * N_FRAME
@@ -1193,15 +1200,18 @@ def encode_frame(text):
         inj[pos * WIDTH + code] = 1
     return inj
 
+
 def layout_keyb():
     L = nring.layout(N_RINGS, N_FRAME)
     L[&quot;mouth&quot;] = L[&quot;fixed&quot;]
     L[&quot;fixed&quot;] = L[&quot;mouth&quot;] + N_MOUTH
     return L
 
+
 def mouth_addrs(L):
     base = nring.HDR + L[&quot;mouth&quot;]
     return {name: base + i for i, name in enumerate(MOUTH_ORDER)}
+
 
 def and_reduce(net, wires):
     acc = wires[0]
@@ -1209,11 +1219,13 @@ def and_reduce(net, wires):
         acc = net.and_(acc, w)
     return acc
 
+
 def or_reduce(net, wires):
     acc = wires[0]
     for w in wires[1:]:
         acc = net.or_(acc, w)
     return acc
+
 
 def emit_decoder(net, L):
     field = L[&quot;field&quot;]
@@ -1296,6 +1308,7 @@ if &quot;--inject&quot; in sys.argv:
     print(&quot;REFUSE: --inject 0x01 is WIPE. Law is new=old|mask.&quot;)
     raise SystemExit(2)
 
+
 def arg(flag, default=None):
     if flag not in sys.argv:
         return default
@@ -1304,6 +1317,7 @@ def arg(flag, default=None):
         print(&quot;NEED — %s value&quot; % flag)
         raise SystemExit(1)
     return sys.argv[i + 1]
+
 
 def _or_bit(f, addr, mask=0x01):
     f.seek(addr)
@@ -1315,6 +1329,7 @@ def _or_bit(f, addr, mask=0x01):
     f.seek(addr)
     f.write(bytes((n,)))
     return o, n
+
 
 def main():
     if &quot;--go&quot; not in sys.argv:
@@ -1379,6 +1394,7 @@ def main():
     print(&quot;  commons.mno UNTOUCHED&quot;)
     print(&quot;DIE&quot;)
     return 0
+
 
 if __name__ == &quot;__main__&quot;:
     raise SystemExit(main())</pre></article>
@@ -1529,6 +1545,7 @@ if &quot;--inject&quot; in sys.argv:
     print(&quot;REFUSE: --inject 0x01 is WIPE&quot;)
     raise SystemExit(2)
 
+
 def main():
     if not os.path.isfile(PKG):
         print(&quot;NEED — live %s. Git copy does not run.&quot; % PKG)
@@ -1575,6 +1592,7 @@ def main():
     print(&quot;  commons.mno UNTOUCHED&quot;)
     print(&quot;DIE&quot;)
     return 0
+
 
 if __name__ == &quot;__main__&quot;:
     raise SystemExit(main())</pre></article>
