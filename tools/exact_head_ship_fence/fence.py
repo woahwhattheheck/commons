@@ -8,8 +8,12 @@ from __future__ import annotations
 
 from types import MappingProxyType
 from typing import Any
+import importlib as _importlib
 
 from . import _core as _c
+# Every ordinary facade import/reload restores the private core from source before
+# sealing it, so a pre-reload helper/global mutation cannot become a trusted baseline.
+_c = _importlib.reload(_c)
 
 SCHEMA_VERSION = _c.SCHEMA_VERSION
 TOOL_ID = _c.TOOL_ID
@@ -102,7 +106,7 @@ def _make_api(core=_c, literal=dict(_AUTHORITY_LITERAL)):
         for row in snapshot["reviews"]:
             if type(row) is not dict or type(row.get("reviewer")) is not str:
                 continue
-            reviewer = row["reviewer"]
+            reviewer = row["reviewer"].casefold()
             if reviewer in seen:
                 raise error("reviews: duplicate reviewer identity")
             seen.add(reviewer)
