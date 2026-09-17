@@ -10,13 +10,15 @@ This is a **public-only internal donor** for evaluating BITSUMMIT as a potential
 
 The public evidence is directionally promising for a teaming route, but **not prime-ready on public evidence alone**.
 
-Strongest externally issued fact: IBM Partner Plus publicly lists BITSUMMIT in Oakville as a VAR/Reseller/Solution Provider with IBM resale authorizations. BITSUMMIT itself publishes substantial Azure/data/AI/security capability material and named case studies including Holt Renfrew, Shell and Destination Canada. Those self-published capabilities are useful for diligence, but this carrier intentionally holds them at `PARTNER_CONFIRMATION_REQUIRED` until issuer/customer evidence or partner documentation is supplied.
+The strongest externally hosted record is an IBM Partner Plus directory page that displays BITSUMMIT Corp in Oakville as a VAR/Reseller/Solution Provider and displays IBM resale authorizations. **That is not independent IBM validation of the underlying company/capability fields.** The page states company and solution information is company-provided and not validated by IBM unless noted. This donor therefore treats the narrow fact that the IBM-hosted record exists/displays those fields as `SUPPORTED`, while the underlying company, resale-authorization, partner-relationship, legal-identity and eligibility assertions still require partner/issuer evidence before bid reliance.
 
-The most important hard gate is legal/entity reconciliation: BITSUMMIT's partner privacy policy uses **BITSUMMIT Inc.** and a current contact page lists **710 Dorval Drive, Oakville**; IBM Partner Plus lists **BITSUMMIT Corp** at **690 Dorval Drive, Oakville**. This carrier does not guess which name/address is controlling. Exact registered entity, standing, registered office, signing authority and buyer-eligibility evidence remain open.
+BITSUMMIT itself publishes substantial Azure/data/AI/security capability material and named case studies including Holt Renfrew, Shell and Destination Canada. Those self-published capabilities are useful for diligence, but this carrier intentionally holds them at `PARTNER_CONFIRMATION_REQUIRED` until issuer/customer evidence or partner documentation is supplied.
+
+The most important hard gate is legal/entity reconciliation: BITSUMMIT's partner privacy policy uses **BITSUMMIT Inc.** and a current contact page lists **710 Dorval Drive, Oakville**; the IBM-hosted directory record displays **BITSUMMIT Corp** at **690 Dorval Drive, Oakville**. This carrier does not guess which name/address is controlling. Exact registered entity, standing, registered office, signing authority and buyer-eligibility evidence remain open.
 
 ## Gate map
 
-- `entity_profile`: IBM partner-directory footprint is supported; exact legal name/address, corporate number, standing, years-in-business evidence, and bid-specific entity requirements still need confirmation.
+- `entity_profile`: the existence/display of the IBM-hosted directory record is supported; its underlying company facts are not independently authenticated here. Exact legal name/address, corporate number, standing, years-in-business evidence, and bid-specific entity requirements still need confirmation.
 - `financial_information`: `OWNER_INPUT`; no public marketing claim substitutes for audited financials, insurance, solvency or required financial history.
 - `similar_client_references`: named case studies exist, but formal reference permission/contact details are `PARTNER_CONFIRMATION_REQUIRED`.
 - `architecture_security_integration`: public Azure/data/AI/security practice evidence exists; formal audit/certification/SLA scope remains confirmation-required.
@@ -30,12 +32,12 @@ The most important hard gate is legal/entity reconciliation: BITSUMMIT's partner
 
 `evidence.json` uses exactly four states:
 
-- `SUPPORTED`: narrow fact directly supported by an issuer/authoritative directory, or only the existence of a partner-published policy/contact route.
+- `SUPPORTED`: a narrow fact directly supported as **appearing in an issuer-hosted directory record**, or only the existence of a partner-published policy/contact route. An issuer-hosted directory page does not by itself authenticate company-supplied fields when the page disclaims validation.
 - `PARTNER_CONFIRMATION_REQUIRED`: partner-authored capability, case-study, designation, staffing, reference or assurance claim that still needs partner/issuer/customer confirmation before bid reliance.
 - `OWNER_INPUT`: commercial/legal/confidential-buyer material that belongs to the canonical pursuit owner.
 - `GAP`: no adequate public evidence, or material source conflict.
 
-The verifier intentionally prevents self-published marketing evidence from being promoted to `SUPPORTED`. It also hard-locks all external mutation authority to false.
+The verifier prevents self-published marketing evidence from being promoted to `SUPPORTED`, locks the exact narrow `SUPPORTED` claims/caveats, requires the exact nine-gate taxonomy with complete evidence coverage, closes root/item schemas, rejects duplicate/nonfinite/floating-point JSON, rejects non-plain direct-Python JSON objects, and hard-locks all external mutation authority to false.
 
 ## Verification
 
@@ -47,7 +49,7 @@ python -m unittest -v revenue.utility_safety_partners.bitsummit_prime_dossier.te
 python -O -m unittest -v revenue.utility_safety_partners.bitsummit_prime_dossier.test_verify
 ```
 
-Hostiles cover stale evidence, marketing-only promotion, missing source URL, legal-source conflict promotion, owner-input laundering, authority promotion/deletion, no-public-source promotion, ISO 42001 certification overclaim, self-published SOC/ISO assurance promotion, operation tamper and canonical-issue tamper.
+Hostiles cover stale evidence, marketing-only promotion, missing source URL, legal-source conflict promotion, owner-input laundering, authority promotion/deletion, no-public-source promotion, ISO 42001 certification overclaim, self-published SOC/ISO assurance promotion, hard-gate deletion/unknown/uncovered categories, `SUPPORTED` claim/caveat widening, root/item authority-field injection, direct mapping subclasses, duplicate keys, nonfinite/floating-point JSON, owner/status-definition/operation/canonical-issue tamper.
 
 ## Source set (observed 2026-09-17)
 
