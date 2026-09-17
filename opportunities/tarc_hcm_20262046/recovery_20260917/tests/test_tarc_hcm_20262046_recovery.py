@@ -36,7 +36,7 @@ class TarcCarrierTests(unittest.TestCase):
     def test_baseline(self):
         self.assertIn("TARC_20262046_IDENTITY_BOUND", mod.validate_public(self.public))
         result = mod.validate_partner(self.partner)
-        self.assertIn("MUSE_ARBITRATION_PENDING", result)
+        self.assertIn("HARD_DNR_PROVIDER_SENT", result)
         self.assertIn("REPOSITORY_SEND_AUTHORITY_FALSE", result)
 
     def test_duplicate_json_key_rejected(self):
@@ -117,16 +117,33 @@ class TarcCarrierTests(unittest.TestCase):
         r["state"] = "MUSE_CLEAR_PROVIDER_SEND_PENDING"
         r["muse_arbitration"]["explicit_clearance_observed"] = True
         r["muse_arbitration"]["clearance_ts"] = "1789619999.000001"
+        r["provider_send"] = {
+            "performed": False,
+            "message_id": None,
+            "thread_id": None,
+            "sent_at": None,
+        }
         self.assertIn("MUSE_CLEAR_PROVIDER_SEND_PENDING", mod.validate_partner(p))
         self.assertIs(r["send_authorized"], False)
 
     def test_provider_receipt_without_send_rejected(self):
-        self.assert_partner_bad(lambda p: p["routes"][0]["provider_send"].__setitem__("message_id", "x"))
+        def mutate(p):
+            r = p["routes"][0]
+            r["state"] = "MUSE_CLEAR_PROVIDER_SEND_PENDING"
+            r["provider_send"] = {
+                "performed": False,
+                "message_id": "x",
+                "thread_id": None,
+                "sent_at": None,
+            }
+        self.assert_partner_bad(mutate)
 
     def test_provider_send_without_clearance_rejected(self):
         def mutate(p):
             r = p["routes"][0]
             r["state"] = "HARD_DNR_PROVIDER_SENT"
+            r["muse_arbitration"]["explicit_clearance_observed"] = False
+            r["muse_arbitration"]["clearance_ts"] = None
             r["provider_send"] = {
                 "performed": True,
                 "message_id": "m",
