@@ -1,10 +1,12 @@
 from __future__ import annotations
+from copy import deepcopy
 from datetime import datetime, timezone
 import json, os
 from pathlib import Path
 import subprocess, sys, tempfile, unittest
 from tools.provider_cost_truth import codec, engine, evaluator, gate, schema
 from tools.provider_cost_truth._test_support import NOW,event,snapshot
+from tools.provider_cost_truth.trusted_sources import TRUSTED_PROVIDER_EVIDENCE_MANIFEST_SHA256
 
 ROOT=Path(__file__).resolve().parents[2]
 
@@ -24,10 +26,24 @@ class ProviderCostTruthHostiles(unittest.TestCase):
         receipt=engine.compile_current(snap)
         self.assertEqual(receipt["state"],"COST_UNKNOWN")
         self.assertFalse(receipt["free_only_satisfied"])
+        self.assertEqual(
+            receipt["trusted_provider_evidence_manifest_sha256"],
+            TRUSTED_PROVIDER_EVIDENCE_MANIFEST_SHA256,
+        )
         self.assertIn(
             "IGNORED_UNTRUSTED_PROVIDER_EVIDENCE:a-zero",receipt["reasons"]
         )
         self.assertTrue(engine.verify_receipt(snap,receipt))
+
+    def test_manifest_digest_tamper_resealed_by_caller_still_fails_replay(self):
+        snap=snapshot([event("a-zero")])
+        receipt=engine.compile_current(snap)
+        forged=deepcopy(receipt)
+        forged["trusted_provider_evidence_manifest_sha256"]="0"*64
+        unsigned=dict(forged);unsigned.pop("receipt_sha256")
+        forged["receipt_sha256"]=codec._sha256_value(unsigned)
+        with self.assertRaisesRegex(gate.GateError,"semantic replay mismatch"):
+            engine.verify_receipt(snap,forged)
 
     def test_ordinary_module_rebinding_cannot_retarget_supported_current_api(self):
         snap=snapshot([event("a-zero")])
