@@ -155,10 +155,10 @@ class RelationshipGuardTests(unittest.TestCase):
     def test_01_empty_packet_is_diagnostic_only_and_process_timed(self):
         out = self.compile()
         self.assertEqual(out["decision"]["status"], "NO_CONFLICT_FOUND")
-        self.assertEqual(out["decision"]["evaluation_mode"], "CURRENT")
-        self.assertTrue(out["decision"]["truth"]["evaluation_time_is_process_owned"])
-        self.assertFalse(out["decision"]["truth"]["verify_replay_establishes_currentness"])
-        self.assertEqual(out["decision"]["truth"]["verification_freshness_window_seconds"], 300)
+        self.assertEqual(out["decision"]["evaluation_mode"], "PROCESS_UTC_SNAPSHOT")
+        self.assertEqual(out["decision"]["truth"]["evaluation_time_claim"], "PROCESS_UTC_SNAPSHOT")
+        self.assertFalse(out["decision"]["truth"]["evaluation_time_process_origin_authenticated"])
+        self.assertFalse(out["decision"]["truth"]["retained_replay_establishes_currentness"])
         self.assertFalse(out["decision"]["truth"]["no_conflict_is_send_permission"])
         self.assertFalse(any(out["decision"]["authority"].values()))
 
@@ -335,7 +335,11 @@ class RelationshipGuardTests(unittest.TestCase):
     def test_28_receipt_and_retained_time_recompile_reject_mutation(self):
         packet = {"candidate": candidate(), "events": [sent()]}
         artifact = compile_guard(packet)
-        self.assertTrue(verify_guard(packet, artifact))
+        verified = verify_guard(packet, artifact)
+        self.assertTrue(verified["retained_integrity_verified"])
+        self.assertFalse(verified["retained_time_process_origin_verified"])
+        self.assertFalse(verified["retained_status_is_current"])
+        self.assertFalse(any(verified["authority"].values()))
         changed = copy.deepcopy(artifact)
         changed["decision"]["authority"]["send_authorized"] = True
         with self.assertRaises(GuardError):
@@ -367,7 +371,9 @@ class RelationshipGuardTests(unittest.TestCase):
             packet = {"candidate": candidate(), "events": []}
             artifact = compile_guard(packet)
             self.assertFalse(any(artifact["decision"]["authority"].values()))
-            self.assertTrue(verify_guard(packet, artifact))
+            verified = verify_guard(packet, artifact)
+            self.assertTrue(verified["retained_integrity_verified"])
+            self.assertFalse(any(verified["authority"].values()))
         finally:
             guard.AUTHORITY = original
 
@@ -377,7 +383,6 @@ class RelationshipGuardTests(unittest.TestCase):
         artifact["decision"]["evaluation_mode"] = "HISTORICAL"
         with self.assertRaises(GuardError):
             verify_guard(packet, artifact)
-
 
     def test_33_older_unreopened_counterparty_negative_survives_newer_reopen(self):
         s = sent(
@@ -411,19 +416,33 @@ class RelationshipGuardTests(unittest.TestCase):
         out = self.compile([s, b, r])
         self.assertEqual(out["decision"]["status"], "HOLD_DEAD_ROUTE")
 
-    def test_35_verify_rejects_future_current_timestamp_before_replay(self):
+    def test_35_verify_rejects_future_self_resealed_snapshot(self):
         packet = {"candidate": candidate(), "events": []}
-        artifact = compile_guard(packet)
-        artifact["decision"]["evaluated_at"] = stamp(seconds_ahead=3600)
+        frozen = guard._freeze(packet, "packet")
+        future = datetime.now(timezone.utc).replace(microsecond=0) + timedelta(days=4)
+        artifact = guard._compile_at(frozen, future, "PROCESS_UTC_SNAPSHOT")
         with self.assertRaisesRegex(GuardError, "future"):
             verify_guard(packet, artifact)
 
-    def test_36_verify_rejects_stale_current_timestamp_before_replay(self):
-        packet = {"candidate": candidate(), "events": []}
-        artifact = compile_guard(packet)
-        artifact["decision"]["evaluated_at"] = stamp(seconds_ago=600)
-        with self.assertRaisesRegex(GuardError, "stale"):
-            verify_guard(packet, artifact)
+    def test_36_self_resealed_old_snapshot_is_integrity_only_and_freshly_reevaluated(self):
+        s = sent(
+            seconds_ago=4 * 24 * 3600,
+            route="ops@example.com",
+            purpose="other-purpose",
+        )
+        packet = {"candidate": candidate(), "events": [s]}
+        frozen = guard._freeze(packet, "packet")
+        old = datetime.now(timezone.utc).replace(microsecond=0) - timedelta(days=4) + timedelta(hours=1)
+        artifact = guard._compile_at(frozen, old, "PROCESS_UTC_SNAPSHOT")
+        self.assertEqual(artifact["decision"]["status"], "HOLD_RECENT_COUNTERPARTY_CONTACT")
+        verified = verify_guard(packet, artifact)
+        self.assertTrue(verified["retained_integrity_verified"])
+        self.assertFalse(verified["retained_time_process_origin_verified"])
+        self.assertFalse(verified["retained_status_is_current"])
+        self.assertEqual(verified["artifact_status"], "HOLD_RECENT_COUNTERPARTY_CONTACT")
+        self.assertEqual(verified["fresh_status"], "NO_CONFLICT_FOUND")
+        self.assertEqual(verified["fresh_decision"]["evaluation_mode"], "PROCESS_UTC_VERIFY_FRESH")
+        self.assertFalse(any(verified["fresh_decision"]["authority"].values()))
 
     def test_37_injected_clock_helper_attribute_cannot_age_out_current_contact(self):
         original = getattr(guard, "_current_time", None)
@@ -438,7 +457,54 @@ class RelationshipGuardTests(unittest.TestCase):
             else:
                 guard._current_time = original
 
-    def test_38_authority_ceiling_exact_false(self):
+    def test_38_changed_ids_cannot_duplicate_provider_send_semantics(self):
+        a = sent(event_id="s1", message="m1", seconds_ago=4000)
+        b = copy.deepcopy(a)
+        b["event_id"] = "s2"
+        b["provider_message_id"] = "m2"
+        with self.assertRaisesRegex(GuardError, "duplicate semantic event"):
+            self.compile([a, b])
+
+    def test_39_changed_ids_cannot_duplicate_human_reply_semantics(self):
+        s = sent(seconds_ago=5000)
+        r1 = response("HUMAN_REPLY", "r1", seconds_ago=4900)
+        r1["provider_message_id"] = "reply-a"
+        r2 = copy.deepcopy(r1)
+        r2["event_id"] = "r2"
+        r2["provider_message_id"] = "reply-b"
+        with self.assertRaisesRegex(GuardError, "duplicate semantic event"):
+            self.compile([s, r1, r2])
+
+    def test_40_changed_ids_cannot_duplicate_negative_semantics(self):
+        s = sent(
+            seconds_ago=5000,
+            route="sales@example.com",
+            purpose="paid-qa-workshare",
+        )
+        n1 = negative("COUNTERPARTY", event_id="n1", seconds_ago=4900)
+        n1["provider_message_id"] = "negative-a"
+        n2 = copy.deepcopy(n1)
+        n2["event_id"] = "n2"
+        n2["provider_message_id"] = "negative-b"
+        with self.assertRaisesRegex(GuardError, "duplicate semantic event"):
+            self.compile([s, n1, n2])
+
+    def test_41_changed_ids_cannot_duplicate_reopen_semantics(self):
+        s = sent(
+            seconds_ago=5000,
+            route="sales@example.com",
+            purpose="paid-qa-workshare",
+        )
+        n = negative("COUNTERPARTY", event_id="n1", seconds_ago=4900)
+        o1 = reopen(blocker="n1", event_id="o1", seconds_ago=4800)
+        o1["provider_message_id"] = "reopen-a"
+        o2 = copy.deepcopy(o1)
+        o2["event_id"] = "o2"
+        o2["provider_message_id"] = "reopen-b"
+        with self.assertRaisesRegex(GuardError, "duplicate semantic event"):
+            self.compile([s, n, o1, o2])
+
+    def test_42_authority_ceiling_exact_false(self):
         out = self.compile()
         self.assertEqual(set(out["decision"]["authority"]), set(guard.AUTHORITY))
         self.assertFalse(any(out["decision"]["authority"].values()))
