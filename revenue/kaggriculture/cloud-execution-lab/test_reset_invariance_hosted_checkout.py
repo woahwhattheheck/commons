@@ -246,6 +246,13 @@ class HostedResetCheckoutContracts(unittest.TestCase):
             )
         self.assertEqual(result.returncode, 0, result.stderr)
 
+    def test_hosted_workflow_pins_deterministic_deadline_mode(self):
+        """Offline reset proof must not depend on CI wall-clock cancellation jitter."""
+        workflow = WORKFLOW.read_text(encoding="utf-8")
+        self.assertIn("test_worker_reset_deterministic.py", workflow)
+        self.assertIn("deterministic-reset-oracle/no-wallclock-cancellation", workflow)
+        self.assertNotIn('test_worker_reset.py" --worker', workflow)
+
     def test_prewarm_fail_closed_and_worker_thread_submit(self):
         source = Path(reset.__file__).read_text(encoding="utf-8")
         self.assertIn(
