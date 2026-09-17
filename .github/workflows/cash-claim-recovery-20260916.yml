@@ -1,0 +1,35 @@
+name: Cash claim recovery snapshot
+
+on:
+  pull_request:
+    paths:
+      - "research/open_pr_cash_claim_recovery_20260916/**"
+      - ".github/workflows/cash-claim-recovery-20260916.yml"
+  push:
+    branches: [main]
+    paths:
+      - "research/open_pr_cash_claim_recovery_20260916/**"
+      - ".github/workflows/cash-claim-recovery-20260916.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cash-claim-recovery-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python research/open_pr_cash_claim_recovery_20260916/validate.py
+      - run: python -m unittest -v research.open_pr_cash_claim_recovery_20260916.test_validate
+      - run: python -O -m unittest -v research.open_pr_cash_claim_recovery_20260916.test_validate
+      - run: python -m py_compile research/open_pr_cash_claim_recovery_20260916/validate.py research/open_pr_cash_claim_recovery_20260916/test_validate.py
