@@ -1,8 +1,14 @@
 import io
 import json
+import stat
+import tempfile
 import unittest
+from pathlib import Path
+from unittest import mock
+import warnings
 import zipfile
 
+from opportunities.invest_appalachia_framer_lms import attachment_recovery as recovery
 from opportunities.invest_appalachia_framer_lms.attachment_recovery import (
     AttachmentRecoveryError,
     SOURCE_URL,
@@ -12,9 +18,11 @@ from opportunities.invest_appalachia_framer_lms.attachment_recovery import (
 
 def make_zip(entries):
     buffer = io.BytesIO()
-    with zipfile.ZipFile(buffer, "w", zipfile.ZIP_DEFLATED) as archive:
-        for name, payload in entries:
-            archive.writestr(name, payload)
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore", UserWarning)
+        with zipfile.ZipFile(buffer, "w", zipfile.ZIP_DEFLATED) as archive:
+            for name, payload in entries:
+                archive.writestr(name, payload)
     return buffer.getvalue()
 
 
@@ -81,9 +89,34 @@ class AttachmentRecoveryTests(unittest.TestCase):
         with self.assertRaises(AttachmentRecoveryError):
             analyze_zip(data, retrieved_at_utc="2026-09-17T07:00:00Z")
 
+    def test_duplicate_member_path_fails_closed(self):
+        data = make_zip([
+            ("notes.txt", b"one"),
+            ("notes.txt", b"two"),
+            ("Attachment A.xlsx", b"A"),
+            ("Attachment B.xlsx", b"B"),
+            ("Attachment C.xlsx", b"C"),
+            ("Attachment D.docx", b"D"),
+        ])
+        with self.assertRaises(AttachmentRecoveryError):
+            analyze_zip(data, retrieved_at_utc="2026-09-17T07:00:00Z")
+
     def test_path_traversal_fails_closed(self):
         data = make_zip([
             ("../Attachment A.xlsx", b"A"),
+            ("Attachment B.xlsx", b"B"),
+            ("Attachment C.xlsx", b"C"),
+            ("Attachment D.docx", b"D"),
+        ])
+        with self.assertRaises(AttachmentRecoveryError):
+            analyze_zip(data, retrieved_at_utc="2026-09-17T07:00:00Z")
+
+    def test_unix_symlink_member_fails_closed(self):
+        symlink = zipfile.ZipInfo("Attachment A.xlsx")
+        symlink.create_system = 3
+        symlink.external_attr = (stat.S_IFLNK | 0o777) << 16
+        data = make_zip([
+            (symlink, b"target.xlsx"),
             ("Attachment B.xlsx", b"B"),
             ("Attachment C.xlsx", b"C"),
             ("Attachment D.docx", b"D"),
@@ -99,10 +132,50 @@ class AttachmentRecoveryTests(unittest.TestCase):
                 source_url="https://example.invalid/fake.zip",
             )
 
-    def test_timestamp_must_be_exact_utc(self):
-        for bad in ("2026-09-17", "2026-09-17T07:00:00+00:00", "", None):
+    def test_timestamp_must_be_real_exact_utc(self):
+        for bad in (
+            "2026-09-17",
+            "2026-09-17T07:00:00+00:00",
+            "2026-13-17T07:00:00Z",
+            "2026-09-31T07:00:00Z",
+            "2026-09-17T25:00:00Z",
+            "",
+            None,
+        ):
             with self.subTest(bad=bad), self.assertRaises(AttachmentRecoveryError):
                 analyze_zip(self.exact_zip(), retrieved_at_utc=bad)
+
+    def test_member_count_is_bounded_before_payload_reads(self):
+        data = self.exact_zip()
+        with mock.patch.object(recovery, "MAX_REGULAR_MEMBERS", 3):
+            with self.assertRaisesRegex(AttachmentRecoveryError, "too many regular members"):
+                analyze_zip(data, retrieved_at_utc="2026-09-17T07:00:00Z")
+
+    def test_cumulative_uncompressed_size_is_bounded_before_payload_reads(self):
+        data = make_zip([
+            ("Attachment A.xlsx", b"AA"),
+            ("Attachment B.xlsx", b"BB"),
+            ("Attachment C.xlsx", b"CC"),
+            ("Attachment D.docx", b"DD"),
+        ])
+        with mock.patch.object(recovery, "MAX_TOTAL_UNCOMPRESSED_BYTES", 7):
+            with self.assertRaisesRegex(AttachmentRecoveryError, "cumulative uncompressed"):
+                analyze_zip(data, retrieved_at_utc="2026-09-17T07:00:00Z")
+
+    def test_existing_receipt_output_is_never_overwritten(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            zip_path = root / "official.zip"
+            output = root / "receipt.json"
+            zip_path.write_bytes(self.exact_zip())
+            output.write_text("sentinel\n", encoding="utf-8")
+            with self.assertRaises(AttachmentRecoveryError):
+                recovery.main([
+                    "--zip", str(zip_path),
+                    "--retrieved-at-utc", "2026-09-17T07:00:00Z",
+                    "--output", str(output),
+                ])
+            self.assertEqual(output.read_text(encoding="utf-8"), "sentinel\n")
 
     def test_non_zip_fails_closed(self):
         with self.assertRaises(AttachmentRecoveryError):
