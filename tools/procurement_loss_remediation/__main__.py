@@ -8,7 +8,8 @@ import sys
 
 from tools.procurement_win_loss.compiler import load_json_file
 
-from .core import RemediationError, compile_plan
+from .core import RemediationError
+from .policy import compile_plan
 from .verifier import RemediationVerificationError, verify_plan
 
 
