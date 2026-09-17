@@ -38,7 +38,7 @@ These are proposal workstreams to map into the buyer's actual evaluation structu
 
 **Student/advisor interaction.** Define channel boundaries, human-advisor escalation, uncertainty/abstention, transparent source context, and no autonomous academic-policy authority.
 
-**Integration.** Create a versioned interface map across buyer-required SIS/CRM/LMS/identity/advising services; define idempotency, retry/reconciliation, contract tests, cutover, and rollback.
+**Integration.** Create a versioned interface map across buyer-specified SIS/CRM/LMS/identity/advising services; define idempotency, retry/reconciliation, contract tests, cutover, and rollback.
 
 **AI-governance acceptance.** Bind model/prompt/policy versions to evaluated behavior; preserve provenance; measure hallucination/unsupported-claim rates, calibration, fairness/subgroup behavior where buyer-approved data allows, and human-override outcomes.
 
