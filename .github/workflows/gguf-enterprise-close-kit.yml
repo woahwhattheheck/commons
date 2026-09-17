@@ -1,0 +1,48 @@
+name: GGUF enterprise close kit
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/gguf_enterprise_close_kit/**'
+      - 'revenue/payment_ready/recovery.json'
+      - 'revenue/payment_ready/pack.json'
+      - 'host/revenue_recovery.py'
+      - 'diagnostic.html'
+      - 'tests/test_gguf_enterprise_close_kit.py'
+      - 'tests/test_gguf_enterprise_close_kit_script_confusables.py'
+      - '.github/workflows/gguf-enterprise-close-kit.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'revenue/gguf_enterprise_close_kit/**'
+      - 'revenue/payment_ready/recovery.json'
+      - 'revenue/payment_ready/pack.json'
+      - 'host/revenue_recovery.py'
+      - 'diagnostic.html'
+      - 'tests/test_gguf_enterprise_close_kit.py'
+      - 'tests/test_gguf_enterprise_close_kit_script_confusables.py'
+      - '.github/workflows/gguf-enterprise-close-kit.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m py_compile revenue/gguf_enterprise_close_kit/close_kit.py tests/test_gguf_enterprise_close_kit.py tests/test_gguf_enterprise_close_kit_script_confusables.py
+      - run: python -m unittest tests.test_gguf_enterprise_close_kit tests.test_gguf_enterprise_close_kit_script_confusables
+      - run: python -O -m unittest tests.test_gguf_enterprise_close_kit tests.test_gguf_enterprise_close_kit_script_confusables
+      - name: Compile and verify synthetic sample
+        run: |
+          tmpdir="$(mktemp -d)"
+          python revenue/gguf_enterprise_close_kit/close_kit.py compile revenue/gguf_enterprise_close_kit/sample_intake.json revenue/gguf_enterprise_close_kit/sample_evidence.json --json-out "$tmpdir/packet.json" --markdown-out "$tmpdir/report.md"
+          python revenue/gguf_enterprise_close_kit/close_kit.py verify "$tmpdir/packet.json"
+          grep -F 'SYNTHETIC / UNPAID / NOT A CUSTOMER CASE' "$tmpdir/report.md"
