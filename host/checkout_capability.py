@@ -144,12 +144,49 @@ def catalog_checkouts(catalog: dict[str, Any]) -> dict[str, str]:
     return out
 
 
+def catalog_checkout_evidence(catalog: dict[str, Any]) -> dict[str, dict[str, str]]:
+    """Return valid catalog checkout evidence keyed by SKU.
+
+    URL/status flags are necessary but not sufficient public authority.  A
+    catalog checkout also has to retain durable capability evidence so the
+    projector can bind it to the canonical rail before exposure.
+    """
+    active = catalog_checkouts(catalog)
+    out: dict[str, dict[str, str]] = {}
+    for listing in catalog.get("listings") or []:
+        if not isinstance(listing, dict) or not isinstance(listing.get("id"), str):
+            continue
+        sku = listing["id"]
+        checkout = listing.get("checkout") if isinstance(listing.get("checkout"), dict) else {}
+        url = checkout.get("url")
+        if active.get(sku) != url:
+            continue
+        evidence = checkout.get("capability_evidence") if isinstance(checkout.get("capability_evidence"), dict) else {}
+        reference = evidence.get("reference")
+        observed_at = evidence.get("observed_at")
+        if not isinstance(reference, str) or not reference.strip():
+            continue
+        if not isinstance(observed_at, str) or not observed_at:
+            continue
+        try:
+            _timestamp(observed_at, "%s.checkout.capability_evidence.observed_at" % sku)
+        except CapabilityError:
+            continue
+        out[sku] = {
+            "url": str(url),
+            "reference": reference,
+            "observed_at": observed_at,
+        }
+    return out
+
+
 def project_rail(
     provider: dict[str, Any],
     rail: dict[str, Any],
     inert: set[str],
     checkouts: dict[str, str],
     default_evidence: dict[str, Any],
+    checkout_evidence: dict[str, dict[str, str]],
 ) -> dict[str, Any]:
     url = str(rail.get("url") or "")
     sku = str(rail.get("sku") or "")
@@ -160,6 +197,12 @@ def project_rail(
             _timestamp(evidence["observed_at"], "%s.evidence.observed_at" % sku)
         except CapabilityError:
             evidence_ready = False
+    catalog_evidence = checkout_evidence.get(sku) or {}
+    evidence_matches = (
+        catalog_evidence.get("url") == url
+        and catalog_evidence.get("reference") == evidence.get("reference")
+        and catalog_evidence.get("observed_at") == evidence.get("observed_at")
+    )
     ready = (
         account_ready(provider)
         and rail.get("link_active") is True
@@ -168,6 +211,7 @@ def project_rail(
         and url not in inert
         and checkouts.get(sku) == url
         and evidence_ready
+        and evidence_matches
     )
     exposure = str(rail.get("exposure") or "")
     if ready and exposure == "CHECKOUT_FIRST":
@@ -207,8 +251,9 @@ def project(snapshot: dict[str, Any], catalog: dict[str, Any]) -> dict[str, Any]
         "observed_at": snapshot.get("observed_at"),
     }
     checkouts = catalog_checkouts(catalog)
+    checkout_evidence = catalog_checkout_evidence(catalog)
     projected = [
-        project_rail(provider, rail, inert, checkouts, default_evidence)
+        project_rail(provider, rail, inert, checkouts, default_evidence, checkout_evidence)
         for rail in rails
         if isinstance(rail, dict)
     ]
