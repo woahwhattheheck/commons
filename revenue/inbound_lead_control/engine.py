@@ -9,17 +9,12 @@ pricing, contract, payment, or revenue authority.
 from __future__ import annotations
 
 from collections.abc import Mapping
-from typing import Any
+from typing import Any, Callable
 
 from . import _engine_v1 as _legacy
 
 InputError = _legacy.InputError
 SCHEMA_VERSION = _legacy.SCHEMA_VERSION
-
-# Save byte-preserved implementations before the package-level compatibility
-# fence below rewires the private legacy module's public entry points.
-_compile_snapshot_v1 = _legacy.compile_snapshot
-_render_markdown_v1 = _legacy.render_markdown
 
 _STATE_EVENT_KINDS = frozenset({"HUMAN_INBOUND", "OUTBOUND_SENT", "BOUNCE"})
 
@@ -75,11 +70,23 @@ def _reject_ambiguous_chronology(document: Any) -> None:
             )
 
 
-def compile_snapshot(document: Mapping[str, Any]) -> dict[str, Any]:
-    """Compile retained evidence after fail-closed chronology preflight."""
+def _make_fenced_compiler(
+    original: Callable[[Mapping[str, Any]], dict[str, Any]],
+) -> Callable[[Mapping[str, Any]], dict[str, Any]]:
+    """Capture the reviewed compiler without leaving a module-global bypass."""
 
-    _reject_ambiguous_chronology(document)
-    return _compile_snapshot_v1(document)
+    def fenced(document: Mapping[str, Any]) -> dict[str, Any]:
+        _reject_ambiguous_chronology(document)
+        return original(document)
+
+    fenced.__name__ = "compile_snapshot"
+    fenced.__qualname__ = "compile_snapshot"
+    fenced.__doc__ = "Compile retained evidence after fail-closed chronology preflight."
+    return fenced
+
+
+compile_snapshot = _make_fenced_compiler(_legacy.compile_snapshot)
+del _make_fenced_compiler
 
 
 def verify_compiled(document: Mapping[str, Any], compiled: Mapping[str, Any]) -> bool:
@@ -95,10 +102,10 @@ def verify_compiled(document: Mapping[str, Any], compiled: Mapping[str, Any]) ->
 def render_markdown(compiled: Mapping[str, Any]) -> str:
     """Render deterministic queue text using the byte-preserved v1 renderer."""
 
-    return _render_markdown_v1(compiled)
+    return _legacy.render_markdown(compiled)
 
 
-# Importing a submodule first still executes package ``__init__``.  Rebinding
+# Importing a submodule first still executes package ``__init__``. Rebinding
 # these legacy entry points therefore prevents an ordinary caller from bypassing
 # the chronology fence merely by naming the byte-preserved implementation.
 _legacy.compile_snapshot = compile_snapshot
