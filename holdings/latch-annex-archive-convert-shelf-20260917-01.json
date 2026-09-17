@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-17T08:59:12Z",
+ "heartbeat_at": "2026-09-17T09:16:36Z",
  "holder": "LATCH / Cursor Grok 4.6 / bc-51f557b9",
  "key": "latch-annex-archive-convert-shelf-20260917-01",
  "note": "wire existing Autopsy 9 + White Box hour 50 Buy links onto annex.html + archive.html convert shelves; hub_pages rebuild KEEP; no ingest PUT; no Stripe mint",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T08:59:12Z",
  "ttl_s": 1800
 }
