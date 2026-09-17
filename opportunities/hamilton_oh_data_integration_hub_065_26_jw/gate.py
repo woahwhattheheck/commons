@@ -1,8 +1,16 @@
 """Fail-closed pursuit gate for Hamilton County RFP 065-26/JW.
 
 Discovery sources may guide investigation but cannot establish buyer control.
-Positive owner/partner qualification is accepted only from source-owned, digest-pinned
-retained evidence. Runtime inputs cannot extend that trust root.
+Positive owner/partner qualification and official buyer-control authority are
+accepted only from source-owned, digest-pinned retained evidence. Runtime JSON
+inputs cannot extend that trust root.
+
+Threat boundary: this module defends the CLI/library boundary against untrusted
+ledger/requirements/evidence JSON and retained-file substitution. The Python
+process itself is trusted. A host that deliberately rebinds module globals,
+replaces functions, or mutates interpreter state is outside this contract; the
+source-owned maps below are reviewed program configuration, not a hostile-host
+enclave.
 """
 from __future__ import annotations
 
@@ -18,6 +26,7 @@ from typing import Any, Mapping, Sequence
 
 OPPORTUNITY_ID = "065-26/JW"
 EVIDENCE_ARTIFACT_SCHEMA = "hamilton-065-26-jw-evidence/v3"
+OFFICIAL_ARTIFACT_SCHEMA = "hamilton-065-26-jw-official-source/v1"
 PACKET_SCHEMA = "hamilton-065-26-jw-pursuit/v3"
 MAX_RETAINED_EVIDENCE_BYTES = 262_144
 
@@ -29,6 +38,7 @@ SOURCE_AUTHORITIES = {
     "OFFICIAL_PORTAL_ENTRY", "OFFICIAL_CONTROLLING_PACKET", "OFFICIAL_ADDENDUM",
     "MIRROR", "INTERNAL_EVIDENCE",
 }
+OFFICIAL_CONTROLLING_AUTHORITIES = {"OFFICIAL_CONTROLLING_PACKET", "OFFICIAL_ADDENDUM"}
 PRIME_GATES = (
     "submission_mechanics", "eligibility", "security_compliance",
     "past_performance", "insurance_legal", "pricing",
@@ -59,9 +69,11 @@ INTERNAL_EVIDENCE_KIND = {
     "PARTNER_DUE_DILIGENCE": "PARTNER_DUE_DILIGENCE_RECORD",
 }
 
-# Source-owned trust root. The reviewed carrier intentionally has no positive
-# owner/partner evidence yet. Adding one requires a source change that pins the
-# retained leaf name to its exact SHA-256 here.
+# Reviewed source-owned trust root for BOTH internal qualification evidence and
+# official buyer-control artifacts. Production intentionally starts empty.
+# Adding a leaf->SHA admission is a source change. Untrusted JSON cannot extend
+# it. The hosting Python process is trusted; deliberate in-process rebinding is
+# explicitly outside this module's adversarial boundary (see module docstring).
 SOURCE_OWNED_RETAINED_EVIDENCE: Mapping[str, str] = MappingProxyType({})
 
 
@@ -230,7 +242,7 @@ def _read_retained_evidence_bytes(leaf: str, sid: str) -> bytes:
         os.close(dir_fd)
 
 
-def _internal_artifact_binding(source: Mapping[str, Any], sid: str) -> tuple[str, str]:
+def _retained_artifact_document(source: Mapping[str, Any], sid: str) -> Mapping[str, Any]:
     locator = source.get("retained_artifact")
     if type(locator) is not dict or set(locator) != {"path", "sha256"}:
         raise GateError(f"{sid}.retained_artifact must contain exact path and sha256 fields")
@@ -247,8 +259,15 @@ def _internal_artifact_binding(source: Mapping[str, Any], sid: str) -> tuple[str
         artifact = loads_strict(raw.decode("utf-8"))
     except UnicodeDecodeError as exc:
         raise GateError(f"{sid}.retained_artifact is not utf-8") from exc
+    if type(artifact) is not dict:
+        raise GateError(f"{sid}.retained_artifact must be a JSON object")
+    return artifact
+
+
+def _internal_artifact_binding(source: Mapping[str, Any], sid: str) -> tuple[str, str]:
+    artifact = _retained_artifact_document(source, sid)
     required = {"schema", "source_id", "opportunity_id", "binding", "evidence"}
-    if type(artifact) is not dict or set(artifact) != required:
+    if set(artifact) != required:
         raise GateError(f"{sid}.retained_artifact has unexpected record fields")
     if artifact.get("schema") != EVIDENCE_ARTIFACT_SCHEMA:
         raise GateError(f"{sid}.retained_artifact schema mismatch")
@@ -278,6 +297,59 @@ def _internal_artifact_binding(source: Mapping[str, Any], sid: str) -> tuple[str
     _string_list(evidence.get("facts"), f"{sid}.retained_artifact.evidence.facts")
     _string_list(evidence.get("refs"), f"{sid}.retained_artifact.evidence.refs")
     return rid, evidence_class
+
+
+def _validate_official_claim(field: str, value: Any, sid: str) -> None:
+    label = f"{sid}.retained_artifact.claims.{field}"
+    if field in {"response_deadline", "question_deadline"}:
+        _time(value, label)
+    elif field == "submission_mechanics":
+        _str(value, label)
+    elif field == "teaming_rules":
+        _bool(value, label)
+    elif field in {"evaluation_criteria", "mandatory_requirements"}:
+        _string_list(value, label)
+    else:
+        raise GateError(f"{sid}.retained_artifact unsupported buyer-control field: {field}")
+
+
+def _official_artifact_binding(source: Mapping[str, Any], sid: str) -> None:
+    artifact = _retained_artifact_document(source, sid)
+    required = {
+        "schema", "source_id", "opportunity_id", "authority", "url",
+        "observed_at", "claims", "controls",
+    }
+    if set(artifact) != required:
+        raise GateError(f"{sid}.retained_artifact has unexpected official record fields")
+    if artifact.get("schema") != OFFICIAL_ARTIFACT_SCHEMA:
+        raise GateError(f"{sid}.retained_artifact official schema mismatch")
+    if artifact.get("source_id") != sid or artifact.get("opportunity_id") != OPPORTUNITY_ID:
+        raise GateError(f"{sid}.retained_artifact official identity mismatch")
+    authority = _str(artifact.get("authority"), f"{sid}.retained_artifact.authority")
+    if authority not in OFFICIAL_CONTROLLING_AUTHORITIES or source.get("authority") != authority:
+        raise GateError(f"{sid}.retained_artifact official authority mismatch")
+    url = _str(artifact.get("url"), f"{sid}.retained_artifact.url")
+    observed = _time(artifact.get("observed_at"), f"{sid}.retained_artifact.observed_at")
+    claims = artifact.get("claims")
+    controls = artifact.get("controls")
+    if type(claims) is not dict:
+        raise GateError(f"{sid}.retained_artifact.claims must be object")
+    if type(controls) is not list or any(type(item) is not str for item in controls):
+        raise GateError(f"{sid}.retained_artifact.controls must be string array")
+    if len(controls) != len(set(controls)):
+        raise GateError(f"{sid}.retained_artifact.controls contains duplicates")
+    if set(controls) != set(claims):
+        raise GateError(f"{sid}.retained_artifact claims/controls must bind the same buyer fields")
+    if not set(controls).issubset(BUYER_CONTROL_FIELDS):
+        raise GateError(f"{sid}.retained_artifact controls unsupported buyer fields")
+    for field in controls:
+        _validate_official_claim(field, claims[field], sid)
+    if source.get("url") != url:
+        raise GateError(f"{sid} url does not match retained official artifact")
+    if _time(source.get("observed_at"), f"{sid}.observed_at") != observed:
+        raise GateError(f"{sid} observed_at does not match retained official artifact")
+    if source.get("claims") != claims or source.get("controls") != controls:
+        raise GateError(f"{sid} claims/controls do not exactly match retained official artifact")
 
 
 def _source_index(ledger: Mapping[str, Any]) -> dict[str, Mapping[str, Any]]:
@@ -313,6 +385,8 @@ def _source_index(ledger: Mapping[str, Any]) -> dict[str, Mapping[str, Any]]:
                 raise GateError(f"{sid} cannot control buyer fields as {authority}: {sorted(forbidden)}")
         if retrieved:
             _sha(source.get("content_sha256"), f"{sid}.content_sha256")
+            if authority in OFFICIAL_CONTROLLING_AUTHORITIES:
+                _official_artifact_binding(source, sid)
         out[sid] = source
     return out
 
@@ -322,7 +396,7 @@ def _official_value(sources: Mapping[str, Mapping[str, Any]], field: str) -> tup
     for sid, source in sources.items():
         if (
             not source["retrieved"]
-            or source["authority"] not in {"OFFICIAL_CONTROLLING_PACKET", "OFFICIAL_ADDENDUM"}
+            or source["authority"] not in OFFICIAL_CONTROLLING_AUTHORITIES
         ):
             continue
         if field in source.get("controls", []) and field in source.get("claims", {}):
@@ -375,7 +449,7 @@ def _evidence_index(
             raise GateError(f"{eid}.content_sha256 does not bind source")
         authority = source["authority"]
         if evidence_class in OFFICIAL_EVIDENCE_CLASSES:
-            if authority not in {"OFFICIAL_CONTROLLING_PACKET", "OFFICIAL_ADDENDUM"}:
+            if authority not in OFFICIAL_CONTROLLING_AUTHORITIES:
                 raise GateError(f"{eid} official evidence must bind official controlling source")
         else:
             if authority != "INTERNAL_EVIDENCE":
@@ -529,12 +603,12 @@ def compile_pursuit(
     if "RESPONSE_DEADLINE_UNCONTROLLED" in reasons:
         work_orders.append({
             "id": "BIND_OFFICIAL_RESPONSE_DEADLINE", "priority": 2,
-            "stop_condition": "official packet/addendum controls a parseable future response_deadline",
+            "stop_condition": "retained source-owned official packet/addendum controls a parseable future response_deadline",
         })
     if "TEAMING_RULES_UNCONTROLLED" in reasons:
         work_orders.append({
             "id": "BIND_TEAMING_AND_SUBCONTRACT_RULES", "priority": 3,
-            "stop_condition": "official packet/addendum controls teaming_rules",
+            "stop_condition": "retained source-owned official packet/addendum controls teaming_rules",
         })
     if missing_prime:
         work_orders.append({
@@ -544,7 +618,7 @@ def compile_pursuit(
     if decision == "HOLD" and not missing_specialist:
         work_orders.append({
             "id": "PREPARE_PAID_SPECIALIST_TEAMING_SCOPE", "priority": 5,
-            "stop_condition": "official teaming permission plus evidence-backed prime partner",
+            "stop_condition": "retained official teaming permission plus evidence-backed prime partner",
         })
     evidence_bindings = {
         rid: sorted(gates[rid]["evidence"])
