@@ -75,6 +75,8 @@ CONVERT_SHELF_LIVE_BUYS = {
     "redundancy.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "distro.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "paperwork-included.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "unbuilt-items.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "webmcp.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -129,6 +131,8 @@ PUBLIC_HTML = (
     "redundancy.html",
     "distro.html",
     "paperwork-included.html",
+    "unbuilt-items.html",
+    "webmcp.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",

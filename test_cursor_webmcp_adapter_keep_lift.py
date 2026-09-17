@@ -17,7 +17,7 @@ ADAPTER = ROOT / "api" / "mcp.py"
 
 KEEP = {
     "p/wire-webmcp-challenge-20260903-01.md": "0e815c6d",
-    "webmcp.html": "b3b0d7d3",
+    "webmcp.html": "1fc25f8b",
     "api/mcp.py": "393da756",
     "p/cursor-webmcp-contest-20260903-01.md": "98fb6b6f",
     "p/cursor-webmcp-judge-url-20260903-01.md": "eb52debf",
