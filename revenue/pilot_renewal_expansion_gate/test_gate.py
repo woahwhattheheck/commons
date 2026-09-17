@@ -208,6 +208,48 @@ class GateTests(unittest.TestCase):
         self.assertEqual(result["current_decision"], "HOLD_WINDOW")
         self.assertEqual(result["verification_mode"], "PROCESS_CURRENT")
 
+    def _assert_authority_sealed(self, *blocks):
+        expected_keys = set(AUTHORITY)
+        for block in blocks:
+            self.assertEqual(set(block), expected_keys)
+            for value in block.values():
+                self.assertIs(type(value), bool)
+                self.assertIs(value, False)
+
+    def test_authority_public_view_rejects_in_place_mutation(self):
+        with self.assertRaises(TypeError):
+            AUTHORITY["external_send_authorized"] = True
+
+    def test_authority_in_place_module_poison_cannot_widen_compile_or_verify(self):
+        raw = sample()
+        poison = {key: False for key in AUTHORITY}
+        with patch.object(engine_module, "AUTHORITY", poison, create=True):
+            engine_module.AUTHORITY["external_send_authorized"] = True
+            _, packet, receipt = engine_module.compile_packet(raw, NOW)
+            result = engine_module.verify_current(raw, packet, receipt, NOW)
+        self._assert_authority_sealed(packet["authority"], receipt["authority"], result["authority"])
+
+    def test_authority_module_rebind_cannot_widen_compile_or_verify(self):
+        raw = sample()
+        poison = {key: False for key in AUTHORITY}
+        poison["external_send_authorized"] = True
+        with patch.object(engine_module, "AUTHORITY", poison, create=True):
+            _, packet, receipt = engine_module.compile_packet(raw, NOW)
+            result = engine_module.verify_current(raw, packet, receipt, NOW)
+        self._assert_authority_sealed(packet["authority"], receipt["authority"], result["authority"])
+
+    def test_resealed_widened_authority_candidate_rejected(self):
+        from revenue.pilot_renewal_expansion_gate.common import sha256
+        raw = sample(); _, packet, receipt = self.compile(raw)
+        packet = copy.deepcopy(packet); receipt = copy.deepcopy(receipt)
+        packet["authority"]["external_send_authorized"] = True
+        receipt["authority"]["external_send_authorized"] = True
+        receipt["packet_sha256"] = sha256(canonical_json(packet))
+        core = {k: receipt[k] for k in receipt if k != "receipt_sha256"}
+        receipt["receipt_sha256"] = sha256(canonical_json(core))
+        with self.assertRaises(GateError):
+            engine_module.verify_current(raw, packet, receipt, NOW)
+
     def test_future_source_observation_invalidates_bound_evidence(self):
         d = sample(); d["sources"][0]["observed_at"] = "2026-09-18T00:00:00Z"
         self.assertEqual(self.compile(d)[1]["decision"], "HOLD_ACCEPTANCE")
