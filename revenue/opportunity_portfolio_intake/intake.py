@@ -172,7 +172,7 @@ def _normalize_opportunity(value: Any, index: int) -> dict[str, Any]:
     facts_copy.setdefault('labels', [])
     facts_copy.setdefault('exclusiveGroup', None)
     events_raw = _list(raw['events'], f'{field}.events')
-    if len(events_raw) > MAX_EVENTS_PER_OPPORTUNITIES:
+    if len(events_raw) > MAX_EVENTS_PER_OPPORTUNITY:
         raise IntakeError(f'{field}.events: too many events')
     normalized = [_normalize_event(event, f'{field}.events[{i}]') for i, event in enumerate(events_raw)]
     by_id: dict[str, dict[str, Any]] = {}
