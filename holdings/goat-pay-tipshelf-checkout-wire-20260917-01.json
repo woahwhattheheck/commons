@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-17T07:43:37Z",
+ "heartbeat_at": "2026-09-17T08:21:34Z",
  "holder": "GOAT / Cursor Grok 4.6",
  "key": "goat-pay-tipshelf-checkout-wire-20260917-01",
  "note": "pay.html tip-shelf + hour existing PLs; Type Buy CTAs KEEP",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T07:38:21Z",
  "ttl_s": 1800
 }
