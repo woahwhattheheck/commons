@@ -1,25 +1,24 @@
 #!/usr/bin/env python3
-"""Truth-narrowed healthcare-prime readiness for CPCA HCCN Connect.
+"""Truth-narrowed, source-bound healthcare-prime readiness for CPCA HCCN Connect.
 
-The legacy qualifier's subcontract ``TEAMING_READY`` value proves only that a
-named prime, relationship flag, and selected TJLabs support gates are present.
-It does not by itself prove the complete applicant/application gate set.  This
-module preserves that useful workshare signal while independently holding CPCA
-application readiness until every mandatory gate and its retained source
-manifest are complete.
+The legacy qualifier's subcontract ``TEAMING_READY`` value is retained only as a
+bounded workshare-discussion signal.  This wrapper code-owns the exact legacy
+qualifier and canonical CPCA qualification specification, binds every receipt to
+the exact evidence/prime/source identities it evaluated, and independently keeps
+CPCA application readiness at HOLD until provider-authenticated evidence exists.
 """
 from __future__ import annotations
 
 import argparse
 import hashlib
-import importlib.util
 import json
 import re
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Mapping, Sequence
+from typing import Any, Callable, Dict, Iterable, List, Mapping, Sequence, Tuple
 
-SCHEMA = "cpca-partner-readiness/v1"
+SCHEMA = "cpca-partner-readiness/v2"
 MAX_JSON_BYTES = 1_048_576
+MAX_PYTHON_BYTES = 1_048_576
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 SOURCE_KEYS = {"source_id", "sha256"}
 AUTHORITY = {
@@ -54,12 +53,70 @@ def _load(path: Path) -> Dict[str, Any]:
     return value
 
 
-def canonical_bytes(value: Mapping[str, Any]) -> bytes:
-    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=True).encode("utf-8")
+def canonical_bytes(value: Any) -> bytes:
+    return json.dumps(
+        value,
+        sort_keys=True,
+        separators=(",", ":"),
+        ensure_ascii=True,
+        allow_nan=False,
+    ).encode("utf-8")
 
 
-def canonical_digest(value: Mapping[str, Any]) -> str:
+def canonical_digest(value: Any) -> str:
     return hashlib.sha256(canonical_bytes(value)).hexdigest()
+
+
+def _canonical_spec_path() -> Path:
+    return Path(__file__).resolve().with_name("qualification_spec.json")
+
+
+def _canonical_legacy_path() -> Path:
+    return Path(__file__).resolve().with_name("cpca_qualify.py")
+
+
+def _assert_canonical_spec(spec: Mapping[str, Any]) -> Tuple[str, str]:
+    """Require the supplied semantic spec to equal the repository-owned spec.
+
+    Return (canonical-json digest, exact source-file byte digest).  This keeps
+    library callers from swapping a weaker specification while preserving the
+    explicit spec argument used by deterministic tests and verifiers.
+    """
+    path = _canonical_spec_path()
+    raw = path.read_bytes()
+    if len(raw) > MAX_JSON_BYTES:
+        raise ValueError("canonical qualification specification is too large")
+    owned = json.loads(raw.decode("utf-8"), object_pairs_hook=_pairs_no_duplicates)
+    if not isinstance(owned, dict):
+        raise ValueError("canonical qualification specification must be an object")
+    if canonical_bytes(spec) != canonical_bytes(owned):
+        raise ValueError("qualification spec differs from code-owned canonical specification")
+    return canonical_digest(owned), hashlib.sha256(raw).hexdigest()
+
+
+def _load_code_owned_legacy() -> Tuple[Callable[[Dict[str, Any], Dict[str, Any]], Dict[str, Any]], str]:
+    """Load exactly the repository-owned predecessor bytes and return its digest.
+
+    There is deliberately no caller-selectable legacy path.  The bytes are read
+    once, hashed, compiled, and executed from that same in-memory snapshot so a
+    path swap cannot create a digest/execution split.
+    """
+    path = _canonical_legacy_path()
+    raw = path.read_bytes()
+    if len(raw) > MAX_PYTHON_BYTES:
+        raise ValueError("canonical legacy qualifier is too large")
+    digest = hashlib.sha256(raw).hexdigest()
+    namespace: Dict[str, Any] = {
+        "__name__": "cpca_qualify_bound_runtime",
+        "__file__": str(path),
+        "__package__": None,
+    }
+    code = compile(raw, str(path), "exec", dont_inherit=True)
+    exec(code, namespace, namespace)
+    evaluate = namespace.get("evaluate")
+    if not callable(evaluate):
+        raise ValueError("canonical legacy qualifier does not expose evaluate")
+    return evaluate, digest
 
 
 def _required_gate_ids(spec: Mapping[str, Any], service_type: str) -> List[str]:
@@ -96,6 +153,59 @@ def _source_object(value: Any, label: str) -> Dict[str, str]:
     if not isinstance(digest, str) or not SHA256_RE.fullmatch(digest):
         raise ValueError(f"{label}.sha256 must be lowercase 64-hex")
     return {"source_id": source_id.strip(), "sha256": digest}
+
+
+def _application_manifest_identity(
+    evidence: Mapping[str, Any], required_ids: Sequence[str]
+) -> Dict[str, Any]:
+    manifest = evidence.get("partner_application_evidence")
+    if manifest is None:
+        return {
+            "present": False,
+            "sha256": canonical_digest(None),
+            "sources": [],
+        }
+    if not isinstance(manifest, dict):
+        raise ValueError("partner_application_evidence must be an object")
+
+    sources: List[Dict[str, str]] = []
+    for key in (
+        "prime_identity_source",
+        "relationship_authority_source",
+        "submission_authority_source",
+        "application_package_source",
+    ):
+        value = manifest.get(key)
+        if value is not None:
+            normalized = _source_object(value, f"partner_application_evidence.{key}")
+            sources.append({"locator": key, **normalized})
+
+    gate_sources = manifest.get("gate_sources")
+    if gate_sources is not None and not isinstance(gate_sources, dict):
+        raise ValueError("partner_application_evidence.gate_sources must be an object")
+    if isinstance(gate_sources, dict):
+        unknown = sorted(set(gate_sources) - set(required_ids))
+        if unknown:
+            raise ValueError(f"unknown partner application gate source ids: {unknown}")
+        for gate_id in sorted(gate_sources):
+            rows = gate_sources[gate_id]
+            if not isinstance(rows, list):
+                raise ValueError(f"gate_sources.{gate_id} must be a list")
+            seen: set[tuple[str, str]] = set()
+            for index, row in enumerate(rows):
+                normalized = _source_object(row, f"gate_sources.{gate_id}[{index}]")
+                identity = (normalized["source_id"], normalized["sha256"])
+                if identity in seen:
+                    raise ValueError(f"duplicate source object for gate {gate_id}: {identity[0]}")
+                seen.add(identity)
+                sources.append({"locator": f"gate_sources.{gate_id}[{index}]", **normalized})
+
+    sources.sort(key=lambda row: (row["locator"], row["source_id"], row["sha256"]))
+    return {
+        "present": True,
+        "sha256": canonical_digest(manifest),
+        "sources": sources,
+    }
 
 
 def _application_manifest_blockers(
@@ -158,21 +268,43 @@ def _application_manifest_blockers(
     return blockers
 
 
-def _load_legacy_module(path: Path):
-    spec = importlib.util.spec_from_file_location("cpca_qualify_legacy_runtime", path)
-    if spec is None or spec.loader is None:
-        raise ValueError(f"cannot load legacy qualifier: {path}")
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    if not callable(getattr(module, "evaluate", None)):
-        raise ValueError("legacy qualifier does not expose evaluate")
-    return module
+def _prime_identity(evidence: Mapping[str, Any]) -> Dict[str, Any]:
+    prime = evidence.get("healthcare_prime")
+    if not isinstance(prime, dict):
+        return {
+            "legal_name": None,
+            "eligibility_source": None,
+            "safety_net_experience_source": None,
+            "relationship_authority": False,
+        }
+    name = prime.get("name")
+    return {
+        "legal_name": name.strip() if isinstance(name, str) and name.strip() else None,
+        "eligibility_source": prime.get("eligibility_source"),
+        "safety_net_experience_source": prime.get("safety_net_experience_source"),
+        "relationship_authority": prime.get("relationship_authority") is True,
+    }
 
 
-def compile_partner_readiness(
+def _source_packet_identity(spec: Mapping[str, Any]) -> Dict[str, Any]:
+    source = spec.get("source_packet")
+    if not isinstance(source, dict):
+        raise ValueError("canonical spec source_packet must be an object")
+    return {
+        "gmail_message_id": source.get("gmail_message_id"),
+        "filename": source.get("filename"),
+        "sha256": source.get("sha256"),
+    }
+
+
+def _compile_trusted_partner_readiness(
     spec: Mapping[str, Any],
     evidence: Mapping[str, Any],
     legacy_result: Mapping[str, Any],
+    *,
+    spec_sha256: str,
+    spec_file_sha256: str,
+    legacy_sha256: str,
 ) -> Dict[str, Any]:
     if evidence.get("bid_model") != "healthcare_prime_subcontract":
         raise ValueError("partner readiness requires bid_model=healthcare_prime_subcontract")
@@ -191,6 +323,7 @@ def compile_partner_readiness(
     if not isinstance(gate_status, dict):
         gate_status = {}
     non_proven = sorted(gate_id for gate_id in required_ids if gate_status.get(gate_id) != "PROVEN")
+    manifest_identity = _application_manifest_identity(evidence, required_ids)
 
     if legacy_state == "NO_BID":
         workshare_state = "NO_BID"
@@ -211,9 +344,6 @@ def compile_partner_readiness(
                 + ["provider_authenticated_prime_application_evidence"]
             )
         )
-        # This generation has no provider-authenticated private evidence adapter.
-        # A caller-supplied manifest may show what has been assembled, but it can
-        # never authorize application readiness by itself.
         application_state = "HOLD"
         if discussion_ready:
             state = "WORKSHARE_DISCUSSION_READY"
@@ -242,6 +372,7 @@ def compile_partner_readiness(
         "workshare": {
             "state": workshare_state,
             "discussion_artifact_only": workshare_state == "DISCUSSION_READY",
+            "source_bound": True,
         },
         "application": {
             "state": application_state,
@@ -250,6 +381,19 @@ def compile_partner_readiness(
             "provider_authenticated_evidence_available": False,
             "caller_manifest_can_authorize_readiness": False,
         },
+        "binding": {
+            "qualification_spec_sha256": spec_sha256,
+            "qualification_spec_file_sha256": spec_file_sha256,
+            "evidence_sha256": canonical_digest(evidence),
+            "prime": _prime_identity(evidence),
+            "application_manifest": manifest_identity,
+            "qualification_source_packet": _source_packet_identity(spec),
+            "legacy_implementation": {
+                "path": "cpca_qualify.py",
+                "sha256": legacy_sha256,
+            },
+            "legacy_result_sha256": canonical_digest(legacy_result),
+        },
         "authority": dict(AUTHORITY),
     }
     if result["application"]["state"] == "TEAMING_READY" and result["application"]["blockers"]:
@@ -257,45 +401,101 @@ def compile_partner_readiness(
     return result
 
 
-def compile_from_evidence(
-    spec: Mapping[str, Any], evidence: Mapping[str, Any], legacy_path: Path | None = None
+def compile_partner_readiness(
+    spec: Mapping[str, Any],
+    evidence: Mapping[str, Any],
+    legacy_result: Mapping[str, Any],
 ) -> Dict[str, Any]:
-    path = legacy_path or Path(__file__).with_name("cpca_qualify.py")
-    legacy = _load_legacy_module(path)
-    legacy_result = legacy.evaluate(dict(spec), dict(evidence))
-    return compile_partner_readiness(spec, evidence, legacy_result)
+    """Compile a caller-supplied predecessor result as NON-AUTHORIZING diagnostics.
+
+    Raw legacy-result compilation is intentionally incapable of emitting the
+    product-significant workshare-discussion state.  Trusted compilation must go
+    through ``compile_from_evidence()``, which executes the code-owned predecessor
+    and binds its exact implementation/evidence/spec identities.
+    """
+    if evidence.get("bid_model") != "healthcare_prime_subcontract":
+        raise ValueError("partner readiness requires bid_model=healthcare_prime_subcontract")
+    if not isinstance(legacy_result, dict):
+        raise ValueError("legacy_result must be an object")
+    blockers = legacy_result.get("blockers", [])
+    if not isinstance(blockers, list) or not all(isinstance(x, str) and x for x in blockers):
+        raise ValueError("legacy blockers must be a list of nonempty strings")
+    return {
+        "schema": SCHEMA,
+        "state": "HOLD",
+        "reason": "untrusted_caller_legacy_result",
+        "domain": evidence.get("domain"),
+        "service_type": evidence.get("service_type"),
+        "bid_model": evidence.get("bid_model"),
+        "legacy_workshare_signal": {
+            "state": legacy_result.get("state"),
+            "reason": legacy_result.get("reason"),
+            "blockers": sorted(set(blockers)),
+            "application_authority": False,
+            "trusted_origin": False,
+        },
+        "workshare": {
+            "state": "HOLD",
+            "discussion_artifact_only": False,
+            "source_bound": False,
+        },
+        "application": {
+            "state": "HOLD",
+            "blockers": ["trusted_legacy_predecessor_required"],
+            "source_manifest_required": True,
+            "provider_authenticated_evidence_available": False,
+            "caller_manifest_can_authorize_readiness": False,
+        },
+        "binding": None,
+        "authority": dict(AUTHORITY),
+    }
 
 
-def make_receipt(spec: Mapping[str, Any], evidence: Mapping[str, Any], legacy_path: Path | None = None) -> Dict[str, Any]:
-    result = compile_from_evidence(spec, evidence, legacy_path)
+def compile_from_evidence(spec: Mapping[str, Any], evidence: Mapping[str, Any]) -> Dict[str, Any]:
+    spec_sha256, spec_file_sha256 = _assert_canonical_spec(spec)
+    evaluate, legacy_sha256 = _load_code_owned_legacy()
+    legacy_result = evaluate(dict(spec), dict(evidence))
+    return _compile_trusted_partner_readiness(
+        spec,
+        evidence,
+        legacy_result,
+        spec_sha256=spec_sha256,
+        spec_file_sha256=spec_file_sha256,
+        legacy_sha256=legacy_sha256,
+    )
+
+
+def make_receipt(spec: Mapping[str, Any], evidence: Mapping[str, Any]) -> Dict[str, Any]:
+    result = compile_from_evidence(spec, evidence)
     result["receipt_sha256"] = canonical_digest(result)
     return result
 
 
 def verify_receipt(
-    spec: Mapping[str, Any], evidence: Mapping[str, Any], receipt: Mapping[str, Any], legacy_path: Path | None = None
+    spec: Mapping[str, Any], evidence: Mapping[str, Any], receipt: Mapping[str, Any]
 ) -> bool:
     if not isinstance(receipt, dict) or not isinstance(receipt.get("receipt_sha256"), str):
         return False
-    supplied = dict(receipt)
-    supplied_digest = supplied.pop("receipt_sha256", None)
-    if supplied_digest != canonical_digest(supplied):
+    try:
+        supplied = dict(receipt)
+        supplied_digest = supplied.pop("receipt_sha256", None)
+        if supplied_digest != canonical_digest(supplied):
+            return False
+        expected = make_receipt(spec, evidence)
+        return canonical_bytes(expected) == canonical_bytes(receipt)
+    except (TypeError, ValueError, UnicodeError, OSError):
         return False
-    expected = make_receipt(spec, evidence, legacy_path)
-    return canonical_bytes(expected) == canonical_bytes(receipt)
 
 
 def main(argv: Iterable[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("evidence", type=Path)
-    parser.add_argument("--spec", type=Path, default=Path(__file__).with_name("qualification_spec.json"))
-    parser.add_argument("--legacy", type=Path, default=Path(__file__).with_name("cpca_qualify.py"))
     parser.add_argument("--out", type=Path)
     args = parser.parse_args(list(argv) if argv is not None else None)
 
-    spec = _load(args.spec)
+    spec = _load(_canonical_spec_path())
     evidence = _load(args.evidence)
-    receipt = make_receipt(spec, evidence, args.legacy)
+    receipt = make_receipt(spec, evidence)
     rendered = json.dumps(receipt, indent=2, sort_keys=True) + "\n"
     if args.out:
         args.out.write_text(rendered, encoding="utf-8")
