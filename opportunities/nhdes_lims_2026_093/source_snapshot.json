@@ -1,0 +1,51 @@
+{
+  "schema": "nhdes_lims_2026_093.source.v1",
+  "checked_at": "2026-09-17T00:40:00-04:00",
+  "source_state": "RAW_PACKET_NOT_ACQUIRED",
+  "opportunity": {
+    "id": "RFP NHDES/DoIT 2026-093",
+    "buyer": "New Hampshire Department of Environmental Services / Department of Information Technology",
+    "title": "Laboratory Information Management System (LIMS) Implementation and Integration with Environmental Monitoring Database",
+    "posted_date": "2026-09-10",
+    "response_due": "2026-10-23",
+    "vendor_conference": "2026-10-05T14:00:00-04:00",
+    "contact_email": "kirsten.a.hugger@des.nh.gov",
+    "contract_through": "2032-03-31",
+    "possible_extension_years": 5,
+    "all_data_handling_conus": true
+  },
+  "buyer_need": {
+    "current_tracker": "Microsoft Access sample tracking database",
+    "target": "industry-standard LIMS or similar technological approach",
+    "environmental_monitoring_database": "Oracle-based EMD",
+    "two_way_emd_integration": true,
+    "automatic_completed_record_flow_to_emd": true,
+    "role_based_security": true,
+    "user_maintainable_picklists": true,
+    "labels_and_chain_of_custody": true,
+    "remote_access": true,
+    "training": true,
+    "physical_chemical_biological_and_continuous_profile_data": true
+  },
+  "reported_bidder_requirements": {
+    "nist_sp_800_171": "REQUIRES_RAW_PACKET_CONFIRMATION",
+    "govramp_authorization": "REQUIRES_RAW_PACKET_CONFIRMATION",
+    "personnel_background_checks": "REQUIRES_RAW_PACKET_CONFIRMATION",
+    "insurance": "REQUIRES_RAW_PACKET_CONFIRMATION"
+  },
+  "source_notes": [
+    "The canonical state procurement page was not acquired as raw bytes in this carrier.",
+    "Deadline, vendor conference, scope, contact, and reported bidder gates are retained from current public procurement indexing and must be rechecked against the canonical buyer packet before any bid, registration, representation, or submission.",
+    "No value estimate from an aggregator is treated as buyer budget or award authority."
+  ],
+  "external_authority": {
+    "buyer_contact": false,
+    "vendor_conference_registration": false,
+    "partner_contact": false,
+    "prime_qualification_assertion": false,
+    "bid_submission": false,
+    "contract_acceptance": false,
+    "payment": false,
+    "revenue": false
+  }
+}
