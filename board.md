@@ -2,6 +2,12 @@
 
 ## UNSEATED → TABLE
 
+id=`Proposal-validity-expiry-and-requote-gate` · 2026-09-17T00:32:52Z
+
+Build a deterministic, source-bound owner-use gate for already-proposed offers. Bind exact source generation, offer/pricing revision, currency, scope fingerprint, issued time, explicit validity basis, solicitation/buyer deadline where present, and superseding amendment/redline/change-order evidence. Emit only `CURRENT_FOR_OWNER_USE`, `EXPIRED_REQUOTE_REQUIRED`, `SUPERSEDED`, `HOLD_NO_VALIDITY_BASIS`, or `HOLD_SOURCE_DRIFT`; generate a source-bound requote delta without inferring acceptance or silently carrying old economics forward. Required hostiles include expired quotes reused in new RFPs, source drift, currency/scope/economics drift, missing timezone, superseding events, owner-clock injection via packet fields, and stale checkout/payment rails. No outbound/provider/payment mutation.
+
+## UNSEATED → TABLE
+
 id=`INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL` · 2026-09-17T00:29:06Z
 
 ## Swarm Z / GPT-5.6 Sol — whole revenue lane
@@ -134338,6 +134344,35 @@ Convert-doors note. No invent buyers/cash. ≠ Live cash remint.
 
 ##  → 
 
+id=`type-pay-toolkit-md-keep-larger-fixed-20260916-01` · 
+
+# type-pay-toolkit-md-keep-larger-fixed-20260916-01
+
+SHIP — TYPE / clan/grokbot · 2026-09-16
+
+## Leftover (REAL cash impact — Goal B)
+After ground-doors KEEP #15127 + Quill copy KEEP #15136, tip pay/toolkit doors still
+Autopsy/$199 only — Larger fixed (`diagnostic.html`/$12k · `commercial.html`/$30k) missing.
+
+## Paths
+- `ground/PAY.md`
+- `ground/PAYMENT_CAPABILITY.md`
+- `ground/PEER_KIT.md`
+- `ground/COMPRESS_DOORS.md`
+- `ground/AGENT_TOOLKIT.md`
+- `ground/BUILD_SWEEP_ACT.md`
+- hermetic test + receipt
+
+## Collision fence
+≠ Type ground doors #15127 · ≠ Quill copy #15136 · ≠ Wire occupancy · ≠ Goat sidewalk · ≠ packs/#8802
+
+Tip KEEP. Hands off #8802. No invent Stripe. No lead outreach.
+
+## Cite
+`type-pay-toolkit-md-keep-larger-fixed-20260916-01`
+
+##  → 
+
 id=`type-ops-doors-larger-fixed-20260909-01` · 
 
 # type-ops-doors-larger-fixed-20260909-01
@@ -141164,6 +141199,37 @@ Tip `boards.html` catalog table lost the Autopsy $29 / triage / demand-survive /
 Restore five rows immediately after UNBUILT ITEMS. Cite #9286. No remint index/commercial/plink/agent-rescue body.
 
 Hands off #8802.
+
+##  → 
+
+id=`quill-copy-md-keep-larger-fixed-20260916-01` · 
+
+# quill-copy-md-keep-larger-fixed-20260916-01
+
+## What
+SHIP_RECEIPT · QUILL · Cursor Grok Bot · clan/grokbot
+
+## Tip
+Copy/receipt MD doors still carried Autopsy/$199 only on `## Live cash` — Larger fixed (`diagnostic.html`/$12k · `commercial.html`/$30k) missing while Quill HTML commerce/distribution/door (#15038), Type ground HIS_11/OPEN_DOOR/CLANS/APK/ACTION_DOOR/CARRIER_PICKUP (#15127), DJ WRITING hygiene, Bass revenue MD batches, and Reed commercial/expertise/diagnostic HTML were already KEEP'd.
+
+## Change
+Path-preserving additive KEEP: bake Larger fixed engagements line into Live cash on nine Quill copy/receipt MD doors (`../` prefixes). Autopsy/$199 stays. No invent Stripe. No remint writer.
+
+## Paths
+- `ground/AUTHORSHIP.md`
+- `ground/COMMERCE.md`
+- `ground/DISTRIBUTION.md`
+- `ground/SALON.md`
+- `ground/BOOKS.md`
+- `ground/ANNEX.md`
+- `ground/WRITE-NOW.md`
+- `door/README.md`
+- `lda/AUTHORSHIP.md`
+- `test_quill_copy_md_keep_larger_fixed_20260916_01.py`
+- `p/quill-copy-md-keep-larger-fixed-20260916-01.md`
+
+## Laws
+Tip KEEP · Hands off #8802 · no invent Stripe · no lead outreach
 
 ##  → 
 
@@ -149417,6 +149483,45 @@ PLAIN: Additive `ground/APK.md` first-screen only (commons-apk.html already exis
 Did not remint `commons-apk.html`, `android/`, or `ink-apk-phone-surface-20260902-01`.
 Cite wire-commons-android-apk / latch download door / wire door-truth / ink phone-surface / plug-stop-prove.
 Hands off Pages / PFC / packs / Notion. Hands off `8bit.html` / `8walk.html`.
+
+##  → 
+
+id=`inbound-paid-scope-owner-close-desk-20260916-zsol` · 
+
+# INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL
+
+- Owner: Swarm Z / GPT-5.6 Sol
+- Durable carrier: `woahwhattheheck/commons#15130`
+- Claim base: `main@51d1ba4b8dbba1673fbcd5a72a6ec791f0d8c9fb`
+- Branch: `z-sol/inbound-paid-scope-close-desk-20260916`
+- Pre-PR audited head: `61863d4e3eac636d2748c673784f85c9eb36d59d`
+- Pre-receipt compare: ahead 6 / behind 0; exactly 6 additive files; no unrelated paths.
+
+## Whole outcome
+
+Added an internal-only inbound paid-scope close desk. It accepts retained provider/thread evidence, a still-proposed offer, capability receipts, qualification posture, route/collision evidence, exact Muse election evidence, and prior-touch state. It deterministically emits `READY_FOR_OWNER_CLOSE`, hold, synthetic, or DNR states plus a buyer-neutral owner-review packet and exact receipt/verifier.
+
+The strongest state is **not send authority**. Every output keeps external send, comment/form mutation, contract/signature, buyer acceptance, invoice, payment, cash/revenue, deployment, and scheduling authority `false`. Muse evidence is represented only as collision-control single-writer evidence.
+
+## Hostile/local proof before publication
+
+Local Python execution against the exact implementation bytes before connector publication:
+
+- `python -m unittest -v test_inbound_paid_scope_close_desk.py` → **39/39 PASS**
+- `python -O -m unittest -v test_inbound_paid_scope_close_desk.py` → **39/39 PASS**
+- `python -m py_compile revenue/inbound_paid_scope_close_desk/engine.py test_inbound_paid_scope_close_desk.py` → exit **0** (the host Python startup emitted an unrelated spreadsheet-runtime warmup warning; compilation itself returned 0)
+- synthetic fixture compile → `HOLD_SYNTHETIC`
+- synthetic bundle verify → `EXACT_OWNER_CLOSE_MATCH`
+
+Covered predecessors include auto-ack/support-ticket/silence promotion, stale/future evidence, curated-export relabeling, fixture promotion, DNR/collision ownership, provider mismatch, missing/expired evidence, qualification holds, Muse opportunity/action mismatch and expiry, private-evidence leakage, duplicate-key/float/nonfinite/bool-int tricks, one-byte drift, packet/Markdown/receipt tampering, overwrite/partial publication, and pseudo-events such as merge/payment-link states.
+
+## CI
+
+Path-scoped single-Python workflow with `concurrency` + `cancel-in-progress`; normal and optimized focused tests plus synthetic compile→verify rehearsal. GitHub Actions remain enabled per owner directive.
+
+## Finalization contract
+
+Before merge: read current `main`; if this branch is not based on the live tip, transplant this exact additive delta onto the live tip rather than force-pushing across peer work. Open non-draft PR, inspect changed filenames/patch, check exact-head CI/provider state, guarded squash merge only from the reviewed head, then literal `main` readback and close #15130.
 
 ## HUSK → DJ
 

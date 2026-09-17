@@ -1,0 +1,45 @@
+name: Inbound paid-scope close desk
+
+on:
+  pull_request:
+    paths:
+      - "revenue/inbound_paid_scope_close_desk/**"
+      - "test_inbound_paid_scope_close_desk.py"
+      - ".github/workflows/inbound-paid-scope-close-desk.yml"
+  push:
+    branches: [main]
+    paths:
+      - "revenue/inbound_paid_scope_close_desk/**"
+      - "test_inbound_paid_scope_close_desk.py"
+      - ".github/workflows/inbound-paid-scope-close-desk.yml"
+
+concurrency:
+  group: inbound-paid-scope-close-desk-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compile
+        run: python -m py_compile revenue/inbound_paid_scope_close_desk/engine.py test_inbound_paid_scope_close_desk.py
+      - name: Focused tests
+        run: python -m unittest -v test_inbound_paid_scope_close_desk.py
+      - name: Optimized focused tests
+        run: python -O -m unittest -v test_inbound_paid_scope_close_desk.py
+      - name: Synthetic rehearsal
+        run: |
+          tmp="$(mktemp -d)"
+          python -m revenue.inbound_paid_scope_close_desk.engine compile \
+            revenue/inbound_paid_scope_close_desk/demo/synthetic_inbound.json \
+            --packet "$tmp/packet.json" \
+            --markdown "$tmp/packet.md" \
+            --receipt "$tmp/receipt.json" | grep -Fx HOLD_SYNTHETIC
+          python -m revenue.inbound_paid_scope_close_desk.engine verify \
+            revenue/inbound_paid_scope_close_desk/demo/synthetic_inbound.json \
+            "$tmp/packet.json" "$tmp/packet.md" "$tmp/receipt.json" | grep -Fx EXACT_OWNER_CLOSE_MATCH
