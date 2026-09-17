@@ -177,6 +177,21 @@ FUTURE_REQUESTS_CONVERT_SHELF_HTML = """
 </section>
 """
 
+# First-screen Buy convert shelf for job.html (static) + claims.html (rebuild).
+# Existing live Payment Links only (Autopsy $29 + White Box hour $250). Cite
+# type-job-claims-convert-shelf-20260917-01. Copy character-exact from
+# avatars.html / ENTRY_CONVERT_SHELF_HTML. Tip KEEP. #8802 off. Rebuild must
+# emit this or ingest drops claims.html. Not Type keep-sell/autogtm/action/
+# capabilities/avatars/clans/commands/cloud-current. Not Wire authorship/
+# accordion. Not Latch 8bit/8walk/annex/archive. Not Goat mcp-tool-drift/
+# free-sample/humans. Not Quill. Not Muse. Not lead spam. Not nine-link shelf.
+JOB_CLAIMS_CONVERT_SHELF_STYLE = ENTRY_CONVERT_SHELF_STYLE
+JOB_CLAIMS_CONVERT_SHELF_HTML = ENTRY_CONVERT_SHELF_HTML.replace(
+    "wire-entry-land-convert-shelf-20260917-01",
+    "type-job-claims-convert-shelf-20260917-01",
+    1,
+)
+
 
 
 
@@ -1993,7 +2008,7 @@ def rebuild_claims(mod, rows):
     }
     public = _preserve_live_cash(_load_prev_live_cash_doc(mod, "claims.json"), public)
     mod._write(os.path.join(mod.ROOT, "claims.json"), json.dumps(public, indent=2) + "\n")
-    extra = BOARD_JS_TAG
+    extra = JOB_CLAIMS_CONVERT_SHELF_STYLE + "\n" + BOARD_JS_TAG
     seed_ids = {s["id"] for s in SEED_CLAIMS}
     headers = ["status", "from", "claim", "evidence that would settle", "observer", "id", "ts"]
 
@@ -2033,7 +2048,15 @@ def rebuild_claims(mod, rows):
         _table(headers, _rows(untested)),
         _table(headers, _rows(seen)),
     )
-    mod._write(os.path.join(mod.ROOT, "claims.html"), _page(mod, "Commons claims", LIVE_CASH_PRODUCTS_HTML + body, extra))
+    mod._write(
+        os.path.join(mod.ROOT, "claims.html"),
+        _page(
+            mod,
+            "Commons claims",
+            JOB_CLAIMS_CONVERT_SHELF_HTML + LIVE_CASH_PRODUCTS_HTML + body,
+            extra,
+        ),
+    )
     return recs
 
 
