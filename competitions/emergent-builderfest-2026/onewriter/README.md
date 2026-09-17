@@ -4,64 +4,61 @@
 **Competition:** Kevin O'Leary × Emergent Builders' Fest 2026  
 **Source state:** durable source packet only; `DRAFT_NOT_SUBMITTED`
 
-OneWriter prevents a concrete multi-agent business failure: two workers independently decide to contact the same hot lead within seconds and both send. The failure is expensive because it looks like spam, damages trust, and creates contradictory follow-up ownership. OneWriter turns the pre-send coordination decision into an atomic, auditable workflow.
+OneWriter prevents a concrete multi-agent business failure: two workers independently discover the same hot lead and contact it seconds apart through the same or different aliases. The duplicate touch looks like spam, damages trust, and can destroy follow-up ownership. OneWriter turns the pre-send ownership decision into an atomic, auditable writer lease.
 
-This packet is designed to be given to Emergent as the build contract for a working app. It does **not** send email, DMs, forms, or provider mutations. It does **not** grant contest-submission authority.
+This packet is a build contract for a working Emergent app. It does **not** send email, DMs, forms, mutate providers, or grant contest-submission authority.
 
-## Why this fits the contest
+## Contest fit
 
-First-party contest page checked 2026-09-17:
-`https://emergent.sh/ai-contests/kevin-oleary-emergent-builder-fest`
+First-party contest page checked 2026-09-17: `https://emergent.sh/ai-contests/kevin-oleary-emergent-builder-fest`.
 
-The page says:
-- build a working app in Emergent for one real business problem;
-- actually use it in the business;
-- submissions close 2026-09-20 23:59 GMT;
-- deployment is not submission;
-- one active submission per participant/team;
-- Business Impact / Potential to Scale is the largest rubric component at 30%.
+The page says the app must solve a real business problem and actually be used in the business; submissions close 2026-09-20 23:59 GMT; deployment is not submission; one active submission is allowed per participant/team; Business Impact / Potential to Scale is the largest rubric component at 30%.
 
-OneWriter maps directly to the operations/team and revenue/sales categories: it coordinates lead ownership, prevents duplicate external touches, distinguishes route failures from human outcomes, and records evidence that can support real before/after measurement.
+OneWriter maps directly to operations/team and revenue/sales: it coordinates lead ownership, prevents duplicate external touches across aliases, distinguishes route failures from human outcomes, and produces evidence for real before/after measurement.
 
 ## Deterministic contract
 
-A lane identity is:
+The **writer-lane identity** is:
 
-`normalized organization × domain × route × purpose × opportunity`
+`normalized organization × domain × purpose × opportunity`
 
-The SHA-256 collision key is deterministic over canonical JSON. State is one of:
+The exact `route` is deliberately **not** part of the collision key. It is normalized, stored as lease metadata, and bound to provider outcomes. This is the core anti-spam rule: a worker leasing `sales@example.com` blocks another worker from simultaneously leasing `founder@example.com` for the same organization/opportunity/purpose.
 
-- `CLEAR`
-- `LEASED`
-- `HARD_DNR`
-- `DEAD_ROUTE`
-- `HUMAN_EVENT_REOPEN`
-- `HOLD`
+The SHA-256 collision key is deterministic over canonical JSON. State is one of `CLEAR`, `LEASED`, `HARD_DNR`, `DEAD_ROUTE`, `HUMAN_EVENT_REOPEN`, or `HOLD`.
 
 Important semantics:
-- exactly one live lease per key;
-- a concurrent claim loses while the lease is live;
-- an expired lease can be recovered;
-- only the current holder can record `SENT` or `BOUNCE`;
+- exactly one live writer lease per organization lane, across routes;
+- an active lease blocks parallel claims even when the proposed alias differs;
+- an expired lease can be recovered with an explicitly selected route;
+- only the current holder can record `SENT` or `BOUNCE`, and the recorded route must match the currently leased route;
 - `SENT` creates `HARD_DNR`;
-- a provider bounce is `DEAD_ROUTE`, **not buyer rejection**;
+- a provider bounce records `DEAD_ROUTE`, **not buyer rejection**;
+- no fallback alias is opened merely because a route failed;
 - a retained genuine human event is the only event that reopens a fenced lane;
+- after a genuine reopen, the next lease may intentionally select a new route;
 - no event in this source packet authorizes an external send.
 
-See `state_machine.json` and `acceptance.py`.
+See `state_machine.json`, `acceptance.py`, and `product_spec.md`.
+
+## Retained evidence identifier contract
+
+`provider_receipt` and `human_evidence_id` are opaque retained-evidence identifiers, not notes. Admission is exact: **trimmed nonempty text, 1–240 characters, no ASCII control characters**. Reject whitespace-only, padded, overlong, or control-character values; do not silently trim them and do not rely on language truthiness. Admitted IDs remain globally single-use in the workspace.
 
 ## Synthetic demo
 
 `demo_events.json` is deliberately synthetic (`*.invalid` domains). It demonstrates:
 
-1. two agents claim the same lead three seconds apart — one gets the lease, one is denied;
-2. provider `SENT` hard-fences the lane;
-3. a later human reply reopens one bounded next action;
-4. a stale lease is recovered;
-5. a provider bounce creates `DEAD_ROUTE` without claiming buyer rejection;
-6. a manual evidence `HOLD` blocks claims until genuine human evidence reopens it.
+1. Alpha leases Northstar through `ops@...`;
+2. Beta races three seconds later through a **different alias** `founder@...` and is denied by the same organization-lane key;
+3. provider `SENT` on Alpha's leased route hard-fences the lane;
+4. a claim through yet another alias is blocked;
+5. retained human evidence reopens one bounded next action, which may choose a new route explicitly;
+6. an expired Harbor Forge lease is recovered;
+7. a matching-route provider bounce creates `DEAD_ROUTE` without claiming buyer rejection;
+8. a fallback alias remains blocked absent a genuine reopen;
+9. a Cedar Works `HOLD` blocks claims across aliases until human evidence.
 
-The expected replay contains 14 events across 3 lanes and measures only facts created by that synthetic replay. Those counts are **not** TJLabs production impact.
+The expected replay contains 14 events across 3 lanes. Those counts are **synthetic proof only**, not TJLabs production impact.
 
 ## Offline proof
 
@@ -74,23 +71,16 @@ python3 -m unittest test_acceptance.py -v
 python3 -O -m unittest test_acceptance.py -v
 ```
 
-The verifier rejects duplicate JSON keys, non-finite numbers, semantic contract remints, authority escalation, duplicate event/provider/human evidence IDs, out-of-order timestamps, invalid lease types, non-holder provider outcomes, expired-holder outcomes, and unknown event fields.
+The hostile suite rejects duplicate JSON keys, non-finite numbers, semantic contract remints, authority escalation, duplicate evidence IDs, nonmonotone timestamps, invalid lease types, non-holder outcomes, expired-holder outcomes, provider outcomes on the wrong route, malformed/credentialed/ported domains, whitespace/padded/control evidence IDs, and unknown authority-bearing event fields. It also proves cross-route collision and normalized-domain equivalence.
 
 ## Emergent build handoff
 
-Use `emergent_master_prompt.md` as the build prompt. The deployed app must then be used on a real TJLabs coordination workflow and produce measured evidence using `impact_evidence.md` **before** contest copy is converted from draft evidence placeholders into real claims.
+Use `emergent_master_prompt.md` as the build prompt. The deployed app must then be exercised on a real TJLabs coordination workflow and produce measured evidence using `impact_evidence.md` **before** draft submission placeholders are converted into factual impact claims.
 
-`submission_copy.md` is intentionally `DRAFT_NOT_SUBMITTED`.
+`submission_copy.md` remains intentionally `DRAFT_NOT_SUBMITTED`.
 
 ## External authority boundary
 
-This repository packet grants none of the following:
-- external email/DM/form sending;
-- provider mutation;
-- contract/signature authority;
-- payment/cash/revenue claims;
-- contest submission;
-- paid Emergent upgrade/spend;
-- public upvote campaign.
+This repository packet grants none of the following: external email/DM/form sending; provider mutation; contract/signature authority; payment/cash/revenue claims; contest submission; paid Emergent upgrade/spend; or public upvote campaigning.
 
 Any real external communication remains separately single-writer coordinated. Any contest submission must be reconciled against the platform's one-active-submission rule immediately before submission.
