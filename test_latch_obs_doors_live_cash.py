@@ -10,6 +10,7 @@ CONVERT_SHELF = frozenset({
     "face.html",  # latch-face-film-convert-shelf-20260917-01
     "look.html",  # type-look-loop-convert-shelf-20260917-01 already on main
     "nojs.html",  # latch-nojs-post-convert-shelf-20260917-01
+    "reply.html",  # latch-reach-reply-convert-shelf-20260917-01
 })
 REQUIRED = ['id="live-cash"', "./agent-rescue.html", "./dealer-service-lead-rescue.html", "./referral-intake-completeness.html", "./repair-booking-preflight.html", "./plant-downtime-handoff.html", "$29 Autopsy", "$199 dealer diagnostic"]
 class LatchObsDoorsLiveCashTest(unittest.TestCase):
