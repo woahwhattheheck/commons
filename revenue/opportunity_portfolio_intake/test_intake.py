@@ -8,6 +8,7 @@ import unittest
 from unittest import mock
 
 from revenue.opportunity_portfolio_intake.cli import _pairs
+from revenue.opportunity_portfolio_intake import intake as fw
 from revenue.opportunity_portfolio_intake.intake import (
     IntakeError,
     SNAPSHOT_AUTHORITY_KEY_ENV,
@@ -131,6 +132,38 @@ class IntakeTests(unittest.TestCase):
         with mock.patch.dict(os.environ, {SNAPSHOT_AUTHORITY_KEY_ENV: "5c" * 32}, clear=False):
             with self.assertRaisesRegex(IntakeError, "MAC does not match host capability"):
                 compile_intake(p, trusted_as_of=TRUSTED, trusted_snapshot_authority=authority)
+
+
+    def test_actor_identity_transplant_cannot_relabel_foreign_take(self):
+        p = packet([event("e1", "TAKE", "2026-09-14T00:50:00Z", actorSeat="OTHER-1")])
+        p["actorSeat"] = "REAL-1"
+        authority = trusted_authority(p)
+        transplanted = deepcopy(p)
+        transplanted["actorSeat"] = "OTHER-1"
+        with self.assertRaisesRegex(IntakeError, "actorSeat does not match"):
+            compile_intake(transplanted, trusted_as_of=TRUSTED, trusted_snapshot_authority=authority)
+
+    def test_stale_complete_snapshot_cannot_manufacture_current_available(self):
+        p = packet()
+        authority = trusted_authority(p)
+        with self.assertRaisesRegex(IntakeError, "older than 300 seconds"):
+            compile_intake(p, trusted_as_of="2026-09-14T01:10:00Z", trusted_snapshot_authority=authority)
+
+    def test_module_authority_rebinding_and_mutation_cannot_widen_receipt(self):
+        injected = {"sendAuthorized": True}
+        fw._AUTHORITY = injected
+        try:
+            injected["contactAuthorized"] = True
+            p = packet()
+            authority = trusted_authority(p)
+            receipt = compile_intake(p, trusted_as_of=TRUSTED, trusted_snapshot_authority=authority)
+            self.assertFalse(any(receipt["authority"].values()))
+            self.assertEqual(
+                verify_receipt(receipt, trusted_snapshot_authority=authority)["receiptDigestSha256"],
+                receipt["receiptDigestSha256"],
+            )
+        finally:
+            del fw._AUTHORITY
 
     def test_this_seat_take(self):
         r = self.compile([event("e1", "TAKE", "2026-09-14T00:50:00Z", actorSeat="ZEP-B4N8")])
@@ -280,7 +313,7 @@ class IntakeTests(unittest.TestCase):
         p = packet([event("e1", "TAKE", "2026-09-14T01:00:30Z", actorSeat="A-1")])
         a = trusted_authority(p)
         with self.assertRaisesRegex(IntakeError, "newer than snapshot"):
-            compile_intake(p, trusted_as_of="2026-09-14T01:10:00Z", trusted_snapshot_authority=a)
+            compile_intake(p, trusted_as_of="2026-09-14T01:04:00Z", trusted_snapshot_authority=a)
 
     def test_snapshot_future_rejected(self):
         p = packet()
