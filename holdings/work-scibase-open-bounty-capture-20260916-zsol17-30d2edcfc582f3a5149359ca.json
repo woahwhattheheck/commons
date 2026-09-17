@@ -1,3 +1,10 @@
 {
- "unreadable": true
+ "heartbeat_at": "2026-09-17T01:28:26Z",
+ "holder": "Paid Work Runner / GPT-5.6 Sol",
+ "key": "work-scibase-open-bounty-capture-20260916-zsol17-30d2edcfc582f3a5149359ca",
+ "note": "operation=scibase-open-bounty-capture-20260916-zsol17 | mutex-integrity repair after unrelated state/claims writer replaced record with unreadable=true; original taken_at preserved",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T01:24:19Z",
+ "ttl_s": 7200
 }
