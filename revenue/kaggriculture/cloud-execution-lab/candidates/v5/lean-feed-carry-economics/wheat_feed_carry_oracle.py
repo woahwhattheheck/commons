@@ -6,9 +6,9 @@ It binds the retained D2 authentication receipt and independently compares the
 exact source-derived `protect_feed_stock` withholding equation with the minimum
 withholding required to preserve its certified WHEAT obligation.
 
-If the two differ, the retained source contract is contradicted and the gate
-fails closed. If they agree, there is no discretionary buffer at this seam and
-no lean-feed candidate is authorized.
+A negative result here is scoped to the final certified helper seam. Upstream
+action selection may still under-offer otherwise balance-permitted WHEAT without
+contradicting the helper theorem; that remains an explicit empirical census gate.
 """
 from __future__ import annotations
 
@@ -34,8 +34,12 @@ STATE_AUTHENTICATED = "D2_SOURCE_AUTHENTICATED"
 NEGATIVE = "NO_DISCRETIONARY_EXCESS_AT_CERTIFIED_WHEAT_SEAM"
 UNCERTIFIED = "CURRENT_POLICY_UNCERTIFIED"
 CONTRADICTION = "SOURCE_CONTRADICTION"
+UPSTREAM_GATE = "UPSTREAM_SELECTED_WHEAT_OFFER_CENSUS_REQUIRED"
 MAX_SHED_CAPACITY = 100
 MAX_HELPER_WITHHOLD = 2
+MAX_STATUS_BYTES = 64 * 1024
+MAX_STATUS_JSON_DEPTH = 64
+MAX_STATUS_JSON_NODES = 4096
 
 
 class WheatCensusError(ValueError):
@@ -54,9 +58,33 @@ def _whole(value: Any, label: str, *, maximum: int | None = None) -> int:
     return value
 
 
+def _check_status_shape(value: Any) -> None:
+    """Bound parsed status depth/node work and reject unsupported JSON scalars."""
+    stack: list[tuple[Any, int]] = [(value, 0)]
+    nodes = 0
+    while stack:
+        item, depth = stack.pop()
+        nodes += 1
+        _require(nodes <= MAX_STATUS_JSON_NODES, "status JSON has too many nodes")
+        _require(depth <= MAX_STATUS_JSON_DEPTH, "status JSON is too deeply nested")
+        if item is None or type(item) in {bool, int, str}:
+            continue
+        if type(item) is list:
+            if len(item) > MAX_STATUS_JSON_NODES - nodes:
+                raise WheatCensusError("status JSON has too many nodes")
+            stack.extend((child, depth + 1) for child in item)
+            continue
+        if type(item) is dict:
+            if len(item) > MAX_STATUS_JSON_NODES - nodes:
+                raise WheatCensusError("status JSON has too many nodes")
+            stack.extend((child, depth + 1) for child in item.values())
+            continue
+        raise WheatCensusError(f"unsupported status JSON type: {type(item).__name__}")
+
+
 def _strict_json_object(path: Path) -> dict[str, Any]:
     raw = path.read_bytes()
-    _require(len(raw) <= 64 * 1024, "status file too large")
+    _require(len(raw) <= MAX_STATUS_BYTES, "status file too large")
 
     def pairs_hook(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
         out: dict[str, Any] = {}
@@ -78,6 +106,9 @@ def _strict_json_object(path: Path) -> dict[str, Any]:
             raw.decode("utf-8", errors="strict"),
             object_pairs_hook=pairs_hook,
             parse_int=parse_int,
+            parse_float=lambda token: (_ for _ in ()).throw(
+                WheatCensusError(f"floating point JSON forbidden: {token}")
+            ),
             parse_constant=lambda token: (_ for _ in ()).throw(
                 WheatCensusError(f"non-finite JSON constant: {token}")
             ),
@@ -86,6 +117,9 @@ def _strict_json_object(path: Path) -> dict[str, Any]:
         raise WheatCensusError("status is not UTF-8") from exc
     except json.JSONDecodeError as exc:
         raise WheatCensusError("status is not valid JSON") from exc
+    except RecursionError as exc:
+        raise WheatCensusError("status JSON is too deeply nested") from exc
+    _check_status_shape(value)
     _require(type(value) is dict, "status root must be object")
     return value
 
@@ -148,12 +182,7 @@ def minimum_required_withheld(
     required_wheat: int,
     offered_wheat: int,
 ) -> int:
-    """Minimum current SELL-WHEAT units that must be withheld.
-
-    This is derived independently as a balance equation: after the originally
-    offered executable sale, how many units must be restored so retained stock
-    plus certified EOD return still covers the source-proven obligation?
-    """
+    """Minimum current SELL-WHEAT units that must be withheld."""
     stock = _whole(observed_shed_wheat, "observed_shed_wheat", maximum=MAX_SHED_CAPACITY)
     returned = _whole(eod_wheat_credit, "eod_wheat_credit", maximum=MAX_SHED_CAPACITY)
     required = _whole(required_wheat, "required_wheat", maximum=MAX_SHED_CAPACITY * 2)
@@ -164,18 +193,43 @@ def minimum_required_withheld(
     return min(executable_offer, max(0, required - remaining_if_unchanged))
 
 
+def balance_permitted_sale(
+    observed_shed_wheat: int,
+    eod_wheat_credit: int,
+    required_wheat: int,
+) -> int:
+    """Maximum current WHEAT sale allowed by the certified stock balance alone.
+
+    This is a census comparator, not proof that upstream policy can or should
+    select that sale after all other action constraints.
+    """
+    stock = _whole(observed_shed_wheat, "observed_shed_wheat", maximum=MAX_SHED_CAPACITY)
+    returned = _whole(eod_wheat_credit, "eod_wheat_credit", maximum=MAX_SHED_CAPACITY)
+    required = _whole(required_wheat, "required_wheat", maximum=MAX_SHED_CAPACITY * 2)
+    _require(required <= stock + returned, "observed wheat cannot cover source-proven obligation")
+    return min(stock, max(0, stock + returned - required))
+
+
+def upstream_balance_offer_gap(
+    observed_shed_wheat: int,
+    eod_wheat_credit: int,
+    required_wheat: int,
+    offered_wheat: int,
+) -> int:
+    """Balance-permitted WHEAT not present in the selected upstream sale offer."""
+    stock = _whole(observed_shed_wheat, "observed_shed_wheat", maximum=MAX_SHED_CAPACITY)
+    offered = _whole(offered_wheat, "offered_wheat", maximum=MAX_SHED_CAPACITY)
+    permitted = balance_permitted_sale(stock, eod_wheat_credit, required_wheat)
+    return max(0, permitted - min(stock, offered))
+
+
 def source_current_policy_withheld(
     observed_shed_wheat: int,
     eod_wheat_credit: int,
     required_wheat: int,
     offered_wheat: int,
 ) -> int:
-    """Exact arithmetic from D2 `operating_stock.protect_feed_stock`.
-
-    This reproduces only the final certified WHEAT sale reservation equation,
-    not the helper's earlier route/window/room proof. A caller must separately
-    supply a certified runtime report before this can describe an observed cell.
-    """
+    """Exact arithmetic from D2 `operating_stock.protect_feed_stock`."""
     stock = _whole(observed_shed_wheat, "observed_shed_wheat", maximum=MAX_SHED_CAPACITY)
     returned = _whole(eod_wheat_credit, "eod_wheat_credit", maximum=MAX_SHED_CAPACITY)
     required = _whole(required_wheat, "required_wheat", maximum=MAX_SHED_CAPACITY * 2)
@@ -237,6 +291,7 @@ def analyze_certified_window(packet: Mapping[str, Any]) -> dict[str, Any]:
 
     saleable = min(stock, offered)
     plus_one = min(saleable, minimum + 1)
+    upstream_gap = upstream_balance_offer_gap(stock, returned, required, offered)
     return {
         "schema": SCHEMA,
         "state": NEGATIVE,
@@ -248,6 +303,10 @@ def analyze_certified_window(packet: Mapping[str, Any]) -> dict[str, Any]:
         "discretionary_excess_units": 0,
         "cash_liberated_by_min_provable": 0,
         "cash_liberation_measurement": "ZERO_BY_EQUAL_WITHHOLDING_NO_PRICE_ASSUMPTION",
+        "upstream_balance_permitted_sale": balance_permitted_sale(stock, returned, required),
+        "upstream_selected_offer": min(stock, offered),
+        "upstream_balance_offer_gap_units": upstream_gap,
+        "upstream_offer_census_state": UPSTREAM_GATE,
         "candidate_build_authorized": False,
         "promotion_authorized": False,
         "falsifier": "current certified helper reservation equals MIN_PROVABLE",
@@ -255,7 +314,7 @@ def analyze_certified_window(packet: Mapping[str, Any]) -> dict[str, Any]:
 
 
 def source_theorem_receipt(status_path: Path | None = None) -> dict[str, Any]:
-    """Return the code/source-only negative result and its remaining evidence gap."""
+    """Return helper theorem plus the independent upstream empirical gate."""
     authority = validate_authenticated_status(status_path)
     return {
         "schema": SCHEMA,
@@ -267,13 +326,22 @@ def source_theorem_receipt(status_path: Path | None = None) -> dict[str, Any]:
             "withholding equation equals the independent minimum balance needed "
             "to preserve required_wheat after the offered executable sale."
         ),
+        "helper_seam_candidate": False,
         "candidate_build_authorized": False,
         "promotion_authorized": False,
         "empirical_result": None,
+        "remaining_gate_state": UPSTREAM_GATE,
+        "upstream_offer_census_required": True,
+        "candidate_hypothesis_paths": [
+            "AUTHENTICATED_UPSTREAM_UNDER_OFFERING_WITH_HELPER_THEOREM_INTACT",
+            "SEPARATELY_REVIEWED_SOURCE_RUNTIME_CONTRADICTION",
+        ],
         "empirical_gate": (
-            "No official-engine dev/holdout is authorized by this source theorem. "
-            "Run retained observation census only to detect source/runtime drift; "
-            "a candidate exists only if authenticated runtime behavior contradicts "
-            "the retained source theorem, which must first be reviewed as drift."
+            "No official-engine dev/holdout candidate is authorized by this source theorem. "
+            "The next retained census must independently test whether authenticated D2 "
+            "selected actions under-offer balance-permitted WHEAT while protect_feed_stock "
+            "continues to equal MIN_PROVABLE. Such under-offering can keep the helper theorem "
+            "intact and may justify a separately reviewed candidate hypothesis. A source/runtime "
+            "contradiction is a distinct path and must first be reviewed as drift."
         ),
     }
