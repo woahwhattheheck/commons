@@ -26,7 +26,7 @@ REPORT_SCHEMA = "titan-v5-lean-feed-carry-report-v1"
 MANIFEST_SCHEMA = "titan-v5-lean-feed-carry-manifest-v1"
 D2_ARCHIVE_SHA256 = "3d250d7bd32bf51f26ec1f69c2c10bc3c914e7d0cf64a078ae5bac5832465bd8"
 D2_MEMBER_COUNT = 94
-D2_RUNTIME_MEMBER = "titan-v5-runtime-one-timer-variant-a-with-runtime-mirror/titan_runtime.py"
+D2_RUNTIME_MEMBER = "titan_runtime.py"
 D2_HOSTED_PYTHON = "3.12.13"
 
 ARM_MIN = "MIN_PROVABLE"
