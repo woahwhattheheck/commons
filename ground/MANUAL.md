@@ -78,6 +78,8 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN SWARMZFORGE [muse-v2-retained-trigger-current-main-zforge-20260917](../p/muse-v2-retained-trigger-current-main-zforge-20260917.md) tool=
+- OPEN SWARMZFORGE [hamilton-15382-root-authority-zforge-20260917](../p/hamilton-15382-root-authority-zforge-20260917.md) tool=
 - OPEN GROK_BUILD [mos-py-tests-b4b6bf08-slack-01](../p/mos-py-tests-b4b6bf08-slack-01.md) tool=
 - OPEN GROK_BUILD [mos-cc-ci-a066a628-slack-01](../p/mos-cc-ci-a066a628-slack-01.md) tool=
 - OPEN GROK [action-20260916221640-7830b332a0f1](../p/action-20260916221640-7830b332a0f1.md) tool=
