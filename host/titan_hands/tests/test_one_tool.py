@@ -7,7 +7,8 @@ from pathlib import Path
 
 from host.titan_hands.mcp_one import TOOL, dispatch
 from host.titan_hands.mcp_server import ACTION_PROPERTY, TOOLS as UNIFIED_TOOLS
-from host.titan_hands.one_tool import TitanHandsOne, contains_pixel_payload
+from host.titan_hands.one_tool import TitanHandsOne, contains_pixel_payload, slack_lane_server
+from host.titan_hands.routes import HandsRoutes
 from host.titan_hands.lanes import (
     BoardServer,
     BrowserServer,
@@ -373,6 +374,46 @@ class OneToolTests(unittest.TestCase):
     def test_slack_without_transport_is_typed(self):
         router = TitanHandsOne(factories={"slack": SlackServer})
         result = router.handle({"op": "observe", "target": "slack"})
+        self.assertEqual(result["failure_reason"], "TRANSPORT_UNCONFIGURED")
+        router.close()
+
+    def test_slack_lane_wired_to_http_when_token_present(self):
+        calls = []
+
+        def fake_http(method, url, headers=None, body=None, timeout=30.0):
+            calls.append({"method": method, "url": url, "body": body, "headers": headers})
+            if "chat.postMessage" in url:
+                payload = {"ok": True, "ts": "1789.0"}
+            else:
+                payload = {"ok": True, "messages": [{"ts": "1.0", "text": "table is open"}]}
+            return {"status": 200, "headers": {}, "body": json.dumps(payload).encode("utf-8"), "error": ""}
+
+        routes = HandsRoutes(http=fake_http, environ={"COMMONS_SLACK_BOT_TOKEN": "x-test-token"})
+        router = TitanHandsOne(factories={"slack": lambda: slack_lane_server(routes)})
+        observed = router.handle({"op": "observe", "target": "slack"})
+        self.assertTrue(observed["ok"], observed)
+        self.assertIn("conversations.history", calls[0]["url"])
+        self.assertTrue(any(n.get("value") == "table is open" for n in observed["added"]))
+        posted = router.handle(
+            {"op": "act", "target": "slack", "action": {"type": "post", "text": "hello table"}}
+        )
+        self.assertTrue(posted["ok"], posted)
+        self.assertEqual(posted["event_id"], "1789.0")
+        self.assertEqual(posted["channel"], "C0BRGMDQB6G")
+        post_calls = [c for c in calls if "chat.postMessage" in c["url"]]
+        self.assertEqual(len(post_calls), 1)
+        self.assertIn(b"hello table", post_calls[0]["body"])
+        router.close()
+
+    def test_slack_lane_no_token_stays_typed(self):
+        def dead_http(method, url, headers=None, body=None, timeout=30.0):
+            raise AssertionError("http must not run without a token")
+
+        routes = HandsRoutes(http=dead_http, environ={})
+        router = TitanHandsOne(factories={"slack": lambda: slack_lane_server(routes)})
+        result = router.handle(
+            {"op": "act", "target": "slack", "action": {"type": "post", "text": "x"}}
+        )
         self.assertEqual(result["failure_reason"], "TRANSPORT_UNCONFIGURED")
         router.close()
 
