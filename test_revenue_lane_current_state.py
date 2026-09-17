@@ -220,11 +220,43 @@ class RevenueLaneStateTest(unittest.TestCase):
         self.assertFalse(result["input_authentication"]["verified_by_compiler"])
 
     def test_coordination_superseder_cannot_erase_provider_truth(self):
-        with self.assertRaisesRegex(ContractError, "source authority mismatch"):
+        with self.assertRaisesRegex(ContractError, "immutable"):
             self.compile([
                 ev("sent", 1, "PROVIDER_SENT", "provider", "2026-09-17T19:00:00Z"),
                 ev("hold", 2, "EVIDENCE_HOLD", "coordination", "2026-09-17T20:00:00Z", supersedes="sent"),
             ])
+
+    def test_cross_generation_second_provider_send_is_collision(self):
+        result = self.compile([
+            ev("sent1", 1, "PROVIDER_SENT", "provider", "2026-09-17T18:00:00Z", route_id="route-a"),
+            ev("select2", 2, "MUSE_SELECTED", "coordination", "2026-09-17T19:00:00Z", route_id="route-b"),
+            ev("sent2", 2, "PROVIDER_SENT", "provider", "2026-09-17T19:05:00Z", route_id="route-b"),
+        ])
+        self.assertEqual(result["state"], "COLLISION_DUPLICATE_SEND_DNR")
+
+    def test_provider_truth_cannot_be_erased_by_provider_superseder(self):
+        with self.assertRaisesRegex(ContractError, "immutable"):
+            self.compile([
+                ev("sent1", 1, "PROVIDER_SENT", "provider", "2026-09-17T18:00:00Z"),
+                ev("sent2", 2, "PROVIDER_SENT", "provider", "2026-09-17T19:00:00Z", supersedes="sent1"),
+            ])
+
+    def test_human_truth_cannot_be_erased_by_human_superseder(self):
+        with self.assertRaisesRegex(ContractError, "immutable"):
+            self.compile([
+                ev("decline", 1, "HUMAN_DECLINE", "human", "2026-09-17T18:00:00Z"),
+                ev("reply", 2, "HUMAN_REPLY", "human", "2026-09-17T19:00:00Z", supersedes="decline"),
+            ])
+
+    def test_fresh_coordination_does_not_refresh_stale_human_reply(self):
+        result = self.compile(
+            [
+                ev("reply", 1, "HUMAN_REPLY", "human", "2026-09-17T18:00:00Z"),
+                ev("take", 2, "TAKE", "coordination", "2026-09-17T20:30:00Z"),
+            ],
+            currentness_seconds=3600,
+        )
+        self.assertEqual(result["state"], "HOLD_EVIDENCE")
 
     def test_equal_time_mutual_supersession_cycle_fails_closed(self):
         with self.assertRaisesRegex(ContractError, "supersession chronology invalid"):
