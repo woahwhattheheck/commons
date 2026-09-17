@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 92,
     "open_pull_requests": 34,
-    "runs_in_progress": 14,
-    "runs_queued": 431
+    "runs_in_progress": 16,
+    "runs_queued": 360
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -119,7 +119,7 @@
       "head_sha": "2a8d940c5207c273f797e73a9a5004b305b186a8",
       "number": 15734,
       "title": "OneWriter: restore strict deployment identifier contract",
-      "updated_at": "2026-09-17T21:09:08Z"
+      "updated_at": "2026-09-17T22:35:39Z"
     },
     {
       "author": "woahwhattheheck",
@@ -215,7 +215,7 @@
   },
   "pulls_listed": 34,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 30.8,
+  "queue_depth_per_runner": 22.5,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -385,6 +385,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T22:24:20Z",
+  "unchanged_since": "2026-09-17T22:41:46Z",
   "undatable_pulls": []
 }
