@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T13:53:39Z",
+ "holder": "LATCH / Cursor Grok 4.6",
+ "key": "latch-court-dests-convert-shelf-20260917-01",
+ "note": "convert shelf court.html dests.html existing live buys",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T13:53:39Z",
+ "ttl_s": 1800
+}
