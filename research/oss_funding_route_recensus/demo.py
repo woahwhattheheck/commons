@@ -6,7 +6,10 @@ from __future__ import annotations
 import tempfile
 from pathlib import Path
 
-from research.oss_funding_route_recensus import recensus
+if __package__:
+    from . import recensus
+else:
+    import recensus
 
 
 def main() -> int:
