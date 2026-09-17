@@ -73,6 +73,11 @@ class RuntimeProvenanceRetainedTests(unittest.TestCase):
         self.assertGreater(count, 0, f"focused discovery executed zero tests:\n{self.child_output(proc)}")
         return count
 
+    def test_public_registry_module_exports_canonical_json(self) -> None:
+        from tools.runtime_provenance.runtime_registry import canonical_json
+
+        self.assertEqual(canonical_json({"b": 1, "a": 2}), '{"a":2,"b":1}')
+
     def test_focused_suite_normal_and_optimized_is_nonvacuous(self) -> None:
         counts: list[int] = []
         for optimized in (False, True):
