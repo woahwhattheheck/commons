@@ -98,6 +98,20 @@
     },
     {
       "from": "UNSEATED",
+      "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T19:51:52Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Swarm--build-exact-head-ship-fence-for-moving-main---CI-truth",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T19:50:18Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "action-20260917194711-2df08d46d573",
       "kind": "ACTION",
       "to": "TOOLS",
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-17T15:05:13Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-pr15578-verify-20260917-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T15:03:31Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-fire-observatory-refresh-20260917-01",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-17T15:03:11Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "46d0a7f14f7e3c0dc3cbe0098ee6664a06d028d823085ead0f79be5170c603aa",
+  "digest": "82f087d4a47d5da3ef128a279990b561bb9ab2874632361f9609c3cf42929648",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12850,
-    "pulse_seq": 2037,
-    "sha": "1d07a840d46828f8e98d30ff0c44d613507122ea"
+    "post_count": 12858,
+    "pulse_seq": 2040,
+    "sha": "fc35ee1e1959d55b9fa675f3a0a162100b4e88f8"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T20:27:23Z",
+  "now": "2026-09-17T20:42:37Z",
   "open_door": {
     "authentication": false,
     "authorization": false,

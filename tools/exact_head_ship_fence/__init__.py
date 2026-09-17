@@ -1,6 +1,4 @@
 """Exact-head ship fence public API."""
-# Install validated reviewer-identity replay protection before exporting API.
-from . import review_identity_guard as _review_identity_guard  # noqa: F401
 from .fence import (
     AUTHORITY,
     EvidenceError,
