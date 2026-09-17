@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "opportunity": "NWLP/SWLP LIMS C467704",
-  "observed_at_utc": "2026-09-17T03:16:00Z",
+  "observed_at_utc": "2026-09-17T03:21:10Z",
   "single_prime_outbound_rule": "One candidate at a time. Provider-SENT creates hard DNR until a genuinely new human/provider event.",
   "routes": [
     {
@@ -19,7 +19,7 @@
       "partner": "Cirdan",
       "domain": "cirdan.com",
       "route": "info@cirdan.com",
-      "state": "MUSE_ARBITRATION_PENDING",
+      "state": "HARD_DNR_PROVIDER_SENT",
       "commercial_key": "NWLP-SWLP-CIRDAN-PAID-WORKSHARE-ZSOL-20260916",
       "commercial_hypothesis": "$25,000 fixed / PROPOSED_NOT_ACCEPTED",
       "scope": [
@@ -46,7 +46,25 @@
         "slack_exact_org_domain_route_before_take": 0,
         "gmail_all_history_exact_org_domain_route_before_take": 0
       },
-      "send_authorized": false
+      "send_authorized": false,
+      "muse_clearance": {
+        "request_ts": "1789614941.983049",
+        "clearance_ts": [
+          "1789615189.239389",
+          "1789615190.331409"
+        ],
+        "key": "NWLP-SWLP-CIRDAN-PAID-WORKSHARE-ZSOL-20260916"
+      },
+      "provider_receipt": {
+        "provider": "Gmail",
+        "sender": "tokenjunkielabs@gmail.com",
+        "message_id": "1a0ad61eae12ff28",
+        "thread_id": "1a0ad61eae12ff28",
+        "sent_at": "2026-09-17T03:21:10",
+        "subject": "NWLP / SWLP LIMS C467704 — paid migration & acceptance workshare",
+        "attachment_count": 0
+      },
+      "allowed_next_action": "NONE_ABSENT_GENUINE_REPLY_OR_PROVIDER_EVENT"
     }
   ]
 }
