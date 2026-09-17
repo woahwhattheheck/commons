@@ -1,0 +1,150 @@
+name: Z-Sol Bounty188 exact-source transport
+
+on:
+  push:
+    branches:
+      - zsol/bounty188-exact-source-transport-20260917
+
+permissions:
+  contents: read
+
+jobs:
+  recover-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Recover target repository generation
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --filter=blob:none https://github.com/woahwhattheheck/bounty-concierge.git target
+          git -C target fetch origin 660b817c5ea6a1979dc994464c053b192652aeab 4434fcd15c54ba1f1f08307aa2e4aa7c4f638994
+          git -C target checkout --detach 660b817c5ea6a1979dc994464c053b192652aeab
+
+      - name: Reconstruct immutable owner-comment archive
+        shell: python
+        run: |
+          import base64, hashlib, io, json, pathlib, re, tarfile, urllib.request
+          repo = 'woahwhattheheck/bounty-concierge'
+          ids = [5676755877,5676767718,5676779864,5676791944,5676820077,5676829096,5676838268,5676841822]
+          expected = {
+            1:'9a11adb4c508b90fbed5b5052a9709c49d6a893e179f045b91c2b674016768fb',
+            2:'64b54d75f6fb649357d1da33194e9471308b1953008a6247a2caf15b2916974c',
+            3:'ed23b9e81eb54a77343db50f45d5436cd5a2b0baf1c581c393f89e06b322069c',
+            4:'7fad5a8945885c83820816e0b160934b1689e517b8503d5d4b5df573d1915782',
+            5:'0def3688d0ea4e809e1c4938631993ed595ba777db6bcb51803e5a733944b07a',
+            6:'18d25ac581264b358fc79222d2a9c4d49b3edf5e119feaea89a3f84f1f688c36',
+            7:'064b90c3788a495d1de5929ceb34d0f9f298c93561335037fb7fa67389c6b384',
+            8:'1c3a9ab91e146c40b4dd7026550046b9d4ed1833716c7623b8fdf0e8b4e8118d',
+          }
+          whole='95515c81275797ce78f3f2650067be89de41b2230b9e12ddf0dcfdfbf9a30d29'
+          allow={
+            '.github/workflows/reinvestment-authority.yml',
+            'concierge/reinvestment_allocator.py',
+            'concierge/_reinvestment_allocator_api.py',
+            'concierge/_reinvestment_allocator_cli.py',
+            'concierge/_reinvestment_allocator_transport.py',
+            'concierge/_reinvestment_allocator_worker.py',
+            'docs/REALIZED_REINVESTMENT_REVIEW.md',
+            'tests/test_reinvestment_allocator.py',
+            'tests/reinvestment_allocator_case_driver.py',
+            'tests/reinvestment_allocator_test_support.py',
+          }
+          hdr=re.compile(r'^ZTE_BUNDLE_V1 ([0-9]{3})/008 ([0-9a-f]{64})$')
+          chunks=[]
+          for i,cid in enumerate(ids,1):
+            req=urllib.request.Request(f'https://api.github.com/repos/{repo}/issues/comments/{cid}',headers={'Accept':'application/vnd.github+json','User-Agent':'zsol-bounty188-exact-source-transport'})
+            with urllib.request.urlopen(req,timeout=30) as r: p=json.load(r)
+            if p.get('user',{}).get('login')!='woahwhattheheck': raise SystemExit(f'owner mismatch {cid}')
+            lines=p.get('body','').splitlines(); m=hdr.fullmatch(lines[0]) if lines else None
+            if not m or int(m.group(1))!=i or m.group(2)!=expected[i]: raise SystemExit(f'header mismatch {cid}')
+            chunk=''.join(''.join(lines[1:]).split())
+            if hashlib.sha256(chunk.encode('ascii')).hexdigest()!=expected[i]: raise SystemExit(f'chunk mismatch {cid}')
+            chunks.append(chunk)
+          archive=base64.b64decode(''.join(chunks),validate=True)
+          if hashlib.sha256(archive).hexdigest()!=whole: raise SystemExit('whole archive mismatch')
+          root=pathlib.Path('target').resolve()
+          with tarfile.open(fileobj=io.BytesIO(archive),mode='r:gz') as tf:
+            ms=tf.getmembers(); names={m.name for m in ms}
+            if names!=allow or len(ms)!=len(allow): raise SystemExit(f'allowlist mismatch {sorted(names ^ allow)}')
+            for m in ms:
+              q=pathlib.PurePosixPath(m.name)
+              if not m.isfile() or q.is_absolute() or '..' in q.parts or m.size>1_000_000: raise SystemExit(f'unsafe {m.name}')
+              out=(root/m.name).resolve()
+              if root not in out.parents: raise SystemExit(f'escape {m.name}')
+              f=tf.extractfile(m); data=f.read() if f else b''
+              if len(data)!=m.size: raise SystemExit(f'size mismatch {m.name}')
+              out.parent.mkdir(parents=True,exist_ok=True); out.write_bytes(data)
+          pathlib.Path('archive.sha256').write_text(whole+'\n')
+
+      - name: Restore reviewed non-importable core
+        shell: bash
+        run: |
+          set -euo pipefail
+          git -C target show 4434fcd15c54ba1f1f08307aa2e4aa7c4f638994:concierge/_reinvestment_allocator_core.py > target/concierge/_reinvestment_allocator_core.source
+
+      - name: Verify exact Git blob identities
+        shell: python
+        run: |
+          import hashlib, json, pathlib
+          expected={
+            '.github/workflows/reinvestment-authority.yml':'0ed83c7ceca15541b7a9ea1e716fc4f167cf1fb3',
+            'concierge/_reinvestment_allocator_api.py':'0afd51877ceb8ad611352c14439d83afef9bf955',
+            'concierge/_reinvestment_allocator_cli.py':'64da5f1a67eb8d0bd90782d0b8c029d052161b88',
+            'concierge/_reinvestment_allocator_core.source':'5731fd0652bc94b20d1f3b2de48628f633f550a9',
+            'concierge/_reinvestment_allocator_transport.py':'472efce478e918d4e17f87620b301302d303e39c',
+            'concierge/_reinvestment_allocator_worker.py':'491b5700e4af442cac06e3a381eff39cbab7ad6f',
+            'concierge/reinvestment_allocator.py':'9660f576c2beaf4b2e6e2fca9bc38f07cf5cead0',
+            'docs/REALIZED_REINVESTMENT_REVIEW.md':'17b45746abbcc3c43fc31e53c576267909e3bc57',
+            'tests/reinvestment_allocator_case_driver.py':'c9a1e88f34c90207176d09f1074b8ae57ed3b4dc',
+            'tests/reinvestment_allocator_test_support.py':'35b5ed9aa19e7b5d4a5bc9d2dcd4c4562c3f7c76',
+            'tests/test_reinvestment_allocator.py':'d82f9b24fe14b46cdc6f768b7c93bb18894a9807',
+          }
+          for p,want in expected.items():
+            b=(pathlib.Path('target')/p).read_bytes(); got=hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest()
+            if got!=want: raise SystemExit(f'blob mismatch {p}: {got} != {want}')
+          pathlib.Path('blob-map.json').write_text(json.dumps(expected,sort_keys=True,indent=2)+'\n')
+
+      - name: Install target runtime dependency
+        run: python -m pip install --disable-pip-version-check -r target/requirements.txt
+
+      - name: Execute exact hostile proof
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd target
+          python -m py_compile concierge/reinvestment_allocator.py concierge/_reinvestment_allocator_api.py concierge/_reinvestment_allocator_cli.py concierge/_reinvestment_allocator_transport.py concierge/_reinvestment_allocator_worker.py tests/test_reinvestment_allocator.py tests/reinvestment_allocator_case_driver.py tests/reinvestment_allocator_test_support.py
+          python -m unittest discover -s tests -p 'test_reinvestment_allocator.py' -v |& tee ../normal.log
+          python -O -m unittest discover -s tests -p 'test_reinvestment_allocator.py' -v |& tee ../optimized.log
+
+      - name: Stage exact source artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p recovered
+          cd target
+          for p in \
+            .github/workflows/reinvestment-authority.yml \
+            concierge/reinvestment_allocator.py \
+            concierge/_reinvestment_allocator_api.py \
+            concierge/_reinvestment_allocator_cli.py \
+            concierge/_reinvestment_allocator_core.source \
+            concierge/_reinvestment_allocator_transport.py \
+            concierge/_reinvestment_allocator_worker.py \
+            docs/REALIZED_REINVESTMENT_REVIEW.md \
+            tests/test_reinvestment_allocator.py \
+            tests/reinvestment_allocator_case_driver.py \
+            tests/reinvestment_allocator_test_support.py; do
+              mkdir -p ../recovered/"$(dirname "$p")"
+              cp "$p" ../recovered/"$p"
+          done
+          cd ..
+          cp archive.sha256 blob-map.json normal.log optimized.log recovered/
+
+      - name: Upload exact-source proof bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: bounty188-exact-source-proof
+          path: recovered/
+          retention-days: 3
+          if-no-files-found: error
