@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -778,6 +778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -1010,12 +1016,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -1900,6 +1900,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -2132,12 +2138,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -3715,6 +3715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -3947,12 +3953,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -4741,6 +4741,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -4973,12 +4979,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -5026,6 +5026,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -5258,12 +5264,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -5305,6 +5305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -5537,12 +5543,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -5572,6 +5572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -5804,12 +5810,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -8395,6 +8395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -8627,12 +8633,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -8650,6 +8650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -8882,12 +8888,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -8971,6 +8971,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -9203,12 +9209,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -9292,6 +9292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -9524,12 +9530,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -9547,6 +9547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -9779,12 +9785,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -9868,6 +9868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -10100,12 +10106,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -10189,6 +10189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -10421,12 +10427,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -10510,6 +10510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -10742,12 +10748,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -10777,6 +10777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -11009,12 +11015,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -11038,6 +11038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -11270,12 +11276,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -11293,6 +11293,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -11525,12 +11531,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -11614,6 +11614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -11846,12 +11852,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -11887,6 +11887,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -12119,12 +12125,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -12718,6 +12718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -12950,12 +12956,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -12973,6 +12973,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -13205,12 +13211,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -13495,6 +13495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -13727,12 +13733,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -13816,6 +13816,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -14048,12 +14054,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -14077,6 +14077,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -14309,12 +14315,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -14344,6 +14344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -14576,12 +14582,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -14665,6 +14665,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -14897,12 +14903,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -14938,6 +14938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -15170,12 +15176,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -15193,6 +15193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -15425,12 +15431,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -15454,6 +15454,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -15686,12 +15692,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -15709,6 +15709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -15941,12 +15947,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -15964,6 +15964,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -16196,12 +16202,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -16267,6 +16267,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -16499,12 +16505,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -16522,6 +16522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -16754,12 +16760,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -16789,6 +16789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -17021,12 +17027,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -17044,6 +17044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -17276,12 +17282,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -17305,6 +17305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -17537,12 +17543,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -17560,6 +17560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -17792,12 +17798,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -17881,6 +17881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -18113,12 +18119,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -18142,6 +18142,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -18374,12 +18380,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -18397,6 +18397,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -18629,12 +18635,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -18652,6 +18652,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -18884,12 +18890,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -18907,6 +18907,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -19139,12 +19145,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -19162,6 +19162,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -19394,12 +19400,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -19417,6 +19417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -19649,12 +19655,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -19738,6 +19738,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -19970,12 +19976,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -20029,6 +20029,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -20261,12 +20267,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -20296,6 +20296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -20528,12 +20534,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -20617,6 +20617,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -20849,12 +20855,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -20872,6 +20872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -21104,12 +21110,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -21193,6 +21193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -21425,12 +21431,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -21514,6 +21514,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -21746,12 +21752,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -21835,6 +21835,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -22067,12 +22073,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -22090,6 +22090,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -22322,12 +22328,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -22345,6 +22345,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -22577,12 +22583,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -22666,6 +22666,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -22898,12 +22904,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -22987,6 +22987,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -23219,12 +23225,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -23260,6 +23260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -23492,12 +23498,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -23533,6 +23533,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -23765,12 +23771,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -23812,6 +23812,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -24044,12 +24050,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -24067,6 +24067,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -24299,12 +24305,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -24388,6 +24388,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -24620,12 +24626,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -24643,6 +24643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -24875,12 +24881,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -24898,6 +24898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -25130,12 +25136,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -25153,6 +25153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -25385,12 +25391,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -25408,6 +25408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -25640,12 +25646,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -25663,6 +25663,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -25895,12 +25901,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -25984,6 +25984,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -26216,12 +26222,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -26305,6 +26305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -26537,12 +26543,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -26560,6 +26560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -26792,12 +26798,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -26881,6 +26881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -27113,12 +27119,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -27190,6 +27190,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -27422,12 +27428,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -27511,6 +27511,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -27743,12 +27749,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -27772,6 +27772,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -28004,12 +28010,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -28075,6 +28075,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -28307,12 +28313,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -28342,6 +28342,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -28574,12 +28580,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -28609,6 +28609,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -28841,12 +28847,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -28864,6 +28864,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -29096,12 +29102,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -29185,6 +29185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -29417,12 +29423,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -29440,6 +29440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -29672,12 +29678,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -29701,6 +29701,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -29933,12 +29939,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -30022,6 +30022,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -30254,12 +30260,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -30277,6 +30277,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -30509,12 +30515,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -30532,6 +30532,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -30764,12 +30770,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -30853,6 +30853,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -31085,12 +31091,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -31120,6 +31120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -31352,12 +31358,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -31375,6 +31375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -31607,12 +31613,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -31654,6 +31654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -31886,12 +31892,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -31915,6 +31915,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -32147,12 +32153,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -32170,6 +32170,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -32402,12 +32408,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -32425,6 +32425,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -32657,12 +32663,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -32680,6 +32680,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -32912,12 +32918,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -33001,6 +33001,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -33233,12 +33239,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -33256,6 +33256,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -33488,12 +33494,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -33511,6 +33511,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -33743,12 +33749,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -33832,6 +33832,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -34064,12 +34070,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -34084,8 +34084,15 @@
     "GOAT": {
       "last_id": "goat-pay-tipshelf-checkout-wire-20260917-01",
       "last_ts": "2026-09-17T07:38:00Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        }
+      ],
       "mine": [
         {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
@@ -34167,6 +34174,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -34399,12 +34412,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -34488,6 +34495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -34720,12 +34733,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -34749,6 +34756,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -34981,12 +34994,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -35016,6 +35023,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -35248,12 +35261,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -35271,6 +35278,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -35503,12 +35516,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -35538,6 +35545,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -35770,12 +35783,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -35799,6 +35806,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -36031,12 +36044,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -36060,6 +36067,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -36292,12 +36305,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -36378,8 +36385,14 @@
     "GROK": {
       "last_id": "txst-open-door-35162239221-receipt",
       "last_ts": "2026-09-17T05:59:33Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
         {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
@@ -36534,6 +36547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -36766,12 +36785,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -36825,6 +36838,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -37057,12 +37076,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -37092,6 +37105,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -37324,12 +37343,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -37350,8 +37363,14 @@
     "GROKBUILD": {
       "last_id": "grok-15313-ia-workshare-land-20260917",
       "last_ts": "2026-09-17T05:54:49Z",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
         {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
@@ -37518,6 +37537,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -37750,12 +37775,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -37785,6 +37804,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -38017,12 +38042,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -38106,6 +38125,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -38338,12 +38363,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -38361,6 +38380,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -38593,12 +38618,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -38628,6 +38647,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -38860,12 +38885,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -38883,6 +38902,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -39115,12 +39140,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -39150,6 +39169,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -39382,12 +39407,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -39471,6 +39490,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -39703,12 +39728,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -39726,6 +39745,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -39958,12 +39983,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -40047,6 +40066,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -40279,12 +40304,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -40368,6 +40387,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -40600,12 +40625,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -40671,6 +40690,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -40903,12 +40928,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -40944,6 +40963,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -41176,12 +41201,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -41229,6 +41248,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -41461,12 +41486,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -41484,6 +41503,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -41716,12 +41741,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -41805,6 +41824,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -42037,12 +42062,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -42060,6 +42079,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -42292,12 +42317,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -42345,6 +42364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -42577,12 +42602,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -42600,6 +42619,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -42832,12 +42857,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -42855,6 +42874,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -43087,12 +43112,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -43110,6 +43129,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -43342,12 +43367,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -43365,6 +43384,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -43597,12 +43622,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -43620,6 +43639,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -43852,12 +43877,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -43941,6 +43960,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -44173,12 +44198,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -44196,6 +44215,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -44428,12 +44453,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -44451,6 +44470,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -44683,12 +44708,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -44706,6 +44725,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -44938,12 +44963,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -44961,6 +44980,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -45193,12 +45218,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -45216,6 +45235,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -45448,12 +45473,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -45489,6 +45508,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -45721,12 +45746,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -45810,6 +45829,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -46042,12 +46067,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -46065,6 +46084,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -46297,12 +46322,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -46350,6 +46369,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -46582,12 +46607,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -46665,6 +46684,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -46897,12 +46922,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -46920,6 +46939,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -47152,12 +47177,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -47193,6 +47212,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -47425,12 +47450,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -47448,6 +47467,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -47680,12 +47705,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -47703,6 +47722,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -47935,12 +47960,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -47958,6 +47977,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -48190,12 +48215,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -48213,6 +48232,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -48445,12 +48470,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -48468,6 +48487,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -48700,12 +48725,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -48723,6 +48742,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -48955,12 +48980,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -49044,6 +49063,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -49276,12 +49301,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -49365,6 +49384,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -49597,12 +49622,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -49686,6 +49705,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -49918,12 +49943,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -49965,6 +49984,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -50197,12 +50222,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -50286,6 +50305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -50518,12 +50543,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -50541,6 +50560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -50773,12 +50798,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -50796,6 +50815,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -51028,12 +51053,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -51060,8 +51079,14 @@
     "QUILL": {
       "last_id": "quill-invoice-exception-hero-buy-convert-20260917-10",
       "last_ts": "2026-09-17T07:06:50Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
         {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
@@ -51162,6 +51187,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -51394,12 +51425,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -51423,6 +51448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -51655,12 +51686,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -51690,6 +51715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -51922,12 +51953,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -51957,6 +51982,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -52189,12 +52220,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -52278,6 +52303,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -52510,12 +52541,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -52599,6 +52624,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -52831,12 +52862,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -52902,6 +52927,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -53134,12 +53165,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -53163,6 +53188,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -53395,12 +53426,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -53418,6 +53443,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -53650,12 +53681,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -53673,6 +53698,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -53905,12 +53936,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -53994,6 +54019,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -54226,12 +54257,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -54249,6 +54274,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -54481,12 +54512,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -54570,6 +54595,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -54802,12 +54833,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -54837,6 +54862,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -55069,12 +55100,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -55092,6 +55117,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -55324,12 +55355,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -55413,6 +55438,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -55645,12 +55676,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -55668,6 +55693,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -55900,12 +55931,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -55923,6 +55948,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -56155,12 +56186,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -56244,6 +56269,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -56476,12 +56507,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -56499,6 +56524,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -56731,12 +56762,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -56772,6 +56797,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -57004,12 +57035,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -57027,6 +57052,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -57259,12 +57290,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -57288,6 +57313,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -57520,12 +57551,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -57543,6 +57568,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -57775,12 +57806,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -57804,6 +57829,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -58036,12 +58067,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -58059,6 +58084,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -58291,12 +58322,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -58314,6 +58339,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -58546,12 +58577,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -58575,6 +58600,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -58807,12 +58838,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -58830,6 +58855,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -59062,12 +59093,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -59091,6 +59116,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -59323,12 +59354,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -59412,6 +59437,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -59644,12 +59675,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -59667,6 +59692,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -59899,12 +59930,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -59922,6 +59947,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -60154,12 +60185,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -60177,6 +60202,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -60409,12 +60440,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -60444,6 +60469,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -60676,12 +60707,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -60765,6 +60790,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -60997,12 +61028,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -61086,6 +61111,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -61318,12 +61349,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -61407,6 +61432,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -61639,12 +61670,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -61728,6 +61753,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -61960,12 +61991,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -61989,6 +62014,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -62221,12 +62252,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -62310,6 +62335,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -62542,12 +62573,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -62631,6 +62656,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -62863,12 +62894,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -62946,6 +62971,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -63178,12 +63209,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -63237,6 +63262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -63469,12 +63500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -63558,6 +63583,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -63790,12 +63821,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -63874,18 +63899,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
-      "last_ts": "2026-09-17T07:34:39Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
-        }
-      ],
+      "last_id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+      "last_ts": "2026-09-17T08:31:26Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
         {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
@@ -63951,12 +63975,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T03:37:51Z"
-        },
-        {
-          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T03:31:08Z"
         }
       ]
     },
@@ -63965,6 +63983,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
         {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
@@ -64198,12 +64222,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -64224,8 +64242,14 @@
     "WIRE": {
       "last_id": "wire-live-cash-buy-path-20260916-01",
       "last_ts": "2026-09-17T04:45:00Z",
-      "n": 27,
+      "n": 28,
       "since": [
+        {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
         {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
@@ -64470,6 +64494,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -64702,12 +64732,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -64791,6 +64815,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -65023,12 +65053,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -65046,6 +65070,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -65278,12 +65308,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -65307,6 +65331,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -65539,12 +65569,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -65562,6 +65586,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -65794,12 +65824,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -65817,6 +65841,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -66049,12 +66079,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -66072,6 +66096,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -66304,12 +66334,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
@@ -66393,6 +66417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
           "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
           "from": "GOAT",
           "to": "TABLE",
@@ -66625,12 +66655,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
         }
       ],
       "mine": [
