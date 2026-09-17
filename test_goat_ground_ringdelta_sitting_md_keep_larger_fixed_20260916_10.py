@@ -1,16 +1,16 @@
-"""goat-ground-power-prtscn-md-keep-larger-fixed-20260916-10 — KEEP Larger on leftover ground MD."""
+"""goat-ground-ringdelta-sitting-md-keep-larger-fixed-20260916-10 — KEEP Larger on leftover ground MD."""
 from __future__ import annotations
 
 import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-CLAIM = "goat-ground-power-prtscn-md-keep-larger-fixed-20260916-10"
+CLAIM = "goat-ground-ringdelta-sitting-md-keep-larger-fixed-20260916-10"
 PATHS = (
-    ("ground/POWER_CORD_DEMO.md", "spy-ground-batch-live-cash-20260905-26"),
-    ("ground/PREDICATE_JAIL.md", "spy-ground-batch-live-cash-20260905-26"),
-    ("ground/PRTSCN.md", "spy-ground-batch-live-cash-20260905-27"),
-    ("ground/REMEASURE.md", "spy-ground-batch-live-cash-20260905-27"),
+    ("ground/RINGDELTA.md", "spy-ground-batch-live-cash-20260909-03"),
+    ("ground/SETTLED_FACTS.md", "spy-ground-batch-live-cash-20260909-01"),
+    ("ground/SITTING_PR.md", "spy-ground-batch-live-cash-20260909-01"),
+    ("ground/SIZE_ONLY.md", "spy-ground-batch-live-cash-20260909-03"),
 )
 TIP_PATHS = (
     "agent-rescue.html",
@@ -27,28 +27,29 @@ HANDS_OFF = (
     "ground/MUHL_TRAIN_BRIDGE.md",
     "ground/MUHL_FILM_ORGAN.md",
     "ground/MUHL_SELF_TRAIN_ADDRESS_CONTRACT.md",
+    "ground/MUHC_CORPUS.md",
+    "ground/POWER_CORD_DEMO.md",
+    "ground/PREDICATE_JAIL.md",
+    "ground/PRTSCN.md",
+    "ground/REMEASURE.md",
     "ground/REPO.md",
     "ground/PEER_PACKET_20260819.md",
     "ground/PC_SHARE.md",
     "ground/MNO_DATASHEETS_20260819.md",
     "ground/P4_CLOSED.md",
+    "ground/SITTING_REMINT.md",
     "ground/JOJO_ASSIGN.md",
     "ground/LDA_ANDROID_CI.md",
     "ground/LDA_RECEIPT.md",
     "ground/MIRROR_MESH_0.md",
-    "ground/MOVING_MAIN_MIRROR.md",
-    "ground/MODEL_LANGUAGE.md",
-    "ground/MUHC.md",
     "ground/SPECTER_FINAL.md",
-    "ground/SPEC_DATA.md",
-    "ground/STALE_MANIFEST.md",
     "ground/STEALABLE_LANES.md",
     "ground/DELTA.md",
     "ground/FACTS.md",
     "ground/OBSERVATORY.md",
     "ground/PFC_COMPUTER.md",
     "ground/BATTERY_RED.md",
-    "ground/BUSINESS_PACK_PAPERWORK.md",
+    "ground/ACCORDION.md",
     "ground/FEATURE_TRACKER.md",
     "ground/CLAUDE_COMPUTE.md",
     "ground/GROK_SURFACES.md",
@@ -68,7 +69,7 @@ def _cash(text: str) -> str:
     return text[idx:] if nxt < 0 else text[idx:nxt]
 
 
-class TestGoatGroundPowerPrtscnMdKeepLargerFixed2026091610(unittest.TestCase):
+class TestGoatGroundRingdeltaSittingMdKeepLargerFixed2026091610(unittest.TestCase):
     def test_leftover_ground_cards_keep_autopsy_and_larger(self) -> None:
         for rel, cite in PATHS:
             with self.subTest(rel=rel):
