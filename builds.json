@@ -350,40 +350,8 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 19,
+ "n_open_prs": 17,
  "open_prs": [
-  {
-   "number": 15266,
-   "author": "woahwhattheheck",
-   "title": "Measure Learn2Design curvature on pinned public organizer problem",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15266",
-   "base_freshness": {
-    "base_sha": "08485af56317e2a43f8b400f8d32b88e66570c5b",
-    "main_sha": "19b636eb7a611062eec2d337b5a5fc514d42759d",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 15427,
-   "author": "woahwhattheheck",
-   "title": "Close Muse v2 migration without expanding workflow surface",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15427",
-   "base_freshness": {
-    "base_sha": "3af0ca1e42c439893927ad8ea08dce5fca53e8af",
-    "main_sha": "19b636eb7a611062eec2d337b5a5fc514d42759d",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
   {
    "number": 15382,
    "author": "woahwhattheheck",
@@ -497,10 +465,10 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 15592,
+   "number": 15593,
    "author": "woahwhattheheck",
-   "title": "TITAN V5: correct D2 archive authority runtime member binding and status",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15592",
+   "title": "revenue: turn procurement outcome evidence into remediation gaps (#15154)",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15593",
    "base_freshness": {
     "base_sha": "346a87b6833ea7cd9cfbc3aee2fb7ea04d7af421",
     "main_sha": "19b636eb7a611062eec2d337b5a5fc514d42759d",
@@ -513,16 +481,16 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 15617,
+   "number": 15612,
    "author": "woahwhattheheck",
-   "title": "Recover CPCA partner-readiness truth boundary on current main",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15617",
+   "title": "Revenue: add source-bound partner opportunity qualification gate",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15612",
    "base_freshness": {
-    "base_sha": "19b636eb7a611062eec2d337b5a5fc514d42759d",
+    "base_sha": "52a24d6c4e6d193c009761d44bfcb77aa1fe8150",
     "main_sha": "19b636eb7a611062eec2d337b5a5fc514d42759d",
     "ahead_by": null,
     "behind_by": null,
-    "label": "FRESH"
+    "label": "STALE_BASE"
    },
    "status": "PR_OPEN",
    "road": "pr",
@@ -545,80 +513,16 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 15613,
+   "number": 15617,
    "author": "woahwhattheheck",
-   "title": "SwarmOps: make current readiness verifier-clock owned",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15613",
+   "title": "Recover CPCA partner-readiness truth boundary on current main",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15617",
    "base_freshness": {
     "base_sha": "19b636eb7a611062eec2d337b5a5fc514d42759d",
     "main_sha": "19b636eb7a611062eec2d337b5a5fc514d42759d",
     "ahead_by": null,
     "behind_by": null,
     "label": "FRESH"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 15431,
-   "author": "woahwhattheheck",
-   "title": "Fix inbound-reply Unicode collision and same-second send authority",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15431",
-   "base_freshness": {
-    "base_sha": "0c41a30dd7813131674baa427f3890a7b7390da7",
-    "main_sha": "19b636eb7a611062eec2d337b5a5fc514d42759d",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 15620,
-   "author": "woahwhattheheck",
-   "title": "Fix inbound-reply authority predecessors on current main",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15620",
-   "base_freshness": {
-    "base_sha": "f63c0259f536935578c4331cf34edc74aa1254cc",
-    "main_sha": "19b636eb7a611062eec2d337b5a5fc514d42759d",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 15621,
-   "author": "woahwhattheheck",
-   "title": "Recover partner qualification gate with completion-evidence binding",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15621",
-   "base_freshness": {
-    "base_sha": "f63c0259f536935578c4331cf34edc74aa1254cc",
-    "main_sha": "19b636eb7a611062eec2d337b5a5fc514d42759d",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 15593,
-   "author": "woahwhattheheck",
-   "title": "revenue: turn procurement outcome evidence into remediation gaps (#15154)",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15593",
-   "base_freshness": {
-    "base_sha": "346a87b6833ea7cd9cfbc3aee2fb7ea04d7af421",
-    "main_sha": "19b636eb7a611062eec2d337b5a5fc514d42759d",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
    },
    "status": "PR_OPEN",
    "road": "pr",
@@ -641,12 +545,76 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 15612,
+   "number": 15623,
    "author": "woahwhattheheck",
-   "title": "Revenue: add source-bound partner opportunity qualification gate",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15612",
+   "title": "Revenue: add deterministic proposal validity / requote gate",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15623",
    "base_freshness": {
-    "base_sha": "52a24d6c4e6d193c009761d44bfcb77aa1fe8150",
+    "base_sha": "64bac375579b27730194d23cec23563c5ef422fd",
+    "main_sha": "19b636eb7a611062eec2d337b5a5fc514d42759d",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15266,
+   "author": "woahwhattheheck",
+   "title": "Measure Learn2Design curvature on pinned public organizer problem",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15266",
+   "base_freshness": {
+    "base_sha": "08485af56317e2a43f8b400f8d32b88e66570c5b",
+    "main_sha": "19b636eb7a611062eec2d337b5a5fc514d42759d",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15592,
+   "author": "woahwhattheheck",
+   "title": "TITAN V5: correct D2 archive authority runtime member binding and status",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15592",
+   "base_freshness": {
+    "base_sha": "346a87b6833ea7cd9cfbc3aee2fb7ea04d7af421",
+    "main_sha": "19b636eb7a611062eec2d337b5a5fc514d42759d",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15624,
+   "author": "woahwhattheheck",
+   "title": "Revenue: current-main proposal validity / requote gate",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15624",
+   "base_freshness": {
+    "base_sha": "f5e52e245d25e9f669acd81d3c41bd810dd13654",
+    "main_sha": "19b636eb7a611062eec2d337b5a5fc514d42759d",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15613,
+   "author": "woahwhattheheck",
+   "title": "SwarmOps: make current readiness verifier-clock owned",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15613",
+   "base_freshness": {
+    "base_sha": "5418abf718cfadb94af014095a416bd8f8cc7e9e",
     "main_sha": "19b636eb7a611062eec2d337b5a5fc514d42759d",
     "ahead_by": null,
     "behind_by": null,
