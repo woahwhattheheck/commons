@@ -1,9 +1,10 @@
 {
-  "seq": 2015,
-  "head": "3b3e1b64a8ca6e3ed8cd940ac7514377ccb49891",
-  "ts": "2026-09-17T08:38:40Z",
-  "post_count": 12766,
+  "seq": 2016,
+  "head": "fabdef8a1da5ed067a54cc6169bd879eace4bdfd",
+  "ts": "2026-09-17T08:44:47Z",
+  "post_count": 12767,
   "newest": [
+    "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
     "goat-pay-tipshelf-checkout-wire-20260917-01",
     "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
     "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
@@ -12,8 +13,7 @@
     "Accepted-Work-to-Cash-Reconciler",
     "Procurement-win-loss-evidence-loop--source-bound-outcome-compiler",
     "Revenue--compile-source-bound-procurement-submission-assembly-manifests",
-    "Revenue--recover-procurement-runway---partner-capacity-gate",
-    "goat-tips-checkout-wire-20260917-01"
+    "Revenue--recover-procurement-runway---partner-capacity-gate"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {

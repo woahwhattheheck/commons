@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import re
 import subprocess
 import sys
 import unittest
@@ -17,6 +18,18 @@ _CANONICAL_SURFACES = (
     "tools/outbound_send_guard/test_muse_current_authority_v2.py",
     "tools/outbound_send_guard/test_muse_election_v2.py",
 )
+_UNITTEST_TERMINAL = re.compile(
+    r"(?m)^Ran\s+(?P<count>\d+)\s+tests?\s+in\s+[^\r\n]+\r?\n"
+    r"\r?\nOK(?:\s+\([^\r\n]*\))?\r?\n?\Z"
+)
+
+
+def _reported_test_count(stderr: str) -> int:
+    """Return unittest's terminal stderr execution count or fail closed."""
+    match = _UNITTEST_TERMINAL.search(stderr)
+    if match is None:
+        raise ValueError(f"unittest stderr has no terminal executed-test summary:\n{stderr}")
+    return int(match.group("count"))
 
 
 class MuseElectionV2RetainedTests(unittest.TestCase):
@@ -44,14 +57,33 @@ class MuseElectionV2RetainedTests(unittest.TestCase):
                 "tools.outbound_send_guard.test_muse_current_authority_v2",
             ],
             cwd=root,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
+            text=True,
+            capture_output=True,
             check=False,
             timeout=180,
         )
-        output = proc.stdout.decode("utf-8", "replace")
+        output = proc.stderr + proc.stdout
         self.assertEqual(proc.returncode, 0, output)
-        self.assertIn("OK", output)
+        count = _reported_test_count(proc.stderr)
+        self.assertGreater(count, 0, f"canonical Muse v2 suite executed zero tests:\n{output}")
+
+    def test_stdout_cannot_override_real_zero_test_stderr_summary(self):
+        proc = subprocess.CompletedProcess(
+            args=[sys.executable, "-O", "-m", "unittest"],
+            returncode=0,
+            stdout="Ran 99 tests in 0.001s\n\nOK\n",
+            stderr="----------------------------------------------------------------------\nRan 0 tests in 0.000s\n\nOK\n",
+        )
+        count = _reported_test_count(proc.stderr)
+        self.assertEqual(count, 0)
+        with self.assertRaisesRegex(AssertionError, "executed zero tests"):
+            self.assertGreater(count, 0, "canonical Muse v2 suite executed zero tests")
+
+    def test_missing_or_nonterminal_unittest_summary_is_rejected(self):
+        with self.assertRaisesRegex(ValueError, "no terminal executed-test summary"):
+            _reported_test_count("OK\n")
+        with self.assertRaisesRegex(ValueError, "no terminal executed-test summary"):
+            _reported_test_count("Ran 3 tests in 0.001s\n\nOK\ntrailing output\n")
 
 
 if __name__ == "__main__":

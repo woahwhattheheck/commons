@@ -5,6 +5,7 @@ import hashlib
 import json
 import os
 import stat
+import unicodedata
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -91,6 +92,24 @@ def _text(value: Any, where: str, maximum: int = 512) -> str:
     if any(ord(ch) < 32 or ord(ch) == 127 for ch in value):
         raise AllocationError(f"{where}: control characters forbidden")
     return value
+
+
+def _semantic_identity_text(value: str, where: str) -> str:
+    normalized = unicodedata.normalize("NFKC", value)
+    if any(unicodedata.category(ch).startswith("C") for ch in normalized):
+        raise AllocationError(f"{where}: Unicode control/format characters forbidden")
+    canonical = " ".join(normalized.split()).casefold()
+    if not canonical:
+        raise AllocationError(f"{where}: empty after semantic normalization")
+    return canonical
+
+
+def _semantic_segment_key(segment: dict[str, Any]) -> tuple[str, str, str]:
+    return (
+        _semantic_identity_text(segment["offer_id"], f"{segment['segment_id']}.offer_id"),
+        segment["route_kind"],
+        _semantic_identity_text(segment["audience_label"], f"{segment['segment_id']}.audience_label"),
+    )
 
 
 def _sha(value: Any, where: str) -> str:
@@ -262,6 +281,9 @@ def compile_packet(document: Any) -> dict[str, Any]:
     ids = [s["segment_id"] for s in segments]
     if len(ids) != len(set(ids)):
         raise AllocationError("duplicate segment_id")
+    semantic_keys = [_semantic_segment_key(s) for s in segments]
+    if len(semantic_keys) != len(set(semantic_keys)):
+        raise AllocationError("duplicate semantic segment: offer_id × route_kind × audience_label")
     evidence_bindings = [(s["evidence_ref"], s["evidence_sha256"]) for s in segments]
     if len(evidence_bindings) != len(set(evidence_bindings)):
         raise AllocationError("duplicate evidence binding across segments")
@@ -463,17 +485,18 @@ def verify_bundle(bundle: Any) -> bool:
 
 
 def load_json_strict(path: Path, limit: int = 8_000_000) -> Any:
-    st = os.lstat(path)
-    if not stat.S_ISREG(st.st_mode) or st.st_size > limit:
-        raise AllocationError("input must be a bounded regular file")
-    flags = os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0)
-    fd = os.open(path, flags)
-    try:
-        before = os.fstat(fd)
-        if not stat.S_ISREG(before.st_mode) or before.st_size > limit:
-            raise AllocationError("input changed or is not regular")
-        if (st.st_dev, st.st_ino, st.st_size) != (before.st_dev, before.st_ino, before.st_size):
-            raise AllocationError("input changed before retained read")
+    def fingerprint(value: os.stat_result) -> tuple[int, int, int, int, int, int, int]:
+        return (
+            value.st_dev,
+            value.st_ino,
+            value.st_mode,
+            value.st_nlink,
+            value.st_size,
+            value.st_mtime_ns,
+            value.st_ctime_ns,
+        )
+
+    def read_once(fd: int, expected_size: int) -> bytes:
         chunks: list[bytes] = []
         remaining = limit + 1
         while remaining:
@@ -483,14 +506,32 @@ def load_json_strict(path: Path, limit: int = 8_000_000) -> Any:
             chunks.append(chunk)
             remaining -= len(chunk)
         raw = b"".join(chunks)
-        after = os.fstat(fd)
-        if len(raw) > limit or len(raw) != before.st_size:
+        if len(raw) > limit or len(raw) != expected_size:
             raise AllocationError("input exceeds bound or changed")
-        if (before.st_dev, before.st_ino, before.st_size) != (
-            after.st_dev,
-            after.st_ino,
-            after.st_size,
-        ):
+        return raw
+
+    st = os.lstat(path)
+    if not stat.S_ISREG(st.st_mode) or st.st_size > limit:
+        raise AllocationError("input must be a bounded regular file")
+    flags = os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0)
+    fd = os.open(path, flags)
+    try:
+        before = os.fstat(fd)
+        if not stat.S_ISREG(before.st_mode) or before.st_size > limit:
+            raise AllocationError("input changed or is not regular")
+        stable = fingerprint(before)
+        if fingerprint(st) != stable:
+            raise AllocationError("input changed before retained read")
+
+        raw = read_once(fd, before.st_size)
+        after_first = os.fstat(fd)
+        if fingerprint(after_first) != stable:
+            raise AllocationError("input changed while reading")
+
+        os.lseek(fd, 0, os.SEEK_SET)
+        replay = read_once(fd, before.st_size)
+        after_replay = os.fstat(fd)
+        if fingerprint(after_replay) != stable or replay != raw:
             raise AllocationError("input changed while reading")
     finally:
         os.close(fd)

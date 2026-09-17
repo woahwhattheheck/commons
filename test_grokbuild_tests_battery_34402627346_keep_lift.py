@@ -43,15 +43,15 @@ DEDUPE = (
     "236c87f0f877e00a76f36714bf439b064c54cbce:"
     "the whole battery, one failure fails the run"
 )
-TOOLS = "e970539c"
-STALE_TOOLS = "3f632f0a"
-BUILDS = "aebf4372"
-STALE_BUILDS = "5a93f3f9"
+TOOLS = "e00fe1eb"
+STALE_TOOLS = "e970539c"
+BUILDS = "d53bd60e"
+STALE_BUILDS = "fb89efb7"
 FEATURES = "b0128863"
 STALE_FEATURES = "5a37e0a8"
-INGEST = "f482b75b"
+INGEST = "fb610bfe"
 LEDGER = "d46d4c1c"
-HUB = "7bc61c8b"
+HUB = "4c31e2df"
 
 
 def git_blob(rel: str) -> str:

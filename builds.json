@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 24,
+ "n_open_prs": 27,
  "open_prs": [
   {
    "number": 15266,
@@ -359,7 +359,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15266",
    "base_freshness": {
     "base_sha": "08485af56317e2a43f8b400f8d32b88e66570c5b",
-    "main_sha": "3af0ca1e42c439893927ad8ea08dce5fca53e8af",
+    "main_sha": "194d0515325edbf4b96b413786d4d24c8effb08a",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -375,7 +375,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15356",
    "base_freshness": {
     "base_sha": "fd8dc22f89d42348a4b6fd06573df7e93c473ae0",
-    "main_sha": "3af0ca1e42c439893927ad8ea08dce5fca53e8af",
+    "main_sha": "194d0515325edbf4b96b413786d4d24c8effb08a",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -391,23 +391,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15346",
    "base_freshness": {
     "base_sha": "2fc289e778bb91bf513c63c60b44a9e9a599c13d",
-    "main_sha": "3af0ca1e42c439893927ad8ea08dce5fca53e8af",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 15318,
-   "author": "woahwhattheheck",
-   "title": "Rule 30: exact period-two trace frontier and bounded fiber engine",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15318",
-   "base_freshness": {
-    "base_sha": "022f93252836b65954bed16557bec258c2184f33",
-    "main_sha": "3af0ca1e42c439893927ad8ea08dce5fca53e8af",
+    "main_sha": "194d0515325edbf4b96b413786d4d24c8effb08a",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -423,7 +407,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15414",
    "base_freshness": {
     "base_sha": "e763e2b0c070ccec1f6f53520440c4e0fb3cb135",
-    "main_sha": "3af0ca1e42c439893927ad8ea08dce5fca53e8af",
+    "main_sha": "194d0515325edbf4b96b413786d4d24c8effb08a",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -439,7 +423,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15382",
    "base_freshness": {
     "base_sha": "b2cc606624525bfdf46919ea11000186a9a8c07a",
-    "main_sha": "3af0ca1e42c439893927ad8ea08dce5fca53e8af",
+    "main_sha": "194d0515325edbf4b96b413786d4d24c8effb08a",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -455,7 +439,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15394",
    "base_freshness": {
     "base_sha": "d497ce32cd808f02c9d2520c3dd88d79cd30bf81",
-    "main_sha": "3af0ca1e42c439893927ad8ea08dce5fca53e8af",
+    "main_sha": "194d0515325edbf4b96b413786d4d24c8effb08a",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -471,10 +455,10 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15423",
    "base_freshness": {
     "base_sha": "3af0ca1e42c439893927ad8ea08dce5fca53e8af",
-    "main_sha": "3af0ca1e42c439893927ad8ea08dce5fca53e8af",
+    "main_sha": "194d0515325edbf4b96b413786d4d24c8effb08a",
     "ahead_by": null,
     "behind_by": null,
-    "label": "FRESH"
+    "label": "STALE_BASE"
    },
    "status": "PR_OPEN",
    "road": "pr",
@@ -487,7 +471,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15317",
    "base_freshness": {
     "base_sha": "74c12162bff05f23614f03f7e13d44dfa7b0f9b0",
-    "main_sha": "3af0ca1e42c439893927ad8ea08dce5fca53e8af",
+    "main_sha": "194d0515325edbf4b96b413786d4d24c8effb08a",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -503,7 +487,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15430",
    "base_freshness": {
     "base_sha": "a7188d57ff9f85ec39425e8db3413471e85dab65",
-    "main_sha": "3af0ca1e42c439893927ad8ea08dce5fca53e8af",
+    "main_sha": "194d0515325edbf4b96b413786d4d24c8effb08a",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -519,7 +503,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15431",
    "base_freshness": {
     "base_sha": "a7188d57ff9f85ec39425e8db3413471e85dab65",
-    "main_sha": "3af0ca1e42c439893927ad8ea08dce5fca53e8af",
+    "main_sha": "194d0515325edbf4b96b413786d4d24c8effb08a",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -535,23 +519,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15419",
    "base_freshness": {
     "base_sha": "f562ab74ed6e9b3e9f98a3d67c75c01257fc31d6",
-    "main_sha": "3af0ca1e42c439893927ad8ea08dce5fca53e8af",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 15438,
-   "author": "woahwhattheheck",
-   "title": "Recover #14712 costed work-batch optimizer onto current main",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15438",
-   "base_freshness": {
-    "base_sha": "767e7e3a3f5b27a5bc32cb7cbc942ca5cf01a3ec",
-    "main_sha": "3af0ca1e42c439893927ad8ea08dce5fca53e8af",
+    "main_sha": "194d0515325edbf4b96b413786d4d24c8effb08a",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -567,23 +535,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15433",
    "base_freshness": {
     "base_sha": "083355fb324d32cfe4a70a25384b7204fbc3a112",
-    "main_sha": "3af0ca1e42c439893927ad8ea08dce5fca53e8af",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 15446,
-   "author": "woahwhattheheck",
-   "title": "CPCA: separate workshare discussion from application readiness",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15446",
-   "base_freshness": {
-    "base_sha": "8b0c6e2021fff346dde8098eb796766a5330dde2",
-    "main_sha": "3af0ca1e42c439893927ad8ea08dce5fca53e8af",
+    "main_sha": "194d0515325edbf4b96b413786d4d24c8effb08a",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -599,7 +551,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15443",
    "base_freshness": {
     "base_sha": "8b0c6e2021fff346dde8098eb796766a5330dde2",
-    "main_sha": "3af0ca1e42c439893927ad8ea08dce5fca53e8af",
+    "main_sha": "194d0515325edbf4b96b413786d4d24c8effb08a",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -615,7 +567,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15359",
    "base_freshness": {
     "base_sha": "274fc6e9206a227c3daec4c28ca9c30493e0dce8",
-    "main_sha": "3af0ca1e42c439893927ad8ea08dce5fca53e8af",
+    "main_sha": "194d0515325edbf4b96b413786d4d24c8effb08a",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -631,23 +583,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15427",
    "base_freshness": {
     "base_sha": "3af0ca1e42c439893927ad8ea08dce5fca53e8af",
-    "main_sha": "3af0ca1e42c439893927ad8ea08dce5fca53e8af",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "FRESH"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 15441,
-   "author": "woahwhattheheck",
-   "title": "Bind Python checkout projectors to catalog capability evidence",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15441",
-   "base_freshness": {
-    "base_sha": "8b0c6e2021fff346dde8098eb796766a5330dde2",
-    "main_sha": "3af0ca1e42c439893927ad8ea08dce5fca53e8af",
+    "main_sha": "194d0515325edbf4b96b413786d4d24c8effb08a",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -663,7 +599,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15437",
    "base_freshness": {
     "base_sha": "d62508874676c6a099781f5d7a968fc306f5b094",
-    "main_sha": "3af0ca1e42c439893927ad8ea08dce5fca53e8af",
+    "main_sha": "194d0515325edbf4b96b413786d4d24c8effb08a",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -673,29 +609,13 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 15451,
+   "number": 15459,
    "author": "woahwhattheheck",
-   "title": "Reject zero-test runtime provenance false greens",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15451",
+   "title": "CPCA: truth-narrow teaming discussion vs application readiness",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15459",
    "base_freshness": {
-    "base_sha": "3b3e1b64a8ca6e3ed8cd940ac7514377ccb49891",
-    "main_sha": "3af0ca1e42c439893927ad8ea08dce5fca53e8af",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 15450,
-   "author": "woahwhattheheck",
-   "title": "Fix vacuous runtime-provenance retained execution",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15450",
-   "base_freshness": {
-    "base_sha": "5a3f592527e231c16bfa97d0be986512e619d875",
-    "main_sha": "3af0ca1e42c439893927ad8ea08dce5fca53e8af",
+    "base_sha": "46a0bd60511b98d29ce0ba1351183f382121c43b",
+    "main_sha": "194d0515325edbf4b96b413786d4d24c8effb08a",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -711,7 +631,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15422",
    "base_freshness": {
     "base_sha": "5a3f592527e231c16bfa97d0be986512e619d875",
-    "main_sha": "3af0ca1e42c439893927ad8ea08dce5fca53e8af",
+    "main_sha": "194d0515325edbf4b96b413786d4d24c8effb08a",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -721,13 +641,141 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 15432,
+   "number": 15461,
    "author": "woahwhattheheck",
-   "title": "Close Westfield signed scope vocabulary after #15411",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15432",
+   "title": "Revenue: close allocator semantic-segment cap alias bypass",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15461",
    "base_freshness": {
-    "base_sha": "083355fb324d32cfe4a70a25384b7204fbc3a112",
-    "main_sha": "3af0ca1e42c439893927ad8ea08dce5fca53e8af",
+    "base_sha": "77d049e21bbc8afec9082ddebb4277204b6a208d",
+    "main_sha": "194d0515325edbf4b96b413786d4d24c8effb08a",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15441,
+   "author": "woahwhattheheck",
+   "title": "Bind Python checkout projectors to catalog capability evidence",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15441",
+   "base_freshness": {
+    "base_sha": "1b75bab4259c8efd4a974bd32a93d4e7f11714c8",
+    "main_sha": "194d0515325edbf4b96b413786d4d24c8effb08a",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15456,
+   "author": "woahwhattheheck",
+   "title": "Muse v2: close retained-CI trigger and zero-test gaps",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15456",
+   "base_freshness": {
+    "base_sha": "3b3e1b64a8ca6e3ed8cd940ac7514377ccb49891",
+    "main_sha": "194d0515325edbf4b96b413786d4d24c8effb08a",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15458,
+   "author": "woahwhattheheck",
+   "title": "Close Westfield signed scope and semantic root after #15411",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15458",
+   "base_freshness": {
+    "base_sha": "46a0bd60511b98d29ce0ba1351183f382121c43b",
+    "main_sha": "194d0515325edbf4b96b413786d4d24c8effb08a",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15454,
+   "author": "woahwhattheheck",
+   "title": "Reject vacuous runtime-provenance CI passes",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15454",
+   "base_freshness": {
+    "base_sha": "3b3e1b64a8ca6e3ed8cd940ac7514377ccb49891",
+    "main_sha": "194d0515325edbf4b96b413786d4d24c8effb08a",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15446,
+   "author": "woahwhattheheck",
+   "title": "CPCA: separate workshare discussion from application readiness",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15446",
+   "base_freshness": {
+    "base_sha": "8b0c6e2021fff346dde8098eb796766a5330dde2",
+    "main_sha": "194d0515325edbf4b96b413786d4d24c8effb08a",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15464,
+   "author": "woahwhattheheck",
+   "title": "Fix revenue allocator semantic-segment cap bypass after #15434",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15464",
+   "base_freshness": {
+    "base_sha": "a56d3ac3827688381cc300733a62c4caf07acfb1",
+    "main_sha": "194d0515325edbf4b96b413786d4d24c8effb08a",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15466,
+   "author": "woahwhattheheck",
+   "title": "CPCA: separate workshare discussion from application readiness",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15466",
+   "base_freshness": {
+    "base_sha": "a56d3ac3827688381cc300733a62c4caf07acfb1",
+    "main_sha": "194d0515325edbf4b96b413786d4d24c8effb08a",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15465,
+   "author": "woahwhattheheck",
+   "title": "Fold OpenCV visual-evidence gate into retained CI surface",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15465",
+   "base_freshness": {
+    "base_sha": "a56d3ac3827688381cc300733a62c4caf07acfb1",
+    "main_sha": "194d0515325edbf4b96b413786d4d24c8effb08a",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"

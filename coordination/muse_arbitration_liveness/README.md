@@ -41,3 +41,8 @@ Inputs use bounded nonblocking descriptor reads and must be ordinary regular fil
 - `CONFLICT`
 
 All authority flags in compiled packets are literal `false`.
+
+## CLEAR reply wire (Muse DM)
+
+Outbound duplicate-claim CLEARs must use the exact `SELECTED|HOLD|COLLISION` wire documented in [`CLEAR_WIRE.md`](CLEAR_WIRE.md). Prose `Cleared:` replies are underbound and must not be treated as authority; peers may mint DeepSeek fallback DECISION evidence (meter: convert/ship + arbitration clear only; never send email) via `deepseek_fallback_arbiter.clear_or_fallback`.
+

@@ -68,6 +68,9 @@ WHITEBOX_HOUR_CHECKOUT = "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07"
 PAY_CONVERT_SHELF_LIVE_CHECKOUTS = (
     PAY_CONVERT_SHELF_LIVE_BUYS | TIPS_CONVERT_SHELF_LIVE_CHECKOUTS | {WHITEBOX_HOUR_CHECKOUT}
 )
+COMMERCE_CONVERT_SHELF_LIVE_CHECKOUTS = (
+    COMMERCE_CONVERT_SHELF_LIVE_BUYS | TIPS_CONVERT_SHELF_LIVE_CHECKOUTS
+)
 OWNER_ACTION_HOSTS = {
     "dashboard.stripe.com",
     "www.paypal.com",
@@ -502,7 +505,7 @@ def live_stripe_checkout_urls(html: str) -> set[str]:
 
 
 def html_stripe_url_errors(name: str, text: str) -> list[str]:
-    """tips/pay convert shelves reuse existing Stripe URLs; commerce/payment-capability are exact live buys."""
+    """tips/pay/commerce convert shelves reuse existing Stripe URLs; payment-capability stays Type live buys."""
     if name == "tips.html":
         found = live_stripe_checkout_urls(text)
         if found != TIPS_CONVERT_SHELF_LIVE_CHECKOUTS:
@@ -516,6 +519,14 @@ def html_stripe_url_errors(name: str, text: str) -> list[str]:
         if found != PAY_CONVERT_SHELF_LIVE_CHECKOUTS:
             return [
                 "%s convert shelf must reuse exactly the existing pay Stripe URLs"
+                % name
+            ]
+        return []
+    if name == "commerce.html":
+        found = live_stripe_checkout_urls(text)
+        if found != COMMERCE_CONVERT_SHELF_LIVE_CHECKOUTS:
+            return [
+                "%s convert shelf must reuse exactly the existing commerce Stripe URLs"
                 % name
             ]
         return []
