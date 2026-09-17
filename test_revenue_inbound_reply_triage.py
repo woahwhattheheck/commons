@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import copy
+import subprocess
+import sys
 import unittest
 
 from revenue.inbound_reply_triage.core import (
@@ -89,8 +91,46 @@ class InboundReplyTriageTests(unittest.TestCase):
             event("MUSE_SELECTED", "2026-09-17T02:00:00Z", "m2"),
             event("SENT", "2026-09-17T02:01:00Z", "s2"),
         ])]
-        with self.assertRaisesRegex(TriageError, "repeat SENT requires later HUMAN_REPLY"):
+        with self.assertRaisesRegex(TriageError, "repeat SENT requires"):
             compile_triage(data)
+
+    def test_send_authority_predecessors_must_be_strictly_earlier(self):
+        data = base_input()
+        data["lanes"] = [lane("same-muse", [
+            event("MUSE_SELECTED", "2026-09-17T01:00:00Z", "m"),
+            event("SENT", "2026-09-17T01:00:00Z", "s"),
+        ])]
+        with self.assertRaisesRegex(TriageError, "fresh prior MUSE_SELECTED"):
+            compile_triage(data)
+
+        data["lanes"] = [lane("repeat-same-muse", [
+            event("MUSE_SELECTED", "2026-09-17T01:00:00Z", "m1"),
+            event("SENT", "2026-09-17T01:01:00Z", "s1"),
+            event("HUMAN_REPLY", "2026-09-17T01:30:00Z", "h"),
+            event("MUSE_SELECTED", "2026-09-17T02:00:00Z", "m2"),
+            event("SENT", "2026-09-17T02:00:00Z", "s2"),
+        ])]
+        with self.assertRaisesRegex(TriageError, "fresh prior MUSE_SELECTED"):
+            compile_triage(data)
+
+        data["lanes"] = [lane("repeat-same-human", [
+            event("MUSE_SELECTED", "2026-09-17T01:00:00Z", "m1"),
+            event("SENT", "2026-09-17T01:01:00Z", "s1"),
+            event("MUSE_SELECTED", "2026-09-17T01:30:00Z", "m2"),
+            event("HUMAN_REPLY", "2026-09-17T02:00:00Z", "h"),
+            event("SENT", "2026-09-17T02:00:00Z", "s2"),
+        ])]
+        with self.assertRaisesRegex(TriageError, "repeat SENT requires"):
+            compile_triage(data)
+
+        data["lanes"] = [lane("valid-repeat", [
+            event("MUSE_SELECTED", "2026-09-17T01:00:00Z", "m1"),
+            event("SENT", "2026-09-17T01:01:00Z", "s1"),
+            event("HUMAN_REPLY", "2026-09-17T02:00:00Z", "h"),
+            event("MUSE_SELECTED", "2026-09-17T02:01:00Z", "m2"),
+            event("SENT", "2026-09-17T02:02:00Z", "s2"),
+        ])]
+        self.assertEqual(compile_triage(data)["owner_review_queue"][0]["state"], "WAITING_EXTERNAL")
 
     def test_waiting_external(self):
         data = base_input()
@@ -169,6 +209,28 @@ class InboundReplyTriageTests(unittest.TestCase):
         with self.assertRaisesRegex(TriageError, "duplicate org×route×purpose×thread"):
             compile_triage(data)
 
+    def test_binding_keys_reject_invisible_controls_and_non_nfkc(self):
+        cases = [
+            ("org_key", "Ac\u200bme", "invisible/control"),
+            ("org_key", "Ac\u202eme", "invisible/control"),
+            ("route_key", "sales\u2060@example.com", "invisible/control"),
+            ("org_key", "\uff21cme", "exact NFKC"),
+            ("org_key", "Cafe\u0301", "exact NFKC"),
+        ]
+        for field, value, message in cases:
+            with self.subTest(field=field, value=repr(value)):
+                data = base_input()
+                candidate = lane("u", [])
+                candidate[field] = value
+                data["lanes"] = [candidate]
+                with self.assertRaisesRegex(TriageError, message):
+                    compile_triage(data)
+
+        data = base_input()
+        data["lanes"] = [lane("accent", [], org="Caf\u00e9", route="caf\u00e9@example.com")]
+        packet = compile_triage(data)
+        self.assertEqual(packet["lanes"][0]["binding"]["org_key"], "Caf\u00e9")
+
     def test_chronology_future_and_same_second_ambiguity_fail_closed(self):
         data = base_input()
         data["lanes"] = [lane("reverse", [
@@ -212,6 +274,34 @@ class InboundReplyTriageTests(unittest.TestCase):
         data["stale_after_minutes"] = True
         with self.assertRaisesRegex(TriageError, "must be integer"):
             compile_triage(data)
+
+    def test_red_closure_executes_under_python_optimized(self):
+        script = r'''
+from revenue.inbound_reply_triage.core import INPUT_SCHEMA, TriageError, compile_triage
+
+def ev(t, at, i):
+    return {"id": i, "type": t, "at": at, "evidence_refs": ["e:" + i]}
+
+def ln(org, events):
+    return {"id":"x","org_key":org,"route_key":"x@example.com","domain":"example.com","purpose_key":"PAID-WORK","thread_key":"thread:x","lease":None,"events":events}
+
+def source(lane):
+    return {"schema":INPUT_SCHEMA,"evaluation_at":"2026-09-17T04:00:00Z","stale_after_minutes":120,"lanes":[lane]}
+
+bad = [
+    ln("Ac\u200bme", []),
+    ln("Acme", [ev("MUSE_SELECTED","2026-09-17T01:00:00Z","m"), ev("SENT","2026-09-17T01:00:00Z","s")]),
+]
+for item in bad:
+    try:
+        compile_triage(source(item))
+    except TriageError:
+        pass
+    else:
+        raise SystemExit(23)
+'''
+        proc = subprocess.run([sys.executable, "-O", "-c", script], capture_output=True, text=True)
+        self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
 
     def test_receipt_recompiles_and_tamper_fails(self):
         data = base_input()

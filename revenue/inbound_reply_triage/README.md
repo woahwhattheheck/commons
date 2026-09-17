@@ -4,7 +4,9 @@
 
 ## Contract
 
-Input binds every lane to an exact `org_key × route_key × domain × purpose_key × thread_key`. Events are chronological and evidence-referenced. `SENT` requires a fresh prior `MUSE_SELECTED`; a repeat send in history additionally requires an intervening human reply. Unsolicited genuine inbound can be represented without a prior send.
+Input binds every lane to an exact `org_key × route_key × domain × purpose_key × thread_key`. `org_key` and `route_key` are collision-sensitive text: they must already be exact NFKC, must remain non-empty after trimming, and cannot contain Unicode control/format/unassigned/private-use/surrogate or line/paragraph-separator code points. This prevents visually equivalent or invisible-spelling variants from splitting one commercial-contact custody lane into multiple bindings.
+
+Events are chronological and evidence-referenced. `SENT` requires a fresh `MUSE_SELECTED` whose timestamp is **strictly earlier** than that `SENT`; same-second list order is never send authority. A repeat send in history additionally requires an intervening `HUMAN_REPLY` strictly after the previous send and strictly before the current send. Unsolicited genuine inbound can be represented without a prior send.
 
 The compiler distinguishes:
 
@@ -21,6 +23,10 @@ The compiler distinguishes:
 A drafted response becomes `RESPONSE_READY_OWNER_REVIEW` only with an active, evidence-bound one-writer lease. An expired/missing lease fails closed to `COLLISION_HOLD`. DNR/collision/bounce/rejection evidence is never converted into a human reply. Same-second mutually exclusive status evidence fails closed instead of using list position as authority.
 
 `evaluation_at` and `stale_after_minutes` produce deterministic reply age/staleness. The owner-review queue prioritizes human inbound first, with older human replies first within a state.
+
+## Evidence boundary
+
+Event and lease `evidence_refs` are retained caller evidence identifiers. They are bound into deterministic source/receipt bytes, but they are **not** external-provider authentication by themselves. `NEW_HUMAN_INBOUND`, active-lease, and `RESPONSE_READY_OWNER_REVIEW` therefore remain retained-evidence states until a separately reviewed provider/source binding proves the referenced event or lease. This package never upgrades those references into provider truth on its own.
 
 ## Authority ceiling
 
