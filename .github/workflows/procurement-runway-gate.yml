@@ -1,0 +1,40 @@
+name: Procurement runway gate
+
+on:
+  pull_request:
+    paths:
+      - "revenue/procurement_runway_gate/**"
+      - ".github/workflows/procurement-runway-gate.yml"
+  push:
+    branches: [main]
+    paths:
+      - "revenue/procurement_runway_gate/**"
+      - ".github/workflows/procurement-runway-gate.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Syntax
+        run: python -m py_compile revenue/procurement_runway_gate/*.py
+      - name: Hostile suite
+        run: python -m unittest revenue.procurement_runway_gate.test_gate
+      - name: Optimized hostile suite
+        run: python -O -m unittest revenue.procurement_runway_gate.test_gate
+      - name: Compile and verify current evidence packet
+        shell: bash
+        run: |
+          out="$(mktemp -d)/runway"
+          python -m revenue.procurement_runway_gate compile revenue/procurement_runway_gate/current_opportunities.json --output-dir "$out"
+          python -m revenue.procurement_runway_gate verify revenue/procurement_runway_gate/current_opportunities.json --output-dir "$out"
