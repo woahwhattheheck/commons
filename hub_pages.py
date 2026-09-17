@@ -141,6 +141,25 @@ KEYS_MOD_CONVERT_SHELF_HTML = """
 </section>
 """
 
+# First-screen Buy convert shelf for lab.html + vent.html. Existing live
+# Payment Links only (Autopsy $29 + White Box hour $250). Cite
+# quill-lab-vent-convert-shelf-20260917-01. Tip KEEP. #8802 off. Not Wire entry/land/live/delta/tools/
+# boards-builds/opportunity/claims, Latch annex/archive/8bit-8walk, Goat tip
+# shelves, or Quill heroes + wake/world + data/weather + books/salon + keys/mod.
+# Rebuild must emit this or ingest drops it.
+LAB_VENT_CONVERT_SHELF_STYLE = ENTRY_CONVERT_SHELF_STYLE
+LAB_VENT_CONVERT_SHELF_HTML = """
+<section id="buy-now-live-checkout" class="law" aria-label="Buy now — live checkout">
+<strong>Buy now — live checkout.</strong> Existing live Payment Links. No invented Stripe. A click is intent, not cash.
+<p>
+<a class="cta" data-checkout href="https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g">Buy Autopsy $29</a>
+<a class="cta" data-checkout href="https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07">Buy one White Box hour $250</a>
+</p>
+<p class="note">Reuse only. Cite <code>quill-lab-vent-convert-shelf-20260917-01</code>. Sources: <a href="./agent-rescue.html">agent-rescue.html</a> · <a href="./commercial.html">commercial.html</a> / <a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. No new Payment Links.</p>
+</section>
+"""
+
+
 def _preserve_live_cash(prev, doc):
     """Keep tip Autopsy/$199 product doors across hub remints.
 
@@ -1612,6 +1631,9 @@ def rebuild_lanes(mod, rows):
         if slug == "salon":
             body = BOOKS_SALON_CONVERT_SHELF_HTML + body
             page_extra = BOOKS_SALON_CONVERT_SHELF_STYLE + "\n" + extra
+        if slug in ("lab", "vent"):
+            body = LAB_VENT_CONVERT_SHELF_HTML + body
+            page_extra = LAB_VENT_CONVERT_SHELF_STYLE + "\n" + extra
         mod._write(os.path.join(mod.ROOT, slug + ".html"), _page(mod, "Commons " + slug, body, page_extra))
     return public
 
