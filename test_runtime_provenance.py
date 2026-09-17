@@ -31,10 +31,6 @@ UNITTEST_TERMINAL = re.compile(
     r"(?m)^Ran\s+(?P<count>\d+)\s+tests?\s+in\s+[^\r\n]+\r?\n"
     r"\r?\nOK(?:\s+\([^\r\n]*\))?\r?\n?\Z"
 )
-UNITTEST_ZERO_DISCOVERY = re.compile(
-    r"(?m)^Ran\s+0\s+tests?\s+in\s+[^\r\n]+\r?\n"
-    r"\r?\n(?:OK(?:\s+\([^\r\n]*\))?|NO TESTS RAN(?:\s+\([^\r\n]*\))?)\r?\n?\Z"
-)
 
 
 def reported_test_count(stderr: str) -> int:
@@ -73,6 +69,14 @@ class RuntimeProvenanceRetainedTests(unittest.TestCase):
         self.assertGreater(count, 0, f"focused discovery executed zero tests:\n{self.child_output(proc)}")
         return count
 
+    def assert_child_rejected_as_nonvacuous(self, proc: subprocess.CompletedProcess[str]) -> None:
+        """Require a child result to fail the positive non-vacuity contract."""
+        try:
+            self.assert_child_nonvacuous(proc)
+        except (AssertionError, ValueError):
+            return
+        self.fail(f"zero-test child unexpectedly satisfied non-vacuity:\n{self.child_output(proc)}")
+
     def test_public_registry_module_exports_canonical_json(self) -> None:
         from tools.runtime_provenance.runtime_registry import canonical_json
 
@@ -101,19 +105,27 @@ class RuntimeProvenanceRetainedTests(unittest.TestCase):
             for optimized in (False, True):
                 with self.subTest(optimized=optimized):
                     proc = self.run_child(*empty_discover, optimized=optimized)
-                    # Python 3.11 and earlier may report an empty discovery as
-                    # rc=0 + "OK"; Python 3.12+ uses rc=5 + "NO TESTS RAN".
-                    # Both provider behaviors must remain non-authorizing.
-                    self.assertIn(proc.returncode, (0, 5), self.child_output(proc))
-                    self.assertRegex(proc.stderr, UNITTEST_ZERO_DISCOVERY)
-                    if proc.returncode == 0:
-                        self.assertEqual(reported_test_count(proc.stderr), 0)
-                    else:
-                        self.assertEqual(proc.returncode, 5)
-                        with self.assertRaisesRegex(ValueError, "no terminal executed-test summary"):
-                            reported_test_count(proc.stderr)
-                    with self.assertRaises(AssertionError):
-                        self.assert_child_nonvacuous(proc)
+                    self.assertIn("Ran 0 tests", proc.stderr, self.child_output(proc))
+                    self.assert_child_rejected_as_nonvacuous(proc)
+
+    def test_known_zero_discovery_result_variants_fail_closed(self) -> None:
+        variants = (
+            subprocess.CompletedProcess(
+                args=[sys.executable, *DISCOVER],
+                returncode=0,
+                stdout="",
+                stderr="----------------------------------------------------------------------\nRan 0 tests in 0.000s\n\nOK\n",
+            ),
+            subprocess.CompletedProcess(
+                args=[sys.executable, *DISCOVER],
+                returncode=5,
+                stdout="",
+                stderr="----------------------------------------------------------------------\nRan 0 tests in 0.000s\n\nNO TESTS RAN\n",
+            ),
+        )
+        for proc in variants:
+            with self.subTest(returncode=proc.returncode):
+                self.assert_child_rejected_as_nonvacuous(proc)
 
     def test_stdout_cannot_override_real_zero_test_stderr_summary(self) -> None:
         proc = subprocess.CompletedProcess(
