@@ -9,6 +9,11 @@ from .common import (
 )
 from .schema import normalize
 
+
+def _generation_subject(subject_id: str, generation: int) -> str:
+    return f"{subject_id}:g{generation}"
+
+
 def evaluate(doc: dict[str, Any], verified_at: datetime) -> dict[str, Any]:
     now = verified_at.astimezone(timezone.utc)
     evidence = {row["id"]: row for row in doc["evidence"]}
@@ -45,14 +50,15 @@ def evaluate(doc: dict[str, Any], verified_at: datetime) -> dict[str, Any]:
     else:
         acceptance_bad = False
         base = doc["commercial_baseline"]
-        if not check(base["acceptance_evidence_id"], "BASELINE_ACCEPTANCE", base["id"]):
+        base_subject = _generation_subject(base["id"], base["generation"])
+        if not check(base["acceptance_evidence_id"], "BASELINE_ACCEPTANCE", base_subject):
             acceptance_bad = True
-            reasons.append({"code": "BASELINE_NOT_ACCEPTED", "ref": base["id"], "detail": "current verified baseline acceptance missing"})
+            reasons.append({"code": "BASELINE_NOT_ACCEPTED", "ref": base["id"], "detail": "exact baseline generation lacks current verified acceptance"})
 
         for co in doc["change_orders"]:
-            if co["state"] == "APPROVED" and not check(co["approval_evidence_id"], "CHANGE_ORDER_APPROVAL", co["id"]):
+            if co["state"] == "APPROVED" and not check(co["approval_evidence_id"], "CHANGE_ORDER_APPROVAL", _generation_subject(co["id"], co["generation"])):
                 acceptance_bad = True
-                reasons.append({"code": "CHANGE_ORDER_APPROVAL_MISSING", "ref": co["id"], "detail": "APPROVED state lacks matching current verified approval"})
+                reasons.append({"code": "CHANGE_ORDER_APPROVAL_MISSING", "ref": co["id"], "detail": "exact approved change generation lacks matching current verified approval"})
             elif co["state"] != "APPROVED":
                 reasons.append({"code": "CHANGE_ORDER_NOT_IN_BASELINE", "ref": co["id"], "detail": f"state={co['state']} remains outside accepted commercial lineage"})
 
@@ -80,11 +86,15 @@ def evaluate(doc: dict[str, Any], verified_at: datetime) -> dict[str, Any]:
         if not check(window["evidence_id"], "RENEWAL_WINDOW", doc["engagement"]["id"]):
             evidence_bad = True
             reasons.append({"code": "WINDOW_EVIDENCE_INVALID", "ref": doc["engagement"]["id"], "detail": "renewal window requires current verified evidence"})
+
+        expansion_support_contract: dict[str, tuple[str, str]] = {}
         for finding in doc["support_findings"]:
+            expansion_support_contract[finding["evidence_id"]] = ("SUPPORT_FINDING", finding["id"])
             if not check(finding["evidence_id"], "SUPPORT_FINDING", finding["id"]):
                 evidence_bad = True
                 reasons.append({"code": "SUPPORT_FINDING_UNBOUND", "ref": finding["id"], "detail": "support finding lacks current verified evidence"})
         for gap in doc["gaps"]:
+            expansion_support_contract[gap["evidence_id"]] = ("GAP_STATUS", gap["id"])
             if not check(gap["evidence_id"], "GAP_STATUS", gap["id"]):
                 evidence_bad = True
                 reasons.append({"code": "GAP_EVIDENCE_INVALID", "ref": gap["id"], "detail": "gap status lacks current verified evidence"})
@@ -93,10 +103,10 @@ def evaluate(doc: dict[str, Any], verified_at: datetime) -> dict[str, Any]:
                 reasons.append({"code": "BLOCKING_GAP_OPEN", "ref": gap["id"], "detail": f"{gap['kind']} gap remains open"})
         for hypothesis in doc["expansion_hypotheses"]:
             for eid in hypothesis["supporting_evidence_ids"]:
-                row = evidence[eid]
-                if row["status"] != "VERIFIED" or _dt(row["observed_at"], "evidence.observed_at") > now:
+                contract = expansion_support_contract.get(eid)
+                if contract is None or not check(eid, contract[0], contract[1]):
                     evidence_bad = True
-                    reasons.append({"code": "EXPANSION_SUPPORT_UNVERIFIED", "ref": hypothesis["id"], "detail": f"support {eid} is not current VERIFIED evidence"})
+                    reasons.append({"code": "EXPANSION_SUPPORT_UNVERIFIED", "ref": hypothesis["id"], "detail": f"support {eid} is not a current source-bound finding/gap evidence row"})
 
         open_at = _dt(window["open_at"], "renewal_window.open_at")
         close_at = _dt(window["close_at"], "renewal_window.close_at")
@@ -139,14 +149,13 @@ def evaluate(doc: dict[str, Any], verified_at: datetime) -> dict[str, Any]:
 
 
 def compile_packet(raw: Any, verified_at: datetime) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
+    """Deterministically compile at an explicit replay time; this alone grants no current authority."""
     doc = normalize(raw)
     packet = evaluate(doc, verified_at)
-    normalized_hash = sha256(canonical_json(doc))
-    packet_hash = sha256(canonical_json(packet))
     receipt_core = {
         "schema": RECEIPT_SCHEMA,
-        "normalized_input_sha256": normalized_hash,
-        "packet_sha256": packet_hash,
+        "normalized_input_sha256": sha256(canonical_json(doc)),
+        "packet_sha256": sha256(canonical_json(packet)),
         "decision": packet["decision"],
         "verified_at": packet["verified_at"],
         "valid_until": doc["renewal_window"]["close_at"],
@@ -157,7 +166,7 @@ def compile_packet(raw: Any, verified_at: datetime) -> tuple[dict[str, Any], dic
     return doc, packet, receipt
 
 
-def verify_current(raw: Any, packet: Any, receipt: Any, verified_at: datetime) -> dict[str, Any]:
+def _verify_at(raw: Any, packet: Any, receipt: Any, verified_at: datetime, *, current_authority: bool) -> dict[str, Any]:
     doc = normalize(raw)
     packet_obj = _obj(packet, "packet")
     receipt_obj = _obj(receipt, "receipt")
@@ -186,17 +195,18 @@ def verify_current(raw: Any, packet: Any, receipt: Any, verified_at: datetime) -
     if canonical_json(expected_packet) != canonical_json(packet_obj):
         raise GateError("packet does not reproduce from bound input and verifier timestamp")
 
-    current = evaluate(doc, verified_at)
     now = verified_at.astimezone(timezone.utc)
+    current = evaluate(doc, now)
     if compiled_at > now:
         raise GateError("receipt is future-dated relative to verifier")
     valid_until = _dt(receipt_obj["valid_until"], "receipt.valid_until")
     same_decision = current["decision"] == receipt_obj["decision"]
-    current_valid = same_decision and now <= valid_until and current["decision"] == "READY_FOR_RENEWAL_REVIEW"
+    current_valid = bool(current_authority and same_decision and now <= valid_until and current["decision"] == "READY_FOR_RENEWAL_REVIEW")
     return {
         "schema": "pilot-renewal-expansion-current-verification/v1",
         "integrity_valid": True,
         "current_valid": current_valid,
+        "verification_mode": "PROCESS_CURRENT" if current_authority else "HISTORICAL_REPLAY_NON_CURRENT",
         "compiled_decision": receipt_obj["decision"],
         "current_decision": current["decision"],
         "verified_at": _z(now),
@@ -204,3 +214,15 @@ def verify_current(raw: Any, packet: Any, receipt: Any, verified_at: datetime) -
         "authority": dict(AUTHORITY),
     }
 
+
+def _make_verify_current():
+    bound_now = datetime.now
+    bound_utc = timezone.utc
+    def verify_current(raw: Any, packet: Any, receipt: Any, verified_at: datetime | None = None) -> dict[str, Any]:
+        """Verify currentness only with process time; explicit time is historical and never current-authorizing."""
+        if verified_at is not None:
+            return _verify_at(raw, packet, receipt, verified_at, current_authority=False)
+        return _verify_at(raw, packet, receipt, bound_now(bound_utc), current_authority=True)
+    return verify_current
+
+verify_current = _make_verify_current()
