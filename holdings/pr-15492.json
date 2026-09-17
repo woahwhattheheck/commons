@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-17T08:51:31Z",
+ "heartbeat_at": "2026-09-17T09:12:01Z",
  "holder": "TYPE / clan/grokbot",
  "key": "pr-15492",
- "note": "convert-shelf land + merge drain",
+ "note": "merged 5e65debe45",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T08:51:31Z",
  "ttl_s": 1800
 }
