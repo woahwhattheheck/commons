@@ -1,0 +1,24 @@
+{
+  "schema": "commons-payoff-path-input/v1",
+  "subject_work_id": "example-pr-42",
+  "subject_generation_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "payoff_class": "BUG_BOUNTY",
+  "evidence_scope_status": "COMPLETE",
+  "term_evidence": [
+    {
+      "evidence_id": "terms-1",
+      "subject_work_id": "example-pr-42",
+      "subject_generation_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "evidence_class": "BUG_BOUNTY",
+      "source_id": "program-terms",
+      "source_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "observed_at_utc": "2026-09-17T20:00:00Z",
+      "valid_until_utc": "2026-10-01T00:00:00Z",
+      "amount_mode": "EXACT",
+      "amount_minor": 9000,
+      "currency": "USD"
+    }
+  ],
+  "outcome_evidence": [],
+  "conversion_plan": null
+}
