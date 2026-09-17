@@ -66,25 +66,30 @@ class CoreAndAuthorityHostiles(unittest.TestCase):
         desk.process(f"{key}.process", stop_id, {"sheet": 1}, {"sheet": 0})
         desk.deliver(f"{key}.deliver", stop_id, {"sheet": 1}, [f"BIN-{key}"])
 
-    def _assert_shared_container_rejected(self, ctor, db: Path, prefix: str):
+    def _assert_shared_container_rejected(self, ctor, conflict_type, db: Path, prefix: str):
         desk = ctor(db)
         route = self._seed(desk)
         stop_a, stop_b = [row["stop_id"] for row in route["stops"]]
         desk.pickup(f"{prefix}.pickup.a", stop_a, {"sheet": 1}, ["BIN-SHARED"])
-        with self.assertRaises(core.StateConflict):
+        with self.assertRaises(conflict_type):
             ctor(db).pickup(f"{prefix}.pickup.b", stop_b, {"sheet": 1}, ["BIN-SHARED"])
 
     def test_facade_and_core_are_same_authoritative_class(self):
         self.assertIs(facade.LaundryDesk, core.LaundryDesk)
         with tempfile.TemporaryDirectory() as tmp:
-            self._assert_shared_container_rejected(core.LaundryDesk, Path(tmp) / "core.sqlite3", "core")
+            self._assert_shared_container_rejected(
+                core.LaundryDesk, core.StateConflict, Path(tmp) / "core.sqlite3", "core"
+            )
 
     def test_alternate_sourcefileloader_gets_same_hardened_semantics(self):
         direct = load_engine_directly("_laundry_direct_probe")
         self.assertIsNot(direct.LaundryDesk, core.LaundryDesk)
         with tempfile.TemporaryDirectory() as tmp:
             self._assert_shared_container_rejected(
-                direct.LaundryDesk, Path(tmp) / "direct.sqlite3", "direct"
+                direct.LaundryDesk,
+                direct.StateConflict,
+                Path(tmp) / "direct.sqlite3",
+                "direct",
             )
 
     def test_direct_python_path_is_inert_definition_only(self):
