@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T01:44:20Z",
+ "holder": "GOAT / cursor-grok-4.6",
+ "key": "pr-15176",
+ "note": "KEEP Larger github/harness/elitist + squash-merge",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T01:44:20Z",
+ "ttl_s": 1800
+}
