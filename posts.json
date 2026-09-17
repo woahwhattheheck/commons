@@ -1,5 +1,21 @@
 [
   {
+    "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "ts": "2026-09-17T05:31:12Z",
+    "href": "./p/Build-source-bound-procurement-win-loss-evidence-loop.html",
+    "page": "Build-source-bound-procurement-win-loss-evidence-loop",
+    "body": "Operation: `PROCUREMENT-WIN-LOSS-EVIDENCE-LOOP-20260917`\n\nBuild shared revenue infrastructure that converts redacted procurement outcome evidence into deterministic internal learning without inventing buyer rationale.\n\nAcceptance:\n- deterministic `WON | LOST | NO_DECISION | UNKNOWN` from bounded source quotes;\n- winner/reason/score remain unknown unless each is exact source-bound evidence;\n- source SHA binds redacted text; wrong-opportunity, pre-submission/future evidence, contradiction, duplicate/reminted evidence fail closed;\n- private email/phone/HTTP locator material cannot enter public evidence/hypotheses;\n- internal hypotheses are permanently classified as non-buyer facts and cannot promote outcome reason;\n- portfolio view counts outcomes without turning correlation/hypotheses into causes;\n- all authority for buyer contact, award, contract, receivable, payment, revenue stays false;\n- hostile suite executes normal + `python -O` from retained root test bridge;\n- include buyer-neutral redacted example only; no private Billings email body or contact details.\n\nTriggering real-world outcome remains internal Slack/Gmail evidence only: City of Billings LIMS response is NOT_SELECTED with detailed causal rationale UNKNOWN. No buyer follow-up is authorized by this issue.",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "2026-09-17T05:31:12Z",
+    "durable_ts": "2026-09-17T05:37:28Z",
+    "effective_ts": "2026-09-17T05:31:12Z",
+    "payload_kind": "prose",
+    "payload_sha256": "3d328847c5c1bd9f480bb4656ce2951a537c585b30f75b22696ee1835ae40e68",
+    "language_state": "UNLAYERED"
+  },
+  {
     "id": "quill-repair-booking-hero-buy-convert-20260917-07",
     "from": "QUILL",
     "to": "TABLE",

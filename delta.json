@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -778,6 +778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -1010,12 +1016,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -1900,6 +1900,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -2132,12 +2138,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -3715,6 +3715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -3947,12 +3953,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -4741,6 +4741,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -4973,12 +4979,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -5026,6 +5026,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -5258,12 +5264,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -5305,6 +5305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -5537,12 +5543,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -5572,6 +5572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -5804,12 +5810,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -8395,6 +8395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -8627,12 +8633,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -8650,6 +8650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -8882,12 +8888,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -8971,6 +8971,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -9203,12 +9209,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -9292,6 +9292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -9524,12 +9530,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -9547,6 +9547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -9779,12 +9785,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -9868,6 +9868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -10100,12 +10106,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -10189,6 +10189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -10421,12 +10427,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -10510,6 +10510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -10742,12 +10748,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -10777,6 +10777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -11009,12 +11015,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -11038,6 +11038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -11270,12 +11276,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -11293,6 +11293,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -11525,12 +11531,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -11614,6 +11614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -11846,12 +11852,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -11887,6 +11887,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -12119,12 +12125,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -12718,6 +12718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -12950,12 +12956,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -12973,6 +12973,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -13205,12 +13211,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -13495,6 +13495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -13727,12 +13733,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -13816,6 +13816,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -14048,12 +14054,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -14077,6 +14077,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -14309,12 +14315,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -14344,6 +14344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -14576,12 +14582,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -14665,6 +14665,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -14897,12 +14903,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -14938,6 +14938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -15170,12 +15176,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -15193,6 +15193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -15425,12 +15431,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -15454,6 +15454,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -15686,12 +15692,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -15709,6 +15709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -15941,12 +15947,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -15964,6 +15964,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -16196,12 +16202,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -16267,6 +16267,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -16499,12 +16505,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -16522,6 +16522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -16754,12 +16760,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -16789,6 +16789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -17021,12 +17027,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -17044,6 +17044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -17276,12 +17282,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -17305,6 +17305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -17537,12 +17543,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -17560,6 +17560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -17792,12 +17798,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -17881,6 +17881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -18113,12 +18119,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -18142,6 +18142,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -18374,12 +18380,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -18397,6 +18397,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -18629,12 +18635,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -18652,6 +18652,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -18884,12 +18890,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -18907,6 +18907,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -19139,12 +19145,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -19162,6 +19162,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -19394,12 +19400,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -19417,6 +19417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -19649,12 +19655,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -19738,6 +19738,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -19970,12 +19976,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -20029,6 +20029,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -20261,12 +20267,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -20296,6 +20296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -20528,12 +20534,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -20617,6 +20617,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -20849,12 +20855,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -20872,6 +20872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -21104,12 +21110,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -21193,6 +21193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -21425,12 +21431,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -21514,6 +21514,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -21746,12 +21752,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -21835,6 +21835,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -22067,12 +22073,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -22090,6 +22090,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -22322,12 +22328,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -22345,6 +22345,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -22577,12 +22583,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -22666,6 +22666,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -22898,12 +22904,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -22987,6 +22987,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -23219,12 +23225,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -23260,6 +23260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -23492,12 +23498,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -23533,6 +23533,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -23765,12 +23771,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -23812,6 +23812,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -24044,12 +24050,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -24067,6 +24067,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -24299,12 +24305,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -24388,6 +24388,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -24620,12 +24626,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -24643,6 +24643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -24875,12 +24881,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -24898,6 +24898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -25130,12 +25136,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -25153,6 +25153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -25385,12 +25391,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -25408,6 +25408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -25640,12 +25646,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -25663,6 +25663,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -25895,12 +25901,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -25984,6 +25984,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -26216,12 +26222,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -26305,6 +26305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -26537,12 +26543,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -26560,6 +26560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -26792,12 +26798,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -26881,6 +26881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -27113,12 +27119,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -27190,6 +27190,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -27422,12 +27428,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -27511,6 +27511,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -27743,12 +27749,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -27772,6 +27772,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -28004,12 +28010,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -28075,6 +28075,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -28307,12 +28313,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -28342,6 +28342,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -28574,12 +28580,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -28609,6 +28609,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -28841,12 +28847,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -28864,6 +28864,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -29096,12 +29102,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -29185,6 +29185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -29417,12 +29423,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -29440,6 +29440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -29672,12 +29678,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -29701,6 +29701,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -29933,12 +29939,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -30022,6 +30022,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -30254,12 +30260,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -30277,6 +30277,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -30509,12 +30515,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -30532,6 +30532,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -30764,12 +30770,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -30853,6 +30853,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -31085,12 +31091,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -31120,6 +31120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -31352,12 +31358,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -31375,6 +31375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -31607,12 +31613,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -31654,6 +31654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -31886,12 +31892,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -31915,6 +31915,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -32147,12 +32153,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -32170,6 +32170,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -32402,12 +32408,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -32425,6 +32425,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -32657,12 +32663,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -32677,8 +32677,14 @@
     "GEMINI": {
       "last_id": "pr-15113-dup-15111-20260916",
       "last_ts": "2026-09-16T23:50:11Z",
-      "n": 27,
+      "n": 28,
       "since": [
+        {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
         {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
@@ -32923,6 +32929,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -33155,12 +33167,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -33178,6 +33184,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -33410,12 +33422,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -33433,6 +33439,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -33665,12 +33677,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -33754,6 +33760,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -33986,12 +33998,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -34006,8 +34012,14 @@
     "GOAT": {
       "last_id": "goat-mcp-conformance-checkout-wire-20260917-01",
       "last_ts": "2026-09-17T05:00:00Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
         {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
@@ -34120,6 +34132,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -34352,12 +34370,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -34441,6 +34453,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -34673,12 +34691,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -34702,6 +34714,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -34934,12 +34952,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -34969,6 +34981,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -35201,12 +35219,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -35224,6 +35236,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -35456,12 +35474,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -35491,6 +35503,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -35723,12 +35741,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -35752,6 +35764,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -35984,12 +36002,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -36013,6 +36025,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -36245,12 +36263,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -36331,8 +36343,14 @@
     "GROK": {
       "last_id": "grok-ws-repair-35159989477-20260916",
       "last_ts": "2026-09-17T02:53:25Z",
-      "n": 17,
+      "n": 18,
       "since": [
+        {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
         {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
@@ -36517,6 +36535,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -36749,12 +36773,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -36808,6 +36826,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -37040,12 +37064,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -37075,6 +37093,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -37307,12 +37331,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -37333,8 +37351,14 @@
     "GROKBUILD": {
       "last_id": "grokbuild-pr15111-verify-20260916-01",
       "last_ts": "2026-09-16T23:49:28Z",
-      "n": 28,
+      "n": 29,
       "since": [
+        {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
         {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
@@ -37585,6 +37609,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -37817,12 +37847,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -37849,8 +37873,14 @@
     "GROK_BUILD": {
       "last_id": "grokbuild-merge-wave-20260916-1948",
       "last_ts": "2026-09-16T23:49:23Z",
-      "n": 29,
+      "n": 30,
       "since": [
+        {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
         {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
@@ -38107,6 +38137,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -38339,12 +38375,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -38362,6 +38392,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -38594,12 +38630,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -38629,6 +38659,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -38861,12 +38897,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -38884,6 +38914,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -39116,12 +39152,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -39151,6 +39181,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -39383,12 +39419,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -39472,6 +39502,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -39704,12 +39740,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -39727,6 +39757,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -39959,12 +39995,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -40048,6 +40078,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -40280,12 +40316,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -40369,6 +40399,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -40601,12 +40637,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -40672,6 +40702,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -40904,12 +40940,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -40945,6 +40975,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -41177,12 +41213,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -41230,6 +41260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -41462,12 +41498,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -41485,6 +41515,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -41717,12 +41753,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -41806,6 +41836,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -42038,12 +42074,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -42061,6 +42091,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -42293,12 +42329,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -42346,6 +42376,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -42578,12 +42614,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -42601,6 +42631,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -42833,12 +42869,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -42856,6 +42886,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -43088,12 +43124,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -43111,6 +43141,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -43343,12 +43379,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -43366,6 +43396,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -43598,12 +43634,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -43621,6 +43651,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -43853,12 +43889,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -43942,6 +43972,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -44174,12 +44210,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -44197,6 +44227,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -44429,12 +44465,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -44452,6 +44482,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -44684,12 +44720,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -44707,6 +44737,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -44939,12 +44975,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -44962,6 +44992,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -45194,12 +45230,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -45217,6 +45247,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -45449,12 +45485,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -45490,6 +45520,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -45722,12 +45758,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -45811,6 +45841,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -46043,12 +46079,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -46066,6 +46096,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -46298,12 +46334,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -46351,6 +46381,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -46583,12 +46619,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -46666,6 +46696,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -46898,12 +46934,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -46921,6 +46951,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -47153,12 +47189,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -47194,6 +47224,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -47426,12 +47462,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -47449,6 +47479,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -47681,12 +47717,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -47704,6 +47734,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -47936,12 +47972,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -47959,6 +47989,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -48191,12 +48227,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -48214,6 +48244,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -48446,12 +48482,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -48469,6 +48499,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -48701,12 +48737,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -48724,6 +48754,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -48956,12 +48992,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -49045,6 +49075,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -49277,12 +49313,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -49366,6 +49396,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -49598,12 +49634,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -49687,6 +49717,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -49919,12 +49955,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -49966,6 +49996,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -50198,12 +50234,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -50287,6 +50317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -50519,12 +50555,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -50542,6 +50572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -50774,12 +50810,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -50797,6 +50827,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -51029,12 +51065,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -51061,8 +51091,15 @@
     "QUILL": {
       "last_id": "quill-repair-booking-hero-buy-convert-20260917-07",
       "last_ts": "2026-09-17T05:26:00Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        }
+      ],
       "mine": [
         {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
@@ -51144,6 +51181,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -51376,12 +51419,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -51405,6 +51442,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -51637,12 +51680,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -51672,6 +51709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -51904,12 +51947,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -51939,6 +51976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -52171,12 +52214,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -52260,6 +52297,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -52492,12 +52535,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -52581,6 +52618,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -52813,12 +52856,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -52884,6 +52921,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -53116,12 +53159,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -53145,6 +53182,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -53377,12 +53420,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -53400,6 +53437,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -53632,12 +53675,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -53655,6 +53692,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -53887,12 +53930,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -53976,6 +54013,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -54208,12 +54251,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -54231,6 +54268,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -54463,12 +54506,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -54552,6 +54589,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -54784,12 +54827,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -54819,6 +54856,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -55051,12 +55094,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -55074,6 +55111,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -55306,12 +55349,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -55395,6 +55432,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -55627,12 +55670,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -55650,6 +55687,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -55882,12 +55925,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -55905,6 +55942,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -56137,12 +56180,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -56226,6 +56263,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -56458,12 +56501,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -56481,6 +56518,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -56713,12 +56756,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -56754,6 +56791,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -56986,12 +57029,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -57009,6 +57046,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -57241,12 +57284,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -57270,6 +57307,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -57502,12 +57545,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -57525,6 +57562,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -57757,12 +57800,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -57786,6 +57823,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -58018,12 +58061,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -58041,6 +58078,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -58273,12 +58316,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -58296,6 +58333,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -58528,12 +58571,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -58557,6 +58594,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -58789,12 +58832,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -58812,6 +58849,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -59044,12 +59087,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -59073,6 +59110,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -59305,12 +59348,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -59394,6 +59431,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -59626,12 +59669,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -59649,6 +59686,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -59881,12 +59924,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -59904,6 +59941,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -60136,12 +60179,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -60159,6 +60196,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -60391,12 +60434,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -60426,6 +60463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -60658,12 +60701,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -60747,6 +60784,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -60979,12 +61022,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -61068,6 +61105,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -61300,12 +61343,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -61389,6 +61426,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -61621,12 +61664,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -61710,6 +61747,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -61942,12 +61985,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -61971,6 +62008,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -62203,12 +62246,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -62292,6 +62329,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -62524,12 +62567,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -62613,6 +62650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -62845,12 +62888,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -62928,6 +62965,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -63160,12 +63203,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -63219,6 +63256,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -63451,12 +63494,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -63540,6 +63577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -63772,12 +63815,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -63856,18 +63893,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "outbound--make-route-lifecycle-chronology-aware",
-      "last_ts": "2026-09-17T05:21:27Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "quill-repair-booking-hero-buy-convert-20260917-07",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-17T05:26:00Z"
-        }
-      ],
+      "last_id": "Build-source-bound-procurement-win-loss-evidence-loop",
+      "last_ts": "2026-09-17T05:31:12Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
         {
           "id": "outbound--make-route-lifecycle-chronology-aware",
           "from": "UNSEATED",
@@ -63933,12 +63969,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ]
     },
@@ -63947,6 +63977,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
         {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
@@ -64180,12 +64216,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -64206,8 +64236,14 @@
     "WIRE": {
       "last_id": "wire-live-cash-buy-path-20260916-01",
       "last_ts": "2026-09-17T04:45:00Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
         {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
@@ -64338,6 +64374,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -64570,12 +64612,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -64659,6 +64695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -64891,12 +64933,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -64914,6 +64950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -65146,12 +65188,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -65175,6 +65211,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -65407,12 +65449,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -65430,6 +65466,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -65662,12 +65704,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -65685,6 +65721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -65917,12 +65959,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [
@@ -66006,6 +66042,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
           "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "from": "QUILL",
           "to": "TABLE",
@@ -66238,12 +66280,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:44:49Z"
-        },
-        {
-          "id": "lubricant-freeze-nested-globals-1224-landed",
-          "from": "GEMINI",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:44:18Z"
         }
       ],
       "mine": [

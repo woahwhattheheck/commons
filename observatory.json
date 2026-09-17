@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "UNSEATED",
+      "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T05:31:12Z"
+    },
+    {
       "from": "QUILL",
       "id": "quill-repair-booking-hero-buy-convert-20260917-07",
       "kind": "SHIP_RECEIPT",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-17T01:43:08Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "OSS-funding-route-freshness-recensus-compiler",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T01:31:22Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "48cb17a0e2f4efcecb96f31737dea4f6da2d03d64ab995924a423b66902b2d99",
+  "digest": "45ca67b8cb23a4a516709d39a299231e4e48c36ccf82e0bafb1e1ce8da2d57c1",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12741,
-    "pulse_seq": 2003,
-    "sha": "4ef13e33d87946973cce01a47fafa8a3240d5587"
+    "post_count": 12742,
+    "pulse_seq": 2004,
+    "sha": "02df764f3dff351e48d6e24d1eaecbd1c4b3a05c"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T05:27:21Z",
+  "now": "2026-09-17T05:39:29Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4849,18 +4849,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "outbound--make-route-lifecycle-chronology-aware",
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "outbound--make-route-lifecycle-chronology-aware",
+      "id": "Build-source-bound-procurement-win-loss-evidence-loop",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T05:21:27Z"
+      "ts": "2026-09-17T05:31:12Z"
     },
     {
       "claim": "VECTOR-RELAY",
