@@ -28,8 +28,10 @@ class T(unittest.TestCase):
   v=base(); v['sources'][0]['observed_at']='2026-01-01T00:00:00Z'; self.assertEqual('HOLD_STALE',json.loads(compile(raw(v))[0])['status'])
  def test_conflict(self):
   v=base(); s=copy.deepcopy(v['sources'][0]); s.update(source_id='s2',sha256='b'*64,uri='https://buyer.example.gov/award/b'); v['sources'].append(s); o=copy.deepcopy(v['observations'][0]); o.update(observation_id='o2',amount_minor=19500,source_ids=['s2']); v['observations'].append(o); self.assertEqual('HOLD_SOURCE_CONFLICT',json.loads(compile(raw(v))[0])['status'])
- def test_same_claim_same_value_not_conflict(self):
-  v=base(); s=copy.deepcopy(v['sources'][0]); s.update(source_id='s2',sha256='b'*64,uri='https://buyer.example.gov/award/b'); v['sources'].append(s); o=copy.deepcopy(v['observations'][0]); o.update(observation_id='o2',source_ids=['s2']); v['observations'].append(o); self.assertEqual('PRICE_EVIDENCE_READY',json.loads(compile(raw(v))[0])['status'])
+ def test_same_claim_same_value_collapses_weight_and_preserves_sources(self):
+  v=base(); first_source=v['sources'][0]['source_id']; s=copy.deepcopy(v['sources'][0]); s.update(source_id='s2',sha256='b'*64,uri='https://buyer.example.gov/award/b'); v['sources'].append(s); o=copy.deepcopy(v['observations'][0]); o.update(observation_id='o2',source_ids=['s2']); v['observations'].append(o); p=json.loads(compile(raw(v))[0]); self.assertEqual('PRICE_EVIDENCE_READY',p['status']); self.assertEqual(1,p['comparable_groups'][0]['count']); self.assertEqual(1,len(p['admissible_observations'])); self.assertEqual({first_source,'s2'},set(p['admissible_observations'][0]['source_ids'])); self.assertEqual({first_source,'s2'},{x['source_id'] for x in p['admissible_observations'][0]['sources']})
+ def test_distinct_claim_same_value_counts_twice(self):
+  v=base(); o=copy.deepcopy(v['observations'][0]); o.update(observation_id='o2',claim_key='different-claim',vendor='Other Vendor'); v['observations'].append(o); p=json.loads(compile(raw(v))[0]); self.assertEqual(2,p['comparable_groups'][0]['count'])
  def test_secondary_not_anchor(self):
   v=base(); v['sources'][0]['authority']='SECONDARY_INDEX'; self.assertEqual('HOLD_NO_HISTORY',json.loads(compile(raw(v))[0])['status'])
  def test_self_authored_not_anchor(self):
