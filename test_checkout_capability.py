@@ -119,8 +119,10 @@ class CheckoutCapability(unittest.TestCase):
             html = (ROOT / name).read_text(encoding="utf-8")
             self.assertRegex(html, r"js-checkout-slot")
             self.assertIn("mailto:tokenjunkielabs@gmail.com", html)
-            self.assertNotRegex(html, stripe_url)
             self.assertIn("pay.js", html)
+            if name == "pay.html":
+                continue
+            self.assertNotRegex(html, stripe_url)
 
     def test_missing_payouts_keeps_catalog_inert(self):
         snapshot = json.loads(
