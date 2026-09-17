@@ -11,53 +11,53 @@ This layer turns retained, explicitly structured public-procurement source paylo
 
 The request carries retained source metadata: URI, raw-source SHA-256, observed time, authority classification, source class, and title. The adapter:
 
-- preserves that metadata exactly;
-- accepts only credential-free HTTPS source locators with no query or fragment component, so signed/token-bearing locator material cannot be retained or exported;
+- preserves retained metadata exactly after validation;
+- accepts only credential-free HTTPS source locators with no query, fragment, or userinfo component;
+- recursively percent-decodes a locator for admission checks, so encoded or multiply encoded query/fragment/userinfo forms cannot be retained, while ordinary encoded path octets such as `%20` or `%2F` remain allowed and are preserved byte-for-byte in the retained URI;
 - verifies that `payload_sha256` matches the canonical structured payload it actually parsed;
 - treats the retained raw-source SHA-256 as one generation identity inside a compile: the same claimed raw source cannot be reminted under a fresh `source_id`, URI, adapter, or payload and counted again;
-- independently treats the verified canonical structured-payload SHA-256 as a second generation identity, so identical structured evidence cannot be cloned into statistics merely by changing caller-controlled source ID, URI, or claimed raw-source SHA metadata;
-- requires all legitimate rows extracted from one retained raw source to live inside that source's single structured payload (for example, all bid-tabulation rows live under one `BID_TABULATION_JSON_V1` document);
+- independently treats the verified canonical structured-payload SHA-256 as a second generation identity, so identical structured evidence cannot be cloned merely by changing caller-controlled metadata;
+- requires legitimate multiple rows from one retained raw source to live inside that source's single structured payload;
 - never upgrades `SECONDARY_INDEX`, `SELF_AUTHORED`, or `SYNTHETIC_FIXTURE` to `BUYER_OFFICIAL`;
-- records `source_provider_authenticated=false` and `buyer_officialness_authenticated=false`;
-- feeds normalized bytes into the landed price-intelligence compiler, which still applies stale/conflict/comparability rules.
+- records provider/buyer authentication and every commercial authority as false;
+- feeds normalized bytes into the price-intelligence compiler, which applies stale/conflict/comparability rules at **economic-claim** granularity.
 
-A caller can lie about a URI, raw-source digest, or authority label. This module does not make those labels cryptographically or provider-authenticated. Production use therefore requires the upstream source-capture process to retain and review the actual public buyer source. The adapter receipt proves deterministic transformation of the supplied generation; it does not prove that a buyer published it. The structured-payload duplicate fence is deliberately independent of caller raw-source metadata so an identical parsed evidence object cannot gain extra weight just because that metadata is reminted.
+A caller can lie about a URI, raw-source digest, or authority label. This module does not make those labels cryptographically or provider-authenticated. Production use therefore still requires upstream retention/review of the actual buyer source. The adapter receipt proves deterministic transformation of supplied evidence; it does not prove that a buyer published it.
 
-The one-generation rule is deliberately conservative. If a buyer document contains multiple legitimate bid or tabulation rows, retain that source once and place all rows inside its one structured payload. Do not split or reslice the same retained bytes, or clone an identical structured payload under fresh metadata, into multiple top-level documents merely to create additional observations.
+## Claim-level weighting
+
+Literal source/payload dedupe is not the statistical authority boundary. Two genuinely different buyer documents can corroborate the same economic claim.
+
+The downstream engine groups fresh buyer-official observations by `claim_key` before computing comparable statistics:
+
+- identical economic signatures under one claim (`opportunity_id`, vendor, amount, currency, basis, unit, term, price kind) contribute **one** comparable statistical row;
+- corroborating `source_ids` are unioned onto that representative row so evidence provenance is retained;
+- different signatures under one claim are **not** collapsed and continue to produce `HOLD_SOURCE_CONFLICT`;
+- distinct claims with the same price still count independently.
+
+This prevents an award notice plus executed contract—or the same logical award reminted under a changed document identifier—from inflating count/range/median weight while retaining legitimate corroboration.
 
 ## Supported shapes
 
 ### `AWARD_NOTICE_JSON_V1`
-
-Compatible source classes: `AWARD_NOTICE`, `BOARD_AWARD`.
-
-Required explicit fields: opportunity ID, award ID, vendor, amount in minor units, currency, basis, unit, term months, award date. The observation is `AWARD`. Missing amount, missing term, or contradictory basis/unit semantics produce HOLD records and no price observation.
+Compatible source classes: `AWARD_NOTICE`, `BOARD_AWARD`. Explicit opportunity, award ID, vendor, amount, currency, basis, unit, term, and date become `AWARD`; ambiguous/incomplete fields HOLD instead of being guessed.
 
 ### `BID_TABULATION_JSON_V1`
-
-Compatible source class: `BID_TABULATION`.
-
-The document fixes opportunity/tabulation identity, currency, basis, unit, term, and bid date. Each row must have a row ID, vendor, bid amount in minor units (or `null` when not explicit), and a real JSON boolean `responsive`. Only responsive rows with explicit amounts and complete basis/unit/term semantics become `BID` observations. Nonresponsive or ambiguous rows remain auditable HOLDs. Multiple legitimate bid rows belong inside this one retained source payload and do not require multiple source identities.
+Compatible source class: `BID_TABULATION`. Only responsive rows with explicit amounts and complete basis/unit/term semantics become `BID`. Multiple legitimate vendor rows belong in the one retained tabulation payload.
 
 ### `EXECUTED_CONTRACT_JSON_V1`
-
-Compatible source class: `EXECUTED_CONTRACT`.
-
-An explicit base contract amount becomes an `AWARD` observation. A separately explicit option amount is **never added to the base**: it is retained as an `OPTION` observation and marked `OPTION_NON_ANCHOR`, so the price engine cannot silently treat potential option value as current award price.
+Compatible source class: `EXECUTED_CONTRACT`. Explicit base value becomes `AWARD`; separately explicit option value remains `OPTION` and is never folded into the base.
 
 ### `AMENDMENT_OPTION_JSON_V1`
-
-Compatible source class: `AMENDMENT`.
-
-Explicit amendment or option values are retained as `OPTION` observations only. They are never promoted to `AWARD`, even when buyer-official. This prevents a change order, exercise, or amendment delta from being treated as the original comparable award.
+Compatible source class: `AMENDMENT`. Explicit amendment/option values remain `OPTION`; they are never promoted to `AWARD`.
 
 ## Hold-not-guess rules
 
-The adapter does not infer a money value from text, a unit from a rate, a term from dates, base value by subtracting options, total value by adding base and options, responsiveness from rank, award status from bid position, currency conversion, or buyer-officialness from an HTTPS hostname.
+The adapter does not infer amount from prose, unit from a rate, term from dates, base by subtracting options, total by adding options, responsiveness from rank, award status from bid position, currency conversion, or buyer-officialness from a hostname.
 
-Representative HOLD codes are `AMBIGUOUS_AMOUNT`, `MISSING_TERM`, `MISSING_RATE_UNIT`, `UNEXPECTED_LUMP_UNIT`, `NONRESPONSIVE_BID_EXCLUDED`, `OPTION_TERM_MISSING`, `OPTION_NON_ANCHOR`, `CHANGE_RECORD_NON_ANCHOR`, and `SOURCE_NOT_BUYER_OFFICIAL`.
+Representative HOLD codes include `AMBIGUOUS_AMOUNT`, `MISSING_TERM`, `MISSING_RATE_UNIT`, `UNEXPECTED_LUMP_UNIT`, `NONRESPONSIVE_BID_EXCLUDED`, `OPTION_TERM_MISSING`, `OPTION_NON_ANCHOR`, `CHANGE_RECORD_NON_ANCHOR`, and `SOURCE_NOT_BUYER_OFFICIAL`.
 
-Malformed structure, duplicate JSON keys, non-integer JSON numbers, bool-as-money, duplicate source IDs, duplicate retained raw-source generations, duplicate structured payload generations, duplicate row IDs, bad hashes, HTTP/credentialed/query-bearing/fragment-bearing URIs, incompatible source classes, and payload-hash mismatches fail closed.
+Malformed structure, duplicate JSON keys, non-integer JSON numbers, bool-as-money, duplicate source IDs, duplicate retained raw-source generations, duplicate structured payload generations, duplicate row IDs, bad hashes, HTTP/credentialed/query-bearing/fragment-bearing locators (including recursively encoded forms), incompatible source classes, and payload-hash mismatches fail closed.
 
 ## Artifacts
 
@@ -70,13 +70,7 @@ python -m revenue.procurement_award_price_intelligence.source_adapters \
   --out-dir /tmp/procurement-adapter-generation
 ```
 
-Compile creates one previously nonexistent generation directory containing:
-
-- `price_input.json` — exact downstream `engine.py` input;
-- `adapter_packet.json` — source audit, HOLDs, downstream status, and authority ceiling;
-- `adapter_receipt.json` — request/output hashes and authority ceiling.
-
-The directory is create-only. A second compile to the same path fails instead of overwriting the first generation.
+Compile creates one previously nonexistent generation directory containing `price_input.json`, `adapter_packet.json`, and `adapter_receipt.json`. The directory is create-only; a second compile to the same path fails instead of overwriting the first generation.
 
 Verify:
 
@@ -93,12 +87,14 @@ python -m revenue.procurement_award_price_intelligence.source_adapters \
 
 ## Authority ceiling
 
-No buyer or prime contact, portal/account mutation, quote, bid, submission, signature, price commitment, award recognition, invoice, payment, or revenue recognition is authorized by this layer. The strongest result remains internal price research from retained source evidence.
+No buyer/prime contact, portal/account mutation, quote, bid, submission, signature, price commitment, award recognition, invoice, payment, or revenue recognition is authorized. The strongest result remains internal price research from retained source evidence.
 
 ## Verification
 
-`test_source_adapters.py` covers all four source shapes, source-class fencing, secondary-source non-promotion, payload/source digests, ambiguous/nonresponsive rows, option separation, malformed money/JSON, URI constraints, duplicate identities, deterministic receipts, output tamper, create-only CLI publication, and direct consumption by the landed price-intelligence engine.
+`test_source_adapters.py` covers all four source shapes, source-class fencing, secondary-source non-promotion, payload/source digests, ambiguous/nonresponsive rows, option separation, malformed money/JSON, URI constraints, duplicate identities, deterministic receipts, output tamper, create-only CLI publication, and direct consumption by the price engine.
 
-`test_source_adapters_redclosure.py` pins the STOP-MERGE predecessors: query/fragment-bearing source locators fail closed; one claimed raw source cannot be reminted or resliced into another top-level document; an identical canonical structured payload still cannot be reminted when caller-controlled raw-source metadata is changed; and multiple legitimate rows remain supported inside one retained source payload. The retained procurement recipe runs the engine suite, current-main adapter suite, source-adapter suite, and red-closure suite in both normal and optimized Python.
+`test_source_adapters_redclosure.py` pins the STOP-MERGE predecessors and their positives: literal/encoded/double-encoded query/fragment and encoded-userinfo locators fail closed; ordinary encoded paths remain exact; raw-source and canonical-payload remints are fenced; changed document identity cannot add statistical weight; independent award-notice + executed-contract corroboration contributes one claim while preserving both sources; differing same-claim signatures still HOLD conflict; distinct claims still count separately; legitimate multi-row bid tabulations remain supported.
 
-Current main retains `procurement-award-price-intelligence.yml` under `ci/workflow-recipes/` rather than the active `.github/workflows/` surface. The recipe remains the functional-test specification under Python 3.13; repository-level `source-parses` separately provides hosted syntax parsing when Python paths change. No extra runner matrix or active workflow surface is added.
+`test_engine.py` independently pins claim-level collapse/provenance preservation and the distinct-claim positive. The retained procurement recipe runs engine, current-main adapter, source-adapter, and red-closure suites under normal and optimized Python.
+
+Current main retains `procurement-award-price-intelligence.yml` under `ci/workflow-recipes/` rather than the active `.github/workflows/` surface. That recipe is the functional-test specification; repository `source-parses` separately provides hosted Python syntax parsing when Python paths change. No extra runner matrix or active workflow surface is added.
