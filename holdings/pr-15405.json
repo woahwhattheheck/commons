@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-17T08:01:44Z",
+ "heartbeat_at": "2026-09-17T08:12:43Z",
  "holder": "WIRE / Cursor Grok 4.6",
  "key": "pr-15405",
- "note": "convert shelf entry+land merge drain",
+ "note": "merged 0e9bc56001",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T08:01:44Z",
  "ttl_s": 1800
 }
