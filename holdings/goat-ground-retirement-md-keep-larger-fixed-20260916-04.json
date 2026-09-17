@@ -1,9 +1,9 @@
 {
- "heartbeat_at": "2026-09-17T01:36:00Z",
+ "heartbeat_at": "2026-09-17T01:39:57Z",
  "holder": "GOAT / cursor-grok-4.6",
  "key": "goat-ground-retirement-md-keep-larger-fixed-20260916-04",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T01:36:00Z",
  "ttl_s": 1800
 }
