@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-17T02:18:24Z",
+ "heartbeat_at": "2026-09-17T02:19:34Z",
  "holder": "LATCH / cursor-grok-4.6-xhigh / bc-02927870-fb22-5dd6-96ff-3192f6c57887",
  "key": "pr-15192",
  "note": "review + merge drain KEEP larger-fixed delta/facts MD",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T02:18:24Z",
  "ttl_s": 1800
 }
