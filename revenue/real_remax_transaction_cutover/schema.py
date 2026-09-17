@@ -189,6 +189,8 @@ def _validate_snapshot(snapshot: Any, *, name: str, expected_system: str) -> Map
     agent_index = _unique_index(parsed_agents, "agent_id", name=f"{name}.agent")
 
     transactions = _list(s["transactions"], name=f"{name}.transactions")
+    if len(offices) + len(agents) + len(transactions) > MAX_ITEMS:
+        _fail(f"{name} exceeds aggregate {MAX_ITEMS} row limit")
     parsed_transactions: list[Mapping[str, Any]] = []
     relationship_count = 0
     for i, raw in enumerate(transactions):
@@ -245,9 +247,12 @@ def _validate_identity_map(identity_map: Any, source_snapshot: Mapping[str, Any]
         _fail("identity map source snapshot id mismatch")
     if _text(m["target_snapshot_id"], name="identity_map.target_snapshot_id") != target_snapshot["snapshot_id"]:
         _fail("identity map target snapshot id mismatch")
-    office_map = _parse_map_rows(m["offices"], name="identity_map.offices", source_key="source_office_id", target_key="target_office_id")
-    agent_map = _parse_map_rows(m["agents"], name="identity_map.agents", source_key="source_agent_id", target_key="target_agent_id")
-    txn_map = _parse_map_rows(m["transactions"], name="identity_map.transactions", source_key="source_transaction_id", target_key="target_transaction_id")
-    if len(office_map) + len(agent_map) + len(txn_map) > MAX_ITEMS:
+    office_rows = _list(m["offices"], name="identity_map.offices")
+    agent_rows = _list(m["agents"], name="identity_map.agents")
+    txn_rows = _list(m["transactions"], name="identity_map.transactions")
+    if len(office_rows) + len(agent_rows) + len(txn_rows) > MAX_ITEMS:
         _fail(f"identity_map exceeds aggregate {MAX_ITEMS} row limit")
+    office_map = _parse_map_rows(office_rows, name="identity_map.offices", source_key="source_office_id", target_key="target_office_id")
+    agent_map = _parse_map_rows(agent_rows, name="identity_map.agents", source_key="source_agent_id", target_key="target_agent_id")
+    txn_map = _parse_map_rows(txn_rows, name="identity_map.transactions", source_key="source_transaction_id", target_key="target_transaction_id")
     return m, office_map, agent_map, txn_map
