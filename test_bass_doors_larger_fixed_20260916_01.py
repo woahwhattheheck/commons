@@ -31,6 +31,9 @@ TARGETS = (
 # Product doors in this KEEP batch: verified livemode PLs, not pointer-only
 # live-cash cards. land.html convert shelf reuses existing Autopsy $29 +
 # White Box hour $250 Payment Links (wire-entry-land-convert-shelf-20260917-01).
+# keyb.html convert shelf reuses the same two live Payment Links
+# (latch-head-keyb-convert-shelf-20260917-01). builds.html and keys.html
+# already carry those same two live Payment Links on current main.
 # health.html convert shelf copies the nine live Payment Links from
 # payment-capability.html (type-patent-health-convert-shelf-20260917-01).
 VERIFIED_PRODUCT_CHECKOUT = {
@@ -38,6 +41,18 @@ VERIFIED_PRODUCT_CHECKOUT = {
         b'https://buy.stripe.com/14A00i84Jdvz36hdxg43S0l',
     ),
     'land.html': (
+        b'https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g',
+        b'https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07',
+    ),
+    'keyb.html': (
+        b'https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g',
+        b'https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07',
+    ),
+    'builds.html': (
+        b'https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g',
+        b'https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07',
+    ),
+    'keys.html': (
         b'https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g',
         b'https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07',
     ),
