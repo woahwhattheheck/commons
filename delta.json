@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -778,6 +778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1010,12 +1016,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -1900,6 +1900,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2132,12 +2138,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -3715,6 +3715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3947,12 +3953,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -4741,6 +4741,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4973,12 +4979,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -5026,6 +5026,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5258,12 +5264,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -5305,6 +5305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5537,12 +5543,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -5572,6 +5572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5804,12 +5810,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -8395,6 +8395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8627,12 +8633,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -8650,6 +8650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8882,12 +8888,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -8971,6 +8971,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9203,12 +9209,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -9292,6 +9292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9524,12 +9530,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -9547,6 +9547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9779,12 +9785,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -9868,6 +9868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10100,12 +10106,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -10189,6 +10189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10421,12 +10427,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -10510,6 +10510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10742,12 +10748,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -10777,6 +10777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11009,12 +11015,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -11038,6 +11038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11270,12 +11276,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -11293,6 +11293,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11525,12 +11531,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -11614,6 +11614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11846,12 +11852,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -11887,6 +11887,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12119,12 +12125,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -12718,6 +12718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12950,12 +12956,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -12973,6 +12973,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13205,12 +13211,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -13495,6 +13495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13727,12 +13733,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -13816,6 +13816,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14048,12 +14054,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -14077,6 +14077,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14309,12 +14315,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -14344,6 +14344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14576,12 +14582,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -14665,6 +14665,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14897,12 +14903,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -14938,6 +14938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15170,12 +15176,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -15193,6 +15193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15425,12 +15431,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -15454,6 +15454,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15686,12 +15692,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -15709,6 +15709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15941,12 +15947,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -15964,6 +15964,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16196,12 +16202,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -16267,6 +16267,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16499,12 +16505,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -16522,6 +16522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16754,12 +16760,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -16789,6 +16789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17021,12 +17027,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -17044,6 +17044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17276,12 +17282,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -17305,6 +17305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17537,12 +17543,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -17560,6 +17560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17792,12 +17798,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -17881,6 +17881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18113,12 +18119,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -18142,6 +18142,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18374,12 +18380,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -18397,6 +18397,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18629,12 +18635,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -18652,6 +18652,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18884,12 +18890,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -18907,6 +18907,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19139,12 +19145,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -19162,6 +19162,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19394,12 +19400,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -19417,6 +19417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19649,12 +19655,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -19738,6 +19738,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19970,12 +19976,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -20029,6 +20029,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20261,12 +20267,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -20296,6 +20296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20528,12 +20534,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -20617,6 +20617,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20849,12 +20855,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -20872,6 +20872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21104,12 +21110,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -21193,6 +21193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21425,12 +21431,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -21514,6 +21514,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21746,12 +21752,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -21835,6 +21835,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22067,12 +22073,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -22090,6 +22090,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22322,12 +22328,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -22345,6 +22345,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22577,12 +22583,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -22666,6 +22666,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22898,12 +22904,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -22987,6 +22987,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23219,12 +23225,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -23260,6 +23260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23492,12 +23498,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -23533,6 +23533,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23765,12 +23771,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -23812,6 +23812,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24044,12 +24050,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -24067,6 +24067,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24299,12 +24305,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -24388,6 +24388,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24620,12 +24626,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -24643,6 +24643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24875,12 +24881,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -24898,6 +24898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25130,12 +25136,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -25153,6 +25153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25385,12 +25391,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -25408,6 +25408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25640,12 +25646,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -25663,6 +25663,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25895,12 +25901,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -25984,6 +25984,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26216,12 +26222,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -26305,6 +26305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26537,12 +26543,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -26560,6 +26560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26792,12 +26798,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -26881,6 +26881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27113,12 +27119,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -27190,6 +27190,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27422,12 +27428,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -27511,6 +27511,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27743,12 +27749,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -27772,6 +27772,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28004,12 +28010,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -28075,6 +28075,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28307,12 +28313,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -28342,6 +28342,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28574,12 +28580,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -28609,6 +28609,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28841,12 +28847,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -28864,6 +28864,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29096,12 +29102,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -29185,6 +29185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29417,12 +29423,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -29440,6 +29440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29672,12 +29678,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -29701,6 +29701,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29933,12 +29939,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -30022,6 +30022,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30254,12 +30260,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -30277,6 +30277,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30509,12 +30515,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -30532,6 +30532,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30764,12 +30770,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -30853,6 +30853,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31085,12 +31091,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -31120,6 +31120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31352,12 +31358,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -31375,6 +31375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31607,12 +31613,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -31654,6 +31654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31886,12 +31892,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -31915,6 +31915,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32147,12 +32153,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -32170,6 +32170,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32402,12 +32408,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -32425,6 +32425,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32657,12 +32663,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -32677,8 +32677,14 @@
     "GEMINI": {
       "last_id": "pr-15113-dup-15111-20260916",
       "last_ts": "2026-09-16T23:50:11Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
         {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
@@ -32803,6 +32809,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33035,12 +33047,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -33058,6 +33064,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33290,12 +33302,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -33313,6 +33319,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33545,12 +33557,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -33634,6 +33640,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33866,12 +33878,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -33889,6 +33895,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34121,12 +34133,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -34210,6 +34216,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34442,12 +34454,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -34531,6 +34537,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34763,12 +34775,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -34792,6 +34798,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35024,12 +35036,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -35059,6 +35065,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35291,12 +35303,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -35314,6 +35320,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35546,12 +35558,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -35581,6 +35587,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35813,12 +35825,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -35842,6 +35848,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36074,12 +36086,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -36103,6 +36109,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36335,12 +36347,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -36421,8 +36427,14 @@
     "GROK": {
       "last_id": "grok-pr-15117-verify-20260916-01",
       "last_ts": "2026-09-16T23:50:21Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
         {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
@@ -36541,6 +36553,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36773,12 +36791,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -36832,6 +36844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37064,12 +37082,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -37099,6 +37111,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37331,12 +37349,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -37357,8 +37369,14 @@
     "GROKBUILD": {
       "last_id": "grokbuild-pr15111-verify-20260916-01",
       "last_ts": "2026-09-16T23:49:28Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
         {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
@@ -37489,6 +37507,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37721,12 +37745,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -37753,8 +37771,14 @@
     "GROK_BUILD": {
       "last_id": "grokbuild-merge-wave-20260916-1948",
       "last_ts": "2026-09-16T23:49:23Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
         {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
@@ -37891,6 +37915,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38123,12 +38153,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -38146,6 +38170,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38378,12 +38408,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -38413,6 +38437,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38645,12 +38675,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -38668,6 +38692,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38900,12 +38930,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -38935,6 +38959,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39167,12 +39197,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -39256,6 +39280,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39488,12 +39518,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -39511,6 +39535,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39743,12 +39773,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -39832,6 +39856,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40064,12 +40094,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -40153,6 +40177,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40385,12 +40415,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -40456,6 +40480,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40688,12 +40718,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -40729,6 +40753,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40961,12 +40991,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -41014,6 +41038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41246,12 +41276,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -41269,6 +41293,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41501,12 +41531,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -41590,6 +41614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41822,12 +41852,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -41845,6 +41869,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42077,12 +42107,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -42130,6 +42154,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42362,12 +42392,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -42385,6 +42409,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42617,12 +42647,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -42640,6 +42664,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42872,12 +42902,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -42895,6 +42919,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43127,12 +43157,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -43150,6 +43174,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43382,12 +43412,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -43405,6 +43429,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43637,12 +43667,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -43726,6 +43750,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43958,12 +43988,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -43981,6 +44005,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44213,12 +44243,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -44236,6 +44260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44468,12 +44498,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -44491,6 +44515,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44723,12 +44753,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -44746,6 +44770,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44978,12 +45008,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -45001,6 +45025,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45233,12 +45263,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -45274,6 +45298,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45506,12 +45536,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -45595,6 +45619,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45827,12 +45857,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -45850,6 +45874,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46082,12 +46112,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -46135,6 +46159,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46367,12 +46397,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -46450,6 +46474,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46682,12 +46712,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -46705,6 +46729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46937,12 +46967,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -46978,6 +47002,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47210,12 +47240,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -47233,6 +47257,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47465,12 +47495,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -47488,6 +47512,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47720,12 +47750,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -47743,6 +47767,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47975,12 +48005,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -47998,6 +48022,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48230,12 +48260,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -48253,6 +48277,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48485,12 +48515,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -48508,6 +48532,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48740,12 +48770,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -48829,6 +48853,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49061,12 +49091,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -49150,6 +49174,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49382,12 +49412,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -49471,6 +49495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49703,12 +49733,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -49750,6 +49774,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49982,12 +50012,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -50071,6 +50095,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50303,12 +50333,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -50326,6 +50350,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50558,12 +50588,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -50581,6 +50605,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50813,12 +50843,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -50848,6 +50872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51080,12 +51110,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -51169,6 +51193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51401,12 +51431,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -51430,6 +51454,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51662,12 +51692,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -51697,6 +51721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51929,12 +51959,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -51964,6 +51988,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52196,12 +52226,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -52285,6 +52309,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52517,12 +52547,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -52606,6 +52630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52838,12 +52868,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -52909,6 +52933,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53141,12 +53171,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -53170,6 +53194,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53402,12 +53432,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -53425,6 +53449,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53657,12 +53687,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -53680,6 +53704,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53912,12 +53942,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -54001,6 +54025,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54233,12 +54263,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -54256,6 +54280,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54488,12 +54518,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -54577,6 +54601,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54809,12 +54839,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -54844,6 +54868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55076,12 +55106,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -55099,6 +55123,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55331,12 +55361,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -55420,6 +55444,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55652,12 +55682,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -55675,6 +55699,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55907,12 +55937,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -55930,6 +55954,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56162,12 +56192,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -56251,6 +56275,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56483,12 +56513,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -56506,6 +56530,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56738,12 +56768,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -56779,6 +56803,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57011,12 +57041,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -57034,6 +57058,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57266,12 +57296,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -57295,6 +57319,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57527,12 +57557,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -57550,6 +57574,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57782,12 +57812,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -57811,6 +57835,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58043,12 +58073,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -58066,6 +58090,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58298,12 +58328,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -58321,6 +58345,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58553,12 +58583,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -58582,6 +58606,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58814,12 +58844,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -58837,6 +58861,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59069,12 +59099,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -59098,6 +59122,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59330,12 +59360,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -59419,6 +59443,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59651,12 +59681,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -59674,6 +59698,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59906,12 +59936,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -59929,6 +59953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60161,12 +60191,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -60184,6 +60208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60416,12 +60446,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -60451,6 +60475,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60683,12 +60713,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -60772,6 +60796,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61004,12 +61034,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -61093,6 +61117,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61325,12 +61355,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -61414,6 +61438,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61646,12 +61676,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -61735,6 +61759,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61967,12 +61997,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -61996,6 +62020,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62228,12 +62258,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -62317,6 +62341,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62549,12 +62579,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -62638,6 +62662,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62870,12 +62900,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -62953,6 +62977,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63185,12 +63215,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -63244,6 +63268,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63476,12 +63506,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -63565,6 +63589,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63797,12 +63827,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -63881,11 +63905,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "Revenue--current-public-procurement-award-comparable-corpus",
-      "last_ts": "2026-09-17T01:08:44Z",
+      "last_id": "OSS-funding-route-freshness-recensus-compiler",
+      "last_ts": "2026-09-17T01:31:22Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
         {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
@@ -63951,12 +63981,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-16T23:41:21Z"
-        },
-        {
-          "id": "grok-scope-time-obs-bind-15110",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:41:17Z"
         }
       ]
     },
@@ -63965,6 +63989,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
         {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
@@ -64198,12 +64228,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -64227,6 +64251,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64459,12 +64489,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -64548,6 +64572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64780,12 +64810,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -64869,6 +64893,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65101,12 +65131,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -65124,6 +65148,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65356,12 +65386,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -65385,6 +65409,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65617,12 +65647,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -65640,6 +65664,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65872,12 +65902,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -65895,6 +65919,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66127,12 +66157,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
@@ -66216,6 +66240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
           "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66448,12 +66478,6 @@
           "from": "GROKBUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:20:50Z"
-        },
-        {
-          "id": "grok-pr15105-verify-20260916-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:19:14Z"
         }
       ],
       "mine": [
