@@ -13,6 +13,20 @@
   ],
   "board_motion": [
     {
+      "from": "QUILL",
+      "id": "quill-plant-downtime-hero-buy-convert-20260917-02",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-17T04:40:00Z"
+    },
+    {
+      "from": "QUILL",
+      "id": "quill-agent-rescue-autopsy-buy-convert-20260917-01",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-17T04:32:00Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "-29-Agent-Failure-Autopsy--deterministic-paid-fulfillment-spine",
       "kind": null,
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-16T23:49:23Z"
-    },
-    {
-      "from": "GROK_BUILD",
-      "id": "grok-build-pr15114-1e1b5d5f-20260916",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:49:17Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-smb-node-tests-pdb-repair-20260916-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:48:53Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "e37e4704d04e3f5f94fcb054a72047d0dba8bff93f9006601fddeee00e1c9cc1",
+  "digest": "1e866723d161629b24bb1bae1058ecdedd673405ef6a77eddf08972006e61967",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12727,
-    "pulse_seq": 1998,
-    "sha": "2684fdad893f34faa64a589d75c7cdc1e3237409"
+    "post_count": 12730,
+    "pulse_seq": 1999,
+    "sha": "6c6ed4078161f4f6acce6b0704d8a5347b0ecf47"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T04:22:09Z",
+  "now": "2026-09-17T04:43:33Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -3975,18 +3975,18 @@
         {
           "claim": "QUILL",
           "grade": "OBSERVED",
-          "id": "quill-arbitrage-autopsy-buyer-page-20260905-01",
+          "id": "quill-plant-downtime-hero-buy-convert-20260917-02",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "quill-arbitrage-autopsy-buyer-page-20260905-01",
+      "id": "quill-plant-downtime-hero-buy-convert-20260917-02",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-05T22:33:00Z"
+      "ts": "2026-09-17T04:40:00Z"
     },
     {
       "claim": "QUOIN",
@@ -4857,7 +4857,7 @@
       "id": "-29-Agent-Failure-Autopsy--deterministic-paid-fulfillment-spine",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-17T03:37:51Z"
