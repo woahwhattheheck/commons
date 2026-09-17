@@ -14,7 +14,7 @@ import zipfile
 from pathlib import Path
 
 import server
-from server import ADMIN_FEE_BPS, HANDOFF_MODE, Desk, DeskError, admin_fee, compute_reward, load_example, loopback_host, make_server, normalize_url, opaque_ref, operation_key
+from server import ADMIN_FEE_BPS, HANDOFF_MODE, Desk, DeskError, admin_fee, compute_reward, load_example, loopback_host, make_server, normalize_url, opaque_ref, operation_key, strict_json
 
 ROOT = Path(__file__).resolve().parent
 
@@ -618,6 +618,22 @@ class HttpTests(unittest.TestCase):
                     break
                 chunks.append(chunk)
         return b''.join(chunks)
+
+    def test_json_boundary_refuses_duplicate_keys_and_non_finite_constants(self):
+        for bad in ('{"operation_id": "a", "operation_id": "b"}', '{"name": {"x": 1, "x": 2}}', '{"budget_minor": NaN}',
+                    '{"budget_minor": Infinity}', '{"budget_minor": -Infinity}', '[1, 2]', '"text"', 'null', '{"unterminated": '):
+            with self.subTest(body=bad):
+                if bad.startswith('{') and bad.endswith('}') and 'unterminated' not in bad:
+                    with self.assertRaises(DeskError):
+                        strict_json(bad)
+                request = urllib.request.Request(self.base + '/api/brand/create', data=bad.encode('utf-8'), headers={'Content-Type': 'application/json'})
+                with self.assertRaises(urllib.error.HTTPError) as caught:
+                    urllib.request.urlopen(request, timeout=10)
+                self.assertEqual(caught.exception.code, 400)
+        self.assertEqual(strict_json('{"a": 1, "b": [1, 2, {"c": "d"}]}'), {'a': 1, 'b': [1, 2, {'c': 'd'}]})
+        status, body, _ = self.call('/api/brand/create', {'operation_id': 'strict-ok', 'name': 'Strict brand'})
+        self.assertEqual(status, 200, body)
+        self.assertEqual(len(self.desk.snapshot()['brands']), 1)
 
     def test_malformed_oversized_short_and_unknown_route_bodies_get_clean_replies(self):
         head = b'POST /api/brand/create HTTP/1.1\r\nHost: 127.0.0.1\r\nContent-Type: application/json\r\n'

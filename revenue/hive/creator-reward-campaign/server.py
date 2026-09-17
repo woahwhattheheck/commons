@@ -138,6 +138,29 @@ def metrics_block(value):
     return {key: integer(value[key], f'metrics.{key}', 0) for key in METRIC_KEYS if key in value}
 
 
+def _no_duplicate_keys(pairs):
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise DeskError(f'duplicate JSON key {key!r}')
+        result[key] = value
+    return result
+
+
+def _no_non_finite(constant):
+    raise DeskError(f'non-finite JSON constant {constant} is not accepted')
+
+
+def strict_json(text_value):
+    """Parse request JSON strictly: duplicate object keys and NaN/Infinity constants are refused, never silently resolved."""
+    try:
+        return json.loads(text_value, object_pairs_hook=_no_duplicate_keys, parse_constant=_no_non_finite)
+    except DeskError:
+        raise
+    except ValueError as exc:
+        raise DeskError('Request body must be a JSON object') from exc
+
+
 def encoded(value):
     try:
         return json.dumps(value, ensure_ascii=False, sort_keys=True, allow_nan=False)
@@ -590,7 +613,7 @@ class Desk:
 def load_example(desk, path=ROOT / 'example.json'):
     """Replay the recorded synthetic operations. Re-running with the same database is idempotent."""
     with open(path, encoding='utf-8') as handle:
-        script = json.load(handle)
+        script = strict_json(handle.read())
     results = {}
 
     def resolve(value):
@@ -675,9 +698,9 @@ class Handler(BaseHTTPRequestHandler):
             if operation is None:
                 raise DeskError('Not found', 404)
             try:
-                data = json.loads(body.decode('utf-8'))
-            except (ValueError, UnicodeDecodeError) as exc:
-                raise DeskError('Request body must be a JSON object') from exc
+                data = strict_json(body.decode('utf-8'))
+            except UnicodeDecodeError as exc:
+                raise DeskError('Request body must be UTF-8 JSON') from exc
             self.reply(200, encoded(self.desk.write(operation, data)))
         except DeskError as exc:
             self.reply(exc.status, encoded({'error': str(exc)}))
