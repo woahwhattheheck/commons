@@ -173,6 +173,13 @@ class SubmissionTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             compile_submission(self.keys, state_rows=self.state, queue_rows=self.queue, odme_rows=no_zone)
 
+    def test_null_keys_and_malformed_receipt_fail_closed(self):
+        bad_keys = [dict(self.keys[0], link_id=None), *self.keys[1:]]
+        with self.assertRaises(ValueError):
+            compile_submission(bad_keys, state_rows=self.state, queue_rows=self.queue, odme_rows=self.odme)
+        payload, _ = compile_submission(self.keys, state_rows=self.state, queue_rows=self.queue, odme_rows=self.odme)
+        self.assertFalse(verify_compiled_submission(payload, []))
+
 
 if __name__ == "__main__":
     unittest.main()

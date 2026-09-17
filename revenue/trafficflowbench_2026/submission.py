@@ -18,13 +18,16 @@ VALUES = {"state": ("speed_kmh", "flow_vph"), "queue": ("queue_pred",), "odme": 
 
 
 def _key(row: Mapping[str, object], task: str) -> tuple[str, ...]:
+    values: list[str] = []
     try:
-        values = tuple(str(row[column]) for column in KEYS[task])
+        for column in KEYS[task]:
+            raw = row[column]
+            if raw is None or not str(raw).strip():
+                raise ValueError(f"blank {task} natural key field: {column}")
+            values.append(str(raw))
     except KeyError as exc:
         raise ValueError(f"missing {task} key field: {exc.args[0]}") from exc
-    if any(not value for value in values):
-        raise ValueError(f"blank {task} natural key")
-    return values
+    return tuple(values)
 
 
 def _number(value: object, name: str, *, nonnegative: bool = True) -> float:
@@ -50,7 +53,8 @@ def _table(rows: Iterable[Mapping[str, object]], task: str) -> dict[tuple[str, .
             raise ValueError("queue_pred must be 0 or 1")
         if task == "odme":
             for zone in ("origin_zone", "destination_zone"):
-                if not str(row.get(zone, "")).strip():
+                raw = row.get(zone)
+                if raw is None or not str(raw).strip():
                     raise ValueError(f"{zone} is required for ODME rows")
         table[key] = vals
     return table
@@ -129,15 +133,20 @@ def _receipt_digest(receipt: Mapping[str, object]) -> str:
 
 
 def verify_compiled_submission(payload: str, receipt: Mapping[str, object]) -> bool:
+    if not isinstance(receipt, Mapping):
+        return False
     if receipt.get("schema") != "trafficflowbench-local-submission/v1":
         return False
     if receipt.get("upstreamCommit") != UPSTREAM["commit"]:
         return False
     if receipt.get("receiptSha256") != _receipt_digest(receipt):
         return False
+    authority = receipt.get("authority")
+    if not isinstance(authority, Mapping):
+        return False
     try:
-        validate_authority_claims(receipt.get("authority", {}))
-    except (TypeError, ValueError):
+        validate_authority_claims(authority)
+    except (AttributeError, TypeError, ValueError):
         return False
     if hashlib.sha256(payload.encode("utf-8")).hexdigest() != receipt.get("csvSha256"):
         return False
