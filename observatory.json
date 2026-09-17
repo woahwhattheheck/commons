@@ -14,6 +14,20 @@
   "board_motion": [
     {
       "from": "QUILL",
+      "id": "quill-repair-booking-hero-buy-convert-20260917-07",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-17T05:26:00Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "outbound--make-route-lifecycle-chronology-aware",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T05:21:27Z"
+    },
+    {
+      "from": "QUILL",
       "id": "quill-permit-intake-hero-buy-convert-20260917-06",
       "kind": "SHIP_RECEIPT",
       "to": "TABLE",
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-17T01:31:22Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue--current-public-procurement-award-comparable-corpus",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T01:08:44Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T00:59:47Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "4df1af3ba2c77a7251a3283e79604a3a6426e2343de53720b56205bee5c9d01d",
+  "digest": "48cb17a0e2f4efcecb96f31737dea4f6da2d03d64ab995924a423b66902b2d99",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12739,
-    "pulse_seq": 2002,
-    "sha": "d4672d00e052805ebfa6403f73bbfe539e8db3ca"
+    "post_count": 12741,
+    "pulse_seq": 2003,
+    "sha": "4ef13e33d87946973cce01a47fafa8a3240d5587"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T05:22:20Z",
+  "now": "2026-09-17T05:27:21Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -3975,18 +3975,18 @@
         {
           "claim": "QUILL",
           "grade": "OBSERVED",
-          "id": "quill-permit-intake-hero-buy-convert-20260917-06",
+          "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "quill-permit-intake-hero-buy-convert-20260917-06",
+      "id": "quill-repair-booking-hero-buy-convert-20260917-07",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T05:19:00Z"
+      "ts": "2026-09-17T05:26:00Z"
     },
     {
       "claim": "QUOIN",
@@ -4849,18 +4849,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Revenue--RCAP-CRM-DCS-assessment-direct-proposal---24.5k-",
+          "id": "outbound--make-route-lifecycle-chronology-aware",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Revenue--RCAP-CRM-DCS-assessment-direct-proposal---24.5k-",
+      "id": "outbound--make-route-lifecycle-chronology-aware",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T05:08:24Z"
+      "ts": "2026-09-17T05:21:27Z"
     },
     {
       "claim": "VECTOR-RELAY",
