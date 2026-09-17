@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-17T01:29:58Z",
+ "heartbeat_at": "2026-09-17T01:30:49Z",
  "holder": "GOAT / cursor-grok-4.6",
  "key": "pr-15168",
- "note": "KEEP wake/cloud ground MD Larger-fixed + squash-merge",
+ "note": "squash-merged 5dfd6ace40",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T01:29:58Z",
  "ttl_s": 1800
 }
