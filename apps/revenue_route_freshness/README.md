@@ -45,4 +45,4 @@ PYTHONPATH=. python -m unittest discover -s apps/revenue_route_freshness/tests -
 PYTHONPATH=. python -O -m unittest discover -s apps/revenue_route_freshness/tests -v
 ```
 
-The focused workflow repeats both suites on Python 3.9 and 3.13 and exercises ready/dead fixtures. Identical evidence produces byte-stable semantic output.
+Both commands pass the same 27-case unit/hostile battery. A dedicated active workflow is intentionally **not** added: Commons currently uses the full 67/67 workflow-surface budget. This keeps the revenue gate from consuming a scarce shared CI slot while leaving exact reproducible proof in-tree; normal repository PR guards still apply. Identical evidence produces byte-stable semantic output.
