@@ -1,156 +1,147 @@
 # Pressure-trace consistency blocker for the zero-gradient Nitsche prize
 
-Status: **rigorous formulation-level counterexample and repair boundary; not a complete prize proof.**
+Status: **rigorous discrete consistency counterexample and repair boundary; not a complete prize proof.**
 
 Issue: #14998  
 Operation: `RIDGWAY-ZEROGRAD-PRESSURE-TRACE-COUNTEREXAMPLE-ZSOL-20260917`
 
-This note closes one ambiguity left by the existing `proof_reduction.md`: for a general nonconstant pressure, the pressure-free velocity Nitsche kernel written in Gjerde–Scott's Eq. (27)/(28) is not the full mixed Stokes consistency identity on divergence-free tests when normal velocity is weakly enforced.
+This note closes one ambiguity left by `proof_reduction.md`: for general nonconstant pressure, the pressure-free velocity Nitsche kernel written in Gjerde–Scott Eq. (27)/(28) is not the full mixed Stokes consistency identity on exactly divergence-free tests when normal velocity is weakly enforced.
 
-The result is intentionally narrow. It proves a missing pressure-normal boundary term, gives two exact counterexamples, and states the minimum repair choices. It does **not** prove the full Scott–Vogelius–Nitsche convergence theorem, does not establish a quartic annulus lower bound, and does not claim the advertised prize.
+The strongest witness below is already degree 3 in velocity, hence contained in the full degree-4 velocity space used by the reported Scott–Vogelius experiment. It is local to a single weak-boundary triangle and extends by zero across its other two edges. The result therefore does not depend on a degree-8 global polynomial construction.
 
-## 1. The source-level mismatch
+It still does **not** prove the full Scott–Vogelius–Nitsche convergence theorem, the sponsor's curved-domain asymptotic lower bound, publication, or prize entitlement.
 
-Gjerde–Scott's Stokes integration-by-parts identity, Eq. (5), contains the full Cauchy traction. With viscosity normalized to one, their identity has the structure
+## 1. Source-level mismatch
 
-`(f,v) = 1/2 (D(u),D(v)) - (p,div v) - <(D(u)-pI)n,v>`
+Gjerde–Scott Eq. (5) contains the full Cauchy traction. With viscosity normalized to one, its divergence-free structure is
 
-for a divergence-free exact solution, modulo the paper's symmetric-gradient convention and the displayed `grad div u` term, which vanishes when `div u=0`.
+`(f,v) = a(u,v) - (p,div v) - <D(u)n,v> + <p,v·n>`.
 
-On an exactly divergence-free test `v`, the *volume* pressure term disappears, but the boundary contribution does not:
+If `div v=0`, the *volume* pressure term disappears but the boundary pressure trace remains:
 
 `(f,v) = a(u,v) - <D(u)n,v> + <p,v·n>`.
 
-For an exact no-slip solution on the true boundary, `u=0` implies the tangential derivative of the trace is zero. Together with `div u=0`, this gives the familiar boundary identity needed to identify the velocity traction with the normal derivative under the paper's convention. The pressure-normal term remains separate.
+By contrast, Eq. (27) uses a velocity normal-derivative Nitsche flux, its adjoint term, and the penalty; Eq. (28) couples that velocity form to the usual volume pressure-divergence form. The displayed weak-boundary form contains no explicit pressure-normal boundary work.
 
-By contrast, Gjerde–Scott Eq. (27) defines the velocity Nitsche form using `partial_n u`, its adjoint counterpart, and the penalty term. Eq. (28) then couples that velocity form to the usual volume `b(v,p)`. There is no explicit pressure-normal boundary term in the displayed weak-boundary form.
+Thus exact divergence freedom alone does not remove pressure from the weak-boundary consistency relation whenever the test space permits `v·n != 0` on that boundary.
 
-Therefore exact divergence freedom alone cannot justify replacing the full mixed traction by the pressure-free velocity flux whenever the test space permits `v·n != 0` on the weak boundary.
+## 2. Exact quartic-compatible boundary-triangle witness
 
-## 2. Exact low-degree counterexample on a fully weak square
+Take the reference triangle
 
-Take
+`K = {(x,y): x>=0, y>=0, x+y<=1}`.
 
-- `Omega=[0,1]^2`,
-- exact velocity `u=0`,
-- pressure `p=x`,
-- forcing `f=grad p=(1,0)`, and
-- test velocity `v=(1,0)`.
+Treat the legs `x=0` and `y=0` as zero-extension/interior edges and the hypotenuse `x+y=1` as the weak boundary edge. Define
 
-Then `v` has polynomial degree zero and `div v=0`. Thus it belongs to every full continuous `[P_k]^2` velocity space if the boundary is weakly imposed.
+`psi=x^2 y^2`,
 
-Exact arithmetic gives
-
-`(f,v)_Omega = 1`,
-
-`(p,div v)_Omega = 0`,
-
-and, by the divergence theorem,
-
-`<p,v·n>_boundary = 1`.
-
-At `u=0`, every velocity-only Nitsche term in the published kernel is zero. Hence the pressure-free kernel produces left-hand side zero while the exact forcing functional equals one. The consistency defect is exactly `-1` in the `lhs-rhs` convention used by the executable certificate.
-
-This is already enough to disprove a general statement that exact divergence freedom by itself deletes pressure from the weak-boundary Stokes consistency relation.
-
-## 3. Mixed-boundary analogue: strong outer wall, weak inner obstacle
-
-The sponsor geometry is not fully weak: the exterior boundary is strong while the curved obstacle boundary is the Nitsche boundary. The same pressure-normal defect survives that topology.
-
-Use the square annulus
-
-`Omega = [-2,2]^2 \ [-1,1]^2`,
-
-with the outer square strongly constrained and the inner square weak. Define the polynomial stream function
-
-`psi=(4-x^2)^2 (4-y^2)^2 (1+y)`
-
-and
-
-`v=curl psi=(partial_y psi,-partial_x psi)`.
+`v=curl psi=(2 x^2 y, -2 x y^2)`.
 
 Then:
 
-- `div v` is identically zero by equality of mixed derivatives;
-- the double factors `(4-x^2)^2` and `(4-y^2)^2` make **both components** of `v` vanish as polynomial traces on all four outer edges;
-- `v` therefore respects the strong outer boundary exactly;
-- the velocity has total degree eight, so this is a formulation-level mixed-boundary witness rather than a claim that this exact polynomial belongs to the sponsor's quartic discrete space.
+- `v` is degree 3, so `v in [P_4(K)]^2`;
+- `div v = 0` identically;
+- both components of `v` vanish identically on `x=0` and `y=0`, because `psi` has a double zero there;
+- therefore `v` can be extended by zero to all neighboring elements across those two edges while remaining continuous and exactly divergence-free elementwise;
+- on the weak edge `x+y=1`, its normal component is nonzero although its total flux is zero.
 
-Again choose `p=x`, `u=0`, `f=(1,0)`. The executable exact-rational certificate computes
+Now choose the no-flow Stokes solution
 
-`(f,v)_Omega = -2436/5`,
+`u=0`, `p=x`, `f=grad p=(1,0)`.
 
-`(p,div v)_Omega = 0`,
+Exact rational integration gives
 
-and the pressure-normal work on the weak inner boundary
+`(f,v)_K = integral_K 2 x^2 y = 1/30`,
 
-`<p,v·n>_inner = -2436/5`.
+`(p,div v)_K = 0`.
 
-The exact inner-edge partition is
+On `x+y=1`, outward `n=(1,1)/sqrt(2)` and `ds=sqrt(2) dx`, hence
 
-- `x=1`: `-162`,
-- `x=-1`: `-162`,
-- `y=1`: `-816/5`,
-- `y=-1`: `0`.
+`<p,v·n>_e = integral_0^1 x [v_x(x,1-x)+v_y(x,1-x)] dx = 1/30`.
 
-The velocity-only Nitsche kernel at `u=0` is again zero. Thus the missing mixed-boundary consistency term is not an artifact of making the entire boundary weak.
+At `u=0`, all velocity-only Nitsche terms vanish. The displayed pressure-free kernel therefore has LHS zero while the forcing functional equals `1/30`: exact consistency defect `-1/30` in the certificate's `lhs-rhs` convention.
 
-## 4. Why this is not automatically an `h_Gamma^(3/2)` remainder
+This is not merely a continuum or high-degree witness. It is a compactly supported `P3` test inside a full `P4` weak-boundary velocity space. Any conforming triangulation containing a weak boundary edge with one adjacent triangle permits the same barycentric construction `psi=lambda_A^2 lambda_B^2` on that triangle and zero extension across its other two edges (after affine transport).
 
-The already-landed geometry argument concerns the trace of the exact no-slip velocity on the displaced polygonal boundary. That trace is `O(h_Gamma^2)`, and the Nitsche half-order weight converts it into `O(h_Gamma^(3/2))`.
+The conclusion is formulation-level but degree-relevant: the general claim that exact Scott–Vogelius divergence freedom deletes pressure from the weak-normal consistency equation is false without an additional boundary-pressure mechanism or cancellation theorem.
 
-The pressure term is structurally different. A generic estimate is
+## 3. Fully weak low-degree sanity check
 
-`|<p-c,v_h·n>| <= ||h_e^(1/2)(p-c)||_Gamma_h ||h_e^(-1/2)v_h||_Gamma_h`.
+On `Omega=[0,1]^2`, take `u=0`, `p=x`, `f=(1,0)`, `v=(1,0)`. Then `v` is degree zero and exactly divergence free,
 
-Exact divergence freedom and zero normal flux on the other strong boundary allow subtraction of a **global constant** `c`, because the total weak-boundary flux vanishes. They do not permit independent edgewise constants without additional orthogonality.
+`(f,v)=1`, `(p,div v)=0`, `<p,v·n>=1`,
 
-For a smooth, genuinely nonconstant pressure on a boundary of `O(1)` length and quasi-uniform boundary scale `h_e~h_Gamma`, the first weighted factor is generically only `O(h_Gamma^(1/2))` when `c` is a global constant. Therefore the pressure-normal term cannot simply be filed under the already-proved `O(h_Gamma^(3/2))` velocity-geometry residual.
+while the velocity-only Nitsche kernel at `u=0` is zero. This is the same defect in its simplest form.
 
-This paragraph is an **upper-bound scaling warning, not a quartic discrete lower-bound theorem**. A sharper method-specific cancellation could exist, but it must be proved from the actual Scott–Vogelius normal-trace space or from an additional pressure-trace mechanism.
+## 4. Strong-outer / weak-inner topology sanity check
 
-## 5. Why the published manufactured test can hide the defect
+The retained square-annulus certificate independently shows the mechanism survives the sponsor-style boundary topology. On
 
-The manufactured example immediately preceding the Nitsche experiment uses constant pressure. For `p=c`,
+`Omega=[-2,2]^2 \ [-1,1]^2`,
+
+use outer square strong, inner square weak, and
+
+`psi=(4-x^2)^2(4-y^2)^2(1+y)`, `v=curl psi`.
+
+The exact certificate proves `div v=0`, both velocity components vanish on the whole outer boundary, and for `p=x`, `f=(1,0)`:
+
+`(f,v)=<p,v·n>_inner=-2436/5`, `(p,div v)=0`.
+
+The exact inner-edge partition is `-162`, `-162`, `-816/5`, `0`. This velocity is degree 8, so this annulus construction is retained as a topology sanity check; the degree-relevant result is Section 2.
+
+## 5. Why this is not automatically an `h_Gamma^(3/2)` remainder
+
+The landed geometry reduction concerns the exact no-slip velocity trace on the displaced polygonal boundary: `u^e|Gamma_h=O(h_Gamma^2)`, which becomes `O(h_Gamma^(3/2))` after the Nitsche half-order weight.
+
+The pressure trace is different. A generic bound is
+
+`|<p-c,v_h·n>| <= ||h_e^(1/2)(p-c)|| ||h_e^(-1/2)v_h||`.
+
+Divergence freedom and zero flux on the remaining strong boundary allow subtraction of a *global* constant `c`; they do not allow independent edgewise constants without extra orthogonality. For smooth nonconstant pressure on an `O(1)` boundary and `h_e~h_Gamma`, the first weighted factor is generically only `O(h_Gamma^(1/2))` for global `c`.
+
+This is an **upper-bound scaling warning**, not an asserted asymptotic lower bound for the sponsor's curved mesh. The exact `P3/P4` witness establishes nonzero consistency; any sharper decay on the actual mesh family would have to come from a separately proved normal-trace/pressure cancellation.
+
+## 6. Why the published manufactured test can hide the defect
+
+The manufactured test immediately preceding the Nitsche experiment uses constant pressure. For `p=c`,
 
 `<p,v_h·n>_Gamma_h = c int_Gamma_h v_h·n`.
 
-If `v_h` is exactly divergence free and has zero normal flux on the remaining strong boundary, the divergence theorem makes this integral zero. Constant pressure therefore lies in a special cancellation class.
+If `v_h` is exactly divergence free and has zero normal flux on the remaining strong boundary, the divergence theorem makes this zero. Constant pressure therefore lies in a special cancellation class. A successful constant-pressure experiment cannot establish general pressure robustness of the displayed weak-normal method.
 
-Consequently a successful constant-pressure numerical experiment does not by itself validate pressure robustness or consistency of the displayed weak-normal formulation for a general Stokes pressure.
+## 7. Independent 2026 corroboration
 
-## 6. Independent 2026 corroboration: weak normal velocity needs pressure-trace control
+Neilan, Olshanskii, and von Wahl, *An unfitted divergence-free higher order finite element method for the Stokes problem* (arXiv:2512.12050v2, 22 July 2026), analyze a different method and are not proof of this prize theorem. Their result is nevertheless mechanistically aligned: they identify loss of pressure robustness when normal velocity is imposed weakly and introduce a boundary multiplier with
 
-Neilan, Olshanskii, and von Wahl, *An unfitted divergence-free higher order finite element method for the Stokes problem* (arXiv:2512.12050v2, 22 July 2026), study a different divergence-free Stokes method, so their paper is not a proof of the Ridgway prize theorem. It is nevertheless directly relevant to the mechanism.
+`c_h(lambda_h,v_h)=int_Gamma_h lambda_h n_h·v_h`.
 
-They explicitly identify a loss of pressure robustness associated with weak enforcement of the normal velocity and introduce a boundary Lagrange multiplier. Their discrete formulation contains
+Their no-flow, nonconstant-pressure experiment probes exactly the pressure-to-velocity leakage that the algebraic witnesses here expose.
 
-`c_h(lambda_h,v_h)=int_Gamma_h lambda_h n_h·v_h`,
+## 8. Minimum theorem repairs
 
-with the multiplier approximating the pressure trace / normal-traction information needed at the weak boundary. Their no-flow pressure test (`u=0` with nonconstant pressure) is designed precisely to expose spurious velocity generated by imperfect pressure decoupling.
+A prize-ready theorem must explicitly choose and analyze one of these routes:
 
-That contemporary independent treatment supports the algebraic conclusion here: weak normal velocity is where pressure can re-enter a nominally divergence-free velocity equation through the boundary.
+1. **Stress-consistent Nitsche:** retain the full Stokes traction, including pressure-normal work.
+2. **Pressure-trace / normal multiplier:** carry the missing normal-traction information in a stable boundary variable or constraint while retaining weak boundary velocity freedom.
+3. **Discrete cancellation theorem:** prove the actual Scott–Vogelius weak-boundary normal-trace space is orthogonal to the relevant pressure trace to the required order. The `P3` boundary-triangle witness shows this is not automatic for the full weak-boundary `P4` space.
+4. **Restricted theorem:** constant-pressure manufactured solutions may exploit total-flux cancellation, but that is not a general mixed Stokes theorem.
 
-## 7. Minimum theorem repairs
+Even after this blocker is repaired, #14998 still needs curved-to-polygonal divergence-compatible approximation/transfer, weak-boundary inf-sup and pressure recovery, complete geometry residual closure, a PDE penalty sweep, independent theorem review, and publication.
 
-A prize-ready theorem must close this blocker explicitly. Viable routes include:
+## 9. Reproducibility and truth ceiling
 
-1. **Stress-consistent Nitsche formulation.** Use the full Stokes traction, including pressure-normal work, and analyze the resulting mixed method, adjoint terms, stability, and geometry residuals.
-2. **Pressure-trace / normal-constraint multiplier.** Introduce a stable boundary variable or constraint that carries the pressure-normal information while retaining the weak-boundary freedom needed to avoid the original strong zero-gradient pathology.
-3. **Prove a discrete cancellation theorem.** Show that the actual Scott–Vogelius weak-boundary normal-trace space is orthogonal to the relevant pressure trace up to the required `O(h_Gamma^(3/2)+h_Omega^k)` order. This cannot be assumed from `div v_h=0` alone.
-4. **Restrict the theorem.** A result limited to the constant-pressure manufactured solution may exploit the constant-flux cancellation, but it would not be the general mixed Stokes theorem suggested by the prize statement.
+`pressure_trace_counterexample.py` uses only the Python standard library and exact `fractions.Fraction` arithmetic. The retained tests cover:
 
-Closing this pressure blocker still leaves the other previously recorded requirements: curved-to-polygonal divergence-compatible approximation/transfer, weak-boundary inf-sup and pressure recovery, complete geometry residual closure, a full PDE penalty sweep, independent mathematical review, and publication.
+- fully weak degree-0 defect;
+- the `P3`/full-`P4` boundary-triangle witness, exact zero-extension traces, and `1/30` equality;
+- strong-outer/weak-inner annulus trace and `-2436/5` equality;
+- exact annulus edge partition;
+- an explicit theorem ceiling.
 
-## 8. Reproducibility and evidence ceiling
+The machine-readable certificate is `results/pressure_trace_counterexample.json`.
 
-`pressure_trace_counterexample.py` uses only Python's `fractions.Fraction`. Its retained tests verify the low-degree square witness, exact zero strong outer trace for the annulus stream-function witness, exact forcing/pressure-boundary equality, and the four edge contributions under both normal Python and real `python -O`.
+**Proved here:** a nonzero pressure-normal consistency defect exists in the displayed general weak-normal formulation, including an exact `P3` test contained in a full `P4` velocity space.
 
-The machine-readable certificate is stored in `results/pressure_trace_counterexample.json`.
-
-Truth ceiling:
-
-- **proved here:** pressure-free weak-normal velocity consistency fails in the displayed general form; exact low-degree fully-weak witness; exact mixed-boundary formulation witness;
-- **not proved here:** a quartic mixed-boundary discrete lower bound, the full convergence theorem, publication, prize eligibility/award, receivable, or cash.
+**Not proved here:** the repaired full convergence theorem, a sponsor-specific curved-domain error lower bound, publication, prize eligibility/award, receivable, or cash.
 
 No sponsor or author contact is performed by this carrier.
