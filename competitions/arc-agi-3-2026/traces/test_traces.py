@@ -109,6 +109,16 @@ class TraceTests(unittest.TestCase):
         with self.assertRaises(TraceError):
             canonical_json_bytes(value)
 
+    def test_cyclic_direct_object_rejected_without_node_burn(self):
+        value = []
+        value.append(value)
+        with self.assertRaisesRegex(TraceError, "cyclic"):
+            canonical_json_bytes(value)
+
+    def test_shared_noncyclic_container_is_allowed(self):
+        shared = [1, 2]
+        self.assertEqual(canonical_json_bytes({"a": shared, "b": shared}), b'{"a":[1,2],"b":[1,2]}')
+
     def test_unavailable_action_rejected(self):
         rec = EpisodeRecorder("unavailable", max_actions=2)
         rec.append_observation((((0,),),), ("ACTION1",), source_ref="synthetic:test")
