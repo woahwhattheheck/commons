@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -778,6 +778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1010,12 +1016,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -1900,6 +1900,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2132,12 +2138,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -3715,6 +3715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3947,12 +3953,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -4741,6 +4741,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4973,12 +4979,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -5026,6 +5026,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5258,12 +5264,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -5305,6 +5305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5537,12 +5543,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -5572,6 +5572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5804,12 +5810,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -8395,6 +8395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8627,12 +8633,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -8650,6 +8650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8882,12 +8888,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -8971,6 +8971,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9203,12 +9209,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -9292,6 +9292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9524,12 +9530,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -9547,6 +9547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9779,12 +9785,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -9868,6 +9868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10100,12 +10106,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -10189,6 +10189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10421,12 +10427,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -10510,6 +10510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10742,12 +10748,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -10777,6 +10777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11009,12 +11015,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -11038,6 +11038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11270,12 +11276,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -11293,6 +11293,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11525,12 +11531,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -11614,6 +11614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11846,12 +11852,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -11887,6 +11887,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12119,12 +12125,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -12718,6 +12718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12950,12 +12956,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -12973,6 +12973,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13205,12 +13211,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -13495,6 +13495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13727,12 +13733,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -13816,6 +13816,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14048,12 +14054,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -14077,6 +14077,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14309,12 +14315,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -14344,6 +14344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14576,12 +14582,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -14665,6 +14665,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14897,12 +14903,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -14938,6 +14938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15170,12 +15176,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -15193,6 +15193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15425,12 +15431,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -15454,6 +15454,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15686,12 +15692,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -15709,6 +15709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15941,12 +15947,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -15964,6 +15964,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16196,12 +16202,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -16267,6 +16267,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16499,12 +16505,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -16522,6 +16522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16754,12 +16760,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -16789,6 +16789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17021,12 +17027,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -17044,6 +17044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17276,12 +17282,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -17305,6 +17305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17537,12 +17543,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -17560,6 +17560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17792,12 +17798,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -17881,6 +17881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18113,12 +18119,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -18142,6 +18142,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18374,12 +18380,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -18397,6 +18397,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18629,12 +18635,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -18652,6 +18652,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18884,12 +18890,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -18907,6 +18907,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19139,12 +19145,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -19162,6 +19162,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19394,12 +19400,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -19417,6 +19417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19649,12 +19655,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -19738,6 +19738,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19970,12 +19976,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -20029,6 +20029,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20261,12 +20267,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -20296,6 +20296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20528,12 +20534,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -20617,6 +20617,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20849,12 +20855,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -20872,6 +20872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21104,12 +21110,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -21193,6 +21193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21425,12 +21431,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -21514,6 +21514,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21746,12 +21752,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -21835,6 +21835,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22067,12 +22073,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -22090,6 +22090,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22322,12 +22328,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -22345,6 +22345,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22577,12 +22583,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -22666,6 +22666,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22898,12 +22904,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -22987,6 +22987,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23219,12 +23225,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -23260,6 +23260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23492,12 +23498,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -23533,6 +23533,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23765,12 +23771,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -23812,6 +23812,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24044,12 +24050,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -24067,6 +24067,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24299,12 +24305,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -24388,6 +24388,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24620,12 +24626,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -24643,6 +24643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24875,12 +24881,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -24898,6 +24898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25130,12 +25136,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -25153,6 +25153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25385,12 +25391,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -25408,6 +25408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25640,12 +25646,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -25663,6 +25663,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25895,12 +25901,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -25984,6 +25984,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26216,12 +26222,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -26305,6 +26305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26537,12 +26543,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -26560,6 +26560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26792,12 +26798,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -26881,6 +26881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27113,12 +27119,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -27190,6 +27190,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27422,12 +27428,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -27511,6 +27511,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27743,12 +27749,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -27772,6 +27772,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28004,12 +28010,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -28075,6 +28075,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28307,12 +28313,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -28342,6 +28342,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28574,12 +28580,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -28609,6 +28609,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28841,12 +28847,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -28864,6 +28864,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29096,12 +29102,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -29185,6 +29185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29417,12 +29423,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -29440,6 +29440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29672,12 +29678,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -29701,6 +29701,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29933,12 +29939,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -30022,6 +30022,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30254,12 +30260,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -30277,6 +30277,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30509,12 +30515,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -30532,6 +30532,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30764,12 +30770,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -30853,6 +30853,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31085,12 +31091,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -31120,6 +31120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31352,12 +31358,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -31375,6 +31375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31607,12 +31613,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -31654,6 +31654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31886,12 +31892,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -31915,6 +31915,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32147,12 +32153,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -32170,6 +32170,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32402,12 +32408,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -32425,6 +32425,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32657,12 +32663,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -32680,6 +32680,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32912,12 +32918,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -33001,6 +33001,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33233,12 +33239,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -33256,6 +33256,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33488,12 +33494,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -33511,6 +33511,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33743,12 +33749,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -33832,6 +33832,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34064,12 +34070,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -34082,30 +34082,17 @@
       ]
     },
     "GOAT": {
-      "last_id": "goat-owner-now-revenue-checkout-wire-20260917-01",
-      "last_ts": "2026-09-17T07:05:00Z",
-      "n": 3,
-      "since": [
-        {
-          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:34:39Z"
-        },
-        {
-          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:33:51Z"
-        },
-        {
-          "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:06:50Z"
-        }
-      ],
+      "last_id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+      "last_ts": "2026-09-17T07:38:00Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
         {
           "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
           "from": "GOAT",
@@ -34171,12 +34158,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:58:27Z"
-        },
-        {
-          "id": "goat-titan-leftover-durabletest-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:57:47Z"
         }
       ]
     },
@@ -34185,6 +34166,12 @@
       "last_ts": "2026-08-26T17:20:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
         {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
@@ -34418,12 +34405,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -34507,6 +34488,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34739,12 +34726,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -34768,6 +34749,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35000,12 +34987,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -35035,6 +35016,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35267,12 +35254,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -35290,6 +35271,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35522,12 +35509,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -35557,6 +35538,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35789,12 +35776,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -35818,6 +35799,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36050,12 +36037,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -36079,6 +36060,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36311,12 +36298,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -36397,8 +36378,14 @@
     "GROK": {
       "last_id": "txst-open-door-35162239221-receipt",
       "last_ts": "2026-09-17T05:59:33Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
         {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
@@ -36547,6 +36534,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36779,12 +36772,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -36838,6 +36825,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37070,12 +37063,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -37105,6 +37092,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37337,12 +37330,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -37363,8 +37350,14 @@
     "GROKBUILD": {
       "last_id": "grok-15313-ia-workshare-land-20260917",
       "last_ts": "2026-09-17T05:54:49Z",
-      "n": 13,
+      "n": 14,
       "since": [
+        {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
         {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
@@ -37525,6 +37518,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37757,12 +37756,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -37792,6 +37785,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38024,12 +38023,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -38113,6 +38106,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38345,12 +38344,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -38368,6 +38361,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38600,12 +38599,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -38635,6 +38628,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38867,12 +38866,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -38890,6 +38883,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39122,12 +39121,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -39157,6 +39150,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39389,12 +39388,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -39478,6 +39471,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39710,12 +39709,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -39733,6 +39726,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39965,12 +39964,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -40054,6 +40047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40286,12 +40285,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -40375,6 +40368,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40607,12 +40606,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -40678,6 +40671,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40910,12 +40909,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -40951,6 +40944,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41183,12 +41182,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -41236,6 +41229,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41468,12 +41467,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -41491,6 +41484,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41723,12 +41722,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -41812,6 +41805,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42044,12 +42043,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -42067,6 +42060,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42299,12 +42298,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -42352,6 +42345,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42584,12 +42583,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -42607,6 +42600,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42839,12 +42838,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -42862,6 +42855,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43094,12 +43093,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -43117,6 +43110,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43349,12 +43348,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -43372,6 +43365,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43604,12 +43603,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -43627,6 +43620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43859,12 +43858,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -43948,6 +43941,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44180,12 +44179,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -44203,6 +44196,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44435,12 +44434,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -44458,6 +44451,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44690,12 +44689,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -44713,6 +44706,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44945,12 +44944,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -44968,6 +44961,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45200,12 +45199,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -45223,6 +45216,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45455,12 +45454,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -45496,6 +45489,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45728,12 +45727,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -45817,6 +45810,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46049,12 +46048,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -46072,6 +46065,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46304,12 +46303,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -46357,6 +46350,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46589,12 +46588,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -46672,6 +46665,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46904,12 +46903,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -46927,6 +46920,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47159,12 +47158,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -47200,6 +47193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47432,12 +47431,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -47455,6 +47448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47687,12 +47686,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -47710,6 +47703,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47942,12 +47941,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -47965,6 +47958,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48197,12 +48196,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -48220,6 +48213,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48452,12 +48451,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -48475,6 +48468,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48707,12 +48706,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -48730,6 +48723,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48962,12 +48961,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -49051,6 +49044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49283,12 +49282,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -49372,6 +49365,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49604,12 +49603,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -49693,6 +49686,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49925,12 +49924,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -49972,6 +49965,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50204,12 +50203,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -50293,6 +50286,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50525,12 +50524,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -50548,6 +50541,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50780,12 +50779,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -50803,6 +50796,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51035,12 +51034,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -51067,8 +51060,14 @@
     "QUILL": {
       "last_id": "quill-invoice-exception-hero-buy-convert-20260917-10",
       "last_ts": "2026-09-17T07:06:50Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
         {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
@@ -51163,6 +51162,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51395,12 +51400,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -51424,6 +51423,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51656,12 +51661,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -51691,6 +51690,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51923,12 +51928,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -51958,6 +51957,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52190,12 +52195,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -52279,6 +52278,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52511,12 +52516,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -52600,6 +52599,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52832,12 +52837,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -52903,6 +52902,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53135,12 +53140,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -53164,6 +53163,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53396,12 +53401,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -53419,6 +53418,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53651,12 +53656,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -53674,6 +53673,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53906,12 +53911,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -53995,6 +53994,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54227,12 +54232,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -54250,6 +54249,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54482,12 +54487,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -54571,6 +54570,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54803,12 +54808,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -54838,6 +54837,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55070,12 +55075,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -55093,6 +55092,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55325,12 +55330,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -55414,6 +55413,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55646,12 +55651,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -55669,6 +55668,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55901,12 +55906,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -55924,6 +55923,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56156,12 +56161,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -56245,6 +56244,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56477,12 +56482,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -56500,6 +56499,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56732,12 +56737,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -56773,6 +56772,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57005,12 +57010,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -57028,6 +57027,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57260,12 +57265,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -57289,6 +57288,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57521,12 +57526,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -57544,6 +57543,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57776,12 +57781,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -57805,6 +57804,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58037,12 +58042,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -58060,6 +58059,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58292,12 +58297,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -58315,6 +58314,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58547,12 +58552,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -58576,6 +58575,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58808,12 +58813,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -58831,6 +58830,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59063,12 +59068,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -59092,6 +59091,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59324,12 +59329,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -59413,6 +59412,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59645,12 +59650,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -59668,6 +59667,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59900,12 +59905,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -59923,6 +59922,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60155,12 +60160,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -60178,6 +60177,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60410,12 +60415,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -60445,6 +60444,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60677,12 +60682,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -60766,6 +60765,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60998,12 +61003,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -61087,6 +61086,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61319,12 +61324,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -61408,6 +61407,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61640,12 +61645,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -61729,6 +61728,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61961,12 +61966,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -61990,6 +61989,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62222,12 +62227,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -62311,6 +62310,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62543,12 +62548,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -62632,6 +62631,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62864,12 +62869,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -62947,6 +62946,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63179,12 +63184,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -63238,6 +63237,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63470,12 +63475,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -63559,6 +63558,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63791,12 +63796,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -63877,8 +63876,15 @@
     "UNSEATED": {
       "last_id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
       "last_ts": "2026-09-17T07:34:39Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        }
+      ],
       "mine": [
         {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
@@ -63960,6 +63966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64192,12 +64204,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -64218,8 +64224,14 @@
     "WIRE": {
       "last_id": "wire-live-cash-buy-path-20260916-01",
       "last_ts": "2026-09-17T04:45:00Z",
-      "n": 26,
+      "n": 27,
       "since": [
+        {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
         {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
@@ -64458,6 +64470,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64690,12 +64708,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -64779,6 +64791,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65011,12 +65029,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -65034,6 +65046,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65266,12 +65284,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -65295,6 +65307,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65527,12 +65545,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -65550,6 +65562,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65782,12 +65800,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -65805,6 +65817,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66037,12 +66055,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -66060,6 +66072,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66292,12 +66310,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [
@@ -66381,6 +66393,12 @@
       "n": 40,
       "since": [
         {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        },
+        {
           "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66613,12 +66631,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
         }
       ],
       "mine": [

@@ -8,6 +8,7 @@ exercises the canonical registry CLI without creating a new workflow slot.
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 import sys
 import unittest
@@ -44,12 +45,32 @@ class RuntimeProvenanceRetainedTests(unittest.TestCase):
     def assert_child_ok(self, proc: subprocess.CompletedProcess[str]) -> None:
         self.assertEqual(proc.returncode, 0, proc.stderr + proc.stdout)
 
+    def assert_nonempty_unittest_run(self, proc: subprocess.CompletedProcess[str]) -> None:
+        output = proc.stderr + proc.stdout
+        match = re.search(r"Ran ([0-9]+) tests? in ", output)
+        if match is None:
+            self.fail(f"missing unittest execution count:\n{output}")
+        count = int(match.group(1))
+        self.assertGreater(count, 0, f"zero-test false green:\n{output}")
+        self.assertIn("OK", output)
+
     def test_focused_suite_normal_and_optimized(self) -> None:
         for optimized in (False, True):
             with self.subTest(optimized=optimized):
                 proc = self.run_child(*DISCOVER, optimized=optimized)
                 self.assert_child_ok(proc)
-                self.assertIn("OK", proc.stderr + proc.stdout)
+                self.assert_nonempty_unittest_run(proc)
+
+    def test_zero_discovery_cannot_false_green(self) -> None:
+        proc = subprocess.CompletedProcess(
+            args=[sys.executable, *DISCOVER],
+            returncode=0,
+            stdout="",
+            stderr="----------------------------------------------------------------------\nRan 0 tests in 0.000s\n\nOK\n",
+        )
+        self.assert_child_ok(proc)
+        with self.assertRaises(AssertionError):
+            self.assert_nonempty_unittest_run(proc)
 
     def test_canonical_registry_verify_is_descriptive_only(self) -> None:
         proc = self.run_child(
