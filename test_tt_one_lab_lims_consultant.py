@@ -5,6 +5,12 @@ import sys
 import unittest
 
 
+MODULES = (
+    "revenue.tt_one_lab_lims_consultant.test_carrier",
+    "revenue.tt_one_lab_lims_consultant.test_semantic_generation",
+)
+
+
 # Root placement is intentional: tests.yml path-filters on root test_*.py.
 # This bridge makes semantic-generation repairs execute both normal and -O
 # without consuming another active workflow slot.
@@ -13,14 +19,7 @@ class TtOneLabLimsRetainedBridge(unittest.TestCase):
         command = [sys.executable]
         if optimized:
             command.append("-O")
-        command.extend(
-            [
-                "-m",
-                "unittest",
-                "-v",
-                "revenue.tt_one_lab_lims_consultant.test_carrier",
-            ]
-        )
+        command.extend(["-m", "unittest", "-v", *MODULES])
         completed = subprocess.run(
             command,
             capture_output=True,
