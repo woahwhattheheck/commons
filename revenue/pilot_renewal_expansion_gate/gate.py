@@ -9,7 +9,7 @@ import stat
 from pathlib import Path
 from typing import Any
 
-from .common import AUTHORITY, GateError, TRUTH_CEILING, canonical_json, sha256, strict_loads, _read_regular
+from .common import GateError, TRUTH_CEILING, canonical_json, sha256, strict_loads, _read_regular
 from .schema import normalize
 from .engine import compile_current, evaluate, verify_current
 
