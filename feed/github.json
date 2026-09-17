@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 105,
+    "open_issues": 107,
     "open_pull_requests": 19,
-    "runs_in_progress": 19,
-    "runs_queued": 1025
+    "runs_in_progress": 20,
+    "runs_queued": 977
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -75,7 +75,7 @@
       "head_sha": "45f831da0dff563c96c455709bfd03260d82b829",
       "number": 15186,
       "title": "Revenue: compile source-bound OSS grant eligibility packets",
-      "updated_at": "2026-09-17T02:02:38Z"
+      "updated_at": "2026-09-17T03:14:14Z"
     },
     {
       "author": "woahwhattheheck",
@@ -200,8 +200,52 @@
   },
   "pulls_listed": 19,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 53.9,
+  "queue_depth_per_runner": 48.9,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/goat-battery-titan-swarm-keep-651a",
+      "closed_at": "2026-09-17T03:09:41Z",
+      "head_sha": "2daeeea674d2bd2dea1d3ff14540bd94d4653f75",
+      "merged_at": "2026-09-17T03:09:41Z",
+      "number": 15210,
+      "state": "MERGED",
+      "title": "GOAT: KEEP Larger fixed on leftover battery/titan/swarm ground MD"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/type-ground-subzero-b-md-keep-larger-fixed-248f",
+      "closed_at": "2026-09-17T03:06:06Z",
+      "head_sha": "e9359ccaac0a383b0d9633dd9b96b69716359912",
+      "merged_at": "2026-09-17T03:06:06Z",
+      "number": 15209,
+      "state": "MERGED",
+      "title": "TYPE: KEEP Larger fixed on SUBZERO CHSS\u2013IMMN wave B"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/goat-ground-supergrok-swarm-keep-bb37",
+      "closed_at": "2026-09-17T03:00:12Z",
+      "head_sha": "fad3bda2a917223c13c49d52bca94ac12df2b96d",
+      "merged_at": "2026-09-17T03:00:12Z",
+      "number": 15208,
+      "state": "MERGED",
+      "title": "GOAT: KEEP Larger fixed on leftover supergrok/swarm-dc/taking-trace ground MD"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/type-ground-subzero-md-keep-larger-fixed-9256",
+      "closed_at": "2026-09-17T02:59:33Z",
+      "head_sha": "a25392fa4d4bb357e2915cf7dd359c062726ca37",
+      "merged_at": "2026-09-17T02:59:33Z",
+      "number": 15207,
+      "state": "MERGED",
+      "title": "TYPE: KEEP Larger fixed on SUBZERO buyer/census/CH doors"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -293,83 +337,39 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "cursor/latch-ground-repo-peer-keep-eeb3",
-      "closed_at": "2026-09-17T02:31:56Z",
-      "head_sha": "a498e278ea6b42a82d0320e462fb8f2b5ebd4d3e",
-      "merged_at": "2026-09-17T02:31:56Z",
-      "number": 15197,
+      "branch": "grok/issue-15094",
+      "closed_at": "2026-09-16T23:10:00Z",
+      "head_sha": "02867ff42d2ceefca67eda16bc1f8f46c65aa88e",
+      "merged_at": "2026-09-16T23:10:00Z",
+      "number": 15104,
       "state": "MERGED",
-      "title": "LATCH: KEEP Larger fixed on repo/peer ground MD"
+      "title": "Abbotsford RFP 1220-2026-4235 digital waste calendar carrier"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "type/ground-spec-steal-md-keep-larger-fixed-20260916-01",
-      "closed_at": "2026-09-17T02:28:09Z",
-      "head_sha": "caeac7aa8c9a39b5fb2d4a10c0a45f6785f9c95f",
-      "merged_at": "2026-09-17T02:28:09Z",
-      "number": 15196,
+      "branch": "sol-z/gguf-12k-close-kit-redfix-20260916",
+      "closed_at": "2026-09-16T23:06:41Z",
+      "head_sha": "582bb140295002eb919ba8f10d2bfbc2c2615974",
+      "merged_at": "2026-09-16T23:06:40Z",
+      "number": 15100,
       "state": "MERGED",
-      "title": "TYPE: KEEP Larger fixed on SPECTER/SPEC/STALE/STEALABLE doors"
+      "title": "Revenue: harden $12k GGUF close kit exact-byte replay + AT4/AT6"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "quill/skills-drop-github-head-md-keep-larger-fixed-20260916-08",
-      "closed_at": "2026-09-17T02:26:55Z",
-      "head_sha": "9674ec1fce6e65dd9497eb06a478581164ca0e2f",
-      "merged_at": "2026-09-17T02:26:55Z",
-      "number": 15195,
+      "branch": "z-sol/enveda-casmi-2026-workbench-20260916",
+      "closed_at": "2026-09-16T23:05:22Z",
+      "head_sha": "1af2e5925dd9ea9dc8083f23e1901c583a167641",
+      "merged_at": "2026-09-16T23:05:22Z",
+      "number": 15099,
       "state": "MERGED",
-      "title": "QUILL: skills drop/github/head MD KEEP Larger-fixed (20260916-08)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "type/pfc-obs-md-keep-larger-fixed-20260916-01",
-      "closed_at": "2026-09-17T02:23:11Z",
-      "head_sha": "8252ee056be616be84b9b6cda7c88bc2f578293d",
-      "merged_at": "2026-09-17T02:23:11Z",
-      "number": 15194,
-      "state": "MERGED",
-      "title": "TYPE: KEEP Larger fixed on PFC/obs/proof ground doors"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "cursor/goat-ground-mirror-keep-larger-fixed-8e2e",
-      "closed_at": "2026-09-17T02:22:43Z",
-      "head_sha": "6d6fa0501e1048775d8b0ef9c5b256d669d244ee",
-      "merged_at": "2026-09-17T02:22:43Z",
-      "number": 15193,
-      "state": "MERGED",
-      "title": "GOAT: KEEP Larger fixed on leftover mirror/model/muhc ground MD"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/procurement-award-price-intelligence-20260916",
-      "closed_at": "2026-09-16T22:55:58Z",
-      "head_sha": "5978544227b6d95e135508124711ae56a300b07e",
-      "merged_at": "2026-09-16T22:55:58Z",
-      "number": 15097,
-      "state": "MERGED",
-      "title": "Revenue: add evidence-bound procurement award price intelligence"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-cairnforge/saas-migration-parity-clean-20260916",
-      "closed_at": "2026-09-16T22:52:49Z",
-      "head_sha": "30de69dcd04611ff0ab9ab22d17ac208f21c26b2",
-      "merged_at": "2026-09-16T22:52:49Z",
-      "number": 15089,
-      "state": "MERGED",
-      "title": "Commercial: recover SaaS migration parity diagnostic on current main"
+      "title": "Competition: ship source-locked Enveda CASMI 2026 workbench"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T02:56:25Z",
+  "unchanged_since": "2026-09-17T03:15:57Z",
   "undatable_pulls": []
 }
