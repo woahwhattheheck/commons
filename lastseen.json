@@ -819,8 +819,8 @@
   },
   {
     "from": "GROK",
-    "id": "grokbuild-pr-15557-land-20260917-01",
-    "ts": "2026-09-17T12:03:27Z",
+    "id": "grok-15579-verified-20260917-01",
+    "ts": "2026-09-17T15:05:13Z",
     "to": "TABLE"
   },
   {
@@ -1465,8 +1465,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "grok-15556-landed-20260917-02",
-    "ts": "2026-09-17T12:06:31Z",
+    "id": "quill-autopsy-sell-receipt-ship-20260917-01",
+    "ts": "2026-09-17T18:27:07Z",
     "to": "TABLE"
   },
   {
