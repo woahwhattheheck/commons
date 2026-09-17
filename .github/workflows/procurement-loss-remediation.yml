@@ -8,12 +8,14 @@ on:
       - 'tools/procurement_loss_remediation/**'
       - 'test_procurement_loss_remediation.py'
       - 'test_procurement_loss_remediation_optimized.py'
+      - 'test_procurement_loss_remediation_generation_remint.py'
       - '.github/workflows/procurement-loss-remediation.yml'
   pull_request:
     paths:
       - 'tools/procurement_loss_remediation/**'
       - 'test_procurement_loss_remediation.py'
       - 'test_procurement_loss_remediation_optimized.py'
+      - 'test_procurement_loss_remediation_generation_remint.py'
       - '.github/workflows/procurement-loss-remediation.yml'
   workflow_dispatch:
 
@@ -53,15 +55,18 @@ jobs:
           tools/procurement_loss_remediation/__main__.py
           test_procurement_loss_remediation.py
           test_procurement_loss_remediation_optimized.py
+          test_procurement_loss_remediation_generation_remint.py
 
       - name: Run retained normal hostile suite
         run: >-
           python -m unittest -v
           test_procurement_loss_remediation.py
           test_procurement_loss_remediation_optimized.py
+          test_procurement_loss_remediation_generation_remint.py
 
       - name: Run retained optimized hostile suite
         run: >-
           python -O -m unittest -v
           test_procurement_loss_remediation.py
           test_procurement_loss_remediation_optimized.py
+          test_procurement_loss_remediation_generation_remint.py
