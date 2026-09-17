@@ -24,7 +24,8 @@ It is deliberately downstream of `../qualification_spec.json` and `../current_re
 - `sealed_package_checklist.md` — final physical package checklist with explicit last-inch authority fence.
 - `response_pack.py` — deterministic compiler/verifier.
 - `test_response_pack.py` — hostile tests, including optimized-mode runs.
-- `current_response_result.json` — deterministic snapshot of the current carrier state.
+
+The receipt is an output, not a manually maintained source file. Generate it from exact current inputs with `compile --write`; `verify` then exact-recompiles and compares it.
 
 ## State machine
 
@@ -36,7 +37,7 @@ The compiler has three internal states:
 
 `OWNER_READY_FOR_SUBMIT` still means **internal owner review readiness only**. It does not set `proposal_submission_authorized`; the compiler's entire external-authority map remains false by design.
 
-Current canonical qualification is `HOLD`, so the committed current response result must be `HOLD_QUALIFICATION` regardless of how complete the narrative artifacts become.
+Current canonical qualification is `HOLD`, so compiling the current response layer must produce `HOLD_QUALIFICATION` regardless of how complete the narrative artifacts become.
 
 ## Run
 
@@ -47,8 +48,10 @@ python commercial/alcorn-rfp-5588/response_pack/response_pack.py compile
 python -O commercial/alcorn-rfp-5588/response_pack/response_pack.py compile
 python -m unittest commercial/alcorn-rfp-5588/response_pack/test_response_pack.py -v
 python -O -m unittest commercial/alcorn-rfp-5588/response_pack/test_response_pack.py -v
+python commercial/alcorn-rfp-5588/response_pack/response_pack.py compile \
+  --write /tmp/alcorn-5588-response-receipt.json
 python commercial/alcorn-rfp-5588/response_pack/response_pack.py verify \
-  commercial/alcorn-rfp-5588/response_pack/current_response_result.json
+  /tmp/alcorn-5588-response-receipt.json
 ```
 
 ## Truth boundary
