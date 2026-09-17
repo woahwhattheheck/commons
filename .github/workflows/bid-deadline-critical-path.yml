@@ -1,0 +1,45 @@
+name: Bid deadline critical path
+
+on:
+  pull_request:
+    paths:
+      - "revenue/bid_deadline_critical_path/**"
+      - "test_bid_deadline_critical_path.py"
+      - ".github/workflows/bid-deadline-critical-path.yml"
+  push:
+    branches: [main]
+    paths:
+      - "revenue/bid_deadline_critical_path/**"
+      - "test_bid_deadline_critical_path.py"
+      - ".github/workflows/bid-deadline-critical-path.yml"
+
+concurrency:
+  group: bid-deadline-critical-path-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compile
+        run: python -m py_compile revenue/bid_deadline_critical_path/engine.py test_bid_deadline_critical_path.py
+      - name: Focused tests
+        run: python -m unittest -v test_bid_deadline_critical_path.py
+      - name: Optimized focused tests
+        run: python -O -m unittest -v test_bid_deadline_critical_path.py
+      - name: Synthetic hold rehearsal
+        run: |
+          tmp="$(mktemp -d)"
+          python -m revenue.bid_deadline_critical_path.engine compile \
+            revenue/bid_deadline_critical_path/demo/synthetic_bid.json \
+            --packet "$tmp/packet.json" \
+            --markdown "$tmp/packet.md" \
+            --receipt "$tmp/receipt.json" | grep -Fx HOLD_SOURCE
+          python -m revenue.bid_deadline_critical_path.engine verify \
+            revenue/bid_deadline_critical_path/demo/synthetic_bid.json \
+            "$tmp/packet.json" "$tmp/packet.md" "$tmp/receipt.json" | grep -Fx EXACT_CRITICAL_PATH_MATCH
