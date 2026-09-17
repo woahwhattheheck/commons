@@ -23,27 +23,12 @@ AUTHORITY = MappingProxyType({
 })
 LANES = frozenset({"OUTREACH", "BOUNTY", "COMPETITION", "CONTRACT", "PRODUCT", "OTHER"})
 EVENT_KINDS = frozenset({
-    "QUALIFIED",
-    "PROPOSAL_SENT",
-    "CLAIM_SUBMITTED",
-    "ACCEPTED",
-    "MERGED",
-    "AWARDED",
-    "INVOICE_ISSUED",
-    "PAYMENT_RECEIVED",
-    "OUTBOUND_SENT",
-    "INBOUND_RECEIVED",
-    "MUSE_CLEAR",
-    "DNR",
-    "COLLISION_HOLD",
+    "QUALIFIED", "PROPOSAL_SENT", "CLAIM_SUBMITTED", "ACCEPTED", "MERGED",
+    "AWARDED", "INVOICE_ISSUED", "PAYMENT_RECEIVED", "OUTBOUND_SENT",
+    "INBOUND_RECEIVED", "MUSE_CLEAR", "DNR", "COLLISION_HOLD",
 })
 SOURCE_CLASSES = frozenset({
-    "PROVIDER_RECEIPT",
-    "BUYER_MESSAGE",
-    "SPONSOR_MESSAGE",
-    "GITHUB",
-    "SLACK",
-    "INTERNAL_RETAINED",
+    "PROVIDER_RECEIPT", "BUYER_MESSAGE", "SPONSOR_MESSAGE", "GITHUB", "SLACK", "INTERNAL_RETAINED",
 })
 
 
@@ -90,6 +75,8 @@ def _make_core():
     def exact_dict(value: Any, keys: frozenset[str], where: str) -> dict[str, Any]:
         if type(value) is not dict:
             raise error_cls(f"{where}: expected exact object")
+        if any(type(key) is not str for key in value):
+            raise error_cls(f"{where}: string keys required")
         if set(value) != keys:
             missing = sorted(keys - set(value))
             extra = sorted(set(value) - keys)
@@ -106,7 +93,7 @@ def _make_core():
                 sort_keys=True,
             )
             return text.encode("utf-8", "strict")
-        except (TypeError, ValueError, UnicodeError) as exc:
+        except (TypeError, ValueError, UnicodeError, RecursionError) as exc:
             raise error_cls(f"not canonical JSON: {exc}") from exc
 
     def digest(value: Any) -> str:
@@ -148,7 +135,12 @@ def _make_core():
         matches = [event for event in events if event["kind"] in kinds and event["amount_cents"] is not None]
         if not matches:
             return None, "UNKNOWN"
-        chosen = matches[-1]
+        latest_at = matches[-1]["observed_at"]
+        latest_matches = [event for event in matches if event["observed_at"] == latest_at]
+        amounts = {event["amount_cents"] for event in latest_matches}
+        if len(amounts) > 1:
+            raise error_cls(f"ambiguous same-time settlement amounts at {latest_at}")
+        chosen = latest_matches[-1]
         return chosen["amount_cents"], chosen["kind"]
 
     def settlement_target(events: list[dict[str, Any]], reference_amount: int | None) -> tuple[int | None, str]:
@@ -294,10 +286,14 @@ def _make_core():
         target, target_source = settlement_target(events, reference_amount)
         stage = stage_for(kinds, payment_total, target)
         action = next_action(stage, events)
+        if target == 0 and stage in {"ACCEPTED_OR_MERGED", "INVOICED_OR_AWARDED"} and action == "COLLECTION_REVIEW":
+            action = "DONE_ZERO_VALUE"
         economic_gap = stage in {
             "ACCEPTED_OR_MERGED", "INVOICED_OR_AWARDED", "PARTIALLY_PAID",
             "PAYMENT_RECORDED_TARGET_UNKNOWN", "OVERPAID_RECONCILE",
         }
+        if target == 0 and stage in {"ACCEPTED_OR_MERGED", "INVOICED_OR_AWARDED"}:
+            economic_gap = False
         micro_batch = bool(
             economic_gap and target is not None and target <= threshold
             and action in {"COLLECTION_REVIEW", "RECONCILE_PAYMENT_STATE", "RECONCILE_OVERPAYMENT"}
@@ -375,20 +371,20 @@ def _make_core():
         return {"schema": bundle_schema, "input": normalized_input, "packet": packet, "receipt": receipt}
 
     def verify_bundle(bundle: Any) -> bool:
-        if type(bundle) is not dict or set(bundle) != {"schema", "input", "packet", "receipt"}:
+        if type(bundle) is not dict or any(type(key) is not str for key in bundle) or set(bundle) != {"schema", "input", "packet", "receipt"}:
             return False
         if bundle.get("schema") != bundle_schema:
             return False
         receipt = bundle.get("receipt")
-        if type(receipt) is not dict or set(receipt) != {"schema", "input_sha256", "packet_sha256", "authority"}:
+        if type(receipt) is not dict or any(type(key) is not str for key in receipt) or set(receipt) != {"schema", "input_sha256", "packet_sha256", "authority"}:
             return False
         if receipt.get("schema") != bundle_schema or receipt.get("authority") != authority():
             return False
         try:
             recomputed = compile_bundle(bundle["input"])
+            return canonical(recomputed) == canonical(bundle)
         except error_cls:
             return False
-        return canonical(recomputed) == canonical(bundle)
 
     def load_json_strict(path: Path, *, limit: int = 8_000_000) -> Any:
         st = os_mod.lstat(path)
@@ -402,6 +398,8 @@ def _make_core():
             before = os_mod.fstat(fd)
             if not stat_mod.S_ISREG(before.st_mode) or before.st_size > limit:
                 raise error_cls("input changed or is not regular")
+            if (st.st_dev, st.st_ino, st.st_size) != (before.st_dev, before.st_ino, before.st_size):
+                raise error_cls("input changed before retained read")
             chunks: list[bytes] = []
             remaining = limit + 1
             while remaining:
@@ -445,7 +443,7 @@ def _make_core():
                 parse_int=bounded_int,
                 object_pairs_hook=reject_pairs,
             )
-        except (UnicodeError, json_mod.JSONDecodeError) as exc:
+        except (UnicodeError, json_mod.JSONDecodeError, RecursionError) as exc:
             raise error_cls(f"invalid JSON: {exc}") from exc
 
     def write_exclusive(path: Path, data: bytes) -> None:
