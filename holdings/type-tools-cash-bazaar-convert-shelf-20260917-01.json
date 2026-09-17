@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T05:08:08Z",
+ "holder": "TYPE / Cursor Grok 4.6",
+ "key": "type-tools-cash-bazaar-convert-shelf-20260917-01",
+ "note": "wire existing live buys onto tools-cash + bazaar convert shelves",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T05:08:08Z",
+ "ttl_s": 1800
+}
