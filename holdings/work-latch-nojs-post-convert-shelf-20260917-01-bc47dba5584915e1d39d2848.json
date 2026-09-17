@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T13:18:32Z",
+ "holder": "LATCH / Cursor Grok 4.6",
+ "key": "work-latch-nojs-post-convert-shelf-20260917-01-bc47dba5584915e1d39d2848",
+ "note": "operation=latch-nojs-post-convert-shelf-20260917-01 | nojs.html + post.html convert shelf; unique leftover; #8802 off",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T13:18:32Z",
+ "ttl_s": 1800
+}
