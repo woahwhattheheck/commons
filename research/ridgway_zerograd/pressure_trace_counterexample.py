@@ -1,29 +1,27 @@
 #!/usr/bin/env python3
 """Exact pressure-trace consistency counterexamples for Commons #14998.
 
-This module is deliberately dependency-free.  It does not solve the prize theorem.
-It certifies two narrow algebraic facts:
+This module is deliberately dependency-free. It does not solve the prize theorem.
+It certifies three narrow algebraic facts:
 
 1. On a fully weak boundary, u=0, p=x, f=(1,0) and the constant
-   divergence-free test v=(1,0) already expose the missing pressure-normal
-   work: (f,v)=1 while every velocity-only Nitsche term at u=0 is zero.
+   divergence-free test v=(1,0) expose missing pressure-normal work.
+2. On one boundary triangle with two zero-extension edges and one weak edge,
+   a compactly supported P3 divergence-free velocity (hence admissible in a
+   full P4 velocity space) exposes the same defect exactly.
+3. On a square annulus the phenomenon survives strong-outer/weak-inner
+   topology with an exact polynomial stream-function witness.
 
-2. The same phenomenon survives the sponsor topology "strong outer boundary,
-   weak obstacle boundary".  On a square annulus we construct an exact
-   polynomial stream function whose curl is divergence free and vanishes on
-   the entire strong outer boundary.  With p=x and f=(1,0), its forcing
-   pairing equals the pressure-normal flux on the weak inner boundary and is
-   exactly -2436/5, while the pressure volume pairing is zero.
-
-The second velocity has polynomial degree 8.  It is therefore a
-formulation-level mixed-boundary consistency witness, not a claim that this
-exact polynomial lies in the sponsor's k=4 discrete space.
+The local P3 witness is the degree-relevant result. The annulus witness remains
+useful as an independent mixed-boundary topology sanity check, but its velocity
+has degree 8 and is not itself a P4 membership claim.
 """
 from __future__ import annotations
 
 from fractions import Fraction
+from math import comb, factorial
 import json
-from typing import Dict, Iterable, Tuple
+from typing import Dict, Tuple
 
 Q = Fraction
 Monomial = Tuple[int, int]
@@ -81,6 +79,17 @@ def integrate_rect(p: Poly, xa: int, xb: int, ya: int, yb: int) -> Q:
     return total
 
 
+def integrate_reference_triangle(p: Poly) -> Q:
+    """Integrate exactly over x>=0, y>=0, x+y<=1."""
+    return sum(
+        (
+            c * Q(factorial(i) * factorial(j), factorial(i + j + 2))
+            for (i, j), c in p.items()
+        ),
+        Q(0),
+    )
+
+
 def restrict_x(p: Poly, x0: int) -> Poly1:
     out: Poly1 = {}
     for (i, j), c in p.items():
@@ -95,10 +104,22 @@ def restrict_y(p: Poly, y0: int) -> Poly1:
     return {i: c for i, c in out.items() if c}
 
 
+def restrict_y_one_minus_x(p: Poly) -> Poly1:
+    """Restrict a 2D polynomial to the reference hypotenuse y=1-x."""
+    out: Poly1 = {}
+    for (i, j), c in p.items():
+        for r in range(j + 1):
+            degree = i + r
+            out[degree] = out.get(degree, Q(0)) + c * comb(j, r) * ((-1) ** r)
+    return {degree: c for degree, c in out.items() if c}
+
+
 def integrate_1d(p: Poly1, a: int, b: int) -> Q:
     return sum(
-        (c * Q(b ** (degree + 1) - a ** (degree + 1), degree + 1)
-         for degree, c in p.items()),
+        (
+            c * Q(b ** (degree + 1) - a ** (degree + 1), degree + 1)
+            for degree, c in p.items()
+        ),
         Q(0),
     )
 
@@ -112,22 +133,75 @@ X: Poly = {(1, 0): Q(1)}
 Y: Poly = {(0, 1): Q(1)}
 
 
+def local_p4_boundary_triangle_witness() -> dict:
+    """A P3 velocity supported on one weak-boundary triangle.
+
+    Reference triangle K has vertices (0,0),(1,0),(0,1). The legs x=0 and
+    y=0 are zero-extension edges; the hypotenuse x+y=1 is the weak boundary.
+    psi=x^2 y^2 has a double zero on both zero-extension edges, so
+    v=curl(psi) has zero vector trace there and may be extended by zero across
+    neighboring elements while remaining continuous. Since v is P3, it lies
+    in every full P4 velocity space.
+    """
+    psi = mul(X, X, Y, Y)
+    vx = derivative(psi, "y")
+    vy = scale(derivative(psi, "x"), -1)
+    div_v = add(derivative(vx, "x"), derivative(vy, "y"))
+    assert not div_v
+    assert not restrict_x(vx, 0) and not restrict_x(vy, 0)
+    assert not restrict_y(vx, 0) and not restrict_y(vy, 0)
+
+    forcing_pairing = integrate_reference_triangle(vx)
+    # On x+y=1, outward n=(1,1)/sqrt(2), ds=sqrt(2) dx, so
+    # p v.n ds = x * (vx+vy) dx for p=x.
+    pressure_flux_poly = restrict_y_one_minus_x(mul(X, add(vx, vy)))
+    pressure_boundary_flux = integrate_1d(pressure_flux_poly, 0, 1)
+    assert forcing_pairing == Q(1, 30)
+    assert pressure_boundary_flux == forcing_pairing
+
+    return {
+        "domain": "reference triangle x>=0,y>=0,x+y<=1",
+        "zero_extension_edges": ["x=0", "y=0"],
+        "weak_boundary_edge": "x+y=1",
+        "pressure": "p=x",
+        "forcing": "f=(1,0)",
+        "stream_function": "psi=x^2 y^2",
+        "velocity": "v=(2*x^2*y,-2*x*y^2)",
+        "velocity_degree": max(degree(vx), degree(vy)),
+        "contained_in_full_P4_velocity_space": True,
+        "divergence_polynomial": {},
+        "zero_extension_trace_zero": True,
+        "forcing_pairing": str(forcing_pairing),
+        "pressure_volume_pairing": "0",
+        "pressure_boundary_flux": str(pressure_boundary_flux),
+        "pressure_free_kernel_lhs_at_u_zero": "0",
+        "consistency_defect_lhs_minus_rhs": str(-forcing_pairing),
+        "scope": (
+            "exact local P3/P4-compatible weak-boundary consistency witness; "
+            "extendable by zero across the two non-weak edges"
+        ),
+    }
+
+
 def square_annulus_witness() -> dict:
     # Omega = [-2,2]^2 \ [-1,1]^2.
     # psi has a double zero on every outer edge, so both components of
-    # v=curl(psi) vanish there.  The (1+y) factor prevents cancellation
+    # v=curl(psi) vanish there. The (1+y) factor prevents cancellation
     # of the weak-inner-boundary pressure work.
-    fx = mul(add(scale(ONE, 4), scale(mul(X, X), -1)),
-             add(scale(ONE, 4), scale(mul(X, X), -1)))
-    fy = mul(add(scale(ONE, 4), scale(mul(Y, Y), -1)),
-             add(scale(ONE, 4), scale(mul(Y, Y), -1)))
+    fx = mul(
+        add(scale(ONE, 4), scale(mul(X, X), -1)),
+        add(scale(ONE, 4), scale(mul(X, X), -1)),
+    )
+    fy = mul(
+        add(scale(ONE, 4), scale(mul(Y, Y), -1)),
+        add(scale(ONE, 4), scale(mul(Y, Y), -1)),
+    )
     psi = mul(fx, fy, add(ONE, Y))
     vx = derivative(psi, "y")
     vy = scale(derivative(psi, "x"), -1)
     div_v = add(derivative(vx, "x"), derivative(vy, "y"))
     assert not div_v
 
-    # Strong outer boundary: v == 0 as a polynomial trace, not merely at nodes.
     for x0 in (-2, 2):
         assert not restrict_x(vx, x0)
         assert not restrict_x(vy, x0)
@@ -135,15 +209,12 @@ def square_annulus_witness() -> dict:
         assert not restrict_y(vx, y0)
         assert not restrict_y(vy, y0)
 
-    # p=x, f=grad p=(1,0).  Because div v=0, the volume pressure
-    # coupling vanishes identically, but the weak-boundary pressure work need not.
     forcing_pairing = (
         integrate_rect(vx, -2, 2, -2, 2)
         - integrate_rect(vx, -1, 1, -1, 1)
     )
     pressure_volume_pairing = Q(0)
 
-    # Inner-square outward normal is outward from the fluid, i.e. into the hole.
     p_vx = mul(X, vx)
     p_vy = mul(X, vy)
     edge_flux = {
@@ -176,16 +247,13 @@ def square_annulus_witness() -> dict:
         "pressure_free_kernel_lhs_at_u_zero": "0",
         "consistency_defect_lhs_minus_rhs": str(-forcing_pairing),
         "scope": (
-            "mixed-boundary formulation-level witness; velocity degree 8, "
-            "not a k=4 discrete-membership claim"
+            "mixed-boundary topology witness; velocity degree 8, retained as an "
+            "independent sanity check rather than a P4 membership claim"
         ),
     }
 
 
 def fully_weak_low_degree_witness() -> dict:
-    # Omega=[0,1]^2, u=0, p=x, f=(1,0), v=(1,0).
-    # v is degree 0 (hence belongs to any full P_k velocity space, k>=0)
-    # and exactly divergence free.  If the boundary is weak, v is admissible.
     return {
         "domain": "[0,1]^2",
         "boundary": "fully weak",
@@ -199,19 +267,21 @@ def fully_weak_low_degree_witness() -> dict:
         "pressure_boundary_flux": "1",
         "pressure_free_kernel_lhs_at_u_zero": "0",
         "consistency_defect_lhs_minus_rhs": "-1",
-        "scope": "exact low-degree weak-boundary consistency witness",
+        "scope": "exact low-degree fully-weak consistency witness",
     }
 
 
 def certificate() -> dict:
     return {
-        "schema": "commons.ridgway-zerograd-pressure-trace-counterexample/v1",
+        "schema": "commons.ridgway-zerograd-pressure-trace-counterexample/v2",
         "fully_weak_low_degree": fully_weak_low_degree_witness(),
+        "local_p4_boundary_triangle": local_p4_boundary_triangle_witness(),
         "strong_outer_weak_inner": square_annulus_witness(),
         "theorem_ceiling": (
-            "proves a pressure-normal consistency defect for the pressure-free "
-            "velocity Nitsche kernel when normal velocity is weak; does not prove "
-            "the full prize theorem or a k=4 annulus lower bound"
+            "proves a pressure-normal consistency defect including an exact "
+            "P3 velocity witness contained in a full P4 weak-boundary space; "
+            "does not prove the full prize convergence theorem, sponsor-specific "
+            "curved-domain error lower bound, publication, or prize entitlement"
         ),
     }
 
