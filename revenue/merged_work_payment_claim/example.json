@@ -1,0 +1,51 @@
+{
+  "schema": "TJL_MERGED_WORK_PAYMENT_CLAIM_V1",
+  "claim_id": "example-merged-work-payment-001",
+  "work": {
+    "repository": "example/project",
+    "pr_number": 42,
+    "merged_commit_sha": "1111111111111111111111111111111111111111",
+    "deliverable_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+    "merged_at": "2026-09-16T18:00:00Z",
+    "source_ref": "github:example/project/pull/42",
+    "source_sha256": "3333333333333333333333333333333333333333333333333333333333333333"
+  },
+  "compensation": {
+    "offer_id": "bounty-42",
+    "source_ref": "program:advertised-bounty-42",
+    "source_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+    "advertised_at": "2026-09-10T12:00:00Z",
+    "expires_at": null,
+    "currency": "USD",
+    "amount_minor": 9000
+  },
+  "acceptance": {
+    "acceptance_id": "merge-42",
+    "source_class": "TARGET_MERGE_EVENT",
+    "source_ref": "github:example/project/pull/42#merged",
+    "source_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+    "accepted_at": "2026-09-16T18:00:00Z",
+    "repository": "example/project",
+    "pr_number": 42,
+    "merged_commit_sha": "1111111111111111111111111111111111111111"
+  },
+  "eligibility": {
+    "status": "ELIGIBLE",
+    "source_ref": "program:rules-snapshot",
+    "source_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+    "observed_at": "2026-09-17T19:00:00Z"
+  },
+  "followups": [],
+  "payment_status": {
+    "status": "UNPAID",
+    "source_ref": "program:payment-status-snapshot",
+    "source_sha256": "7777777777777777777777777777777777777777777777777777777777777777",
+    "observed_at": "2026-09-17T19:30:00Z",
+    "paid_amount_minor": null,
+    "payment_ref": null
+  },
+  "policy": {
+    "max_status_age_hours": 168,
+    "cooldown_hours": 72
+  }
+}

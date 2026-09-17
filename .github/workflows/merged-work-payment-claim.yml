@@ -1,0 +1,28 @@
+name: merged-work-payment-claim
+
+on:
+  push:
+    paths:
+      - 'revenue/merged_work_payment_claim/**'
+      - 'test_merged_work_payment_claim.py'
+      - '.github/workflows/merged-work-payment-claim.yml'
+  pull_request:
+    paths:
+      - 'revenue/merged_work_payment_claim/**'
+      - 'test_merged_work_payment_claim.py'
+      - '.github/workflows/merged-work-payment-claim.yml'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m py_compile revenue/merged_work_payment_claim/*.py test_merged_work_payment_claim.py
+      - run: python -m unittest -v test_merged_work_payment_claim.py
+      - run: python -O -m unittest -v test_merged_work_payment_claim.py
