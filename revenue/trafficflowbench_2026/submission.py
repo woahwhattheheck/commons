@@ -6,7 +6,7 @@ import io
 import math
 from collections.abc import Iterable, Mapping
 
-from .contract import UPSTREAM, authority_ceiling, canonical_json_bytes, validate_authority_claims
+from .contract import UPSTREAM, authority_ceiling, canonical_json_bytes
 
 OUT_COLUMNS = ("submission_id", "task", "speed_kmh", "flow_vph", "queue_pred", "path_flow")
 KEYS = {
@@ -15,6 +15,17 @@ KEYS = {
     "odme": ("panel", "departure_time", "path_id"),
 }
 VALUES = {"state": ("speed_kmh", "flow_vph"), "queue": ("queue_pred",), "odme": ("path_flow",)}
+RECEIPT_FIELDS = frozenset({
+    "schema",
+    "upstreamCommit",
+    "submissionKeySha256",
+    "rows",
+    "gaps",
+    "requireComplete",
+    "csvSha256",
+    "authority",
+    "receiptSha256",
+})
 
 
 def _key(row: Mapping[str, object], task: str) -> tuple[str, ...]:
@@ -28,6 +39,20 @@ def _key(row: Mapping[str, object], task: str) -> tuple[str, ...]:
     except KeyError as exc:
         raise ValueError(f"missing {task} key field: {exc.args[0]}") from exc
     return tuple(values)
+
+
+def _normalize_key_record(row: Mapping[str, object]) -> tuple[dict[str, object], tuple[str, ...]]:
+    task = str(row.get("task", ""))
+    if task not in KEYS:
+        raise ValueError(f"unknown task in submission key: {task!r}")
+    try:
+        sid = int(str(row["submission_id"]))
+    except (KeyError, ValueError) as exc:
+        raise ValueError("submission_id must be an integer") from exc
+    key = _key(row, task)
+    record: dict[str, object] = {"submission_id": sid, "task": task}
+    record.update(dict(zip(KEYS[task], key)))
+    return record, key
 
 
 def _number(value: object, name: str, *, nonnegative: bool = True) -> float:
@@ -60,6 +85,21 @@ def _table(rows: Iterable[Mapping[str, object]], task: str) -> dict[tuple[str, .
     return table
 
 
+def _feed_key_digest(hasher: "hashlib._Hash", record: Mapping[str, object]) -> None:
+    hasher.update(canonical_json_bytes(record))
+    hasher.update(b"\n")
+
+
+def _is_sha256(value: object) -> bool:
+    if not isinstance(value, str) or len(value) != 64:
+        return False
+    try:
+        int(value, 16)
+    except ValueError:
+        return False
+    return True
+
+
 def compile_submission(
     submission_key_rows: Iterable[Mapping[str, object]],
     *,
@@ -68,7 +108,11 @@ def compile_submission(
     odme_rows: Iterable[Mapping[str, object]],
     require_complete: bool = True,
 ) -> tuple[str, dict[str, object]]:
-    """Compile the official six-column merged shape without contacting Kaggle."""
+    """Compile the official six-column shape without contacting Kaggle.
+
+    The receipt binds the exact ordered ``submission_key`` generation. Keep that
+    same key iterable for ``verify_compiled_submission``.
+    """
     tables = {
         "state": _table(state_rows, "state"),
         "queue": _table(queue_rows, "queue"),
@@ -79,19 +123,16 @@ def compile_submission(
     writer.writeheader()
     seen_ids: set[int] = set()
     gaps = {task: 0 for task in tables}
+    key_hasher = hashlib.sha256()
     row_count = 0
     for row in submission_key_rows:
-        task = str(row.get("task", ""))
-        if task not in tables:
-            raise ValueError(f"unknown task in submission key: {task!r}")
-        try:
-            sid = int(str(row["submission_id"]))
-        except (KeyError, ValueError) as exc:
-            raise ValueError("submission_id must be an integer") from exc
+        record, key = _normalize_key_record(row)
+        task = str(record["task"])
+        sid = int(record["submission_id"])
         if sid in seen_ids:
             raise ValueError(f"duplicate submission_id: {sid}")
         seen_ids.add(sid)
-        key = _key(row, task)
+        _feed_key_digest(key_hasher, record)
         values = tables[task].get(key)
         if values is None:
             gaps[task] += 1
@@ -114,8 +155,9 @@ def compile_submission(
         raise ValueError("submission key is empty")
     payload = buffer.getvalue()
     receipt = {
-        "schema": "trafficflowbench-local-submission/v1",
+        "schema": "trafficflowbench-local-submission/v2",
         "upstreamCommit": UPSTREAM["commit"],
+        "submissionKeySha256": key_hasher.hexdigest(),
         "rows": row_count,
         "gaps": gaps,
         "requireComplete": bool(require_complete),
@@ -132,40 +174,60 @@ def _receipt_digest(receipt: Mapping[str, object]) -> str:
     return hashlib.sha256(canonical_json_bytes(body)).hexdigest()
 
 
-def verify_compiled_submission(payload: str, receipt: Mapping[str, object]) -> bool:
-    if not isinstance(receipt, Mapping):
+def verify_compiled_submission(
+    payload: str,
+    receipt: Mapping[str, object],
+    submission_key_rows: Iterable[Mapping[str, object]],
+) -> bool:
+    """Fail-closed local verifier bound to the exact ordered submission key."""
+    if not isinstance(receipt, Mapping) or set(receipt) != RECEIPT_FIELDS:
         return False
-    if receipt.get("schema") != "trafficflowbench-local-submission/v1":
+    if receipt.get("schema") != "trafficflowbench-local-submission/v2":
         return False
     if receipt.get("upstreamCommit") != UPSTREAM["commit"]:
         return False
-    if receipt.get("receiptSha256") != _receipt_digest(receipt):
+    if not _is_sha256(receipt.get("submissionKeySha256")) or not _is_sha256(receipt.get("csvSha256")):
         return False
-    authority = receipt.get("authority")
-    if not isinstance(authority, Mapping):
+    if not _is_sha256(receipt.get("receiptSha256")) or receipt.get("receiptSha256") != _receipt_digest(receipt):
         return False
-    try:
-        validate_authority_claims(authority)
-    except (AttributeError, TypeError, ValueError):
+    if receipt.get("authority") != authority_ceiling():
         return False
-    if hashlib.sha256(payload.encode("utf-8")).hexdigest() != receipt.get("csvSha256"):
+    if type(receipt.get("rows")) is not int or receipt["rows"] <= 0:
+        return False
+    if type(receipt.get("requireComplete")) is not bool:
+        return False
+    gaps = receipt.get("gaps")
+    if not isinstance(gaps, Mapping) or set(gaps) != set(KEYS):
+        return False
+    if any(type(gaps[task]) is not int or gaps[task] < 0 for task in KEYS):
+        return False
+    if receipt["requireComplete"] and any(gaps[task] != 0 for task in KEYS):
+        return False
+    if hashlib.sha256(payload.encode("utf-8")).hexdigest() != receipt["csvSha256"]:
         return False
     try:
         rows = list(csv.DictReader(io.StringIO(payload)))
     except csv.Error:
         return False
-    if not rows or tuple(rows[0].keys()) != OUT_COLUMNS:
+    if not rows or tuple(rows[0].keys()) != OUT_COLUMNS or receipt["rows"] != len(rows):
         return False
+
+    key_hasher = hashlib.sha256()
+    key_count = 0
     try:
-        if int(receipt.get("rows", -1)) != len(rows):
-            return False
-    except (TypeError, ValueError):
+        for key_count, key_row in enumerate(submission_key_rows, start=1):
+            if key_count > len(rows):
+                return False
+            record, _ = _normalize_key_record(key_row)
+            _feed_key_digest(key_hasher, record)
+            out = rows[key_count - 1]
+            if out["submission_id"] != str(record["submission_id"]) or out["task"] != record["task"]:
+                return False
+    except (AttributeError, TypeError, ValueError):
         return False
-    gaps = receipt.get("gaps")
-    if not isinstance(gaps, Mapping) or set(gaps) != set(KEYS):
+    if key_count != len(rows) or key_hasher.hexdigest() != receipt["submissionKeySha256"]:
         return False
-    if receipt.get("requireComplete") is True and any(gaps.get(task) != 0 for task in KEYS):
-        return False
+
     seen: set[int] = set()
     for row in rows:
         if any(row.get(column, "") == "" for column in OUT_COLUMNS):
