@@ -1,0 +1,30 @@
+name: hamilton-06526jw-pursuit
+
+on:
+  pull_request:
+    paths:
+      - 'opportunities/hamilton_065_26_jw/**'
+      - '.github/workflows/hamilton-06526jw-pursuit.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'opportunities/hamilton_065_26_jw/**'
+      - '.github/workflows/hamilton-06526jw-pursuit.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  pursuit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Hostile suite
+        run: python -m unittest opportunities.hamilton_065_26_jw.test_pursuit -v
+      - name: Optimized hostile suite
+        run: python -O -m unittest opportunities.hamilton_065_26_jw.test_pursuit -v
+      - name: Compile
+        run: python -m py_compile opportunities/hamilton_065_26_jw/pursuit.py opportunities/hamilton_065_26_jw/test_pursuit.py
