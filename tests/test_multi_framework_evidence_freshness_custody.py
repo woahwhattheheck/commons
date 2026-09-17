@@ -85,6 +85,54 @@ class FreshnessCustodyRecoveryTests(unittest.TestCase):
             self.assertEqual(packet_path.read_bytes(), b"X" * len(packet_bytes))
             self.assertEqual(markdown_path.read_bytes(), markdown_bytes)
 
+    @unittest.skipIf(os.name == "nt", "open-file rename semantics differ on Windows")
+    def test_substitution_on_directory_fsync_boundary_fails_closed(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            packet_path = root / "packet.json"
+            markdown_path = root / "review.md"
+            captured_original = root / "packet.original"
+            packet_bytes = b'{"packet":"original"}\n'
+            markdown_bytes = b"# review\n"
+            real_fsync = os.fsync
+            dir_fsyncs = 0
+            mutated = False
+
+            def hostile_fsync(fd: int) -> None:
+                nonlocal dir_fsyncs, mutated
+                mode = os.fstat(fd).st_mode
+                if stat.S_ISDIR(mode):
+                    dir_fsyncs += 1
+                    if dir_fsyncs == 1 and not mutated:
+                        mutated = True
+                        os.replace(packet_path, captured_original)
+                        packet_path.write_bytes(b"X" * len(packet_bytes))
+                return real_fsync(fd)
+
+            import stat as stat_mod
+            globals_stat = stat_mod
+            with mock.patch.object(cli_module.os, "fsync", side_effect=hostile_fsync):
+                with self.assertRaisesRegex(GateError, "output_final_replaced"):
+                    _write_new_set(
+                        [(packet_path, packet_bytes), (markdown_path, markdown_bytes)]
+                    )
+
+            self.assertTrue(mutated)
+            self.assertGreaterEqual(dir_fsyncs, 1)
+            self.assertEqual(captured_original.read_bytes(), packet_bytes)
+            self.assertEqual(packet_path.read_bytes(), b"X" * len(packet_bytes))
+            self.assertEqual(markdown_path.read_bytes(), markdown_bytes)
+
+    def test_duplicate_final_targets_rejected_before_create(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            same = root / "same.json"
+            payload_a = b'{"a":1}\n'
+            payload_b = b'{"b":2}\n'
+            with self.assertRaisesRegex(GateError, "output_duplicate_target"):
+                _write_new_set([(same, payload_a), (same, payload_b)])
+            self.assertFalse(same.exists())
+
 
 if __name__ == "__main__":
     unittest.main()
