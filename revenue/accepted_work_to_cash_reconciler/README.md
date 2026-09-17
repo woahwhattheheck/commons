@@ -4,25 +4,32 @@
 `revenue_funnel_control`. The upstream compiler proves an evidence-bound economic
 stage; this module answers the next narrower question:
 
-> Given retained acceptance, route, contact and provider-cash evidence, what is
-> the terminal **owner action** for each item without accidentally authorizing a
-> send, invoice, payment mutation, receivable, accounting entry, or revenue claim?
+> Given retained acceptance, route, contact and cash-related evidence, what is
+> the next **owner action** for each item without accidentally authorizing a send,
+> invoice, payment mutation, receivable, accounting entry, or revenue claim?
 
 It exists for merged/delivered work, paid-work platforms, subcontract/workshare
 promises, accepted proposals, invoices/payment links, sponsor adjudications, and
-provider cash evidence. It is deliberately stricter than "merged = paid".
+retained payment evidence. It is deliberately stricter than either "merged = paid"
+or "a second retained ref/hash = authenticated provider cash."
 
 ## Important boundaries
 
 - `MERGED` alone becomes `MERGED_WORK_ONLY`, not buyer/sponsor acceptance.
 - `ACCEPTED` is externally accepted only when its retained source class is
   `BUYER_MESSAGE` or `SPONSOR_MESSAGE`.
-- A retained `PAYMENT_RECEIVED` event is **not** enough for `DONE_PAID`.
-  Every payment event must also have a separately bound provider confirmation.
-- Provider confirmation must be independently bound: copying the same retained
-  provider ref + digest from the upstream payment event does not create a second
-  confirmation. Confirmation remains retained evidence, not a live bank/Stripe/
-  provider query or authentication.
+- A retained `PAYMENT_RECEIVED` event is **not** provider-authenticated cash.
+- `payment_confirmations` are retained caller-supplied confirmation assertions.
+  They must bind an upstream payment event and obey chronology/bounds, but this
+  generation has no provider adapter or independently authenticated provider-byte
+  boundary. Therefore they can enrich review context but can never produce a
+  terminal paid/done state.
+- Copying the exact upstream payment ref + digest is rejected as duplicate retained
+  evidence. A different ref, a different digest, a route-evidence ref/digest, or a
+  copied retained digest is still unauthenticated and remains `VERIFY_PROVIDER_CASH`.
+- `DONE_PAID` is intentionally unavailable in this generation. Terminal paid truth
+  requires a future separately authenticated, source-bound provider object proving
+  the exact opportunity/payment/amount/provider transaction.
 - New contact is never authorized. If contact is the next step and a source-bound
   route exists, the product emits `MUSE_REQUIRED` with exact recipient + purpose.
   Even a historical `MUSE_CLEAR` event does not become reusable send authority.
@@ -47,12 +54,20 @@ The document contains:
    stage labels.
 2. `routes`: zero or one evidence-bound route per opportunity. Route evidence must
    be a buyer/sponsor message, provider directory, or organizer rules source.
-3. `payment_confirmations`: zero or one independently bound provider confirmation
-   per upstream `PAYMENT_RECEIVED` event, keyed by opportunity id + payment event id.
+3. `payment_confirmations`: zero or one retained, unauthenticated confirmation
+   assertion per upstream `PAYMENT_RECEIVED` event, keyed by opportunity id +
+   payment event id. These assertions are integrity-bound into the packet/receipt
+   but are explicitly not provider authentication.
 
 The compiler emits a content-addressed
 `TJL_ACCEPTED_WORK_TO_CASH_BUNDLE_V1` and the verifier recompiles both the upstream
 funnel semantics and the reconciler semantics from embedded input.
+
+The packet truth boundary is
+`COMPOSED_RETAINED_EVIDENCE_NOT_PROVIDER_AUTHENTICATED`. Summary fields also expose
+`provider_authenticated_payment_evidence_available=false` and
+`terminal_paid_requires_provider_authenticated_evidence=true` so downstream code
+cannot silently reinterpret retained confirmation assertions as provider truth.
 
 ## Terminal actions
 
@@ -69,11 +84,11 @@ Representative terminal actions are:
 - `OWNER_INVOICE_PREPARATION_REVIEW`
 - `ACCEPTANCE_EVIDENCE_REQUIRED`
 - `ROUTE_EVIDENCE_REQUIRED`
-- `DONE_PAID`
 - `DONE_ZERO_VALUE`
 
 `OWNER_INVOICE_PREPARATION_REVIEW` is an internal review state only. The authority
-map still forbids invoice creation or delivery.
+map still forbids invoice creation or delivery. `DONE_ZERO_VALUE` is available only
+for upstream zero-settlement-target work; it is not a payment assertion.
 
 ## CLI
 
@@ -103,6 +118,8 @@ python -O -m unittest -v \
   test_accepted_work_to_cash_reconciler_hostile.py
 ```
 
-The root tests are enrolled by the existing Commons `test_*.py` retained-test path.
-This product intentionally adds no new standalone workflow slot; exact-head CI is
-read from the retained Commons battery before merge.
+The hostile suite retains exact predecessors for arbitrary invented confirmation
+bindings, route-evidence relabeling, copied payment digests, exact self-copy, and
+same-second contact ambiguity. The root tests are enrolled by the existing Commons
+`test_*.py` retained-test path. This product intentionally adds no new standalone
+workflow slot; exact-head CI is read from the retained Commons battery before merge.
