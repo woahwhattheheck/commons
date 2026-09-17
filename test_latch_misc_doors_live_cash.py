@@ -13,9 +13,10 @@ class LatchMiscDoorsLiveCashTest(unittest.TestCase):
                 text = (ROOT / name).read_text(encoding="utf-8")
                 for n in REQUIRED:
                     self.assertIn(n, text, f"{name} missing {n}")
-                if name == "autogtm.html":
-                    # Convert shelf reuses two existing live Payment Links
-                    # (type-keep-sell-autogtm-convert-shelf-20260917-01).
+<<<<<<< HEAD
+                if name in ("autogtm.html", "8walk.html"):
+                    # Convert shelves reuse existing live Payment Links.
+                    # Live cash product-page doors stay relative.
                     live_cash = text.split('id="live-cash"', 1)[1].split("</section>", 1)[0]
                     self.assertNotIn("buy.stripe.com", live_cash)
                 else:
