@@ -205,7 +205,42 @@ def catalog_checkouts(catalog: dict[str, Any]) -> dict[str, str]:
     return out
 
 
-def project_rail(rail: dict[str, Any], checkouts: dict[str, str]) -> dict[str, Any]:
+def catalog_checkout_evidence(catalog: dict[str, Any]) -> dict[str, dict[str, str]]:
+    """Return timestamp-valid catalog checkout evidence keyed by SKU."""
+    active = catalog_checkouts(catalog)
+    out: dict[str, dict[str, str]] = {}
+    for listing in catalog.get("listings") or []:
+        if not isinstance(listing, dict) or not isinstance(listing.get("id"), str):
+            continue
+        sku = listing["id"]
+        checkout = listing.get("checkout") if isinstance(listing.get("checkout"), dict) else {}
+        url = checkout.get("url")
+        if active.get(sku) != url:
+            continue
+        evidence = checkout.get("capability_evidence") if isinstance(checkout.get("capability_evidence"), dict) else {}
+        reference = evidence.get("reference")
+        observed_at = evidence.get("observed_at")
+        if not isinstance(reference, str) or not reference.strip():
+            continue
+        if not isinstance(observed_at, str) or not observed_at:
+            continue
+        try:
+            _timestamp(observed_at, "%s.checkout.capability_evidence.observed_at" % sku)
+        except RegistryError:
+            continue
+        out[sku] = {
+            "url": str(url),
+            "reference": reference,
+            "observed_at": observed_at,
+        }
+    return out
+
+
+def project_rail(
+    rail: dict[str, Any],
+    checkouts: dict[str, str],
+    checkout_evidence: dict[str, dict[str, str]],
+) -> dict[str, Any]:
     eligible = public_storefront_eligible(rail)
     links = rail.get("canonical_links") if isinstance(rail.get("canonical_links"), list) else []
     supported_skus = {
@@ -225,6 +260,12 @@ def project_rail(rail: dict[str, Any], checkouts: dict[str, str]) -> dict[str, A
                     _timestamp(evidence["observed_at"], "%s.evidence.observed_at" % sku)
                 except RegistryError:
                     evidence_ready = False
+            catalog_evidence = checkout_evidence.get(sku) or {}
+            evidence_matches = (
+                catalog_evidence.get("url") == url
+                and catalog_evidence.get("reference") == evidence.get("reference")
+                and catalog_evidence.get("observed_at") == evidence.get("observed_at")
+            )
             if (
                 link.get("link_active") is True
                 and link.get("livemode") is True
@@ -232,6 +273,7 @@ def project_rail(rail: dict[str, Any], checkouts: dict[str, str]) -> dict[str, A
                 and checkouts.get(sku) == url
                 and STRIPE_URL_RE.fullmatch(url)
                 and evidence_ready
+                and evidence_matches
             ):
                 public_links.append(
                     {
@@ -280,7 +322,12 @@ def project(registry: dict[str, Any], catalog: dict[str, Any]) -> dict[str, Any]
     _timestamp(registry.get("observed_at"), "observed_at")
     rails = registry.get("rails") if isinstance(registry.get("rails"), list) else []
     checkouts = catalog_checkouts(catalog)
-    projected = [project_rail(rail, checkouts) for rail in rails if isinstance(rail, dict)]
+    checkout_evidence = catalog_checkout_evidence(catalog)
+    projected = [
+        project_rail(rail, checkouts, checkout_evidence)
+        for rail in rails
+        if isinstance(rail, dict)
+    ]
     public = [row for row in projected if row["public_presentation"] == "EXPOSE"]
     usable = [row for row in projected if row["owner_usable"]]
     active = public[0]["id"] if public else ""
