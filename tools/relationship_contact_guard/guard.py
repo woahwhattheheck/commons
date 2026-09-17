@@ -22,6 +22,9 @@ ARTIFACT_SCHEMA = "relationship-contact-guard-artifact/v3"
 VERIFICATION_SCHEMA = "relationship-contact-guard-verification/v1"
 MAX_JSON_BYTES = 1_048_576
 MAX_EVENTS = 10_000
+MAX_SAFE_INTEGER = 9_007_199_254_740_991
+MAX_JSON_DEPTH = 64
+MAX_JSON_NODES = 100_000
 MIN_RELATIONSHIP_COOLDOWN_SECONDS = 6 * 60 * 60
 MIN_PURSUIT_COOLDOWN_SECONDS = 72 * 60 * 60
 IDENT_RE = re.compile(r"^[a-z0-9][a-z0-9._@:+/\-]{0,254}$")
@@ -63,27 +66,55 @@ def _bad_constant(value: str) -> None:
 
 
 def _plain(value: Any, path: str = "$") -> None:
-    if value is None or type(value) in (str, bool, int):
-        return
-    if type(value) is float:
-        if not math.isfinite(value):
-            raise GuardError(f"{path}: non-finite number")
-        return
-    if type(value) is list:
-        for i, item in enumerate(value):
-            _plain(item, f"{path}[{i}]")
-        return
-    if type(value) is dict:
-        for key, item in value.items():
-            if type(key) is not str:
-                raise GuardError(f"{path}: non-string JSON key")
-            _plain(item, f"{path}.{key}")
-        return
-    raise GuardError(f"{path}: exact plain JSON types required")
+    """Bounded exact-JSON admission for direct Python objects.
+
+    This is iterative on purpose: hostile deep input must become GuardError,
+    not interpreter RecursionError, before canonical serialization.
+    """
+    stack: list[tuple[Any, str, int]] = [(value, path, 0)]
+    nodes = 0
+    while stack:
+        item, item_path, depth = stack.pop()
+        nodes += 1
+        if nodes > MAX_JSON_NODES:
+            raise GuardError(f"{path}: JSON node limit exceeded")
+        if depth > MAX_JSON_DEPTH:
+            raise GuardError(f"{item_path}: JSON depth limit exceeded")
+        if item is None or type(item) in (str, bool):
+            continue
+        if type(item) is int:
+            if item < -MAX_SAFE_INTEGER or item > MAX_SAFE_INTEGER:
+                raise GuardError(f"{item_path}: integer outside supported exact JSON range")
+            continue
+        if type(item) is float:
+            if not math.isfinite(item):
+                raise GuardError(f"{item_path}: non-finite number")
+            continue
+        if type(item) is list:
+            for i in range(len(item) - 1, -1, -1):
+                stack.append((item[i], f"{item_path}[{i}]", depth + 1))
+            continue
+        if type(item) is dict:
+            entries = list(item.items())
+            for key, child in reversed(entries):
+                if type(key) is not str:
+                    raise GuardError(f"{item_path}: non-string JSON key")
+                stack.append((child, f"{item_path}.{key}", depth + 1))
+            continue
+        raise GuardError(f"{item_path}: exact plain JSON types required")
 
 
 def canonical_bytes(value: Any) -> bytes:
-    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=True, allow_nan=False).encode()
+    try:
+        return json.dumps(
+            value,
+            sort_keys=True,
+            separators=(",", ":"),
+            ensure_ascii=True,
+            allow_nan=False,
+        ).encode()
+    except (ValueError, TypeError, RecursionError, OverflowError) as exc:
+        raise GuardError("canonical JSON serialization failed") from exc
 
 
 def digest(value: Any) -> str:
@@ -105,6 +136,8 @@ def _freeze(value: Any, label: str) -> dict[str, Any]:
         raise GuardError(f"{label}: top level must be a plain object")
     _plain(value, label)
     raw = canonical_bytes(value)
+    if len(raw) > MAX_JSON_BYTES:
+        raise GuardError(f"{label}: exceeds {MAX_JSON_BYTES} canonical bytes")
     frozen = _decode_json_bytes(raw, label)
     if type(frozen) is not dict:
         raise GuardError(f"{label}: top level must be a plain object")
@@ -578,6 +611,7 @@ def verify_guard(packet: Mapping[str, Any], artifact: Mapping[str, Any]) -> dict
             "revenue_recognized": False,
         },
     }
+
 
 def _write(path: Path, value: Any) -> None:
     path.write_text(json.dumps(value, sort_keys=True, indent=2, ensure_ascii=True, allow_nan=False) + "\n", encoding="utf-8")
