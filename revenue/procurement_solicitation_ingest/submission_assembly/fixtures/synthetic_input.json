@@ -1,0 +1,123 @@
+{
+  "artifacts": [
+    {
+      "artifact_id": "technical-current",
+      "attestations": [],
+      "format": "txt",
+      "pages": 3,
+      "path": "Technical.txt",
+      "sha256": "30e64d6d0c42e013683fac770c7fcf1ce7408527270e61b0b3fb3cac10f4e919",
+      "slot_id": "technical"
+    },
+    {
+      "artifact_id": "forms-current",
+      "attestations": [
+        {
+          "artifact_sha256": "bf089b6b868688235fae054112aa0bad281b2d72c4e931b00b9dc67d3253ed26",
+          "evidence_sha256": "c48a9c5139ee885ad4ff6658a7ae127f87b8943d861483f63d3eb6c0fd8fd76f",
+          "type": "SIGNATURE_PRESENT"
+        },
+        {
+          "artifact_sha256": "bf089b6b868688235fae054112aa0bad281b2d72c4e931b00b9dc67d3253ed26",
+          "evidence_sha256": "5334095489fdf9f25134afac84720312fc85d92d29844e669109e60e1cc67b56",
+          "type": "CERTIFICATION_PRESENT"
+        }
+      ],
+      "format": "txt",
+      "pages": 1,
+      "path": "Forms.txt",
+      "sha256": "bf089b6b868688235fae054112aa0bad281b2d72c4e931b00b9dc67d3253ed26",
+      "slot_id": "forms"
+    }
+  ],
+  "evaluated_at": "2026-09-17T03:00:00-04:00",
+  "opportunity_id": "synthetic-rfp-001",
+  "schema": "procurement-submission-assembly/input/v1",
+  "source_generations": [
+    {
+      "deadline_at": "2026-10-01T17:00:00-04:00",
+      "observed_at": "2026-09-01T12:00:00-04:00",
+      "sequence": 1,
+      "slots": [
+        {
+          "attachment_class": "TECHNICAL",
+          "certification_requirement": "NONE",
+          "file_name": "Technical-v1.txt",
+          "formats": [
+            "txt"
+          ],
+          "max_bytes": 1024,
+          "max_pages": 5,
+          "order": 1,
+          "portal_field": "technical_upload",
+          "required": true,
+          "section_id": "4.1",
+          "signature_requirement": "NONE",
+          "slot_id": "technical"
+        },
+        {
+          "attachment_class": "MANDATORY_FORM",
+          "certification_requirement": "NONE",
+          "file_name": "Forms.txt",
+          "formats": [
+            "txt"
+          ],
+          "max_bytes": 1024,
+          "max_pages": 2,
+          "order": 2,
+          "portal_field": "forms_upload",
+          "required": false,
+          "section_id": "4.2",
+          "signature_requirement": "NONE",
+          "slot_id": "forms"
+        }
+      ],
+      "source_authority": "BUYER_OFFICIAL_RETAINED_SOURCE",
+      "source_id": "rfp-v1",
+      "source_sha256": "4ecb169fbaab942c6ca0fc315a9a75cfe06ee499058ad8bccfa5e8d6e0f2ce5a"
+    },
+    {
+      "deadline_at": "2026-10-02T17:00:00-04:00",
+      "observed_at": "2026-09-10T09:00:00-04:00",
+      "sequence": 2,
+      "slots": [
+        {
+          "attachment_class": "MANDATORY_FORM",
+          "certification_requirement": "CERTIFICATION_PRESENT_REQUIRED",
+          "file_name": "Forms.txt",
+          "formats": [
+            "txt"
+          ],
+          "max_bytes": 1024,
+          "max_pages": 2,
+          "order": 1,
+          "portal_field": "forms_upload",
+          "required": true,
+          "section_id": "A1.2",
+          "signature_requirement": "SIGNATURE_PRESENT_REQUIRED",
+          "slot_id": "forms"
+        },
+        {
+          "attachment_class": "TECHNICAL",
+          "certification_requirement": "NONE",
+          "file_name": "Technical.txt",
+          "formats": [
+            "txt"
+          ],
+          "max_bytes": 1024,
+          "max_pages": 4,
+          "order": 2,
+          "portal_field": "technical_upload",
+          "required": true,
+          "section_id": "A1.1",
+          "signature_requirement": "NONE",
+          "slot_id": "technical"
+        }
+      ],
+      "source_authority": "BUYER_OFFICIAL_RETAINED_SOURCE",
+      "source_id": "addendum-1",
+      "source_sha256": "0434518aae3ff8803038cd134a78b193b419e8e84baa19f24fcdc0c040a2e185"
+    }
+  ],
+  "truth_boundary": "OWNER_REVIEW_ONLY_NO_SUBMISSION_AUTHORITY"
+}
