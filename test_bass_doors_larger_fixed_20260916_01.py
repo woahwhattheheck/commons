@@ -36,6 +36,8 @@ TARGETS = (
 # already carry those same two live Payment Links on current main.
 # health.html convert shelf copies the nine live Payment Links from
 # payment-capability.html (type-patent-health-convert-shelf-20260917-01).
+# glyphs.html convert shelf reuses the same two live Payment Links
+# (type-embassy-glyphs-convert-shelf-20260917-01).
 VERIFIED_PRODUCT_CHECKOUT = {
     'invoice-exception-pack.html': (
         b'https://buy.stripe.com/14A00i84Jdvz36hdxg43S0l',
@@ -65,6 +67,10 @@ VERIFIED_PRODUCT_CHECKOUT = {
         b'https://buy.stripe.com/7sYdR8ckZgHLbCN50K43S0y',
         b'https://buy.stripe.com/14AfZg1Gl3UZ7mxfFo43S0x',
         b'https://buy.stripe.com/28E9AS70F6378qB2SC43S0w',
+        b'https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07',
+    ),
+    'glyphs.html': (
+        b'https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g',
         b'https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07',
     ),
 }

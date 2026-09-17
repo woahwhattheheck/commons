@@ -81,6 +81,8 @@ CONVERT_SHELF_LIVE_BUYS = {
     "webmcp.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "skills.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "swarm.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "embassy.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "glyphs.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -139,6 +141,8 @@ PUBLIC_HTML = (
     "webmcp.html",
     "skills.html",
     "swarm.html",
+    "embassy.html",
+    "glyphs.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
