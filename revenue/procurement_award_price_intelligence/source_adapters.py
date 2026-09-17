@@ -14,7 +14,7 @@ import os
 import re
 import sys
 from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.parse import unquote, urlsplit
 
 from . import engine as price_engine
 
@@ -135,6 +135,16 @@ def _uri(value, where):
         or "#" in value
     ):
         raise Error(f"{where}: credential-free queryless fragmentless https URI required")
+    decoded = value
+    seen = set()
+    while "%" in decoded and decoded not in seen:
+        seen.add(decoded)
+        next_value = unquote(decoded)
+        if next_value == decoded:
+            break
+        decoded = next_value
+        if "?" in decoded or "#" in decoded:
+            raise Error(f"{where}: encoded query/fragment delimiter forbidden")
     return value
 
 
