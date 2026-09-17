@@ -88,6 +88,53 @@ class UarkCurrentEntryTests(unittest.TestCase):
                 self.assertFalse(packet_path.exists(), "refusal must occur before JSON publication")
                 self.assertFalse(markdown_path.exists(), "historical Markdown must not be persisted")
 
+    def test_facade_function_metadata_cannot_recover_unsafe_legacy_callables(self) -> None:
+        qualifier = load_qualifier()
+        packet = qualifier.compile_historical(
+            json.loads(FIXTURE_PATH.read_text(encoding="utf-8"))
+        )
+
+        for exported in (
+            qualifier.compile_historical,
+            qualifier.verify_packet_historical,
+            qualifier.render_markdown,
+            qualifier.main,
+        ):
+            for default in exported.__defaults__ or ():
+                self.assertFalse(callable(default), "callable must not be retained in function defaults")
+            for cell in exported.__closure__ or ():
+                self.assertFalse(callable(cell.cell_contents), "callable must not be retained in closure cells")
+
+        # The predecessor used compile_historical.__globals__ (or wrapper
+        # __defaults__) to recover the original raw renderer/main.  The core
+        # namespace itself is now hardened before export, so those same routes
+        # can recover only truth-labeled/refusing callables.
+        core_globals = qualifier.compile_historical.__globals__
+        recovered_renderer = core_globals["render_markdown"]
+        recovered_main = core_globals["main"]
+        self.assertIs(recovered_renderer, qualifier.render_markdown)
+        self.assertIs(recovered_main, qualifier.main)
+        recovered = recovered_renderer(packet)
+        self.assertIn("HISTORICAL / INTEGRITY ONLY", recovered)
+        self.assertIn("NOT CURRENT", recovered)
+
+        with tempfile.TemporaryDirectory() as td:
+            packet_path = Path(td) / "escaped.json"
+            markdown_path = Path(td) / "escaped.md"
+            rc = recovered_main(
+                [
+                    "compile",
+                    str(FIXTURE_PATH),
+                    "--json-out",
+                    str(packet_path),
+                    "--markdown-out",
+                    str(markdown_path),
+                ]
+            )
+            self.assertEqual(rc, 2)
+            self.assertFalse(packet_path.exists(), "metadata bypass must not publish JSON first")
+            self.assertFalse(markdown_path.exists(), "metadata bypass must not persist historical Markdown")
+
     def test_direct_isolated_current_markdown_is_truth_labeled(self) -> None:
         with tempfile.TemporaryDirectory() as td:
             packet = Path(td) / "packet.json"
