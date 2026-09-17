@@ -4,23 +4,33 @@ This additive successor keeps the source-locked foundation in `workbench.py` unc
 
 ## Public contract captured 2026-09-17
 
-`public_competition_contract_2026-09-17.json` pins facts rendered on the current public Kaggle competition/data pages. It does not assert that Bryce has joined the competition or accepted its rules.
+`public_competition_contract_2026-09-17.json` pins only facts rendered on the reviewed public competition/data pages. It does not assert that Bryce has joined the competition or accepted its rules.
 
-The retained public contract records the molecule-level MRR@25 objective, top-25 submission shape, 1–16 spectra per hidden-test molecule, notebook/runtime limits, public deadlines, the advertised $50,000 total prize pool, and an all-false provider/account authority ceiling. The prize pool is not expected value, an award, a receivable, or revenue.
+The retained public contract says:
 
-Eligibility, collaboration/team-size details, account-specific rule acceptance, submission quota, and the controlling license/use interpretation for any external dataset remain held for owner/rules review.
+- objective: rank candidate structures for each **molecule** under **MRR@25**;
+- a correct prediction is compared after RDKit tautomer canonicalization and the first InChIKey block (InChIKey14);
+- a row is `molecule_id,smiles`, with up to 25 semicolon-separated SMILES ordered best first, each molecule exactly once;
+- the public data description says hidden test is about 1,500 spectra / 400 molecules and 1–16 spectra per molecule (median 3), with ten listed adducts;
+- entry and team-merger deadline: 2026-12-07 23:59 UTC; final submission deadline: 2026-12-14 23:59 UTC;
+- code submissions are notebook-based with at most 9h CPU or GPU, internet disabled;
+- advertised prize pool: $50,000 total. This is not expected value, an award, a receivable, or revenue.
 
-## Executable data boundary
+Eligibility, collaboration/team-size details, account-specific rule acceptance, and any submission quota not present in the public contract remain held for owner/rules review.
 
-This generation executes **SYNTHETIC fixtures only**. `PUBLIC_OPEN` is intentionally not an executable admission class.
+## Data-admission boundary
 
-That restriction is structural: a caller cannot promote arbitrary gated, private, or restrictively licensed spectra merely by setting `dataset_kind="PUBLIC_OPEN"`. Public/open data can be enabled only by a separately reviewed provenance adapter that binds, at minimum, canonical source identity/URL, exact retained bytes or digest, observed generation/currentness, and an explicit compatible license/use class. Until that adapter exists, the module fails closed on every non-synthetic fixture.
+This recovery deliberately admits **SYNTHETIC fixtures only**. A caller-authored `PUBLIC_OPEN` label is not evidence that bytes are public, reusable, current, or compatibly licensed. The older repository source ledger still records competition data-license / external-data-policy authority as unresolved for this carrier, and this module has no independently reviewed external source artifact whose exact bytes, observation generation, provenance, and license-use class can be verified in code.
 
-Each synthetic molecule carries 1–16 query spectra; candidates can carry multiple reference spectra. The baseline scores every query spectrum against the candidate's best reference spectrum and aggregates evidence over the molecule (`70% mean + 30% max`). This is a deterministic diagnostic baseline, not a leaderboard claim.
+Therefore `PUBLIC_OPEN`, competition-gated, private, and any other non-synthetic fixture kind fail closed. Public/open data can be enabled in a successor only after a code-owned source manifest binds an exact retained artifact digest to independently reviewed provenance, observation generation/currentness, and an explicit license/use class. Adding caller-authored provenance strings to a fixture must not widen admission.
 
-The synthetic fixture contains a predecessor-style adversary: one spectrum for `M-001` is a near-perfect match to distractor `C-D`, while two independent spectra support the true `C-A`. Molecule aggregation recovers `C-A` first.
+## What `multispectrum.py` changes
 
-The module reports reciprocal rank at 25 and mean MRR@25 over molecules, and can render a **preview** CSV with the public `molecule_id,smiles` shape. The preview is synthetic-only and is not a Kaggle submission.
+Each synthetic molecule carries 1–16 query spectra; candidates can carry multiple reference spectra. The baseline scores every query spectrum against the candidate's best matching reference spectrum, then aggregates evidence over the molecule (`70% mean + 30% max`). This is deliberately a deterministic diagnostic baseline, not a leaderboard claim.
+
+The synthetic fixture contains a predecessor-style adversary: one spectrum for `M-001` is a near-perfect match to distractor `C-D`, but two independent spectra support the true `C-A`. A one-spectrum winner would be wrong on that observation; molecule aggregation recovers `C-A` first.
+
+The module reports exact reciprocal rank at 25 and mean MRR@25 over molecules, and it can render a **preview** CSV with the public `molecule_id,smiles` shape. The preview is not a Kaggle submission: it uses synthetic data only and cannot sign in, join, accept rules, download gated data, mutate a team, or submit.
 
 ```bash
 python competitions/enveda_casmi_2026/multispectrum.py baseline \
@@ -32,13 +42,13 @@ python competitions/enveda_casmi_2026/multispectrum.py preview \
   competitions/enveda_casmi_2026/synthetic_multispectrum_fixture.json
 ```
 
-## Research sequence without account mutation
+## Research sequence that remains legal without account mutation
 
-1. Keep experiments synthetic until a reviewed provenance/license adapter exists; public accessibility by itself is not executable evidence.
-2. Replace heuristic mean/max aggregation with learned or calibrated fusion across spectra/adducts, while scoring validation at the molecule/MRR@25 unit.
-3. Separate library-search candidates from structure-generation candidates and preserve provenance throughout.
-4. Optimize top-25 ranking diversity/calibration, not only top-1 spectral similarity.
-5. If Bryce later joins, pin the accepted rules/data generation before gated-data work or a real submission and re-run authority/data-license gates.
+1. Keep this executable harness synthetic-only until a real public/open source artifact is independently pinned with exact-byte provenance and license-use authority.
+2. Replace heuristic mean/max aggregation with learned or calibrated fusion across spectra/adducts, but score validation at the molecule/MRR@25 unit from the start.
+3. Separate library-search candidates from structure-generation candidates; preserve provenance and never treat a public leaderboard observation as ground truth.
+4. Optimize top-25 ranking diversity and calibration, not only top-1 spectral similarity.
+5. If Bryce later joins, pin the accepted rules/data generation before gated-data work or a real submission. Re-run the authority and data-license gate at that point.
 
 ## Authority ceiling
 

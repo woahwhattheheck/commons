@@ -62,6 +62,7 @@ class CasmiMultiSpectrumTests(unittest.TestCase):
         one = self.result()
         two = run_multispectrum_baseline(copy.deepcopy(self.fixture()))
         self.assertEqual(one, two)
+        self.assertEqual(one["dataset_kind"], "SYNTHETIC")
         self.assertEqual(one["scoring_unit"], "MOLECULE")
         self.assertEqual(one["molecule_count"], 2)
         self.assertEqual(one["spectrum_count"], 5)
@@ -92,13 +93,30 @@ class CasmiMultiSpectrumTests(unittest.TestCase):
         with self.assertRaises(MultiSpectrumError):
             run_multispectrum_baseline(raw)
 
-    def test_public_open_label_alone_cannot_self_promote_fixture(self):
+    def test_public_open_label_only_promotion_is_rejected(self):
         raw = self.fixture()
         raw["dataset_kind"] = "PUBLIC_OPEN"
-        with self.assertRaisesRegex(MultiSpectrumError, "provenance and license"):
-            normalize_fixture(raw)
-        with self.assertRaises(MultiSpectrumError):
+        with self.assertRaisesRegex(MultiSpectrumError, "only SYNTHETIC"):
             run_multispectrum_baseline(raw)
+
+    def test_caller_authored_provenance_cannot_widen_public_open_admission(self):
+        raw = self.fixture()
+        raw["dataset_kind"] = "PUBLIC_OPEN"
+        raw["source_manifest"] = {
+            "source_url": "https://example.invalid/public.mgf",
+            "sha256": "0" * 64,
+            "observed_at_utc": "2026-09-17T00:00:00Z",
+            "license": "CC0-1.0",
+            "use_class": "PUBLIC_RESEARCH",
+        }
+        with self.assertRaises(MultiSpectrumError):
+            normalize_fixture(raw)
+
+    def test_private_label_cannot_promote(self):
+        raw = self.fixture()
+        raw["dataset_kind"] = "PRIVATE"
+        with self.assertRaises(MultiSpectrumError):
+            normalize_fixture(raw)
 
     def test_more_than_sixteen_query_spectra_is_rejected(self):
         raw = self.fixture()
@@ -200,6 +218,19 @@ class CasmiMultiSpectrumTests(unittest.TestCase):
         rows = list(csv.DictReader(io.StringIO(preview.stdout)))
         self.assertEqual(len(rows), 2)
         self.assertEqual(list(rows[0]), ["molecule_id", "smiles"])
+
+    def test_cli_public_open_label_fails_closed(self):
+        raw = self.fixture()
+        raw["dataset_kind"] = "PUBLIC_OPEN"
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "public-open.json"
+            path.write_text(json.dumps(raw), encoding="utf-8")
+            proc = subprocess.run(
+                [sys.executable, str(MODULE), "baseline", str(CONTRACT), str(path)],
+                capture_output=True, text=True, timeout=10,
+            )
+        self.assertEqual(proc.returncode, 2)
+        self.assertIn("only SYNTHETIC", proc.stderr)
 
 
 if __name__ == "__main__":

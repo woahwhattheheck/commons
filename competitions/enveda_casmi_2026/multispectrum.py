@@ -1,9 +1,12 @@
 """Molecule-grouped multi-spectrum diagnostic baseline for Enveda CASMI 2026.
 
-Uses only SYNTHETIC fixtures. PUBLIC_OPEN is intentionally held until a
-reviewed adapter evidence-binds source identity, retained bytes, observation
-generation, and license/use class. This module cannot sign in, accept Kaggle
-rules, download gated data, submit, or claim eligibility/prizes/revenue.
+The executable fixture boundary is intentionally SYNTHETIC-only. Public/open,
+competition-gated, private, or otherwise externally sourced spectra require a
+separate code-owned source manifest with independently reviewed exact-byte
+provenance and license/use authority before admission.
+
+This module cannot sign in, accept Kaggle rules, download gated data, submit,
+or claim eligibility, prizes, payment, or revenue.
 """
 from __future__ import annotations
 
@@ -35,8 +38,11 @@ class MultiSpectrumError(ValueError):
 def canonical(value: Any) -> bytes:
     try:
         return json.dumps(
-            value, sort_keys=True, separators=(",", ":"), ensure_ascii=False,
-            allow_nan=False
+            value,
+            sort_keys=True,
+            separators=(",", ":"),
+            ensure_ascii=False,
+            allow_nan=False,
         ).encode("utf-8", "strict")
     except (TypeError, ValueError, UnicodeError, RecursionError, OverflowError) as exc:
         raise MultiSpectrumError(f"cannot canonicalize value: {exc}") from exc
@@ -83,7 +89,9 @@ def read_json(path: Path) -> dict[str, Any]:
         os.close(fd)
     try:
         value = json.loads(
-            raw.decode("utf-8"), object_pairs_hook=_pairs, parse_constant=_bad_constant
+            raw.decode("utf-8"),
+            object_pairs_hook=_pairs,
+            parse_constant=_bad_constant,
         )
     except MultiSpectrumError:
         raise
@@ -140,9 +148,16 @@ def validate_public_contract(raw: Mapping[str, Any]) -> dict[str, Any]:
         raise MultiSpectrumError("notebook/internet contract mismatch")
     if submission.get("cpu_runtime_hours_max") != 9 or submission.get("gpu_runtime_hours_max") != 9:
         raise MultiSpectrumError("runtime contract mismatch")
-    if not isinstance(shape, dict) or shape.get("spectra_per_test_molecule_min") != 1 or shape.get("spectra_per_test_molecule_max") != 16:
+    if (
+        not isinstance(shape, dict)
+        or shape.get("spectra_per_test_molecule_min") != 1
+        or shape.get("spectra_per_test_molecule_max") != 16
+    ):
         raise MultiSpectrumError("test multi-spectrum shape mismatch")
-    if not isinstance(timeline, dict) or timeline.get("final_submission_deadline_utc") != "2026-12-14T23:59:00Z":
+    if (
+        not isinstance(timeline, dict)
+        or timeline.get("final_submission_deadline_utc") != "2026-12-14T23:59:00Z"
+    ):
         raise MultiSpectrumError("final deadline mismatch")
     if not isinstance(authority, dict) or not authority or any(value is not False for value in authority.values()):
         raise MultiSpectrumError("authority ceiling must remain all false")
@@ -177,14 +192,18 @@ def _normalize_spectrum(raw: Any, where: str) -> dict[str, Any]:
 
 def normalize_fixture(raw: Mapping[str, Any]) -> dict[str, Any]:
     expected = {
-        "schema", "dataset_kind", "fragment_tolerance_da", "precursor_tolerance_da",
-        "molecules", "candidates"
+        "schema",
+        "dataset_kind",
+        "fragment_tolerance_da",
+        "precursor_tolerance_da",
+        "molecules",
+        "candidates",
     }
     if type(raw) is not dict or set(raw) != expected or raw.get("schema") != FIXTURE_SCHEMA:
         raise MultiSpectrumError("multispectrum fixture shape/schema mismatch")
     if raw["dataset_kind"] != "SYNTHETIC":
         raise MultiSpectrumError(
-            "only SYNTHETIC fixtures are admitted until provenance and license are evidence-bound"
+            "only SYNTHETIC fixtures are admitted; external bytes require a code-owned exact-byte provenance/license manifest"
         )
     fragment_tol = _number(raw["fragment_tolerance_da"], "fragment_tolerance_da")
     precursor_tol = _number(raw["precursor_tolerance_da"], "precursor_tolerance_da")
@@ -210,11 +229,16 @@ def normalize_fixture(raw: Mapping[str, Any]) -> dict[str, Any]:
         spectra = row["spectra"]
         if type(spectra) is not list or not (1 <= len(spectra) <= 16):
             raise MultiSpectrumError(f"molecules[{i}].spectra: expected 1..16 spectra")
-        molecules.append({
-            "molecule_id": mid,
-            "expected_candidate_id": expected_candidate_id,
-            "spectra": [_normalize_spectrum(s, f"molecules[{i}].spectra[{j}]") for j, s in enumerate(spectra)],
-        })
+        molecules.append(
+            {
+                "molecule_id": mid,
+                "expected_candidate_id": expected_candidate_id,
+                "spectra": [
+                    _normalize_spectrum(s, f"molecules[{i}].spectra[{j}]")
+                    for j, s in enumerate(spectra)
+                ],
+            }
+        )
 
     candidates: list[dict[str, Any]] = []
     candidate_ids: set[str] = set()
@@ -231,16 +255,21 @@ def normalize_fixture(raw: Mapping[str, Any]) -> dict[str, Any]:
         spectra = row["reference_spectra"]
         if type(spectra) is not list or not spectra or len(spectra) > 64:
             raise MultiSpectrumError(f"candidates[{i}].reference_spectra: non-empty <=64 required")
-        candidates.append({
-            "candidate_id": cid,
-            "smiles": smiles,
-            "reference_spectra": [_normalize_spectrum(s, f"candidates[{i}].reference_spectra[{j}]") for j, s in enumerate(spectra)],
-        })
+        candidates.append(
+            {
+                "candidate_id": cid,
+                "smiles": smiles,
+                "reference_spectra": [
+                    _normalize_spectrum(s, f"candidates[{i}].reference_spectra[{j}]")
+                    for j, s in enumerate(spectra)
+                ],
+            }
+        )
     if any(row["expected_candidate_id"] not in candidate_ids for row in molecules):
         raise MultiSpectrumError("every expected_candidate_id must exist in candidate library")
     return {
         "schema": FIXTURE_SCHEMA,
-        "dataset_kind": raw["dataset_kind"],
+        "dataset_kind": "SYNTHETIC",
         "fragment_tolerance_da": fragment_tol,
         "precursor_tolerance_da": precursor_tol,
         "molecules": molecules,
@@ -248,7 +277,11 @@ def normalize_fixture(raw: Mapping[str, Any]) -> dict[str, Any]:
     }
 
 
-def _spectral_cosine(query: list[tuple[float, float]], ref: list[tuple[float, float]], tolerance: float) -> float:
+def _spectral_cosine(
+    query: list[tuple[float, float]],
+    ref: list[tuple[float, float]],
+    tolerance: float,
+) -> float:
     qnorm = math.sqrt(sum(intensity for _, intensity in query))
     rnorm = math.sqrt(sum(intensity for _, intensity in ref))
     if qnorm == 0.0 or rnorm == 0.0:
@@ -291,7 +324,10 @@ def _candidate_for_molecule(
     for query in spectra:
         score = max(
             _spectrum_candidate_score(
-                query, reference, fragment_tolerance_da, precursor_tolerance_da
+                query,
+                reference,
+                fragment_tolerance_da,
+                precursor_tolerance_da,
             )
             for reference in candidate["reference_spectra"]
         )
@@ -312,39 +348,48 @@ def run_multispectrum_baseline(raw_fixture: Mapping[str, Any]) -> dict[str, Any]
     rows: list[dict[str, Any]] = []
     reciprocal_sum = 0.0
     spectrum_count = 0
-    candidate_to_smiles = {row["candidate_id"]: row["smiles"] for row in fixture["candidates"]}
+    candidate_to_smiles = {
+        row["candidate_id"]: row["smiles"] for row in fixture["candidates"]
+    }
     for molecule in fixture["molecules"]:
         spectrum_count += len(molecule["spectra"])
         ranking: list[dict[str, Any]] = []
         for candidate in fixture["candidates"]:
             aggregate, per_spectrum = _candidate_for_molecule(
-                molecule["spectra"], candidate,
-                fixture["fragment_tolerance_da"], fixture["precursor_tolerance_da"]
+                molecule["spectra"],
+                candidate,
+                fixture["fragment_tolerance_da"],
+                fixture["precursor_tolerance_da"],
             )
-            ranking.append({
-                "candidate_id": candidate["candidate_id"],
-                "smiles": candidate["smiles"],
-                "aggregate_score": round(aggregate, 12),
-                "per_spectrum_scores": [round(value, 12) for value in per_spectrum],
-            })
+            ranking.append(
+                {
+                    "candidate_id": candidate["candidate_id"],
+                    "smiles": candidate["smiles"],
+                    "aggregate_score": round(aggregate, 12),
+                    "per_spectrum_scores": [round(value, 12) for value in per_spectrum],
+                }
+            )
         ranking.sort(key=lambda row: (-row["aggregate_score"], row["candidate_id"]))
         rank = next(
-            i + 1 for i, row in enumerate(ranking)
+            i + 1
+            for i, row in enumerate(ranking)
             if row["candidate_id"] == molecule["expected_candidate_id"]
         )
         reciprocal = reciprocal_rank_at_25(rank)
         reciprocal_sum += reciprocal
-        rows.append({
-            "molecule_id": molecule["molecule_id"],
-            "spectrum_count": len(molecule["spectra"]),
-            "expected_candidate_id": molecule["expected_candidate_id"],
-            "expected_rank": rank,
-            "reciprocal_rank_at_25": round(reciprocal, 12),
-            "ranking": ranking,
-        })
+        rows.append(
+            {
+                "molecule_id": molecule["molecule_id"],
+                "spectrum_count": len(molecule["spectra"]),
+                "expected_candidate_id": molecule["expected_candidate_id"],
+                "expected_rank": rank,
+                "reciprocal_rank_at_25": round(reciprocal, 12),
+                "ranking": ranking,
+            }
+        )
     result_core = {
         "schema": RESULT_SCHEMA,
-        "dataset_kind": fixture["dataset_kind"],
+        "dataset_kind": "SYNTHETIC",
         "metric_kind": "LOCAL_MRR_AT_25_MATCHES_PUBLIC_METRIC_FORMULA_NOT_KAGGLE_SCORE",
         "scoring_unit": "MOLECULE",
         "molecule_count": len(rows),
@@ -401,7 +446,11 @@ def submission_preview_rows(result: Mapping[str, Any]) -> list[dict[str, str]]:
 def render_submission_preview_csv(result: Mapping[str, Any]) -> str:
     rows = submission_preview_rows(result)
     stream = io.StringIO(newline="")
-    writer = csv.DictWriter(stream, fieldnames=["molecule_id", "smiles"], lineterminator="\n")
+    writer = csv.DictWriter(
+        stream,
+        fieldnames=["molecule_id", "smiles"],
+        lineterminator="\n",
+    )
     writer.writeheader()
     writer.writerows(rows)
     return stream.getvalue()
