@@ -5,14 +5,17 @@ import json
 from pathlib import Path
 from typing import Any
 
-# Public compatibility constants. Runtime semantics below capture an independent
-# immutable generation at import time and do not late-resolve these globals.
+# Public compatibility constants. Runtime semantics below capture one cooperative
+# in-process generation and do not late-resolve these globals. CPython closure cells
+# remain reflectively writable by hostile same-process code; the emitted receipt makes
+# that unsupported boundary explicit instead of claiming machine-strong immutability.
 SCHEMA = "invest_appalachia_framer_lms.partner_workshare.v1"
 OPPORTUNITY_ID = "INVEST-APPALACHIA-FRAMER-LMS-20260916"
 QUALIFICATION_GENERATION_SHA256 = "13018ee1b2fe14b3b8171acc734e0ea57a52006a5e96f095600e88bcbca63a02"
 WORKSHARE_SHA256 = "9825e29c23028dffb23158f7b1db8fb751ba45c0ecedad681764d77bc5ac3b4d"
 PRICE_USD = 24000
 BUYER_CAP_USD = 60000
+PUBLIC_API_BOUNDARY = "COOPERATIVE_IN_PROCESS_ONLY_NOT_HOSTILE_RUNTIME"
 
 
 class WorkshareError(ValueError):
@@ -20,7 +23,7 @@ class WorkshareError(ValueError):
 
 
 def _make_semantic_generation():
-    """Capture the reviewed commercial generation against post-import rebinding."""
+    """Capture the reviewed commercial generation for cooperative in-process use."""
 
     schema = "invest_appalachia_framer_lms.partner_workshare.v1"
     opportunity_id = "INVEST-APPALACHIA-FRAMER-LMS-20260916"
@@ -28,6 +31,15 @@ def _make_semantic_generation():
     workshare_sha256 = "9825e29c23028dffb23158f7b1db8fb751ba45c0ecedad681764d77bc5ac3b4d"
     price_usd = 24000
     buyer_cap_usd = 60000
+    integrity_boundary_items = (
+        ("schema", "invest_appalachia_framer_lms.integrity_boundary.v1"),
+        ("public_api_boundary", "COOPERATIVE_IN_PROCESS_ONLY_NOT_HOSTILE_RUNTIME"),
+        ("resists_module_global_rebinding", True),
+        ("resists_cpython_closure_cell_mutation", False),
+        ("hostile_same_process_python_supported", False),
+        ("machine_strong_same_process_integrity_claimed", False),
+        ("externally_isolated_source_verified_runner_provided", False),
+    )
 
     error = WorkshareError
     json_dumps = json.dumps
@@ -90,6 +102,9 @@ def _make_semantic_generation():
             raise
         except (os_error, unicode_error, json_decode_error, value_error, recursion_error, overflow_error) as exc:
             raise error(f"invalid JSON: {exc}") from exc
+
+    def boundary_projection() -> dict[str, Any]:
+        return dict_type(integrity_boundary_items)
 
     def validate_qualification(current_packet: Any) -> None:
         if dgst(current_packet) != qualification_sha256:
@@ -171,6 +186,7 @@ def _make_semantic_generation():
             "opportunity_id": opportunity_id,
             "qualification_generation_sha256": qualification_sha256,
             "workshare_sha256": workshare_sha256,
+            "integrity_boundary": boundary_projection(),
             "prime_posture": "NO_CHANGE_PRIME_HOLD",
             "workshare_posture": "READY_FOR_INTERNAL_QUALIFIED_PRIME_SELECTION",
             "specialist_price_usd": price_usd,
