@@ -25,7 +25,13 @@ class ProposalValidityGateRetainedTests(unittest.TestCase):
         args = [sys.executable]
         if optimized:
             args.append("-O")
-        args += ["-m", "unittest", "-v", "revenue.proposal_validity_gate.test_gate"]
+        args += [
+            "-m",
+            "unittest",
+            "-v",
+            "revenue.proposal_validity_gate.test_gate",
+            "revenue.proposal_validity_gate.test_boundary",
+        ]
         return subprocess.run(
             args,
             cwd=root,
@@ -51,8 +57,10 @@ class ProposalValidityGateRetainedTests(unittest.TestCase):
         root = Path(__file__).resolve().parent
         for relative in (
             "revenue/proposal_validity_gate/engine.py",
+            "revenue/proposal_validity_gate/boundary.py",
             "revenue/proposal_validity_gate/cli.py",
             "revenue/proposal_validity_gate/test_gate.py",
+            "revenue/proposal_validity_gate/test_boundary.py",
         ):
             source = (root / relative).read_text(encoding="utf-8")
             with self.subTest(path=relative, optimize=0):
