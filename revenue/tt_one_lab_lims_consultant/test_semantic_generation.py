@@ -202,6 +202,31 @@ class SemanticGenerationTest(unittest.TestCase):
         finally:
             deadline_cell.cell_contents = original
 
+    def test_closure_cell_authority_can_widen_and_self_verify_only_inside_unsupported_hostile_runtime(self):
+        compile_impl = _freevar(carrier.compile_packet, "compile_impl")
+        authority_projection = _freevar(compile_impl, "authority_projection")
+        authority_cell = _cell(authority_projection, "authority_items")
+        original = authority_cell.cell_contents
+        forged = tuple(
+            (name, True if name in {"submission_authorized", "revenue_claimed"} else value)
+            for name, value in original
+        )
+        owner = complete_input()
+        try:
+            authority_cell.cell_contents = forged
+            packet = carrier.compile_packet(owner)
+            self.assertTrue(packet["authority"]["submission_authorized"])
+            self.assertTrue(packet["authority"]["revenue_claimed"])
+            self.assertTrue(carrier.verify_packet(packet, owner))
+            self.assertFalse(BOUNDARY["resists_cpython_closure_cell_mutation"])
+            self.assertFalse(BOUNDARY["hostile_same_process_python_supported"])
+            self.assertFalse(BOUNDARY["machine_strong_same_process_integrity_claimed"])
+        finally:
+            authority_cell.cell_contents = original
+        restored = carrier.compile_packet(owner)
+        self.assertFalse(restored["authority"]["submission_authorized"])
+        self.assertFalse(restored["authority"]["revenue_claimed"])
+
     def test_public_compiler_symbol_rebinding_still_does_not_change_verifier(self):
         owner = complete_input()
         baseline = carrier.compile_packet(owner)
