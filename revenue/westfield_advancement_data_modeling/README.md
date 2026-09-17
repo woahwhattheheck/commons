@@ -4,17 +4,31 @@
 
 This carrier turns Commons issue #14030 into a concrete subcontract workshare that a qualified advancement prime can evaluate quickly. It does **not** claim that KHow Consulting is pursuing the RFP, that Token Junkie Labs is the prime, or that Westfield has approved any supplier.
 
-## Current authority
+## Pinned public context, not live-provider authority
 
-Westfield State University's official open-bids page lists **RFP #2027-002 — Advancement Data Modeling**, posted September 4, 2026, with response/opening on **September 25, 2026 via Bonfire/Euna**:
+The carrier pins these two public source identities:
 
-- https://www.westfield.ma.edu/offices/open-general-bids
+- Westfield State University's open-bids page: `https://www.westfield.ma.edu/offices/open-general-bids`
+- KHow Consulting's public profile: `https://khowconsulting.com/`
 
-KHow Consulting's current public site describes advancement strategy, analytics, campaign readiness and data-informed decision work:
+The compiler labels this boundary `PINNED_PUBLIC_IDENTITIES_NOT_LIVE_PROVIDER_AUTHENTICATED`. It does not fetch those pages, prove they are still live, prove KHow is bidding, or convert public descriptions into solicitation-specific qualification. Any external use still needs a fresh provider/source check and the separate Muse single-writer gate.
 
-- https://khowconsulting.com/
+The pinned opportunity identity is exactly:
 
-That public profile supports *fit exploration only*. It is not evidence that KHow is bidding, has accepted TJLabs, or owns any particular reference for this solicitation.
+- buyer: `Westfield State University`
+- solicitation: `RFP #2027-002 Advancement Data Modeling`
+- deadline: `2026-09-25`
+- route: `Bonfire/Euna`
+
+Those fields are code-owned in this pre-award carrier; a caller cannot transplant another buyer, solicitation, deadline, route, or source and rehash it into a valid receipt.
+
+## Commercial truth boundary
+
+This package is pre-award only. `commercial.state` is pinned to `PROPOSED_NOT_ACCEPTED`. Stronger states such as accepted, funded, delivered, paid, or revenue-recognized are not representable here.
+
+Pricing is also closed rather than prose-screened: the only accepted value is the sentinel `UNPRICED_SCOPE_NEGOTIATION_REQUIRED`. Actual commercial terms belong in a separately evidenced contract/payment layer, not this readiness carrier.
+
+All buyer/prime/reference/data/award/payment/revenue authority flags remain false.
 
 ## Paid workshare
 
@@ -25,18 +39,21 @@ Deliverables:
 1. **Source-to-feature provenance ledger** — each candidate predictor bound to its source field, transformation, as-of date and allowed use.
 2. **Entity + household leakage controls** — constituent dedupe and household grouping before train/validation partitioning so the same donor unit cannot leak across folds.
 3. **Temporal validation contract** — features must be knowable at the historical scoring cutoff; gift/bequest outcomes must occur strictly after that cutoff.
-4. **Calibration + ranked-lift acceptance** — Brier/reliability plus lift-at-k (or precision/recall-at-k by agreement), not accuracy theater on a highly imbalanced donor outcome.
+4. **Calibration + ranked-lift acceptance** — Brier/reliability plus lift-at-k (or precision/recall-at-k by agreement), not accuracy theater on an imbalanced outcome.
 5. **Reproducible handoff** — split manifest, metric definitions, model/config digest, exception ledger and a content-addressed acceptance receipt.
 
 Excluded unless separately contracted: buyer portal submission, campaign-strategy leadership, production-data custody, prime responsibility, reference ownership, buyer commitments, or independent certification.
 
-## Why this is valuable
+## Closed acceptance semantics
 
-The highest-risk failure modes in advancement modeling are often not “the algorithm.” They are identity duplication, household leakage, future information entering historical features, unstable ranking metrics, and an opaque handoff that cannot be reproduced. This scope makes those failure modes mechanically reviewable while leaving advancement strategy and client interpretation with the prime.
+The manifest uses closed policy IDs instead of free-form promises:
 
-## Executable acceptance contract
+- `CONSTITUENT_HOUSEHOLD_GROUP_BEFORE_SPLIT_V1`
+- `FEATURES_KNOWABLE_AT_CUTOFF_OUTCOMES_STRICTLY_AFTER_V1`
 
-`acceptance.py` validates a metadata-only manifest and compiles a deterministic acceptance plan plus tamper-detecting receipt. It intentionally refuses pre-award authority promotion and binding price claims.
+The required-check set is exact, temporal holdout is mandatory, source roles/URLs are fixed, and receipt verification recompiles the full normalized plan. Notes remain descriptive only and cannot create live-provider authority.
+
+## Executable contract
 
 ```bash
 python revenue/westfield_advancement_data_modeling/acceptance.py \
@@ -44,6 +61,10 @@ python revenue/westfield_advancement_data_modeling/acceptance.py \
 
 python -m unittest discover -s revenue/westfield_advancement_data_modeling/tests -v
 python -O -m unittest discover -s revenue/westfield_advancement_data_modeling/tests -v
+python -m unittest -v test_westfield_advancement_data_modeling.py
+python -O -m unittest -v test_westfield_advancement_data_modeling.py
 ```
+
+The root bridge exists so the existing path-filtered `tests.yml` battery retains this product in both ordinary and optimized Python without adding a workflow slot.
 
 No donor PII or production data belongs in this public carrier.
