@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Hermetic: agent-ops.html buy-path uses the existing Operator/Foundry Payment Links."""
+"""Hermetic: agent-ops.html buy-path uses existing rails without promoting stale chargeability."""
 from __future__ import annotations
 
 import json
@@ -13,6 +13,7 @@ import test_checkout_landing_integrity as cli
 
 ROOT = Path(__file__).resolve().parent
 PAGE = ROOT / "agent-ops.html"
+SCRIPT = ROOT / "agent-ops.js"
 CHECKOUT = ROOT / "agent-ops-checkout.json"
 SHELF = ROOT / "revenue/checkout_capability/offer-shelf-links-20260910.json"
 CLAIM = "goat-agent-ops-checkout-wire-20260917-01"
@@ -41,19 +42,23 @@ CTA_IDS = ("hero-pilot-cta", "operator-cta", "foundry-cta")
 
 
 class GoatAgentOpsCheckoutWire(unittest.TestCase):
-    def test_door_carries_the_verified_payment_links(self) -> None:
+    def test_door_carries_verified_payment_links_without_static_currentness_claim(self) -> None:
         html = PAGE.read_text(encoding="utf-8")
+        script = SCRIPT.read_text(encoding="utf-8")
         self.assertIn(OPERATOR, html)
         self.assertIn(FOUNDRY, html)
         self.assertIn("Buy Operator — $49/mo", html)
         self.assertIn("Buy Foundry — $2,500", html)
         self.assertIn("Buy Foundry pilot — $2,500", html)
-        self.assertIn("Chargeable Stripe checkout", html)
+        self.assertIn("checked-in Stripe route", html)
+        self.assertIn("live chargeability", html)
         self.assertNotIn("reading checkout state", html)
+        self.assertNotIn("2 provider-verified checkout routes are active", html)
         self.assertIn("<noscript>", html)
         noscript = html.split("<noscript>", 1)[1].split("</noscript>", 1)[0]
         self.assertIn(OPERATOR, noscript)
         self.assertIn(FOUNDRY, noscript)
+        self.assertIn("current provider chargeability cannot be confirmed", noscript)
         self.assertNotIn('class="js-checkout-slot"', html)
         self.assertNotIn("pay.js", html)
         for cta_id in CTA_IDS:
@@ -63,6 +68,10 @@ class GoatAgentOpsCheckoutWire(unittest.TestCase):
         self.assertIn("mailto:tokenjunkielabs@gmail.com?subject=Commons%20Agent%20Ops%20pilot", html)
         self.assertIn('id="live-cash"', html)
         self.assertIn("./agent-rescue.html", html)
+        self.assertIn("checkoutPresentation", script)
+        self.assertNotIn("STATIC_CHARGEABLE", script)
+        self.assertIn("primary CTAs were demoted to contact-only", script)
+        self.assertIn("current chargeability is unconfirmed", script)
         hrefs = [
             unescape(value)
             for value in re.findall(r'href="(https://buy\.stripe\.com/[^"]+)"', html)
