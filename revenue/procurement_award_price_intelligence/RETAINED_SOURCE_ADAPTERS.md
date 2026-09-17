@@ -1,9 +1,9 @@
-# Procurement award source adapters
+# Retained procurement award source adapters
 
 Operation lineage: `PROCUREMENT-AWARD-SOURCE-INGEST-ADAPTERS-20260916-ZSOL`  
 Path-custody recovery: `PROCUREMENT-AWARD-SOURCE-PATH-CUSTODY-15137-ZCH0118-20260917`
 
-This layer converts retained, explicitly structured public-procurement evidence into the input consumed by `engine.py`. It is an evidence parser and deterministic transformation boundary, not a provider authenticator.
+This layer converts retained, explicitly structured public-procurement evidence into the input consumed by `engine.py`. It is an evidence parser and deterministic transformation boundary, not a provider authenticator. It is separate from the first-party live-source adapter documented in `SOURCE_ADAPTERS.md`.
 
 ## Source-locator custody
 
@@ -16,7 +16,7 @@ Admission is mechanical:
 - no userinfo, query, or fragment;
 - the same checks are repeated after each recursive percent-decode generation so encoded/double-encoded userinfo/query/fragment forms fail closed.
 
-After admission, the caller path is **not exported** to the price engine. Engine-facing `sources[*].uri` is reduced to a canonical non-secret origin (`https://<canonical-host>`). The exact caller locator is bound only by SHA-256 in adapter-only custody evidence:
+After admission, the caller path is **not exported** to the price engine. Engine-facing `sources[*].uri` is reduced to a canonical origin (`https://<canonical-host>`). The exact caller locator is bound only by SHA-256 in adapter-only custody evidence:
 
 - `adapter_packet.json -> source_audit[*].source_locator_sha256`
 - `adapter_receipt.json -> source_locator_sha256s[*]`
@@ -79,4 +79,4 @@ python -m revenue.procurement_award_price_intelligence.source_adapters \
 
 `test_source_adapters_redclosure.py` pins the historical STOP-MERGE predecessors: literal/encoded/double-encoded query, fragment and userinfo rejection; arbitrary literal/encoded/double-encoded caller paths reduced to origin-only output with exact-locator digest custody; raw/payload anti-remint; claim-level corroboration/conflict; distinct-claim positives; and legitimate multi-row bid tabulations.
 
-The retained root `test_procurement_award_adapter_guard.py` executes engine, current-main live-adapter custody, source-adapter, and source-redclosure suites under both normal Python and `python -O`. `ci/workflow-recipes/procurement-award-price-intelligence.yml` remains a non-active retained functional-test recipe; this recovery adds no new `.github/workflows` surface.
+The retained root `test_procurement_award_adapter_guard.py` executes engine, current-main live-adapter custody, retained-source adapter, and retained-source red-closure suites under both normal Python and `python -O`. Because that root guard changes in the recovery carrier, the repository's canonical `tests` workflow admits the battery on pull requests and main. The archived `ci/workflow-recipes/procurement-award-price-intelligence.yml` remains byte-identical to current main; this recovery does not mutate archived workflow inventory or add active workflow surface.

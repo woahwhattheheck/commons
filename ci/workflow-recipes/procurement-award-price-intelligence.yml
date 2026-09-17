@@ -17,6 +17,6 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: '3.13'}
-      - run: python -m py_compile revenue/procurement_award_price_intelligence/engine.py revenue/procurement_award_price_intelligence/test_engine.py revenue/procurement_award_price_intelligence/adapters.py revenue/procurement_award_price_intelligence/test_adapters.py revenue/procurement_award_price_intelligence/source_adapters.py revenue/procurement_award_price_intelligence/test_source_adapters.py revenue/procurement_award_price_intelligence/test_source_adapters_redclosure.py
-      - run: python -m unittest -v revenue.procurement_award_price_intelligence.test_engine revenue.procurement_award_price_intelligence.test_adapters revenue.procurement_award_price_intelligence.test_source_adapters revenue.procurement_award_price_intelligence.test_source_adapters_redclosure
-      - run: python -O -m unittest -v revenue.procurement_award_price_intelligence.test_engine revenue.procurement_award_price_intelligence.test_adapters revenue.procurement_award_price_intelligence.test_source_adapters revenue.procurement_award_price_intelligence.test_source_adapters_redclosure
+      - run: python -m py_compile revenue/procurement_award_price_intelligence/engine.py revenue/procurement_award_price_intelligence/test_engine.py revenue/procurement_award_price_intelligence/adapters.py revenue/procurement_award_price_intelligence/test_adapters.py
+      - run: python -m unittest -v revenue.procurement_award_price_intelligence.test_engine revenue.procurement_award_price_intelligence.test_adapters
+      - run: python -O -m unittest -v revenue.procurement_award_price_intelligence.test_engine revenue.procurement_award_price_intelligence.test_adapters
