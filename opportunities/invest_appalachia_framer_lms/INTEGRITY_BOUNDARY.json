@@ -1,0 +1,9 @@
+{
+  "schema": "invest_appalachia_framer_lms.integrity_boundary.v1",
+  "public_api_boundary": "COOPERATIVE_IN_PROCESS_ONLY_NOT_HOSTILE_RUNTIME",
+  "resists_module_global_rebinding": true,
+  "resists_cpython_closure_cell_mutation": false,
+  "hostile_same_process_python_supported": false,
+  "machine_strong_same_process_integrity_claimed": false,
+  "externally_isolated_source_verified_runner_provided": false
+}
