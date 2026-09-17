@@ -8,9 +8,14 @@ new private API-generation seam and adds exact predecessors for the two later
 STOPs: public-clock rebinding and irrelevant/pre-issue old-source history.
 """
 
-import copy
 import datetime as dt
-from unittest import mock
+from pathlib import Path
+import sys
+
+# Work under direct execution, unittest discovery, and dotted module invocation.
+TEST_DIR = Path(__file__).resolve().parent
+if str(TEST_DIR) not in sys.path:
+    sys.path.insert(0, str(TEST_DIR))
 
 import _proposal_validity_predecessor_suite as _pre
 
@@ -18,7 +23,6 @@ import _proposal_validity_predecessor_suite as _pre
 gate = _pre.gate
 UTC = _pre.UTC
 NOW = _pre.NOW
-DIGEST = _pre.DIGEST
 DIGEST2 = _pre.DIGEST2
 issued_v2 = _pre.issued_v2
 current_v2 = _pre.current_v2
@@ -80,7 +84,10 @@ class GateTests(_pre.GateTests):
     def test_direct_utc_now_rebinding_cannot_select_public_evaluation_history(self):
         a = issued_v2()
         a["issued_on"] = "2026-01-01T00:00:00Z"
-        a["validity"] = {"mode": "VALID_UNTIL", "valid_until": "2099-01-01T00:00:00Z"}
+        a["validity"] = {
+            "mode": "VALID_UNTIL",
+            "valid_until": "2099-01-01T00:00:00Z",
+        }
         a["buyer_deadline"] = None
         b = current_v2()
         b["source_observed_at"] = "2026-01-02T00:00:00Z"
@@ -97,7 +104,10 @@ class GateTests(_pre.GateTests):
     def test_direct_utc_now_rebinding_cannot_freeze_public_verify(self):
         a = issued_v2()
         a["issued_on"] = "2026-01-01T00:00:00Z"
-        a["validity"] = {"mode": "VALID_UNTIL", "valid_until": "2099-01-01T00:00:00Z"}
+        a["validity"] = {
+            "mode": "VALID_UNTIL",
+            "valid_until": "2099-01-01T00:00:00Z",
+        }
         a["buyer_deadline"] = None
         b = current_v2()
         b["source_observed_at"] = "2026-01-02T00:00:00Z"
