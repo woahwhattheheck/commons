@@ -87,6 +87,38 @@ class InprsFileBackedAcceptanceV2Test(unittest.TestCase):
         self.assertFalse(receipt["accepted"])
         self.assertIn("MANIFEST_PIN_MISMATCH", self.codes(receipt))
 
+    def test_bundle_generation_is_snapshotted_before_legacy_delegation(self) -> None:
+        tmp, root, manifest_path, bundle_path, pin = self.make()
+        self.addCleanup(tmp.cleanup)
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        contract_manifest = next(
+            row for row in manifest["contracts"] if len(row["version_roots"]) > 1
+        )
+        rel = contract_manifest["version_roots"][0]["path"]
+        rewritten = b"SECOND BUNDLE GENERATION HISTORICAL VERSION\n"
+        original_validate = accept._validate_version_roots
+
+        def mutate_after_root_check(manifest_obj, bundle_obj, root_obj):
+            result = original_validate(manifest_obj, bundle_obj, root_obj)
+            later = json.loads(bundle_path.read_text(encoding="utf-8"))
+            contract = next(
+                row
+                for row in later["contracts"]
+                if row["legacy_id"] == contract_manifest["legacy_id"]
+            )
+            (root / rel).write_bytes(rewritten)
+            contract["version_history"][0]["sha256"] = accept._sha(rewritten)
+            bundle_path.write_bytes(
+                json.dumps(later, sort_keys=True, separators=(",", ":")).encode()
+            )
+            return result
+
+        accept._validate_version_roots = mutate_after_root_check
+        self.addCleanup(setattr, accept, "_validate_version_roots", original_validate)
+        receipt = accept.verify_handoff(manifest_path, pin, bundle_path, root)
+        self.assertFalse(receipt["accepted"], receipt)
+        self.assertIn("VERSION_FILE_HASH_MISMATCH", self.codes(receipt))
+
     def test_bundle_duplicate_key_fails_before_legacy_projection(self) -> None:
         tmp, root, manifest_path, bundle_path, pin = self.make()
         self.addCleanup(tmp.cleanup)
