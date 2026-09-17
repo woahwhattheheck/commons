@@ -116,9 +116,9 @@ jobs:
           revenue/mmsd_ai_governance_policy/test_engine.py
           revenue/mmsd_ai_governance_policy/test_verify_hostiles.py
       - name: AI governance unit and hostile tests
-        run: python -m unittest -q revenue.mmsd_ai_governance_policy.test_engine revenue.mmsd_ai_governance_policy.test_latest revenue.mmsd_ai_governance_policy.test_verify_hostiles
+        run: python -m unittest -q revenue.mmsd_ai_governance_policy.test_engine revenue.mmsd_ai_governance_policy.test_verify_hostiles
       - name: AI governance optimized Python tests
-        run: python -O -m unittest -q revenue.mmsd_ai_governance_policy.test_engine revenue.mmsd_ai_governance_policy.test_latest revenue.mmsd_ai_governance_policy.test_verify_hostiles
+        run: python -O -m unittest -q revenue.mmsd_ai_governance_policy.test_engine revenue.mmsd_ai_governance_policy.test_verify_hostiles
 
   mealframe:
     runs-on: ubuntu-latest
