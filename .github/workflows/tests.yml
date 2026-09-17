@@ -319,3 +319,41 @@ jobs:
           path: ${{ runner.temp }}/commons-battery-report.json
           if-no-files-found: error
           retention-days: 14
+
+  runtime-provenance:
+    name: runtime-provenance
+    if: ${{ github.event_name != 'pull_request' || github.base_ref == 'main' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run runtime-provenance tests
+        run: python -m unittest discover -s tools/runtime_provenance -p 'test_*.py' -v
+
+      - name: Run optimized runtime-provenance tests
+        run: python -O -m unittest discover -s tools/runtime_provenance -p 'test_*.py' -v
+
+      - name: Verify canonical registry
+        run: python -m tools.runtime_provenance.runtime_registry verify runtime/agent_runtime_registry.json
+
+      - name: Emit canonical registry digest
+        run: python -m tools.runtime_provenance.runtime_registry digest runtime/agent_runtime_registry.json
+
+  non-main-base:
+    if: ${{ github.event_name == 'pull_request' && github.base_ref != 'main' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: engine battery stays on main
+        run: |
+          echo "Commons engine battery is scoped to main."
+          echo "This PR targets ${{ github.base_ref }}; dedicated path-scoped gates bind this head."
+          echo "Live-pin KEEP/readback tests are not titan composition proof."
