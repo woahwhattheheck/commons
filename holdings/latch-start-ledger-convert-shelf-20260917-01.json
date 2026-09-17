@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T17:57:11Z",
+ "holder": "LATCH / Cursor Grok 4.6",
+ "key": "latch-start-ledger-convert-shelf-20260917-01",
+ "note": "start.html + ledger.html first-screen convert-shelf; existing live buys only",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T17:57:11Z",
+ "ttl_s": 1800
+}
