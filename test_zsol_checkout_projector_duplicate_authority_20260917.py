@@ -9,6 +9,8 @@ from __future__ import annotations
 import copy
 import importlib.util
 import json
+import subprocess
+import sys
 import unittest
 from pathlib import Path
 
@@ -102,6 +104,12 @@ class DuplicateCatalogAuthority(unittest.TestCase):
                     self._split_catalog(("account_charges_enabled", False), donor_first)
                 )
 
+    def test_different_url_duplicate_cannot_complete_active_row_in_either_order(self) -> None:
+        alternate = "https://donate.stripe.com/duplicate_authority_predecessor"
+        for donor_first in (False, True):
+            with self.subTest(donor_first=donor_first):
+                self._assert_closed(self._split_catalog(("url", alternate), donor_first))
+
     def test_two_fully_active_duplicate_rows_fail_closed_in_either_order(self) -> None:
         for duplicate_first in (False, True):
             with self.subTest(duplicate_first=duplicate_first):
@@ -126,6 +134,30 @@ class DuplicateCatalogAuthority(unittest.TestCase):
             SKU,
             self._payment_public(payment_capability.project(self.registry, self.catalog)),
         )
+
+    def test_duplicate_predecessors_execute_under_optimized_python(self) -> None:
+        module = Path(__file__).stem
+        selected = [
+            f"{module}.DuplicateCatalogAuthority.test_inactive_evidence_donor_cannot_complete_active_row_in_either_order",
+            f"{module}.DuplicateCatalogAuthority.test_account_disabled_evidence_donor_cannot_complete_active_row_in_either_order",
+            f"{module}.DuplicateCatalogAuthority.test_different_url_duplicate_cannot_complete_active_row_in_either_order",
+            f"{module}.DuplicateCatalogAuthority.test_two_fully_active_duplicate_rows_fail_closed_in_either_order",
+        ]
+        completed = subprocess.run(
+            [sys.executable, "-O", "-m", "unittest", *selected],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            timeout=60,
+            check=False,
+        )
+        self.assertEqual(
+            completed.returncode,
+            0,
+            msg=f"optimized predecessors failed\nstdout:\n{completed.stdout}\nstderr:\n{completed.stderr}",
+        )
+        self.assertIn("Ran 4 tests", completed.stderr)
+        self.assertIn("OK", completed.stderr)
 
 
 if __name__ == "__main__":
