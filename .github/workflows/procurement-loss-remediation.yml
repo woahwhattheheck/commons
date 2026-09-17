@@ -1,0 +1,67 @@
+name: procurement-loss-remediation
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'tools/procurement_loss_remediation/**'
+      - 'test_procurement_loss_remediation.py'
+      - 'test_procurement_loss_remediation_optimized.py'
+      - '.github/workflows/procurement-loss-remediation.yml'
+  pull_request:
+    paths:
+      - 'tools/procurement_loss_remediation/**'
+      - 'test_procurement_loss_remediation.py'
+      - 'test_procurement_loss_remediation_optimized.py'
+      - '.github/workflows/procurement-loss-remediation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: "${{ github.workflow }}-${{ github.event_name }}-${{ github.event_name == 'workflow_dispatch' && github.run_id || github.ref }}"
+  cancel-in-progress: true
+
+jobs:
+  remediation:
+    name: source + hostile proof (${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - name: Check out exact source
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Parse retained product source
+        run: >-
+          python -m py_compile
+          tools/procurement_loss_remediation/core.py
+          tools/procurement_loss_remediation/verifier.py
+          tools/procurement_loss_remediation/__init__.py
+          tools/procurement_loss_remediation/__main__.py
+          test_procurement_loss_remediation.py
+          test_procurement_loss_remediation_optimized.py
+
+      - name: Run retained normal hostile suite
+        run: >-
+          python -m unittest -v
+          test_procurement_loss_remediation.py
+          test_procurement_loss_remediation_optimized.py
+
+      - name: Run retained optimized hostile suite
+        run: >-
+          python -O -m unittest -v
+          test_procurement_loss_remediation.py
+          test_procurement_loss_remediation_optimized.py
