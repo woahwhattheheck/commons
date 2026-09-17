@@ -119,6 +119,8 @@ class RouteQuarantineTests(unittest.TestCase):
         self.assertEqual(receipt["payload"]["route_state"], "CLEAR")
         self.assertFalse(receipt["payload"]["side_effects_authorized"])
         self.assertFalse(receipt["payload"]["same_route_send_authorized"])
+        self.assertFalse(receipt["payload"]["alternate_route_research_required"])
+        self.assertIsNone(receipt["payload"]["research_obligation"])
 
     def test_different_offer_after_cooldown_is_still_blocked_by_dead_mailbox(self) -> None:
         evidence = send_evidence([outbound()])
@@ -127,10 +129,23 @@ class RouteQuarantineTests(unittest.TestCase):
         self.assertEqual(receipt["payload"]["send_guard_decision"], "ALLOW_NEW")
         self.assertEqual(receipt["payload"]["route_state"], "BLOCKED")
         self.assertEqual(receipt["payload"]["decision"], "DO_NOT_USE_ROUTE")
-        self.assertTrue(receipt["payload"]["alternate_route_research_required"])
-        self.assertEqual(receipt["payload"]["research_obligation"]["kind"], "FIND_INDEPENDENT_PUBLIC_BUSINESS_ROUTE")
-        self.assertTrue(receipt["payload"]["research_obligation"]["automatic_replacement_forbidden"])
+        self.assertFalse(receipt["payload"]["alternate_route_research_required"])
+        self.assertIsNone(receipt["payload"]["research_obligation"])
         self.assertTrue(receipt["payload"]["alternate_route_send_requires_fresh_preflight"])
+        self.assertFalse(receipt["payload"]["side_effects_authorized"])
+
+    def test_blocked_route_cannot_be_rehashed_into_alias_hunt_instruction(self) -> None:
+        evidence = send_evidence([outbound()])
+        check_bundle = bundle([route_check(events=[dsn("sent-old", status="5.1.1", smtp=550)])])
+        receipt = rq.evaluate(intent(), evidence, check_bundle)
+        tampered = copy.deepcopy(receipt)
+        tampered["payload"]["alternate_route_research_required"] = True
+        tampered["payload"]["research_obligation"] = {
+            "kind": "FIND_INDEPENDENT_PUBLIC_BUSINESS_ROUTE",
+            "automatic_replacement_forbidden": True,
+        }
+        tampered["receipt_sha256"] = rq.digest_object(tampered["payload"])
+        self.assertFalse(rq.verify(tampered, intent(), evidence, check_bundle))
 
     def test_policy_rejection_holds_route(self) -> None:
         evidence = send_evidence([outbound()])
@@ -139,6 +154,8 @@ class RouteQuarantineTests(unittest.TestCase):
         self.assertEqual(receipt["payload"]["route_state"], "HOLD")
         self.assertEqual(receipt["payload"]["decision"], "HOLD")
         self.assertTrue(receipt["payload"]["route_review_required"])
+        self.assertFalse(receipt["payload"]["alternate_route_research_required"])
+        self.assertIsNone(receipt["payload"]["research_obligation"])
 
     def test_mailbox_full_holds_route(self) -> None:
         evidence = send_evidence([outbound()])
