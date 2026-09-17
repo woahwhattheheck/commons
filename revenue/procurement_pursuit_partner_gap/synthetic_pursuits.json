@@ -1,0 +1,108 @@
+{
+  "carrier_mode": "SYNTHETIC_ONLY",
+  "generated_at": "2026-09-16T02:00:00Z",
+  "max_pursuit_source_age_seconds": 604800,
+  "prime_proofs": [
+    {
+      "expires_at": "2026-10-16T00:00:00Z",
+      "proof_id": "fixture-prime-sla-proof",
+      "proof_kind": "ACCEPTED_SLA_RECEIPT",
+      "requirement_id": "fixture-req-sla",
+      "source_ref": "https://fixtures.example.invalid/prime/sla",
+      "source_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+      "status": "VERIFIED",
+      "verified_at": "2026-09-16T00:30:00Z"
+    }
+  ],
+  "pursuits": [
+    {
+      "pursuit_id": "fixture-pursuit-cloud",
+      "requirements": [
+        {
+          "applicability_tags": [
+            "cloud"
+          ],
+          "capability_key": "cloud-delivery",
+          "claim_kind": "CAPABILITY",
+          "family": "corporate_capability",
+          "internal_claim_id": "fixture-claim-capability",
+          "mapping_approval": "APPROVED",
+          "partner_deliverable": "Supply current cloud-delivery proof and own the mapped workshare.",
+          "partner_eligible": true,
+          "required_proof_kind": "CAPABILITY_PROOF",
+          "requirement_id": "fixture-req-cloud",
+          "text": "Buyer requires demonstrated cloud delivery capability.",
+          "text_sha256": "a79c773e8caf9514a006f85e52acf99cc7d9f5b3b64bbd2337ac9855360648b6"
+        }
+      ],
+      "source": {
+        "authority": "SYNTHETIC_FIXTURE",
+        "expires_at": "2026-09-30T00:00:00Z",
+        "observed_at": "2026-09-16T00:00:00Z",
+        "sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+        "uri": "https://fixtures.example.invalid/pursuits/cloud"
+      },
+      "title": "Synthetic cloud delivery pursuit"
+    },
+    {
+      "pursuit_id": "fixture-pursuit-reference",
+      "requirements": [
+        {
+          "applicability_tags": [
+            "enterprise"
+          ],
+          "capability_key": "enterprise-reference",
+          "claim_kind": "REFERENCE",
+          "family": "references_past_performance",
+          "internal_claim_id": null,
+          "mapping_approval": "NONE",
+          "partner_deliverable": "Supply a permissioned reference and support the mapped reference workshare.",
+          "partner_eligible": true,
+          "required_proof_kind": "REFERENCE_PERMISSION_RECEIPT",
+          "requirement_id": "fixture-req-reference",
+          "text": "Buyer requires a permissioned enterprise reference.",
+          "text_sha256": "6d923704d3a80733660650ad08e419f18b48aa207cf01f427c2a08a2a1d8113a"
+        }
+      ],
+      "source": {
+        "authority": "SYNTHETIC_FIXTURE",
+        "expires_at": "2026-09-30T00:00:00Z",
+        "observed_at": "2026-09-16T00:00:00Z",
+        "sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+        "uri": "https://fixtures.example.invalid/pursuits/reference"
+      },
+      "title": "Synthetic reference pursuit"
+    },
+    {
+      "pursuit_id": "fixture-pursuit-sla",
+      "requirements": [
+        {
+          "applicability_tags": [
+            "managed-service"
+          ],
+          "capability_key": "managed-service-sla",
+          "claim_kind": "SLA",
+          "family": "sla_support",
+          "internal_claim_id": null,
+          "mapping_approval": "NONE",
+          "partner_deliverable": "Supply an accepted SLA receipt and own the mapped SLA workshare.",
+          "partner_eligible": true,
+          "required_proof_kind": "ACCEPTED_SLA_RECEIPT",
+          "requirement_id": "fixture-req-sla",
+          "text": "Buyer requires a retained service-level commitment.",
+          "text_sha256": "2f8da6f562bc0a1f52ecb96751e775486698fab2a3463ad159c707a7c4ced46c"
+        }
+      ],
+      "source": {
+        "authority": "SYNTHETIC_FIXTURE",
+        "expires_at": "2026-09-30T00:00:00Z",
+        "observed_at": "2026-09-16T00:00:00Z",
+        "sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+        "uri": "https://fixtures.example.invalid/pursuits/sla"
+      },
+      "title": "Synthetic SLA pursuit"
+    }
+  ],
+  "schema": "procurement-pursuit-partner-gap/request/v1",
+  "truth_boundary": "RETAINED_REQUIREMENTS_AND_VERIFIED_MATERIALIZER_GENERATION_NOT_PROVIDER_AUTHENTICATION"
+}
