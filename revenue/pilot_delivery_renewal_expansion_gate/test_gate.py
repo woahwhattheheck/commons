@@ -3,16 +3,57 @@ from __future__ import annotations
 import copy
 import json
 import unittest
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from unittest.mock import patch
 
 from revenue.pilot_delivery_renewal_expansion_gate import engine
 
 NOW = "2026-09-17T18:55:00Z"
 FIXTURE = Path(__file__).with_name("demo") / "synthetic_ready.json"
 
+
 def packet():
     return engine.load_json(FIXTURE.read_bytes())
+
+
+def _text(dt: datetime) -> str:
+    return dt.replace(microsecond=0).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def current_packet():
+    """Return the synthetic contract shifted around real process UTC for current-API tests."""
+    p = packet()
+    now = datetime.now(timezone.utc).replace(microsecond=0)
+    baseline = now - timedelta(days=45)
+    change = now - timedelta(days=20)
+    p["baseline"]["accepted_at"] = _text(baseline)
+    p["baseline"]["source"]["observed_at"] = _text(baseline)
+    p["change_orders"][0]["decided_at"] = _text(change)
+    p["change_orders"][0]["source"]["observed_at"] = _text(change)
+    for offset, row in zip((10, 8), p["milestones"]):
+        delivered = now - timedelta(days=offset)
+        accepted = delivered + timedelta(days=1)
+        row["delivered_at"] = _text(delivered)
+        row["accepted_at"] = _text(accepted)
+        row["source"]["observed_at"] = _text(accepted)
+    payment = now - timedelta(days=2)
+    p["payment"]["observed_at"] = _text(payment)
+    p["payment"]["source"]["observed_at"] = _text(payment)
+    recent = now - timedelta(days=1)
+    for row in p["support_findings"]:
+        row["observed_at"] = _text(recent)
+        row["source"]["observed_at"] = _text(recent)
+    for row in p["security_data_gaps"]:
+        row["source"]["observed_at"] = _text(recent)
+    for row in p["expansion_hypotheses"]:
+        row["source"]["observed_at"] = _text(recent)
+    p["renewal_window"]["opens_at"] = _text(now - timedelta(days=1))
+    p["renewal_window"]["closes_at"] = _text(now + timedelta(days=30))
+    p["renewal_window"]["source"]["observed_at"] = _text(recent)
+    p["route_control"]["observed_at"] = _text(now)
+    p["route_control"]["source"]["observed_at"] = _text(now)
+    return p
+
 
 class GateTests(unittest.TestCase):
     def test_ready_owner_review_without_buyer_signal(self):
@@ -201,27 +242,55 @@ class GateTests(unittest.TestCase):
         with self.assertRaisesRegex(engine.GateError, "digest mismatch"):
             engine.verify_receipt(p, receipt)
 
-    def test_verify_rechecks_current_clock(self):
+    def test_resealed_semantic_receipt_tamper_rejected(self):
         p = packet()
-        receipt = engine._compile(p, NOW)
-        fake_now = datetime_like("2027-01-01T00:00:00Z")
-        with patch.object(engine, "datetime", fake_now):
+        forged = copy.deepcopy(engine._compile(p, NOW))
+        forged["authority"]["external_send_authorized"] = True
+        unsigned = dict(forged)
+        unsigned.pop("receipt_digest")
+        forged["receipt_digest"] = engine.digest(unsigned)
+        with self.assertRaisesRegex(engine.GateError, "semantic mismatch"):
+            engine.verify_receipt(p, forged)
+
+    def test_current_clock_ignores_ordinary_module_global_rebinding(self):
+        p = current_packet()
+        receipt = engine.compile_current(p)
+        fake = datetime_like("2099-01-01T00:00:00Z")
+        sentinel = object()
+        names = ("datetime", "timezone", "_stdlib_datetime", "_stdlib_timezone")
+        previous = {name: getattr(engine, name, sentinel) for name in names}
+        try:
+            for name in names:
+                setattr(engine, name, fake)
+            current = engine.compile_current(p)
             checked = engine.verify_receipt(p, receipt)
+        finally:
+            for name, value in previous.items():
+                if value is sentinel:
+                    delattr(engine, name)
+                else:
+                    setattr(engine, name, value)
+        self.assertNotEqual(current["evaluated_at"], "2099-01-01T00:00:00Z")
         self.assertTrue(checked["integrity_valid"])
-        self.assertEqual(checked["current_state"], engine.HOLD_EVIDENCE)
-        self.assertFalse(checked["still_current"])
+        self.assertTrue(checked["still_current"])
+
 
 def datetime_like(value: str):
-    real = __import__("datetime").datetime
-    fixed = real.strptime(value, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=__import__("datetime").timezone.utc)
+    fixed = datetime.strptime(value, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+
     class FixedDateTime:
+        utc = timezone.utc
+
         @classmethod
         def now(cls, tz=None):
             return fixed if tz is None else fixed.astimezone(tz)
+
         @staticmethod
         def strptime(*args, **kwargs):
-            return real.strptime(*args, **kwargs)
+            return datetime.strptime(*args, **kwargs)
+
     return FixedDateTime
+
 
 if __name__ == "__main__":
     unittest.main()
