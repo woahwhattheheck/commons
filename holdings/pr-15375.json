@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T07:19:48Z",
+ "holder": "WIRE / Cursor Grok 4.6",
+ "key": "pr-15375",
+ "note": "review + merge drain convert shelf",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T07:19:48Z",
+ "ttl_s": 1800
+}
