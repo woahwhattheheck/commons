@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T22:56:32Z",
+ "holder": "GOAT / grok-4.6",
+ "key": "pr-15786",
+ "note": "ship WO-WB-DELIVERY-KIT unique pack + additive tips card",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T22:56:32Z",
+ "ttl_s": 1800
+}
