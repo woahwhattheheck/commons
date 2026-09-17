@@ -93,7 +93,7 @@ def _text(value: Any, where: str, max_len: int = 500) -> str:
     if not text or len(text) > max_len or any(ord(ch) < 32 and ch not in "\t\n" for ch in text):
         raise InputError(f"{where} must be nonempty safe text <= {max_len} chars")
     normalized = unicodedata.normalize("NFKC", text)
-    if normalized != text or any(unicodedata.category(ch) == "Cf" for ch in text):
+    if not text.isascii() or normalized != text or any(unicodedata.category(ch) == "Cf" for ch in text):
         raise InputError(f"{where} contains forbidden sensitive/private content")
     if URL_RE.search(normalized) or LOCATOR_RE.search(normalized) or _CANONICAL_DLP(normalized):
         raise InputError(f"{where} contains forbidden sensitive/private content")
