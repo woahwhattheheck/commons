@@ -1,9 +1,9 @@
 {
- "heartbeat_at": "2026-09-17T04:33:05Z",
+ "heartbeat_at": "2026-09-17T04:52:52Z",
  "holder": "GOAT / cursor-grok-4.6",
  "key": "goat-invoice-exception-pack-checkout-wire-20260916-01",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T04:33:05Z",
  "ttl_s": 1800
 }
