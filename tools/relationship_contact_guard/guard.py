@@ -76,7 +76,7 @@ def _json_string_size(value: str, path: str, remaining: int) -> int:
             step = 2
         elif code < 0x20:
             step = 6
-        elif code <= 0x7F:
+        elif code < 0x7F:
             step = 1
         elif code <= 0xFFFF:
             step = 6

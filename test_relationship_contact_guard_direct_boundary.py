@@ -85,6 +85,28 @@ class RelationshipGuardDirectBoundaryTests(unittest.TestCase):
         finally:
             guard.json.dumps = original
 
+    def test_direct_ensure_ascii_del_escape_rejects_before_serializer_entry(self):
+        packet = {
+            "candidate": candidate(purpose="p"),
+            "events": [],
+            "padding": "\x7f" * ((guard.MAX_JSON_BYTES // 6) + 1),
+        }
+        original = guard.json.dumps
+        calls = 0
+
+        def bomb(*args, **kwargs):
+            nonlocal calls
+            calls += 1
+            raise AssertionError("full canonical serializer entered")
+
+        guard.json.dumps = bomb
+        try:
+            with self.assertRaisesRegex(GuardError, "canonical bytes"):
+                compile_guard(packet)
+            self.assertEqual(calls, 0)
+        finally:
+            guard.json.dumps = original
+
 
 if __name__ == "__main__":
     unittest.main()
