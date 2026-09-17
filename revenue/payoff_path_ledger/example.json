@@ -1,24 +1,14 @@
 {
   "schema": "commons-payoff-path-input/v1",
-  "subject_work_id": "example-pr-42",
+  "subject_work_id": "example-strategic-lane",
   "subject_generation_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-  "payoff_class": "BUG_BOUNTY",
+  "payoff_class": "STRATEGIC_UNPAID",
   "evidence_scope_status": "COMPLETE",
-  "term_evidence": [
-    {
-      "evidence_id": "terms-1",
-      "subject_work_id": "example-pr-42",
-      "subject_generation_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "evidence_class": "BUG_BOUNTY",
-      "source_id": "program-terms",
-      "source_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-      "observed_at_utc": "2026-09-17T20:00:00Z",
-      "valid_until_utc": "2026-10-01T00:00:00Z",
-      "amount_mode": "EXACT",
-      "amount_minor": 9000,
-      "currency": "USD"
-    }
-  ],
+  "term_evidence": [],
   "outcome_evidence": [],
-  "conversion_plan": null
+  "conversion_plan": {
+    "milestone": "Obtain an explicit buyer or prize conversion signal before further build effort",
+    "effort_ceiling_hours": 8,
+    "review_by_utc": "2026-10-01T00:00:00Z"
+  }
 }
