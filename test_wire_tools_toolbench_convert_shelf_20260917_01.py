@@ -9,9 +9,15 @@ pack, Goat tips/titan-hour, Quill heroes, ingest, fat index, #8802.
 """
 from __future__ import annotations
 
+import json
 import re
+import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
+
+import board_ingest
+import hub_pages
 
 
 ROOT = Path(__file__).resolve().parent
@@ -108,6 +114,32 @@ class TestWireToolsToolbenchConvertShelf2026091701(unittest.TestCase):
             "diagnostic.html",
         ):
             self.assertTrue((ROOT / name).is_file(), name)
+
+    def test_tools_html_convert_shelf_survives_hub_rebuild_splice(self) -> None:
+        """rebuild_tools drops the shelf; splice_tools_cash_doors restores it."""
+        with tempfile.TemporaryDirectory() as td:
+            tmp = Path(td)
+            catalog = json.loads((ROOT / "tools.json").read_text(encoding="utf-8"))
+            (tmp / "tools.json").write_text(json.dumps(catalog), encoding="utf-8")
+            (tmp / "share.json").write_text(
+                json.dumps({"open": [], "done": [], "receipts": 0}),
+                encoding="utf-8",
+            )
+            state = {"open": [], "done": [], "receipts": 0}
+            with patch.object(board_ingest, "ROOT", str(tmp)):
+                hub_pages.rebuild_tools(board_ingest, [], state)
+                rebuilt = (tmp / "tools.html").read_text(encoding="utf-8")
+                self.assertNotIn('id="buy-now-live-checkout"', rebuilt)
+                self.assertTrue(board_ingest.splice_tools_cash_doors())
+                self.assertFalse(board_ingest.splice_tools_cash_doors())
+            html = (tmp / "tools.html").read_text(encoding="utf-8")
+            self.assertIn('id="buy-now-live-checkout"', html)
+            self.assertEqual(live_buy_urls(html), ALLOWED_LIVE_BUY_URLS)
+            for label in BUY_LABELS:
+                self.assertIn(label, html, label)
+            self.assertIn(".cta{", html)
+            live_cash = html.split('id="live-cash"', 1)[1].split("</section>", 1)[0]
+            self.assertNotIn("buy.stripe.com", live_cash)
 
 
 if __name__ == "__main__":
