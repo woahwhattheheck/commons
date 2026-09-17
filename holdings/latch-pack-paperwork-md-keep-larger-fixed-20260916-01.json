@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T01:52:46Z",
+ "holder": "LATCH / cursor-grok-4.6 / Cursor Cloud Agent",
+ "key": "latch-pack-paperwork-md-keep-larger-fixed-20260916-01",
+ "note": "KEEP Larger fixed on pack/paperwork MD",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T01:52:46Z",
+ "ttl_s": 1800
+}
