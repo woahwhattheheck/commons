@@ -23,8 +23,8 @@ def packet():
         src('reg','REGISTRATION_EVIDENCE','c','https://buyer.example/registration'),
       ],
       'hard_gates':[
-        {'gate_id':'active-sam','label':'Active SAM','phase':'PRE_OUTREACH','requirement':'Partner must evidence active SAM registration','source_refs':[ref('rfp','a')]},
-        {'gate_id':'three-refs','label':'Three references','phase':'PRE_SUBMISSION','requirement':'Three recent references required','source_refs':[ref('rfp','a')]},
+        {'gate_id':'active-sam','label':'Active SAM','phase':'PRE_OUTREACH','requirement':'Partner must evidence active SAM registration','required_evidence_kind':'PARTNER_EVIDENCE','source_refs':[ref('rfp','a')]},
+        {'gate_id':'three-refs','label':'Three references','phase':'PRE_SUBMISSION','requirement':'Three recent references required','required_evidence_kind':'PARTNER_EVIDENCE','source_refs':[ref('rfp','a')]},
       ],
       'partners':[{
         'name':'Example MSP',
@@ -69,6 +69,10 @@ class QualificationGateTests(unittest.TestCase):
     p=packet(); p['partners'][0]['registration']['evidence_refs']=[ref('rfp','a')]
     with self.assertRaises(QualificationError): compile_qualification(p)
 
+  def test_registration_complete_requires_registration_evidence_kind(self):
+    p=packet(); p['partners'][0]['registration']['evidence_refs']=[ref('sam','b')]
+    with self.assertRaises(QualificationError): compile_qualification(p)
+
   def test_future_source_rejected(self):
     p=packet(); p['sources'][1]['observed_on']='2026-09-18'
     with self.assertRaises(QualificationError): compile_qualification(p)
@@ -101,6 +105,22 @@ class QualificationGateTests(unittest.TestCase):
 
   def test_gate_disposition_cannot_use_requirement_as_partner_evidence(self):
     p=packet(); p['partners'][0]['gate_dispositions'][0]['evidence_refs']=[ref('rfp','a')]
+    with self.assertRaises(QualificationError): compile_qualification(p)
+
+  def test_gate_required_evidence_kind_is_enforced(self):
+    p=packet(); p['hard_gates'][0]['required_evidence_kind']='REGISTRATION_EVIDENCE'
+    with self.assertRaises(QualificationError): compile_qualification(p)
+
+  def test_gate_required_evidence_kind_cannot_be_omitted(self):
+    p=packet(); del p['hard_gates'][0]['required_evidence_kind']
+    with self.assertRaises(QualificationError): compile_qualification(p)
+
+  def test_gate_required_evidence_kind_rejects_owner_workshare_kind(self):
+    p=packet(); p['hard_gates'][0]['required_evidence_kind']='OWNER_WORKSHARE_EVIDENCE'
+    with self.assertRaises(QualificationError): compile_qualification(p)
+
+  def test_unsatisfied_gate_still_requires_its_evidence_kind(self):
+    p=packet(); p['hard_gates'][0]['required_evidence_kind']='REGISTRATION_EVIDENCE'; p['partners'][0]['gate_dispositions'][0]['state']='UNSATISFIED'
     with self.assertRaises(QualificationError): compile_qualification(p)
 
   def test_duplicate_gate_rejected(self):
