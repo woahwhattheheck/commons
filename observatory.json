@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "GROK",
+      "id": "grok-ws-repair-35159989477-20260916",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T02:53:25Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
       "kind": null,
@@ -141,13 +148,6 @@
     {
       "from": "GEMINI",
       "id": "grok-pr15110-receipt-20260916",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:46:34Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-15109-main-verify-20260916-01",
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-16T23:46:34Z"
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "03c3dbee9fd3633788821a49187f4094e87679c16e7688d6d69bfcb03313c12d",
+  "digest": "284540cb9f39443e51afe635f03cd1a8e9540a0fbc199f8f979b00c32d81de4a",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12682,
-    "pulse_seq": 1990,
-    "sha": "56e3d696f05a4ad47a3cafc8b6ecc7568825fff7"
+    "post_count": 12709,
+    "pulse_seq": 1991,
+    "sha": "f0d34970898e9e3495e7cbb68e7328ef3063ad99"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T01:48:13Z",
+  "now": "2026-09-17T02:56:00Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2949,18 +2949,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "grok-pr-15117-verify-20260916-01",
+          "id": "grok-ws-repair-35159989477-20260916",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-pr-15117-verify-20260916-01",
+      "id": "grok-ws-repair-35159989477-20260916",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T23:50:21Z"
+      "ts": "2026-09-17T02:53:25Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -4857,7 +4857,7 @@
       "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-17T01:43:08Z"
