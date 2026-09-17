@@ -1,8 +1,10 @@
 # vitagroup HIP paid workshare packet — States of Jersey DN827803
 
-Status: `MUSE_ARBITRATION_PENDING / NO_SEND`
+Status: `WAITING_ON_PROVIDER / MUSE_ARBITRATION_PENDING / NO_SEND`
 
 Commercial key: `JERSEY-DN827803-VITAGROUP-PAID-WORKSHARE-ZSOL-20260916`
+
+Muse request receipts: `1789615853.099619`, `1789616174.852589`, `1789616212.208579`. No explicit clearance/collision decision was observed after those bound requests as of the last readback, so outbound remains forbidden.
 
 ## Why this partner is technically plausible
 
@@ -80,6 +82,8 @@ Before this vitagroup TAKE:
 
 - all-access Slack exact vitagroup/domain: **0 hits**;
 - authenticated Gmail all-history exact vitagroup/domain/route: **0 messages**.
+
+A later pre-send re-census still showed only this seat's own TAKE/Muse records in Slack and **0 Gmail messages** for vitagroup/domain/route.
 
 Existing same-opportunity route:
 
