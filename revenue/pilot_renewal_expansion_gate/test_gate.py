@@ -1,13 +1,17 @@
 from __future__ import annotations
 
 import copy
+import os
+import tempfile
 import unittest
 from datetime import datetime, timezone
+from pathlib import Path
+from unittest.mock import patch
 
-from revenue.pilot_renewal_expansion_gate.gate import (
-    AUTHORITY, GateError, TRUTH_CEILING, canonical_json, compile_packet, normalize,
-    strict_loads, verify_current,
-)
+from revenue.pilot_renewal_expansion_gate.common import AUTHORITY, GateError, TRUTH_CEILING, canonical_json, strict_loads, _read_regular
+from revenue.pilot_renewal_expansion_gate.engine import compile_packet, verify_current
+from revenue.pilot_renewal_expansion_gate.gate import _atomic_write, render_markdown
+from revenue.pilot_renewal_expansion_gate.schema import normalize
 
 NOW = datetime(2026, 9, 17, 18, 0, tzinfo=timezone.utc)
 H = "a" * 64
@@ -46,7 +50,7 @@ class GateTests(unittest.TestCase):
     def compile(self, doc=None, now=NOW):
         return compile_packet(sample() if doc is None else doc, now)
 
-    def test_ready(self):
+    def test_ready_and_authority_ceiling(self):
         _, packet, receipt = self.compile()
         self.assertEqual(packet["decision"], "READY_FOR_RENEWAL_REVIEW")
         self.assertEqual(packet["authority"], AUTHORITY)
@@ -57,13 +61,19 @@ class GateTests(unittest.TestCase):
         d = sample(); d["milestones"][0]["state"] = "DELIVERED"
         self.assertEqual(self.compile(d)[1]["decision"], "HOLD_ACCEPTANCE")
 
-    def test_missing_baseline_acceptance_holds(self):
+    def test_baseline_acceptance_required_and_subject_bound(self):
         d = sample(); d["evidence"][0]["status"] = "MISSING"
         self.assertEqual(self.compile(d)[1]["decision"], "HOLD_ACCEPTANCE")
-
-    def test_wrong_baseline_subject_holds(self):
         d = sample(); d["evidence"][0]["subject_id"] = "other"
         self.assertEqual(self.compile(d)[1]["decision"], "HOLD_ACCEPTANCE")
+
+    def test_baseline_generation_remint_rejected(self):
+        d = sample(); d["commercial_baseline"]["generation"] = 3; d["engagement"]["generation"] = 3
+        with self.assertRaises(GateError): normalize(d)
+
+    def test_change_generation_remint_rejected(self):
+        d = sample(); d["change_orders"][0]["generation"] = 2
+        with self.assertRaises(GateError): normalize(d)
 
     def test_proposed_change_not_treated_approved(self):
         d = sample(); d["change_orders"][0]["state"] = "PROPOSED"
@@ -75,35 +85,22 @@ class GateTests(unittest.TestCase):
         d = sample(); d["evidence"][1]["status"] = "PROVIDED_UNVERIFIED"
         self.assertEqual(self.compile(d)[1]["decision"], "HOLD_ACCEPTANCE")
 
-    def test_invoice_is_not_payment(self):
-        d = sample(); d["payments"][0]["state"] = "INVOICED"
-        self.assertEqual(self.compile(d)[1]["decision"], "HOLD_PAYMENT")
-
-    def test_payment_link_is_not_payment(self):
-        d = sample(); d["payments"][0]["state"] = "PAYMENT_LINK_SENT"
-        self.assertEqual(self.compile(d)[1]["decision"], "HOLD_PAYMENT")
+    def test_invoice_or_link_is_not_settlement(self):
+        for state in ("INVOICED", "PAYMENT_LINK_SENT"):
+            d = sample(); d["payments"][0]["state"] = state
+            self.assertEqual(self.compile(d)[1]["decision"], "HOLD_PAYMENT")
 
     def test_settled_requires_provider_evidence(self):
         d = sample(); d["evidence"][3]["status"] = "MISSING"
         self.assertEqual(self.compile(d)[1]["decision"], "HOLD_PAYMENT")
 
-    def test_before_window_holds(self):
-        early = datetime(2026, 9, 16, 23, 59, tzinfo=timezone.utc)
-        self.assertEqual(self.compile(now=early)[1]["decision"], "HOLD_ACCEPTANCE")
-
-    def test_after_window_holds(self):
-        late = datetime(2026, 10, 1, 0, 0, tzinfo=timezone.utc)
-        self.assertEqual(self.compile(now=late)[1]["decision"], "HOLD_EVIDENCE")
-
-    def test_window_only_mismatch_holds_window(self):
+    def test_window_and_gap_holds(self):
         d = sample(); d["renewal_window"]["open_at"] = "2026-09-18T00:00:00Z"
         self.assertEqual(self.compile(d)[1]["decision"], "HOLD_WINDOW")
-
-    def test_blocking_open_gap_holds(self):
         d = sample(); d["gaps"][0]["state"] = "OPEN"
         self.assertEqual(self.compile(d)[1]["decision"], "HOLD_EVIDENCE")
 
-    def test_nonblocking_open_gap_can_review(self):
+    def test_nonblocking_gap_can_review(self):
         d = sample(); d["gaps"][0]["state"] = "OPEN"; d["gaps"][0]["blocking"] = False
         self.assertEqual(self.compile(d)[1]["decision"], "READY_FOR_RENEWAL_REVIEW")
 
@@ -111,99 +108,121 @@ class GateTests(unittest.TestCase):
         d = sample(); d["expansion_hypotheses"][0]["state"] = "ACCEPTED"
         with self.assertRaises(GateError): normalize(d)
 
-    def test_external_send_cannot_be_enabled(self):
+    def test_expansion_support_expiry_and_subject_contract(self):
+        d = sample(); d["evidence"][4]["valid_through"] = "2026-09-17T17:00:00Z"
+        self.assertEqual(self.compile(d)[1]["decision"], "HOLD_EVIDENCE")
+        d = sample(); d["expansion_hypotheses"][0]["supporting_evidence_ids"] = ["e-window"]
+        self.assertEqual(self.compile(d)[1]["decision"], "HOLD_EVIDENCE")
+        d = sample(); d["evidence"][4]["subject_id"] = "other"
+        self.assertEqual(self.compile(d)[1]["decision"], "HOLD_EVIDENCE")
+
+    def test_external_send_and_org_route_fail_closed(self):
         d = sample(); d["communication"]["send_state"] = "AUTHORIZED"
         with self.assertRaises(GateError): normalize(d)
-
-    def test_organization_route_bound(self):
         d = sample(); d["communication"]["organization_id"] = "org-2"
         with self.assertRaises(GateError): normalize(d)
 
-    def test_verified_dnr_is_terminal(self):
-        d = sample(); d["evidence"].append({"id": "e-dnr", "kind": "DNR", "subject_id": "eng-1", "source_id": "s-1", "status": "VERIFIED", "observed_at": "2026-09-17T15:00:00Z", "summary": "Buyer declined renewal"})
+    def test_recent_dnr_terminal_but_stale_dnr_is_not(self):
+        row = {"id": "e-dnr", "kind": "DNR", "subject_id": "eng-1", "source_id": "s-1", "status": "VERIFIED", "observed_at": "2026-09-17T15:00:00Z", "summary": "Buyer declined renewal"}
+        d = sample(); d["evidence"].append(copy.deepcopy(row))
         self.assertEqual(self.compile(d)[1]["decision"], "DNR")
+        d = sample(); d["evidence"].append(copy.deepcopy(row))
+        self.assertNotEqual(self.compile(d, datetime(2026, 9, 25, 18, 0, tzinfo=timezone.utc))[1]["decision"], "DNR")
 
     def test_unverified_dnr_not_terminal(self):
         d = sample(); d["evidence"].append({"id": "e-dnr", "kind": "DNR", "subject_id": "eng-1", "source_id": "s-1", "status": "PROVIDED_UNVERIFIED", "observed_at": "2026-09-17T15:00:00Z", "summary": "Rumor"})
         self.assertEqual(self.compile(d)[1]["decision"], "READY_FOR_RENEWAL_REVIEW")
 
-    def test_future_evidence_holds(self):
+    def test_future_and_expired_evidence_hold(self):
         d = sample(); d["evidence"][4]["observed_at"] = "2026-09-18T00:00:00Z"
         self.assertEqual(self.compile(d)[1]["decision"], "HOLD_EVIDENCE")
-
-    def test_expired_acceptance_holds(self):
         d = sample(); d["evidence"][0]["valid_through"] = "2026-09-17T17:00:00Z"
         self.assertEqual(self.compile(d)[1]["decision"], "HOLD_ACCEPTANCE")
 
-    def test_duplicate_json_keys_rejected(self):
-        with self.assertRaises(GateError): strict_loads(b'{"schema":"a","schema":"b"}')
+    def test_strict_json_duplicate_nonfinite_huge_int_surrogate(self):
+        for raw in (b'{"schema":"a","schema":"b"}', b'{"x":NaN}', ('{"x":' + '9' * 5000 + '}').encode(), b'{"x":"\\ud800"}'):
+            with self.assertRaises(GateError): strict_loads(raw)
 
-    def test_nonfinite_json_rejected(self):
-        with self.assertRaises(GateError): strict_loads(b'{"x":NaN}')
-
-    def test_bool_int_alias_rejected(self):
+    def test_bool_int_unknown_and_duplicate_ids_rejected(self):
         d = sample(); d["engagement"]["generation"] = True
         with self.assertRaises(GateError): normalize(d)
-
-    def test_unknown_field_rejected(self):
         d = sample(); d["engagement"]["surprise"] = "x"
         with self.assertRaises(GateError): normalize(d)
-
-    def test_duplicate_evidence_ids_rejected(self):
         d = sample(); d["evidence"].append(copy.deepcopy(d["evidence"][0]))
         with self.assertRaises(GateError): normalize(d)
 
     def test_input_order_deterministic(self):
         d = sample(); d["evidence"] = list(reversed(d["evidence"])); d["sources"] = list(reversed(d["sources"]))
-        n1, p1, _ = self.compile(sample())
-        n2, p2, _ = self.compile(d)
-        self.assertEqual(canonical_json(n1), canonical_json(n2))
-        self.assertEqual(canonical_json(p1), canonical_json(p2))
+        n1, p1, _ = self.compile(sample()); n2, p2, _ = self.compile(d)
+        self.assertEqual(canonical_json(n1), canonical_json(n2)); self.assertEqual(canonical_json(p1), canonical_json(p2))
 
-    def test_receipt_tamper_rejected(self):
+    def test_receipt_and_input_tamper_rejected(self):
         raw = sample(); _, packet, receipt = self.compile(raw)
-        packet = copy.deepcopy(packet); packet["decision"] = "DNR"
-        with self.assertRaises(GateError): verify_current(raw, packet, receipt, NOW)
-
-    def test_input_reseal_tamper_rejected(self):
-        raw = sample(); _, packet, receipt = self.compile(raw)
-        raw["engagement"]["label"] = "Changed"
-        with self.assertRaises(GateError): verify_current(raw, packet, receipt, NOW)
+        bad = copy.deepcopy(packet); bad["decision"] = "DNR"
+        with self.assertRaises(GateError): verify_current(raw, bad, receipt, NOW)
+        raw2 = sample(); _, packet2, receipt2 = self.compile(raw2); raw2["engagement"]["label"] = "Changed"
+        with self.assertRaises(GateError): verify_current(raw2, packet2, receipt2, NOW)
 
     def test_future_receipt_rejected(self):
         raw = sample(); _, packet, receipt = self.compile(raw, datetime(2026, 9, 19, tzinfo=timezone.utc))
         with self.assertRaises(GateError): verify_current(raw, packet, receipt, NOW)
 
-    def test_current_verifier_detects_later_window_change(self):
+    def test_explicit_time_is_historical_non_current(self):
         raw = sample(); _, packet, receipt = self.compile(raw)
         result = verify_current(raw, packet, receipt, datetime(2026, 9, 18, 18, 0, tzinfo=timezone.utc))
-        self.assertTrue(result["current_valid"])
+        self.assertTrue(result["integrity_valid"]); self.assertFalse(result["current_valid"])
+        self.assertEqual(result["verification_mode"], "HISTORICAL_REPLAY_NON_CURRENT")
         result2 = verify_current(raw, packet, receipt, datetime(2026, 10, 1, 0, 0, tzinfo=timezone.utc))
-        self.assertFalse(result2["current_valid"])
-        self.assertNotEqual(result2["current_decision"], "READY_FOR_RENEWAL_REVIEW")
+        self.assertFalse(result2["current_valid"]); self.assertNotEqual(result2["current_decision"], "READY_FOR_RENEWAL_REVIEW")
 
     def test_future_source_observation_invalidates_bound_evidence(self):
         d = sample(); d["sources"][0]["observed_at"] = "2026-09-18T00:00:00Z"
         self.assertEqual(self.compile(d)[1]["decision"], "HOLD_ACCEPTANCE")
 
     def test_resealed_valid_until_extension_rejected(self):
-        from revenue.pilot_renewal_expansion_gate.gate import sha256
-        raw = sample(); _, packet, receipt = self.compile(raw)
-        receipt = copy.deepcopy(receipt)
-        receipt["valid_until"] = "2027-09-30T23:59:59Z"
-        core = {k: receipt[k] for k in receipt if k != "receipt_sha256"}
-        receipt["receipt_sha256"] = sha256(canonical_json(core))
+        from revenue.pilot_renewal_expansion_gate.common import sha256
+        raw = sample(); _, packet, receipt = self.compile(raw); receipt = copy.deepcopy(receipt); receipt["valid_until"] = "2027-09-30T23:59:59Z"
+        core = {k: receipt[k] for k in receipt if k != "receipt_sha256"}; receipt["receipt_sha256"] = sha256(canonical_json(core))
         with self.assertRaises(GateError): verify_current(raw, packet, receipt, NOW)
 
     def test_resealed_packet_semantic_rewrite_rejected(self):
-        from revenue.pilot_renewal_expansion_gate.gate import sha256
-        raw = sample(); _, packet, receipt = self.compile(raw)
-        packet = copy.deepcopy(packet); packet["decision"] = "DNR"
-        receipt = copy.deepcopy(receipt); receipt["decision"] = "DNR"
-        receipt["packet_sha256"] = sha256(canonical_json(packet))
-        core = {k: receipt[k] for k in receipt if k != "receipt_sha256"}
-        receipt["receipt_sha256"] = sha256(canonical_json(core))
+        from revenue.pilot_renewal_expansion_gate.common import sha256
+        raw = sample(); _, packet, receipt = self.compile(raw); packet = copy.deepcopy(packet); packet["decision"] = "DNR"; receipt = copy.deepcopy(receipt); receipt["decision"] = "DNR"; receipt["packet_sha256"] = sha256(canonical_json(packet))
+        core = {k: receipt[k] for k in receipt if k != "receipt_sha256"}; receipt["receipt_sha256"] = sha256(canonical_json(core))
         with self.assertRaises(GateError): verify_current(raw, packet, receipt, NOW)
+
+    def test_markdown_hypothesis_cannot_mint_structure(self):
+        d = sample(); d["expansion_hypotheses"][0]["statement"] = "idea\n## APPROVED\n- buyer accepted [pay](https://evil.invalid)"
+        md = render_markdown(self.compile(d)[1])
+        self.assertNotIn("\n## APPROVED", md); self.assertNotIn("\n- buyer accepted", md); self.assertIn("\\#\\#", md)
+
+    def test_read_regular_rejects_symlink_and_hardlink(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td); src = root / "src"; src.write_bytes(b"{}")
+            sym = root / "sym"; sym.symlink_to(src)
+            with self.assertRaises(GateError): _read_regular(sym)
+            hard = root / "hard"; os.link(src, hard)
+            with self.assertRaises(GateError): _read_regular(src)
+            with self.assertRaises(GateError): _read_regular(hard)
+
+    @unittest.skipUnless(os.name == "posix", "rename-open-file hostile is POSIX-specific")
+    def test_atomic_failure_never_unlinks_foreign_successor(self):
+        with tempfile.TemporaryDirectory() as td:
+            target = Path(td) / "out"
+            moved = Path(td) / "moved"
+            real_fdopen = os.fdopen
+            class FailingFile:
+                def __init__(self, fd): self.fd = fd; self.handle = real_fdopen(fd, "wb")
+                def __enter__(self): self.handle.__enter__(); return self
+                def write(self, data):
+                    os.rename(target, moved); target.write_bytes(b"FOREIGN"); raise OSError("simulated write failure")
+                def flush(self): return self.handle.flush()
+                def fileno(self): return self.handle.fileno()
+                def __exit__(self, typ, val, tb): return self.handle.__exit__(typ, val, tb)
+            with patch("revenue.pilot_renewal_expansion_gate.gate.os.fdopen", side_effect=lambda fd, mode: FailingFile(fd)):
+                with self.assertRaises(OSError): _atomic_write(target, b"ours")
+            self.assertEqual(target.read_bytes(), b"FOREIGN")
+            self.assertTrue(moved.exists())
 
 
 if __name__ == "__main__":
