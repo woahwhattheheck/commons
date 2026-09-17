@@ -71,6 +71,11 @@ for (const failAt of ["after_prepare", "after_effects"]) {
 {
   const page = fs.readFileSync(path.join(__dirname, "fleet-work-order.html"), "utf8");
   for (const marker of ["$199 diagnostic", "$2,500 proof", "Exactly Once", "Crash after prepare", "Rollback incomplete", "no login", "synthetic inputs only"]) assert(page.includes(marker), marker);
+  assert(page.includes('class="js-checkout-slot"'), "catalog checkout slot");
+  assert.equal((page.match(/data-sku="fleet-work-order-exactly-once"/g) || []).length, 1);
+  assert(page.includes("pay.js"), "local pay.js hydrates the slot");
+  assert(!page.includes("buy.stripe.com"), "no static Stripe URL");
+  assert(page.includes("mailto:tokenjunkielabs@gmail.com"), "handoff mailto");
   assert(!/\b(login required|sign up required|permission required)\b/i.test(page));
 }
 

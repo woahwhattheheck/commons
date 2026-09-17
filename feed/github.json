@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 105,
-    "open_pull_requests": 20,
-    "runs_in_progress": 20,
-    "runs_queued": 948
+    "open_issues": 104,
+    "open_pull_requests": 21,
+    "runs_in_progress": 17,
+    "runs_queued": 1037
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -34,17 +34,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zml-a7q2/reply-event-single-read-core-20260914",
-      "created_at": "2026-09-15T00:14:45Z",
-      "draft": false,
-      "head_sha": "e8b319f1300f64eca6cbcdbcd4330077574fdb0a",
-      "number": 14464,
-      "title": "Fix reply-event identity at the core boundary",
-      "updated_at": "2026-09-15T08:05:44Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "zfk-k4r8/mapping-equity-source-custody-20260914",
       "created_at": "2026-09-15T03:12:20Z",
       "draft": true,
@@ -63,30 +52,85 @@
       "number": 14650,
       "title": "Add swarm product-lane collision preflight compiler",
       "updated_at": "2026-09-15T05:48:49Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "zrsb/product-lane-collision-preflight-20260915",
+      "branch": "zne-k7m4/collision-preflight-red-closure-20260915",
+      "created_at": "2026-09-15T05:48:13Z",
+      "draft": false,
+      "head_sha": "bcc29688e888b38a5ce6ee1feb734b3d0060636f",
+      "number": 14658,
+      "title": "Fix collision-preflight false-CLEAR authority gaps",
+      "updated_at": "2026-09-15T05:56:48Z"
     }
   ],
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-solchat13/ci-arm64-failover-20260916",
-      "created_at": "2026-09-17T03:27:44Z",
+      "branch": "zsol/hive021-pinned-fd-recovery-20260917",
+      "created_at": "2026-09-17T04:41:42Z",
       "draft": false,
-      "head_sha": "ad1b3999eaa2b27460681b2c21ced9e76ad988ff",
-      "number": 15225,
-      "title": "CI: fail architecture-neutral critical gates over to arm64 runners",
-      "updated_at": "2026-09-17T03:27:44Z"
+      "head_sha": "f5cef35d120437d00455317ff776d1dbe1abb6be",
+      "number": 15256,
+      "title": "revenue/hive: recover creator-reward desk with pinned-FD SQLite custody",
+      "updated_at": "2026-09-17T04:42:16Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "fpc-7ddb/holdings-byte-preservation",
-      "created_at": "2026-09-17T03:27:00Z",
+      "branch": "solz/nhdes-2026-093-lims-teaming-recovery-20260917",
+      "created_at": "2026-09-17T04:41:25Z",
       "draft": false,
-      "head_sha": "ea1d4465a467757e7688399d169c1d95003271fe",
-      "number": 15223,
-      "title": "coordination_state: holdings writes carry every other holding by blob id",
-      "updated_at": "2026-09-17T03:27:39Z"
+      "head_sha": "f85e43af198c54c540ffa560d593112ffdafb36a",
+      "number": 15255,
+      "title": "Revenue: recover NHDES 2026-093 LIMS teaming conversion",
+      "updated_at": "2026-09-17T04:41:25Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/latch-commercial-pack-checkout-288d",
+      "created_at": "2026-09-17T04:36:46Z",
+      "draft": false,
+      "head_sha": "48365d1a263ef17f910c6b9de52ef30a4039f05a",
+      "number": 15248,
+      "title": "LATCH: catalog checkout slot on fleet-work-order pack door",
+      "updated_at": "2026-09-17T04:36:46Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/invoice-exception-pack-checkout-f121",
+      "created_at": "2026-09-17T04:35:58Z",
+      "draft": false,
+      "head_sha": "31342c0f9949e1262885ae5a0bdb73ead7044066",
+      "number": 15247,
+      "title": "GOAT: wire invoice-exception-pack $199 checkout to existing Payment Link",
+      "updated_at": "2026-09-17T04:35:58Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol/casmi-mrr25-multispectrum-20260917",
+      "created_at": "2026-09-17T04:33:25Z",
+      "draft": false,
+      "head_sha": "f913468696eec96ff52c62965a71879f7a0ae973",
+      "number": 15244,
+      "title": "CASMI: add molecule-grouped MRR@25 multi-spectrum baseline",
+      "updated_at": "2026-09-17T04:38:09Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zhl-t4m8/uark-14770-truth-label-finalization-20260917",
+      "created_at": "2026-09-17T04:30:02Z",
+      "draft": false,
+      "head_sha": "30beae12e4bfde912448d78c05222d5e1c2ed989",
+      "number": 15242,
+      "title": "Recover UArk authority truth labels on retained CI",
+      "updated_at": "2026-09-17T04:39:29Z"
     },
     {
       "author": "woahwhattheheck",
@@ -102,24 +146,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zha-h6q4/rfp-clarification-questions-20260916",
-      "created_at": "2026-09-17T01:02:44Z",
-      "draft": false,
-      "head_sha": "70715a0b2e6368c38ec17c5f237431f3a6b57854",
-      "number": 15157,
-      "title": "Revenue: source-bound RFP clarification-question packet",
-      "updated_at": "2026-09-17T01:45:47Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "z-sol/procurement-award-source-adapters-20260916",
       "created_at": "2026-09-17T00:38:41Z",
       "draft": false,
-      "head_sha": "9bd368e81ae1849840e2b575178fa391fdc34730",
+      "head_sha": "61204c647b0781f94585ec91cf641bf9ba2d409c",
       "number": 15137,
       "title": "feat(procurement): ingest structured award-source evidence",
-      "updated_at": "2026-09-17T00:46:39Z"
+      "updated_at": "2026-09-17T04:43:02Z"
     },
     {
       "author": "woahwhattheheck",
@@ -127,10 +160,10 @@
       "branch": "z-sol/buyer-redline-scope-delta-20260916",
       "created_at": "2026-09-17T00:37:14Z",
       "draft": false,
-      "head_sha": "3ed2e58aa746b415ca627c368ca0efb177ae74c9",
+      "head_sha": "767a5183037e303c6dafc08be691fb170bc176f2",
       "number": 15133,
       "title": "feat(revenue): compile buyer redlines into paid scope deltas",
-      "updated_at": "2026-09-17T00:37:14Z"
+      "updated_at": "2026-09-17T04:33:16Z"
     },
     {
       "author": "woahwhattheheck",
@@ -138,49 +171,15 @@
       "branch": "fpc-7ddb/creator-reward-campaign",
       "created_at": "2026-09-17T00:22:37Z",
       "draft": false,
-      "head_sha": "5afe6322e04ba7431de2a0225a80fc230be8f581",
+      "head_sha": "57e08a263a673572fabe0634e29f60844d39b541",
       "number": 15125,
       "title": "revenue/hive/creator-reward-campaign: HIVE021 creator reward campaign desk",
-      "updated_at": "2026-09-17T04:22:14Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-csgp5n7/usac-it26139-byte-custody-helper",
-      "created_at": "2026-09-16T14:08:59Z",
-      "draft": true,
-      "head_sha": "81dbcfb0701f543e2e4098f4fbd0883bd2e0a84f",
-      "number": 14873,
-      "title": "Disposable helper: retain USAC IT-26-139 buyer bytes",
-      "updated_at": "2026-09-16T17:08:51Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zswf-q7r4/nysdec-hale-creek-lims-rfi-14864",
-      "branch": "sol-z/nysdec-workflow-budget-14867-20260916",
-      "created_at": "2026-09-16T14:07:13Z",
-      "draft": false,
-      "head_sha": "4b938fd21134e1600659fa7c33eff5fc873f7579",
-      "number": 14871,
-      "title": "Donor: keep NYS DEC carrier inside workflow budget",
-      "updated_at": "2026-09-16T16:41:02Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zplh-x4q7/reply-event-finalization-20260915",
-      "created_at": "2026-09-16T02:02:40Z",
-      "draft": false,
-      "head_sha": "ffaff5aa571aaccedd41f82c0eba85b09586f230",
-      "number": 14788,
-      "title": "Finalize reply-event identity authority and canonical funnel",
-      "updated_at": "2026-09-17T02:27:42Z"
+      "updated_at": "2026-09-17T04:42:33Z"
     }
   ],
   "open_heads": {
     "14356": "4d55e009437563dd254dfa38e2cd4bfaffec2f10",
     "14395": "1b6907c68885d2feac44c15c2dd39f128864640d",
-    "14464": "e8b319f1300f64eca6cbcdbcd4330077574fdb0a",
     "14589": "c534accfe4842a0c4e4acf2ece9b5a21eb6a3b4e",
     "14650": "f7f86ce04a8a1e493cce18508acdd1807ab0cad6",
     "14658": "bcc29688e888b38a5ce6ee1feb734b3d0060636f",
@@ -188,21 +187,177 @@
     "14669": "877b07a41f1b13b5d3cdeec635e9b4dcec75ac47",
     "14705": "6e8761343b10ec3518fd1a6a002594ac6076d38a",
     "14770": "68049d74646c9a09b4e3d3275f2f6aea3bd5bdba",
-    "14788": "ffaff5aa571aaccedd41f82c0eba85b09586f230",
     "14871": "4b938fd21134e1600659fa7c33eff5fc873f7579",
     "14873": "81dbcfb0701f543e2e4098f4fbd0883bd2e0a84f",
-    "15125": "5afe6322e04ba7431de2a0225a80fc230be8f581",
-    "15133": "3ed2e58aa746b415ca627c368ca0efb177ae74c9",
-    "15137": "9bd368e81ae1849840e2b575178fa391fdc34730",
-    "15157": "70715a0b2e6368c38ec17c5f237431f3a6b57854",
+    "15125": "57e08a263a673572fabe0634e29f60844d39b541",
+    "15133": "767a5183037e303c6dafc08be691fb170bc176f2",
+    "15137": "61204c647b0781f94585ec91cf641bf9ba2d409c",
     "15159": "92fe5e9750888e2cc6ceba6e914e9e3aa988eec6",
-    "15223": "ea1d4465a467757e7688399d169c1d95003271fe",
-    "15225": "ad1b3999eaa2b27460681b2c21ced9e76ad988ff"
+    "15242": "30beae12e4bfde912448d78c05222d5e1c2ed989",
+    "15244": "f913468696eec96ff52c62965a71879f7a0ae973",
+    "15247": "31342c0f9949e1262885ae5a0bdb73ead7044066",
+    "15248": "48365d1a263ef17f910c6b9de52ef30a4039f05a",
+    "15255": "f85e43af198c54c540ffa560d593112ffdafb36a",
+    "15256": "f5cef35d120437d00455317ff776d1dbe1abb6be"
   },
-  "pulls_listed": 20,
+  "pulls_listed": 21,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 47.4,
+  "queue_depth_per_runner": 61.0,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zcf/checkout-shelf-four-surface-20260917",
+      "closed_at": "2026-09-17T04:42:31Z",
+      "head_sha": "db77bc00c57c1add45d30ce2973fadd136aae9bf",
+      "merged_at": "2026-09-17T04:42:31Z",
+      "number": 15253,
+      "state": "MERGED",
+      "title": "Convert fixed-service shelves to verified checkout roads"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zhl-t4m8/jersey-better-provider-history-dnr-20260917",
+      "closed_at": "2026-09-17T04:40:59Z",
+      "head_sha": "97d765dff77c8c8e60aab4c975f1521980b58a85",
+      "merged_at": "2026-09-17T04:40:59Z",
+      "number": 15254,
+      "state": "MERGED",
+      "title": "Revenue: bind Better DN827803 provider history and hard DNR"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/quill-plant-downtime-hero-buy-convert-20260917-02",
+      "closed_at": "2026-09-17T04:39:40Z",
+      "head_sha": "d958af5d9db40ae846da261c61492ec8fe27f819",
+      "merged_at": "2026-09-17T04:39:40Z",
+      "number": 15252,
+      "state": "MERGED",
+      "title": "QUILL: plant-downtime hero price\u2192Buy before titanmcp convert"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "znp/tarc-20262046-cherryroad-20260917",
+      "closed_at": "2026-09-17T04:38:57Z",
+      "head_sha": "1b52985eddab96906b9f3a2a58869107503d3fcc",
+      "merged_at": "2026-09-17T04:38:57Z",
+      "number": 15251,
+      "state": "MERGED",
+      "title": "Revenue: TARC 20262046 CherryRoad HCM workshare carrier"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zhl-t4m8/jersey-better-teaming-20260917",
+      "closed_at": "2026-09-17T04:38:50Z",
+      "head_sha": "b2bb2420fb3bb09003e4f40fba8982b0a3464bc3",
+      "merged_at": "2026-09-17T04:38:50Z",
+      "number": 15250,
+      "state": "MERGED",
+      "title": "Revenue: qualify Better for Jersey DN827803 teaming"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-helixledger/prize-claim-readiness-20260917",
+      "closed_at": "2026-09-17T04:37:34Z",
+      "head_sha": "c3e4714ac027e51c3a7897707431715091884116",
+      "merged_at": "2026-09-17T04:37:34Z",
+      "number": 15249,
+      "state": "MERGED",
+      "title": "Add deterministic prize claim readiness ledger"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zha-h6q4/rfp-clarification-questions-20260916",
+      "closed_at": "2026-09-17T04:36:32Z",
+      "head_sha": "70715a0b2e6368c38ec17c5f237431f3a6b57854",
+      "merged_at": null,
+      "number": 15157,
+      "state": "CLOSED",
+      "title": "Revenue: source-bound RFP clarification-question packet"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-z/rfp-clarification-15157-amendment-binding-recovery-20260917",
+      "closed_at": "2026-09-17T04:36:10Z",
+      "head_sha": "2fce18764d044813ced8e1b5c9456410b74ed1fa",
+      "merged_at": "2026-09-17T04:36:10Z",
+      "number": 15246,
+      "state": "MERGED",
+      "title": "Revenue: repair source-bound RFP clarification amendment authority"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "quill/agent-rescue-autopsy-buy-convert-20260917-01",
+      "closed_at": "2026-09-17T04:30:11Z",
+      "head_sha": "157af922c4e9b0ea75b9a74abb6af4919059bdad",
+      "merged_at": "2026-09-17T04:30:11Z",
+      "number": 15243,
+      "state": "MERGED",
+      "title": "QUILL: agent-rescue Autopsy $29 Buy CTA first-screen convert"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-solchat13/ci-arm64-failover-20260916",
+      "closed_at": "2026-09-17T04:29:52Z",
+      "head_sha": "eb1d3306f134218a8e5219e80e90d8e661c290a6",
+      "merged_at": "2026-09-17T04:29:51Z",
+      "number": 15225,
+      "state": "MERGED",
+      "title": "CI: fail architecture-neutral critical gates over to arm64 runners"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zml-a7q2/reply-event-single-read-core-20260914",
+      "closed_at": "2026-09-17T04:27:58Z",
+      "head_sha": "e8b319f1300f64eca6cbcdbcd4330077574fdb0a",
+      "merged_at": null,
+      "number": 14464,
+      "state": "CLOSED",
+      "title": "Fix reply-event identity at the core boundary"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zplh-x4q7/reply-event-finalization-20260915",
+      "closed_at": "2026-09-17T04:27:45Z",
+      "head_sha": "ffaff5aa571aaccedd41f82c0eba85b09586f230",
+      "merged_at": null,
+      "number": 14788,
+      "state": "CLOSED",
+      "title": "Finalize reply-event identity authority and canonical funnel"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/goat-spy25-studies-keep-70d5",
+      "closed_at": "2026-09-17T04:25:32Z",
+      "head_sha": "59fdad6a23203683a8bfd25974a5f0ef02281bf2",
+      "merged_at": "2026-09-17T04:25:32Z",
+      "number": 15241,
+      "state": "MERGED",
+      "title": "GOAT: KEEP Larger fixed on leftover spy-25/26 studies notes"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "fpc-7ddb/holdings-byte-preservation",
+      "closed_at": "2026-09-17T04:23:32Z",
+      "head_sha": "ea1d4465a467757e7688399d169c1d95003271fe",
+      "merged_at": "2026-09-17T04:23:32Z",
+      "number": 15223,
+      "state": "MERGED",
+      "title": "coordination_state: holdings writes carry every other holding by blob id"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -213,164 +368,10 @@
       "number": 15240,
       "state": "MERGED",
       "title": "GOAT: KEEP Larger fixed on leftover spy-24 interconnect/lda/muhl notes"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "cursor/goat-corpus-spy23-keep-b7f6",
-      "closed_at": "2026-09-17T04:09:07Z",
-      "head_sha": "4210d1f81b6f0d1a28a6792675bee37f70cb2dc3",
-      "merged_at": "2026-09-17T04:09:07Z",
-      "number": 15239,
-      "state": "MERGED",
-      "title": "GOAT: KEEP Larger fixed on leftover spy-23 corpus ground MD"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-lattice/prior-wins-bigger-cash-ladder-20260916",
-      "closed_at": "2026-09-17T04:07:04Z",
-      "head_sha": "95e766831f24e65507da577dcaf45dfc7562747c",
-      "merged_at": "2026-09-17T04:07:04Z",
-      "number": 15238,
-      "state": "MERGED",
-      "title": "Revenue: ladder settled proof into larger open cash opportunities"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "gpt56/autopsy-refund-terminality-20260916",
-      "closed_at": "2026-09-17T04:03:39Z",
-      "head_sha": "ef2c9fccfbb93f7fae1e10f833c9109f02c05b44",
-      "merged_at": "2026-09-17T04:03:38Z",
-      "number": 15237,
-      "state": "MERGED",
-      "title": "Autopsy: retire satisfied refunds from active queue"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol/ridgway-zerograd-nitsche-20260916",
-      "closed_at": "2026-09-17T04:02:35Z",
-      "head_sha": "0ca44b36c91b6d6f9c61a03a76640e7ac4697238",
-      "merged_at": "2026-09-17T04:02:35Z",
-      "number": 15236,
-      "state": "MERGED",
-      "title": "Research: reduce Ridgway zero-gradient prize to concrete Scott\u2013Vogelius/Nitsche gaps"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "cursor/goat-corpus-spy22-keep-2155",
-      "closed_at": "2026-09-17T03:59:00Z",
-      "head_sha": "973a70caa09dc4c2cf7a288fa2ae4609db2bce7c",
-      "merged_at": "2026-09-17T03:59:00Z",
-      "number": 15235,
-      "state": "MERGED",
-      "title": "GOAT: KEEP Larger fixed on leftover spy-22 corpus ground MD"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-lattice/private-posted-contracts-20260916",
-      "closed_at": "2026-09-17T03:54:56Z",
-      "head_sha": "a28fb8b70a76d6ee53763f85f02327c917494dc6",
-      "merged_at": "2026-09-17T03:54:56Z",
-      "number": 15234,
-      "state": "MERGED",
-      "title": "Revenue: ship buyer-posted contract bid packet"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "cursor/goat-work-automation-xyz-keep-703a",
-      "closed_at": "2026-09-17T03:50:19Z",
-      "head_sha": "69717e8a66d4a1172c161bf218d4db175b8344f9",
-      "merged_at": "2026-09-17T03:50:19Z",
-      "number": 15233,
-      "state": "MERGED",
-      "title": "GOAT: KEEP Larger fixed on leftover work-automation/xyz-zero ground MD"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-autopsyloop/autopsy-29-fulfillment-20260916",
-      "closed_at": "2026-09-17T03:50:14Z",
-      "head_sha": "b76f1bbbfd9bfb1592c29246763541afd44f1e30",
-      "merged_at": "2026-09-17T03:50:14Z",
-      "number": 15232,
-      "state": "MERGED",
-      "title": "Revenue: deterministic $29 Agent Failure Autopsy fulfillment spine"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-lattice/outbound-muse-trust-hardening-20260916",
-      "closed_at": "2026-09-17T03:41:47Z",
-      "head_sha": "ec7f4d3f8919ee747e2f69a415e6e3a6ddad362f",
-      "merged_at": "2026-09-17T03:41:47Z",
-      "number": 15230,
-      "state": "MERGED",
-      "title": "Security: authenticate Muse evidence for outbound readiness"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "cursor/goat-vent-visual-keep-a9e1",
-      "closed_at": "2026-09-17T03:41:20Z",
-      "head_sha": "b0c5b28b251eff82f9da55a51eb0479b43fd7ad0",
-      "merged_at": "2026-09-17T03:41:20Z",
-      "number": 15231,
-      "state": "MERGED",
-      "title": "GOAT: KEEP Larger fixed on leftover vent/visual/wake/whisper/width200 ground MD"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "grok/cnr-ci-receipt-35162961529",
-      "closed_at": "2026-09-16T23:44:40Z",
-      "head_sha": "aad67e14f726be61f98ae0f2e79754b64a0b7807",
-      "merged_at": "2026-09-16T23:44:40Z",
-      "number": 15117,
-      "state": "MERGED",
-      "title": "Receipt: commercial-next-step-router CI EXTERNAL_PROVIDER_ACTION"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "grokbuild/commercial-funnel-root-bridge-20260916",
-      "closed_at": "2026-09-16T23:43:54Z",
-      "head_sha": "dcec3f463d6351a249eb44ff4d931d9cdf3c819b",
-      "merged_at": "2026-09-16T23:43:54Z",
-      "number": 15116,
-      "state": "MERGED",
-      "title": "test(commercial-funnel): land unique root CI bridge leftover from #14822"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "grok/repair-14999-local-div-certificates-20260916",
-      "closed_at": "2026-09-16T23:43:43Z",
-      "head_sha": "22050f2019e29043ce57eb0453fed43d5212c3db",
-      "merged_at": "2026-09-16T23:43:43Z",
-      "number": 15114,
-      "state": "MERGED",
-      "title": "research/ridgway_freudenthal: land advertised local-div certificates (#14999)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "grok/opportunity-qualification-scope-drift-hold-20260916",
-      "closed_at": "2026-09-16T23:41:57Z",
-      "head_sha": "ed7ca64ea5b28d770b47009a59886a5064b28c00",
-      "merged_at": "2026-09-16T23:41:57Z",
-      "number": 15115,
-      "state": "MERGED",
-      "title": "fix(revenue): HOLD frozen-root authority scope drift"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T04:22:35Z",
+  "unchanged_since": "2026-09-17T04:43:57Z",
   "undatable_pulls": []
 }

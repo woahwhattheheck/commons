@@ -25,6 +25,17 @@ FUNNEL = os.path.join("revenue", "reply_to_revenue", "funnel.json")
 BINDINGS = os.path.join("revenue", "scope_to_delivery", "catalog_bindings.json")
 PACK = os.path.join("revenue", "payment_ready", "pack.json")
 STRIPE_URL_RE = re.compile(r"^https://(?:buy|donate)\.stripe\.com/[A-Za-z0-9_-]+$")
+STRIPE_HTML_URL_RE = re.compile(r"https://(?:buy|donate)\.stripe\.com/")
+BUY_HOST_PATH_RE = re.compile(r"https?://buy\.stripe\.com/([A-Za-z0-9_-]+)", re.I)
+PAY_CONVERT_SHELF_LIVE_BUYS = frozenset(
+    {
+        "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
+        "https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e",
+        "https://buy.stripe.com/28E9AS70F6378qB2SC43S0w",
+        "https://buy.stripe.com/14AfZg1Gl3UZ7mxfFo43S0x",
+        "https://buy.stripe.com/7sYdR8ckZgHLbCN50K43S0y",
+    }
+)
 OWNER_ACTION_HOSTS = {
     "dashboard.stripe.com",
     "www.paypal.com",
@@ -309,14 +320,32 @@ def compose_errors(root: str, registry: dict[str, Any], projected: dict[str, Any
     return errors
 
 
+def html_stripe_url_errors(name: str, text: str) -> list[str]:
+    """tips/commerce/payment-capability stay inert; pay.html convert shelf is exact live buys."""
+    if name == "pay.html":
+        found = {
+            "https://buy.stripe.com/%s" % path
+            for path in BUY_HOST_PATH_RE.findall(text)
+        }
+        if found != PAY_CONVERT_SHELF_LIVE_BUYS:
+            return [
+                "%s convert shelf must reuse exactly the existing live buy.stripe.com URLs"
+                % name
+            ]
+        if "donate.stripe.com" in text.lower():
+            return ["%s must not invent donate.stripe.com URLs" % name]
+        return []
+    if STRIPE_HTML_URL_RE.search(text):
+        return ["%s must keep Stripe URLs out of static HTML" % name]
+    return []
+
+
 def html_surface_errors(root: str) -> list[str]:
     errors: list[str] = []
-    stripe_url = re.compile(r"https://(?:buy|donate)\.stripe\.com/")
     paypal_me = re.compile(r"paypal\.me/", re.I)
     for name in PUBLIC_HTML:
         text = _read(root, name)
-        if stripe_url.search(text):
-            errors.append("%s must keep Stripe URLs out of static HTML" % name)
+        errors.extend(html_stripe_url_errors(name, text))
         if paypal_me.search(text):
             errors.append("%s must not invent a PayPal.me" % name)
         if "mailto:tokenjunkielabs@gmail.com" not in text and name in (
