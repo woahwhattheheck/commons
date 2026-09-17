@@ -93,12 +93,24 @@ def compile_s3_manifest_event(event: Mapping[str, Any], s3_get: Callable[[str, s
         "manifest_sha256": sha256(bytes(manifest_bytes)),
         "aws_execution_proven": False,
     }
-    core = {"adapter_schema": "visual-evidence-packet-quality-s3-artifact/v1", "core_artifact": artifact, "runtime_envelope": envelope}
+    core = {
+        "adapter_schema": "visual-evidence-packet-quality-s3-artifact/v1",
+        "core_artifact": artifact,
+        "runtime_envelope": envelope,
+    }
     return {**core, "adapter_receipt_sha256": sha256(core)}
 
 
-def verify_s3_manifest_event(event: Mapping[str, Any], s3_get: Callable[[str, str, str], bytes], artifact: Mapping[str, Any]) -> bool:
-    """Verify adapter and outer runtime envelope by exact deterministic recompile."""
+def verify_s3_manifest_event(
+    event: Mapping[str, Any],
+    s3_get: Callable[[str, str, str], bytes],
+    artifact: Mapping[str, Any],
+) -> bool:
+    """Verify an adapter artifact by exact deterministic recompile.
+
+    This binds the outer runtime envelope as well as the inner packet-quality artifact.
+    An envelope field cannot be changed while retaining a valid adapter receipt.
+    """
     if type(artifact) is not dict:
         raise PacketQualityError("adapter artifact must be plain object")
     expected = compile_s3_manifest_event(event, s3_get)
@@ -112,14 +124,22 @@ def verify_s3_manifest_event(event: Mapping[str, Any], s3_get: Callable[[str, st
     receipt = artifact.get("adapter_receipt_sha256")
     if type(receipt) is not str or len(receipt) != 64 or any(c not in "0123456789abcdef" for c in receipt):
         raise PacketQualityError("adapter receipt malformed")
-    core = {"adapter_schema": artifact.get("adapter_schema"), "core_artifact": artifact.get("core_artifact"), "runtime_envelope": artifact.get("runtime_envelope")}
+    core = {
+        "adapter_schema": artifact.get("adapter_schema"),
+        "core_artifact": artifact.get("core_artifact"),
+        "runtime_envelope": artifact.get("runtime_envelope"),
+    }
     if sha256(core) != receipt:
         raise PacketQualityError("adapter receipt mismatch")
     return True
 
 
 def lambda_handler(event: Mapping[str, Any], context: Any = None) -> dict[str, Any]:
-    """Optional read-only deployment entry point; no AWS writes."""
+    """Optional deployment entry point; read-only S3 access, no writes.
+
+    Competition deployment must run OpenCV 5. This function refuses to present
+    itself as a competition-ready runtime on any other major version.
+    """
     import cv2
     if not str(cv2.__version__).startswith("5."):
         raise PacketQualityError("live competition adapter requires OpenCV 5.x")
