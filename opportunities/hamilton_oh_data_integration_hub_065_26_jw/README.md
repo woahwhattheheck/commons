@@ -4,28 +4,39 @@ Recovered source-authority-bounded pursuit carrier for Commons issue #13928.
 
 ## Current disposition
 
-`HOLD` — not a bid and not a no-bid. The opportunity is publicly visible and appears open, but the controlling Hamilton County solicitation packet/addenda have not been retained in this carrier. Discovery mirrors are useful for prioritizing packet recovery and specialist/partner questions; they are never allowed to mint buyer requirements or submission authority.
+`HOLD` — not a bid and not a no-bid. The public opportunity is visible, but the controlling Hamilton County solicitation packet/addenda have not been retained here. Public mirrors may prioritize research; they cannot mint buyer requirements, qualification satisfaction, deadlines, teaming permission, or submission authority.
 
-As checked on 2026-09-17, public mirrors report an October 14, 2026 response deadline and describe a justice-data integration hub with API/event-driven integration, mapping/orchestration, validation, logging/monitoring, and NIEM/CJIS/FedRAMP-High themes. Those claims remain `DISCOVERY_ONLY` until recovered from controlling County material.
+As checked on 2026-09-17, mirrors reported an October 14, 2026 response deadline and described a justice-data integration hub with API/event-driven integration, mapping/orchestration, validation, logging/monitoring, and NIEM/CJIS/FedRAMP-High themes. Those remain `DISCOVERY_ONLY` until recovered from controlling County material.
 
 ## Decision model
 
-The compiler emits exactly one of:
+The compiler emits one of:
 
-- `PRIME`: official packet retained, official submission mechanics bound, and every prime gate evidence-backed.
-- `TEAMING`: official material permits teaming/subcontracting, specialist delivery evidence is complete, and a real prime partner is evidence-backed.
-- `HOLD`: potentially valuable, but authority or qualification gates incomplete.
+- `PRIME`: a controlling official packet is retained, official submission mechanics and a future official response deadline are bound, and every prime satisfaction gate has admissible retained evidence.
+- `TEAMING`: the same official deadline is open, official material permits teaming, specialist delivery evidence is bound, and a real prime partner has source-owned due-diligence evidence.
+- `HOLD`: authority, deadline, qualification, specialist, or partner gates remain incomplete.
 - `NO_BID`: the retained official response deadline has passed.
 
-Mirror sources (`MIRROR`) and the bare official portal entry (`OFFICIAL_PORTAL_ENTRY`) are structurally forbidden from controlling buyer fields such as deadlines, submission mechanics, teaming rules, evaluation criteria, or mandatory requirements.
+### Requirement text is not qualification proof
+
+`OFFICIAL_REQUIREMENT` can satisfy only the `submission_mechanics` gate. Eligibility, security/compliance, past performance, insurance/legal, and pricing require owner-specific satisfaction evidence (`OWNER_QUALIFICATION` or `OWNER_PRICING`). An RFP sentence describing a requirement cannot prove that the owner satisfies it.
+
+### Source-owned retained evidence
+
+Positive owner/partner evidence is closed-world. Runtime JSON may name only a JSON leaf directly under `retained_evidence/`, and that leaf is admissible only when `gate.py`'s `SOURCE_OWNED_RETAINED_EVIDENCE` mapping pins the exact leaf name to its exact SHA-256. The production map is intentionally empty in this carrier, so no positive owner/partner qualification is claimed.
+
+For an admitted future artifact the verifier also requires: source digest = locator digest = source-owned pinned digest; one-link regular inode; no-follow directory-relative open; one unchanged file-descriptor generation; bounded UTF-8 strict JSON; exact opportunity/source/requirement/class binding; and typed non-empty facts/refs. A caller-created one-link file plus matching runtime ledger/manifest rows is rejected before its bytes can become qualification evidence. A hard-link alias is also rejected.
+
+`verify_receipt(...)` performs a semantic exact recompile against the source ledger, requirements, evidence manifest, source-owned retained bytes, and evaluation time. Rehashing a forged decision or authority bit does not verify.
 
 ## Immediate work order
 
-1. Recover the exact official RFP and all current addenda from the County procurement portal. Retain byte hashes and identify the current generation.
-2. Bind official response/question deadlines, submission mechanics, teaming rules, evaluation criteria, security/compliance requirements, insurance, references, pricing forms, and addendum precedence.
-3. Re-evaluate prime economics. Do not claim TJLabs has justice-sector references, CJIS/FedRAMP authorization, insurance, or certifications unless retained owner/vendor evidence proves them.
-4. If prime gates remain unproven and official rules permit subcontracting, identify a qualified prime and offer a paid specialist workshare around integration implementation, deterministic validation/evidence, cutover, observability, and test automation. External contact must use the fleet single-writer/Muse collision gate first.
-5. Stop on an official deadline pass, official prohibition on teaming, or evidence that qualification/cost makes the pursuit uneconomic.
+1. Recover the exact official RFP and all current addenda from the County procurement portal. Retain exact bytes/digests and identify the current generation.
+2. Bind the official response/question deadlines, submission mechanics, teaming rules, evaluation criteria, security/compliance requirements, insurance, references, pricing forms, and addendum precedence.
+3. Add positive owner qualification only through reviewed source-owned retained artifacts; requirement text or runtime labels are not satisfaction evidence.
+4. Re-evaluate prime economics without claiming justice-sector references, CJIS/FedRAMP authorization, insurance, certifications, pricing readiness, or capacity until source-owned evidence proves them.
+5. If prime gates remain unproven and official rules allow subcontracting, identify a qualified prime and offer a paid specialist workshare. Any external contact must first win the fleet Muse single-writer collision gate.
+6. Stop on an official deadline pass, official prohibition on teaming, or evidence that qualification/cost makes the pursuit uneconomic.
 
 ## Usage
 
@@ -33,7 +44,8 @@ Mirror sources (`MIRROR`) and the bare official portal entry (`OFFICIAL_PORTAL_E
 python -m opportunities.hamilton_oh_data_integration_hub_065_26_jw.gate \
   --ledger opportunities/hamilton_oh_data_integration_hub_065_26_jw/source_ledger.json \
   --requirements opportunities/hamilton_oh_data_integration_hub_065_26_jw/requirements.json \
+  --evidence opportunities/hamilton_oh_data_integration_hub_065_26_jw/evidence_manifest.json \
   --now 2026-09-17T07:05:00Z
 ```
 
-Output is canonical JSON with a self-verifying SHA-256 receipt. It grants no County contact, portal registration, question/proposal submission, signature, pricing commitment, partner representation, award, payment, or revenue authority.
+Output is canonical JSON with input digests and a semantic SHA-256 receipt. It grants no County contact, portal registration, question/proposal submission, signature, pricing commitment, partner representation, award, payment, receivable, or revenue authority.
