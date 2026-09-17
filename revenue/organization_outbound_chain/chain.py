@@ -4,7 +4,7 @@ This module is the provider-bound conjunction required by Commons #14269. It doe
 not mint outreach authority. It composes already-landed current organization
 pressure, the exact organization-wide lease generation plus holder secret,
 commercial-opportunity custody and the action-specific initial-outreach slot, then
-allows the actual provider callback only through outbound_send_consumer.consume_once.
+allows one exact typed provider boundary only through outbound_send_consumer.consume_once.
 
 No prerequisite receipt can represent a completed send. The returned chain receipt
 keeps external_send_authorized false; only the terminal consumer's retained outcome
@@ -30,12 +30,17 @@ from revenue.organization_outbound_lease import (
 from revenue.outbound_send_consumer import consume_once
 from tools.outbound_send_guard import capability_lease as lower_lease
 
+from .provider_boundary import (
+    ProviderBoundary,
+    ProviderBoundaryError,
+    invoke_provider_boundary,
+    provider_name as boundary_provider_name,
+)
+
 SCHEMA = "commons.organization-outbound-chain/v1"
 PROVIDER_REQUEST_SCHEMA = "commons.organization-outbound-provider-request/v1"
 _INITIAL_EVENT_KIND = "initial"
 _HEX = frozenset("0123456789abcdef")
-_SUPPORTED_PROVIDERS = frozenset({"gmail", "slack_dm", "discord", "webhook_mail"})
-
 
 class ChainError(ValueError):
     """Fail-closed structural/current-authority error."""
@@ -46,7 +51,6 @@ class LeaseStore(Protocol):
 
 
 GitTransport = Callable[[str, str, Mapping[str, Any] | None], tuple[int, Any]]
-ProviderCallback = Callable[[str, bytes], Any]
 
 
 def _canon(value: Any) -> bytes:
@@ -367,9 +371,8 @@ def execute_guarded_initial_outreach(
     organization_holder_capability: bytes,
     prospect_identity: bytes,
     route_identity: bytes,
-    provider: str,
+    provider_boundary: ProviderBoundary,
     provider_request_bytes: bytes,
-    provider_callback: ProviderCallback,
 ) -> dict[str, Any]:
     """Execute one initial provider mutation through the full mandatory chain.
 
@@ -378,11 +381,10 @@ def execute_guarded_initial_outreach(
     the returned receipt. The organization lease must have been acquired with the
     commitment helpers exported by this module.
     """
-    provider_name = _token(provider, "provider")
-    if provider_name not in _SUPPORTED_PROVIDERS:
-        raise ChainError("provider is not registered for guarded initial outreach")
-    if not callable(provider_callback):
-        raise ChainError("provider_callback callable required")
+    try:
+        provider_name = boundary_provider_name(provider_boundary)
+    except ProviderBoundaryError as exc:
+        raise ChainError("exact registered provider boundary required") from exc
     request_bytes = _private_bytes(provider_request_bytes, "provider_request_bytes", maximum=2 * 1024 * 1024)
 
     organization_lease, _ = _active_organization_lease(
@@ -484,7 +486,11 @@ def execute_guarded_initial_outreach(
         }
 
         def terminal_provider(idempotency_key: str) -> Any:
-            return provider_callback(idempotency_key, request_bytes)
+            return invoke_provider_boundary(
+                provider_boundary,
+                idempotency_key=idempotency_key,
+                request_bytes=request_bytes,
+            )
 
         try:
             consumer_receipt = consume_once(
