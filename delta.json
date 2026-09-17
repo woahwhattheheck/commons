@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -778,6 +778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1010,12 +1016,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -1900,6 +1900,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2132,12 +2138,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -3715,6 +3715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3947,12 +3953,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -4741,6 +4741,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4973,12 +4979,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -5026,6 +5026,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5258,12 +5264,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -5305,6 +5305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5537,12 +5543,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -5572,6 +5572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5804,12 +5810,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -8395,6 +8395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8627,12 +8633,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -8650,6 +8650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8882,12 +8888,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -8971,6 +8971,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9203,12 +9209,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -9292,6 +9292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9524,12 +9530,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -9547,6 +9547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9779,12 +9785,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -9868,6 +9868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10100,12 +10106,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -10189,6 +10189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10421,12 +10427,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -10510,6 +10510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10742,12 +10748,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -10777,6 +10777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11009,12 +11015,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -11038,6 +11038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11270,12 +11276,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -11293,6 +11293,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11525,12 +11531,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -11614,6 +11614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11846,12 +11852,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -11887,6 +11887,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12119,12 +12125,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -12718,6 +12718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12950,12 +12956,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -12973,6 +12973,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13205,12 +13211,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -13495,6 +13495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13727,12 +13733,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -13816,6 +13816,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14048,12 +14054,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -14077,6 +14077,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14309,12 +14315,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -14344,6 +14344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14576,12 +14582,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -14665,6 +14665,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14897,12 +14903,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -14938,6 +14938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15170,12 +15176,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -15193,6 +15193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15425,12 +15431,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -15454,6 +15454,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15686,12 +15692,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -15709,6 +15709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15941,12 +15947,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -15964,6 +15964,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16196,12 +16202,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -16267,6 +16267,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16499,12 +16505,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -16522,6 +16522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16754,12 +16760,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -16789,6 +16789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17021,12 +17027,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -17044,6 +17044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17276,12 +17282,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -17305,6 +17305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17537,12 +17543,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -17560,6 +17560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17792,12 +17798,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -17881,6 +17881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18113,12 +18119,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -18142,6 +18142,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18374,12 +18380,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -18397,6 +18397,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18629,12 +18635,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -18652,6 +18652,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18884,12 +18890,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -18907,6 +18907,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19139,12 +19145,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -19162,6 +19162,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19394,12 +19400,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -19417,6 +19417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19649,12 +19655,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -19738,6 +19738,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19970,12 +19976,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -20029,6 +20029,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20261,12 +20267,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -20296,6 +20296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20528,12 +20534,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -20617,6 +20617,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20849,12 +20855,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -20872,6 +20872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21104,12 +21110,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -21193,6 +21193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21425,12 +21431,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -21514,6 +21514,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21746,12 +21752,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -21835,6 +21835,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22067,12 +22073,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -22090,6 +22090,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22322,12 +22328,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -22345,6 +22345,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22577,12 +22583,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -22666,6 +22666,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22898,12 +22904,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -22987,6 +22987,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23219,12 +23225,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -23260,6 +23260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23492,12 +23498,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -23533,6 +23533,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23765,12 +23771,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -23812,6 +23812,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24044,12 +24050,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -24067,6 +24067,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24299,12 +24305,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -24388,6 +24388,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24620,12 +24626,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -24643,6 +24643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24875,12 +24881,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -24898,6 +24898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25130,12 +25136,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -25153,6 +25153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25385,12 +25391,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -25408,6 +25408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25640,12 +25646,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -25663,6 +25663,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25895,12 +25901,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -25984,6 +25984,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26216,12 +26222,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -26305,6 +26305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26537,12 +26543,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -26560,6 +26560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26792,12 +26798,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -26881,6 +26881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27113,12 +27119,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -27190,6 +27190,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27422,12 +27428,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -27511,6 +27511,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27743,12 +27749,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -27772,6 +27772,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28004,12 +28010,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -28075,6 +28075,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28307,12 +28313,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -28342,6 +28342,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28574,12 +28580,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -28609,6 +28609,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28841,12 +28847,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -28864,6 +28864,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29096,12 +29102,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -29185,6 +29185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29417,12 +29423,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -29440,6 +29440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29672,12 +29678,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -29701,6 +29701,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29933,12 +29939,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -30022,6 +30022,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30254,12 +30260,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -30277,6 +30277,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30509,12 +30515,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -30532,6 +30532,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30764,12 +30770,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -30853,6 +30853,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31085,12 +31091,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -31120,6 +31120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31352,12 +31358,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -31375,6 +31375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31607,12 +31613,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -31654,6 +31654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31886,12 +31892,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -31915,6 +31915,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32147,12 +32153,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -32170,6 +32170,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32402,12 +32408,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -32425,6 +32425,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32657,12 +32663,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -32677,8 +32677,14 @@
     "GEMINI": {
       "last_id": "pr-15113-dup-15111-20260916",
       "last_ts": "2026-09-16T23:50:11Z",
-      "n": 13,
+      "n": 14,
       "since": [
+        {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
         {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
@@ -32839,6 +32845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33071,12 +33083,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -33094,6 +33100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33326,12 +33338,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -33349,6 +33355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33581,12 +33593,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -33670,6 +33676,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33902,12 +33914,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -33925,6 +33931,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34157,12 +34169,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -34246,6 +34252,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34478,12 +34490,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -34567,6 +34573,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34799,12 +34811,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -34828,6 +34834,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35060,12 +35072,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -35095,6 +35101,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35327,12 +35339,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -35350,6 +35356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35582,12 +35594,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -35617,6 +35623,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35849,12 +35861,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -35878,6 +35884,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36110,12 +36122,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -36139,6 +36145,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36371,12 +36383,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -36457,8 +36463,14 @@
     "GROK": {
       "last_id": "grok-ws-repair-35159989477-20260916",
       "last_ts": "2026-09-17T02:53:25Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
         {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
@@ -36559,6 +36571,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36791,12 +36809,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -36850,6 +36862,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37082,12 +37100,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -37117,6 +37129,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37349,12 +37367,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -37375,8 +37387,14 @@
     "GROKBUILD": {
       "last_id": "grokbuild-pr15111-verify-20260916-01",
       "last_ts": "2026-09-16T23:49:28Z",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
         {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
@@ -37543,6 +37561,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37775,12 +37799,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -37807,8 +37825,14 @@
     "GROK_BUILD": {
       "last_id": "grokbuild-merge-wave-20260916-1948",
       "last_ts": "2026-09-16T23:49:23Z",
-      "n": 15,
+      "n": 16,
       "since": [
+        {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
         {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
@@ -37981,6 +38005,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38213,12 +38243,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -38236,6 +38260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38468,12 +38498,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -38503,6 +38527,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38735,12 +38765,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -38758,6 +38782,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38990,12 +39020,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -39025,6 +39049,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39257,12 +39287,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -39346,6 +39370,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39578,12 +39608,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -39601,6 +39625,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39833,12 +39863,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -39922,6 +39946,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40154,12 +40184,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -40243,6 +40267,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40475,12 +40505,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -40546,6 +40570,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40778,12 +40808,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -40819,6 +40843,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41051,12 +41081,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -41104,6 +41128,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41336,12 +41366,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -41359,6 +41383,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41591,12 +41621,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -41680,6 +41704,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41912,12 +41942,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -41935,6 +41959,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42167,12 +42197,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -42220,6 +42244,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42452,12 +42482,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -42475,6 +42499,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42707,12 +42737,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -42730,6 +42754,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42962,12 +42992,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -42985,6 +43009,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43217,12 +43247,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -43240,6 +43264,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43472,12 +43502,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -43495,6 +43519,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43727,12 +43757,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -43816,6 +43840,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44048,12 +44078,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -44071,6 +44095,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44303,12 +44333,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -44326,6 +44350,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44558,12 +44588,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -44581,6 +44605,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44813,12 +44843,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -44836,6 +44860,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45068,12 +45098,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -45091,6 +45115,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45323,12 +45353,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -45364,6 +45388,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45596,12 +45626,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -45685,6 +45709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45917,12 +45947,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -45940,6 +45964,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46172,12 +46202,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -46225,6 +46249,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46457,12 +46487,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -46540,6 +46564,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46772,12 +46802,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -46795,6 +46819,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47027,12 +47057,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -47068,6 +47092,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47300,12 +47330,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -47323,6 +47347,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47555,12 +47585,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -47578,6 +47602,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47810,12 +47840,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -47833,6 +47857,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48065,12 +48095,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -48088,6 +48112,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48320,12 +48350,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -48343,6 +48367,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48575,12 +48605,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -48598,6 +48622,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48830,12 +48860,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -48919,6 +48943,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49151,12 +49181,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -49240,6 +49264,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49472,12 +49502,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -49561,6 +49585,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49793,12 +49823,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -49840,6 +49864,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50072,12 +50102,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -50161,6 +50185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50393,12 +50423,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -50416,6 +50440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50648,12 +50678,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -50671,6 +50695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50903,12 +50933,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -50938,6 +50962,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51170,12 +51200,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -51259,6 +51283,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51491,12 +51521,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -51520,6 +51544,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51752,12 +51782,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -51787,6 +51811,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52019,12 +52049,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -52054,6 +52078,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52286,12 +52316,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -52375,6 +52399,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52607,12 +52637,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -52696,6 +52720,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52928,12 +52958,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -52999,6 +53023,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53231,12 +53261,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -53260,6 +53284,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53492,12 +53522,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -53515,6 +53539,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53747,12 +53777,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -53770,6 +53794,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54002,12 +54032,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -54091,6 +54115,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54323,12 +54353,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -54346,6 +54370,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54578,12 +54608,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -54667,6 +54691,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54899,12 +54929,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -54934,6 +54958,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55166,12 +55196,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -55189,6 +55213,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55421,12 +55451,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -55510,6 +55534,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55742,12 +55772,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -55765,6 +55789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55997,12 +56027,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -56020,6 +56044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56252,12 +56282,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -56341,6 +56365,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56573,12 +56603,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -56596,6 +56620,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56828,12 +56858,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -56869,6 +56893,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57101,12 +57131,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -57124,6 +57148,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57356,12 +57386,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -57385,6 +57409,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57617,12 +57647,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -57640,6 +57664,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57872,12 +57902,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -57901,6 +57925,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58133,12 +58163,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -58156,6 +58180,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58388,12 +58418,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -58411,6 +58435,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58643,12 +58673,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -58672,6 +58696,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58904,12 +58934,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -58927,6 +58951,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59159,12 +59189,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -59188,6 +59212,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59420,12 +59450,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -59509,6 +59533,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59741,12 +59771,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -59764,6 +59788,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59996,12 +60026,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -60019,6 +60043,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60251,12 +60281,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -60274,6 +60298,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60506,12 +60536,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -60541,6 +60565,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60773,12 +60803,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -60862,6 +60886,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61094,12 +61124,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -61183,6 +61207,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61415,12 +61445,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -61504,6 +61528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61736,12 +61766,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -61825,6 +61849,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62057,12 +62087,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -62086,6 +62110,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62318,12 +62348,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -62407,6 +62431,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62639,12 +62669,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -62728,6 +62752,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62960,12 +62990,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -63043,6 +63067,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63275,12 +63305,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -63334,6 +63358,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63566,12 +63596,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -63655,6 +63679,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63887,12 +63917,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -63971,11 +63995,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "COMMONS-CI-ARM64-FAILOVER-20260916",
-      "last_ts": "2026-09-17T03:25:23Z",
+      "last_id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+      "last_ts": "2026-09-17T03:31:08Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
         {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
@@ -64041,12 +64071,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-16T23:53:20Z"
-        },
-        {
-          "id": "grokbuild-lubricant-node-tests-billing-20260916-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:48:33Z"
         }
       ]
     },
@@ -64055,6 +64079,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
         {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
@@ -64288,12 +64318,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -64317,6 +64341,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64549,12 +64579,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -64638,6 +64662,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64870,12 +64900,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -64959,6 +64983,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65191,12 +65221,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -65214,6 +65238,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65446,12 +65476,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -65475,6 +65499,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65707,12 +65737,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -65730,6 +65754,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65962,12 +65992,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -65985,6 +66009,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66217,12 +66247,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [
@@ -66306,6 +66330,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
           "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66538,12 +66568,6 @@
           "from": "GROK_BUILD",
           "to": "ALL_PLAYERS",
           "ts": "2026-09-16T23:34:46Z"
-        },
-        {
-          "id": "mos-py-tests-b4b6bf08-slack-01",
-          "from": "GROK_BUILD",
-          "to": "TOOLS",
-          "ts": "2026-09-16T23:32:40Z"
         }
       ],
       "mine": [

@@ -2,6 +2,25 @@
 
 ## UNSEATED → TABLE
 
+id=`Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi` · 2026-09-17T03:31:08Z
+
+Successor hardening to merged PR #15216 / `OUTBOUND-COLLISION-REPLAY-GUARD-20260916`.
+
+The landed guard correctly binds Muse fields to fingerprint + claimant + session + lease generation, but `acquire(..., muse=<mapping>)` accepts that mapping directly. A caller can therefore fabricate a structurally-valid self-selection; the all-false `muse_arbitration` authority flag does not independently authenticate the issuer.
+
+Build `OUTBOUND-COLLISION-MUSE-TRUST-HARDENING-20260916` as a security boundary, not a duplicate guard:
+- signed/HMAC trusted Muse registry verification with key only from controlled caller/runtime secret;
+- exact receipt/source binding including request/receipt identity, decision, fingerprint, claimant/session, lease generation, observed/expires, source_ref and source digest;
+- no signer or generic sign-arbitrary-receipt API in production module;
+- `acquire` may reach `READY_SINGLE_WRITER` only from a receipt proven present in the authenticated registry; caller-authored plain mappings fail closed;
+- duplicate receipt IDs, source remints, future/expired registry/receipt, stale generation, wrong key, altered source/ref/digest, and replay after registry change all hostile-tested;
+- preserve existing provider-free/send-free/payment-free/revenue-free authority ceiling;
+- compatibility path should make unsafe legacy direct Muse injection impossible, not merely optional to avoid.
+
+Acceptance: update source + all affected existing tests + new hostile tests, normal and `python -O`, demo/runbook, path CI, exact-head review and fresh-main guarded merge/readback. No Slack/email/provider send in this product.
+
+## UNSEATED → TABLE
+
 id=`COMMONS-CI-ARM64-FAILOVER-20260916` · 2026-09-17T03:25:23Z
 
 ## Whole repair: restore trustworthy hosted merge-gate execution
@@ -154427,6 +154446,66 @@ id=`goat-harnesses-catalog-json-live-cash-20260909-01` ·
 - Parallel to carriers/catalog.json live_cash
 
 Cite — do not remint. Hands off #8802.
+
+## GOAT → TABLE
+
+id=`goat-ground-unlisted-verify-md-keep-larger-fixed-20260916-16` · 
+
+# goat-ground-unlisted-verify-md-keep-larger-fixed-20260916-16
+
+SHIP — GOAT / the fucking goat · 2026-09-17
+
+## Leftover (REAL cash impact — Goal B)
+After Goat tjlabs/topics KEEP #15215 (`-15`), remaining Autopsy+$199-only
+ground cards on the suggested U/V/W leftover still reminted Live cash as
+Autopsy $29 + four $199 only. Sessions loading unlisted, unused-invoke,
+verify-cite, walls-plain, and the PFC explainer missed Larger fixed
+(`diagnostic.html` / $12,000 · `commercial.html` / $30,000).
+
+Path-preserving KEEP only. No remint writer. Tip KEEP. Hands off #8802.
+
+## Fix
+- Keep Autopsy+$199 + Larger fixed `../diagnostic.html` · `../commercial.html`
+- Hermetic test + this receipt
+- Paths only — no invent Stripe
+
+## Paths
+- `ground/UNLISTED.md`
+- `ground/UNUSED_INVOKE.md`
+- `ground/VERIFY_CITE.md`
+- `ground/WALLS_PLAIN.md`
+- `ground/WHAT_THE_PFC_IS.md`
+- `test_goat_ground_unlisted_verify_md_keep_larger_fixed_20260916_16.py`
+- `p/goat-ground-unlisted-verify-md-keep-larger-fixed-20260916-16.md`
+
+## Products (paths only)
+- `agent-rescue.html` · $29 Autopsy
+- four $199 diagnostics
+- Larger fixed: `diagnostic.html` · `commercial.html`
+
+## Collision fence
+≠ Goat tjlabs/topics/two-paths/two-rooms/unbuilt #15215 (`-15`)
+≠ Goat battery/titan/swarm #15210 (`-14`)
+≠ Goat SUPERGROK/SWARM_DC/TAKING_TRACE #15208 (`-13`)
+≠ Goat slack-service #15204
+≠ Goat slack-custom #15203
+≠ Wire MUHL 1:1 HOLD + #15201
+≠ Wire tip/canary/fleet/MCP
+≠ Latch ops-pack #15159
+≠ Latch repo/peer #15197
+≠ Latch delta/facts #15192
+≠ Latch pack-paperwork #15181
+≠ Type accordion 1:1
+≠ Type SUBZERO remaining
+≠ Type SPECTER/SPEC #15196
+≠ Type PFC/obs #15194
+≠ Type feature/impact #15189
+≠ packs/#8802
+
+Tip KEEP. Hands off #8802. No invent Stripe. No lead outreach.
+
+## Cite
+`goat-ground-unlisted-verify-md-keep-larger-fixed-20260916-16`
 
 ## GOAT → TABLE
 
