@@ -39,6 +39,27 @@ def _write_all(fd: int, data: bytes) -> None:
         sent += n
 
 
+def _final_key(path: Path) -> tuple[str, str]:
+    parent = path.parent if str(path.parent) else Path(".")
+    return (os.path.normpath(str(parent)), path.name)
+
+
+def _require_visible_final(path: Path, data: bytes, dfd: int, fd: int) -> None:
+    written = os.fstat(fd)
+    if not stat.S_ISREG(written.st_mode) or written.st_size != len(data):
+        raise GateError("output_write_identity_changed")
+    try:
+        visible = os.stat(path.name, dir_fd=dfd, follow_symlinks=False)
+    except FileNotFoundError as exc:
+        raise GateError("output_final_missing") from exc
+    if (
+        not stat.S_ISREG(visible.st_mode)
+        or (visible.st_dev, visible.st_ino, visible.st_size)
+        != (written.st_dev, written.st_ino, written.st_size)
+    ):
+        raise GateError("output_final_replaced")
+
+
 def _write_new_set(items: list[tuple[Path, bytes]]) -> None:
     """Publish an artifact set under retained parent/file descriptor custody.
 
@@ -48,6 +69,13 @@ def _write_new_set(items: list[tuple[Path, bytes]]) -> None:
     """
     if not items:
         return
+    seen: set[tuple[str, str]] = set()
+    for path, _data in items:
+        key = _final_key(path)
+        if key in seen:
+            raise GateError("output_duplicate_target")
+        seen.add(key)
+
     retained: list[tuple[Path, bytes, int, os.stat_result]] = []
     opened: list[tuple[Path, bytes, int, os.stat_result, int]] = []
     try:
@@ -79,19 +107,7 @@ def _write_new_set(items: list[tuple[Path, bytes]]) -> None:
         # The visible final basename must still identify the inode/size written
         # through the retained descriptor. A rename/substitution is fail-closed.
         for path, data, dfd, _parent_before, fd in opened:
-            written = os.fstat(fd)
-            if not stat.S_ISREG(written.st_mode) or written.st_size != len(data):
-                raise GateError("output_write_identity_changed")
-            try:
-                visible = os.stat(path.name, dir_fd=dfd, follow_symlinks=False)
-            except FileNotFoundError as exc:
-                raise GateError("output_final_missing") from exc
-            if (
-                not stat.S_ISREG(visible.st_mode)
-                or (visible.st_dev, visible.st_ino, visible.st_size)
-                != (written.st_dev, written.st_ino, written.st_size)
-            ):
-                raise GateError("output_final_replaced")
+            _require_visible_final(path, data, dfd, fd)
 
         # Flush directory entries only after every file passes visible identity.
         synced: set[int] = set()
@@ -99,6 +115,11 @@ def _write_new_set(items: list[tuple[Path, bytes]]) -> None:
             if dfd not in synced:
                 os.fsync(dfd)
                 synced.add(dfd)
+
+        # Recheck after directory durability. A substitution on the fsync
+        # boundary must not produce a success receipt.
+        for path, data, dfd, _parent_before, fd in opened:
+            _require_visible_final(path, data, dfd, fd)
 
         # Preserve the original parent-path generation fence, but perform it
         # only after the whole artifact set is complete.
