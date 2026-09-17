@@ -39,6 +39,22 @@ def compile_cutover(
     source_txns = _unique_index(source["transactions"], "transaction_id", name="source transaction")
     target_txns = _unique_index(target["transactions"], "transaction_id", name="target transaction")
 
+    for source_id, target_id in office_map.items():
+        if source_id not in source_offices:
+            raise CutoverError(f"identity map office source does not exist: {source_id}")
+        if target_id not in target_offices:
+            raise CutoverError(f"identity map office target does not exist: {target_id}")
+    for source_id, target_id in agent_map.items():
+        if source_id not in source_agents:
+            raise CutoverError(f"identity map agent source does not exist: {source_id}")
+        if target_id not in target_agents:
+            raise CutoverError(f"identity map agent target does not exist: {target_id}")
+    for source_id, target_id in txn_map.items():
+        if source_id not in source_txns:
+            raise CutoverError(f"identity map transaction source does not exist: {source_id}")
+        if target_id not in target_txns:
+            raise CutoverError(f"identity map transaction target does not exist: {target_id}")
+
     findings: list[dict[str, Any]] = []
     active_source_stages = set(str(v) for v in p["active_source_stages"])
     stage_map = {str(k): str(v) for k, v in p["stage_map"].items()}
