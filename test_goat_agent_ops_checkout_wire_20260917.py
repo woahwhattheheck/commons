@@ -53,6 +53,7 @@ class GoatAgentOpsCheckoutWire(unittest.TestCase):
         self.assertIn("checked-in Stripe route", html)
         self.assertIn("live chargeability", html)
         self.assertNotIn("reading checkout state", html)
+        self.assertNotIn("live state loading", html)
         self.assertNotIn("2 provider-verified checkout routes are active", html)
         self.assertIn("<noscript>", html)
         noscript = html.split("<noscript>", 1)[1].split("</noscript>", 1)[0]

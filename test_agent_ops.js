@@ -103,6 +103,7 @@ const html = fs.readFileSync(path.join(__dirname, "agent-ops.html"), "utf8");
 for (const source of Object.values(ops.SOURCES)) assert(html.includes("agent-ops.js") && source.startsWith("./"));
 for (const phrase of ["Every agent.", "collision", "SHA-pinned", "$49", "$2,500", "checked-in Stripe route", "live chargeability", "No purchase or buyer is claimed", "Dispatch through Commons", "CARRIER_ACCEPTED", "READY_NOT_PROVISIONED"]) assert(html.includes(phrase), phrase);
 assert(!html.includes("reading checkout state"), "checkout copy must not stay on forever-loading");
+assert(!html.includes("live state loading"), "checkout copy must not stay on forever-loading");
 assert(!html.includes("2 provider-verified checkout routes are active"), "static markup must not preclaim current processor state");
 assert(html.includes("https://buy.stripe.com/7sYdR8bgVezD8qBgJs43S0u"), "operator Payment Link");
 assert(html.includes("https://buy.stripe.com/4gMcN4gBffDH8qBfFo43S0v"), "foundry Payment Link");
