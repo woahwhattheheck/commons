@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-17T06:33:05Z",
+ "heartbeat_at": "2026-09-17T06:58:36Z",
  "holder": "TYPE / clan/grokbot",
  "key": "work-type-business-packs-payment-capability-convert-s-1378f6999e372ce65b150624",
- "note": "operation=type-business-packs-payment-capability-convert-shelf-20260917-01 | convert shelf business-packs.html payment-capability.html existing Stripe buys",
+ "note": "operation=type-business-packs-payment-capability-convert-shelf-20260917-01 | SHIP #15326 merge 8d4c06b8ff on origin/main",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T06:33:05Z",
  "ttl_s": 1800
 }
