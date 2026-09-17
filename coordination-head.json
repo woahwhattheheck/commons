@@ -3,20 +3,19 @@
   "drift": {
    "contained": 0,
    "current": 0,
-   "disjoint": 18,
+   "disjoint": 17,
    "overlap": 7,
    "unknown": 0
   },
   "hosted": {
-   "FAILED": 4,
-   "NOT_EXECUTED_QUEUED": 20,
-   "RUNNING": 1
+   "FAILED": 10,
+   "NOT_EXECUTED_QUEUED": 14
   },
-  "lanes_open": 24,
+  "lanes_open": 23,
   "lanes_with_several_open": 1,
-  "listed_open": 25,
+  "listed_open": 24,
   "listed_recent_closed": 400,
-  "open_prs": 25
+  "open_prs": 24
  },
  "degraded": [
   "closed-listing-partial"
@@ -26,14 +25,14 @@
   "full": "coordination.json"
  },
  "main": {
-  "committed_at": "2026-09-17T12:00:31Z",
-  "sha": "7a0fc71e1c708a961e0754c963ef79baae310506"
+  "committed_at": "2026-09-17T16:06:26Z",
+  "sha": "79ea9db38e95521b8ac70d17af61ceab7660f887"
  },
- "observed_at": "2026-09-17T12:01:00Z",
+ "observed_at": "2026-09-17T16:45:43Z",
  "queue": {
-  "in_progress": 19,
-  "oldest_queued_age_s": 12995,
-  "queued": 2091
+  "in_progress": 20,
+  "oldest_queued_age_s": 28672,
+  "queued": 1478
  },
  "schema": "commons-coordination-head/v1",
  "several_open": [
@@ -49,7 +48,7 @@
   "batches": 0,
   "capacity": null,
   "counts": {
-   "NEEDS_PACKET": 25
+   "NEEDS_PACKET": 24
   }
  }
 }

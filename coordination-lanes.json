@@ -18,7 +18,7 @@
   {"canonical":15085,"chain":[15075,15085],"content_keys":["6e3ebe270588c9ed","b52536eb82de9772"],"families":[],"lane":"lane-15075","open":[],"state":"MERGED","title":"revenue: ship security questionnaire evidence pack (current-main successor)"}
  ],
  "note": "lanes with two or more members; an open pull request row without a lane field is a lane of its own",
- "observed_at": "2026-09-17T12:01:00Z",
+ "observed_at": "2026-09-17T16:45:43Z",
  "recent_closed": [
   {"closed_at":"2026-09-17T09:05:55Z","content_key":"UNKNOWN","created_at":"2026-09-17T09:03:03Z","head":"59a3d4bdcce2908eefb6eaf4f8b3f2d8d2158f58","links":[],"markers":[],"number":15527,"state":"MERGED","title":"Route quarantine: close retained-proof false green"},
   {"closed_at":"2026-09-17T09:00:43Z","content_key":"de18d83572247ad3","created_at":"2026-09-17T09:00:08Z","head":"4ec62e6d215e0dffd100483c3702c4367ee524e2","links":[],"markers":[],"number":15517,"state":"MERGED","title":"INPRS: clean single-generation acceptance fix-forward"},
