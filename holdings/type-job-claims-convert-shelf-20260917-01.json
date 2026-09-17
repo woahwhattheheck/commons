@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T11:47:39Z",
+ "holder": "TYPE / clan/grokbot",
+ "key": "type-job-claims-convert-shelf-20260917-01",
+ "note": "job.html + claims.html first-screen Buy now thin shelf; two existing plinks",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T11:47:39Z",
+ "ttl_s": 1800
+}
