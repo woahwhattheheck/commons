@@ -1,0 +1,19 @@
+{
+  "external_authority": false,
+  "opportunity_id": "002100000088314",
+  "questions": [
+    {"id": "data-custody", "state": "OPEN_INTERNAL", "text": "What data-custody, hosting, segregation, retention, deletion, and exit/transition evidence will a future procurement require?", "topic": "data_custody"},
+    {"id": "ingestion", "state": "OPEN_INTERNAL", "text": "What payer/file/API ingestion volumes, cadence, acknowledgement, validation, correction, and resubmission service levels should future solutions support?", "topic": "ingestion"},
+    {"id": "standards", "state": "OPEN_INTERNAL", "text": "Which current and future submission standards, code sets, schema versions, and change-management obligations should be treated as controlling?", "topic": "schema_versioning"},
+    {"id": "provenance", "state": "OPEN_INTERNAL", "text": "What source-lineage, transformation, reconciliation, completeness, quality, and reproducibility evidence must be retained and auditable?", "topic": "provenance_quality"},
+    {"id": "access", "state": "OPEN_INTERNAL", "text": "What API, extract, researcher, agency, public-use, and interoperability surfaces are expected, with what authorization and portability constraints?", "topic": "api_export"},
+    {"id": "consumer", "state": "OPEN_INTERNAL", "text": "What accuracy, accessibility, methodology, refresh, regression, and explanatory requirements apply to consumer-facing transparency tools?", "topic": "consumer_transparency"},
+    {"id": "analytics", "state": "OPEN_INTERNAL", "text": "Which analytic workloads, dashboards, benchmark methods, reproducibility expectations, and policy-use cases should be supported?", "topic": "analytics"},
+    {"id": "security", "state": "OPEN_INTERNAL", "text": "Which security/privacy frameworks, independent assessments, incident duties, access controls, encryption, logging, and data-use constraints will be mandatory?", "topic": "security_privacy"},
+    {"id": "ops", "state": "OPEN_INTERNAL", "text": "What availability, recovery, support, incident, defect, data-quality, and performance service levels will be measured?", "topic": "operations_sla"},
+    {"id": "transition", "state": "OPEN_INTERNAL", "text": "What incumbent transition, parallel-run, knowledge-transfer, portability, source/documentation escrow, and exit criteria should future bidders plan for?", "topic": "transition_portability"},
+    {"id": "commercial", "state": "OPEN_INTERNAL", "text": "Which cost units and pricing structures does the State want compared: implementation, ingestion, storage, analytics, users, support, enhancements, transition, or outcome/service levels?", "topic": "cost_structure"}
+  ],
+  "schema": "indiana-apcd-rfi-question-matrix/v1",
+  "status": "INTERNAL_DRAFT_NOT_SUBMITTED"
+}
