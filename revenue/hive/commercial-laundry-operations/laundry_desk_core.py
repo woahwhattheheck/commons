@@ -49,13 +49,17 @@ _engine.AUTHORITY = AUTHORITY
 _BaseLaundryDesk = _engine.LaundryDesk
 
 
-def _sealed_base_new(cls, *args, **kwargs):
-    if cls is _BaseLaundryDesk:
-        raise TypeError("raw laundry engine is not a public construction surface")
-    return object.__new__(cls)
+def _make_sealed_base_new(raw_base):
+    def sealed(cls, *args, **kwargs):
+        if cls is raw_base:
+            raise TypeError("raw laundry engine is not a public construction surface")
+        return object.__new__(cls)
+
+    return sealed
 
 
-_BaseLaundryDesk.__new__ = staticmethod(_sealed_base_new)
+_BaseLaundryDesk.__new__ = staticmethod(_make_sealed_base_new(_BaseLaundryDesk))
+del _make_sealed_base_new
 
 
 def _public_delegate(method_name: str):
