@@ -1,0 +1,26 @@
+name: buyer-redline-scope-delta
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/buyer_redline_scope_delta/**'
+      - '.github/workflows/buyer-redline-scope-delta.yml'
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile
+        run: python -m py_compile revenue/buyer_redline_scope_delta/engine.py revenue/buyer_redline_scope_delta/cli.py revenue/buyer_redline_scope_delta/test_engine.py
+      - name: Test normal
+        run: python -m unittest -v revenue.buyer_redline_scope_delta.test_engine
+      - name: Test optimized
+        run: python -O -m unittest -v revenue.buyer_redline_scope_delta.test_engine
