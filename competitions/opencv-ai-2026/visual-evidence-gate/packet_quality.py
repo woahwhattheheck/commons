@@ -27,7 +27,13 @@ MAX_CLIPPED_FRACTION = 0.35
 NEAR_DUPLICATE_DHASH_DISTANCE = 3
 ID_RE = re.compile(r"^[a-z0-9][a-z0-9._:-]{0,127}$")
 SHA_RE = re.compile(r"^[0-9a-f]{64}$")
-ACTIONS = {"ACCEPT_FOR_HUMAN_REVIEW", "REQUEST_RECAPTURE", "REQUEST_MISSING_VIEW", "HOLD_DUPLICATE_EVIDENCE", "HOLD_UNSAFE_OR_UNREADABLE"}
+ACTIONS = {
+    "ACCEPT_FOR_HUMAN_REVIEW",
+    "REQUEST_RECAPTURE",
+    "REQUEST_MISSING_VIEW",
+    "HOLD_DUPLICATE_EVIDENCE",
+    "HOLD_UNSAFE_OR_UNREADABLE",
+}
 AUTHORITY = {
     "external_action_authorized": False,
     "claim_approved": False,
@@ -152,14 +158,31 @@ def measure_image_bytes(image_id: str, payload: bytes) -> dict[str, Any]:
     data = bytes(payload)
     payload_sha = sha256(data)
     if not data or len(data) > MAX_IMAGE_BYTES:
-        return {"image_id": image_id, "payload_sha256": payload_sha, "status": "UNREADABLE", "reason": "EMPTY_OR_OVERSIZE_BYTES"}
+        return {
+            "image_id": image_id,
+            "payload_sha256": payload_sha,
+            "status": "UNREADABLE",
+            "reason": "EMPTY_OR_OVERSIZE_BYTES",
+        }
     arr = np.frombuffer(data, dtype=np.uint8)
     image = cv2.imdecode(arr, cv2.IMREAD_COLOR)
     if image is None or image.ndim != 3 or image.shape[2] != 3:
-        return {"image_id": image_id, "payload_sha256": payload_sha, "status": "UNREADABLE", "reason": "OPENCV_DECODE_FAILED"}
+        return {
+            "image_id": image_id,
+            "payload_sha256": payload_sha,
+            "status": "UNREADABLE",
+            "reason": "OPENCV_DECODE_FAILED",
+        }
     height, width = int(image.shape[0]), int(image.shape[1])
     if height < MIN_EDGE or width < MIN_EDGE or height > MAX_EDGE or width > MAX_EDGE or height * width > MAX_PIXELS:
-        return {"image_id": image_id, "payload_sha256": payload_sha, "status": "UNREADABLE", "reason": "UNSUPPORTED_DIMENSIONS", "width": width, "height": height}
+        return {
+            "image_id": image_id,
+            "payload_sha256": payload_sha,
+            "status": "UNREADABLE",
+            "reason": "UNSUPPORTED_DIMENSIONS",
+            "width": width,
+            "height": height,
+        }
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     focus = float(cv2.Laplacian(gray, cv2.CV_64F).var())
     low_clip = float(np.mean(gray <= 5))
@@ -247,12 +270,14 @@ def compile_triage(packet: Mapping[str, Any], image_loader: Callable[[str], byte
     action = "ACCEPT_FOR_HUMAN_REVIEW"
     reasons: list[dict[str, str]] = []
     affected_slots: list[str] = []
+
     unreadable = [m for m in measurements if m["status"] != "MEASURED"]
     if unreadable:
         action = "HOLD_UNSAFE_OR_UNREADABLE"
         for m in unreadable:
             reasons.append({"code": "UNREADABLE_IMAGE", "detail": m["reason"], "slot_id": m["slot_id"]})
             affected_slots.append(m["slot_id"])
+
     if action == "ACCEPT_FOR_HUMAN_REVIEW":
         duplicates: list[tuple[str, str, str]] = []
         for i, left in enumerate(measurements):
@@ -266,6 +291,7 @@ def compile_triage(packet: Mapping[str, Any], image_loader: Callable[[str], byte
             for a, b, kind in duplicates:
                 reasons.append({"code": kind, "detail": f"{a}<->{b}", "slot_id": a})
                 affected_slots.extend([a, b])
+
     if action == "ACCEPT_FOR_HUMAN_REVIEW":
         missing = [s for s in slots if s["slot_id"] not in by_slot]
         if missing:
@@ -273,6 +299,7 @@ def compile_triage(packet: Mapping[str, Any], image_loader: Callable[[str], byte
             for slot in missing:
                 reasons.append({"code": "MISSING_REQUIRED_SLOT", "detail": slot["label"], "slot_id": slot["slot_id"]})
                 affected_slots.append(slot["slot_id"])
+
     if action == "ACCEPT_FOR_HUMAN_REVIEW":
         poor: list[tuple[dict[str, Any], str]] = []
         for m in measurements:
@@ -294,7 +321,11 @@ def compile_triage(packet: Mapping[str, Any], image_loader: Callable[[str], byte
     measurement_set = {
         "packet_sha256": sha256(frozen),
         "measurements": measurements,
-        "thresholds": {"min_focus_variance": MIN_FOCUS_VARIANCE, "max_clipped_fraction": MAX_CLIPPED_FRACTION, "near_duplicate_dhash_distance": NEAR_DUPLICATE_DHASH_DISTANCE},
+        "thresholds": {
+            "min_focus_variance": MIN_FOCUS_VARIANCE,
+            "max_clipped_fraction": MAX_CLIPPED_FRACTION,
+            "near_duplicate_dhash_distance": NEAR_DUPLICATE_DHASH_DISTANCE,
+        },
     }
     measurement_receipt = sha256(measurement_set)
     trace = {
@@ -312,7 +343,13 @@ def compile_triage(packet: Mapping[str, Any], image_loader: Callable[[str], byte
         "measurements": measurements,
         "trace": trace,
         "authority": dict(AUTHORITY),
-        "truth": {"image_bytes_measured_here": True, "provider_execution_authenticated_here": False, "aws_runtime_proven_here": False, "competition_submission_proven_here": False, "accept_for_human_review_is_business_approval": False},
+        "truth": {
+            "image_bytes_measured_here": True,
+            "provider_execution_authenticated_here": False,
+            "aws_runtime_proven_here": False,
+            "competition_submission_proven_here": False,
+            "accept_for_human_review_is_business_approval": False,
+        },
     }
     core = {"artifact_schema": ARTIFACT_SCHEMA, "decision": decision}
     return {**core, "receipt_sha256": sha256(core)}
