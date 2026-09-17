@@ -1,0 +1,47 @@
+{
+  "schema": "TJL_ACCEPTED_WORK_TO_CASH_V1",
+  "evaluation_at": "2026-09-17T07:30:00Z",
+  "freshness_seconds": 86400,
+  "items": [
+    {
+      "id": "merged-bounty",
+      "title": "Merged bug-fix bounty",
+      "payer": "Synthetic sponsor",
+      "program": "Synthetic bounty",
+      "lane": "BOUNTY",
+      "currency": "USD",
+      "advertised_amount_cents": 9000,
+      "events": [
+        {"id": "merge-1", "kind": "MERGED", "observed_at": "2026-09-16T20:00:00Z", "source_class": "GITHUB", "ref": "github:synthetic/pr/1", "sha256": "1111111111111111111111111111111111111111111111111111111111111111", "amount_cents": null, "route": null, "purpose": null},
+        {"id": "contact-1", "kind": "CONTACT_REQUIRED", "observed_at": "2026-09-17T07:00:00Z", "source_class": "INTERNAL_RETAINED", "ref": "internal:synthetic/payment-route/1", "sha256": "2222222222222222222222222222222222222222222222222222222222222222", "amount_cents": null, "route": "bounty@example.invalid", "purpose": "request advertised merged-work bounty payment"}
+      ]
+    },
+    {
+      "id": "paid-contract",
+      "title": "Accepted contract milestone",
+      "payer": "Synthetic buyer",
+      "program": "Synthetic contract",
+      "lane": "CONTRACT",
+      "currency": "USD",
+      "advertised_amount_cents": null,
+      "events": [
+        {"id": "accept-2", "kind": "ACCEPTED", "observed_at": "2026-09-15T18:00:00Z", "source_class": "BUYER_MESSAGE", "ref": "buyer:synthetic/acceptance/2", "sha256": "3333333333333333333333333333333333333333333333333333333333333333", "amount_cents": 250000, "route": null, "purpose": null},
+        {"id": "invoice-2", "kind": "INVOICE_ISSUED", "observed_at": "2026-09-16T18:00:00Z", "source_class": "PROVIDER_RECEIPT", "ref": "invoice:synthetic/2", "sha256": "4444444444444444444444444444444444444444444444444444444444444444", "amount_cents": 250000, "route": null, "purpose": null},
+        {"id": "payment-2", "kind": "PAYMENT_RECEIVED", "observed_at": "2026-09-17T06:30:00Z", "source_class": "PAYMENT_PROVIDER", "ref": "payment:synthetic/2", "sha256": "5555555555555555555555555555555555555555555555555555555555555555", "amount_cents": 250000, "route": null, "purpose": null}
+      ]
+    },
+    {
+      "id": "competition-award",
+      "title": "Awarded competition work",
+      "payer": "Synthetic competition sponsor",
+      "program": "Synthetic competition",
+      "lane": "COMPETITION",
+      "currency": "USD",
+      "advertised_amount_cents": 50000,
+      "events": [
+        {"id": "award-3", "kind": "AWARDED", "observed_at": "2026-09-16T15:00:00Z", "source_class": "SPONSOR_MESSAGE", "ref": "sponsor:synthetic/award/3", "sha256": "6666666666666666666666666666666666666666666666666666666666666666", "amount_cents": 50000, "route": null, "purpose": null},
+        {"id": "claim-route-3", "kind": "CLAIM_ROUTE_READY", "observed_at": "2026-09-17T06:00:00Z", "source_class": "PLATFORM_RECEIPT", "ref": "platform:synthetic/claim-route/3", "sha256": "7777777777777777777777777777777777777777777777777777777777777777", "amount_cents": null, "route": null, "purpose": null}
+      ]
+    }
+  ]
+}
