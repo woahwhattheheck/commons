@@ -65,43 +65,123 @@ def _bad_constant(value: str) -> None:
     raise GuardError(f"non-finite JSON constant forbidden: {value}")
 
 
-def _plain(value: Any, path: str = "$") -> None:
-    """Bounded exact-JSON admission for direct Python objects.
+def _json_string_size(value: str, path: str, remaining: int) -> int:
+    """Return exact ensure_ascii canonical JSON string bytes without allocating it."""
+    total = 2  # surrounding quotes
+    if total > remaining:
+        raise GuardError(f"{path}: canonical bytes limit exceeded")
+    for char in value:
+        code = ord(char)
+        if char in ('"', "\\") or char in ("\b", "\f", "\n", "\r", "\t"):
+            step = 2
+        elif code < 0x20:
+            step = 6
+        elif code <= 0x7F:
+            step = 1
+        elif code <= 0xFFFF:
+            step = 6
+        else:
+            step = 12
+        total += step
+        if total > remaining:
+            raise GuardError(f"{path}: canonical bytes limit exceeded")
+    return total
 
-    This is iterative on purpose: hostile deep input must become GuardError,
-    not interpreter RecursionError, before canonical serialization.
+
+def _freeze_plain_json(value: Any, path: str) -> Any:
+    """Detach one bounded exact-JSON generation before canonical serialization.
+
+    Container cardinality is checked against the remaining node budget before
+    child iteration/copy. String/key canonical bytes are charged incrementally,
+    so over-budget direct objects fail before the full value reaches json.dumps.
     """
-    stack: list[tuple[Any, str, int]] = [(value, path, 0)]
-    nodes = 0
-    while stack:
-        item, item_path, depth = stack.pop()
-        nodes += 1
-        if nodes > MAX_JSON_NODES:
-            raise GuardError(f"{path}: JSON node limit exceeded")
+    state = {"nodes": 0, "bytes": 0}
+
+    def charge_bytes(amount: int, item_path: str) -> None:
+        if amount < 0 or state["bytes"] + amount > MAX_JSON_BYTES:
+            raise GuardError(f"{item_path}: canonical bytes limit exceeded")
+        state["bytes"] += amount
+
+    def take_node(item_path: str) -> None:
+        if state["nodes"] >= MAX_JSON_NODES:
+            raise GuardError(f"{item_path}: JSON node limit exceeded")
+        state["nodes"] += 1
+
+    def visit(item: Any, item_path: str, depth: int) -> Any:
         if depth > MAX_JSON_DEPTH:
             raise GuardError(f"{item_path}: JSON depth limit exceeded")
-        if item is None or type(item) in (str, bool):
-            continue
+        take_node(item_path)
+
+        if item is None:
+            charge_bytes(4, item_path)
+            return None
+        if type(item) is bool:
+            charge_bytes(4 if item else 5, item_path)
+            return item
         if type(item) is int:
             if item < -MAX_SAFE_INTEGER or item > MAX_SAFE_INTEGER:
                 raise GuardError(f"{item_path}: integer outside supported exact JSON range")
-            continue
+            charge_bytes(len(str(item)), item_path)
+            return item
         if type(item) is float:
             if not math.isfinite(item):
                 raise GuardError(f"{item_path}: non-finite number")
-            continue
+            # A finite float's scalar representation is intrinsically tiny;
+            # using the serializer here cannot bypass aggregate work bounds.
+            try:
+                scalar = json.dumps(item, ensure_ascii=True, allow_nan=False)
+            except (ValueError, TypeError, OverflowError) as exc:
+                raise GuardError(f"{item_path}: canonical float serialization failed") from exc
+            charge_bytes(len(scalar.encode("ascii")), item_path)
+            return item
+        if type(item) is str:
+            remaining = MAX_JSON_BYTES - state["bytes"]
+            charge_bytes(_json_string_size(item, item_path, remaining), item_path)
+            return item
+
         if type(item) is list:
-            for i in range(len(item) - 1, -1, -1):
-                stack.append((item[i], f"{item_path}[{i}]", depth + 1))
-            continue
+            count = len(item)
+            if state["nodes"] + count > MAX_JSON_NODES:
+                raise GuardError(f"{item_path}: JSON node limit exceeded before child traversal")
+            charge_bytes(2 + max(0, count - 1), item_path)  # [] plus commas
+            out: list[Any] = []
+            try:
+                for index in range(count):
+                    out.append(visit(item[index], f"{item_path}[{index}]", depth + 1))
+            except IndexError as exc:
+                raise GuardError(f"{item_path}: list changed during bounded snapshot") from exc
+            if len(item) != count:
+                raise GuardError(f"{item_path}: list changed during bounded snapshot")
+            return out
+
         if type(item) is dict:
-            entries = list(item.items())
-            for key, child in reversed(entries):
-                if type(key) is not str:
-                    raise GuardError(f"{item_path}: non-string JSON key")
-                stack.append((child, f"{item_path}.{key}", depth + 1))
-            continue
+            count = len(item)
+            # Each pair costs one string-key work node and one value work node.
+            if state["nodes"] + (2 * count) > MAX_JSON_NODES:
+                raise GuardError(f"{item_path}: JSON node limit exceeded before child traversal")
+            charge_bytes(2 + max(0, count - 1) + count, item_path)  # {}, commas, colons
+            out: dict[str, Any] = {}
+            seen = 0
+            try:
+                for key, child in item.items():
+                    seen += 1
+                    if seen > count:
+                        raise GuardError(f"{item_path}: object changed during bounded snapshot")
+                    if type(key) is not str:
+                        raise GuardError(f"{item_path}: non-string JSON key")
+                    take_node(f"{item_path}.<key>")
+                    remaining = MAX_JSON_BYTES - state["bytes"]
+                    charge_bytes(_json_string_size(key, f"{item_path}.<key>", remaining), f"{item_path}.<key>")
+                    out[key] = visit(child, f"{item_path}.{key}", depth + 1)
+            except RuntimeError as exc:
+                raise GuardError(f"{item_path}: object changed during bounded snapshot") from exc
+            if seen != count or len(item) != count:
+                raise GuardError(f"{item_path}: object changed during bounded snapshot")
+            return out
+
         raise GuardError(f"{item_path}: exact plain JSON types required")
+
+    return visit(value, path, 0)
 
 
 def canonical_bytes(value: Any) -> bytes:
@@ -134,9 +214,13 @@ def _decode_json_bytes(raw: bytes, label: str) -> Any:
 def _freeze(value: Any, label: str) -> dict[str, Any]:
     if type(value) is not dict:
         raise GuardError(f"{label}: top level must be a plain object")
-    _plain(value, label)
-    raw = canonical_bytes(value)
+    frozen_plain = _freeze_plain_json(value, label)
+    if type(frozen_plain) is not dict:
+        raise GuardError(f"{label}: top level must be a plain object")
+    raw = canonical_bytes(frozen_plain)
     if len(raw) > MAX_JSON_BYTES:
+        # Defensive consistency check: bounded preflight should have rejected
+        # before serializer entry if its byte accounting ever drifts.
         raise GuardError(f"{label}: exceeds {MAX_JSON_BYTES} canonical bytes")
     frozen = _decode_json_bytes(raw, label)
     if type(frozen) is not dict:
