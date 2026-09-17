@@ -169,7 +169,7 @@ class ReachabilityBoundaryTests(unittest.TestCase):
         public = SageEvidenceAdapter(model, current, candidate_factory=self.candidates)
         old = predecessor.SageEvidenceAdapter(model, current, candidate_factory=self.candidates)
 
-        self.assertEqual(REACHABILITY_POLICY, "exact-predecessor-unanimous-concrete-reachability/v2")
+        self.assertEqual(REACHABILITY_POLICY, "exact-predecessor-full-animation-unanimous-concrete-reachability/v3")
         self.assertNotEqual(public.model_digest, old.model_digest)
         public_again = SageEvidenceAdapter(model, current, candidate_factory=self.candidates)
         self.assertEqual(public.model_digest, public_again.model_digest)
