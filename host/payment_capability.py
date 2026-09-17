@@ -83,6 +83,8 @@ CONVERT_SHELF_LIVE_BUYS = {
     "swarm.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "embassy.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "glyphs.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "program.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "foldbook.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -143,6 +145,8 @@ PUBLIC_HTML = (
     "swarm.html",
     "embassy.html",
     "glyphs.html",
+    "program.html",
+    "foldbook.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
