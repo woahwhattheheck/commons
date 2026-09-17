@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "opportunity": "South Dakota EDSS RFP 26RFP-27-0908002-001",
+  "observed_at_utc": "2026-09-17T04:42:00Z",
+  "single_partner_rule": "One prime candidate at a time. First question is whether the candidate is already invited and participating. Provider-SENT becomes hard DNR until a genuine reply or material provider event.",
+  "routes": [
+    {
+      "partner": "InductiveHealth",
+      "domain": "inductivehealth.com",
+      "route": "solutions@inductivehealth.com",
+      "route_evidence": "current InductiveHealth first-party collateral publishes solutions@inductivehealth.com",
+      "state": "HARD_DNR_PROVIDER_SENT",
+      "commercial_key": "SD-EDSS-26RFP270908002001-INDUCTIVE-PAID-WORKSHARE-ZNP-20260917",
+      "commercial_hypothesis": {
+        "amount_minor": 4000000,
+        "currency": "USD",
+        "display": "$40,000 fixed",
+        "offer_state": "PROPOSED_NOT_ACCEPTED"
+      },
+      "qualification_gate": "Ask only whether InductiveHealth is already invited and actively evaluating/responding to this invitation-only RFP. No invitation or bid participation is inferred.",
+      "scope": [
+        "source-to-target Maven and historical-data reconciliation matrix plus exception ledger",
+        "ELR eCR HL7 FHIR and other interface inventory with deterministic replay and idempotency evidence",
+        "message and data-quality reconciliation including MMG and state/federal reporting-path evidence",
+        "requirements-to-UAT traceability and acceptance evidence",
+        "migration and cutover rehearsal plus rollback and release-readiness evidence",
+        "operator handoff and reproducibility packet"
+      ],
+      "retained_by_prime": [
+        "EDSS platform and product authority",
+        "system configuration and product roadmap",
+        "epidemiology and public-health interpretation",
+        "PHI privacy security and compliance",
+        "invitation and prime offeror status",
+        "buyer relationship and procurement representations",
+        "SFTP and proposal submission authority",
+        "staffing and implementation schedule",
+        "licensing and pricing to the State",
+        "production credentials and deployment authority",
+        "training and ongoing support",
+        "final operational acceptance"
+      ],
+      "first_party_sources": [
+        "https://www.inductivehealth.com/",
+        "https://www.inductivehealth.com/inductivehealthedss/",
+        "https://www.inductivehealth.com/services/",
+        "https://www.inductivehealth.com/resource/inductivehealth-acquires-ssdi/",
+        "https://www.inductivehealth.com/wp-content/uploads/2025/12/MMG-Case-Study-FINAL.pdf"
+      ],
+      "fit_facts": [
+        "InductiveHealth markets disease-surveillance solutions to Federal, State, Tribal, Local and Territorial jurisdictions.",
+        "Its current EDSS capabilities include ELR and eCR, HL7 v2.x, FHIR R4, role-based access, audit trails and configurable public-health workflows.",
+        "Its services include NBS and EpiTrax implementation, data integration, Mirth and Rhapsody, MMG onboarding, hosting and data-quality support.",
+        "InductiveHealth says its platform and services support more than 40 public-health jurisdictions.",
+        "Its 2026 SSDI acquisition expanded NBS and public-health implementation expertise."
+      ],
+      "collision_census": {
+        "slack_material_prior_contact_before_take": 0,
+        "gmail_all_history_material_prior_contact_before_take": 0
+      },
+      "muse_arbitration": {
+        "request_ts": [
+          "1789620570.622749"
+        ],
+        "explicit_clearance_observed": true,
+        "clearance_ts": "1789620755.395339",
+        "terminal_without_clearance": "WAITING_ON_MUSE_NO_SEND"
+      },
+      "provider_send": {
+        "performed": true,
+        "message_id": "1a0adbb533c2feed",
+        "thread_id": "1a0adbb533c2feed",
+        "sent_at": "2026-09-17T04:58:50Z"
+      },
+      "candidate_confirmed_invited_participating": false,
+      "send_authorized": false,
+      "accepted_workshare": false,
+      "award": false,
+      "payment": false,
+      "receivable": false,
+      "revenue": false
+    }
+  ]
+}

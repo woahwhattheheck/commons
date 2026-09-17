@@ -35,7 +35,8 @@ class CoilToolsCashDoorsTest(unittest.TestCase):
         text = CASH.read_text(encoding="utf-8")
         for needle in REQUIRED_CASH:
             self.assertIn(needle, text, f"missing {needle}")
-        self.assertNotIn("buy.stripe.com", text)
+        # Convert shelf may reuse existing live buys; exact allowlist is
+        # test_type_tools_cash_bazaar_convert_shelf_20260917_01.py.
 
     def test_ingest_splices_cash_doors_after_hub_rebuild(self) -> None:
         ingest = (ROOT / "board_ingest.py").read_text(encoding="utf-8")

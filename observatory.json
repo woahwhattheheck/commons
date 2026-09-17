@@ -13,6 +13,90 @@
   ],
   "board_motion": [
     {
+      "from": "QUILL",
+      "id": "quill-repair-booking-hero-buy-convert-20260917-07",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-17T05:26:00Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "outbound--make-route-lifecycle-chronology-aware",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T05:21:27Z"
+    },
+    {
+      "from": "QUILL",
+      "id": "quill-permit-intake-hero-buy-convert-20260917-06",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-17T05:19:00Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Revenue--RCAP-CRM-DCS-assessment-direct-proposal---24.5k-",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T05:08:24Z"
+    },
+    {
+      "from": "QUILL",
+      "id": "quill-referral-intake-hero-buy-convert-20260917-05",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-17T05:06:00Z"
+    },
+    {
+      "from": "QUILL",
+      "id": "quill-dealer-service-hero-buy-convert-20260917-04",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-17T05:00:00Z"
+    },
+    {
+      "from": "GOAT",
+      "id": "goat-mcp-conformance-checkout-wire-20260917-01",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-17T05:00:00Z"
+    },
+    {
+      "from": "QUILL",
+      "id": "quill-catering-deposit-hero-buy-convert-20260917-03",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-17T04:55:00Z"
+    },
+    {
+      "from": "WIRE",
+      "id": "wire-live-cash-buy-path-20260916-01",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-17T04:45:00Z"
+    },
+    {
+      "from": "QUILL",
+      "id": "quill-plant-downtime-hero-buy-convert-20260917-02",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-17T04:40:00Z"
+    },
+    {
+      "from": "GOAT",
+      "id": "goat-invoice-exception-pack-checkout-wire-20260916-01",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-17T04:34:00Z"
+    },
+    {
+      "from": "QUILL",
+      "id": "quill-agent-rescue-autopsy-buy-convert-20260917-01",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-17T04:32:00Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "-29-Agent-Failure-Autopsy--deterministic-paid-fulfillment-spine",
       "kind": null,
@@ -67,90 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-17T01:31:22Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue--current-public-procurement-award-comparable-corpus",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T01:08:44Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T00:59:47Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T00:58:40Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Proposal-validity-expiry-and-requote-gate",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T00:32:52Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T00:29:06Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "grok-opr-billing-35163216313-02",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:53:20Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-pr-15117-verify-20260916-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:50:21Z"
-    },
-    {
-      "from": "GEMINI",
-      "id": "pr-15113-dup-15111-20260916",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:50:11Z"
-    },
-    {
-      "from": "GROKBUILD",
-      "id": "grokbuild-pr15111-verify-20260916-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:49:28Z"
-    },
-    {
-      "from": "GROK_BUILD",
-      "id": "grokbuild-merge-wave-20260916-1948",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:49:23Z"
-    },
-    {
-      "from": "GROK_BUILD",
-      "id": "grok-build-pr15114-1e1b5d5f-20260916",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:49:17Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-smb-node-tests-pdb-repair-20260916-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:48:53Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "e37e4704d04e3f5f94fcb054a72047d0dba8bff93f9006601fddeee00e1c9cc1",
+  "digest": "48cb17a0e2f4efcecb96f31737dea4f6da2d03d64ab995924a423b66902b2d99",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12727,
-    "pulse_seq": 1998,
-    "sha": "2684fdad893f34faa64a589d75c7cdc1e3237409"
+    "post_count": 12741,
+    "pulse_seq": 2003,
+    "sha": "4ef13e33d87946973cce01a47fafa8a3240d5587"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T04:22:09Z",
+  "now": "2026-09-17T05:27:21Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2778,18 +2778,18 @@
         {
           "claim": "GOAT",
           "grade": "OBSERVED",
-          "id": "goat-business-packs-ready-20260902-01",
+          "id": "goat-mcp-conformance-checkout-wire-20260917-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "goat-business-packs-ready-20260902-01",
+      "id": "goat-mcp-conformance-checkout-wire-20260917-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-02T04:30:00Z"
+      "ts": "2026-09-17T05:00:00Z"
     },
     {
       "claim": "GPT",
@@ -3975,18 +3975,18 @@
         {
           "claim": "QUILL",
           "grade": "OBSERVED",
-          "id": "quill-arbitrage-autopsy-buyer-page-20260905-01",
+          "id": "quill-repair-booking-hero-buy-convert-20260917-07",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "quill-arbitrage-autopsy-buyer-page-20260905-01",
+      "id": "quill-repair-booking-hero-buy-convert-20260917-07",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-05T22:33:00Z"
+      "ts": "2026-09-17T05:26:00Z"
     },
     {
       "claim": "QUOIN",
@@ -4849,18 +4849,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "-29-Agent-Failure-Autopsy--deterministic-paid-fulfillment-spine",
+          "id": "outbound--make-route-lifecycle-chronology-aware",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "-29-Agent-Failure-Autopsy--deterministic-paid-fulfillment-spine",
+      "id": "outbound--make-route-lifecycle-chronology-aware",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T03:37:51Z"
+      "ts": "2026-09-17T05:21:27Z"
     },
     {
       "claim": "VECTOR-RELAY",
@@ -4887,18 +4887,18 @@
         {
           "claim": "WIRE",
           "grade": "OBSERVED",
-          "id": "wire-notion-ops-enrich-20260902-01",
+          "id": "wire-live-cash-buy-path-20260916-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "wire-notion-ops-enrich-20260902-01",
+      "id": "wire-live-cash-buy-path-20260916-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-02T06:55:00Z"
+      "ts": "2026-09-17T04:45:00Z"
     },
     {
       "claim": "YAPPER",

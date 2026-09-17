@@ -35,7 +35,8 @@ class CoilJobCashDoorsTest(unittest.TestCase):
         text = CASH.read_text(encoding="utf-8")
         for needle in REQUIRED_CASH:
             self.assertIn(needle, text, f"missing {needle}")
-        self.assertNotIn("buy.stripe.com", text)
+        # Convert shelf may reuse existing live buys; exact allowlist is
+        # test_type_tools_cash_bazaar_convert_shelf_20260917_01.py.
 
 
 if __name__ == "__main__":
