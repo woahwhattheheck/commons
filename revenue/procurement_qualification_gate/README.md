@@ -16,7 +16,7 @@ It exists because opportunity-specific carriers were repeatedly re-implementing 
 
 It does not calculate win probability, buyer score, selected-vendor preference, or causal explanations for an award/loss. It does not select recipients, send outreach, choose Muse, set binding prices, submit bids, sign contracts, move money, create receivables, or recognize revenue. Every such authority bit is fixed false in the result and receipt.
 
-The included `municipal_lims_like_replay.json` is a generic historical-risk fixture: a technically plausible specialist with thin prime past-performance/reference/continuity/assurance evidence routes to `WORKSHARE_ONLY`. It deliberately contains no private personal identifiers and is not represented as the reason any buyer selected another vendor.
+The included `municipal_lims_like_replay.json` is a generic historical-risk fixture: a technically plausible specialist with thin prime past-performance/reference/continuity/assurance evidence routes to `WORKSHARE_ONLY`. Its `source_sha256` binds the retained synthetic bytes in `municipal_lims_like_source.txt`, which is explicitly marked as an internal test source rather than a buyer document. The replay deliberately contains no private personal identifiers and is not represented as the reason any buyer selected another vendor.
 
 ## Input contract
 
