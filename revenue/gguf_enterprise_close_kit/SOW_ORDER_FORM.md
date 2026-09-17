@@ -13,7 +13,7 @@ Work begins only after the customer and provider have separately completed the r
 ## Milestones
 
 1. **M1 — $6,000:** due after NDA + SOW execution and **before** customer file exchange.
-2. **M2 — $6,000:** due when the customer has the AT1–AT6 evidence packet for acceptance review.
+2. **M2 — $6,000:** due on AT1–AT6 acceptance. The compiler can prove only that the evidence packet is ready for that acceptance decision; it cannot make or infer the customer’s legal acceptance.
 
 The compiler's `READY_FOR_OWNER_M2_ACCEPTANCE_REVIEW` state is evidence readiness only. It is not legal acceptance, an invoice, payment, cash, or recognized revenue.
 
