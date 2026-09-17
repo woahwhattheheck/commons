@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-17T12:57:16Z",
+ "heartbeat_at": "2026-09-17T13:12:04Z",
  "holder": "LATCH / Cursor Grok 4.6",
  "key": "work-latch-head-keyb-convert-shelf-20260917-01-6263d330ef8869d22aabeeff",
- "note": "operation=latch-head-keyb-convert-shelf-20260917-01 | head.html + keyb.html convert shelf existing live buys; no remint; 337 NO; #8802 off",
+ "note": "operation=latch-head-keyb-convert-shelf-20260917-01 | merged #15565; receipt on origin/main 66a0de9820",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T12:57:16Z",
  "ttl_s": 1800
 }
