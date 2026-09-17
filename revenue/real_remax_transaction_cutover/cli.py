@@ -88,39 +88,110 @@ def load_strict_json(path: str) -> Any:
     return value
 
 
+def _same_file_generation(left: os.stat_result, right: os.stat_result) -> bool:
+    return (left.st_dev, left.st_ino) == (right.st_dev, right.st_ino)
+
+
+def _assert_visible_output_generation(
+    path: str,
+    *,
+    fd: int,
+    expected_size: int,
+    parent: Path,
+    parent_fd: int | None,
+    leaf: str,
+) -> None:
+    owned = os.fstat(fd)
+    if not stat.S_ISREG(owned.st_mode) or owned.st_size != expected_size:
+        raise CutoverError(f"owned output generation changed before publication: {path}")
+    try:
+        if parent_fd is not None:
+            visible = os.stat(leaf, dir_fd=parent_fd, follow_symlinks=False)
+            retained_parent = os.fstat(parent_fd)
+            visible_parent = os.stat(parent, follow_symlinks=True)
+            if not _same_file_generation(retained_parent, visible_parent):
+                raise CutoverError(f"output parent generation changed before publication: {path}")
+        else:
+            visible = os.stat(path, follow_symlinks=False)
+    except OSError as exc:
+        raise CutoverError(f"output path disappeared before publication: {path}: {exc}") from exc
+    if not stat.S_ISREG(visible.st_mode) or not _same_file_generation(owned, visible):
+        raise CutoverError(f"visible output generation changed before publication: {path}")
+
+
 def write_exclusive(path: str, value: Any) -> None:
     data = canonical_bytes(value)
-    parent = Path(path).parent
+    output = Path(path)
+    parent = output.parent
+    leaf = output.name
+    if not leaf or leaf in {".", ".."}:
+        raise CutoverError(f"invalid output leaf: {path}")
     parent.mkdir(parents=True, exist_ok=True)
     flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
     if hasattr(os, "O_NOFOLLOW"):
         flags |= os.O_NOFOLLOW
-    try:
-        fd = os.open(path, flags, 0o600)
-    except OSError as exc:
-        raise CutoverError(f"refusing non-exclusive output {path}: {exc}") from exc
-    try:
-        view = memoryview(data)
-        while view:
-            n = os.write(fd, view)
-            if n <= 0:
-                raise CutoverError(f"short write for {path}")
-            view = view[n:]
-        os.fsync(fd)
-    except Exception:
-        # Never pathname-unlink on rollback: another actor could have swapped the
-        # visible name after this descriptor was reserved. Fail visibly by
-        # truncating only the inode we still own through the retained fd.
+
+    use_dir_fd = (
+        hasattr(os, "supports_dir_fd")
+        and os.open in os.supports_dir_fd
+        and os.stat in os.supports_dir_fd
+    )
+    parent_fd: int | None = None
+    if use_dir_fd:
+        parent_flags = os.O_RDONLY
+        if hasattr(os, "O_DIRECTORY"):
+            parent_flags |= os.O_DIRECTORY
         try:
-            os.ftruncate(fd, 0)
+            parent_fd = os.open(parent, parent_flags)
+        except OSError as exc:
+            raise CutoverError(f"cannot retain output parent {parent}: {exc}") from exc
+
+    try:
+        try:
+            if parent_fd is not None:
+                fd = os.open(leaf, flags, 0o600, dir_fd=parent_fd)
+            else:
+                fd = os.open(path, flags, 0o600)
+        except OSError as exc:
+            raise CutoverError(f"refusing non-exclusive output {path}: {exc}") from exc
+        try:
+            view = memoryview(data)
+            while view:
+                n = os.write(fd, view)
+                if n <= 0:
+                    raise CutoverError(f"short write for {path}")
+                view = view[n:]
             os.fsync(fd)
-        except OSError:
-            pass
-        finally:
+            if parent_fd is not None:
+                try:
+                    os.fsync(parent_fd)
+                except OSError:
+                    pass
+            _assert_visible_output_generation(
+                path,
+                fd=fd,
+                expected_size=len(data),
+                parent=parent,
+                parent_fd=parent_fd,
+                leaf=leaf,
+            )
+        except Exception:
+            # Never pathname-unlink on rollback: another actor could have swapped the
+            # visible name after this descriptor was reserved. Fail visibly by
+            # truncating only the inode we still own through the retained fd.
+            try:
+                os.ftruncate(fd, 0)
+                os.fsync(fd)
+            except OSError:
+                pass
+            finally:
+                os.close(fd)
+            raise
+        else:
             os.close(fd)
-        raise
-    else:
-        os.close(fd)
+    finally:
+        if parent_fd is not None:
+            os.close(parent_fd)
 
 
 def _build_parser() -> argparse.ArgumentParser:
