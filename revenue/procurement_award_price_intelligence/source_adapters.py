@@ -121,9 +121,11 @@ def _currency(value, where):
     return value
 
 
-def _uri(value, where):
-    value = _string(value, where, limit=2048)
-    parts = urlsplit(value)
+def _split_uri(value, where, encoded=False):
+    try:
+        parts = urlsplit(value)
+    except ValueError as exc:
+        raise Error(f"{where}: invalid https URI") from exc
     if (
         parts.scheme != "https"
         or not parts.hostname
@@ -134,7 +136,14 @@ def _uri(value, where):
         or "?" in value
         or "#" in value
     ):
-        raise Error(f"{where}: credential-free queryless fragmentless https URI required")
+        prefix = "encoded " if encoded else ""
+        raise Error(f"{where}: {prefix}credential/query/fragment component forbidden")
+    return parts
+
+
+def _uri(value, where):
+    value = _string(value, where, limit=2048)
+    _split_uri(value, where)
     decoded = value
     seen = set()
     while "%" in decoded and decoded not in seen:
@@ -143,8 +152,7 @@ def _uri(value, where):
         if next_value == decoded:
             break
         decoded = next_value
-        if "?" in decoded or "#" in decoded:
-            raise Error(f"{where}: encoded query/fragment delimiter forbidden")
+        _split_uri(decoded, where, encoded=True)
     return value
 
 
