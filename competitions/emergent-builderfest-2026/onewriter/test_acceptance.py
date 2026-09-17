@@ -11,13 +11,19 @@ a=importlib.util.module_from_spec(spec); sys.modules[spec.name]=a; spec.loader.e
 class OneWriterTests(unittest.TestCase):
     def setUp(self): self.m=a.load_json(M); self.d=a.load_json(E)
     def replay(self,d=None): return a.replay(copy.deepcopy(self.m),copy.deepcopy(d or self.d))
-    def receipts(self): return {r["event_id"]:r for r in self.replay()["receipts"]}
+    def receipts(self,d=None): return {r["event_id"]:r for r in self.replay(d)["receipts"]}
     def test_baseline(self):
         s=self.replay()["summary"]; self.assertEqual((s["status"],s["event_count"],s["lane_count"]),("OK",14,3)); self.assertEqual(s["metrics"]["duplicate_touches_prevented"],4)
-    def test_parallel_claim(self):
-        r=self.receipts(); self.assertEqual(r["evt-001"]["decision"],"GRANTED"); self.assertEqual(r["evt-002"]["decision"],"DENIED_ACTIVE_LEASE"); self.assertEqual(r["evt-001"]["collision_key"],r["evt-002"]["collision_key"])
-    def test_sent_fence_and_human_reopen(self):
-        r=self.receipts(); self.assertEqual(r["evt-003"]["state"],"HARD_DNR"); self.assertEqual(r["evt-004"]["decision"],"DENIED_HARD_DNR"); self.assertEqual(r["evt-005"]["decision"],"REOPENED_HUMAN_EVENT"); self.assertEqual(r["evt-006"]["decision"],"GRANTED_AFTER_HUMAN_EVENT")
+    def test_cross_route_parallel_claim_collides(self):
+        r=self.receipts(); self.assertNotEqual(r["evt-001"]["event_route"],r["evt-002"]["event_route"]); self.assertEqual(r["evt-001"]["decision"],"GRANTED"); self.assertEqual(r["evt-002"]["decision"],"DENIED_ACTIVE_LEASE"); self.assertEqual(r["evt-001"]["collision_key"],r["evt-002"]["collision_key"])
+    def test_sent_fence_and_human_reopen_can_select_new_route(self):
+        r=self.receipts(); self.assertEqual(r["evt-003"]["state"],"HARD_DNR"); self.assertEqual(r["evt-004"]["decision"],"DENIED_HARD_DNR"); self.assertEqual(r["evt-005"]["decision"],"REOPENED_HUMAN_EVENT"); self.assertEqual(r["evt-006"]["decision"],"GRANTED_AFTER_HUMAN_EVENT"); self.assertNotEqual(r["evt-003"]["lane_route"],r["evt-006"]["lane_route"])
+    def test_provider_outcome_must_match_leased_route(self):
+        d=copy.deepcopy(self.d); d["events"][2]["route"]="email:founder@northstar.invalid"
+        with self.assertRaisesRegex(a.ContractError,"does not match current leased route"): a.replay(self.m,d)
+    def test_equivalent_domain_variants_share_key(self):
+        e1=copy.deepcopy(self.d["events"][0]); e2=copy.deepcopy(e1); e2["domain"]="HTTPS://WWW.NORTHSTAR.INVALID./ignored/path?x=1"
+        self.assertEqual(a.collision_key(e1),a.collision_key(e2))
     def test_stale_recovery_and_dead_route(self):
         r=self.receipts(); self.assertEqual(r["evt-008"]["decision"],"GRANTED_STALE_RECOVERY"); self.assertEqual(r["evt-009"]["state"],"DEAD_ROUTE"); self.assertEqual(r["evt-010"]["decision"],"DENIED_DEAD_ROUTE")
     def test_hold(self):
@@ -62,14 +68,22 @@ class OneWriterTests(unittest.TestCase):
     def test_extra_event_authority_field(self):
         d=copy.deepcopy(self.d); d["events"][0]["send_authorized"]=True
         with self.assertRaisesRegex(a.ContractError,"key set changed"): a.replay(self.m,d)
+    def test_domain_credentials_and_ports_rejected(self):
+        for domain in ("https://user@example.invalid","example.invalid:443"):
+            d=copy.deepcopy(self.d); d["events"][0]["domain"]=domain
+            with self.subTest(domain=domain), self.assertRaisesRegex(a.ContractError,"credentials forbidden|port forbidden"): a.replay(self.m,d)
     def test_whitespace_provider_evidence_rejected(self):
         for index in (2,8):
             d=copy.deepcopy(self.d); d["events"][index]["provider_receipt"]="   "
-            with self.subTest(event=d["events"][index]["kind"]):
-                with self.assertRaisesRegex(a.ContractError,"provider_receipt must be trimmed nonempty"): a.replay(self.m,d)
+            with self.subTest(event=d["events"][index]["kind"]), self.assertRaisesRegex(a.ContractError,"provider_receipt must be trimmed nonempty"): a.replay(self.m,d)
     def test_whitespace_human_evidence_cannot_reopen(self):
         d=copy.deepcopy(self.d); d["events"][4]["human_evidence_id"]="   "
         with self.assertRaisesRegex(a.ContractError,"human_evidence_id must be trimmed nonempty"): a.replay(self.m,d)
+    def test_padded_overlong_and_control_evidence_rejected(self):
+        cases=((2,"provider_receipt"," padded"),(2,"provider_receipt","x"*241),(4,"human_evidence_id","human\nthread"))
+        for index,field,value in cases:
+            d=copy.deepcopy(self.d); d["events"][index][field]=value
+            with self.subTest(field=field,value=repr(value)), self.assertRaisesRegex(a.ContractError,"trimmed nonempty|control characters"): a.replay(self.m,d)
     def test_real_cli_normal_and_optimized(self):
         for optimized in (False,True):
             cmd=[sys.executable]+(["-O"] if optimized else [])+[str(A),"replay",str(M),str(E)]; run=subprocess.run(cmd,cwd=HERE,text=True,capture_output=True,check=False)
@@ -81,12 +95,4 @@ class OneWriterTests(unittest.TestCase):
             for optimized in (False,True):
                 cmd=[sys.executable]+(["-O"] if optimized else [])+[str(A),"replay",str(M),str(p)]; run=subprocess.run(cmd,cwd=HERE,text=True,capture_output=True,check=False)
                 with self.subTest(optimized=optimized): self.assertEqual(run.returncode,2); self.assertIn("key set changed",run.stderr)
-    def test_whitespace_evidence_cli_normal_and_optimized(self):
-        cases=((2,"provider_receipt","provider_receipt must be trimmed nonempty"),(8,"provider_receipt","provider_receipt must be trimmed nonempty"),(4,"human_evidence_id","human_evidence_id must be trimmed nonempty"))
-        with tempfile.TemporaryDirectory() as td:
-            for index,field,needle in cases:
-                d=copy.deepcopy(self.d); d["events"][index][field]="   "; p=Path(td)/f"h-{index}.json"; p.write_text(json.dumps(d))
-                for optimized in (False,True):
-                    cmd=[sys.executable]+(["-O"] if optimized else [])+[str(A),"replay",str(M),str(p)]; run=subprocess.run(cmd,cwd=HERE,text=True,capture_output=True,check=False)
-                    with self.subTest(event=d["events"][index]["kind"],optimized=optimized): self.assertEqual(run.returncode,2); self.assertIn(needle,run.stderr)
 if __name__=="__main__": unittest.main()
