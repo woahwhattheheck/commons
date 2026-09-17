@@ -39,12 +39,13 @@ class RealRemaxCutoverTest(unittest.TestCase):
         self.mapping["transactions"].reverse()
         self.source["agents"].reverse()
         self.target["agents"].reverse()
-        # Snapshot bytes intentionally bind row order, so evidence digests move,
-        # while semantic parity and transaction ordering stay deterministic.
+        self.mapping["agents"].reverse()
+        for txn in self.source["transactions"]:
+            txn["relationships"].reverse()
+        for txn in self.target["transactions"]:
+            txn["relationships"].reverse()
         actual = self.compile()
-        self.assertEqual("PARITY", actual["decision"])
-        self.assertEqual(expected["active_source_transaction_ids"], actual["active_source_transaction_ids"])
-        self.assertEqual(expected["parity_transaction_ids"], actual["parity_transaction_ids"])
+        self.assertEqual(expected, actual)
 
     def test_stage_and_status_drift_hold(self):
         self.target["transactions"][0]["stage"] = "UNDER_CONTRACT"
