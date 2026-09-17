@@ -17,6 +17,10 @@ class T(unittest.TestCase):
             self.assertIn("repair-booking-preflight.html", text, name)
             self.assertIn("plant-downtime-handoff.html", text, name)
             self.assertIn("$199", text, name)
+            if name == "catalog.html":
+                # Convert shelf reuses existing live buys; exact allowlist is
+                # test_type_resources_catalog_convert_shelf_20260917_01.py.
+                continue
             self.assertNotIn("buy.stripe.com", text, name)
 if __name__ == "__main__":
     unittest.main()

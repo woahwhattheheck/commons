@@ -33,7 +33,7 @@ KEEP = {
     "p/grok-build-llms-txt-33694402716-billing-lock-20260902-01.md": "6a8728e3",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
-    "catalog.html": "35a7069f",
+    "catalog.html": "71c0c5fd",
     "hub_pages.py": "7bc61c8b",
 }
 

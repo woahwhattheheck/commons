@@ -22,7 +22,7 @@ KEEP = {
     "p/cursor-goat-pages-super-mcp-land-readback-20260902-01.md": "f98887bf",
     "test_cursor_goat_pages_super_mcp_land_readback.py": "2fc6f4c1",
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
-    "catalog.html": "35a7069f",
+    "catalog.html": "71c0c5fd",
     "hub_pages.py": "7bc61c8b",
     "wire.html": "3f030862",
     ".github/workflows/tests.yml": "fd94b65c",

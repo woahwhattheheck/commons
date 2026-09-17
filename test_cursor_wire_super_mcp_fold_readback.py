@@ -23,7 +23,7 @@ KEEP = {
     "super-mcp.html": "d72c7828",
     "p/latch-wake-super-mcp-pointer-20260902-01.md": "a35e63c3",
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
-    "catalog.html": "35a7069f",
+    "catalog.html": "71c0c5fd",
     "p/cursor-goat-pages-super-mcp-land-readback-20260902-01.md": "f98887bf",
     "p/cursor-wire-shared-super-mcp-catalog-readback-20260902-01.md": "593d54bc",
     "p/cursor-wire-super-mcp-marketplace-readback-20260902-01.md": "448eda52",

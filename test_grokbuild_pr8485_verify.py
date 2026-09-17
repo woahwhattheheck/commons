@@ -16,7 +16,7 @@ KEEP = {
     "p/grokbuild-pr8479-verify-20260902-01.md": "658530be",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
-    "catalog.html": "35a7069f",
+    "catalog.html": "71c0c5fd",
     "boards.html": "c7531a1e",
     "hub_pages.py": "7bc61c8b",
     "p/cursor-goat-pages-super-mcp-land-readback-20260902-01.md": "f98887bf",
