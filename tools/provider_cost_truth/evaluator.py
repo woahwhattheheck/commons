@@ -6,6 +6,7 @@ from .codec import MAX_EVIDENCE_AGE_SECONDS, GateError, _parse_ts, _sha256_value
 from .schema import validate_snapshot, _target_scope, _request_identity, _scope_identity
 from .trusted_sources import (
     TRUSTED_PROVIDER_EVIDENCE_FINGERPRINTS,
+    TRUSTED_PROVIDER_EVIDENCE_MANIFEST_SHA256,
     TRUSTED_PROVIDER_EVIDENCE_SCHEMA,
 )
 
@@ -102,6 +103,7 @@ def _evaluate_snapshot(
     _billing=_billing_class,
     _parse=_parse_ts,
     _hash=_sha256_value,
+    _manifest_sha=TRUSTED_PROVIDER_EVIDENCE_MANIFEST_SHA256,
 ) -> dict[str, Any]:
     """Evaluate at caller time but deliberately emit no current receipt fields."""
     if now.tzinfo is None:
@@ -157,6 +159,7 @@ def _evaluate_snapshot(
         "target_scope": target_scope,
         "request_sha256": _hash(request),
         "snapshot_sha256": _hash(normalized),
+        "trusted_provider_evidence_manifest_sha256": _manifest_sha,
         "controlling_event_ids": controlling,
         "account_billing_event_ids": account_billing,
         "reasons": sorted(set(reasons)),
