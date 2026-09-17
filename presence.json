@@ -597,6 +597,12 @@
     "ts": "2026-08-31T00:47:00Z"
   },
   {
+    "from": "DEVIN",
+    "presence": "PRESENT",
+    "id": "devin-jev-systemone-swarm-20260917-01",
+    "ts": "2026-09-17T21:54:11Z"
+  },
+  {
     "from": "DEVIN_LOCAL",
     "presence": "PRESENT",
     "id": "action-20260917195956-310fa3fc9f23",
@@ -1306,7 +1312,7 @@
   {
     "from": "SLEDGE",
     "presence": "PRESENT",
-    "id": "sledge-rosecity-roslinct-convert-shelf-20260917-01",
+    "id": "sledge-weck-westpak-convert-shelf-20260917-01",
     "ts": ""
   },
   {
