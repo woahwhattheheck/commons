@@ -9,6 +9,10 @@ from types import FunctionType as _FunctionType
 from typing import Any
 
 from . import common as _common_module, model as _model_module
+from ._trusted_runtime import (
+    get_or_build_current_api as _get_or_build_current_api,
+    trusted_builtins_copy as _trusted_builtins_copy,
+)
 from .common import (
     RECEIPT_SCHEMA, READY, HOLD_ACCEPTANCE, HOLD_PAYMENT, HOLD_WINDOW, HOLD_EVIDENCE, DNR, STATES, GateError, _ts, _dt, digest, authority_flags, canonical_json, load_json
 )
@@ -167,47 +171,51 @@ def _build_current_api(
     _function_type=_FunctionType,
     _common=_common_module,
     _model=_model_module,
+    _trusted_builtins_fn=_trusted_builtins_copy,
     _receipt_schema=RECEIPT_SCHEMA,
-    _states=frozenset(STATES),
+    _state_values=STATES,
     _gate_error=GateError,
     _hold_evidence=HOLD_EVIDENCE,
 ):
-    """Build current APIs around one import-generation-owned semantic snapshot.
+    """Build the process-first-load current semantic API pair.
 
-    Current compilation must not resolve mutable module globals or the process-global
-    builtins table for time, validation, decision states, commercial lineage,
-    canonicalization, authority, or trusted container views. Semantic clones receive a
-    private copy of the import-time builtins mapping before they are created. Current
-    entrypoints freeze packet/receipt inputs exactly once to exact built-in plain-JSON
-    containers and UTF-8 scalar text before any semantic read, so stateful mapping/list
-    subclasses cannot present different views to authentication and recompilation phases
-    and Python-only surrogate text cannot leak into canonical serialization. Ordinary
-    module/global/builtins rebinding therefore cannot substitute caller-selected current
-    time or semantics. Direct function/closure surgery remains outside this cooperative
-    in-process boundary.
+    The private ``_trusted_runtime`` module owns two reload-stable roots: a first-load
+    builtins snapshot and the first successfully built current-API pair. This builder is
+    therefore consumed only once per process. Ordinary ``importlib.reload(engine)`` or a
+    second execution of this source cannot ratify a process-global builtins monkeypatch,
+    a later engine/model/common module rebinding, or caller-selected current time into a
+    new trusted semantic generation. A process restart is required to adopt new current
+    semantics.
+
+    Within the first generation, semantic clones receive private builtins dictionaries;
+    packet/receipt inputs are frozen exactly once to exact built-in plain-JSON trees and
+    UTF-8 scalar text before semantic reads. Direct trust-root/function/default/closure
+    surgery remains outside this cooperative in-process boundary.
     """
+    sealed_builtins = _trusted_builtins_fn()
+    trusted_dict = sealed_builtins["dict"]
+    trusted_vars = sealed_builtins["vars"]
+    trusted_globals = sealed_builtins["globals"]
+    trusted_getattr = sealed_builtins["getattr"]
+    trusted_frozenset = sealed_builtins["frozenset"]
+    trusted_tuple = sealed_builtins["tuple"]
 
     def _clone_function(fn, private_globals):
         clone = _function_type(fn.__code__, private_globals, fn.__name__, fn.__defaults__, fn.__closure__)
-        clone.__kwdefaults__ = dict(fn.__kwdefaults__ or {})
+        clone.__kwdefaults__ = trusted_dict(fn.__kwdefaults__ or {})
         return clone
 
-    common_globals = dict(vars(_common))
-    source_builtins = common_globals.get("__builtins__")
-    if type(source_builtins) is dict:
-        sealed_builtins = dict(source_builtins)
-    else:
-        sealed_builtins = dict(vars(source_builtins))
-    common_globals["__builtins__"] = dict(sealed_builtins)
+    common_globals = trusted_dict(trusted_vars(_common))
+    common_globals["__builtins__"] = trusted_dict(sealed_builtins)
 
     common_helpers = (
         "_keys", "_string", "_bool", "_int", "_enum", "_sha", "_ts", "_dt", "_age", "_uri", "_source"
     )
     for name in common_helpers:
-        common_globals[name] = _clone_function(getattr(_common, name), common_globals)
+        common_globals[name] = _clone_function(trusted_getattr(_common, name), common_globals)
 
-    model_globals = dict(vars(_model))
-    model_globals["__builtins__"] = dict(sealed_builtins)
+    model_globals = trusted_dict(trusted_vars(_model))
+    model_globals["__builtins__"] = trusted_dict(sealed_builtins)
     for name in common_helpers:
         model_globals[name] = common_globals[name]
     for name in (
@@ -215,14 +223,14 @@ def _build_current_api(
         "PAYMENT_CLASSES", "SUPPORT_SEVERITIES", "FINDING_STATES", "GAP_STATES",
         "ROUTE_STATES", "HYPOTHESIS_BASES",
     ):
-        model_globals[name] = frozenset(model_globals[name])
+        model_globals[name] = trusted_frozenset(model_globals[name])
     sealed_normalize = _clone_function(_model._normalize, model_globals)
 
-    engine_globals = dict(globals())
-    engine_globals["__builtins__"] = dict(sealed_builtins)
+    engine_globals = trusted_dict(trusted_globals())
+    engine_globals["__builtins__"] = trusted_dict(sealed_builtins)
     sealed_commercial_generation = _clone_function(_commercial_generation_source, engine_globals)
     sealed_expected_total = _clone_function(_expected_total_source, engine_globals)
-    decision_globals = dict(engine_globals)
+    decision_globals = trusted_dict(engine_globals)
     sealed_decision = _clone_function(_decision_source, decision_globals)
     sealed_decision.__kwdefaults__.update({
         "_commercial_generation_fn": sealed_commercial_generation,
@@ -232,14 +240,15 @@ def _build_current_api(
 
     json_dumps = _common.json.dumps
     sha256 = _common.hashlib.sha256
-    authority_keys = tuple(_common.authority_flags())
-    builtin_type = type
-    builtin_dict = dict
-    builtin_list = list
-    builtin_str = str
-    builtin_int = int
-    builtin_bool = bool
-    builtin_enumerate = enumerate
+    authority_keys = trusted_tuple(_common.authority_flags())
+    states = trusted_frozenset(_state_values)
+    builtin_type = sealed_builtins["type"]
+    builtin_dict = sealed_builtins["dict"]
+    builtin_list = sealed_builtins["list"]
+    builtin_str = sealed_builtins["str"]
+    builtin_int = sealed_builtins["int"]
+    builtin_bool = sealed_builtins["bool"]
+    builtin_enumerate = sealed_builtins["enumerate"]
     max_abs_integer = 10**15
 
     def _canonical(value: Any) -> bytes:
@@ -322,7 +331,7 @@ def _build_current_api(
         unsigned.pop("receipt_digest", None)
         if builtin_type(claimed) is not builtin_str or claimed != _digest_fn(unsigned):
             raise _gate_error("receipt: digest mismatch")
-        if supplied.get("schema") != _receipt_schema or supplied.get("state") not in _states:
+        if supplied.get("schema") != _receipt_schema or supplied.get("state") not in states:
             raise _gate_error("receipt: unsupported schema/state")
         evaluated_at = supplied.get("evaluated_at")
         if builtin_type(evaluated_at) is not builtin_str:
@@ -361,8 +370,10 @@ def _build_current_api(
     return compile_current, verify_receipt
 
 
-compile_current, verify_receipt = _build_current_api()
+compile_current, verify_receipt = _get_or_build_current_api(_build_current_api)
 del _build_current_api
+del _get_or_build_current_api
+del _trusted_builtins_copy
 del _FunctionType
 del _common_module
 del _model_module
