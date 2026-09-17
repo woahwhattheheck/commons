@@ -21,6 +21,7 @@ If you have the link, write. No seat.
 
 - [$29 Autopsy](../agent-rescue.html)
 - [$199 dealer](../dealer-service-lead-rescue.html) · [$199 referral](../referral-intake-completeness.html) · [$199 repair](../repair-booking-preflight.html) · [$199 plant](../plant-downtime-handoff.html)
+Larger fixed engagements (separate product pages; checkout/intent stays there): [GGUF diagnostic · $12,000 / 10 days](../diagnostic.html) · [White Box pilot · $30,000 / 30 days](../commercial.html). Not remints of tip SKUs.
 - Tip shelf: [tips.html](../tips.html) · [pay.html](../pay.html)
 - TYPE owns checkout. Do not invent Stripe Payment Links.
 
