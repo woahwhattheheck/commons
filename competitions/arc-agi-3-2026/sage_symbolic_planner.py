@@ -1,9 +1,12 @@
 """Public ARC3 SAGE planner facade with evidence-conditioned reachability.
 
-The landed planner implementation is preserved byte-for-byte in the private
-``_sage_symbolic_planner_core`` module. This facade narrows only the evidence
-authority boundary:
+The landed planner implementation remains byte-for-byte in the private
+``_sage_symbolic_planner_core`` module. This facade narrows the evidence authority
+boundary and repairs exact predecessor identity for production SAGE observations:
 
+* EXACT identity binds the full ordered animation-frame sequence plus settled
+  action/state/progress metadata. Two observations with the same final frame but
+  different temporal histories are not interchangeable predecessors.
 * SCENE/GLOBAL fallback evidence may inform abstract effect/confidence/risk,
   but never a concrete successor, terminal state, progress or successor novelty.
 * EXACT evidence carries a concrete future only when every transition matching
@@ -14,6 +17,7 @@ authority boundary:
 """
 from __future__ import annotations
 
+from collections.abc import Sequence as _Sequence
 from dataclasses import replace as _replace
 
 try:
@@ -21,12 +25,14 @@ try:
 except ImportError:  # direct module execution from the competition directory
     import _sage_symbolic_planner_core as _core  # type: ignore
 
-REACHABILITY_POLICY = "exact-predecessor-unanimous-concrete-reachability/v2"
-PLANNER_SCHEMA = "commons.arc3-sage-symbolic-planner/v2"
-PLANNER_VERSION = 2
+OBSERVATION_IDENTITY_POLICY = "ordered-animation-frames-plus-settled-metadata/v1"
+REACHABILITY_POLICY = "exact-predecessor-full-animation-unanimous-concrete-reachability/v3"
+PLANNER_SCHEMA = "commons.arc3-sage-symbolic-planner/v3"
+PLANNER_VERSION = 3
 
 # Preserve the historical module surface. Keep the old implementation private
-# and byte-exact; SageEvidenceAdapter, plan and verify_receipt are replaced below.
+# and byte-exact; exact identity, SageEvidenceAdapter, plan and verify_receipt are
+# replaced below.
 for _name, _value in vars(_core).items():
     if _name.startswith("__") or _name in {
         "SageEvidenceAdapter", "plan", "verify_receipt", "PLANNER_SCHEMA", "PLANNER_VERSION"
@@ -42,6 +48,42 @@ for _name, _value in vars(_core).items():
 _BaseSageEvidenceAdapter = _core.SageEvidenceAdapter
 
 
+def _ordered_frames_payload(obs):
+    """Return the complete ordered frame sequence for exact predecessor identity.
+
+    Production ``sage_core.Observation`` exposes ``frames``. Small generic test
+    adapters may expose only ``frame``; those are normalized as a one-frame
+    sequence rather than receiving weaker identity semantics.
+    """
+    frames_raw = getattr(obs, "frames", None)
+    if frames_raw is None:
+        frames_raw = (getattr(obs, "frame"),)
+    if (
+        not isinstance(frames_raw, _Sequence)
+        or isinstance(frames_raw, (str, bytes))
+        or not frames_raw
+    ):
+        raise ValueError("observation frames must be a non-empty sequence")
+    frames = [_core._grid_payload(frame) for frame in frames_raw]
+    settled = _core._grid_payload(getattr(obs, "frame"))
+    if frames[-1] != settled:
+        raise ValueError("observation.frame must equal the final retained frame")
+    return frames
+
+
+def observation_digest(obs):
+    """Exact identity digest including the full ordered animation-frame sequence."""
+    settled = _core._observation_payload(obs)
+    return _core._digest({
+        "schema": OBSERVATION_IDENTITY_POLICY,
+        "frames": _ordered_frames_payload(obs),
+        "available_actions": settled["available_actions"],
+        "state": settled["state"],
+        "levels_completed": settled["levels_completed"],
+        "win_levels": settled["win_levels"],
+    })
+
+
 def _strip_concrete_reachability(hypothesis):
     return _replace(
         hypothesis,
@@ -54,16 +96,83 @@ def _strip_concrete_reachability(hypothesis):
 
 
 class SageEvidenceAdapter(_BaseSageEvidenceAdapter):
-    """SAGE adapter with exact, unanimous concrete-reachability authority."""
+    """SAGE adapter with temporal exact identity and unanimous reachability authority."""
 
-    def __init__(self, *args, **kwargs) -> None:
-        super().__init__(*args, **kwargs)
-        # Receipts bind evidence *and* the authority policy used to interpret it.
+    def __init__(self, model, observation, *, candidate_factory=None) -> None:
+        # Rebuild the predecessor evidence index with the hardened observation
+        # identity while retaining the old core's scene/effect/action semantics.
+        self.model = model
+        self.observation = observation
+        self._candidate_factory = candidate_factory
+        transitions = getattr(model, "transitions", None)
+        if not isinstance(transitions, list):
+            raise ValueError("SAGE model must expose transitions list")
+        self._observations = {observation_digest(observation): observation}
+        rows = []
+        for transition in transitions:
+            before = getattr(transition, "before")
+            after = getattr(transition, "after")
+            action = getattr(transition, "action")
+            effect = getattr(transition, "effect")
+            before_digest = observation_digest(before)
+            after_digest = observation_digest(after)
+            self._observations[before_digest] = before
+            self._observations[after_digest] = after
+            effect_digest = getattr(effect, "digest", None)
+            if not isinstance(effect_digest, str) or len(effect_digest) != 64:
+                raise ValueError("transition effect must expose sha256 digest")
+            rows.append({
+                "before": before_digest,
+                "after": after_digest,
+                "scene": _core._scene_key(before),
+                "action": _core._action_key(action),
+                "action_name": _core._action_name(action),
+                "effect": effect_digest,
+                "changed": _core._exact_int(getattr(effect, "changed_count", 0), "changed_count"),
+                "progress": _core._exact_int(max(0, getattr(effect, "level_delta", 0)), "level_delta"),
+                "terminal": str(getattr(effect, "terminal", "NOT_FINISHED")),
+            })
+        self._rows = tuple(sorted(rows, key=lambda row: _core._canonical_bytes(row)))
+        evidence_digest = _core._digest({
+            "schema": "sage-evidence/v2",
+            "observation_identity": OBSERVATION_IDENTITY_POLICY,
+            "rows": list(self._rows),
+        })
+        # Receipts bind evidence *and* both authority policies used to interpret it.
         self._model_digest = _core._digest({
-            "schema": "sage-evidence-policy/v3",
-            "evidence_digest": self._model_digest,
+            "schema": "sage-evidence-policy/v4",
+            "evidence_digest": evidence_digest,
+            "observation_identity": OBSERVATION_IDENTITY_POLICY,
             "reachability_policy": REACHABILITY_POLICY,
         })
+
+    def _state_from_observation(self, obs, *, cumulative_progress):
+        payload = _core._observation_payload(obs)
+        digest = observation_digest(obs)
+        return _core.SymbolicState(
+            digest=digest,
+            available_actions=tuple(payload["available_actions"]),
+            terminal=payload["state"],
+            cumulative_progress=cumulative_progress,
+            observation_digest=digest,
+            observation=obs,
+        )
+
+    def _evidence_rows(self, obs, action):
+        before = observation_digest(obs)
+        key = _core._action_key(action)
+        name = _core._action_name(action)
+        exact = tuple(row for row in self._rows if row["before"] == before and row["action"] == key)
+        if exact:
+            return "EXACT", exact
+        scene = _core._scene_key(obs)
+        local = tuple(row for row in self._rows if row["scene"] == scene and row["action_name"] == name)
+        if local:
+            return "SCENE", local
+        global_rows = tuple(row for row in self._rows if row["action_name"] == name)
+        if global_rows:
+            return "GLOBAL", global_rows
+        return "UNOBSERVED", ()
 
     def _resolved_observation(self, state):
         obs = state.observation
@@ -107,13 +216,14 @@ class SageEvidenceAdapter(_BaseSageEvidenceAdapter):
         # no future action space is asserted without concrete observation bytes.
         progress = successor.cumulative_progress
         digest = _core._digest({
-            "schema": "sage-abstract-state/v2",
+            "schema": "sage-abstract-state/v3",
             "parent": state.digest,
             "action": hypothesis.action_key,
             "effect": hypothesis.effect_digest,
             "terminal": successor.terminal,
             "progress": progress,
             "available_actions": [],
+            "observation_identity": OBSERVATION_IDENTITY_POLICY,
             "reachability_policy": REACHABILITY_POLICY,
         })
         return _core.SymbolicState(
@@ -126,7 +236,7 @@ class SageEvidenceAdapter(_BaseSageEvidenceAdapter):
         )
 
 
-def _v2_receipt_from_core(receipt):
+def _v3_receipt_from_core(receipt):
     unsealed = {key: receipt[key] for key in receipt if key != "receipt_sha256"}
     unsealed["schema"] = PLANNER_SCHEMA
     unsealed["planner_version"] = PLANNER_VERSION
@@ -140,14 +250,14 @@ def plan(
     budget=_core.PlannerBudget(),
     weights=_core.ScoreWeights(),
 ):
-    """Run the bounded planner and emit a v2 policy-bound receipt."""
+    """Run the bounded planner and emit a v3 policy-bound receipt."""
     decision = _core.plan(
         adapter,
         actions_left=actions_left,
         budget=budget,
         weights=weights,
     )
-    receipt = _v2_receipt_from_core(decision.receipt)
+    receipt = _v3_receipt_from_core(decision.receipt)
     return _core.PlanDecision(
         decision.first_action,
         decision.selected_prefix,
@@ -164,7 +274,7 @@ def verify_receipt(
     budget=_core.PlannerBudget(),
     weights=_core.ScoreWeights(),
 ):
-    """Recompute a v2 receipt and reject tamper, drift or v1 semantic replay."""
+    """Recompute a v3 receipt and reject tamper, drift or older semantic replay."""
     if not isinstance(receipt, dict) or frozenset(receipt) != _core.RECEIPT_KEYS:
         raise _core.ReceiptVerificationError("receipt field set mismatch")
     supplied_digest = receipt.get("receipt_sha256")
