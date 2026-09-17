@@ -124,15 +124,15 @@ jobs:
 
       - name: Compile laundry desk and retained hostiles
         working-directory: revenue/hive/commercial-laundry-operations
-        run: python -m py_compile laundry_desk.py laundry_desk_core.py cli.py demo.py test_laundry_desk.py test_export_hostiles.py test_cross_stop_custody.py test_core_authority_hostiles.py
+        run: python -m py_compile laundry_desk.py laundry_desk_core.py cli.py demo.py test_laundry_desk.py test_export_hostiles.py test_cross_stop_custody.py test_core_authority_hostiles.py test_cli_read_only.py
 
       - name: Normal laundry hostile suite
         working-directory: revenue/hive/commercial-laundry-operations
-        run: python -B -m unittest -v test_laundry_desk.py test_export_hostiles.py test_cross_stop_custody.py test_core_authority_hostiles.py
+        run: python -B -m unittest -v test_laundry_desk.py test_export_hostiles.py test_cross_stop_custody.py test_core_authority_hostiles.py test_cli_read_only.py
 
       - name: Optimized laundry hostile suite
         working-directory: revenue/hive/commercial-laundry-operations
-        run: python -O -B -m unittest -v test_laundry_desk.py test_export_hostiles.py test_cross_stop_custody.py test_core_authority_hostiles.py
+        run: python -O -B -m unittest -v test_laundry_desk.py test_export_hostiles.py test_cross_stop_custody.py test_core_authority_hostiles.py test_cli_read_only.py
 
       - name: Synthetic two-account demo
         working-directory: revenue/hive/commercial-laundry-operations
