@@ -92,6 +92,14 @@ class CasmiMultiSpectrumTests(unittest.TestCase):
         with self.assertRaises(MultiSpectrumError):
             run_multispectrum_baseline(raw)
 
+    def test_public_open_label_alone_cannot_self_promote_fixture(self):
+        raw = self.fixture()
+        raw["dataset_kind"] = "PUBLIC_OPEN"
+        with self.assertRaisesRegex(MultiSpectrumError, "provenance and license"):
+            normalize_fixture(raw)
+        with self.assertRaises(MultiSpectrumError):
+            run_multispectrum_baseline(raw)
+
     def test_more_than_sixteen_query_spectra_is_rejected(self):
         raw = self.fixture()
         raw["molecules"][0]["spectra"] = [copy.deepcopy(raw["molecules"][0]["spectra"][0]) for _ in range(17)]
