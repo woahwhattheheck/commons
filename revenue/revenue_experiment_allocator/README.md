@@ -92,7 +92,7 @@ Input loading is strict: bounded retained regular file, no symlink following whe
 The root `test_revenue_experiment_allocator.py` covers normal and hostile semantics including:
 
 - ranking without headline ticket value;
-- hard segment concentration cap;
+- hard segment concentration cap, including non-divisible batch/share arithmetic;
 - exploration reservation;
 - stale evidence / incomplete census / unresolved collision / route holds;
 - exact monotone funnel and cash invariants;
@@ -105,7 +105,7 @@ The root `test_revenue_experiment_allocator.py` covers normal and hostile semant
 Run:
 
 ```bash
-python -m unittest -q test_revenue_experiment_allocator.py
-python -O -m unittest -q test_revenue_experiment_allocator.py
-python -m py_compile revenue/revenue_experiment_allocator/engine.py test_revenue_experiment_allocator.py
+python -m unittest -q test_revenue_experiment_allocator.py test_revenue_experiment_allocator_strict_share.py
+python -O -m unittest -q test_revenue_experiment_allocator.py test_revenue_experiment_allocator_strict_share.py
+python -m py_compile revenue/revenue_experiment_allocator/engine.py test_revenue_experiment_allocator.py test_revenue_experiment_allocator_strict_share.py
 ```
