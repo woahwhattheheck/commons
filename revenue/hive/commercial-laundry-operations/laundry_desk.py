@@ -2,10 +2,14 @@ from __future__ import annotations
 
 """Public hardened facade for the commercial laundry operations desk.
 
-The reviewed facade implementation is loaded privately.  Public semantic
+The reviewed facade implementation is loaded privately. Public semantic
 authority does not depend on its rebindable module AUTHORITY name: invoice
 creation below uses source-literal hard-false authority, while inherited
 snapshot/integrity projections are sealed by ``laundry_desk_core``.
+
+The supported read-only open path is deliberately separate from ordinary
+construction. It never initializes or migrates source database state and opens
+SQLite with both ``mode=ro`` and ``PRAGMA query_only=ON``.
 """
 
 import importlib.machinery as _machinery
@@ -136,6 +140,59 @@ def _make_authority_safe_draft(core_module, generated_id):
 # not participate in invoice authority generation.
 LaundryDesk.draft_invoice = _make_authority_safe_draft(_core, _generated_id)
 
-# Do not leave the privately loaded facade module or factory as ordinary raw
-# semantic handles.  The class methods retain only the closures they need.
-del _facade, _loader, _spec, _name, _value, _make_authority_safe_draft
+
+def _make_read_only_surface(core_module):
+    """Bind a non-initializing, read-only SQLite access path to the public desk."""
+
+    original_connect = LaundryDesk._connect
+    path_type = core_module.Path
+    sqlite_module = core_module.sqlite3
+    closing_type = core_module.closing
+    expected_schema_version = str(core_module.SCHEMA_VERSION)
+
+    def read_only_connect(self):
+        if not getattr(self, "_commons_read_only", False):
+            return original_connect(self)
+        database_path = path_type(self.database).resolve()
+        # pathlib.as_uri percent-encodes reserved path characters before the
+        # SQLite URI query string is appended.
+        uri = database_path.as_uri() + "?mode=ro"
+        conn = sqlite_module.connect(uri, uri=True, timeout=8.0, isolation_level=None)
+        conn.row_factory = sqlite_module.Row
+        conn.execute("PRAGMA foreign_keys = ON")
+        conn.execute("PRAGMA busy_timeout = 8000")
+        conn.execute("PRAGMA query_only = ON")
+        return conn
+
+    @classmethod
+    def open_read_only(cls, database: str | core_module.Path):
+        database_path = path_type(database)
+        if not database_path.is_file():
+            raise FileNotFoundError(f"laundry database does not exist: {database_path}")
+
+        # Construct without invoking the retained __init__, which intentionally
+        # creates parent directories and initializes schema for writable desks.
+        instance = cls.__new__(cls)
+        instance.database = str(database_path)
+        instance._commons_read_only = True
+
+        try:
+            with closing_type(instance._connect()) as conn:
+                row = conn.execute(
+                    "SELECT value FROM meta WHERE key='schema_version'"
+                ).fetchone()
+        except sqlite_module.Error as exc:
+            raise LaundryDeskError("existing laundry database schema is unavailable") from exc
+        if row is None or row[0] != expected_schema_version:
+            observed = None if row is None else row[0]
+            raise LaundryDeskError(f"unsupported schema version {observed}")
+        return instance
+
+    return open_read_only, read_only_connect
+
+
+LaundryDesk.open_read_only, LaundryDesk._connect = _make_read_only_surface(_core)
+
+# Do not leave the privately loaded facade module or factories as ordinary raw
+# semantic handles. The class methods retain only the closures they need.
+del _facade, _loader, _spec, _name, _value, _make_authority_safe_draft, _make_read_only_surface
