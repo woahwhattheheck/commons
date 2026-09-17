@@ -87,6 +87,8 @@ CONVERT_SHELF_LIVE_BUYS = {
     "foldbook.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "flipbook.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "compress.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "command.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "coordination.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -151,6 +153,8 @@ PUBLIC_HTML = (
     "foldbook.html",
     "flipbook.html",
     "compress.html",
+    "command.html",
+    "coordination.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
