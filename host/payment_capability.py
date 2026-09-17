@@ -111,6 +111,8 @@ CONVERT_SHELF_LIVE_BUYS = {
     "right-now.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "baddl-eia-accession-release-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "billings-bid-1421-acceptance-runner.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "billings-bid-1421-operations-runner.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "billings-bid-1421-partner-recon.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -199,6 +201,8 @@ PUBLIC_HTML = (
     "right-now.html",
     "baddl-eia-accession-release-lims.html",
     "billings-bid-1421-acceptance-runner.html",
+    "billings-bid-1421-operations-runner.html",
+    "billings-bid-1421-partner-recon.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
