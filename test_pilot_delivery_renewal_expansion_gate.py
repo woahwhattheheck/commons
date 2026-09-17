@@ -1,3 +1,4 @@
+import builtins
 import copy
 import unittest
 from datetime import datetime, timedelta, timezone
@@ -112,6 +113,59 @@ class CurrentSemanticGenerationTests(unittest.TestCase):
         finally:
             for owner, name, old_value in reversed(previous):
                 setattr(owner, name, old_value)
+
+    def test_process_builtin_max_rebinding_cannot_rewrite_commercial_generation(self):
+        p = current_packet()
+        for row in p["milestones"]:
+            row["commercial_generation"] = 1
+        p["payment"]["commercial_generation"] = 1
+
+        control = engine.compile_current(p)
+        self.assertEqual(control["state"], engine.HOLD_ACCEPTANCE)
+        self.assertEqual(control["commercial_generation"], 2)
+
+        real_max = builtins.max
+
+        def forged_max(*args, **kwargs):
+            if len(args) == 1 and not kwargs and type(args[0]) is list and args[0] == [1, 2]:
+                return 1
+            return real_max(*args, **kwargs)
+
+        try:
+            builtins.max = forged_max
+            mutated = engine.compile_current(p)
+        finally:
+            builtins.max = real_max
+
+        self.assertEqual(mutated["state"], engine.HOLD_ACCEPTANCE)
+        self.assertEqual(mutated["commercial_generation"], 2)
+        self.assertTrue(all(value is False for value in mutated["authority"].values()))
+
+    def test_process_builtin_isinstance_rebinding_cannot_admit_bool_as_integer(self):
+        p = current_packet()
+        p["baseline"]["generation"] = True
+        with self.assertRaisesRegex(engine.GateError, "integer required"):
+            engine.compile_current(p)
+
+        real_isinstance = builtins.isinstance
+        captured = None
+
+        def forged_isinstance(value, kind):
+            if value is True and kind is bool:
+                return False
+            return real_isinstance(value, kind)
+
+        try:
+            builtins.isinstance = forged_isinstance
+            try:
+                engine.compile_current(p)
+            except engine.GateError as exc:
+                captured = str(exc)
+        finally:
+            builtins.isinstance = real_isinstance
+
+        self.assertIsNotNone(captured)
+        self.assertIn("integer required", captured)
 
     def test_split_view_receipt_cannot_cross_authentication_phases(self):
         p = current_packet()
