@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 83,
-    "open_pull_requests": 29,
-    "runs_in_progress": 20,
-    "runs_queued": 2307
+    "open_issues": 81,
+    "open_pull_requests": 25,
+    "runs_in_progress": 16,
+    "runs_queued": 2454
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,57 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zsol/mfef-retained-ci-budget-20260917",
-      "created_at": "2026-09-17T08:57:25Z",
+      "branch": "cursor/goat-free-sample-humans-convert-shelf-997a",
+      "created_at": "2026-09-17T09:08:56Z",
       "draft": false,
-      "head_sha": "e778448ce0c9b3b64f09d4bc6fc310df9095efc0",
-      "number": 15512,
-      "title": "fix: retain freshness custody CI within workflow budget",
-      "updated_at": "2026-09-17T08:57:25Z"
+      "head_sha": "7dc85ca4d9c031d49b87059a543559521fe64ffb",
+      "number": 15532,
+      "title": "GOAT: wire existing Autopsy and White Box hour buys onto free-sample and humans",
+      "updated_at": "2026-09-17T09:08:56Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/latch-annex-archive-convert-shelf-5a2c",
+      "created_at": "2026-09-17T09:04:48Z",
+      "draft": false,
+      "head_sha": "0834e5373bd57932fa410142ff35fd19035dbd22",
+      "number": 15529,
+      "title": "Wire existing $29 and $250 Buy links onto annex and archive shelves",
+      "updated_at": "2026-09-17T09:04:48Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-swarm/onewriter-builderfest-current-main-20260917",
+      "created_at": "2026-09-17T09:02:55Z",
+      "draft": false,
+      "head_sha": "f02d9d1e910c5330d4dd7aaf08174c5e61300447",
+      "number": 15526,
+      "title": "Integrate OneWriter Emergent Builder Fest source packet on current main",
+      "updated_at": "2026-09-17T09:02:55Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-swarmz/titan-reset-warmup-symmetry-20260917",
+      "created_at": "2026-09-17T09:02:13Z",
+      "draft": false,
+      "head_sha": "32b4fc62a30db43fc73b2b36f005bf541dd26c8c",
+      "number": 15525,
+      "title": "test(titan): lock deterministic reset verification mode",
+      "updated_at": "2026-09-17T09:02:13Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "z-sol/pay-projector-evidence-binding-current-main-20260917",
+      "branch": "main",
+      "created_at": "2026-09-17T08:57:54Z",
+      "draft": false,
+      "head_sha": "722fadb6b062247f5a01a00865c456c7cec69bd8",
+      "number": 15514,
+      "title": "Rejoin 688cbc main into projector evidence branch",
+      "updated_at": "2026-09-17T09:09:09Z"
     },
     {
       "author": "woahwhattheheck",
@@ -83,32 +127,10 @@
       "branch": "swarm-z/fix-13986-ci-surface",
       "created_at": "2026-09-17T08:56:41Z",
       "draft": false,
-      "head_sha": "0297656f5b4a5d6af4aa03f955ac484463cf755f",
+      "head_sha": "bbfa94d7566631c1789fc135a4c654539c90e064",
       "number": 15511,
       "title": "ci: close freshness custody workflow-surface RED (#13986)",
-      "updated_at": "2026-09-17T08:56:41Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/pay-projector-authority-final-main-20260917",
-      "created_at": "2026-09-17T08:56:41Z",
-      "draft": false,
-      "head_sha": "cc1f87722022dfec22aa023571759104b5693737",
-      "number": 15510,
-      "title": "Finalize checkout/payment projector authority on current main",
-      "updated_at": "2026-09-17T08:56:41Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol/inprs-bundle-generation-snapshot-20260917",
-      "created_at": "2026-09-17T08:55:55Z",
-      "draft": false,
-      "head_sha": "b62f46fafda05d8c574ed210f646c2d45f535185",
-      "number": 15508,
-      "title": "INPRS: bind v2 and v1 to one candidate bundle generation",
-      "updated_at": "2026-09-17T08:56:44Z"
+      "updated_at": "2026-09-17T09:01:03Z"
     },
     {
       "author": "woahwhattheheck",
@@ -119,29 +141,7 @@
       "head_sha": "18e9c988c227d8cde0d0d2556a7dcbb02e55f9a4",
       "number": 15507,
       "title": "Recover Okaloosa notice truth with guarded audit freshness",
-      "updated_at": "2026-09-17T08:56:08Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "keystone/fix-multi-framework-workflow-surface-20260917",
-      "created_at": "2026-09-17T08:55:11Z",
-      "draft": false,
-      "head_sha": "67d382c42900c7e8befb6c675fb7f358993727aa",
-      "number": 15506,
-      "title": "Fix multi-framework freshness workflow-surface regression",
-      "updated_at": "2026-09-17T08:57:02Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-z/opencv-retained-ci-clean-20260917",
-      "created_at": "2026-09-17T08:52:09Z",
-      "draft": false,
-      "head_sha": "372dae1eb3c4009a3fa3baf2332d1fb1903f76d1",
-      "number": 15497,
-      "title": "Clean successor: retain OpenCV evidence gate inside tests workflow",
-      "updated_at": "2026-09-17T08:56:22Z"
+      "updated_at": "2026-09-17T09:09:06Z"
     },
     {
       "author": "woahwhattheheck",
@@ -149,10 +149,10 @@
       "branch": "zsol/emergent-builderfest-onewriter-20260917",
       "created_at": "2026-09-17T08:51:46Z",
       "draft": false,
-      "head_sha": "231db9be44eca8f72c5dc8d969cf9015a0db520e",
+      "head_sha": "78f5b53af961c116d455c824e9ff37d7a0b8256e",
       "number": 15494,
       "title": "feat: ship OneWriter Emergent Builder Fest source packet",
-      "updated_at": "2026-09-17T08:56:41Z"
+      "updated_at": "2026-09-17T09:08:18Z"
     },
     {
       "author": "woahwhattheheck",
@@ -168,13 +168,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-sol/runtime-provenance-zero-discovery-crossversion-20260917",
-      "created_at": "2026-09-17T08:50:37Z",
+      "branch": "moraine/muse-v2-retained-trigger-15469-20260917",
+      "created_at": "2026-09-17T08:50:32Z",
       "draft": false,
-      "head_sha": "13f48c461e5d70a7abfd6dc655c660278eeb3fd2",
-      "number": 15488,
-      "title": "Test: make runtime-provenance zero-discovery proof cross-version",
-      "updated_at": "2026-09-17T08:51:38Z"
+      "head_sha": "a25ff1bcb579b0d6a705e37231d15789d279bb8a",
+      "number": 15487,
+      "title": "Retain Muse v2 trigger and non-vacuous execution proof",
+      "updated_at": "2026-09-17T08:50:32Z"
     }
   ],
   "open_heads": {
@@ -190,196 +190,192 @@
     "15427": "76180954707469bb8552468cd28efb298e6da7fd",
     "15431": "1c07e5d54809948a66b1538989fe91b441f87548",
     "15437": "c6b45149870465626821876daba6e29c8c7aef01",
-    "15441": "51ae247dc14b3b0816936d1d9bc67a1a51dcd8e0",
     "15458": "dacd8663a1e0c5a8d56a0227a59364845ef62e05",
     "15459": "9b9a15a5f926239447e30222bf3bb55e065db87a",
-    "15465": "37030ef4fbcfe09aff2bdd05fc8489288af538de",
     "15473": "e04f598f39be2fece697037b2df67f82b206c75b",
-    "15483": "fc8456beb39e0e6615b1ea82cde80af6957058fd",
     "15487": "a25ff1bcb579b0d6a705e37231d15789d279bb8a",
-    "15488": "13f48c461e5d70a7abfd6dc655c660278eeb3fd2",
     "15492": "ce0b44765449e9cc58104782436bb970fb888878",
-    "15494": "231db9be44eca8f72c5dc8d969cf9015a0db520e",
-    "15497": "372dae1eb3c4009a3fa3baf2332d1fb1903f76d1",
-    "15506": "67d382c42900c7e8befb6c675fb7f358993727aa",
+    "15494": "78f5b53af961c116d455c824e9ff37d7a0b8256e",
     "15507": "18e9c988c227d8cde0d0d2556a7dcbb02e55f9a4",
-    "15508": "b62f46fafda05d8c574ed210f646c2d45f535185",
-    "15510": "cc1f87722022dfec22aa023571759104b5693737",
-    "15511": "0297656f5b4a5d6af4aa03f955ac484463cf755f",
-    "15512": "e778448ce0c9b3b64f09d4bc6fc310df9095efc0"
+    "15511": "bbfa94d7566631c1789fc135a4c654539c90e064",
+    "15514": "722fadb6b062247f5a01a00865c456c7cec69bd8",
+    "15525": "32b4fc62a30db43fc73b2b36f005bf541dd26c8c",
+    "15526": "f02d9d1e910c5330d4dd7aaf08174c5e61300447",
+    "15529": "0834e5373bd57932fa410142ff35fd19035dbd22",
+    "15532": "7dc85ca4d9c031d49b87059a543559521fe64ffb"
   },
-  "pulls_listed": 29,
+  "pulls_listed": 25,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 115.3,
+  "queue_depth_per_runner": 153.4,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zsk-0405/awc-preimport-upstream-seal-20260917",
-      "closed_at": "2026-09-17T08:56:44Z",
-      "head_sha": "26dfd3b074c144f0aa25190eeaeb7d8ee9d17912",
-      "merged_at": "2026-09-17T08:56:44Z",
-      "number": 15468,
+      "branch": "zsa-0445/rule30-equal-frequency-20260917",
+      "closed_at": "2026-09-17T09:07:21Z",
+      "head_sha": "5b1fb4c2e9147a36f1ecdb9c666ccf546042ce2e",
+      "merged_at": "2026-09-17T09:07:21Z",
+      "number": 15531,
       "state": "MERGED",
-      "title": "Revenue: block pre-import funnel-root poisoning after #15384"
+      "title": "Rule 30: prove conditional center-trace bijection"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zsol/awc-preimport-upstream-seal-rejoin-20260917",
-      "closed_at": "2026-09-17T08:56:41Z",
-      "head_sha": "4c736c31c7400d0fa72d052553da564950445e45",
-      "merged_at": "2026-09-17T08:56:41Z",
-      "number": 15502,
-      "state": "MERGED",
-      "title": "Revenue: rejoin reviewed pre-import funnel-root seal on current main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "z-sol/pay-projector-evidence-binding-current-main-20260917",
-      "branch": "main",
-      "closed_at": "2026-09-17T08:56:21Z",
-      "head_sha": "824305d4c2a18422f86df08d784ca83655a58bae",
-      "merged_at": "2026-09-17T08:56:21Z",
-      "number": 15509,
-      "state": "MERGED",
-      "title": "Rejoin latest main into projector evidence branch"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "kite-z/inprs-file-backed-v2-version-roots-20260917",
-      "closed_at": "2026-09-17T08:56:06Z",
-      "head_sha": "638a8764fc5f787718cc623b768720e8f329e644",
+      "branch": "solstice/route-quarantine-no-auto-alias-20260917",
+      "closed_at": "2026-09-17T09:06:17Z",
+      "head_sha": "2686b3e59c47e22b17728b4a46a2da4a147cd929",
       "merged_at": null,
-      "number": 15505,
+      "number": 15483,
       "state": "CLOSED",
-      "title": "[SUPERSEDED by #15508] INPRS: snapshot candidate bundle generation before v1 delegation"
+      "title": "Stop blocked routes from triggering automatic alias research"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-helix/costed-work-retained-ci-currentmain-20260917",
-      "closed_at": "2026-09-17T08:55:58Z",
-      "head_sha": "023b0306b4bf51c185de86d6619ff0108052185c",
+      "branch": "zsol/route-quarantine-retained-proof-20260917",
+      "closed_at": "2026-09-17T09:05:55Z",
+      "head_sha": "59a3d4bdcce2908eefb6eaf4f8b3f2d8d2158f58",
+      "merged_at": "2026-09-17T09:05:54Z",
+      "number": 15527,
+      "state": "MERGED",
+      "title": "Route quarantine: close retained-proof false green"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "quill-data-weather-convert-shelf-20260917-01",
+      "closed_at": "2026-09-17T09:05:09Z",
+      "head_sha": "a3091717f3ecd791cbe702a8d8eab64569f0747c",
+      "merged_at": "2026-09-17T09:05:09Z",
+      "number": 15530,
+      "state": "MERGED",
+      "title": "QUILL: data.html + weather.html convert shelf (existing Autopsy $29 + White Box hour $250)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol/runtime-provenance-zero-discovery-crossversion-20260917",
+      "closed_at": "2026-09-17T09:05:06Z",
+      "head_sha": "a7b2e2e6b2ebfe93f8fe29fc9abbf11e9bd4009c",
+      "merged_at": "2026-09-17T09:05:06Z",
+      "number": 15488,
+      "state": "MERGED",
+      "title": "Test: make runtime-provenance zero-discovery proof cross-version"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarmz/procurement-qualification-gate-rejoin-20260917",
+      "closed_at": "2026-09-17T09:04:42Z",
+      "head_sha": "701d5b0837db82a98257167a371ae3d1e70c4569",
+      "merged_at": "2026-09-17T09:04:42Z",
+      "number": 15518,
+      "state": "MERGED",
+      "title": "Revenue: add reusable prime vs workshare procurement qualification gate"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zeta-sol/opencv-retained-ci-current-main-20260917",
+      "closed_at": "2026-09-17T09:04:20Z",
+      "head_sha": "d73f9a42bc85d708f773a469458ea50aab513c0c",
       "merged_at": null,
-      "number": 15493,
+      "number": 15528,
       "state": "CLOSED",
-      "title": "Retain costed-work optimizer source changes in CI"
+      "title": "OpenCV CI: clean current-main retained proof successor"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-helix/costed-work-retained-ci-20260917",
-      "closed_at": "2026-09-17T08:55:40Z",
-      "head_sha": "d76a4009990703dc49873e5f98b8ef13e1b97d84",
+      "branch": "swarm-z/opencv-retained-ci-clean-20260917",
+      "closed_at": "2026-09-17T09:03:45Z",
+      "head_sha": "372dae1eb3c4009a3fa3baf2332d1fb1903f76d1",
       "merged_at": null,
-      "number": 15484,
+      "number": 15497,
       "state": "CLOSED",
-      "title": "Retain costed-work optimizer source changes in CI"
+      "title": "Clean successor: retain OpenCV evidence gate inside tests workflow"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zsol/titan-reset-deterministic-oracle-20260917",
-      "closed_at": "2026-09-17T08:55:29Z",
-      "head_sha": "c51ced8a6f7153ac543578f542ab45443f25db09",
-      "merged_at": "2026-09-17T08:55:29Z",
-      "number": 15490,
-      "state": "MERGED",
-      "title": "test(titan): make reset-invariance oracle deterministic"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "sol-zeta/marin-rfp2907-opengov-workshare-15491",
-      "closed_at": "2026-09-17T08:55:16Z",
-      "head_sha": "60460178b5b1651e86c53941bc938b7bd34e4e0a",
-      "merged_at": "2026-09-17T08:55:16Z",
-      "number": 15504,
-      "state": "MERGED",
-      "title": "Revenue: package Marin RFP 2907 OpenGov acceptance workshare"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-helix/costed-work-retained-ci-terminal-20260917",
-      "closed_at": "2026-09-17T08:55:08Z",
-      "head_sha": "7edc0b2e810fd23c20788afaa0bbfe7bb37de924",
-      "merged_at": "2026-09-17T08:55:08Z",
-      "number": 15503,
-      "state": "MERGED",
-      "title": "Retain costed-work optimizer source changes in CI"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zeta/runtime-provenance-15482-current-main-20260917",
-      "closed_at": "2026-09-17T08:53:56Z",
-      "head_sha": "cfa3d75fa396a67e7c1add80601e388afc50f7b1",
+      "branch": "zsf-0432/opencv-workflow-surface-closure-20260917",
+      "closed_at": "2026-09-17T09:03:41Z",
+      "head_sha": "37030ef4fbcfe09aff2bdd05fc8489288af538de",
       "merged_at": null,
-      "number": 15500,
+      "number": 15465,
       "state": "CLOSED",
-      "title": "Fix Python 3.12 zero-discovery runtime-provenance proof (fresh main)"
+      "title": "Fold OpenCV visual-evidence gate into retained CI surface"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zhl/runtime-provenance-py312-zero-discovery-20260917",
-      "closed_at": "2026-09-17T08:52:52Z",
-      "head_sha": "8ea42be147b136d83a620bb1c628a93b8abb029a",
-      "merged_at": null,
-      "number": 15482,
-      "state": "CLOSED",
-      "title": "Fix Python 3.12 zero-discovery runtime-provenance proof"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsa-0445/muse-v2-retained-trigger-20260917",
-      "closed_at": "2026-09-17T08:52:39Z",
-      "head_sha": "a91ade610f1b1d7599f8289087e151439ed62502",
-      "merged_at": null,
-      "number": 15478,
-      "state": "CLOSED",
-      "title": "Muse v2: retain source trigger and reject zero-test optimized proof"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-swarm/runtime-provenance-py312-clean-20260917",
-      "closed_at": "2026-09-17T08:52:38Z",
-      "head_sha": "41a6c5944153b900fd07c1fe4a56722412605e14",
-      "merged_at": "2026-09-17T08:52:38Z",
-      "number": 15499,
+      "branch": "swarm-z/solstice-agent-toolcall-gate-14146",
+      "closed_at": "2026-09-17T09:02:48Z",
+      "head_sha": "8e14aedd80fbf0e5afe61f36b4581bc4d108bf4f",
+      "merged_at": "2026-09-17T09:02:48Z",
+      "number": 15524,
       "state": "MERGED",
-      "title": "Fix Python 3.12 zero-discovery runtime-provenance proof (clean carrier)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "z-sol/pay-projector-evidence-binding-current-main-20260917",
-      "branch": "main",
-      "closed_at": "2026-09-17T08:52:27Z",
-      "head_sha": "ffbd7d083f75f0c6f6ec14f542065157cc8e69de",
-      "merged_at": "2026-09-17T08:52:27Z",
-      "number": 15498,
-      "state": "MERGED",
-      "title": "Rejoin current main after commerce checkout policy"
+      "title": "Recover #14146 agent tool-call evidence gate"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "wire-muse-clear-wire-guard-20260917-01",
-      "closed_at": "2026-09-17T08:52:01Z",
-      "head_sha": "7024e841787c0deb25c44132200dcf489c296dac",
-      "merged_at": "2026-09-17T08:52:01Z",
-      "number": 15496,
+      "branch": "zrg-0442/muse-ledger-delta-linear-fix-20260917",
+      "closed_at": "2026-09-17T09:02:45Z",
+      "head_sha": "2e4ab02725092fe7f6aa87ce9034a2015bc85b5e",
+      "merged_at": "2026-09-17T09:02:45Z",
+      "number": 15515,
       "state": "MERGED",
-      "title": "Muse CLEAR wire guard + DeepSeek fallback arbiter stub"
+      "title": "Outbound: make Muse receipt-ledger verification truly linear"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-z/opencv-workflow-surface-final-20260917",
+      "closed_at": "2026-09-17T09:02:12Z",
+      "head_sha": "290f67cf22b93b4bf9a71ec18a15db3c16461225",
+      "merged_at": "2026-09-17T09:02:12Z",
+      "number": 15520,
+      "state": "MERGED",
+      "title": "Finalize workflow surface: retain OpenCV evidence gate inside tests"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "grok/runtime-provenance-canonical-json-export-20260917",
+      "closed_at": "2026-09-17T09:01:52Z",
+      "head_sha": "c1e3196f62bd8a75faa44a269915df29f15b4d88",
+      "merged_at": "2026-09-17T09:01:52Z",
+      "number": 15522,
+      "state": "MERGED",
+      "title": "Re-export canonical_json so runtime-provenance focused discovery stays non-vacuous"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "wire-boards-builds-convert-shelf-20260917-01",
+      "closed_at": "2026-09-17T09:01:26Z",
+      "head_sha": "96c96604722a2360ff058150eabe77e4737ba400",
+      "merged_at": "2026-09-17T09:01:26Z",
+      "number": 15519,
+      "state": "MERGED",
+      "title": "Wire boards.html + builds.html convert shelf (existing Autopsy $29 + White Box hour $250)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "quill-wake-world-convert-shelf-20260917-01",
+      "closed_at": "2026-09-17T09:01:23Z",
+      "head_sha": "553fbffa6d5e60a8b1cfca6bc2c2a4b51c24fe18",
+      "merged_at": "2026-09-17T09:01:23Z",
+      "number": 15521,
+      "state": "MERGED",
+      "title": "QUILL: wake.html + world.html convert shelf (existing Autopsy $29 + White Box hour $250)"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T08:57:27Z",
+  "unchanged_since": "2026-09-17T09:09:26Z",
   "undatable_pulls": []
 }
