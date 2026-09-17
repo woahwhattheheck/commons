@@ -1,0 +1,52 @@
+name: Procurement pursuit partner gap
+on:
+  pull_request:
+    paths:
+      - 'revenue/procurement_pursuit_partner_gap/**'
+      - 'revenue/procurement_response_module_library/materializer.py'
+      - '.github/workflows/procurement-pursuit-partner-gap.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'revenue/procurement_pursuit_partner_gap/**'
+      - 'revenue/procurement_response_module_library/materializer.py'
+      - '.github/workflows/procurement-pursuit-partner-gap.yml'
+concurrency:
+  group: procurement-pursuit-partner-gap-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m py_compile revenue/procurement_pursuit_partner_gap/compiler.py revenue/procurement_pursuit_partner_gap/test_compiler.py
+      - run: python -m unittest -v revenue.procurement_pursuit_partner_gap.test_compiler
+      - run: python -O -m unittest -v revenue.procurement_pursuit_partner_gap.test_compiler
+      - name: Synthetic fixture materializer generation
+        run: |
+          rm -rf /tmp/pursuit-gap-mat /tmp/pursuit-gap-output
+          python -m revenue.procurement_response_module_library.materializer compile \
+            --source revenue/procurement_pursuit_partner_gap/synthetic_materializer_source.json \
+            --out-dir /tmp/pursuit-gap-mat
+      - name: Synthetic fixture compile and verify
+        run: |
+          python -m revenue.procurement_pursuit_partner_gap.compiler compile \
+            --request revenue/procurement_pursuit_partner_gap/synthetic_pursuits.json \
+            --materializer-source revenue/procurement_pursuit_partner_gap/synthetic_materializer_source.json \
+            --materializer-catalog /tmp/pursuit-gap-mat/catalog.json \
+            --materializer-diff /tmp/pursuit-gap-mat/diff.json \
+            --materializer-receipt /tmp/pursuit-gap-mat/receipt.json \
+            --out-dir /tmp/pursuit-gap-output
+          python -m revenue.procurement_pursuit_partner_gap.compiler verify \
+            --request revenue/procurement_pursuit_partner_gap/synthetic_pursuits.json \
+            --materializer-source revenue/procurement_pursuit_partner_gap/synthetic_materializer_source.json \
+            --materializer-catalog /tmp/pursuit-gap-mat/catalog.json \
+            --materializer-diff /tmp/pursuit-gap-mat/diff.json \
+            --materializer-receipt /tmp/pursuit-gap-mat/receipt.json \
+            --packet /tmp/pursuit-gap-output/gap_packet.json \
+            --receipt /tmp/pursuit-gap-output/gap_receipt.json
