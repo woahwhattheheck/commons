@@ -146,17 +146,17 @@ class AttachmentRecoveryTests(unittest.TestCase):
         response.__enter__.return_value = response
         response.geturl.return_value = SOURCE_URL
         response.read.return_value = self.exact_zip()
-        with mock.patch.object(recovery.urllib.request, "urlopen", return_value=response), mock.patch.object(
+        with mock.patch.object(recovery.urllib.request, "urlopen", return_value=response) as urlopen, mock.patch.object(
             recovery, "_observed_utc_now", return_value="2026-09-17T07:31:02Z"
         ):
             receipt = fetch_and_analyze_official_zip(timeout_seconds=7.0)
+        urlopen.assert_called_once()
+        self.assertEqual(urlopen.call_args.kwargs["timeout"], 7.0)
         self.assertEqual(receipt["provenance_mode"], PROVENANCE_OFFICIAL_FETCH)
         self.assertEqual(receipt["source_url"], SOURCE_URL)
         self.assertEqual(receipt["retrieved_at_utc"], "2026-09-17T07:31:02Z")
         self.assertEqual(receipt["member_set_status"], "OFFICIAL_FETCH_EXACT_A_D_UNREVIEWED")
         self.assertFalse(receipt["attachments_complete_authorized"])
-        request = recovery.urllib.request.urlopen.call_args if hasattr(recovery.urllib.request.urlopen, "call_args") else None
-        self.assertIsNone(request)
 
     def test_fetch_redirect_fails_closed_before_official_receipt(self):
         response = mock.MagicMock()
