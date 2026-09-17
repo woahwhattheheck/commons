@@ -7,12 +7,15 @@ from pathlib import Path
 
 
 class ProcurementAwardAdapterGuardBridgeTests(unittest.TestCase):
-    def test_engine_adapter_and_uri_custody_suites_normal_and_optimized(self):
+    def test_engine_adapter_and_source_custody_suites_normal_and_optimized(self):
         root = Path(__file__).resolve().parent
         modules = [
             "revenue.procurement_award_price_intelligence.test_engine",
             "revenue.procurement_award_price_intelligence.test_adapters",
             "revenue.procurement_award_price_intelligence.test_adapter_uri_custody",
+            "revenue.procurement_award_price_intelligence.test_source_adapters",
+            "revenue.procurement_award_price_intelligence.test_source_adapters_redclosure",
+            "revenue.procurement_award_price_intelligence.test_source_adapters_empty_userinfo",
         ]
         for optimized in (False, True):
             command = [sys.executable]
