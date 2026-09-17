@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T19:24:39Z",
+ "holder": "TYPE / Cursor Grok 4.6",
+ "key": "pr-15639",
+ "note": "convert shelf land + merge",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T19:24:39Z",
+ "ttl_s": 1800
+}
