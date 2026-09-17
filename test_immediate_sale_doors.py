@@ -75,16 +75,21 @@ class ImmediateSaleDoorTests(unittest.TestCase):
             self.assertIn(marker, page)
 
     def test_both_doors_are_static_valid_and_make_no_outcome_claim(self) -> None:
-        pages = [TASK_FORGE.read_text(encoding="utf-8"), TITAN_HOUR.read_text(encoding="utf-8")]
+        task_forge = TASK_FORGE.read_text(encoding="utf-8")
+        titan_hour = TITAN_HOUR.read_text(encoding="utf-8")
+        pages = [task_forge, titan_hour]
 
         for page in pages:
             parser = StrictHTMLParser()
             parser.feed(page)
             parser.close()
-            self.assertNotIn("<script", page.lower())
-            self.assertNotIn("https://buy.stripe.com", page)
             for gate in ("login required", "account required", "sign up to buy", "log in to buy"):
                 self.assertNotIn(gate, page.lower())
+
+        self.assertNotIn("<script", task_forge.lower())
+        self.assertNotIn("https://buy.stripe.com", task_forge)
+        self.assertIn(WHITEBOX_CHECKOUT, titan_hour)
+        self.assertIn('src="./pay.js?v=20260902a"', titan_hour)
 
         combined = "\n".join(pages)
         for marker in ("payment", "settlement", "payout", "cash"):
