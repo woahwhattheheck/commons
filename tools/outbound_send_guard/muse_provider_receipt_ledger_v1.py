@@ -112,14 +112,15 @@ def _get_default_head(token: str) -> str:
     try: return _sha(value["object"]["sha"], "main ref sha")
     except (KeyError, TypeError) as exc: raise MuseProviderReceiptLedgerError("malformed main ref") from exc
 
-def _get_commit(token: str, sha: str) -> dict[str, str]:
+def _get_commit(token: str, sha: str, *, require_single_parent: bool = True) -> dict[str, Any]:
     sha = _sha(sha, "commit sha")
     value = _api("GET", f"/repos/{PROVIDER_OWNER}/{PROVIDER_REPO}/git/commits/{sha}", token=token)
     try:
         tree = _sha(value["tree"]["sha"], "tree sha"); parents = [_sha(x["sha"], "parent sha") for x in value["parents"]]
     except (KeyError, TypeError) as exc: raise MuseProviderReceiptLedgerError("malformed provider commit") from exc
-    if len(parents) != 1: raise MuseProviderReceiptLedgerError("ledger commit must have one parent")
-    return {"sha": sha, "tree_sha": tree, "parent_sha": parents[0]}
+    if require_single_parent and len(parents) != 1: raise MuseProviderReceiptLedgerError("ledger commit must have one parent")
+    if not parents: raise MuseProviderReceiptLedgerError("provider commit must have at least one parent")
+    return {"sha": sha, "tree_sha": tree, "parent_sha": parents[0] if len(parents) == 1 else None, "parent_shas": parents}
 
 def _get_tree(token: str, sha: str) -> dict[str, str]:
     value = _api("GET", f"/repos/{PROVIDER_OWNER}/{PROVIDER_REPO}/git/trees/{_sha(sha,'tree sha')}?recursive=1", token=token)
@@ -236,7 +237,7 @@ def _post_commit(token: str, tree: str, parent: str, generation: int) -> str:
 
 
 def initialize_remote_ledger(*, token: str|None=None) -> dict[str,Any]:
-    token=_token() if token is None else token; genesis=_get_default_head(token); base=_get_commit(token,genesis); manifest=_manifest(0,genesis,None,[])
+    token=_token() if token is None else token; genesis=_get_default_head(token); base=_get_commit(token,genesis,require_single_parent=False); manifest=_manifest(0,genesis,None,[])
     tree=_post_tree(token,base["tree_sha"],{MANIFEST_PATH:_canon(manifest)}); commit=_post_commit(token,tree,genesis,0)
     value=_api("POST",f"/repos/{PROVIDER_OWNER}/{PROVIDER_REPO}/git/refs",body={"ref":PROVIDER_REF,"sha":commit},token=token)
     try: observed=_sha(value["object"]["sha"],"created ref")
@@ -304,6 +305,7 @@ def _read(path: str, label: str):
     try:
         with open(path,"rb") as f: return _parse_json_bytes(f.read(),label)
     except OSError as exc: raise MuseProviderReceiptLedgerError(f"{label}: read failed") from exc
+
 def _write(value): sys.stdout.buffer.write(_canon(value))
 def _parser():
     p=argparse.ArgumentParser(description=__doc__); sub=p.add_subparsers(dest="command",required=True); sub.add_parser("init")
