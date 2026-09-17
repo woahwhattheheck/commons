@@ -10,7 +10,7 @@ from typing import Any
 
 from .common import AUTHORITY, GateError, TRUTH_CEILING, canonical_json, sha256, strict_loads, _read_regular
 from .schema import normalize
-from .engine import compile_packet, evaluate, verify_current
+from .engine import compile_current, evaluate, verify_current
 
 def render_markdown(packet: dict[str, Any]) -> str:
     lines = [
@@ -72,11 +72,10 @@ def main(argv: list[str] | None = None) -> int:
     v.add_argument("packet")
     v.add_argument("receipt")
     args = parser.parse_args(argv)
-    now = datetime.now(timezone.utc)
     try:
         raw = strict_loads(_read_regular(Path(args.input)))
         if args.cmd == "compile":
-            _, packet, receipt = compile_packet(raw, now)
+            _, packet, receipt = compile_current(raw)
             out = Path(args.output_dir)
             if out.exists():
                 raise GateError("output_dir must not already exist")
@@ -88,7 +87,7 @@ def main(argv: list[str] | None = None) -> int:
             return 0
         packet = strict_loads(_read_regular(Path(args.packet)))
         receipt = strict_loads(_read_regular(Path(args.receipt)))
-        result = verify_current(raw, packet, receipt, now)
+        result = verify_current(raw, packet, receipt)
         print(canonical_json(result).decode("utf-8"), end="")
         return 0 if result["integrity_valid"] else 2
     except (GateError, OSError) as exc:
