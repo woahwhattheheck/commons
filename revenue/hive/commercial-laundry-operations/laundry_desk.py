@@ -9,7 +9,9 @@ IDs remain readable; over-bound IDs are deterministically bound to their full
 source tuple with SHA-256.
 """
 
+import csv
 import hashlib
+import io
 from typing import Any
 
 import laundry_desk_core as _core
@@ -40,6 +42,34 @@ def _generated_id(namespace: str, *parts: object) -> str:
     if len(bounded) > MAX_ID_LENGTH or not ID_RE.fullmatch(bounded):
         raise LaundryDeskError("generated identifier contract violated")
     return bounded
+
+
+def _csv_safe(value: str) -> str:
+    """Neutralize spreadsheet formulas in human-authored text projections only."""
+    if not isinstance(value, str):
+        raise ValidationError("CSV projection text must be text")
+    return "'" + value if value.startswith(("=", "+", "-", "@")) else value
+
+
+def _md_literal(value: str) -> str:
+    """Render human-authored text literally without Markdown structural meaning."""
+    if not isinstance(value, str):
+        raise ValidationError("Markdown projection text must be text")
+    entities = {
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        "|": "&#124;",
+        "`": "&#96;",
+        "\\": "&#92;",
+        "*": "&#42;",
+        "_": "&#95;",
+        "[": "&#91;",
+        "]": "&#93;",
+        "#": "&#35;",
+        "!": "&#33;",
+    }
+    return "".join(entities.get(ch, ch) for ch in value)
 
 
 class LaundryDesk(_core.LaundryDesk):
@@ -170,3 +200,147 @@ class LaundryDesk(_core.LaundryDesk):
             return invoice
 
         return self._operation(operation_key, "INVOICE_DRAFTED", "invoice", invoice_id, payload, mutate)
+
+
+    def deliver(
+        self,
+        operation_key: str,
+        stop_id: str,
+        delivered_counts: _core.Mapping[str, int],
+        container_ids: _core.Iterable[str],
+    ) -> OperationResult:
+        """Record delivery and fail closed on unresolved custody discontinuity.
+
+        Pickup containers are the custody reference. If delivery uses a different
+        set, deterministic CUSTODY_MISSING/CUSTODY_UNEXPECTED exceptions are
+        opened. Legitimate repack/transfer can proceed only after an operator
+        explicitly resolves those exceptions; invoice drafting remains blocked
+        while any exception is open.
+        """
+        stop_id = _core._ident(stop_id, "stop_id")
+        delivered = _core._counts(delivered_counts, "delivered counts")
+        containers = _core._containers(container_ids, "delivery containers")
+        payload = {"stop_id": stop_id, "delivered_counts": delivered, "container_ids": containers}
+
+        def mutate(conn: _core.sqlite3.Connection) -> dict[str, Any]:
+            row = conn.execute("SELECT route_id,state FROM stops WHERE stop_id=?", (stop_id,)).fetchone()
+            if not row:
+                raise ValidationError("unknown stop")
+            if row["state"] != "PROCESSED":
+                raise StateConflict("delivery requires PROCESSED stop")
+            processed = self._phase_counts(conn, stop_id, "PROCESSED")
+            item_codes = sorted(set(processed) | set(delivered))
+            created: list[str] = []
+            for item in item_codes:
+                expected = processed.get(item, 0)
+                actual = delivered.get(item, 0)
+                conn.execute(
+                    "INSERT INTO linen_counts(stop_id,phase,item_code,qty) VALUES (?,?,?,?)",
+                    (stop_id, "DELIVERED", item, actual),
+                )
+                if actual != expected:
+                    created.append(
+                        self._insert_exception(
+                            conn, stop_id, "DELIVERY_COUNT_MISMATCH", item, expected, actual
+                        )
+                    )
+
+            pickup_containers = {
+                r[0]
+                for r in conn.execute(
+                    "SELECT container_id FROM container_custody "
+                    "WHERE stop_id=? AND phase='PICKUP' ORDER BY container_id",
+                    (stop_id,),
+                )
+            }
+            delivery_containers = set(containers)
+            for container_id in sorted(pickup_containers - delivery_containers):
+                created.append(
+                    self._insert_exception(
+                        conn, stop_id, "CUSTODY_MISSING", container_id, 1, 0
+                    )
+                )
+            for container_id in sorted(delivery_containers - pickup_containers):
+                created.append(
+                    self._insert_exception(
+                        conn, stop_id, "CUSTODY_UNEXPECTED", container_id, 0, 1
+                    )
+                )
+            for container_id in containers:
+                conn.execute(
+                    "INSERT INTO container_custody(stop_id,phase,container_id) VALUES (?,?,?)",
+                    (stop_id, "DELIVERY", container_id),
+                )
+            conn.execute(
+                "UPDATE stops SET state='DELIVERED' WHERE stop_id=? AND state='PROCESSED'",
+                (stop_id,),
+            )
+            self._maybe_complete_route(conn, row["route_id"])
+            return {
+                "stop_id": stop_id,
+                "state": "DELIVERED",
+                "delivered_counts": delivered,
+                "containers": containers,
+                "open_exception_ids": created,
+            }
+
+        return self._operation(operation_key, "DELIVERY_RECORDED", "stop", stop_id, payload, mutate)
+
+    def render_customer_exports(self, customer_id: str) -> dict[str, str]:
+        """Render deterministic projections without mutating authoritative labels."""
+        snap = self.customer_snapshot(customer_id)
+        json_text = _core.json.dumps(snap, sort_keys=True, indent=2, ensure_ascii=False) + "\n"
+
+        csv_buf = io.StringIO(newline="")
+        writer = csv.writer(csv_buf, lineterminator="\n")
+        writer.writerow(
+            [
+                "customer_id",
+                "customer_name",
+                "site_id",
+                "site_name",
+                "agreement_id",
+                "item_code",
+                "unit_price_cents",
+                "active_from",
+                "active_to",
+            ]
+        )
+        for site in snap["sites"]:
+            for agreement in site["agreements"]:
+                writer.writerow(
+                    [
+                        snap["customer_id"],
+                        _csv_safe(snap["name"]),
+                        site["site_id"],
+                        _csv_safe(site["name"]),
+                        agreement["agreement_id"],
+                        agreement["item_code"],
+                        agreement["unit_price_cents"],
+                        agreement["active_from"],
+                        agreement["active_to"] or "",
+                    ]
+                )
+
+        md = [
+            f"# Customer {snap['customer_id']}",
+            "",
+            f"Name: {_md_literal(snap['name'])}",
+            "",
+            "| Site | Site name | Item | Unit price (cents) | Effective |",
+            "|---|---|---|---:|---|",
+        ]
+        for site in snap["sites"]:
+            for agreement in site["agreements"]:
+                end = agreement["active_to"] or "open"
+                md.append(
+                    f"| {site['site_id']} | {_md_literal(site['name'])} | "
+                    f"{agreement['item_code']} | {agreement['unit_price_cents']} | "
+                    f"{agreement['active_from']}..{end} |"
+                )
+        md += [
+            "",
+            "Authority flags: all customer/provider/payment/deployment/revenue authority is `false`.",
+            "",
+        ]
+        return {"json": json_text, "csv": csv_buf.getvalue(), "markdown": "\n".join(md)}

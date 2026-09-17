@@ -48,7 +48,7 @@ class DeskCase(unittest.TestCase):
     def _good_stop(self, stop_id, prefix="x"):
         self.desk.pickup(f"{prefix}.pickup", stop_id, {"sheet": 10, "towel": 20}, [f"{prefix}-c1"])
         self.desk.process(f"{prefix}.process", stop_id, {"sheet": 10, "towel": 20}, {"sheet": 0, "towel": 0})
-        self.desk.deliver(f"{prefix}.deliver", stop_id, {"sheet": 10, "towel": 20}, [f"{prefix}-out"])
+        self.desk.deliver(f"{prefix}.deliver", stop_id, {"sheet": 10, "towel": 20}, [f"{prefix}-c1"])
 
     def test_two_account_manifest_is_deterministic(self):
         route = self._route()
@@ -71,7 +71,7 @@ class DeskCase(unittest.TestCase):
         self.desk.pickup("s.pickup", stop, {"sheet": 10}, ["bin-1"])
         result = self.desk.process("s.process", stop, {"sheet": 9}, {"sheet": 0}).value
         self.assertEqual(len(result["open_exception_ids"]), 1)
-        self.desk.deliver("s.deliver", stop, {"sheet": 9}, ["bin-out"])
+        self.desk.deliver("s.deliver", stop, {"sheet": 9}, ["bin-1"])
         with self.assertRaises(InvoiceBlocked):
             self.desk.draft_invoice("s.invoice.blocked", stop)
         self.desk.resolve_exception("s.resolve", result["open_exception_ids"][0], "COUNT_ACCEPTED", "Owner accepted shortage")
@@ -92,7 +92,7 @@ class DeskCase(unittest.TestCase):
         stop = self._route()["stops"][0]["stop_id"]
         self.desk.pickup("m.pickup", stop, {"sheet": 10}, ["bin-1"])
         self.desk.process("m.process", stop, {"sheet": 10}, {"sheet": 0})
-        result = self.desk.deliver("m.deliver", stop, {"sheet": 8}, ["bin-out"]).value
+        result = self.desk.deliver("m.deliver", stop, {"sheet": 8}, ["bin-1"]).value
         self.assertEqual(len(result["open_exception_ids"]), 1)
         with self.assertRaises(InvoiceBlocked):
             self.desk.draft_invoice("m.invoice", stop)
@@ -164,7 +164,7 @@ class DeskCase(unittest.TestCase):
             local = LaundryDesk(self.db)
             barrier.wait()
             try:
-                local.deliver(key, stop, {"sheet": 10}, [container])
+                local.deliver(key, stop, {"sheet": 10}, ["bin-1"])
                 value = "ok"
             except StateConflict:
                 value = "conflict"
@@ -213,7 +213,7 @@ class DeskCase(unittest.TestCase):
         exception_id = processed["open_exception_ids"][0]
         self.assertLessEqual(len(exception_id), 255)
         self.desk.resolve_exception("max.resolve", exception_id, "DAMAGE_ACCEPTED", "Owner accepted recorded damage")
-        self.desk.deliver("max.deliver", stop_id, {item_code: 2}, ["max-bin-out"])
+        self.desk.deliver("max.deliver", stop_id, {item_code: 2}, ["max-bin-in"])
         invoice = self.desk.draft_invoice("max.invoice", stop_id).value
         self.assertLessEqual(len(invoice["invoice_id"]), 255)
         self.assertEqual(invoice["total_cents"], 642)
@@ -235,9 +235,96 @@ class DeskCase(unittest.TestCase):
         exception_id = processed["open_exception_ids"][0]
         self.assertLessEqual(len(exception_id), 255)
         self.desk.resolve_exception("near.resolve", exception_id, "DAMAGE_ACCEPTED", "Near-bound exception resolved")
-        self.desk.deliver("near.deliver", stop_id, {item_code: 4}, ["near-out"])
+        self.desk.deliver("near.deliver", stop_id, {item_code: 4}, ["near-in"])
         invoice = self.desk.draft_invoice("near.invoice", stop_id).value
         self.assertEqual(invoice["total_cents"], 800)
+
+    def test_custody_discontinuity_blocks_until_explicit_resolution_and_survives_restart(self):
+        stop = self._route()["stops"][0]["stop_id"]
+        self.desk.pickup("custody.pickup", stop, {"sheet": 10}, ["PICKUP-001"])
+        self.desk.process("custody.process", stop, {"sheet": 10}, {"sheet": 0})
+        delivered = self.desk.deliver(
+            "custody.deliver", stop, {"sheet": 10}, ["DELIVERY-999"]
+        )
+        self.assertFalse(delivered.replayed)
+        self.assertEqual(len(delivered.value["open_exception_ids"]), 2)
+        replay = self.desk.deliver(
+            "custody.deliver", stop, {"sheet": 10}, ["DELIVERY-999"]
+        )
+        self.assertTrue(replay.replayed)
+        self.assertEqual(replay.value["open_exception_ids"], delivered.value["open_exception_ids"])
+        with self.assertRaises(IdempotencyConflict):
+            self.desk.deliver("custody.deliver", stop, {"sheet": 10}, ["PICKUP-001"])
+
+        reopened = LaundryDesk(self.db)
+        snap = reopened.route_snapshot("route:2026-09-21:route-one")
+        open_exceptions = [e for e in snap["stops"][0]["exceptions"] if e["status"] == "OPEN"]
+        self.assertEqual(
+            sorted(e["kind"] for e in open_exceptions),
+            ["CUSTODY_MISSING", "CUSTODY_UNEXPECTED"],
+        )
+        with self.assertRaises(InvoiceBlocked):
+            reopened.draft_invoice("custody.invoice.blocked", stop)
+        for idx, exception_id in enumerate(delivered.value["open_exception_ids"], 1):
+            reopened.resolve_exception(
+                f"custody.resolve.{idx}",
+                exception_id,
+                "OWNER_REPACK_ACCEPTED",
+                "Owner explicitly reconciled the container transfer",
+            )
+        invoice = reopened.draft_invoice("custody.invoice", stop).value
+        self.assertEqual(invoice["state"], "DRAFT")
+        self.assertEqual(invoice["total_cents"], 1250)
+
+    def test_customer_csv_formula_neutralization_is_projection_only(self):
+        import csv
+        import io
+
+        for idx, sigil in enumerate(("=", "+", "-", "@"), 1):
+            customer_id = f"formula-customer-{idx}"
+            site_id = f"formula-site-{idx}"
+            customer_name = f"{sigil}1+1"
+            site_name = f"{sigil}SUM(A1:A2)"
+            self.desk.add_customer(f"formula.customer.{idx}", customer_id, customer_name)
+            self.desk.add_site(f"formula.site.{idx}", site_id, customer_id, site_name)
+            self.desk.add_agreement(
+                f"formula.agreement.{idx}",
+                f"formula-agreement-{idx}",
+                site_id,
+                "sheet",
+                100,
+                "2026-01-01",
+            )
+            before = self.desk.customer_snapshot(customer_id)
+            exports = self.desk.render_customer_exports(customer_id)
+            after = self.desk.customer_snapshot(customer_id)
+            self.assertEqual(before, after)
+            self.assertEqual(before["name"], customer_name)
+            self.assertEqual(before["sites"][0]["name"], site_name)
+            rows = list(csv.DictReader(io.StringIO(exports["csv"])))
+            self.assertEqual(rows[0]["customer_name"], "'" + customer_name)
+            self.assertEqual(rows[0]["site_name"], "'" + site_name)
+            self.assertIn(customer_name, exports["json"])
+
+    def test_customer_markdown_free_text_is_literal_and_deterministic(self):
+        customer_name = "Pipe | `tick` *bold* [link] #heading"
+        site_name = "Site | `code` ![image]"
+        self.desk.add_customer("md.customer", "md-customer", customer_name)
+        self.desk.add_site("md.site", "md-site", "md-customer", site_name)
+        self.desk.add_agreement(
+            "md.agreement", "md-agreement", "md-site", "sheet", 100, "2026-01-01"
+        )
+        first = self.desk.render_customer_exports("md-customer")
+        second = self.desk.render_customer_exports("md-customer")
+        self.assertEqual(first, second)
+        md = first["markdown"]
+        self.assertNotIn("Pipe | `tick`", md)
+        self.assertNotIn("Site | `code`", md)
+        self.assertIn("Pipe &#124; &#96;tick&#96; &#42;bold&#42; &#91;link&#93; &#35;heading", md)
+        self.assertIn("Site &#124; &#96;code&#96; &#33;&#91;image&#93;", md)
+        snapshot = self.desk.customer_snapshot("md-customer")
+        self.assertEqual(snapshot["name"], customer_name)
+        self.assertEqual(snapshot["sites"][0]["name"], site_name)
 
     def test_cli_export_is_create_exclusive(self):
         stop = self._route()["stops"][0]["stop_id"]

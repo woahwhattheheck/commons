@@ -25,12 +25,12 @@ def build_demo(db_path: str) -> dict:
 
     desk.pickup("demo.alpha.pickup", alpha["stop_id"], {"sheet": 100, "towel": 60}, ["A-001", "A-002"])
     desk.process("demo.alpha.process", alpha["stop_id"], {"sheet": 100, "towel": 60}, {"sheet": 0, "towel": 0})
-    desk.deliver("demo.alpha.deliver", alpha["stop_id"], {"sheet": 100, "towel": 60}, ["A-OUT-001", "A-OUT-002"])
+    desk.deliver("demo.alpha.deliver", alpha["stop_id"], {"sheet": 100, "towel": 60}, ["A-001", "A-002"])
     alpha_invoice = desk.draft_invoice("demo.alpha.invoice", alpha["stop_id"]).value
 
     desk.pickup("demo.beta.pickup", beta["stop_id"], {"sheet": 40, "towel": 80}, ["B-001"])
     beta_process = desk.process("demo.beta.process", beta["stop_id"], {"sheet": 39, "towel": 79}, {"sheet": 1, "towel": 0}).value
-    desk.deliver("demo.beta.deliver", beta["stop_id"], {"sheet": 39, "towel": 79}, ["B-OUT-001"])
+    desk.deliver("demo.beta.deliver", beta["stop_id"], {"sheet": 39, "towel": 79}, ["B-001"])
     blocked = False
     try:
         desk.draft_invoice("demo.beta.invoice.blocked", beta["stop_id"])

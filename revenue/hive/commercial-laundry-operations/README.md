@@ -20,14 +20,15 @@ No acceptance, booked/earned revenue, receivable, savings, payment, or cash is i
 - dated recurring service plans and a deterministic daily route manifest;
 - pickup container custody and item counts;
 - plant-processing good/damaged counts;
-- delivery container custody and item counts;
-- explicit `PROCESS_COUNT_MISMATCH`, `DAMAGE`, and `DELIVERY_COUNT_MISMATCH` exceptions;
+- delivery container custody and item counts; pickup/delivery container-set discontinuities become explicit custody exceptions;
+- explicit `PROCESS_COUNT_MISMATCH`, `DAMAGE`, `DELIVERY_COUNT_MISMATCH`, `CUSTODY_MISSING`, and `CUSTODY_UNEXPECTED` exceptions;
 - invoice-readiness blocking until every exception is explicitly resolved by an operator;
 - exact-cent, integer-only invoice **DRAFTS**;
 - operation-key idempotency: exact replay is a no-op; changed-content reuse fails closed;
 - immutable event history enforced by SQLite triggers;
 - restart safety plus transaction/unique-key fences for competing terminal actions;
-- deterministic route and customer JSON/CSV/Markdown renderers;
+- deterministic route and customer JSON/CSV/Markdown renderers; customer CSV neutralizes formula-leading owner text at projection time and Markdown renders owner labels literally;
+- bounded deterministic generated IDs: readable derived IDs when they fit, SHA-256-bound IDs when a valid component tuple would exceed the public 255-character grammar;
 - integrity verification binding operations to event payload digests.
 
 ### Authority ceiling
@@ -53,7 +54,7 @@ A route stop moves monotonically:
 
 Exact retries with the same operation key and canonical payload return the stored result without appending a new event. A reused key with changed content raises `IdempotencyConflict`. Separate operation keys racing a terminal transition are serialized under `BEGIN IMMEDIATE`; after one commits, the other sees a non-admissible state and fails closed.
 
-Processing accounts for pickup quantity as `processed + damaged`. Any mismatch creates an exception; any non-zero damage creates an explicit damage exception. Delivery compares delivered quantity to processed-good quantity. Invoice drafting requires `DELIVERED`, zero open exceptions, and exactly one dated price authority for every delivered item.
+Processing accounts for pickup quantity as `processed + damaged`. Any mismatch creates an exception; any non-zero damage creates an explicit damage exception. Delivery compares delivered quantity to processed-good quantity **and** reconciles the exact pickup/delivery container sets. Missing or unexpected container custody opens deterministic exceptions. Legitimate repack/transfer therefore requires an explicit operator resolution record before invoicing rather than being silently accepted. Invoice drafting requires `DELIVERED`, zero open exceptions, and exactly one dated price authority for every delivered item.
 
 ## Synthetic two-account demo
 
@@ -72,7 +73,7 @@ python -m unittest -v test_laundry_desk.py
 python -O -m unittest -v test_laundry_desk.py
 ```
 
-The hostile suite covers deterministic two-account route creation, exact replay, changed-content reuse, processing shortage, damage, delivery mismatch, integer-cent validation, overlapping pricing authority, restart/export stability, customer exports, hard-false authorities, immutable event history, event/operation integrity, concurrent delivery terminal races, duplicate exception resolution, duplicate invoice terminal actions, create-exclusive file export, and the end-to-end demo.
+The hostile suite covers deterministic two-account route creation, exact replay, changed-content reuse, processing shortage, damage, delivery mismatch, custody discontinuity/restart/resolution, integer-cent validation, overlapping pricing authority, maximum accepted identifier lifecycles, resolvable near-bound exceptions, restart/export stability, projection-only CSV formula neutralization, Markdown literal safety/determinism, hard-false authorities, immutable event history, event/operation integrity, concurrent delivery terminal races, duplicate exception resolution, duplicate invoice terminal actions, create-exclusive file export, and the end-to-end demo.
 
 ## Read-only CLI / exports
 
