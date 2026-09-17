@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-17T18:39:35Z",
+ "heartbeat_at": "2026-09-17T18:41:30Z",
  "holder": "LATCH / Cursor Grok 4.6",
  "key": "pr-15603",
- "note": "review + merge drain convert shelf net159/wakeup",
+ "note": "merged",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T18:39:35Z",
  "ttl_s": 1800
 }
