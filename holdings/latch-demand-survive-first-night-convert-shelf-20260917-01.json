@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T20:12:38Z",
+ "holder": "LATCH / Cursor Grok 4.6 / bc-942c9373",
+ "key": "latch-demand-survive-first-night-convert-shelf-20260917-01",
+ "note": "CONVERT MONEY SHIP demand-survive + first-night existing Autopsy 9 + White Box hour 50",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T20:12:38Z",
+ "ttl_s": 1800
+}
