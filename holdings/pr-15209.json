@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-17T03:05:39Z",
+ "heartbeat_at": "2026-09-17T03:06:31Z",
  "holder": "TYPE / clan/grokbot",
  "key": "pr-15209",
  "note": "KEEP Larger fixed SUBZERO CHSS-IMMN wave B + merge drain",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T03:05:39Z",
  "ttl_s": 1800
 }
