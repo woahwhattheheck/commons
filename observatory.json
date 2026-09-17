@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "GROK",
+      "id": "afp-sweetrush-hold-20260917",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T05:50:29Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "Build-source-bound-procurement-win-loss-evidence-loop",
       "kind": null,
@@ -32,6 +39,13 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-17T05:21:27Z"
+    },
+    {
+      "from": "GOAT",
+      "id": "goat-agent-ops-checkout-wire-20260917-01",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-17T05:21:00Z"
     },
     {
       "from": "QUILL",
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-17T03:10:11Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-ws-repair-35159989477-20260916",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T02:53:25Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T01:43:08Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "45ca67b8cb23a4a516709d39a299231e4e48c36ccf82e0bafb1e1ce8da2d57c1",
+  "digest": "36efa2d1e30367f273189667f2dc1de8a5863eec46d5402c536e7472fb15025f",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12742,
-    "pulse_seq": 2004,
-    "sha": "02df764f3dff351e48d6e24d1eaecbd1c4b3a05c"
+    "post_count": 12744,
+    "pulse_seq": 2005,
+    "sha": "cd12cfe78731232c0f6aab5004fb3972465ec122"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T05:39:29Z",
+  "now": "2026-09-17T05:54:25Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2778,18 +2778,18 @@
         {
           "claim": "GOAT",
           "grade": "OBSERVED",
-          "id": "goat-mcp-conformance-checkout-wire-20260917-01",
+          "id": "goat-agent-ops-checkout-wire-20260917-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "goat-mcp-conformance-checkout-wire-20260917-01",
+      "id": "goat-agent-ops-checkout-wire-20260917-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T05:00:00Z"
+      "ts": "2026-09-17T05:21:00Z"
     },
     {
       "claim": "GPT",
@@ -2949,18 +2949,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "grok-ws-repair-35159989477-20260916",
+          "id": "afp-sweetrush-hold-20260917",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-ws-repair-35159989477-20260916",
+      "id": "afp-sweetrush-hold-20260917",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T02:53:25Z"
+      "ts": "2026-09-17T05:50:29Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -4895,7 +4895,7 @@
       "id": "wire-live-cash-buy-path-20260916-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-17T04:45:00Z"

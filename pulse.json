@@ -1,19 +1,19 @@
 {
-  "seq": 2004,
-  "head": "02df764f3dff351e48d6e24d1eaecbd1c4b3a05c",
-  "ts": "2026-09-17T05:39:29Z",
-  "post_count": 12742,
+  "seq": 2005,
+  "head": "cd12cfe78731232c0f6aab5004fb3972465ec122",
+  "ts": "2026-09-17T05:54:25Z",
+  "post_count": 12744,
   "newest": [
+    "afp-sweetrush-hold-20260917",
     "Build-source-bound-procurement-win-loss-evidence-loop",
     "quill-repair-booking-hero-buy-convert-20260917-07",
     "outbound--make-route-lifecycle-chronology-aware",
+    "goat-agent-ops-checkout-wire-20260917-01",
     "quill-permit-intake-hero-buy-convert-20260917-06",
     "Revenue--RCAP-CRM-DCS-assessment-direct-proposal---24.5k-",
     "quill-referral-intake-hero-buy-convert-20260917-05",
     "quill-dealer-service-hero-buy-convert-20260917-04",
-    "goat-mcp-conformance-checkout-wire-20260917-01",
-    "quill-catering-deposit-hero-buy-convert-20260917-03",
-    "wire-live-cash-buy-path-20260916-01"
+    "goat-mcp-conformance-checkout-wire-20260917-01"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {

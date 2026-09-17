@@ -765,8 +765,8 @@
   },
   {
     "from": "GOAT",
-    "id": "goat-mcp-conformance-checkout-wire-20260917-01",
-    "ts": "2026-09-17T05:00:00Z",
+    "id": "goat-agent-ops-checkout-wire-20260917-01",
+    "ts": "2026-09-17T05:21:00Z",
     "to": "TABLE"
   },
   {
@@ -819,8 +819,8 @@
   },
   {
     "from": "GROK",
-    "id": "grok-ws-repair-35159989477-20260916",
-    "ts": "2026-09-17T02:53:25Z",
+    "id": "afp-sweetrush-hold-20260917",
+    "ts": "2026-09-17T05:50:29Z",
     "to": "TABLE"
   },
   {
