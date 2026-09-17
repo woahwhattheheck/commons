@@ -6,22 +6,33 @@ import subprocess
 import sys
 import unittest
 
-import cv2
-import numpy as np
+_OPTIONAL_IMPORT_ERROR = None
+try:
+    import cv2
+    import numpy as np
+except ModuleNotFoundError as exc:  # global Commons battery does not install optional CV deps
+    cv2 = None
+    np = None
+    _OPTIONAL_IMPORT_ERROR = exc
 
-from competitions.opencv_ai_competition_2026.visual_evidence_gate.aws_boundary import (
-    deployment_claim_is_admissible,
-    inactive_aws_plan,
+if _OPTIONAL_IMPORT_ERROR is None:
+    from competitions.opencv_ai_competition_2026.visual_evidence_gate.aws_boundary import (
+        deployment_claim_is_admissible,
+        inactive_aws_plan,
+    )
+    from competitions.opencv_ai_competition_2026.visual_evidence_gate.core import (
+        GateError,
+        compile_synthetic_run,
+        evaluate_synthetic_suite,
+        generate_synthetic_scene,
+        verify_trace,
+    )
+
+
+@unittest.skipIf(
+    _OPTIONAL_IMPORT_ERROR is not None,
+    "OpenCV/NumPy are optional to the global Commons battery; the pinned OpenCV 5 workflow is execution authority",
 )
-from competitions.opencv_ai_competition_2026.visual_evidence_gate.core import (
-    GateError,
-    compile_synthetic_run,
-    evaluate_synthetic_suite,
-    generate_synthetic_scene,
-    verify_trace,
-)
-
-
 class VisualEvidenceGateTests(unittest.TestCase):
     def test_synthetic_generation_is_deterministic(self) -> None:
         first = generate_synthetic_scene("warning")
@@ -75,6 +86,7 @@ class VisualEvidenceGateTests(unittest.TestCase):
         no_digest = dict(tampered)
         no_digest.pop("receipt_sha256")
         import hashlib
+
         payload = (json.dumps(no_digest, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n").encode()
         tampered["receipt_sha256"] = hashlib.sha256(payload).hexdigest()
         self.assertFalse(verify_trace(tampered))
@@ -89,6 +101,25 @@ class VisualEvidenceGateTests(unittest.TestCase):
         self.assertTrue(first["all_expected_behaviors_observed"])
         self.assertFalse(first["official_score_or_rank_claimed"])
 
+    def test_public_api_defaults_to_competition_mode(self) -> None:
+        major = int(str(cv2.__version__).split(".", 1)[0])
+        if major >= 5:
+            trace = compile_synthetic_run("clear")
+            runtime = trace["steps"][0]["evidence"]["runtime"]
+            self.assertTrue(runtime["opencv5_verified"])
+            self.assertFalse(runtime["compatibility_mode"])
+        else:
+            with self.assertRaises(GateError):
+                compile_synthetic_run("clear")
+
+    def test_compatibility_mode_requires_an_actual_boolean(self) -> None:
+        for value in (1, "true", None, [], {}):
+            with self.subTest(value=repr(value)):
+                with self.assertRaisesRegex(GateError, "compatibility_mode must be a boolean"):
+                    compile_synthetic_run("clear", compatibility_mode=value)
+                with self.assertRaisesRegex(GateError, "compatibility_mode must be a boolean"):
+                    evaluate_synthetic_suite(compatibility_mode=value)
+
     def test_competition_mode_requires_opencv5(self) -> None:
         major = int(str(cv2.__version__).split(".", 1)[0])
         if major >= 5:
@@ -100,6 +131,7 @@ class VisualEvidenceGateTests(unittest.TestCase):
 
     def test_malformed_scene_rejected(self) -> None:
         from competitions.opencv_ai_competition_2026.visual_evidence_gate import core
+
         with self.assertRaises(GateError):
             core._perceive(np.zeros((16, 16), dtype=np.uint8), compatibility_mode=True, scope="bad")
 
