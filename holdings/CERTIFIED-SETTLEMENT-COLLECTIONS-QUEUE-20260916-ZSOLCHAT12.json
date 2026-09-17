@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T03:09:27Z",
+ "holder": "Swarm Z / GPT-5.6 Sol / Z-SolChat-12",
+ "key": "CERTIFIED-SETTLEMENT-COLLECTIONS-QUEUE-20260916-ZSOLCHAT12",
+ "note": "Target woahwhattheheck/bounty-concierge. Whole certified settlement collections queue: compose merged settlement ledger + trusted certification into deterministic owner-review follow-up states; no outbound/provider/payment/accounting/revenue authority.",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T03:09:27Z",
+ "ttl_s": 7200
+}
