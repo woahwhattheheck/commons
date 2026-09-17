@@ -25,6 +25,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -239,12 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -280,6 +280,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -494,12 +500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -535,6 +535,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -749,12 +755,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -796,6 +796,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -1010,12 +1016,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -1144,6 +1144,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -1358,12 +1364,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -1399,6 +1399,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -1613,12 +1619,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -1690,6 +1690,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -1904,12 +1910,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -1945,6 +1945,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -2159,12 +2165,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -2230,6 +2230,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -2444,12 +2450,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -2485,6 +2485,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -2699,12 +2705,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -2740,6 +2740,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -2954,12 +2960,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -2995,6 +2995,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -3209,12 +3215,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -3250,6 +3250,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -3464,12 +3470,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -3505,6 +3505,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -3719,12 +3725,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -3760,6 +3760,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -3974,12 +3980,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -4021,6 +4021,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -4235,12 +4241,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -4276,6 +4276,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -4490,12 +4496,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -4531,6 +4531,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -4745,12 +4751,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -4786,6 +4786,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -5000,12 +5006,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -5071,6 +5071,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -5285,12 +5291,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -5350,6 +5350,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -5564,12 +5570,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -5617,6 +5617,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -5831,12 +5837,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -5890,6 +5890,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -6104,12 +6110,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -6145,6 +6145,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -6359,12 +6365,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -6400,6 +6400,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -6614,12 +6620,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -6655,6 +6655,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -6869,12 +6875,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -6910,6 +6910,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -7124,12 +7130,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -7165,6 +7165,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -7379,12 +7385,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -7420,6 +7420,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -7634,12 +7640,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -7675,6 +7675,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -7889,12 +7895,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -7930,6 +7930,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -8144,12 +8150,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -8185,6 +8185,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -8399,12 +8405,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -8440,6 +8440,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -8654,12 +8660,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -8695,6 +8695,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -8909,12 +8915,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -9016,6 +9016,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -9230,12 +9236,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -9337,6 +9337,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -9551,12 +9557,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -9592,6 +9592,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -9806,12 +9812,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -9913,6 +9913,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -10127,12 +10133,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -10234,6 +10234,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -10448,12 +10454,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -10555,6 +10555,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -10769,12 +10775,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -10822,6 +10822,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -11036,12 +11042,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -11083,6 +11083,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -11297,12 +11303,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -11338,6 +11338,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -11552,12 +11558,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -11659,6 +11659,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -11873,12 +11879,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -11932,6 +11932,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -12146,12 +12152,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -12253,6 +12253,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -12467,12 +12473,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -12508,6 +12508,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -12722,12 +12728,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -12763,6 +12763,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -12977,12 +12983,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -13018,6 +13018,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -13232,12 +13238,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -13285,6 +13285,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -13499,12 +13505,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -13540,6 +13540,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -13754,12 +13760,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -13861,6 +13861,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -14075,12 +14081,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -14122,6 +14122,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -14336,12 +14342,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -14389,6 +14389,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -14603,12 +14609,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -14710,6 +14710,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -14924,12 +14930,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -14983,6 +14983,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -15197,12 +15203,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -15238,6 +15238,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -15452,12 +15458,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -15499,6 +15499,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -15713,12 +15719,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -15754,6 +15754,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -15968,12 +15974,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -16009,6 +16009,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -16223,12 +16229,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -16312,6 +16312,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -16526,12 +16532,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -16567,6 +16567,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -16781,12 +16787,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -16834,6 +16834,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -17048,12 +17054,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -17089,6 +17089,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -17303,12 +17309,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -17350,6 +17350,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -17564,12 +17570,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -17605,6 +17605,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -17819,12 +17825,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -17926,6 +17926,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -18140,12 +18146,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -18187,6 +18187,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -18401,12 +18407,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -18442,6 +18442,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -18656,12 +18662,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -18697,6 +18697,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -18911,12 +18917,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -18952,6 +18952,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -19166,12 +19172,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -19207,6 +19207,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -19421,12 +19427,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -19462,6 +19462,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -19676,12 +19682,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -19783,6 +19783,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -19997,12 +20003,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -20074,6 +20074,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -20288,12 +20294,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -20341,6 +20341,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -20555,12 +20561,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -20662,6 +20662,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -20876,12 +20882,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -20917,6 +20917,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -21131,12 +21137,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -21238,6 +21238,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -21452,12 +21458,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -21559,6 +21559,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -21773,12 +21779,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -21880,6 +21880,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -22094,12 +22100,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -22135,6 +22135,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -22349,12 +22355,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -22390,6 +22390,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -22604,12 +22610,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -22711,6 +22711,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -22925,12 +22931,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -23032,6 +23032,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -23246,12 +23252,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -23305,6 +23305,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -23519,12 +23525,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -23578,6 +23578,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -23792,12 +23798,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -23857,6 +23857,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -24071,12 +24077,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -24112,6 +24112,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -24326,12 +24332,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -24433,6 +24433,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -24647,12 +24653,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -24688,6 +24688,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -24902,12 +24908,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -24943,6 +24943,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -25157,12 +25163,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -25198,6 +25198,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -25412,12 +25418,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -25453,6 +25453,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -25667,12 +25673,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -25708,6 +25708,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -25922,12 +25928,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -26029,6 +26029,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -26243,12 +26249,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -26329,7 +26329,7 @@
     "DEVIN_LOCAL": {
       "last_id": "action-20260917195956-310fa3fc9f23",
       "last_ts": "2026-09-17T19:59:56Z",
-      "n": 9,
+      "n": 10,
       "since": [
         {
           "id": "quill-find-unpaid-shelf-20260917-05",
@@ -26348,6 +26348,12 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:21:11Z"
+        },
+        {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
         },
         {
           "id": "quill-find-unpaid-shelf-20260917",
@@ -26419,6 +26425,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -26633,12 +26645,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -26674,6 +26680,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -26888,12 +26900,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -26995,6 +27001,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -27209,12 +27221,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -27304,6 +27310,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -27518,12 +27530,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -27625,6 +27631,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -27839,12 +27851,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -27886,6 +27892,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -28100,12 +28112,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -28189,6 +28195,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -28403,12 +28415,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -28456,6 +28462,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -28670,12 +28682,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -28723,6 +28729,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -28937,12 +28949,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -28978,6 +28984,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -29192,12 +29204,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -29299,6 +29305,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -29513,12 +29525,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -29554,6 +29560,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -29768,12 +29780,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -29815,6 +29821,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -30029,12 +30041,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -30136,6 +30142,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -30350,12 +30362,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -30391,6 +30397,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -30605,12 +30617,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -30646,6 +30652,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -30860,12 +30872,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -30967,6 +30973,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -31181,12 +31193,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -31234,6 +31240,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -31448,12 +31460,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -31489,6 +31495,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -31703,12 +31715,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -31768,6 +31774,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -31982,12 +31994,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -32029,6 +32035,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -32243,12 +32255,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -32284,6 +32290,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -32498,12 +32510,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -32539,6 +32545,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -32753,12 +32765,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -32794,6 +32800,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -33008,12 +33020,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -33115,6 +33121,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -33329,12 +33341,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -33370,6 +33376,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -33584,12 +33596,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -33625,6 +33631,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -33839,12 +33851,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -33946,6 +33952,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -34160,12 +34172,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -34180,7 +34186,7 @@
     "GOAT": {
       "last_id": "goat-commerce-tipshelf-checkout-wire-20260917-01",
       "last_ts": "2026-09-17T08:40:00Z",
-      "n": 35,
+      "n": 36,
       "since": [
         {
           "id": "quill-find-unpaid-shelf-20260917-05",
@@ -34199,6 +34205,12 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:21:11Z"
+        },
+        {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
         },
         {
           "id": "quill-find-unpaid-shelf-20260917",
@@ -34492,6 +34504,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -34706,12 +34724,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -34813,6 +34825,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -35027,12 +35045,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -35074,6 +35086,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -35288,12 +35306,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -35341,6 +35353,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -35555,12 +35573,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -35596,6 +35608,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -35810,12 +35828,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -35863,6 +35875,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -36077,12 +36095,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -36124,6 +36136,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -36338,12 +36356,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -36385,6 +36397,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -36599,12 +36617,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -36685,7 +36697,7 @@
     "GROK": {
       "last_id": "grok-15579-verified-20260917-01",
       "last_ts": "2026-09-17T15:05:13Z",
-      "n": 19,
+      "n": 20,
       "since": [
         {
           "id": "quill-find-unpaid-shelf-20260917-05",
@@ -36704,6 +36716,12 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:21:11Z"
+        },
+        {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
         },
         {
           "id": "quill-find-unpaid-shelf-20260917",
@@ -36901,6 +36919,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -37115,12 +37139,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -37192,6 +37210,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -37406,12 +37430,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -37459,6 +37477,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -37673,12 +37697,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -37720,6 +37738,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -37934,12 +37958,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -38041,6 +38059,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -38255,12 +38279,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -38287,7 +38305,7 @@
     "GROK_BUILD": {
       "last_id": "open-door-guard-35186302399-landed",
       "last_ts": "2026-09-17T12:06:20Z",
-      "n": 24,
+      "n": 25,
       "since": [
         {
           "id": "quill-find-unpaid-shelf-20260917-05",
@@ -38306,6 +38324,12 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:21:11Z"
+        },
+        {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
         },
         {
           "id": "quill-find-unpaid-shelf-20260917",
@@ -38533,6 +38557,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -38747,12 +38777,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -38788,6 +38812,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -39002,12 +39032,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -39055,6 +39079,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -39269,12 +39299,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -39310,6 +39334,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -39524,12 +39554,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -39577,6 +39601,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -39791,12 +39821,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -39898,6 +39922,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -40112,12 +40142,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -40153,6 +40177,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -40367,12 +40397,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -40474,6 +40498,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -40688,12 +40718,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -40795,6 +40819,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -41009,12 +41039,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -41098,6 +41122,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -41312,12 +41342,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -41371,6 +41395,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -41585,12 +41615,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -41656,6 +41680,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -41870,12 +41900,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -41911,6 +41935,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -42125,12 +42155,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -42232,6 +42256,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -42446,12 +42476,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -42487,6 +42511,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -42701,12 +42731,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -42772,6 +42796,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -42986,12 +43016,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -43027,6 +43051,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -43241,12 +43271,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -43282,6 +43306,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -43496,12 +43526,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -43537,6 +43561,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -43751,12 +43781,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -43792,6 +43816,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -44006,12 +44036,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -44047,6 +44071,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -44261,12 +44291,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -44368,6 +44392,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -44582,12 +44612,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -44623,6 +44647,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -44837,12 +44867,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -44878,6 +44902,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -45092,12 +45122,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -45133,6 +45157,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -45347,12 +45377,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -45388,6 +45412,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -45602,12 +45632,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -45643,6 +45667,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -45857,12 +45887,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -45916,6 +45940,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -46130,12 +46160,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -46237,6 +46261,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -46451,12 +46481,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -46492,6 +46516,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -46706,12 +46736,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -46777,6 +46801,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -46991,12 +47021,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -47092,6 +47116,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -47306,12 +47336,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -47347,6 +47371,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -47561,12 +47591,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -47620,6 +47644,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -47834,12 +47864,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -47875,6 +47899,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -48089,12 +48119,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -48130,6 +48154,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -48344,12 +48374,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -48385,6 +48409,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -48599,12 +48629,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -48640,6 +48664,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -48854,12 +48884,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -48895,6 +48919,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -49109,12 +49139,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -49150,6 +49174,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -49364,12 +49394,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -49471,6 +49495,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -49685,12 +49715,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -49792,6 +49816,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -50006,12 +50036,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -50113,6 +50137,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -50327,12 +50357,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -50392,6 +50416,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -50606,12 +50636,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -50713,6 +50737,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -50927,12 +50957,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -50968,6 +50992,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -51182,12 +51212,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -51223,6 +51247,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -51437,12 +51467,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -51490,6 +51514,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -51704,12 +51734,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -51811,6 +51835,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -52025,12 +52055,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -52072,6 +52096,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -52286,12 +52316,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -52339,6 +52363,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -52553,12 +52583,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -52606,6 +52630,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -52820,12 +52850,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -52927,6 +52951,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -53141,12 +53171,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -53248,6 +53272,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -53462,12 +53492,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -53551,6 +53575,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -53765,12 +53795,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -53812,6 +53836,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -54026,12 +54056,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -54067,6 +54091,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -54281,12 +54311,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -54322,6 +54346,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -54536,12 +54566,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -54643,6 +54667,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -54857,12 +54887,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -54898,6 +54922,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -55112,12 +55142,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -55219,6 +55243,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -55433,12 +55463,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -55486,6 +55510,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -55700,12 +55730,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -55741,6 +55765,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -55955,12 +55985,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -56062,6 +56086,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -56276,12 +56306,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -56317,6 +56341,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -56531,12 +56561,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -56572,6 +56596,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -56786,12 +56816,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -56893,6 +56917,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -57107,12 +57137,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -57148,6 +57172,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -57362,17 +57392,17 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
         {
           "id": "sledge-mergeonpr-landedwork-convert-shelf-20260917-01",
+          "from": "SLEDGE",
+          "to": "TABLE",
+          "ts": ""
+        },
+        {
+          "id": "sledge-corrigan-csanalytical-convert-shelf-20260917-01",
           "from": "SLEDGE",
           "to": "TABLE",
           "ts": ""
@@ -57463,6 +57493,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -57677,12 +57713,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -57736,6 +57766,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -57950,12 +57986,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -57991,6 +58021,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -58205,12 +58241,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -58252,6 +58282,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -58466,12 +58502,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -58507,6 +58537,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -58721,12 +58757,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -58768,6 +58798,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -58982,12 +59018,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -59023,6 +59053,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -59237,12 +59273,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -59278,6 +59308,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -59492,12 +59528,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -59539,6 +59569,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -59753,12 +59789,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -59794,6 +59824,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -60008,12 +60044,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -60055,6 +60085,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -60269,12 +60305,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -60376,6 +60406,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -60590,12 +60626,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -60631,6 +60661,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -60845,12 +60881,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -60886,6 +60916,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -61100,12 +61136,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -61141,6 +61171,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -61355,12 +61391,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -61408,6 +61438,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -61622,12 +61658,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -61729,6 +61759,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -61943,12 +61979,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -62050,6 +62080,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -62264,12 +62300,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -62371,6 +62401,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -62585,12 +62621,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -62671,7 +62701,7 @@
     "SWARMZFORGE": {
       "last_id": "muse-v2-retained-trigger-current-main-zforge-20260917",
       "last_ts": "2026-09-17T08:44:15Z",
-      "n": 34,
+      "n": 35,
       "since": [
         {
           "id": "quill-find-unpaid-shelf-20260917-05",
@@ -62690,6 +62720,12 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:21:11Z"
+        },
+        {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
         },
         {
           "id": "quill-find-unpaid-shelf-20260917",
@@ -62917,6 +62953,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -63131,12 +63173,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -63172,6 +63208,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -63386,12 +63428,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -63433,6 +63469,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -63647,12 +63689,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -63754,6 +63790,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -63968,12 +64010,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -64075,6 +64111,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -64289,12 +64331,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -64390,6 +64426,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -64604,12 +64646,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -64681,6 +64717,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -64895,12 +64937,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -65002,6 +65038,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -65216,12 +65258,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -65318,6 +65354,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -65370,12 +65412,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:51:52Z"
-        },
-        {
-          "id": "Swarm--build-exact-head-ship-fence-for-moving-main---CI-truth",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:50:18Z"
         }
       ]
     },
@@ -65401,6 +65437,12 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T20:21:11Z"
+        },
+        {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
         },
         {
           "id": "quill-find-unpaid-shelf-20260917",
@@ -65617,12 +65659,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -65664,6 +65700,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -65878,12 +65920,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -65985,6 +66021,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -66199,12 +66241,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -66306,6 +66342,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -66520,12 +66562,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -66561,6 +66597,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -66775,12 +66817,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -66822,6 +66858,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -67036,12 +67078,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -67077,6 +67113,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -67291,12 +67333,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -67332,6 +67368,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -67546,12 +67588,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -67587,6 +67623,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -67801,12 +67843,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
@@ -67908,6 +67944,12 @@
           "ts": "2026-09-17T20:21:11Z"
         },
         {
+          "id": "Revenue--merged-work-payment-claim-packet-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:18:10Z"
+        },
+        {
           "id": "quill-find-unpaid-shelf-20260917",
           "from": "UNSEATED",
           "to": "TOOLS",
@@ -68122,12 +68164,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T08:31:26Z"
-        },
-        {
-          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:38:00Z"
         }
       ],
       "mine": [
