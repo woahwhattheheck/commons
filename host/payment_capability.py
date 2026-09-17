@@ -103,6 +103,8 @@ CONVERT_SHELF_LIVE_BUYS = {
     "aquatrace-ops-acceptance.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "aquatrace-work-order-b-production-foundation.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "aquatrace-work-order-c-reporting-offline.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "aquatrace-work-order-f-release-readiness.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "at-grok-adapter-evidence.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -183,6 +185,8 @@ PUBLIC_HTML = (
     "aquatrace-ops-acceptance.html",
     "aquatrace-work-order-b-production-foundation.html",
     "aquatrace-work-order-c-reporting-offline.html",
+    "aquatrace-work-order-f-release-readiness.html",
+    "at-grok-adapter-evidence.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
