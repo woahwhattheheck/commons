@@ -29,6 +29,29 @@ class RouteLifecycleTests(unittest.TestCase):
             with self.subTest(kind=kind): self.assertEqual(self.decision(ev([event(kind=kind)]))["decision"],"BLOCK_ROUTE")
     def test_conflicting_delivered_and_failure_hold_unknown(self):
         p=self.decision(ev([event(),event(event_id="ok",kind="delivered",at="2026-09-13T08:11:40Z",source="delivered-1")])); self.assertEqual(p["decision"],"HOLD_ROUTE"); self.assertEqual(p["authority"],"unknown")
+    def test_temporary_failure_then_strictly_later_delivery_settles_delivered(self):
+        delayed=event(event_id="temp",at="2026-09-13T08:11:20Z",smtp=421,status="4.2.2",source="dsn-temp")
+        delivered=event(event_id="ok",kind="delivered",at="2026-09-13T08:11:40Z",source="delivered-1")
+        for rows in ([delayed,delivered],[delivered,delayed]):
+            with self.subTest(order=[row["event_id"] for row in rows]):
+                p=self.decision(ev(rows)); self.assertEqual(p["decision"],"DELIVERED"); self.assertEqual(p["authority"],"complete"); self.assertIn("strictly postdates", " ".join(p["reasons"]))
+                self.assertFalse(p["same_route_resend_authorized"]); self.assertTrue(p["alternate_route_requires_independent_send_guard"]); self.assertFalse(p["side_effects_authorized"])
+    def test_temporary_failure_at_or_after_delivery_holds(self):
+        delivered=event(event_id="ok",kind="delivered",at="2026-09-13T08:11:30Z",source="delivered-1")
+        for at in ("2026-09-13T08:11:30Z","2026-09-13T08:11:40Z"):
+            with self.subTest(at=at):
+                delayed=event(event_id="temp",at=at,smtp=421,status="4.2.2",source="dsn-temp")
+                p=self.decision(ev([delivered,delayed])); self.assertEqual(p["decision"],"HOLD_ROUTE"); self.assertEqual(p["authority"],"unknown")
+    def test_recipient_intent_block_survives_delivery_in_either_order(self):
+        delivered=event(event_id="ok",kind="delivered",at="2026-09-13T08:11:30Z",source="delivered-1")
+        for kind,at in (("unsubscribe","2026-09-13T08:11:20Z"),("unsubscribe","2026-09-13T08:11:40Z"),("complaint","2026-09-13T08:11:40Z")):
+            with self.subTest(kind=kind,at=at):
+                intent=event(event_id=f"intent-{kind}-{at}",kind=kind,at=at,source=f"intent-{kind}")
+                p=self.decision(ev([delivered,intent])); self.assertEqual(p["decision"],"BLOCK_ROUTE"); self.assertEqual(p["authority"],"complete"); self.assertIn("delivery evidence does not erase", " ".join(p["reasons"]))
+    def test_nonallowlisted_permanent_failure_is_not_superseded_by_delivery(self):
+        permanent=event(event_id="policy",at="2026-09-13T08:11:20Z",smtp=550,status="5.7.1",source="dsn-policy")
+        delivered=event(event_id="ok",kind="delivered",at="2026-09-13T08:11:40Z",source="delivered-1")
+        p=self.decision(ev([permanent,delivered])); self.assertEqual(p["decision"],"HOLD_ROUTE"); self.assertEqual(p["authority"],"unknown")
     def test_source_scope_and_time_fences(self):
         cases=[ev([event(mid="other")]),ev([event(recipient="other@example.com")]),ev([event(at="2026-09-13T08:10:00Z")]),ev([event(at="2026-09-13T08:12:01Z")]),ev(as_of="2026-09-13T08:09:00Z")]
         for case in cases:
