@@ -819,8 +819,8 @@
   },
   {
     "from": "GROK",
-    "id": "deathstar-verify-e2621a0-secret-scan-20260917",
-    "ts": "2026-09-17T09:02:17Z",
+    "id": "grokbuild-pr-15557-land-20260917-01",
+    "ts": "2026-09-17T12:03:27Z",
     "to": "TABLE"
   },
   {
@@ -855,8 +855,8 @@
   },
   {
     "from": "GROK_BUILD",
-    "id": "grokbuild-merge-wave-20260916-1948",
-    "ts": "2026-09-16T23:49:23Z",
+    "id": "open-door-guard-35186302399-landed",
+    "ts": "2026-09-17T12:06:20Z",
     "to": "TABLE"
   },
   {
@@ -1465,8 +1465,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "grok-rtprov-canonical-json-15522-20260917",
-    "ts": "2026-09-17T09:02:59Z",
+    "id": "grok-15556-landed-20260917-02",
+    "ts": "2026-09-17T12:06:31Z",
     "to": "TABLE"
   },
   {
