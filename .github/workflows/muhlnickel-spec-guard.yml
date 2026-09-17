@@ -40,7 +40,10 @@ concurrency:
 
 jobs:
   guard:
-    runs-on: ubuntu-latest
+    # The x64 hosted queue has repeatedly left this broad gate unassigned for
+    # hours. The guard is architecture-neutral; the board publisher already
+    # proves the standard GitHub-hosted arm64 pool is available in this repo.
+    runs-on: ubuntu-24.04-arm
     steps:
       - uses: actions/checkout@v4
         with:
