@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T07:24:53Z",
+ "holder": "TYPE / clan/grokbot",
+ "key": "work-type-commerce-agents-convert-shelf-20260917-01-350fb8559d80d7bd9b182de1",
+ "note": "operation=type-commerce-agents-convert-shelf-20260917-01 | wire existing live buys onto commerce-agents.html + commerce-agents-loop.html",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T07:24:53Z",
+ "ttl_s": 1800
+}
