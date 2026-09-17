@@ -1,50 +1,82 @@
 # Procurement award source adapters
 
-This layer turns a small set of **buyer-hosted public procurement source shapes** into the strict input consumed by `procurement_award_price_intelligence.engine`. It is internal price research only: adapters do not create a quote, authorize a bid, contact a buyer or partner, recognize an award, invoice, payment, or revenue.
+Operation lineage: `PROCUREMENT-AWARD-SOURCE-INGEST-ADAPTERS-20260916-ZSOL`  
+Path-custody recovery: `PROCUREMENT-AWARD-SOURCE-PATH-CUSTODY-15137-ZCH0118-20260917`
 
-## Trust boundary
+This layer converts retained, explicitly structured public-procurement evidence into the input consumed by `engine.py`. It is an evidence parser and deterministic transformation boundary, not a provider authenticator.
 
-`compile_adapter()` fetches the official HTTPS source itself from a code-owned allowlist. The caller does not supply the source hash, source authority, content type, source class, or capture timestamp. The receipt binds the exact fetched bytes (`source_sha256`), final URL, media type, adapter profile, lineage, extraction method/state/coverage, normalized output hash, and hard-false commercial authority. `verify_adapter()` re-fetches the source; if the buyer-hosted bytes have drifted, verification fails rather than silently blessing old extracted rows.
+## Source-locator custody
 
-Two profiles ship in v1:
+The request may contain an exact retained HTTPS locator, including an arbitrary path. The adapter does **not** try to guess whether path tokens are public or secret.
 
-- `LEGISTAR_AWARD_HTML_V1`: code parses a complete public Legistar record. Caller-authored rows are forbidden. Current code-owned hosts are Coral Gables, MWRD, Aurora IL, and Ocala Legistar.
-- `BUYER_BID_TABULATION_PDF_V1`: the adapter binds a complete, human-reviewed text extraction to the exact live PDF hash. Current code-owned hosts are City of Coweta and City of Topeka public file hosts.
+Admission is mechanical:
 
-The PDF profile is intentionally stricter than “someone typed a number from a PDF.” Only `TABULAR_PDF_TEXT / REVIEWED / COMPLETE_TABLE` can promote rows. OCR, ambiguous extraction, partial/unknown table coverage, or any row whose source disposition is `UNKNOWN` yields `HOLD_AMBIGUOUS_EXTRACTION` with zero promoted observations. Rows explicitly marked `REJECTED_BY_SOURCE` are preserved in the receipt’s exclusion list and cannot become comparable bids.
+- HTTPS only;
+- default HTTPS port only (`443` or omitted);
+- no userinfo, query, or fragment;
+- the same checks are repeated after each recursive percent-decode generation so encoded/double-encoded userinfo/query/fragment forms fail closed.
 
-Every held row is still strictly type-checked. A HOLD is not a route for floats, booleans-as-money, malformed dates, duplicate record IDs, or bad currency/basis/unit semantics to enter artifacts.
+After admission, the caller path is **not exported** to the price engine. Engine-facing `sources[*].uri` is reduced to a canonical non-secret origin (`https://<canonical-host>`). The exact caller locator is bound only by SHA-256 in adapter-only custody evidence:
 
-## Amendment / option / renewal lineage
+- `adapter_packet.json -> source_audit[*].source_locator_sha256`
+- `adapter_receipt.json -> source_locator_sha256s[*]`
 
-Requests bind `relation`, `sequence`, and `parent_source_sha256`. `ORIGINAL` requires sequence 0 and a null parent. Later lineage requires a positive sequence plus parent hash. `AMENDMENT` emits source class `AMENDMENT`. `OPTION` and `RENEWAL` emit those price kinds instead of base `AWARD`/`BID`, so the downstream engine cannot silently treat them as historical base-price anchors.
+The raw request is independently bound by `request_sha256`. Neither the price input, downstream packet/receipt, nor memo receives caller path bytes. This avoids pretending a generic path-token heuristic can distinguish public document identity from signed-path capability material.
 
-## Current first-party source-shape checks
+The raw-source SHA-256 and canonical structured-payload SHA-256 remain separate generation identities. Exact raw-source or structured-payload remints fail closed. Legitimate multiple rows belong inside one retained source payload.
 
-The shapes were checked against current buyer-hosted public records during implementation:
+## Claim-level weighting
 
-- MWRD Legistar File 26-0350: final action 2026-05-21; award language names Porter Pipe & Supply Company and a not-to-exceed amount of $94,191.14.
-- Coral Gables Legistar File 26-1459: final action 2026-05-05; award language names Coreland Construction Corp. and an estimated amount of $829,898.94.
-- City of Coweta 2026 Police Department radio-tower bid tabulation: the official PDF exposes a complete vendor/total table and explicitly marks Second Sight Systems rejected.
-- City of Topeka Bid No. 6 (released 2026-02-11): the official PDF exposes complete bidder totals.
+Fresh buyer-official observations are reduced at economic-claim granularity before statistics:
 
-These are schema/adapter anchors, not TJLabs bid prices and not buyer commitments. The checked-in Coweta JSON is a reviewed-source example; running it fetches the current official PDF and binds its current bytes before any row can promote.
+- identical signatures under one `claim_key` contribute one comparable statistical row;
+- corroborating `source_ids` are unioned on that row;
+- differing signatures under one claim produce `HOLD_SOURCE_CONFLICT`;
+- distinct claims with the same amount remain independent observations.
 
-## CLI
+Thus an award notice plus executed contract can corroborate one award without double-weighting it, while genuinely distinct awards/bids still count separately.
+
+## Supported structured sources
+
+- `AWARD_NOTICE_JSON_V1` (`AWARD_NOTICE`, `BOARD_AWARD`) -> explicit `AWARD` only.
+- `BID_TABULATION_JSON_V1` (`BID_TABULATION`) -> responsive rows with explicit amounts -> `BID`.
+- `EXECUTED_CONTRACT_JSON_V1` (`EXECUTED_CONTRACT`) -> explicit base -> `AWARD`; explicit option remains separate `OPTION`.
+- `AMENDMENT_OPTION_JSON_V1` (`AMENDMENT`) -> `OPTION` only, never promoted to `AWARD`.
+
+The adapter never infers amount from prose, responsiveness from rank, buyer-officialness from hostname, missing rate unit, missing term, currency conversion, award status from bid position, or base value by arithmetic over options.
+
+`SECONDARY_INDEX`, `SELF_AUTHORED`, and `SYNTHETIC_FIXTURE` are retained as such and cannot create buyer-official price authority.
+
+## Authority ceiling
+
+`source_provider_authenticated` and `buyer_officialness_authenticated` remain false. Quote, bid, submission, buyer/partner contact, signature, price commitment, award recognition, invoice, payment, and revenue authority remain false.
+
+A caller can lie about authority metadata or supplied digests. Production use still requires independent retention/review of the actual buyer evidence. The adapter receipt proves deterministic transformation of supplied evidence; it does not prove who published it.
+
+## Verification
+
+Compile:
 
 ```bash
-python -m revenue.procurement_award_price_intelligence.adapters compile \
-  --input revenue/procurement_award_price_intelligence/example_adapter_coweta.json \
-  --out-dir /tmp/procurement-adapter
-
-python -m revenue.procurement_award_price_intelligence.adapters verify \
-  --input revenue/procurement_award_price_intelligence/example_adapter_coweta.json \
-  --normalized /tmp/procurement-adapter/normalized.json \
-  --receipt /tmp/procurement-adapter/adapter-receipt.json
+python -m revenue.procurement_award_price_intelligence.source_adapters \
+  compile \
+  --input revenue/procurement_award_price_intelligence/source_adapters_example.json \
+  --out-dir /tmp/procurement-adapter-generation
 ```
 
-Output files are create-exclusive. Feed `normalized.json` into the existing engine compile/verify flow only after reviewing the adapter receipt and current source.
+Verify recompiles and requires byte-identical `price_input.json`, `adapter_packet.json`, and `adapter_receipt.json`:
 
-## Hostile coverage
+```bash
+python -m revenue.procurement_award_price_intelligence.source_adapters \
+  verify \
+  --input revenue/procurement_award_price_intelligence/source_adapters_example.json \
+  --price-input /tmp/procurement-adapter-generation/price_input.json \
+  --packet /tmp/procurement-adapter-generation/adapter_packet.json \
+  --receipt /tmp/procurement-adapter-generation/adapter_receipt.json
+```
 
-`test_adapters.py` covers Legistar code-derived parsing; complete reviewed PDF rows; source hashes; rejected/unknown dispositions; OCR/ambiguous/partial holds; option/renewal/amendment lineage; unknown hosts and off-host redirects; media-type/PDF magic mismatches; duplicate JSON/record IDs; bool/float money; exact verification; output tampering; future capture timestamps; and live-source byte drift. The path-scoped workflow runs both normal and `python -O` suites.
+`test_source_adapters.py` covers structured-source semantics, strict parsing, authority ceilings, deterministic receipts, CLI create-only publication, and the origin+locator-digest contract.
+
+`test_source_adapters_redclosure.py` pins the historical STOP-MERGE predecessors: literal/encoded/double-encoded query, fragment and userinfo rejection; arbitrary literal/encoded/double-encoded caller paths reduced to origin-only output with exact-locator digest custody; raw/payload anti-remint; claim-level corroboration/conflict; distinct-claim positives; and legitimate multi-row bid tabulations.
+
+The retained root `test_procurement_award_adapter_guard.py` executes engine, current-main live-adapter custody, source-adapter, and source-redclosure suites under both normal Python and `python -O`. `ci/workflow-recipes/procurement-award-price-intelligence.yml` remains a non-active retained functional-test recipe; this recovery adds no new `.github/workflows` surface.
