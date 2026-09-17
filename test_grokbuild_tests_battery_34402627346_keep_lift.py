@@ -45,11 +45,11 @@ DEDUPE = (
 )
 TOOLS = "e970539c"
 STALE_TOOLS = "3f632f0a"
-BUILDS = "d37d54ea"
-STALE_BUILDS = "c1313e23"
+BUILDS = "5a93f3f9"
+STALE_BUILDS = "d37d54ea"
 FEATURES = "b0128863"
 STALE_FEATURES = "5a37e0a8"
-INGEST = "da5a222b"
+INGEST = "f482b75b"
 LEDGER = "d46d4c1c"
 HUB = "7bc61c8b"
 
@@ -112,6 +112,15 @@ class TestGrokbuildTestsBattery34402627346KeepLift(unittest.TestCase):
             self.assertIn('id="cash-hook"', tools)
             self.assertIn('id="digit-door"', tools)
             self.assertIn("coil-tools-json-live-cash-20260905-01", tools)
+            self.assertIn('id="buy-now-live-checkout"', tools)
+            self.assertIn("Buy Autopsy $29", tools)
+            self.assertIn("Buy one White Box hour $250", tools)
+            self.assertIn(
+                "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g", tools
+            )
+            self.assertIn(
+                "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07", tools
+            )
             self.assertNotIn("hygiene seat", tools)
             written = {}
             builds_ledger.project(str(tmp), lambda p, t: written.__setitem__(p, t))
