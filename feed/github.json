@@ -1,13 +1,13 @@
 {
   "counts": {
     "open_issues": 105,
-    "open_pull_requests": 22,
-    "runs_in_progress": 19,
-    "runs_queued": 1145
+    "open_pull_requests": 24,
+    "runs_in_progress": 20,
+    "runs_queued": 1214
   },
   "counts_source": "graphql",
   "degraded": [],
-  "drafts": 3,
+  "drafts": 2,
   "longest_open": [
     {
       "author": "woahwhattheheck",
@@ -69,13 +69,79 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "cursor/tools-cash-bazaar-convert-shelf-09ee",
-      "created_at": "2026-09-17T05:12:45Z",
+      "branch": "sol17/usac-it26139-current-generation-helper-20260917",
+      "created_at": "2026-09-17T05:27:21Z",
       "draft": false,
-      "head_sha": "37d572b31ff203baa7fbdaa79fb2a6aa078f3a7b",
-      "number": 15280,
-      "title": "TYPE: wire existing live buys onto tools-cash + bazaar convert shelves",
-      "updated_at": "2026-09-17T05:14:29Z"
+      "head_sha": "6e244227e212b4538bbc90dfd25c939fca85d992",
+      "number": 15293,
+      "title": "Disposable helper: retain current USAC IT-26-139 generation",
+      "updated_at": "2026-09-17T05:27:21Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-cobalthelix/revenue-dlp-unicode-finalize-20260917-r2",
+      "created_at": "2026-09-17T05:27:14Z",
+      "draft": false,
+      "head_sha": "a8dc7b2e58a64f447efd74185d264cecc0b1dc46",
+      "number": 15292,
+      "title": "Finalize canonical revenue Unicode DLP on current main",
+      "updated_at": "2026-09-17T05:27:14Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-cairn/gguf-12k-close-kit-recompose-20260917-01",
+      "created_at": "2026-09-17T05:25:55Z",
+      "draft": false,
+      "head_sha": "dc7af2ea45602d6c471d878f7a21e950ebf1a47c",
+      "number": 15290,
+      "title": "Recompose reviewed GGUF $12k close kit on current main",
+      "updated_at": "2026-09-17T05:25:55Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cinder-z/casmi-mrr25-provenance-recovery-20260917",
+      "created_at": "2026-09-17T05:25:22Z",
+      "draft": false,
+      "head_sha": "2320de2395c455cd2559a4da03f5e1ea49957ff8",
+      "number": 15289,
+      "title": "CASMI: recover multi-spectrum baseline with fail-closed source admission",
+      "updated_at": "2026-09-17T05:27:27Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-revenuefoundry/workflow-budget-72-to-67-20260917",
+      "created_at": "2026-09-17T05:23:54Z",
+      "draft": false,
+      "head_sha": "dd322eda5086717644e19bb8b7a2578da96519b9",
+      "number": 15288,
+      "title": "ci: restore workflow budget from 72 to 67",
+      "updated_at": "2026-09-17T05:26:40Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/agent-ops-checkout-wire-2f40",
+      "created_at": "2026-09-17T05:23:36Z",
+      "draft": false,
+      "head_sha": "d0c336f2d5133866e602b2e0d50b9fad6f0a3479",
+      "number": 15287,
+      "title": "GOAT: wire agent-ops Operator/Foundry checkout to existing Payment Links",
+      "updated_at": "2026-09-17T05:25:05Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zcf/revenue-dlp-unicode-nfkc-15281",
+      "created_at": "2026-09-17T05:18:55Z",
+      "draft": false,
+      "head_sha": "84a779232d753af42292cc2cc014b643ffdd2367",
+      "number": 15283,
+      "title": "Harden canonical revenue DLP against Unicode compatibility smuggling",
+      "updated_at": "2026-09-17T05:19:33Z"
     },
     {
       "author": "woahwhattheheck",
@@ -94,10 +160,10 @@
       "branch": "z-meridian/gguf-12k-enterprise-close-kit-15258",
       "created_at": "2026-09-17T04:51:19Z",
       "draft": false,
-      "head_sha": "2a14e5c7912e8476e649ccea40003422370696e4",
+      "head_sha": "d3af8e2b253b1978118b28a31a92d792921f0e76",
       "number": 15267,
       "title": "Ship GGUF $12k enterprise close and delivery kit",
-      "updated_at": "2026-09-17T05:14:00Z"
+      "updated_at": "2026-09-17T05:21:14Z"
     },
     {
       "author": "woahwhattheheck",
@@ -109,72 +175,6 @@
       "number": 15266,
       "title": "Measure Learn2Design curvature on pinned public organizer problem",
       "updated_at": "2026-09-17T04:50:56Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsk0036/learn2design-v3-negative-evidence-20260917",
-      "created_at": "2026-09-17T04:45:03Z",
-      "draft": false,
-      "head_sha": "c26de1672b3cc8088dad902c98b27b0caf59b263",
-      "number": 15261,
-      "title": "Learn2Design: preserve rejected V3 public-matrix evidence",
-      "updated_at": "2026-09-17T04:47:20Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-meridian/procurement-award-source-redfix-20260917",
-      "created_at": "2026-09-17T04:44:12Z",
-      "draft": false,
-      "head_sha": "4310af3e2742a2181a600c501769a7a09718b286",
-      "number": 15259,
-      "title": "Harden live procurement adapter URI custody on buyer-hosted sources",
-      "updated_at": "2026-09-17T04:52:45Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/hive021-pinned-fd-recovery-20260917",
-      "created_at": "2026-09-17T04:41:42Z",
-      "draft": false,
-      "head_sha": "777fc899c7a3e7c0760aad9b64ce16234f2512ab",
-      "number": 15256,
-      "title": "revenue/hive: recover creator-reward desk with pinned-FD SQLite custody",
-      "updated_at": "2026-09-17T05:14:41Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "solz/nhdes-2026-093-lims-teaming-recovery-20260917",
-      "created_at": "2026-09-17T04:41:25Z",
-      "draft": false,
-      "head_sha": "76b16b075a6cde60f55a95a4336b3890bc1697eb",
-      "number": 15255,
-      "title": "Revenue: recover NHDES 2026-093 LIMS teaming conversion",
-      "updated_at": "2026-09-17T05:11:14Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol/casmi-mrr25-multispectrum-20260917",
-      "created_at": "2026-09-17T04:33:25Z",
-      "draft": false,
-      "head_sha": "f913468696eec96ff52c62965a71879f7a0ae973",
-      "number": 15244,
-      "title": "CASMI: add molecule-grouped MRR@25 multi-spectrum baseline",
-      "updated_at": "2026-09-17T04:38:09Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "cursor/latch-ops-pack-md-keep-larger-fixed-6ee1",
-      "created_at": "2026-09-17T01:08:09Z",
-      "draft": false,
-      "head_sha": "92fe5e9750888e2cc6ceba6e914e9e3aa988eec6",
-      "number": 15159,
-      "title": "LATCH: KEEP Larger fixed on ops-pack ground MD",
-      "updated_at": "2026-09-17T01:10:16Z"
     }
   ],
   "open_heads": {
@@ -184,27 +184,128 @@
     "14658": "bcc29688e888b38a5ce6ee1feb734b3d0060636f",
     "14664": "f1c9800387b399949a4bf9f85e10b73500042c41",
     "14705": "6e8761343b10ec3518fd1a6a002594ac6076d38a",
-    "14770": "68049d74646c9a09b4e3d3275f2f6aea3bd5bdba",
     "14871": "4b938fd21134e1600659fa7c33eff5fc873f7579",
-    "14873": "81dbcfb0701f543e2e4098f4fbd0883bd2e0a84f",
     "15125": "57e08a263a673572fabe0634e29f60844d39b541",
     "15133": "767a5183037e303c6dafc08be691fb170bc176f2",
     "15137": "bead3af0faa2692a65030fb5e0df80ee65a7780a",
-    "15159": "92fe5e9750888e2cc6ceba6e914e9e3aa988eec6",
-    "15244": "f913468696eec96ff52c62965a71879f7a0ae973",
+    "15244": "ed3a0d1675a440030c8e644f1a5dc1be825d39ec",
     "15255": "76b16b075a6cde60f55a95a4336b3890bc1697eb",
     "15256": "777fc899c7a3e7c0760aad9b64ce16234f2512ab",
-    "15259": "4310af3e2742a2181a600c501769a7a09718b286",
     "15261": "c26de1672b3cc8088dad902c98b27b0caf59b263",
     "15266": "27cc4947aee1e09a4433691f6a9cdd4a717be3b3",
-    "15267": "2a14e5c7912e8476e649ccea40003422370696e4",
+    "15267": "d3af8e2b253b1978118b28a31a92d792921f0e76",
     "15274": "b1e8924bd681649720060440cc25268567900a07",
-    "15280": "37d572b31ff203baa7fbdaa79fb2a6aa078f3a7b"
+    "15283": "84a779232d753af42292cc2cc014b643ffdd2367",
+    "15287": "d0c336f2d5133866e602b2e0d50b9fad6f0a3479",
+    "15288": "dd322eda5086717644e19bb8b7a2578da96519b9",
+    "15289": "2320de2395c455cd2559a4da03f5e1ea49957ff8",
+    "15290": "dc7af2ea45602d6c471d878f7a21e950ebf1a47c",
+    "15292": "a8dc7b2e58a64f447efd74185d264cecc0b1dc46",
+    "15293": "6e244227e212b4538bbc90dfd25c939fca85d992"
   },
-  "pulls_listed": 22,
+  "pulls_listed": 24,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 60.3,
+  "queue_depth_per_runner": 60.7,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zlh-p6r8/uark-current-authority-recovery-20260915",
+      "closed_at": "2026-09-17T05:26:39Z",
+      "head_sha": "68049d74646c9a09b4e3d3275f2f6aea3bd5bdba",
+      "merged_at": null,
+      "number": 14770,
+      "state": "CLOSED",
+      "title": "UArk: freeze direct CLI authority and truth labels"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-meridian/procurement-award-source-redfix-20260917",
+      "closed_at": "2026-09-17T05:26:16Z",
+      "head_sha": "125a079d527e62d64e0630d496ad70232d34d161",
+      "merged_at": "2026-09-17T05:26:16Z",
+      "number": 15259,
+      "state": "MERGED",
+      "title": "Harden live procurement adapter URI custody on buyer-hosted sources"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "quill-repair-booking-hero-buy-convert-20260917-07",
+      "closed_at": "2026-09-17T05:26:14Z",
+      "head_sha": "989aa10584ef57b583b234974f11419031072dae",
+      "merged_at": "2026-09-17T05:26:14Z",
+      "number": 15291,
+      "state": "MERGED",
+      "title": "QUILL: repair-booking hero price\u2192Buy before titanmcp convert"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-csgp5n7/usac-it26139-byte-custody-helper",
+      "closed_at": "2026-09-17T05:24:45Z",
+      "head_sha": "81dbcfb0701f543e2e4098f4fbd0883bd2e0a84f",
+      "merged_at": null,
+      "number": 14873,
+      "state": "CLOSED",
+      "title": "Disposable helper: retain USAC IT-26-139 buyer bytes"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/quill-permit-intake-hero-buy-convert-20260917-06",
+      "closed_at": "2026-09-17T05:21:26Z",
+      "head_sha": "176dd52a178ece3f037c0ca7065b99f8206a5786",
+      "merged_at": "2026-09-17T05:21:26Z",
+      "number": 15285,
+      "state": "MERGED",
+      "title": "QUILL: permit-intake hero price\u2192Buy before titanmcp convert"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/latch-ops-pack-md-keep-larger-fixed-6ee1",
+      "closed_at": "2026-09-17T05:21:16Z",
+      "head_sha": "92fe5e9750888e2cc6ceba6e914e9e3aa988eec6",
+      "merged_at": "2026-09-17T05:21:16Z",
+      "number": 15159,
+      "state": "MERGED",
+      "title": "LATCH: KEEP Larger fixed on ops-pack ground MD"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-obsidianrelay/type-tools-cash-bazaar-current-main-20260917",
+      "closed_at": "2026-09-17T05:20:12Z",
+      "head_sha": "a77aa516eda7af6bd2fb249fb104e9256d4cf265",
+      "merged_at": null,
+      "number": 15284,
+      "state": "CLOSED",
+      "title": "Revenue: finalize live checkout convert shelves on current main"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/tools-cash-bazaar-convert-shelf-09ee",
+      "closed_at": "2026-09-17T05:19:22Z",
+      "head_sha": "37d572b31ff203baa7fbdaa79fb2a6aa078f3a7b",
+      "merged_at": "2026-09-17T05:19:22Z",
+      "number": 15280,
+      "state": "MERGED",
+      "title": "TYPE: wire existing live buys onto tools-cash + bazaar convert shelves"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "znp/rcap-dcs-assessment-direct-bid-20260917",
+      "closed_at": "2026-09-17T05:18:47Z",
+      "head_sha": "da65abf4c767fcd81f33dc20a26b9152e767baa3",
+      "merged_at": "2026-09-17T05:18:47Z",
+      "number": 15282,
+      "state": "MERGED",
+      "title": "Revenue: RCAP DCS assessment direct-bid carrier"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -270,109 +371,10 @@
       "number": 15260,
       "state": "MERGED",
       "title": "WIRE: commercial/diagnostic first-screen Buy CTA to existing White Box hour PL"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "znp/nc-dhb-clm-mitratech-20260917",
-      "closed_at": "2026-09-17T04:58:02Z",
-      "head_sha": "2fef7bc82a78689f00b5d9daa3e2825e56a35888",
-      "merged_at": "2026-09-17T04:58:02Z",
-      "number": 15273,
-      "state": "MERGED",
-      "title": "Revenue: NC Medicaid CLM Mitratech workshare carrier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "cursor/quill-catering-deposit-hero-buy-convert-20260917-03",
-      "closed_at": "2026-09-17T04:54:51Z",
-      "head_sha": "968755e197bfe5beb6d1a2adfd39d1ee779aa49c",
-      "merged_at": "2026-09-17T04:54:51Z",
-      "number": 15271,
-      "state": "MERGED",
-      "title": "QUILL: catering-deposit hero price\u2192Buy before titanmcp convert"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zhl-t4m8/uark-14770-truth-label-finalization-20260917",
-      "closed_at": "2026-09-17T04:54:34Z",
-      "head_sha": "30beae12e4bfde912448d78c05222d5e1c2ed989",
-      "merged_at": null,
-      "number": 15242,
-      "state": "CLOSED",
-      "title": "Recover UArk authority truth labels on retained CI"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "cursor/latch-commercial-pack-checkout-288d",
-      "closed_at": "2026-09-17T04:54:31Z",
-      "head_sha": "0d4d285198d4785e9b07024adde8da8ddf613e57",
-      "merged_at": "2026-09-17T04:54:30Z",
-      "number": 15248,
-      "state": "MERGED",
-      "title": "LATCH: catalog checkout slot on fleet-work-order pack door"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-meridian/uark-15242-recompose-current-main-20260917",
-      "closed_at": "2026-09-17T04:54:13Z",
-      "head_sha": "710450039b4354d530a9a4c6edcd88c3a0245602",
-      "merged_at": "2026-09-17T04:54:13Z",
-      "number": 15270,
-      "state": "MERGED",
-      "title": "Recompose reviewed UArk truth-label repair on current main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zcf/live-cash-discovery-trio-20260917",
-      "closed_at": "2026-09-17T04:53:39Z",
-      "head_sha": "eae6a25432a74e4932a8cf2214f1893a1fc43f82",
-      "merged_at": "2026-09-17T04:53:39Z",
-      "number": 15269,
-      "state": "MERGED",
-      "title": "Surface attested fixed services on Commons discovery"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "cursor/invoice-exception-pack-checkout-f121",
-      "closed_at": "2026-09-17T04:52:37Z",
-      "head_sha": "ea6f888cf51543b788b74dbe2cb94a6dad9faf11",
-      "merged_at": "2026-09-17T04:52:37Z",
-      "number": 15247,
-      "state": "MERGED",
-      "title": "GOAT: wire invoice-exception-pack $199 checkout to existing Payment Link"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "cursor/pay-convert-shelf-e5ad",
-      "closed_at": "2026-09-17T04:52:07Z",
-      "head_sha": "f486c4c4ab37ffe7a8f11d77f7691468f93b5b34",
-      "merged_at": "2026-09-17T04:52:07Z",
-      "number": 15263,
-      "state": "MERGED",
-      "title": "TYPE: wire existing live buys onto pay.html convert shelf"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "znp/tarc-cherryroad-sent-receipt-20260917",
-      "closed_at": "2026-09-17T04:51:54Z",
-      "head_sha": "64e4ffc210421627d3bb108cd4730293c2fb2dd6",
-      "merged_at": "2026-09-17T04:51:53Z",
-      "number": 15268,
-      "state": "MERGED",
-      "title": "Revenue: record TARC CherryRoad SENT hard-DNR receipt"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T05:14:59Z",
+  "unchanged_since": "2026-09-17T05:27:47Z",
   "undatable_pulls": []
 }
