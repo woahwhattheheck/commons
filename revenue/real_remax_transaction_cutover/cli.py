@@ -19,6 +19,10 @@ class DuplicateKeyError(ValueError):
     pass
 
 
+class _PublicationError(CutoverError, OSError):
+    """Filesystem publication failure normalized into the CLI contract."""
+
+
 def _pairs(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
     out: dict[str, Any] = {}
     for key, value in pairs:
@@ -126,7 +130,10 @@ def write_exclusive(path: str, value: Any) -> None:
     leaf = output.name
     if not leaf or leaf in {".", ".."}:
         raise CutoverError(f"invalid output leaf: {path}")
-    parent.mkdir(parents=True, exist_ok=True)
+    try:
+        parent.mkdir(parents=True, exist_ok=True)
+    except OSError as exc:
+        raise _PublicationError(f"cannot prepare output parent {parent}: {exc}") from exc
     flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
     if hasattr(os, "O_NOFOLLOW"):
         flags |= os.O_NOFOLLOW
@@ -175,7 +182,7 @@ def write_exclusive(path: str, value: Any) -> None:
                 parent_fd=parent_fd,
                 leaf=leaf,
             )
-        except Exception:
+        except Exception as exc:
             # Never pathname-unlink on rollback: another actor could have swapped the
             # visible name after this descriptor was reserved. Fail visibly by
             # truncating only the inode we still own through the retained fd.
@@ -186,6 +193,10 @@ def write_exclusive(path: str, value: Any) -> None:
                 pass
             finally:
                 os.close(fd)
+            if isinstance(exc, CutoverError):
+                raise
+            if isinstance(exc, OSError):
+                raise _PublicationError(f"cannot publish output {path}: {exc}") from exc
             raise
         else:
             os.close(fd)
