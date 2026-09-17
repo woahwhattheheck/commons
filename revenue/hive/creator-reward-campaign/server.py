@@ -40,7 +40,7 @@ UNSUPPORTED_MESSAGE = ('database custody cannot be proven on this platform (no r
 # does not start.
 DESCRIPTOR_TABLE = next((table for table in ('/proc/self/fd', '/dev/fd') if os.path.isdir(table)), None)
 CUSTODY_PROOF = 'descriptor' if DESCRIPTOR_TABLE else ('handle' if os.name == 'nt' else None)
-_OPEN_LOCK = threading.Lock()  # one open at a time per process, so a new descriptor belongs to that open
+_DESK_LOCK = threading.Lock()  # one desk operation at a time per process, held from the open until the session closes
 
 
 def _descriptors():
@@ -72,6 +72,29 @@ def _descriptor_proof(before, after, pinned):
         else:
             elsewhere = True
     return on_pinned or not elsewhere
+
+
+class _Session:
+    """A proven connection; closing it also releases the desk lock held since the open."""
+    __slots__ = ('_db', '_live')
+
+    def __init__(self, db):
+        self._db = db
+        self._live = True
+
+    def __getattr__(self, name):
+        return getattr(self._db, name)
+
+    def close(self):
+        if self._live:
+            self._live = False
+            try:
+                self._db.close()
+            finally:
+                _DESK_LOCK.release()
+
+    def __del__(self):
+        self.close()
 # Known tracking/share parameters are dropped from content URLs; any other query material is refused
 # unless a code-owned projection below names it as the content identity.
 TRACKING_QUERY_KEYS = frozenset((
@@ -435,7 +458,7 @@ class Desk:
         target.parent.mkdir(parents=True, exist_ok=True)
         if CUSTODY_PROOF is None:
             raise DeskError(UNSUPPORTED_MESSAGE)
-        with _OPEN_LOCK:  # no other open of this path in the process while the handle is taken
+        with _DESK_LOCK:  # no other open of this path in the process while the handle is taken
             self.pinned = self._pin()
         self.identity = None
         try:
@@ -511,28 +534,40 @@ class Desk:
         return (opened.st_dev, opened.st_ino)
 
     def _open(self):
-        """Open a connection and prove, before any statement runs, that it opened the pinned file itself."""
-        with _OPEN_LOCK:
+        """Take the desk lock, open a connection and prove, before any statement runs, that it opened the pinned file itself.
+
+        The lock is held until the returned session is closed, so one desk operation runs at a time in
+        this process: the descriptor that appears during the open belongs to this open, and no other desk
+        transaction exists while it is proven.
+        """
+        _DESK_LOCK.acquire()
+        try:
             before = _descriptors()
             db = sqlite3.connect(self.path, timeout=10)
-            try:
-                if CUSTODY_PROOF == 'descriptor':
-                    # The descriptor this open created must refer to the pinned file. A copy carrying the same
-                    # header identity, swapped in for the open and swapped out again, is a different file.
-                    if not _descriptor_proof(before, _descriptors(), self.pinned):
-                        raise DeskError(SUBSTITUTED_MESSAGE, 503)
-                else:
-                    # The pinned handle keeps the path from being renamed, replaced or deleted while the desk lives.
-                    try:
-                        current = os.stat(self.path)
-                    except OSError as exc:
-                        raise DeskError(SUBSTITUTED_MESSAGE, 503) from exc
-                    if (current.st_dev, current.st_ino) != self.pinned:
-                        raise DeskError(SUBSTITUTED_MESSAGE, 503)
-            except BaseException:
-                db.close()
-                raise
-        return db
+        except BaseException:
+            _DESK_LOCK.release()
+            raise
+        try:
+            if CUSTODY_PROOF == 'descriptor':
+                # The descriptor this open created must refer to the pinned file. A copy carrying the same
+                # header identity, swapped in for the open and swapped out again, is a different file.
+                if not _descriptor_proof(before, _descriptors(), self.pinned):
+                    raise DeskError(SUBSTITUTED_MESSAGE, 503)
+            else:
+                # The pinned handle keeps the path from being renamed, replaced or deleted while the desk lives.
+                try:
+                    current = os.stat(self.path)
+                except OSError as exc:
+                    raise DeskError(SUBSTITUTED_MESSAGE, 503) from exc
+                if (current.st_dev, current.st_ino) != self.pinned:
+                    raise DeskError(SUBSTITUTED_MESSAGE, 503)
+            db.row_factory = sqlite3.Row
+            db.execute('PRAGMA foreign_keys=ON')
+        except BaseException:
+            db.close()
+            _DESK_LOCK.release()
+            raise
+        return _Session(db)
 
     def _header_identity(self):
         """Identity (application id, user version) read from the SQLite header through the pinned handle; None while the file is empty."""
@@ -595,8 +630,6 @@ class Desk:
         except BaseException:
             db.close()
             raise
-        db.row_factory = sqlite3.Row
-        db.execute('PRAGMA foreign_keys=ON')
         return db
 
     @staticmethod
