@@ -5,7 +5,9 @@ from hashlib import sha256
 import unittest
 
 import _sage_symbolic_planner_core as predecessor
+from sage_core import ActionToken as SageActionToken, Observation as SageObservation, Transition as SageTransition
 from sage_symbolic_planner import (
+    OBSERVATION_IDENTITY_POLICY,
     PLANNER_SCHEMA,
     PLANNER_VERSION,
     REACHABILITY_POLICY,
@@ -69,6 +71,43 @@ class FakeModel:
 class ExactEvidenceScopeTests(unittest.TestCase):
     def candidates(self, obs):
         return tuple(Token(name) for name in sorted(obs.available_actions))
+
+    def test_real_observation_temporal_history_is_part_of_exact_identity(self):
+        settled = ((0, 1),)
+        before_a = SageObservation(
+            frames=(((0, 0),), settled),
+            available_actions=("ACTION1",),
+        )
+        current_b = SageObservation(
+            frames=(((1, 1),), settled),
+            available_actions=("ACTION1",),
+        )
+        win = SageObservation(
+            frames=(settled, ((1, 0),)),
+            available_actions=("ACTION1",),
+            state="WIN",
+            levels_completed=1,
+        )
+        action = SageActionToken("ACTION1")
+        transition = SageTransition.build(before_a, action, win)
+
+        # This is the exact predecessor killer: the preserved v1 core aliases the
+        # two real SAGE observations because their final frame/metadata match.
+        self.assertEqual(predecessor.observation_digest(before_a), predecessor.observation_digest(current_b))
+        self.assertNotEqual(observation_digest(before_a), observation_digest(current_b))
+
+        adapter = SageEvidenceAdapter(
+            FakeModel([transition]),
+            current_b,
+            candidate_factory=lambda _obs: (action,),
+        )
+        hypothesis, = adapter.hypotheses(adapter.root_state())
+        self.assertEqual(hypothesis.evidence_scope, "SCENE")
+        self.assertEqual(hypothesis.terminal, "NOT_FINISHED")
+        self.assertEqual(hypothesis.progress, 0)
+        self.assertEqual(hypothesis.novelty_bps, 0)
+        self.assertIsNone(hypothesis.successor_observation_digest)
+        self.assertIsNone(hypothesis.successor_observation)
 
     def test_modal_exact_win_cannot_determinize_conflicting_exact_outcome(self):
         current = Obs(((0, 1),), ("ACTION1",))
@@ -165,24 +204,29 @@ class ExactEvidenceScopeTests(unittest.TestCase):
         self.assertEqual(decision.selected_prefix, ("ACTION1", "ACTION2"))
         self.assertEqual(decision.receipt["selected_progress"], 2)
 
-    def test_receipt_v2_rejects_v1_semantic_replay(self):
+    def test_receipt_v3_rejects_older_semantic_replay(self):
         current = Obs(((0, 1),), ("ACTION1",))
         after = Obs(((1, 0),), ("ACTION1",))
         transition = Transition(current, Token("ACTION1"), after, Effect(h("move"), 1))
         adapter = SageEvidenceAdapter(FakeModel([transition]), current, candidate_factory=self.candidates)
         decision = plan(adapter, actions_left=1)
 
-        self.assertEqual(REACHABILITY_POLICY, "exact-predecessor-unanimous-concrete-reachability/v2")
-        self.assertEqual(PLANNER_SCHEMA, "commons.arc3-sage-symbolic-planner/v2")
-        self.assertEqual(PLANNER_VERSION, 2)
+        self.assertEqual(OBSERVATION_IDENTITY_POLICY, "ordered-animation-frames-plus-settled-metadata/v1")
+        self.assertEqual(REACHABILITY_POLICY, "exact-predecessor-full-animation-unanimous-concrete-reachability/v3")
+        self.assertEqual(PLANNER_SCHEMA, "commons.arc3-sage-symbolic-planner/v3")
+        self.assertEqual(PLANNER_VERSION, 3)
         self.assertEqual(verify_receipt(adapter, decision.receipt, actions_left=1), "VERIFIED_OFFLINE")
 
-        legacy = {key: value for key, value in decision.receipt.items() if key != "receipt_sha256"}
-        legacy["schema"] = predecessor.PLANNER_SCHEMA
-        legacy["planner_version"] = predecessor.PLANNER_VERSION
-        legacy = predecessor._seal_receipt(legacy)
-        with self.assertRaises(ReceiptVerificationError):
-            verify_receipt(adapter, legacy, actions_left=1)
+        for legacy_schema, legacy_version in (
+            (predecessor.PLANNER_SCHEMA, predecessor.PLANNER_VERSION),
+            ("commons.arc3-sage-symbolic-planner/v2", 2),
+        ):
+            legacy = {key: value for key, value in decision.receipt.items() if key != "receipt_sha256"}
+            legacy["schema"] = legacy_schema
+            legacy["planner_version"] = legacy_version
+            legacy = predecessor._seal_receipt(legacy)
+            with self.assertRaises(ReceiptVerificationError):
+                verify_receipt(adapter, legacy, actions_left=1)
 
 
 if __name__ == "__main__":
