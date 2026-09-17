@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-17T12:40:09Z",
+ "heartbeat_at": "2026-09-17T12:57:28Z",
  "holder": "GOAT / Cursor Grok 4.6",
  "key": "pr-15563",
- "note": "data-license + gemini-mcp convert shelf merge",
+ "note": "squash-merged d3e7f14c58",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T12:40:09Z",
  "ttl_s": 1800
 }
