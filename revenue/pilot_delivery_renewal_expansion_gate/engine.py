@@ -5,8 +5,10 @@ import argparse
 import sys
 from datetime import datetime as _stdlib_datetime, timezone as _stdlib_timezone
 from pathlib import Path
+from types import FunctionType as _FunctionType
 from typing import Any
 
+from . import common as _common_module, model as _model_module
 from .common import (
     RECEIPT_SCHEMA, READY, HOLD_ACCEPTANCE, HOLD_PAYMENT, HOLD_WINDOW, HOLD_EVIDENCE, DNR, STATES, GateError, _ts, _dt, digest, authority_flags, canonical_json, load_json
 )
@@ -166,27 +168,92 @@ def _build_current_api(
     _datetime_cls=_stdlib_datetime,
     _timezone_obj=_stdlib_timezone,
     _compiler=_compile,
-    _canonical=canonical_json,
-    _digest_fn=digest,
+    _decision_source=_decision,
+    _commercial_generation_fn=_commercial_generation,
+    _expected_total_fn=_expected_total,
+    _function_type=_FunctionType,
+    _common=_common_module,
+    _model=_model_module,
     _projection=_semantic_projection,
-    _dt_fn=_dt,
     _receipt_schema=RECEIPT_SCHEMA,
     _states=frozenset(STATES),
     _gate_error=GateError,
     _hold_evidence=HOLD_EVIDENCE,
 ):
-    """Build current APIs around an import-generation-owned stdlib UTC clock.
+    """Build current APIs around one import-generation-owned semantic snapshot.
 
-    Ordinary reassignment/insertion of module globals cannot replace the clock or
-    compiler captured by these closures. Direct closure/function surgery remains
-    outside this cooperative in-process boundary.
+    Current compilation must not resolve mutable module globals for time, validation,
+    decision states, canonicalization, or authority.  The snapshot below gives the
+    normalizer and its common helpers private global dictionaries captured at import,
+    freezes mutable enum sets, and closes current APIs over that generation.  Ordinary
+    module/global rebinding therefore cannot substitute caller-selected current time or
+    semantics.  Direct function/closure surgery remains outside this cooperative
+    in-process boundary.
     """
+
+    def _clone_function(fn, private_globals):
+        clone = _function_type(fn.__code__, private_globals, fn.__name__, fn.__defaults__, fn.__closure__)
+        clone.__kwdefaults__ = dict(fn.__kwdefaults__ or {})
+        return clone
+
+    common_globals = dict(vars(_common))
+    common_helpers = (
+        "_keys", "_string", "_bool", "_int", "_enum", "_sha", "_ts", "_dt", "_age", "_uri", "_source"
+    )
+    for name in common_helpers:
+        common_globals[name] = _clone_function(getattr(_common, name), common_globals)
+
+    model_globals = dict(vars(_model))
+    for name in common_helpers:
+        model_globals[name] = common_globals[name]
+    for name in (
+        "BASELINE_STATES", "CHANGE_STATES", "MILESTONE_STATES", "PAYMENT_STATES",
+        "PAYMENT_CLASSES", "SUPPORT_SEVERITIES", "FINDING_STATES", "GAP_STATES",
+        "ROUTE_STATES", "HYPOTHESIS_BASES",
+    ):
+        model_globals[name] = frozenset(model_globals[name])
+    sealed_normalize = _clone_function(_model._normalize, model_globals)
+
+    decision_globals = dict(globals())
+    sealed_decision = _clone_function(_decision_source, decision_globals)
+    sealed_decision.__kwdefaults__.update({
+        "_commercial_generation_fn": _commercial_generation_fn,
+        "_expected_total_fn": _expected_total_fn,
+        "_dt_fn": common_globals["_dt"],
+    })
+
+    json_dumps = _common.json.dumps
+    sha256 = _common.hashlib.sha256
+    authority_keys = tuple(_common.authority_flags())
+
+    def _canonical(value: Any) -> bytes:
+        return (json_dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n").encode("utf-8")
+
+    def _digest_fn(value: Any) -> str:
+        return sha256(_canonical(value)).hexdigest()
+
+    def _authority_flags_fn() -> dict[str, bool]:
+        return {key: False for key in authority_keys}
+
+    def _sealed_compile(packet: dict[str, Any], now: str) -> dict[str, Any]:
+        return _compiler(
+            packet,
+            now,
+            _ts_fn=common_globals["_ts"],
+            _normalize_fn=sealed_normalize,
+            _decision_fn=sealed_decision,
+            _commercial_generation_fn=_commercial_generation_fn,
+            _expected_total_fn=_expected_total_fn,
+            _digest_fn=_digest_fn,
+            _authority_flags_fn=_authority_flags_fn,
+            _receipt_schema=_receipt_schema,
+        )
 
     def _clock_text() -> str:
         return _datetime_cls.now(_timezone_obj.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
     def compile_current(packet: dict[str, Any]) -> dict[str, Any]:
-        return _compiler(packet, _clock_text())
+        return _sealed_compile(packet, _clock_text())
 
     def verify_receipt(packet: dict[str, Any], receipt: dict[str, Any]) -> dict[str, Any]:
         """Authenticate exact historical semantics, then re-evaluate at current UTC."""
@@ -205,17 +272,17 @@ def _build_current_api(
             raise _gate_error("receipt: evaluated_at required")
 
         try:
-            historical = _compiler(packet, evaluated_at)
+            historical = _sealed_compile(packet, evaluated_at)
         except _gate_error as exc:
             raise _gate_error(f"receipt: historical recompile failed: {exc}") from exc
         if _canonical(historical) != _canonical(receipt):
             raise _gate_error("receipt: semantic mismatch")
 
         current_now = _clock_text()
-        if _dt_fn(evaluated_at) > _dt_fn(current_now):
+        if common_globals["_dt"](evaluated_at) > common_globals["_dt"](current_now):
             raise _gate_error("receipt: evaluated_at is in the future")
         try:
-            current = _compiler(packet, current_now)
+            current = _sealed_compile(packet, current_now)
         except _gate_error as exc:
             return {
                 "integrity_valid": True,
@@ -239,6 +306,9 @@ def _build_current_api(
 
 compile_current, verify_receipt = _build_current_api()
 del _build_current_api
+del _FunctionType
+del _common_module
+del _model_module
 del _stdlib_datetime
 del _stdlib_timezone
 
