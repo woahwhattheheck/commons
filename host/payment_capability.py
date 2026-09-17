@@ -147,6 +147,8 @@ CONVERT_SHELF_LIVE_BUYS = {
     "sgspsi-thermal-rheology-lineage-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "sharp-rtu-vial-isolator-lineage-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "slo-cls-cutover-evidence-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "torrent-workorder-commissioning-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "trace-sila-ml-iatf-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -271,6 +273,8 @@ PUBLIC_HTML = (
     "sgspsi-thermal-rheology-lineage-lims.html",
     "sharp-rtu-vial-isolator-lineage-lims.html",
     "slo-cls-cutover-evidence-lims.html",
+    "torrent-workorder-commissioning-lims.html",
+    "trace-sila-ml-iatf-lims.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
