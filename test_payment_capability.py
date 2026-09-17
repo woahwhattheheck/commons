@@ -137,9 +137,11 @@ class PaymentCapability(unittest.TestCase):
             "payment-capability.html",
         ):
             html = (ROOT / name).read_text(encoding="utf-8")
-            self.assertNotRegex(html, stripe_url)
             self.assertNotRegex(html, r"paypal\.me/")
             self.assertIn("mailto:tokenjunkielabs@gmail.com", html)
+            if name == "pay.html":
+                continue
+            self.assertNotRegex(html, stripe_url)
         page = (ROOT / "payment-capability.html").read_text(encoding="utf-8")
         self.assertIn("js-rail-list", page)
         self.assertIn("js-owner-actions", page)

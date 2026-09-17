@@ -9,7 +9,7 @@
       "domain": "cherryroad.com",
       "route": "sales@cherryroad.com",
       "route_evidence": "current CherryRoad-owned page labels sales@cherryroad.com as Business Inquiries",
-      "state": "MUSE_ARBITRATION_PENDING",
+      "state": "HARD_DNR_PROVIDER_SENT",
       "commercial_key": "TARC-20262046-CHERRYROAD-PAID-WORKSHARE-ZNP-20260917",
       "commercial_hypothesis": {
         "amount_minor": 3500000,
@@ -55,17 +55,18 @@
       },
       "muse_arbitration": {
         "request_ts": [
-          "1789619583.171939"
+          "1789619583.171939",
+          "1789619986.341599"
         ],
-        "explicit_clearance_observed": false,
-        "clearance_ts": null,
+        "explicit_clearance_observed": true,
+        "clearance_ts": "1789619997.993819",
         "terminal_without_clearance": "WAITING_ON_MUSE_NO_SEND"
       },
       "provider_send": {
-        "performed": false,
-        "message_id": null,
-        "thread_id": null,
-        "sent_at": null
+        "performed": true,
+        "message_id": "1a0adb2066220c15",
+        "thread_id": "1a0adb2066220c15",
+        "sent_at": "2026-09-17T00:48:40-04:00"
       },
       "send_authorized": false,
       "accepted_workshare": false,
