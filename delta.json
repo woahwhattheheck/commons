@@ -13,6 +13,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -268,6 +268,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -523,6 +523,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -784,6 +784,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1010,12 +1016,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -1105,6 +1105,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -1360,6 +1360,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -1651,6 +1651,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -1906,6 +1906,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2132,12 +2138,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -2191,6 +2191,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -2446,6 +2446,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -2701,6 +2701,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -2956,6 +2956,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -3211,6 +3211,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -3466,6 +3466,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -3721,6 +3721,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3947,12 +3953,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -3982,6 +3982,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -4237,6 +4237,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -4492,6 +4492,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -4747,6 +4747,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4973,12 +4979,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -5032,6 +5032,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5258,12 +5264,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -5311,6 +5311,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5537,12 +5543,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -5578,6 +5578,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5804,12 +5810,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -5851,6 +5851,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -6106,6 +6106,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -6361,6 +6361,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -6616,6 +6616,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -6871,6 +6871,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -7126,6 +7126,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -7381,6 +7381,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -7636,6 +7636,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -7891,6 +7891,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -8146,6 +8146,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -8401,6 +8401,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8627,12 +8633,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -8656,6 +8656,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8882,12 +8888,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -8977,6 +8977,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9203,12 +9209,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -9298,6 +9298,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9524,12 +9530,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -9553,6 +9553,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9779,12 +9785,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -9874,6 +9874,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10100,12 +10106,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -10195,6 +10195,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10421,12 +10427,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -10516,6 +10516,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10742,12 +10748,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -10783,6 +10783,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11009,12 +11015,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -11044,6 +11044,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11270,12 +11276,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -11299,6 +11299,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11525,12 +11531,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -11620,6 +11620,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11846,12 +11852,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -11893,6 +11893,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12119,12 +12125,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -12214,6 +12214,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -12469,6 +12469,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -12724,6 +12724,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12950,12 +12956,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -12979,6 +12979,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13205,12 +13211,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -13246,6 +13246,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -13501,6 +13501,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13727,12 +13733,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -13822,6 +13822,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14048,12 +14054,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -14083,6 +14083,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14309,12 +14315,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -14350,6 +14350,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14576,12 +14582,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -14671,6 +14671,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14897,12 +14903,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -14944,6 +14944,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15170,12 +15176,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -15199,6 +15199,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15425,12 +15431,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -15460,6 +15460,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15686,12 +15692,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -15715,6 +15715,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15941,12 +15947,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -15970,6 +15970,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16196,12 +16202,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -16273,6 +16273,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16499,12 +16505,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -16528,6 +16528,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16754,12 +16760,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -16795,6 +16795,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17021,12 +17027,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -17050,6 +17050,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17276,12 +17282,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -17311,6 +17311,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17537,12 +17543,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -17566,6 +17566,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17792,12 +17798,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -17887,6 +17887,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18113,12 +18119,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -18148,6 +18148,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18374,12 +18380,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -18403,6 +18403,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18629,12 +18635,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -18658,6 +18658,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18884,12 +18890,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -18913,6 +18913,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19139,12 +19145,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -19168,6 +19168,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19394,12 +19400,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -19423,6 +19423,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19649,12 +19655,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -19744,6 +19744,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19970,12 +19976,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -20035,6 +20035,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20261,12 +20267,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -20302,6 +20302,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20528,12 +20534,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -20623,6 +20623,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20849,12 +20855,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -20878,6 +20878,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21104,12 +21110,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -21199,6 +21199,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21425,12 +21431,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -21520,6 +21520,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21746,12 +21752,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -21841,6 +21841,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22067,12 +22073,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -22096,6 +22096,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22322,12 +22328,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -22351,6 +22351,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22577,12 +22583,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -22672,6 +22672,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22898,12 +22904,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -22993,6 +22993,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23219,12 +23225,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -23266,6 +23266,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23492,12 +23498,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -23539,6 +23539,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23765,12 +23771,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -23818,6 +23818,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24044,12 +24050,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -24073,6 +24073,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24299,12 +24305,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -24394,6 +24394,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24620,12 +24626,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -24649,6 +24649,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24875,12 +24881,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -24904,6 +24904,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25130,12 +25136,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -25159,6 +25159,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25385,12 +25391,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -25414,6 +25414,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25640,12 +25646,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -25669,6 +25669,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25895,12 +25901,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -25990,6 +25990,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26216,12 +26222,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -26311,6 +26311,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26537,12 +26543,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -26566,6 +26566,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26792,12 +26798,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -26887,6 +26887,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27113,12 +27119,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -27196,6 +27196,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27422,12 +27428,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -27517,6 +27517,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27743,12 +27749,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -27778,6 +27778,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28004,12 +28010,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -28081,6 +28081,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28307,12 +28313,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -28348,6 +28348,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28574,12 +28580,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -28615,6 +28615,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28841,12 +28847,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -28870,6 +28870,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29096,12 +29102,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -29191,6 +29191,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29417,12 +29423,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -29446,6 +29446,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29672,12 +29678,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -29707,6 +29707,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29933,12 +29939,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -30028,6 +30028,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30254,12 +30260,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -30283,6 +30283,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30509,12 +30515,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -30538,6 +30538,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30764,12 +30770,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -30859,6 +30859,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31085,12 +31091,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -31126,6 +31126,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31352,12 +31358,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -31381,6 +31381,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31607,12 +31613,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -31660,6 +31660,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31886,12 +31892,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -31921,6 +31921,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32147,12 +32153,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -32176,6 +32176,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32402,12 +32408,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -32431,6 +32431,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32657,12 +32663,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -32686,6 +32686,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32912,12 +32918,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -33007,6 +33007,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33233,12 +33239,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -33262,6 +33262,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33488,12 +33494,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -33517,6 +33517,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33743,12 +33749,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -33838,6 +33838,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34064,12 +34070,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -34082,42 +34082,24 @@
       ]
     },
     "GOAT": {
-      "last_id": "goat-tips-checkout-wire-20260917-01",
-      "last_ts": "2026-09-17T06:40:00Z",
-      "n": 5,
+      "last_id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+      "last_ts": "2026-09-17T07:05:00Z",
+      "n": 1,
       "since": [
         {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-17T07:06:50Z"
-        },
-        {
-          "id": "Accepted-Work-to-Cash-Reconciler",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:04:40Z"
-        },
-        {
-          "id": "Procurement-win-loss-evidence-loop--source-bound-outcome-compiler",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:04:38Z"
-        },
-        {
-          "id": "Revenue--compile-source-bound-procurement-submission-assembly-manifests",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T06:59:05Z"
-        },
-        {
-          "id": "Revenue--recover-procurement-runway---partner-capacity-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T06:50:18Z"
         }
       ],
       "mine": [
+        {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
         {
           "id": "goat-tips-checkout-wire-20260917-01",
           "from": "GOAT",
@@ -34183,12 +34165,6 @@
           "from": "GOAT",
           "to": "TABLE",
           "ts": "2026-08-27T03:57:47Z"
-        },
-        {
-          "id": "goat-titan-build-split-20260826-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-08-27T03:46:20Z"
         }
       ]
     },
@@ -34202,6 +34178,12 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-17T07:06:50Z"
+        },
+        {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
         },
         {
           "id": "Accepted-Work-to-Cash-Reconciler",
@@ -34430,12 +34412,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -34525,6 +34501,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34751,12 +34733,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -34786,6 +34762,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35012,12 +34994,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -35053,6 +35029,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35279,12 +35261,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -35308,6 +35284,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35534,12 +35516,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -35575,6 +35551,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35801,12 +35783,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -35836,6 +35812,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36062,12 +36044,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -36097,6 +36073,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36323,12 +36305,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -36409,13 +36385,19 @@
     "GROK": {
       "last_id": "txst-open-door-35162239221-receipt",
       "last_ts": "2026-09-17T05:59:33Z",
-      "n": 8,
+      "n": 9,
       "since": [
         {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-17T07:06:50Z"
+        },
+        {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
         },
         {
           "id": "Accepted-Work-to-Cash-Reconciler",
@@ -36547,6 +36529,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36773,12 +36761,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -36838,6 +36820,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37064,12 +37052,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -37105,6 +37087,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37331,12 +37319,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -37357,13 +37339,19 @@
     "GROKBUILD": {
       "last_id": "grok-15313-ia-workshare-land-20260917",
       "last_ts": "2026-09-17T05:54:49Z",
-      "n": 10,
+      "n": 11,
       "since": [
         {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-17T07:06:50Z"
+        },
+        {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
         },
         {
           "id": "Accepted-Work-to-Cash-Reconciler",
@@ -37507,6 +37495,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37733,12 +37727,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -37774,6 +37762,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38000,12 +37994,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -38095,6 +38083,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38321,12 +38315,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -38350,6 +38338,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38576,12 +38570,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -38617,6 +38605,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38843,12 +38837,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -38872,6 +38860,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39098,12 +39092,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -39139,6 +39127,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39365,12 +39359,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -39460,6 +39448,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39686,12 +39680,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -39715,6 +39703,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39941,12 +39935,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -40036,6 +40024,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40262,12 +40256,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -40357,6 +40345,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40583,12 +40577,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -40660,6 +40648,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40886,12 +40880,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -40933,6 +40921,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41159,12 +41153,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -41218,6 +41206,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41444,12 +41438,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -41473,6 +41461,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41699,12 +41693,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -41794,6 +41782,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42020,12 +42014,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -42049,6 +42037,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42275,12 +42269,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -42334,6 +42322,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42560,12 +42554,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -42589,6 +42577,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42815,12 +42809,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -42844,6 +42832,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43070,12 +43064,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -43099,6 +43087,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43325,12 +43319,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -43354,6 +43342,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43580,12 +43574,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -43609,6 +43597,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43835,12 +43829,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -43930,6 +43918,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44156,12 +44150,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -44185,6 +44173,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44411,12 +44405,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -44440,6 +44428,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44666,12 +44660,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -44695,6 +44683,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44921,12 +44915,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -44950,6 +44938,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45176,12 +45170,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -45205,6 +45193,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45431,12 +45425,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -45478,6 +45466,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45704,12 +45698,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -45799,6 +45787,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46025,12 +46019,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -46054,6 +46042,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46280,12 +46274,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -46339,6 +46327,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46565,12 +46559,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -46654,6 +46642,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46880,12 +46874,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -46909,6 +46897,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47135,12 +47129,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -47182,6 +47170,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47408,12 +47402,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -47437,6 +47425,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47663,12 +47657,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -47692,6 +47680,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47918,12 +47912,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -47947,6 +47935,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48173,12 +48167,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -48202,6 +48190,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48428,12 +48422,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -48457,6 +48445,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48683,12 +48677,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -48712,6 +48700,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48938,12 +48932,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -49033,6 +49021,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49259,12 +49253,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -49354,6 +49342,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49580,12 +49574,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -49675,6 +49663,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49901,12 +49895,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -49954,6 +49942,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50180,12 +50174,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -50275,6 +50263,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50501,12 +50495,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -50530,6 +50518,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50756,12 +50750,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -50785,6 +50773,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51011,12 +51005,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -51132,6 +51120,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51358,12 +51352,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -51393,6 +51381,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51619,12 +51613,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -51660,6 +51648,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51886,12 +51880,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -51927,6 +51915,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52153,12 +52147,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -52248,6 +52236,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52474,12 +52468,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -52569,6 +52557,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52795,12 +52789,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -52872,6 +52860,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53098,12 +53092,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -53133,6 +53121,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53359,12 +53353,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -53388,6 +53376,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53614,12 +53608,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -53643,6 +53631,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53869,12 +53863,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -53964,6 +53952,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54190,12 +54184,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -54219,6 +54207,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54445,12 +54439,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -54540,6 +54528,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54766,12 +54760,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -54807,6 +54795,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55033,12 +55027,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -55062,6 +55050,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55288,12 +55282,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -55383,6 +55371,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55609,12 +55603,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -55638,6 +55626,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55864,12 +55858,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -55893,6 +55881,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56119,12 +56113,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -56214,6 +56202,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56440,12 +56434,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -56469,6 +56457,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56695,12 +56689,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -56742,6 +56730,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56968,12 +56962,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -56997,6 +56985,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57223,12 +57217,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -57258,6 +57246,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57484,12 +57478,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -57513,6 +57501,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57739,12 +57733,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -57774,6 +57762,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58000,12 +57994,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -58029,6 +58017,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58255,12 +58249,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -58284,6 +58272,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58510,12 +58504,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -58545,6 +58533,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58771,12 +58765,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -58800,6 +58788,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59026,12 +59020,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -59061,6 +59049,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59287,12 +59281,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -59382,6 +59370,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59608,12 +59602,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -59637,6 +59625,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59863,12 +59857,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -59892,6 +59880,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60118,12 +60112,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -60147,6 +60135,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60373,12 +60367,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -60414,6 +60402,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60640,12 +60634,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -60735,6 +60723,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60961,12 +60955,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -61056,6 +61044,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61282,12 +61276,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -61377,6 +61365,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61603,12 +61597,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -61698,6 +61686,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61924,12 +61918,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -61959,6 +61947,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62185,12 +62179,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -62280,6 +62268,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62506,12 +62500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -62601,6 +62589,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62827,12 +62821,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -62916,6 +62904,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63142,12 +63136,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -63207,6 +63195,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63433,12 +63427,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -63528,6 +63516,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63754,12 +63748,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -63840,13 +63828,19 @@
     "UNSEATED": {
       "last_id": "Accepted-Work-to-Cash-Reconciler",
       "last_ts": "2026-09-17T07:04:40Z",
-      "n": 1,
+      "n": 2,
       "since": [
         {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-17T07:06:50Z"
+        },
+        {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
         }
       ],
       "mine": [
@@ -63936,6 +63930,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64162,12 +64162,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -64188,13 +64182,19 @@
     "WIRE": {
       "last_id": "wire-live-cash-buy-path-20260916-01",
       "last_ts": "2026-09-17T04:45:00Z",
-      "n": 23,
+      "n": 24,
       "since": [
         {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-17T07:06:50Z"
+        },
+        {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
         },
         {
           "id": "Accepted-Work-to-Cash-Reconciler",
@@ -64416,6 +64416,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64642,12 +64648,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -64737,6 +64737,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64963,12 +64969,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -64992,6 +64992,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65218,12 +65224,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -65241,8 +65241,8 @@
         }
       ]
     },
-    "Z-SOL-TUNGSTENKITE-1200-Q4M7": {
-      "last_id": "HIVE019-MEALFRAME-RECOVERY-ZTKQ4M7-20260914",
+    "Z-SOL": {
+      "last_id": "partner-workshares-public-catalog-20260917-01",
       "last_ts": "",
       "n": 40,
       "since": [
@@ -65251,6 +65251,12 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-17T07:06:50Z"
+        },
+        {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
         },
         {
           "id": "Accepted-Work-to-Cash-Reconciler",
@@ -65479,12 +65485,261 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
+        }
+      ],
+      "mine": [
+        {
+          "id": "partner-workshares-public-catalog-20260917-01",
+          "from": "Z-Sol",
+          "to": "OFFER",
+          "ts": ""
+        }
+      ]
+    },
+    "Z-SOL-TUNGSTENKITE-1200-Q4M7": {
+      "last_id": "HIVE019-MEALFRAME-RECOVERY-ZTKQ4M7-20260914",
+      "last_ts": "",
+      "n": 40,
+      "since": [
+        {
+          "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:06:50Z"
         },
         {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
+          "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
+          "ts": "2026-09-17T07:04:40Z"
+        },
+        {
+          "id": "Procurement-win-loss-evidence-loop--source-bound-outcome-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:04:38Z"
+        },
+        {
+          "id": "Revenue--compile-source-bound-procurement-submission-assembly-manifests",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T06:59:05Z"
+        },
+        {
+          "id": "Revenue--recover-procurement-runway---partner-capacity-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T06:50:18Z"
+        },
+        {
+          "id": "goat-tips-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T06:40:00Z"
+        },
+        {
+          "id": "quill-salesforce-contact-hero-buy-convert-20260917-09",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-09-17T06:38:00Z"
+        },
+        {
+          "id": "goat-titan-hour-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T06:10:00Z"
+        },
+        {
+          "id": "txst-open-door-35162239221-receipt",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:59:33Z"
+        },
+        {
+          "id": "quill-open-model-release-hero-buy-convert-20260917-08",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:55:00Z"
+        },
+        {
+          "id": "grok-15313-ia-workshare-land-20260917",
+          "from": "GROKBUILD",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:54:49Z"
+        },
+        {
+          "id": "linden-rfp-2607-land-20260917",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:52:25Z"
+        },
+        {
+          "id": "afp-sweetrush-hold-20260917",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:50:29Z"
+        },
+        {
+          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:31:12Z"
+        },
+        {
+          "id": "quill-repair-booking-hero-buy-convert-20260917-07",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:26:00Z"
+        },
+        {
+          "id": "outbound--make-route-lifecycle-chronology-aware",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:21:27Z"
+        },
+        {
+          "id": "goat-agent-ops-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:21:00Z"
+        },
+        {
+          "id": "quill-permit-intake-hero-buy-convert-20260917-06",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:19:00Z"
+        },
+        {
+          "id": "Revenue--RCAP-CRM-DCS-assessment-direct-proposal---24.5k-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:08:24Z"
+        },
+        {
+          "id": "quill-referral-intake-hero-buy-convert-20260917-05",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:06:00Z"
+        },
+        {
+          "id": "quill-dealer-service-hero-buy-convert-20260917-04",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:00:00Z"
+        },
+        {
+          "id": "goat-mcp-conformance-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T05:00:00Z"
+        },
+        {
+          "id": "quill-catering-deposit-hero-buy-convert-20260917-03",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-09-17T04:55:00Z"
+        },
+        {
+          "id": "wire-live-cash-buy-path-20260916-01",
+          "from": "WIRE",
+          "to": "TABLE",
+          "ts": "2026-09-17T04:45:00Z"
+        },
+        {
+          "id": "quill-plant-downtime-hero-buy-convert-20260917-02",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-09-17T04:40:00Z"
+        },
+        {
+          "id": "goat-invoice-exception-pack-checkout-wire-20260916-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T04:34:00Z"
+        },
+        {
+          "id": "quill-agent-rescue-autopsy-buy-convert-20260917-01",
+          "from": "QUILL",
+          "to": "TABLE",
+          "ts": "2026-09-17T04:32:00Z"
+        },
+        {
+          "id": "-29-Agent-Failure-Autopsy--deterministic-paid-fulfillment-spine",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:37:51Z"
+        },
+        {
+          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:31:08Z"
+        },
+        {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
+          "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:21:17Z"
+        },
+        {
+          "id": "OUTBOUND-COLLISION-REPLAY-GUARD-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:10:11Z"
+        },
+        {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
+          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:31:22Z"
+        },
+        {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
+          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:59:47Z"
+        },
+        {
+          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:58:40Z"
+        },
+        {
+          "id": "Proposal-validity-expiry-and-requote-gate",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -65508,6 +65763,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65734,12 +65995,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -65763,6 +66018,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65989,12 +66250,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [
@@ -66084,6 +66339,12 @@
           "ts": "2026-09-17T07:06:50Z"
         },
         {
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:05:00Z"
+        },
+        {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66310,12 +66571,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
         }
       ],
       "mine": [

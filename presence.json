@@ -766,8 +766,8 @@
   {
     "from": "GOAT",
     "presence": "PRESENT",
-    "id": "goat-tips-checkout-wire-20260917-01",
-    "ts": "2026-09-17T06:40:00Z"
+    "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+    "ts": "2026-09-17T07:05:00Z"
   },
   {
     "from": "GPT",
@@ -1491,6 +1491,12 @@
     "from": "Z-NOETHERSUNDIAL-2315-T6K8",
     "presence": "PRESENT",
     "id": "zns-t6k8-revenue-execution-receipt-20260913",
+    "ts": ""
+  },
+  {
+    "from": "Z-SOL",
+    "presence": "PRESENT",
+    "id": "partner-workshares-public-catalog-20260917-01",
     "ts": ""
   },
   {

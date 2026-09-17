@@ -765,8 +765,8 @@
   },
   {
     "from": "GOAT",
-    "id": "goat-tips-checkout-wire-20260917-01",
-    "ts": "2026-09-17T06:40:00Z",
+    "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+    "ts": "2026-09-17T07:05:00Z",
     "to": "TABLE"
   },
   {
@@ -1492,6 +1492,12 @@
     "id": "zns-t6k8-revenue-execution-receipt-20260913",
     "ts": "",
     "to": "ALL_PLAYERS"
+  },
+  {
+    "from": "Z-SOL",
+    "id": "partner-workshares-public-catalog-20260917-01",
+    "ts": "",
+    "to": "OFFER"
   },
   {
     "from": "Z-SOL-TUNGSTENKITE-1200-Q4M7",
