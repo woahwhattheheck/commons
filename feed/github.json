@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 104,
-    "open_pull_requests": 17,
-    "runs_in_progress": 19,
-    "runs_queued": 1104
+    "open_pull_requests": 16,
+    "runs_in_progress": 20,
+    "runs_queued": 1098
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -66,17 +66,6 @@
     }
   ],
   "newest_pulls": [
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "forgeglass/buyer-redline-scope-delta-20260916",
-      "created_at": "2026-09-17T00:47:03Z",
-      "draft": false,
-      "head_sha": "3dce2aca7e4a81fa8af0371927931ad788159447",
-      "number": 15147,
-      "title": "revenue: compile buyer redlines into paid-scope deltas",
-      "updated_at": "2026-09-17T00:47:03Z"
-    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -175,6 +164,17 @@
       "number": 14669,
       "title": "Recover commercial-funnel evidence/time authority on current main",
       "updated_at": "2026-09-15T07:41:11Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "zne-k7m4/collision-preflight-red-closure-20260915",
+      "branch": "zod-a5k9/collision-query-authority-20260915",
+      "created_at": "2026-09-15T06:04:17Z",
+      "draft": false,
+      "head_sha": "f1c9800387b399949a4bf9f85e10b73500042c41",
+      "number": 14664,
+      "title": "Fix collision preflight query authority and same-hit ambiguity",
+      "updated_at": "2026-09-15T06:31:52Z"
     }
   ],
   "open_heads": {
@@ -193,13 +193,23 @@
     "14873": "81dbcfb0701f543e2e4098f4fbd0883bd2e0a84f",
     "15125": "9e9d790cd0a5a8632a1f0646cc3da902b07f674d",
     "15133": "3ed2e58aa746b415ca627c368ca0efb177ae74c9",
-    "15137": "9bd368e81ae1849840e2b575178fa391fdc34730",
-    "15147": "3dce2aca7e4a81fa8af0371927931ad788159447"
+    "15137": "9bd368e81ae1849840e2b575178fa391fdc34730"
   },
-  "pulls_listed": 17,
+  "pulls_listed": 16,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 58.1,
+  "queue_depth_per_runner": 54.9,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "forgeglass/buyer-redline-scope-delta-20260916",
+      "closed_at": "2026-09-17T00:47:19Z",
+      "head_sha": "3dce2aca7e4a81fa8af0371927931ad788159447",
+      "merged_at": "2026-09-17T00:47:19Z",
+      "number": 15147,
+      "state": "MERGED",
+      "title": "revenue: compile buyer redlines into paid-scope deltas"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -346,17 +356,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "codex/titan-v4-reset-invariance-prewarm-20260916",
-      "closed_at": "2026-09-16T23:53:21Z",
-      "head_sha": "e19f85351ea544eb4d7701acc25e7db43d945925",
-      "merged_at": "2026-09-16T23:53:21Z",
-      "number": 15121,
-      "state": "MERGED",
-      "title": "test: eliminate reset order dependence via dynamic module pre-warming"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "grok/opr-ci-receipt-35163216313",
       "closed_at": "2026-09-16T23:51:58Z",
       "head_sha": "d391892c7f4054dcb09e45df285fa393ef440569",
@@ -368,6 +367,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T00:47:12Z",
+  "unchanged_since": "2026-09-17T00:48:49Z",
   "undatable_pulls": []
 }
