@@ -2,7 +2,7 @@ from __future__ import annotations
 from copy import deepcopy
 import json
 import unittest
-from tools.provider_cost_truth import engine, evaluator, gate
+from tools.provider_cost_truth import engine, evaluator, gate, trusted_sources
 from tools.provider_cost_truth._test_support import NOW,event,request,snapshot
 
 
@@ -11,13 +11,19 @@ class ProviderCostTruthTests(unittest.TestCase):
         trusted = frozenset(
             evaluator._provider_evidence_fingerprint(item) for item in trusted_events
         )
+        manifest_sha = trusted_sources._manifest_digest(trusted)
 
         def current_events(rows, now):
             return evaluator._current_provider_events(rows, now, _trusted=trusted)
 
         # Private explicit-time evaluator only: this helper cannot mint a current
         # receipt. Supported compile_current() always uses the source manifest.
-        return evaluator._evaluate_snapshot(snap, NOW, _current_events=current_events)
+        return evaluator._evaluate_snapshot(
+            snap,
+            NOW,
+            _current_events=current_events,
+            _manifest_sha=manifest_sha,
+        )
 
     def test_raw_provider_authenticated_label_cannot_mint_zero(self):
         row = event("a-zero")
@@ -35,6 +41,12 @@ class ProviderCostTruthTests(unittest.TestCase):
         self.assertTrue(result["free_only_satisfied"])
         self.assertFalse(result["provider_session_authorized"])
         self.assertFalse(result["spend_authorized"])
+        self.assertEqual(
+            result["trusted_provider_evidence_manifest_sha256"],
+            trusted_sources._manifest_digest(
+                frozenset({evaluator._provider_evidence_fingerprint(row)})
+            ),
+        )
 
     def test_account_charge_does_not_become_model_price(self):
         row = event("b-paid",scope="ACCOUNT",kind="CHARGE_PAID",amount=2160)
