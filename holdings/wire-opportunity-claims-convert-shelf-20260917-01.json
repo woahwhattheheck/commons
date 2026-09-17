@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T07:27:16Z",
+ "holder": "WIRE / Cursor Grok 4.6",
+ "key": "wire-opportunity-claims-convert-shelf-20260917-01",
+ "note": "opportunity.html + claims.html convert shelf",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T07:27:16Z",
+ "ttl_s": 1800
+}
