@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Build-genuine-human-inbound---owner-close-desk",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T18:51:41Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "quill-autopsy-sell-receipt-ship-20260917-01",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": "ACTION",
       "to": "TOOLS",
       "ts": "2026-09-17T08:38:25Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue--TDEM-RFP-1548-Euna-Grants-migration-integration-acceptance-workshare",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T08:37:06Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "5b55855b78c1b98f5e247a2152c5ce067bc3b90137a1e831cea5509e350cd25c",
+  "digest": "cc3e6a90f7d113eae58d2e47e806b4096339d53f88c1f9fe85966f050dd86bbb",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12824,
-    "pulse_seq": 2024,
-    "sha": "a3e3751d51eeb0521b68325fa8ded995cb523bbc"
+    "post_count": 12825,
+    "pulse_seq": 2026,
+    "sha": "f5e52e245d25e9f669acd81d3c41bd810dd13654"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T18:49:37Z",
+  "now": "2026-09-17T18:58:35Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4868,18 +4868,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "quill-autopsy-sell-receipt-ship-20260917-01",
+          "id": "Build-genuine-human-inbound---owner-close-desk",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "quill-autopsy-sell-receipt-ship-20260917-01",
+      "id": "Build-genuine-human-inbound---owner-close-desk",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T18:27:07Z"
+      "ts": "2026-09-17T18:51:41Z"
     },
     {
       "claim": "VECTOR-RELAY",
