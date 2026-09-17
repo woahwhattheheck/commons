@@ -127,6 +127,8 @@ CONVERT_SHELF_LIVE_BUYS = {
     "eagletrax-split-sample-preflight-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "elevatebio-pittsburgh-replication-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "highpower-ssf-receiving-gate-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "kincell-rtp-qc-release-bridge-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "lexington-mrf-diversion-gate.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -231,6 +233,8 @@ PUBLIC_HTML = (
     "eagletrax-split-sample-preflight-lims.html",
     "elevatebio-pittsburgh-replication-lims.html",
     "highpower-ssf-receiving-gate-lims.html",
+    "kincell-rtp-qc-release-bridge-lims.html",
+    "lexington-mrf-diversion-gate.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
