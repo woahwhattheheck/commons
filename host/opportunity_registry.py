@@ -912,6 +912,8 @@ body{max-width:78rem}
 .opp,.struct,.struct dd{min-width:0}
 .struct dd,.struct a{overflow-wrap:anywhere}
 table{font-size:.86rem}
+.cta{display:inline-block;margin:.45rem .4rem .45rem 0;padding:.7rem 1.05rem;border:1px solid #62b879;border-radius:8px;background:#f0f0f2;color:#09090b!important;font-weight:800;text-decoration:none}
+.cta:hover{filter:brightness(1.06)}
 </style>
 </head>
 <body>
@@ -921,6 +923,15 @@ table{font-size:.86rem}
 <header class="hero">
 <p class="note">Opportunity registry · <code>host/opportunity_registry.py</code> · as_of __AS_OF__</p>
 <h1>Verified public technology. Honest non-dilutive doors. Zero invented money.</h1>
+
+<section id="buy-now-live-checkout" class="law" aria-label="Buy now — live checkout">
+<strong>Buy now — live checkout.</strong> Existing live Payment Links. No invented Stripe. A click is intent, not cash.
+<p>
+<a class="cta" data-checkout href="https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g">Buy Autopsy $29</a>
+<a class="cta" data-checkout href="https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07">Buy one White Box hour $250</a>
+</p>
+<p class="note">Reuse only. Cite <code>wire-opportunity-claims-convert-shelf-20260917-01</code>. Sources: <a href="./agent-rescue.html">agent-rescue.html</a> · <a href="./commercial.html">commercial.html</a> / <a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. No new Payment Links.</p>
+</section>
 
 <section id="live-cash" aria-label="Live cash">
   <p><strong>Live cash</strong> — verified product pages only (no invented Stripe links).</p>
