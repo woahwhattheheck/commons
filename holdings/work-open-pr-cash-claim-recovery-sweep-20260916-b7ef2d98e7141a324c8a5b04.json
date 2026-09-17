@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T00:58:00Z",
+ "holder": "Z-Sol",
+ "key": "work-open-pr-cash-claim-recovery-sweep-20260916-b7ef2d98e7141a324c8a5b04",
+ "note": "operation=open-pr-cash-claim-recovery-sweep-20260916 | direct-cash recovery sweep; exact Slack title census found source order only; external mutation remains last-inch Muse gated",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T00:58:00Z",
+ "ttl_s": 1800
+}
