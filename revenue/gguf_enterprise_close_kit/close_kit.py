@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import importlib.util
 import json
 import math
 import re
@@ -27,6 +28,20 @@ TERMS_SHA256 = "1c0756062563415e551587a5f1ab22147366d406135de6c45ccbd3a562985730
 ACCEPTANCE_IDS = ("AT1", "AT2", "AT3", "AT4", "AT5", "AT6")
 CASE_RE = re.compile(r"^[a-z0-9][a-z0-9._-]{2,63}$")
 SHA_RE = re.compile(r"^[0-9a-f]{64}$")
+URL_RE = re.compile(r"https?://", re.IGNORECASE)
+
+# Reuse the canonical GGUF revenue rail's fail-closed DLP implementation rather
+# than inventing a weaker sibling regex. The helper is bound once from the exact
+# repository source and the module handle is discarded; every free-text value
+# retained in a public packet is checked before packet construction.
+_DLP_PATH = Path(__file__).resolve().parents[2] / "host" / "revenue_recovery.py"
+_DLP_SPEC = importlib.util.spec_from_file_location("gguf_close_kit_canonical_dlp", _DLP_PATH)
+if _DLP_SPEC is None or _DLP_SPEC.loader is None:  # pragma: no cover - repo contract
+    raise ImportError(f"cannot load canonical revenue DLP from {_DLP_PATH}")
+_dlp_module = importlib.util.module_from_spec(_DLP_SPEC)
+_DLP_SPEC.loader.exec_module(_dlp_module)
+_CANONICAL_DLP = _dlp_module.contains_sensitive_value
+del _dlp_module, _DLP_SPEC
 
 
 class InputError(ValueError):
@@ -89,6 +104,12 @@ def _text(value: Any, where: str, *, max_len: int = 500) -> str:
     stripped = value.strip()
     if not stripped or len(stripped) > max_len or any(ord(ch) < 32 and ch not in "\t\n" for ch in stripped):
         raise InputError(f"{where} must be nonempty safe text <= {max_len} chars")
+    # Public close-kit text is descriptive metadata, never a transport for
+    # contacts, URLs, credentials, payment data, model bytes, or other secrets.
+    # Disallow URLs outright and apply the canonical revenue-pipeline DLP to
+    # every admitted free-text value even when caller privacy booleans are false.
+    if URL_RE.search(stripped) or _CANONICAL_DLP(stripped):
+        raise InputError(f"{where} contains forbidden sensitive/private content")
     return stripped
 
 
@@ -408,8 +429,7 @@ def render_markdown(packet: dict[str, Any]) -> str:
 def _write_exclusive(path: Path, text: str) -> None:
     if path.exists() or path.is_symlink():
         raise InputError(f"exclusive create refused: {path}")
-    flags = "x"
-    with path.open(flags, encoding="utf-8", newline="\n") as handle:
+    with path.open("x", encoding="utf-8", newline="\n") as handle:
         handle.write(text)
 
 
