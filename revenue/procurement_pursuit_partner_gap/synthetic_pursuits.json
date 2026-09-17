@@ -32,7 +32,7 @@
           "required_proof_kind": "CAPABILITY_PROOF",
           "requirement_id": "fixture-req-cloud",
           "text": "Buyer requires demonstrated cloud delivery capability.",
-          "text_sha256": "a79c773e8caf9514a006f85e52acf99cc7d9f5b3b64bbd2337ac9855360648b6"
+          "text_sha256": "b24da49318a344fd4e7fe732548023bfd8624c4e14e8b590b2138c3ba7f7f9d4"
         }
       ],
       "source": {
@@ -61,7 +61,7 @@
           "required_proof_kind": "REFERENCE_PERMISSION_RECEIPT",
           "requirement_id": "fixture-req-reference",
           "text": "Buyer requires a permissioned enterprise reference.",
-          "text_sha256": "6d923704d3a80733660650ad08e419f18b48aa207cf01f427c2a08a2a1d8113a"
+          "text_sha256": "45a912ca861b1569f2ceb18f8898b5916a7244bd0ecd071ef413b8aae127bcda"
         }
       ],
       "source": {
@@ -90,7 +90,7 @@
           "required_proof_kind": "ACCEPTED_SLA_RECEIPT",
           "requirement_id": "fixture-req-sla",
           "text": "Buyer requires a retained service-level commitment.",
-          "text_sha256": "2f8da6f562bc0a1f52ecb96751e775486698fab2a3463ad159c707a7c4ced46c"
+          "text_sha256": "a31bad405264ba07cc0943c618af85bbf338c5597ba53f0c59e91bec754ade95"
         }
       ],
       "source": {
