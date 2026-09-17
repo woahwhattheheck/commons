@@ -30,6 +30,10 @@ def packet(name: str) -> dict:
     }
 
 
+def _refresh_source(raw: dict) -> None:
+    raw["outcome_receipt"] = compile_record(raw["outcome_record"])
+
+
 class ProcurementLossRemediationTests(unittest.TestCase):
     def test_stated_buyer_reason_produces_actionable_gap(self):
         receipt = compile_plan(packet("stated_loss"))
@@ -61,10 +65,11 @@ class ProcurementLossRemediationTests(unittest.TestCase):
         self.assertEqual(receipt["source_outcome"], "LOST")
         self.assertEqual(receipt["status"], "ACTIONABLE_GAPS")
         self.assertEqual(receipt["buyer_reasons"], [])
-        self.assertEqual(
-            receipt["internal_hypotheses"][0]["attribution"],
-            "INTERNAL_HYPOTHESIS_NOT_BUYER_FACT",
-        )
+        hypothesis = receipt["internal_hypotheses"][0]
+        self.assertEqual(hypothesis["attribution"], "INTERNAL_HYPOTHESIS_NOT_BUYER_FACT")
+        self.assertTrue(hypothesis["basis_valid"])
+        self.assertEqual(hypothesis["bound_evidence"][0]["evidence_status"], "CURRENT")
+        self.assertEqual(hypothesis["bound_evidence"][0]["mapped_outcome"], "LOST")
         self.assertTrue(receipt["remediation_gaps"][0]["basis_valid"])
 
     def test_pending_source_holds_before_remediation(self):
@@ -101,12 +106,129 @@ class ProcurementLossRemediationTests(unittest.TestCase):
             any(reason.startswith("buyer_reason_evidence_mapped_more_than_once:") for reason in receipt["hold_reasons"])
         )
 
-    def test_hypothesis_must_reference_retained_source_evidence(self):
+    def test_hypothesis_must_bind_exact_source_digest(self):
         raw = packet("unknown_reason_internal_hypothesis")
-        raw["internal_hypotheses"][0]["evidence_ids"] = ["not-in-source"]
+        raw["internal_hypotheses"][0]["evidence_basis"][0]["source_digest_sha256"] = "9" * 64
         receipt = compile_plan(raw)
         self.assertEqual(receipt["status"], "HOLD_CONTRADICTION")
-        self.assertIn("hypothesis_unknown_evidence:hyp-runway", receipt["hold_reasons"])
+        self.assertFalse(receipt["internal_hypotheses"][0]["basis_valid"])
+        self.assertIn(
+            "hypothesis_evidence_binding_mismatch:hyp-runway:notice-002",
+            receipt["hold_reasons"],
+        )
+
+    def test_hypothesis_must_bind_exact_observed_at(self):
+        raw = packet("unknown_reason_internal_hypothesis")
+        raw["internal_hypotheses"][0]["evidence_basis"][0]["observed_at"] = "2026-09-17T11:29:59Z"
+        receipt = compile_plan(raw)
+        self.assertEqual(receipt["status"], "HOLD_CONTRADICTION")
+        self.assertFalse(receipt["internal_hypotheses"][0]["basis_valid"])
+
+    def test_hypothesis_must_reference_retained_source_evidence(self):
+        raw = packet("unknown_reason_internal_hypothesis")
+        raw["internal_hypotheses"][0]["evidence_basis"][0]["evidence_id"] = "not-in-source"
+        receipt = compile_plan(raw)
+        self.assertEqual(receipt["status"], "HOLD_CONTRADICTION")
+        self.assertIn(
+            "hypothesis_unknown_evidence:hyp-runway:not-in-source",
+            receipt["hold_reasons"],
+        )
+
+    def test_noncurrent_fact_cannot_support_actionable_hypothesis_gap(self):
+        raw = packet("stated_loss")
+        raw["outcome_record"]["evidence"].append(
+            {
+                "evidence_id": "old-signal",
+                "bound_opportunity_id": "SYNTH-LOSS-001",
+                "source_kind": "OWNER_LEDGER",
+                "source_digest_sha256": "5" * 64,
+                "observed_at": "2026-09-17T10:00:00Z",
+                "captured_at": "2026-09-17T10:05:00Z",
+                "evidence_status": "WITHDRAWN",
+                "redacted": True,
+                "decision_signal": "PENDING",
+                "rationale": {"status": "UNKNOWN"},
+            }
+        )
+        _refresh_source(raw)
+        raw["internal_hypotheses"] = [
+            {
+                "hypothesis_id": "hyp-old",
+                "text": "Historical process friction may be worth a separate internal experiment.",
+                "confidence": "LOW",
+                "evidence_basis": [
+                    {
+                        "evidence_id": "old-signal",
+                        "source_digest_sha256": "5" * 64,
+                        "observed_at": "2026-09-17T10:00:00Z",
+                    }
+                ],
+            }
+        ]
+        raw["remediation_gaps"].append(
+            {
+                "gap_id": "gap-old",
+                "version": 1,
+                "gap_kind": "PROCESS",
+                "rail": "DELIVERY_PROCESS",
+                "basis_type": "INTERNAL_HYPOTHESIS",
+                "basis_id": "hyp-old",
+                "action": "Test the process signal separately before changing pursuit policy.",
+            }
+        )
+        receipt = compile_plan(raw)
+        self.assertEqual(receipt["source_outcome"], "LOST")
+        self.assertEqual(receipt["status"], "HOLD_CONTRADICTION")
+        self.assertFalse(receipt["internal_hypotheses"][0]["basis_valid"])
+        self.assertFalse(next(row for row in receipt["remediation_gaps"] if row["gap_id"] == "gap-old")["basis_valid"])
+        self.assertIn("hypothesis_noncurrent_evidence:hyp-old:old-signal", receipt["hold_reasons"])
+
+    def test_current_pending_fact_cannot_support_actionable_hypothesis_gap(self):
+        raw = packet("stated_loss")
+        raw["outcome_record"]["evidence"].append(
+            {
+                "evidence_id": "pending-signal",
+                "bound_opportunity_id": "SYNTH-LOSS-001",
+                "source_kind": "OWNER_LEDGER",
+                "source_digest_sha256": "6" * 64,
+                "observed_at": "2026-09-17T10:00:00Z",
+                "captured_at": "2026-09-17T10:05:00Z",
+                "evidence_status": "CURRENT",
+                "redacted": True,
+                "decision_signal": "PENDING",
+                "rationale": {"status": "UNKNOWN"},
+            }
+        )
+        _refresh_source(raw)
+        raw["internal_hypotheses"] = [
+            {
+                "hypothesis_id": "hyp-pending",
+                "text": "An earlier open process signal may be worth retaining as non-causal context.",
+                "confidence": "LOW",
+                "evidence_basis": [
+                    {
+                        "evidence_id": "pending-signal",
+                        "source_digest_sha256": "6" * 64,
+                        "observed_at": "2026-09-17T10:00:00Z",
+                    }
+                ],
+            }
+        ]
+        raw["remediation_gaps"].append(
+            {
+                "gap_id": "gap-pending",
+                "version": 1,
+                "gap_kind": "PROCESS",
+                "rail": "DELIVERY_PROCESS",
+                "basis_type": "INTERNAL_HYPOTHESIS",
+                "basis_id": "hyp-pending",
+                "action": "Keep the pending signal non-actionable until terminal evidence exists.",
+            }
+        )
+        receipt = compile_plan(raw)
+        self.assertEqual(receipt["source_outcome"], "LOST")
+        self.assertEqual(receipt["status"], "HOLD_CONTRADICTION")
+        self.assertIn("hypothesis_nonterminal_evidence:hyp-pending:pending-signal", receipt["hold_reasons"])
 
     def test_gap_cannot_cross_to_unknown_basis(self):
         raw = packet("unknown_reason_internal_hypothesis")
@@ -127,9 +249,15 @@ class ProcurementLossRemediationTests(unittest.TestCase):
         with self.assertRaisesRegex(RemediationError, "contact/locator-shaped"):
             compile_plan(raw)
 
-    def test_private_locator_shaped_action_is_rejected(self):
+    def test_private_slash_phone_action_is_rejected(self):
         raw = packet("unknown_reason_internal_hypothesis")
-        raw["remediation_gaps"][0]["action"] = "Call 555-123-4567 before scoring the next pursuit."
+        raw["remediation_gaps"][0]["action"] = "Call 555/123/4567 before scoring the next pursuit."
+        with self.assertRaisesRegex(RemediationError, "contact/locator-shaped"):
+            compile_plan(raw)
+
+    def test_private_colon_phone_action_is_rejected(self):
+        raw = packet("unknown_reason_internal_hypothesis")
+        raw["remediation_gaps"][0]["action"] = "Escalate via 555:123:4567 before scoring the next pursuit."
         with self.assertRaisesRegex(RemediationError, "contact/locator-shaped"):
             compile_plan(raw)
 
@@ -167,13 +295,19 @@ class ProcurementLossRemediationTests(unittest.TestCase):
             "rationale": {"status": "UNKNOWN"},
         }
         left["outcome_record"]["evidence"].append(second)
-        left["outcome_receipt"] = compile_record(left["outcome_record"])
+        _refresh_source(left)
         left["internal_hypotheses"] = [
             {
                 "hypothesis_id": "hyp-secondary",
                 "text": "A retained internal signal may justify a separate qualification experiment.",
                 "confidence": "LOW",
-                "evidence_ids": ["notice-001b"],
+                "evidence_basis": [
+                    {
+                        "evidence_id": "notice-001b",
+                        "source_digest_sha256": "4" * 64,
+                        "observed_at": "2026-09-17T10:30:00Z",
+                    }
+                ],
             }
         ]
         left["remediation_gaps"].append(
@@ -190,7 +324,7 @@ class ProcurementLossRemediationTests(unittest.TestCase):
 
         right = copy.deepcopy(left)
         right["outcome_record"]["evidence"].reverse()
-        right["outcome_receipt"] = compile_record(right["outcome_record"])
+        _refresh_source(right)
         right["buyer_reason_mappings"].reverse()
         right["internal_hypotheses"].reverse()
         right["remediation_gaps"].reverse()
