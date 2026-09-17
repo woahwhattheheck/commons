@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import stat
 import tempfile
 import unittest
 from pathlib import Path
@@ -109,8 +110,6 @@ class FreshnessCustodyRecoveryTests(unittest.TestCase):
                         packet_path.write_bytes(b"X" * len(packet_bytes))
                 return real_fsync(fd)
 
-            import stat as stat_mod
-            globals_stat = stat_mod
             with mock.patch.object(cli_module.os, "fsync", side_effect=hostile_fsync):
                 with self.assertRaisesRegex(GateError, "output_final_replaced"):
                     _write_new_set(
