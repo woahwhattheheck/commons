@@ -1,14 +1,12 @@
 {
   "counts": {
-    "open_issues": 93,
-    "open_pull_requests": 12,
-    "runs_in_progress": 18,
-    "runs_queued": 1552
+    "open_issues": 91,
+    "open_pull_requests": 16,
+    "runs_in_progress": 19,
+    "runs_queued": 1689
   },
   "counts_source": "graphql",
-  "degraded": [
-    "open-count-below-listing"
-  ],
+  "degraded": [],
   "drafts": 1,
   "longest_open": [
     {
@@ -50,10 +48,10 @@
       "branch": "z-cairn/rule30-period2-frontier-20260917-01",
       "created_at": "2026-09-17T05:53:24Z",
       "draft": false,
-      "head_sha": "232d4b35b9355ca9cec6e48c50b47ce6b67e4d3f",
+      "head_sha": "4462b5e5a1724fe4dddd5631aa0c45d822f4eb35",
       "number": 15318,
       "title": "Rule 30: exact period-two trace frontier and bounded fiber engine",
-      "updated_at": "2026-09-17T06:56:10Z"
+      "updated_at": "2026-09-17T07:35:46Z"
     },
     {
       "author": "woahwhattheheck",
@@ -61,56 +59,111 @@
       "branch": "zsb0240/human-reply-postmerge-red-closure-20260917",
       "created_at": "2026-09-17T07:01:09Z",
       "draft": false,
-      "head_sha": "e1df1aa41a6e0498ab923de06494b3f9815deccd",
+      "head_sha": "378c76cec7b32637ae9c45cb7c2dabf63256d8b9",
       "number": 15346,
       "title": "Human workshare: close post-merge commercial-truth RED",
-      "updated_at": "2026-09-17T07:12:23Z"
+      "updated_at": "2026-09-17T07:32:08Z"
     }
   ],
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zsol/partner-workshare-catalog-20260917",
-      "created_at": "2026-09-17T07:16:54Z",
+      "branch": "zfa0302/provider-route-retained-ci-postmerge-20260917",
+      "created_at": "2026-09-17T07:34:46Z",
       "draft": false,
-      "head_sha": "8ba47bc182b186bc5d629d9c975965c3615e7342",
-      "number": 15372,
-      "title": "SELL: publish prime / partner paid-workshare catalog",
-      "updated_at": "2026-09-17T07:16:54Z"
+      "head_sha": "7cb915f39c5e4da18ded542d85b87e633f007f29",
+      "number": 15397,
+      "title": "Retain provider-route authority tests in Commons battery",
+      "updated_at": "2026-09-17T07:35:22Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zbf-0253/procurement-win-loss-evidence-loop",
-      "created_at": "2026-09-17T07:15:08Z",
+      "branch": "zat-0310/muse-v2-closeout-14503",
+      "created_at": "2026-09-17T07:34:29Z",
       "draft": false,
-      "head_sha": "72f0c69999d7d108ebd0ee229f0e5780ab314974",
-      "number": 15369,
-      "title": "Build source-bound procurement win/loss evidence loop",
-      "updated_at": "2026-09-17T07:15:08Z"
+      "head_sha": "2c2ddd172a72029913750cfb8670f36d2c8378bc",
+      "number": 15394,
+      "title": "Close canonical Muse v2 migration and CI acceptance",
+      "updated_at": "2026-09-17T07:34:29Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-sol/provider-route-authority-20260917",
-      "created_at": "2026-09-17T07:14:12Z",
+      "branch": "zcv-0306/procurement-winloss-subsecond-20260917",
+      "created_at": "2026-09-17T07:33:28Z",
       "draft": false,
-      "head_sha": "1841d9acfde99ffa8e3bae70e3a4ecaab3c8d57a",
-      "number": 15368,
-      "title": "Revenue: make provider/mailbox truth authoritative for outbound routes",
-      "updated_at": "2026-09-17T07:15:21Z"
+      "head_sha": "30910ec44fa307478f73ddad01a133f56e348402",
+      "number": 15392,
+      "title": "Procurement win/loss: fail closed on sub-second chronology",
+      "updated_at": "2026-09-17T07:35:51Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zrh-0244/trafficflowbench-receipt-semantic-closure-20260917",
-      "created_at": "2026-09-17T07:11:39Z",
+      "branch": "cursor/commerce-agents-convert-shelf-90d4",
+      "created_at": "2026-09-17T07:32:02Z",
       "draft": false,
-      "head_sha": "06cd619e2be3103610651474d41e39ff1a8cf95d",
-      "number": 15363,
-      "title": "TrafficFlowBench: make submission receipts exact-recompile evidence",
-      "updated_at": "2026-09-17T07:16:32Z"
+      "head_sha": "f8cbaa16d9ed630207d4fbd45141f3b351d70456",
+      "number": 15391,
+      "title": "TYPE: wire existing live buys onto commerce-agents.html and commerce-agents-loop.html",
+      "updated_at": "2026-09-17T07:32:02Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zqb-0318/muse-slack-provider-auth-v1-14503",
+      "created_at": "2026-09-17T07:26:04Z",
+      "draft": false,
+      "head_sha": "9a37337c911b5fca65f7fafa785e6daa2047f28b",
+      "number": 15385,
+      "title": "Outbound: authenticate Muse Slack provider evidence without minting send authority",
+      "updated_at": "2026-09-17T07:39:33Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "sol-z/accepted-work-to-cash-reconciler-20260917",
+      "created_at": "2026-09-17T07:25:18Z",
+      "draft": false,
+      "head_sha": "93a23d76b2cdf115c7d3d36f338d9fcec43f86b7",
+      "number": 15384,
+      "title": "Add accepted-work-to-cash terminal action reconciler",
+      "updated_at": "2026-09-17T07:32:22Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol/hamilton-15362-authority-fixforward-20260917",
+      "created_at": "2026-09-17T07:23:10Z",
+      "draft": false,
+      "head_sha": "67ea52d849be72b4c348f7e09356d61e25a17ba2",
+      "number": 15382,
+      "title": "Fix Hamilton pursuit evidence, deadline, and semantic receipt authority",
+      "updated_at": "2026-09-17T07:30:35Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol/real-remax-cutover-recovery-20260917",
+      "created_at": "2026-09-17T07:21:48Z",
+      "draft": false,
+      "head_sha": "9d35c8bf48ff2ca7315f72dbd599a163a7beb545",
+      "number": 15380,
+      "title": "Revenue: recover Real/REMAX cutover evidence core (#13800)",
+      "updated_at": "2026-09-17T07:41:04Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zeta-sol/owner-now-postmerge-gate-20260917",
+      "created_at": "2026-09-17T07:21:39Z",
+      "draft": false,
+      "head_sha": "28e6c4b0e358ec6ae391559ed7e8fe6000ed680f",
+      "number": 15378,
+      "title": "Fix owner-now static checkout authority after #15364",
+      "updated_at": "2026-09-17T07:23:47Z"
     },
     {
       "author": "woahwhattheheck",
@@ -118,254 +171,202 @@
       "branch": "zsol/invest-appalachia-postmerge-red-rejoin-20260917",
       "created_at": "2026-09-17T07:08:27Z",
       "draft": false,
-      "head_sha": "5ef12f0c589316e6a18a725b1e48c88beb929c21",
+      "head_sha": "df8dc7c13f7accf0218f445db4351a8c49a8da76",
       "number": 15359,
       "title": "Fix Invest Appalachia attachment recovery resource bounds",
-      "updated_at": "2026-09-17T07:16:40Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/human-reply-workshare-postmerge-red-20260917",
-      "created_at": "2026-09-17T07:06:29Z",
-      "draft": false,
-      "head_sha": "e852acc8602a52e148b09e609f3569bcf61a34b7",
-      "number": 15356,
-      "title": "Fix live human-reply workshare commercial-claim and receipt gaps",
-      "updated_at": "2026-09-17T07:09:41Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "znf-0242/procurement-runway-67-slot-repair-20260917",
-      "created_at": "2026-09-17T07:05:30Z",
-      "draft": false,
-      "head_sha": "a5c3ae869b42e70f0e0cc4559b3fa2719d771e6d",
-      "number": 15355,
-      "title": "CI: keep procurement runway gate inside the retained 67-slot surface",
-      "updated_at": "2026-09-17T07:16:50Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-vectorforge/trafficflowbench-2026-recovery-20260917",
-      "created_at": "2026-09-17T07:02:44Z",
-      "draft": false,
-      "head_sha": "709e8fe75a67c95fe9d9718be8f06aa5c4915829",
-      "number": 15349,
-      "title": "Recover TrafficFlowBench 2026 source-safe competition carrier",
-      "updated_at": "2026-09-17T07:13:39Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsb0240/human-reply-postmerge-red-closure-20260917",
-      "created_at": "2026-09-17T07:01:09Z",
-      "draft": false,
-      "head_sha": "e1df1aa41a6e0498ab923de06494b3f9815deccd",
-      "number": 15346,
-      "title": "Human workshare: close post-merge commercial-truth RED",
-      "updated_at": "2026-09-17T07:12:23Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-cairn/rule30-period2-frontier-20260917-01",
-      "created_at": "2026-09-17T05:53:24Z",
-      "draft": false,
-      "head_sha": "232d4b35b9355ca9cec6e48c50b47ce6b67e4d3f",
-      "number": 15318,
-      "title": "Rule 30: exact period-two trace frontier and bounded fiber engine",
-      "updated_at": "2026-09-17T06:56:10Z"
+      "updated_at": "2026-09-17T07:32:12Z"
     }
   ],
   "open_heads": {
     "15266": "27cc4947aee1e09a4433691f6a9cdd4a717be3b3",
     "15293": "6e244227e212b4538bbc90dfd25c939fca85d992",
     "15317": "1270888a6522bf400726e480758ba260c524075e",
-    "15318": "232d4b35b9355ca9cec6e48c50b47ce6b67e4d3f",
-    "15346": "e1df1aa41a6e0498ab923de06494b3f9815deccd",
-    "15349": "709e8fe75a67c95fe9d9718be8f06aa5c4915829",
-    "15355": "a5c3ae869b42e70f0e0cc4559b3fa2719d771e6d",
+    "15318": "4462b5e5a1724fe4dddd5631aa0c45d822f4eb35",
+    "15346": "378c76cec7b32637ae9c45cb7c2dabf63256d8b9",
     "15356": "e852acc8602a52e148b09e609f3569bcf61a34b7",
-    "15359": "5ef12f0c589316e6a18a725b1e48c88beb929c21",
-    "15363": "06cd619e2be3103610651474d41e39ff1a8cf95d",
-    "15368": "1841d9acfde99ffa8e3bae70e3a4ecaab3c8d57a",
-    "15369": "72f0c69999d7d108ebd0ee229f0e5780ab314974",
-    "15372": "8ba47bc182b186bc5d629d9c975965c3615e7342"
+    "15359": "df8dc7c13f7accf0218f445db4351a8c49a8da76",
+    "15378": "28e6c4b0e358ec6ae391559ed7e8fe6000ed680f",
+    "15380": "9d35c8bf48ff2ca7315f72dbd599a163a7beb545",
+    "15382": "67ea52d849be72b4c348f7e09356d61e25a17ba2",
+    "15384": "93a23d76b2cdf115c7d3d36f338d9fcec43f86b7",
+    "15385": "9a37337c911b5fca65f7fafa785e6daa2047f28b",
+    "15391": "f8cbaa16d9ed630207d4fbd45141f3b351d70456",
+    "15392": "30910ec44fa307478f73ddad01a133f56e348402",
+    "15394": "2c2ddd172a72029913750cfb8670f36d2c8378bc",
+    "15397": "7cb915f39c5e4da18ded542d85b87e633f007f29"
   },
-  "pulls_listed": 13,
+  "pulls_listed": 16,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 86.2,
+  "queue_depth_per_runner": 88.9,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "znf-0242/procurement-runway-67-slot-repair-20260917",
-      "closed_at": "2026-09-17T07:16:58Z",
-      "head_sha": "a5c3ae869b42e70f0e0cc4559b3fa2719d771e6d",
+      "branch": "quill-agent-autopsy-intake-hero-buy-convert-20260917-17",
+      "closed_at": "2026-09-17T07:41:31Z",
+      "head_sha": "923e3f352832ad0f56d3739b2089ed2f05f4164b",
+      "merged_at": "2026-09-17T07:41:31Z",
+      "number": 15399,
+      "state": "MERGED",
+      "title": "QUILL: agent-autopsy-intake hero $29 Buy CTA convert"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/quill-late-cancel-noshow-hero-buy-convert-20260917-16",
+      "closed_at": "2026-09-17T07:36:20Z",
+      "head_sha": "d5d59fe9a78a13d783ad12dbd1621aee2e2db8a6",
+      "merged_at": "2026-09-17T07:36:20Z",
+      "number": 15398,
+      "state": "MERGED",
+      "title": "QUILL: late-cancel-noshow hero $3500 Buy CTA convert"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/quill-chargeback-evidence-hero-buy-convert-20260917-15",
+      "closed_at": "2026-09-17T07:34:40Z",
+      "head_sha": "23d185cb18c2c8d99ee8f1857e0164b0f8e5e228",
+      "merged_at": "2026-09-17T07:34:40Z",
+      "number": 15395,
+      "state": "MERGED",
+      "title": "QUILL: chargeback-evidence hero $4000 Buy CTA convert"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/wire-opportunity-claims-convert-shelf-5cf4",
+      "closed_at": "2026-09-17T07:32:40Z",
+      "head_sha": "1d36d1380edf12bc71b64d008374e8bd903b9515",
+      "merged_at": "2026-09-17T07:32:40Z",
+      "number": 15388,
+      "state": "MERGED",
+      "title": "WIRE: opportunity.html + claims.html first-screen Buy CTAs (existing Autopsy $29 + White Box hour $250)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "solz/ridgway-zerograd-obstruction-20260917",
+      "closed_at": "2026-09-17T07:32:02Z",
+      "head_sha": "8c6fb868ace593556f645cbe4f1d873e664bc7dc",
+      "merged_at": "2026-09-17T07:32:02Z",
+      "number": 15389,
+      "state": "MERGED",
+      "title": "Quantify strong Scott\u2013Vogelius hGamma half-order obstruction (#14998)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/quill-hotel-room-turn-hero-buy-convert-20260917-14",
+      "closed_at": "2026-09-17T07:31:34Z",
+      "head_sha": "e4fe22d53a7796ed7288ccc22c6a799c541b6813",
+      "merged_at": "2026-09-17T07:31:34Z",
+      "number": 15390,
+      "state": "MERGED",
+      "title": "QUILL: hotel-room-turn hero $2500 Buy CTA convert"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol/provider-route-authority-20260917",
+      "closed_at": "2026-09-17T07:30:59Z",
+      "head_sha": "3e086330d162395ed3e4a148aec89b863c6f93c6",
+      "merged_at": "2026-09-17T07:30:59Z",
+      "number": 15368,
+      "state": "MERGED",
+      "title": "Revenue: make provider/mailbox truth authoritative for outbound routes"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zmb-0308/cloudsafe-0771853-fulfillment-20260917",
+      "closed_at": "2026-09-17T07:28:43Z",
+      "head_sha": "f156c3788142f7d906ff030b7a8c727deab8f05e",
+      "merged_at": "2026-09-17T07:28:43Z",
+      "number": 15386,
+      "state": "MERGED",
+      "title": "Ship YES-ready invoice resolution pilot fulfillment"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zrh-0244/trafficflowbench-receipt-semantic-closure-20260917",
+      "closed_at": "2026-09-17T07:28:29Z",
+      "head_sha": "32707c24e75786ba826279b37af9db46d285c725",
       "merged_at": null,
-      "number": 15355,
+      "number": 15363,
       "state": "CLOSED",
-      "title": "CI: keep procurement runway gate inside the retained 67-slot surface"
+      "title": "Superseded: TrafficFlowBench semantic verifier closure"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "quill/agentic-production-failure-hero-buy-convert-20260917-12",
-      "closed_at": "2026-09-17T07:16:37Z",
-      "head_sha": "502db586115d5d04b1a34f7f66d2533312d8765e",
-      "merged_at": "2026-09-17T07:16:37Z",
-      "number": 15371,
-      "state": "MERGED",
-      "title": "QUILL: agentic-production-failure hero $2500 Buy before titanmcp convert"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zed17/procurement-runway-67-slot-rejoin-20260917",
-      "closed_at": "2026-09-17T07:16:18Z",
-      "head_sha": "9336c87bc9670f6e83e371fdda0566dcb19ee2de",
-      "merged_at": "2026-09-17T07:16:18Z",
-      "number": 15370,
-      "state": "MERGED",
-      "title": "CI: rejoin reviewed procurement runway 67-slot repair"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "cursor/owner-now-revenue-checkout-wire-3f17",
-      "closed_at": "2026-09-17T07:16:17Z",
-      "head_sha": "129c4247ee267750dcf4f451cb3eeb54f2dfb353",
-      "merged_at": "2026-09-17T07:16:17Z",
-      "number": 15364,
-      "state": "MERGED",
-      "title": "GOAT: wire existing owner-now-revenue Payment Links"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "sol17/usac-it26139-recovered-bytes-20260917",
-      "closed_at": "2026-09-17T07:16:06Z",
-      "head_sha": "111c6811380fbc109c278fb7d419527a8e78a0ba",
+      "branch": "zrh-0244/trafficflowbench-retained-execution-20260917",
+      "closed_at": "2026-09-17T07:28:02Z",
+      "head_sha": "7a70c276ed58a19172259d0ee4042dca3e8e88b0",
       "merged_at": null,
-      "number": 15301,
+      "number": 15387,
       "state": "CLOSED",
-      "title": "USAC IT-26-139: bind recovered controlling buyer bytes"
+      "title": "TrafficFlowBench: retain canonical carrier execution in CI"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-rook/outreach-cohort-attribution-20260917",
-      "closed_at": "2026-09-17T07:15:03Z",
-      "head_sha": "ccc00fd3c2583f55a2345e52be4a947b206274b4",
-      "merged_at": "2026-09-17T07:15:03Z",
-      "number": 15367,
-      "state": "MERGED",
-      "title": "Revenue: add evidence-bound outreach cohort attribution"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsa-0242/revenue-funnel-realization-control",
-      "closed_at": "2026-09-17T07:14:38Z",
-      "head_sha": "4ffbae65c83597eeba5c568075ad61c124d00adf",
+      "branch": "zbf-0253/procurement-win-loss-evidence-loop",
+      "closed_at": "2026-09-17T07:27:36Z",
+      "head_sha": "72f0c69999d7d108ebd0ee229f0e5780ab314974",
       "merged_at": null,
-      "number": 15341,
+      "number": 15369,
       "state": "CLOSED",
-      "title": "Add evidence-bound revenue funnel realization control"
+      "title": "Build source-bound procurement win/loss evidence loop"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "solz/usac-it26139-custody-truth-20260917",
-      "closed_at": "2026-09-17T07:14:06Z",
-      "head_sha": "b1640e95659f877d363f6074624a2a92c171f776",
-      "merged_at": "2026-09-17T07:14:06Z",
-      "number": 15331,
+      "branch": "zcv-0306/procurement-winloss-redaction-20260917",
+      "closed_at": "2026-09-17T07:27:13Z",
+      "head_sha": "a331906b0646814db67ebf3205ca03cd365b6956",
+      "merged_at": "2026-09-17T07:27:12Z",
+      "number": 15383,
       "state": "MERGED",
-      "title": "USAC IT-26-139: keep recovered hashes distinct from durable custody"
+      "title": "Procurement win/loss: close Unicode redaction bypass"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zsol/hamilton-06526-recovery-20260917",
-      "closed_at": "2026-09-17T07:13:22Z",
-      "head_sha": "5d6446d5b169f80e19b04db5c0cd89d0957c20e9",
-      "merged_at": "2026-09-17T07:13:22Z",
-      "number": 15362,
-      "state": "MERGED",
-      "title": "Recover Hamilton County 065-26/JW pursuit qualification carrier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsa-0242/revenue-funnel-realization-control-current",
-      "closed_at": "2026-09-17T07:13:20Z",
-      "head_sha": "8eada54cf61cc4adc14a1991ce62fdaed14f5c78",
-      "merged_at": "2026-09-17T07:13:20Z",
-      "number": 15366,
-      "state": "MERGED",
-      "title": "Add evidence-bound revenue funnel realization control"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "quill-agent-runaway-hero-buy-convert-20260917-11",
-      "closed_at": "2026-09-17T07:12:21Z",
-      "head_sha": "4d17111969eeac0f29763c964f68969d79c7e93a",
-      "merged_at": "2026-09-17T07:12:21Z",
-      "number": 15365,
-      "state": "MERGED",
-      "title": "QUILL: agent-runaway hero $2500 Buy before titanmcp convert"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zeta-sol/casmi-preview-provenance-recovery-20260917",
-      "closed_at": "2026-09-17T07:11:22Z",
-      "head_sha": "0b2f7acd88818bcd61c5c47320f286b8408bb83d",
-      "merged_at": "2026-09-17T07:11:22Z",
-      "number": 15361,
-      "state": "MERGED",
-      "title": "CASMI: bind preview rendering to admitted synthetic fixture"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "cursor/type-offer-scope-convert-shelf-400f",
-      "closed_at": "2026-09-17T07:07:35Z",
-      "head_sha": "971176290e73d96f18002ef7e03e680393c141ed",
-      "merged_at": "2026-09-17T07:07:35Z",
-      "number": 15357,
-      "state": "MERGED",
-      "title": "TYPE: wire existing live buys onto offer and scope-to-delivery"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "cursor/quill-invoice-exception-hero-buy-convert-20260917-10",
-      "closed_at": "2026-09-17T07:07:31Z",
-      "head_sha": "df311912067e2554de3ec04b475dff63e8fb6635",
-      "merged_at": "2026-09-17T07:07:31Z",
-      "number": 15358,
-      "state": "MERGED",
-      "title": "QUILL: invoice-exception hero $199 Buy before titanmcp convert"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/human-reply-workshare-claim-guard-redclosure-20260917",
-      "closed_at": "2026-09-17T07:06:14Z",
-      "head_sha": "2612d5cd3dc4dc8c7fa42f96cf5a1ff06103a997",
+      "branch": "zfa0302/owner-now-rail-eligibility-20260917",
+      "closed_at": "2026-09-17T07:25:45Z",
+      "head_sha": "9b78a76752e25fe081ca0ddc076456acfcdb1dd2",
       "merged_at": null,
-      "number": 15344,
+      "number": 15377,
       "state": "CLOSED",
-      "title": "Fix human-reply workshare commercial-claim smuggling"
+      "title": "Fix owner-now checkout publication to honor current rail eligibility"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-vectorforge/trafficflowbench-2026-recovery-20260917",
+      "closed_at": "2026-09-17T07:24:49Z",
+      "head_sha": "be84775609f0be8343ba564c407bd81144f30dc2",
+      "merged_at": "2026-09-17T07:24:49Z",
+      "number": 15349,
+      "state": "MERGED",
+      "title": "Recover TrafficFlowBench 2026 source-safe competition carrier"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zat-0310/westfield-workshare-clean-20260917",
+      "closed_at": "2026-09-17T07:22:54Z",
+      "head_sha": "b52b58c03a01de66f4385461c58d80e4196f8abf",
+      "merged_at": "2026-09-17T07:22:54Z",
+      "number": 15379,
+      "state": "MERGED",
+      "title": "Add Westfield advancement-modeling paid workshare carrier"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T07:16:59Z",
+  "unchanged_since": "2026-09-17T07:43:36Z",
   "undatable_pulls": []
 }

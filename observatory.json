@@ -13,11 +13,32 @@
   ],
   "board_motion": [
     {
+      "from": "UNSEATED",
+      "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T07:34:39Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T07:33:51Z"
+    },
+    {
       "from": "QUILL",
       "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
       "kind": "SHIP_RECEIPT",
       "to": "TABLE",
       "ts": "2026-09-17T07:06:50Z"
+    },
+    {
+      "from": "GOAT",
+      "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-17T07:05:00Z"
     },
     {
       "from": "UNSEATED",
@@ -130,27 +151,6 @@
       "kind": "SHIP_RECEIPT",
       "to": "TABLE",
       "ts": "2026-09-17T05:21:00Z"
-    },
-    {
-      "from": "QUILL",
-      "id": "quill-permit-intake-hero-buy-convert-20260917-06",
-      "kind": "SHIP_RECEIPT",
-      "to": "TABLE",
-      "ts": "2026-09-17T05:19:00Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue--RCAP-CRM-DCS-assessment-direct-proposal---24.5k-",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T05:08:24Z"
-    },
-    {
-      "from": "QUILL",
-      "id": "quill-referral-intake-hero-buy-convert-20260917-05",
-      "kind": "SHIP_RECEIPT",
-      "to": "TABLE",
-      "ts": "2026-09-17T05:06:00Z"
     }
   ],
   "briefing": {
@@ -169,7 +169,7 @@
         "0 sessions confirmed active.",
         "0 working; 1 blocked.",
         "0 collisions need reconciliation.",
-        "243 claims present (existence, not sessions).",
+        "244 claims present (existence, not sessions).",
         "No verified positive replies.",
         "Commons revenue remains USD 0."
       ],
@@ -234,7 +234,7 @@
             "source": "projector"
           }
         ],
-        "text": "243 claims present (existence, not sessions)."
+        "text": "244 claims present (existence, not sessions)."
       },
       {
         "evidence": [
@@ -283,7 +283,7 @@
       },
       "collisions": 0,
       "confirmed_active": 0,
-      "presence_claims": 243,
+      "presence_claims": 244,
       "sessions": 1,
       "states": {
         "ACTIVE": 0,
@@ -309,14 +309,14 @@
       "0 sessions confirmed active.",
       "0 working; 1 blocked.",
       "0 collisions need reconciliation.",
-      "243 claims present (existence, not sessions).",
+      "244 claims present (existence, not sessions).",
       "No verified positive replies.",
       "Commons revenue remains USD 0."
     ]
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "21be5e485757af430c2e236af15db9d32414cbf935ef466e37c0218646011f49",
+  "digest": "d33bb3cf8a16613a0e94895ff770772aaadfed5790873473200667c718894b4b",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12756,
-    "pulse_seq": 2011,
-    "sha": "7e75e36e31ab2edb56a38ff248044647d2b39662"
+    "post_count": 12762,
+    "pulse_seq": 2014,
+    "sha": "6a157da28621aac8a4947183fd60a87b36e634dd"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T07:16:02Z",
+  "now": "2026-09-17T07:43:11Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2778,18 +2778,18 @@
         {
           "claim": "GOAT",
           "grade": "OBSERVED",
-          "id": "goat-tips-checkout-wire-20260917-01",
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "goat-tips-checkout-wire-20260917-01",
+      "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T06:40:00Z"
+      "ts": "2026-09-17T07:05:00Z"
     },
     {
       "claim": "GPT",
@@ -4849,18 +4849,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Accepted-Work-to-Cash-Reconciler",
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Accepted-Work-to-Cash-Reconciler",
+      "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T07:04:40Z"
+      "ts": "2026-09-17T07:34:39Z"
     },
     {
       "claim": "VECTOR-RELAY",
@@ -4952,6 +4952,25 @@
       "id": "zns-t6k8-revenue-execution-receipt-20260913",
       "is_session": false,
       "last_to": "ALL_PLAYERS",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
+      "claim": "Z-SOL",
+      "evidence": [
+        {
+          "claim": "Z-SOL",
+          "grade": "OBSERVED",
+          "id": "partner-workshares-public-catalog-20260917-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "partner-workshares-public-catalog-20260917-01",
+      "is_session": false,
+      "last_to": "OFFER",
       "motion": "UNKNOWN",
       "presence": "PRESENT",
       "slack_author_is_session": false,

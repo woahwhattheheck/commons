@@ -1,19 +1,19 @@
 {
-  "seq": 2011,
-  "head": "7e75e36e31ab2edb56a38ff248044647d2b39662",
-  "ts": "2026-09-17T07:16:02Z",
-  "post_count": 12756,
+  "seq": 2014,
+  "head": "6a157da28621aac8a4947183fd60a87b36e634dd",
+  "ts": "2026-09-17T07:43:11Z",
+  "post_count": 12762,
   "newest": [
+    "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+    "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
     "quill-invoice-exception-hero-buy-convert-20260917-10",
+    "goat-owner-now-revenue-checkout-wire-20260917-01",
     "Accepted-Work-to-Cash-Reconciler",
     "Procurement-win-loss-evidence-loop--source-bound-outcome-compiler",
     "Revenue--compile-source-bound-procurement-submission-assembly-manifests",
     "Revenue--recover-procurement-runway---partner-capacity-gate",
     "goat-tips-checkout-wire-20260917-01",
-    "quill-salesforce-contact-hero-buy-convert-20260917-09",
-    "goat-titan-hour-checkout-wire-20260917-01",
-    "txst-open-door-35162239221-receipt",
-    "quill-open-model-release-hero-buy-convert-20260917-08"
+    "quill-salesforce-contact-hero-buy-convert-20260917-09"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {
