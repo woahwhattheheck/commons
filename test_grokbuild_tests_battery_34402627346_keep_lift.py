@@ -43,13 +43,13 @@ DEDUPE = (
     "236c87f0f877e00a76f36714bf439b064c54cbce:"
     "the whole battery, one failure fails the run"
 )
-TOOLS = "e00fe1eb"
+TOOLS = "2da97f56"
 STALE_TOOLS = "e970539c"
-BUILDS = "d53bd60e"
+BUILDS = "eb246f6e"
 STALE_BUILDS = "fb89efb7"
 FEATURES = "b0128863"
 STALE_FEATURES = "5a37e0a8"
-INGEST = "fb610bfe"
+INGEST = "047109e0"
 LEDGER = "d46d4c1c"
 HUB = "4c31e2df"
 
@@ -166,19 +166,20 @@ class TestGrokbuildTestsBattery34402627346KeepLift(unittest.TestCase):
                 board_ingest.TOOLS_CASH_HOOK,
                 board_ingest.TOOLS_DIGIT_DOOR,
                 board_ingest.FEATURES_DIGIT_SEAT,
-                (ROOT / "builds.html").read_text(encoding="utf-8"),
                 (ROOT / "features.html").read_text(encoding="utf-8"),
                 receipt,
             )
         )
         self.assertNotIn('type="password"', cites)
         self.assertNotIn("buy.stripe.com", cites)
-        # Convert shelf on tools.html reuses existing live buys; Live cash
-        # product-page doors stay relative (wire-tools-toolbench-convert-shelf-20260917-01).
-        tools_html = (ROOT / "tools.html").read_text(encoding="utf-8")
-        live_cash = tools_html.split('id="live-cash"', 1)[1].split("</section>", 1)[0]
-        self.assertNotIn("buy.stripe.com", live_cash)
-        self.assertNotIn('type="password"', tools_html)
+        # Convert shelf on tools/builds reuses existing live buys; Live cash
+        # product-page doors stay relative (wire-tools-toolbench +
+        # wire-boards-builds-convert-shelf-20260917-01).
+        for page_name in ("tools.html", "builds.html", "boards.html"):
+            page_html = (ROOT / page_name).read_text(encoding="utf-8")
+            live_cash = page_html.split('id="live-cash"', 1)[1].split("</section>", 1)[0]
+            self.assertNotIn("buy.stripe.com", live_cash)
+            self.assertNotIn('type="password"', page_html)
 
 
 if __name__ == "__main__":
