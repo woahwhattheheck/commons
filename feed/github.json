@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 81,
+    "open_issues": 82,
     "open_pull_requests": 25,
-    "runs_in_progress": 16,
-    "runs_queued": 2454
+    "runs_in_progress": 19,
+    "runs_queued": 2449
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,6 +69,17 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "z-sol/onewriter-retained-source-parses-20260917",
+      "created_at": "2026-09-17T09:11:06Z",
+      "draft": false,
+      "head_sha": "2898aa00c66d5788b0d42c3f392d732b1587d8c9",
+      "number": 15534,
+      "title": "ci: retain OneWriter normal and optimized contract",
+      "updated_at": "2026-09-17T09:11:06Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "cursor/goat-free-sample-humans-convert-shelf-997a",
       "created_at": "2026-09-17T09:08:56Z",
       "draft": false,
@@ -83,10 +94,10 @@
       "branch": "cursor/latch-annex-archive-convert-shelf-5a2c",
       "created_at": "2026-09-17T09:04:48Z",
       "draft": false,
-      "head_sha": "0834e5373bd57932fa410142ff35fd19035dbd22",
+      "head_sha": "c5ced8c1b751608701a3788f02b1f0cbe88becfd",
       "number": 15529,
       "title": "Wire existing $29 and $250 Buy links onto annex and archive shelves",
-      "updated_at": "2026-09-17T09:04:48Z"
+      "updated_at": "2026-09-17T09:12:34Z"
     },
     {
       "author": "woahwhattheheck",
@@ -116,10 +127,10 @@
       "branch": "main",
       "created_at": "2026-09-17T08:57:54Z",
       "draft": false,
-      "head_sha": "722fadb6b062247f5a01a00865c456c7cec69bd8",
+      "head_sha": "c2809f062260eb26439d08257a2c70fd9d3a084a",
       "number": 15514,
       "title": "Rejoin 688cbc main into projector evidence branch",
-      "updated_at": "2026-09-17T09:09:09Z"
+      "updated_at": "2026-09-17T09:12:28Z"
     },
     {
       "author": "woahwhattheheck",
@@ -157,17 +168,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "cursor/type-agent-triage-control-convert-shelf-4791",
-      "created_at": "2026-09-17T08:51:21Z",
-      "draft": false,
-      "head_sha": "ce0b44765449e9cc58104782436bb970fb888878",
-      "number": 15492,
-      "title": "TYPE: wire existing live buys onto agent-triage and agent-control",
-      "updated_at": "2026-09-17T08:51:21Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "moraine/muse-v2-retained-trigger-15469-20260917",
       "created_at": "2026-09-17T08:50:32Z",
       "draft": false,
@@ -194,20 +194,31 @@
     "15459": "9b9a15a5f926239447e30222bf3bb55e065db87a",
     "15473": "e04f598f39be2fece697037b2df67f82b206c75b",
     "15487": "a25ff1bcb579b0d6a705e37231d15789d279bb8a",
-    "15492": "ce0b44765449e9cc58104782436bb970fb888878",
     "15494": "78f5b53af961c116d455c824e9ff37d7a0b8256e",
     "15507": "18e9c988c227d8cde0d0d2556a7dcbb02e55f9a4",
     "15511": "bbfa94d7566631c1789fc135a4c654539c90e064",
-    "15514": "722fadb6b062247f5a01a00865c456c7cec69bd8",
+    "15514": "c2809f062260eb26439d08257a2c70fd9d3a084a",
     "15525": "32b4fc62a30db43fc73b2b36f005bf541dd26c8c",
     "15526": "f02d9d1e910c5330d4dd7aaf08174c5e61300447",
-    "15529": "0834e5373bd57932fa410142ff35fd19035dbd22",
-    "15532": "7dc85ca4d9c031d49b87059a543559521fe64ffb"
+    "15529": "c5ced8c1b751608701a3788f02b1f0cbe88becfd",
+    "15532": "7dc85ca4d9c031d49b87059a543559521fe64ffb",
+    "15534": "2898aa00c66d5788b0d42c3f392d732b1587d8c9"
   },
   "pulls_listed": 25,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 153.4,
+  "queue_depth_per_runner": 128.9,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/type-agent-triage-control-convert-shelf-4791",
+      "closed_at": "2026-09-17T09:11:26Z",
+      "head_sha": "ce0b44765449e9cc58104782436bb970fb888878",
+      "merged_at": "2026-09-17T09:11:26Z",
+      "number": 15492,
+      "state": "MERGED",
+      "title": "TYPE: wire existing live buys onto agent-triage and agent-control"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -361,21 +372,10 @@
       "number": 15519,
       "state": "MERGED",
       "title": "Wire boards.html + builds.html convert shelf (existing Autopsy $29 + White Box hour $250)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "quill-wake-world-convert-shelf-20260917-01",
-      "closed_at": "2026-09-17T09:01:23Z",
-      "head_sha": "553fbffa6d5e60a8b1cfca6bc2c2a4b51c24fe18",
-      "merged_at": "2026-09-17T09:01:23Z",
-      "number": 15521,
-      "state": "MERGED",
-      "title": "QUILL: wake.html + world.html convert shelf (existing Autopsy $29 + White Box hour $250)"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T09:09:26Z",
+  "unchanged_since": "2026-09-17T09:12:46Z",
   "undatable_pulls": []
 }
