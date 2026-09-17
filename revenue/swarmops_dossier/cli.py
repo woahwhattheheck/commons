@@ -6,7 +6,14 @@ import os
 import stat
 from pathlib import Path
 
-from .engine import DossierError, canonical_bytes, compile_dossier, render_markdown, strict_json_loads, verify_dossier
+from .current import (
+    HISTORICAL_MODE,
+    compile_current_dossier,
+    compile_historical_dossier,
+    verify_current_dossier,
+    verify_historical_dossier,
+)
+from .engine import DossierError, canonical_bytes, render_markdown, strict_json_loads
 
 MAX_INPUT = 1_048_576
 _READ_CHUNK = 64 * 1024
@@ -76,48 +83,106 @@ def read_regular(path: str) -> str:
 
 
 def write_new(path: str, data: bytes) -> None:
-    fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL | getattr(os, "O_NOFOLLOW", 0), 0o600)
+    fd = os.open(
+        path,
+        os.O_WRONLY | os.O_CREAT | os.O_EXCL | getattr(os, "O_NOFOLLOW", 0),
+        0o600,
+    )
     try:
         view = memoryview(data)
         while view:
             n = os.write(fd, view)
+            if n <= 0:
+                raise OSError("short write")
             view = view[n:]
     finally:
         os.close(fd)
 
 
+def _render_output(dossier: dict) -> str:
+    rendered = render_markdown(dossier)
+    if dossier.get("evaluation_mode") == HISTORICAL_MODE:
+        rendered = rendered.replace(
+            "## What we can show now",
+            "## What was evidenced at replay time",
+            1,
+        )
+        return (
+            "# NON-CURRENT HISTORICAL REPLAY\n\n"
+            "This deterministic replay is for integrity/debugging only. "
+            "It cannot establish current readiness.\n\n"
+            + rendered
+        )
+    return rendered
+
+
 def main(argv: list[str] | None = None) -> int:
     """Compile/verify the unprivileged prospect-safe surface.
 
-    Deliberately no CLI flag accepts commercial-truth authority. A pathname supplied by
-    the same CLI caller is not independent buyer/payment/accounting provenance. Hosts
-    that have independently authenticated those provider facts must call the engine API
-    with their retained trust map; this CLI always compiles/verifies with an empty map.
+    Public CLI use owns its evaluation clock: no caller-supplied timestamp can
+    create or verify CURRENT readiness. Historical replay is a library/test
+    boundary only. A hidden argv-injection compatibility seam exists solely for
+    retained programmatic tests and always yields HISTORICAL_INTEGRITY_ONLY /
+    NON_CURRENT output; public command-line invocation rejects that flag.
+
+    Deliberately no CLI flag accepts commercial-truth authority. Hosts that
+    independently authenticate buyer/payment/accounting facts must call the
+    engine/current library APIs with their retained trust map.
     """
-    ap = argparse.ArgumentParser(description="Compile and verify prospect-safe Commons SwarmOps evidence dossiers")
+    ap = argparse.ArgumentParser(
+        description="Compile and verify prospect-safe Commons SwarmOps evidence dossiers"
+    )
     sub = ap.add_subparsers(dest="cmd", required=True)
+
     cp = sub.add_parser("compile")
     cp.add_argument("packet")
     cp.add_argument("policy")
-    cp.add_argument("--as-of", required=True)
+    cp.add_argument(
+        "--as-of",
+        dest="historical_as_of",
+        help=argparse.SUPPRESS,
+    )
     cp.add_argument("--json-out", required=True)
     cp.add_argument("--markdown-out", required=True)
+
     vp = sub.add_parser("verify")
     vp.add_argument("packet")
     vp.add_argument("policy")
     vp.add_argument("candidate")
-    vp.add_argument("--as-of", required=True)
+    vp.add_argument(
+        "--as-of",
+        dest="historical_as_of",
+        help=argparse.SUPPRESS,
+    )
+
+    public_invocation = argv is None
     ns = ap.parse_args(argv)
+    if public_invocation and ns.historical_as_of is not None:
+        ap.error(
+            "--as-of is not accepted by the public current CLI; "
+            "use compile_historical_dossier()/verify_historical_dossier()"
+        )
     try:
         packet = strict_json_loads(read_regular(ns.packet))
         policy = strict_json_loads(read_regular(ns.policy))
+
         if ns.cmd == "compile":
-            dossier = compile_dossier(packet, policy, ns.as_of, {})
+            if ns.historical_as_of is None:
+                dossier = compile_current_dossier(packet, policy, {})
+                exit_code = 0 if dossier["status"] == "READY_FOR_OWNER_REVIEW" else 2
+            else:
+                dossier = compile_historical_dossier(packet, policy, ns.historical_as_of, {})
+                exit_code = 0
             write_new(ns.json_out, canonical_bytes(dossier) + b"\n")
-            write_new(ns.markdown_out, render_markdown(dossier).encode("utf-8"))
-            return 0 if dossier["status"] == "READY_FOR_OWNER_REVIEW" else 2
+            write_new(ns.markdown_out, _render_output(dossier).encode("utf-8"))
+            return exit_code
+
         candidate = strict_json_loads(read_regular(ns.candidate))
-        return 0 if verify_dossier(packet, policy, ns.as_of, candidate, {}) else 3
+        if ns.historical_as_of is None:
+            verified = verify_current_dossier(packet, policy, candidate, {})
+        else:
+            verified = verify_historical_dossier(packet, policy, ns.historical_as_of, candidate, {})
+        return 0 if verified else 3
     except (DossierError, OSError, UnicodeError, json.JSONDecodeError) as exc:
         print(f"ERROR: {exc}", file=__import__("sys").stderr)
         return 4
