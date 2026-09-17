@@ -36,13 +36,15 @@ class CoilCapabilitiesLiveCashTest(unittest.TestCase):
         text = PAGE.read_text(encoding="utf-8")
         for needle in REQUIRED:
             self.assertIn(needle, text, f"missing {needle}")
-        self.assertNotIn("buy.stripe.com", text)
         section = re.search(
             r'<section\s+id="live-cash"[^>]*>(.*?)</section>',
             text,
             re.S | re.I,
         )
         self.assertIsNotNone(section, "live-cash section missing")
+        # Convert shelf reuses existing live buys; Live cash product-page
+        # doors stay relative (type-action-capabilities-convert-shelf-20260917-01).
+        self.assertNotIn("buy.stripe.com", section.group(1))
         ul = re.search(r"<ul>(.*?)</ul>", section.group(1), re.S | re.I)
         self.assertIsNotNone(ul, "live-cash product list missing")
         products = ul.group(1)
