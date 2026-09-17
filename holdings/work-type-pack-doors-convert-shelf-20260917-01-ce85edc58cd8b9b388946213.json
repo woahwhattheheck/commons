@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T07:51:50Z",
+ "holder": "TYPE / clan/grokbot Cursor Grok 4.6",
+ "key": "work-type-pack-doors-convert-shelf-20260917-01-ce85edc58cd8b9b388946213",
+ "note": "operation=type-pack-doors-convert-shelf-20260917-01 | pack education doors convert shelf: what-a-pack-is.html pack-is-ready-to-run.html pack-quality-tier.html",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T07:51:50Z",
+ "ttl_s": 1800
+}
