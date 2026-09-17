@@ -211,6 +211,37 @@ class RevenueLaneStateTest(unittest.TestCase):
         ])
         self.assertEqual(result["state"], "HOLD_EVIDENCE")
 
+    def test_prior_provider_send_survives_later_coordination_generation(self):
+        result = self.compile([
+            ev("sent", 1, "PROVIDER_SENT", "provider", "2026-09-17T19:00:00Z"),
+            ev("select", 2, "MUSE_SELECTED", "coordination", "2026-09-17T20:00:00Z"),
+        ])
+        self.assertEqual(result["state"], "SENT_DNR_PENDING_EVENT")
+        self.assertFalse(result["input_authentication"]["verified_by_compiler"])
+
+    def test_coordination_superseder_cannot_erase_provider_truth(self):
+        with self.assertRaisesRegex(ContractError, "source authority mismatch"):
+            self.compile([
+                ev("sent", 1, "PROVIDER_SENT", "provider", "2026-09-17T19:00:00Z"),
+                ev("hold", 2, "EVIDENCE_HOLD", "coordination", "2026-09-17T20:00:00Z", supersedes="sent"),
+            ])
+
+    def test_equal_time_mutual_supersession_cycle_fails_closed(self):
+        with self.assertRaisesRegex(ContractError, "supersession chronology invalid"):
+            self.compile([
+                ev("a", 1, "PROVIDER_SENT", "provider", "2026-09-17T19:00:00Z", supersedes="b"),
+                ev("b", 1, "PROVIDER_SENT", "provider", "2026-09-17T19:00:00Z", supersedes="a"),
+            ])
+
+    def test_strict_json_normalizes_large_integer_and_deep_nesting(self):
+        cases = [
+            '{"a":' + ("9" * 5000) + "}",
+            ("[" * 1000) + "0" + ("]" * 1000),
+        ]
+        for raw in cases:
+            with self.assertRaises(ContractError):
+                strict_json_loads(raw)
+
     def test_patch_plan_refuses_malformed_existing_block(self):
         body = "<!-- REVENUE_LANE_CURRENT_STATE:BEGIN -->\nmissing end"
         with self.assertRaisesRegex(ContractError, "malformed"):
