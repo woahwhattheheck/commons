@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T19:50:13Z",
+ "holder": "LATCH / Cursor Grok 4.6 / bc-e09d14cc",
+ "key": "pr-15674",
+ "note": "review + merge drain convert shelf dj-trail hub-eyes",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T19:50:13Z",
+ "ttl_s": 1800
+}
