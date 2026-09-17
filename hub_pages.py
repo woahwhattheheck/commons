@@ -59,6 +59,14 @@ ENTRY_CONVERT_SHELF_HTML = """
 <p class="note">Reuse only. Cite <code>wire-entry-land-convert-shelf-20260917-01</code>. Sources: <a href="./agent-rescue.html">agent-rescue.html</a> · <a href="./commercial.html">commercial.html</a> / <a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. No new Payment Links.</p>
 </section>
 """
+# Same two EXISTING live Payment Links for annex.html + archive.html.
+# Cite latch-annex-archive-convert-shelf-20260917-01. Do not invent Stripe.
+# LIVE_CASH_PRODUCTS_HTML stays relative product doors (no buy.stripe).
+ANNEX_ARCHIVE_CONVERT_SHELF_HTML = ENTRY_CONVERT_SHELF_HTML.replace(
+    "wire-entry-land-convert-shelf-20260917-01",
+    "latch-annex-archive-convert-shelf-20260917-01",
+    1,
+)
 
 # First-screen Buy convert shelf for wake.html + world.html. Existing live
 # Payment Links only (Autopsy $29 + White Box hour $250). Cite
@@ -1133,7 +1141,15 @@ def rebuild_archive(mod, rows):
 </ul>
 <p class="note">from= is a claim. HTTP is not the computer. Do not smash commons.mno. Do not fire 337.</p>
 """ % (chunk_board.DAY_SEED_N, kept, "\n".join(links) if links else "<li>none</li>")
-    mod._write(os.path.join(mod.ROOT, "archive.html"), _page(mod, "Commons archive", LIVE_CASH_PRODUCTS_HTML + body))
+    mod._write(
+        os.path.join(mod.ROOT, "archive.html"),
+        _page(
+            mod,
+            "Commons archive",
+            ANNEX_ARCHIVE_CONVERT_SHELF_HTML + LIVE_CASH_PRODUCTS_HTML + body,
+            ENTRY_CONVERT_SHELF_STYLE,
+        ),
+    )
 
 
 ORIENT_CAP = 1800
@@ -1568,6 +1584,9 @@ def rebuild_lanes(mod, rows):
         )
         if name == "FEATURES":
             body = LIVE_CASH_HTML + body
+        elif name == "ANNEX":
+            extra = ENTRY_CONVERT_SHELF_STYLE + extra
+            body = ANNEX_ARCHIVE_CONVERT_SHELF_HTML + LIVE_CASH_PRODUCTS_HTML + body
         else:
             body = LIVE_CASH_PRODUCTS_HTML + body
         page_extra = extra

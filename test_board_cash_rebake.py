@@ -53,7 +53,7 @@ class BoardCashRebakeTests(unittest.TestCase):
             PUBLISHERS[name](board_ingest, self.rows if rows is None else rows)
         return (self.root / name).read_text(encoding="utf-8")
 
-    def assert_cash(self, text):
+    def assert_cash(self, text, convert_shelf=False):
         self.assertEqual(text.count('id="live-cash"'), 1)
         section = re.search(r'<section\b[^>]*\bid="live-cash"[^>]*>.*?</section>', text, re.S).group()
         self.assertEqual(re.findall(r'href="([^\"]+)"', section), list(CASH_HREFS))
@@ -63,11 +63,21 @@ class BoardCashRebakeTests(unittest.TestCase):
         self.assertIn("GGUF diagnostic · $12,000 / 10 days", section)
         self.assertIn("White Box pilot · $30,000 / 30 days", section)
         self.assertNotIn("tools-cash.html", text)
-        self.assertNotIn("buy.stripe.com", text)
+        self.assertNotIn("buy.stripe.com", section)
+        if convert_shelf:
+            self.assertIn('id="buy-now-live-checkout"', text)
+            self.assertIn("https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g", text)
+            self.assertIn("https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07", text)
+            self.assertGreater(
+                text.find('id="live-cash"'),
+                text.find('id="buy-now-live-checkout"'),
+            )
+        else:
+            self.assertNotIn("buy.stripe.com", text)
 
     def repeated_bake(self, name):
         first = self.bake(name)
-        self.assert_cash(first)
+        self.assert_cash(first, convert_shelf=name in ("annex.html", "archive.html"))
         self.assertEqual(self.bake(name), first)
         self.assertIn('id="trust-through-proof"', first)
         return first
@@ -113,7 +123,10 @@ class BoardCashRebakeTests(unittest.TestCase):
                 (self.root / name).write_text("stale published output", encoding="utf-8")
                 (self.root / "books.json").write_text("[]", encoding="utf-8")
                 text = self.bake(name, [])
-                self.assert_cash(text)
+                self.assert_cash(
+                    text,
+                    convert_shelf=name in ("annex.html", "archive.html"),
+                )
                 self.assertNotIn("stale published output", text)
                 self.assertNotIn("rill-claim", text)
                 self.assertNotIn("rill-book", text)

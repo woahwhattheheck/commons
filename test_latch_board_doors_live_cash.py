@@ -13,9 +13,9 @@ class LatchBoardDoorsLiveCashTest(unittest.TestCase):
                 text = (ROOT / name).read_text(encoding="utf-8")
                 for n in REQUIRED:
                     self.assertIn(n, text, f"{name} missing {n}")
-                if name == "claims.html":
+                if name in ("claims.html", "annex.html", "archive.html"):
                     # Convert shelf reuses existing live buys; Live cash product-page
-                    # doors stay relative (wire-opportunity-claims-convert-shelf-20260917-01).
+                    # doors stay relative (wire-opportunity-claims / latch-annex-archive).
                     live_cash = text.split('id="live-cash"', 1)[1].split("</section>", 1)[0]
                     self.assertNotIn("buy.stripe.com", live_cash)
                 else:

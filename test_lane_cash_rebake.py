@@ -33,7 +33,13 @@ class LaneCashRebakeTests(unittest.TestCase):
         self.assertIn(expected, page)
         self.assertIn('<form id="say">', page)
         self.assertIn('data-lane="%s"' % lane, page)
-        self.assertNotIn("buy.stripe.com", page)
+        if lane == "ANNEX":
+            self.assertIn("https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g", page)
+            self.assertIn("https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07", page)
+            live_cash = page.split('id="live-cash"', 1)[1].split("</section>", 1)[0]
+            self.assertNotIn("buy.stripe.com", live_cash)
+        else:
+            self.assertNotIn("buy.stripe.com", page)
         if lane != "FEATURES":
             self.assertNotIn("tools-cash.html", page)
         expected_script = "lane-head.js" if lane in hub_pages.LANE_HEAD_BOARDS else "board.js"
