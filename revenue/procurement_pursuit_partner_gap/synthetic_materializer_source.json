@@ -1,0 +1,33 @@
+{
+  "evidence_max_age_seconds": 604800,
+  "generated_at": "2026-09-16T01:00:00Z",
+  "library_id": "synthetic-pursuit-gap-fixture",
+  "records": [
+    {
+      "applicability_tags": [
+        "cloud",
+        "delivery"
+      ],
+      "claim_id": "fixture-claim-capability",
+      "claim_kind": "CAPABILITY",
+      "claim_text": "Synthetic fixture only: delivery capability evidence.",
+      "evidence_id": "fixture-evidence-capability",
+      "evidence_state": "SUPPORTED",
+      "expires_at": "2026-10-16T00:00:00Z",
+      "family": "corporate_capability",
+      "module_id": "fixture-module-capability",
+      "observed_at": "2026-09-16T00:00:00Z",
+      "owner_status": "APPROVED",
+      "record_id": "fixture-record-capability",
+      "revision": 1,
+      "source_kind": "SYNTHETIC_FIXTURE",
+      "source_ref": "https://fixtures.example.invalid/evidence/capability",
+      "source_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "title": "Synthetic capability fixture",
+      "valid_from": "2026-09-01T00:00:00Z",
+      "valid_until": "2026-10-16T00:00:00Z"
+    }
+  ],
+  "schema": "procurement-response-modules/materializer-source/v1",
+  "truth_boundary": "INTERNAL_OWNER_REVIEW_ONLY"
+}
