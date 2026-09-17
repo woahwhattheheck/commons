@@ -9,6 +9,7 @@ import json
 import math
 import re
 import sys
+import unicodedata
 from pathlib import Path
 from typing import Any
 
@@ -91,7 +92,10 @@ def _text(value: Any, where: str, max_len: int = 500) -> str:
     text = value.strip()
     if not text or len(text) > max_len or any(ord(ch) < 32 and ch not in "\t\n" for ch in text):
         raise InputError(f"{where} must be nonempty safe text <= {max_len} chars")
-    if URL_RE.search(text) or LOCATOR_RE.search(text) or _CANONICAL_DLP(text):
+    normalized = unicodedata.normalize("NFKC", text)
+    if normalized != text or any(unicodedata.category(ch) == "Cf" for ch in text):
+        raise InputError(f"{where} contains forbidden sensitive/private content")
+    if URL_RE.search(normalized) or LOCATOR_RE.search(normalized) or _CANONICAL_DLP(normalized):
         raise InputError(f"{where} contains forbidden sensitive/private content")
     return text
 
@@ -146,8 +150,7 @@ def validate_intake(value: Any) -> dict[str, Any]:
     if not isinstance(r, dict):
         raise InputError("customer_readiness must be object")
     _exact(r, rkeys, "customer_readiness")
-    for key in rkeys:
-        _bool(r[key], f"customer_readiness.{key}")
+    for key in rkeys: _bool(r[key], f"customer_readiness.{key}")
 
     privacy = value["privacy"]
     pkeys = {"public_model_bytes_present", "public_secret_values_present", "public_private_contact_present"}
@@ -181,80 +184,58 @@ def validate_intake(value: Any) -> dict[str, Any]:
             raise InputError("synthetic demo must not assert customer readiness/payment facts or evidence refs")
     else:
         for flag, ref in bindings.items():
-            if r[flag] and refs[ref] is None:
-                raise InputError(f"{flag}=true requires {ref}")
-            if not r[flag] and refs[ref] is not None:
-                raise InputError(f"{ref} present while {flag}=false")
+            if r[flag] and refs[ref] is None: raise InputError(f"{flag}=true requires {ref}")
+            if not r[flag] and refs[ref] is not None: raise InputError(f"{ref} present while {flag}=false")
     return value
 
 
 def validate_evidence(value: Any) -> dict[str, Any]:
-    if not isinstance(value, dict):
-        raise InputError("evidence must be an object")
+    if not isinstance(value, dict): raise InputError("evidence must be an object")
     _exact(value, {"schema_version", "kind", "case_id", "artifacts", "harness_runs", "finding_sha256", "delivery_receipt_sha256", "claims"}, "evidence")
     if value["schema_version"] != 1 or value["kind"] != "GGUF_ACCEPTANCE_EVIDENCE" or not isinstance(value["case_id"], str) or CASE_RE.fullmatch(value["case_id"]) is None:
         raise InputError("unsupported evidence schema/kind/case")
     a = value["artifacts"]
-    if not isinstance(a, dict):
-        raise InputError("artifacts must be object")
+    if not isinstance(a, dict): raise InputError("artifacts must be object")
     _exact(a, {"original_sha256", "ablated_sha256", "restored_sha256"}, "artifacts")
-    for k, v in a.items():
-        _digest(v, f"artifacts.{k}")
+    for k, v in a.items(): _digest(v, f"artifacts.{k}")
     runs = value["harness_runs"]
-    if not isinstance(runs, dict):
-        raise InputError("harness_runs must be object")
+    if not isinstance(runs, dict): raise InputError("harness_runs must be object")
     _exact(runs, {"baseline", "ablation", "restore"}, "harness_runs")
     metric_keys = None
     for phase in ("baseline", "ablation", "restore"):
         run = runs[phase]
-        if not isinstance(run, dict):
-            raise InputError(f"harness_runs.{phase} must be object")
+        if not isinstance(run, dict): raise InputError(f"harness_runs.{phase} must be object")
         _exact(run, {"log_sha256", "metrics"}, f"harness_runs.{phase}")
         _digest(run["log_sha256"], f"harness_runs.{phase}.log_sha256")
         metrics = run["metrics"]
-        if not isinstance(metrics, dict) or not metrics or len(metrics) > 32:
-            raise InputError("metrics must be 1..32 object")
+        if not isinstance(metrics, dict) or not metrics or len(metrics) > 32: raise InputError("metrics must be 1..32 object")
         keys = set(metrics)
         metric_keys = keys if metric_keys is None else metric_keys
-        if keys != metric_keys:
-            raise InputError("metric key sets must match across baseline/ablation/restore")
+        if keys != metric_keys: raise InputError("metric key sets must match across baseline/ablation/restore")
         for name, metric in metrics.items():
-            if not isinstance(name, str) or re.fullmatch(r"[a-z][a-z0-9_.-]{0,63}", name) is None:
-                raise InputError(f"invalid metric name: {name!r}")
+            if not isinstance(name, str) or re.fullmatch(r"[a-z][a-z0-9_.-]{0,63}", name) is None: raise InputError(f"invalid metric name: {name!r}")
             _metric(metric, f"harness_runs.{phase}.metrics.{name}")
-    _digest(value["finding_sha256"], "finding_sha256")
-    _digest(value["delivery_receipt_sha256"], "delivery_receipt_sha256")
+    _digest(value["finding_sha256"], "finding_sha256"); _digest(value["delivery_receipt_sha256"], "delivery_receipt_sha256")
     claims = value["claims"]
-    if not isinstance(claims, dict):
-        raise InputError("claims must be object")
+    if not isinstance(claims, dict): raise InputError("claims must be object")
     _exact(claims, {"public_binary_bytes_present", "metric_lift_required", "buyer_acceptance_claimed", "payment_claimed"}, "claims")
-    for key in claims:
-        _bool(claims[key], f"claims.{key}")
-    if claims["public_binary_bytes_present"]:
-        raise InputError("public binary bytes are forbidden")
-    if claims["metric_lift_required"]:
-        raise InputError("metric lift cannot be an acceptance requirement")
-    if claims["buyer_acceptance_claimed"]:
-        raise InputError("this compiler cannot assert buyer/legal acceptance")
-    if claims["payment_claimed"]:
-        raise InputError("this compiler cannot assert payment")
+    for key in claims: _bool(claims[key], f"claims.{key}")
+    if claims["public_binary_bytes_present"]: raise InputError("public binary bytes are forbidden")
+    if claims["metric_lift_required"]: raise InputError("metric lift cannot be an acceptance requirement")
+    if claims["buyer_acceptance_claimed"]: raise InputError("this compiler cannot assert buyer/legal acceptance")
+    if claims["payment_claimed"]: raise InputError("this compiler cannot assert payment")
     return value
 
 
 def _readiness(intake: dict[str, Any]) -> tuple[str, list[str]]:
-    if intake["mode"] == "SYNTHETIC_DEMO":
-        return "SYNTHETIC_DEMO_ONLY", []
+    if intake["mode"] == "SYNTHETIC_DEMO": return "SYNTHETIC_DEMO_ONLY", []
     r = intake["customer_readiness"]
     holds = []
     for key, code in (
-        ("legal_control_confirmed", "LEGAL_GGUF_CONTROL_NOT_CONFIRMED"),
-        ("harness_ready", "CUSTOMER_HARNESS_NOT_READY"),
-        ("nda_signed", "NDA_NOT_SIGNED"),
-        ("sow_signed", "SOW_NOT_SIGNED"),
-        ("m1_received_owner_reported", "M1_NOT_OWNER_REPORTED_RECEIVED"),
+        ("legal_control_confirmed", "LEGAL_GGUF_CONTROL_NOT_CONFIRMED"), ("harness_ready", "CUSTOMER_HARNESS_NOT_READY"),
+        ("nda_signed", "NDA_NOT_SIGNED"), ("sow_signed", "SOW_NOT_SIGNED"), ("m1_received_owner_reported", "M1_NOT_OWNER_REPORTED_RECEIVED"),
     ):
-        if not r[key]:
-            holds.append(code)
+        if not r[key]: holds.append(code)
     return ("READY_FOR_OWNER_PRIVATE_FILE_EXCHANGE_REVIEW" if not holds else "HOLD"), holds
 
 
@@ -270,38 +251,19 @@ def _acceptance(evidence: dict[str, Any]) -> tuple[dict[str, bool], dict[str, An
 
 def compile_packet(intake_raw: Any, evidence_raw: Any) -> dict[str, Any]:
     intake, evidence = validate_intake(intake_raw), validate_evidence(evidence_raw)
-    if intake["case_id"] != evidence["case_id"]:
-        raise InputError("intake/evidence case_id mismatch")
+    if intake["case_id"] != evidence["case_id"]: raise InputError("intake/evidence case_id mismatch")
     ready, holds = _readiness(intake)
     tests, benchmark = _acceptance(evidence)
     complete, synthetic = all(tests.values()), intake["mode"] == "SYNTHETIC_DEMO"
     state = ("SYNTHETIC_DEMO_COMPLETE" if complete else "SYNTHETIC_DEMO_HOLD") if synthetic else ("HOLD_PRE_FILE_EXCHANGE" if ready != "READY_FOR_OWNER_PRIVATE_FILE_EXCHANGE_REVIEW" else ("READY_FOR_OWNER_M2_ACCEPTANCE_REVIEW" if complete else "HOLD_AT1_AT6_INCOMPLETE"))
     packet = {
-        "schema_version": 1,
-        "kind": "GGUF_ENTERPRISE_CLOSE_PACKET",
-        "offer": canonical_offer(),
-        "case_id": intake["case_id"],
-        "mode": intake["mode"],
-        "intake": intake,
-        "evidence": evidence,
-        "readiness": {"state": ready, "holds": holds, "private_file_exchange_is_publicly_authorized": False},
+        "schema_version": 1, "kind": "GGUF_ENTERPRISE_CLOSE_PACKET", "offer": canonical_offer(), "case_id": intake["case_id"], "mode": intake["mode"],
+        "intake": intake, "evidence": evidence, "readiness": {"state": ready, "holds": holds, "private_file_exchange_is_publicly_authorized": False},
         "acceptance": {"tests": tests, "all_at1_at6_evidence_complete": complete, "rule": ACCEPTANCE_RULE, "legal_acceptance_claimed": False},
-        "benchmark": benchmark,
-        "terminal_state": state,
-        "milestones": {
-            "M1": "SYNTHETIC_NOT_APPLICABLE" if synthetic else ("OWNER_REPORTED_EVIDENCE_PRESENT" if intake["customer_readiness"]["m1_received_owner_reported"] else "HOLD"),
-            "M2": "SYNTHETIC_NOT_APPLICABLE" if synthetic else ("READY_FOR_OWNER_ACCEPTANCE_REVIEW" if state == "READY_FOR_OWNER_M2_ACCEPTANCE_REVIEW" else "HOLD"),
-        },
+        "benchmark": benchmark, "terminal_state": state,
+        "milestones": {"M1": "SYNTHETIC_NOT_APPLICABLE" if synthetic else ("OWNER_REPORTED_EVIDENCE_PRESENT" if intake["customer_readiness"]["m1_received_owner_reported"] else "HOLD"), "M2": "SYNTHETIC_NOT_APPLICABLE" if synthetic else ("READY_FOR_OWNER_ACCEPTANCE_REVIEW" if state == "READY_FOR_OWNER_M2_ACCEPTANCE_REVIEW" else "HOLD")},
         "expansion": {"white_box_30d_discussion_ready": bool(not synthetic and state == "READY_FOR_OWNER_M2_ACCEPTANCE_REVIEW"), "expansion_accepted": False},
-        "authority": {
-            "buyer_contact_authorized": False,
-            "legal_acceptance_authorized": False,
-            "customer_file_transfer_authorized_by_this_packet": False,
-            "payment_capture_authorized": False,
-            "refund_authorized": False,
-            "revenue_recognition_authorized": False,
-            "public_model_bytes_allowed": False,
-        },
+        "authority": {"buyer_contact_authorized": False, "legal_acceptance_authorized": False, "customer_file_transfer_authorized_by_this_packet": False, "payment_capture_authorized": False, "refund_authorized": False, "revenue_recognition_authorized": False, "public_model_bytes_allowed": False},
         "truth": {"build_is_buyer_interest": False, "build_is_payment": False, "build_is_revenue": False, "synthetic_demo": synthetic},
     }
     packet["packet_receipt_sha256"] = sha256_obj(packet)
@@ -309,17 +271,13 @@ def compile_packet(intake_raw: Any, evidence_raw: Any) -> dict[str, Any]:
 
 
 def verify_packet(packet_raw: Any) -> None:
-    if not isinstance(packet_raw, dict):
-        raise InputError("packet must be object")
+    if not isinstance(packet_raw, dict): raise InputError("packet must be object")
     required = {"schema_version", "kind", "offer", "case_id", "mode", "intake", "evidence", "readiness", "acceptance", "benchmark", "terminal_state", "milestones", "expansion", "authority", "truth", "packet_receipt_sha256"}
     _exact(packet_raw, required, "packet")
     receipt = _digest(packet_raw["packet_receipt_sha256"], "packet_receipt_sha256")
-    unsigned = dict(packet_raw)
-    unsigned.pop("packet_receipt_sha256")
-    if sha256_obj(unsigned) != receipt:
-        raise InputError("packet receipt mismatch")
-    if compile_packet(packet_raw["intake"], packet_raw["evidence"]) != packet_raw:
-        raise InputError("packet semantic verification mismatch")
+    unsigned = dict(packet_raw); unsigned.pop("packet_receipt_sha256")
+    if sha256_obj(unsigned) != receipt: raise InputError("packet receipt mismatch")
+    if compile_packet(packet_raw["intake"], packet_raw["evidence"]) != packet_raw: raise InputError("packet semantic verification mismatch")
 
 
 def render_markdown(packet: dict[str, Any]) -> str:
@@ -332,22 +290,14 @@ def render_markdown(packet: dict[str, Any]) -> str:
 
 
 def _write_exclusive(path: Path, text: str) -> None:
-    if path.exists() or path.is_symlink():
-        raise InputError(f"exclusive create refused: {path}")
-    with path.open("x", encoding="utf-8", newline="\n") as handle:
-        handle.write(text)
+    if path.exists() or path.is_symlink(): raise InputError(f"exclusive create refused: {path}")
+    with path.open("x", encoding="utf-8", newline="\n") as handle: handle.write(text)
 
 
 def parser() -> argparse.ArgumentParser:
-    p = argparse.ArgumentParser(description=__doc__)
-    sub = p.add_subparsers(dest="command", required=True)
-    c = sub.add_parser("compile")
-    c.add_argument("intake", type=Path)
-    c.add_argument("evidence", type=Path)
-    c.add_argument("--json-out", type=Path)
-    c.add_argument("--markdown-out", type=Path)
-    v = sub.add_parser("verify")
-    v.add_argument("packet", type=Path)
+    p = argparse.ArgumentParser(description=__doc__); sub = p.add_subparsers(dest="command", required=True)
+    c = sub.add_parser("compile"); c.add_argument("intake", type=Path); c.add_argument("evidence", type=Path); c.add_argument("--json-out", type=Path); c.add_argument("--markdown-out", type=Path)
+    v = sub.add_parser("verify"); v.add_argument("packet", type=Path)
     return p
 
 
@@ -355,19 +305,13 @@ def main(argv: list[str] | None = None) -> int:
     args = parser().parse_args(argv)
     try:
         if args.command == "compile":
-            packet = compile_packet(read_json(args.intake), read_json(args.evidence))
-            js = canonical_json(packet) + "\n"
-            md = render_markdown(packet)
+            packet = compile_packet(read_json(args.intake), read_json(args.evidence)); js = canonical_json(packet) + "\n"; md = render_markdown(packet)
             _write_exclusive(args.json_out, js) if args.json_out else sys.stdout.write(js)
-            if args.markdown_out:
-                _write_exclusive(args.markdown_out, md)
+            if args.markdown_out: _write_exclusive(args.markdown_out, md)
             return 0
-        verify_packet(read_json(args.packet))
-        print("VERIFIED")
-        return 0
+        verify_packet(read_json(args.packet)); print("VERIFIED"); return 0
     except InputError as exc:
-        print(f"ERROR: {exc}", file=sys.stderr)
-        return 2
+        print(f"ERROR: {exc}", file=sys.stderr); return 2
 
 
 if __name__ == "__main__":
