@@ -69,21 +69,57 @@ class CurrentBoundaryTests(unittest.TestCase):
             current.__dict__.pop("_utc_now", None)
             current.__dict__.pop("_core", None)
 
-    def test_compatibility_guard_preserves_shape_but_never_positive_embedded(self):
+    def test_compatibility_guard_caller_digests_cannot_forge_provenance(self):
+        it = intent()
+        ev = evidence()
         receipt = guard.evaluate(
-            intent(),
-            evidence(),
+            it,
+            ev,
             intent_sha256="a" * 64,
             evidence_sha256="b" * 64,
         )
         payload = receipt["payload"]
         self.assertEqual(payload["intent"]["recipient"], "buyer@example.com")
         self.assertEqual(payload["authority"], "complete")
-        self.assertEqual(payload["evidence"]["intent_sha256"], "a" * 64)
-        self.assertEqual(payload["evidence"]["evidence_sha256"], "b" * 64)
+        self.assertEqual(payload["evidence"]["intent_sha256"], guard.digest_object(it))
+        self.assertEqual(payload["evidence"]["evidence_sha256"], guard.digest_object(ev))
+        self.assertNotEqual(payload["evidence"]["intent_sha256"], "a" * 64)
+        self.assertNotEqual(payload["evidence"]["evidence_sha256"], "b" * 64)
+        custody = payload["source_custody"]
+        self.assertEqual(custody["mode"], "CANONICAL_OBJECT_SNAPSHOT")
+        self.assertEqual(custody["intent"]["canonical_object_sha256"], guard.digest_object(it))
+        self.assertIsNone(custody["intent"]["exact_bytes_sha256"])
+        self.assertEqual(custody["evidence"]["canonical_object_sha256"], guard.digest_object(ev))
+        self.assertIsNone(custody["evidence"]["exact_bytes_sha256"])
         self.assertEqual(payload["historical_decision"], "ALLOW_NEW")
         self.assertEqual(payload["decision"], "HOLD")
         self.assertFalse(payload["current_preflight_clear"])
+
+    def test_compatibility_guard_byte_api_binds_only_exact_consumed_bytes(self):
+        it = intent()
+        ev = evidence()
+        ib = json.dumps(it, sort_keys=True, indent=2).encode("utf-8")
+        eb = json.dumps(ev, sort_keys=True, indent=2).encode("utf-8")
+        receipt = guard.evaluate_bytes(ib, eb)
+        payload = receipt["payload"]
+        custody = payload["source_custody"]
+        self.assertEqual(custody["mode"], "EXACT_CONSUMED_BYTES")
+        self.assertEqual(payload["evidence"]["intent_sha256"], guard.digest_bytes(ib))
+        self.assertEqual(payload["evidence"]["evidence_sha256"], guard.digest_bytes(eb))
+        self.assertEqual(custody["intent"]["exact_bytes_sha256"], guard.digest_bytes(ib))
+        self.assertEqual(custody["evidence"]["exact_bytes_sha256"], guard.digest_bytes(eb))
+        self.assertEqual(custody["intent"]["canonical_object_sha256"], guard.digest_object(it))
+        self.assertEqual(custody["evidence"]["canonical_object_sha256"], guard.digest_object(ev))
+        self.assertNotEqual(guard.digest_bytes(ib), guard.digest_object(it))
+        self.assertNotEqual(guard.digest_bytes(eb), guard.digest_object(ev))
+        self.assertEqual(payload["decision"], "HOLD")
+        self.assertFalse(payload["side_effects_authorized"])
+
+    def test_compatibility_guard_byte_api_rejects_non_bytes(self):
+        with self.assertRaises(guard.GuardError):
+            guard.evaluate_bytes(intent(), encoded(evidence()))  # type: ignore[arg-type]
+        with self.assertRaises(guard.GuardError):
+            guard.evaluate_bytes(encoded(intent()), evidence())  # type: ignore[arg-type]
 
     def test_exact_byte_embedded_surface_binds_consumed_bytes_and_holds(self):
         ib = encoded(intent())
