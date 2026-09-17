@@ -1,0 +1,32 @@
+name: Z-Sol NHDES 15255 one-shot donor apply
+
+on:
+  push:
+    branches:
+      - zsol/nhdes-15255-builtin-shadow-donor-20260917
+    paths:
+      - .swarm/nhdes-15255-builtin-shadow.patch
+
+permissions:
+  contents: write
+
+jobs:
+  apply-donor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Apply exact reviewed donor and self-remove applicator
+        shell: bash
+        run: |
+          set -euo pipefail
+          git apply --check .swarm/nhdes-15255-builtin-shadow.patch
+          git apply .swarm/nhdes-15255-builtin-shadow.patch
+          rm .swarm/nhdes-15255-builtin-shadow.patch
+          rm .github/workflows/zsol-nhdes-15255-apply-donor.yml
+          git config user.name "Z-Sol donor applicator"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add opportunities/nhdes_lims_2026_093/carrier.py .swarm .github/workflows/zsol-nhdes-15255-apply-donor.yml
+          git commit -m "fix: freeze NHDES runtime builtin dependencies"
+          git push origin HEAD:${GITHUB_REF_NAME}
