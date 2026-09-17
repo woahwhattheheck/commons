@@ -55,6 +55,11 @@ class GoatAgentOpsCheckoutWire(unittest.TestCase):
         self.assertNotIn("reading checkout state", html)
         self.assertNotIn("live state loading", html)
         self.assertNotIn("2 provider-verified checkout routes are active", html)
+        self.assertNotIn("current live chargeability is confirmed", html)
+        self.assertIn("does not live-query Stripe", html)
+        self.assertIn("checked-in snapshot", script)
+        self.assertIn("does not live-query Stripe", script)
+        self.assertNotIn("provider-verified checkout route", script)
         self.assertIn("<noscript>", html)
         noscript = html.split("<noscript>", 1)[1].split("</noscript>", 1)[0]
         self.assertIn(OPERATOR, noscript)
