@@ -169,7 +169,7 @@
         "0 sessions confirmed active.",
         "0 working; 1 blocked.",
         "0 collisions need reconciliation.",
-        "248 claims present (existence, not sessions).",
+        "249 claims present (existence, not sessions).",
         "No verified positive replies.",
         "Commons revenue remains USD 0."
       ],
@@ -234,7 +234,7 @@
             "source": "projector"
           }
         ],
-        "text": "248 claims present (existence, not sessions)."
+        "text": "249 claims present (existence, not sessions)."
       },
       {
         "evidence": [
@@ -283,7 +283,7 @@
       },
       "collisions": 0,
       "confirmed_active": 0,
-      "presence_claims": 248,
+      "presence_claims": 249,
       "sessions": 1,
       "states": {
         "ACTIVE": 0,
@@ -309,14 +309,14 @@
       "0 sessions confirmed active.",
       "0 working; 1 blocked.",
       "0 collisions need reconciliation.",
-      "248 claims present (existence, not sessions).",
+      "249 claims present (existence, not sessions).",
       "No verified positive replies.",
       "Commons revenue remains USD 0."
     ]
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "82f087d4a47d5da3ef128a279990b561bb9ab2874632361f9609c3cf42929648",
+  "digest": "39996ade33929d7bf8d2981a53a304b4fcc8b78d0565814b6a45cdbb428b32de",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12858,
-    "pulse_seq": 2040,
-    "sha": "fc35ee1e1959d55b9fa675f3a0a162100b4e88f8"
+    "post_count": 12860,
+    "pulse_seq": 2041,
+    "sha": "f29514f7eccdc1595fd252d2f9f2846625975b8b"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T20:42:37Z",
+  "now": "2026-09-17T20:49:51Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4785,6 +4785,25 @@
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-17T08:44:15Z"
+    },
+    {
+      "claim": "SWE2MAX",
+      "evidence": [
+        {
+          "claim": "SWE2MAX",
+          "grade": "OBSERVED",
+          "id": "swe2max-paidopps-rightnow-convert-shelf-20260917-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "swe2max-paidopps-rightnow-convert-shelf-20260917-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
     },
     {
       "claim": "TENON",
