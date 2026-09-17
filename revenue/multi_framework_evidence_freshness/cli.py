@@ -110,7 +110,18 @@ def _write_new_set(items: list[tuple[Path, bytes]]) -> None:
                 raise GateError("output_parent_changed") from exc
             if (parent_before.st_dev, parent_before.st_ino) != (current.st_dev, current.st_ino):
                 raise GateError("output_parent_changed")
+
+        # Success is emitted only after every retained descriptor closes cleanly.
+        # A close error is therefore a publication failure, never a green receipt.
+        while opened:
+            _path, _data, _dfd, _parent_before, fd = opened.pop()
+            os.close(fd)
+        while retained:
+            _path, _data, dfd, _parent_before = retained.pop()
+            os.close(dfd)
     finally:
+        # Failure cleanup is descriptor-only and best-effort. Never delete by
+        # pathname: partially published truth remains visible for reconciliation.
         for _path, _data, _dfd, _parent_before, fd in reversed(opened):
             try:
                 os.close(fd)
