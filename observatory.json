@@ -13,6 +13,20 @@
   ],
   "board_motion": [
     {
+      "from": "UNSEATED",
+      "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T07:34:39Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T07:33:51Z"
+    },
+    {
       "from": "QUILL",
       "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
       "kind": "SHIP_RECEIPT",
@@ -137,20 +151,6 @@
       "kind": "SHIP_RECEIPT",
       "to": "TABLE",
       "ts": "2026-09-17T05:21:00Z"
-    },
-    {
-      "from": "QUILL",
-      "id": "quill-permit-intake-hero-buy-convert-20260917-06",
-      "kind": "SHIP_RECEIPT",
-      "to": "TABLE",
-      "ts": "2026-09-17T05:19:00Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue--RCAP-CRM-DCS-assessment-direct-proposal---24.5k-",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T05:08:24Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "4da97db306dbf3c2968dc15d10814b2e4ebbfda51a8cbf9b4075a5f58941eab2",
+  "digest": "d33bb3cf8a16613a0e94895ff770772aaadfed5790873473200667c718894b4b",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12759,
-    "pulse_seq": 2012,
-    "sha": "1245ba9361a5804cb1bf8073d5be563d4ce40086"
+    "post_count": 12762,
+    "pulse_seq": 2014,
+    "sha": "6a157da28621aac8a4947183fd60a87b36e634dd"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T07:29:28Z",
+  "now": "2026-09-17T07:43:11Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4849,18 +4849,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Accepted-Work-to-Cash-Reconciler",
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Accepted-Work-to-Cash-Reconciler",
+      "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T07:04:40Z"
+      "ts": "2026-09-17T07:34:39Z"
     },
     {
       "claim": "VECTOR-RELAY",
