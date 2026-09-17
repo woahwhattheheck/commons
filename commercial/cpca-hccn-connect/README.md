@@ -33,7 +33,9 @@ The packet is materially stricter than the public landing-page summary:
 
 A direct-prime application must remain `HOLD` until the mandatory experience, references, personnel, recent comparable engagements, licensing/insurance, rate sheet, and signature/submission authority are source-bound. The engine refuses to treat empty/unsourced reference or engagement counts as proof.
 
-The most defensible recovery route, if direct-prime evidence remains unavailable, is **healthcare-prime teaming**: identify a genuinely qualified healthcare/FQHC/HCCN prime, obtain explicit relationship authority, bind that prime's eligibility and safety-net experience, and confine TJLabs to a support scope for which TJLabs can prove its own subject-matter and delivery track record. The code returns `TEAMING_READY` only when that named-prime evidence and support-scope proof are present; otherwise it remains `HOLD`.
+The most defensible recovery route, if direct-prime evidence remains unavailable, is **healthcare-prime teaming**: identify a genuinely qualified healthcare/FQHC/HCCN prime, obtain explicit relationship authority, bind that prime's eligibility and safety-net experience, and confine TJLabs to a support scope for which TJLabs can prove its own subject-matter and delivery track record.
+
+The legacy `cpca_qualify.py` state `TEAMING_READY` is only a narrow **workshare-discussion signal**. It can be emitted while mandatory applicant/application blockers remain unresolved, so it must never be read as CPCA applicant readiness, submission readiness, or permission to use a prime's credentials. `cpca_partner_readiness.py` truth-narrows that legacy signal to `WORKSHARE_DISCUSSION_READY` and keeps the application at `HOLD`. This generation has no provider-authenticated private-evidence adapter; even a complete caller-authored application manifest is non-authorizing.
 
 ## Teaming recovery artifacts
 
@@ -41,29 +43,34 @@ The direct-prime `HOLD` has a bounded follow-on that does not weaken the evidenc
 
 - [`teaming_shortlist.md`](./teaming_shortlist.md) ranks public-evidence healthcare-prime candidates by buyer-gate overlap, TJLabs complementarity, and competitor/self-sufficiency risk.
 - [`teaming_outreach_packets.md`](./teaming_outreach_packets.md) stages exact candidate-specific messages and a Muse single-writer arbitration template. Its state is **DRAFT ONLY / NOT SENT**.
+- [`partner_workshare/`](./partner_workshare/) is the executable positive-reply workshare packager. It fixes the healthcare-prime/TJLabs responsibility split, binds relationship and qualification evidence, renders a one-page review packet, and never grants external or commercial authority.
+- [`cpca_partner_readiness.py`](./cpca_partner_readiness.py) separates that useful workshare discussion from CPCA applicant/application readiness and emits a canonical receipt that exact-recompiles during verification.
 
-These files do not make any candidate a partner and do not authorize contact. Before any outbound email, re-run Slack + Gmail collision checks, obtain Muse `SELECT`, and re-fence again immediately before send. A positive response still does not satisfy `TEAMING_READY` until explicit relationship authority and source-bound prime/support evidence are entered into the qualification carrier.
+These artifacts do not make any candidate a partner and do not authorize contact. Before any outbound email or contact-form message, re-run Slack + Gmail collision checks, obtain Muse `SELECT`, and re-fence again immediately before send. A positive response or internally reviewable workshare still leaves the CPCA application at `HOLD` until separately provider-authenticated prime/application evidence and human authority exist.
 
 ## Use
 
 ```bash
 cd commercial/cpca-hccn-connect
 python3 cpca_qualify.py current_evidence.json
+python3 cpca_partner_readiness.py current_evidence.json
 python3 -m unittest -v test_cpca_qualify.py
+python3 -m unittest -v test_cpca_partner_readiness.py
 ```
 
-The CLI emits a canonical result plus a SHA-256 receipt. Missing gates default to `MISSING`; nothing defaults to pass. Every non-count gate marked `PROVEN` must carry at least one explicit `gate_sources` entry; references, recent engagements, and safety-net experience are proven only from their own source-bound records.
+`cpca_qualify.py` emits the legacy qualification result plus a SHA-256 receipt. `cpca_partner_readiness.py` consumes the same source-bound specification/evidence and recompiles the legacy result before emitting the truth-narrowed partner/application receipt. Missing gates default to `MISSING`; nothing defaults to pass. Every non-count gate marked `PROVEN` must carry at least one explicit `gate_sources` entry; references, recent engagements, and safety-net experience are proven only from their own source-bound records.
 
 ## State meanings
 
 - `PRIME_READY`: all direct-prime mandatory gates for the selected domain/service type are source-bound `PROVEN` before the deadline.
-- `TEAMING_READY`: a named healthcare prime has source-bound eligibility + safety-net evidence + explicit relationship authority, and every claimed TJLabs support gate is proven.
+- `TEAMING_READY` (legacy qualifier only): named-prime relationship/support evidence is sufficient for a bounded workshare discussion; **not** applicant/application readiness.
+- `WORKSHARE_DISCUSSION_READY` (partner-readiness wrapper): the legacy workshare signal exists, while `application.state` remains `HOLD` and all external/commercial authority remains false.
 - `HOLD`: one or more required facts remain missing/held; do not submit.
 - `NO_BID`: deadline has passed (or a future extension may add other terminal conditions).
 
 ## Authority ceiling
 
-Every result preserves these as false unless a separately authorized external process proves otherwise: buyer-contact authority, committed price, signed attestation, proposal submission, award, payment, and recognized revenue. This repository carrier does not send email, submit Smartsheet forms, sign attestations, accept contracts, or manufacture healthcare credentials.
+Every result preserves these as false unless a separately authorized external process proves otherwise: buyer-contact authority, credential-use authority, committed price, staff commitment, signed attestation, proposal submission, award, payment, and recognized revenue. This repository carrier does not send email, submit Smartsheet forms, sign attestations, accept contracts, use another organization's credentials, or manufacture healthcare qualifications.
 
 ## Live cash
 
