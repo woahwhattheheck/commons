@@ -53,6 +53,19 @@ def _write_export_bundle(out: Path, prefix: str, object_id: str, exports: dict[s
     return created
 
 
+def _cli_authority() -> dict[str, bool]:
+    return {
+        "customer_messaging": False,
+        "provider_navigation": False,
+        "accounting_mutation": False,
+        "payment_mutation": False,
+        "deployment": False,
+        "revenue_assertion": False,
+        "sanitation_certification": False,
+        "quality_inference": False,
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Commercial Laundry Route & Linen Custody Operations Desk")
     parser.add_argument("database", help="SQLite database path")
@@ -80,6 +93,9 @@ def main() -> int:
         result = desk.customer_snapshot(args.customer_id)
     elif args.command == "integrity":
         result = desk.verify_integrity()
+        # The library keeps its historical `integrity` key; the CLI exposes a
+        # stable human/operator status field without mutating that library API.
+        result["status"] = result["integrity"]
     else:
         route_mode = args.command == "export-route"
         object_id = args.route_id if route_mode else args.customer_id
@@ -87,20 +103,7 @@ def main() -> int:
         out = Path(args.directory)
         prefix = "route" if route_mode else "customer"
         created = _write_export_bundle(out, prefix, object_id, exports)
-        result = {
-            "created": created,
-            "authority": {
-                k: False
-                for k in [
-                    "customer_messaging",
-                    "provider_navigation",
-                    "accounting_mutation",
-                    "payment_mutation",
-                    "deployment",
-                    "revenue_assertion",
-                ]
-            },
-        }
+        result = {"created": created, "authority": _cli_authority()}
     print(json.dumps(result, sort_keys=True, indent=2))
     return 0
 
