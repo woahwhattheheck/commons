@@ -1,6 +1,9 @@
 from __future__ import annotations
 
 import importlib
+import importlib.machinery
+import importlib.util
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -21,11 +24,27 @@ FALSE_KEYS = {
     "quality_inference",
 }
 WIDENED = {key: True for key in FALSE_KEYS}
+ENGINE_PATH = Path(__file__).with_name("_laundry_desk_engine.py.disabled")
+LEGACY_FACADE_PATH = Path(__file__).with_name("_laundry_desk_facade_impl.py.disabled")
 
 
 def assert_hard_false(case: unittest.TestCase, value: dict[str, bool]) -> None:
     case.assertEqual(set(value), FALSE_KEYS)
     case.assertTrue(all(flag is False for flag in value.values()))
+
+
+def load_engine_directly(name: str):
+    loader = importlib.machinery.SourceFileLoader(name, str(ENGINE_PATH))
+    spec = importlib.util.spec_from_loader(name, loader)
+    if spec is None:
+        raise AssertionError("engine probe spec unavailable")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[name] = module
+    try:
+        loader.exec_module(module)
+    finally:
+        sys.modules.pop(name, None)
+    return module
 
 
 class CoreAndAuthorityHostiles(unittest.TestCase):
@@ -47,59 +66,56 @@ class CoreAndAuthorityHostiles(unittest.TestCase):
         desk.process(f"{key}.process", stop_id, {"sheet": 1}, {"sheet": 0})
         desk.deliver(f"{key}.deliver", stop_id, {"sheet": 1}, [f"BIN-{key}"])
 
-    def _raw_engine_class(self):
-        matches = [
-            cls
-            for cls in facade.LaundryDesk.__mro__[1:]
-            if cls.__module__ == "_commercial_laundry_engine_private"
-        ]
-        self.assertEqual(len(matches), 1)
-        return matches[0]
+    def _assert_shared_container_rejected(self, ctor, db: Path, prefix: str):
+        desk = ctor(db)
+        route = self._seed(desk)
+        stop_a, stop_b = [row["stop_id"] for row in route["stops"]]
+        desk.pickup(f"{prefix}.pickup.a", stop_a, {"sheet": 1}, ["BIN-SHARED"])
+        with self.assertRaises(core.StateConflict):
+            ctor(db).pickup(f"{prefix}.pickup.b", stop_b, {"sheet": 1}, ["BIN-SHARED"])
 
-    def test_public_core_constructor_routes_to_hardened_facade_and_custody(self):
+    def test_facade_and_core_are_same_authoritative_class(self):
+        self.assertIs(facade.LaundryDesk, core.LaundryDesk)
         with tempfile.TemporaryDirectory() as tmp:
-            db = Path(tmp) / "core.sqlite3"
-            desk = core.LaundryDesk(db)
-            self.assertIs(type(desk), facade.LaundryDesk)
-            route = self._seed(desk)
-            stop_a, stop_b = [row["stop_id"] for row in route["stops"]]
-            desk.pickup("core.pickup.a", stop_a, {"sheet": 1}, ["BIN-SHARED"])
-            with self.assertRaises(core.StateConflict):
-                core.LaundryDesk(db).pickup(
-                    "core.pickup.b", stop_b, {"sheet": 1}, ["BIN-SHARED"]
-                )
+            self._assert_shared_container_rejected(core.LaundryDesk, Path(tmp) / "core.sqlite3", "core")
 
-    def test_raw_base_handle_removed_constructor_sealed_and_unbound_pickup_safe(self):
-        self.assertFalse(hasattr(core, "_BaseLaundryDesk"))
-        raw = self._raw_engine_class()
+    def test_alternate_sourcefileloader_gets_same_hardened_semantics(self):
+        direct = load_engine_directly("_laundry_direct_probe")
+        self.assertIsNot(direct.LaundryDesk, core.LaundryDesk)
         with tempfile.TemporaryDirectory() as tmp:
-            db = Path(tmp) / "raw.sqlite3"
-            with self.assertRaises(TypeError):
-                raw(db)
-            desk = facade.LaundryDesk(db)
-            route = self._seed(desk)
-            stop_a, stop_b = [row["stop_id"] for row in route["stops"]]
-            desk.pickup("raw.pickup.a", stop_a, {"sheet": 1}, ["BIN-SHARED"])
-            # Even an explicit MRO-base unbound call delegates to the hardened
-            # public operation and cannot revive the retained blind pickup.
-            with self.assertRaises(core.StateConflict):
-                raw.pickup(desk, "raw.pickup.b", stop_b, {"sheet": 1}, ["BIN-SHARED"])
+            self._assert_shared_container_rejected(
+                direct.LaundryDesk, Path(tmp) / "direct.sqlite3", "direct"
+            )
 
-    def test_retained_implementation_modules_are_not_ordinary_import_targets(self):
-        self.assertNotIn("_commercial_laundry_engine_private", sys.modules)
-        self.assertNotIn("_commercial_laundry_facade_private", sys.modules)
-        with self.assertRaises(ModuleNotFoundError):
-            importlib.import_module("_laundry_desk_engine")
+    def test_direct_python_path_is_inert_definition_only(self):
+        run = subprocess.run(
+            [sys.executable, str(ENGINE_PATH)],
+            cwd=str(ENGINE_PATH.parent),
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            check=False,
+        )
+        self.assertEqual(run.returncode, 0, run.stderr)
+        self.assertEqual(run.stdout, "")
+        self.assertEqual(run.stderr, "")
+
+    def test_legacy_second_facade_payload_is_absent(self):
+        self.assertFalse(LEGACY_FACADE_PATH.exists())
         with self.assertRaises(ModuleNotFoundError):
             importlib.import_module("_laundry_desk_facade_impl")
 
     def test_authority_exports_are_immutable(self):
+        self.assertIs(facade.AUTHORITY, core.AUTHORITY)
         assert_hard_false(self, dict(facade.AUTHORITY))
-        assert_hard_false(self, dict(core.AUTHORITY))
         with self.assertRaises(TypeError):
             facade.AUTHORITY["payment_mutation"] = True
         with self.assertRaises(TypeError):
             core.AUTHORITY["payment_mutation"] = True
+        direct = load_engine_directly("_laundry_authority_probe")
+        assert_hard_false(self, dict(direct.AUTHORITY))
+        with self.assertRaises(TypeError):
+            direct.AUTHORITY["revenue_assertion"] = True
 
     def test_public_module_rebinding_cannot_widen_outputs(self):
         facade_original = facade.AUTHORITY
@@ -108,64 +124,58 @@ class CoreAndAuthorityHostiles(unittest.TestCase):
             facade.AUTHORITY = WIDENED.copy()
             core.AUTHORITY = WIDENED.copy()
             with tempfile.TemporaryDirectory() as tmp:
-                for ctor, name in ((facade.LaundryDesk, "facade"), (core.LaundryDesk, "core")):
-                    desk = ctor(Path(tmp) / f"{name}.sqlite3")
-                    route = self._seed(desk)
-                    stop = route["stops"][0]["stop_id"]
-                    self._good_stop(desk, stop, name)
-                    invoice = desk.draft_invoice(f"{name}.invoice", stop).value
-                    assert_hard_false(self, invoice["authority"])
-                    assert_hard_false(self, desk.route_snapshot(route["route_id"])["authority"])
-                    assert_hard_false(self, desk.customer_snapshot("cust-a")["authority"])
-                    assert_hard_false(self, desk.verify_integrity()["authority"])
+                desk = facade.LaundryDesk(Path(tmp) / "public.sqlite3")
+                route = self._seed(desk)
+                stop = route["stops"][0]["stop_id"]
+                self._good_stop(desk, stop, "public")
+                assert_hard_false(self, desk.draft_invoice("public.invoice", stop).value["authority"])
+                assert_hard_false(self, desk.route_snapshot(route["route_id"])["authority"])
+                assert_hard_false(self, desk.customer_snapshot("cust-a")["authority"])
+                assert_hard_false(self, desk.verify_integrity()["authority"])
         finally:
             facade.AUTHORITY = facade_original
             core.AUTHORITY = core_original
 
-    def test_method_globals_and_retained_projection_globals_cannot_widen_outputs(self):
+    def test_method_globals_rebinding_cannot_widen_outputs(self):
         methods = (
             facade.LaundryDesk.draft_invoice,
             facade.LaundryDesk.route_snapshot,
             facade.LaundryDesk.customer_snapshot,
             facade.LaundryDesk.verify_integrity,
         )
-        touched: dict[int, tuple[dict, object]] = {}
-        sentinel = object()
+        namespace = methods[0].__globals__
+        self.assertTrue(all(method.__globals__ is namespace for method in methods))
+        previous_authority = namespace.get("AUTHORITY")
+        previous_literal = namespace.get("_AUTHORITY_LITERAL")
         try:
-            for method in methods:
-                namespace = method.__globals__
-                if id(namespace) not in touched:
-                    touched[id(namespace)] = (namespace, namespace.get("AUTHORITY", sentinel))
-                namespace["AUTHORITY"] = WIDENED.copy()
-                # The core projection wrappers capture retained originals in a
-                # closure. Rebind those originals' private module global too.
-                for cell in method.__closure__ or ():
-                    original = cell.cell_contents
-                    if callable(original) and hasattr(original, "__globals__"):
-                        original_ns = original.__globals__
-                        if id(original_ns) not in touched:
-                            touched[id(original_ns)] = (
-                                original_ns,
-                                original_ns.get("AUTHORITY", sentinel),
-                            )
-                        original_ns["AUTHORITY"] = WIDENED.copy()
-
+            namespace["AUTHORITY"] = WIDENED.copy()
+            namespace["_AUTHORITY_LITERAL"] = WIDENED.copy()
             with tempfile.TemporaryDirectory() as tmp:
                 desk = facade.LaundryDesk(Path(tmp) / "globals.sqlite3")
                 route = self._seed(desk)
                 stop = route["stops"][0]["stop_id"]
                 self._good_stop(desk, stop, "globals")
-                invoice = desk.draft_invoice("globals.invoice", stop).value
-                assert_hard_false(self, invoice["authority"])
+                assert_hard_false(self, desk.draft_invoice("globals.invoice", stop).value["authority"])
                 assert_hard_false(self, desk.route_snapshot(route["route_id"])["authority"])
                 assert_hard_false(self, desk.customer_snapshot("cust-a")["authority"])
                 assert_hard_false(self, desk.verify_integrity()["authority"])
         finally:
-            for namespace, previous in touched.values():
-                if previous is sentinel:
-                    namespace.pop("AUTHORITY", None)
-                else:
-                    namespace["AUTHORITY"] = previous
+            namespace["AUTHORITY"] = previous_authority
+            namespace["_AUTHORITY_LITERAL"] = previous_literal
+
+    def test_direct_loaded_module_rebinding_cannot_widen_outputs(self):
+        direct = load_engine_directly("_laundry_direct_authority_probe")
+        direct.AUTHORITY = WIDENED.copy()
+        direct._AUTHORITY_LITERAL = WIDENED.copy()
+        with tempfile.TemporaryDirectory() as tmp:
+            desk = direct.LaundryDesk(Path(tmp) / "direct-authority.sqlite3")
+            route = self._seed(desk)
+            stop = route["stops"][0]["stop_id"]
+            self._good_stop(desk, stop, "directauth")
+            assert_hard_false(self, desk.draft_invoice("directauth.invoice", stop).value["authority"])
+            assert_hard_false(self, desk.route_snapshot(route["route_id"])["authority"])
+            assert_hard_false(self, desk.customer_snapshot("cust-a")["authority"])
+            assert_hard_false(self, desk.verify_integrity()["authority"])
 
 
 if __name__ == "__main__":

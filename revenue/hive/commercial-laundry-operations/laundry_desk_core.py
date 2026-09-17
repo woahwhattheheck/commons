@@ -1,133 +1,84 @@
 from __future__ import annotations
 
-"""Hardened core entrypoint for the commercial laundry operations desk.
+"""Canonical core entrypoint for the commercial laundry operations desk.
 
-The retained engine is loaded privately, but its raw class is not left as an
-ordinary authority path: direct construction is sealed, hardened operations on
-that class delegate to the public facade, and authority-bearing projections are
-wrapped with source-literal false authority.  The public core constructor still
-routes through the hardened facade so both supported imports share one semantic
-surface.
+There is exactly one product implementation class.  The internal engine is
+already hardened when loaded directly; this module gives it the stable public
+core import surface and adds the supported non-initializing read-only open path
+used by the CLI.  It does not create a second subclass or authority layer.
 """
 
 import importlib.machinery as _machinery
 import importlib.util as _importlib_util
 import sys as _sys
 from pathlib import Path as _LoaderPath
-from types import MappingProxyType
 
-_PRIVATE_ENGINE_NAME = "_commercial_laundry_engine_private"
-_PRIVATE_ENGINE_PATH = _LoaderPath(__file__).with_name("_laundry_desk_engine.py.disabled")
-_loader = _machinery.SourceFileLoader(_PRIVATE_ENGINE_NAME, str(_PRIVATE_ENGINE_PATH))
-_spec = _importlib_util.spec_from_loader(_PRIVATE_ENGINE_NAME, _loader)
+_ENGINE_NAME = "_commercial_laundry_engine"
+_ENGINE_PATH = _LoaderPath(__file__).with_name("_laundry_desk_engine.py.disabled")
+_loader = _machinery.SourceFileLoader(_ENGINE_NAME, str(_ENGINE_PATH))
+_spec = _importlib_util.spec_from_loader(_ENGINE_NAME, _loader)
 if _spec is None:
-    raise ImportError("unable to load retained commercial-laundry engine")
+    raise ImportError("unable to load commercial-laundry engine")
 _engine = _importlib_util.module_from_spec(_spec)
-_sys.modules[_PRIVATE_ENGINE_NAME] = _engine
+_sys.modules[_ENGINE_NAME] = _engine
 try:
     _loader.exec_module(_engine)
 finally:
-    _sys.modules.pop(_PRIVATE_ENGINE_NAME, None)
+    _sys.modules.pop(_ENGINE_NAME, None)
 
 for _name, _value in vars(_engine).items():
-    if _name not in {"LaundryDesk", "AUTHORITY"} and not _name.startswith("__"):
+    if not _name.startswith("__"):
         globals()[_name] = _value
 
-AUTHORITY = MappingProxyType(
-    {
-        "customer_messaging": False,
-        "provider_navigation": False,
-        "accounting_mutation": False,
-        "payment_mutation": False,
-        "deployment": False,
-        "revenue_assertion": False,
-        "sanitation_certification": False,
-        "quality_inference": False,
-    }
-)
-_engine.AUTHORITY = AUTHORITY
-_BaseLaundryDesk = _engine.LaundryDesk
+
+def _make_read_only_surface():
+    original_connect = LaundryDesk._connect
+    path_type = Path
+    sqlite_module = sqlite3
+    closing_type = closing
+    expected_schema_version = str(SCHEMA_VERSION)
+
+    def read_only_connect(self):
+        if not getattr(self, "_commons_read_only", False):
+            return original_connect(self)
+        database_path = path_type(self.database).resolve()
+        uri = database_path.as_uri() + "?mode=ro"
+        conn = sqlite_module.connect(uri, uri=True, timeout=8.0, isolation_level=None)
+        conn.row_factory = sqlite_module.Row
+        conn.execute("PRAGMA foreign_keys = ON")
+        conn.execute("PRAGMA busy_timeout = 8000")
+        conn.execute("PRAGMA query_only = ON")
+        return conn
+
+    @classmethod
+    def open_read_only(cls, database: str | Path):
+        database_path = path_type(database)
+        if not database_path.is_file():
+            raise FileNotFoundError(f"laundry database does not exist: {database_path}")
+
+        # Skip the writable initializer: it creates parent directories and
+        # initializes schema by design, which a read-only inspection must not do.
+        instance = cls.__new__(cls)
+        instance.database = str(database_path)
+        instance._commons_read_only = True
+        try:
+            with closing_type(instance._connect()) as conn:
+                row = conn.execute(
+                    "SELECT value FROM meta WHERE key='schema_version'"
+                ).fetchone()
+        except sqlite_module.Error as exc:
+            raise LaundryDeskError("existing laundry database schema is unavailable") from exc
+        if row is None or row[0] != expected_schema_version:
+            observed = None if row is None else row[0]
+            raise LaundryDeskError(f"unsupported schema version {observed}")
+        return instance
+
+    return open_read_only, read_only_connect
 
 
-def _make_sealed_base_new(raw_base):
-    def sealed(cls, *args, **kwargs):
-        if cls is raw_base:
-            raise TypeError("raw laundry engine is not a public construction surface")
-        return object.__new__(cls)
+LaundryDesk.open_read_only, LaundryDesk._connect = _make_read_only_surface()
 
-    return sealed
-
-
-_BaseLaundryDesk.__new__ = staticmethod(_make_sealed_base_new(_BaseLaundryDesk))
-del _make_sealed_base_new
-
-
-def _public_delegate(method_name: str):
-    def guarded(self, *args, **kwargs):
-        from laundry_desk import LaundryDesk as PublicLaundryDesk
-
-        if not isinstance(self, PublicLaundryDesk):
-            raise StateConflict("raw laundry engine operation is not authoritative")
-        target = PublicLaundryDesk.__dict__.get(method_name)
-        if target is None:
-            raise StateConflict("hardened public operation unavailable")
-        return target(self, *args, **kwargs)
-
-    guarded.__name__ = method_name
-    return guarded
-
-
-# These operations were hardened by the facade.  Reaching the retained base by
-# MRO or a stale handle cannot resurrect their pre-hardening implementations.
-for _method_name in (
-    "create_daily_route",
-    "pickup",
-    "deliver",
-    "draft_invoice",
-    "_insert_exception",
-    "render_customer_exports",
-):
-    setattr(_BaseLaundryDesk, _method_name, _public_delegate(_method_name))
-
-
-def _authority_projection(original):
-    def wrapped(self, *args, **kwargs):
-        result = original(self, *args, **kwargs)
-        result["authority"] = {
-            "customer_messaging": False,
-            "provider_navigation": False,
-            "accounting_mutation": False,
-            "payment_mutation": False,
-            "deployment": False,
-            "revenue_assertion": False,
-            "sanitation_certification": False,
-            "quality_inference": False,
-        }
-        return result
-
-    return wrapped
-
-
-# These retained methods do not mutate authority-bearing state; replacing their
-# returned authority with source-literal false values removes dependence on the
-# retained function module's rebindable AUTHORITY name, including raw-MRO calls.
-_BaseLaundryDesk.route_snapshot = _authority_projection(_BaseLaundryDesk.route_snapshot)
-_BaseLaundryDesk.customer_snapshot = _authority_projection(_BaseLaundryDesk.customer_snapshot)
-_BaseLaundryDesk.verify_integrity = _authority_projection(_BaseLaundryDesk.verify_integrity)
-
-
-class LaundryDesk(_BaseLaundryDesk):
-    """Compatibility constructor sharing the hardened facade authority surface."""
-
-    def __new__(cls, *args, **kwargs):
-        if cls is LaundryDesk:
-            from laundry_desk import LaundryDesk as PublicLaundryDesk
-
-            return super().__new__(PublicLaundryDesk)
-        return super().__new__(cls)
-
-
-# The raw class is intentionally absent from the public module namespace.  It is
-# still an MRO implementation detail, but direct construction and hardened
-# operation calls on it are fail-closed/delegating as above.
-del _engine, _loader, _spec, _name, _value, _method_name, _BaseLaundryDesk
+# No raw implementation module/class handle is introduced beyond the one class
+# object exported above. The class's functions legitimately retain their engine
+# globals, while the read-only methods retain only closure-captured dependencies.
+del _engine, _loader, _spec, _name, _value, _make_read_only_surface

@@ -10,11 +10,13 @@ import sqlite3
 from dataclasses import dataclass
 from datetime import date, datetime, timezone
 from pathlib import Path
+from types import MappingProxyType
 from typing import Any, Callable, Iterable, Mapping
 
 SCHEMA_VERSION = 1
 ID_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:-]{0,254}$")
-AUTHORITY = {
+MAX_ID_LENGTH = 255
+_AUTHORITY_LITERAL = {
     "customer_messaging": False,
     "provider_navigation": False,
     "accounting_mutation": False,
@@ -24,6 +26,7 @@ AUTHORITY = {
     "sanitation_certification": False,
     "quality_inference": False,
 }
+AUTHORITY = MappingProxyType(_AUTHORITY_LITERAL.copy())
 
 
 class LaundryDeskError(RuntimeError):
@@ -143,6 +146,53 @@ def _containers(values: Iterable[str], field: str) -> list[str]:
     if len(items) != len(set(items)):
         raise ValidationError(f"duplicate container in {field}")
     return sorted(items)
+
+
+def _generated_id(namespace: str, *parts: object) -> str:
+    namespace = _ident(namespace, "generated ID namespace")
+    text_parts = [str(part) for part in parts]
+    candidate = f"{namespace}:" + ":".join(text_parts)
+    if len(candidate) <= MAX_ID_LENGTH and ID_RE.fullmatch(candidate):
+        return candidate
+    digest = hashlib.sha256(
+        _canonical_json({"namespace": namespace, "parts": text_parts}).encode("utf-8")
+    ).hexdigest()
+    bounded = f"{namespace}:sha256:{digest}"
+    if len(bounded) > MAX_ID_LENGTH or not ID_RE.fullmatch(bounded):
+        raise LaundryDeskError("generated identifier contract violated")
+    return bounded
+
+
+def _csv_safe(value: str) -> str:
+    if not isinstance(value, str):
+        raise ValidationError("CSV projection text must be text")
+    return "'" + value if value.startswith(("=", "+", "-", "@")) else value
+
+
+def _md_literal(value: str) -> str:
+    if not isinstance(value, str):
+        raise ValidationError("Markdown projection text must be text")
+    entities = {
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", "|": "&#124;", "`": "&#96;",
+        "\\": "&#92;", "*": "&#42;", "_": "&#95;", "[": "&#91;", "]": "&#93;",
+        "#": "&#35;", "!": "&#33;",
+    }
+    return "".join(entities.get(ch, ch) for ch in value)
+
+
+def _authority_literal() -> dict[str, bool]:
+    # Kept for callers that want a fresh inert value. Semantic methods below use
+    # source-literal dictionaries so rebinding this helper cannot widen output.
+    return {
+        "customer_messaging": False,
+        "provider_navigation": False,
+        "accounting_mutation": False,
+        "payment_mutation": False,
+        "deployment": False,
+        "revenue_assertion": False,
+        "sanitation_certification": False,
+        "quality_inference": False,
+    }
 
 
 @dataclass(frozen=True)
@@ -471,7 +521,7 @@ class LaundryDesk:
     def create_daily_route(self, operation_key: str, service_date: str, route_code: str) -> OperationResult:
         service_date = _iso_date(service_date, "service_date")
         route_code = _ident(route_code, "route_code")
-        route_id = f"route:{service_date}:{route_code}"
+        route_id = _generated_id("route", service_date, route_code)
         weekday = date.fromisoformat(service_date).weekday()
         payload = {"service_date": service_date, "route_code": route_code}
 
@@ -493,7 +543,9 @@ class LaundryDesk:
             )
             stops: list[dict[str, Any]] = []
             for row in plans:
-                stop_id = f"stop:{service_date}:{route_code}:{row['stop_sequence']:04d}:{row['site_id']}"
+                stop_id = _generated_id(
+                    "stop", service_date, route_code, f"{row['stop_sequence']:04d}", row["site_id"]
+                )
                 conn.execute(
                     "INSERT INTO stops(stop_id,route_id,site_id,stop_sequence,state) VALUES (?,?,?,?,'MANIFESTED')",
                     (stop_id, route_id, row["site_id"], row["stop_sequence"]),
@@ -502,6 +554,23 @@ class LaundryDesk:
             return {"route_id": route_id, "service_date": service_date, "route_code": route_code, "stops": stops}
 
         return self._operation(operation_key, "ROUTE_MANIFESTED", "route", route_id, payload, mutate)
+
+    @staticmethod
+    def _active_container_owner(
+        conn: sqlite3.Connection, container_id: str, excluding_stop_id: str
+    ) -> str | None:
+        row = conn.execute(
+            "SELECT cc.stop_id FROM container_custody cc "
+            "JOIN stops s ON s.stop_id=cc.stop_id "
+            "WHERE cc.phase='PICKUP' AND cc.container_id=? AND cc.stop_id<>? AND ("
+            "s.state IN ('PICKED_UP','PROCESSED') OR ("
+            "s.state IN ('DELIVERED','INVOICE_DRAFTED') AND EXISTS ("
+            "SELECT 1 FROM exceptions e WHERE e.stop_id=cc.stop_id "
+            "AND e.kind='CUSTODY_MISSING' AND e.item_code=cc.container_id AND e.status='OPEN'"
+            "))) ORDER BY cc.stop_id LIMIT 1",
+            (container_id, excluding_stop_id),
+        ).fetchone()
+        return row["stop_id"] if row else None
 
     def pickup(
         self,
@@ -521,12 +590,25 @@ class LaundryDesk:
                 raise ValidationError("unknown stop")
             if row["state"] != "MANIFESTED":
                 raise StateConflict("pickup requires MANIFESTED stop")
-            for item, qty in counts.items():
-                conn.execute("INSERT INTO linen_counts(stop_id,phase,item_code,qty) VALUES (?,?,?,?)", (stop_id, "PICKUP", item, qty))
             for container_id in containers:
-                conn.execute("INSERT INTO container_custody(stop_id,phase,container_id) VALUES (?,?,?)", (stop_id, "PICKUP", container_id))
-            conn.execute("UPDATE stops SET state='PICKED_UP' WHERE stop_id=? AND state='MANIFESTED'", (stop_id,))
-            conn.execute("UPDATE routes SET state='IN_PROGRESS' WHERE route_id=? AND state='MANIFESTED'", (row["route_id"],))
+                if self._active_container_owner(conn, container_id, stop_id) is not None:
+                    raise StateConflict("pickup container already has another active stop owner")
+            for item, qty in counts.items():
+                conn.execute(
+                    "INSERT INTO linen_counts(stop_id,phase,item_code,qty) VALUES (?,?,?,?)",
+                    (stop_id, "PICKUP", item, qty),
+                )
+            for container_id in containers:
+                conn.execute(
+                    "INSERT INTO container_custody(stop_id,phase,container_id) VALUES (?,?,?)",
+                    (stop_id, "PICKUP", container_id),
+                )
+            conn.execute(
+                "UPDATE stops SET state='PICKED_UP' WHERE stop_id=? AND state='MANIFESTED'", (stop_id,)
+            )
+            conn.execute(
+                "UPDATE routes SET state='IN_PROGRESS' WHERE route_id=? AND state='MANIFESTED'", (row["route_id"],)
+            )
             return {"stop_id": stop_id, "state": "PICKED_UP", "pickup_counts": counts, "containers": containers}
 
         return self._operation(operation_key, "PICKUP_RECORDED", "stop", stop_id, payload, mutate)
@@ -556,14 +638,28 @@ class LaundryDesk:
                 p = pickup.get(item, 0)
                 good = processed.get(item, 0)
                 bad = damaged.get(item, 0)
-                conn.execute("INSERT INTO linen_counts(stop_id,phase,item_code,qty) VALUES (?,?,?,?)", (stop_id, "PROCESSED", item, good))
-                conn.execute("INSERT INTO linen_counts(stop_id,phase,item_code,qty) VALUES (?,?,?,?)", (stop_id, "DAMAGED", item, bad))
+                conn.execute(
+                    "INSERT INTO linen_counts(stop_id,phase,item_code,qty) VALUES (?,?,?,?)",
+                    (stop_id, "PROCESSED", item, good),
+                )
+                conn.execute(
+                    "INSERT INTO linen_counts(stop_id,phase,item_code,qty) VALUES (?,?,?,?)",
+                    (stop_id, "DAMAGED", item, bad),
+                )
                 if good + bad != p:
                     created.append(self._insert_exception(conn, stop_id, "PROCESS_COUNT_MISMATCH", item, p, good + bad))
                 if bad > 0:
                     created.append(self._insert_exception(conn, stop_id, "DAMAGE", item, 0, bad))
-            conn.execute("UPDATE stops SET state='PROCESSED' WHERE stop_id=? AND state='PICKED_UP'", (stop_id,))
-            return {"stop_id": stop_id, "state": "PROCESSED", "processed_counts": processed, "damaged_counts": damaged, "open_exception_ids": created}
+            conn.execute(
+                "UPDATE stops SET state='PROCESSED' WHERE stop_id=? AND state='PICKED_UP'", (stop_id,)
+            )
+            return {
+                "stop_id": stop_id,
+                "state": "PROCESSED",
+                "processed_counts": processed,
+                "damaged_counts": damaged,
+                "open_exception_ids": created,
+            }
 
         return self._operation(operation_key, "PROCESSING_RECORDED", "stop", stop_id, payload, mutate)
 
@@ -585,20 +681,51 @@ class LaundryDesk:
                 raise ValidationError("unknown stop")
             if row["state"] != "PROCESSED":
                 raise StateConflict("delivery requires PROCESSED stop")
+            for container_id in containers:
+                if self._active_container_owner(conn, container_id, stop_id) is not None:
+                    raise StateConflict("delivery container still belongs to another active stop")
+
             processed = self._phase_counts(conn, stop_id, "PROCESSED")
             item_codes = sorted(set(processed) | set(delivered))
             created: list[str] = []
             for item in item_codes:
                 expected = processed.get(item, 0)
                 actual = delivered.get(item, 0)
-                conn.execute("INSERT INTO linen_counts(stop_id,phase,item_code,qty) VALUES (?,?,?,?)", (stop_id, "DELIVERED", item, actual))
+                conn.execute(
+                    "INSERT INTO linen_counts(stop_id,phase,item_code,qty) VALUES (?,?,?,?)",
+                    (stop_id, "DELIVERED", item, actual),
+                )
                 if actual != expected:
                     created.append(self._insert_exception(conn, stop_id, "DELIVERY_COUNT_MISMATCH", item, expected, actual))
+
+            pickup_containers = {
+                r[0]
+                for r in conn.execute(
+                    "SELECT container_id FROM container_custody WHERE stop_id=? AND phase='PICKUP' ORDER BY container_id",
+                    (stop_id,),
+                )
+            }
+            delivery_containers = set(containers)
+            for container_id in sorted(pickup_containers - delivery_containers):
+                created.append(self._insert_exception(conn, stop_id, "CUSTODY_MISSING", container_id, 1, 0))
+            for container_id in sorted(delivery_containers - pickup_containers):
+                created.append(self._insert_exception(conn, stop_id, "CUSTODY_UNEXPECTED", container_id, 0, 1))
             for container_id in containers:
-                conn.execute("INSERT INTO container_custody(stop_id,phase,container_id) VALUES (?,?,?)", (stop_id, "DELIVERY", container_id))
-            conn.execute("UPDATE stops SET state='DELIVERED' WHERE stop_id=? AND state='PROCESSED'", (stop_id,))
+                conn.execute(
+                    "INSERT INTO container_custody(stop_id,phase,container_id) VALUES (?,?,?)",
+                    (stop_id, "DELIVERY", container_id),
+                )
+            conn.execute(
+                "UPDATE stops SET state='DELIVERED' WHERE stop_id=? AND state='PROCESSED'", (stop_id,)
+            )
             self._maybe_complete_route(conn, row["route_id"])
-            return {"stop_id": stop_id, "state": "DELIVERED", "delivered_counts": delivered, "containers": containers, "open_exception_ids": created}
+            return {
+                "stop_id": stop_id,
+                "state": "DELIVERED",
+                "delivered_counts": delivered,
+                "containers": containers,
+                "open_exception_ids": created,
+            }
 
         return self._operation(operation_key, "DELIVERY_RECORDED", "stop", stop_id, payload, mutate)
 
@@ -626,19 +753,25 @@ class LaundryDesk:
             ).rowcount
             if changed != 1:
                 raise StateConflict("exception resolution lost a concurrent terminal race")
-            return {"exception_id": exception_id, "stop_id": row["stop_id"], "status": "RESOLVED", "resolution_code": resolution_code, "note": note}
+            return {
+                "exception_id": exception_id,
+                "stop_id": row["stop_id"],
+                "status": "RESOLVED",
+                "resolution_code": resolution_code,
+                "note": note,
+            }
 
         return self._operation(operation_key, "EXCEPTION_RESOLVED", "exception", exception_id, payload, mutate)
 
     def draft_invoice(self, operation_key: str, stop_id: str) -> OperationResult:
         stop_id = _ident(stop_id, "stop_id")
-        invoice_id = f"draft:{stop_id}"
+        invoice_id = _generated_id("draft", stop_id)
         payload = {"stop_id": stop_id}
 
         def mutate(conn: sqlite3.Connection) -> dict[str, Any]:
             row = conn.execute(
-                "SELECT s.state,s.site_id,r.service_date,r.route_id FROM stops s JOIN routes r ON r.route_id=s.route_id WHERE s.stop_id=?",
-                (stop_id,),
+                "SELECT s.state,s.site_id,r.service_date,r.route_id FROM stops s "
+                "JOIN routes r ON r.route_id=s.route_id WHERE s.stop_id=?", (stop_id,)
             ).fetchone()
             if not row:
                 raise ValidationError("unknown stop")
@@ -646,7 +779,9 @@ class LaundryDesk:
                 raise StateConflict("invoice draft requires DELIVERED stop")
             if conn.execute("SELECT 1 FROM invoices WHERE stop_id=?", (stop_id,)).fetchone():
                 raise StateConflict("invoice draft already exists")
-            open_ex = conn.execute("SELECT COUNT(*) FROM exceptions WHERE stop_id=? AND status='OPEN'", (stop_id,)).fetchone()[0]
+            open_ex = conn.execute(
+                "SELECT COUNT(*) FROM exceptions WHERE stop_id=? AND status='OPEN'", (stop_id,)
+            ).fetchone()[0]
             if open_ex:
                 raise InvoiceBlocked(f"{open_ex} unresolved custody/count exceptions block invoice readiness")
             delivered = self._phase_counts(conn, stop_id, "DELIVERED")
@@ -655,7 +790,8 @@ class LaundryDesk:
             for item, qty in sorted(delivered.items()):
                 auth = conn.execute(
                     "SELECT agreement_id,unit_price_cents FROM agreements WHERE site_id=? AND item_code=? "
-                    "AND active_from<=? AND (active_to IS NULL OR active_to>=?) ORDER BY active_from DESC,agreement_id",
+                    "AND active_from<=? AND (active_to IS NULL OR active_to>=?) "
+                    "ORDER BY active_from DESC,agreement_id",
                     (row["site_id"], item, row["service_date"], row["service_date"]),
                 ).fetchall()
                 if len(auth) != 1:
@@ -663,7 +799,13 @@ class LaundryDesk:
                 cents = _money(auth[0]["unit_price_cents"], "stored unit_price_cents")
                 line_total = _money(qty * cents, "line total")
                 total = _money(total + line_total, "invoice total")
-                lines.append({"item_code": item, "quantity": qty, "unit_price_cents": cents, "line_total_cents": line_total, "agreement_id": auth[0]["agreement_id"]})
+                lines.append({
+                    "item_code": item,
+                    "quantity": qty,
+                    "unit_price_cents": cents,
+                    "line_total_cents": line_total,
+                    "agreement_id": auth[0]["agreement_id"],
+                })
             invoice = {
                 "invoice_id": invoice_id,
                 "state": "DRAFT",
@@ -674,13 +816,24 @@ class LaundryDesk:
                 "currency": "USD",
                 "lines": lines,
                 "total_cents": total,
-                "authority": AUTHORITY.copy(),
+                "authority": {
+                    "customer_messaging": False,
+                    "provider_navigation": False,
+                    "accounting_mutation": False,
+                    "payment_mutation": False,
+                    "deployment": False,
+                    "revenue_assertion": False,
+                    "sanitation_certification": False,
+                    "quality_inference": False,
+                },
             }
             conn.execute(
                 "INSERT INTO invoices(invoice_id,stop_id,state,total_cents,payload_json) VALUES (?,?,'DRAFT',?,?)",
                 (invoice_id, stop_id, total, _canonical_json(invoice)),
             )
-            changed = conn.execute("UPDATE stops SET state='INVOICE_DRAFTED' WHERE stop_id=? AND state='DELIVERED'", (stop_id,)).rowcount
+            changed = conn.execute(
+                "UPDATE stops SET state='INVOICE_DRAFTED' WHERE stop_id=? AND state='DELIVERED'", (stop_id,)
+            ).rowcount
             if changed != 1:
                 raise StateConflict("invoice drafting lost a concurrent terminal race")
             return invoice
@@ -688,15 +841,22 @@ class LaundryDesk:
         return self._operation(operation_key, "INVOICE_DRAFTED", "invoice", invoice_id, payload, mutate)
 
     def _phase_counts(self, conn: sqlite3.Connection, stop_id: str, phase: str) -> dict[str, int]:
-        return {row["item_code"]: row["qty"] for row in conn.execute(
-            "SELECT item_code,qty FROM linen_counts WHERE stop_id=? AND phase=? ORDER BY item_code", (stop_id, phase)
-        )}
+        return {
+            row["item_code"]: row["qty"]
+            for row in conn.execute(
+                "SELECT item_code,qty FROM linen_counts WHERE stop_id=? AND phase=? ORDER BY item_code",
+                (stop_id, phase),
+            )
+        }
 
-    def _insert_exception(self, conn: sqlite3.Connection, stop_id: str, kind: str, item_code: str, expected: int, actual: int) -> str:
+    def _insert_exception(
+        self, conn: sqlite3.Connection, stop_id: str, kind: str, item_code: str, expected: int, actual: int
+    ) -> str:
         ordinal = conn.execute("SELECT COUNT(*) FROM exceptions WHERE stop_id=?", (stop_id,)).fetchone()[0] + 1
-        exception_id = f"exc:{stop_id}:{ordinal:04d}"
+        exception_id = _generated_id("exc", stop_id, f"{ordinal:04d}")
         conn.execute(
-            "INSERT INTO exceptions(exception_id,stop_id,kind,item_code,expected_qty,actual_qty,status) VALUES (?,?,?,?,?,?,'OPEN')",
+            "INSERT INTO exceptions(exception_id,stop_id,kind,item_code,expected_qty,actual_qty,status) "
+            "VALUES (?,?,?,?,?,?,'OPEN')",
             (exception_id, stop_id, kind, item_code, expected, actual),
         )
         return exception_id
@@ -711,21 +871,27 @@ class LaundryDesk:
     def route_snapshot(self, route_id: str) -> dict[str, Any]:
         route_id = _ident(route_id, "route_id")
         with closing(self._connect()) as conn:
-            route = conn.execute("SELECT route_id,service_date,route_code,state FROM routes WHERE route_id=?", (route_id,)).fetchone()
+            route = conn.execute(
+                "SELECT route_id,service_date,route_code,state FROM routes WHERE route_id=?", (route_id,)
+            ).fetchone()
             if not route:
                 raise ValidationError("unknown route")
             stops: list[dict[str, Any]] = []
             for row in conn.execute(
                 "SELECT s.stop_id,s.site_id,s.stop_sequence,s.state,si.customer_id,si.name site_name,c.name customer_name "
                 "FROM stops s JOIN sites si ON si.site_id=s.site_id JOIN customers c ON c.customer_id=si.customer_id "
-                "WHERE s.route_id=? ORDER BY s.stop_sequence,s.site_id",
-                (route_id,),
+                "WHERE s.route_id=? ORDER BY s.stop_sequence,s.site_id", (route_id,)
             ):
-                exceptions = [dict(r) for r in conn.execute(
-                    "SELECT exception_id,kind,item_code,expected_qty,actual_qty,status,resolution_code,resolution_note "
-                    "FROM exceptions WHERE stop_id=? ORDER BY exception_id", (row["stop_id"],)
-                )]
-                invoice_row = conn.execute("SELECT payload_json FROM invoices WHERE stop_id=?", (row["stop_id"],)).fetchone()
+                exceptions = [
+                    dict(r)
+                    for r in conn.execute(
+                        "SELECT exception_id,kind,item_code,expected_qty,actual_qty,status,resolution_code,resolution_note "
+                        "FROM exceptions WHERE stop_id=? ORDER BY exception_id", (row["stop_id"],)
+                    )
+                ]
+                invoice_row = conn.execute(
+                    "SELECT payload_json FROM invoices WHERE stop_id=?", (row["stop_id"],)
+                ).fetchone()
                 stops.append({
                     "stop_id": row["stop_id"],
                     "site_id": row["site_id"],
@@ -738,8 +904,18 @@ class LaundryDesk:
                     "processed_counts": self._phase_counts(conn, row["stop_id"], "PROCESSED"),
                     "damaged_counts": self._phase_counts(conn, row["stop_id"], "DAMAGED"),
                     "delivered_counts": self._phase_counts(conn, row["stop_id"], "DELIVERED"),
-                    "pickup_containers": [r[0] for r in conn.execute("SELECT container_id FROM container_custody WHERE stop_id=? AND phase='PICKUP' ORDER BY container_id", (row["stop_id"],))],
-                    "delivery_containers": [r[0] for r in conn.execute("SELECT container_id FROM container_custody WHERE stop_id=? AND phase='DELIVERY' ORDER BY container_id", (row["stop_id"],))],
+                    "pickup_containers": [
+                        r[0] for r in conn.execute(
+                            "SELECT container_id FROM container_custody WHERE stop_id=? AND phase='PICKUP' ORDER BY container_id",
+                            (row["stop_id"],),
+                        )
+                    ],
+                    "delivery_containers": [
+                        r[0] for r in conn.execute(
+                            "SELECT container_id FROM container_custody WHERE stop_id=? AND phase='DELIVERY' ORDER BY container_id",
+                            (row["stop_id"],),
+                        )
+                    ],
                     "exceptions": exceptions,
                     "invoice": json.loads(invoice_row[0]) if invoice_row else None,
                 })
@@ -749,35 +925,78 @@ class LaundryDesk:
                 "route_code": route["route_code"],
                 "state": route["state"],
                 "stops": stops,
-                "authority": AUTHORITY.copy(),
+                "authority": {
+                    "customer_messaging": False,
+                    "provider_navigation": False,
+                    "accounting_mutation": False,
+                    "payment_mutation": False,
+                    "deployment": False,
+                    "revenue_assertion": False,
+                    "sanitation_certification": False,
+                    "quality_inference": False,
+                },
             }
 
     def customer_snapshot(self, customer_id: str) -> dict[str, Any]:
         customer_id = _ident(customer_id, "customer_id")
         with closing(self._connect()) as conn:
-            customer = conn.execute("SELECT customer_id,name FROM customers WHERE customer_id=?", (customer_id,)).fetchone()
+            customer = conn.execute(
+                "SELECT customer_id,name FROM customers WHERE customer_id=?", (customer_id,)
+            ).fetchone()
             if not customer:
                 raise ValidationError("unknown customer")
             sites: list[dict[str, Any]] = []
-            for site in conn.execute("SELECT site_id,name FROM sites WHERE customer_id=? ORDER BY site_id", (customer_id,)):
-                agreements = [dict(r) for r in conn.execute(
-                    "SELECT agreement_id,item_code,unit_price_cents,active_from,active_to FROM agreements WHERE site_id=? ORDER BY item_code,active_from,agreement_id",
-                    (site["site_id"],),
-                )]
+            for site in conn.execute(
+                "SELECT site_id,name FROM sites WHERE customer_id=? ORDER BY site_id", (customer_id,)
+            ):
+                agreements = [
+                    dict(r)
+                    for r in conn.execute(
+                        "SELECT agreement_id,item_code,unit_price_cents,active_from,active_to "
+                        "FROM agreements WHERE site_id=? ORDER BY item_code,active_from,agreement_id",
+                        (site["site_id"],),
+                    )
+                ]
                 sites.append({"site_id": site["site_id"], "name": site["name"], "agreements": agreements})
-            return {"customer_id": customer["customer_id"], "name": customer["name"], "sites": sites, "authority": AUTHORITY.copy()}
+            return {
+                "customer_id": customer["customer_id"],
+                "name": customer["name"],
+                "sites": sites,
+                "authority": {
+                    "customer_messaging": False,
+                    "provider_navigation": False,
+                    "accounting_mutation": False,
+                    "payment_mutation": False,
+                    "deployment": False,
+                    "revenue_assertion": False,
+                    "sanitation_certification": False,
+                    "quality_inference": False,
+                },
+            }
 
     def render_route_exports(self, route_id: str) -> dict[str, str]:
         snap = self.route_snapshot(route_id)
         json_text = json.dumps(snap, sort_keys=True, indent=2, ensure_ascii=False) + "\n"
         csv_buf = io.StringIO(newline="")
         writer = csv.writer(csv_buf, lineterminator="\n")
-        writer.writerow(["route_id","service_date","route_code","stop_id","sequence","customer_id","site_id","state","open_exceptions","invoice_state","invoice_total_cents"])
+        writer.writerow([
+            "route_id", "service_date", "route_code", "stop_id", "sequence", "customer_id", "site_id",
+            "state", "open_exceptions", "invoice_state", "invoice_total_cents",
+        ])
         for stop in snap["stops"]:
             open_count = sum(1 for exc in stop["exceptions"] if exc["status"] == "OPEN")
             invoice = stop["invoice"]
-            writer.writerow([snap["route_id"],snap["service_date"],snap["route_code"],stop["stop_id"],stop["sequence"],stop["customer_id"],stop["site_id"],stop["state"],open_count,invoice["state"] if invoice else "",invoice["total_cents"] if invoice else ""])
-        md = [f"# Route {snap['route_id']}", "", f"- Service date: `{snap['service_date']}`", f"- Route code: `{snap['route_code']}`", f"- State: `{snap['state']}`", "", "| Seq | Customer | Site | State | Open exceptions | Invoice |", "|---:|---|---|---|---:|---|"]
+            writer.writerow([
+                snap["route_id"], snap["service_date"], snap["route_code"], stop["stop_id"], stop["sequence"],
+                stop["customer_id"], stop["site_id"], stop["state"], open_count,
+                invoice["state"] if invoice else "", invoice["total_cents"] if invoice else "",
+            ])
+        md = [
+            f"# Route {snap['route_id']}", "", f"- Service date: `{snap['service_date']}`",
+            f"- Route code: `{snap['route_code']}`", f"- State: `{snap['state']}`", "",
+            "| Seq | Customer | Site | State | Open exceptions | Invoice |",
+            "|---:|---|---|---|---:|---|",
+        ]
         for stop in snap["stops"]:
             open_count = sum(1 for exc in stop["exceptions"] if exc["status"] == "OPEN")
             invoice = stop["invoice"]
@@ -786,7 +1005,9 @@ class LaundryDesk:
                 inv = f"DRAFT ${dollars}.{cents:02d}"
             else:
                 inv = "—"
-            md.append(f"| {stop['sequence']} | {stop['customer_id']} | {stop['site_id']} | {stop['state']} | {open_count} | {inv} |")
+            md.append(
+                f"| {stop['sequence']} | {stop['customer_id']} | {stop['site_id']} | {stop['state']} | {open_count} | {inv} |"
+            )
         md += ["", "Authority flags: all customer/provider/payment/deployment/revenue authority is `false`.", ""]
         return {"json": json_text, "csv": csv_buf.getvalue(), "markdown": "\n".join(md)}
 
@@ -795,23 +1016,41 @@ class LaundryDesk:
         json_text = json.dumps(snap, sort_keys=True, indent=2, ensure_ascii=False) + "\n"
         csv_buf = io.StringIO(newline="")
         writer = csv.writer(csv_buf, lineterminator="\n")
-        writer.writerow(["customer_id","customer_name","site_id","site_name","agreement_id","item_code","unit_price_cents","active_from","active_to"])
+        writer.writerow([
+            "customer_id", "customer_name", "site_id", "site_name", "agreement_id", "item_code",
+            "unit_price_cents", "active_from", "active_to",
+        ])
         for site in snap["sites"]:
             for agreement in site["agreements"]:
-                writer.writerow([snap["customer_id"],snap["name"],site["site_id"],site["name"],agreement["agreement_id"],agreement["item_code"],agreement["unit_price_cents"],agreement["active_from"],agreement["active_to"] or ""])
-        md = [f"# Customer {snap['customer_id']}", "", f"Name: {snap['name']}", "", "| Site | Item | Unit price (cents) | Effective |", "|---|---|---:|---|"]
+                writer.writerow([
+                    snap["customer_id"], _csv_safe(snap["name"]), site["site_id"], _csv_safe(site["name"]),
+                    agreement["agreement_id"], agreement["item_code"], agreement["unit_price_cents"],
+                    agreement["active_from"], agreement["active_to"] or "",
+                ])
+        md = [
+            f"# Customer {snap['customer_id']}", "", f"Name: {_md_literal(snap['name'])}", "",
+            "| Site | Site name | Item | Unit price (cents) | Effective |",
+            "|---|---|---|---:|---|",
+        ]
         for site in snap["sites"]:
             for agreement in site["agreements"]:
                 end = agreement["active_to"] or "open"
-                md.append(f"| {site['site_id']} | {agreement['item_code']} | {agreement['unit_price_cents']} | {agreement['active_from']}..{end} |")
+                md.append(
+                    f"| {site['site_id']} | {_md_literal(site['name'])} | {agreement['item_code']} | "
+                    f"{agreement['unit_price_cents']} | {agreement['active_from']}..{end} |"
+                )
         md += ["", "Authority flags: all customer/provider/payment/deployment/revenue authority is `false`.", ""]
         return {"json": json_text, "csv": csv_buf.getvalue(), "markdown": "\n".join(md)}
 
     def event_history(self) -> list[dict[str, Any]]:
         with closing(self._connect()) as conn:
-            return [dict(row) for row in conn.execute(
-                "SELECT seq,operation_key,payload_hash,event_type,entity_type,entity_id,event_json,created_at FROM events ORDER BY seq"
-            )]
+            return [
+                dict(row)
+                for row in conn.execute(
+                    "SELECT seq,operation_key,payload_hash,event_type,entity_type,entity_id,event_json,created_at "
+                    "FROM events ORDER BY seq"
+                )
+            ]
 
     def verify_integrity(self) -> dict[str, Any]:
         with closing(self._connect()) as conn:
@@ -828,4 +1067,19 @@ class LaundryDesk:
                     raise LaundryDeskError("operation/event payload digest mismatch")
                 if _canonical_json(event["result"]) != row["result_json"]:
                     raise LaundryDeskError("operation/event result mismatch")
-            return {"schema_version": SCHEMA_VERSION, "operations": op_count, "events": len(events), "integrity": "PASS", "authority": AUTHORITY.copy()}
+            return {
+                "schema_version": SCHEMA_VERSION,
+                "operations": op_count,
+                "events": len(events),
+                "integrity": "PASS",
+                "authority": {
+                    "customer_messaging": False,
+                    "provider_navigation": False,
+                    "accounting_mutation": False,
+                    "payment_mutation": False,
+                    "deployment": False,
+                    "revenue_assertion": False,
+                    "sanitation_certification": False,
+                    "quality_inference": False,
+                },
+            }
