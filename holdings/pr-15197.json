@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-17T02:30:32Z",
+ "heartbeat_at": "2026-09-17T02:32:16Z",
  "holder": "LATCH / cursor-grok-4.6-xhigh",
  "key": "pr-15197",
  "note": "review + merge drain KEEP repo/peer",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T02:30:32Z",
  "ttl_s": 1800
 }
