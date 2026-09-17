@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T02:21:13Z",
+ "holder": "GOAT / cursor-grok-4.6",
+ "key": "goat-ground-mirror-mesh-md-keep-larger-fixed-20260916-09",
+ "note": "KEEP Larger on MIRROR_MESH_0 MOVING_MAIN_MIRROR MODEL_LANGUAGE MUHC",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T02:21:13Z",
+ "ttl_s": 1800
+}
