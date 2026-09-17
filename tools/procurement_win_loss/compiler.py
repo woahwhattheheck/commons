@@ -164,7 +164,10 @@ def _time(value: Any, label: str) -> datetime:
         raise OutcomeError(f"{label} must be ISO-8601") from exc
     if parsed.tzinfo is None or parsed.utcoffset() is None:
         raise OutcomeError(f"{label} must include a timezone")
-    return parsed.astimezone(timezone.utc)
+    parsed_utc = parsed.astimezone(timezone.utc)
+    if parsed_utc.microsecond != 0:
+        raise OutcomeError(f"{label} must be second-aligned")
+    return parsed_utc
 
 
 def _ftime(value: datetime) -> str:
