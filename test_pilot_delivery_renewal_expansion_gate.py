@@ -48,7 +48,14 @@ class CurrentSemanticGenerationTests(unittest.TestCase):
             (engine, "_decision", lambda *_args, **_kwargs: ("READY_FOR_RENEWAL_REVIEW", [])),
             (engine, "_normalize", lambda value, _now: value),
             (engine, "_compile", lambda *_args, **_kwargs: {"state": "READY_FOR_RENEWAL_REVIEW"}),
+            (engine, "_commercial_generation", lambda _normalized: 999),
+            (engine, "_expected_total", lambda _normalized: 0),
             (engine, "authority_flags", lambda: {"external_send_authorized": True}),
+            (engine, "max", lambda *_args, **_kwargs: 999),
+            (engine, "dict", lambda *_args, **_kwargs: {"external_send_authorized": True}),
+            (engine, "str", bytes),
+            (engine, "enumerate", lambda *_args, **_kwargs: ()),
+            (engine, "type", lambda _value: SplitViewDict),
             (model_module, "_age", lambda *_args, **_kwargs: 0),
             (model_module, "_source", lambda value, *_args, **_kwargs: value),
             (model_module, "PAYMENT_MAX_AGE_SECONDS", 10**18),
@@ -66,6 +73,7 @@ class CurrentSemanticGenerationTests(unittest.TestCase):
                 previous.append((owner, name, getattr(owner, name, sentinel)))
                 setattr(owner, name, replacement)
             after = engine.compile_current(dnr_packet)
+            checked = engine.verify_receipt(dnr_packet, before)
         finally:
             for owner, name, old in reversed(previous):
                 if old is sentinel:
@@ -77,6 +85,10 @@ class CurrentSemanticGenerationTests(unittest.TestCase):
         self.assertEqual(after["reasons"], ["ROUTE_DNR"])
         self.assertTrue(all(value is False for value in after["authority"].values()))
         self.assertNotEqual(after["receipt_digest"], "0" * 64)
+        self.assertTrue(checked["integrity_valid"])
+        self.assertEqual(checked["prior_state"], "DNR")
+        self.assertEqual(checked["current_state"], "DNR")
+        self.assertTrue(checked["still_current"])
 
     def test_rebinding_freshness_helpers_cannot_revive_stale_payment(self):
         stale = current_packet()
