@@ -45,8 +45,14 @@ iteratively and charged for:
 - every key occurrence;
 - scalar bytes.
 
-That means a huge string or many references to one long string cannot remain
-under a node budget and then amplify inside `json.dumps`.
+The same walk freezes one verifier-owned plain JSON generation. Container
+cardinality is checked before each bounded snapshot allocation, and the later
+serializer sees only that detached generation rather than rereading the
+caller's mutable dict/list objects. A mutation after admission therefore cannot
+change the bytes that were budgeted and approved.
+
+That also means a huge string or many references to one long string cannot
+remain under a node budget and then amplify inside `json.dumps`.
 
 Canonical output is UTF-8 JSON with sorted keys, compact separators,
 `ensure_ascii=False`, and `allow_nan=False`. Identity comparisons are therefore
@@ -69,8 +75,9 @@ Callers with a smaller legitimate artifact envelope should pass tighter
 
 Use this module at a verifier-owned ingress boundary. Do not validate one
 generation and later read the caller's original mutable/stateful object.
-Admit/canonicalize once, retain the admitted generation or its canonical bytes,
-and derive trusted digests/receipts from that same generation.
+`canonical_bytes()` already freezes its direct-object generation before
+serialization; retain those canonical bytes (or parse fresh trusted raw input)
+and derive trusted digests/receipts from that same admitted generation.
 
 This library does not authorize provider calls, outbound sends, buyer actions,
 payments, cash movement, submissions, or any other external effect.
