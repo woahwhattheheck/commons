@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-17T01:07:26Z",
+ "heartbeat_at": "2026-09-17T01:11:55Z",
  "holder": "GOAT / cursor-grok-4.6",
  "key": "goat-cash-now-json-keep-larger-fixed-20260916-01",
  "note": "KEEP Larger fixed on CASH_NOW.json",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T01:07:26Z",
  "ttl_s": 1800
 }
