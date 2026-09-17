@@ -9,14 +9,15 @@ from datetime import datetime, timedelta, timezone
 from typing import Any
 
 SCHEMA_INPUT = "commons-payoff-path-input/v2"
-SCHEMA_RECEIPT = "commons-payoff-path-receipt/v3"
-COMPILER_ID = "commons.payoff-path-ledger/v3"
+SCHEMA_RECEIPT = "commons-payoff-path-receipt/v4"
+COMPILER_ID = "commons.payoff-path-ledger/v4"
 EVIDENCE_AUTH_ENV = "PAYOFF_PATH_EVIDENCE_AUTHORITY_KEY_HEX"
 MAX_SAFE_INT = 10**15
 MAX_TEXT = 4096
 MAX_ROWS = 256
 MAX_JSON_DEPTH = 32
 MAX_JSON_NODES = 4096
+MAX_JSON_INPUT_BYTES = 4 * 1024 * 1024
 MAX_EVIDENCE_AGE = timedelta(days=90)
 
 PAYOFF_CLASSES = frozenset({
@@ -76,6 +77,11 @@ def _freeze_json(
     value: Any,
     path: str = "$",
     _type=type,
+    _bool_type=bool,
+    _int_type=int,
+    _str_type=str,
+    _list_type=list,
+    _dict_type=dict,
     _len=len,
     _abs=abs,
     _max_int=MAX_SAFE_INT,
@@ -83,6 +89,8 @@ def _freeze_json(
     _max_rows=MAX_ROWS,
     _max_depth=MAX_JSON_DEPTH,
     _max_nodes=MAX_JSON_NODES,
+    _unicode_error=UnicodeError,
+    _recursion_error=RecursionError,
     _err=GateError,
 ) -> Any:
     nodes = [0]
@@ -94,30 +102,30 @@ def _freeze_json(
         if nodes[0] > _max_nodes:
             raise _err("JSON graph exceeds node limit")
         node_type = _type(node)
-        if node is None or node_type is bool:
+        if node is None or node_type is _bool_type:
             return node
-        if node_type is int:
+        if node_type is _int_type:
             if _abs(node) > _max_int:
                 raise _err("integer outside safe domain")
             return node
-        if node_type is str:
+        if node_type is _str_type:
             if _len(node) > _max_text:
                 raise _err("text too long")
             try:
                 node.encode("utf-8", "strict")
-            except UnicodeError as exc:
+            except _unicode_error as exc:
                 raise _err("invalid UTF-8 text") from exc
             return node
-        if node_type is list:
+        if node_type is _list_type:
             if _len(node) > _max_rows:
                 raise _err("collection too large")
             return [walk(child, f"{node_path}[]", depth + 1) for child in node]
-        if node_type is dict:
+        if node_type is _dict_type:
             if _len(node) > _max_rows:
                 raise _err("mapping too large")
             out: dict[str, Any] = {}
             for key, child in node.items():
-                if _type(key) is not str:
+                if _type(key) is not _str_type:
                     raise _err("object key must be exact str")
                 nodes[0] += 1
                 if nodes[0] > _max_nodes:
@@ -126,7 +134,7 @@ def _freeze_json(
                     raise _err("text too long")
                 try:
                     key.encode("utf-8", "strict")
-                except UnicodeError as exc:
+                except _unicode_error as exc:
                     raise _err("invalid UTF-8 text") from exc
                 out[key] = walk(child, f"{node_path}.{key}", depth + 1)
             return out
@@ -134,7 +142,7 @@ def _freeze_json(
 
     try:
         return walk(value, path, 0)
-    except RecursionError as exc:
+    except _recursion_error as exc:
         raise _err("JSON nesting exceeds recursion safety boundary") from exc
 
 
@@ -147,18 +155,32 @@ def loads_strict_json(
     _reject_constant_fn=_reject_constant,
     _freeze=_freeze_json,
     _json_decode_error=json.JSONDecodeError,
+    _bytes_type=bytes,
+    _str_type=str,
     _type=type,
+    _len=len,
+    _max_input_bytes=MAX_JSON_INPUT_BYTES,
+    _unicode_error=UnicodeError,
+    _other_errors=(ValueError, TypeError, RecursionError),
     _err=GateError,
 ) -> Any:
     try:
-        if _type(raw) is bytes:
+        if _type(raw) is _bytes_type:
+            if _len(raw) > _max_input_bytes:
+                raise _err("JSON input exceeds byte limit")
             text = raw.decode("utf-8", "strict")
-        elif _type(raw) is str:
-            raw.encode("utf-8", "strict")
+        elif _type(raw) is _str_type:
+            # UTF-8 byte length is always >= character length, so reject a
+            # definitely oversized str before allocating its encoded copy.
+            if _len(raw) > _max_input_bytes:
+                raise _err("JSON input exceeds byte limit")
+            encoded = raw.encode("utf-8", "strict")
+            if _len(encoded) > _max_input_bytes:
+                raise _err("JSON input exceeds byte limit")
             text = raw
         else:
             raise _err("JSON input must be bytes or exact str")
-    except UnicodeError as exc:
+    except _unicode_error as exc:
         raise _err("invalid UTF-8") from exc
     try:
         value = _loads(
@@ -171,15 +193,22 @@ def loads_strict_json(
         return _freeze(value)
     except _err:
         raise
-    except (_json_decode_error, UnicodeError, ValueError, TypeError, RecursionError) as exc:
+    except (_json_decode_error, *_other_errors) as exc:
         raise _err("invalid JSON") from exc
 
 
-def _canonical_bytes(value: Any, _freeze=_freeze_json, _dumps=json.dumps, _err=GateError) -> bytes:
+def _canonical_bytes(
+    value: Any,
+    _freeze=_freeze_json,
+    _dumps=json.dumps,
+    _unicode_error=UnicodeError,
+    _other_errors=(ValueError, TypeError, RecursionError),
+    _err=GateError,
+) -> bytes:
     frozen = _freeze(value)
     try:
         return _dumps(frozen, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode("utf-8", "strict")
-    except (UnicodeError, ValueError, TypeError, RecursionError) as exc:
+    except (_unicode_error, *_other_errors) as exc:
         raise _err("cannot canonicalize JSON") from exc
 
 
@@ -187,22 +216,22 @@ def _sha(value: Any, _canonical=_canonical_bytes, _sha256=hashlib.sha256) -> str
     return _sha256(_canonical(value)).hexdigest()
 
 
-def _exact_keys(obj: Any, keys: set[str], label: str, _type=type, _set=set, _err=GateError) -> dict[str, Any]:
-    if _type(obj) is not dict:
+def _exact_keys(obj: Any, keys: set[str], label: str, _type=type, _dict_type=dict, _set=set, _err=GateError) -> dict[str, Any]:
+    if _type(obj) is not _dict_type:
         raise _err(f"{label} must be object")
     if _set(obj) != keys:
         raise _err(f"{label} keys mismatch")
     return obj
 
 
-def _text(value: Any, label: str, *, _type=type, _len=len, _max=MAX_TEXT, _err=GateError) -> str:
-    if _type(value) is not str or not value:
+def _text(value: Any, label: str, *, _type=type, _str_type=str, _len=len, _max=MAX_TEXT, _unicode_error=UnicodeError, _err=GateError) -> str:
+    if _type(value) is not _str_type or not value:
         raise _err(f"{label} must be nonempty exact str")
     if _len(value) > _max:
         raise _err(f"{label} too long")
     try:
         value.encode("utf-8", "strict")
-    except UnicodeError as exc:
+    except _unicode_error as exc:
         raise _err(f"{label} invalid UTF-8") from exc
     return value
 
@@ -221,38 +250,46 @@ def _digest(value: Any, label: str, _text_fn=_text, _hex_re=_HEX64, _err=GateErr
     return value
 
 
-def _timestamp(value: Any, label: str, _text_fn=_text, _ts_re=_TS, _strptime=datetime.strptime, _utc=timezone.utc, _err=GateError) -> datetime:
+def _timestamp(value: Any, label: str, _text_fn=_text, _ts_re=_TS, _strptime=datetime.strptime, _utc=timezone.utc, _value_error=ValueError, _err=GateError) -> datetime:
     value = _text_fn(value, label)
     if not _ts_re.fullmatch(value):
         raise _err(f"{label} must be whole-second UTC")
     try:
         dt = _strptime(value, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=_utc)
-    except ValueError as exc:
+    except _value_error as exc:
         raise _err(f"{label} invalid timestamp") from exc
     if dt.strftime("%Y-%m-%dT%H:%M:%SZ") != value:
         raise _err(f"{label} noncanonical timestamp")
     return dt
 
 
-def _format_ts(dt: datetime, _datetime_type=datetime, _utc=timezone.utc, _err=GateError) -> str:
-    if type(dt) is not _datetime_type or dt.tzinfo is None or dt.utcoffset() is None:
+def _format_ts(dt: datetime, _datetime_type=datetime, _type=type, _utc=timezone.utc, _err=GateError) -> str:
+    if _type(dt) is not _datetime_type or dt.tzinfo is None or dt.utcoffset() is None:
         raise _err("evaluation time must be exact timezone-aware datetime")
     return dt.astimezone(_utc).replace(microsecond=0).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
-def _positive_int(value: Any, label: str, _type=type, _max=MAX_SAFE_INT, _err=GateError) -> int:
-    if _type(value) is not int or value <= 0 or value > _max:
+def _positive_int(value: Any, label: str, _type=type, _int_type=int, _max=MAX_SAFE_INT, _err=GateError) -> int:
+    if _type(value) is not _int_type or value <= 0 or value > _max:
         raise _err(f"{label} must be positive safe integer")
     return value
 
 
-def _load_host_key(_getenv=os.environ.get, _key_name=EVIDENCE_AUTH_ENV, _hex_re=_HEX64, _err=GateError) -> bytes | None:
+def _load_host_key(
+    _getenv=os.environ.get,
+    _key_name=EVIDENCE_AUTH_ENV,
+    _hex_re=_HEX64,
+    _type=type,
+    _str_type=str,
+    _bytes_fromhex=bytes.fromhex,
+    _err=GateError,
+) -> bytes | None:
     raw = _getenv(_key_name)
     if raw is None:
         return None
-    if type(raw) is not str or not _hex_re.fullmatch(raw):
+    if _type(raw) is not _str_type or not _hex_re.fullmatch(raw):
         raise _err("host evidence authority key must be exactly 32 bytes of lowercase hex")
-    return bytes.fromhex(raw)
+    return _bytes_fromhex(raw)
 
 
 def _evidence_tag(kind: str, row_without_tag: dict[str, Any], key: bytes, _canonical=_canonical_bytes, _hmac_new=hmac.new, _sha256=hashlib.sha256) -> str:
@@ -267,7 +304,7 @@ def _verify_evidence_tag(kind: str, row: dict[str, Any], key: bytes, _digest_fn=
         raise _err("evidence authentication failed")
 
 
-def _validate_term(row: Any, key: bytes, _exact=_exact_keys, _id=_identifier, _dig=_digest, _ts=_timestamp, _pos=_positive_int, _classes=EVIDENCE_CLASSES, _modes=AMOUNT_MODES, _currency=_CURRENCY, _verify_tag=_verify_evidence_tag, _err=GateError) -> dict[str, Any]:
+def _validate_term(row: Any, key: bytes, _exact=_exact_keys, _id=_identifier, _dig=_digest, _ts=_timestamp, _pos=_positive_int, _classes=EVIDENCE_CLASSES, _modes=AMOUNT_MODES, _currency=_CURRENCY, _verify_tag=_verify_evidence_tag, _type=type, _str_type=str, _err=GateError) -> dict[str, Any]:
     row = _exact(row, {
         "evidence_id", "subject_work_id", "subject_generation_sha256", "evidence_class",
         "source_id", "source_sha256", "observed_at_utc", "valid_until_utc",
@@ -287,7 +324,7 @@ def _validate_term(row: Any, key: bytes, _exact=_exact_keys, _id=_identifier, _d
         raise _err("invalid amount_mode")
     if row["amount_mode"] == "EXACT":
         _pos(row["amount_minor"], "amount_minor")
-        if type(row["currency"]) is not str or not _currency.fullmatch(row["currency"]):
+        if _type(row["currency"]) is not _str_type or not _currency.fullmatch(row["currency"]):
             raise _err("currency must be three uppercase letters")
     elif row["amount_minor"] is not None or row["currency"] is not None:
         raise _err("AMOUNT_UNKNOWN must not carry amount/currency")
@@ -391,6 +428,9 @@ def _validate_packet_structure(
     _plan=_validate_plan,
     _schema=SCHEMA_INPUT,
     _max_rows=MAX_ROWS,
+    _type=type,
+    _list_type=list,
+    _len=len,
     _err=GateError,
 ) -> dict[str, Any]:
     packet = _freeze(packet)
@@ -407,9 +447,9 @@ def _validate_packet_structure(
         raise _err("invalid payoff_class")
     if packet["evidence_scope_status"] not in _scopes:
         raise _err("invalid evidence_scope_status")
-    if type(packet["term_evidence"]) is not list or len(packet["term_evidence"]) > _max_rows:
+    if _type(packet["term_evidence"]) is not _list_type or _len(packet["term_evidence"]) > _max_rows:
         raise _err("term_evidence must be bounded list")
-    if type(packet["outcome_evidence"]) is not list or len(packet["outcome_evidence"]) > _max_rows:
+    if _type(packet["outcome_evidence"]) is not _list_type or _len(packet["outcome_evidence"]) > _max_rows:
         raise _err("outcome_evidence must be bounded list")
     if packet["evidence_scope_status"] == "PARTIAL" and packet["scope_attestation"] is not None:
         raise _err("PARTIAL scope must not carry completeness attestation")
@@ -426,14 +466,16 @@ def _validate_packet(
     _outcome=_validate_outcome,
     _scope=_validate_scope_attestation,
     _sha256=hashlib.sha256,
+    _set_type=set,
+    _env_name=EVIDENCE_AUTH_ENV,
     _err=GateError,
 ) -> tuple[dict[str, Any], str | None, bool, list[str]]:
     packet = _structure(packet)
     key = _load_key()
     if (packet["term_evidence"] or packet["outcome_evidence"]) and key is None:
-        raise _err(f"host evidence authority unavailable: {EVIDENCE_AUTH_ENV}")
+        raise _err(f"host evidence authority unavailable: {_env_name}")
 
-    identities: set[str] = set()
+    identities = _set_type()
     if key is not None:
         for row in packet["term_evidence"]:
             _term(row, key)
@@ -479,9 +521,15 @@ def _compile_at(
     _max_age=MAX_EVIDENCE_AGE,
     _receipt_schema=SCHEMA_RECEIPT,
     _compiler_id=COMPILER_ID,
+    _type=type,
+    _datetime_type=datetime,
+    _any=any,
+    _len=len,
+    _set_type=set,
+    _err=GateError,
 ) -> dict[str, Any]:
-    if type(now) is not datetime or now.tzinfo is None or now.utcoffset() is None:
-        raise GateError("evaluation time must be exact timezone-aware datetime")
+    if _type(now) is not _datetime_type or now.tzinfo is None or now.utcoffset() is None:
+        raise _err("evaluation time must be exact timezone-aware datetime")
     now = now.astimezone(_utc).replace(microsecond=0)
     packet, authority_key_fingerprint, scope_valid, scope_reasons = _validate(packet, now)
     subject = packet["subject_work_id"]
@@ -514,7 +562,7 @@ def _compile_at(
         elif row["evidence_class"] != "GENERIC_CONTEXT":
             conflict = True
 
-    outcomes: set[str] = set()
+    outcomes = _set_type()
     for row in packet["outcome_evidence"]:
         if row["subject_work_id"] != subject or row["subject_generation_sha256"] != generation:
             conflict = True
@@ -527,9 +575,9 @@ def _compile_at(
         outcomes.add(row["kind"])
 
     economics = {(row["amount_minor"], row["currency"]) for row in exact_terms}
-    if len(economics) > 1:
+    if _len(economics) > 1:
         conflict = True
-    if exact_terms and any(row["amount_mode"] == "AMOUNT_UNKNOWN" for row in matching_terms):
+    if exact_terms and _any(row["amount_mode"] == "AMOUNT_UNKNOWN" for row in matching_terms):
         conflict = True
 
     plan = packet["conversion_plan"]
@@ -561,7 +609,7 @@ def _compile_at(
         if not matching_terms:
             state = "HOLD_NO_PAYOFF_PATH"
             reasons.append("NO_CLASS_BOUND_COMPENSATION_TERM")
-        elif any(row["amount_mode"] == "AMOUNT_UNKNOWN" for row in matching_terms):
+        elif _any(row["amount_mode"] == "AMOUNT_UNKNOWN" for row in matching_terms):
             state = "HOLD_UNKNOWN_COMPENSATION"
             reasons.append("COMPENSATION_AMOUNT_UNKNOWN")
         elif not exact_terms:
@@ -575,7 +623,7 @@ def _compile_at(
             reasons.append("AUTHENTICATED_CURRENT_COMPENSATION_TERM")
     elif payoff_class == "PRODUCT_CONVERSION":
         if matching_terms:
-            if any(row["amount_mode"] == "AMOUNT_UNKNOWN" for row in matching_terms):
+            if _any(row["amount_mode"] == "AMOUNT_UNKNOWN" for row in matching_terms):
                 state = "HOLD_UNKNOWN_COMPENSATION"
                 reasons.append("COMPENSATION_AMOUNT_UNKNOWN")
             elif exact_terms:
@@ -645,6 +693,15 @@ def _validate_receipt_shape(
     _sha_fn=_sha,
     _schema=SCHEMA_RECEIPT,
     _compiler_id=COMPILER_ID,
+    _type=type,
+    _list_type=list,
+    _str_type=str,
+    _dict_type=dict,
+    _bool_type=bool,
+    _set=set,
+    _all=all,
+    _any=any,
+    _dict_ctor=dict,
     _err=GateError,
 ) -> dict[str, Any]:
     receipt = _freeze(receipt)
@@ -663,7 +720,7 @@ def _validate_receipt_shape(
     _ts(receipt["evaluated_at_utc"], "receipt evaluated_at_utc")
     if receipt["state"] not in _states:
         raise _err("receipt state invalid")
-    if type(receipt["reasons"]) is not list or not receipt["reasons"] or not all(type(x) is str and x for x in receipt["reasons"]):
+    if _type(receipt["reasons"]) is not _list_type or not receipt["reasons"] or not _all(_type(x) is _str_type and x for x in receipt["reasons"]):
         raise _err("receipt reasons invalid")
     _dig(receipt["input_digest_sha256"], "input digest")
     _dig(receipt["term_fingerprint_sha256"], "term fingerprint")
@@ -678,12 +735,12 @@ def _validate_receipt_shape(
         "payment_or_funds_movement_authorized", "cash_receipt_proven", "revenue_recognized",
         "tax_or_accounting_conclusion", "provider_or_account_mutation_authorized",
     }
-    if type(authority) is not dict or set(authority) != keys:
+    if _type(authority) is not _dict_type or _set(authority) != keys:
         raise _err("authority ceiling keys mismatch")
-    if any(type(authority[key]) is not bool or authority[key] is not False for key in keys):
+    if _any(_type(authority[key]) is not _bool_type or authority[key] is not False for key in keys):
         raise _err("authority ceiling must be exact false booleans")
     _dig(receipt["receipt_digest_sha256"], "receipt digest")
-    without = dict(receipt)
+    without = _dict_ctor(receipt)
     digest = without.pop("receipt_digest_sha256")
     if _sha_fn(without) != digest:
         raise _err("receipt digest mismatch")
@@ -698,12 +755,12 @@ def verify_integrity(packet: Any, receipt: Any, _freeze=_freeze_json, _validate_
     return _canonical(expected) == _canonical(frozen_receipt)
 
 
-def _verify_current_at(packet: Any, receipt: Any, now: datetime, _freeze=_freeze_json, _validate_receipt=_validate_receipt_shape, _ts=_timestamp, _compile=_compile_at, _canonical=_canonical_bytes, _projection=_receipt_projection, _utc=timezone.utc) -> bool:
+def _verify_current_at(packet: Any, receipt: Any, now: datetime, _freeze=_freeze_json, _validate_receipt=_validate_receipt_shape, _ts=_timestamp, _compile=_compile_at, _canonical=_canonical_bytes, _projection=_receipt_projection, _utc=timezone.utc, _type=type, _datetime_type=datetime, _err=GateError) -> bool:
     frozen_packet = _freeze(packet)
     frozen_receipt = _validate_receipt(receipt)
     evaluated = _ts(frozen_receipt["evaluated_at_utc"], "receipt evaluated_at_utc")
-    if type(now) is not datetime or now.tzinfo is None or now.utcoffset() is None:
-        raise GateError("evaluation time must be exact timezone-aware datetime")
+    if _type(now) is not _datetime_type or now.tzinfo is None or now.utcoffset() is None:
+        raise _err("evaluation time must be exact timezone-aware datetime")
     now = now.astimezone(_utc).replace(microsecond=0)
     if evaluated > now:
         return False
