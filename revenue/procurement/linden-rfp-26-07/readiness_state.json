@@ -2,7 +2,7 @@
   "schema": "commons/procurement-readiness-state/v1",
   "op": "LINDEN-RFP-26-07-STALE-RECOVERY-ZSC0119-20260917",
   "solicitation_id": "26-07",
-  "as_of": "2026-09-17T01:50:00-04:00",
+  "as_of": "2026-09-17T01:15:00-04:00",
   "package": {
     "status": "MISSING_PACKAGE",
     "sha256": null,
