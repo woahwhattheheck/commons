@@ -135,7 +135,15 @@ def _write_new_set(items: list[tuple[Path, bytes]]) -> None:
 
 
 def _write_new(path: Path, data: bytes) -> None:
-    _write_new_set([(path, data)])
+    # Preserve the landed single-output helper contract: an already occupied
+    # path raises OSError/FileExistsError even though the multi-output compile
+    # transaction uses GateError for preflight classification.
+    try:
+        _write_new_set([(path, data)])
+    except GateError as exc:
+        if str(exc) == "output_exists":
+            raise FileExistsError("output_exists") from exc
+        raise
 
 
 def _target_exists(path: Path) -> bool:
