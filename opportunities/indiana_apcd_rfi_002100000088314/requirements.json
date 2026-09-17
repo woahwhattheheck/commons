@@ -1,0 +1,15 @@
+{
+  "opportunity_id": "002100000088314",
+  "requirements": [
+    {"evidence": [], "id": "controlling_rfi_package", "note": "Current controlling package bytes/attachments are not retained in this carrier.", "state": "UNKNOWN"},
+    {"evidence": [], "id": "response_mechanics", "note": "Submission format/channel/attachments/signature rules are not retained.", "state": "UNKNOWN"},
+    {"evidence": [], "id": "healthcare_claims_domain", "note": "No owner healthcare-claims/APCD qualification is asserted.", "state": "UNKNOWN"},
+    {"evidence": [], "id": "privacy_security", "note": "No owner privacy/security certification or authorization is asserted.", "state": "UNKNOWN"},
+    {"evidence": [], "id": "data_ingestion_operations", "note": "No production APCD ingestion/operations qualification is asserted.", "state": "UNKNOWN"},
+    {"evidence": [], "id": "references_experience", "note": "No qualifying project references are asserted.", "state": "UNKNOWN"},
+    {"evidence": [], "id": "staffing_capacity", "note": "No committed staffing or key-person qualification is asserted.", "state": "UNKNOWN"},
+    {"evidence": [], "id": "pricing_cost_model", "note": "No buyer-approved pricing structure or owner bid price is asserted.", "state": "UNKNOWN"},
+    {"evidence": [], "id": "specialist_workshare", "note": "Internal future-partner hypothesis only; not a buyer requirement, offer, or accepted scope.", "state": "PROPOSED"}
+  ],
+  "schema": "indiana-apcd-rfi-requirements/v1"
+}
