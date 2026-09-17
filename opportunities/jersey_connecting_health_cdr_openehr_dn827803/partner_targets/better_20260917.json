@@ -1,7 +1,7 @@
 {
   "schema": "jersey-dn827803/partner-target/v1",
   "operation": "JERSEY-DN827803-BETTER-TEAMING-ZHLT4M8-20260917",
-  "checked_at_utc": "2026-09-17T04:37:00Z",
+  "checked_at_utc": "2026-09-17T04:39:42Z",
   "opportunity": {
     "notice_id": "DN827803",
     "buyer": "States of Jersey",
@@ -17,7 +17,7 @@
     "legal_route_observed": "Better Ltd / United Kingdom office",
     "domain": "better.care",
     "public_business_route": "info@better.care",
-    "relationship_state": "QUALIFIED_NOT_CONTACTED_FOR_DN827803",
+    "relationship_state": "CONTACTED_20260913_NO_REPLY_HARD_DNR",
     "bid_or_interest_claim": false,
     "prime_claim": false,
     "first_party_evidence": [
@@ -58,13 +58,27 @@
       }
     ]
   },
+  "provider_history": {
+    "source": "Gmail provider history",
+    "thread_id": "1a09af22dc174a2c",
+    "message_id": "1a09af22dc174a2c",
+    "sent_at": "2026-09-13T13:25:57Z",
+    "from": "tokenjunkielabs@gmail.com",
+    "to": "brian.murray@better.care",
+    "subject": "States of Jersey DN827803 — openEHR/CDR specialist teaming",
+    "provider_state": "SENT",
+    "thread_message_count": 1,
+    "reply_state": "NO_REPLY_OBSERVED_20260917",
+    "purpose_summary": "Asked whether Better UK & Ireland was evaluating DN827803 and offered a bounded specialist subcontractor seam around interoperability/transition evidence, interface inventory/reconciliation, migration-parity checks, deterministic acceptance packs and independent readiness verification; explicitly disclaimed CDR/openEHR prime, clinical-safety, platform, patient-data-governance and final-acceptance ownership.",
+    "collision_effect": "HARD_DNR_UNTIL_GENUINE_INBOUND_OR_PROVIDER_EVENT"
+  },
   "fit": {
     "route": "TEAMING_ACCEPTANCE_EVIDENCE",
     "why_candidate_is_plausible": [
       "The buyer's public notice requires a centralised CDR and an openEHR-compliant platform; Better publicly sells an openEHR CDR/platform.",
       "The public notice calls for real-time access and interoperability; Better publicly documents event-driven real-time flows plus openEHR/FHIR APIs.",
       "The buyer's public notice allows joint bids/partnerships where appropriate; Better publicly operates a partner programme.",
-      "Better has a UK entity and public business route, reducing routing ambiguity."
+      "Better has a UK entity and a provider-confirmed named recipient was already used on 2026-09-13."
     ],
     "unknowns": [
       "Whether Better is already bidding DN827803.",
@@ -77,8 +91,9 @@
   "commercial_hypothesis": {
     "currency": "GBP",
     "fixed_fee": 18000,
-    "state": "PROPOSED_NOT_ACCEPTED_INTERNAL_HYPOTHESIS",
+    "state": "INTERNAL_ONLY_NOT_SENT_NOT_ACCEPTED",
     "not_offered_to_buyer": true,
+    "not_a_followup_authorization": true,
     "scope": [
       "interface conformance and replay/idempotency acceptance evidence",
       "migration reconciliation and exception-ledger design",
@@ -94,28 +109,21 @@
       "Better platform implementation ownership",
       "live patient-data handling before separately authorized controls",
       "claims of savings, award, acceptance or booked revenue"
-    ],
-    "acceptance_hypothesis": [
-      "Agreed interface and migration-object inventory is versioned and traceable.",
-      "Every sampled acceptance case binds requirement, input, observed result, evidence and disposition.",
-      "Duplicate, stale, missing and out-of-order scenarios have deterministic expected outcomes.",
-      "Migration/reconciliation exceptions are classified, ownered and reproducible.",
-      "Unresolved blockers remain explicit rather than being relabeled as pass."
     ]
   },
   "outbound": {
     "authorized": false,
-    "muse_required": true,
-    "exact_recipient_candidate": "info@better.care",
-    "intent": "Ask whether Better is pursuing Jersey DN827803 and, if so, whether it wants a bounded paid acceptance-evidence/interoperability specialist workshare; £18,000 fixed commercial hypothesis, subject to pack/prime fit.",
-    "required_before_send": [
+    "hard_dnr": true,
+    "muse_request_now": false,
+    "reason": "A materially identical DN827803 Better teaming email was already provider-SENT on 2026-09-13 and has no reply. Do not route around that send through info@better.care or another Better recipient.",
+    "resume_only_after": "GENUINE_INBOUND_OR_PROVIDER_EVENT",
+    "future_protocol_after_resume": [
       "fresh Slack exact opportunity/domain/recipient/purpose census",
       "fresh Gmail exact domain/recipient/opportunity census",
       "Muse exact recipient+intent SELECT/CLEAR",
       "immediate final Slack+Gmail recensus after Muse",
-      "exactly one provider send only if still collision-free"
-    ],
-    "hard_dnr_after_provider_sent": true
+      "at most one provider send if still collision-free"
+    ]
   },
   "authority_ceiling": {
     "buyer_contact": false,

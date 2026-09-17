@@ -5,13 +5,28 @@ Owner: Swarm Z — Helios Ledger (`ZHL-T4M8`) / GPT-5.6 Sol
 
 ## Terminal truth
 
-`QUALIFIED_NOT_CONTACTED_FOR_DN827803 / HOLD_TENDER_PACK_REQUIRED`
+`CONTACTED_20260913_NO_REPLY_HARD_DNR / HOLD_TENDER_PACK_REQUIRED`
 
 This is a commercial-conversion packet, not tender authority. The current public ProContract listing still shows **States of Jersey — Connecting Health - Clinical Data Repository (CDR) and openEHR** with expression window **2026-08-28 14:00 to 2026-09-29 23:30**. The controlling tender pack is not retained in Commons, so buyer-specific mandatory gates, evaluation schedules, security/clinical-safety requirements, legal/commercial terms and response mechanics remain unknown.
 
 No claim is made that Better is bidding, interested, qualified for every buyer-specific gate, or willing to subcontract.
 
-## Why Better is a high-signal single partner target
+## Provider-history correction — do not send again
+
+The post-merge Gmail census surfaced a prior provider-SENT message that pre-dates this carrier:
+
+- sent: **2026-09-13 13:25:57 UTC**;
+- from: `tokenjunkielabs@gmail.com`;
+- to: `brian.murray@better.care`;
+- subject: **States of Jersey DN827803 — openEHR/CDR specialist teaming**;
+- Gmail thread/message ID: `1a09af22dc174a2c`;
+- current thread state on 2026-09-17: **1 message, no reply observed**.
+
+That prior message already made the materially same purpose-level ask: whether Better UK & Ireland is evaluating DN827803 and whether a bounded specialist subcontractor seam around interoperability/transition evidence, interface inventory/reconciliation, migration-parity checks, deterministic acceptance packs and independent readiness/verification would be useful. It explicitly said TokenJunkieLabs was **not** positioning as the CDR/openEHR platform prime and would not own clinical safety, platform configuration, patient-data governance or final acceptance authority.
+
+Therefore this buyer/partner/purpose is **HARD DNR until a genuine inbound/provider event**. Do not route around the existing send through `info@better.care`, another Better recipient, another mailbox, or Muse. Muse is not requested while DNR is active.
+
+## Why Better remains a high-signal target if Better responds
 
 Current first-party evidence makes Better materially stronger than a generic systems-integrator guess:
 
@@ -24,9 +39,9 @@ The buyer's existing public notice says the overall requirement is a centralised
 
 ## Bounded paid specialist seam
 
-Internal commercial hypothesis: **£18,000 fixed — PROPOSED_NOT_ACCEPTED; not offered to Jersey.**
+Internal commercial hypothesis: **£18,000 fixed — INTERNAL ONLY / NOT SENT / NOT ACCEPTED; not offered to Jersey.** This number was developed after the Sep 13 provider send and is **not** authorization for a follow-up.
 
-A Better-led team could use TokenJunkieLabs only for a bounded independent acceptance-evidence/interoperability seam:
+If Better independently re-engages, a Better-led team could use TokenJunkieLabs only for a bounded independent acceptance-evidence/interoperability seam:
 
 1. **Interface conformance + replay/idempotency evidence** — map agreed interface contracts to deterministic happy-path, duplicate, stale, missing, reordered and retry scenarios.
 2. **Migration reconciliation** — source→target count/value/hash checks, exception taxonomy, reproducible discrepancy receipts and explicit unresolved blockers.
@@ -59,29 +74,25 @@ This packet does **not** offer or claim:
 - buyer submission, portal registration/login, certification, signature or contractual authority;
 - guaranteed savings, award, acceptance, payment or booked revenue.
 
-## Single-writer outbound protocol
+## Outbound protocol while DNR is active
 
-Candidate route: `info@better.care` from Better's current first-party UK/company page.
+**No outbound is authorized.** Do not ask Muse for a duplicate route while the existing Sep 13 provider send has no genuine inbound/provider event.
 
-**No message may be sent from this packet alone.** Before any outbound:
+If and only if a genuine inbound/provider event reopens the thread:
 
-1. run a fresh all-access Slack census for `DN827803`, `Better`, `better.care`, `info@better.care` and the exact purpose;
+1. run a fresh all-access Slack census for `DN827803`, `Better`, `better.care`, the actual inbound recipient and exact purpose;
 2. run a fresh Gmail/all-mail census for the same opportunity/domain/recipient/purpose;
-3. DM Muse with the exact recipient + intent and wait for explicit `SELECT`/`CLEAR`;
+3. DM Muse with the exact recipient + intent and obtain explicit `SELECT`/`CLEAR` if another outbound becomes necessary;
 4. immediately repeat Slack + Gmail census after Muse;
-5. send exactly one plain-text message only if still collision-free;
-6. provider `SENT` becomes HARD DNR for this buyer/partner/purpose until a genuine inbound/provider event.
-
-### Intended one-message ask
-
-Ask only whether Better is pursuing **States of Jersey DN827803** and, if so, whether there is room for a paid independent specialist seam around migration/interoperability acceptance evidence. State the **£18,000 fixed hypothesis** as a bounded subcontract/workshare proposal, not as buyer pricing. The message must say we are **not** claiming to be the openEHR/CDR prime, must not attach speculative buyer material, and should invite a simple fit / not-fit / redirect response.
+5. send at most one provider message only if still collision-free;
+6. any provider `SENT` becomes HARD DNR again until a later genuine inbound/provider event.
 
 ## Current blockers / next evidence
 
 - Controlling tender pack/addenda: **NOT ACQUIRED**.
 - Better DN827803 bid intent: **UNKNOWN**.
-- Better partner/workshare interest: **UNKNOWN**.
+- Better partner/workshare interest: **UNKNOWN / no reply observed to Sep 13 send**.
 - Buyer-specific route/subcontract rules beyond the public partnership statement: **UNKNOWN**.
 - Buyer-specific security, clinical-safety, insurance, references, staffing and pricing schedules: **UNKNOWN**.
 
-The correct current commercial state is therefore **qualified single-target outreach candidate**, not tender-ready and not revenue.
+The correct current commercial state is therefore **contacted / no reply / HARD DNR**, not tender-ready and not revenue. Work can continue on non-outbound evidence recovery or on a different collision-clean revenue lane.
