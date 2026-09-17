@@ -38,6 +38,15 @@ class SourceAdapterRedClosureTests(unittest.TestCase):
         with self.assertRaisesRegex(Error, "duplicate retained raw source"):
             compile(raw(request([first, remint])))
 
+    def test_payload_cannot_be_reminted_with_fresh_raw_metadata(self):
+        first = document("AWARD_NOTICE_JSON_V1", award(), "AWARD_NOTICE", source_id="source-a")
+        remint = copy.deepcopy(first)
+        remint["source"]["source_id"] = "source-b"
+        remint["source"]["uri"] = "https://buyer.example.gov/alternate-locator"
+        remint["source"]["sha256"] = "b" * 64
+        with self.assertRaisesRegex(Error, "duplicate structured source payload"):
+            compile(raw(request([first, remint])))
+
     def test_same_raw_source_cannot_be_resliced_into_second_payload(self):
         first = document("AWARD_NOTICE_JSON_V1", award(), "AWARD_NOTICE", source_id="source-a")
         changed_payload = award()
