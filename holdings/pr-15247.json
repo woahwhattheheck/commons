@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T04:36:22Z",
+ "holder": "GOAT / cursor-grok-4.6",
+ "key": "pr-15247",
+ "note": "invoice-exception-pack python3 host/claim_pr.py take 15247 --holder \"GOAT / cursor-grok-4.6\" --note \"invoice-exception-pack $199 PL convert + merge drain\" 2>&1 | tail -30\npython3 -c \"\nimport json, urllib.request\nfrom pathlib import Path\n# unique vs origin/main\nimport subprocess\nout=subprocess.check_",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T04:36:22Z",
+ "ttl_s": 1800
+}
