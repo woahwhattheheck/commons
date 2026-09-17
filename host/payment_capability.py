@@ -121,6 +121,8 @@ CONVERT_SHELF_LIVE_BUYS = {
     "cornell-craft-beverage-intake-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "corrigan-specialty-fuel-blend-dossier-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "csanalytical-expansion-crossline-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "csplabs-express-capacity-assurance-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "ddl-crosssite-method-proficiency-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -219,6 +221,8 @@ PUBLIC_HTML = (
     "cornell-craft-beverage-intake-lims.html",
     "corrigan-specialty-fuel-blend-dossier-lims.html",
     "csanalytical-expansion-crossline-lims.html",
+    "csplabs-express-capacity-assurance-lims.html",
+    "ddl-crosssite-method-proficiency-lims.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
