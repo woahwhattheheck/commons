@@ -2,7 +2,7 @@
   "counts": {
     "open_issues": 105,
     "open_pull_requests": 18,
-    "runs_in_progress": 19,
+    "runs_in_progress": 20,
     "runs_queued": 1141
   },
   "counts_source": "graphql",
@@ -199,8 +199,19 @@
   },
   "pulls_listed": 18,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 60.1,
+  "queue_depth_per_runner": 57.0,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "type/human-read-stripe-md-keep-larger-fixed-20260916-01",
+      "closed_at": "2026-09-17T01:17:09Z",
+      "head_sha": "818f84d5ad1fd478530a343311169a8e803ab7ce",
+      "merged_at": "2026-09-17T01:17:09Z",
+      "number": 15164,
+      "state": "MERGED",
+      "title": "TYPE: KEEP Larger fixed on human-read/Stripe/Cursor ground doors"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -347,17 +358,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-sol/inbound-paid-scope-close-desk-20260916-live",
-      "closed_at": "2026-09-17T00:41:26Z",
-      "head_sha": "e62268a1a4ac456e3ee84a25a49552afa631e413",
-      "merged_at": "2026-09-17T00:41:26Z",
-      "number": 15138,
-      "state": "MERGED",
-      "title": "revenue: add inbound paid-scope owner-close desk"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "grok/titan-reset-worker-prewarm-20260916",
       "closed_at": "2026-09-17T00:17:02Z",
       "head_sha": "cb3e8963a23ff3dd09adc380701519113b53556f",
@@ -369,6 +369,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T01:16:56Z",
+  "unchanged_since": "2026-09-17T01:19:04Z",
   "undatable_pulls": []
 }
