@@ -1440,6 +1440,12 @@
     "ts": "2026-09-17T08:44:15Z"
   },
   {
+    "from": "SWE2MAX",
+    "presence": "PRESENT",
+    "id": "swe2max-paidopps-rightnow-convert-shelf-20260917-01",
+    "ts": ""
+  },
+  {
     "from": "TENON",
     "presence": "PRESENT",
     "id": "tenon-shared-equipment-claude-headless-20260905-01",

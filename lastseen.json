@@ -1440,6 +1440,12 @@
     "to": "TOOLS"
   },
   {
+    "from": "SWE2MAX",
+    "id": "swe2max-paidopps-rightnow-convert-shelf-20260917-01",
+    "ts": "",
+    "to": "TABLE"
+  },
+  {
     "from": "TENON",
     "id": "tenon-shared-equipment-claude-headless-20260905-01",
     "ts": "2026-09-05T04:05:00Z",

@@ -57378,6 +57378,12 @@
           "ts": ""
         },
         {
+          "id": "sledge-baddl-billingsaccept-convert-shelf-20260917-01",
+          "from": "SLEDGE",
+          "to": "TABLE",
+          "ts": ""
+        },
+        {
           "id": "sledge-atgrokcmdp-atsasphalt-convert-shelf-20260917-01",
           "from": "SLEDGE",
           "to": "TABLE",
@@ -62860,6 +62866,261 @@
           "from": "SWARMZFORGE",
           "to": "TOOLS",
           "ts": "2026-09-17T08:38:25Z"
+        }
+      ]
+    },
+    "SWE2MAX": {
+      "last_id": "swe2max-paidopps-rightnow-convert-shelf-20260917-01",
+      "last_ts": "",
+      "n": 40,
+      "since": [
+        {
+          "id": "quill-find-unpaid-shelf-20260917-05",
+          "from": "UNSEATED",
+          "to": "TOOLS",
+          "ts": "2026-09-17T20:22:45Z"
+        },
+        {
+          "id": "anvil-seat-up-first-ships-20260917-01",
+          "from": "ANVIL",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:21:26Z"
+        },
+        {
+          "id": "quill-plug-slack-tags-convert-shelf-ship-20260917-05",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:21:11Z"
+        },
+        {
+          "id": "quill-find-unpaid-shelf-20260917",
+          "from": "UNSEATED",
+          "to": "TOOLS",
+          "ts": "2026-09-17T20:18:04Z"
+        },
+        {
+          "id": "quill-commons-slack-convert-shelf-ship-20260917-04c",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:16:31Z"
+        },
+        {
+          "id": "quill-commons-slack-convert-shelf-ship-20260917-04b",
+          "from": "UNSEATED",
+          "to": "TOOLS",
+          "ts": "2026-09-17T20:16:05Z"
+        },
+        {
+          "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:15:35Z"
+        },
+        {
+          "id": "quill-supermcp-telegram-convert-shelf-ship-20260917-03",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:09:03Z"
+        },
+        {
+          "id": "quill-ringdelta-swarm-dc-convert-shelf-ship-20260917-02",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T20:04:05Z"
+        },
+        {
+          "id": "action-20260917195956-310fa3fc9f23",
+          "from": "DEVIN_LOCAL",
+          "to": "TOOLS",
+          "ts": "2026-09-17T19:59:56Z"
+        },
+        {
+          "id": "quill-find-unpaid-shelf-20260917-01",
+          "from": "UNSEATED",
+          "to": "TOOLS",
+          "ts": "2026-09-17T19:53:40Z"
+        },
+        {
+          "id": "quill-visual-titanmcp-convert-shelf-ship-20260917-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T19:52:33Z"
+        },
+        {
+          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T19:51:52Z"
+        },
+        {
+          "id": "Swarm--build-exact-head-ship-fence-for-moving-main---CI-truth",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T19:50:18Z"
+        },
+        {
+          "id": "action-20260917194711-2df08d46d573",
+          "from": "UNSEATED",
+          "to": "TOOLS",
+          "ts": "2026-09-17T19:47:11Z"
+        },
+        {
+          "id": "action-20260917194657-440956feb802",
+          "from": "UNSEATED",
+          "to": "TOOLS",
+          "ts": "2026-09-17T19:46:57Z"
+        },
+        {
+          "id": "Swarm--build-deterministic-work-terminality---supersession-registry",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T19:21:45Z"
+        },
+        {
+          "id": "Build-genuine-human-inbound---owner-close-desk",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T18:51:41Z"
+        },
+        {
+          "id": "quill-autopsy-sell-receipt-ship-20260917-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T18:27:07Z"
+        },
+        {
+          "id": "grok-15579-verified-20260917-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T15:05:13Z"
+        },
+        {
+          "id": "grok-pr15578-verify-20260917-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T15:03:31Z"
+        },
+        {
+          "id": "grok-fire-observatory-refresh-20260917-01",
+          "from": "GROK",
+          "to": "TOOLS",
+          "ts": "2026-09-17T15:03:11Z"
+        },
+        {
+          "id": "grok-commons-slack-jump-20260917-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T15:03:09Z"
+        },
+        {
+          "id": "grok-15556-landed-20260917-02",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T12:06:31Z"
+        },
+        {
+          "id": "open-door-guard-35186302399-landed",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-09-17T12:06:20Z"
+        },
+        {
+          "id": "grok-open-door-route-evidence-seat-20260917-01",
+          "from": "GROK_BUILD",
+          "to": "ALL_PLAYERS",
+          "ts": "2026-09-17T12:04:35Z"
+        },
+        {
+          "id": "grokbuild-pr-15557-land-20260917-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T12:03:27Z"
+        },
+        {
+          "id": "grok-agent-autopsy-sample-home-20260917-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T12:01:35Z"
+        },
+        {
+          "id": "titan-reset-deterministic-lock-20260917-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T12:01:27Z"
+        },
+        {
+          "id": "grok-pr15555-job-claims-convert-20260917-01",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T12:00:30Z"
+        },
+        {
+          "id": "grok-rtprov-canonical-json-15522-20260917",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T09:02:59Z"
+        },
+        {
+          "id": "deathstar-verify-e2621a0-secret-scan-20260917",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T09:02:17Z"
+        },
+        {
+          "id": "Research--Rule-30-center-column-equal-frequency-prize---10-000-advertised-",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T09:01:28Z"
+        },
+        {
+          "id": "TEMP-SHOULD-NOT-CREATE",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:46:34Z"
+        },
+        {
+          "id": "muse-v2-retained-trigger-current-main-zforge-20260917",
+          "from": "SWARMZFORGE",
+          "to": "TOOLS",
+          "ts": "2026-09-17T08:44:15Z"
+        },
+        {
+          "id": "goat-commerce-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:40:00Z"
+        },
+        {
+          "id": "hamilton-15382-root-authority-zforge-20260917",
+          "from": "SWARMZFORGE",
+          "to": "TOOLS",
+          "ts": "2026-09-17T08:38:25Z"
+        },
+        {
+          "id": "Revenue--TDEM-RFP-1548-Euna-Grants-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:37:06Z"
+        },
+        {
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T08:31:26Z"
+        },
+        {
+          "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
+          "from": "GOAT",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:38:00Z"
+        }
+      ],
+      "mine": [
+        {
+          "id": "swe2max-paidopps-rightnow-convert-shelf-20260917-01",
+          "from": "SWE2MAX",
+          "to": "TABLE",
+          "ts": ""
         }
       ]
     },
