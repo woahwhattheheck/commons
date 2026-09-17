@@ -48,13 +48,31 @@ class HumanReplyWorkshareClaimGuardTests(unittest.TestCase):
                     with self.assertRaisesRegex(WorkshareError, "unsupported"):
                         compile_offer(row)
 
-    def test_legitimate_acceptance_evidence_phrase_still_compiles_in_all_fields(self):
+    def test_unicode_compatibility_and_format_smuggling_fail_closed(self):
+        hostiles = (
+            "Ｐａｙｍｅｎｔ ｒｅｃｅｉｖｅｄ for the pilot.",
+            "Pay\u200bment received for the pilot.",
+            "Existing\u2060 customer requested the change.",
+            "Buyer\u2028accepted this scope yesterday.",
+        )
+        for field in ("counterparty_label", "opportunity_label", "scope.input_bounds"):
+            for phrase in hostiles:
+                with self.subTest(field=field, phrase=repr(phrase)):
+                    row = base_record()
+                    self._put(row, field, phrase)
+                    with self.assertRaises(WorkshareError):
+                        compile_offer(row)
+
+    def test_legitimate_acceptance_evidence_and_unicode_labels_still_compile(self):
         phrase = "Acceptance evidence workshare"
         for field in ("counterparty_label", "opportunity_label", "scope.input_bounds"):
             with self.subTest(field=field):
                 row = base_record()
                 self._put(row, field, phrase)
                 self.assertIn("PROPOSED_NOT_ACCEPTED", compile_offer(row).markdown)
+        row = base_record()
+        row["counterparty_label"] = "Café Example Prime"
+        self.assertIn("Café Example Prime", compile_offer(row).markdown)
 
     def test_public_renderer_revalidates_forged_normalized_mapping(self):
         forged = copy.deepcopy(dict(compile_offer(base_record()).normalized))
@@ -63,7 +81,7 @@ class HumanReplyWorkshareClaimGuardTests(unittest.TestCase):
         with self.assertRaisesRegex(WorkshareError, "unsupported"):
             render_offer_markdown(forged)
 
-    def test_optimized_python_keeps_alternate_field_guards(self):
+    def test_optimized_python_keeps_ascii_and_unicode_guards(self):
         program = textwrap.dedent(
             """
             from revenue.human_reply_workshare_kit.core import WorkshareError, compile_offer
@@ -73,6 +91,8 @@ class HumanReplyWorkshareClaimGuardTests(unittest.TestCase):
                 ("counterparty_label", "Buyer accepted this scope yesterday."),
                 ("opportunity_label", "Existing customer - award secured"),
                 ("scope.input_bounds", "Payment received for the pilot."),
+                ("counterparty_label", "Ｐａｙｍｅｎｔ ｒｅｃｅｉｖｅｄ for the pilot."),
+                ("opportunity_label", "Pay\\u200bment received for the pilot."),
             )
             for field, phrase in cases:
                 row = base_record()
@@ -84,7 +104,7 @@ class HumanReplyWorkshareClaimGuardTests(unittest.TestCase):
                     compile_offer(row)
                 except WorkshareError:
                     continue
-                raise SystemExit(f"guard bypass under -O: {field}")
+                raise SystemExit(f"guard bypass under -O: {field}: {phrase!r}")
             """
         )
         result = subprocess.run(
