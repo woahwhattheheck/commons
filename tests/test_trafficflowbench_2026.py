@@ -270,6 +270,7 @@ class SubmissionTests(unittest.TestCase):
         self.assertIn("1,state,70.0,2100.0,0.0,0.0", payload)
         self.assertIn("2,queue,0.0,0.0,1.0,0.0", payload)
         self.assertEqual(receipt["schema"], "trafficflowbench-local-submission/v2")
+        self.assertEqual(receipt["authority"], authority_ceiling())
         self.assertEqual(len(receipt["compileInputSha256"]), 64)
         self.assertEqual(len(receipt["compilerContractSha256"]), 64)
 
@@ -297,10 +298,31 @@ class SubmissionTests(unittest.TestCase):
         payload, receipt = self.compile()
         self.assertFalse(verify_compiled_submission(payload, receipt))
 
-    def test_authority_forgery_fails_even_after_receipt_rehash(self):
+    def test_authority_true_promotion_fails_even_after_receipt_rehash(self):
         payload, receipt = self.compile()
         forged = copy.deepcopy(receipt)
         forged["authority"]["submissionSent"] = True
+        _rehash_receipt(forged)
+        self.assertFalse(self.verify(payload, forged))
+
+    def test_authority_field_deletion_fails_even_after_receipt_rehash(self):
+        payload, receipt = self.compile()
+        forged = copy.deepcopy(receipt)
+        del forged["authority"]["kaggleJoined"]
+        _rehash_receipt(forged)
+        self.assertFalse(self.verify(payload, forged))
+
+    def test_authority_field_addition_fails_even_after_receipt_rehash(self):
+        payload, receipt = self.compile()
+        forged = copy.deepcopy(receipt)
+        forged["authority"]["fabricatedAuthority"] = False
+        _rehash_receipt(forged)
+        self.assertFalse(self.verify(payload, forged))
+
+    def test_authority_evidence_class_mutation_fails_even_after_receipt_rehash(self):
+        payload, receipt = self.compile()
+        forged = copy.deepcopy(receipt)
+        forged["authority"]["evidenceClass"] = "LOCAL_SYNTHETIC"
         _rehash_receipt(forged)
         self.assertFalse(self.verify(payload, forged))
 
@@ -348,13 +370,7 @@ class SubmissionTests(unittest.TestCase):
         if sys.flags.optimize:
             return
         proc = subprocess.run(
-            [
-                sys.executable,
-                "-O",
-                "-m",
-                "unittest",
-                "tests.test_trafficflowbench_2026.SubmissionTests",
-            ],
+            [sys.executable, "-O", "test_trafficflowbench_2026.py"],
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
             text=True,
