@@ -23,9 +23,19 @@ class BoundaryError(ValueError):
         self.code = code
 
 
+# CPython permits the integer-string conversion guard to be configured as low
+# as 640 decimal digits. Keep public custom ceilings comfortably below that
+# implementation floor so accepted integers are always conversion-safe.
+MAX_SUPPORTED_INTEGER_ABS = (10**100) - 1
+
+
 @dataclass(frozen=True)
 class Limits:
-    """Resource and semantic limits for one JSON generation."""
+    """Resource and semantic limits for one JSON generation.
+
+    ``max_integer_abs`` is configurable up to 100 decimal digits. Larger
+    ceilings are rejected as invalid limits before any decimal conversion.
+    """
 
     max_depth: int = 64
     max_nodes: int = 200_000
@@ -39,7 +49,11 @@ class Limits:
             raise BoundaryError("invalid_limits")
         if type(self.max_bytes) is not int or self.max_bytes < 2:
             raise BoundaryError("invalid_limits")
-        if type(self.max_integer_abs) is not int or self.max_integer_abs < 0:
+        if (
+            type(self.max_integer_abs) is not int
+            or self.max_integer_abs < 0
+            or self.max_integer_abs > MAX_SUPPORTED_INTEGER_ABS
+        ):
             raise BoundaryError("invalid_limits")
 
 
