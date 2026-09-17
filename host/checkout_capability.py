@@ -324,7 +324,15 @@ def project(snapshot: dict[str, Any], catalog: dict[str, Any]) -> dict[str, Any]
     checkout_evidence = catalog_checkout_evidence(catalog)
     authority = canonical_checkout_authority()
     projected = [
-        project_rail(provider, rail, inert, checkouts, default_evidence, checkout_evidence, authority)
+        project_rail(
+            provider,
+            rail,
+            inert,
+            checkouts,
+            default_evidence,
+            checkout_evidence,
+            authority,
+        )
         for rail in rails
         if isinstance(rail, dict)
     ]
@@ -401,29 +409,47 @@ def catalog_checkout_errors(catalog: dict[str, Any], snapshot: dict[str, Any], p
 
 
 def live_buy_urls(html: str) -> set[str]:
-    return {"https://buy.stripe.com/%s" % path for path in BUY_HOST_PATH_RE.findall(html)}
+    """Canonical https://buy.stripe.com/<path> identities found in HTML."""
+    return {
+        "https://buy.stripe.com/%s" % path
+        for path in BUY_HOST_PATH_RE.findall(html)
+    }
 
 
 def live_stripe_checkout_urls(html: str) -> set[str]:
-    return live_buy_urls(html) | {"https://donate.stripe.com/%s" % path for path in DONATE_HOST_PATH_RE.findall(html)}
+    """Canonical https://(buy|donate).stripe.com/<path> identities found in HTML."""
+    return live_buy_urls(html) | {
+        "https://donate.stripe.com/%s" % path
+        for path in DONATE_HOST_PATH_RE.findall(html)
+    }
 
 
 def html_stripe_url_errors(name: str, text: str) -> list[str]:
+    """tips/pay convert shelves reuse existing Stripe URLs; commerce reuses live buys."""
     if name == "tips.html":
         found = live_stripe_checkout_urls(text)
         if found != TIPS_CONVERT_SHELF_LIVE_CHECKOUTS:
-            return ["%s convert shelf must reuse exactly the existing tip-shelf Stripe URLs" % name]
+            return [
+                "%s convert shelf must reuse exactly the existing tip-shelf Stripe URLs"
+                % name
+            ]
         return []
     if name == "pay.html":
         found = live_stripe_checkout_urls(text)
         if found != PAY_CONVERT_SHELF_LIVE_CHECKOUTS:
-            return ["%s convert shelf must reuse exactly the existing pay Stripe URLs" % name]
+            return [
+                "%s convert shelf must reuse exactly the existing pay Stripe URLs"
+                % name
+            ]
         return []
     allowed = CONVERT_SHELF_LIVE_BUYS.get(name)
     if allowed is not None:
         found = live_buy_urls(text)
         if found != allowed:
-            return ["%s convert shelf must reuse exactly the existing live buy.stripe.com URLs" % name]
+            return [
+                "%s convert shelf must reuse exactly the existing live buy.stripe.com URLs"
+                % name
+            ]
         if "donate.stripe.com" in text.lower():
             return ["%s must not invent donate.stripe.com URLs" % name]
         return []
@@ -447,11 +473,13 @@ def html_surface_errors(root: str) -> list[str]:
 def measure_root(root: str) -> dict[str, Any]:
     snapshot = _load(root, SNAPSHOT)
     catalog = _load(root, CATALOG)
-    blob = "\n".join([
-        _read(root, SNAPSHOT),
-        _read(root, os.path.join("ground", "CHECKOUT_CAPABILITY.md")),
-        _read(root, os.path.join("host", "checkout_capability.py")),
-    ])
+    blob = "\n".join(
+        [
+            _read(root, SNAPSHOT),
+            _read(root, os.path.join("ground", "CHECKOUT_CAPABILITY.md")),
+            _read(root, os.path.join("host", "checkout_capability.py")),
+        ]
+    )
     projected = project(snapshot, catalog)
     errors = []
     hits = forbidden_hits(blob)
@@ -495,7 +523,13 @@ def measure_root(root: str) -> dict[str, Any]:
         if "Recorded URL (not a checkout):" in text:
             errors.append("%s must not still call a verified URL a non-checkout" % path)
     state = "INTEGRATED" if not errors else "NOT_LANDED"
-    return {"state": state, "errors": errors, "projected": projected, "snapshot": SNAPSHOT, "z": "" if not errors else "FINDER-FAILED"}
+    return {
+        "state": state,
+        "errors": errors,
+        "projected": projected,
+        "snapshot": SNAPSHOT,
+        "z": "" if not errors else "FINDER-FAILED",
+    }
 
 
 def _self_test() -> bool:
@@ -503,11 +537,41 @@ def _self_test() -> bool:
         "schema_version": "commons-checkout-capability/v1",
         "kind": "CHECKOUT_CAPABILITY_SNAPSHOT",
         "observed_at": "2026-08-28T16:10:00Z",
-        "provider": {"name": "stripe", "livemode": True, "charges_enabled": False, "payouts_enabled": False, "currently_due": ["external_account"], "card_payments": "inactive", "transfers": "inactive"},
-        "canonical_rails": [{"sku": "sku-tip-20260826", "url": "https://donate.stripe.com/fZucN40Ch9fj7mxgJs43S08", "link_active": True, "livemode": True, "exposure": "CHECKOUT_FIRST"}],
+        "provider": {
+            "name": "stripe",
+            "livemode": True,
+            "charges_enabled": False,
+            "payouts_enabled": False,
+            "currently_due": ["external_account"],
+            "card_payments": "inactive",
+            "transfers": "inactive",
+        },
+        "canonical_rails": [
+            {
+                "sku": "sku-tip-20260826",
+                "url": "https://donate.stripe.com/fZucN40Ch9fj7mxgJs43S08",
+                "link_active": True,
+                "livemode": True,
+                "exposure": "CHECKOUT_FIRST",
+            }
+        ],
         "inert_duplicate_urls": [],
     }
-    catalog = {"listings": [{"id": "sku-tip-20260826", "checkout": {"status": "ACTIVE_CHARGEABLE", "provider": "stripe", "url": "https://donate.stripe.com/fZucN40Ch9fj7mxgJs43S08", "link_active": True, "account_charges_enabled": True, "account_payouts_enabled": True}}]}
+    catalog = {
+        "listings": [
+            {
+                "id": "sku-tip-20260826",
+                "checkout": {
+                    "status": "ACTIVE_CHARGEABLE",
+                    "provider": "stripe",
+                    "url": "https://donate.stripe.com/fZucN40Ch9fj7mxgJs43S08",
+                    "link_active": True,
+                    "account_charges_enabled": True,
+                    "account_payouts_enabled": True,
+                },
+            }
+        ]
+    }
     projected = project(dead, catalog)
     if projected["account_ready"] or projected["public_rails"]:
         return False
