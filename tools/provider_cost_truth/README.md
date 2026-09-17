@@ -24,7 +24,9 @@ The v1 manifest intentionally ships **empty**. Therefore the supported `compile_
 
 Adding a fingerprint to `TRUSTED_PROVIDER_EVIDENCE_FINGERPRINTS` is an explicit source-code authority change. It must be backed by independently authenticated provider material and reviewed as such; do not add a fingerprint merely because a caller supplied matching fields. This package does not fetch providers, hold credentials, or authenticate provider bytes itself.
 
-Private explicit-time semantic tests may inject a test-only fingerprint generation into the non-authorizing evaluator to prove scope/precedence logic. That seam emits no current receipt fields and is not the supported current compiler.
+Every evaluation and current receipt also binds `trusted_provider_evidence_manifest_sha256`, a deterministic digest of the trust-manifest schema and sorted fingerprint generation. Historical verification replays using the captured program generation and requires exact receipt equality. Changing that manifest digest and merely recomputing the outer receipt SHA does not manufacture a valid receipt: semantic replay reconstructs the actual captured generation and rejects the forged one.
+
+Private explicit-time semantic tests may inject a test-only fingerprint generation plus its matching manifest digest into the non-authorizing evaluator to prove scope/precedence logic. That seam emits no current receipt fields and is not the supported current compiler.
 
 ## Scope and currentness
 
