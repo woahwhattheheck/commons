@@ -27,6 +27,7 @@ OPEN_STATES = {"OPEN", "ROLLING"}
 RULE_SCOPES = {"ELIGIBILITY", "ARTIFACT", "SELECTOR"}
 OPERATORS = {"BOOL_TRUE", "BOOL_FALSE", "INT_MIN", "INT_MAX", "INT_RANGE", "ENUM_IN", "TEXT_PRESENT", "SUBJECTIVE"}
 GATE_STATUS = {"VERIFIED", "MISSING", "HOLD"}
+REFERENCE_GENERATION_MAX_AGE_SECONDS = 7 * 24 * 60 * 60
 
 
 class GrantPacketError(ValueError):
@@ -216,6 +217,31 @@ def _validate_references(refs: dict[str, Any], refs_raw: bytes):
     return programs, digest(refs_raw)
 
 
+def _reference_currentness(refs: dict[str, Any], program: dict[str, Any], evaluated_dt: datetime):
+    generated_at, generated_dt = _timestamp(refs["generated_at"], "references.generated_at")
+    observed_at, observed_dt = _timestamp(program["observed_at"], "program.observed_at")
+    generation_age = int((evaluated_dt - generated_dt).total_seconds())
+    program_age = int((evaluated_dt - observed_dt).total_seconds())
+    future = generation_age < 0 or program_age < 0
+    stale = generation_age > REFERENCE_GENERATION_MAX_AGE_SECONDS or program_age > REFERENCE_GENERATION_MAX_AGE_SECONDS
+    current = not future and not stale
+    if future:
+        reason = "REFERENCE_GENERATION_FUTURE"
+    elif stale:
+        reason = "REFERENCE_GENERATION_STALE"
+    else:
+        reason = "REFERENCE_GENERATION_CURRENT"
+    return {
+        "current": current,
+        "reason": reason,
+        "policy_max_age_seconds": REFERENCE_GENERATION_MAX_AGE_SECONDS,
+        "reference_generated_at": generated_at,
+        "reference_age_seconds": generation_age,
+        "program_observed_at": observed_at,
+        "program_age_seconds": program_age,
+    }
+
+
 def _evidence(doc: dict[str, Any], evaluated_dt: datetime, max_age: int):
     project = doc["project"]
     _keys(project, ["project_id", "repository_url", "evidence"], "input.project")
@@ -289,6 +315,7 @@ def compile_packet(reference_bytes: bytes, input_bytes: bytes):
     program = programs.get(program_id)
     if program is None:
         raise GrantPacketError("input.program_id: unknown program")
+    reference_currentness = _reference_currentness(refs, program, evaluated_dt)
     project, grouped = _evidence(doc, evaluated_dt, max_age)
 
     gates = []
@@ -301,7 +328,7 @@ def compile_packet(reference_bytes: bytes, input_bytes: bytes):
         })
 
     mechanical = [g for g in gates if g["scope"] in {"ELIGIBILITY", "ARTIFACT"}]
-    program_current = program["program_state"] in OPEN_STATES and not program["source_conflicts"]
+    program_current = program["program_state"] in OPEN_STATES and not program["source_conflicts"] and reference_currentness["current"]
     if not program_current:
         packet_status = "HOLD_PROGRAM_CURRENTNESS"
     elif any(g["status"] == "HOLD" for g in mechanical):
@@ -316,7 +343,6 @@ def compile_packet(reference_bytes: bytes, input_bytes: bytes):
     artifacts = [{"rule_id": g["rule_id"], "evidence_key": g["evidence_key"], "status": g["status"], "reason": g["reason"]}
                  for g in gates if g["scope"] == "ARTIFACT"]
     verified_keys = {g["evidence_key"] for g in gates if g["status"] == "VERIFIED"}
-    evidence_index = {row["key"]: row for row in project["evidence"] if row["key"] in verified_keys}
     outline_allowed = program["ai_drafting_policy"] == "DRAFT_OUTLINE_ALLOWED"
     outline = {
         "allowed": outline_allowed,
@@ -327,7 +353,6 @@ def compile_packet(reference_bytes: bytes, input_bytes: bytes):
         ] if outline_allowed else [],
         "owner_instruction": "OWNER MUST AUTHOR APPLICATION TEXT" if not outline_allowed else "DRAFT STRUCTURE ONLY; OWNER MUST REVIEW/WRITE FINAL APPLICATION",
     }
-    # Deliberately no prose synthesis from evidence.
     packet = {
         "schema": PACKET_SCHEMA, "truth_boundary": BOUNDARY, "evaluated_at": evaluated_at,
         "status": packet_status,
@@ -337,6 +362,7 @@ def compile_packet(reference_bytes: bytes, input_bytes: bytes):
             "route_map_source_id": program["route_map_source_id"], "source_urls": program["source_urls"],
             "observed_at": program["observed_at"], "source_factset_sha256": program["source_factset_sha256"],
             "source_conflicts": program["source_conflicts"], "reference_value": program["reference_value"],
+            "currentness": reference_currentness,
         },
         "gates": gates,
         "required_artifacts": artifacts,
@@ -361,7 +387,7 @@ def compile_packet(reference_bytes: bytes, input_bytes: bytes):
 
 
 def render_markdown(packet: dict[str, Any]):
-    lines = ["# OSS grant packet readiness", "", f"- Program: `{packet['program']['program_id']}`", f"- Project: `{packet['project']['project_id']}`", f"- Status: **{packet['status']}**", "- Truth: **packet readiness only; not eligibility, selection, award, payment, or revenue**", "", "## Mechanical eligibility / artifacts", ""]
+    lines = ["# OSS grant packet readiness", "", f"- Program: `{packet['program']['program_id']}`", f"- Project: `{packet['project']['project_id']}`", f"- Status: **{packet['status']}**", f"- Reference currentness: **{packet['program']['currentness']['reason']}** (age limit {packet['program']['currentness']['policy_max_age_seconds']}s)", "- Truth: **packet readiness only; not eligibility, selection, award, payment, or revenue**", "", "## Mechanical eligibility / artifacts", ""]
     for gate in packet["gates"]:
         if gate["scope"] != "SELECTOR":
             lines.append(f"- `{gate['status']}` `{gate['rule_id']}` — {gate['reason']}")
