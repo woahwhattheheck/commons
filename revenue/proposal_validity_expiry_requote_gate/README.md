@@ -20,7 +20,7 @@ The v2 current snapshot binds the same live commercial semantics plus exact cont
 
 For a CURRENT result, source observation must be no earlier than issuance and no later than the trusted runtime clock. Source digest/generation/status drift or a stale/replaced/withdrawn payment road produces `HOLD_SOURCE_DRIFT`. Pricing, currency, scope, or economics drift remains `SUPERSEDED`.
 
-Supersession kinds are `AMENDMENT`, `REDLINE`, `CHANGE_ORDER`, `REPRICE`, and `WITHDRAWAL`. V2 events are bound to the exact current source generation/digest and cannot postdate the current source observation. Events at or before issuance do not supersede the issued offer.
+Supersession kinds are `AMENDMENT`, `REDLINE`, `CHANGE_ORDER`, `REPRICE`, and `WITHDRAWAL`. Every row is schema/syntax validated and event IDs remain globally unique. **Current source-generation/digest/observation authority is applied only after the row is relevant to this exact offer and observed after the offer was issued.** Historical rows for another offer, and pre-issuance history for this offer, therefore cannot veto current truth merely because they correctly bind an older source generation. A relevant post-issuance superseder must still bind the exact current source generation/digest and cannot postdate the current source observation.
 
 ### V1 compatibility / migration
 
@@ -28,11 +28,15 @@ Legacy schema-v1 issued/current JSON is still accepted so callers receive a dete
 
 ## Time and replay boundary
 
-The production CLI obtains evaluation time from the process UTC clock and exposes **no `--as-of`** option. The clock callable is captured from the standard library at module import, so ordinary rebinding of `gate._dt.datetime` cannot freeze public evaluation at a historical time.
+The production CLI obtains evaluation time from the process UTC clock and exposes **no `--as-of`** option. The underlying standard-library `datetime.now` callable is captured when the canonical core initializes. The **public `evaluate_offer()` / `verify_packet()` API generation also captures that clock function in a closure**, so ordinary rebinding of either `gate._dt.datetime` or the public `gate._utc_now` name cannot select or freeze historical evaluation time.
 
-The private `_evaluate_at` helper defaults to `clock_basis=TEST_EXPLICIT`; those packets are intentionally not accepted by `verify_packet` as process-current evidence. Public `evaluate_offer`/CLI packets carry `clock_basis=PROCESS_UTC`.
+The private `_evaluate_at` helper defaults to `clock_basis=TEST_EXPLICIT`; those packets are intentionally not accepted by `verify_packet` as process-current evidence. Retained deterministic tests construct a separate private API generation with `_build_current_api_for_test`; the supported public API exposes no caller clock parameter.
 
-Verification exact-rebuilds at the packet's bound evaluation instant and then performs a fresh process-UTC evaluation whose **semantic projection** must still match, not merely its coarse five-state string. This rejects both an old CURRENT packet after expiry and subtler same-state drift, such as an already-expired packet later crossing a buyer deadline and gaining a new requote reason.
+Verification exact-rebuilds at the packet's bound evaluation instant and then performs a fresh captured process-UTC evaluation whose **semantic projection** must still match, not merely its coarse five-state string. This rejects both an old CURRENT packet after expiry and subtler same-state drift, such as an already-expired packet later crossing a buyer deadline and gaining a new requote reason.
+
+## Implementation preservation
+
+The exact canonical implementation reviewed at predecessor head `9dee00d3021f45272c22b86493c75191ce596b16` is retained byte-for-byte as `_proposal_validity_core.py`. Public `gate.py` is a small hardening facade that patches only the two later reviewed STOP seams—supersession relevance ordering and public current-clock ownership—before exporting the supported API/CLI. Likewise, the predecessor test file is retained byte-for-byte as `tests/_proposal_validity_predecessor_suite.py`; the discoverable successor test subclasses it, adapts deterministic clock setup to the private API-generation seam, and adds the later hostile predecessors.
 
 ## Strict input boundary
 
@@ -59,9 +63,13 @@ Output creation is exclusive: an existing target is never overwritten.
 ## Tests
 
 ```bash
-python -m py_compile revenue/proposal_validity_expiry_requote_gate/gate.py tests/test_proposal_validity_expiry_requote_gate.py
+python -m py_compile \
+  revenue/proposal_validity_expiry_requote_gate/_proposal_validity_core.py \
+  revenue/proposal_validity_expiry_requote_gate/gate.py \
+  tests/_proposal_validity_predecessor_suite.py \
+  tests/test_proposal_validity_expiry_requote_gate.py
 python -m unittest -v tests/test_proposal_validity_expiry_requote_gate.py
 python -O -m unittest -v tests/test_proposal_validity_expiry_requote_gate.py
 ```
 
-The retained hostile suite covers legacy truth narrowing, source generation/digest/status/chronology, commercial drift, all five supersession kinds and source binding, payment-road drift, validity/deadline boundaries, explicit-test-clock rejection, stdlib-clock rebinding, duplicate/nonfinite/float/giant-int/surrogate/deep JSON hostiles, tampered receipts, historical CURRENT replay, same-state temporal semantic drift, create-exclusive output, no `--as-of`, and bounded CLI failures under normal and optimized Python.
+The retained hostile suite covers legacy truth narrowing; source generation/digest/status/chronology; commercial drift; all five supersession kinds; relevant post-issue source binding; irrelevant OTHER-offer and pre-issue old-generation history; payment-road drift; validity/deadline boundaries; explicit-test-clock rejection; stdlib-clock rebinding; direct public `_utc_now` rebinding; duplicate/nonfinite/float/giant-int/surrogate/deep JSON hostiles; tampered receipts; historical CURRENT replay; same-state temporal semantic drift; create-exclusive output; no `--as-of`; and bounded CLI failures under normal and optimized Python.
