@@ -2,6 +2,9 @@ from __future__ import annotations
 
 import copy
 import json
+from pathlib import Path
+import subprocess
+import sys
 import unittest
 
 from revenue.human_reply_workshare_kit.core import (
@@ -12,6 +15,41 @@ from revenue.human_reply_workshare_kit.core import (
     render_receipt_json,
 )
 from revenue.human_reply_workshare_kit.test_core import base_record
+
+
+ROOT = Path(__file__).resolve().parents[2]
+_DIRECT_LEGACY_IMPORT = r'''
+import copy
+import importlib
+
+legacy = importlib.import_module("revenue.human_reply_workshare_kit._core_legacy")
+from revenue.human_reply_workshare_kit.test_core import base_record
+
+smuggled = base_record()
+smuggled["opportunity_label"] = "Payment [received] for the pilot"
+try:
+    legacy.compile_offer(smuggled)
+except legacy.WorkshareError:
+    pass
+else:
+    raise SystemExit("direct legacy compile accepted a commercial-truth assertion")
+
+valid = legacy.compile_offer(base_record())
+forged_normalized = copy.deepcopy(dict(valid.normalized))
+forged_normalized["scope"] = copy.deepcopy(dict(valid.normalized["scope"]))
+forged_normalized["scope"]["one_line"] = "Buyer **accepted** this workshare"
+forged = legacy.CompiledOffer(
+    normalized=forged_normalized,
+    markdown=valid.markdown,
+    receipt_sha256=valid.receipt_sha256,
+)
+try:
+    legacy.render_receipt_json(forged)
+except legacy.WorkshareError:
+    pass
+else:
+    raise SystemExit("direct legacy receipt renderer accepted forged current state")
+'''
 
 
 class HumanReplyWorkshareTruthGuardTests(unittest.TestCase):
@@ -166,6 +204,29 @@ class HumanReplyWorkshareTruthGuardTests(unittest.TestCase):
         self.assertEqual(receipt["pack_id"], compiled.normalized["pack_id"])
         self.assertEqual(receipt["commercial_state"], "PROPOSED_NOT_ACCEPTED")
         self.assertEqual(receipt["normalized_sha256"], compiled.receipt_sha256)
+
+    def test_direct_legacy_import_is_guarded_in_fresh_normal_and_optimized_processes(self):
+        for optimized in (False, True):
+            command = [sys.executable]
+            if optimized:
+                command.append("-O")
+            command.extend(["-c", _DIRECT_LEGACY_IMPORT])
+            completed = subprocess.run(
+                command,
+                cwd=ROOT,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True,
+                timeout=60,
+            )
+            self.assertEqual(
+                completed.returncode,
+                0,
+                msg=(
+                    f"direct legacy predecessor failed (optimized={optimized})\n"
+                    f"stdout={completed.stdout}\nstderr={completed.stderr}"
+                ),
+            )
 
     def test_benign_acceptance_evidence_language_still_compiles(self):
         row = base_record("DATA_MIGRATION_ACCEPTANCE")
