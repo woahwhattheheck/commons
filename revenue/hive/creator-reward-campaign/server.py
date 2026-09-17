@@ -1,6 +1,7 @@
 """Creator reward campaign desk. Python standard library; local handoff only; no provider calls."""
 import argparse
 import csv
+import hashlib
 import io
 import json
 import re
@@ -24,6 +25,27 @@ MAX_MINOR = 10**12
 HANDLE = re.compile(r'[A-Za-z0-9][A-Za-z0-9._-]{0,63}')
 NAME = re.compile(r'[A-Za-z0-9][A-Za-z0-9 ._-]{0,119}')
 ASSET_NAME = re.compile(r'[A-Za-z0-9][A-Za-z0-9_-]{0,79}\.(md|txt)')
+# Opaque-reference grammar for payout route and settlement references. It is a
+# shape filter owned by this module, not a detector: it refuses obvious contact,
+# URL/host, phone, SSN, card/account/IBAN digit shapes, credential keywords,
+# well-known secret prefixes and token-shaped runs, so those values never reach
+# SQLite, state, handoff records or exports. Operators supply references issued
+# by their payout system of record.
+OPAQUE_REF = re.compile(r'[A-Za-z0-9][A-Za-z0-9._:/-]{0,79}')
+REF_FORBIDDEN_TEXT = re.compile(
+    r'(?:@|://|(?<![A-Za-z0-9])www\.|(?<![A-Za-z0-9])(?:mailto|tel|sms|http|https|ftp):|'
+    r'(?<![A-Za-z0-9])(?:password|passwd|pwd|secret|api[_-]?key|apikey|token|bearer|auth|oauth|otp|cvv|cvc|pin|'
+    r'iban|swift|bic|routing|aba|card|pan|ssn|sin|ein|tin|tax[_-]?id)(?![A-Za-z]))', re.I)
+REF_SECRET_PREFIX = re.compile(
+    r'(?<![A-Za-z0-9])(?:(?:sk|pk|rk)[_-](?:live|test)[_-]|whsec[_-]|ghp_|gho_|ghu_|ghs_|github_pat_|xox[abpr]-|'
+    r'AKIA[0-9A-Z]{12,}|ASIA[0-9A-Z]{12,}|ya29\.|eyJ[A-Za-z0-9_-]{10,}|sq0[a-z]{3}-|SG\.[A-Za-z0-9_-]{10,}|glpat-|npm_)', re.I)
+REF_HOST_SHAPE = re.compile(r'[A-Za-z0-9-]+\.[A-Za-z]{2,24}(?:$|[/:.])')
+REF_PHONE_OR_SSN_SHAPE = re.compile(r'(?<!\d)(?:\d{3}[-.]\d{3}[-.]\d{4}|\d{3}-\d{2}-\d{4})(?!\d)')
+REF_CARD_GROUP_SHAPE = re.compile(r'(?<!\d)\d{4}(?:[-.]\d{4}){2,4}(?!\d)')
+REF_DIGIT_RUN = re.compile(r'\d{13,}')
+REF_DIGIT_TOKEN = re.compile(r'(?<![A-Za-z0-9])\d{9,}(?![A-Za-z0-9])')
+REF_IBAN_SHAPE = re.compile(r'(?<![A-Za-z0-9])[A-Za-z]{2}\d{2}[A-Za-z0-9]{11,30}(?![A-Za-z0-9])')
+REF_TOKEN_SHAPE = re.compile(r'[A-Za-z0-9]{32,}')
 
 
 class DeskError(ValueError):
@@ -62,6 +84,19 @@ def day(value, name):
     return value
 
 
+def opaque_ref(value, name):
+    """Validate an opaque reference: ASCII identifier grammar minus contact, URL, account, card and secret shapes."""
+    reference = text(value, name, 80)
+    if not OPAQUE_REF.fullmatch(reference):
+        raise DeskError(f'{name} must be an opaque reference of up to 80 ASCII letters, digits, dots, underscores, colons, slashes or hyphens')
+    if (REF_FORBIDDEN_TEXT.search(reference) or REF_SECRET_PREFIX.search(reference) or REF_HOST_SHAPE.search(reference)
+            or REF_PHONE_OR_SSN_SHAPE.search(reference) or REF_CARD_GROUP_SHAPE.search(reference) or REF_DIGIT_RUN.search(reference)
+            or REF_DIGIT_TOKEN.search(reference) or REF_IBAN_SHAPE.search(reference) or REF_TOKEN_SHAPE.search(reference)
+            or (sum(ch.isdigit() for ch in reference) >= 13 and not any(ch.isalpha() for ch in reference))):
+        raise DeskError(f'{name} must be an opaque reference: no email, link, host, phone, account, card, IBAN, credential or token shapes')
+    return reference
+
+
 def encoded(value):
     try:
         return json.dumps(value, ensure_ascii=False, sort_keys=True, allow_nan=False)
@@ -74,7 +109,11 @@ def now():
 
 
 def normalize_url(value):
-    """Return a stable duplicate key for a public content URL: scheme, host, path only."""
+    """Return the canonical public content URL (scheme, host, path only); it is the only URL form the desk retains.
+
+    Userinfo is refused; query strings and fragments (where signed or tokenized links carry their
+    secrets) are dropped before storage, so the duplicate key and the retained URL are the same value.
+    """
     raw = text(value, 'url', 2000)
     parts = urlsplit(raw.strip())
     if parts.scheme.lower() not in ('http', 'https') or not parts.netloc or '@' in parts.netloc:
@@ -183,7 +222,7 @@ class Desk:
                     id TEXT PRIMARY KEY, campaign_id TEXT NOT NULL REFERENCES campaigns(id),
                     payload TEXT NOT NULL, created TEXT NOT NULL);
                 CREATE TABLE IF NOT EXISTS operations (
-                    id TEXT PRIMARY KEY, payload TEXT NOT NULL, result TEXT NOT NULL);
+                    id TEXT PRIMARY KEY, payload_sha256 TEXT NOT NULL, result TEXT NOT NULL);
             ''')
 
     def connect(self):
@@ -247,17 +286,19 @@ class Desk:
         if not isinstance(data, dict):
             raise DeskError('Payload must be an object')
         key = text(data.get('operation_id'), 'operation_id', 200)
-        payload = encoded({'operation': operation, 'data': data})
+        # Write receipts keep only a digest of the request payload: exact replay still matches and a
+        # different payload is still refused, but raw request bodies are never retained.
+        payload_digest = hashlib.sha256(encoded({'operation': operation, 'data': data}).encode('utf-8')).hexdigest()
         db = self.connect()
         try:
             db.execute('BEGIN IMMEDIATE')
             previous = db.execute('SELECT * FROM operations WHERE id=?', (key,)).fetchone()
             if previous:
-                if previous['payload'] != payload:
+                if previous['payload_sha256'] != payload_digest:
                     raise DeskError('operation_id already belongs to a different edit', 409)
                 return json.loads(previous['result'])
             result = self._apply(db, operation, data)
-            db.execute('INSERT INTO operations VALUES (?,?,?)', (key, payload, encoded(result)))
+            db.execute('INSERT INTO operations VALUES (?,?,?)', (key, payload_digest, encoded(result)))
             db.commit()
             return result
         except sqlite3.IntegrityError as exc:
@@ -279,7 +320,7 @@ class Desk:
             if not HANDLE.fullmatch(handle):
                 raise DeskError('handle uses letters, digits, dots, underscores or hyphens')
             consent_on = day(data.get('consent_on'), 'consent_on')
-            route = text(data.get('payout_route_ref'), 'payout_route_ref', 120)
+            route = opaque_ref(data.get('payout_route_ref'), 'payout_route_ref')
             identifier = uuid.uuid4().hex
             db.execute('INSERT INTO creators(id,handle,consent_on,payout_route_ref) VALUES (?,?,?,?)', (identifier, handle, consent_on, route))
             return {'id': identifier}
@@ -327,17 +368,16 @@ class Desk:
             platform = data.get('platform')
             if platform not in rules['platforms']:
                 raise DeskError(f'platform must be one of the campaign platforms {rules["platforms"]}')
-            url = text(data.get('url'), 'url', 2000)
-            key = normalize_url(url)
+            url = normalize_url(data.get('url'))  # canonical public form is the only URL the desk retains
             posted_on = day(data.get('posted_on'), 'posted_on')
             if posted_on < creator['consent_on']:
                 raise DeskError('posted_on precedes the recorded creator consent date')
             identifier = uuid.uuid4().hex
             db.execute('INSERT INTO submissions(id,campaign_id,creator_id,platform,url,url_key,posted_on,disclosure_present,rights_accepted,created) VALUES (?,?,?,?,?,?,?,?,?,?)',
-                       (identifier, campaign['id'], creator['id'], platform, url, key, posted_on,
+                       (identifier, campaign['id'], creator['id'], platform, url, url, posted_on,
                         int(boolean(data.get('disclosure_present'), 'disclosure_present')),
                         int(boolean(data.get('rights_accepted'), 'rights_accepted')), now()))
-            return {'id': identifier}
+            return {'id': identifier, 'url': url}
         if operation == 'submission/review':
             identifier = text(data.get('id'), 'id', 100)
             submission = self.row(db, 'submissions', identifier)
@@ -414,7 +454,7 @@ class Desk:
             self.expected(payable, data)
             if payable['status'] != 'HANDED_OFF':
                 raise DeskError('Only handed-off payables can record an external settlement reference', 409)
-            reference = text(data.get('settlement_ref'), 'settlement_ref', 200)
+            reference = opaque_ref(data.get('settlement_ref'), 'settlement_ref')
             db.execute("UPDATE payables SET status='SETTLEMENT_RECORDED',settlement_ref=?,version=version+1 WHERE id=?", (reference, identifier))
             return {'id': identifier, 'status': 'SETTLEMENT_RECORDED'}
         raise DeskError('Unknown operation', 404)

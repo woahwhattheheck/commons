@@ -56,7 +56,7 @@
     <form id="creatorForm">
       <label>Creator handle <input name="handle" required maxlength="64" placeholder="letters, digits, . _ -"></label>
       <label>Consent recorded on <input name="consent_on" type="date" required></label>
-      <label>Payout route reference (opaque) <input name="payout_route_ref" required maxlength="120"></label>
+      <label>Payout route reference (opaque; issued by your payout system, never an account, card, email, link or key) <input name="payout_route_ref" required maxlength="80" pattern="[A-Za-z0-9][A-Za-z0-9._:/-]{0,79}"></label>
       <button>Add consenting creator</button>
     </form>
     <div id="creators" class="meta"></div>
@@ -114,7 +114,7 @@
       <label>Campaign <select name="campaign_id" id="campaignSelect" required></select></label>
       <label>Creator <select name="creator_id" id="creatorSelect" required></select></label>
       <label>Platform <select name="platform"><option>TIKTOK</option><option>INSTAGRAM</option><option>YOUTUBE</option><option>X</option><option>OTHER</option></select></label>
-      <label>Content URL <input name="url" type="url" required placeholder="https://..."></label>
+      <label>Content URL (retained as scheme, host and path only) <input name="url" type="url" required placeholder="https://..."></label>
       <label>Posted on <input name="posted_on" type="date" required></label>
       <label><input type="checkbox" name="disclosure_present" style="width:auto"> Disclosure present</label>
       <label><input type="checkbox" name="rights_accepted" style="width:auto"> Creator accepted rights terms</label>
@@ -202,7 +202,7 @@
     document.getElementById('payables').innerHTML = state.payables.length ? '<table><thead><tr><th>Campaign</th><th>Creator</th><th class="num">Amount</th><th class="num">Proposed admin fee (5%)</th><th>Status</th><th>Handoff</th><th>Settlement</th></tr></thead><tbody>' +
       state.payables.map(function (p) {
         var c = campaignById[p.campaign_id] || {};
-        var settle = p.status === 'HANDED_OFF' ? '<form class="row settleForm" data-id="' + esc(p.id) + '" data-version="' + p.version + '"><input name="settlement_ref" placeholder="external settlement reference" required maxlength="200" style="width:200px"><button class="secondary">Record settlement</button></form>' : esc(p.settlement_ref || '');
+        var settle = p.status === 'HANDED_OFF' ? '<form class="row settleForm" data-id="' + esc(p.id) + '" data-version="' + p.version + '"><input name="settlement_ref" placeholder="opaque settlement reference" required maxlength="80" pattern="[A-Za-z0-9][A-Za-z0-9._:/-]{0,79}" style="width:200px"><button class="secondary">Record settlement</button></form>' : esc(p.settlement_ref || '');
         return '<tr><td>' + esc(c.title || p.campaign_id) + '</td><td>' + esc((creatorById[p.creator_id] || {}).handle || p.creator_id) + '</td><td class="num">' + esc(money(p.amount_minor, c.currency)) + '</td><td class="num">' + esc(money(p.admin_fee_minor, c.currency)) + '</td><td><span class="status ' + statusClass(p.status) + '">' + esc(p.status) + '</span></td><td class="meta">' + esc(p.handoff_id ? p.handoff_id.slice(0, 8) : '') + '</td><td>' + settle + '</td></tr>';
       }).join('') + '</tbody></table><p class="meta">Amounts are calculated rewards under the campaign rule and budget cap. The administration fee is a proposal (PROPOSED_NOT_ACCEPTED). Handoff writes a local request file for a separately authorized operator; settlement is recorded here by reference only.</p>' : '<p class="meta">No payables yet.</p>';
   }

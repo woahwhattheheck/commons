@@ -1,6 +1,8 @@
 import concurrent.futures
 import io
 import json
+import re
+import sqlite3
 import tempfile
 import threading
 import unittest
@@ -10,9 +12,25 @@ import uuid
 import zipfile
 from pathlib import Path
 
-from server import ADMIN_FEE_BPS, HANDOFF_MODE, Desk, DeskError, admin_fee, compute_reward, load_example, make_server, normalize_url
+from server import ADMIN_FEE_BPS, HANDOFF_MODE, Desk, DeskError, admin_fee, compute_reward, load_example, make_server, normalize_url, opaque_ref
 
 ROOT = Path(__file__).resolve().parent
+
+# Values that must never become desk state: card, account, IBAN, contact, link, host, credential and token shapes.
+SECRET_SHAPED_REFERENCES = (
+    '4111111111111111', '4111-1111-1111-1111', '4111.1111.1111.1111', '378282246310005', '021000021', 'ACCT-000123456789',
+    'someone@example.invalid', 'https://payouts.invalid/route?token=QUERYSECRETVALUE', 'http://payouts.invalid/r',
+    'www.payouts.invalid/r', 'payouts.invalid', 'payouts.invalid:8443', 'mailto:someone', 'tel:5551234567', 'sms:5551234567',
+    '555-123-4567', '555.123.4567', '123-45-6789', '5551234567', 'GB82WEST12345698765432', 'DE89370400440532013000',
+    'sk_live_EXAMPLEKEY', 'sk_test_abc', 'whsec_abc', 'ghp_abcdefghijklmnop', 'xoxb-1-2-3', 'AKIAIOSFODNN7EXAMPLE',
+    'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIn0', 'token:abc', 'api_key-1', 'apikey/1', 'password1', 'secret-7', 'bearer-x', 'oauth:1',
+    'CVV-123', 'PIN-1234', 'routing-021000021', 'IBAN-1', 'card-9', 'ssn-1', 'ein:12', 'tax-id-7',
+    '0123456789abcdef0123456789abcdef', '41111111-11111111', 'R' * 81, 'ROUTE 1', 'ROUTE#1', 'ROUTE+1', 'ROUTE=1', '-lead', '',
+)
+SECRET_NEEDLES = ('4111111111111111', 'QUERYSECRETVALUE', 'someone@example', 'GB82WEST', 'DE8937040044', 'sk_live_', 'whsec_',
+                  'ghp_abcdefghijklmnop', 'AKIAIOSFODNN7EXAMPLE', 'eyJhbGciOiJIUzI1NiJ9', '021000021', '378282246310005')
+OPAQUE_REFERENCES = ('ROUTE-DEMO-ALDER', 'vendor:route/2026-09-16', 'R-0001', 'acct-1Nv0FGQ9RKHgCVdK', 'po_1MoHpqLkdIwHu7ixj7XKD0Ry',
+                     '9b2f6c1e-4d3a-4f8b-a1c2-7e5d3b9f0a41', 'x', 'EXT-RECEIPT-2026-09-16-01', 'PAYOUT.BATCH_44/LINE-7', 'ROUTE-2026-09-16-000001')
 
 
 class DeskTests(unittest.TestCase):
@@ -53,6 +71,29 @@ class DeskTests(unittest.TestCase):
     def review(self, submission, decision='approve', **extra):
         version = self.item('submissions', submission)['version']
         return self.write('submission/review', id=submission, version=version, decision=decision, note='reviewed', **extra)
+
+    def retained_bytes(self):
+        """Every byte the desk retains or hands out: state JSON, SQLite files, ZIP export members, write receipts."""
+        state = self.desk.snapshot()
+        chunks = [json.dumps(state, sort_keys=True).encode('utf-8')]
+        chunks.extend(path.read_bytes() for path in sorted(Path(self.tmp.name).glob('desk.sqlite3*')))
+        for campaign in state['campaigns']:
+            archive = zipfile.ZipFile(io.BytesIO(self.desk.export(campaign['id'])))
+            chunks.extend(archive.read(name) for name in archive.namelist())
+        db = sqlite3.connect(self.path)
+        try:
+            for digest, result in db.execute('SELECT payload_sha256, result FROM operations').fetchall():
+                self.assertTrue(re.fullmatch(r'[0-9a-f]{64}', digest))
+                chunks.append(result.encode('utf-8'))
+        finally:
+            db.close()
+        return b'\n'.join(chunks)
+
+    def assert_never_retained(self, *needles):
+        retained = self.retained_bytes()
+        for needle in needles:
+            with self.subTest(needle=needle):
+                self.assertNotIn(needle.encode('utf-8'), retained)
 
     def test_eligible_submission_produces_exactly_one_payable(self):
         campaign = self.campaign()
@@ -285,6 +326,72 @@ class DeskTests(unittest.TestCase):
         with self.assertRaises(DeskError):
             self.desk.write('brand/create', {'operation_id': 'x', 'name': float('nan')})
 
+    def test_payout_route_references_must_be_opaque_and_never_enter_state(self):
+        for reference in SECRET_SHAPED_REFERENCES:
+            with self.subTest(reference=reference):
+                with self.assertRaises(DeskError) as caught:
+                    self.write('creator/create', handle=f'c-{uuid.uuid4().hex[:8]}', consent_on='2026-09-01', payout_route_ref=reference)
+                self.assertEqual(caught.exception.status, 400)
+                self.assertIn('payout_route_ref', str(caught.exception))
+        for reference in OPAQUE_REFERENCES:
+            with self.subTest(reference=reference):
+                self.assertEqual(opaque_ref(reference, 'payout_route_ref'), reference)
+                self.write('creator/create', handle=f'c-{uuid.uuid4().hex[:8]}', consent_on='2026-09-01', payout_route_ref=reference)
+        self.assertEqual(len(self.desk.snapshot()['creators']), 1 + len(OPAQUE_REFERENCES))
+        campaign = self.campaign()
+        self.review(self.submit(campaign))
+        self.write('payable/handoff', campaign_id=campaign)
+        self.assert_never_retained(*SECRET_NEEDLES)
+        with self.assertRaises(DeskError):
+            opaque_ref(None, 'payout_route_ref')
+        with self.assertRaises(DeskError):
+            opaque_ref(12345, 'payout_route_ref')
+
+    def test_settlement_references_must_be_opaque_and_never_enter_state(self):
+        campaign = self.campaign()
+        payable = self.review(self.submit(campaign))['payable_id']
+        self.write('payable/handoff', campaign_id=campaign)
+        version = self.item('payables', payable)['version']
+        for reference in SECRET_SHAPED_REFERENCES:
+            with self.subTest(reference=reference):
+                with self.assertRaises(DeskError) as caught:
+                    self.write('payable/settle', id=payable, version=version, settlement_ref=reference)
+                self.assertEqual(caught.exception.status, 400)
+                self.assertIn('settlement_ref', str(caught.exception))
+        self.assertEqual(self.item('payables', payable)['status'], 'HANDED_OFF')
+        self.assertEqual(self.item('payables', payable)['version'], version)
+        settled = self.write('payable/settle', id=payable, version=version, settlement_ref='EXT-RECEIPT-2026-09-16-01')
+        self.assertEqual(settled['status'], 'SETTLEMENT_RECORDED')
+        self.assertEqual(self.item('payables', payable)['settlement_ref'], 'EXT-RECEIPT-2026-09-16-01')
+        self.assert_never_retained(*SECRET_NEEDLES)
+        self.assertIn(b'EXT-RECEIPT-2026-09-16-01', self.retained_bytes())
+
+    def test_content_urls_are_retained_only_in_canonical_public_form(self):
+        campaign = self.campaign()
+        tokenized = 'https://Example.invalid/video/77/?sig=SIGNEDSECRETVALUE&token=TOKENSECRETVALUE#FRAGMENTSECRETVALUE'
+        result = self.write('submission/create', campaign_id=campaign, creator_id=self.creator, platform='TIKTOK', url=tokenized,
+                            posted_on='2026-09-08', disclosure_present=True, rights_accepted=True)
+        self.assertEqual(result['url'], 'https://example.invalid/video/77')
+        row = self.item('submissions', result['id'])
+        self.assertEqual(row['url'], 'https://example.invalid/video/77')
+        self.assertEqual(row['url_key'], row['url'])
+        with self.assertRaises(DeskError) as caught:
+            self.submit(campaign, url='https://example.invalid/video/77?sig=OTHERSECRETVALUE')
+        self.assertEqual(caught.exception.status, 409)
+        for bad in ('https://user:pw@example.invalid/v', 'https://token@example.invalid/v'):
+            with self.subTest(bad=bad), self.assertRaises(DeskError):
+                self.submit(campaign, url=bad)
+        self.review(result['id'])
+        self.write('payable/handoff', campaign_id=campaign)
+        self.assert_never_retained('SIGNEDSECRETVALUE', 'TOKENSECRETVALUE', 'FRAGMENTSECRETVALUE', 'OTHERSECRETVALUE', 'user:pw', '?sig=', '#FRAGMENT')
+        self.assertIn(b'https://example.invalid/video/77', self.retained_bytes())
+        data = {'operation_id': 'replay-tokenized', 'campaign_id': self.campaign(), 'creator_id': self.creator, 'platform': 'TIKTOK',
+                'url': tokenized, 'posted_on': '2026-09-08', 'disclosure_present': True, 'rights_accepted': True}
+        replay = self.desk.write('submission/create', data)
+        self.assertEqual(Desk(self.path).write('submission/create', data), replay)
+        self.assertEqual(replay['url'], 'https://example.invalid/video/77')
+        self.assert_never_retained('SIGNEDSECRETVALUE', 'TOKENSECRETVALUE', 'FRAGMENTSECRETVALUE')
+
     def test_export_zip_contents(self):
         campaign = self.campaign(open_now=False)
         self.write('campaign/action', id=campaign, version=1, action='asset', name='brief.md', license='internal', content='# Brief')
@@ -355,6 +462,9 @@ class HttpTests(unittest.TestCase):
         status, body, _ = self.call('/api/brand/create', {'operation_id': 'b1', 'name': 'HTTP brand'})
         self.assertEqual(status, 200)
         brand = json.loads(body)['id']
+        status, body, _ = self.call('/api/creator/create', {'operation_id': 'c0', 'handle': 'http.creator', 'consent_on': '2026-09-01', 'payout_route_ref': '4111111111111111'})
+        self.assertEqual(status, 400)
+        self.assertIn('payout_route_ref', json.loads(body)['error'])
         status, body, _ = self.call('/api/creator/create', {'operation_id': 'c1', 'handle': 'http.creator', 'consent_on': '2026-09-01', 'payout_route_ref': 'R'})
         creator = json.loads(body)['id']
         status, body, _ = self.call('/api/campaign/create', {
