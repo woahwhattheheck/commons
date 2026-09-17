@@ -19,7 +19,7 @@ SCHEMA = "visual-evidence-gate/v1"
 DETECTOR = "red-region-v1"
 MAX_FRAME_PIXELS = 4_194_304
 MAX_AGE_MS = 2_000
-MIN_HAZARD_PPM = 7_500
+MIN_HAZARD_PPM = 7_500  # 0.75% of frame
 CENTER_LOW = 400
 CENTER_HIGH = 600
 ALLOWED_REQUEST_CLASSES = {"ADVISORY", "OBSERVATION_ONLY"}
@@ -69,6 +69,7 @@ def synthetic_scene(*, width: int = 320, height: int = 192, hazard: str = "none"
     if hazard not in {"none", "left", "center", "right"}:
         raise GateError("unknown synthetic hazard")
     frame = np.full((height, width, 3), 32, dtype=np.uint8)
+    # Neutral structure makes the scene non-uniform while remaining deterministic.
     cv2.line(frame, (0, height // 2), (width - 1, height // 2), (96, 96, 96), 2)
     cv2.circle(frame, (width // 2, height // 3), max(4, min(width, height) // 18), (180, 120, 20), -1)
     if hazard != "none":
@@ -101,6 +102,7 @@ def detect(frame: np.ndarray, *, observed_ms: int) -> Detection:
     width, height = _validate_frame(frame)
     if not isinstance(observed_ms, int) or isinstance(observed_ms, bool) or observed_ms < 0:
         raise GateError("observed_ms must be nonnegative integer")
+    # The frame digest binds exact BGR bytes plus dimensions to the downstream decision.
     scene_sha = hashlib.sha256(
         width.to_bytes(4, "big") + height.to_bytes(4, "big") + frame.tobytes(order="C")
     ).hexdigest()
@@ -206,6 +208,7 @@ def validate_evidence(ev: Any, *, now_ms: int) -> dict[str, Any]:
 
 def decide(ev: Any, *, now_ms: int, requested_action_class: str = "ADVISORY") -> dict[str, Any]:
     if requested_action_class not in ALLOWED_REQUEST_CLASSES:
+        # Unknown or physical action requests are never auto-authorized.
         return {
             "decision": "HUMAN_APPROVAL_REQUIRED",
             "tool_plan": "NO_ACTION",
