@@ -1,50 +1,74 @@
 # Outbound Collision Replay Guard
 
-A deterministic, provider-free single-writer control for outbound intents.
+A deterministic, provider-free single-writer control for outbound intents. This exists because search-then-send coordination is not atomic: two workers can both see "no prior sender" and race.
 
-This exists because search-then-send coordination is not atomic: two workers can
-both see "no prior sender" and race. The guard gives every candidate outbound a
-canonical `(counterparty, route, thread, purpose)` fingerprint and a renewable
-claimant/session lease. It then requires separately retained Muse arbitration
-evidence before the lease can become `READY_SINGLE_WRITER`.
+## Security boundary: authenticated Muse evidence
 
-## Invariants
+`READY_SINGLE_WRITER` is now reachable only through an HMAC-authenticated Muse registry. A caller-authored receipt mapping is **not** Muse authority and fails closed as `WAIT_MUSE`.
 
-- A live lease held by another claimant returns `YIELD_EXISTING` without rewriting the owner's lease state.
-- Muse must bind the **exact** intent fingerprint, claimant, session, and lease generation.
-- A clearance from an earlier lease generation is rejected even if its wall-clock expiry has not passed.
-- The lease cannot outlive the Muse receipt.
-- A send attempt binds the exact body SHA-256 and provider.
-- Replaying the same attempt is idempotent; changing the body/provider while an attempt is unresolved is rejected.
-- `UNKNOWN` provider result never permits a fresh attempt. Reconcile the exact attempt from provider history first.
-- Exact provider `SENT` produces `SENT_TERMINAL`; a late provider receipt may terminalize the exact reserved attempt even after lease expiry.
-- `SENT_TERMINAL` prevents a second claimant from reopening the same intent.
-- `external_send`, `muse_arbitration`, `provider_mutation`, `payment`, and `revenue` authority are always false. This library coordinates evidence; it does not perform outbound.
+The verifier key is read only from the runtime secret `OUTBOUND_MUSE_TRUST_KEY`. The production module contains no signer and accepts no key from the untrusted registry. Tests and the offline demo create fixture signatures themselves; that fixture code is not exported by the package.
 
-States: `CLAIMED`, `YIELD_EXISTING`, `WAIT_MUSE`, `READY_SINGLE_WRITER`,
-`SENT_TERMINAL`, `RELEASED_UNSENT`, `HOLD_AMBIGUOUS_COUNTERPARTY`.
+Registry schema: `outbound-collision-muse-registry/v1`.
 
-## Flow
+```json
+{
+  "schema": "outbound-collision-muse-registry/v1",
+  "generated_at": "2026-09-17T03:15:00Z",
+  "receipts": [{
+    "receipt_id": "muse-r1",
+    "request_key": "muse-q1",
+    "intent_fingerprint": "<sha256>",
+    "selected_claimant_id": "seat-a",
+    "selected_session_id": "session-a",
+    "lease_generation": 1,
+    "decision": "SELECTED",
+    "arbitrated_at": "2026-09-17T03:14:59Z",
+    "expires_at": "2026-09-17T03:25:00Z",
+    "source_ref": "slack:dm:muse:...",
+    "source_sha256": "<sha256>"
+  }],
+  "signature_hmac_sha256": "<HMAC-SHA256 over canonical body>"
+}
+```
 
-1. Canonicalize the exact organization/person, route, provider thread, and narrow message purpose.
-2. Call `acquire(...)` without Muse evidence. This reserves/observes the lease but remains `WAIT_MUSE`.
-3. Ask Muse using the exact fingerprint + claimant/session + current lease generation externally.
-4. Re-run `acquire(...)` with the retained arbitration receipt. Only an exact, current selection becomes `READY_SINGLE_WRITER`.
-5. Hash the final message bytes and call `begin_send(...)` before the provider mutation. Persist the returned lease.
-6. After the provider call, bind `SENT` + exact provider message id with `observe_send(...)`. If the call result is unknown, record `UNKNOWN`, query provider history for the same attempt, and **do not rewrite/retry a changed body**.
-7. `verify(...)` replays receipt integrity and the all-false authority boundary.
+The registry signature binds the exact receipt/request identity, selected claimant/session, lease generation, decision, timestamps, source reference, and source digest. Duplicate receipt IDs, source-evidence remints, future registries, registries that predate their arbitration evidence, expired/future receipts, conflicting selections, stale generations, source mutation, and wrong keys all fail closed.
 
-Aliases and forwarded-thread identities must be resolved upstream. Unknown/generic counterparty, route, or thread keys are rejected; if identity remains ambiguous, use `ambiguous_hold(...)` and stop before Muse/provider action.
+A successful lease persists `muse_receipt_id`, `muse_request_key`, `muse_registry_sha256`, `muse_registry_generated_at`, `muse_source_ref`, and `muse_source_sha256`. This makes later send fencing auditable against the exact trusted registry bytes that created readiness.
 
-## Demo
+## Compatibility
+
+Intent fingerprint semantics remain compatible with the original v1 guard. Lease schema is v2 because authenticated Muse provenance is now part of the lease invariant.
+
+- A legacy v1 `READY_SINGLE_WRITER` lease is rejected and must reacquire authenticated Muse evidence before a send attempt.
+- Legacy terminal `SENT_TERMINAL` evidence remains terminal so hardening cannot accidentally reopen an already-sent intent.
+- Unsigned/plain Muse dictionaries degrade to `WAIT_MUSE`; they never become ready.
+
+## Core invariants
+
+- A live lease held by another claimant returns `YIELD_EXISTING` without rewriting its owner.
+- Muse binds exact fingerprint + claimant + session + **lease generation**.
+- Lease expiry is capped by authenticated Muse expiry.
+- A send attempt binds exact body SHA-256 and provider; identical replay is idempotent, changed body/provider is blocked.
+- `UNKNOWN` provider result never permits a fresh attempt; reconcile the exact attempt first.
+- Provider-confirmed `SENT` is terminal, including a late receipt after lease expiry.
+- `external_send`, `muse_arbitration`, `provider_mutation`, `payment`, and `revenue` authority are always false.
+
+## Live workflow
+
+1. Canonicalize the counterparty/route/thread/purpose and acquire a lease without Muse evidence (`WAIT_MUSE`).
+2. Ask Muse externally using the normal TokenJunkieLabs coordination path. This module never messages Muse.
+3. A controlled adapter retains Muse evidence, constructs the trusted registry, and signs it with the runtime-held key.
+4. Re-run `acquire(..., muse=<signed registry>)`. Only one exact, current authenticated selection reaches `READY_SINGLE_WRITER`.
+5. Hash final message bytes and call `begin_send(...)` before the separately authorized provider mutation.
+6. Bind `SENT` or `UNKNOWN` provider evidence with `observe_send(...)`; never retry a changed body while the result is unresolved.
+
+## Verification
 
 ```bash
+python -m py_compile revenue/outbound_collision_guard/core.py tests/test_outbound_collision_guard.py tests/test_outbound_collision_guard_release_boundary.py
+python -m unittest -v tests.test_outbound_collision_guard tests.test_outbound_collision_guard_release_boundary
+python -O -m unittest -v tests.test_outbound_collision_guard tests.test_outbound_collision_guard_release_boundary
 python -m revenue.outbound_collision_guard.demo
 ```
 
-## Test
-
-```bash
-python -m unittest -v tests.test_outbound_collision_guard
-python -O -m unittest -v tests.test_outbound_collision_guard
-```
+The suite includes signed-registry and legacy-regression hostiles plus the original send/replay boundary behavior.
