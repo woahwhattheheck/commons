@@ -5,17 +5,18 @@ import argparse, hashlib, json, re, sys
 from dataclasses import dataclass
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
+from urllib.parse import urlsplit
 
-EXPECTED_DIGEST="cf7e3cd2d134e8fa4b887b410459b07f979c699646914d140f5ddfc53011e02d"
+EXPECTED_DIGEST="5d91e5f639d684eb8eb5cca4ddcbcefc8c78cb7c3c060a398d604d2dad599a80"
 ROOT_KEYS={"schema_version","product","collision_key","states","events","lease","invariants","authority","contract_digest_sha256"}
 EVENT_KEYS={"id","at_utc","kind","actor","org","domain","route","purpose","opportunity","lease_seconds","provider_receipt","human_evidence_id","reason","expect"}
 AUTHORITY={"email_send_authorized":False,"dm_send_authorized":False,"form_submit_authorized":False,"provider_mutation_authorized":False,"contract_authorized":False,"signature_authorized":False,"payment_authorized":False,"cash_or_revenue_authorized":False,"contest_submission_authorized":False}
 STATES=["CLEAR","LEASED","HARD_DNR","DEAD_ROUTE","HUMAN_EVENT_REOPEN","HOLD"]
 EVENTS=["CLAIM","SENT","BOUNCE","HUMAN_EVENT","HOLD"]
-FIELDS=["org","domain","route","purpose","opportunity"]
-NORMALIZATION={"org":"unicode-casefold-trim-collapse-space","domain":"ascii-lower-strip-scheme-www-path-trailing-dot","route":"unicode-casefold-trim-collapse-space","purpose":"unicode-casefold-trim-collapse-space","opportunity":"unicode-casefold-trim-collapse-space"}
-INVARIANTS=["exactly_one_active_lease_per_collision_key","active_lease_blocks_parallel_claims","expired_lease_may_be_recovered","sent_requires_current_lease_holder_and_provider_receipt","sent_hard_fences_lane_until_genuine_human_event","bounce_requires_current_lease_holder_and_provider_receipt","bounce_is_route_failure_not_buyer_rejection","human_event_requires_distinct_retained_evidence","human_event_reopens_only_a_bounded_next_action","hold_blocks_claims_until_new_human_event","event_ids_provider_receipts_and_human_evidence_ids_are_single_use","timestamps_are_strictly_monotone_utc","no_event_grants_external_send_authority"]
+FIELDS=["org","domain","purpose","opportunity"]
+NORMALIZATION={"org":"unicode-casefold-trim-collapse-space","domain":"idna-host-lower-strip-scheme-www-path-trailing-dot","route":"unicode-casefold-trim-collapse-space","purpose":"unicode-casefold-trim-collapse-space","opportunity":"unicode-casefold-trim-collapse-space"}
 EVIDENCE_ID_MAX=240
+INVARIANTS=["exactly_one_active_lease_per_collision_key","active_lease_blocks_parallel_claims_across_routes","expired_lease_may_be_recovered_with_an_explicit_route","sent_requires_current_lease_holder_matching_leased_route_and_provider_receipt","sent_hard_fences_lane_until_genuine_human_event","bounce_requires_current_lease_holder_matching_leased_route_and_provider_receipt","bounce_is_route_failure_not_buyer_rejection","human_event_requires_distinct_retained_evidence","human_event_reopens_only_a_bounded_next_action","hold_blocks_claims_until_new_human_event","event_ids_provider_receipts_and_human_evidence_ids_are_single_use","timestamps_are_strictly_monotone_utc","no_event_grants_external_send_authority"]
 
 class ContractError(ValueError): pass
 def require(ok,msg):
@@ -34,8 +35,8 @@ def canonical_bytes(v): return json.dumps(v,ensure_ascii=False,sort_keys=True,se
 def machine_semantic(m): return {k:m[k] for k in sorted(ROOT_KEYS-{"contract_digest_sha256"})}
 def validate_machine(m):
     require(isinstance(m,dict) and set(m)==ROOT_KEYS,"state-machine root key set changed")
-    require(type(m["schema_version"]) is int and m["schema_version"]==1 and m["product"]=="OneWriter","machine identity changed")
-    require(m["collision_key"]=={"algorithm":"sha256-canonical-json-v1","fields":FIELDS,"normalization":NORMALIZATION},"collision-key contract changed")
+    require(type(m["schema_version"]) is int and m["schema_version"]==2 and m["product"]=="OneWriter","machine identity changed")
+    require(m["collision_key"]=={"algorithm":"sha256-canonical-json-v2-org-lane","fields":FIELDS,"normalization":NORMALIZATION},"collision-key contract changed")
     require(m["states"]==STATES and m["events"]==EVENTS,"state/event list changed")
     require(m["lease"]=={"default_ttl_seconds":300,"min_ttl_seconds":30,"max_ttl_seconds":1800},"lease policy changed")
     require(m["invariants"]==INVARIANTS,"invariant list changed"); require(m["authority"]==AUTHORITY,"authority must remain exact and all-false")
@@ -46,13 +47,26 @@ _space=re.compile(r"\s+"); _scheme=re.compile(r"^[a-z][a-z0-9+.-]*://",re.I)
 def norm_text(v,name):
     require(isinstance(v,str),f"{name} must be a string"); v=_space.sub(" ",v.strip()).casefold(); require(bool(v) and len(v)<=240,f"{name} invalid"); return v
 def norm_domain(v):
-    require(isinstance(v,str),"domain must be a string"); v=_scheme.sub("",v.strip().lower()).split("/",1)[0]; v=v[4:] if v.startswith("www.") else v; v=v.rstrip("."); require(bool(v) and " " not in v and "@" not in v and len(v)<=253,"domain shape invalid"); return v
+    require(isinstance(v,str),"domain must be a string"); raw=v.strip(); require(bool(raw),"domain shape invalid")
+    try:
+        parsed=urlsplit(raw if _scheme.match(raw) else "https://"+raw)
+    except ValueError as exc: raise ContractError("domain shape invalid") from exc
+    require(parsed.username is None and parsed.password is None,"domain credentials forbidden")
+    try: port=parsed.port
+    except ValueError as exc: raise ContractError("domain shape invalid") from exc
+    require(port is None,"domain port forbidden")
+    host=(parsed.hostname or "").rstrip(".").lower(); host=host[4:] if host.startswith("www.") else host
+    try: host=host.encode("idna").decode("ascii")
+    except UnicodeError as exc: raise ContractError("domain IDNA invalid") from exc
+    require(bool(host) and " " not in host and "@" not in host and len(host)<=253 and "." in host,"domain shape invalid")
+    return host
 def evidence_id(v,name):
     require(type(v) is str,f"{name} must be a string")
     require(v==v.strip() and 1<=len(v)<=EVIDENCE_ID_MAX,f"{name} must be trimmed nonempty text <= {EVIDENCE_ID_MAX} chars")
     require(not any(ord(ch)<32 or ord(ch)==127 for ch in v),f"{name} contains control characters")
     return v
-def identity(e): return {"org":norm_text(e["org"],"org"),"domain":norm_domain(e["domain"]),"route":norm_text(e["route"],"route"),"purpose":norm_text(e["purpose"],"purpose"),"opportunity":norm_text(e["opportunity"],"opportunity")}
+def identity(e): return {"org":norm_text(e["org"],"org"),"domain":norm_domain(e["domain"]),"purpose":norm_text(e["purpose"],"purpose"),"opportunity":norm_text(e["opportunity"],"opportunity")}
+def event_route(e): return norm_text(e["route"],"route")
 def collision_key(e): return hashlib.sha256(canonical_bytes(identity(e))).hexdigest()
 def utc(v):
     require(isinstance(v,str) and v.endswith("Z"),"at_utc must be UTC-Z")
@@ -61,7 +75,7 @@ def utc(v):
 def validate_event(e):
     require(isinstance(e,dict) and set(e)==EVENT_KEYS,"event key set changed")
     for f in ("id","kind","actor","org","domain","route","purpose","opportunity","reason"): require(isinstance(e[f],str) and e[f].strip(),f"{f} must be nonempty")
-    require(e["kind"] in EVENTS,"unknown event kind"); utc(e["at_utc"]); identity(e)
+    require(e["kind"] in EVENTS,"unknown event kind"); utc(e["at_utc"]); identity(e); event_route(e)
     lease=e["lease_seconds"]; provider=e["provider_receipt"]; human=e["human_evidence_id"]
     require(lease is None or type(lease) is int,"lease_seconds must be null or integer (bool forbidden)")
     require(provider is None or type(provider) is str,"provider receipt invalid"); require(human is None or type(human) is str,"human evidence invalid")
@@ -69,34 +83,34 @@ def validate_event(e):
     if human is not None: evidence_id(human,"human_evidence_id")
     require(isinstance(e["expect"],dict) and set(e["expect"])=={"decision","state"} and e["expect"]["state"] in STATES,"expect invalid")
     if e["kind"]=="CLAIM": require(type(lease) is int and 30<=lease<=1800 and provider is None and human is None,"CLAIM lease/evidence invalid")
-    elif e["kind"] in {"SENT","BOUNCE"}: require(lease is None and provider is not None and human is None,f"{e['kind']} evidence invalid")
-    elif e["kind"]=="HUMAN_EVENT": require(lease is None and provider is None and human is not None,"HUMAN_EVENT evidence invalid")
+    elif e["kind"] in {"SENT","BOUNCE"}: require(lease is None and bool(provider) and human is None,f"{e['kind']} evidence invalid")
+    elif e["kind"]=="HUMAN_EVENT": require(lease is None and provider is None and bool(human),"HUMAN_EVENT evidence invalid")
     else: require(lease is None and provider is None and human is None,"HOLD evidence invalid")
 
 @dataclass
 class Lane:
-    state:str="CLEAR"; holder:str|None=None; until:datetime|None=None
+    state:str="CLEAR"; holder:str|None=None; until:datetime|None=None; route:str|None=None
 
 def replay(machine,doc):
-    validate_machine(machine); require(isinstance(doc,dict) and set(doc)=={"schema_version","scenario","events","expected_summary"},"demo-events root key set changed"); require(doc["schema_version"]==1 and doc["scenario"]=="synthetic-onewriter-business-demo-v1","demo metadata changed")
+    validate_machine(machine); require(isinstance(doc,dict) and set(doc)=={"schema_version","scenario","events","expected_summary"},"demo-events root key set changed"); require(doc["schema_version"]==2 and doc["scenario"]=="synthetic-onewriter-business-demo-v2","demo metadata changed")
     ids=set(); providers=set(); humans=set(); lanes={}; receipts=[]; prev=None; metrics={"claims_granted":0,"collisions_prevented":0,"duplicate_touches_prevented":0,"stale_lanes_recovered":0,"sent_hard_fences":0,"dead_routes_recorded":0,"human_reopens":0}
     for pos,e in enumerate(doc["events"]):
         validate_event(e); require(e["id"] not in ids,f"duplicate event id: {e['id']}"); ids.add(e["id"]); now=utc(e["at_utc"]); require(prev is None or now>prev,"timestamps must be strictly monotone"); prev=now
         if e["provider_receipt"] is not None: require(e["provider_receipt"] not in providers,"provider receipt reused"); providers.add(e["provider_receipt"])
         if e["human_evidence_id"] is not None: require(e["human_evidence_id"] not in humans,"human evidence reused"); humans.add(e["human_evidence_id"])
-        key=collision_key(e); lane=lanes.setdefault(key,Lane()); prior=lane.state; kind=e["kind"]
+        key=collision_key(e); lane=lanes.setdefault(key,Lane()); prior=lane.state; kind=e["kind"]; route=event_route(e)
         if kind=="CLAIM":
             if lane.state=="LEASED" and now<lane.until: decision="DENIED_ACTIVE_LEASE"; metrics["collisions_prevented"]+=1; metrics["duplicate_touches_prevented"]+=1
-            elif lane.state=="LEASED": lane.holder=e["actor"]; lane.until=now+timedelta(seconds=e["lease_seconds"]); decision="GRANTED_STALE_RECOVERY"; metrics["claims_granted"]+=1; metrics["stale_lanes_recovered"]+=1
+            elif lane.state=="LEASED": lane.holder=e["actor"]; lane.until=now+timedelta(seconds=e["lease_seconds"]); lane.route=route; decision="GRANTED_STALE_RECOVERY"; metrics["claims_granted"]+=1; metrics["stale_lanes_recovered"]+=1
             elif lane.state in {"HARD_DNR","DEAD_ROUTE","HOLD"}: decision=f"DENIED_{lane.state}"; metrics["duplicate_touches_prevented"]+=1
-            else: decision="GRANTED_AFTER_HUMAN_EVENT" if lane.state=="HUMAN_EVENT_REOPEN" else "GRANTED"; lane.state="LEASED"; lane.holder=e["actor"]; lane.until=now+timedelta(seconds=e["lease_seconds"]); metrics["claims_granted"]+=1
+            else: decision="GRANTED_AFTER_HUMAN_EVENT" if lane.state=="HUMAN_EVENT_REOPEN" else "GRANTED"; lane.state="LEASED"; lane.holder=e["actor"]; lane.until=now+timedelta(seconds=e["lease_seconds"]); lane.route=route; metrics["claims_granted"]+=1
         elif kind in {"SENT","BOUNCE"}:
-            require(lane.state=="LEASED",f"{kind} requires an active lease"); require(lane.holder==e["actor"],f"{kind} actor is not current lease holder"); require(now<lane.until,f"{kind} lease expired"); lane.holder=None; lane.until=None
+            require(lane.state=="LEASED",f"{kind} requires an active lease"); require(lane.holder==e["actor"],f"{kind} actor is not current lease holder"); require(now<lane.until,f"{kind} lease expired"); require(lane.route==route,f"{kind} route does not match current leased route"); lane.holder=None; lane.until=None
             if kind=="SENT": lane.state="HARD_DNR"; decision="RECORDED_SENT"; metrics["sent_hard_fences"]+=1
             else: lane.state="DEAD_ROUTE"; decision="RECORDED_DEAD_ROUTE"; metrics["dead_routes_recorded"]+=1
         elif kind=="HUMAN_EVENT": require(lane.state in {"HARD_DNR","DEAD_ROUTE","HOLD"},"HUMAN_EVENT requires fenced prior lane"); lane.state="HUMAN_EVENT_REOPEN"; decision="REOPENED_HUMAN_EVENT"; metrics["human_reopens"]+=1
-        else: require(lane.state!="LEASED","HOLD cannot revoke active lease"); lane.state="HOLD"; decision="RECORDED_HOLD"
-        observed={"decision":decision,"state":lane.state}; require(observed==e["expect"],f"expected receipt mismatch at {e['id']}"); sem={"position":pos,"event_id":e["id"],"at_utc":e["at_utc"],"actor":e["actor"],"collision_key":key,"prior_state":prior,"decision":decision,"state":lane.state,"external_send_authorized":False}; receipts.append({**sem,"receipt_sha256":hashlib.sha256(canonical_bytes(sem)).hexdigest()})
+        else: require(lane.state!="LEASED","HOLD cannot revoke active lease"); lane.state="HOLD"; lane.route=route; decision="RECORDED_HOLD"
+        observed={"decision":decision,"state":lane.state}; require(observed==e["expect"],f"expected receipt mismatch at {e['id']}"); sem={"position":pos,"event_id":e["id"],"at_utc":e["at_utc"],"actor":e["actor"],"collision_key":key,"event_route":route,"lane_route":lane.route,"prior_state":prior,"decision":decision,"state":lane.state,"external_send_authorized":False}; receipts.append({**sem,"receipt_sha256":hashlib.sha256(canonical_bytes(sem)).hexdigest()})
     summary={"status":"OK","scenario":doc["scenario"],"event_count":len(doc["events"]),"lane_count":len(lanes),"metrics":metrics,"authority":AUTHORITY,"receipt_chain_sha256":hashlib.sha256(canonical_bytes(receipts)).hexdigest()}; require(summary==doc["expected_summary"],"expected_summary mismatch"); return {"summary":summary,"receipts":receipts}
 
 def main(argv=None):
