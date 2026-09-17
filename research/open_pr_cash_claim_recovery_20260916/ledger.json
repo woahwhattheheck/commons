@@ -1,0 +1,186 @@
+{
+  "authority": {
+    "cash_or_revenue_recognition_computed": false,
+    "cross_denomination_conversion_authorized": false,
+    "last_inch_external_mutation_requires_muse": true,
+    "merge_implies_award": false,
+    "new_outbound_authorized": false
+  },
+  "operation": "OPEN-PR-CASH-CLAIM-RECOVERY-SWEEP-20260916",
+  "private_evidence_policy": {
+    "publish_email_body": false,
+    "publish_recipient_address": false,
+    "retained_reference_form": "opaque_label_plus_sha256"
+  },
+  "rows": [
+    {
+      "advertised": {
+        "amount": "1.00",
+        "denomination": "USD",
+        "truth": "ADVERTISED"
+      },
+      "awarded": {
+        "amount": "1.00",
+        "denomination": "USD",
+        "truth": "SPONSOR_AWARD"
+      },
+      "contact": {
+        "human_reply_count": 1,
+        "last_human_reply_date": "2026-09-16",
+        "last_outbound_date": "2026-09-07",
+        "outbound_count": 1
+      },
+      "delivery_state": "MERGED",
+      "id": "frantic-120-pylon-04ef83a2",
+      "new_outbound_authorized": false,
+      "next_action": "CLOSED_PAID",
+      "paid": {
+        "amount": "1.00",
+        "denomination": "USD",
+        "truth": "SPONSOR_PAID"
+      },
+      "private_evidence": {
+        "ref": "private:frantic-120-pylon-payment-20260916",
+        "sha256": "3b97bc34d609098a128250ce80aff724bc7194c98b594b5c3dffd630eb56694a"
+      },
+      "program": "Frantic bounty 120",
+      "proof_level": "SPONSOR_PAYMENT_CONFIRMATION",
+      "public_receipts": [
+        "https://gofrantic.com/r/bbdb5d61",
+        "https://gofrantic.com/r/ef2f247c"
+      ],
+      "settlement_state": "PAID",
+      "work_ref": "https://github.com/sourcey/startup-credits/pull/1423"
+    },
+    {
+      "advertised": {
+        "amount": "25",
+        "denomination": "RTC",
+        "truth": "ADVERTISED_LOW_TIER"
+      },
+      "awarded": {
+        "amount": "25",
+        "denomination": "RTC",
+        "truth": "SPONSOR_AWARD"
+      },
+      "contact": {
+        "human_reply_count": 1,
+        "last_human_reply_date": "2026-09-11",
+        "last_outbound_date": null,
+        "outbound_count": 1
+      },
+      "delivery_state": "SPONSOR_VERIFIED_FINDING",
+      "id": "rustchain-2819-bounded-coin-selection",
+      "new_outbound_authorized": false,
+      "next_action": "CLOSED_PAID",
+      "paid": {
+        "amount": "25",
+        "denomination": "RTC",
+        "truth": "SPONSOR_PAID"
+      },
+      "private_evidence": {
+        "ref": "private:rustchain-2819-payment-20260911",
+        "sha256": "bf7f2e569fe6835e48ad97fa04f78d5ed469db505c8346dff3db0f8a7e9527a4"
+      },
+      "program": "RustChain UTXO red-team #2819",
+      "proof_level": "SPONSOR_PAYMENT_CONFIRMATION",
+      "public_receipts": [],
+      "settlement_state": "PAID",
+      "work_ref": "https://github.com/Scottcjn/rustchain-bounties/issues/2819"
+    },
+    {
+      "advertised": null,
+      "awarded": null,
+      "contact": {
+        "human_reply_count": 1,
+        "last_human_reply_date": "2026-09-13",
+        "last_outbound_date": "2026-09-16",
+        "outbound_count_since_human_reply": 3
+      },
+      "delivery_state": "SPONSOR_VERIFIED_FINDINGS",
+      "id": "rustchain-deduplicated-security-batch",
+      "new_outbound_authorized": false,
+      "next_action": "WAIT_FOR_SPONSOR_BREAKDOWN",
+      "paid": null,
+      "private_evidence": {
+        "ref": "private:rustchain-dedup-adjudication-20260913",
+        "sha256": "d0921c6d07ec641c5eecc0fdc77f3338e406001db4fa3ba901d881594ae0fdc3"
+      },
+      "program": "RustChain security bounty batch",
+      "proof_level": "SPONSOR_VERIFIED_PENDING_BREAKDOWN",
+      "public_receipts": [],
+      "settlement_state": "HOLD_SPONSOR_ADJUDICATION",
+      "work_ref": "https://github.com/Scottcjn/rustchain-bounties"
+    },
+    {
+      "advertised": {
+        "amount": "90",
+        "denomination": "USD",
+        "truth": "ADVERTISED"
+      },
+      "awarded": null,
+      "contact": {
+        "human_reply_count": 0,
+        "last_human_reply_date": null,
+        "last_outbound_date": "2026-09-15",
+        "outbound_count": 2
+      },
+      "delivery_state": "MERGED",
+      "id": "lilly-267-pr384",
+      "new_outbound_authorized": false,
+      "next_action": "DNR_UNTIL_SPONSOR_REPLY_OR_NEW_PROVIDER_EVIDENCE",
+      "paid": null,
+      "private_evidence": null,
+      "program": "Lilly Protocol AgentLily #267",
+      "proof_level": "MERGED_PLUS_ADVERTISED_ONLY",
+      "public_receipts": [
+        "https://github.com/Lilly-Protocol/agentlily-runtime/issues/267"
+      ],
+      "settlement_state": "WAIT_SPONSOR",
+      "work_ref": "https://github.com/Lilly-Protocol/agentlily-runtime/pull/384"
+    },
+    {
+      "advertised": null,
+      "awarded": null,
+      "contact": {
+        "human_reply_count": 0,
+        "last_human_reply_date": null,
+        "last_outbound_date": "2026-09-12",
+        "outbound_count": 3
+      },
+      "delivery_state": "MERGED",
+      "id": "omi-12858-12888",
+      "new_outbound_authorized": false,
+      "next_action": "DNR_UNTIL_SPONSOR_AWARD_OR_HUMAN_REPLY",
+      "paid": null,
+      "private_evidence": null,
+      "program": "BasedHardware Omi merged PR pair",
+      "proof_level": "MERGED_NO_SPONSOR_AWARD",
+      "proposed_by_us": {
+        "amount": "100",
+        "denomination": "USD",
+        "truth": "PROPOSED_BY_US_NOT_ADVERTISED"
+      },
+      "public_receipts": [
+        "https://github.com/BasedHardware/omi/issues/12352"
+      ],
+      "secondary_work_refs": [
+        "https://github.com/BasedHardware/omi/pull/12888"
+      ],
+      "settlement_state": "HOLD_SPONSOR_AUTH",
+      "work_ref": "https://github.com/BasedHardware/omi/pull/12858"
+    }
+  ],
+  "schema": "open-pr-cash-claim-recovery/v1",
+  "snapshot_at_utc": "2026-09-17T01:10:00Z",
+  "summary": {
+    "nonpaid_rows": 3,
+    "paid_by_denomination": {
+      "RTC": "25",
+      "USD": "1.00"
+    },
+    "paid_rows": 2,
+    "ready_for_muse_rows": 0,
+    "rows": 5
+  }
+}
