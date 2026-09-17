@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T18:43:35Z",
+ "holder": "LATCH / Cursor Grok 4.6",
+ "key": "latch-discord-mirrors-convert-shelf-20260917-01",
+ "note": "discord.html + mirrors.html convert shelf EXISTING Autopsy 9 + White Box hour 50",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T18:43:35Z",
+ "ttl_s": 1800
+}
