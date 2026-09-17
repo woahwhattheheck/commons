@@ -1,16 +1,15 @@
 #!/usr/bin/env python3
 """Read-only Slack provider evidence for canonical Muse publication election v2.
 
-This module authenticates the *source* of a Muse election snapshot by reading the
-pinned Slack workspace and pinned Muse DM directly. It deliberately does not
-turn a provider observation into outbound authority. Canonical v2 still owns
-request/candidate/decision semantics; the separate retained prior-receipt ledger
-remains an independent authority root and is not invented here.
+This module authenticates the *source* of a current-visible Muse election
+snapshot by reading the pinned Slack workspace and pinned Muse DM directly. It
+deliberately does not claim Slack Web API history is append-only: edited rows
+are rejected, while deleted rows are not recoverable from this transport.
 
-The provider receipt therefore proves only: "these canonical election bytes were
-observed from the pinned Slack provider boundary at this time". It always keeps
-terminal_election_authorized, external_send_authorized and
-side_effects_authorized false.
+It also does not turn a provider observation into outbound authority. Canonical
+v2 still owns request/candidate/decision semantics; the separate retained
+prior-receipt ledger remains an independent authority root and is not invented
+here. Terminal election, external send and side-effect authority stay false.
 """
 from __future__ import annotations
 
@@ -31,6 +30,7 @@ MUSE_DM_CONVERSATION_ID = "D0C1U7TUZEC"
 TOKEN_ENV = "MUSE_SLACK_TOKEN"
 PROVIDER_SCHEMA = "outbound-muse-slack-provider-evidence/v1"
 AUTHORITY_MODE = "PROVIDER_AUTHENTICATED_SLACK_DM_EVIDENCE_V1"
+VISIBILITY_MODEL = "CURRENT_VISIBLE_SLACK_WEB_API_ONLY"
 CONTROL_SCHEMA = "MUSE PUBLICATION CONTROL v1"
 VALID_CONTROL_ACTIONS = frozenset({"HOLD", "WITHDRAW", "CANCEL", "RESUME"})
 PROVIDER_EVIDENCE_TTL_SECONDS = 30
@@ -172,6 +172,12 @@ def _raw_message(row: Any, label: str, *, oldest: float, latest: float) -> dict[
     subtype = row.get("subtype")
     if subtype not in (None, ""):
         raise MuseSlackProviderError(f"{label}: unsupported Slack subtype")
+    # conversations.history/replies normally return the current edited message
+    # as an ordinary row plus `edited` metadata rather than as Events API
+    # `message_changed`. Authenticating edited text under the original ts would
+    # erase the mutation, so current-visible evidence rejects it entirely.
+    if "edited" in row:
+        raise MuseSlackProviderError(f"{label}: edited Slack message unsupported")
     ts = row.get("ts")
     user = row.get("user")
     text = row.get("text")
@@ -329,9 +335,9 @@ def _compile_payload(request: Mapping[str, Any], *, captured_at: datetime, token
     req = request["payload"]
 
     # This compile is observation-only. `ledger_complete=True` answers only the
-    # counterfactual "what does current provider evidence say if the independent
-    # receipt ledger is complete?". The result is never serialized as a canonical
-    # receipt and cannot authorize a terminal election.
+    # counterfactual "what do the currently visible provider bytes say if the
+    # independent receipt ledger is complete?". The result is never serialized
+    # as a canonical receipt and cannot authorize a terminal election.
     observed = _CORE["compile_receipt"](
         request,
         snapshot,
@@ -342,6 +348,7 @@ def _compile_payload(request: Mapping[str, Any], *, captured_at: datetime, token
     observed_decision = observed["decision"]
     effective = observed_decision
     control_action, control_ts, provider_reasons = _requester_controls(snapshot, request, requester)
+    provider_reasons.append("SLACK_WEB_API_HISTORY_CURRENT_VISIBLE_ONLY")
     if provider_reasons and any(reason.startswith("AMBIGUOUS_REQUESTER_FOLLOWUP:") for reason in provider_reasons):
         effective = "HOLD"
     if control_action in {"HOLD", "WITHDRAW", "CANCEL"}:
@@ -355,6 +362,7 @@ def _compile_payload(request: Mapping[str, Any], *, captured_at: datetime, token
     snapshot_sha = _digest(snapshot)
     authentication = {
         "schema_version": PROVIDER_SCHEMA,
+        "visibility_model": VISIBILITY_MODEL,
         "team_id": TEAM_ID,
         "muse_user_id": MUSE_USER_ID,
         "muse_dm_conversation_id": MUSE_DM_CONVERSATION_ID,
@@ -366,6 +374,9 @@ def _compile_payload(request: Mapping[str, Any], *, captured_at: datetime, token
     payload = {
         "schema_version": PROVIDER_SCHEMA,
         "authority_mode": AUTHORITY_MODE,
+        "visibility_model": VISIBILITY_MODEL,
+        "deleted_history_authenticated": False,
+        "requester_control_history_authenticated": False,
         "team_id": TEAM_ID,
         "muse_user_id": MUSE_USER_ID,
         "muse_dm_conversation_id": MUSE_DM_CONVERSATION_ID,
@@ -381,7 +392,7 @@ def _compile_payload(request: Mapping[str, Any], *, captured_at: datetime, token
         "compiled_at": _fmt(captured_at),
         "valid_until": _fmt(captured_at + timedelta(seconds=PROVIDER_EVIDENCE_TTL_SECONDS)),
         "muse_observed_decision": observed_decision,
-        "effective_observation": effective,
+        "current_visible_effective_observation": effective,
         "selection_message_ts": observed.get("selection_message_ts"),
         "selected_at": observed.get("selected_at"),
         "winner_request_id": observed.get("winner_request_id"),
@@ -402,13 +413,13 @@ def _compile_payload(request: Mapping[str, Any], *, captured_at: datetime, token
 
 
 def compile_provider_evidence(request: Mapping[str, Any]) -> dict[str, Any]:
-    """Fetch current Slack evidence and return a self-describing read-only receipt."""
+    """Fetch current-visible Slack evidence and return a read-only receipt."""
     payload = _compile_payload(request, captured_at=_utc_now(), token=_token())
     return {"payload": payload, "receipt_sha256": _digest(payload)}
 
 
 def verify_provider_evidence(request: Mapping[str, Any], receipt: Mapping[str, Any]) -> bool:
-    """Re-read Slack at the retained boundary and reproduce the receipt exactly."""
+    """Re-read current-visible Slack bytes at the retained boundary exactly."""
     try:
         if type(receipt) is not dict or set(receipt) != {"payload", "receipt_sha256"}:
             return False
@@ -416,10 +427,11 @@ def verify_provider_evidence(request: Mapping[str, Any], receipt: Mapping[str, A
         if type(payload) is not dict:
             return False
         expected_fields = {
-            "schema_version", "authority_mode", "team_id", "muse_user_id", "muse_dm_conversation_id",
+            "schema_version", "authority_mode", "visibility_model", "deleted_history_authenticated",
+            "requester_control_history_authenticated", "team_id", "muse_user_id", "muse_dm_conversation_id",
             "request_sha256", "request_id", "publication_key", "candidate_sha256", "requester_user_id",
             "request_message_ts", "snapshot_sha256", "snapshot_authentication_sha256", "coverage_started_at",
-            "compiled_at", "valid_until", "muse_observed_decision", "effective_observation",
+            "compiled_at", "valid_until", "muse_observed_decision", "current_visible_effective_observation",
             "selection_message_ts", "selected_at", "winner_request_id", "winner_candidate_sha256",
             "winner_message_ts", "control_action", "control_message_ts", "source_reasons", "provider_reasons",
             "prior_receipt_ledger_authenticated", "terminal_election_authorized",
@@ -429,6 +441,10 @@ def verify_provider_evidence(request: Mapping[str, Any], receipt: Mapping[str, A
         if set(payload) != expected_fields:
             return False
         if payload.get("schema_version") != PROVIDER_SCHEMA or payload.get("authority_mode") != AUTHORITY_MODE:
+            return False
+        if payload.get("visibility_model") != VISIBILITY_MODEL:
+            return False
+        if payload.get("deleted_history_authenticated") is not False or payload.get("requester_control_history_authenticated") is not False:
             return False
         if payload.get("team_id") != TEAM_ID or payload.get("muse_user_id") != MUSE_USER_ID or payload.get("muse_dm_conversation_id") != MUSE_DM_CONVERSATION_ID:
             return False
@@ -461,6 +477,7 @@ __all__ = [
     "MuseSlackProviderError",
     "PROVIDER_SCHEMA",
     "TEAM_ID",
+    "VISIBILITY_MODEL",
     "compile_provider_evidence",
     "verify_provider_evidence",
 ]
