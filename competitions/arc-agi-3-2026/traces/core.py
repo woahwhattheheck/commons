@@ -235,8 +235,8 @@ def decode_frame_record(record: Mapping[str, Any]) -> tuple[tuple[int, ...], ...
 
 def _action_record(name: Any, x: Any = None, y: Any = None) -> dict[str, Any]:
     name = _text(name, "action name", maximum=64)
-    if not name.startswith("ACTION") or not name[6:].isdigit():
-        raise TraceError("action name must use ACTION<digits>")
+    if not name.startswith("ACTION"):
+        raise TraceError("action name must use ACTION* form")
     if (x is None) != (y is None):
         raise TraceError("x and y must be supplied together")
     if x is not None:
