@@ -6,7 +6,7 @@ import io
 import math
 from collections.abc import Iterable, Mapping
 
-from .contract import UPSTREAM, canonical_json_bytes
+from .contract import UPSTREAM, authority_ceiling, canonical_json_bytes, validate_authority_claims
 
 OUT_COLUMNS = ("submission_id", "task", "speed_kmh", "flow_vph", "queue_pred", "path_flow")
 KEYS = {
@@ -44,8 +44,14 @@ def _table(rows: Iterable[Mapping[str, object]], task: str) -> dict[tuple[str, .
         if key in table:
             raise ValueError(f"duplicate {task} natural key: {key}")
         vals = tuple(_number(row.get(column), column) for column in VALUES[task])
+        if task == "state" and key[-1] not in {"R1", "R2", "R3"}:
+            raise ValueError("mask_regime must be R1, R2, or R3")
         if task == "queue" and vals[0] not in (0.0, 1.0):
             raise ValueError("queue_pred must be 0 or 1")
+        if task == "odme":
+            for zone in ("origin_zone", "destination_zone"):
+                if not str(row.get(zone, "")).strip():
+                    raise ValueError(f"{zone} is required for ODME rows")
         table[key] = vals
     return table
 
@@ -110,19 +116,29 @@ def compile_submission(
         "gaps": gaps,
         "requireComplete": bool(require_complete),
         "csvSha256": hashlib.sha256(payload.encode("utf-8")).hexdigest(),
-        "authority": {
-            "submissionSent": False,
-            "officialScoreEstablished": False,
-            "leaderboardRankEstablished": False,
-            "prizeAwarded": False,
-            "paymentReceived": False,
-        },
+        "authority": authority_ceiling(),
     }
     receipt["receiptSha256"] = hashlib.sha256(canonical_json_bytes(receipt)).hexdigest()
     return payload, receipt
 
 
+def _receipt_digest(receipt: Mapping[str, object]) -> str:
+    body = dict(receipt)
+    body.pop("receiptSha256", None)
+    return hashlib.sha256(canonical_json_bytes(body)).hexdigest()
+
+
 def verify_compiled_submission(payload: str, receipt: Mapping[str, object]) -> bool:
+    if receipt.get("schema") != "trafficflowbench-local-submission/v1":
+        return False
+    if receipt.get("upstreamCommit") != UPSTREAM["commit"]:
+        return False
+    if receipt.get("receiptSha256") != _receipt_digest(receipt):
+        return False
+    try:
+        validate_authority_claims(receipt.get("authority", {}))
+    except (TypeError, ValueError):
+        return False
     if hashlib.sha256(payload.encode("utf-8")).hexdigest() != receipt.get("csvSha256"):
         return False
     try:
@@ -131,21 +147,40 @@ def verify_compiled_submission(payload: str, receipt: Mapping[str, object]) -> b
         return False
     if not rows or tuple(rows[0].keys()) != OUT_COLUMNS:
         return False
-    if int(receipt.get("rows", -1)) != len(rows):
+    try:
+        if int(receipt.get("rows", -1)) != len(rows):
+            return False
+    except (TypeError, ValueError):
         return False
-    seen: set[str] = set()
+    gaps = receipt.get("gaps")
+    if not isinstance(gaps, Mapping) or set(gaps) != set(KEYS):
+        return False
+    if receipt.get("requireComplete") is True and any(gaps.get(task) != 0 for task in KEYS):
+        return False
+    seen: set[int] = set()
     for row in rows:
         if any(row.get(column, "") == "" for column in OUT_COLUMNS):
             return False
-        if row["submission_id"] in seen or row["task"] not in KEYS:
+        if row["task"] not in KEYS:
             return False
-        seen.add(row["submission_id"])
         try:
-            values = [float(row[c]) for c in ("speed_kmh", "flow_vph", "queue_pred", "path_flow")]
+            sid = int(row["submission_id"])
         except ValueError:
             return False
+        if sid in seen:
+            return False
+        seen.add(sid)
+        try:
+            speed, flow, queue, path = [float(row[c]) for c in ("speed_kmh", "flow_vph", "queue_pred", "path_flow")]
+        except ValueError:
+            return False
+        values = [speed, flow, queue, path]
         if any(not math.isfinite(v) or v < 0 for v in values):
             return False
-        if row["task"] == "queue" and values[2] not in (0.0, 1.0):
+        if row["task"] == "state" and (queue != 0.0 or path != 0.0):
+            return False
+        if row["task"] == "queue" and (speed != 0.0 or flow != 0.0 or path != 0.0 or queue not in (0.0, 1.0)):
+            return False
+        if row["task"] == "odme" and (speed != 0.0 or flow != 0.0 or queue != 0.0):
             return False
     return True

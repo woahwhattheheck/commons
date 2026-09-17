@@ -158,6 +158,20 @@ class SubmissionTests(unittest.TestCase):
     def test_receipt_tamper_fails(self):
         payload, receipt = compile_submission(self.keys, state_rows=self.state, queue_rows=self.queue, odme_rows=self.odme)
         self.assertFalse(verify_compiled_submission(payload + "x", receipt))
+        authority_tamper = copy.deepcopy(receipt)
+        authority_tamper["authority"]["submissionSent"] = True
+        self.assertFalse(verify_compiled_submission(payload, authority_tamper))
+        source_tamper = dict(receipt, upstreamCommit="deadbeef")
+        self.assertFalse(verify_compiled_submission(payload, source_tamper))
+
+    def test_task_specific_schema_edges_fail_closed(self):
+        bad_regime = [dict(self.state[0], mask_regime="R4")]
+        with self.assertRaises(ValueError):
+            compile_submission(self.keys, state_rows=bad_regime, queue_rows=self.queue, odme_rows=self.odme)
+        no_zone = [dict(self.odme[0])]
+        del no_zone[0]["origin_zone"]
+        with self.assertRaises(ValueError):
+            compile_submission(self.keys, state_rows=self.state, queue_rows=self.queue, odme_rows=no_zone)
 
 
 if __name__ == "__main__":
