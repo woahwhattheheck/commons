@@ -73,6 +73,8 @@ CONVERT_SHELF_LIVE_BUYS = {
     "pixel-portfolio.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "todo.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "redundancy.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "distro.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "paperwork-included.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -125,6 +127,8 @@ PUBLIC_HTML = (
     "pixel-portfolio.html",
     "todo.html",
     "redundancy.html",
+    "distro.html",
+    "paperwork-included.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",

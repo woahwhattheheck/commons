@@ -16,6 +16,10 @@ CANONICAL_STRIPE = [
     "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
     "https://buy.stripe.com/7sYbJ02Kpcrv9uF0Ku43S09",
 ]
+CONVERT_SHELF_LIVE_BUYS = {
+    "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
+    "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
+}
 
 
 class DistroListing(unittest.TestCase):
@@ -36,7 +40,8 @@ class DistroListing(unittest.TestCase):
         self.assertNotIn('type="password"', page)
         self.assertNotIn("required login", page.lower())
         self.assertNotRegex(page, r'href=["\'][^"\']+\.mno["\']')
-        self.assertEqual(STRIPE_URL_RE.findall(page), [])
+        self.assertEqual(set(STRIPE_URL_RE.findall(page)), CONVERT_SHELF_LIVE_BUYS)
+        self.assertNotIn("donate.stripe.com", page)
 
     def test_catalog_keeps_seven_stripe_urls_and_marks_owner_slot(self):
         catalog = (ROOT / "land" / "stripe-payment-links-20260826.md").read_text(encoding="utf-8")
