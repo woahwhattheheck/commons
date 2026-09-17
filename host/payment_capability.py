@@ -141,6 +141,8 @@ CONVERT_SHELF_LIVE_BUYS = {
     "rmb-crosssite-courier-accession-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "rosecity-olcc-metrc-sampling-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "roslinct-hopkinton-paperless-qc-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "sanair-asbestos-coc-router-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "savant-fe8-order-report-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -259,6 +261,8 @@ PUBLIC_HTML = (
     "rmb-crosssite-courier-accession-lims.html",
     "rosecity-olcc-metrc-sampling-lims.html",
     "roslinct-hopkinton-paperless-qc-lims.html",
+    "sanair-asbestos-coc-router-lims.html",
+    "savant-fe8-order-report-lims.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
