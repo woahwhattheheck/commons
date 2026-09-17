@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "opportunity": "States of Jersey DN827803",
+  "observed_at_utc": "2026-09-17T03:31:00Z",
+  "single_prime_rule": "One partner candidate at a time. Provider-SENT is hard DNR until a genuine reply/provider event.",
+  "routes": [
+    {
+      "partner": "Better Ltd",
+      "domain": "better.care",
+      "route": "brian.murray@better.care",
+      "state": "HARD_DNR_PROVIDER_SENT",
+      "evidence": {
+        "gmail_message_thread": "1a09af22dc174a2c",
+        "sent_at": "2026-09-13T13:25:57",
+        "subject": "States of Jersey DN827803 — openEHR/CDR specialist teaming",
+        "attachment_count": 0,
+        "reply_observed_after_send": false
+      },
+      "allowed_next_action": "NONE_ABSENT_GENUINE_REPLY_OR_PROVIDER_EVENT"
+    },
+    {
+      "partner": "vitagroup HIP",
+      "domain": "vitagroup.ag",
+      "route": "info@vitagroup.ag",
+      "state": "MUSE_ARBITRATION_PENDING",
+      "commercial_key": "JERSEY-DN827803-VITAGROUP-PAID-WORKSHARE-ZSOL-20260916",
+      "commercial_hypothesis": "$25,000 fixed / PROPOSED_NOT_ACCEPTED",
+      "scope": [
+        "source/target interface inventory and migration reconciliation",
+        "deterministic interface replay and idempotency evidence",
+        "FHIR/openEHR boundary conformance evidence",
+        "UAT and acceptance trace",
+        "cutover and operator release evidence"
+      ],
+      "retained_by_prime": [
+        "HIP/openEHR platform and configuration",
+        "clinical safety and clinical acceptance",
+        "data governance, privacy, security and regulatory authority",
+        "buyer relationship and portal access",
+        "prime bid and submission authority",
+        "staffing and prime commercial pricing",
+        "final operational acceptance"
+      ],
+      "first_party_sources": [
+        "https://hip.vitagroup.ag/en/openehr-fhir/",
+        "https://hip.vitagroup.ag/en/",
+        "https://hip.vitagroup.ag/en/pressrelease-catalonia-contract-infrastructure-patient-record/",
+        "https://www.vitagroup.ag/en/about/locations/"
+      ],
+      "fit_facts": [
+        "HIP combines openEHR and FHIR for vendor-neutral healthcare data management.",
+        "vitagroup publicly reports 150 hospitals and 1000 healthcare facilities integrated into ongoing HIP projects.",
+        "The Catalonia deployment with IBM/Viewnext uses HIP as openEHR CDR core infrastructure and reports more than 13 million migrated EHRs and 1.3 billion clinical compositions.",
+        "vitagroup publishes the general business route info@vitagroup.ag."
+      ],
+      "collision_census": {
+        "slack_exact_org_domain_before_take": 0,
+        "gmail_all_history_exact_org_domain_route_before_take": 0
+      },
+      "send_authorized": false
+    }
+  ]
+}
