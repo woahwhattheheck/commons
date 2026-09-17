@@ -249,7 +249,10 @@ def _label(value: Any, where: str) -> str:
     value = _plain_str(value, where, max_len=160)
     if not _SAFE_LABEL_RE.fullmatch(value):
         raise WorkshareError(f"{where} has unsafe label characters")
-    return value.strip()
+    value = value.strip()
+    if not value:
+        raise WorkshareError(f"{where} must not be blank")
+    return value
 
 
 def _int(value: Any, where: str, *, low: int, high: int) -> int:
@@ -266,6 +269,8 @@ def _list_of_lines(value: Any, where: str, *, minimum: int = 1, maximum: int = 8
     out: list[str] = []
     for i, item in enumerate(value):
         text = _plain_str(item, f"{where}[{i}]", max_len=240).strip()
+        if not text:
+            raise WorkshareError(f"{where}[{i}] must not be blank")
         if text in out:
             raise WorkshareError(f"{where} contains duplicate item")
         out.append(text)
@@ -274,6 +279,8 @@ def _list_of_lines(value: Any, where: str, *, minimum: int = 1, maximum: int = 8
 
 def _scope_text(value: Any) -> str:
     text = _plain_str(value, "scope.one_line", max_len=320).strip()
+    if not text:
+        raise WorkshareError("scope.one_line must not be blank")
     for pattern in _FORBIDDEN_SCOPE_ASSERTIONS:
         if pattern.search(text):
             raise WorkshareError("scope.one_line contains unsupported commercial/outcome assertion")
