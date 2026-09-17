@@ -13,6 +13,7 @@ h1{font-size:clamp(2.2rem,7vw,5rem);line-height:.95;max-width:14ch}.lead{font-si
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:1rem}.price{font:800 2rem ui-monospace,monospace}
 label{display:block;margin:.75rem 0 .25rem}input,select,textarea,button{width:100%;font:inherit;padding:.7rem;border-radius:8px;border:1px solid #45634c;background:#080c09;color:#eef7f0}
 button{cursor:pointer;background:#1f6737;font-weight:800;margin-top:.65rem}button.secondary{background:#1b2820}.actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:.5rem}
+.checkout-active,.buy{display:inline-block;margin:.2rem .25rem .2rem 0;border:0;border-radius:8px;padding:.7rem .9rem;background:#1f6737;color:#ecf7ef;font-weight:850;text-decoration:none}.js-checkout-slot p{margin:.4rem 0}
 pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#050706;padding:1rem;border-radius:8px;min-height:9rem}.status{font:700 1rem ui-monospace,monospace;color:#9cf1b8}
 </style>
 </head>
@@ -31,7 +32,8 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#050706;padding:1rem;
 
   <p class="lead">Replay a duplicate inspection event or stop the worker halfway through. The ledger still produces exactly one work order, exactly one escalation, and one durable closeout receipt.</p>
   <p class="price">$199 diagnostic · one business day</p>
-<p class="price-actions"><a class="buy" href="https://buy.stripe.com/7sY9AS98NdvzdKVbp843S0p" target="_blank" rel="noopener noreferrer">Start the $199 diagnostic</a> <span class="small">Secure Stripe checkout opens in a new tab.</span></p>
+  <div class="js-checkout-slot" data-sku="fleet-work-order-exactly-once"><p class="note">Loading verified $199 diagnostic checkout from the catalog…</p></div>
+  <p class="note">A click is intent, not cash. The Stripe URL is filled from catalog evidence; this page does not invent a checkout link.</p>
   <p>$2,500 proof only after the diagnostic finds a real fit. The demo does not dispatch technicians or connect to a production fleet.</p>
 </header>
 
@@ -86,6 +88,7 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#050706;padding:1rem;
   output.textContent=JSON.stringify(store.load(),null,2);
 })();
 </script>
-<p class="price-actions"><a class="buy" href="https://buy.stripe.com/7sY9AS98NdvzdKVbp843S0p" target="_blank" rel="noopener noreferrer">Start the $199 diagnostic</a> <span class="small">Secure Stripe checkout opens in a new tab.</span></p>
+<p class="note">Verified $199 checkout is filled from the catalog at the top of this page. Fallback: <a href="mailto:tokenjunkielabs@gmail.com?subject=Fleet%20work-order%20diagnostic">email exact fleet intake</a>.</p>
+<script src="./pay.js?v=20260902a"></script>
 </body>
 </html>

@@ -175,6 +175,12 @@
     ["land.html", "land"]
   ];
 
+  var FIXED_DISCOVERY = [
+    ["hotel-room-turn-evidence.html", "$2,500 hotel room-turn pilot"],
+    ["late-cancel-noshow-fee-leakage.html", "$3,500 late-cancel / no-show leakage"],
+    ["chargeback-evidence-readiness.html", "$4,000 chargeback readiness"]
+  ];
+
   function base() {
     if (typeof window !== "undefined" && window.COMMONS_BASE) return window.COMMONS_BASE;
     return "./";
@@ -227,6 +233,34 @@
     }
   }
 
+  function augmentIndexLiveCash() {
+    if (typeof document === "undefined") return;
+    var hub = document.getElementById("door-hub");
+    var host = document.getElementById("live-cash");
+    if (!hub || !host) return;
+    var list = host.querySelector("ul");
+    if (!list) return;
+    var b = base();
+    FIXED_DISCOVERY.forEach(function (pair) {
+      var exists = false;
+      var anchors = host.querySelectorAll("a[href]");
+      for (var i = 0; i < anchors.length; i += 1) {
+        var href = anchors[i].getAttribute("href") || "";
+        if (href === "./" + pair[0] || href === pair[0] || href === b + pair[0]) {
+          exists = true;
+          break;
+        }
+      }
+      if (exists) return;
+      var item = document.createElement("li");
+      var anchor = document.createElement("a");
+      anchor.href = b + pair[0];
+      anchor.textContent = pair[1];
+      item.appendChild(anchor);
+      list.appendChild(item);
+    });
+  }
+
   function paintHub() {
     if (typeof document === "undefined") return;
     var host = document.getElementById("door-hub");
@@ -267,15 +301,18 @@
   root.COMMONS_DOORS = {
     TABS: TABS,
     HOME: HOME,
+    FIXED_DISCOVERY: FIXED_DISCOVERY,
     injectHomeBar: injectHomeBar,
     paintHub: paintHub,
-    relabelStaticAutopsyDoor: relabelStaticAutopsyDoor
+    relabelStaticAutopsyDoor: relabelStaticAutopsyDoor,
+    augmentIndexLiveCash: augmentIndexLiveCash
   };
 
   if (typeof document !== "undefined") {
     function boot() {
       injectHomeBar();
       paintHub();
+      augmentIndexLiveCash();
     }
     if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
     else boot();
