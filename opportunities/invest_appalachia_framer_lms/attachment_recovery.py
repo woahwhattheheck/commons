@@ -51,7 +51,10 @@ def _safe_name(name: str) -> str:
     path = PurePosixPath(normalized)
     if path.is_absolute() or any(part in {"", ".", ".."} for part in path.parts):
         raise AttachmentRecoveryError(f"unsafe ZIP member path: {name!r}")
-    return normalized
+    canonical = path.as_posix()
+    if not canonical or canonical == ".":
+        raise AttachmentRecoveryError(f"unsafe ZIP member path: {name!r}")
+    return canonical
 
 
 def _require_regular_member(info: zipfile.ZipInfo, name: str) -> None:
