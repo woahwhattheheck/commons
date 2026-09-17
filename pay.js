@@ -2,6 +2,11 @@
   "use strict";
   var STRIPE_CHECKOUT_HOSTS = { "buy.stripe.com": true, "donate.stripe.com": true };
   var STRIPE_CHECKOUT_PATH = /^\/[A-Za-z0-9_-]+$/;
+  var FIXED_BUY_PRODUCTS = [
+    { path: "./hotel-room-turn-evidence.html", label: "Buy hotel pilot" },
+    { path: "./late-cancel-noshow-fee-leakage.html", label: "Buy fee-leakage diagnostic" },
+    { path: "./chargeback-evidence-readiness.html", label: "Buy chargeback desk" }
+  ];
   function esc(value) {
     return String(value == null ? "" : value).replace(/[&<>"']/g, function (c) {
       if (c === "&") return "&amp;";
@@ -88,6 +93,57 @@
     if (root && root.getAttribute("data-checkout-first") === "1") return true;
     return /(?:^|\/)(?:tips|pay)\.html$/i.test(path);
   }
+  function fixedBuyContainer() {
+    if (typeof document === "undefined" || typeof window === "undefined" || !window.location) return null;
+    var path = window.location.pathname || "";
+    if (!/(?:^|\/)(?:tips|commerce|bazaar|tools-cash)\.html$/i.test(path)) return null;
+    return document.querySelector("#tip-shelf, #live-cash-doors, #live-cash, #cash-doors");
+  }
+  function uniqueSafeCheckoutFromHtml(text) {
+    if (typeof DOMParser === "undefined" || typeof text !== "string") return "";
+    var parsed;
+    try { parsed = new DOMParser().parseFromString(text, "text/html"); } catch (err) { return ""; }
+    var seen = {};
+    Array.prototype.forEach.call(parsed.querySelectorAll("a[href]"), function (anchor) {
+      var href = anchor.getAttribute("href");
+      if (isStripeCheckoutUrl(href)) seen[href] = true;
+    });
+    var urls = Object.keys(seen);
+    return urls.length === 1 ? urls[0] : "";
+  }
+  function appendFixedBuy(anchor, url, label) {
+    var parent = anchor && anchor.parentNode;
+    if (!parent || !isStripeCheckoutUrl(url)) return;
+    if (parent.querySelector && parent.querySelector('a[data-fixed-buy-road="1"]')) return;
+    var spacer = document.createTextNode(" · ");
+    var checkout = document.createElement("a");
+    checkout.className = "checkout-active fixed-buy-road";
+    checkout.setAttribute("href", url);
+    checkout.setAttribute("rel", "noopener noreferrer");
+    checkout.setAttribute("target", "_blank");
+    checkout.setAttribute("data-fixed-buy-road", "1");
+    checkout.textContent = label;
+    var next = anchor.nextSibling;
+    parent.insertBefore(spacer, next);
+    parent.insertBefore(checkout, next);
+  }
+  function exposeFixedBuyRoads(snapshot) {
+    var container = fixedBuyContainer();
+    if (!container || !accountReady(snapshot) || typeof fetch !== "function") return;
+    FIXED_BUY_PRODUCTS.forEach(function (product) {
+      var anchor = container.querySelector('a[href="' + product.path + '"]');
+      if (!anchor || !anchor.parentNode) return;
+      fetch(product.path, { cache: "no-store" }).then(function (response) {
+        if (!response.ok) throw new Error(String(response.status));
+        return response.text();
+      }).then(function (text) {
+        var checkout = uniqueSafeCheckoutFromHtml(text);
+        if (checkout) appendFixedBuy(anchor, checkout, product.label);
+      }).catch(function () {
+        // Canonical product page or rail proof unavailable: keep the product-page link only.
+      });
+    });
+  }
   function fillSlot(slot, listing, snapshot, funnel) {
     if (!railEligible(snapshot, listing)) {
       slot.innerHTML = '<p class="note">Provider rail is inert. Unverified URLs stay unpublished.</p>';
@@ -168,6 +224,7 @@
       var sku = slot.getAttribute("data-sku");
       fillSlot(slot, byId[sku], snapshot, (catalog.funnels || {})[sku]);
     });
+    exposeFixedBuyRoads(snapshot);
     fillOwner(snapshot);
     fillFailover(registry, snapshot);
   }

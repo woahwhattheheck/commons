@@ -15,6 +15,8 @@ class BassBazaarLiveCashTest(unittest.TestCase):
         self.assertIn("referral-intake-completeness.html", text)
         self.assertIn("repair-booking-preflight.html", text)
         self.assertIn("plant-downtime-handoff.html", text)
-        self.assertNotIn("buy.stripe.com", text)
+        self.assertIn('id="buy-now-live-checkout"', text)
+        # Convert shelf may reuse existing live buys; exact allowlist is
+        # test_type_tools_cash_bazaar_convert_shelf_20260917_01.py.
 if __name__ == "__main__":
     unittest.main()
