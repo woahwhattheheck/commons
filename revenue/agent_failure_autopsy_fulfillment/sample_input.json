@@ -1,0 +1,20 @@
+{
+  "schema": "agent-autopsy-fulfillment-batch/v1",
+  "cases": [
+    {
+      "case_ref": "SYNTHETIC-UNPAID-001",
+      "payment": {"state": "UNVERIFIED", "receipt_sha256": null},
+      "intake": {
+        "intended_outcome": "Update three owned files, run focused tests, and publish one pull request.",
+        "observed_failure": "The publish action retried after a timeout and attempted the side effect twice.",
+        "stack": "Synthetic CI and coding-agent harness",
+        "first_error": "The retry resumed after the side-effect boundary instead of replaying from an idempotent checkpoint.",
+        "evidence_items": [
+          {"kind": "redacted_log", "sha256": "2222222222222222222222222222222222222222222222222222222222222222", "bytes": 1200}
+        ],
+        "redaction_confirmed": true
+      },
+      "operator": {"delivery_receipt_sha256": null, "refund_receipt_sha256": null, "refund_reason": ""}
+    }
+  ]
+}
