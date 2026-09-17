@@ -88,6 +88,27 @@ class TraceTests(unittest.TestCase):
     def test_float_rejected_by_parser(self):
         self.assertRaises(TraceError, strict_json_loads, b'{"x":1.0}')
 
+    def test_huge_integer_parser_normalizes_failure(self):
+        raw = b'{"x":' + (b'9' * 5000) + b'}'
+        with self.assertRaises(TraceError):
+            strict_json_loads(raw)
+
+    def test_lone_surrogate_string_normalizes_failure(self):
+        with self.assertRaises(TraceError):
+            strict_json_loads('{"x":"\ud800"}')
+
+    def test_deep_json_parser_normalizes_failure(self):
+        raw = (('[' * 2000) + '0' + (']' * 2000)).encode('ascii')
+        with self.assertRaises(TraceError):
+            strict_json_loads(raw)
+
+    def test_deep_direct_object_rejected_without_recursion_escape(self):
+        value = 0
+        for _ in range(200):
+            value = [value]
+        with self.assertRaises(TraceError):
+            canonical_json_bytes(value)
+
     def test_unavailable_action_rejected(self):
         rec = EpisodeRecorder("unavailable", max_actions=2)
         rec.append_observation((((0,),),), ("ACTION1",), source_ref="synthetic:test")
