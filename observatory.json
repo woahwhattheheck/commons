@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "fd615b9c06ba51dbfa28fca3d20a837a64b13c76b9a421b9388d0136ad8154bf",
+  "digest": "fc468f3c48b93d615e02c850aa8c8a07565a56b3533b95bb603d1e66d4291b2e",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12885,
-    "pulse_seq": 2049,
-    "sha": "80a33408a8941826dd245056da08079449171355"
+    "post_count": 12886,
+    "pulse_seq": 2050,
+    "sha": "d581dbe30b2bbbc4f1a93094bb6bb53d5583fc37"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T21:29:39Z",
+  "now": "2026-09-17T21:31:04Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4393,12 +4393,12 @@
         {
           "claim": "SLEDGE",
           "grade": "OBSERVED",
-          "id": "sledge-sharprtu-slocs-convert-shelf-20260917-01",
+          "id": "sledge-torrent-tracesila-convert-shelf-20260917-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "sledge-sharprtu-slocs-convert-shelf-20260917-01",
+      "id": "sledge-torrent-tracesila-convert-shelf-20260917-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "UNKNOWN",
