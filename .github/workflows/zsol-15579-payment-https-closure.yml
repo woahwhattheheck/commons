@@ -1,0 +1,99 @@
+name: zsol-15579-payment-https-closure
+
+on:
+  push:
+    branches:
+      - z-sol/commons-15579-payment-https-closure-20260917
+
+permissions:
+  contents: write
+
+jobs:
+  patch-and-test:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: z-sol/commons-15579-payment-https-closure-20260917
+          fetch-depth: 0
+      - name: Apply exact #15579 fix-forward
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          root = Path('.')
+          payment = root / 'host' / 'payment_capability.py'
+          lines = payment.read_text(encoding='utf-8').splitlines()
+
+          def insert_block(start_marker: str, end_marker: str, additions: list[str]) -> None:
+              start = next(i for i, line in enumerate(lines) if line == start_marker)
+              end = next(i for i in range(start + 1, len(lines)) if lines[i] == end_marker)
+              block = lines[start:end]
+              for addition in additions:
+                  if addition not in block:
+                      lines.insert(end, addition)
+                      end += 1
+                      block.append(addition)
+
+          insert_block(
+              'CONVERT_SHELF_LIVE_BUYS = {',
+              '}',
+              [
+                  '    "salvage.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,',
+                  '    "shots.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,',
+              ],
+          )
+          insert_block(
+              'PUBLIC_HTML = (',
+              ')',
+              [
+                  '    "salvage.html",',
+                  '    "shots.html",',
+              ],
+          )
+          payment.write_text('\n'.join(lines) + '\n', encoding='utf-8')
+
+          test = root / 'test_type_salvage_shots_convert_shelf_20260917_01.py'
+          text = test.read_text(encoding='utf-8')
+
+          old_regex = '''BUY_HOST_PATH = re.compile(\n    r"https?://buy\\.stripe\\.com/([A-Za-z0-9_-]+)",\n    re.IGNORECASE,\n)\n'''
+          new_regex = '''BUY_HTTPS_URL = re.compile(\n    r"https://buy\\.stripe\\.com/[A-Za-z0-9_-]+",\n)\nHTTP_BUY_URL = re.compile(\n    r"http://buy\\.stripe\\.com/[A-Za-z0-9_-]+",\n    re.IGNORECASE,\n)\n'''
+          assert text.count(old_regex) == 1, 'focused BUY_HOST_PATH shape drifted'
+          text = text.replace(old_regex, new_regex, 1)
+
+          old_helper = '''def live_buy_urls(html: str) -> set[str]:\n    """Canonical https://buy.stripe.com/<path> identities found in HTML."""\n    return {\n        f"https://buy.stripe.com/{path}"\n        for path in BUY_HOST_PATH.findall(html)\n    }\n'''
+          new_helper = '''def live_buy_urls(html: str) -> set[str]:\n    """Literal HTTPS checkout identities found in HTML; never normalize HTTP."""\n    return set(BUY_HTTPS_URL.findall(html))\n\n\ndef checkout_identity_errors(html: str) -> list[str]:\n    """Fail closed on URL-set drift or any insecure duplicate checkout identity."""\n    errors: list[str] = []\n    if live_buy_urls(html) != ALLOWED_LIVE_BUY_URLS:\n        errors.append("HTTPS buy.stripe.com URL set drift")\n    if HTTP_BUY_URL.search(html):\n        errors.append("HTTP buy.stripe.com URL present")\n    return errors\n'''
+          assert text.count(old_helper) == 1, 'focused live_buy_urls helper drifted'
+          text = text.replace(old_helper, new_helper, 1)
+
+          old_assert = '''                found = live_buy_urls(html)\n                self.assertEqual(found, ALLOWED_LIVE_BUY_URLS)\n'''
+          new_assert = '''                self.assertEqual(checkout_identity_errors(html), [])\n                found = live_buy_urls(html)\n                self.assertEqual(found, ALLOWED_LIVE_BUY_URLS)\n'''
+          assert text.count(old_assert) == 1, 'focused exact-set assertion drifted'
+          text = text.replace(old_assert, new_assert, 1)
+
+          marker = '''    def test_fenced_pages_do_not_carry_this_cite(self) -> None:\n'''
+          hostile = '''    def test_central_payment_capability_enrolls_both_pages(self) -> None:\n        import host.payment_capability as payment_capability\n\n        for page in PAGES:\n            with self.subTest(page=page.name):\n                self.assertIn(page.name, payment_capability.PUBLIC_HTML)\n                self.assertEqual(\n                    payment_capability.CONVERT_SHELF_LIVE_BUYS.get(page.name),\n                    ALLOWED_LIVE_BUY_URLS,\n                )\n\n    def test_http_duplicate_cannot_false_green(self) -> None:\n        http_duplicate = sorted(ALLOWED_LIVE_BUY_URLS)[0].replace("https://", "http://", 1)\n        for page in PAGES:\n            with self.subTest(page=page.name):\n                html = page.read_text(encoding="utf-8")\n                hostile = html + f'\\n<a href="{http_duplicate}">hostile duplicate</a>\\n'\n                # The valid HTTPS set is intentionally unchanged; the proof must\n                # still reject the insecure duplicate instead of normalizing it.\n                self.assertEqual(live_buy_urls(hostile), ALLOWED_LIVE_BUY_URLS)\n                self.assertIn("HTTP buy.stripe.com URL present", checkout_identity_errors(hostile))\n\n'''
+          assert text.count(marker) == 1, 'test insertion marker drifted'
+          assert 'def test_http_duplicate_cannot_false_green' not in text
+          text = text.replace(marker, hostile + marker, 1)
+          test.write_text(text, encoding='utf-8')
+          PY
+
+          python -m unittest \
+            test_type_salvage_shots_convert_shelf_20260917_01 \
+            test_latch_obs_doors_live_cash
+          python -O test_type_salvage_shots_convert_shelf_20260917_01.py
+          python host/payment_capability.py --self-test
+          git diff --check
+
+      - name: Commit repair and remove one-shot workflow
+        shell: bash
+        run: |
+          git config user.name 'Z-Sol'
+          git config user.email 'tokenjunkielabs@gmail.com'
+          git rm .github/workflows/zsol-15579-payment-https-closure.yml
+          git add host/payment_capability.py test_type_salvage_shots_convert_shelf_20260917_01.py
+          git commit -m 'Close #15579 payment shelf HTTPS custody gap'
+          git push origin HEAD:z-sol/commons-15579-payment-https-closure-20260917
