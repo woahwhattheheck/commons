@@ -124,8 +124,17 @@ def _currency(value, where):
 def _uri(value, where):
     value = _string(value, where, limit=2048)
     parts = urlsplit(value)
-    if parts.scheme != "https" or not parts.hostname or parts.username or parts.password:
-        raise Error(f"{where}: credential-free https URI required")
+    if (
+        parts.scheme != "https"
+        or not parts.hostname
+        or parts.username
+        or parts.password
+        or parts.query
+        or parts.fragment
+        or "?" in value
+        or "#" in value
+    ):
+        raise Error(f"{where}: credential-free queryless fragmentless https URI required")
     return value
 
 
@@ -371,7 +380,8 @@ def compile(raw: bytes):
     max_age = _integer(request["max_source_age_seconds"], "max_source_age_seconds", 1, 31536000)
     if not isinstance(request["documents"], list) or not request["documents"]:
         raise Error("documents: non-empty list required")
-    sources, observations, holds, audits, seen_sources = [], [], [], [], set()
+    sources, observations, holds, audits = [], [], [], []
+    seen_sources, seen_raw_sources = set(), set()
     for index, document in enumerate(request["documents"]):
         where = f"documents[{index}]"
         _keys(document, ("adapter", "source", "payload_sha256", "payload"), where)
@@ -382,6 +392,9 @@ def compile(raw: bytes):
         if source["source_id"] in seen_sources:
             raise Error(where + ": duplicate source_id")
         seen_sources.add(source["source_id"])
+        if source["sha256"] in seen_raw_sources:
+            raise Error(where + ": duplicate retained raw source")
+        seen_raw_sources.add(source["sha256"])
         payload = document["payload"]
         if not isinstance(payload, dict):
             raise Error(where + ".payload: object required")
