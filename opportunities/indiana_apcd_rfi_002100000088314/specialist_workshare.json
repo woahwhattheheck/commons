@@ -1,0 +1,27 @@
+{
+  "candidate_deliverables": [
+    "deterministic ingestion and data-quality acceptance harnesses",
+    "schema/version-drift regression and evidence packs",
+    "data-lineage and reproducible analytics QA",
+    "consumer-tool regression and methodology evidence",
+    "privacy/security control-test evidence only under qualified prime authority",
+    "AI/LLM analytic evaluation only if future controlling requirements permit"
+  ],
+  "capability_claims": [],
+  "excluded_authority": [
+    "represent IDOI or IDOA",
+    "claim healthcare/APCD qualification",
+    "claim privacy/security certification",
+    "submit RFI response",
+    "set bid price",
+    "bind partner",
+    "sign contract",
+    "claim award",
+    "claim payment",
+    "claim revenue"
+  ],
+  "opportunity_id": "002100000088314",
+  "price_usd": null,
+  "schema": "indiana-apcd-rfi-specialist-workshare/v1",
+  "status": "INTERNAL_HYPOTHESIS_NOT_OFFER"
+}
