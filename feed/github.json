@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 102,
+    "open_issues": 104,
     "open_pull_requests": 16,
-    "runs_in_progress": 20,
-    "runs_queued": 1093
+    "runs_in_progress": 19,
+    "runs_queued": 1100
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -197,8 +197,19 @@
   },
   "pulls_listed": 16,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 54.6,
+  "queue_depth_per_runner": 57.9,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol2/procurement-award-source-adapters-20260916",
+      "closed_at": "2026-09-17T00:44:00Z",
+      "head_sha": "69a7ba15eac36a86f8cc9573077a31da0c027396",
+      "merged_at": "2026-09-17T00:44:00Z",
+      "number": 15143,
+      "state": "MERGED",
+      "title": "Revenue: add source-bound procurement award adapters"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -344,29 +355,18 @@
     },
     {
       "author": "woahwhattheheck",
-      "base": "z-quorum/learn2design-provenance-20260915",
-      "branch": "zsk-h4q9/learn2design-unicode-closure",
-      "closed_at": "2026-09-16T23:50:02Z",
-      "head_sha": "ad8a22b25efa67111d34f72a9bdfe85be7e864da",
+      "base": "main",
+      "branch": "grok-build/prm-evidence-materializer-15108",
+      "closed_at": "2026-09-16T23:46:03Z",
+      "head_sha": "6c9bc27e2cd4bbc5092f86f58bc48cbd879b5780",
       "merged_at": null,
-      "number": 14776,
+      "number": 15113,
       "state": "CLOSED",
-      "title": "Learn2Design: fail closed on non-scalar Unicode evidence"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zsh-q6m4/learn2design-public-evidence-20260915",
-      "branch": "z-quorum/learn2design-provenance-20260915",
-      "closed_at": "2026-09-16T23:50:01Z",
-      "head_sha": "33e117064c336cefc947c52b38dee311e8ca0818",
-      "merged_at": null,
-      "number": 14728,
-      "state": "CLOSED",
-      "title": "Learn2Design: independent recorded-run provenance repair for #14672"
+      "title": "Procurement: add response-module evidence materializer (#15108)"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T00:43:06Z",
+  "unchanged_since": "2026-09-17T00:44:28Z",
   "undatable_pulls": []
 }
