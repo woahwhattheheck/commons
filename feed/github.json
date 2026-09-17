@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 91,
     "open_pull_requests": 16,
-    "runs_in_progress": 20,
-    "runs_queued": 1691
+    "runs_in_progress": 19,
+    "runs_queued": 1689
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -149,10 +149,10 @@
       "branch": "zsol/real-remax-cutover-recovery-20260917",
       "created_at": "2026-09-17T07:21:48Z",
       "draft": false,
-      "head_sha": "7eed681954f019de113eacd45efeed109ebb23cf",
+      "head_sha": "9d35c8bf48ff2ca7315f72dbd599a163a7beb545",
       "number": 15380,
       "title": "Revenue: recover Real/REMAX cutover evidence core (#13800)",
-      "updated_at": "2026-09-17T07:39:26Z"
+      "updated_at": "2026-09-17T07:41:04Z"
     },
     {
       "author": "woahwhattheheck",
@@ -186,7 +186,7 @@
     "15356": "e852acc8602a52e148b09e609f3569bcf61a34b7",
     "15359": "df8dc7c13f7accf0218f445db4351a8c49a8da76",
     "15378": "28e6c4b0e358ec6ae391559ed7e8fe6000ed680f",
-    "15380": "7eed681954f019de113eacd45efeed109ebb23cf",
+    "15380": "9d35c8bf48ff2ca7315f72dbd599a163a7beb545",
     "15382": "67ea52d849be72b4c348f7e09356d61e25a17ba2",
     "15384": "93a23d76b2cdf115c7d3d36f338d9fcec43f86b7",
     "15385": "9a37337c911b5fca65f7fafa785e6daa2047f28b",
@@ -197,8 +197,19 @@
   },
   "pulls_listed": 16,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 84.5,
+  "queue_depth_per_runner": 88.9,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "quill-agent-autopsy-intake-hero-buy-convert-20260917-17",
+      "closed_at": "2026-09-17T07:41:31Z",
+      "head_sha": "923e3f352832ad0f56d3739b2089ed2f05f4164b",
+      "merged_at": "2026-09-17T07:41:31Z",
+      "number": 15399,
+      "state": "MERGED",
+      "title": "QUILL: agent-autopsy-intake hero $29 Buy CTA convert"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -352,21 +363,10 @@
       "number": 15379,
       "state": "MERGED",
       "title": "Add Westfield advancement-modeling paid workshare carrier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zat-0310/westfield-workshare-20260917",
-      "closed_at": "2026-09-17T07:21:58Z",
-      "head_sha": "14e9bfd9557808534271c7c99131a1012a08d390",
-      "merged_at": null,
-      "number": 15374,
-      "state": "CLOSED",
-      "title": "Add Westfield advancement-modeling paid workshare carrier"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T07:40:04Z",
+  "unchanged_since": "2026-09-17T07:43:36Z",
   "undatable_pulls": []
 }
