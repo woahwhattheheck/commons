@@ -94,6 +94,29 @@ class GgufEnterpriseCloseKitTests(unittest.TestCase):
             with self.assertRaises(mod.InputError):
                 mod.compile_packet(load(INTAKE), evidence)
 
+    def test_retained_free_text_cannot_smuggle_private_or_secret_values(self) -> None:
+        cases = (
+            "contact jane@example.test for the harness",
+            "api_key=sk_live_1234567890abcdef",
+            "https://example.test/download?token=secret-value",
+            "account_number=123456789012",
+            "Authorization: Bearer abcdefghijklmnopqrstuvwxyz",
+        )
+        for value in cases:
+            with self.subTest(value=value):
+                intake = load(INTAKE)
+                intake["scope"]["objective"] = value
+                with self.assertRaisesRegex(mod.InputError, "sensitive/private"):
+                    mod.compile_packet(intake, load(EVIDENCE))
+
+    def test_all_retained_scope_text_fields_use_same_dlp_boundary(self) -> None:
+        for field in ("model_label", "objective", "harness_label", "start_window"):
+            with self.subTest(field=field):
+                intake = load(INTAKE)
+                intake["scope"][field] = "buyer_email=private@example.test"
+                with self.assertRaisesRegex(mod.InputError, "sensitive/private"):
+                    mod.compile_packet(intake, load(EVIDENCE))
+
     def test_unknown_fields_are_rejected(self) -> None:
         intake = load(INTAKE)
         intake["buyer_email"] = "forbidden@example.invalid"
