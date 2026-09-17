@@ -12,7 +12,7 @@ import uuid
 import zipfile
 from pathlib import Path
 
-from server import ADMIN_FEE_BPS, HANDOFF_MODE, Desk, DeskError, admin_fee, compute_reward, load_example, make_server, normalize_url, opaque_ref
+from server import ADMIN_FEE_BPS, HANDOFF_MODE, Desk, DeskError, admin_fee, compute_reward, load_example, make_server, normalize_url, opaque_ref, operation_key
 
 ROOT = Path(__file__).resolve().parent
 
@@ -21,14 +21,17 @@ SECRET_SHAPED_REFERENCES = (
     '4111111111111111', '4111-1111-1111-1111', '4111.1111.1111.1111', '378282246310005', '021000021', 'ACCT-000123456789',
     'someone@example.invalid', 'https://payouts.invalid/route?token=QUERYSECRETVALUE', 'http://payouts.invalid/r',
     'www.payouts.invalid/r', 'payouts.invalid', 'payouts.invalid:8443', 'mailto:someone', 'tel:5551234567', 'sms:5551234567',
-    '555-123-4567', '555.123.4567', '123-45-6789', '5551234567', 'GB82WEST12345698765432', 'DE89370400440532013000',
+    '555-123-4567', '555.123.4567', '555/123/4567', '555:123:4567', 'R-555/123/4567', '123-45-6789', '123.45.6789', '123/45/6789',
+    '123:45:6789', '12-3456789', '12/3456789', '5551234567', '2026/0916/001', 'GB82WEST12345698765432', 'DE89370400440532013000',
     'sk_live_EXAMPLEKEY', 'sk_test_abc', 'whsec_abc', 'ghp_abcdefghijklmnop', 'xoxb-1-2-3', 'AKIAIOSFODNN7EXAMPLE',
     'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIn0', 'token:abc', 'api_key-1', 'apikey/1', 'password1', 'secret-7', 'bearer-x', 'oauth:1',
     'CVV-123', 'PIN-1234', 'routing-021000021', 'IBAN-1', 'card-9', 'ssn-1', 'ein:12', 'tax-id-7',
-    '0123456789abcdef0123456789abcdef', '41111111-11111111', 'R' * 81, 'ROUTE 1', 'ROUTE#1', 'ROUTE+1', 'ROUTE=1', '-lead', '',
+    '0123456789abcdef0123456789abcdef', '41111111-11111111', '4111/1111/1111/1111', '4111:1111:1111:1111', 'R' * 81,
+    'ROUTE 1', 'ROUTE#1', 'ROUTE+1', 'ROUTE=1', '-lead', '',
 )
 SECRET_NEEDLES = ('4111111111111111', 'QUERYSECRETVALUE', 'someone@example', 'GB82WEST', 'DE8937040044', 'sk_live_', 'whsec_',
-                  'ghp_abcdefghijklmnop', 'AKIAIOSFODNN7EXAMPLE', 'eyJhbGciOiJIUzI1NiJ9', '021000021', '378282246310005')
+                  'ghp_abcdefghijklmnop', 'AKIAIOSFODNN7EXAMPLE', 'eyJhbGciOiJIUzI1NiJ9', '021000021', '378282246310005',
+                  '555/123/4567', '555:123:4567', '123/45/6789', '123.45.6789', '12-3456789')
 OPAQUE_REFERENCES = ('ROUTE-DEMO-ALDER', 'vendor:route/2026-09-16', 'R-0001', 'acct-1Nv0FGQ9RKHgCVdK', 'po_1MoHpqLkdIwHu7ixj7XKD0Ry',
                      '9b2f6c1e-4d3a-4f8b-a1c2-7e5d3b9f0a41', 'x', 'EXT-RECEIPT-2026-09-16-01', 'PAYOUT.BATCH_44/LINE-7', 'ROUTE-2026-09-16-000001')
 
@@ -82,7 +85,8 @@ class DeskTests(unittest.TestCase):
             chunks.extend(archive.read(name) for name in archive.namelist())
         db = sqlite3.connect(self.path)
         try:
-            for digest, result in db.execute('SELECT payload_sha256, result FROM operations').fetchall():
+            for key_digest, digest, result in db.execute('SELECT id_sha256, payload_sha256, result FROM operations').fetchall():
+                self.assertTrue(re.fullmatch(r'[0-9a-f]{64}', key_digest))
                 self.assertTrue(re.fullmatch(r'[0-9a-f]{64}', digest))
                 chunks.append(result.encode('utf-8'))
         finally:
@@ -365,6 +369,39 @@ class DeskTests(unittest.TestCase):
         self.assertEqual(self.item('payables', payable)['settlement_ref'], 'EXT-RECEIPT-2026-09-16-01')
         self.assert_never_retained(*SECRET_NEEDLES)
         self.assertIn(b'EXT-RECEIPT-2026-09-16-01', self.retained_bytes())
+
+    def test_operation_ids_are_validated_and_retained_only_as_digests(self):
+        secret_id = 'op-sk_live_EXAMPLEKEY-QUERYSECRETVALUE'
+        first = self.desk.write('brand/create', {'operation_id': secret_id, 'name': 'Digest brand'})
+        self.assertEqual(self.desk.write('brand/create', {'operation_id': secret_id, 'name': 'Digest brand'}), first)
+        with self.assertRaises(DeskError) as caught:
+            self.desk.write('brand/create', {'operation_id': secret_id, 'name': 'Different brand'})
+        self.assertEqual(caught.exception.status, 409)
+        self.assert_never_retained(secret_id, 'sk_live_EXAMPLEKEY', 'QUERYSECRETVALUE')
+        self.assertEqual(operation_key(secret_id), operation_key(secret_id))
+        self.assertTrue(re.fullmatch(r'[0-9a-f]{64}', operation_key(secret_id)))
+        for bad in ('has space', 'someone@example.invalid', 'op#1', 'x' * 201, '', None, 7):
+            with self.subTest(bad=bad), self.assertRaises(DeskError):
+                self.desk.write('brand/create', {'operation_id': bad, 'name': 'Never stored'})
+        self.assertEqual(len(self.desk.snapshot()['brands']), 2)
+
+    def test_handles_and_metrics_refuse_identity_numbers_and_unknown_fields(self):
+        for bad in ('555.123.4567', '4111111111111111', '123-45-6789', '021000021', 'GB82WEST12345698765432', '2026.0916.0001'):
+            with self.subTest(handle=bad), self.assertRaises(DeskError):
+                self.write('creator/create', handle=bad, consent_on='2026-09-01', payout_route_ref='ROUTE-OK')
+        for ok in ('demo.alder', 'creator_2026', 'a.b-c_d', 'x'):
+            with self.subTest(handle=ok):
+                self.write('creator/create', handle=ok, consent_on='2026-09-01', payout_route_ref='ROUTE-OK')
+        self.assert_never_retained('555.123.4567', '4111111111111111', '123-45-6789', 'GB82WEST')
+        campaign = self.campaign()
+        submission = self.submit(campaign)
+        for bad in ({'views': 1, 'note': 'free text'}, {'views': -1}, {'views': 1.5}, {'views': True}, {'likes': 'many'}, ['views'], 'views'):
+            with self.subTest(metrics=bad), self.assertRaises(DeskError):
+                self.review(submission, metrics=bad)
+        self.assertEqual(self.item('submissions', submission)['status'], 'SUBMITTED')
+        result = self.review(submission, metrics={'views': 10, 'likes': 2})
+        self.assertEqual(result['status'], 'APPROVED')
+        self.assertEqual(self.item('submissions', submission)['metrics'], {'views': 10, 'likes': 2})
 
     def test_content_urls_are_retained_only_in_canonical_public_form(self):
         campaign = self.campaign()

@@ -40,8 +40,12 @@ REF_SECRET_PREFIX = re.compile(
     r'(?<![A-Za-z0-9])(?:(?:sk|pk|rk)[_-](?:live|test)[_-]|whsec[_-]|ghp_|gho_|ghu_|ghs_|github_pat_|xox[abpr]-|'
     r'AKIA[0-9A-Z]{12,}|ASIA[0-9A-Z]{12,}|ya29\.|eyJ[A-Za-z0-9_-]{10,}|sq0[a-z]{3}-|SG\.[A-Za-z0-9_-]{10,}|glpat-|npm_)', re.I)
 REF_HOST_SHAPE = re.compile(r'[A-Za-z0-9-]+\.[A-Za-z]{2,24}(?:$|[/:.])')
-REF_PHONE_OR_SSN_SHAPE = re.compile(r'(?<!\d)(?:\d{3}[-.]\d{3}[-.]\d{4}|\d{3}-\d{2}-\d{4})(?!\d)')
-REF_CARD_GROUP_SHAPE = re.compile(r'(?<!\d)\d{4}(?:[-.]\d{4}){2,4}(?!\d)')
+# Phone, SSN and EIN shapes with every separator the identifier grammar admits.
+REF_PHONE_OR_SSN_SHAPE = re.compile(r'(?<!\d)(?:\d{3}[-.:/]\d{3}[-.:/]\d{4}|\d{3}[-.:/]\d{2}[-.:/]\d{4}|\d{2}[-.:/]\d{7})(?!\d)')
+REF_CARD_GROUP_SHAPE = re.compile(r'(?<!\d)\d{4}(?:[-.:/]\d{4}){2,4}(?!\d)')
+REF_DIGIT_ONLY_MINIMUM = 9  # a value with no letters and this many digits is a number, not a reference
+OPERATION_ID = re.compile(r'[A-Za-z0-9][A-Za-z0-9._:/-]{0,199}')
+METRIC_KEYS = ('views', 'likes', 'comments', 'shares', 'saves')
 REF_DIGIT_RUN = re.compile(r'\d{13,}')
 REF_DIGIT_TOKEN = re.compile(r'(?<![A-Za-z0-9])\d{9,}(?![A-Za-z0-9])')
 REF_IBAN_SHAPE = re.compile(r'(?<![A-Za-z0-9])[A-Za-z]{2}\d{2}[A-Za-z0-9]{11,30}(?![A-Za-z0-9])')
@@ -84,17 +88,39 @@ def day(value, name):
     return value
 
 
+def numeric_identity_shape(value):
+    """True when a value carries a phone, SSN, EIN, card, account or IBAN digit shape under any admitted separator."""
+    return bool(REF_PHONE_OR_SSN_SHAPE.search(value) or REF_CARD_GROUP_SHAPE.search(value) or REF_DIGIT_RUN.search(value)
+                or REF_DIGIT_TOKEN.search(value) or REF_IBAN_SHAPE.search(value)
+                or (sum(ch.isdigit() for ch in value) >= REF_DIGIT_ONLY_MINIMUM and not any(ch.isalpha() for ch in value)))
+
+
 def opaque_ref(value, name):
     """Validate an opaque reference: ASCII identifier grammar minus contact, URL, account, card and secret shapes."""
     reference = text(value, name, 80)
     if not OPAQUE_REF.fullmatch(reference):
         raise DeskError(f'{name} must be an opaque reference of up to 80 ASCII letters, digits, dots, underscores, colons, slashes or hyphens')
     if (REF_FORBIDDEN_TEXT.search(reference) or REF_SECRET_PREFIX.search(reference) or REF_HOST_SHAPE.search(reference)
-            or REF_PHONE_OR_SSN_SHAPE.search(reference) or REF_CARD_GROUP_SHAPE.search(reference) or REF_DIGIT_RUN.search(reference)
-            or REF_DIGIT_TOKEN.search(reference) or REF_IBAN_SHAPE.search(reference) or REF_TOKEN_SHAPE.search(reference)
-            or (sum(ch.isdigit() for ch in reference) >= 13 and not any(ch.isalpha() for ch in reference))):
+            or REF_TOKEN_SHAPE.search(reference) or numeric_identity_shape(reference)):
         raise DeskError(f'{name} must be an opaque reference: no email, link, host, phone, account, card, IBAN, credential or token shapes')
     return reference
+
+
+def operation_key(value):
+    """Validate the client idempotency key and return the digest under which it is retained."""
+    key = text(value, 'operation_id', 200)
+    if not OPERATION_ID.fullmatch(key):
+        raise DeskError('operation_id must be an identifier of up to 200 ASCII letters, digits, dots, underscores, colons, slashes or hyphens')
+    return hashlib.sha256(key.encode('utf-8')).hexdigest()
+
+
+def metrics_block(value):
+    """Owner-entered metrics: a fixed allow-list of non-negative integer counts, nothing else."""
+    if not isinstance(value, dict):
+        raise DeskError('metrics must be an object')
+    if set(value) - set(METRIC_KEYS):
+        raise DeskError(f'metrics accepts only {list(METRIC_KEYS)}')
+    return {key: integer(value[key], f'metrics.{key}', 0) for key in METRIC_KEYS if key in value}
 
 
 def encoded(value):
@@ -222,7 +248,7 @@ class Desk:
                     id TEXT PRIMARY KEY, campaign_id TEXT NOT NULL REFERENCES campaigns(id),
                     payload TEXT NOT NULL, created TEXT NOT NULL);
                 CREATE TABLE IF NOT EXISTS operations (
-                    id TEXT PRIMARY KEY, payload_sha256 TEXT NOT NULL, result TEXT NOT NULL);
+                    id_sha256 TEXT PRIMARY KEY, payload_sha256 TEXT NOT NULL, result TEXT NOT NULL);
             ''')
 
     def connect(self):
@@ -285,20 +311,20 @@ class Desk:
     def write(self, operation, data):
         if not isinstance(data, dict):
             raise DeskError('Payload must be an object')
-        key = text(data.get('operation_id'), 'operation_id', 200)
-        # Write receipts keep only a digest of the request payload: exact replay still matches and a
-        # different payload is still refused, but raw request bodies are never retained.
+        key_digest = operation_key(data.get('operation_id'))
+        # Write receipts keep only digests of the idempotency key and the request payload: exact replay
+        # still matches and a different payload is still refused, but no raw request text is retained.
         payload_digest = hashlib.sha256(encoded({'operation': operation, 'data': data}).encode('utf-8')).hexdigest()
         db = self.connect()
         try:
             db.execute('BEGIN IMMEDIATE')
-            previous = db.execute('SELECT * FROM operations WHERE id=?', (key,)).fetchone()
+            previous = db.execute('SELECT * FROM operations WHERE id_sha256=?', (key_digest,)).fetchone()
             if previous:
                 if previous['payload_sha256'] != payload_digest:
                     raise DeskError('operation_id already belongs to a different edit', 409)
                 return json.loads(previous['result'])
             result = self._apply(db, operation, data)
-            db.execute('INSERT INTO operations VALUES (?,?,?)', (key, payload_digest, encoded(result)))
+            db.execute('INSERT INTO operations VALUES (?,?,?)', (key_digest, payload_digest, encoded(result)))
             db.commit()
             return result
         except sqlite3.IntegrityError as exc:
@@ -319,6 +345,8 @@ class Desk:
             handle = text(data.get('handle'), 'handle', 64)
             if not HANDLE.fullmatch(handle):
                 raise DeskError('handle uses letters, digits, dots, underscores or hyphens')
+            if numeric_identity_shape(handle):
+                raise DeskError('handle must be a creator handle, not a phone, SSN, card, account or IBAN number')
             consent_on = day(data.get('consent_on'), 'consent_on')
             route = opaque_ref(data.get('payout_route_ref'), 'payout_route_ref')
             identifier = uuid.uuid4().hex
@@ -404,9 +432,7 @@ class Desk:
                 problems.append('posted outside the campaign window')
             if problems:
                 raise DeskError('Not eligible for approval: ' + '; '.join(problems), 409)
-            metrics = data.get('metrics', {})
-            if not isinstance(metrics, dict):
-                raise DeskError('metrics must be an object')
+            metrics = metrics_block(data.get('metrics', {}))
             rule = json.loads(campaign['rule'])
             reward, basis = compute_reward(rule, metrics)
             remaining = campaign['budget_minor'] - self.committed(db, campaign['id'])
@@ -570,14 +596,15 @@ class Handler(BaseHTTPRequestHandler):
     def do_POST(self):
         path = urlsplit(self.path).path
         try:
-            operation = self.routes.get(path)
-            if operation is None:
-                raise DeskError('Not found', 404)
             length = int(self.headers.get('Content-Length') or 0)
             if length <= 0 or length > 5_000_000:
                 raise DeskError('Request body must be JSON up to 5 MB', 413)
+            body = self.rfile.read(length)  # drain the request before any reply so the client never sees an aborted socket
+            operation = self.routes.get(path)
+            if operation is None:
+                raise DeskError('Not found', 404)
             try:
-                data = json.loads(self.rfile.read(length).decode('utf-8'))
+                data = json.loads(body.decode('utf-8'))
             except (ValueError, UnicodeDecodeError) as exc:
                 raise DeskError('Request body must be a JSON object') from exc
             self.reply(200, encoded(self.desk.write(operation, data)))
