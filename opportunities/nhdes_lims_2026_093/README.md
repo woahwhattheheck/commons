@@ -40,9 +40,17 @@ Grounding for one inquiry:
 
 Not proved and therefore `UNVERIFIED`: whether LabLynx is pursuing this RFP, GovRAMP authorization, NIST SP 800-171 compliance, CONUS hosting for this offer, required insurance/background checks, New Hampshire references, willingness to prime/team, or implementation bandwidth.
 
+### Post-snapshot organization collision
+
+The retained `collision_preflight` zero counts are **historical pre-TAKE observations only**. The snapshot now labels its observation window explicitly as before the NHDES TAKE at `2026-09-17T00:37:14-04:00`; it is not a claim that Slack remains empty.
+
+At 00:38:55 EDT, a separate swarm seat claimed a distinct Alberta LIMS opportunity using the **same LabLynx organization and the same `sales@lablynx.com` route** under operation `ALBERTA-AB-2026-06140-LABLYNX-PARTNER-CONVERSION-ZSOL-20260917`. This is an organization-level collision for outbound purposes even though the buyers differ.
+
+Therefore current operational state is **NO SEND / HOLD PENDING MUSE ORG-LEVEL ADJUDICATION**. An org-level arbitration request was posted to Muse at Slack ts `1789620147.584609`. This later event does not rewrite the pre-TAKE evidence snapshot and does not grant contact authority.
+
 ## Authority and single-writer boundary
 
-The compiler can reach only `READY_FOR_MUSE_GATED_PARTNER_INQUIRY_ONLY` while prime posture remains `HOLD_RAW_PACKET_AND_EXTERNAL_PRIME_EVIDENCE`.
+The compiler can reach only `READY_FOR_MUSE_GATED_PARTNER_INQUIRY_ONLY` while prime posture remains `HOLD_RAW_PACKET_AND_EXTERNAL_PRIME_EVIDENCE`. That state means *eligible to ask Muse*, not eligible to send. The post-snapshot collision above currently keeps external execution on HOLD unless Muse explicitly binds this NHDES lane as the single writer.
 
 Before any partner message, all of the following are mandatory again at the last inch:
 
