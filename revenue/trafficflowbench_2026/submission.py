@@ -19,6 +19,7 @@ RECEIPT_FIELDS = frozenset({
     "schema",
     "upstreamCommit",
     "submissionKeySha256",
+    "inputSha256",
     "rows",
     "gaps",
     "requireComplete",
@@ -65,8 +66,9 @@ def _number(value: object, name: str, *, nonnegative: bool = True) -> float:
     return out
 
 
-def _table(rows: Iterable[Mapping[str, object]], task: str) -> dict[tuple[str, ...], tuple[float, ...]]:
+def _table(rows: Iterable[Mapping[str, object]], task: str) -> tuple[dict[tuple[str, ...], tuple[float, ...]], str]:
     table: dict[tuple[str, ...], tuple[float, ...]] = {}
+    records: list[tuple[tuple[str, ...], dict[str, object]]] = []
     for row in rows:
         key = _key(row, task)
         if key in table:
@@ -76,13 +78,22 @@ def _table(rows: Iterable[Mapping[str, object]], task: str) -> dict[tuple[str, .
             raise ValueError("mask_regime must be R1, R2, or R3")
         if task == "queue" and vals[0] not in (0.0, 1.0):
             raise ValueError("queue_pred must be 0 or 1")
+        record: dict[str, object] = {"task": task}
+        record.update(dict(zip(KEYS[task], key)))
+        record.update(dict(zip(VALUES[task], vals)))
         if task == "odme":
             for zone in ("origin_zone", "destination_zone"):
                 raw = row.get(zone)
                 if raw is None or not str(raw).strip():
                     raise ValueError(f"{zone} is required for ODME rows")
+                record[zone] = str(raw)
         table[key] = vals
-    return table
+        records.append((key, record))
+    hasher = hashlib.sha256()
+    for _, record in sorted(records, key=lambda item: item[0]):
+        hasher.update(canonical_json_bytes(record))
+        hasher.update(b"\n")
+    return table, hasher.hexdigest()
 
 
 def _feed_key_digest(hasher: "hashlib._Hash", record: Mapping[str, object]) -> None:
@@ -115,11 +126,11 @@ def compile_submission(
     """
     if require_complete is not True:
         raise ValueError("source-safe compiler requires complete predictions")
-    tables = {
-        "state": _table(state_rows, "state"),
-        "queue": _table(queue_rows, "queue"),
-        "odme": _table(odme_rows, "odme"),
-    }
+    state_table, state_sha = _table(state_rows, "state")
+    queue_table, queue_sha = _table(queue_rows, "queue")
+    odme_table, odme_sha = _table(odme_rows, "odme")
+    tables = {"state": state_table, "queue": queue_table, "odme": odme_table}
+    input_sha256 = {"state": state_sha, "queue": queue_sha, "odme": odme_sha}
     buffer = io.StringIO(newline="")
     writer = csv.DictWriter(buffer, fieldnames=list(OUT_COLUMNS), lineterminator="\n")
     writer.writeheader()
@@ -158,6 +169,7 @@ def compile_submission(
         "schema": "trafficflowbench-local-submission/v2",
         "upstreamCommit": UPSTREAM["commit"],
         "submissionKeySha256": key_hasher.hexdigest(),
+        "inputSha256": input_sha256,
         "rows": row_count,
         "gaps": gaps,
         "requireComplete": True,
@@ -178,6 +190,10 @@ def verify_compiled_submission(
     payload: str,
     receipt: Mapping[str, object],
     submission_key_rows: Iterable[Mapping[str, object]],
+    *,
+    state_rows: Iterable[Mapping[str, object]],
+    queue_rows: Iterable[Mapping[str, object]],
+    odme_rows: Iterable[Mapping[str, object]],
 ) -> bool:
     """Fail-closed local verifier bound to the exact ordered submission key."""
     if not isinstance(receipt, Mapping) or set(receipt) != RECEIPT_FIELDS:
@@ -187,6 +203,11 @@ def verify_compiled_submission(
     if receipt.get("upstreamCommit") != UPSTREAM["commit"]:
         return False
     if not _is_sha256(receipt.get("submissionKeySha256")) or not _is_sha256(receipt.get("csvSha256")):
+        return False
+    input_sha256 = receipt.get("inputSha256")
+    if not isinstance(input_sha256, Mapping) or set(input_sha256) != set(KEYS):
+        return False
+    if any(not _is_sha256(input_sha256[task]) for task in KEYS):
         return False
     if not _is_sha256(receipt.get("receiptSha256")) or receipt.get("receiptSha256") != _receipt_digest(receipt):
         return False
@@ -204,6 +225,21 @@ def verify_compiled_submission(
     if hashlib.sha256(payload.encode("utf-8")).hexdigest() != receipt["csvSha256"]:
         return False
     try:
+        key_material = list(submission_key_rows)
+        state_material = list(state_rows)
+        queue_material = list(queue_rows)
+        odme_material = list(odme_rows)
+        expected_payload, expected_receipt = compile_submission(
+            key_material,
+            state_rows=state_material,
+            queue_rows=queue_material,
+            odme_rows=odme_material,
+        )
+    except (AttributeError, TypeError, ValueError):
+        return False
+    if payload != expected_payload or dict(receipt) != expected_receipt:
+        return False
+    try:
         rows = list(csv.DictReader(io.StringIO(payload)))
     except csv.Error:
         return False
@@ -213,7 +249,7 @@ def verify_compiled_submission(
     key_hasher = hashlib.sha256()
     key_count = 0
     try:
-        for key_count, key_row in enumerate(submission_key_rows, start=1):
+        for key_count, key_row in enumerate(key_material, start=1):
             if key_count > len(rows):
                 return False
             record, _ = _normalize_key_record(key_row)
