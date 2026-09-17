@@ -19,7 +19,7 @@ class RetainedCpcaPartnerReadinessTests(unittest.TestCase):
         self.assertEqual(0, proc.returncode, output)
         match = re.search(r"Ran (\d+) tests?", output)
         self.assertIsNotNone(match, output)
-        self.assertGreaterEqual(int(match.group(1)), 13, output)
+        self.assertGreaterEqual(int(match.group(1)), 18, output)
         self.assertRegex(output, r"\bOK\b")
 
     def test_nested_suite_normal_and_optimized(self):
