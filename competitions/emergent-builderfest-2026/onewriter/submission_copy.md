@@ -23,7 +23,7 @@ OneWriter also keeps outcomes truthful:
 - a matching-route bounce is a dead route, not buyer rejection, and does not automatically open a fallback alias;
 - stale leases can be recovered after expiry;
 - only retained human evidence reopens a bounded next action;
-- retained provider/human evidence ids must be exact trimmed nonempty 1–240 character values with no ASCII controls;
+- retained provider/human evidence ids must be exact trimmed nonempty 1–240 character values with no ASCII controls, Unicode category-C codepoints, or non-category-C Default_Ignorable codepoints;
 - the post-reopen claimant may deliberately select a new route;
 - every transition produces an immutable receipt.
 
