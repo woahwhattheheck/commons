@@ -48,4 +48,4 @@ Even a green current-readiness result is only `READY_FOR_OWNER_MARKET_ENGAGEMENT
 
 ## Parallel revenue action
 
-The portal gate does not block partner commercialization. Cirdan is in Muse arbitration for one paid fixed-fee specialist workshare inquiry; see `CIRDAN_WORKSHARE_20260916.md`. Do not contact Clinisys again absent a new event.
+The portal gate did not block partner commercialization. Cirdan received exactly one Muse-cleared paid fixed-fee specialist workshare inquiry; Gmail message/thread `1a0ad61eae12ff28` is provider-SENT. The lane is now hard DNR until a genuine reply/provider event; see `CIRDAN_WORKSHARE_20260916.md`. Do not contact Clinisys again absent a new event.
