@@ -34,27 +34,17 @@ def _expected_total(normalized: dict[str, Any], *, _error=GateError) -> int:
     return total
 
 
-def _decision(
-    normalized: dict[str, Any],
-    now: str,
-    *,
-    _commercial_generation_fn=_commercial_generation,
-    _expected_total_fn=_expected_total,
-    _dt_fn=_dt,
-) -> tuple[str, list[str]]:
+def _decision(normalized: dict[str, Any], now: str, *, _commercial_generation_fn=_commercial_generation, _expected_total_fn=_expected_total, _dt_fn=_dt) -> tuple[str, list[str]]:
     reasons: list[str] = []
     route = normalized["route_control"]
     if route["state"] == "DNR":
         return DNR, ["ROUTE_DNR"]
-
     baseline = normalized["baseline"]
     if baseline["status"] != "ACCEPTED":
         return HOLD_ACCEPTANCE, ["BASELINE_NOT_ACCEPTED"]
-
     pending_changes = [x["change_order_id"] for x in normalized["change_orders"] if x["status"] == "PENDING"]
     if pending_changes:
         return HOLD_EVIDENCE, [f"PENDING_CHANGE_ORDER:{x}" for x in pending_changes]
-
     commercial_generation = _commercial_generation_fn(normalized)
     bad_milestones = []
     for row in normalized["milestones"]:
@@ -64,7 +54,6 @@ def _decision(
             bad_milestones.append(f"MILESTONE_NOT_BUYER_HUMAN_ACCEPTED:{row['milestone_id']}")
     if bad_milestones:
         return HOLD_ACCEPTANCE, bad_milestones
-
     expected = _expected_total_fn(normalized)
     payment = normalized["payment"]
     payment_bad = (
@@ -77,14 +66,12 @@ def _decision(
     )
     if payment_bad:
         return HOLD_PAYMENT, ["PAYMENT_NOT_FINAL_EXACT_COMMERCIAL_LINEAGE"]
-
     now_dt = _dt_fn(now)
     window = normalized["renewal_window"]
     if now_dt < _dt_fn(window["opens_at"]):
         return HOLD_WINDOW, ["RENEWAL_WINDOW_NOT_OPEN"]
     if now_dt > _dt_fn(window["closes_at"]):
         return HOLD_WINDOW, ["RENEWAL_WINDOW_CLOSED"]
-
     evidence_reasons = []
     for row in normalized["support_findings"]:
         if row["status"] == "OPEN" and row["severity"] in {"HIGH", "BLOCKING"}:
@@ -95,30 +82,14 @@ def _decision(
     for row in normalized["expansion_hypotheses"]:
         if row["commercial_state"] != "PROPOSED_NOT_ACCEPTED":
             evidence_reasons.append(f"HYPOTHESIS_STATE_NOT_PROPOSED_NOT_ACCEPTED:{row['hypothesis_id']}")
-        if any(row[key] for key in (
-            "buyer_interest_claimed", "roi_claimed", "savings_claimed", "usage_claimed",
-            "urgency_claimed", "expansion_approved_claimed"
-        )):
+        if any(row[key] for key in ("buyer_interest_claimed", "roi_claimed", "savings_claimed", "usage_claimed", "urgency_claimed", "expansion_approved_claimed")):
             evidence_reasons.append(f"HYPOTHESIS_UNSUPPORTED_CLAIM:{row['hypothesis_id']}")
     if evidence_reasons:
         return HOLD_EVIDENCE, sorted(evidence_reasons)
-
     return READY, []
 
 
-def _compile(
-    packet: dict[str, Any],
-    now: str,
-    *,
-    _ts_fn=_ts,
-    _normalize_fn=_normalize,
-    _decision_fn=_decision,
-    _commercial_generation_fn=_commercial_generation,
-    _expected_total_fn=_expected_total,
-    _digest_fn=digest,
-    _authority_flags_fn=authority_flags,
-    _receipt_schema=RECEIPT_SCHEMA,
-) -> dict[str, Any]:
+def _compile(packet: dict[str, Any], now: str, *, _ts_fn=_ts, _normalize_fn=_normalize, _decision_fn=_decision, _commercial_generation_fn=_commercial_generation, _expected_total_fn=_expected_total, _digest_fn=digest, _authority_flags_fn=authority_flags, _receipt_schema=RECEIPT_SCHEMA) -> dict[str, Any]:
     now = _ts_fn(now, "trusted_now")
     normalized = _normalize_fn(packet, now)
     state, reasons = _decision_fn(normalized, now)
@@ -133,50 +104,19 @@ def _compile(
         "effective_total_cents": _expected_total_fn(normalized),
         "currency": normalized["baseline"]["currency"],
         "input_digest": _digest_fn(normalized),
-        "commercial_lineage_digest": _digest_fn({
-            "baseline": normalized["baseline"],
-            "change_orders": normalized["change_orders"],
-        }),
+        "commercial_lineage_digest": _digest_fn({"baseline": normalized["baseline"], "change_orders": normalized["change_orders"]}),
         "baseline_id": normalized["baseline"]["baseline_id"],
-        "accepted_milestone_ids": [
-            x["milestone_id"] for x in normalized["milestones"]
-            if x["status"] == "BUYER_HUMAN_ACCEPTED"
-        ],
+        "accepted_milestone_ids": [x["milestone_id"] for x in normalized["milestones"] if x["status"] == "BUYER_HUMAN_ACCEPTED"],
         "proposed_expansion_hypothesis_ids": [x["hypothesis_id"] for x in normalized["expansion_hypotheses"]],
-        "route": {
-            "route_id": normalized["route_control"]["route_id"],
-            "collision_key": normalized["route_control"]["collision_key"],
-            "muse_key": normalized["route_control"]["muse_key"],
-            "state": normalized["route_control"]["state"],
-        },
-        "truth": {
-            "expansion_hypotheses_remain": "PROPOSED_NOT_ACCEPTED",
-            "buyer_signal_required_for_this_state": False,
-            "ready_means": "OWNER_REVIEW_ONLY",
-        },
+        "route": {"route_id": normalized["route_control"]["route_id"], "collision_key": normalized["route_control"]["collision_key"], "muse_key": normalized["route_control"]["muse_key"], "state": normalized["route_control"]["state"]},
+        "truth": {"expansion_hypotheses_remain": "PROPOSED_NOT_ACCEPTED", "buyer_signal_required_for_this_state": False, "ready_means": "OWNER_REVIEW_ONLY"},
         "authority": _authority_flags_fn(),
     }
     result["receipt_digest"] = _digest_fn(result)
     return result
 
 
-def _build_current_api(
-    *,
-    _datetime_cls=_stdlib_datetime,
-    _timezone_obj=_stdlib_timezone,
-    _compiler=_compile,
-    _decision_source=_decision,
-    _commercial_generation_source=_commercial_generation,
-    _expected_total_source=_expected_total,
-    _function_type=_FunctionType,
-    _common=_common_module,
-    _model=_model_module,
-    _trusted_builtins_fn=_trusted_builtins_copy,
-    _receipt_schema=RECEIPT_SCHEMA,
-    _state_values=STATES,
-    _gate_error=GateError,
-    _hold_evidence=HOLD_EVIDENCE,
-):
+def _build_current_api(*, _datetime_cls=_stdlib_datetime, _timezone_obj=_stdlib_timezone, _compiler=_compile, _decision_source=_decision, _commercial_generation_source=_commercial_generation, _expected_total_source=_expected_total, _function_type=_FunctionType, _common=_common_module, _model=_model_module, _trusted_builtins_fn=_trusted_builtins_copy, _receipt_schema=RECEIPT_SCHEMA, _state_values=STATES, _gate_error=GateError, _hold_evidence=HOLD_EVIDENCE):
     """Build the process-first-load current semantic API/error generation."""
     sealed_builtins = _trusted_builtins_fn()
     trusted_dict = sealed_builtins["dict"]
@@ -193,36 +133,23 @@ def _build_current_api(
 
     common_globals = trusted_dict(trusted_vars(_common))
     common_globals["__builtins__"] = trusted_dict(sealed_builtins)
-
-    common_helpers = (
-        "_keys", "_string", "_bool", "_int", "_enum", "_sha", "_ts", "_dt", "_age", "_uri", "_source"
-    )
+    common_helpers = ("_keys", "_string", "_bool", "_int", "_enum", "_sha", "_ts", "_dt", "_age", "_uri", "_source")
     for name in common_helpers:
         common_globals[name] = _clone_function(trusted_getattr(_common, name), common_globals)
-
     model_globals = trusted_dict(trusted_vars(_model))
     model_globals["__builtins__"] = trusted_dict(sealed_builtins)
     for name in common_helpers:
         model_globals[name] = common_globals[name]
-    for name in (
-        "BASELINE_STATES", "CHANGE_STATES", "MILESTONE_STATES", "PAYMENT_STATES",
-        "PAYMENT_CLASSES", "SUPPORT_SEVERITIES", "FINDING_STATES", "GAP_STATES",
-        "ROUTE_STATES", "HYPOTHESIS_BASES",
-    ):
+    for name in ("BASELINE_STATES", "CHANGE_STATES", "MILESTONE_STATES", "PAYMENT_STATES", "PAYMENT_CLASSES", "SUPPORT_SEVERITIES", "FINDING_STATES", "GAP_STATES", "ROUTE_STATES", "HYPOTHESIS_BASES"):
         model_globals[name] = trusted_frozenset(model_globals[name])
     sealed_normalize = _clone_function(_model._normalize, model_globals)
-
     engine_globals = trusted_dict(trusted_globals())
     engine_globals["__builtins__"] = trusted_dict(sealed_builtins)
     sealed_commercial_generation = _clone_function(_commercial_generation_source, engine_globals)
     sealed_expected_total = _clone_function(_expected_total_source, engine_globals)
     decision_globals = trusted_dict(engine_globals)
     sealed_decision = _clone_function(_decision_source, decision_globals)
-    sealed_decision.__kwdefaults__.update({
-        "_commercial_generation_fn": sealed_commercial_generation,
-        "_expected_total_fn": sealed_expected_total,
-        "_dt_fn": common_globals["_dt"],
-    })
+    sealed_decision.__kwdefaults__.update({"_commercial_generation_fn": sealed_commercial_generation, "_expected_total_fn": sealed_expected_total, "_dt_fn": common_globals["_dt"]})
 
     json_dumps = _common.json.dumps
     sha256 = _common.hashlib.sha256
@@ -277,7 +204,7 @@ def _build_current_api(
                 child_count = builtin_len(current)
                 if child_count > max_plain_nodes - budget["nodes"]:
                     raise _gate_error(f"{where}: node budget exceeded")
-                spend(bytes_=2 + max(0, child_count - 1))
+                spend(bytes_=2 + (child_count - 1 if child_count else 0))
                 frozen: dict[str, Any] = {}
                 for key, item in current.items():
                     if builtin_type(key) is not builtin_str:
@@ -293,7 +220,7 @@ def _build_current_api(
                 child_count = builtin_len(current)
                 if child_count > max_plain_nodes - budget["nodes"]:
                     raise _gate_error(f"{where}: node budget exceeded")
-                spend(bytes_=2 + max(0, child_count - 1))
+                spend(bytes_=2 + (child_count - 1 if child_count else 0))
                 frozen = []
                 for index, item in builtin_enumerate(current):
                     frozen.append(freeze(item, f"{where}[{index}]", depth + 1))
@@ -314,7 +241,7 @@ def _build_current_api(
             if kind is builtin_int:
                 if current < -max_abs_integer or current > max_abs_integer:
                     raise _gate_error(f"{where}: integer outside supported range")
-                spend(bytes_=builtin_len(str(current)))
+                spend(bytes_=builtin_len(builtin_str(current)))
                 return current
             raise _gate_error(f"{where}: exact built-in plain-JSON value required")
 
@@ -327,18 +254,7 @@ def _build_current_api(
         return projected
 
     def _sealed_compile(packet: dict[str, Any], now: str) -> dict[str, Any]:
-        return _compiler(
-            packet,
-            now,
-            _ts_fn=common_globals["_ts"],
-            _normalize_fn=sealed_normalize,
-            _decision_fn=sealed_decision,
-            _commercial_generation_fn=sealed_commercial_generation,
-            _expected_total_fn=sealed_expected_total,
-            _digest_fn=_digest_fn,
-            _authority_flags_fn=_authority_flags_fn,
-            _receipt_schema=_receipt_schema,
-        )
+        return _compiler(packet, now, _ts_fn=common_globals["_ts"], _normalize_fn=sealed_normalize, _decision_fn=sealed_decision, _commercial_generation_fn=sealed_commercial_generation, _expected_total_fn=sealed_expected_total, _digest_fn=_digest_fn, _authority_flags_fn=_authority_flags_fn, _receipt_schema=_receipt_schema)
 
     def _clock_text() -> str:
         return _datetime_cls.now(_timezone_obj.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -361,36 +277,20 @@ def _build_current_api(
         evaluated_at = supplied.get("evaluated_at")
         if builtin_type(evaluated_at) is not builtin_str:
             raise _gate_error("receipt: evaluated_at required")
-
         try:
             historical = _sealed_compile(frozen_packet, evaluated_at)
         except _gate_error as exc:
             raise _gate_error(f"receipt: historical recompile failed: {exc}") from exc
         if _canonical(historical) != _canonical(supplied):
             raise _gate_error("receipt: semantic mismatch")
-
         current_now = _clock_text()
         if common_globals["_dt"](evaluated_at) > common_globals["_dt"](current_now):
             raise _gate_error("receipt: evaluated_at is in the future")
         try:
             current = _sealed_compile(frozen_packet, current_now)
         except _gate_error as exc:
-            return {
-                "integrity_valid": True,
-                "prior_state": historical["state"],
-                "current_state": _hold_evidence,
-                "current_reasons": [f"CURRENT_REEVALUATION_FAILED:{exc}"],
-                "current_receipt_digest": None,
-                "still_current": False,
-            }
-        return {
-            "integrity_valid": True,
-            "prior_state": historical["state"],
-            "current_state": current["state"],
-            "current_reasons": current["reasons"],
-            "current_receipt_digest": current["receipt_digest"],
-            "still_current": _canonical(_project(historical)) == _canonical(_project(current)),
-        }
+            return {"integrity_valid": True, "prior_state": historical["state"], "current_state": _hold_evidence, "current_reasons": [f"CURRENT_REEVALUATION_FAILED:{exc}"], "current_receipt_digest": None, "still_current": False}
+        return {"integrity_valid": True, "prior_state": historical["state"], "current_state": current["state"], "current_reasons": current["reasons"], "current_receipt_digest": current["receipt_digest"], "still_current": _canonical(_project(historical)) == _canonical(_project(current))}
 
     return compile_current, verify_receipt, _gate_error
 
@@ -412,8 +312,6 @@ def _read(path: Path) -> dict[str, Any]:
     try:
         return load_json(path.read_bytes(), str(path))
     except ValueError as exc:
-        if isinstance(exc, GateError):
-            raise
         raise GateError(str(exc)) from exc
 
 
