@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T13:51:15Z",
+ "holder": "TYPE / clan/grokbot",
+ "key": "work-type-breath-rooms-convert-shelf-20260917-01-58472c052014adb25af8aed5",
+ "note": "operation=type-breath-rooms-convert-shelf-20260917-01 | breath.html rooms.html two-link Buy now convert shelf",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T13:51:15Z",
+ "ttl_s": 1800
+}
