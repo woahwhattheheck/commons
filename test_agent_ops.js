@@ -91,7 +91,14 @@ ops.dispatchOperation(packet, function (url, options) {
 
 const html = fs.readFileSync(path.join(__dirname, "agent-ops.html"), "utf8");
 for (const source of Object.values(ops.SOURCES)) assert(html.includes("agent-ops.js") && source.startsWith("./"));
-for (const phrase of ["Every agent.", "collision", "SHA-pinned", "$49", "$2,500", "reading checkout state", "No purchase or buyer is claimed", "Dispatch through Commons", "CARRIER_ACCEPTED", "READY_NOT_PROVISIONED"]) assert(html.includes(phrase), phrase);
+for (const phrase of ["Every agent.", "collision", "SHA-pinned", "$49", "$2,500", "Chargeable Stripe checkout", "No purchase or buyer is claimed", "Dispatch through Commons", "CARRIER_ACCEPTED", "READY_NOT_PROVISIONED"]) assert(html.includes(phrase), phrase);
+assert(!html.includes("reading checkout state"), "checkout copy must not stay on forever-loading");
+assert(html.includes("https://buy.stripe.com/7sYdR8bgVezD8qBgJs43S0u"), "operator Payment Link");
+assert(html.includes("https://buy.stripe.com/4gMcN4gBffDH8qBfFo43S0v"), "foundry Payment Link");
+assert(html.includes('id="hero-pilot-cta"'));
+assert(html.includes("<noscript>"));
+assert(html.includes("mailto:tokenjunkielabs@gmail.com?subject=Commons%20Agent%20Ops%20Operator"));
+assert(html.includes("mailto:tokenjunkielabs@gmail.com?subject=Commons%20Agent%20Ops%20Foundry"));
 assert(!/\b(authentication|authorization) required\b/i.test(html));
 assert(html.includes('href="./index.html">Commons home</a>'));
 assert(!/maxlength/.test(html));

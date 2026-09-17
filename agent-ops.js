@@ -193,16 +193,26 @@
       var state = checkoutState(view.checkout, sku);
       var cta = document.getElementById(sku + "-cta");
       var label = document.getElementById(sku + "-payment-state");
+      var existing = cta ? String(cta.getAttribute("href") || "") : "";
+      var staticStripe = /^https:\/\/(?:buy|donate)\.stripe\.com\/[A-Za-z0-9]+$/.test(existing);
       if (cta) {
-        cta.href = state.chargeable ? state.url : state.fallbackUrl;
-        cta.textContent = state.chargeable ? "Buy " + sku + " now" : state.fallbackLabel;
-        cta.dataset.checkoutState = state.chargeable ? "CHARGEABLE" : "CONTACT_ONLY";
+        if (state.chargeable && state.url) {
+          cta.href = state.url;
+          cta.textContent = "Buy " + sku + " now";
+          cta.dataset.checkoutState = "CHARGEABLE";
+        } else if (staticStripe) {
+          cta.dataset.checkoutState = "STATIC_CHARGEABLE";
+        } else {
+          cta.href = state.fallbackUrl;
+          cta.textContent = state.fallbackLabel;
+          cta.dataset.checkoutState = "CONTACT_ONLY";
+        }
       }
-      text(label, state.chargeable ? "provider-verified checkout" : state.reason);
+      text(label, (state.chargeable || staticStripe) ? "Chargeable Stripe checkout" : state.reason);
       return state;
     });
     var liveCount = checkoutStates.filter(function (state) { return state.chargeable; }).length;
-    text(document.getElementById("checkout-truth"), liveCount ? liveCount + " provider-verified checkout route" + (liveCount === 1 ? " is" : "s are") + " active. A click is not payment; cash remains separately measured." : "No provider-verified checkout route is active. Contact is the current intake road; no purchase or buyer is claimed.");
+    text(document.getElementById("checkout-truth"), liveCount ? liveCount + " provider-verified checkout route" + (liveCount === 1 ? " is" : "s are") + " active. A click is not payment; cash remains separately measured. No purchase or buyer is claimed by this page." : "Static Payment Links remain clickable. Checkout JSON did not confirm chargeability this load. A click is not payment; cash remains separately measured. No purchase or buyer is claimed by this page.");
   }
 
   function renderReceipts(document, receipts) {
@@ -221,7 +231,10 @@
     var keys = Object.keys(SOURCES);
     Promise.all(keys.map(function (key) { return fetcher(SOURCES[key], { cache: "no-store" }).then(function (response) { if (!response.ok) throw new Error(key + " HTTP " + response.status); return response.json(); }); }))
       .then(function (values) { var data = {}; keys.forEach(function (key, i) { data[key] = values[i]; }); var now = Date.now(); render(document, snapshot(data, now), now); })
-      .catch(function (error) { text(document.getElementById("snapshot-note"), "Live projection unavailable: " + error.message + ". Existing links remain usable."); });
+      .catch(function (error) {
+        text(document.getElementById("snapshot-note"), "Live projection unavailable: " + error.message + ". Existing links remain usable.");
+        text(document.getElementById("checkout-truth"), "Static Payment Links remain clickable. Live projection did not load. A click is not payment; cash remains separately measured. No purchase or buyer is claimed by this page.");
+      });
 
     var storage = typeof localStorage !== "undefined" ? localStorage : { getItem: function () { return null; }, setItem: function () {} };
     renderReceipts(document, readReceipts(storage));
