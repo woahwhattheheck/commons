@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import datetime, timezone
 import hashlib
 import json
 import re
@@ -8,8 +8,9 @@ from typing import Any, Mapping
 
 INPUT_SCHEMA = "provider-route-authority-input/v1"
 RECEIPT_SCHEMA = "provider-route-authority-receipt/v1"
+EVIDENCE_TRUST = "CALLER_ASSERTED_UNAUTHENTICATED"
 
-ALLOWED_DECISIONS = {"ALLOW_ONE_SEND", "HARD_DNR", "DEAD_ROUTE", "HOLD_UNKNOWN", "INBOUND_ONLY"}
+ALLOWED_DECISIONS = {"CANDIDATE_ONE_SEND", "HARD_DNR", "DEAD_ROUTE", "HOLD_UNKNOWN", "INBOUND_ONLY"}
 _EVENT_SOURCE = {
     "SLACK_TAKE": "SLACK", "MUSE_CLEAR": "MUSE", "ROUTE_VERIFIED": "PUBLIC_EVIDENCE",
     "PROVIDER_SENT": "PROVIDER", "HARD_BOUNCE": "PROVIDER", "SOFT_BOUNCE": "PROVIDER",
@@ -109,7 +110,7 @@ def _timestamp(value: Any, where: str) -> str:
         raise AuthorityError(f"{where} must be ISO-8601") from None
     if dt.tzinfo is None or dt.utcoffset() is None:
         raise AuthorityError(f"{where} must include a timezone")
-    return value
+    return dt.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
 def _timestamp_key(value: str) -> datetime:
@@ -275,16 +276,36 @@ def evaluate(normalized: Mapping[str, Any]) -> tuple[str, list[str], dict[str, A
         return "HOLD_UNKNOWN", ["NO_POST_TAKE_MUSE_CLEAR"], provider_truth
     if verified is None or not _at_or_after(verified, take):
         return "HOLD_UNKNOWN", ["NO_POST_TAKE_ROUTE_VERIFICATION"], provider_truth
-    return "ALLOW_ONE_SEND", ["POST_TAKE_MUSE_CLEAR", "POST_TAKE_ROUTE_VERIFIED", "NO_PROVIDER_OR_HUMAN_HOLD"], provider_truth
+    return "CANDIDATE_ONE_SEND", [
+        "POST_TAKE_MUSE_CLEAR",
+        "POST_TAKE_ROUTE_VERIFIED",
+        "NO_PROVIDER_OR_HUMAN_HOLD",
+        "CALLER_EVIDENCE_UNAUTHENTICATED",
+        "LIVE_SLACK_MUSE_PROVIDER_RECENSUS_REQUIRED",
+    ], provider_truth
 
 
 def compile_authority(raw: Mapping[str, Any]) -> dict[str, Any]:
     normalized = normalize_input(raw)
     decision, reasons, provider_truth = evaluate(normalized)
     digest = hashlib.sha256(canonical_json(normalized).encode("utf-8")).hexdigest()
-    return {"schema": RECEIPT_SCHEMA, "subject": normalized["subject"], "decision": decision,
-            "reasons": reasons, "provider_truth": provider_truth, "event_count": len(normalized["events"]),
-            "evidence_digest_sha256": digest}
+    return {
+        "schema": RECEIPT_SCHEMA,
+        "subject": normalized["subject"],
+        "decision": decision,
+        "reasons": reasons,
+        "provider_truth": provider_truth,
+        "event_count": len(normalized["events"]),
+        "evidence_digest_sha256": digest,
+        "evidence_trust": EVIDENCE_TRUST,
+        "authority": {
+            "external_send_authorized": False,
+            "muse_request_authorized": False,
+            "provider_mutation_authorized": False,
+            "payment_mutation_authorized": False,
+            "revenue_recognition_authorized": False,
+        },
+    }
 
 
 def verify_authority(raw: Mapping[str, Any], receipt: Mapping[str, Any]) -> None:
