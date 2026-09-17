@@ -48,24 +48,31 @@ def _build_strict_loader():
 loads_strict = _build_strict_loader()
 
 
-def _load_manifest() -> dict[str, Any]:
-    manifest = loads_strict(
-        (Path(__file__).resolve().parent / "source_manifest.json").read_text(
-            encoding="utf-8"
-        )
+def _load_json_object(name: str) -> dict[str, Any]:
+    value = loads_strict(
+        (Path(__file__).resolve().parent / name).read_text(encoding="utf-8")
     )
-    if type(manifest) is not dict:
-        raise CarrierError("source manifest must be an object")
-    return manifest
+    if type(value) is not dict:
+        raise CarrierError(f"{name} must be a JSON object")
+    return value
 
 
-def _build_semantic_generation(source: dict[str, Any]):
-    """Capture one immutable-by-construction semantic generation.
+def _load_manifest() -> dict[str, Any]:
+    return _load_json_object("source_manifest.json")
 
-    The returned functions close over primitive values, immutable tuples, compiled
-    regexes, and captured stdlib/helper callables. Public entrypoints are later
-    wrapped around these closures, so rebinding module globals/helpers after import
-    cannot change what compile and verify mean together.
+
+def _load_integrity_boundary() -> dict[str, Any]:
+    return _load_json_object("INTEGRITY_BOUNDARY.json")
+
+
+def _build_semantic_generation(source: dict[str, Any], boundary: dict[str, Any]):
+    """Capture a cooperative semantic generation.
+
+    The returned runtime functions close over primitive values, immutable tuples,
+    compiled regexes, and captured stdlib/helper callables. This prevents ordinary
+    module-global/helper rebinding from changing compiler/verifier meaning together.
+    It is deliberately not a hostile same-process Python integrity boundary; the
+    exact non-claim is emitted in every packet and documented by the boundary file.
     """
 
     error_cls = CarrierError
@@ -131,6 +138,21 @@ def _build_semantic_generation(source: dict[str, Any]):
         "submission_authorized": False,
         "travel_spend_authorized": False,
     }
+    expected_boundary = {
+        "schema": "tt-one-lab-lims-integrity-boundary/v1",
+        "public_api_boundary": "COOPERATIVE_IN_PROCESS_ONLY_NOT_HOSTILE_RUNTIME",
+        "resists_module_global_rebinding": True,
+        "resists_helper_symbol_rebinding": True,
+        "resists_public_compiler_symbol_rebinding_in_verifier": True,
+        "resists_cpython_closure_cell_mutation": False,
+        "hostile_same_process_python_supported": False,
+        "machine_strong_same_process_integrity_claimed": False,
+        "externally_isolated_source_verified_runner_provided": False,
+        "caller_supplied_evaluation_time": "REPLAY_ONLY_NOT_CURRENT",
+        "current_submission_authority_claimed": False,
+        "required_external_boundary_for_hostile_runtime": "Run reviewed source in a separately trusted, source-verified execution environment outside the potentially hostile Python process.",
+        "rationale": "CPython exposes writable function closure cells and mutable function/runtime objects to code already executing in the same interpreter. This carrier hardens accidental/cooperative rebinding but does not claim to defend against arbitrary reflective mutation by hostile same-process code.",
+    }
 
     def canonical(value: Any) -> bytes:
         return json_dumps(
@@ -145,6 +167,11 @@ def _build_semantic_generation(source: dict[str, Any]):
         return sha256(canonical(value)).hexdigest()
 
     source_digest = digest(source)
+    if boundary != expected_boundary:
+        raise error_cls("integrity boundary sidecar must match code-owned contract")
+    boundary_digest = digest(expected_boundary)
+    boundary_items = tuple_(sorted_(expected_boundary.items()))
+
     if type_(source.get("buyer_facts")) is not dict_:
         raise error_cls("source buyer_facts must be an object")
     if source.get("authority") != expected_authority:
@@ -399,6 +426,9 @@ def _build_semantic_generation(source: dict[str, Any]):
     def authority_projection() -> dict[str, bool]:
         return dict_(authority_items)
 
+    def boundary_projection() -> dict[str, Any]:
+        return dict_(boundary_items)
+
     def compile_impl(owner_input: dict[str, Any]) -> dict[str, Any]:
         top = exact_object(owner_input, expected_top, "owner_input")
         if top["source_manifest_digest"] != source_digest:
@@ -453,8 +483,10 @@ def _build_semantic_generation(source: dict[str, Any]):
             "submission": submission,
         }
         packet = {
-            "schema": "tt-one-lab-lims-owner-review-packet/v2",
+            "schema": "tt-one-lab-lims-owner-review-packet/v3",
             "source_manifest_digest": source_digest,
+            "integrity_boundary": boundary_projection(),
+            "integrity_boundary_digest": boundary_digest,
             "evaluated_at": top["evaluated_at"],
             "evaluation_time_authority": "CALLER_SUPPLIED_REPLAY_ONLY_NOT_CURRENT",
             "current_deadline_readiness_claimed": False,
@@ -536,4 +568,6 @@ def _publish_generation(generation):
     verify_packet,
     source_manifest_digest,
     example_owner_input,
-) = _publish_generation(_build_semantic_generation(_load_manifest()))
+) = _publish_generation(
+    _build_semantic_generation(_load_manifest(), _load_integrity_boundary())
+)
