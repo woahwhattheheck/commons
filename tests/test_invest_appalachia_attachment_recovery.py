@@ -89,16 +89,16 @@ class AttachmentRecoveryTests(unittest.TestCase):
         with self.assertRaises(AttachmentRecoveryError):
             analyze_zip(data, retrieved_at_utc="2026-09-17T07:00:00Z")
 
-    def test_duplicate_member_path_fails_closed(self):
+    def test_path_equivalent_duplicate_member_fails_closed(self):
         data = make_zip([
             ("notes.txt", b"one"),
-            ("notes.txt", b"two"),
+            ("./notes.txt", b"two"),
             ("Attachment A.xlsx", b"A"),
             ("Attachment B.xlsx", b"B"),
             ("Attachment C.xlsx", b"C"),
             ("Attachment D.docx", b"D"),
         ])
-        with self.assertRaises(AttachmentRecoveryError):
+        with self.assertRaisesRegex(AttachmentRecoveryError, "duplicate ZIP member path"):
             analyze_zip(data, retrieved_at_utc="2026-09-17T07:00:00Z")
 
     def test_path_traversal_fails_closed(self):
