@@ -53,6 +53,10 @@ The manifest uses closed policy IDs instead of free-form promises:
 
 The required-check set is exact and temporal holdout is mandatory. Source roles, URLs, and their boundary notes are code-owned. The canonical deliverables, exclusions, handoff artifacts, and metric selections are also code-owned and order-bound. Caller prose cannot substitute a stronger award/payment/submission/data-access claim and then rehash it into a valid acceptance receipt. Receipt verification recompiles this full normalized plan.
 
+The compiler captures the complete signed semantic generation in an immutable `_SemanticRoot` when the public compile/mint/verify functions are defined. Exported `EXPECTED_*`, policy/state, check-set, and authority-set names are compatibility/introspection mirrors, **not** authority inputs. Ordinary same-process mutation or rebinding of those module data names cannot redefine what `compile_acceptance()`, `make_receipt()`, or `verify_receipt()` accepts. The retained fresh-child hostile test proves that boundary under normal Python and `python -O`.
+
+This is a metadata integrity boundary, not a Python sandbox: a caller that deliberately replaces function code, mutates function defaults/closures, or uses equivalent interpreter-level code-tampering primitives is outside the contract and must instead rely on process/file/code provenance controls.
+
 ## Executable contract
 
 ```bash
@@ -63,8 +67,10 @@ python -m unittest discover -s revenue/westfield_advancement_data_modeling/tests
 python -O -m unittest discover -s revenue/westfield_advancement_data_modeling/tests -v
 python -m unittest -v test_westfield_advancement_data_modeling.py
 python -O -m unittest -v test_westfield_advancement_data_modeling.py
+python -m unittest -v test_westfield_semantic_root_immutability.py
+python -O -m unittest -v test_westfield_semantic_root_immutability.py
 ```
 
-The root bridge exists so the existing path-filtered `tests.yml` battery retains this product in both ordinary and optimized Python without adding a workflow slot.
+The root bridges exist so the existing path-filtered `tests.yml` battery retains both the canonical contract suite and the semantic-root mutation predecessor without adding a workflow slot.
 
 No donor PII or production data belongs in this public carrier.

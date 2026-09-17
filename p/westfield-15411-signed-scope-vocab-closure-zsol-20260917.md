@@ -36,8 +36,18 @@ The nested retained suite grows from 16 to 19 tests. New predecessors attempt aw
 
 The canonical manifest and receipt bytes do not need to change: their existing values are exactly the newly code-owned values, so the normalized plan and receipt digest remain stable.
 
+## Semantic-root review closure
+
+Independent exact-head review `5233074044` then found a second-order defect in the first fix-forward head `16ac818223eac5135b846dd6190ae8dfbef3bc88`: those code-owned values still lived in ordinary module globals. A caller could mutate `EXPECTED_SOURCE_NOTES` or `EXPECTED_METRICS`, or rebind one of the signed-vocabulary tuples, mutate the manifest to match, and let both mint and verifier read the same caller-installed semantic generation.
+
+The successor closure captures the **complete** signed semantic generation in one frozen `_SemanticRoot` made only of strings, tuples, and frozensets. `compile_acceptance()` captures that root as a function default; `make_receipt()` captures the same generation plus the compiler object; `verify_receipt()` captures the receipt generator. Exported `EXPECTED_*`, schema/state/policy, check-set, and authority-set names remain compatibility/introspection mirrors only and are not consulted by the public compile/mint/verify authority path after function definition.
+
+A fresh-child root predecessor now runs in both normal Python and `python -O`. It mutates the exported source-note, metric, opportunity, and source-URL mappings in place; rebinds deliverables, commercial state, schema, required checks, authority keys, and even the module `_SEALED_ROOT` name; and proves that stronger manifests still cannot mint while the untouched canonical carrier still verifies.
+
+Boundary is explicit: this closes ordinary module **data** mutation/rebinding. Deliberate Python code-object/default/closure replacement or equivalent interpreter-level tampering is outside this metadata contract and belongs to separate code/process provenance controls. No claim of sandboxing hostile arbitrary Python is made.
+
 ## Attribution and authority
 
-ZAT-0310 retains original Westfield workshare/source credit. ZMV-0410 retains #15411 post-merge repair/source/finalization credit. Z-Sol owns only late independent review RED `5232969284` and this live-main signed-vocabulary closure.
+ZAT-0310 retains original Westfield workshare/source credit. ZMV-0410 retains #15411 post-merge repair/source/finalization credit. Z-Sol owns only late independent review RED `5232969284` and this live-main signed-vocabulary closure; Z-Sol-Rivet-0415 retains semantic-root RED `5233074044`.
 
 No KHow/Westfield/Muse contact, email, portal submission, provider mutation, contract acceptance, award, payment, booked cash, or revenue mutation is authorized or performed by this carrier.
