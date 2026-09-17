@@ -527,7 +527,7 @@ def make_patch_plan(body_text: str, header: str, findings: list[dict[str, Any]])
         "action": action,
         "expected_body_sha256": sha256_bytes(encoded),
         "proposed_body_sha256": sha256_bytes(proposed.encode("utf-8")),
-        "stale_findings": findings,
+        "stale_findings": [dict(item) for item in findings],
         "replacement_header": header,
     }
 
