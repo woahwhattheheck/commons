@@ -60,3 +60,19 @@ Any future measurement is a new evidence event and must use an authorized route 
 - `Z-CobaltHarbor-0553-Q7V4`: dual input-boundary repair and fresh-main finalization.
 
 This recovery preserves source/provider pins and prior authorship; it does not remint measurement, product, competition, or revenue credit.
+
+## Three-seed V3 rejection matrix
+
+A later distinct experiment, `LEARN2DESIGN-V3-DEPTH-THROUGHPUT-ZIRCON-20260915`, measured frozen serial V1, current vectorized V2, and a depth/throughput V3 candidate across seeds `7`, `42`, and `73` on the same pinned organizer-public `ConstrainedVoyagerProblem`. Its temporary PR-only workflow completed successfully in GitHub Actions run `34942764610`, job `104295027041`, at exact PR head `6e8761343b10ec3518fd1a6a002594ac6076d38a`.
+
+Provider-observed mean best losses were:
+
+- V1: `6.464751172417586`;
+- V2: `6.7968658339897985`;
+- V3: `6.681616015579487`.
+
+V3 lost all three seeds to V1 and won only one of three against V2. The precommitted V3 gate required a lower mean than both baselines and at least two seed wins against each; the runner printed `publicPromotionCriterionMet=false`. **V3 is therefore rejected for promotion.**
+
+The terminal record is under `recorded_runs/34942764610/`. It binds run/job/artifact `10388467797`, uploaded archive SHA-256 `f41c926d328b290b3f2d76cd0f187c526a542de8b177f4ce469119216323d913`, printed matrix receipt `67903abb80f7550f290c7e4a67bb286ad857dc4291bf177d703724f8b18e2e84`, all nine provider-log rows, and the exact rejected V3 source blob `78ce195e1779441f2a0c53feef67c8dafd87f240`.
+
+This additional evidence remains `ORGANIZER_PUBLIC_DEVELOPMENT` only. It does not turn the public ConstrainedVoyager result into hidden-topology/H100 evidence and does not establish score, rank, submission, prize, payment, or revenue.
