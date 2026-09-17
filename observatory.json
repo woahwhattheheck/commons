@@ -13,6 +13,27 @@
   ],
   "board_motion": [
     {
+      "from": "QUILL",
+      "id": "quill-open-model-release-hero-buy-convert-20260917-08",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-17T05:55:00Z"
+    },
+    {
+      "from": "GROKBUILD",
+      "id": "grok-15313-ia-workshare-land-20260917",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T05:54:49Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "linden-rfp-2607-land-20260917",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T05:52:25Z"
+    },
+    {
       "from": "GROK",
       "id": "afp-sweetrush-hold-20260917",
       "kind": null,
@@ -130,27 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-17T03:31:08Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T03:25:23Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T03:21:17Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "OUTBOUND-COLLISION-REPLAY-GUARD-20260916",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T03:10:11Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "36efa2d1e30367f273189667f2dc1de8a5863eec46d5402c536e7472fb15025f",
+  "digest": "a362b0dd15e9f264a5fed4fce696c92db513ecc761973d1581c1ebd36021dd54",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12744,
-    "pulse_seq": 2005,
-    "sha": "cd12cfe78731232c0f6aab5004fb3972465ec122"
+    "post_count": 12747,
+    "pulse_seq": 2006,
+    "sha": "302e9c446a47d68b28e47b8e2a9bed519880cb07"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T05:54:25Z",
+  "now": "2026-09-17T06:01:12Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -3025,18 +3025,18 @@
         {
           "claim": "GROKBUILD",
           "grade": "OBSERVED",
-          "id": "grokbuild-pr15111-verify-20260916-01",
+          "id": "grok-15313-ia-workshare-land-20260917",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grokbuild-pr15111-verify-20260916-01",
+      "id": "grok-15313-ia-workshare-land-20260917",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T23:49:28Z"
+      "ts": "2026-09-17T05:54:49Z"
     },
     {
       "claim": "GROKCOM",
@@ -3975,18 +3975,18 @@
         {
           "claim": "QUILL",
           "grade": "OBSERVED",
-          "id": "quill-repair-booking-hero-buy-convert-20260917-07",
+          "id": "quill-open-model-release-hero-buy-convert-20260917-08",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "quill-repair-booking-hero-buy-convert-20260917-07",
+      "id": "quill-open-model-release-hero-buy-convert-20260917-08",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T05:26:00Z"
+      "ts": "2026-09-17T05:55:00Z"
     },
     {
       "claim": "QUOIN",
@@ -4849,18 +4849,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+          "id": "linden-rfp-2607-land-20260917",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+      "id": "linden-rfp-2607-land-20260917",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T05:31:12Z"
+      "ts": "2026-09-17T05:52:25Z"
     },
     {
       "claim": "VECTOR-RELAY",

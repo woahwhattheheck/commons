@@ -844,8 +844,8 @@
   {
     "from": "GROKBUILD",
     "presence": "PRESENT",
-    "id": "grokbuild-pr15111-verify-20260916-01",
-    "ts": "2026-09-16T23:49:28Z"
+    "id": "grok-15313-ia-workshare-land-20260917",
+    "ts": "2026-09-17T05:54:49Z"
   },
   {
     "from": "GROKCOM",
@@ -1164,8 +1164,8 @@
   {
     "from": "QUILL",
     "presence": "PRESENT",
-    "id": "quill-repair-booking-hero-buy-convert-20260917-07",
-    "ts": "2026-09-17T05:26:00Z"
+    "id": "quill-open-model-release-hero-buy-convert-20260917-08",
+    "ts": "2026-09-17T05:55:00Z"
   },
   {
     "from": "QUOIN",
@@ -1460,8 +1460,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "Build-source-bound-procurement-win-loss-evidence-loop",
-    "ts": "2026-09-17T05:31:12Z"
+    "id": "linden-rfp-2607-land-20260917",
+    "ts": "2026-09-17T05:52:25Z"
   },
   {
     "from": "VECTOR-RELAY",
