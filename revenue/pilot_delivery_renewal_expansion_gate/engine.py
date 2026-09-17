@@ -177,21 +177,7 @@ def _build_current_api(
     _gate_error=GateError,
     _hold_evidence=HOLD_EVIDENCE,
 ):
-    """Build the process-first-load current semantic API pair.
-
-    The private ``_trusted_runtime`` module owns two reload-stable roots: a first-load
-    builtins snapshot and the first successfully built current-API pair. This builder is
-    therefore consumed only once per process. Ordinary ``importlib.reload(engine)`` or a
-    second execution of this source cannot ratify a process-global builtins monkeypatch,
-    a later engine/model/common module rebinding, or caller-selected current time into a
-    new trusted semantic generation. A process restart is required to adopt new current
-    semantics.
-
-    Within the first generation, semantic clones receive private builtins dictionaries;
-    packet/receipt inputs are frozen exactly once to exact built-in plain-JSON trees and
-    UTF-8 scalar text before semantic reads. Direct trust-root/function/default/closure
-    surgery remains outside this cooperative in-process boundary.
-    """
+    """Build the process-first-load current semantic API/error generation."""
     sealed_builtins = _trusted_builtins_fn()
     trusted_dict = sealed_builtins["dict"]
     trusted_vars = sealed_builtins["vars"]
@@ -249,7 +235,10 @@ def _build_current_api(
     builtin_int = sealed_builtins["int"]
     builtin_bool = sealed_builtins["bool"]
     builtin_enumerate = sealed_builtins["enumerate"]
+    builtin_len = sealed_builtins["len"]
     max_abs_integer = 10**15
+    max_plain_nodes = 10_000
+    max_plain_bytes = 1_000_000
 
     def _canonical(value: Any) -> bytes:
         return (json_dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n").encode("utf-8")
@@ -267,33 +256,69 @@ def _build_current_api(
             raise _gate_error(f"{label}: valid UTF-8 text required") from None
         return value
 
-    def _freeze_plain_json(value: Any, label: str, depth: int = 0) -> Any:
-        """Copy one exact built-in JSON tree without consulting subclass hooks."""
-        if depth > 64:
-            raise _gate_error(f"{label}: nesting too deep")
-        kind = builtin_type(value)
-        if kind is builtin_dict:
-            frozen: dict[str, Any] = {}
-            for key, item in value.items():
-                if builtin_type(key) is not builtin_str:
-                    raise _gate_error(f"{label}: string object keys required")
-                _checked_text(key, f"{label}: object key")
-                frozen[key] = _freeze_plain_json(item, f"{label}.<field>", depth + 1)
-            return frozen
-        if kind is builtin_list:
-            return [
-                _freeze_plain_json(item, f"{label}[{index}]", depth + 1)
-                for index, item in builtin_enumerate(value)
-            ]
-        if value is None or kind is builtin_bool:
-            return value
-        if kind is builtin_str:
-            return _checked_text(value, label)
-        if kind is builtin_int:
-            if value < -max_abs_integer or value > max_abs_integer:
-                raise _gate_error(f"{label}: integer outside supported range")
-            return value
-        raise _gate_error(f"{label}: exact built-in plain-JSON value required")
+    def _freeze_plain_json(value: Any, label: str) -> Any:
+        """Bounded copy of one exact built-in JSON tree before semantic reads."""
+        budget = {"nodes": 0, "bytes": 0}
+
+        def spend(nodes: int = 0, bytes_: int = 0) -> None:
+            if budget["nodes"] + nodes > max_plain_nodes:
+                raise _gate_error(f"{label}: node budget exceeded")
+            if budget["bytes"] + bytes_ > max_plain_bytes:
+                raise _gate_error(f"{label}: byte budget exceeded")
+            budget["nodes"] += nodes
+            budget["bytes"] += bytes_
+
+        def freeze(current: Any, where: str, depth: int) -> Any:
+            if depth > 64:
+                raise _gate_error(f"{where}: nesting too deep")
+            spend(nodes=1)
+            kind = builtin_type(current)
+            if kind is builtin_dict:
+                child_count = builtin_len(current)
+                if child_count > max_plain_nodes - budget["nodes"]:
+                    raise _gate_error(f"{where}: node budget exceeded")
+                spend(bytes_=2 + max(0, child_count - 1))
+                frozen: dict[str, Any] = {}
+                for key, item in current.items():
+                    if builtin_type(key) is not builtin_str:
+                        raise _gate_error(f"{where}: string object keys required")
+                    if builtin_len(key) > max_plain_bytes - budget["bytes"]:
+                        raise _gate_error(f"{where}: byte budget exceeded")
+                    _checked_text(key, f"{where}: object key")
+                    key_bytes = json_dumps(key, ensure_ascii=False).encode("utf-8")
+                    spend(bytes_=builtin_len(key_bytes) + 1)
+                    frozen[key] = freeze(item, f"{where}.<field>", depth + 1)
+                return frozen
+            if kind is builtin_list:
+                child_count = builtin_len(current)
+                if child_count > max_plain_nodes - budget["nodes"]:
+                    raise _gate_error(f"{where}: node budget exceeded")
+                spend(bytes_=2 + max(0, child_count - 1))
+                frozen = []
+                for index, item in builtin_enumerate(current):
+                    frozen.append(freeze(item, f"{where}[{index}]", depth + 1))
+                return frozen
+            if current is None:
+                spend(bytes_=4)
+                return current
+            if kind is builtin_bool:
+                spend(bytes_=4 if current else 5)
+                return current
+            if kind is builtin_str:
+                if builtin_len(current) > max_plain_bytes - budget["bytes"]:
+                    raise _gate_error(f"{where}: byte budget exceeded")
+                _checked_text(current, where)
+                text_bytes = json_dumps(current, ensure_ascii=False).encode("utf-8")
+                spend(bytes_=builtin_len(text_bytes))
+                return current
+            if kind is builtin_int:
+                if current < -max_abs_integer or current > max_abs_integer:
+                    raise _gate_error(f"{where}: integer outside supported range")
+                spend(bytes_=builtin_len(str(current)))
+                return current
+            raise _gate_error(f"{where}: exact built-in plain-JSON value required")
+
+        return freeze(value, label, 0)
 
     def _project(receipt: dict[str, Any]) -> dict[str, Any]:
         projected = builtin_dict(receipt)
@@ -367,10 +392,10 @@ def _build_current_api(
             "still_current": _canonical(_project(historical)) == _canonical(_project(current)),
         }
 
-    return compile_current, verify_receipt
+    return compile_current, verify_receipt, _gate_error
 
 
-compile_current, verify_receipt = _get_or_build_current_api(_build_current_api)
+compile_current, verify_receipt, GateError = _get_or_build_current_api(_build_current_api)
 del _build_current_api
 del _get_or_build_current_api
 del _trusted_builtins_copy
@@ -384,7 +409,12 @@ del _stdlib_timezone
 def _read(path: Path) -> dict[str, Any]:
     if path.is_symlink() or not path.is_file():
         raise GateError(f"{path}: regular file required")
-    return load_json(path.read_bytes(), str(path))
+    try:
+        return load_json(path.read_bytes(), str(path))
+    except ValueError as exc:
+        if isinstance(exc, GateError):
+            raise
+        raise GateError(str(exc)) from exc
 
 
 def main(argv: list[str] | None = None) -> int:
