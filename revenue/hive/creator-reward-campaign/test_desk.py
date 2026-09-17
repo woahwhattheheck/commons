@@ -204,10 +204,42 @@ class DeskTests(unittest.TestCase):
         self.assertEqual(normalize_url('https://www.tiktok.com/@demo.alder/video/7234567890123456789?is_from_webapp=1&sender_device=pc'),
                          'https://www.tiktok.com/@demo.alder/video/7234567890123456789')
         self.assertEqual(normalize_url('https://www.instagram.com/reel/C0ffee-Id/?igsh=abc&utm_source=ig_web_copy_link'), 'https://www.instagram.com/reel/C0ffee-Id')
+        self.assertEqual(normalize_url('https://example.invalid:8443/video/1'), 'https://example.invalid:8443/video/1')
+        self.assertEqual(normalize_url('https://Example.invalid:443/video/1/'), 'https://example.invalid/video/1')
+        self.assertEqual(normalize_url('http://example.invalid:80/video/1'), 'http://example.invalid/video/1')
+        self.assertEqual(normalize_url('https://example.invalid:/video/1'), 'https://example.invalid/video/1')
+        self.assertEqual(normalize_url('https://[2001:DB8::1]:8443/v/1'), 'https://[2001:db8::1]:8443/v/1')
+        self.assertEqual(normalize_url('https://[2001:db8::1]/v/1'), 'https://[2001:db8::1]/v/1')
         for bad in ('example.invalid/video', 'ftp://example.invalid/v', 'https://user:pw@example.invalid/v', 'https://', '', 'javascript:alert(1)',
-                    'https://example.invalid/a?q=1', 'https://example.invalid/a?token=abc', 'https://example.invalid/a?sig=1&utm_source=x'):
+                    'https://example.invalid/a?q=1', 'https://example.invalid/a?token=abc', 'https://example.invalid/a?sig=1&utm_source=x',
+                    'https://example.invalid:bad/video/1', 'https://example.invalid:0/video/1', 'https://example.invalid:65536/video/1',
+                    'https://example.invalid:-1/video/1', 'https://example.invalid:8a/video/1', 'https://www.youtube.com:8443/watch?v=AAAAAAAAAAA',
+                    'https://youtu.be:8443/AAAAAAAAAAA'):
             with self.subTest(bad=bad), self.assertRaises(DeskError):
                 normalize_url(bad)
+
+    def test_ported_urls_keep_their_identity_and_malformed_ports_are_refused(self):
+        campaign = self.campaign()
+        portless = self.write('submission/create', campaign_id=campaign, creator_id=self.creator, platform='TIKTOK',
+                              url='https://example.invalid/video/1', posted_on='2026-09-08', disclosure_present=True, rights_accepted=True)
+        ported = self.write('submission/create', campaign_id=campaign, creator_id=self.creator, platform='TIKTOK',
+                            url='https://example.invalid:8443/video/1', posted_on='2026-09-08', disclosure_present=True, rights_accepted=True)
+        self.assertEqual(portless['url'], 'https://example.invalid/video/1')
+        self.assertEqual(ported['url'], 'https://example.invalid:8443/video/1')
+        self.assertNotEqual(portless['id'], ported['id'])
+        for duplicate in ('https://example.invalid:443/video/1', 'https://EXAMPLE.invalid:8443/video/1/'):
+            with self.subTest(duplicate=duplicate), self.assertRaises(DeskError) as caught:
+                self.submit(campaign, url=duplicate)
+            self.assertEqual(caught.exception.status, 409)
+        for bad in ('https://example.invalid:bad/video/1', 'https://example.invalid:0/video/2', 'https://example.invalid:70000/video/2'):
+            with self.subTest(bad=bad), self.assertRaises(DeskError) as caught:
+                self.submit(campaign, url=bad)
+            self.assertEqual(caught.exception.status, 400)
+        retained = {row['url'] for row in self.desk.snapshot()['submissions']}
+        self.assertEqual(retained, {'https://example.invalid/video/1', 'https://example.invalid:8443/video/1'})
+        archive = zipfile.ZipFile(io.BytesIO(self.desk.export(campaign)))
+        self.assertIn('https://example.invalid:8443/video/1', archive.read('submissions.csv').decode('utf-8'))
+        self.assert_never_retained(':bad', ':70000')
 
     def test_youtube_identities_survive_canonicalization_and_dedupe(self):
         video_a, video_b, video_c = 'AAAAAAAAAAA', 'bbbb-BBBB_b', 'CcCcCcCcCcC'
@@ -618,6 +650,44 @@ class HttpTests(unittest.TestCase):
                     break
                 chunks.append(chunk)
         return b''.join(chunks)
+
+    def test_json_strings_must_be_unicode_scalar_values_and_nesting_is_bounded(self):
+        bodies = (
+            b'{"operation_id": "s1", "name": "\\ud800"}',
+            b'{"operation_id": "s2", "name": "ok\\udc00x"}',
+            b'{"operation_id": "\\udbff", "name": "ok"}',
+            b'{"operation_id": "s3", "\\ud800": "key"}',
+            b'[' * 200000 + b']' * 200000,
+            b'{"a":' * 20000 + b'1' + b'}' * 20000,
+        )
+        for body in bodies:
+            with self.subTest(body=body[:40]):
+                request = urllib.request.Request(self.base + '/api/brand/create', data=body, headers={'Content-Type': 'application/json'})
+                with self.assertRaises(urllib.error.HTTPError) as caught:
+                    urllib.request.urlopen(request, timeout=10)
+                self.assertEqual(caught.exception.code, 400)
+                self.assertIn('error', json.loads(caught.exception.read().decode('utf-8')))
+        with self.assertRaises(DeskError):
+            strict_json('{"a": "\\ud800"}')
+        with self.assertRaises(DeskError):
+            strict_json('[' * 100000 + ']' * 100000)
+        with self.assertRaises(DeskError):
+            self.desk.write('brand/create', {'operation_id': 'direct-surrogate', 'name': 'bad \ud800 name'})
+        deep = []
+        cursor = deep
+        for _ in range(5000):
+            cursor.append([])
+            cursor = cursor[0]
+        with self.assertRaises(DeskError):
+            self.desk.write('brand/create', {'operation_id': 'direct-deep', 'name': 'x', 'extra': deep})
+        with tempfile.TemporaryDirectory() as td:
+            script = Path(td) / 'example.json'
+            script.write_bytes(b'{"operations": [{"operation_id": "demo", "operation": "brand/create", "data": {"name": "\\ud800"}}]}')
+            with self.assertRaises(DeskError):
+                load_example(self.desk, script)
+        status, body, _ = self.call('/api/brand/create', {'operation_id': 'scalar-ok', 'name': 'Scalar brand'})
+        self.assertEqual(status, 200, body)
+        self.assertEqual(len(self.desk.snapshot()['brands']), 1)
 
     def test_json_boundary_refuses_duplicate_keys_and_non_finite_constants(self):
         for bad in ('{"operation_id": "a", "operation_id": "b"}', '{"name": {"x": 1, "x": 2}}', '{"budget_minor": NaN}',

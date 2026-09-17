@@ -151,21 +151,42 @@ def _no_non_finite(constant):
     raise DeskError(f'non-finite JSON constant {constant} is not accepted')
 
 
+def _scalar_strings(value):
+    """Refuse strings that are not valid Unicode scalar sequences (lone surrogates) anywhere in a parsed document."""
+    stack = [value]
+    while stack:
+        item = stack.pop()
+        if isinstance(item, str):
+            try:
+                item.encode('utf-8')
+            except UnicodeEncodeError as exc:
+                raise DeskError('JSON strings must be valid Unicode scalar values') from exc
+        elif isinstance(item, dict):
+            stack.extend(item.keys())
+            stack.extend(item.values())
+        elif isinstance(item, list):
+            stack.extend(item)
+    return value
+
+
 def strict_json(text_value):
-    """Parse request JSON strictly: duplicate object keys and NaN/Infinity constants are refused, never silently resolved."""
+    """Parse request JSON strictly: duplicate keys, NaN/Infinity, lone surrogates and nesting bombs are refused, never silently resolved."""
     try:
-        return json.loads(text_value, object_pairs_hook=_no_duplicate_keys, parse_constant=_no_non_finite)
+        parsed = json.loads(text_value, object_pairs_hook=_no_duplicate_keys, parse_constant=_no_non_finite)
     except DeskError:
         raise
-    except ValueError as exc:
+    except (ValueError, RecursionError) as exc:
         raise DeskError('Request body must be a JSON object') from exc
+    return _scalar_strings(parsed)
 
 
 def encoded(value):
     try:
-        return json.dumps(value, ensure_ascii=False, sort_keys=True, allow_nan=False)
-    except (ValueError, TypeError) as exc:
-        raise DeskError('Payload must contain finite JSON values') from exc
+        text_value = json.dumps(value, ensure_ascii=False, sort_keys=True, allow_nan=False)
+        text_value.encode('utf-8')  # a lone surrogate must fail here as a DeskError, never later as an unhandled encode error
+    except (ValueError, TypeError, RecursionError) as exc:
+        raise DeskError('Payload must contain finite JSON values and valid Unicode scalar strings') from exc
+    return text_value
 
 
 def now():
@@ -189,6 +210,16 @@ def normalize_url(value):
     host = (parts.hostname or '').lower()
     if not host or any(ord(ch) < 0x21 for ch in host):
         raise DeskError('url host is invalid')
+    try:
+        port = parts.port  # raises for non-numeric or out-of-range ports instead of silently dropping them
+    except ValueError as exc:
+        raise DeskError('url port must be a number from 1 to 65535') from exc
+    if port == 0:
+        raise DeskError('url port must be a number from 1 to 65535')
+    scheme = parts.scheme.lower()
+    authority = f'[{host}]' if ':' in host else host
+    if port is not None and port != {'http': 80, 'https': 443}[scheme]:
+        authority = f'{authority}:{port}'  # an explicit non-default port is part of the content identity
     path = parts.path.rstrip('/') or '/'
     query = {}
     for key, item in parse_qsl(parts.query, keep_blank_values=True):
@@ -197,6 +228,8 @@ def normalize_url(value):
             continue
         query.setdefault(lowered, []).append(item)
     if host == 'youtu.be' or host in YOUTUBE_HOSTS:
+        if port not in (None, 443, 80):
+            raise DeskError('YouTube links must use the default port')
         if host == 'youtu.be':
             video = path.strip('/')
             if not YOUTUBE_ID.fullmatch(video):
@@ -216,7 +249,7 @@ def normalize_url(value):
         return f'https://www.youtube.com/watch?v={video}'
     if query:
         raise DeskError(f'url carries query material that is not a supported content identity {sorted(query)}; supply the canonical content link')
-    return f'{parts.scheme.lower()}://{host}{path}'
+    return f'{scheme}://{authority}{path}'
 
 
 def loopback_host(value):
