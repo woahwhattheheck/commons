@@ -1,9 +1,10 @@
 {
-  "seq": 2012,
-  "head": "1245ba9361a5804cb1bf8073d5be563d4ce40086",
-  "ts": "2026-09-17T07:29:28Z",
-  "post_count": 12759,
+  "seq": 2013,
+  "head": "a2c622eff61390ad0a925ce76d62859d8f710e74",
+  "ts": "2026-09-17T07:39:40Z",
+  "post_count": 12761,
   "newest": [
+    "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
     "quill-invoice-exception-hero-buy-convert-20260917-10",
     "goat-owner-now-revenue-checkout-wire-20260917-01",
     "Accepted-Work-to-Cash-Reconciler",
@@ -12,8 +13,7 @@
     "Revenue--recover-procurement-runway---partner-capacity-gate",
     "goat-tips-checkout-wire-20260917-01",
     "quill-salesforce-contact-hero-buy-convert-20260917-09",
-    "goat-titan-hour-checkout-wire-20260917-01",
-    "txst-open-door-35162239221-receipt"
+    "goat-titan-hour-checkout-wire-20260917-01"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {

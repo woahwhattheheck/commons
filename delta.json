@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -778,6 +778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -1010,12 +1016,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -1900,6 +1900,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -2132,12 +2138,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -3715,6 +3715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -3947,12 +3953,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -4741,6 +4741,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -4973,12 +4979,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -5026,6 +5026,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -5258,12 +5264,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -5305,6 +5305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -5537,12 +5543,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -5572,6 +5572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -5804,12 +5810,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -8395,6 +8395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -8627,12 +8633,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -8650,6 +8650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -8882,12 +8888,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -8971,6 +8971,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -9203,12 +9209,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -9292,6 +9292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -9524,12 +9530,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -9547,6 +9547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -9779,12 +9785,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -9868,6 +9868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -10100,12 +10106,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -10189,6 +10189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -10421,12 +10427,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -10510,6 +10510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -10742,12 +10748,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -10777,6 +10777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -11009,12 +11015,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -11038,6 +11038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -11270,12 +11276,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -11293,6 +11293,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -11525,12 +11531,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -11614,6 +11614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -11846,12 +11852,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -11887,6 +11887,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -12119,12 +12125,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -12718,6 +12718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -12950,12 +12956,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -12973,6 +12973,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -13205,12 +13211,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -13495,6 +13495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -13727,12 +13733,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -13816,6 +13816,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -14048,12 +14054,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -14077,6 +14077,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -14309,12 +14315,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -14344,6 +14344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -14576,12 +14582,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -14665,6 +14665,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -14897,12 +14903,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -14938,6 +14938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -15170,12 +15176,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -15193,6 +15193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -15425,12 +15431,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -15454,6 +15454,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -15686,12 +15692,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -15709,6 +15709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -15941,12 +15947,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -15964,6 +15964,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -16196,12 +16202,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -16267,6 +16267,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -16499,12 +16505,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -16522,6 +16522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -16754,12 +16760,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -16789,6 +16789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -17021,12 +17027,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -17044,6 +17044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -17276,12 +17282,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -17305,6 +17305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -17537,12 +17543,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -17560,6 +17560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -17792,12 +17798,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -17881,6 +17881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -18113,12 +18119,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -18142,6 +18142,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -18374,12 +18380,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -18397,6 +18397,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -18629,12 +18635,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -18652,6 +18652,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -18884,12 +18890,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -18907,6 +18907,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -19139,12 +19145,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -19162,6 +19162,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -19394,12 +19400,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -19417,6 +19417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -19649,12 +19655,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -19738,6 +19738,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -19970,12 +19976,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -20029,6 +20029,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -20261,12 +20267,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -20296,6 +20296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -20528,12 +20534,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -20617,6 +20617,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -20849,12 +20855,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -20872,6 +20872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -21104,12 +21110,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -21193,6 +21193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -21425,12 +21431,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -21514,6 +21514,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -21746,12 +21752,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -21835,6 +21835,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -22067,12 +22073,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -22090,6 +22090,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -22322,12 +22328,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -22345,6 +22345,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -22577,12 +22583,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -22666,6 +22666,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -22898,12 +22904,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -22987,6 +22987,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -23219,12 +23225,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -23260,6 +23260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -23492,12 +23498,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -23533,6 +23533,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -23765,12 +23771,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -23812,6 +23812,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -24044,12 +24050,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -24067,6 +24067,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -24299,12 +24305,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -24388,6 +24388,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -24620,12 +24626,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -24643,6 +24643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -24875,12 +24881,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -24898,6 +24898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -25130,12 +25136,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -25153,6 +25153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -25385,12 +25391,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -25408,6 +25408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -25640,12 +25646,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -25663,6 +25663,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -25895,12 +25901,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -25984,6 +25984,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -26216,12 +26222,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -26305,6 +26305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -26537,12 +26543,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -26560,6 +26560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -26792,12 +26798,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -26881,6 +26881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -27113,12 +27119,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -27190,6 +27190,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -27422,12 +27428,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -27511,6 +27511,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -27743,12 +27749,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -27772,6 +27772,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -28004,12 +28010,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -28075,6 +28075,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -28307,12 +28313,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -28342,6 +28342,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -28574,12 +28580,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -28609,6 +28609,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -28841,12 +28847,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -28864,6 +28864,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -29096,12 +29102,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -29185,6 +29185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -29417,12 +29423,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -29440,6 +29440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -29672,12 +29678,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -29701,6 +29701,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -29933,12 +29939,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -30022,6 +30022,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -30254,12 +30260,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -30277,6 +30277,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -30509,12 +30515,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -30532,6 +30532,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -30764,12 +30770,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -30853,6 +30853,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -31085,12 +31091,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -31120,6 +31120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -31352,12 +31358,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -31375,6 +31375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -31607,12 +31613,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -31654,6 +31654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -31886,12 +31892,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -31915,6 +31915,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -32147,12 +32153,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -32170,6 +32170,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -32402,12 +32408,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -32425,6 +32425,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -32657,12 +32663,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -32680,6 +32680,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -32912,12 +32918,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -33001,6 +33001,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -33233,12 +33239,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -33256,6 +33256,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -33488,12 +33494,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -33511,6 +33511,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -33743,12 +33749,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -33832,6 +33832,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -34064,12 +34070,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -34084,8 +34084,14 @@
     "GOAT": {
       "last_id": "goat-owner-now-revenue-checkout-wire-20260917-01",
       "last_ts": "2026-09-17T07:05:00Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
         {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
@@ -34174,6 +34180,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -34406,12 +34418,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -34495,6 +34501,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -34727,12 +34739,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -34756,6 +34762,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -34988,12 +35000,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -35023,6 +35029,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -35255,12 +35267,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -35278,6 +35284,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -35510,12 +35522,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -35545,6 +35551,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -35777,12 +35789,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -35806,6 +35812,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -36038,12 +36050,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -36067,6 +36073,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -36299,12 +36311,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -36385,8 +36391,14 @@
     "GROK": {
       "last_id": "txst-open-door-35162239221-receipt",
       "last_ts": "2026-09-17T05:59:33Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
         {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
@@ -36523,6 +36535,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -36755,12 +36773,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -36814,6 +36826,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -37046,12 +37064,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -37081,6 +37093,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -37313,12 +37331,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -37339,8 +37351,14 @@
     "GROKBUILD": {
       "last_id": "grok-15313-ia-workshare-land-20260917",
       "last_ts": "2026-09-17T05:54:49Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
         {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
@@ -37489,6 +37507,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -37721,12 +37745,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -37756,6 +37774,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -37988,12 +38012,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -38077,6 +38095,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -38309,12 +38333,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -38332,6 +38350,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -38564,12 +38588,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -38599,6 +38617,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -38831,12 +38855,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -38854,6 +38872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -39086,12 +39110,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -39121,6 +39139,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -39353,12 +39377,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -39442,6 +39460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -39674,12 +39698,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -39697,6 +39715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -39929,12 +39953,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -40018,6 +40036,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -40250,12 +40274,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -40339,6 +40357,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -40571,12 +40595,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -40642,6 +40660,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -40874,12 +40898,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -40915,6 +40933,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -41147,12 +41171,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -41200,6 +41218,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -41432,12 +41456,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -41455,6 +41473,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -41687,12 +41711,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -41776,6 +41794,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -42008,12 +42032,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -42031,6 +42049,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -42263,12 +42287,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -42316,6 +42334,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -42548,12 +42572,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -42571,6 +42589,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -42803,12 +42827,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -42826,6 +42844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -43058,12 +43082,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -43081,6 +43099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -43313,12 +43337,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -43336,6 +43354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -43568,12 +43592,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -43591,6 +43609,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -43823,12 +43847,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -43912,6 +43930,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -44144,12 +44168,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -44167,6 +44185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -44399,12 +44423,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -44422,6 +44440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -44654,12 +44678,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -44677,6 +44695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -44909,12 +44933,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -44932,6 +44950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -45164,12 +45188,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -45187,6 +45205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -45419,12 +45443,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -45460,6 +45478,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -45692,12 +45716,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -45781,6 +45799,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -46013,12 +46037,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -46036,6 +46054,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -46268,12 +46292,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -46321,6 +46339,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -46553,12 +46577,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -46636,6 +46654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -46868,12 +46892,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -46891,6 +46909,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -47123,12 +47147,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -47164,6 +47182,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -47396,12 +47420,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -47419,6 +47437,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -47651,12 +47675,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -47674,6 +47692,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -47906,12 +47930,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -47929,6 +47947,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -48161,12 +48185,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -48184,6 +48202,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -48416,12 +48440,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -48439,6 +48457,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -48671,12 +48695,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -48694,6 +48712,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -48926,12 +48950,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -49015,6 +49033,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -49247,12 +49271,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -49336,6 +49354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -49568,12 +49592,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -49657,6 +49675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -49889,12 +49913,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -49936,6 +49954,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -50168,12 +50192,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -50257,6 +50275,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -50489,12 +50513,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -50512,6 +50530,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -50744,12 +50768,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -50767,6 +50785,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -50999,12 +51023,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -51031,8 +51049,15 @@
     "QUILL": {
       "last_id": "quill-invoice-exception-hero-buy-convert-20260917-10",
       "last_ts": "2026-09-17T07:06:50Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        }
+      ],
       "mine": [
         {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
@@ -51114,6 +51139,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -51346,12 +51377,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -51375,6 +51400,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -51607,12 +51638,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -51642,6 +51667,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -51874,12 +51905,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -51909,6 +51934,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -52141,12 +52172,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -52230,6 +52255,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -52462,12 +52493,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -52551,6 +52576,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -52783,12 +52814,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -52854,6 +52879,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -53086,12 +53117,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -53115,6 +53140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -53347,12 +53378,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -53370,6 +53395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -53602,12 +53633,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -53625,6 +53650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -53857,12 +53888,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -53946,6 +53971,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -54178,12 +54209,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -54201,6 +54226,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -54433,12 +54464,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -54522,6 +54547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -54754,12 +54785,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -54789,6 +54814,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -55021,12 +55052,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -55044,6 +55069,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -55276,12 +55307,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -55365,6 +55390,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -55597,12 +55628,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -55620,6 +55645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -55852,12 +55883,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -55875,6 +55900,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -56107,12 +56138,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -56196,6 +56221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -56428,12 +56459,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -56451,6 +56476,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -56683,12 +56714,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -56724,6 +56749,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -56956,12 +56987,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -56979,6 +57004,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -57211,12 +57242,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -57240,6 +57265,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -57472,12 +57503,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -57495,6 +57520,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -57727,12 +57758,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -57756,6 +57781,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -57988,12 +58019,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -58011,6 +58036,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -58243,12 +58274,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -58266,6 +58291,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -58498,12 +58529,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -58527,6 +58552,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -58759,12 +58790,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -58782,6 +58807,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -59014,12 +59045,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -59043,6 +59068,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -59275,12 +59306,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -59364,6 +59389,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -59596,12 +59627,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -59619,6 +59644,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -59851,12 +59882,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -59874,6 +59899,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -60106,12 +60137,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -60129,6 +60154,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -60361,12 +60392,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -60396,6 +60421,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -60628,12 +60659,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -60717,6 +60742,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -60949,12 +60980,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -61038,6 +61063,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -61270,12 +61301,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -61359,6 +61384,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -61591,12 +61622,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -61680,6 +61705,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -61912,12 +61943,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -61941,6 +61966,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -62173,12 +62204,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -62262,6 +62287,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -62494,12 +62525,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -62583,6 +62608,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -62815,12 +62846,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -62898,6 +62923,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -63130,12 +63161,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -63189,6 +63214,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -63421,12 +63452,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -63510,6 +63535,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -63742,12 +63773,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -63826,24 +63851,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "Accepted-Work-to-Cash-Reconciler",
-      "last_ts": "2026-09-17T07:04:40Z",
-      "n": 2,
-      "since": [
-        {
-          "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:06:50Z"
-        },
-        {
-          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
-          "from": "GOAT",
-          "to": "TABLE",
-          "ts": "2026-09-17T07:05:00Z"
-        }
-      ],
+      "last_id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+      "last_ts": "2026-09-17T07:33:51Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
         {
           "id": "Accepted-Work-to-Cash-Reconciler",
           "from": "UNSEATED",
@@ -63909,12 +63927,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T03:25:23Z"
-        },
-        {
-          "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T03:21:17Z"
         }
       ]
     },
@@ -63923,6 +63935,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
         {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
@@ -64156,12 +64174,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -64182,8 +64194,14 @@
     "WIRE": {
       "last_id": "wire-live-cash-buy-path-20260916-01",
       "last_ts": "2026-09-17T04:45:00Z",
-      "n": 24,
+      "n": 25,
       "since": [
+        {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
         {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
@@ -64410,6 +64428,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -64642,12 +64666,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -64731,6 +64749,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -64963,12 +64987,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -64986,6 +65004,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -65218,12 +65242,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -65247,6 +65265,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -65479,12 +65503,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -65502,6 +65520,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -65734,12 +65758,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -65757,6 +65775,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -65989,12 +66013,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -66012,6 +66030,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -66244,12 +66268,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [
@@ -66333,6 +66351,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:33:51Z"
+        },
+        {
           "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "from": "QUILL",
           "to": "TABLE",
@@ -66565,12 +66589,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
         }
       ],
       "mine": [

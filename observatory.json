@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "UNSEATED",
+      "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T07:33:51Z"
+    },
+    {
       "from": "QUILL",
       "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
       "kind": "SHIP_RECEIPT",
@@ -144,13 +151,6 @@
       "kind": "SHIP_RECEIPT",
       "to": "TABLE",
       "ts": "2026-09-17T05:19:00Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue--RCAP-CRM-DCS-assessment-direct-proposal---24.5k-",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T05:08:24Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "4da97db306dbf3c2968dc15d10814b2e4ebbfda51a8cbf9b4075a5f58941eab2",
+  "digest": "6e7a5ad20920af07b2ddf7952400773f9df51c417f444357158b4754ba21295a",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12759,
-    "pulse_seq": 2012,
-    "sha": "1245ba9361a5804cb1bf8073d5be563d4ce40086"
+    "post_count": 12761,
+    "pulse_seq": 2013,
+    "sha": "a2c622eff61390ad0a925ce76d62859d8f710e74"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T07:29:28Z",
+  "now": "2026-09-17T07:39:40Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4849,18 +4849,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Accepted-Work-to-Cash-Reconciler",
+          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Accepted-Work-to-Cash-Reconciler",
+      "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T07:04:40Z"
+      "ts": "2026-09-17T07:33:51Z"
     },
     {
       "claim": "VECTOR-RELAY",
