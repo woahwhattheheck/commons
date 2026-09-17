@@ -1,10 +1,11 @@
 from __future__ import annotations
 
 import json
+import tempfile
 import unittest
 from pathlib import Path
 
-from revenue.utility_safety_partners.bitsummit_prime_dossier.verify import VerificationError, verify_payload
+from revenue.utility_safety_partners.bitsummit_prime_dossier.verify import VerificationError, verify_path, verify_payload
 
 ROOT = Path(__file__).with_name("evidence.json")
 
@@ -50,10 +51,10 @@ class DossierVerifierTests(unittest.TestCase):
         with self.assertRaises(VerificationError):
             verify_payload(p)
 
-    def test_supported_issuer_claim_cannot_widen(self):
+    def test_hosted_directory_claim_cannot_be_widened_to_independent_validation(self):
         p = load()
         target = next(x for x in p["items"] if x["id"] == "ibm_partner_directory_identity")
-        target["claim"] = "IBM confirms BITSUMMIT meets all buyer eligibility requirements."
+        target["claim"] = "IBM independently validates BITSUMMIT and confirms it meets all buyer eligibility requirements."
         with self.assertRaises(VerificationError):
             verify_payload(p)
 
@@ -152,6 +153,40 @@ class DossierVerifierTests(unittest.TestCase):
         p["owner"] = "someone else"
         with self.assertRaises(VerificationError):
             verify_payload(p)
+
+    def test_root_schema_is_closed(self):
+        p = load()
+        p["prime_eligible"] = True
+        with self.assertRaises(VerificationError):
+            verify_payload(p)
+
+    def test_item_schema_is_closed(self):
+        p = load()
+        p["items"][0]["buyer_verified"] = True
+        with self.assertRaises(VerificationError):
+            verify_payload(p)
+
+    def test_direct_mapping_subclass_rejected(self):
+        class SplitView(dict):
+            pass
+        with self.assertRaises(VerificationError):
+            verify_payload(SplitView(load()))
+
+    def _verify_text_rejected(self, text: str):
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "evidence.json"
+            path.write_text(text, encoding="utf-8")
+            with self.assertRaises(VerificationError):
+                verify_path(path)
+
+    def test_duplicate_json_key_rejected(self):
+        self._verify_text_rejected('{"schema_version":1,"schema_version":1}')
+
+    def test_nonfinite_json_rejected(self):
+        self._verify_text_rejected('{"schema_version":NaN}')
+
+    def test_float_json_rejected(self):
+        self._verify_text_rejected('{"schema_version":1.0}')
 
     def test_operation_tamper_rejected(self):
         p = load()
