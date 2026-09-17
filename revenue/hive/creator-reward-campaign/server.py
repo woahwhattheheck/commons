@@ -11,6 +11,7 @@ import secrets
 import sqlite3
 import stat
 import sys
+import threading
 import uuid
 import zipfile
 from datetime import date, datetime, timezone
@@ -19,6 +20,7 @@ from pathlib import Path
 from urllib.parse import parse_qsl, quote, urlsplit
 
 ROOT = Path(__file__).resolve().parent
+INDEX_HTML = (ROOT / 'index.html').read_bytes()  # read once: the desk opens no other file while serving
 PLATFORMS = ('TIKTOK', 'INSTAGRAM', 'YOUTUBE', 'X', 'OTHER')
 RULE_KINDS = ('FIXED_PER_APPROVED', 'PER_THOUSAND_VIEWS')
 CAMPAIGN_STATES = ('DRAFT', 'OPEN', 'CLOSED')
@@ -30,6 +32,46 @@ MAX_BODY_BYTES = 5_000_000
 REGULAR_FILE_MESSAGE = 'database path must be a regular file (existing or new), never a link or a special file'
 NOT_A_DATABASE_MESSAGE = 'database path does not hold a desk SQLite database'
 SUBSTITUTED_MESSAGE = 'database identity changed since the desk opened it; no operation runs against a substituted database'
+UNSUPPORTED_MESSAGE = ('database custody cannot be proven on this platform (no readable descriptor table and no exclusive '
+                       'file handles); the desk does not start here')
+# Custody proof per platform. Where the process descriptor table is readable, every connection's own
+# descriptor is checked against the pinned file before any statement runs. On Windows the pinned handle
+# keeps the database from being renamed, replaced or deleted while the desk lives. Elsewhere the desk
+# does not start.
+DESCRIPTOR_TABLE = next((table for table in ('/proc/self/fd', '/dev/fd') if os.path.isdir(table)), None)
+CUSTODY_PROOF = 'descriptor' if DESCRIPTOR_TABLE else ('handle' if os.name == 'nt' else None)
+_OPEN_LOCK = threading.Lock()  # one open at a time per process, so a new descriptor belongs to that open
+
+
+def _descriptors():
+    try:
+        return {int(name) for name in os.listdir(DESCRIPTOR_TABLE) if name.isdigit()}
+    except (OSError, TypeError):
+        return set()
+
+
+def _descriptor_proof(before, after, pinned):
+    """True when the open just performed is bound to the pinned file.
+
+    A descriptor that appeared during the open and refers to the pinned file proves it. When no
+    regular-file descriptor appeared at all, SQLite reused one of its own parked descriptors, and
+    those only ever refer to the pinned file (a refused open is closed before anything else can hold
+    a lock on the other file). A regular-file descriptor that appeared and refers elsewhere is the
+    connection opening some other file.
+    """
+    on_pinned = elsewhere = False
+    for descriptor in after - before:
+        try:
+            found = os.fstat(descriptor)
+        except OSError:
+            continue  # closed again already (the listing's own directory handle)
+        if not stat.S_ISREG(found.st_mode):
+            continue
+        if (found.st_dev, found.st_ino) == pinned:
+            on_pinned = True
+        else:
+            elsewhere = True
+    return on_pinned or not elsewhere
 # Known tracking/share parameters are dropped from content URLs; any other query material is refused
 # unless a code-owned projection below names it as the content identity.
 TRACKING_QUERY_KEYS = frozenset((
@@ -373,13 +415,15 @@ def admin_fee(amount_minor):
 class Desk:
     """One SQLite database, bound to this desk for its whole life.
 
-    Startup opens the path itself (links refused), keeps that handle open, and binds to the
-    database identity carried in the SQLite file header: a new database receives a freshly
-    minted 64-bit identity, an existing desk database keeps its own, and a desk database
-    written before identities existed is adopted once. Every connection afterwards proves
-    through the connection itself that it opened that same database, by reading the identity
-    back before any statement runs; anything else is closed and refused, so a path that is
-    renamed, linked or overwritten after startup neither receives nor answers a desk operation.
+    Startup opens the path itself (links refused) and keeps that handle open. Every connection,
+    the first one included, is proven before any statement runs: where the process descriptor
+    table is readable, the descriptor the connection opened must refer to the pinned file
+    itself, so a copy carrying the same header identity that is swapped in for the open and
+    swapped out again is refused and receives nothing; on Windows the pinned handle keeps the
+    database from being renamed, replaced or deleted while the desk lives; on any other platform
+    the desk does not start. The header identity (minted for a new database, kept for an existing
+    desk database, adopted once for a database written before identities existed) additionally
+    refuses a pinned file whose bytes were replaced in place by another database.
     """
 
     def __init__(self, path):
@@ -389,9 +433,16 @@ class Desk:
         if target.is_symlink() or (target.exists() and not target.is_file()):
             raise DeskError(REGULAR_FILE_MESSAGE)
         target.parent.mkdir(parents=True, exist_ok=True)
-        self.pinned = self._pin()
+        if CUSTODY_PROOF is None:
+            raise DeskError(UNSUPPORTED_MESSAGE)
+        with _OPEN_LOCK:  # no other open of this path in the process while the handle is taken
+            self.pinned = self._pin()
         self.identity = None
-        db = sqlite3.connect(self.path, timeout=10)
+        try:
+            db = self._open()
+        except BaseException:
+            self.close()
+            raise
         try:
             identity = self._adopt(db)
             db.executescript('''
@@ -459,6 +510,30 @@ class Desk:
             raise DeskError(REGULAR_FILE_MESSAGE)
         return (opened.st_dev, opened.st_ino)
 
+    def _open(self):
+        """Open a connection and prove, before any statement runs, that it opened the pinned file itself."""
+        with _OPEN_LOCK:
+            before = _descriptors()
+            db = sqlite3.connect(self.path, timeout=10)
+            try:
+                if CUSTODY_PROOF == 'descriptor':
+                    # The descriptor this open created must refer to the pinned file. A copy carrying the same
+                    # header identity, swapped in for the open and swapped out again, is a different file.
+                    if not _descriptor_proof(before, _descriptors(), self.pinned):
+                        raise DeskError(SUBSTITUTED_MESSAGE, 503)
+                else:
+                    # The pinned handle keeps the path from being renamed, replaced or deleted while the desk lives.
+                    try:
+                        current = os.stat(self.path)
+                    except OSError as exc:
+                        raise DeskError(SUBSTITUTED_MESSAGE, 503) from exc
+                    if (current.st_dev, current.st_ino) != self.pinned:
+                        raise DeskError(SUBSTITUTED_MESSAGE, 503)
+            except BaseException:
+                db.close()
+                raise
+        return db
+
     def _header_identity(self):
         """Identity (application id, user version) read from the SQLite header through the pinned handle; None while the file is empty."""
         os.lseek(self._handle, 0, os.SEEK_SET)
@@ -511,17 +586,11 @@ class Desk:
     def connect(self):
         if self._handle is None:
             raise DeskError('desk is closed', 503)
-        db = sqlite3.connect(self.path, timeout=10)
+        db = self._open()
         try:
-            # The connection must show, through itself, that it opened the desk's own database, and the
-            # path must still lead to the pinned file; otherwise it is closed before any statement runs.
+            # _open proved the descriptor; the header identity additionally refuses a pinned file whose
+            # bytes were replaced in place by another database.
             if self._connection_identity(db) != self.identity:
-                raise DeskError(SUBSTITUTED_MESSAGE, 503)
-            try:
-                current = os.stat(self.path)
-            except OSError as exc:
-                raise DeskError(SUBSTITUTED_MESSAGE, 503) from exc
-            if (current.st_dev, current.st_ino) != self.pinned:
                 raise DeskError(SUBSTITUTED_MESSAGE, 503)
         except BaseException:
             db.close()
@@ -862,7 +931,7 @@ class Handler(BaseHTTPRequestHandler):
         path = urlsplit(self.path).path
         try:
             if path == '/':
-                self.reply(200, (ROOT / 'index.html').read_bytes(), 'text/html; charset=utf-8')
+                self.reply(200, INDEX_HTML, 'text/html; charset=utf-8')
             elif path == '/api/state':
                 self.reply(200, encoded(self.desk.snapshot()))
             elif path.startswith('/api/export/'):

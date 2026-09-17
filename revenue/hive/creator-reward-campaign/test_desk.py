@@ -355,8 +355,15 @@ class DeskTests(unittest.TestCase):
         Desk(foreign_path).close()
         existing = Path(self.tmp.name) / 'existing.sqlite3'
         Desk(existing).close()
+        cloned = Path(self.tmp.name) / 'cloned.sqlite3'
+        Desk(cloned).close()
+        clone = Path(self.tmp.name) / 'cloned-copy.sqlite3'
+        shutil.copyfile(cloned, clone)  # a byte copy carries the same header identity
+        with closing(sqlite3.connect(clone)) as db:
+            db.execute("INSERT INTO brands (id, name) VALUES ('clone-only', 'Clone brand')")
+            db.commit()
         genuine = server.sqlite3.connect
-        for victim in (existing, Path(self.tmp.name) / 'fresh.sqlite3'):
+        for victim, substitute in ((existing, foreign_path), (Path(self.tmp.name) / 'fresh.sqlite3', foreign_path), (cloned, clone)):
             outcome = {}
 
             def swapping_connect(path, *args, **kwargs):
@@ -368,7 +375,8 @@ class DeskTests(unittest.TestCase):
                     except PermissionError:
                         outcome['pinned'] = True  # the handle taken first keeps the file where it is on this platform
                     else:
-                        shutil.copyfile(foreign_path, victim)
+                        shutil.copyfile(substitute, victim)
+                        outcome['substituted_bytes'] = victim.read_bytes()
                 return genuine(path, *args, **kwargs)
 
             server.sqlite3.connect = swapping_connect
@@ -378,12 +386,94 @@ class DeskTests(unittest.TestCase):
                 except DeskError as caught:
                     self.assertEqual(caught.status, 503)
                     self.assertNotIn('pinned', outcome)
+                    # The substituted target received nothing: refused before any statement ran.
+                    self.assertEqual(victim.read_bytes(), outcome['substituted_bytes'])
                 else:
                     desk.close()
                     self.assertIn('pinned', outcome)
             finally:
                 server.sqlite3.connect = genuine
             self.assertIn('swapped', outcome)
+
+    def test_same_identity_clone_swapped_in_for_the_open_and_out_again_is_refused(self):
+        real = Path(self.tmp.name) / 'owned.sqlite3'
+        desk = Desk(real)
+        self.addCleanup(desk.close)
+        desk.write('brand/create', {'operation_id': 'own-1', 'name': 'Own brand'})
+        clone = Path(self.tmp.name) / 'owned-clone.sqlite3'
+        shutil.copyfile(real, clone)  # same header identity as the desk's database
+        with closing(sqlite3.connect(clone)) as db:
+            db.execute("INSERT INTO brands (id, name) VALUES ('clone-only', 'Clone brand')")
+            db.commit()
+            self.assertEqual((db.execute('PRAGMA application_id').fetchone()[0], db.execute('PRAGMA user_version').fetchone()[0]), desk.identity)
+        clone_bytes = clone.read_bytes()
+        aside = Path(self.tmp.name) / 'owned-aside.sqlite3'
+        genuine = server.sqlite3.connect
+        outcome = {}
+
+        def racing_connect(path, *args, **kwargs):
+            # The clone answers to the path only for the instant of the SQLite open; the desk's own file is back before the open returns.
+            if str(path) != str(real):
+                return genuine(path, *args, **kwargs)
+            try:
+                os.replace(real, aside)
+            except PermissionError:
+                outcome['pinned'] = True  # the pinned handle keeps the file in place on this platform
+                return genuine(path, *args, **kwargs)
+            os.replace(clone, real)
+            try:
+                return genuine(path, *args, **kwargs)
+            finally:
+                os.replace(real, clone)
+                os.replace(aside, real)
+                outcome['raced'] = True
+
+        server.sqlite3.connect = racing_connect
+        try:
+            for step, call in (('snapshot', desk.snapshot),
+                               ('write', lambda: desk.write('brand/create', {'operation_id': 'own-2', 'name': 'Never in clone'}))):
+                try:
+                    result = call()
+                except DeskError as caught:
+                    self.assertEqual(caught.status, 503)
+                    self.assertIn('raced', outcome)
+                else:
+                    self.assertIn('pinned', outcome)
+                    if step == 'snapshot':
+                        self.assertEqual([b['name'] for b in result['brands']], ['Own brand'])
+            if 'raced' in outcome:
+                with self.assertRaises(DeskError) as caught:
+                    desk.export('0' * 32)
+                self.assertEqual(caught.exception.status, 503)
+        finally:
+            server.sqlite3.connect = genuine
+        self.assertEqual(clone.read_bytes(), clone_bytes)  # the clone received nothing
+        names = [b['name'] for b in desk.snapshot()['brands']]
+        self.assertNotIn('Clone brand', names)
+        self.assertEqual(names, ['Own brand'] if 'raced' in outcome else ['Never in clone', 'Own brand'])
+
+    def test_descriptor_proof_rule(self):
+        pinned_path = Path(self.tmp.name) / 'pinned.bin'
+        pinned_path.write_bytes(b'pinned')
+        other_path = Path(self.tmp.name) / 'other.bin'
+        other_path.write_bytes(b'other')
+        flags = os.O_RDONLY | getattr(os, 'O_BINARY', 0)
+        pinned_fd = os.open(pinned_path, flags)
+        self.addCleanup(os.close, pinned_fd)
+        other_fd = os.open(other_path, flags)
+        self.addCleanup(os.close, other_fd)
+        found = os.fstat(pinned_fd)
+        pinned = (found.st_dev, found.st_ino)
+        closed = os.open(other_path, flags)
+        os.close(closed)
+        proof = server._descriptor_proof
+        self.assertTrue(proof(set(), {pinned_fd}, pinned))  # the open produced a descriptor on the pinned file
+        self.assertTrue(proof(set(), set(), pinned))  # SQLite reused one of its own parked descriptors
+        self.assertTrue(proof(set(), {closed}, pinned))  # a descriptor closed again (the listing's own handle) decides nothing
+        self.assertFalse(proof(set(), {other_fd}, pinned))  # the open produced a descriptor on another file
+        self.assertTrue(proof(set(), {other_fd, pinned_fd}, pinned))  # an unrelated descriptor cannot hide a proven one
+        self.assertFalse(proof({pinned_fd}, {pinned_fd, other_fd}, pinned))  # a pre-existing pinned descriptor is not this open's
+        self.assertIn(server.CUSTODY_PROOF, ('descriptor', 'handle'))
 
     def test_ported_urls_keep_their_identity_and_malformed_ports_are_refused(self):
         campaign = self.campaign()
