@@ -43,7 +43,7 @@ const inactivePresentation = ops.checkoutPresentation(inactiveCatalog, "operator
 assert.strictEqual(inactivePresentation.href, "mailto:sales@example.com");
 assert.strictEqual(inactivePresentation.label, "Contact");
 assert.strictEqual(inactivePresentation.checkoutState, "CONTACT_ONLY");
-assert.notStrictEqual(inactivePresentation.status, "Chargeable Stripe checkout");
+assert.notStrictEqual(inactivePresentation.status, "Recorded checkout state is chargeable.");
 
 const readyProvider = {
   name: "stripe",
@@ -61,7 +61,7 @@ assert.strictEqual(activeCheckout.url, "https://buy.stripe.com/AbC123");
 const activePresentation = ops.checkoutPresentation({ provider: readyProvider, offers: activeOffer }, "operator");
 assert.strictEqual(activePresentation.href, "https://buy.stripe.com/AbC123");
 assert.strictEqual(activePresentation.checkoutState, "CHARGEABLE");
-assert.strictEqual(activePresentation.status, "Chargeable Stripe checkout");
+assert.strictEqual(activePresentation.status, "Recorded checkout state is chargeable.");
 assert.strictEqual(ops.checkoutState({ provider: readyProvider, offers: { operator: { link: { status: "ACTIVE", active: true, url: "https://example.com/pay" } } } }, "operator").chargeable, false);
 assert.strictEqual(ops.checkoutState({ provider: Object.assign({}, readyProvider, { account_payouts_enabled: false }), offers: activeOffer }, "operator").chargeable, false);
 assert.strictEqual(ops.checkoutState({ provider: Object.assign({}, readyProvider, { currently_due: ["business_profile.url"] }), offers: activeOffer }, "operator").chargeable, false);
@@ -105,6 +105,8 @@ for (const phrase of ["Every agent.", "collision", "SHA-pinned", "$49", "$2,500"
 assert(!html.includes("reading checkout state"), "checkout copy must not stay on forever-loading");
 assert(!html.includes("live state loading"), "checkout copy must not stay on forever-loading");
 assert(!html.includes("2 provider-verified checkout routes are active"), "static markup must not preclaim current processor state");
+assert(!html.includes("current live chargeability is confirmed"), "checked-in snapshot must not be described as a live provider query");
+assert(html.includes("does not live-query Stripe"));
 assert(html.includes("https://buy.stripe.com/7sYdR8bgVezD8qBgJs43S0u"), "operator Payment Link");
 assert(html.includes("https://buy.stripe.com/4gMcN4gBffDH8qBfFo43S0v"), "foundry Payment Link");
 assert(html.includes('id="hero-pilot-cta"'));
@@ -115,6 +117,10 @@ assert(html.includes("mailto:tokenjunkielabs@gmail.com?subject=Commons%20Agent%2
 assert(!/\b(authentication|authorization) required\b/i.test(html));
 assert(html.includes('href="./index.html">Commons home</a>'));
 assert(!/maxlength/.test(html));
+const script = fs.readFileSync(path.join(__dirname, "agent-ops.js"), "utf8");
+assert(script.includes("checked-in snapshot"));
+assert(script.includes("does not live-query Stripe"));
+assert(!script.includes("provider-verified checkout route"));
 
 const checkout = JSON.parse(fs.readFileSync(path.join(__dirname, "agent-ops-checkout.json"), "utf8"));
 const providerReadback = JSON.parse(fs.readFileSync(path.join(__dirname, "revenue", "checkout_capability", "offer-shelf-links-20260910.json"), "utf8"));
@@ -156,6 +162,7 @@ for (const [offerName, receiptName, cents] of [
   const presentation = ops.checkoutPresentation(checkout, offerName);
   assert.strictEqual(presentation.checkoutState, "CHARGEABLE");
   assert.strictEqual(presentation.href, recorded.url);
+  assert.strictEqual(presentation.status, "Recorded checkout state is chargeable.");
 }
 assert.strictEqual(contract.commercial.refund, "All sales are final; no refunds.");
 assert.strictEqual(checkout.economic_truth.buyer_claimed, false);
