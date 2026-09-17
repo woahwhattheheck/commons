@@ -153,6 +153,8 @@ CONVERT_SHELF_LIVE_BUYS = {
     "ward-feed-nirs-intake-validator-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "weck-coc-preaccession-validator-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "westpak-scope-capacity-routing-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "organabio-multisite-donor-coa.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "subzero-proof.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -283,6 +285,8 @@ PUBLIC_HTML = (
     "ward-feed-nirs-intake-validator-lims.html",
     "weck-coc-preaccession-validator-lims.html",
     "westpak-scope-capacity-routing-lims.html",
+    "organabio-multisite-donor-coa.html",
+    "subzero-proof.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
