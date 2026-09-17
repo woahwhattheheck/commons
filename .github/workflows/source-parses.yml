@@ -8,6 +8,8 @@ on:
     paths:
       - "revenue/multi_framework_evidence_freshness/**"
       - "tests/test_multi_framework_evidence_freshness*.py"
+      - "tools/procurement_loss_remediation/**"
+      - "test_procurement_loss_remediation*.py"
       - ".github/workflows/source-parses.yml"
   pull_request:
     paths:
@@ -99,3 +101,49 @@ jobs:
 
       - name: Optimized Python freshness battery
         run: python -O -B -m unittest discover -s tests -p 'test_multi_framework_evidence_freshness*.py' -v
+
+  procurement-loss-remediation:
+    name: procurement-loss-remediation (${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - name: Check out exact event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Parse retained product source
+        run: >-
+          python -m py_compile
+          tools/procurement_loss_remediation/core.py
+          tools/procurement_loss_remediation/verifier.py
+          tools/procurement_loss_remediation/__init__.py
+          tools/procurement_loss_remediation/__main__.py
+          test_procurement_loss_remediation.py
+          test_procurement_loss_remediation_optimized.py
+          test_procurement_loss_remediation_generation_remint.py
+
+      - name: Run retained normal hostile suite
+        run: >-
+          python -m unittest -v
+          test_procurement_loss_remediation.py
+          test_procurement_loss_remediation_optimized.py
+          test_procurement_loss_remediation_generation_remint.py
+
+      - name: Run retained optimized hostile suite
+        run: >-
+          python -O -m unittest -v
+          test_procurement_loss_remediation.py
+          test_procurement_loss_remediation_optimized.py
+          test_procurement_loss_remediation_generation_remint.py
