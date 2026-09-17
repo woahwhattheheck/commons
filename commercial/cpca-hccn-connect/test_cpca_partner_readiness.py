@@ -17,23 +17,11 @@ def load_module(name, path):
     return module
 
 
-p = load_module("cpca_partner_readiness_test_target", ROOT / "cpca_partner_readiness.py")
+def load_json(name):
+    return json.loads((ROOT / name).read_text(encoding="utf-8"))
 
-MIN_SPEC = {
-    "mandatory_direct_prime_gates": [
-        {"id": "licensing_insurance"},
-        {"id": "client_references"},
-        {"id": "technical_assistance_track_record"},
-        {"id": "group_training_track_record"},
-        {"id": "submission_authority"},
-    ],
-    "service_type_specific_gate_ids": {
-        "technical_assistance": ["technical_assistance_track_record"],
-        "group_training": ["group_training_track_record"],
-        "both": ["technical_assistance_track_record", "group_training_track_record"],
-    },
-}
-REQUIRED = ["licensing_insurance", "client_references", "technical_assistance_track_record", "submission_authority"]
+
+p = load_module("cpca_partner_readiness_test_target", ROOT / "cpca_partner_readiness.py")
 
 
 def digest(label):
@@ -44,128 +32,191 @@ def source(label):
     return {"source_id": f"urn:test:{label}", "sha256": digest(label)}
 
 
-def evidence():
-    return {
-        "domain": "artificial_intelligence",
-        "service_type": "technical_assistance",
-        "bid_model": "healthcare_prime_subcontract",
-        "healthcare_prime": {
-            "name": "Example Qualified Health Prime",
-            "eligibility_source": "urn:test:eligibility",
-            "safety_net_experience_source": "urn:test:safety-net",
-            "relationship_authority": True,
-        },
-        "tjlabs_support_gate_ids": ["technical_assistance_track_record"],
+def teaming_case():
+    spec = load_json("qualification_spec.json")
+    evidence = load_json("current_evidence.json")
+    evidence["bid_model"] = "healthcare_prime_subcontract"
+    evidence["healthcare_prime"] = {
+        "name": "Example Qualified Health Prime",
+        "eligibility_source": "urn:test:eligibility",
+        "safety_net_experience_source": "urn:test:safety-net",
+        "relationship_authority": True,
     }
+    evidence["gate_status"]["subject_matter_expertise"] = "PROVEN"
+    evidence.setdefault("gate_sources", {})["subject_matter_expertise"] = ["urn:test:subject-matter"]
+    evidence["tjlabs_support_gate_ids"] = ["subject_matter_expertise"]
+    return spec, evidence
 
 
-def complete_manifest(e):
+def required_gate_ids(spec, service_type):
+    specific = set(spec["service_type_specific_gate_ids"][service_type])
+    track = {"technical_assistance_track_record", "group_training_track_record"}
+    return [
+        row["id"]
+        for row in spec["mandatory_direct_prime_gates"]
+        if row["id"] not in track or row["id"] in specific
+    ]
+
+
+def complete_manifest(spec, evidence):
+    required = required_gate_ids(spec, evidence["service_type"])
     return {
-        "qualification_spec_sha256": p.canonical_digest(MIN_SPEC),
-        "prime_legal_name": e["healthcare_prime"]["name"],
-        "domain": e["domain"],
-        "service_type": e["service_type"],
+        "qualification_spec_sha256": p.canonical_digest(spec),
+        "prime_legal_name": evidence["healthcare_prime"]["name"],
+        "domain": evidence["domain"],
+        "service_type": evidence["service_type"],
         "prime_identity_source": source("prime"),
         "relationship_authority_source": source("relationship"),
         "submission_authority_source": source("submission"),
         "application_package_source": source("package"),
-        "gate_sources": {gate_id: [source(gate_id)] for gate_id in REQUIRED},
+        "gate_sources": {gate_id: [source(gate_id)] for gate_id in required},
     }
 
 
-def legacy(blockers):
+def fake_legacy(blockers=()):
     return {
         "state": "TEAMING_READY",
-        "reason": "named_healthcare_prime_and_support_scope_proven",
-        "gate_status": {gate_id: ("PROVEN" if gate_id not in blockers else "HOLD") for gate_id in REQUIRED},
+        "reason": "caller_fabricated_teaming_ready",
+        "gate_status": {"subject_matter_expertise": "PROVEN"},
         "blockers": list(blockers),
     }
 
 
 class PartnerReadinessTests(unittest.TestCase):
-    def test_bug_shaped_teaming_ready_becomes_discussion_only(self):
-        e = evidence()
-        result = p.compile_partner_readiness(MIN_SPEC, e, legacy(["licensing_insurance", "client_references"]))
-        self.assertEqual("WORKSHARE_DISCUSSION_READY", result["state"])
-        self.assertEqual("DISCUSSION_READY", result["workshare"]["state"])
-        self.assertEqual("HOLD", result["application"]["state"])
-        self.assertIn("licensing_insurance", result["application"]["blockers"])
-        self.assertFalse(result["legacy_workshare_signal"]["application_authority"])
-
-    def test_complete_legacy_gates_without_manifest_still_hold(self):
-        e = evidence()
-        result = p.compile_partner_readiness(MIN_SPEC, e, legacy([]))
-        self.assertEqual("WORKSHARE_DISCUSSION_READY", result["state"])
-        self.assertEqual("HOLD", result["application"]["state"])
-        self.assertIn("partner_application_evidence", result["application"]["blockers"])
+    def test_code_owned_predecessor_teaming_signal_is_discussion_only(self):
+        spec, evidence = teaming_case()
+        receipt = p.make_receipt(spec, evidence)
+        self.assertEqual("WORKSHARE_DISCUSSION_READY", receipt["state"])
+        self.assertEqual("DISCUSSION_READY", receipt["workshare"]["state"])
+        self.assertTrue(receipt["workshare"]["source_bound"])
+        self.assertEqual("HOLD", receipt["application"]["state"])
+        self.assertIn("provider_authenticated_prime_application_evidence", receipt["application"]["blockers"])
+        self.assertFalse(receipt["legacy_workshare_signal"]["application_authority"])
+        self.assertTrue(all(value is False for value in receipt["authority"].values()))
 
     def test_complete_caller_manifest_still_cannot_authorize_application(self):
-        e = evidence()
-        e["partner_application_evidence"] = complete_manifest(e)
-        result = p.compile_partner_readiness(MIN_SPEC, e, legacy([]))
-        self.assertEqual("WORKSHARE_DISCUSSION_READY", result["state"])
-        self.assertEqual("HOLD", result["application"]["state"])
-        self.assertIn("provider_authenticated_prime_application_evidence", result["application"]["blockers"])
-        self.assertFalse(result["application"]["provider_authenticated_evidence_available"])
-        self.assertFalse(result["application"]["caller_manifest_can_authorize_readiness"])
-        self.assertTrue(all(value is False for value in result["authority"].values()))
+        spec, evidence = teaming_case()
+        evidence["partner_application_evidence"] = complete_manifest(spec, evidence)
+        receipt = p.make_receipt(spec, evidence)
+        self.assertEqual("WORKSHARE_DISCUSSION_READY", receipt["state"])
+        self.assertEqual("HOLD", receipt["application"]["state"])
+        self.assertIn("provider_authenticated_prime_application_evidence", receipt["application"]["blockers"])
+        self.assertFalse(receipt["application"]["provider_authenticated_evidence_available"])
+        self.assertFalse(receipt["application"]["caller_manifest_can_authorize_readiness"])
+        self.assertTrue(receipt["binding"]["application_manifest"]["present"])
+        self.assertGreater(len(receipt["binding"]["application_manifest"]["sources"]), 4)
 
-    def test_two_arbitrary_prime_strings_never_prove_application(self):
-        e = evidence()
-        result = p.compile_partner_readiness(MIN_SPEC, e, legacy(["submission_authority"]))
-        self.assertNotEqual("APPLICATION_TEAMING_READY", result["state"])
-        self.assertEqual("HOLD", result["application"]["state"])
+    def test_public_raw_legacy_result_is_non_authorizing(self):
+        spec, evidence = teaming_case()
+        result = p.compile_partner_readiness(spec, evidence, fake_legacy())
+        self.assertEqual("HOLD", result["state"])
+        self.assertEqual("HOLD", result["workshare"]["state"])
+        self.assertFalse(result["workshare"]["source_bound"])
+        self.assertFalse(result["legacy_workshare_signal"]["trusted_origin"])
+        self.assertEqual(["trusted_legacy_predecessor_required"], result["application"]["blockers"])
+        self.assertIsNone(result["binding"])
 
-    def test_manifest_is_bound_to_exact_spec_and_prime(self):
-        e = evidence()
-        e["partner_application_evidence"] = complete_manifest(e)
-        e["partner_application_evidence"]["prime_legal_name"] = "Different Prime"
-        result = p.compile_partner_readiness(MIN_SPEC, e, legacy([]))
-        self.assertIn("prime_legal_name", result["application"]["blockers"])
-        self.assertEqual("HOLD", result["application"]["state"])
+    def test_noncanonical_spec_substitution_fails_closed(self):
+        spec, evidence = teaming_case()
+        forged_spec = copy.deepcopy(spec)
+        forged_spec["receipt_test_marker"] = "weaker-caller-spec"
+        with self.assertRaisesRegex(ValueError, "code-owned canonical specification"):
+            p.make_receipt(forged_spec, evidence)
 
-    def test_malformed_source_object_fails_closed(self):
-        e = evidence()
-        e["partner_application_evidence"] = complete_manifest(e)
-        e["partner_application_evidence"]["relationship_authority_source"]["sha256"] = "not-a-digest"
-        with self.assertRaisesRegex(ValueError, "lowercase 64-hex"):
-            p.compile_partner_readiness(MIN_SPEC, e, legacy([]))
+    def test_cross_prime_receipt_transplant_is_rejected_even_when_state_collides(self):
+        spec, evidence = teaming_case()
+        receipt = p.make_receipt(spec, evidence)
+        other = copy.deepcopy(evidence)
+        other["healthcare_prime"]["name"] = "Different Qualified Health Prime"
+        other_receipt = p.make_receipt(spec, other)
+        self.assertEqual(receipt["state"], other_receipt["state"])
+        self.assertNotEqual(receipt["binding"]["prime"], other_receipt["binding"]["prime"])
+        self.assertFalse(p.verify_receipt(spec, other, receipt))
 
-    def test_receipt_tamper_cannot_verify(self):
-        e = evidence()
-        e["partner_application_evidence"] = complete_manifest(e)
-        result = p.compile_partner_readiness(MIN_SPEC, e, legacy([]))
-        result["receipt_sha256"] = p.canonical_digest(result)
-        forged = copy.deepcopy(result)
+    def test_cross_evidence_receipt_transplant_is_rejected_even_when_state_collides(self):
+        spec, evidence = teaming_case()
+        receipt = p.make_receipt(spec, evidence)
+        other = copy.deepcopy(evidence)
+        other.setdefault("evidence_notes", []).append("different retained note generation")
+        other_receipt = p.make_receipt(spec, other)
+        self.assertEqual(receipt["state"], other_receipt["state"])
+        self.assertNotEqual(receipt["binding"]["evidence_sha256"], other_receipt["binding"]["evidence_sha256"])
+        self.assertFalse(p.verify_receipt(spec, other, receipt))
+
+    def test_cross_source_manifest_receipt_transplant_is_rejected(self):
+        spec, evidence = teaming_case()
+        evidence["partner_application_evidence"] = complete_manifest(spec, evidence)
+        receipt = p.make_receipt(spec, evidence)
+        other = copy.deepcopy(evidence)
+        other["partner_application_evidence"]["prime_identity_source"] = source("different-prime-source")
+        other_receipt = p.make_receipt(spec, other)
+        self.assertEqual(receipt["state"], other_receipt["state"])
+        self.assertNotEqual(
+            receipt["binding"]["application_manifest"]["sha256"],
+            other_receipt["binding"]["application_manifest"]["sha256"],
+        )
+        self.assertFalse(p.verify_receipt(spec, other, receipt))
+
+    def test_legacy_implementation_is_code_owned_and_digest_bound(self):
+        spec, evidence = teaming_case()
+        receipt = p.make_receipt(spec, evidence)
+        expected = hashlib.sha256((ROOT / "cpca_qualify.py").read_bytes()).hexdigest()
+        self.assertEqual(expected, receipt["binding"]["legacy_implementation"]["sha256"])
+        self.assertEqual("cpca_qualify.py", receipt["binding"]["legacy_implementation"]["path"])
+        with self.assertRaises(TypeError):
+            p.make_receipt(spec, evidence, ROOT / "replacement_legacy.py")
+        with self.assertRaises(TypeError):
+            p.verify_receipt(spec, evidence, receipt, ROOT / "replacement_legacy.py")
+
+    def test_rehashed_forged_application_state_fails_semantic_verify(self):
+        spec, evidence = teaming_case()
+        receipt = p.make_receipt(spec, evidence)
+        forged = copy.deepcopy(receipt)
         forged["application"]["state"] = "TEAMING_READY"
-        self.assertNotEqual(forged["receipt_sha256"], p.canonical_digest({k: v for k, v in forged.items() if k != "receipt_sha256"}))
+        unsigned = dict(forged)
+        unsigned.pop("receipt_sha256")
+        forged["receipt_sha256"] = p.canonical_digest(unsigned)
+        self.assertFalse(p.verify_receipt(spec, evidence, forged))
 
-    def test_real_legacy_predecessor_cannot_promote_application(self):
-        legacy_path = ROOT / "cpca_qualify.py"
-        spec_path = ROOT / "qualification_spec.json"
-        current_path = ROOT / "current_evidence.json"
-        if not (legacy_path.exists() and spec_path.exists() and current_path.exists()):
-            self.skipTest("repository integration files unavailable")
-        q = load_module("cpca_qualify_real_predecessor", legacy_path)
-        spec = json.loads(spec_path.read_text(encoding="utf-8"))
-        e = json.loads(current_path.read_text(encoding="utf-8"))
-        e["bid_model"] = "healthcare_prime_subcontract"
-        e["healthcare_prime"] = {
-            "name": "Example Qualified Health Prime",
-            "eligibility_source": "urn:test:eligibility",
-            "safety_net_experience_source": "urn:test:safety-net",
-            "relationship_authority": True,
-        }
-        e["gate_status"]["subject_matter_expertise"] = "PROVEN"
-        e.setdefault("gate_sources", {})["subject_matter_expertise"] = ["urn:test:subject-matter"]
-        e["tjlabs_support_gate_ids"] = ["subject_matter_expertise"]
-        old = q.evaluate(spec, e)
-        self.assertEqual("TEAMING_READY", old["state"])
-        self.assertTrue(old["blockers"])
-        result = p.compile_partner_readiness(spec, e, old)
-        self.assertEqual("WORKSHARE_DISCUSSION_READY", result["state"])
-        self.assertEqual("HOLD", result["application"]["state"])
-        self.assertTrue(result["application"]["blockers"])
+    def test_malformed_application_source_object_fails_closed(self):
+        spec, evidence = teaming_case()
+        evidence["partner_application_evidence"] = complete_manifest(spec, evidence)
+        evidence["partner_application_evidence"]["relationship_authority_source"]["sha256"] = "not-a-digest"
+        with self.assertRaisesRegex(ValueError, "lowercase 64-hex"):
+            p.make_receipt(spec, evidence)
+
+    def test_exact_receipt_verifies_and_binds_canonical_spec_file(self):
+        spec, evidence = teaming_case()
+        receipt = p.make_receipt(spec, evidence)
+        self.assertTrue(p.verify_receipt(spec, evidence, receipt))
+        self.assertEqual(p.canonical_digest(spec), receipt["binding"]["qualification_spec_sha256"])
+        self.assertEqual(
+            hashlib.sha256((ROOT / "qualification_spec.json").read_bytes()).hexdigest(),
+            receipt["binding"]["qualification_spec_file_sha256"],
+        )
+        self.assertEqual(
+            spec["source_packet"]["sha256"],
+            receipt["binding"]["qualification_source_packet"]["sha256"],
+        )
+
+    def test_receipt_binds_exact_predecessor_result(self):
+        spec, evidence = teaming_case()
+        receipt = p.make_receipt(spec, evidence)
+        q = load_module("cpca_qualify_reference_for_digest", ROOT / "cpca_qualify.py")
+        legacy_result = q.evaluate(copy.deepcopy(spec), copy.deepcopy(evidence))
+        self.assertEqual("TEAMING_READY", legacy_result["state"])
+        self.assertEqual(p.canonical_digest(legacy_result), receipt["binding"]["legacy_result_sha256"])
+
+    def test_cli_rejects_removed_legacy_override(self):
+        spec, evidence = teaming_case()
+        temp = ROOT / ".cpca_partner_readiness_test_evidence.json"
+        try:
+            temp.write_text(json.dumps(evidence), encoding="utf-8")
+            with self.assertRaises(SystemExit) as raised:
+                p.main([str(temp), "--legacy", str(ROOT / "cpca_qualify.py")])
+            self.assertNotEqual(0, raised.exception.code)
+        finally:
+            temp.unlink(missing_ok=True)
 
 
 if __name__ == "__main__":
