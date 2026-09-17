@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 92,
+    "open_issues": 93,
     "open_pull_requests": 34,
-    "runs_in_progress": 16,
-    "runs_queued": 360
+    "runs_in_progress": 15,
+    "runs_queued": 280
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -18,7 +18,7 @@
       "head_sha": "f4f1a938de70001cf7d6e3980f5de6d8204f532c",
       "number": 15613,
       "title": "SwarmOps: harden current semantic readiness verification",
-      "updated_at": "2026-09-17T20:16:55Z"
+      "updated_at": "2026-09-17T22:48:12Z"
     },
     {
       "author": "woahwhattheheck",
@@ -51,7 +51,7 @@
       "head_sha": "db0e8838d61cd6133154bf2008aefb5b94fc5acd",
       "number": 15631,
       "title": "ARC3 SAGE: close exact-evidence ambiguity and abstract lookahead (#14735)",
-      "updated_at": "2026-09-17T21:11:12Z"
+      "updated_at": "2026-09-17T22:46:11Z"
     },
     {
       "author": "woahwhattheheck",
@@ -215,8 +215,52 @@
   },
   "pulls_listed": 34,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 22.5,
+  "queue_depth_per_runner": 18.7,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "devin/wb-hour-delivery-kit-20260917-01",
+      "closed_at": "2026-09-17T23:04:13Z",
+      "head_sha": "1e759e3bed87e0f8d48cbd11bf3e5869eb3a73d9",
+      "merged_at": "2026-09-17T23:04:13Z",
+      "number": 15788,
+      "state": "MERGED",
+      "title": "Add White Box hour delivery kit (WO-WB-DELIVERY-KIT)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/latch-ci-fix-pack-99-54f4",
+      "closed_at": "2026-09-17T22:59:00Z",
+      "head_sha": "77cc131608ef0185902f50155491dab032639162",
+      "merged_at": "2026-09-17T22:59:00Z",
+      "number": 15787,
+      "state": "MERGED",
+      "title": "LATCH WO-CI-FIX-PACK-99 produce pack + sample"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/wo-wb-delivery-kit-6aee",
+      "closed_at": "2026-09-17T22:56:51Z",
+      "head_sha": "96a633462c67da0ff0336de144cd4bad026ba744",
+      "merged_at": "2026-09-17T22:56:51Z",
+      "number": 15786,
+      "state": "MERGED",
+      "title": "GOAT WO-WB-DELIVERY-KIT: White Box hour ops pack"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "type/wo-convert-shelf-49-20260917-01",
+      "closed_at": "2026-09-17T22:49:19Z",
+      "head_sha": "92b5a38c85207be3a1b55b5243dff301a0b8b5ae",
+      "merged_at": "2026-09-17T22:49:19Z",
+      "number": 15785,
+      "state": "MERGED",
+      "title": "TYPE WO-CONVERT-SHELF-49: $49 convert-shelf pack + tips funnel"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -264,17 +308,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "devin/sledge-fleetworkorder-imagedrop",
-      "closed_at": "2026-09-17T21:47:40Z",
-      "head_sha": "0d9b3503094c4664467bc4dce85714a25d9786ca",
-      "merged_at": "2026-09-17T21:47:40Z",
-      "number": 15782,
-      "state": "MERGED",
-      "title": "convert shelf: fleet work order + image drop (sledge-fleetworkorder-imagedrop-convert-shelf-20260917-01)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "devin/sledge-prooftoproposal-theworld",
       "closed_at": "2026-09-17T21:44:22Z",
       "head_sha": "8f53d1bc124abe23565ffb0a76e04b0d4f8926a6",
@@ -282,17 +315,6 @@
       "number": 15781,
       "state": "MERGED",
       "title": "convert shelf: proof-to-proposal + the-world (sledge-prooftoproposal-theworld-convert-shelf-20260917-01)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "devin/sledge-freesamplepair",
-      "closed_at": "2026-09-17T21:40:13Z",
-      "head_sha": "0fc13ead242a5e2e1342f227a9065e8d652ba829",
-      "merged_at": "2026-09-17T21:40:13Z",
-      "number": 15780,
-      "state": "MERGED",
-      "title": "convert shelf: muhlnickel + titan-hands free-sample (sledge-freesamplepair-convert-shelf-20260917-01)"
     },
     {
       "author": "woahwhattheheck",
@@ -359,32 +381,10 @@
       "number": 15774,
       "state": "MERGED",
       "title": "convert shelf: sharp rtu + slo cls (sledge-sharprtu-slocs-convert-shelf-20260917-01)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "devin/sledge-sclabs-sgspsi",
-      "closed_at": "2026-09-17T21:26:46Z",
-      "head_sha": "27ed9300bd1cf3263dbb4d703afab88b0ac8d21b",
-      "merged_at": "2026-09-17T21:26:46Z",
-      "number": 15773,
-      "state": "MERGED",
-      "title": "convert shelf: sc labs multistate + sgs psi thermal (sledge-sclabs-sgspsi-convert-shelf-20260917-01)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "devin/sledge-sanair-savant",
-      "closed_at": "2026-09-17T21:25:09Z",
-      "head_sha": "ca808c40dcf056f51b2a472ce2d373931a66d022",
-      "merged_at": "2026-09-17T21:25:09Z",
-      "number": 15772,
-      "state": "MERGED",
-      "title": "convert shelf: sanair asbestos + savant fe8 (sledge-sanair-savant-convert-shelf-20260917-01)"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T22:41:46Z",
+  "unchanged_since": "2026-09-17T23:16:02Z",
   "undatable_pulls": []
 }
