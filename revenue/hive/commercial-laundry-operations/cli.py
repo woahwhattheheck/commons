@@ -62,7 +62,7 @@ def main() -> int:
     p.add_argument("route_id")
     p = sub.add_parser("customer-snapshot")
     p.add_argument("customer_id")
-    p = sub.add_parser("integrity")
+    sub.add_parser("integrity")
     p = sub.add_parser("export-route")
     p.add_argument("route_id")
     p.add_argument("directory")
@@ -71,7 +71,9 @@ def main() -> int:
     p.add_argument("directory")
 
     args = parser.parse_args()
-    desk = LaundryDesk(args.database)
+    # Every CLI command is observational with respect to the source SQLite
+    # database. Export commands may create only their requested handoff bundle.
+    desk = LaundryDesk.open_read_only(args.database)
     if args.command == "route-snapshot":
         result = desk.route_snapshot(args.route_id)
     elif args.command == "customer-snapshot":
@@ -85,7 +87,20 @@ def main() -> int:
         out = Path(args.directory)
         prefix = "route" if route_mode else "customer"
         created = _write_export_bundle(out, prefix, object_id, exports)
-        result = {"created": created, "authority": {k: False for k in ["customer_messaging","provider_navigation","accounting_mutation","payment_mutation","deployment","revenue_assertion"]}}
+        result = {
+            "created": created,
+            "authority": {
+                k: False
+                for k in [
+                    "customer_messaging",
+                    "provider_navigation",
+                    "accounting_mutation",
+                    "payment_mutation",
+                    "deployment",
+                    "revenue_assertion",
+                ]
+            },
+        }
     print(json.dumps(result, sort_keys=True, indent=2))
     return 0
 
