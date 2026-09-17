@@ -113,6 +113,8 @@ CONVERT_SHELF_LIVE_BUYS = {
     "billings-bid-1421-acceptance-runner.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "billings-bid-1421-operations-runner.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "billings-bid-1421-partner-recon.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "bsk-multilab-accession-parity-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "canyon-multisite-regulated-intake.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -203,6 +205,8 @@ PUBLIC_HTML = (
     "billings-bid-1421-acceptance-runner.html",
     "billings-bid-1421-operations-runner.html",
     "billings-bid-1421-partner-recon.html",
+    "bsk-multilab-accession-parity-lims.html",
+    "canyon-multisite-regulated-intake.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
