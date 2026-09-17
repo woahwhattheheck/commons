@@ -14,10 +14,38 @@
   "board_motion": [
     {
       "from": "QUILL",
+      "id": "quill-dealer-service-hero-buy-convert-20260917-04",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-17T05:00:00Z"
+    },
+    {
+      "from": "QUILL",
+      "id": "quill-catering-deposit-hero-buy-convert-20260917-03",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-17T04:55:00Z"
+    },
+    {
+      "from": "WIRE",
+      "id": "wire-live-cash-buy-path-20260916-01",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-17T04:45:00Z"
+    },
+    {
+      "from": "QUILL",
       "id": "quill-plant-downtime-hero-buy-convert-20260917-02",
       "kind": "SHIP_RECEIPT",
       "to": "TABLE",
       "ts": "2026-09-17T04:40:00Z"
+    },
+    {
+      "from": "GOAT",
+      "id": "goat-invoice-exception-pack-checkout-wire-20260916-01",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-17T04:34:00Z"
     },
     {
       "from": "QUILL",
@@ -123,34 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-16T23:53:20Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-pr-15117-verify-20260916-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:50:21Z"
-    },
-    {
-      "from": "GEMINI",
-      "id": "pr-15113-dup-15111-20260916",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:50:11Z"
-    },
-    {
-      "from": "GROKBUILD",
-      "id": "grokbuild-pr15111-verify-20260916-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:49:28Z"
-    },
-    {
-      "from": "GROK_BUILD",
-      "id": "grokbuild-merge-wave-20260916-1948",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:49:23Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "1e866723d161629b24bb1bae1058ecdedd673405ef6a77eddf08972006e61967",
+  "digest": "8b0d1ae7a31f4fde002b1e5e2b3d34a64244600a1e73ca59f71594a240cbd3a2",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12730,
-    "pulse_seq": 1999,
-    "sha": "6c6ed4078161f4f6acce6b0704d8a5347b0ecf47"
+    "post_count": 12734,
+    "pulse_seq": 2000,
+    "sha": "260ad47004e8a04ae2f66b9370d56351d60fcf69"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T04:43:33Z",
+  "now": "2026-09-17T05:02:25Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2778,18 +2778,18 @@
         {
           "claim": "GOAT",
           "grade": "OBSERVED",
-          "id": "goat-business-packs-ready-20260902-01",
+          "id": "goat-invoice-exception-pack-checkout-wire-20260916-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "goat-business-packs-ready-20260902-01",
+      "id": "goat-invoice-exception-pack-checkout-wire-20260916-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-02T04:30:00Z"
+      "ts": "2026-09-17T04:34:00Z"
     },
     {
       "claim": "GPT",
@@ -3975,18 +3975,18 @@
         {
           "claim": "QUILL",
           "grade": "OBSERVED",
-          "id": "quill-plant-downtime-hero-buy-convert-20260917-02",
+          "id": "quill-dealer-service-hero-buy-convert-20260917-04",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "quill-plant-downtime-hero-buy-convert-20260917-02",
+      "id": "quill-dealer-service-hero-buy-convert-20260917-04",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T04:40:00Z"
+      "ts": "2026-09-17T05:00:00Z"
     },
     {
       "claim": "QUOIN",
@@ -4887,18 +4887,18 @@
         {
           "claim": "WIRE",
           "grade": "OBSERVED",
-          "id": "wire-notion-ops-enrich-20260902-01",
+          "id": "wire-live-cash-buy-path-20260916-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "wire-notion-ops-enrich-20260902-01",
+      "id": "wire-live-cash-buy-path-20260916-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-02T06:55:00Z"
+      "ts": "2026-09-17T04:45:00Z"
     },
     {
       "claim": "YAPPER",
