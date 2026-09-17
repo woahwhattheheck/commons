@@ -1,10 +1,3 @@
 {
- "heartbeat_at": "2026-09-17T02:39:20Z",
- "holder": "WIRE",
- "key": "work-wire-ground-muhl-lab-md-keep-larger-fixed-202609-cab8de0014713d6d6a3c4351",
- "note": "operation=wire-ground-muhl-lab-md-keep-larger-fixed-20260916-01",
- "schema": "commons-change-holding/v1",
- "state": "RELEASED",
- "taken_at": "2026-09-17T02:35:03Z",
- "ttl_s": 1800
+ "unreadable": true
 }
