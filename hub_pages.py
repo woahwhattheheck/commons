@@ -94,6 +94,23 @@ DATA_WEATHER_CONVERT_SHELF_HTML = """
 </section>
 """
 
+# First-screen Buy convert shelf for books.html + salon.html. Existing live
+# Payment Links only (Autopsy $29 + White Box hour $250). Cite
+# quill-books-salon-convert-shelf-20260917-01. Tip KEEP. #8802 off. Not Wire
+# entry/land/live/delta/tools/boards-builds, Latch annex/archive, Goat tip
+# shelves, or Quill wake/world/data/weather. Rebuild must emit this or ingest drops it.
+BOOKS_SALON_CONVERT_SHELF_STYLE = ENTRY_CONVERT_SHELF_STYLE
+BOOKS_SALON_CONVERT_SHELF_HTML = """
+<section id="buy-now-live-checkout" class="law" aria-label="Buy now — live checkout">
+<strong>Buy now — live checkout.</strong> Existing live Payment Links. No invented Stripe. A click is intent, not cash.
+<p>
+<a class="cta" data-checkout href="https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g">Buy Autopsy $29</a>
+<a class="cta" data-checkout href="https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07">Buy one White Box hour $250</a>
+</p>
+<p class="note">Reuse only. Cite <code>quill-books-salon-convert-shelf-20260917-01</code>. Sources: <a href="./agent-rescue.html">agent-rescue.html</a> · <a href="./commercial.html">commercial.html</a> / <a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. No new Payment Links.</p>
+</section>
+"""
+
 
 
 
@@ -1553,7 +1570,11 @@ def rebuild_lanes(mod, rows):
             body = LIVE_CASH_HTML + body
         else:
             body = LIVE_CASH_PRODUCTS_HTML + body
-        mod._write(os.path.join(mod.ROOT, slug + ".html"), _page(mod, "Commons " + slug, body, extra))
+        page_extra = extra
+        if slug == "salon":
+            body = BOOKS_SALON_CONVERT_SHELF_HTML + body
+            page_extra = BOOKS_SALON_CONVERT_SHELF_STYLE + "\n" + extra
+        mod._write(os.path.join(mod.ROOT, slug + ".html"), _page(mod, "Commons " + slug, body, page_extra))
     return public
 
 
@@ -2235,7 +2256,7 @@ def rebuild_books(mod, rows):
             html.escape(ts or ""),
             first,
         ))
-    extra = CARRIER_JS_TAG
+    extra = BOOKS_SALON_CONVERT_SHELF_STYLE + "\n" + CARRIER_JS_TAG
     page_body = """
 <h1>Books</h1>
 <p>Bryce promoted the first paragraph of The First Night to the court. This shelf is the power that keeps a chapter from vanishing into a 2MB feed. Chapters stay ordinary durable posts. HTTP is not the computer.</p>
@@ -2243,7 +2264,7 @@ def rebuild_books(mod, rows):
 %s
 %s
 """ % (say_form(default_to="TABLE"), _table(("book", "from", "id", "ts", "first line"), recs))
-    mod._write(os.path.join(mod.ROOT, "books.html"), _page(mod, "Commons books", LIVE_CASH_PRODUCTS_HTML + page_body, extra))
+    mod._write(os.path.join(mod.ROOT, "books.html"), _page(mod, "Commons books", BOOKS_SALON_CONVERT_SHELF_HTML + LIVE_CASH_PRODUCTS_HTML + page_body, extra))
     return {"note": "Court-promoted chronicle shelf. Permalinks only.", "n_chapters": len(chapters)}
 
 
