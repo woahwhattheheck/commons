@@ -115,11 +115,15 @@ def _closed(o: dict[str, Any], allowed: set[str], where: str):
 
 
 def _current(observed: str, valid_until: str | None, as_of) -> bool:
-    if _dt(observed, "observed_at") > as_of:
+    observed_dt = _dt(observed, "observed_at")
+    if observed_dt > as_of:
         return False
     if valid_until is None:
         return True
-    return _dt(valid_until, "valid_until") >= as_of
+    valid_dt = _dt(valid_until, "valid_until")
+    if valid_dt < observed_dt:
+        return False
+    return valid_dt >= as_of
 
 
 def validate_and_normalize(raw: Any) -> dict[str, Any]:
@@ -141,14 +145,11 @@ def validate_and_normalize(raw: Any) -> dict[str, Any]:
         if cid in carrier_ids:
             raise InputError("duplicate carrier pursuit_id")
         carrier_ids.add(cid)
-        verified = _bool(c, "verified", f"carrier[{i}]")
-        source = _source(_str(c, "source_uri", f"carrier[{i}]"), f"carrier[{i}].source_uri")
-        dig = _digest(_str(c, "source_sha256", f"carrier[{i}]"), f"carrier[{i}].source_sha256")
         obs = _str(c, "observed_at", f"carrier[{i}]")
         vu = c.get("valid_until")
         if vu is not None and type(vu) is not str:
             raise InputError("carrier.valid_until: string/null")
-        carriers_out.append({"pursuit_id": cid, "source_uri": source, "source_sha256": dig, "observed_at": obs, "valid_until": vu, "verified": verified, "current": _current(obs, vu, as_of)})
+        carriers_out.append({"pursuit_id": cid, "source_uri": _source(_str(c, "source_uri", f"carrier[{i}]"), f"carrier[{i}].source_uri"), "source_sha256": _digest(_str(c, "source_sha256", f"carrier[{i}]"), f"carrier[{i}].source_sha256"), "observed_at": obs, "valid_until": vu, "verified": _bool(c, "verified", f"carrier[{i}]"), "current": _current(obs, vu, as_of)})
 
     pursuits_out = []
     pursuit_ids = set()
@@ -179,8 +180,7 @@ def validate_and_normalize(raw: Any) -> dict[str, Any]:
             cat = _str(r, "category", f"requirement[{pi}:{ri}]")
             if cat not in CATEGORIES:
                 raise InputError("requirement.category: invalid")
-            cap = _id(r, "capability_key", f"requirement[{pi}:{ri}]")
-            reqs.append({"requirement_id": rid, "text": _str(r, "text", f"requirement[{pi}:{ri}]"), "mandatory": _bool(r, "mandatory", f"requirement[{pi}:{ri}]"), "partner_eligible": _bool(r, "partner_eligible", f"requirement[{pi}:{ri}]"), "category": cat, "capability_key": cap})
+            reqs.append({"requirement_id": rid, "text": _str(r, "text", f"requirement[{pi}:{ri}]"), "mandatory": _bool(r, "mandatory", f"requirement[{pi}:{ri}]"), "partner_eligible": _bool(r, "partner_eligible", f"requirement[{pi}:{ri}]"), "category": cat, "capability_key": _id(r, "capability_key", f"requirement[{pi}:{ri}]")})
 
         evs = []
         ev_ids = set()
@@ -243,13 +243,10 @@ def _state_for(req, pursuit):
 
 def compile_payload(raw: Any) -> dict[str, Any]:
     n = validate_and_normalize(raw)
-    blocker = []
-    carriers = n["verified_carrier_set"]
-    if n["materialization_mode"] == "LIVE":
-        valid = 5 <= len(carriers) <= 10 and all(c["verified"] and c["current"] for c in carriers)
-        carrier_ids = {c["pursuit_id"] for c in carriers}
-        if not valid or not {p["pursuit_id"] for p in n["pursuits"]}.issubset(carrier_ids):
-            blocker = [BLOCKED_NO_CARRIER]
+    # Caller-provided carrier rows are retained as evidence claims, but cannot authenticate
+    # their own presence on repository main. Until a code-owned/main-bound carrier manifest
+    # exists, every LIVE invocation must fail closed regardless of caller booleans.
+    blocker = [BLOCKED_NO_CARRIER] if n["materialization_mode"] == "LIVE" else []
     rows = []
     needs = {}
     for p in n["pursuits"]:
@@ -269,8 +266,12 @@ def compile_payload(raw: Any) -> dict[str, Any]:
     status = BLOCKED_NO_CARRIER if blocker else ("OWNER_REVIEW_READY" if not any(r["state"] == "OWNER_INPUT" for r in rows) else "HOLD_OWNER_INPUT")
     core = {"schema_version": SCHEMA_VERSION, "as_of": n["as_of"], "materialization_mode": n["materialization_mode"], "status": status, "blockers": blocker, "crosswalk": rows, "partner_capability_shortlist": shortlist, "authority": {"company_recommendation": False, "route_recommendation": False, "external_contact": False, "buyer_submission": False, "signature": False, "price_commitment": False, "award": False, "payment": False, "revenue": False}}
     md = render_markdown(core)
-    receipt = {"schema_version": SCHEMA_VERSION, "canonical_input_sha256": sha256(canonical_bytes(n)), "crosswalk_sha256": sha256(canonical_bytes(rows)), "shortlist_sha256": sha256(canonical_bytes(shortlist)), "markdown_sha256": sha256(md.encode("utf-8")), "status": status, "blockers": blocker}
+    receipt = {"schema_version": SCHEMA_VERSION, "canonical_input_sha256": sha256(canonical_bytes(n)), "payload_sha256": sha256(canonical_bytes(core)), "crosswalk_sha256": sha256(canonical_bytes(rows)), "shortlist_sha256": sha256(canonical_bytes(shortlist)), "markdown_sha256": sha256(md.encode("utf-8")), "status": status, "blockers": blocker}
     return {"normalized_input": n, "payload": core, "markdown": md, "receipt": receipt}
+
+
+def _md(value: str) -> str:
+    return value.replace("\\", "\\\\").replace("|", "\\|").replace("\r", " ").replace("\n", " ")
 
 
 def render_markdown(core: dict[str, Any]) -> str:
@@ -280,6 +281,7 @@ def render_markdown(core: dict[str, Any]) -> str:
     lines += ["## Requirement crosswalk", "", "| Pursuit | Requirement | State | Capability | Proof |", "|---|---|---|---|---|"]
     for r in core["crosswalk"]:
         lines.append(f"| {r['pursuit_id']} | {r['requirement_id']} | {r['state']} | {r['capability_key']} | {r['category']} |")
+        lines.append(f"<!-- requirement-text: {_md(r['text'])} -->")
     lines += ["", "## Partner / prime capability requirements", ""]
     if not core["partner_capability_shortlist"]:
         lines.append("_None mechanically required from current retained inputs._")
