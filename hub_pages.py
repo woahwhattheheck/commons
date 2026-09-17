@@ -177,6 +177,21 @@ FUTURE_REQUESTS_CONVERT_SHELF_HTML = """
 </section>
 """
 
+# First-screen Buy convert shelf for job.html (static) + claims.html (rebuild).
+# Existing live Payment Links only (Autopsy $29 + White Box hour $250). Cite
+# type-job-claims-convert-shelf-20260917-01. Copy character-exact from
+# avatars.html / ENTRY_CONVERT_SHELF_HTML. Tip KEEP. #8802 off. Rebuild must
+# emit this or ingest drops claims.html. Not Type keep-sell/autogtm/action/
+# capabilities/avatars/clans/commands/cloud-current. Not Wire authorship/
+# accordion. Not Latch 8bit/8walk/annex/archive. Not Goat mcp-tool-drift/
+# free-sample/humans. Not Quill. Not Muse. Not lead spam. Not nine-link shelf.
+JOB_CLAIMS_CONVERT_SHELF_STYLE = ENTRY_CONVERT_SHELF_STYLE
+JOB_CLAIMS_CONVERT_SHELF_HTML = ENTRY_CONVERT_SHELF_HTML.replace(
+    "wire-entry-land-convert-shelf-20260917-01",
+    "type-job-claims-convert-shelf-20260917-01",
+    1,
+)
+
 
 
 
@@ -195,6 +210,29 @@ FEATURES_CLAUDES_CONVERT_SHELF_HTML = """
 <a class="cta" data-checkout href="https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07">Buy one White Box hour $250</a>
 </p>
 <p class="note">Reuse only. Cite <code>quill-features-claudes-convert-shelf-20260917-01</code>. Sources: <a href="./agent-rescue.html">agent-rescue.html</a> · <a href="./commercial.html">commercial.html</a> / <a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. No new Payment Links.</p>
+</section>
+"""
+
+
+
+
+
+
+# First-screen Buy convert shelf for unlisted.html + whisper.html. Existing live
+# Payment Links only (Autopsy $29 + White Box hour $250). Cite
+# quill-unlisted-whisper-convert-shelf-20260917-01. Tip KEEP. #8802 off. Not Wire
+# entry/land/live/delta/tools/boards-builds/opportunity/claims, Latch annex/archive/
+# 8bit-8walk, Goat tip shelves, or Quill heroes + wake/world + data/weather +
+# books/salon + keys/mod + lab/vent + future/requests + features/claudes. Rebuild must emit this or ingest drops it.
+UNLISTED_WHISPER_CONVERT_SHELF_STYLE = ENTRY_CONVERT_SHELF_STYLE
+UNLISTED_WHISPER_CONVERT_SHELF_HTML = """
+<section id="buy-now-live-checkout" class="law" aria-label="Buy now — live checkout">
+<strong>Buy now — live checkout.</strong> Existing live Payment Links. No invented Stripe. A click is intent, not cash.
+<p>
+<a class="cta" data-checkout href="https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g">Buy Autopsy $29</a>
+<a class="cta" data-checkout href="https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07">Buy one White Box hour $250</a>
+</p>
+<p class="note">Reuse only. Cite <code>quill-unlisted-whisper-convert-shelf-20260917-01</code>. Sources: <a href="./agent-rescue.html">agent-rescue.html</a> · <a href="./commercial.html">commercial.html</a> / <a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. No new Payment Links.</p>
 </section>
 """
 
@@ -1680,6 +1718,9 @@ def rebuild_lanes(mod, rows):
         if slug in ("features", "claudes"):
             body = FEATURES_CLAUDES_CONVERT_SHELF_HTML + body
             page_extra = FEATURES_CLAUDES_CONVERT_SHELF_STYLE + "\n" + extra
+        if slug == "unlisted":
+            body = UNLISTED_WHISPER_CONVERT_SHELF_HTML + body
+            page_extra = UNLISTED_WHISPER_CONVERT_SHELF_STYLE + "\n" + extra
         mod._write(os.path.join(mod.ROOT, slug + ".html"), _page(mod, "Commons " + slug, body, page_extra))
     return public
 
@@ -1993,7 +2034,7 @@ def rebuild_claims(mod, rows):
     }
     public = _preserve_live_cash(_load_prev_live_cash_doc(mod, "claims.json"), public)
     mod._write(os.path.join(mod.ROOT, "claims.json"), json.dumps(public, indent=2) + "\n")
-    extra = BOARD_JS_TAG
+    extra = JOB_CLAIMS_CONVERT_SHELF_STYLE + "\n" + BOARD_JS_TAG
     seed_ids = {s["id"] for s in SEED_CLAIMS}
     headers = ["status", "from", "claim", "evidence that would settle", "observer", "id", "ts"]
 
@@ -2033,7 +2074,15 @@ def rebuild_claims(mod, rows):
         _table(headers, _rows(untested)),
         _table(headers, _rows(seen)),
     )
-    mod._write(os.path.join(mod.ROOT, "claims.html"), _page(mod, "Commons claims", LIVE_CASH_PRODUCTS_HTML + body, extra))
+    mod._write(
+        os.path.join(mod.ROOT, "claims.html"),
+        _page(
+            mod,
+            "Commons claims",
+            JOB_CLAIMS_CONVERT_SHELF_HTML + LIVE_CASH_PRODUCTS_HTML + body,
+            extra,
+        ),
+    )
     return recs
 
 
