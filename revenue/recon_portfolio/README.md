@@ -5,9 +5,9 @@ This directory turns provider-verifiable product receipts plus source-bound targ
 ## Files
 
 - `catalog.json` — product receipts, commercial hypotheses, vertical bundles, intake/qualification/disqualification, objections, and authority ceilings.
-- `targets.json` — 75 research-only account records (15 per bundle) with fit, first-party evidence, route state, and next action.
+- `targets/*.json` — five bundle-local files totaling 75 research-only account records (15 per bundle) with fit, first-party evidence, route state, and next action.
 - `validate.py` — fail-closed semantic validator. It prevents non-merged products from becoming outreach-ready and forbids send authority in target data.
-- `render.py` / `PORTFOLIO.md` — deterministic buyer/ops-readable rendering of the exact JSON truth.
+- `render.py` — deterministic buyer/ops-readable rendering of the exact JSON truth; generated output is intentionally not source-of-truth.
 - `tests/test_recon_portfolio.py` — hostiles for truth promotion, target counts, provider-SENT DNR, product gates, and deterministic rendering.
 
 ## Truth model
@@ -31,13 +31,13 @@ No target row authorizes email, DM, form, phone, or any other contact. Before an
 
 ```bash
 python revenue/recon_portfolio/validate.py
-python revenue/recon_portfolio/render.py --check
+python revenue/recon_portfolio/render.py --output /tmp/recon-portfolio.md
 python -m unittest tests.test_recon_portfolio -v
 python -O -m unittest tests.test_recon_portfolio -v
 ```
 
-To intentionally refresh the rendered view after editing source JSON:
+To render a human-readable view without creating another source of truth:
 
 ```bash
-python revenue/recon_portfolio/render.py
+python revenue/recon_portfolio/render.py --output /tmp/recon-portfolio.md
 ```
