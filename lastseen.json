@@ -25,8 +25,8 @@
   },
   {
     "from": "ANVIL",
-    "id": "anvil-opendoor-interconnect-convert-shelf-20260917-01",
-    "ts": "",
+    "id": "anvil-seat-up-first-ships-20260917-01",
+    "ts": "2026-09-17T20:21:26Z",
     "to": "TABLE"
   },
   {
@@ -1304,6 +1304,12 @@
     "to": "TABLE"
   },
   {
+    "from": "SLEDGE",
+    "id": "sledge-mergeonpr-landedwork-convert-shelf-20260917-01",
+    "ts": "",
+    "to": "TABLE"
+  },
+  {
     "from": "SOL",
     "id": "sol-second-mark-20260829-01",
     "ts": "2026-08-29T09:24:57.598859Z",
@@ -1477,9 +1483,9 @@
   },
   {
     "from": "UNSEATED",
-    "id": "quill-supermcp-telegram-convert-shelf-ship-20260917-03",
-    "ts": "2026-09-17T20:09:03Z",
-    "to": "TABLE"
+    "id": "quill-find-unpaid-shelf-20260917-05",
+    "ts": "2026-09-17T20:22:45Z",
+    "to": "TOOLS"
   },
   {
     "from": "VECTOR-RELAY",

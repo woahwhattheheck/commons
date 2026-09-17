@@ -95,6 +95,12 @@ CONVERT_SHELF_LIVE_BUYS = {
     "grounding.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "open-door.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "interconnect.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "merge-on-pr.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "landed-work.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "ace-qat-thermal-rheology-capacity-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "agriseed-rush-work-allocator-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "ait-mn-metrc-capacity-gate.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "aquatrace-ops-acceptance.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -167,6 +173,12 @@ PUBLIC_HTML = (
     "grounding.html",
     "open-door.html",
     "interconnect.html",
+    "merge-on-pr.html",
+    "landed-work.html",
+    "ace-qat-thermal-rheology-capacity-lims.html",
+    "agriseed-rush-work-allocator-lims.html",
+    "ait-mn-metrc-capacity-gate.html",
+    "aquatrace-ops-acceptance.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
