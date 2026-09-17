@@ -191,6 +191,21 @@ class ProcurementQualificationGateTests(unittest.TestCase):
         with self.assertRaisesRegex(engine.QualificationError, "non-finite JSON constant"):
             engine.load_json_strict(io.StringIO('{"x":NaN}'))
 
+    def test_historical_source_digest_is_exact(self) -> None:
+        doc = json.loads(FIXTURE.read_text(encoding="utf-8"))
+        source = (
+            HERE
+            / "revenue"
+            / "procurement_qualification_gate"
+            / "municipal_lims_like_source.txt"
+        ).read_bytes()
+        import hashlib
+
+        self.assertEqual(
+            hashlib.sha256(source).hexdigest(),
+            doc["opportunity"]["source_sha256"],
+        )
+
     def test_historical_municipal_lims_like_replay_is_workshare_only(self) -> None:
         doc = json.loads(FIXTURE.read_text(encoding="utf-8"))
         result = engine.compile_assessment(doc)
