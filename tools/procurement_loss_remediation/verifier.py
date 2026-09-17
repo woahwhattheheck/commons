@@ -4,7 +4,8 @@ from __future__ import annotations
 
 from typing import Any
 
-from .core import RECEIPT_SCHEMA, RemediationError, compile_plan, digest, normalize_input
+from .core import RECEIPT_SCHEMA, RemediationError, digest, normalize_input
+from .policy import compile_plan
 
 
 class RemediationVerificationError(ValueError):
@@ -53,9 +54,9 @@ def verify_plan(raw_input: Any, raw_receipt: Any) -> dict[str, Any]:
         raise RemediationVerificationError("receipt_sha256 mismatch")
 
     # Recompile from the independently revalidated source packet and require
-    # exact semantic equality. This catches source-evidence projections,
-    # status, attribution, basis, authority, source-receipt and ordering
-    # tampering, not merely hash edits.
+    # exact semantic equality under the public truth-ceiling policy. This
+    # catches source projections, status, attribution, basis, authority,
+    # source-receipt and ordering tampering, not merely hash edits.
     expected = compile_plan(normalized)
     if raw_receipt != expected:
         raise RemediationVerificationError("semantic remediation receipt mismatch")
