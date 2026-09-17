@@ -218,10 +218,10 @@ def _latest(events: list[dict[str, str]], kind: str) -> dict[str, str] | None:
     return matches[-1] if matches else None
 
 
-def _at_or_after(left: dict[str, str] | None, right: dict[str, str] | None) -> bool:
+def _strictly_after(left: dict[str, str] | None, right: dict[str, str] | None) -> bool:
     if left is None or right is None:
         return False
-    return _timestamp_key(left["at"]) >= _timestamp_key(right["at"])
+    return _timestamp_key(left["at"]) > _timestamp_key(right["at"])
 
 
 def evaluate(normalized: Mapping[str, Any]) -> tuple[str, list[str], dict[str, Any]]:
@@ -272,9 +272,9 @@ def evaluate(normalized: Mapping[str, Any]) -> tuple[str, list[str], dict[str, A
     verified = _latest(exact, "ROUTE_VERIFIED")
     if take is None:
         return "HOLD_UNKNOWN", ["NO_CURRENT_COORDINATION_TAKE"], provider_truth
-    if muse is None or not _at_or_after(muse, take):
+    if muse is None or not _strictly_after(muse, take):
         return "HOLD_UNKNOWN", ["NO_POST_TAKE_MUSE_CLEAR"], provider_truth
-    if verified is None or not _at_or_after(verified, take):
+    if verified is None or not _strictly_after(verified, take):
         return "HOLD_UNKNOWN", ["NO_POST_TAKE_ROUTE_VERIFICATION"], provider_truth
     return "CANDIDATE_ONE_SEND", [
         "POST_TAKE_MUSE_CLEAR",
