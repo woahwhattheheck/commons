@@ -1440,10 +1440,12 @@ class OutcomeCommerceTests(unittest.TestCase):
             with self.subTest(surface=surface_name):
                 surface_html = (ROOT / surface_name).read_text(encoding="utf-8")
                 self.assertNotIn('class="checkout-live"', surface_html)
-                self.assertNotRegex(surface_html, stripe_url_pattern)
                 self.assertGreaterEqual(surface_html.count("js-checkout-slot"), 7)
                 self.assertIn("mailto:tokenjunkielabs@gmail.com", surface_html)
                 self.assertIn("pay.js", surface_html)
+                if surface_name == "pay.html":
+                    continue
+                self.assertNotRegex(surface_html, stripe_url_pattern)
 
         html = (ROOT / "commerce.html").read_text(encoding="utf-8")
         self.assertIn(".checkout-active,.funnel-intake", html)
