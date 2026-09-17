@@ -8,6 +8,7 @@ on:
     paths:
       - "revenue/multi_framework_evidence_freshness/**"
       - "tests/test_multi_framework_evidence_freshness*.py"
+      - "revenue/swarmops_dossier/**"
       - ".github/workflows/source-parses.yml"
   pull_request:
     paths:
@@ -51,6 +52,18 @@ jobs:
           if [ -f host/slack_mirror_state.py ] && [ -f test_slack_mirror_delivery.py ]; then
             python3 -m unittest -v test_slack_mirror test_slack_mirror_state test_slack_mirror_delivery test_slack_mirror_receipt_commit
             python3 -O -m unittest -v test_slack_mirror test_slack_mirror_state test_slack_mirror_delivery test_slack_mirror_receipt_commit
+          fi
+
+      - name: Verify SwarmOps currentness contract when present
+        shell: bash
+        run: |
+          if [ -f revenue/swarmops_dossier/test_current.py ]; then
+            python3 -m unittest -v \
+              revenue.swarmops_dossier.test_current \
+              revenue.swarmops_dossier.test_current_hardening
+            python3 -O -m unittest -v \
+              revenue.swarmops_dossier.test_current \
+              revenue.swarmops_dossier.test_current_hardening
           fi
 
   multi-framework-evidence-freshness:
