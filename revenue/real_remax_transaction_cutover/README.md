@@ -25,13 +25,13 @@ A `PARITY` result means only that the supplied, internally valid offline generat
 
 ## Synthetic acceptance fixture
 
-`synthetic_fixture.build_synthetic_bundle()` builds 240 active transactions across four offices and 32 synthetic agents. The root test bridge exercises all 240 as a clean acceptance corpus and then attacks stage/status drift, exact-cent drift, split/relationship drift, office mismatch, missing/ambiguous/orphan mappings, duplicate identities, receipt tamper/reseal, source-generation drift, full-report order invariance, findings-ceiling failure, aggregate direct-object bounds, strict duplicate/non-finite/deep JSON, create-exclusive publication, and a post-durability foreign-successor pathname swap.
+`synthetic_fixture.build_synthetic_bundle()` builds 240 active transactions across four offices and 32 synthetic agents. The root test bridge exercises all 240 as a clean acceptance corpus and then attacks stage/status drift, exact-cent drift, split/relationship drift, office mismatch, missing/ambiguous/orphan mappings, duplicate identities, receipt tamper/reseal, source-generation drift, full-report order invariance, findings-ceiling failure, aggregate direct-object bounds, strict duplicate/non-finite/deep JSON, create-exclusive publication, post-durability foreign-successor pathname swap, and CLI write/fsync/parent-create publication failures under normal and optimized Python.
 
 ## Resource and publication custody
 
 CLI inputs must be strict canonical UTF-8 JSON. Duplicate keys, non-finite values, non-regular input files, oversized inputs, excessive JSON depth/node count, input-generation mutation during read, and non-exclusive output paths fail closed. The direct Python object API separately enforces aggregate snapshot and identity-map row ceilings before expensive derived-map construction, in addition to per-list/per-relationship limits.
 
-Output creation is exclusive. On platforms with `dir_fd` support, the writer retains the output parent descriptor as well as the output file descriptor through write/fsync and the final publication check. Before success, it requires the visible leaf to remain a regular file with the same device/inode generation as the retained output descriptor and requires the visible parent pathname to still resolve to the retained parent generation. On platforms without `dir_fd`, it performs the same non-followed final leaf-generation check by pathname. Failed output publication truncates only the retained owned descriptor best-effort and never pathname-unlinks a possible foreign successor; an owned zero-byte tombstone may remain for explicit cleanup.
+Output creation is exclusive. On platforms with `dir_fd` support, the writer retains the output parent descriptor as well as the output file descriptor through write/fsync and the final publication check. Before success, it requires the visible leaf to remain a regular file with the same device/inode generation as the retained output descriptor and requires the visible parent pathname to still resolve to the retained parent generation. On platforms without `dir_fd`, it performs the same non-followed final leaf-generation check by pathname. Failed output publication truncates only the retained owned descriptor best-effort and never pathname-unlinks a possible foreign successor; an owned zero-byte tombstone may remain for explicit cleanup. Filesystem failures during parent preparation, output write, or output-file fsync are normalized into the same `CutoverError` CLI contract after descriptor-only rollback, so they emit `ERROR:` and exit 4 rather than escaping as tracebacks.
 
 ## CLI
 
@@ -51,7 +51,7 @@ python -m revenue.real_remax_transaction_cutover.cli verify \
   --report report.json
 ```
 
-Exit codes: compile `0=PARITY`, `2=HOLD`, `4=input/contract error`; verify `0=VERIFIED`, `3=INVALID`, `4=input/contract error`.
+Exit codes: compile `0=PARITY`, `2=HOLD`, `4=input/contract/publication error`; verify `0=VERIFIED`, `3=INVALID`, `4=input/contract error`.
 
 ## Lineage
 
