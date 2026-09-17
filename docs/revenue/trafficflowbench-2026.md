@@ -20,7 +20,7 @@ Task 3 has no standalone submission. It is derived from Task 1 state predictions
 - a Task 1 reconstruction helper that blends visible local structure with the historical profile and projects flow under a triangular fundamental-diagram envelope;
 - a Task 2 queue-wave forecaster using only visible speed history, including an onset fixture where it beats origin persistence;
 - a non-negative split-local prior-regularized ODME projected-gradient solver for Task 4;
-- deterministic compiler/verifier for the organizer's six-column merged upload shape with duplicate-key rejection, finite/non-negative gates, queue binary enforcement, **complete-row fail closed by default**, and a SHA-256 binding to the exact ordered `submission_key` generation (stricter than the organizer's zero-fill behavior);
+- deterministic compiler/verifier for the organizer's six-column merged upload shape with duplicate-key rejection, finite/non-negative gates, queue binary enforcement, **complete-row fail closed with no permissive zero-fill mode**, and a SHA-256 binding to the exact ordered `submission_key` generation (stricter than the organizer's zero-fill behavior);
 - immutable contract/evidence receipts whose authority ceiling keeps Kaggle join, rule acceptance, competition-data acquisition, official score, rank, prize, payment, and revenue false;
 - hostile tests for duplicates, missing rows, invalid queue states, receipt tampering, non-negative ODME projection, FD projection, and local-method improvement.
 
@@ -28,7 +28,7 @@ Task 3 has no standalone submission. It is derived from Task 1 state predictions
 
 Everything in this carrier is `PUBLIC_OR_LOCAL_SYNTHETIC_ONLY`. Local diagnostic scores are not organizer scores. Hidden truth, private labels, private complete counts, queue truth, organizer boundary flows, and private evaluator configuration are not present and must not be fabricated.
 
-When an authorized entrant later acquires the official release, the safe continuation is: verify the organizer repo/source pin; verify split-local prior identity; run the methods locally against allowed train/validation assets; compile with the exact shipped `submission_key.csv`; verify the deterministic receipt against that exact `submission_key` generation; then use a separately authorized single account for any Kaggle action.
+When an authorized entrant later acquires the official release, the safe continuation is: verify the organizer repo/source pin; verify split-local prior identity; run the methods locally against allowed train/validation assets; compile with the exact shipped `submission_key.csv`; verify the deterministic receipt against that exact `submission_key` generation (verified receipts require complete predictions and zero gaps); then use a separately authorized single account for any Kaggle action.
 
 ## Local proof
 
