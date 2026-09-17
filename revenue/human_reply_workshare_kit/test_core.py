@@ -5,6 +5,7 @@ import unittest
 
 from revenue.human_reply_workshare_kit.core import (
     COMMERCIAL_STATE,
+    CompiledOffer,
     WorkshareError,
     compile_offer,
     pack_catalog,
@@ -122,6 +123,8 @@ class HumanReplyWorkshareKitTests(unittest.TestCase):
             "This is recognized revenue.",
             "Existing customer requested the change.",
             "Guaranteed savings of ten percent.",
+            "Invoice issued yesterday.",
+            "Contract has been signed.",
         ]
         for phrase in phrases:
             row = base_record()
@@ -129,6 +132,53 @@ class HumanReplyWorkshareKitTests(unittest.TestCase):
             with self.subTest(phrase=phrase):
                 with self.assertRaisesRegex(WorkshareError, "unsupported"):
                     compile_offer(row)
+
+    def test_commercial_claim_smuggling_rejected_on_every_rendered_surface(self):
+        cases = [
+            ("counterparty_label", "Existing customer"),
+            ("opportunity_label", "Award secured"),
+        ]
+        for field, phrase in cases:
+            row = base_record()
+            row[field] = phrase
+            with self.subTest(field=field):
+                with self.assertRaisesRegex(WorkshareError, "unsupported"):
+                    compile_offer(row)
+
+        row = base_record()
+        row["scope"]["input_bounds"] = ["Buyer accepted this scope yesterday"]
+        with self.assertRaisesRegex(WorkshareError, "unsupported"):
+            compile_offer(row)
+
+    def test_nfkc_and_markdown_split_claim_evasions_are_rejected(self):
+        phrases = [
+            "Buyer accｅpted this scope yesterday.",
+            "Buyer **accepted** this scope yesterday.",
+            "Payment [received] for the pilot.",
+            "Contract *has been* signed.",
+        ]
+        for phrase in phrases:
+            row = base_record()
+            row["scope"]["one_line"] = phrase
+            with self.subTest(phrase=phrase):
+                with self.assertRaisesRegex(WorkshareError, "unsupported"):
+                    compile_offer(row)
+
+    def test_unicode_format_and_line_separator_controls_are_rejected(self):
+        for phrase in ("Buyer acc\u200bepted", "one scope\u2028second scope", "one\u2060scope"):
+            row = base_record()
+            row["scope"]["one_line"] = phrase
+            with self.subTest(phrase=repr(phrase)):
+                with self.assertRaisesRegex(WorkshareError, "Unicode control/format"):
+                    compile_offer(row)
+
+    def test_nfkc_normalized_text_is_receipt_bound(self):
+        row = base_record()
+        row["counterparty_label"] = "Ｅxample Prime"
+        compiled = compile_offer(row)
+        self.assertEqual(compiled.normalized["counterparty_label"], "Example Prime")
+        canonical = compile_offer(base_record())
+        self.assertEqual(compiled.receipt_sha256, canonical.receipt_sha256)
 
     def test_acceptance_evidence_phrase_is_allowed(self):
         row = base_record("DATA_MIGRATION_ACCEPTANCE")
@@ -190,6 +240,38 @@ class HumanReplyWorkshareKitTests(unittest.TestCase):
         row["scope"]["one_line"] = "One entity, one other frozen closed period, retained exports only."
         b = compile_offer(row)
         self.assertNotEqual(a.receipt_sha256, b.receipt_sha256)
+
+    def test_forged_compiled_offer_hash_is_rejected(self):
+        authentic = compile_offer(base_record())
+        forged = CompiledOffer(
+            normalized=authentic.normalized,
+            markdown=authentic.markdown,
+            receipt_sha256="0" * 64,
+        )
+        with self.assertRaisesRegex(WorkshareError, "receipt hash"):
+            render_receipt_json(forged)
+
+    def test_forged_compiled_offer_markdown_is_rejected(self):
+        authentic = compile_offer(base_record())
+        forged = CompiledOffer(
+            normalized=authentic.normalized,
+            markdown=authentic.markdown + "\nBuyer accepted this scope yesterday.",
+            receipt_sha256=authentic.receipt_sha256,
+        )
+        with self.assertRaisesRegex(WorkshareError, "markdown"):
+            render_receipt_json(forged)
+
+    def test_mutated_compiled_normalized_state_is_rejected(self):
+        authentic = compile_offer(base_record())
+        mutated = copy.deepcopy(authentic.normalized)
+        mutated["scope"]["input_bounds"] = ["Buyer accepted this scope yesterday"]
+        forged = CompiledOffer(
+            normalized=mutated,
+            markdown=authentic.markdown,
+            receipt_sha256=authentic.receipt_sha256,
+        )
+        with self.assertRaisesRegex(WorkshareError, "unsupported"):
+            render_receipt_json(forged)
 
     def test_milestones_are_monotonic_and_end_at_duration(self):
         md = compile_offer(base_record()).markdown
