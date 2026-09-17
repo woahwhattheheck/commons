@@ -1,0 +1,37 @@
+name: live-pursuit-partner-shortlist
+
+on:
+  pull_request:
+    paths:
+      - "revenue/live_pursuit_partner_shortlist/**"
+      - ".github/workflows/live-pursuit-partner-shortlist.yml"
+  push:
+    branches: [main]
+    paths:
+      - "revenue/live_pursuit_partner_shortlist/**"
+      - ".github/workflows/live-pursuit-partner-shortlist.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: live-pursuit-partner-shortlist-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile
+        run: python -m compileall -q revenue/live_pursuit_partner_shortlist
+      - name: Unit and hostile tests
+        run: python -m unittest discover -s revenue/live_pursuit_partner_shortlist/tests -p 'test_*.py' -v
+      - name: Optimized Python guards
+        run: python -O -m unittest discover -s revenue/live_pursuit_partner_shortlist/tests -p 'test_*.py' -v
+      - name: Synthetic compile and verify
+        run: |
+          rm -rf /tmp/partner-shortlist
+          python revenue/live_pursuit_partner_shortlist/compiler.py compile --input revenue/live_pursuit_partner_shortlist/fixtures/pursuits.synthetic.json --out-dir /tmp/partner-shortlist
+          python revenue/live_pursuit_partner_shortlist/compiler.py verify --input revenue/live_pursuit_partner_shortlist/fixtures/pursuits.synthetic.json --out-dir /tmp/partner-shortlist
+          grep -F 'company: `UNASSIGNED`' /tmp/partner-shortlist/shortlist.md
