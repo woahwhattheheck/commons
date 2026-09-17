@@ -15,6 +15,12 @@ def _finding(code: str, *, transaction_id: str | None = None, detail: str) -> di
     return row
 
 
+def _add_finding(findings: list[dict[str, Any]], row: dict[str, Any]) -> None:
+    findings.append(row)
+    if len(findings) > MAX_FINDINGS:
+        raise CutoverError(f"cutover produces more than {MAX_FINDINGS} findings")
+
+
 def _relationship_key(rel: Mapping[str, Any], agent_map: Mapping[str, str]) -> tuple[str, str, int, int]:
     source_agent = str(rel["agent_id"])
     target_agent = agent_map.get(source_agent, "")
@@ -99,24 +105,24 @@ def compile_cutover(
     for source_office_id, source_office in sorted(source_offices.items()):
         target_office_id = office_map.get(source_office_id)
         if target_office_id is None:
-            findings.append(_finding("OFFICE_MAP_MISSING", detail=f"source office {source_office_id} has no target mapping"))
+            _add_finding(findings, _finding("OFFICE_MAP_MISSING", detail=f"source office {source_office_id} has no target mapping"))
         elif target_office_id not in target_offices:
-            findings.append(_finding("OFFICE_TARGET_MISSING", detail=f"mapped target office {target_office_id} does not exist"))
+            _add_finding(findings, _finding("OFFICE_TARGET_MISSING", detail=f"mapped target office {target_office_id} does not exist"))
 
     for source_agent_id, source_agent in sorted(source_agents.items()):
         target_agent_id = agent_map.get(source_agent_id)
         if target_agent_id is None:
-            findings.append(_finding("AGENT_MAP_MISSING", detail=f"source agent {source_agent_id} has no target mapping"))
+            _add_finding(findings, _finding("AGENT_MAP_MISSING", detail=f"source agent {source_agent_id} has no target mapping"))
             continue
         target_agent = target_agents.get(target_agent_id)
         if target_agent is None:
-            findings.append(_finding("AGENT_TARGET_MISSING", detail=f"mapped target agent {target_agent_id} does not exist"))
+            _add_finding(findings, _finding("AGENT_TARGET_MISSING", detail=f"mapped target agent {target_agent_id} does not exist"))
             continue
         expected_target_office = office_map.get(str(source_agent["office_id"]))
         if expected_target_office is None:
             continue
         if target_agent["office_id"] != expected_target_office:
-            findings.append(_finding("AGENT_OFFICE_MISMATCH", detail=f"source agent {source_agent_id} maps to target agent {target_agent_id} in wrong target office"))
+            _add_finding(findings, _finding("AGENT_OFFICE_MISMATCH", detail=f"source agent {source_agent_id} maps to target agent {target_agent_id} in wrong target office"))
 
     active_ids: list[str] = []
     parity_ids: list[str] = []
@@ -124,69 +130,66 @@ def compile_cutover(
         if source_txn["stage"] not in active_source_stages:
             continue
         active_ids.append(source_txn_id)
+        transaction_findings_start = len(findings)
         target_txn_id = txn_map.get(source_txn_id)
         if target_txn_id is None:
-            findings.append(_finding("TRANSACTION_MAP_MISSING", transaction_id=source_txn_id, detail="active source transaction has no target mapping"))
+            _add_finding(findings, _finding("TRANSACTION_MAP_MISSING", transaction_id=source_txn_id, detail="active source transaction has no target mapping"))
             continue
         target_txn = target_txns.get(target_txn_id)
         if target_txn is None:
-            findings.append(_finding("TRANSACTION_TARGET_MISSING", transaction_id=source_txn_id, detail=f"mapped target transaction {target_txn_id} does not exist"))
+            _add_finding(findings, _finding("TRANSACTION_TARGET_MISSING", transaction_id=source_txn_id, detail=f"mapped target transaction {target_txn_id} does not exist"))
             continue
 
         expected_stage = stage_map.get(str(source_txn["stage"]))
         if expected_stage is None:
-            findings.append(_finding("STAGE_POLICY_MISSING", transaction_id=source_txn_id, detail=f"policy has no stage mapping for {source_txn['stage']}"))
+            _add_finding(findings, _finding("STAGE_POLICY_MISSING", transaction_id=source_txn_id, detail=f"policy has no stage mapping for {source_txn['stage']}"))
         elif target_txn["stage"] != expected_stage:
-            findings.append(_finding("STAGE_MISMATCH", transaction_id=source_txn_id, detail=f"expected target stage {expected_stage}, got {target_txn['stage']}"))
+            _add_finding(findings, _finding("STAGE_MISMATCH", transaction_id=source_txn_id, detail=f"expected target stage {expected_stage}, got {target_txn['stage']}"))
 
         expected_status = status_map.get(str(source_txn["status"]))
         if expected_status is None:
-            findings.append(_finding("STATUS_POLICY_MISSING", transaction_id=source_txn_id, detail=f"policy has no status mapping for {source_txn['status']}"))
+            _add_finding(findings, _finding("STATUS_POLICY_MISSING", transaction_id=source_txn_id, detail=f"policy has no status mapping for {source_txn['status']}"))
         elif target_txn["status"] != expected_status:
-            findings.append(_finding("STATUS_MISMATCH", transaction_id=source_txn_id, detail=f"expected target status {expected_status}, got {target_txn['status']}"))
+            _add_finding(findings, _finding("STATUS_MISMATCH", transaction_id=source_txn_id, detail=f"expected target status {expected_status}, got {target_txn['status']}"))
 
         if target_txn["gross_commission_cents"] != source_txn["gross_commission_cents"]:
-            findings.append(_finding("GROSS_COMMISSION_MISMATCH", transaction_id=source_txn_id, detail=f"expected {source_txn['gross_commission_cents']} cents, got {target_txn['gross_commission_cents']}"))
+            _add_finding(findings, _finding("GROSS_COMMISSION_MISMATCH", transaction_id=source_txn_id, detail=f"expected {source_txn['gross_commission_cents']} cents, got {target_txn['gross_commission_cents']}"))
 
         source_roles = Counter(str(rel["role"]) for rel in source_txn["relationships"])
         for role in sorted(required_roles):
             if source_roles[role] == 0:
-                findings.append(_finding("REQUIRED_SOURCE_ROLE_MISSING", transaction_id=source_txn_id, detail=f"required role {role} missing in source"))
+                _add_finding(findings, _finding("REQUIRED_SOURCE_ROLE_MISSING", transaction_id=source_txn_id, detail=f"required role {role} missing in source"))
 
         expected_relationships: list[tuple[str, str, int, int]] = []
         unmapped_agent = False
         for rel in source_txn["relationships"]:
             source_agent_id = str(rel["agent_id"])
             if source_agent_id not in agent_map:
-                findings.append(_finding("RELATIONSHIP_AGENT_MAP_MISSING", transaction_id=source_txn_id, detail=f"source relationship agent {source_agent_id} has no target mapping"))
+                _add_finding(findings, _finding("RELATIONSHIP_AGENT_MAP_MISSING", transaction_id=source_txn_id, detail=f"source relationship agent {source_agent_id} has no target mapping"))
                 unmapped_agent = True
                 continue
             target_agent_id = agent_map[source_agent_id]
             target_agent = target_agents.get(target_agent_id)
             if target_agent is None:
-                findings.append(_finding("RELATIONSHIP_AGENT_TARGET_MISSING", transaction_id=source_txn_id, detail=f"mapped target relationship agent {target_agent_id} does not exist"))
+                _add_finding(findings, _finding("RELATIONSHIP_AGENT_TARGET_MISSING", transaction_id=source_txn_id, detail=f"mapped target relationship agent {target_agent_id} does not exist"))
                 unmapped_agent = True
                 continue
             source_agent = source_agents[source_agent_id]
             expected_target_office = office_map.get(str(source_agent["office_id"]))
             if expected_target_office is None:
-                findings.append(_finding("RELATIONSHIP_OFFICE_MAP_MISSING", transaction_id=source_txn_id, detail=f"source relationship agent {source_agent_id} office has no target mapping"))
+                _add_finding(findings, _finding("RELATIONSHIP_OFFICE_MAP_MISSING", transaction_id=source_txn_id, detail=f"source relationship agent {source_agent_id} office has no target mapping"))
             elif target_agent["office_id"] != expected_target_office:
-                findings.append(_finding("RELATIONSHIP_AGENT_OFFICE_MISMATCH", transaction_id=source_txn_id, detail=f"source relationship agent {source_agent_id} maps to target agent {target_agent_id} in wrong target office"))
+                _add_finding(findings, _finding("RELATIONSHIP_AGENT_OFFICE_MISMATCH", transaction_id=source_txn_id, detail=f"source relationship agent {source_agent_id} maps to target agent {target_agent_id} in wrong target office"))
             expected_relationships.append(_relationship_key(rel, agent_map))
         actual_relationships = sorted(
             (str(rel["role"]), str(rel["agent_id"]), int(rel["split_bps"]), int(rel["commission_cents"]))
             for rel in target_txn["relationships"]
         )
         if not unmapped_agent and sorted(expected_relationships) != actual_relationships:
-            findings.append(_finding("RELATIONSHIP_MISMATCH", transaction_id=source_txn_id, detail="role/agent/split/commission relationship set differs after identity mapping"))
+            _add_finding(findings, _finding("RELATIONSHIP_MISMATCH", transaction_id=source_txn_id, detail="role/agent/split/commission relationship set differs after identity mapping"))
 
-        before = [f for f in findings if f.get("transaction_id") == source_txn_id]
-        if not before:
+        if len(findings) == transaction_findings_start:
             parity_ids.append(source_txn_id)
-
-    if len(findings) > MAX_FINDINGS:
-        raise CutoverError(f"cutover produces more than {MAX_FINDINGS} findings")
 
     findings.sort(key=lambda row: (row.get("transaction_id", ""), row["code"], row["detail"]))
     code_counts = Counter(row["code"] for row in findings)
