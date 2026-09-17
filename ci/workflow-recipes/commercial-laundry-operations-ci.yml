@@ -1,0 +1,36 @@
+name: Commercial laundry operations desk
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/hive/commercial-laundry-operations/**'
+      - '.github/workflows/commercial-laundry-operations-ci.yml'
+  push:
+    paths:
+      - 'revenue/hive/commercial-laundry-operations/**'
+      - '.github/workflows/commercial-laundry-operations-ci.yml'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile
+        working-directory: revenue/hive/commercial-laundry-operations
+        run: python -m py_compile laundry_desk.py laundry_desk_core.py cli.py demo.py test_laundry_desk.py test_export_hostiles.py test_cross_stop_custody.py test_core_authority_hostiles.py
+      - name: Normal hostile suite
+        working-directory: revenue/hive/commercial-laundry-operations
+        run: python -m unittest -v test_laundry_desk.py test_export_hostiles.py test_cross_stop_custody.py test_core_authority_hostiles.py
+      - name: Optimized hostile suite
+        working-directory: revenue/hive/commercial-laundry-operations
+        run: python -O -m unittest -v test_laundry_desk.py test_export_hostiles.py test_cross_stop_custody.py test_core_authority_hostiles.py
+      - name: Synthetic two-account demo
+        working-directory: revenue/hive/commercial-laundry-operations
+        run: python demo.py >/tmp/commercial-laundry-demo.json
