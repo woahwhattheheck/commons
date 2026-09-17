@@ -87,6 +87,8 @@ Land unique work includes surfacing verified product pages (no invented Stripe U
 - [$199 repair diagnostic](../repair-booking-preflight.html)
 - [$199 plant diagnostic](../plant-downtime-handoff.html)
 
+Larger fixed engagements (separate product pages; checkout/intent stays there): [GGUF diagnostic · $12,000 / 10 days](../diagnostic.html) · [White Box pilot · $30,000 / 30 days](../commercial.html). Not remints of tip SKUs.
+
 Collected cash remains USD 0 until independently evidenced. Cite — do not remint EXECUTE/CASH_NOW Live cash ids.
 
 ## Contest product (titanmcp)

@@ -26,6 +26,8 @@ python host/claim_work.py status --work 'SMB-500-CONSTRUCTION-CHANGE-ORDER'
 
 `host/claim_work.py` delegates all writes to `host/coordination_state.py::holding_write`, so it inherits the existing fast-forward-only race, winner-tip retry, TTL, future-heartbeat fail-closed, and same-holder clock-regression behavior. `host/swarm_preclaim_fence.py` remains the read-only evidence/absence fence; it complements this writer but is not itself a lock.
 
+Every write touches only its own key. The other holdings at the tip are carried into the new commit by blob id, so their bytes are identical before and after the write whether or not the writer's clone holds those blobs: a blobless or sparse checkout writes the same tree a full clone writes. The target key's current record is parsed on demand, fetching that single blob when the clone lacks it; when it cannot be read, the writer returns `ok: false` with the reason and writes nothing. `status` and `list` rows for holdings whose content cannot be read in this clone carry `unreadable: true` in the listing only. A write that runs out of fast-forward attempts returns `ok: false`, `conflict: non-fast-forward`, the attempt count and the tip it last saw. `test_coordination_holdings_preservation.py` proves these contracts against a bare remote that honours partial-clone filters, with one full and one blobless writer.
+
 ## Canonical keys
 
 * GitHub issue: exactly `issue-N`, where `N` is a positive integer.

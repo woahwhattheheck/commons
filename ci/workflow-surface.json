@@ -1,7 +1,7 @@
 {
   "schema": "commons.workflow-surface.v1",
   "source_commit": "4592104ca9fd37f7546b0b39f01badb83f8a1300",
-  "source_workflows": 407,
+  "source_workflows": 434,
   "max_active_workflows": 67,
   "retained": [
     ".github/workflows/affordable-housing-compliance-demo.yml",
@@ -73,6 +73,12 @@
     ".github/workflows/workflow-surface.yml"
   ],
   "archived": [
+    {
+      "source": ".github/workflows/abbotsford-1220-2026-4235.yml",
+      "archive": "ci/workflow-recipes/abbotsford-1220-2026-4235.yml",
+      "sha256": "8318d598b72d5653410b4d75008bac77fe93d8ab525bab2057feb76f3723460e",
+      "bytes": 1055
+    },
     {
       "source": ".github/workflows/agent-false-success-survival.yml",
       "archive": "ci/workflow-recipes/agent-false-success-survival.yml",
@@ -176,6 +182,12 @@
       "bytes": 1061
     },
     {
+      "source": ".github/workflows/bid-deadline-critical-path.yml",
+      "archive": "ci/workflow-recipes/bid-deadline-critical-path.yml",
+      "sha256": "87bcfd1eff818b48d8fc882474f66c78dd9a6e5cd28a3d6f6740c8f57200f9e1",
+      "bytes": 1674
+    },
+    {
       "source": ".github/workflows/bid-owner-action-cockpit.yml",
       "archive": "ci/workflow-recipes/bid-owner-action-cockpit.yml",
       "sha256": "943b4aa28491752887a25202daf6fdc77c7e443b9ce952f8d80febbf7e1101bf",
@@ -206,16 +218,40 @@
       "bytes": 973
     },
     {
+      "source": ".github/workflows/buyer-redline-scope-delta.yml",
+      "archive": "ci/workflow-recipes/buyer-redline-scope-delta.yml",
+      "sha256": "38e580e38ffab69770da1e8a5241dd6fd3a660b061f4b53b6f206ce22655c188",
+      "bytes": 1457
+    },
+    {
       "source": ".github/workflows/cal-maine-pancake-batch-evidence.yml",
       "archive": "ci/workflow-recipes/cal-maine-pancake-batch-evidence.yml",
       "sha256": "4b8cca972f106f00a10f712163b5923c893d33f7ab6c8b82d923cbd251e74496",
       "bytes": 1106
     },
     {
+      "source": ".github/workflows/call-e-routescout.yml",
+      "archive": "ci/workflow-recipes/call-e-routescout.yml",
+      "sha256": "0a80a70afc304584f8a524559821e7cd7bbc3ccfe40108846563246ff4825c7b",
+      "bytes": 1689
+    },
+    {
+      "source": ".github/workflows/case-study-reference-consent-vault.yml",
+      "archive": "ci/workflow-recipes/case-study-reference-consent-vault.yml",
+      "sha256": "82dc90cd9800844f877467f73f62ed598cf625b2cb2bdc9d4efe4e0eaea1e9da",
+      "bytes": 1688
+    },
+    {
       "source": ".github/workflows/cash-realization-ledger.yml",
       "archive": "ci/workflow-recipes/cash-realization-ledger.yml",
       "sha256": "50d12cdfddccc24d11db9b6373a66ba9319c9c1ac7febe6f7d4d2fbfaf20ff78",
       "bytes": 1473
+    },
+    {
+      "source": ".github/workflows/channel-partner-deal-desk.yml",
+      "archive": "ci/workflow-recipes/channel-partner-deal-desk.yml",
+      "sha256": "3db9379f5328254b77880d5df32bb09fef4443c58388af39059b27fa9188a626",
+      "bytes": 1013
     },
     {
       "source": ".github/workflows/cloud-miner-manufacture.yml",
@@ -290,6 +326,12 @@
       "bytes": 3088
     },
     {
+      "source": ".github/workflows/conversion-attribution-ledger.yml",
+      "archive": "ci/workflow-recipes/conversion-attribution-ledger.yml",
+      "sha256": "8c2457165e7870eaf6c542d092adf9bb92842994972d106a95518d6927b3815a",
+      "bytes": 1332
+    },
+    {
       "source": ".github/workflows/creator-desk-multisite.yml",
       "archive": "ci/workflow-recipes/creator-desk-multisite.yml",
       "sha256": "44676abc9e1809ede6fd27bdf89864f5b05e29c4bb1a5d62e28dbbbd76b1dff5",
@@ -338,6 +380,12 @@
       "bytes": 1664
     },
     {
+      "source": ".github/workflows/delivery-backplanner.yml",
+      "archive": "ci/workflow-recipes/delivery-backplanner.yml",
+      "sha256": "ae0f8416021fb8814bc6890bd65614e142b2e07a31679d4e9dc54cdab13d8fe6",
+      "bytes": 1291
+    },
+    {
       "source": ".github/workflows/delivery-capacity-allocator.yml",
       "archive": "ci/workflow-recipes/delivery-capacity-allocator.yml",
       "sha256": "daef11431f34179acec44e0fe889fe4439b7f853f4704e9738fc7bfc20481217",
@@ -348,6 +396,12 @@
       "archive": "ci/workflow-recipes/denton-floyd-invoice-exception.yml",
       "sha256": "8fc3e89331aeb90f995a1d54ddfbcf9e4ab4741fb394ad39e69f4ab471ff0bae",
       "bytes": 1597
+    },
+    {
+      "source": ".github/workflows/diagnostic-upsell-evidence-ladder.yml",
+      "archive": "ci/workflow-recipes/diagnostic-upsell-evidence-ladder.yml",
+      "sha256": "b44eba81f98a18a28b54279b1f5f4f177b66bd7b34652a712314db3c35f9f438",
+      "bytes": 1844
     },
     {
       "source": ".github/workflows/diversey-proof-clean.yml",
@@ -372,6 +426,12 @@
       "archive": "ci/workflow-recipes/dusty-layout-revision-evidence-gate.yml",
       "sha256": "d74addebb11e36ed09d859ca576516ce98f9e6aa939b5a0992509cfe38512cc1",
       "bytes": 2221
+    },
+    {
+      "source": ".github/workflows/enveda-casmi-2026.yml",
+      "archive": "ci/workflow-recipes/enveda-casmi-2026.yml",
+      "sha256": "600a348abd305e9f6f638cc5f1624b54a76e8f343270c4060195ecbd8c663259",
+      "bytes": 1384
     },
     {
       "source": ".github/workflows/equipment-catalog-publication.yml",
@@ -438,6 +498,12 @@
       "archive": "ci/workflow-recipes/gatewayhacks-civic-ledger.yml",
       "sha256": "2b27e49b1d6c3d597eb758d7e543f3aacbb113306978dbed0d2c4583fc8564e5",
       "bytes": 1077
+    },
+    {
+      "source": ".github/workflows/gguf-12k-enterprise-close-kit.yml",
+      "archive": "ci/workflow-recipes/gguf-12k-enterprise-close-kit.yml",
+      "sha256": "2cf2799fcdc25f5c234036cfea8f4d15811627da4fb54fcafd74e83241cc7d94",
+      "bytes": 1118
     },
     {
       "source": ".github/workflows/gguf-prospect-qualification.yml",
@@ -548,6 +614,12 @@
       "bytes": 1048
     },
     {
+      "source": ".github/workflows/inbound-paid-scope-close-desk.yml",
+      "archive": "ci/workflow-recipes/inbound-paid-scope-close-desk.yml",
+      "sha256": "d29e63ac942911df42346ccff02d8146af0607b158363cfda00cf5a7082c6c7c",
+      "bytes": 1726
+    },
+    {
       "source": ".github/workflows/inkomoko-ai-platform.yml",
       "archive": "ci/workflow-recipes/inkomoko-ai-platform.yml",
       "sha256": "27ced256d22b7631373af5153ec474330843078887dbf8647a7a4785a429fb7f",
@@ -576,6 +648,12 @@
       "archive": "ci/workflow-recipes/kuro0315-episode-custody.yml",
       "sha256": "39a16b5bc1b62661716f4d9552f536a0ec3079947dca0580cc076d61fa29066f",
       "bytes": 1414
+    },
+    {
+      "source": ".github/workflows/lacsd-04252-ap-acceptance.yml",
+      "archive": "ci/workflow-recipes/lacsd-04252-ap-acceptance.yml",
+      "sha256": "cf0e574e85eec1eaf4a3454245b5abae87bca4e5fcafc3942455ba09157fcad1",
+      "bytes": 1031
     },
     {
       "source": ".github/workflows/lacsd-04254-evidence-sprint.yml",
@@ -672,6 +750,12 @@
       "archive": "ci/workflow-recipes/multi-framework-evidence-freshness-commercial.yml",
       "sha256": "f921335e4e557b13b3b275f596664a5944216d832753c95e35bb420b11e69970",
       "bytes": 1613
+    },
+    {
+      "source": ".github/workflows/multi-framework-evidence-freshness-pilot.yml",
+      "archive": "ci/workflow-recipes/multi-framework-evidence-freshness-pilot.yml",
+      "sha256": "ddcf6f7ab77ca309cfa77535067af27f3777757737d38261c7ac4e23d26e859e",
+      "bytes": 2576
     },
     {
       "source": ".github/workflows/multi-framework-evidence-freshness.yml",
@@ -800,6 +884,18 @@
       "bytes": 1010
     },
     {
+      "source": ".github/workflows/oss-funding-route-recensus.yml",
+      "archive": "ci/workflow-recipes/oss-funding-route-recensus.yml",
+      "sha256": "33e4dda9d309f424f221fe89aa2d69ebf10b94d2e67921edc8c68ab02b4723f7",
+      "bytes": 1274
+    },
+    {
+      "source": ".github/workflows/oss-sponsor-route-map.yml",
+      "archive": "ci/workflow-recipes/oss-sponsor-route-map.yml",
+      "sha256": "dbcf447726970451714a7d7c6e6b3dda60a7c82c383262faff673283bfce8eff",
+      "bytes": 1069
+    },
+    {
       "source": ".github/workflows/outbound-capability-lease.yml",
       "archive": "ci/workflow-recipes/outbound-capability-lease.yml",
       "sha256": "8061eed7c57d6ca1fd0b5972baf1527cffe03cf53e4c52f2ea37c29a23bbdede",
@@ -884,6 +980,12 @@
       "bytes": 1178
     },
     {
+      "source": ".github/workflows/partner-workshare-data-room.yml",
+      "archive": "ci/workflow-recipes/partner-workshare-data-room.yml",
+      "sha256": "f1eb0d265f6662a4413c469d42f2c640d6e9a403c65573b195f271811f2d25a8",
+      "bytes": 1624
+    },
+    {
       "source": ".github/workflows/payment-capability.yml",
       "archive": "ci/workflow-recipes/payment-capability.yml",
       "sha256": "1c88b4a38ca327cdc19976870b03b5314b19430d993823b249994063fda446d7",
@@ -938,10 +1040,46 @@
       "bytes": 947
     },
     {
+      "source": ".github/workflows/procurement-award-price-intelligence.yml",
+      "archive": "ci/workflow-recipes/procurement-award-price-intelligence.yml",
+      "sha256": "366b8308336b75f7d10ca5ea4fec0c2c5fbf6f3249c9b84b63f526e55de21207",
+      "bytes": 1199
+    },
+    {
+      "source": ".github/workflows/procurement-qa-answer-delta.yml",
+      "archive": "ci/workflow-recipes/procurement-qa-answer-delta.yml",
+      "sha256": "7164dfcc1af8123377fcaf78e2dd5052ece9beaed91c09ea9af08f66093ae597",
+      "bytes": 2238
+    },
+    {
+      "source": ".github/workflows/procurement-response-module-library.yml",
+      "archive": "ci/workflow-recipes/procurement-response-module-library.yml",
+      "sha256": "c1b160c41b94a66b0ac9fe3f17aa4555dd8f38d58860fd28d4a17eba9852a410",
+      "bytes": 2985
+    },
+    {
+      "source": ".github/workflows/procurement-solicitation-ingest.yml",
+      "archive": "ci/workflow-recipes/procurement-solicitation-ingest.yml",
+      "sha256": "e73d22c9dc27d96dac9c4943a1bab35fe33c57fd6f9c0933f2ae10f7a4d1b2c8",
+      "bytes": 1638
+    },
+    {
+      "source": ".github/workflows/proposal-validity-expiry-requote-gate.yml",
+      "archive": "ci/workflow-recipes/proposal-validity-expiry-requote-gate.yml",
+      "sha256": "ffef04ee962839fe2ee19b6b2540911dc0331ddfd946b4e20e973ffd50cefaca",
+      "bytes": 1708
+    },
+    {
       "source": ".github/workflows/prospect-contact-lock.yml",
       "archive": "ci/workflow-recipes/prospect-contact-lock.yml",
       "sha256": "0c615f0811b38f7f5c12aaccf8b458b0f7825ee1e6cc3b03643c91777e60cc9e",
       "bytes": 2499
+    },
+    {
+      "source": ".github/workflows/public-procurement-comparable-corpus.yml",
+      "archive": "ci/workflow-recipes/public-procurement-comparable-corpus.yml",
+      "sha256": "19a1fa766581fd93f5c0b7950928f39a0aaba362041d4a2386f1b6ffa61997fb",
+      "bytes": 2337
     },
     {
       "source": ".github/workflows/public-sector-ai-governance-dossier.yml",
@@ -966,6 +1104,12 @@
       "archive": "ci/workflow-recipes/pursuit-portfolio.yml",
       "sha256": "732ab3b8b75c6a4f046c7950bdcbaef3cee9d9038c2ee4ad5c5119f230b749e1",
       "bytes": 3843
+    },
+    {
+      "source": ".github/workflows/qualification-evidence-vault.yml",
+      "archive": "ci/workflow-recipes/qualification-evidence-vault.yml",
+      "sha256": "0dd32c07dfc90590c846817657e6c16ddbb00de42ec6b3c58d4da16bacbb9d00",
+      "bytes": 1893
     },
     {
       "source": ".github/workflows/quantiphy-main.yml",
@@ -1104,6 +1248,12 @@
       "archive": "ci/workflow-recipes/roadef-solver-container.yml",
       "sha256": "9d933970c5cf6e47f7d91c80a05227c35afb33475ec321a4edb4ce032b703f24",
       "bytes": 2912
+    },
+    {
+      "source": ".github/workflows/route-freshness-gate.yml",
+      "archive": "ci/workflow-recipes/route-freshness-gate.yml",
+      "sha256": "534352128272d78c13b31b32544b12bba21f69a653c303ab5f40d5fa859168a3",
+      "bytes": 1407
     },
     {
       "source": ".github/workflows/rsna-knee-adaptive-router.yml",
@@ -2006,6 +2156,12 @@
       "bytes": 2233
     },
     {
+      "source": ".github/workflows/txst-ai-advising-qualification.yml",
+      "archive": "ci/workflow-recipes/txst-ai-advising-qualification.yml",
+      "sha256": "1e59c7d67cd30325e147b40b57db5d37c48aab6eac9b2b645eecfcede812fb8a",
+      "bytes": 1938
+    },
+    {
       "source": ".github/workflows/uark-rfp09112026-cmmc.yml",
       "archive": "ci/workflow-recipes/uark-rfp09112026-cmmc.yml",
       "sha256": "863cba92948caa6e9bf047129cfa149171aa38e11fbded813018db138b97d820",
@@ -2034,6 +2190,12 @@
       "archive": "ci/workflow-recipes/usac-pursuit.yml",
       "sha256": "7e12b93c7470f573592a3078fe3a757d34d4274f43a16145bb2733ee113577c0",
       "bytes": 2338
+    },
+    {
+      "source": ".github/workflows/vct-website-rfp.yml",
+      "archive": "ci/workflow-recipes/vct-website-rfp.yml",
+      "sha256": "2b1de50944f0b88199cdf892eede829e9a8435bce60f4d8b03d5c4a6842eea6f",
+      "bytes": 1870
     },
     {
       "source": ".github/workflows/vctc-erp-gms.yml",

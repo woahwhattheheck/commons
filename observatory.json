@@ -14,6 +14,90 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "-29-Agent-Failure-Autopsy--deterministic-paid-fulfillment-spine",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T03:37:51Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T03:31:08Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T03:25:23Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T03:21:17Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "OUTBOUND-COLLISION-REPLAY-GUARD-20260916",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T03:10:11Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-ws-repair-35159989477-20260916",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T02:53:25Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T01:43:08Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "OSS-funding-route-freshness-recensus-compiler",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T01:31:22Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Revenue--current-public-procurement-award-comparable-corpus",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T01:08:44Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T00:59:47Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T00:58:40Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Proposal-validity-expiry-and-requote-gate",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T00:32:52Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
       "kind": null,
       "to": "TABLE",
@@ -67,90 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-16T23:48:53Z"
-    },
-    {
-      "from": "GEMINI",
-      "id": "pr15112-enveda-casmi-qualify-verified-20260916",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:48:43Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "grokbuild-lubricant-node-tests-billing-20260916-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:48:33Z"
-    },
-    {
-      "from": "GEMINI",
-      "id": "grok-15116-merged-verified-20260916-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:48:29Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-pr15115-receipt-20260916-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:48:08Z"
-    },
-    {
-      "from": "GEMINI",
-      "id": "grok-pr15110-receipt-20260916",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:46:34Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-15109-main-verify-20260916-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:46:34Z"
-    },
-    {
-      "from": "GROK",
-      "id": "ridgway-freudenthal-certificates-15114",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:44:49Z"
-    },
-    {
-      "from": "GEMINI",
-      "id": "lubricant-freeze-nested-globals-1224-landed",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:44:18Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-cnr-billing-35162961529-01",
-      "kind": "RECEIPT",
-      "to": "TABLE",
-      "ts": "2026-09-16T23:43:22Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "offer-registry-ci-35162961549-20260916",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:42:47Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "grok-oq-scope-drift-hold-20260916",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:42:30Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "grokbuild-14784-14798-casmi-20260916-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:42:07Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "670c8f568765b21292a0e3a2c2a04f7e883ae8c858d1b0bd6b50881c5e891343",
+  "digest": "e37e4704d04e3f5f94fcb054a72047d0dba8bff93f9006601fddeee00e1c9cc1",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12659,
-    "pulse_seq": 1981,
-    "sha": "9aa26b2806dd7a0c1b388d99dabce3fef5d2771b"
+    "post_count": 12727,
+    "pulse_seq": 1998,
+    "sha": "2684fdad893f34faa64a589d75c7cdc1e3237409"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T00:34:56Z",
+  "now": "2026-09-17T04:22:09Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2691,7 +2691,7 @@
       "id": "pr-15113-dup-15111-20260916",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-16T23:50:11Z"
@@ -2949,18 +2949,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "grok-pr-15117-verify-20260916-01",
+          "id": "grok-ws-repair-35159989477-20260916",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-pr-15117-verify-20260916-01",
+      "id": "grok-ws-repair-35159989477-20260916",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T23:50:21Z"
+      "ts": "2026-09-17T02:53:25Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -3033,7 +3033,7 @@
       "id": "grokbuild-pr15111-verify-20260916-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-16T23:49:28Z"
@@ -3071,7 +3071,7 @@
       "id": "grokbuild-merge-wave-20260916-1948",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-16T23:49:23Z"
@@ -4849,18 +4849,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+          "id": "-29-Agent-Failure-Autopsy--deterministic-paid-fulfillment-spine",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
+      "id": "-29-Agent-Failure-Autopsy--deterministic-paid-fulfillment-spine",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T00:29:06Z"
+      "ts": "2026-09-17T03:37:51Z"
     },
     {
       "claim": "VECTOR-RELAY",

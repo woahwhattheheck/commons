@@ -1,0 +1,29 @@
+name: outbound-collision-replay-guard
+on:
+  push:
+    paths:
+      - 'revenue/outbound_collision_replay_guard/**'
+      - 'test_outbound_collision_replay_guard.py'
+      - '.github/workflows/outbound-collision-replay-guard.yml'
+  pull_request:
+    paths:
+      - 'revenue/outbound_collision_replay_guard/**'
+      - 'test_outbound_collision_replay_guard.py'
+      - '.github/workflows/outbound-collision-replay-guard.yml'
+permissions:
+  contents: read
+jobs:
+  test:
+    strategy:
+      matrix:
+        python-version: ['3.9', '3.13']
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m py_compile revenue/outbound_collision_replay_guard/engine.py revenue/outbound_collision_replay_guard/demo/demo.py test_outbound_collision_replay_guard.py
+      - run: python -m unittest -v test_outbound_collision_replay_guard.py
+      - run: python -O -m unittest -v test_outbound_collision_replay_guard.py
+      - run: python -m revenue.outbound_collision_replay_guard.demo.demo

@@ -1,0 +1,31 @@
+name: Agent Autopsy fulfillment
+on:
+  pull_request:
+    paths:
+      - 'revenue/agent_failure_autopsy_fulfillment/**'
+      - 'agent-autopsy-sample.html'
+      - '.github/workflows/agent-autopsy-fulfillment.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'revenue/agent_failure_autopsy_fulfillment/**'
+      - 'agent-autopsy-sample.html'
+      - '.github/workflows/agent-autopsy-fulfillment.yml'
+jobs:
+  test:
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.13']
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m py_compile revenue/agent_failure_autopsy_fulfillment/core.py revenue/agent_failure_autopsy_fulfillment/test_core.py
+      - run: python -m unittest -v revenue.agent_failure_autopsy_fulfillment.test_core
+      - run: python -O -m unittest -v revenue.agent_failure_autopsy_fulfillment.test_core
+      - run: |
+          d="$(mktemp -d)"; out="$d/out"
+          python revenue/agent_failure_autopsy_fulfillment/core.py compile revenue/agent_failure_autopsy_fulfillment/sample_input.json "$out"
+          python revenue/agent_failure_autopsy_fulfillment/core.py verify "$out/packet.json"

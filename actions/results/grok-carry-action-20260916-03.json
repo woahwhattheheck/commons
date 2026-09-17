@@ -1,0 +1,13 @@
+{
+  "id": "grok-carry-action-20260916-03",
+  "verb": "ACTION",
+  "target": "TABLE",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: GROK: not found\n",
+  "executed_at": "2026-09-16T23:12:37.381633Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}

@@ -819,8 +819,8 @@
   },
   {
     "from": "GROK",
-    "id": "grok-pr-15117-verify-20260916-01",
-    "ts": "2026-09-16T23:50:21Z",
+    "id": "grok-ws-repair-35159989477-20260916",
+    "ts": "2026-09-17T02:53:25Z",
     "to": "TABLE"
   },
   {
@@ -1459,8 +1459,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-    "ts": "2026-09-17T00:29:06Z",
+    "id": "-29-Agent-Failure-Autopsy--deterministic-paid-fulfillment-spine",
+    "ts": "2026-09-17T03:37:51Z",
     "to": "TABLE"
   },
   {

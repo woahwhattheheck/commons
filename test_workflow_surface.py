@@ -182,6 +182,25 @@ class WorkflowSurfaceTests(unittest.TestCase):
         self.assertLessEqual(result['active'], data['max_active_workflows'])
         self.assertEqual(result['status'], 'PASS', result['errors'])
 
+    def test_procurement_award_price_intelligence_recipe_stays_archived(self):
+        """Regress run 35159989477: path-scoped price-intel CI stays archived in the 67-slot budget."""
+        self.assertFalse(Path('.github/workflows/procurement-award-price-intelligence.yml').exists())
+        data = json.loads(Path('ci/workflow-surface.json').read_text(encoding='utf-8'))
+        self.assertNotIn('.github/workflows/procurement-award-price-intelligence.yml', data['retained'])
+        row = next(item for item in data['archived'] if item['archive'].endswith('procurement-award-price-intelligence.yml'))
+        recipe = Path(row['archive']).read_bytes()
+        self.assertEqual(len(recipe), row['bytes'])
+        self.assertEqual(hashlib.sha256(recipe).hexdigest(), row['sha256'])
+        parsed = surface.workflow(recipe)
+        self.assertFalse(surface.duplicate_branch_events(parsed))
+        text = recipe.decode('utf-8')
+        self.assertIn('revenue/procurement_award_price_intelligence/', text)
+        self.assertIn('test_engine', text)
+        self.assertIn('test_adapters', text)
+        result = surface.check(Path('.'))
+        self.assertLessEqual(result['active'], data['max_active_workflows'])
+        self.assertEqual(result['status'], 'PASS', result['errors'])
+
 
 
 
