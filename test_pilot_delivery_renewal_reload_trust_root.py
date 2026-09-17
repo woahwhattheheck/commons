@@ -158,10 +158,10 @@ class ReloadStableTrustRootTests(unittest.TestCase):
         with self.assertRaisesRegex(engine.GateError, "node budget exceeded"):
             engine.verify_receipt(packet, receipt)
 
-    def test_packet_large_string_fails_at_byte_budget(self):
+    def test_packet_large_string_fails_at_character_budget(self):
         packet = current_packet()
-        packet["oversized_untrusted_text"] = "x" * 1_000_001
-        with self.assertRaisesRegex(engine.GateError, "byte budget exceeded"):
+        packet["oversized_untrusted_text"] = "x" * 2_000_001
+        with self.assertRaisesRegex(engine.GateError, "character budget exceeded"):
             engine.compile_current(packet)
 
 
