@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 93,
     "open_pull_requests": 35,
-    "runs_in_progress": 14,
-    "runs_queued": 1090
+    "runs_in_progress": 15,
+    "runs_queued": 1100
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -97,7 +97,7 @@
       "head_sha": "3ec4527a7c94d67f452765516a88057b6589e538",
       "number": 15751,
       "title": "Outreach qualification firewall: fail closed before send",
-      "updated_at": "2026-09-17T20:52:18Z"
+      "updated_at": "2026-09-17T20:59:54Z"
     },
     {
       "author": "woahwhattheheck",
@@ -138,10 +138,10 @@
       "branch": "z-af1614/exact-head-ship-fence-15676-r2",
       "created_at": "2026-09-17T20:33:19Z",
       "draft": false,
-      "head_sha": "3f958fc2ba0352e96040d476771c192b794a9f2f",
+      "head_sha": "9796d8857366291ef873aae725ffcec9887555eb",
       "number": 15731,
       "title": "feat: exact-head ship fence for moving-main + CI truth",
-      "updated_at": "2026-09-17T20:54:44Z"
+      "updated_at": "2026-09-17T21:00:11Z"
     },
     {
       "author": "woahwhattheheck",
@@ -160,10 +160,10 @@
       "branch": "solz/payoff-path-ledger-15712-20260917",
       "created_at": "2026-09-17T20:32:33Z",
       "draft": false,
-      "head_sha": "fbc7af4626723b19e09dee1f8b9dce6d7ea02fef",
+      "head_sha": "a420680149f990a427c8e78cd2375cf3edea004b",
       "number": 15728,
       "title": "Revenue: compile explicit payoff paths for uncompensated work",
-      "updated_at": "2026-09-17T20:58:54Z"
+      "updated_at": "2026-09-17T21:00:49Z"
     },
     {
       "author": "woahwhattheheck",
@@ -198,15 +198,15 @@
     "15699": "43ada9c1b6a2152d1fd65d95ed41ccade89be98f",
     "15700": "08fa986edbb83cfb91fa75924997f23fc929eb3d",
     "15707": "c7f6f4bd9a103b7afdf077e690eec8ecd5fa9406",
-    "15714": "644a392eafdad02e7f351650150647c029e00c92",
-    "15717": "54e09511742f85ddabe26f90e680c60f691709e4",
+    "15714": "49f70c1b3d26a1caffe7edb0cb5dc5fa6263c517",
+    "15717": "b6821d9c7ce8fd9bf8d4dd4fd1f3113d6ae7bea7",
     "15721": "f691d4d452180f1df152a4b504b730fa4854f000",
     "15724": "0bc0e6b19aed5ea71598c6ab6b914a828bc8a6f4",
-    "15726": "07a9a285194b301735514b290f6bc8c5ac1567b1",
+    "15726": "252f4a10a318508775dcfb617716718f781e53ea",
     "15727": "86d342fdd4365c20ab5563772fe93ed1c2d5b81a",
-    "15728": "fbc7af4626723b19e09dee1f8b9dce6d7ea02fef",
+    "15728": "a420680149f990a427c8e78cd2375cf3edea004b",
     "15730": "9ddf5f322a886a19b48d08356545ac90f7be7501",
-    "15731": "3f958fc2ba0352e96040d476771c192b794a9f2f",
+    "15731": "9796d8857366291ef873aae725ffcec9887555eb",
     "15732": "8cd5546c7fef5d2d2b48101e7a40d134ddaed2b0",
     "15733": "7dc930d3ac5fd03f96b76102974108f5483265ab",
     "15734": "ad08bb07ccb60f1c48231910601802275c179afe",
@@ -216,8 +216,19 @@
   },
   "pulls_listed": 35,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 77.9,
+  "queue_depth_per_runner": 73.3,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "devin/sledge-corrigan-csanalytical",
+      "closed_at": "2026-09-17T21:00:22Z",
+      "head_sha": "085e19e31938c415cfab59962ecba1438aa6a2cd",
+      "merged_at": "2026-09-17T21:00:22Z",
+      "number": 15757,
+      "state": "MERGED",
+      "title": "convert shelf: corrigan fuel + csanalytical crossline (sledge-corrigan-csanalytical-convert-shelf-20260917-01)"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -371,21 +382,10 @@
       "number": 15658,
       "state": "CLOSED",
       "title": "OneWriter: close bounded-reopen and receipt-causation post-merge gaps"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "devin/sledge-aquatracef-atgrokadapter-convert-shelf",
-      "closed_at": "2026-09-17T20:39:34Z",
-      "head_sha": "a86f67c7a711c5be0c300de369e35d51f089b17f",
-      "merged_at": "2026-09-17T20:39:34Z",
-      "number": 15738,
-      "state": "MERGED",
-      "title": "convert shelf: aquatrace wo-f + at-grok adapter (sledge-aquatracef-atgrokadapter-convert-shelf-20260917-01)"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T20:59:08Z",
+  "unchanged_since": "2026-09-17T21:01:08Z",
   "undatable_pulls": []
 }

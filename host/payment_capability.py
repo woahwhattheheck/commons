@@ -119,6 +119,12 @@ CONVERT_SHELF_LIVE_BUYS = {
     "chemtechford-short-hold-intake-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "clark-d4172-proficiency-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "cornell-craft-beverage-intake-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "corrigan-specialty-fuel-blend-dossier-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "csanalytical-expansion-crossline-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "csplabs-express-capacity-assurance-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "ddl-crosssite-method-proficiency-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "discount-concession-leakage.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "eagletrax-split-sample-preflight-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -215,6 +221,12 @@ PUBLIC_HTML = (
     "chemtechford-short-hold-intake-lims.html",
     "clark-d4172-proficiency-lims.html",
     "cornell-craft-beverage-intake-lims.html",
+    "corrigan-specialty-fuel-blend-dossier-lims.html",
+    "csanalytical-expansion-crossline-lims.html",
+    "csplabs-express-capacity-assurance-lims.html",
+    "ddl-crosssite-method-proficiency-lims.html",
+    "discount-concession-leakage.html",
+    "eagletrax-split-sample-preflight-lims.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
