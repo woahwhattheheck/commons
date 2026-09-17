@@ -6,17 +6,20 @@ import sys
 import unittest
 
 ROOT = Path(__file__).resolve().parent
-NESTED = ROOT / "competitions/opencv-ai-2026/visual-evidence-gate/tests/test_visual_gate.py"
+NESTED = (
+    ROOT / "competitions/opencv-ai-2026/visual-evidence-gate/tests/test_visual_gate.py",
+    ROOT / "competitions/opencv-ai-2026/visual-evidence-gate/tests/test_packet_quality.py",
+)
 
 
 def _deps_available() -> bool:
     return importlib.util.find_spec("cv2") is not None and importlib.util.find_spec("numpy") is not None
 
 
-def _nested_suite():
+def _nested_suite(path: Path):
     if not _deps_available():
         return unittest.TestSuite([unittest.FunctionTestCase(lambda: None, description="OpenCV dependency absent: dedicated workflow owns execution")])
-    spec = importlib.util.spec_from_file_location("opencv_visual_gate_tests", NESTED)
+    spec = importlib.util.spec_from_file_location(f"opencv_visual_gate_tests_{path.stem}", path)
     module = importlib.util.module_from_spec(spec)
     if spec.loader is None:
         raise RuntimeError("nested test loader unavailable")
@@ -25,16 +28,19 @@ def _nested_suite():
 
 
 class OptimizedModeProof(unittest.TestCase):
-    def test_nested_suite_under_python_optimized(self):
+    def test_nested_suites_under_python_optimized(self):
         if not _deps_available():
             self.skipTest("OpenCV dependency absent; dedicated workflow installs pinned test runtime")
-        run = subprocess.run([sys.executable, "-O", str(NESTED)], cwd=str(NESTED.parent), capture_output=True, text=True)
-        self.assertEqual(run.returncode, 0, run.stdout + run.stderr)
+        for path in NESTED:
+            with self.subTest(path=path.name):
+                run = subprocess.run([sys.executable, "-O", str(path)], cwd=str(path.parent), capture_output=True, text=True)
+                self.assertEqual(run.returncode, 0, run.stdout + run.stderr)
 
 
 def load_tests(loader, tests, pattern):
     suite = unittest.TestSuite()
-    suite.addTests(_nested_suite())
+    for path in NESTED:
+        suite.addTests(_nested_suite(path))
     suite.addTests(loader.loadTestsFromTestCase(OptimizedModeProof))
     return suite
 
