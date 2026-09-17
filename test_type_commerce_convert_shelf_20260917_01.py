@@ -6,6 +6,9 @@ invent new buy.stripe.com host paths. Tip KEEP relative doors stay.
 Catalog js-checkout-slot rails stay. Hands off pay.html, tips.html,
 tools-cash.html, bazaar.html, commercial.html, diagnostic.html,
 ground/*.md Larger KEEP, and #8802.
+
+The first-screen #buy-now-live-checkout shelf stays exactly Type's nine
+live buys. Additive tip-shelf Payment Links live outside that section.
 """
 from __future__ import annotations
 
@@ -92,12 +95,13 @@ class TestTypeCommerceConvertShelf2026091701(unittest.TestCase):
         html = COMMERCE.read_text(encoding="utf-8")
         self.assertIn('id="buy-now-live-checkout"', html)
         self.assertIn("Buy now — live checkout", html)
-        found = live_buy_urls(html)
-        self.assertEqual(found, ALLOWED_LIVE_BUY_URLS)
-        self.assertNotIn("donate.stripe.com", html)
-        for url in ALLOWED_LIVE_BUY_URLS:
-            self.assertIn(url, html)
         shelf = convert_shelf(html)
+        found = live_buy_urls(shelf)
+        self.assertEqual(found, ALLOWED_LIVE_BUY_URLS)
+        self.assertNotIn("donate.stripe.com", shelf)
+        for url in ALLOWED_LIVE_BUY_URLS:
+            self.assertIn(url, shelf)
+            self.assertIn(url, html)
         nav_at = html.find('class="nav"')
         shelf_at = html.find('id="buy-now-live-checkout"')
         live_cash_at = html.find('id="live-cash"')
