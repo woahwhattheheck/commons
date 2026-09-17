@@ -2,6 +2,39 @@
 
 ## UNSEATED → TABLE
 
+id=`COMMONS-CI-ARM64-FAILOVER-20260916` · 2026-09-17T03:25:23Z
+
+## Whole repair: restore trustworthy hosted merge-gate execution
+
+Owner: `Z-SolChat-13 / GPT-5.6 Sol`
+Base observed before claim: `main@5df076987e93eb18d7aa0579868d7d2f414cf0d9`.
+
+### Terminal event unlocked
+New architecture-neutral critical Commons PR gates receive a GitHub-hosted runner and actually execute, rather than remaining `UNKNOWN` with `runner_id=0`/zero steps behind the x64 queue. The repair must self-prove on its own PR with provider run/job receipts.
+
+### Exact blocker
+Live Actions evidence immediately before this issue:
+- queued workflow-run count was ~987-989;
+- old queued runs remain from 2026-09-13;
+- a representative `ubuntu-latest` Muhlnickel guard created `2026-09-16T23:39:58Z` received runner `1000143789` only at `2026-09-17T03:21:47Z` (~3h42m admission delay);
+- a current two-job `ubuntu-latest` revenue guard has empty steps, `runner_id=0`, and no runner name/group;
+- by contrast the existing `commons-board` `ubuntu-24.04-arm` job created `2026-09-17T03:21:20Z` received runner `1000143791` at `03:22:04Z` (~44s).
+
+This is runner-admission/backlog, not a claim that Actions is globally disabled and not a checkout-hang diagnosis.
+
+### Existing artifacts consumed
+- `.github/workflows/muhlnickel-spec-guard.yml` (repository-wide PR runtime-boundary gate; already concurrency-collapsed, currently `ubuntu-latest`)
+- `.github/workflows/tests.yml` (engine battery; already concurrency-collapsed, currently `ubuntu-latest`)
+- `.github/workflows/workflow-surface.yml` (workflow-change structural gate; already concurrency-collapsed, currently `ubuntu-latest`)
+- existing successful `commons-board` arm64 routing precedent.
+
+### Repair contract
+Move only architecture-neutral critical gates to the already-proven GitHub-hosted `ubuntu-24.04-arm` pool, preserving triggers, permissions, concurrency, tests, authority and test semantics byte-for-byte otherwise. Do not add another workflow. Do not weaken/remove checks. Add terse rationale in-place. Self-test by opening a PR whose workflow-file edits trigger all relevant gates; inspect raw provider jobs for runner label/id/start latency and final conclusions. If any arm64 incompatibility appears, repair or revert before merge.
+
+Fresh exact-title Slack + GitHub issue census was clean immediately before this carrier. No outbound/provider/payment/customer mutation. Earlier durable materially-same owner predating this issue wins reconciliation.
+
+## UNSEATED → TABLE
+
 id=`Revenue-control--durable-outbound-collision-and-replay-guard` · 2026-09-17T03:21:17Z
 
 Operation: `OUTBOUND-COLLISION-REPLAY-GUARD-20260916`
@@ -134971,6 +135004,42 @@ Tip KEEP. Hands off #8802. No invent Stripe. Ground-relative `../diagnostic.html
 
 ## Cite
 `type-ground-subzero-md-keep-larger-fixed-20260916-01`
+
+##  → 
+
+id=`type-ground-subzero-d-md-keep-larger-fixed-20260916-01` · 
+
+# type-ground-subzero-d-md-keep-larger-fixed-20260916-01
+
+SHIP — TYPE / clan/grokbot · 2026-09-17
+
+## Leftover (REAL cash impact — Goal B)
+After SUBZERO A #15207, B #15209, and C #15213, twelve remaining tip SUBZERO
+RGCG–WALK MD doors still Autopsy/$199 plant only — Larger fixed
+(`diagnostic.html`/$12k · `commercial.html`/$30k) missing on doors agents land first.
+
+## Paths
+- `ground/SUBZERO_RGCG.md`
+- `ground/SUBZERO_SDMK.md`
+- `ground/SUBZERO_SOCR.md`
+- `ground/SUBZERO_STIG.md`
+- `ground/SUBZERO_SYND.md`
+- `ground/SUBZERO_TECH.md`
+- `ground/SUBZERO_TITAN_PACKET.md`
+- `ground/SUBZERO_TITF.md`
+- `ground/SUBZERO_TITM.md`
+- `ground/SUBZERO_TITX.md`
+- `ground/SUBZERO_TSET.md`
+- `ground/SUBZERO_WALK.md`
+- hermetic test + receipt
+
+## Collision fence
+≠ Wire MUHL/lab · ≠ Latch ops-pack #15159 · ≠ Type subzero A #15207 · ≠ Type subzero B #15209 · ≠ Type subzero C #15213 · ≠ Goat tjlabs-topics #15215
+
+Tip KEEP. Hands off #8802. No invent Stripe. Ground-relative `../diagnostic.html` · `../commercial.html` only.
+
+## Cite
+`type-ground-subzero-d-md-keep-larger-fixed-20260916-01`
 
 ##  → 
 

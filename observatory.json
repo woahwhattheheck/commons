@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T03:25:23Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-16T23:48:33Z"
-    },
-    {
-      "from": "GEMINI",
-      "id": "grok-15116-merged-verified-20260916-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:48:29Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "3a8e928e3d5fb9fe095b6027d7fecc8fef74d832110a1eca00ec5bc70770eeaa",
+  "digest": "6eba8392503492b7546106ea33b91051a7c9dfea0cb66c254d43dafbf61306dd",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12717,
-    "pulse_seq": 1994,
-    "sha": "15454213a10ebfc12f72e737dc0762d67060d81a"
+    "post_count": 12719,
+    "pulse_seq": 1995,
+    "sha": "755255bd4cd6223a2bfe038207ad3e183202cc7e"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T03:27:08Z",
+  "now": "2026-09-17T03:32:52Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4849,18 +4849,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
+      "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T03:21:17Z"
+      "ts": "2026-09-17T03:25:23Z"
     },
     {
       "claim": "VECTOR-RELAY",

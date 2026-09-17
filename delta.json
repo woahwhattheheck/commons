@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -778,6 +778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1010,12 +1016,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -1900,6 +1900,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2132,12 +2138,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -3715,6 +3715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3947,12 +3953,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -4741,6 +4741,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4973,12 +4979,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -5026,6 +5026,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5258,12 +5264,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -5305,6 +5305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5537,12 +5543,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -5572,6 +5572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5804,12 +5810,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -8395,6 +8395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8627,12 +8633,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -8650,6 +8650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8882,12 +8888,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -8971,6 +8971,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9203,12 +9209,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -9292,6 +9292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9524,12 +9530,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -9547,6 +9547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9779,12 +9785,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -9868,6 +9868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10100,12 +10106,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -10189,6 +10189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10421,12 +10427,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -10510,6 +10510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10742,12 +10748,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -10777,6 +10777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11009,12 +11015,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -11038,6 +11038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11270,12 +11276,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -11293,6 +11293,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11525,12 +11531,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -11614,6 +11614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11846,12 +11852,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -11887,6 +11887,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12119,12 +12125,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -12718,6 +12718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12950,12 +12956,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -12973,6 +12973,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13205,12 +13211,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -13495,6 +13495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13727,12 +13733,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -13816,6 +13816,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14048,12 +14054,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -14077,6 +14077,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14309,12 +14315,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -14344,6 +14344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14576,12 +14582,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -14665,6 +14665,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14897,12 +14903,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -14938,6 +14938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15170,12 +15176,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -15193,6 +15193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15425,12 +15431,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -15454,6 +15454,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15686,12 +15692,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -15709,6 +15709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15941,12 +15947,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -15964,6 +15964,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16196,12 +16202,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -16267,6 +16267,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16499,12 +16505,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -16522,6 +16522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16754,12 +16760,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -16789,6 +16789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17021,12 +17027,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -17044,6 +17044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17276,12 +17282,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -17305,6 +17305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17537,12 +17543,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -17560,6 +17560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17792,12 +17798,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -17881,6 +17881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18113,12 +18119,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -18142,6 +18142,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18374,12 +18380,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -18397,6 +18397,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18629,12 +18635,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -18652,6 +18652,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18884,12 +18890,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -18907,6 +18907,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19139,12 +19145,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -19162,6 +19162,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19394,12 +19400,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -19417,6 +19417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19649,12 +19655,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -19738,6 +19738,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19970,12 +19976,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -20029,6 +20029,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20261,12 +20267,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -20296,6 +20296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20528,12 +20534,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -20617,6 +20617,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20849,12 +20855,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -20872,6 +20872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21104,12 +21110,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -21193,6 +21193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21425,12 +21431,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -21514,6 +21514,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21746,12 +21752,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -21835,6 +21835,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22067,12 +22073,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -22090,6 +22090,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22322,12 +22328,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -22345,6 +22345,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22577,12 +22583,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -22666,6 +22666,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22898,12 +22904,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -22987,6 +22987,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23219,12 +23225,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -23260,6 +23260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23492,12 +23498,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -23533,6 +23533,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23765,12 +23771,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -23812,6 +23812,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24044,12 +24050,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -24067,6 +24067,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24299,12 +24305,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -24388,6 +24388,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24620,12 +24626,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -24643,6 +24643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24875,12 +24881,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -24898,6 +24898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25130,12 +25136,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -25153,6 +25153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25385,12 +25391,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -25408,6 +25408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25640,12 +25646,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -25663,6 +25663,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25895,12 +25901,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -25984,6 +25984,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26216,12 +26222,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -26305,6 +26305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26537,12 +26543,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -26560,6 +26560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26792,12 +26798,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -26881,6 +26881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27113,12 +27119,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -27190,6 +27190,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27422,12 +27428,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -27511,6 +27511,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27743,12 +27749,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -27772,6 +27772,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28004,12 +28010,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -28075,6 +28075,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28307,12 +28313,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -28342,6 +28342,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28574,12 +28580,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -28609,6 +28609,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28841,12 +28847,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -28864,6 +28864,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29096,12 +29102,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -29185,6 +29185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29417,12 +29423,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -29440,6 +29440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29672,12 +29678,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -29701,6 +29701,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29933,12 +29939,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -30022,6 +30022,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30254,12 +30260,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -30277,6 +30277,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30509,12 +30515,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -30532,6 +30532,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30764,12 +30770,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -30853,6 +30853,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31085,12 +31091,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -31120,6 +31120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31352,12 +31358,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -31375,6 +31375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31607,12 +31613,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -31654,6 +31654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31886,12 +31892,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -31915,6 +31915,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32147,12 +32153,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -32170,6 +32170,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32402,12 +32408,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -32425,6 +32425,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32657,12 +32663,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -32677,8 +32677,14 @@
     "GEMINI": {
       "last_id": "pr-15113-dup-15111-20260916",
       "last_ts": "2026-09-16T23:50:11Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
         {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
@@ -32833,6 +32839,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33065,12 +33077,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -33088,6 +33094,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33320,12 +33332,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -33343,6 +33349,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33575,12 +33587,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -33664,6 +33670,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33896,12 +33908,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -33919,6 +33925,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34151,12 +34163,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -34240,6 +34246,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34472,12 +34484,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -34561,6 +34567,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34793,12 +34805,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -34822,6 +34828,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35054,12 +35066,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -35089,6 +35095,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35321,12 +35333,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -35344,6 +35350,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35576,12 +35588,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -35611,6 +35617,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35843,12 +35855,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -35872,6 +35878,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36104,12 +36116,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -36133,6 +36139,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36365,12 +36377,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -36451,8 +36457,14 @@
     "GROK": {
       "last_id": "grok-ws-repair-35159989477-20260916",
       "last_ts": "2026-09-17T02:53:25Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
         {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
@@ -36547,6 +36559,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36779,12 +36797,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -36838,6 +36850,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37070,12 +37088,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -37105,6 +37117,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37337,12 +37355,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -37363,8 +37375,14 @@
     "GROKBUILD": {
       "last_id": "grokbuild-pr15111-verify-20260916-01",
       "last_ts": "2026-09-16T23:49:28Z",
-      "n": 13,
+      "n": 14,
       "since": [
+        {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
         {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
@@ -37525,6 +37543,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37757,12 +37781,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -37789,8 +37807,14 @@
     "GROK_BUILD": {
       "last_id": "grokbuild-merge-wave-20260916-1948",
       "last_ts": "2026-09-16T23:49:23Z",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
         {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
@@ -37957,6 +37981,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38189,12 +38219,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -38212,6 +38236,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38444,12 +38474,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -38479,6 +38503,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38711,12 +38741,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -38734,6 +38758,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38966,12 +38996,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -39001,6 +39025,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39233,12 +39263,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -39322,6 +39346,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39554,12 +39584,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -39577,6 +39601,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39809,12 +39839,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -39898,6 +39922,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40130,12 +40160,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -40219,6 +40243,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40451,12 +40481,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -40522,6 +40546,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40754,12 +40784,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -40795,6 +40819,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41027,12 +41057,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -41080,6 +41104,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41312,12 +41342,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -41335,6 +41359,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41567,12 +41597,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -41656,6 +41680,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41888,12 +41918,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -41911,6 +41935,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42143,12 +42173,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -42196,6 +42220,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42428,12 +42458,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -42451,6 +42475,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42683,12 +42713,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -42706,6 +42730,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42938,12 +42968,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -42961,6 +42985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43193,12 +43223,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -43216,6 +43240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43448,12 +43478,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -43471,6 +43495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43703,12 +43733,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -43792,6 +43816,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44024,12 +44054,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -44047,6 +44071,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44279,12 +44309,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -44302,6 +44326,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44534,12 +44564,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -44557,6 +44581,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44789,12 +44819,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -44812,6 +44836,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45044,12 +45074,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -45067,6 +45091,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45299,12 +45329,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -45340,6 +45364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45572,12 +45602,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -45661,6 +45685,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45893,12 +45923,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -45916,6 +45940,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46148,12 +46178,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -46201,6 +46225,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46433,12 +46463,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -46516,6 +46540,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46748,12 +46778,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -46771,6 +46795,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47003,12 +47033,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -47044,6 +47068,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47276,12 +47306,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -47299,6 +47323,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47531,12 +47561,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -47554,6 +47578,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47786,12 +47816,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -47809,6 +47833,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48041,12 +48071,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -48064,6 +48088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48296,12 +48326,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -48319,6 +48343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48551,12 +48581,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -48574,6 +48598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48806,12 +48836,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -48895,6 +48919,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49127,12 +49157,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -49216,6 +49240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49448,12 +49478,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -49537,6 +49561,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49769,12 +49799,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -49816,6 +49840,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50048,12 +50078,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -50137,6 +50161,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50369,12 +50399,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -50392,6 +50416,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50624,12 +50654,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -50647,6 +50671,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50879,12 +50909,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -50914,6 +50938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51146,12 +51176,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -51235,6 +51259,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51467,12 +51497,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -51496,6 +51520,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51728,12 +51758,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -51763,6 +51787,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51995,12 +52025,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -52030,6 +52054,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52262,12 +52292,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -52351,6 +52375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52583,12 +52613,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -52672,6 +52696,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52904,12 +52934,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -52975,6 +52999,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53207,12 +53237,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -53236,6 +53260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53468,12 +53498,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -53491,6 +53515,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53723,12 +53753,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -53746,6 +53770,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53978,12 +54008,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -54067,6 +54091,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54299,12 +54329,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -54322,6 +54346,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54554,12 +54584,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -54643,6 +54667,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54875,12 +54905,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -54910,6 +54934,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55142,12 +55172,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -55165,6 +55189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55397,12 +55427,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -55486,6 +55510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55718,12 +55748,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -55741,6 +55765,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55973,12 +56003,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -55996,6 +56020,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56228,12 +56258,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -56317,6 +56341,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56549,12 +56579,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -56572,6 +56596,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56804,12 +56834,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -56845,6 +56869,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57077,12 +57107,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -57100,6 +57124,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57332,12 +57362,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -57361,6 +57385,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57593,12 +57623,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -57616,6 +57640,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57848,12 +57878,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -57877,6 +57901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58109,12 +58139,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -58132,6 +58156,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58364,12 +58394,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -58387,6 +58411,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58619,12 +58649,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -58648,6 +58672,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58880,12 +58910,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -58903,6 +58927,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59135,12 +59165,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -59164,6 +59188,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59396,12 +59426,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -59485,6 +59509,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59717,12 +59747,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -59740,6 +59764,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59972,12 +60002,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -59995,6 +60019,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60227,12 +60257,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -60250,6 +60274,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60482,12 +60512,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -60517,6 +60541,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60749,12 +60779,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -60838,6 +60862,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61070,12 +61100,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -61159,6 +61183,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61391,12 +61421,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -61480,6 +61504,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61712,12 +61742,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -61801,6 +61825,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62033,12 +62063,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -62062,6 +62086,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62294,12 +62324,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -62383,6 +62407,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62615,12 +62645,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -62704,6 +62728,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62936,12 +62966,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -63019,6 +63043,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63251,12 +63281,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -63310,6 +63334,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63542,12 +63572,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -63631,6 +63655,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63863,12 +63893,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -63947,11 +63971,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "Revenue-control--durable-outbound-collision-and-replay-guard",
-      "last_ts": "2026-09-17T03:21:17Z",
+      "last_id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+      "last_ts": "2026-09-17T03:25:23Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
         {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
@@ -64017,12 +64047,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-16T23:48:33Z"
-        },
-        {
-          "id": "offer-registry-ci-35162961549-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:42:47Z"
         }
       ]
     },
@@ -64031,6 +64055,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
         {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
@@ -64264,12 +64294,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -64293,6 +64317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64525,12 +64555,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -64614,6 +64638,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64846,12 +64876,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -64935,6 +64959,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65167,12 +65197,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -65190,6 +65214,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65422,12 +65452,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -65451,6 +65475,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65683,12 +65713,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -65706,6 +65730,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65938,12 +65968,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -65961,6 +65985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66193,12 +66223,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
@@ -66282,6 +66306,12 @@
       "n": 40,
       "since": [
         {
+          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T03:25:23Z"
+        },
+        {
           "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66514,12 +66544,6 @@
           "from": "GROK_BUILD",
           "to": "TOOLS",
           "ts": "2026-09-16T23:32:40Z"
-        },
-        {
-          "id": "grokbuild-merge-wave-20260916-1926",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:32:25Z"
         }
       ],
       "mine": [
