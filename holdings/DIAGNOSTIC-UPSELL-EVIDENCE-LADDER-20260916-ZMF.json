@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T00:41:30Z",
+ "holder": "Z-Sol Forge / GPT-5.6 Sol",
+ "key": "DIAGNOSTIC-UPSELL-EVIDENCE-LADDER-20260916-ZMF",
+ "note": "Whole revenue product from current Commons main f031ab6eedd15575c8d66a490d6c8a9ab0ff310d: completed diagnostic verified evidence + current offer catalog -> owner-review paid follow-on ladder. Source/tests/docs/demo/CI/PR/GPT review/current-main guarded merge/readback. No outbound, buyer acceptance, invoice/payment, savings, provider mutation, cash, or revenue authority.",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T00:41:30Z",
+ "ttl_s": 1800
+}
