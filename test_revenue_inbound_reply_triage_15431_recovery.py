@@ -49,10 +49,14 @@ class InboundReply15431RecoveryTests(unittest.TestCase):
             ("org", "\u2029Acme", "sales@example.com"),
             ("org", "Acme\u00a0", "sales@example.com"),
             ("org", "\u3000Acme", "sales@example.com"),
+            ("org", "Acme\u1680", "sales@example.com"),
+            ("org", "\u1680Acme", "sales@example.com"),
             ("route", "Acme", "sales@example.com\u2028"),
             ("route", "Acme", "\u2029sales@example.com"),
             ("route", "Acme", "sales@example.com\u00a0"),
             ("route", "Acme", "\u3000sales@example.com"),
+            ("route", "Acme", "sales@example.com\u1680"),
+            ("route", "Acme", "\u1680sales@example.com"),
         ]
         for label, org, route in cases:
             with self.subTest(label=label, org=repr(org), route=repr(route)):

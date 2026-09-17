@@ -138,13 +138,17 @@ def _binding_text(value: Any, where: str, *, max_len: int) -> str:
 
     Validate the caller-authored spelling before any whitespace canonicalization so
     trim-erased Unicode separators/compatibility spaces cannot alias a clean lane.
-    Only ordinary ASCII SPACE may be removed at the outer boundary after the
-    original text has passed the forbidden-category and exact-NFKC fences.
+    Only ordinary ASCII SPACE may be used as boundary whitespace and removed after
+    the original text has passed the forbidden-category and exact-NFKC fences.
     """
     original = _text(value, where, max_len=max_len)
     for ch in original:
         category = unicodedata.category(ch)
-        if category.startswith("C") or category in {"Zl", "Zp"}:
+        if (
+            category.startswith("C")
+            or category in {"Zl", "Zp"}
+            or (category == "Zs" and ch != " ")
+        ):
             raise TriageError(f"{where} contains invisible/control text")
     if unicodedata.normalize("NFKC", original) != original:
         raise TriageError(f"{where} must be exact NFKC text")
