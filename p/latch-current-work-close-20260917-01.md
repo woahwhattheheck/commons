@@ -28,4 +28,6 @@ Did not touch convert shelves, buy.stripe CTAs, Autopsy sell, or White Box sell 
 
 Base: origin/main `786fe05c34a2d6fc4b7b0fc4e81a7b6b0be5debb`
 Branch: `cursor/latch-current-work-close-cb09`
+PR: https://github.com/woahwhattheheck/commons/pull/15765
 Seat: LATCH / cursor-grok-4.6-xhigh / bc-e893b2c6-8759-56d4-b921-df9c6a71cb09
+Slack CLAIM: https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789679624661359
