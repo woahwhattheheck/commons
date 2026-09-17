@@ -20,6 +20,7 @@ FALSE_KEYS = {
     "sanitation_certification",
     "quality_inference",
 }
+WIDENED = {key: True for key in FALSE_KEYS}
 
 
 def assert_hard_false(case: unittest.TestCase, value: dict[str, bool]) -> None:
@@ -46,6 +47,15 @@ class CoreAndAuthorityHostiles(unittest.TestCase):
         desk.process(f"{key}.process", stop_id, {"sheet": 1}, {"sheet": 0})
         desk.deliver(f"{key}.deliver", stop_id, {"sheet": 1}, [f"BIN-{key}"])
 
+    def _raw_engine_class(self):
+        matches = [
+            cls
+            for cls in facade.LaundryDesk.__mro__[1:]
+            if cls.__module__ == "_commercial_laundry_engine_private"
+        ]
+        self.assertEqual(len(matches), 1)
+        return matches[0]
+
     def test_public_core_constructor_routes_to_hardened_facade_and_custody(self):
         with tempfile.TemporaryDirectory() as tmp:
             db = Path(tmp) / "core.sqlite3"
@@ -58,6 +68,22 @@ class CoreAndAuthorityHostiles(unittest.TestCase):
                 core.LaundryDesk(db).pickup(
                     "core.pickup.b", stop_b, {"sheet": 1}, ["BIN-SHARED"]
                 )
+
+    def test_raw_base_handle_removed_constructor_sealed_and_unbound_pickup_safe(self):
+        self.assertFalse(hasattr(core, "_BaseLaundryDesk"))
+        raw = self._raw_engine_class()
+        with tempfile.TemporaryDirectory() as tmp:
+            db = Path(tmp) / "raw.sqlite3"
+            with self.assertRaises(TypeError):
+                raw(db)
+            desk = facade.LaundryDesk(db)
+            route = self._seed(desk)
+            stop_a, stop_b = [row["stop_id"] for row in route["stops"]]
+            desk.pickup("raw.pickup.a", stop_a, {"sheet": 1}, ["BIN-SHARED"])
+            # Even an explicit MRO-base unbound call delegates to the hardened
+            # public operation and cannot revive the retained blind pickup.
+            with self.assertRaises(core.StateConflict):
+                raw.pickup(desk, "raw.pickup.b", stop_b, {"sheet": 1}, ["BIN-SHARED"])
 
     def test_retained_implementation_modules_are_not_ordinary_import_targets(self):
         self.assertNotIn("_commercial_laundry_engine_private", sys.modules)
@@ -79,8 +105,8 @@ class CoreAndAuthorityHostiles(unittest.TestCase):
         facade_original = facade.AUTHORITY
         core_original = core.AUTHORITY
         try:
-            facade.AUTHORITY = {"payment_mutation": True, "revenue_assertion": True}
-            core.AUTHORITY = {"payment_mutation": True, "revenue_assertion": True}
+            facade.AUTHORITY = WIDENED.copy()
+            core.AUTHORITY = WIDENED.copy()
             with tempfile.TemporaryDirectory() as tmp:
                 for ctor, name in ((facade.LaundryDesk, "facade"), (core.LaundryDesk, "core")):
                     desk = ctor(Path(tmp) / f"{name}.sqlite3")
@@ -95,6 +121,51 @@ class CoreAndAuthorityHostiles(unittest.TestCase):
         finally:
             facade.AUTHORITY = facade_original
             core.AUTHORITY = core_original
+
+    def test_method_globals_and_retained_projection_globals_cannot_widen_outputs(self):
+        methods = (
+            facade.LaundryDesk.draft_invoice,
+            facade.LaundryDesk.route_snapshot,
+            facade.LaundryDesk.customer_snapshot,
+            facade.LaundryDesk.verify_integrity,
+        )
+        touched: dict[int, tuple[dict, object]] = {}
+        sentinel = object()
+        try:
+            for method in methods:
+                namespace = method.__globals__
+                if id(namespace) not in touched:
+                    touched[id(namespace)] = (namespace, namespace.get("AUTHORITY", sentinel))
+                namespace["AUTHORITY"] = WIDENED.copy()
+                # The core projection wrappers capture retained originals in a
+                # closure. Rebind those originals' private module global too.
+                for cell in method.__closure__ or ():
+                    original = cell.cell_contents
+                    if callable(original) and hasattr(original, "__globals__"):
+                        original_ns = original.__globals__
+                        if id(original_ns) not in touched:
+                            touched[id(original_ns)] = (
+                                original_ns,
+                                original_ns.get("AUTHORITY", sentinel),
+                            )
+                        original_ns["AUTHORITY"] = WIDENED.copy()
+
+            with tempfile.TemporaryDirectory() as tmp:
+                desk = facade.LaundryDesk(Path(tmp) / "globals.sqlite3")
+                route = self._seed(desk)
+                stop = route["stops"][0]["stop_id"]
+                self._good_stop(desk, stop, "globals")
+                invoice = desk.draft_invoice("globals.invoice", stop).value
+                assert_hard_false(self, invoice["authority"])
+                assert_hard_false(self, desk.route_snapshot(route["route_id"])["authority"])
+                assert_hard_false(self, desk.customer_snapshot("cust-a")["authority"])
+                assert_hard_false(self, desk.verify_integrity()["authority"])
+        finally:
+            for namespace, previous in touched.values():
+                if previous is sentinel:
+                    namespace.pop("AUTHORITY", None)
+                else:
+                    namespace["AUTHORITY"] = previous
 
 
 if __name__ == "__main__":

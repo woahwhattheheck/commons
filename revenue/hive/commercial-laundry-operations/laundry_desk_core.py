@@ -2,10 +2,12 @@ from __future__ import annotations
 
 """Hardened core entrypoint for the commercial laundry operations desk.
 
-The retained engine source is intentionally stored under a non-importable
-``.disabled`` suffix.  This module exposes its helper surface for compatibility,
-but direct ``LaundryDesk`` construction is routed through the hardened public
-facade so there is no ordinary direct-core path around custody/ID/export guards.
+The retained engine is loaded privately, but its raw class is not left as an
+ordinary authority path: direct construction is sealed, hardened operations on
+that class delegate to the public facade, and authority-bearing projections are
+wrapped with source-literal false authority.  The public core constructor still
+routes through the hardened facade so both supported imports share one semantic
+surface.
 """
 
 import importlib.machinery as _machinery
@@ -27,8 +29,6 @@ try:
 finally:
     _sys.modules.pop(_PRIVATE_ENGINE_NAME, None)
 
-# Preserve the implementation helper surface used by the compatibility facade,
-# without exposing the pre-hardening class or mutable authority object.
 for _name, _value in vars(_engine).items():
     if _name not in {"LaundryDesk", "AUTHORITY"} and not _name.startswith("__"):
         globals()[_name] = _value
@@ -49,8 +49,71 @@ _engine.AUTHORITY = AUTHORITY
 _BaseLaundryDesk = _engine.LaundryDesk
 
 
+def _sealed_base_new(cls, *args, **kwargs):
+    if cls is _BaseLaundryDesk:
+        raise TypeError("raw laundry engine is not a public construction surface")
+    return object.__new__(cls)
+
+
+_BaseLaundryDesk.__new__ = staticmethod(_sealed_base_new)
+
+
+def _public_delegate(method_name: str):
+    def guarded(self, *args, **kwargs):
+        from laundry_desk import LaundryDesk as PublicLaundryDesk
+
+        if not isinstance(self, PublicLaundryDesk):
+            raise StateConflict("raw laundry engine operation is not authoritative")
+        target = PublicLaundryDesk.__dict__.get(method_name)
+        if target is None:
+            raise StateConflict("hardened public operation unavailable")
+        return target(self, *args, **kwargs)
+
+    guarded.__name__ = method_name
+    return guarded
+
+
+# These operations were hardened by the facade.  Reaching the retained base by
+# MRO or a stale handle cannot resurrect their pre-hardening implementations.
+for _method_name in (
+    "create_daily_route",
+    "pickup",
+    "deliver",
+    "draft_invoice",
+    "_insert_exception",
+    "render_customer_exports",
+):
+    setattr(_BaseLaundryDesk, _method_name, _public_delegate(_method_name))
+
+
+def _authority_projection(original):
+    def wrapped(self, *args, **kwargs):
+        result = original(self, *args, **kwargs)
+        result["authority"] = {
+            "customer_messaging": False,
+            "provider_navigation": False,
+            "accounting_mutation": False,
+            "payment_mutation": False,
+            "deployment": False,
+            "revenue_assertion": False,
+            "sanitation_certification": False,
+            "quality_inference": False,
+        }
+        return result
+
+    return wrapped
+
+
+# These retained methods do not mutate authority-bearing state; replacing their
+# returned authority with source-literal false values removes dependence on the
+# retained function module's rebindable AUTHORITY name, including raw-MRO calls.
+_BaseLaundryDesk.route_snapshot = _authority_projection(_BaseLaundryDesk.route_snapshot)
+_BaseLaundryDesk.customer_snapshot = _authority_projection(_BaseLaundryDesk.customer_snapshot)
+_BaseLaundryDesk.verify_integrity = _authority_projection(_BaseLaundryDesk.verify_integrity)
+
+
 class LaundryDesk(_BaseLaundryDesk):
-    """Compatibility constructor that cannot bypass the hardened facade."""
+    """Compatibility constructor sharing the hardened facade authority surface."""
 
     def __new__(cls, *args, **kwargs):
         if cls is LaundryDesk:
@@ -60,6 +123,7 @@ class LaundryDesk(_BaseLaundryDesk):
         return super().__new__(cls)
 
 
-# Remove ordinary handles to the retained executable module.  Its class object
-# remains only as this class's base so facade subclasses keep the durable engine.
-del _engine, _loader, _spec, _name, _value
+# The raw class is intentionally absent from the public module namespace.  It is
+# still an MRO implementation detail, but direct construction and hardened
+# operation calls on it are fail-closed/delegating as above.
+del _engine, _loader, _spec, _name, _value, _method_name, _BaseLaundryDesk
