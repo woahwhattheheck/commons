@@ -33,7 +33,7 @@ class LaneCashRebakeTests(unittest.TestCase):
         self.assertIn(expected, page)
         self.assertIn('<form id="say">', page)
         self.assertIn('data-lane="%s"' % lane, page)
-        if lane == "ANNEX":
+        if lane in ("ANNEX", "SALON"):
             self.assertIn("https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g", page)
             self.assertIn("https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07", page)
             live_cash = page.split('id="live-cash"', 1)[1].split("</section>", 1)[0]

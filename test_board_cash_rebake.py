@@ -77,7 +77,10 @@ class BoardCashRebakeTests(unittest.TestCase):
 
     def repeated_bake(self, name):
         first = self.bake(name)
-        self.assert_cash(first, convert_shelf=name in ("annex.html", "archive.html"))
+        self.assert_cash(
+            first,
+            convert_shelf=name in ("annex.html", "archive.html", "books.html"),
+        )
         self.assertEqual(self.bake(name), first)
         self.assertIn('id="trust-through-proof"', first)
         return first
@@ -125,7 +128,7 @@ class BoardCashRebakeTests(unittest.TestCase):
                 text = self.bake(name, [])
                 self.assert_cash(
                     text,
-                    convert_shelf=name in ("annex.html", "archive.html"),
+                    convert_shelf=name in ("annex.html", "archive.html", "books.html"),
                 )
                 self.assertNotIn("stale published output", text)
                 self.assertNotIn("rill-claim", text)
