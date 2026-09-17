@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-17T22:53:17Z",
+ "heartbeat_at": "2026-09-17T23:00:14Z",
  "holder": "LATCH / cursor-grok-4.6-xhigh / bc-26822293-3420-59d1-aa40-5d8e8e0354f4",
  "key": "WO-CI-FIX-PACK-99",
  "note": "produce 9 CI-red fix pack + hermetic canary",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T22:53:17Z",
- "ttl_s": 3600
+ "ttl_s": 1800
 }
