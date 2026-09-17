@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parent
 ATTESTED = ROOT / "attested-runs.html"
 DISTRIBUTION = ROOT / "distribution.html"
 RECEIPT = ROOT / "p" / "goat-attested-runs-distribution-convert-shelf-20260917-01.md"
+COPY_RECEIPT = ROOT / "p" / "goat-attested-runs-distribution-convert-copy-20260917-01.md"
 
 ALLOWED_LIVE_BUY_URLS = frozenset(
     {
@@ -32,6 +33,10 @@ BUY_HOST_PATH = re.compile(
     re.IGNORECASE,
 )
 BUY_LABELS = (
+    "See what broke in one failed agent run — $29.",
+    "One live instrumented hour, white box — $250.",
+)
+GENERIC_LABELS = (
     "Buy Autopsy $29",
     "Buy one White Box hour $250",
 )
@@ -80,6 +85,8 @@ class TestGoatAttestedRunsDistributionConvertShelf2026091701(unittest.TestCase):
                 shelf = convert_shelf(html)
                 for label in BUY_LABELS:
                     self.assertIn(label, shelf, label)
+                for generic in GENERIC_LABELS:
+                    self.assertNotIn(generic, shelf, generic)
                 self.assertIn('id="live-cash"', html)
                 live_cash = html.split('id="live-cash"', 1)[1]
                 live_cash = live_cash.split("</section>", 1)[0]
@@ -108,6 +115,15 @@ class TestGoatAttestedRunsDistributionConvertShelf2026091701(unittest.TestCase):
         )
         for url in ALLOWED_LIVE_BUY_URLS:
             self.assertIn(url, text)
+        copy = COPY_RECEIPT.read_text(encoding="utf-8")
+        self.assertIn(
+            "id: goat-attested-runs-distribution-convert-copy-20260917-01",
+            copy,
+        )
+        for label in BUY_LABELS:
+            self.assertIn(label, copy, label)
+        for url in ALLOWED_LIVE_BUY_URLS:
+            self.assertIn(url, copy)
         for name in (
             "attested-runs.html",
             "distribution.html",
