@@ -187,6 +187,23 @@ class SubmissionTests(unittest.TestCase):
         forged["receiptSha256"] = hashlib.sha256(canonical_json_bytes(body)).hexdigest()
         self.assertFalse(verify_compiled_submission(forged_payload, forged, self.keys))
 
+    def test_incomplete_mode_and_forged_gap_counts_fail_closed(self):
+        with self.assertRaises(ValueError):
+            compile_submission(self.keys, state_rows=self.state, queue_rows=[], odme_rows=self.odme, require_complete=False)
+        payload, receipt = compile_submission(self.keys, state_rows=self.state, queue_rows=self.queue, odme_rows=self.odme)
+        forged = copy.deepcopy(receipt)
+        forged["gaps"] = {"state": 999, "queue": 0, "odme": 777}
+        body = dict(forged)
+        body.pop("receiptSha256")
+        forged["receiptSha256"] = hashlib.sha256(canonical_json_bytes(body)).hexdigest()
+        self.assertFalse(verify_compiled_submission(payload, forged, self.keys))
+        forged = copy.deepcopy(receipt)
+        forged["requireComplete"] = False
+        body = dict(forged)
+        body.pop("receiptSha256")
+        forged["receiptSha256"] = hashlib.sha256(canonical_json_bytes(body)).hexdigest()
+        self.assertFalse(verify_compiled_submission(payload, forged, self.keys))
+
     def test_task_specific_schema_edges_fail_closed(self):
         bad_regime = [dict(self.state[0], mask_regime="R4")]
         with self.assertRaises(ValueError):
