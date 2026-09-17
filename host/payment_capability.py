@@ -131,6 +131,8 @@ CONVERT_SHELF_LIVE_BUYS = {
     "lexington-mrf-diversion-gate.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "luvak-ssa-lab-analytics-cutover-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "made-scientific-princeton-rapid-qc-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "oregon-brewlab-sample-report-reconciliation-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "pace-lebanon-microbial-volume-evidence-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -239,6 +241,8 @@ PUBLIC_HTML = (
     "lexington-mrf-diversion-gate.html",
     "luvak-ssa-lab-analytics-cutover-lims.html",
     "made-scientific-princeton-rapid-qc-lims.html",
+    "oregon-brewlab-sample-report-reconciliation-lims.html",
+    "pace-lebanon-microbial-volume-evidence-lims.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
