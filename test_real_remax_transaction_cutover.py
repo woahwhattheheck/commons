@@ -79,6 +79,15 @@ class RealRemaxCutoverTest(unittest.TestCase):
         with self.assertRaisesRegex(CutoverError, "multiple sources"):
             self.compile()
 
+    def test_orphan_mapping_rows_rejected(self):
+        self.mapping["transactions"].append({"source_transaction_id": "STX99999", "target_transaction_id": "TTX99999"})
+        with self.assertRaisesRegex(CutoverError, "transaction source does not exist"):
+            self.compile()
+        self.source, self.target, self.mapping, self.policy = build_synthetic_bundle(240)
+        self.mapping["agents"][0]["target_agent_id"] = "TA999"
+        with self.assertRaisesRegex(CutoverError, "agent target does not exist"):
+            self.compile()
+
     def test_duplicate_snapshot_identity_rejected(self):
         self.source["agents"][1]["agent_id"] = self.source["agents"][0]["agent_id"]
         with self.assertRaisesRegex(CutoverError, "duplicate source_snapshot.agent"):
@@ -91,6 +100,12 @@ class RealRemaxCutoverTest(unittest.TestCase):
         self.assertIn("AGENT_OFFICE_MISMATCH", codes)
         self.assertIn("RELATIONSHIP_AGENT_OFFICE_MISMATCH", codes)
         self.assertLess(report["summary"]["parity_transactions"], 240)
+
+    def test_findings_ceiling_raises_cutover_error(self):
+        self.target["transactions"][0]["stage"] = "UNDER_CONTRACT"
+        with mock.patch("revenue.real_remax_transaction_cutover.engine.MAX_FINDINGS", 0):
+            with self.assertRaisesRegex(CutoverError, "more than 0 findings"):
+                self.compile()
 
     def test_receipt_tamper_and_reseal_do_not_verify(self):
         report = self.compile()
