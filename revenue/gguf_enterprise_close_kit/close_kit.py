@@ -262,7 +262,7 @@ def compile_packet(intake_raw: Any, evidence_raw: Any) -> dict[str, Any]:
         "acceptance": {"tests": tests, "all_at1_at6_evidence_complete": complete, "rule": ACCEPTANCE_RULE, "legal_acceptance_claimed": False},
         "benchmark": benchmark, "terminal_state": state,
         "milestones": {"M1": "SYNTHETIC_NOT_APPLICABLE" if synthetic else ("OWNER_REPORTED_EVIDENCE_PRESENT" if intake["customer_readiness"]["m1_received_owner_reported"] else "HOLD"), "M2": "SYNTHETIC_NOT_APPLICABLE" if synthetic else ("READY_FOR_OWNER_ACCEPTANCE_REVIEW" if state == "READY_FOR_OWNER_M2_ACCEPTANCE_REVIEW" else "HOLD")},
-        "expansion": {"white_box_30d_discussion_ready": bool(not synthetic and state == "READY_FOR_OWNER_M2_ACCEPTANCE_REVIEW"), "expansion_accepted": False},
+        "expansion": {"white_box_30d_discussion_ready": False, "expansion_accepted": False},
         "authority": {"buyer_contact_authorized": False, "legal_acceptance_authorized": False, "customer_file_transfer_authorized_by_this_packet": False, "payment_capture_authorized": False, "refund_authorized": False, "revenue_recognition_authorized": False, "public_model_bytes_allowed": False},
         "truth": {"build_is_buyer_interest": False, "build_is_payment": False, "build_is_revenue": False, "synthetic_demo": synthetic},
     }
