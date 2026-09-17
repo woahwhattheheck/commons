@@ -129,6 +129,8 @@ CONVERT_SHELF_LIVE_BUYS = {
     "highpower-ssf-receiving-gate-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "kincell-rtp-qc-release-bridge-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "lexington-mrf-diversion-gate.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "luvak-ssa-lab-analytics-cutover-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "made-scientific-princeton-rapid-qc-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -235,6 +237,8 @@ PUBLIC_HTML = (
     "highpower-ssf-receiving-gate-lims.html",
     "kincell-rtp-qc-release-bridge-lims.html",
     "lexington-mrf-diversion-gate.html",
+    "luvak-ssa-lab-analytics-cutover-lims.html",
+    "made-scientific-princeton-rapid-qc-lims.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
