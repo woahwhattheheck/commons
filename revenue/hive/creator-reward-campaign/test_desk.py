@@ -2,6 +2,7 @@ import concurrent.futures
 import io
 import json
 import re
+import socket
 import sqlite3
 import tempfile
 import threading
@@ -12,7 +13,8 @@ import uuid
 import zipfile
 from pathlib import Path
 
-from server import ADMIN_FEE_BPS, HANDOFF_MODE, Desk, DeskError, admin_fee, compute_reward, load_example, make_server, normalize_url, opaque_ref, operation_key
+import server
+from server import ADMIN_FEE_BPS, HANDOFF_MODE, Desk, DeskError, admin_fee, compute_reward, load_example, loopback_host, make_server, normalize_url, opaque_ref, operation_key
 
 ROOT = Path(__file__).resolve().parent
 
@@ -185,20 +187,69 @@ class DeskTests(unittest.TestCase):
     def test_duplicate_content_url_is_refused_across_creators_and_forms(self):
         campaign = self.campaign()
         other = self.write('creator/create', handle='creator.two', consent_on='2026-09-01', payout_route_ref='ROUTE-2')['id']
-        self.submit(campaign, url='https://Example.invalid/video/1/?utm=x#frag')
-        for duplicate in ('https://example.invalid/video/1', 'HTTPS://EXAMPLE.INVALID/video/1/', 'https://example.invalid/video/1?other=y'):
+        self.submit(campaign, url='https://Example.invalid/video/1/?utm_source=x&fbclid=y#frag')
+        for duplicate in ('https://example.invalid/video/1', 'HTTPS://EXAMPLE.INVALID/video/1/', 'https://example.invalid/video/1?utm_medium=y&igshid=z'):
             with self.subTest(duplicate=duplicate), self.assertRaises(DeskError) as caught:
                 self.submit(campaign, creator=other, url=duplicate)
             self.assertEqual(caught.exception.status, 409)
+        with self.assertRaises(DeskError) as caught:
+            self.submit(campaign, creator=other, url='https://example.invalid/video/1?other=y')
+        self.assertEqual(caught.exception.status, 400)
         self.assertEqual(len(self.desk.snapshot()['submissions']), 1)
         self.submit(self.campaign(), url='https://example.invalid/video/1')
 
     def test_url_normalization_rules(self):
-        self.assertEqual(normalize_url('https://Example.invalid/a/b/?q=1#x'), 'https://example.invalid/a/b')
+        self.assertEqual(normalize_url('https://Example.invalid/a/b/?utm_campaign=1&si=2#x'), 'https://example.invalid/a/b')
         self.assertEqual(normalize_url('http://example.invalid'), 'http://example.invalid/')
-        for bad in ('example.invalid/video', 'ftp://example.invalid/v', 'https://user:pw@example.invalid/v', 'https://', '', 'javascript:alert(1)'):
+        self.assertEqual(normalize_url('https://www.tiktok.com/@demo.alder/video/7234567890123456789?is_from_webapp=1&sender_device=pc'),
+                         'https://www.tiktok.com/@demo.alder/video/7234567890123456789')
+        self.assertEqual(normalize_url('https://www.instagram.com/reel/C0ffee-Id/?igsh=abc&utm_source=ig_web_copy_link'), 'https://www.instagram.com/reel/C0ffee-Id')
+        for bad in ('example.invalid/video', 'ftp://example.invalid/v', 'https://user:pw@example.invalid/v', 'https://', '', 'javascript:alert(1)',
+                    'https://example.invalid/a?q=1', 'https://example.invalid/a?token=abc', 'https://example.invalid/a?sig=1&utm_source=x'):
             with self.subTest(bad=bad), self.assertRaises(DeskError):
                 normalize_url(bad)
+
+    def test_youtube_identities_survive_canonicalization_and_dedupe(self):
+        video_a, video_b, video_c = 'AAAAAAAAAAA', 'bbbb-BBBB_b', 'CcCcCcCcCcC'
+        forms = {
+            f'https://www.youtube.com/watch?v={video_a}&si=SHARETRACK&feature=shared': video_a,
+            f'https://m.youtube.com/watch?feature=share&v={video_a}': video_a,
+            f'https://youtu.be/{video_a}?si=TRACK': video_a,
+            f'https://youtu.be/{video_a}?t=42s&pp=SHAREBLOB': video_a,
+            f'https://www.youtube.com/shorts/{video_b}': video_b,
+            f'https://www.youtube.com/live/{video_b}?feature=shared': video_b,
+            f'https://www.youtube.com/embed/{video_c}': video_c,
+            f'https://youtube.com/watch?v={video_c}': video_c,
+        }
+        for form, video in forms.items():
+            with self.subTest(form=form):
+                self.assertEqual(normalize_url(form), f'https://www.youtube.com/watch?v={video}')
+        for bad in ('https://www.youtube.com/watch', 'https://www.youtube.com/watch?v=short', 'https://www.youtube.com/watch?v=AAAAAAAAAAA&v=bbbb-BBBB_b',
+                    'https://www.youtube.com/watch?v=AAAAAAAAAAA&token=SECRET', 'https://www.youtube.com/playlist?list=PL123', 'https://youtu.be/',
+                    'https://youtu.be/AAAAAAAAAAA?token=SECRETVALUE', 'https://www.youtube.com/@channel', 'https://www.youtube.com/shorts/AAAAAAAAAAA?token=x'):
+            with self.subTest(bad=bad), self.assertRaises(DeskError):
+                normalize_url(bad)
+        campaign = self.campaign(eligibility={'platforms': ['YOUTUBE'], 'disclosure_tag': '#ad', 'requires_disclosure': True,
+                                              'requires_rights_acceptance': True, 'window_start': '2026-09-01', 'window_end': '2026-09-30'})
+        first = self.write('submission/create', campaign_id=campaign, creator_id=self.creator, platform='YOUTUBE',
+                           url=f'https://www.youtube.com/watch?v={video_a}&si=SHARETRACK', posted_on='2026-09-08', disclosure_present=True, rights_accepted=True)
+        second = self.write('submission/create', campaign_id=campaign, creator_id=self.creator, platform='YOUTUBE',
+                            url=f'https://www.youtube.com/watch?v={video_b}', posted_on='2026-09-08', disclosure_present=True, rights_accepted=True)
+        self.assertEqual(first['url'], f'https://www.youtube.com/watch?v={video_a}')
+        self.assertEqual(second['url'], f'https://www.youtube.com/watch?v={video_b}')
+        self.assertNotEqual(first['id'], second['id'])
+        for alias in (f'https://youtu.be/{video_a}', f'https://m.youtube.com/watch?v={video_a}&feature=share', f'https://www.youtube.com/shorts/{video_b}'):
+            with self.subTest(alias=alias), self.assertRaises(DeskError) as caught:
+                self.submit(campaign, url=alias, platform='YOUTUBE')
+            self.assertEqual(caught.exception.status, 409)
+        retained = {row['url'] for row in self.desk.snapshot()['submissions']}
+        self.assertEqual(retained, {f'https://www.youtube.com/watch?v={video_a}', f'https://www.youtube.com/watch?v={video_b}'})
+        archive = zipfile.ZipFile(io.BytesIO(self.desk.export(campaign)))
+        submissions_csv = archive.read('submissions.csv').decode('utf-8')
+        self.assertIn(f'https://www.youtube.com/watch?v={video_a}', submissions_csv)
+        self.assertIn(f'https://www.youtube.com/watch?v={video_b}', submissions_csv)
+        self.assertNotIn('SHARETRACK', submissions_csv)
+        self.assert_never_retained('SHARETRACK')
 
     def test_eligibility_failures_block_approval_but_allow_rejection(self):
         campaign = self.campaign()
@@ -405,7 +456,12 @@ class DeskTests(unittest.TestCase):
 
     def test_content_urls_are_retained_only_in_canonical_public_form(self):
         campaign = self.campaign()
-        tokenized = 'https://Example.invalid/video/77/?sig=SIGNEDSECRETVALUE&token=TOKENSECRETVALUE#FRAGMENTSECRETVALUE'
+        signed = 'https://Example.invalid/video/77/?sig=SIGNEDSECRETVALUE&token=TOKENSECRETVALUE#FRAGMENTSECRETVALUE'
+        with self.assertRaises(DeskError) as caught:
+            self.submit(campaign, url=signed)
+        self.assertEqual(caught.exception.status, 400)
+        self.assertNotIn('SIGNEDSECRETVALUE', str(caught.exception))
+        tokenized = 'https://Example.invalid/video/77/?utm_source=newsletter&utm_content=TRACKSECRETVALUE&fbclid=FBSECRETVALUE#FRAGMENTSECRETVALUE'
         result = self.write('submission/create', campaign_id=campaign, creator_id=self.creator, platform='TIKTOK', url=tokenized,
                             posted_on='2026-09-08', disclosure_present=True, rights_accepted=True)
         self.assertEqual(result['url'], 'https://example.invalid/video/77')
@@ -413,21 +469,39 @@ class DeskTests(unittest.TestCase):
         self.assertEqual(row['url'], 'https://example.invalid/video/77')
         self.assertEqual(row['url_key'], row['url'])
         with self.assertRaises(DeskError) as caught:
-            self.submit(campaign, url='https://example.invalid/video/77?sig=OTHERSECRETVALUE')
+            self.submit(campaign, url='https://example.invalid/video/77?utm_medium=OTHERSECRETVALUE')
         self.assertEqual(caught.exception.status, 409)
         for bad in ('https://user:pw@example.invalid/v', 'https://token@example.invalid/v'):
             with self.subTest(bad=bad), self.assertRaises(DeskError):
                 self.submit(campaign, url=bad)
         self.review(result['id'])
         self.write('payable/handoff', campaign_id=campaign)
-        self.assert_never_retained('SIGNEDSECRETVALUE', 'TOKENSECRETVALUE', 'FRAGMENTSECRETVALUE', 'OTHERSECRETVALUE', 'user:pw', '?sig=', '#FRAGMENT')
+        self.assert_never_retained('SIGNEDSECRETVALUE', 'TOKENSECRETVALUE', 'FRAGMENTSECRETVALUE', 'OTHERSECRETVALUE', 'TRACKSECRETVALUE',
+                                   'FBSECRETVALUE', 'user:pw', '?sig=', '?utm', '#FRAGMENT')
         self.assertIn(b'https://example.invalid/video/77', self.retained_bytes())
         data = {'operation_id': 'replay-tokenized', 'campaign_id': self.campaign(), 'creator_id': self.creator, 'platform': 'TIKTOK',
                 'url': tokenized, 'posted_on': '2026-09-08', 'disclosure_present': True, 'rights_accepted': True}
         replay = self.desk.write('submission/create', data)
         self.assertEqual(Desk(self.path).write('submission/create', data), replay)
         self.assertEqual(replay['url'], 'https://example.invalid/video/77')
-        self.assert_never_retained('SIGNEDSECRETVALUE', 'TOKENSECRETVALUE', 'FRAGMENTSECRETVALUE')
+        self.assert_never_retained('SIGNEDSECRETVALUE', 'TOKENSECRETVALUE', 'FRAGMENTSECRETVALUE', 'TRACKSECRETVALUE', 'FBSECRETVALUE')
+
+    def test_server_binds_loopback_only(self):
+        for host in ('127.0.0.1', 'localhost', '::1', '[::1]', '127.0.0.2', 'LOCALHOST'):
+            with self.subTest(host=host):
+                self.assertEqual(loopback_host(host), host)
+        for host in ('0.0.0.0', '::', '10.0.0.5', '192.168.1.20', '203.0.113.9', 'example.invalid', '', ' ', 'localhost.example.invalid'):
+            with self.subTest(host=host), self.assertRaises(DeskError):
+                loopback_host(host)
+            with self.subTest(bind=host), self.assertRaises(DeskError):
+                make_server(self.desk, host, 0)
+        bound = make_server(self.desk, '127.0.0.1', 0)
+        try:
+            self.assertEqual(bound.server_address[0], '127.0.0.1')
+        finally:
+            bound.server_close()
+        self.assertEqual(server.main(['--db', str(Path(self.tmp.name) / 'cli.sqlite3'), '--host', '0.0.0.0', '--port', '0']), 2)
+        self.assertFalse((Path(self.tmp.name) / 'cli.sqlite3').exists())
 
     def test_export_zip_contents(self):
         campaign = self.campaign(open_now=False)
@@ -532,6 +606,39 @@ class HttpTests(unittest.TestCase):
         with self.assertRaises(urllib.error.HTTPError) as caught:
             urllib.request.urlopen(request, timeout=10)
         self.assertEqual(caught.exception.code, 400)
+
+    def raw(self, request_bytes):
+        with socket.create_connection(('127.0.0.1', self.server.server_address[1]), timeout=10) as sock:
+            sock.sendall(request_bytes)
+            sock.shutdown(socket.SHUT_WR)
+            chunks = []
+            while True:
+                chunk = sock.recv(65536)
+                if not chunk:
+                    break
+                chunks.append(chunk)
+        return b''.join(chunks)
+
+    def test_malformed_oversized_short_and_unknown_route_bodies_get_clean_replies(self):
+        head = b'POST /api/brand/create HTTP/1.1\r\nHost: 127.0.0.1\r\nContent-Type: application/json\r\n'
+        cases = (
+            (head + b'Content-Length: abc\r\n\r\n{}', b'HTTP/1.0 400', b'Content-Length must be a non-negative integer'),
+            (head + b'Content-Length: -5\r\n\r\n{}', b'HTTP/1.0 400', b'Content-Length must be a non-negative integer'),
+            (head + b'Content-Length: 0\r\n\r\n', b'HTTP/1.0 400', b'Request body must be a JSON object'),
+            (head + b'\r\n', b'HTTP/1.0 400', b'Content-Length must be a non-negative integer'),
+            (head + b'Content-Length: 6000000\r\n\r\n{}', b'HTTP/1.0 413', b'up to 5 MB'),
+            (head + b'Content-Length: 10\r\n\r\n{}', b'HTTP/1.0 400', b'shorter than Content-Length'),
+            (b'POST /api/unknown HTTP/1.1\r\nHost: 127.0.0.1\r\nContent-Length: 20\r\n\r\n{"operation_id":"x"}', b'HTTP/1.0 404', b'Not found'),
+        )
+        for request_bytes, status_line, needle in cases:
+            with self.subTest(request=request_bytes[:80]):
+                response = self.raw(request_bytes)
+                self.assertTrue(response.startswith(status_line), response[:120])
+                self.assertIn(needle, response)
+                self.assertIn(b'Content-Length:', response)
+        status, body, _ = self.call('/api/state')
+        self.assertEqual(status, 200)
+        self.assertEqual(json.loads(body)['brands'], [])
 
 
 if __name__ == '__main__':

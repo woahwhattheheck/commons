@@ -3,16 +3,18 @@ import argparse
 import csv
 import hashlib
 import io
+import ipaddress
 import json
 import re
 import sqlite3
+import sys
 import uuid
 import zipfile
 from contextlib import closing
 from datetime import date, datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.parse import parse_qsl, urlsplit
 
 ROOT = Path(__file__).resolve().parent
 PLATFORMS = ('TIKTOK', 'INSTAGRAM', 'YOUTUBE', 'X', 'OTHER')
@@ -22,6 +24,19 @@ REVIEWABLE = 'SUBMITTED'
 ADMIN_FEE_BPS = 500  # proposed 5% administration fee; PROPOSED_NOT_ACCEPTED
 HANDOFF_MODE = 'LOCAL_HANDOFF_ONLY_NOT_PAID'
 MAX_MINOR = 10**12
+MAX_BODY_BYTES = 5_000_000
+# Known tracking/share parameters are dropped from content URLs; any other query material is refused
+# unless a code-owned projection below names it as the content identity.
+TRACKING_QUERY_KEYS = frozenset((
+    'fbclid', 'gclid', 'gbraid', 'wbraid', 'msclkid', 'yclid', 'twclid', 'ttclid', 'li_fat_id', 'igshid', 'igsh', 'si', 'feature',
+    'ref', 'ref_src', 'ref_url', 'source', 'mc_cid', 'mc_eid', 's', 't', '_t', '_r', '_d', 'is_from_webapp', 'is_copy_url',
+    'sender_device', 'sender_web_id', 'web_id', 'share_app_id', 'share_link_id', 'share_item_id', 'tt_from', 'u_code', 'ug_btm',
+    'lang', 'app', 'checksum', 'timestamp', 'sec_uid', 'sec_user_id', 'ab_channel', 'pp', 'spm', 'from', 'cxt', 'ncid', 'trk',
+    'context', 'sfnsn', 'mibextid', 'rdid', 'share_url', 'utm',
+))
+YOUTUBE_HOSTS = frozenset(('youtube.com', 'www.youtube.com', 'm.youtube.com', 'music.youtube.com', 'youtube-nocookie.com', 'www.youtube-nocookie.com'))
+YOUTUBE_ID = re.compile(r'[A-Za-z0-9_-]{11}')
+YOUTUBE_PATH_ID = re.compile(r'/(?:shorts|live|embed|v)/([A-Za-z0-9_-]{11})$')
 HANDLE = re.compile(r'[A-Za-z0-9][A-Za-z0-9._-]{0,63}')
 NAME = re.compile(r'[A-Za-z0-9][A-Za-z0-9 ._-]{0,119}')
 ASSET_NAME = re.compile(r'[A-Za-z0-9][A-Za-z0-9_-]{0,79}\.(md|txt)')
@@ -135,20 +150,64 @@ def now():
 
 
 def normalize_url(value):
-    """Return the canonical public content URL (scheme, host, path only); it is the only URL form the desk retains.
+    """Return the canonical public content URL, the only URL form the desk retains.
 
-    Userinfo is refused; query strings and fragments (where signed or tokenized links carry their
-    secrets) are dropped before storage, so the duplicate key and the retained URL are the same value.
+    Scheme, lowercased host and path are kept; userinfo is refused; fragments and known tracking
+    parameters are dropped. Query material is retained only where a code-owned projection names it as
+    the content identity: YouTube video ids, which are normalized to https://www.youtube.com/watch?v=ID
+    from watch, youtu.be, shorts, live and embed forms. Any other query material is refused rather than
+    silently stripped, so a signed or tokenized link never enters the desk and a content identity is
+    never lost. The duplicate key is the retained value.
     """
-    raw = text(value, 'url', 2000)
-    parts = urlsplit(raw.strip())
+    raw = text(value, 'url', 2000).strip()
+    parts = urlsplit(raw)
     if parts.scheme.lower() not in ('http', 'https') or not parts.netloc or '@' in parts.netloc:
         raise DeskError('url must be an http(s) content link with a host and no credentials')
-    host = parts.hostname or ''
+    host = (parts.hostname or '').lower()
     if not host or any(ord(ch) < 0x21 for ch in host):
         raise DeskError('url host is invalid')
     path = parts.path.rstrip('/') or '/'
-    return f'{parts.scheme.lower()}://{host.lower()}{path}'
+    query = {}
+    for key, item in parse_qsl(parts.query, keep_blank_values=True):
+        lowered = key.lower()
+        if lowered in TRACKING_QUERY_KEYS or lowered.startswith('utm_'):
+            continue
+        query.setdefault(lowered, []).append(item)
+    if host == 'youtu.be' or host in YOUTUBE_HOSTS:
+        if host == 'youtu.be':
+            video = path.strip('/')
+            if not YOUTUBE_ID.fullmatch(video):
+                raise DeskError('youtu.be links must be https://youtu.be/<11-character video id>')
+        elif path == '/watch':
+            values = query.pop('v', [])
+            if len(values) != 1 or not YOUTUBE_ID.fullmatch(values[0]):
+                raise DeskError('YouTube watch links must carry exactly one 11-character v= video id')
+            video = values[0]
+        else:
+            match = YOUTUBE_PATH_ID.fullmatch(path)
+            if not match:
+                raise DeskError('YouTube links must be a watch, youtu.be, shorts, live or embed video link')
+            video = match.group(1)
+        if query:
+            raise DeskError(f'url carries unsupported query material {sorted(query)}; supply the canonical video link')
+        return f'https://www.youtube.com/watch?v={video}'
+    if query:
+        raise DeskError(f'url carries query material that is not a supported content identity {sorted(query)}; supply the canonical content link')
+    return f'{parts.scheme.lower()}://{host}{path}'
+
+
+def loopback_host(value):
+    """Accept only loopback bind targets; this desk has no remote authentication and is never served elsewhere."""
+    host = text(value, 'host', 253).strip()
+    candidate = host[1:-1] if host.startswith('[') and host.endswith(']') else host
+    if candidate.lower() == 'localhost':
+        return host
+    try:
+        if ipaddress.ip_address(candidate).is_loopback:
+            return host
+    except ValueError:
+        pass
+    raise DeskError('host must be a loopback address (127.0.0.1, ::1 or localhost); this desk has no remote authentication and is not served on other interfaces')
 
 
 def reward_rule(data):
@@ -573,6 +632,8 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header('Content-Type', content_type)
         self.send_header('Content-Length', str(len(body)))
         self.send_header('Cache-Control', 'no-store')
+        if self.close_connection:
+            self.send_header('Connection', 'close')
         self.end_headers()
         self.wfile.write(body)
 
@@ -596,10 +657,20 @@ class Handler(BaseHTTPRequestHandler):
     def do_POST(self):
         path = urlsplit(self.path).path
         try:
-            length = int(self.headers.get('Content-Length') or 0)
-            if length <= 0 or length > 5_000_000:
+            header = (self.headers.get('Content-Length') or '').strip()
+            length = int(header) if header.isdigit() else -1
+            if length < 0:
+                self.close_connection = True  # nothing can be drained without a valid length; the reply closes the connection
+                raise DeskError('Content-Length must be a non-negative integer')
+            if length == 0:
+                raise DeskError('Request body must be a JSON object')
+            if length > MAX_BODY_BYTES:
+                self.close_connection = True  # refused without reading; the reply closes the connection instead of draining megabytes
                 raise DeskError('Request body must be JSON up to 5 MB', 413)
-            body = self.rfile.read(length)  # drain the request before any reply so the client never sees an aborted socket
+            body = self.rfile.read(length)  # bounded drain before any reply so a refused route never aborts the client socket
+            if len(body) != length:
+                self.close_connection = True
+                raise DeskError('Request body was shorter than Content-Length')
             operation = self.routes.get(path)
             if operation is None:
                 raise DeskError('Not found', 404)
@@ -614,20 +685,25 @@ class Handler(BaseHTTPRequestHandler):
 
 def make_server(desk, host='127.0.0.1', port=0):
     handler = type('BoundHandler', (Handler,), {'desk': desk})
-    return ThreadingHTTPServer((host, port), handler)
+    return ThreadingHTTPServer((loopback_host(host), port), handler)
 
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description='Creator reward campaign desk (local, standard library).')
     parser.add_argument('--db', default=str(ROOT / 'creator-reward.sqlite3'))
-    parser.add_argument('--host', default='127.0.0.1')
+    parser.add_argument('--host', default='127.0.0.1', help='loopback only (127.0.0.1, ::1 or localhost); the desk has no remote authentication')
     parser.add_argument('--port', type=int, default=8766)
     parser.add_argument('--demo', action='store_true', help='load the recorded synthetic campaign (idempotent)')
     args = parser.parse_args(argv)
+    try:
+        bind_host = loopback_host(args.host)
+    except DeskError as exc:
+        print(f'ERROR: {exc}', file=sys.stderr)
+        return 2
     desk = Desk(args.db)
     if args.demo:
         load_example(desk)
-    server = make_server(desk, args.host, args.port)
+    server = make_server(desk, bind_host, args.port)
     print(f'Creator reward campaign desk on http://{args.host}:{server.server_address[1]} ({HANDOFF_MODE})')
     try:
         server.serve_forever()
