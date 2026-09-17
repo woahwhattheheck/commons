@@ -280,35 +280,24 @@ def _normalize_envelope(envelope: Mapping[str, Any]) -> dict[str, Any]:
 def _identity(envelope: Mapping[str, Any], policy_sha: str) -> dict[str, Any]:
     request = envelope["request"]
     return {
-        "run_id": envelope["run_id"],
-        "call_id": envelope["call_id"],
-        "agent_id": envelope["agent"]["id"],
-        "agent_version": envelope["agent"]["version"],
-        "actor_role": envelope["actor"]["role"],
-        "tool": request["tool"],
-        "action": request["action"],
-        "target_resource": request["target_resource"],
-        "data_class": request["data_class"],
-        "arguments_sha256": request["arguments_sha256"],
-        "effect": request["effect"],
-        "idempotency_key": envelope["idempotency_key"],
-        "policy_sha256": policy_sha,
-        "source_sha256": envelope["source"]["source_sha256"],
+        "run_id": envelope["run_id"], "call_id": envelope["call_id"],
+        "agent_id": envelope["agent"]["id"], "agent_version": envelope["agent"]["version"],
+        "actor_role": envelope["actor"]["role"], "tool": request["tool"],
+        "action": request["action"], "target_resource": request["target_resource"],
+        "data_class": request["data_class"], "arguments_sha256": request["arguments_sha256"],
+        "effect": request["effect"], "idempotency_key": envelope["idempotency_key"],
+        "policy_sha256": policy_sha, "source_sha256": envelope["source"]["source_sha256"],
     }
 
 
 def _evaluate_normalized(
-    envelope: dict[str, Any],
-    policy: dict[str, Any],
-    policy_sha: str,
-    seen_calls: set[str],
-    seen_idempotency: set[str],
+    envelope: dict[str, Any], policy: dict[str, Any], policy_sha: str,
+    seen_calls: set[str], seen_idempotency: set[str],
 ) -> dict[str, Any]:
     reasons: set[str] = set()
     request = envelope["request"]
     actor_role = envelope["actor"]["role"]
-    tool = request["tool"]
-    action = request["action"]
+    tool, action = request["tool"], request["action"]
     pair = f"{tool}:{action}"
 
     allowed_pair = action in policy["allowed_tool_actions"].get(tool, [])
@@ -318,14 +307,10 @@ def _evaluate_normalized(
     prefixes = policy["role_resource_prefixes"].get(actor_role, [])
     if not any(request["target_resource"].startswith(prefix) for prefix in prefixes):
         reasons.add("ROLE_RESOURCE_MISMATCH")
-
     if request["data_class"] in set(policy["restricted_data_classes"]):
         reasons.add("RESTRICTED_DATA_EXPOSURE")
-
-    if allowed_pair:
-        limit = policy["max_cost_minor_by_tool_action"][pair]
-        if request["estimated_cost_minor"] > limit:
-            reasons.add("BUDGET_RATE_BREACH")
+    if allowed_pair and request["estimated_cost_minor"] > policy["max_cost_minor_by_tool_action"][pair]:
+        reasons.add("BUDGET_RATE_BREACH")
 
     required_mutating = action in set(policy["human_approval_required_for_actions"])
     if allowed_pair and required_mutating and request["effect"] != "MUTATING":
@@ -351,11 +336,17 @@ def _evaluate_normalized(
         reasons.add("UNSAFE_LIFECYCLE")
     if completed is not None and observed is None:
         reasons.add("UNSAFE_LIFECYCLE")
-    if dispatched is None and trace["outcome"] != "NOT_DISPATCHED":
+
+    # Only a never-dispatched request can have NOT_DISPATCHED. Any dispatched
+    # but incomplete snapshot is unresolved and therefore HOLD regardless of a
+    # caller-written SUCCESS/FAILED label. A completion needs an observation and
+    # a known terminal outcome.
+    if dispatched is None:
+        if trace["outcome"] != "NOT_DISPATCHED":
+            reasons.add("UNKNOWN_OUTCOME")
+    elif completed is None:
         reasons.add("UNKNOWN_OUTCOME")
-    if dispatched is not None and completed is None and trace["outcome"] == "UNKNOWN":
-        reasons.add("UNKNOWN_OUTCOME")
-    if completed is not None and trace["outcome"] not in {"SUCCESS", "FAILED"}:
+    elif trace["outcome"] not in {"SUCCESS", "FAILED"}:
         reasons.add("UNKNOWN_OUTCOME")
 
     approval = envelope["approval"]
@@ -382,7 +373,6 @@ def _evaluate_normalized(
         reasons.add("CONFLICTING_DUPLICATE_CALL_ID")
     else:
         seen_calls.add(envelope["call_id"])
-
     idem = envelope["idempotency_key"]
     if idem is not None:
         if idem in seen_idempotency:
@@ -394,18 +384,13 @@ def _evaluate_normalized(
     receipt = {
         "schema": "agent-toolcall-gate-receipt/v1",
         "decision": "HOLD" if reasons else "EXECUTE_ALLOWED",
-        "reasons": sorted(reasons),
-        "evaluated_at": envelope["evaluated_at"],
+        "reasons": sorted(reasons), "evaluated_at": envelope["evaluated_at"],
         "environment": "SYNTHETIC_NONPRODUCTION",
-        "envelope_sha256": sha256_json(envelope),
-        "policy_sha256": policy_sha,
-        "identity_sha256": sha256_json(identity),
-        "identity": identity,
+        "envelope_sha256": sha256_json(envelope), "policy_sha256": policy_sha,
+        "identity_sha256": sha256_json(identity), "identity": identity,
         "trace_state": {
-            "requested": True,
-            "dispatched": dispatched is not None,
-            "observed": observed is not None,
-            "completed": completed is not None,
+            "requested": True, "dispatched": dispatched is not None,
+            "observed": observed is not None, "completed": completed is not None,
             "outcome": trace["outcome"],
         },
         "authority": deepcopy(EXPECTED_AUTHORITY),
@@ -415,8 +400,7 @@ def _evaluate_normalized(
 
 
 def compile_batch(
-    envelopes: Iterable[Mapping[str, Any]],
-    policy: Mapping[str, Any] | None = None,
+    envelopes: Iterable[Mapping[str, Any]], policy: Mapping[str, Any] | None = None,
 ) -> list[dict[str, Any]]:
     active_policy = load_policy() if policy is None else _validate_policy(policy)
     policy_sha = sha256_json(active_policy)
@@ -430,20 +414,17 @@ def compile_batch(
     ]
 
 
-def compile_one(
-    envelope: Mapping[str, Any], policy: Mapping[str, Any] | None = None
-) -> dict[str, Any]:
+def compile_one(envelope: Mapping[str, Any], policy: Mapping[str, Any] | None = None) -> dict[str, Any]:
     return compile_batch([envelope], policy)[0]
 
 
 def verify_batch(
-    envelopes: Iterable[Mapping[str, Any]],
-    receipts: Iterable[Mapping[str, Any]],
+    envelopes: Iterable[Mapping[str, Any]], receipts: Iterable[Mapping[str, Any]],
     policy: Mapping[str, Any] | None = None,
 ) -> bool:
-    expected = compile_batch(envelopes, policy)
-    supplied = [dict(item) for item in receipts]
-    return canonical_bytes(expected) == canonical_bytes(supplied)
+    return canonical_bytes(compile_batch(envelopes, policy)) == canonical_bytes(
+        [dict(item) for item in receipts]
+    )
 
 
 def receipt_markdown(receipt: Mapping[str, Any]) -> str:
@@ -452,13 +433,11 @@ def receipt_markdown(receipt: Mapping[str, Any]) -> str:
     identity = value["identity"]
     return (
         "# Agent Tool-Call Evidence Receipt\n\n"
-        f"- Decision: `{value['decision']}`\n"
-        f"- Reasons: `{reasons}`\n"
+        f"- Decision: `{value['decision']}`\n- Reasons: `{reasons}`\n"
         f"- Run / call: `{identity['run_id']}` / `{identity['call_id']}`\n"
         f"- Agent: `{identity['agent_id']}@{identity['agent_version']}`\n"
         f"- Tool/action: `{identity['tool']}:{identity['action']}`\n"
-        f"- Target: `{identity['target_resource']}`\n"
-        f"- Data class: `{identity['data_class']}`\n"
+        f"- Target: `{identity['target_resource']}`\n- Data class: `{identity['data_class']}`\n"
         f"- Identity SHA-256: `{value['identity_sha256']}`\n"
         f"- Envelope SHA-256: `{value['envelope_sha256']}`\n"
         f"- Policy SHA-256: `{value['policy_sha256']}`\n"
@@ -478,10 +457,8 @@ def build_ledger(receipts: Iterable[Mapping[str, Any]]) -> list[dict[str, Any]]:
             raise GateError("receipt digest mismatch")
         receipt["receipt_sha256"] = claimed
         entry = {
-            "schema": "agent-toolcall-ledger-entry/v1",
-            "sequence": sequence,
-            "previous_entry_sha256": previous,
-            "receipt": receipt,
+            "schema": "agent-toolcall-ledger-entry/v1", "sequence": sequence,
+            "previous_entry_sha256": previous, "receipt": receipt,
         }
         entry["entry_sha256"] = sha256_json(entry)
         previous = entry["entry_sha256"]
@@ -503,9 +480,7 @@ def verify_ledger(entries: Iterable[Mapping[str, Any]]) -> bool:
         if type(receipt) is not dict:
             return False
         receipt_claimed = receipt.pop("receipt_sha256", None)
-        if receipt_claimed != sha256_json(receipt):
-            return False
-        if claimed != sha256_json(entry):
+        if receipt_claimed != sha256_json(receipt) or claimed != sha256_json(entry):
             return False
         previous = claimed
         sequence += 1
@@ -538,8 +513,7 @@ def daily_root_manifest(entries: Iterable[Mapping[str, Any]], day: str) -> dict[
             selected.append(entry)
     hashes = [entry["entry_sha256"] for entry in selected]
     manifest = {
-        "schema": "agent-toolcall-daily-root/v1",
-        "day": day,
+        "schema": "agent-toolcall-daily-root/v1", "day": day,
         "entry_count": len(selected),
         "first_sequence": selected[0]["sequence"] if selected else None,
         "last_sequence": selected[-1]["sequence"] if selected else None,
