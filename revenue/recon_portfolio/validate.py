@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import Any
 
 CATALOG_SCHEMA='tjlabs.recon-portfolio.catalog/v1'
-TARGETS_SCHEMA='tjlabs.recon-portfolio.targets/v1'
+TARGETS_SCHEMA='tjlabs.recon-portfolio.target-bundle/v1'
 PRODUCT_STATES={'MERGED_DELIVERABLE','OPEN_NEAR_SHIP','CONCEPT'}
 ROUTE_STATES={'VERIFIED_CURRENT','HOLD_ROUTE','DNR_PROVIDER_SENT','PRODUCT_GATE_HOLD'}
 ROUTE_KINDS={'EMAIL','FORM','SITE'}
@@ -29,6 +29,20 @@ def load(path:Path)->Any:
     except (json.JSONDecodeError,UnicodeError,OSError) as e:
         raise PortfolioError(f'{path}: {e}') from e
 
+def load_targets_dir(path:Path)->dict[str,Any]:
+    docs=[]
+    for fp in sorted(path.glob('*.json')):
+        doc=load(fp)
+        _require(doc.get('schema')==TARGETS_SCHEMA,f'{fp}: target bundle schema')
+        _require(doc.get('bundle_id')==fp.stem,f'{fp}: bundle_id/filename mismatch')
+        docs.append(doc)
+    _require(bool(docs),f'{path}: no target bundle files')
+    dates={d.get('generated_on') for d in docs}
+    _require(len(dates)==1,f'{path}: target generated_on mismatch')
+    bundle_ids=[d['bundle_id'] for d in docs]
+    _require(len(bundle_ids)==len(set(bundle_ids)),f'{path}: duplicate target bundle')
+    return {'schema':'tjlabs.recon-portfolio.targets-aggregate/v1','generated_on':next(iter(dates)),'targets':[t for d in docs for t in d.get('targets',[])]}
+
 def _require(cond:bool,msg:str):
     if not cond: raise PortfolioError(msg)
 
@@ -38,7 +52,7 @@ def _nonempty_strings(values:Any,where:str):
 
 def validate(catalog:dict[str,Any],targets_doc:dict[str,Any])->dict[str,Any]:
     _require(catalog.get('schema')==CATALOG_SCHEMA,'catalog schema')
-    _require(targets_doc.get('schema')==TARGETS_SCHEMA,'targets schema')
+    _require(targets_doc.get('schema')=='tjlabs.recon-portfolio.targets-aggregate/v1','targets aggregate schema')
     _require(type(catalog.get('generated_on')) is str,'catalog generated_on')
     _require(targets_doc.get('generated_on')==catalog.get('generated_on'),'generated_on mismatch')
     _require(type(catalog.get('global_outbound_rule')) is str and 'Muse' in catalog['global_outbound_rule'],'global outbound mutex missing')
@@ -124,10 +138,10 @@ def main(argv=None)->int:
     ap=argparse.ArgumentParser()
     here=Path(__file__).resolve().parent
     ap.add_argument('--catalog',type=Path,default=here/'catalog.json')
-    ap.add_argument('--targets',type=Path,default=here/'targets.json')
+    ap.add_argument('--targets-dir',type=Path,default=here/'targets')
     ns=ap.parse_args(argv)
     try:
-        summary=validate(load(ns.catalog),load(ns.targets))
+        summary=validate(load(ns.catalog),load_targets_dir(ns.targets_dir))
     except PortfolioError as e:
         print(f'INVALID: {e}')
         return 2
