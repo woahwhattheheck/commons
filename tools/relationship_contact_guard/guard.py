@@ -709,94 +709,105 @@ def _compile_at(
     return {**core, "receipt_sha256": _digest_fn(core)}
 
 
-def compile_guard(
-    packet: Mapping[str, Any],
-    *,
-    _freeze_fn=_freeze,
-    _compile_at_fn=_compile_at,
-) -> dict[str, Any]:
-    # Sample process wall time directly in the public current compiler rather
-    # than through a mutable module-level clock callback.
-    from datetime import datetime as _datetime, timezone as _timezone
+def _make_compile_guard(_freeze_fn, _compile_at_fn):
+    def compile_guard(packet: Mapping[str, Any]) -> dict[str, Any]:
+        # Sample process wall time directly in the public current compiler rather
+        # than through a mutable module-level clock callback.
+        from datetime import datetime as _datetime, timezone as _timezone
 
-    frozen = _freeze_fn(packet, "packet")
-    now = _datetime.now(_timezone.utc).replace(microsecond=0)
-    return _compile_at_fn(frozen, now, "PROCESS_UTC_SNAPSHOT")
+        frozen = _freeze_fn(packet, "packet")
+        now = _datetime.now(_timezone.utc).replace(microsecond=0)
+        return _compile_at_fn(frozen, now, "PROCESS_UTC_SNAPSHOT")
+
+    return compile_guard
 
 
-def verify_guard(
-    packet: Mapping[str, Any],
-    artifact: Mapping[str, Any],
-    *,
-    _verification_schema: str = VERIFICATION_SCHEMA,
-    _hex64_fullmatch=HEX64_RE.fullmatch,
-    _freeze_fn=_freeze,
-    _time_fn=_time,
-    _compile_at_fn=_compile_at,
-    _canonical_bytes_fn=canonical_bytes,
-    _digest_fn=digest,
-) -> dict[str, Any]:
-    """Verify retained artifact integrity, then freshly re-evaluate current semantics.
+compile_guard = _make_compile_guard(_freeze, _compile_at)
 
-    A semantic receipt is not a signature. The retained artifact cannot prove
-    that its own evaluated_at was originally sampled from process UTC, so this
-    verifier never upgrades that retained clock claim. Current diagnostic
-    status comes only from a fresh process-time evaluation performed here.
-    """
-    frozen_artifact = _freeze_fn(artifact, "artifact")
-    decision = frozen_artifact.get("decision")
-    if type(decision) is not dict:
-        raise GuardError("artifact decision missing")
-    if decision.get("evaluation_mode") != "PROCESS_UTC_SNAPSHOT":
-        raise GuardError("artifact evaluation_mode must be PROCESS_UTC_SNAPSHOT")
-    evaluated_at = _time_fn(decision.get("evaluated_at"), "artifact.decision.evaluated_at")
 
-    from datetime import datetime as _datetime, timezone as _timezone
+def _make_verify_guard(
+    _verification_schema: str,
+    _hex64_fullmatch,
+    _freeze_fn,
+    _time_fn,
+    _compile_at_fn,
+    _canonical_bytes_fn,
+    _digest_fn,
+):
+    def verify_guard(packet: Mapping[str, Any], artifact: Mapping[str, Any]) -> dict[str, Any]:
+        """Verify retained artifact integrity, then freshly re-evaluate current semantics.
 
-    verify_now = _datetime.now(_timezone.utc).replace(microsecond=0)
-    if evaluated_at > verify_now:
-        raise GuardError("artifact evaluated_at is in the future")
+        A semantic receipt is not a signature. The retained artifact cannot prove
+        that its own evaluated_at was originally sampled from process UTC, so this
+        verifier never upgrades that retained clock claim. Current diagnostic
+        status comes only from a fresh process-time evaluation performed here.
+        """
+        frozen_artifact = _freeze_fn(artifact, "artifact")
+        decision = frozen_artifact.get("decision")
+        if type(decision) is not dict:
+            raise GuardError("artifact decision missing")
+        if decision.get("evaluation_mode") != "PROCESS_UTC_SNAPSHOT":
+            raise GuardError("artifact evaluation_mode must be PROCESS_UTC_SNAPSHOT")
+        evaluated_at = _time_fn(decision.get("evaluated_at"), "artifact.decision.evaluated_at")
 
-    frozen_packet = _freeze_fn(packet, "packet")
-    expected = _compile_at_fn(frozen_packet, evaluated_at, "PROCESS_UTC_SNAPSHOT")
-    if _canonical_bytes_fn(frozen_artifact) != _canonical_bytes_fn(expected):
-        raise GuardError("artifact does not exactly match deterministic retained-time recompile")
-    receipt = frozen_artifact.get("receipt_sha256")
-    if type(receipt) is not str or not _hex64_fullmatch(receipt):
-        raise GuardError("artifact receipt_sha256 malformed")
-    core = {"artifact_schema": frozen_artifact["artifact_schema"], "decision": frozen_artifact["decision"]}
-    if _digest_fn(core) != receipt:
-        raise GuardError("artifact receipt mismatch")
-    if any(frozen_artifact["decision"]["authority"].values()):
-        raise GuardError("artifact authority ceiling widened")
+        from datetime import datetime as _datetime, timezone as _timezone
 
-    fresh = _compile_at_fn(frozen_packet, verify_now, "PROCESS_UTC_VERIFY_FRESH")
-    if any(fresh["decision"]["authority"].values()):
-        raise GuardError("fresh verification authority ceiling widened")
+        verify_now = _datetime.now(_timezone.utc).replace(microsecond=0)
+        if evaluated_at > verify_now:
+            raise GuardError("artifact evaluated_at is in the future")
 
-    return {
-        "verification_schema": _verification_schema,
-        "retained_integrity_verified": True,
-        "retained_time_process_origin_verified": False,
-        "retained_status_is_current": False,
-        "artifact_evaluated_at": frozen_artifact["decision"]["evaluated_at"],
-        "artifact_status": frozen_artifact["decision"]["status"],
-        "verification_evaluated_at": fresh["decision"]["evaluated_at"],
-        "fresh_status": fresh["decision"]["status"],
-        "fresh_decision": fresh["decision"],
-        "fresh_receipt_sha256": fresh["receipt_sha256"],
-        "authority": {
-            "send_authorized": False,
-            "muse_authorized": False,
-            "provider_send_proven": False,
-            "buyer_acceptance_proven": False,
-            "contract_proven": False,
-            "payment_proven": False,
-            "cash_proven": False,
-            "revenue_recognized": False,
-        },
-    }
+        frozen_packet = _freeze_fn(packet, "packet")
+        expected = _compile_at_fn(frozen_packet, evaluated_at, "PROCESS_UTC_SNAPSHOT")
+        if _canonical_bytes_fn(frozen_artifact) != _canonical_bytes_fn(expected):
+            raise GuardError("artifact does not exactly match deterministic retained-time recompile")
+        receipt = frozen_artifact.get("receipt_sha256")
+        if type(receipt) is not str or not _hex64_fullmatch(receipt):
+            raise GuardError("artifact receipt_sha256 malformed")
+        core = {"artifact_schema": frozen_artifact["artifact_schema"], "decision": frozen_artifact["decision"]}
+        if _digest_fn(core) != receipt:
+            raise GuardError("artifact receipt mismatch")
+        if any(frozen_artifact["decision"]["authority"].values()):
+            raise GuardError("artifact authority ceiling widened")
 
+        fresh = _compile_at_fn(frozen_packet, verify_now, "PROCESS_UTC_VERIFY_FRESH")
+        if any(fresh["decision"]["authority"].values()):
+            raise GuardError("fresh verification authority ceiling widened")
+
+        return {
+            "verification_schema": _verification_schema,
+            "retained_integrity_verified": True,
+            "retained_time_process_origin_verified": False,
+            "retained_status_is_current": False,
+            "artifact_evaluated_at": frozen_artifact["decision"]["evaluated_at"],
+            "artifact_status": frozen_artifact["decision"]["status"],
+            "verification_evaluated_at": fresh["decision"]["evaluated_at"],
+            "fresh_status": fresh["decision"]["status"],
+            "fresh_decision": fresh["decision"],
+            "fresh_receipt_sha256": fresh["receipt_sha256"],
+            "authority": {
+                "send_authorized": False,
+                "muse_authorized": False,
+                "provider_send_proven": False,
+                "buyer_acceptance_proven": False,
+                "contract_proven": False,
+                "payment_proven": False,
+                "cash_proven": False,
+                "revenue_recognized": False,
+            },
+        }
+
+    return verify_guard
+
+
+verify_guard = _make_verify_guard(
+    VERIFICATION_SCHEMA,
+    HEX64_RE.fullmatch,
+    _freeze,
+    _time,
+    _compile_at,
+    canonical_bytes,
+    digest,
+)
 
 def _write(path: Path, value: Any) -> None:
     path.write_text(json.dumps(value, sort_keys=True, indent=2, ensure_ascii=True, allow_nan=False) + "\n", encoding="utf-8")
