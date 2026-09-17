@@ -22,7 +22,7 @@ KEEP_UNREAD = {
     "p/grokbuild-repair-337-living-clear-20260902-01.md": "1884a299",
     "p/grokbuild-owner-now-337-closer-strip-20260902-01.md": "71135011",
     "ground/OWNER_NOW.md": "a17b0afb",
-    "autogtm.html": "b6ff1bfd",
+    "autogtm.html": "1009c4cd",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "p/cursor-owner-now-revenue-20260902-01.md": "fe5ba035",
@@ -49,10 +49,10 @@ class GrokbuildOccupancyLandedWorkKeepLiftTest(unittest.TestCase):
         self.assertNotEqual(
             terminal.KEEP.get("test_landed_work_feed_readback.py"), "cb58ab08"
         )
-        self.assertTrue(git_blob("test_stealable_lanes.py").startswith("306dd0a3"))
-        self.assertTrue(git_blob("test_landed_work_feed.py").startswith("281837b2"))
+        self.assertTrue(git_blob("test_stealable_lanes.py").startswith("cfbafb8f"))
+        self.assertTrue(git_blob("test_landed_work_feed.py").startswith("ce43bce7"))
         self.assertTrue(
-            git_blob("test_landed_work_feed_readback.py").startswith("fa18ef3f")
+            git_blob("test_landed_work_feed_readback.py").startswith("3184d5c8")
         )
 
     def test_living_owner_now_stays_clear_of_invented_signature(self) -> None:

@@ -22,9 +22,9 @@ KEEP = {
     "test_source_parses.py": "71e0c9b6",
     ".github/workflows/source-parses.yml": "0a8cf371",
     "p/grokbuild-source-parses-33689088174-billing-lock-20260902-01.md": "3b13ac02",
-    "test_grokbuild_source_parses_33689088174_billing_lock.py": "9690f77f",
+    "test_grokbuild_source_parses_33689088174_billing_lock.py": "dba4126e",
     "p/grokbuild-open-door-guard-33699286785-billing-lock-20260902-01.md": "d22e0707",
-    "test_grokbuild_open_door_guard_33699286785_billing_lock.py": "996709e6",
+    "test_grokbuild_open_door_guard_33699286785_billing_lock.py": "8d1a8945",
     "open_door_guard.py": "877e148d",
 }
 

@@ -13,7 +13,7 @@ LEFTOVER = ROOT / "p/grokbuild-occupancy-landed-work-keep-lift-20260902-01.md"
 
 KEEP = {
     "p/grokbuild-occupancy-landed-work-keep-lift-20260902-01.md": "67a8a527",
-    "test_grokbuild_occupancy_landed_work_keep_lift.py": "8403975b",
+    "test_grokbuild_occupancy_landed_work_keep_lift.py": "385f717f",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "host/stealable_lanes.py": "60ac60e1",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
@@ -30,14 +30,14 @@ KEEP = {
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "ground/OWNER_NOW.md": "a17b0afb",
-    "test_stealable_lanes.py": "306dd0a3",
+    "test_stealable_lanes.py": "cfbafb8f",
     "test_stealable_lanes_occupancy.py": "639fcb6c",
-    "test_landed_work_feed.py": "281837b2",
-    "test_landed_work_feed_readback.py": "fa18ef3f",
+    "test_landed_work_feed.py": "ce43bce7",
+    "test_landed_work_feed_readback.py": "3184d5c8",
     "hub_pages.py": "f3c00421",
     "door.js": "c06cc197",
     "api/mcp.py": "393da756",
-    "autogtm.html": "b6ff1bfd",
+    "autogtm.html": "1009c4cd",
 }
 
 

@@ -28,7 +28,7 @@ KEEP_UNREAD = {
     "p/cursor-big-things-incoming-alert-20260902-01.md": "fde94226",
     "test_incoming_models.py": "d8f2ddbd",
     "ground/INCOMING_MODELS.json": "6b5e89dc",
-    "autogtm.html": "b6ff1bfd",
+    "autogtm.html": "1009c4cd",
 }
 
 KEEP_MODULES = (

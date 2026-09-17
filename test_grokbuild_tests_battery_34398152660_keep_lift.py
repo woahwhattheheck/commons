@@ -20,13 +20,13 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-PR7915 = "d2e1c397"
+PR7915 = "307abd15"
 STALE_PR7915 = "67240310"
 CHUNK_HTML = "c4a48395"
 STALE_CHUNK_HTML = "1304e4ec"
 HELPER = "0fc25108"
 STALE_HELPER = "95dd6557"
-MERGE = "698940f2"
+MERGE = "d727225a"
 ORIGINALS = (
     "test_merge_on_pr.py",
     "test_pr7915_closed_unmerged.py",

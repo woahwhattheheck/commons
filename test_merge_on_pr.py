@@ -19,7 +19,7 @@ KEEP = {
     "ground/SPRINT_INTEGRATION.json": "eba10870",
     "ground/SPRINT_INTEGRATION.md": "79504401",
     "host/pr7915_closed_unmerged.py": "9d56ea0e",
-    "test_pr7915_closed_unmerged.py": "d2e1c397",
+    "test_pr7915_closed_unmerged.py": "307abd15",
     "p/cursor-pr7915-closed-unmerged-readback-20260902-01.md": "2a7f31a4",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "host/harborline_qualify_live_probe.py": "2c1797b2",
@@ -35,7 +35,7 @@ KEEP = {
     "door.js": "c06cc197",
     "api/mcp.py": "393da756",
     "repo_pulse.py": "298716e9",
-    "autogtm.html": "b6ff1bfd",
+    "autogtm.html": "1009c4cd",
 }
 
 

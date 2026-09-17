@@ -16,7 +16,7 @@ HELPER = ROOT / "host/incoming_models.py"
 
 KEEP = {
     "p/cursor-incoming-models-hub-payload-readback-20260902-01.md": "2d297673",
-    "test_incoming_models_hub_payload_readback.py": "e105fc57",
+    "test_incoming_models_hub_payload_readback.py": "541cab13",
     "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
     "host/incoming_models.py": "108797f0",
     "test_incoming_models.py": "d8f2ddbd",
@@ -29,7 +29,7 @@ KEEP = {
     "p/cursor-big-things-incoming-shots-readback-20260902-01.md": "3cabb764",
     "ground/OWNER_NOW.md": "a17b0afb",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
-    "autogtm.html": "b6ff1bfd",
+    "autogtm.html": "1009c4cd",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "host/harborline_pack_market_render.py": "cc9a3320",

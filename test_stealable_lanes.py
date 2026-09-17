@@ -23,7 +23,7 @@ KEEP = {
     "ground/HEAVY_LANES.json": "7849eac9",
     "api/mcp.py": "393da756",
     "ground/OWNER_NOW.md": "a17b0afb",
-    "autogtm.html": "b6ff1bfd",
+    "autogtm.html": "1009c4cd",
     "hub_pages.py": "f3c00421",
     "door.js": "c06cc197",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",

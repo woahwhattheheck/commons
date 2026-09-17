@@ -27,7 +27,7 @@ KEEP = {
     "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "host/harborline_qualify_live_probe.py": "2c1797b2",
-    "autogtm.html": "b6ff1bfd",
+    "autogtm.html": "1009c4cd",
 }
 
 

@@ -12,8 +12,8 @@ RECEIPT = ROOT / "p/cursor-autogtm-hub-pages-live-get-readback-20260902-01.md"
 LIVE_GET = "live GET /public/api/v1/autogtm/projects credentials=omit"
 
 KEEP = {
-    "test_autogtm_peer_readback_ack.py": "f35696b4",
-    "autogtm.html": "b6ff1bfd",
+    "test_autogtm_peer_readback_ack.py": "6ba65fb2",
+    "autogtm.html": "1009c4cd",
     "p/cursor-autogtm-door-live-probe-20260902-01.md": "c71c57a0",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "host/harborline_qualify_live_probe.py": "2c1797b2",

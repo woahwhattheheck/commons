@@ -25,7 +25,7 @@ KEEP_UNREAD = {
     "p/cursor-harborline-pack-market-render-readback-20260902-01.md": "6efbac54",
     "p/cursor-harborline-pack-market-render-readback-rematch-20260902-01.md": "f965e00f",
     "ground/OWNER_NOW.md": "a17b0afb",
-    "autogtm.html": "b6ff1bfd",
+    "autogtm.html": "1009c4cd",
 }
 
 KEEP_MODULES = (

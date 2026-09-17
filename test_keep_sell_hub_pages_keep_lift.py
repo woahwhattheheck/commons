@@ -23,7 +23,7 @@ BOARDS_BLOB = "486b13e1"
 STALE_BOARDS = "a44e8e3e"
 
 KEEP_UNREAD = {
-    "autogtm.html": "b6ff1bfd",
+    "autogtm.html": "1009c4cd",
     "door.js": "c06cc197",
     "ground/OWNER_NOW.md": "a17b0afb",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",

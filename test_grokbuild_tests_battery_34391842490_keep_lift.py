@@ -22,7 +22,7 @@ HUB = "f3c00421"
 STALE_HUB = "d0bd0e8d"
 BOARDS = "486b13e1"
 STALE_BOARDS = "143730a0"
-AUTOGTM = "b6ff1bfd"
+AUTOGTM = "1009c4cd"
 STALE_AUTOGTM = "dbbc96a5"
 ORIGINALS = (
     "test_keep_sell_hub_pages_keep_lift.py",
