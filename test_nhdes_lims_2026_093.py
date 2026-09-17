@@ -6,7 +6,10 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-SUITE = "tests.test_nhdes_lims_2026_093"
+SUITES = (
+    "tests.test_nhdes_lims_2026_093",
+    "tests.test_nhdes_lims_2026_093_builtin_shadow",
+)
 DEDICATED_WORKFLOW = ROOT / ".github" / "workflows" / "nhdes-lims-2026-093.yml"
 
 
@@ -18,7 +21,7 @@ class NhdesLims2026093BatteryBridge(unittest.TestCase):
         command = [sys.executable]
         if optimized:
             command.append("-O")
-        command.extend(["-m", "unittest", "-v", SUITE])
+        command.extend(["-m", "unittest", "-v", *SUITES])
         completed = subprocess.run(
             command,
             cwd=ROOT,
@@ -30,7 +33,7 @@ class NhdesLims2026093BatteryBridge(unittest.TestCase):
             completed.returncode,
             0,
             msg=(
-                f"nested NHDES 2026-093 suite failed (optimized={optimized})\n"
+                f"nested NHDES 2026-093 suites failed (optimized={optimized})\n"
                 f"stdout:\n{completed.stdout}\n"
                 f"stderr:\n{completed.stderr}"
             ),
