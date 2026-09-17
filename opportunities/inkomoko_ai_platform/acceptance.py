@@ -1,142 +1,77 @@
-"""Deterministic synthetic acceptance checks for the Inkomoko pursuit carrier.
-
-This module deliberately models only synthetic/non-production evidence.  It does
-not connect to WhatsApp, CBS, Inkobook, Power BI, or any buyer system.
-"""
 from __future__ import annotations
+from .core import CarrierError,digest,keys,text
 
-from typing import Any
+SCHEMA="inkomoko-synthetic-acceptance/v1"
+LANG={"en","fr","rw","sw"};CHANNEL={"WEB","WHATSAPP","STAFF_CONSOLE"}
+ROLE={"ENTREPRENEUR","BUSINESS_ADVISOR","SUPPORT_AGENT","ADMIN"}
+TYPE={"TRAINING_STAGE","FAQ","LOAN_ENQUIRY","INTEGRATION_CALL","INTEGRATION_RESULT","ESCALATION_REQUEST","HUMAN_HANDOFF","CHANNEL_SWITCH","AUDIT"}
+SYSTEM={None,"CBS","INKOBOOK","PBI"}
+STAGES=["IDEATION","INVESTMENT_READINESS","BUSINESS_PLANNING","MARKET_ENTRY"]
+EVENT={"seq","type","channel","conversation_id","context_sha256","request_id","system","stage","subject_id","result"}
 
+def syn(v,label):
+    s=text(v,label,128)
+    if not s.startswith("SYN-") or any(c not in "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789._:-" for c in s):raise CarrierError(f"{label} must be a SYN-* synthetic identifier")
+    return s
+def sha(v,label):
+    s=text(v,label,64)
+    if len(s)!=64 or any(c not in "0123456789abcdef" for c in s):raise CarrierError(f"{label} must be lowercase SHA-256")
+    return s
 
-class AcceptanceError(ValueError):
-    pass
-
-
-REQUIRED_SCENARIOS = {
-    "progressive_learning",
-    "content_revision",
-    "rbac",
-    "multilingual_routing",
-    "channel_continuity",
-    "human_escalation",
-    "adapter_boundaries",
-    "replay_idempotency",
-    "stale_content_policy",
-    "analytics_events",
-}
-
-ALLOWED_CHANNELS = {"WEB", "WHATSAPP_SYNTHETIC"}
-ALLOWED_LANGUAGES = {"en", "fr", "rw", "sw"}
-ALLOWED_ROLES = {"LEARNER", "COACH", "ADMIN"}
-
-
-def _is_int(value: Any) -> bool:
-    return type(value) is int
-
-
-def _text(value: Any, field: str, *, maximum: int = 160) -> str:
-    if type(value) is not str or not value or len(value) > maximum:
-        raise AcceptanceError(f"{field} must be non-empty bounded text")
-    return value
-
-
-def _bool(value: Any, field: str) -> bool:
-    if type(value) is not bool:
-        raise AcceptanceError(f"{field} must be boolean")
-    return value
-
-
-def _event_list(case: dict[str, Any]) -> list[dict[str, Any]]:
-    events = case.get("events")
-    if type(events) is not list or not events or len(events) > 40:
-        raise AcceptanceError("events must be a non-empty bounded list")
-    for event in events:
-        if type(event) is not dict:
-            raise AcceptanceError("event must be an object")
-        if set(event) != {"id", "kind", "channel", "language", "role", "sequence", "payload_ref"}:
-            raise AcceptanceError("event keys are exact")
-        _text(event["id"], "event.id", maximum=80)
-        _text(event["kind"], "event.kind", maximum=80)
-        if event["channel"] not in ALLOWED_CHANNELS:
-            raise AcceptanceError("unsupported channel")
-        if event["language"] not in ALLOWED_LANGUAGES:
-            raise AcceptanceError("unsupported language")
-        if event["role"] not in ALLOWED_ROLES:
-            raise AcceptanceError("unsupported role")
-        if not _is_int(event["sequence"]) or event["sequence"] < 0:
-            raise AcceptanceError("sequence must be a non-negative integer")
-        _text(event["payload_ref"], "event.payload_ref", maximum=120)
-    ids = [e["id"] for e in events]
-    if len(ids) != len(set(ids)):
-        raise AcceptanceError("duplicate event id")
-    return events
-
-
-def _ordered(events: list[dict[str, Any]]) -> bool:
-    seq = [e["sequence"] for e in events]
-    return seq == sorted(seq) and len(seq) == len(set(seq))
-
-
-def _has(events: list[dict[str, Any]], kind: str) -> bool:
-    return any(e["kind"] == kind for e in events)
-
-
-def _scenario_pass(case: dict[str, Any], events: list[dict[str, Any]]) -> tuple[bool, str]:
-    sid = case["scenario_id"]
-    if sid == "progressive_learning":
-        return (_ordered(events) and all(_has(events, f"STAGE_{i}_COMPLETE") for i in range(1, 5)), "four ordered learning stages")
-    if sid == "content_revision":
-        return (_ordered(events) and _has(events, "CONTENT_VERSION_OLD") and _has(events, "CONTENT_VERSION_NEW") and _has(events, "STALE_VERSION_REJECTED"), "revision invalidates stale content")
-    if sid == "rbac":
-        roles = {e["role"] for e in events if e["kind"] == "AUTHORIZED_ACTION"}
-        return (_has(events, "UNAUTHORIZED_ACTION_REJECTED") and bool(roles), "role boundary enforced")
-    if sid == "multilingual_routing":
-        langs = {e["language"] for e in events if e["kind"] == "ROUTED_RESPONSE"}
-        return (langs == ALLOWED_LANGUAGES, "all four required languages routed")
-    if sid == "channel_continuity":
-        channels = {e["channel"] for e in events if e["kind"] in {"SESSION_OPEN", "SESSION_RESUME"}}
-        refs = {e["payload_ref"] for e in events if e["kind"] in {"SESSION_OPEN", "SESSION_RESUME"}}
-        return (channels == ALLOWED_CHANNELS and len(refs) == 1, "cross-channel synthetic session continuity")
-    if sid == "human_escalation":
-        kinds = [e["kind"] for e in events]
-        ok = "ESCALATION_REQUESTED" in kinds and "CONTEXT_PRESERVED" in kinds and kinds.index("ESCALATION_REQUESTED") < kinds.index("CONTEXT_PRESERVED")
-        return (ok, "human escalation preserves context")
-    if sid == "adapter_boundaries":
-        required = {"CBS_ADAPTER_STUB", "INKOBOOK_ADAPTER_STUB", "POWERBI_ADAPTER_STUB", "LIVE_CREDENTIAL_REFUSED"}
-        return (required.issubset({e["kind"] for e in events}), "provider-neutral stubs and live-credential refusal")
-    if sid == "replay_idempotency":
-        return (_has(events, "DUPLICATE_EFFECT_COLLAPSED") and _has(events, "CONFLICTING_REPLAY_REJECTED"), "duplicate collapse and conflict rejection")
-    if sid == "stale_content_policy":
-        return (_has(events, "STALE_POLICY_REJECTED") and _has(events, "CURRENT_POLICY_ACCEPTED"), "stale/current policy separation")
-    if sid == "analytics_events":
-        return (_has(events, "ANALYTICS_EVENT_EMITTED") and _has(events, "ANALYTICS_DUPLICATE_COLLAPSED"), "analytics event idempotency")
-    raise AcceptanceError("unknown scenario")
-
-
-def evaluate_acceptance(cases: Any) -> dict[str, Any]:
-    if type(cases) is not list or len(cases) != len(REQUIRED_SCENARIOS):
-        raise AcceptanceError("acceptance suite must contain exactly the required scenario count")
-    by_id: dict[str, dict[str, Any]] = {}
-    for case in cases:
-        if type(case) is not dict or set(case) != {"scenario_id", "synthetic", "events"}:
-            raise AcceptanceError("scenario keys are exact")
-        sid = _text(case["scenario_id"], "scenario_id", maximum=80)
-        if sid not in REQUIRED_SCENARIOS or sid in by_id:
-            raise AcceptanceError("unknown or duplicate scenario_id")
-        if _bool(case["synthetic"], "synthetic") is not True:
-            raise AcceptanceError("checked-in acceptance evidence must be explicitly synthetic")
-        by_id[sid] = case
-    if set(by_id) != REQUIRED_SCENARIOS:
-        raise AcceptanceError("acceptance scenario universe mismatch")
-
-    rows = []
-    for sid in sorted(REQUIRED_SCENARIOS):
-        events = _event_list(by_id[sid])
-        passed, reason = _scenario_pass(by_id[sid], events)
-        rows.append({"scenario_id": sid, "passed": bool(passed), "reason": reason})
-    return {
-        "synthetic_only": True,
-        "passed": all(row["passed"] for row in rows),
-        "scenario_count": len(rows),
-        "rows": rows,
-    }
+def evaluate_scenario(s):
+    keys(s,{"schema_version","scenario_id","language","initial_channel","role","events"},"scenario")
+    if type(s["schema_version"]) is not int or s["schema_version"]!=1:raise CarrierError("unsupported acceptance schema")
+    sid=syn(s["scenario_id"],"scenario_id");language=text(s["language"],"language",8);channel=text(s["initial_channel"],"initial_channel",32);role=text(s["role"],"role",32)
+    if language not in LANG:raise CarrierError("unsupported test language")
+    if channel not in CHANNEL:raise CarrierError("unsupported initial channel")
+    if role not in ROLE:raise CarrierError("unsupported role")
+    events=s["events"]
+    if type(events) is not list or not events or len(events)>500:raise CarrierError("events must be non-empty bounded list")
+    findings=[];stages=[];pending=None;requests={};results=set();audits=set();prev=0;conv=None;current=channel
+    for i,e in enumerate(events):
+        keys(e,EVENT,f"event[{i}]");seq=e["seq"]
+        if type(seq) is not int or seq<=prev:raise CarrierError("event seq must be strictly increasing positive integers")
+        prev=seq;typ=text(e["type"],"event.type",40);ch=text(e["channel"],"event.channel",32);cid=syn(e["conversation_id"],"conversation_id");ctx=sha(e["context_sha256"],"context_sha256")
+        if typ not in TYPE:raise CarrierError(f"unsupported event type: {typ}")
+        if ch not in CHANNEL:raise CarrierError("unsupported event channel")
+        req=syn(e["request_id"],"request_id") if e["request_id"] is not None else None
+        system=e["system"];stage=e["stage"];subject=syn(e["subject_id"],"subject_id") if e["subject_id"] is not None else None;text(e["result"],"result",128)
+        if system not in SYSTEM:raise CarrierError("unsupported integration system")
+        if stage is not None and stage not in STAGES:raise CarrierError("unsupported training stage")
+        if conv is None:conv=cid
+        elif cid!=conv:findings.append(("CONVERSATION_CONTEXT_BREAK",f"event {seq} changed conversation_id"))
+        if typ=="CHANNEL_SWITCH":
+            if ch==current:findings.append(("NOOP_CHANNEL_SWITCH",f"event {seq} did not change channel"))
+            current=ch
+        elif ch!=current:findings.append(("CHANNEL_WITHOUT_SWITCH",f"event {seq} used {ch} before CHANNEL_SWITCH"))
+        if typ=="TRAINING_STAGE":
+            if stage is None:findings.append(("STAGE_MISSING",f"event {seq}"))
+            else:stages.append(stage)
+        if typ=="ESCALATION_REQUEST":
+            if pending is not None:findings.append(("OVERLAPPING_ESCALATION",f"event {seq} started a second escalation"))
+            pending=(cid,ctx)
+        if typ=="HUMAN_HANDOFF":
+            if pending is None:findings.append(("UNREQUESTED_HANDOFF",f"event {seq} lacks escalation request"))
+            else:
+                if (cid,ctx)!=pending:findings.append(("ESCALATION_CONTEXT_LOST",f"event {seq} changed conversation/context evidence"))
+                pending=None
+        if typ=="LOAN_ENQUIRY" and subject is None:findings.append(("LOAN_SUBJECT_MISSING",f"event {seq} lacks synthetic subject"))
+        if typ=="INTEGRATION_CALL":
+            if req is None or system is None:findings.append(("INTEGRATION_IDENTITY_MISSING",f"event {seq}"))
+            elif req in requests:findings.append(("DUPLICATE_INTEGRATION_REQUEST",req))
+            else:requests[req]=system
+        if typ=="INTEGRATION_RESULT":
+            if req is None or req not in requests:findings.append(("ORPHAN_INTEGRATION_RESULT",req or f"event {seq}"))
+            elif req in results:findings.append(("DUPLICATE_INTEGRATION_RESULT",req))
+            else:results.add(req)
+        if typ=="AUDIT":
+            if req is None:findings.append(("AUDIT_TARGET_MISSING",f"event {seq}"))
+            else:audits.add(req)
+    if pending is not None:findings.append(("ESCALATION_UNRESOLVED","trace ended before HUMAN_HANDOFF"))
+    if stages!=STAGES:findings.append(("TRAINING_SEQUENCE_INCOMPLETE",f"observed={stages}"))
+    for req,system in sorted(requests.items()):
+        if req not in results:findings.append(("INTEGRATION_RESULT_MISSING",f"{req}:{system}"))
+        if req not in audits:findings.append(("INTEGRATION_AUDIT_MISSING",f"{req}:{system}"))
+    fs=[{"code":a,"detail":b} for a,b in sorted(findings)]
+    report={"schema":SCHEMA,"scenario_id":sid,"scenario_digest":digest(s),"status":"PASS" if not fs else "FAIL","findings":fs,"metrics":{"event_count":len(events),"integration_request_count":len(requests),"training_stage_count":len(stages),"language":language,"channel_final":current},"authority":{"buyer_acceptance":False,"production_validation":False,"security_certification":False,"customer_data_access":False}}
+    report["receipt_sha256"]=digest(report);return report

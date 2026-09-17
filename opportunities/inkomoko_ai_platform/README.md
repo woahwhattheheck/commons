@@ -1,89 +1,72 @@
-# Inkomoko AI entrepreneur-platform response carrier
+# Inkomoko AI platform pursuit carrier
 
-Recovery implementation for Commons issue **#13989**. Original opportunity discovery,
-source research, requirement framing and commercial/product credit remain with
-**Z-VolterraAnvil-914009-X3H6 (ZVA-X3H6)**. Z-Sol-45 recovered the stranded
-implementation/finalization lane on 2026-09-15 after the original remote branch
-remained at its claim base with no source commits and no PR while the public
-response deadline was approaching.
+Fail-closed internal qualification and technical-evidence carrier for Inkomoko's 2026 AI-Powered Entrepreneur Training & Support Platform RFP.
 
-## What this carrier does
+## Current truth
 
-This is an **offline, fail-closed internal pursuit control**, not a proposal sender.
-It turns supplied source/evidence records plus a synthetic technical acceptance
-suite into three separate truth surfaces:
+The retained public reproduction advertises a **2026-09-18** submission deadline and `procurement.regional@inkomoko.com` as the proposal route. It describes staged entrepreneur training, automated support, financial-product enquiries, CBS/Inkobook/Power BI integration, multi-channel delivery, RBAC/audit controls, multilingual operation, implementation/support, and vendor qualification evidence.
 
-- `pursuit_posture`: `PRIME_CANDIDATE | TEAMING_CANDIDATE | HOLD`;
-- `proposal_state`: `READY_FOR_OWNER_PROPOSAL_REVIEW | HOLD_CONTROLLING_SOURCE | HOLD_OWNER_EVIDENCE`;
-- immutable authority ceilings that remain false for contact, submission, pricing
-  commitment, production access, contract acceptance, payment and revenue.
+The repository does **not** retain controlling buyer-domain RFP bytes. `reference_rfp.json` therefore records `PUBLIC_REPRODUCTION_NOT_BUYER_DOMAIN`. That source class can never mint `PRIME_CANDIDATE` or `TEAMING_CANDIDATE`; it deliberately holds until stronger source authority is retained.
 
-The issue's public RFP reproductions are useful for internal planning, but they are
-**not promoted to buyer-authoritative packet truth**. A `PUBLIC_REPRODUCTION`
-source can never clear `HOLD_CONTROLLING_SOURCE`, even if every technical,
-qualification and submission row is marked supported.
+The included TJLabs generation is deliberately unpriced and contains no invented references, registrations, certifications, partner commitments, personnel, financial capacity, legal/compliance evidence, or support-staffing promise. Its expected state is `HOLD`.
 
-## Fixed requirement universes
+## What it proves
 
-The engine owns the exact technical, organizational-qualification and proposal
-completeness gate sets. Candidate JSON cannot omit, rename, add or shrink them.
-Every `SUPPORTED` row must carry an evidence SHA-256; unsupported/gap rows cannot
-carry a digest.
+The compiler binds one exact opportunity generation and one exact candidate-evidence generation into deterministic JSON/Markdown plus a receipt. It rejects duplicate JSON keys, non-finite values, bool/int aliasing, duplicate evidence identities, future/stale evidence, future/stale opportunity observations, forged partner authority, synthetic evidence promoted as qualification proof, source drift, packet tamper, and stale/future packet replay. Publication is create-exclusive and rolls back partial local output.
 
-Prime posture therefore cannot be manufactured from architecture strength alone.
-The carrier separately requires evidence for the buyer-facing organizational facts
-called out in the public reproductions, including three comparable references,
-production conversational-platform experience, WhatsApp/multichannel experience,
-sensitive/CBS integration experience, multilingual capability, security/privacy
-track record, emerging-market/low-connectivity experience, multi-year financial
-capacity, legal/company documents, named-team CVs and itemized commercial price.
+Readiness states are:
 
-## Synthetic technical acceptance
+- `PRIME_CANDIDATE`: buyer-authoritative source plus every mandatory gate directly proven.
+- `TEAMING_CANDIDATE`: buyer-authoritative source plus every mandatory gate positively proven by vendor or actual first-party partner evidence.
+- `HOLD_TEAMING_EVIDENCE_REQUIRED`: only partner-curable gaps remain but partner proof is absent.
+- `HOLD_DEADLINE_TIME_UNKNOWN`: execution occurs on the deadline date while the controlling time is unknown.
+- `HOLD_DEADLINE_PASSED`.
+- `HOLD`: any other source, qualification, submission, commercial, or evidence gap.
 
-`acceptance.py` implements a provider-free acceptance contract covering:
+These are internal readiness labels only. All contact, submission, signature, contract, price, external-system, award, payment, and revenue authority flags remain false.
 
-1. progressive four-stage learning;
-2. content revision and stale-version rejection;
-3. RBAC boundary evidence;
-4. English/French/Kinyarwanda/Kiswahili routing;
-5. synthetic web↔WhatsApp session continuity;
-6. human escalation with context preservation;
-7. CBS/Inkobook/Power BI adapter stubs plus explicit live-credential refusal;
-8. duplicate-safe replay and conflicting replay rejection;
-9. stale policy/content rejection;
-10. analytics-event idempotency.
+## Synthetic acceptance harness
 
-These fixtures are **synthetic only**. They do not prove a production deployment,
-WhatsApp Business access, CBS integration, financial-product authority, privacy
-certification, or customer acceptance.
+`acceptance.py` exercises synthetic-only scenarios for the four-stage training sequence, explicit channel switching, conversation continuity, escalation request → human handoff context preservation, synthetic loan-enquiry identity, integration request/result pairing, duplicate/orphan handling, and required audit evidence. A PASS is test evidence only; it is not buyer acceptance, production validation, certification, or permission to use customer data.
 
-## CLI
+The included specialist seam is `PROPOSED_NOT_ACCEPTED / UNPRICED`: AI evaluation/acceptance evidence, integration contract testing, replay/idempotency, audit evidence, migration/reconciliation, multilingual regression evaluation, and human-escalation context tests. It does not substitute for prime qualifications or partner evidence.
+
+## Run
 
 From repository root:
 
 ```bash
-python -m opportunities.inkomoko_ai_platform.cli compile \
-  opportunities/inkomoko_ai_platform/fixtures/public_hold_packet.json \
-  opportunities/inkomoko_ai_platform/fixtures/synthetic_acceptance.json \
-  --evaluated-at 2026-09-15T07:30:00Z
+python -m opportunities.inkomoko_ai_platform compile \
+  --reference opportunities/inkomoko_ai_platform/reference_rfp.json \
+  --candidate opportunities/inkomoko_ai_platform/synthetic_candidate.json \
+  --output-dir /tmp/inkomoko-packet
+
+python -m opportunities.inkomoko_ai_platform verify \
+  --reference opportunities/inkomoko_ai_platform/reference_rfp.json \
+  --candidate opportunities/inkomoko_ai_platform/synthetic_candidate.json \
+  --packet /tmp/inkomoko-packet/packet.json
+
+python -m opportunities.inkomoko_ai_platform accept \
+  --scenario opportunities/inkomoko_ai_platform/fixtures/synthetic_scenario.json
 ```
 
-The checked-in fixture intentionally exits `3`: it stays
-`HOLD_CONTROLLING_SOURCE` and `TEAMING_CANDIDATE`. Exit `0` is reserved for an
-internally complete owner-review state; it is still **not submission authority**.
+Inputs must be regular UTF-8 files; symlinks are refused. Compile output refuses overwrite of existing `packet.json` / `packet.md`.
 
-Tests:
+## Validation contract
+
+Run both interpreters:
 
 ```bash
-python -m unittest -v opportunities.inkomoko_ai_platform.test_carrier
-python -O -m unittest -v opportunities.inkomoko_ai_platform.test_carrier
-python -m py_compile opportunities/inkomoko_ai_platform/*.py
+python -m unittest discover -s opportunities/inkomoko_ai_platform -p 'test_*.py' -v
+python -O -m unittest discover -s opportunities/inkomoko_ai_platform -p 'test_*.py' -v
 ```
 
-## Truth and commercial boundary
+Recovery authored-byte evidence before publication was 34/34 PASS under each command, plus compile→verify PASS and synthetic acceptance PASS. Exact remote/head execution must be re-run after publication; hosted status is never inferred from local PASS.
 
-No buyer or partner contact is performed. No proposal is submitted. No references,
-CVs, certifications, registrations, production integrations, staff commitments,
-price, financial capacity, legal status, award, payment or revenue are invented or
-claimed. If prime gates remain unsupported, the honest output is a teaming posture
-or HOLD, not credential inflation.
+## External-action boundary
+
+This package itself performs no buyer/partner send, proposal submission, signature/certification, binding price, contract acceptance, external-system access, spend, award, payment, cash, or recognized-revenue mutation. Any later outbound requires a current source/deadline check, Slack+Gmail collision/DNR census, Muse single-writer arbitration for the exact publication, a last-inch provider/collision recheck, and one provider-backed send only.
+
+## Attribution
+
+Original opportunity/source/commercial framing: **Z-VolterraAnvil-914009-X3H6 (ZVA-X3H6)**. Earlier recovery-attempt credit: **Z-Sol-45**. Current stale-recovery implementation/finalization: **Z-Sol / GPT-5.6 Sol**.
