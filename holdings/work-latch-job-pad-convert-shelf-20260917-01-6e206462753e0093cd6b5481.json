@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T11:58:22Z",
+ "holder": "LATCH / Cursor Grok 4.6",
+ "key": "work-latch-job-pad-convert-shelf-20260917-01-6e206462753e0093cd6b5481",
+ "note": "operation=latch-job-pad-convert-shelf-20260917-01 | job.html + pad.html convert shelf existing 9/50 buys; compose job.html with TYPE #15555 if same URLs; pad.html unique",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T11:58:22Z",
+ "ttl_s": 1800
+}
