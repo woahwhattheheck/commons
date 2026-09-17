@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import re
 import subprocess
 import sys
 import unittest
@@ -17,6 +18,7 @@ _CANONICAL_SURFACES = (
     "tools/outbound_send_guard/test_muse_current_authority_v2.py",
     "tools/outbound_send_guard/test_muse_election_v2.py",
 )
+_RAN = re.compile(r"Ran\s+(\d+)\s+tests?\b")
 
 
 class MuseElectionV2RetainedTests(unittest.TestCase):
@@ -51,6 +53,9 @@ class MuseElectionV2RetainedTests(unittest.TestCase):
         )
         output = proc.stdout.decode("utf-8", "replace")
         self.assertEqual(proc.returncode, 0, output)
+        match = _RAN.search(output)
+        self.assertIsNotNone(match, f"unittest did not report an executed test count:\n{output}")
+        self.assertGreater(int(match.group(1)), 0, f"canonical Muse v2 suite executed zero tests:\n{output}")
         self.assertIn("OK", output)
 
 
