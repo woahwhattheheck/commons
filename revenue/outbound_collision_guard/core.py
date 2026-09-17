@@ -159,13 +159,13 @@ def _validate_lease(lease):
     generation = lease.get("generation")
     if type(generation) is not int or generation < 1:
         raise GuardError("lease generation invalid")
-    taken = _utc(lease.get("taken_at"), "lease.taken_at")
-    expires = _utc(lease.get("expires_at"), "lease.expires_at")
-    if expires <= taken:
-        raise GuardError("lease expiry invalid")
     state = lease.get("state")
     if state not in STATES:
         raise GuardError("lease state invalid")
+    taken = _utc(lease.get("taken_at"), "lease.taken_at")
+    expires = _utc(lease.get("expires_at"), "lease.expires_at")
+    if expires < taken or (expires == taken and state != "RELEASED_UNSENT"):
+        raise GuardError("lease expiry invalid")
     if lease.get("muse_receipt_id") is not None:
         _key(lease["muse_receipt_id"], "lease.muse_receipt_id")
     attempt = lease.get("attempt")
