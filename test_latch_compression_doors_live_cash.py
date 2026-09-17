@@ -13,7 +13,10 @@ class LatchCompressionDoorsLiveCashTest(unittest.TestCase):
                 text = (ROOT / name).read_text(encoding="utf-8")
                 for n in REQUIRED:
                     self.assertIn(n, text, f"{name} missing {n}")
-                self.assertNotIn("buy.stripe.com", text)
+                # Convert shelves reuse existing live buys; Live cash
+                # product-page doors stay relative.
+                live_cash = text.split('id="live-cash"', 1)[1].split("</section>", 1)[0]
+                self.assertNotIn("buy.stripe.com", live_cash)
                 self.assertNotIn("tools-cash.html", text)
 if __name__ == "__main__":
     unittest.main()
