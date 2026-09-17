@@ -37,7 +37,7 @@
       "binding_id": "usac-it-26-139-main-v1",
       "opportunity_id": "IT-26-139",
       "source_ledger_path": "opportunities/usac_it_26_139_ai_consulting/source_ledger.json",
-      "source_ledger_sha256": "36bfab21c89b94f3464b7bd06f3864eea6db0acf52ede5c3c6f6221157e49c75",
+      "source_ledger_sha256": "4f11bdd08f9244fce03546458f8bcb8f6aff456beb7fe43b8d0bc1596089f72c",
       "submission_manifest_path": "opportunities/usac_it_26_139_ai_consulting/submission_manifest.json",
       "submission_manifest_sha256": "ce47b0d480532ef8b69274899b874a8dc32cabecca8b4e464d799f22325e15d0",
       "deadline_utc": "2026-09-30T15:00:00Z",
@@ -45,11 +45,7 @@
       "vault_registry_sha256": null,
       "vault_query_sha256": null,
       "static_holds": [
-        "BID_SHEET_BYTES_NOT_RETAINED",
-        "CONFIDENTIALITY_AGREEMENT_BYTES_NOT_RETAINED",
-        "CURRENT_BUYER_PAGE_GENERATION_NOT_RETAINED",
-        "Q_AND_A_BYTES_NOT_RETAINED",
-        "RFP_BYTES_NOT_RETAINED"
+        "CURRENT_BUYER_PAGE_GENERATION_NOT_RETAINED"
       ]
     }
   ]
