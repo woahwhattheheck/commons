@@ -175,26 +175,29 @@ class AcceptedWorkToCashTests(unittest.TestCase):
         item = compile_packet(_document([_opportunity("route", events)]))["items"][0]
         self.assertEqual(item["terminal_action"], "ROUTE_EVIDENCE_REQUIRED")
 
-    def test_paid_requires_separate_provider_confirmation(self):
+    def test_paid_requires_provider_authentication_not_retained_assertion(self):
         events = _base_events("paid") + [
             _event("paid-a", "ACCEPTED", "2026-09-17T03:00:00Z", "BUYER_MESSAGE"),
             _event("paid-i", "INVOICE_ISSUED", "2026-09-17T04:00:00Z", "BUYER_MESSAGE", amount=500_000),
             _event("paid-p", "PAYMENT_RECEIVED", "2026-09-17T05:00:00Z", "PROVIDER_RECEIPT", amount=500_000),
         ]
-        item = compile_packet(_document([_opportunity("paid", events)]))["items"][0]
+        packet = compile_packet(_document([_opportunity("paid", events)]))
+        item = packet["items"][0]
         self.assertEqual(item["stage"], "PAID")
         self.assertEqual(item["terminal_action"], "VERIFY_PROVIDER_CASH")
         self.assertEqual(item["cash_state"], "RETAINED_PAYMENT_EVENTS_UNCONFIRMED")
+        self.assertFalse(packet["summary"]["provider_authenticated_payment_evidence_available"])
+        self.assertTrue(packet["summary"]["terminal_paid_requires_provider_authenticated_evidence"])
 
-    def test_provider_confirmed_payment_is_done_paid(self):
+    def test_retained_confirmation_never_closes_paid(self):
         events = _base_events("paid") + [
             _event("paid-a", "ACCEPTED", "2026-09-17T03:00:00Z", "BUYER_MESSAGE"),
             _event("paid-i", "INVOICE_ISSUED", "2026-09-17T04:00:00Z", "BUYER_MESSAGE", amount=500_000),
             _event("paid-p", "PAYMENT_RECEIVED", "2026-09-17T05:00:00Z", "PROVIDER_RECEIPT", amount=500_000),
         ]
         item = compile_packet(_document([_opportunity("paid", events)], confirmations=[_confirmation("paid", "paid-p")]))["items"][0]
-        self.assertEqual(item["terminal_action"], "DONE_PAID")
-        self.assertEqual(item["cash_state"], "ALL_PAYMENT_EVENTS_PROVIDER_CONFIRMED")
+        self.assertEqual(item["terminal_action"], "VERIFY_PROVIDER_CASH")
+        self.assertEqual(item["cash_state"], "RETAINED_CONFIRMATIONS_COMPLETE_UNAUTHENTICATED")
 
     def test_confirmation_must_bind_payment_event(self):
         events = _base_events("paid") + [
