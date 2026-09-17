@@ -14,11 +14,23 @@ calls Muse, dereferences an evidence URL, updates a provider, moves money,
 submits a proposal, or recognizes revenue. Every rendered CURRENT STATE block
 contains the same all-false authority ceiling.
 
-Provider state must come from provider-class events; human reply/decline or
-partner acceptance must come from human-class events. Coordination intent
-(`TAKE`, `MUSE_PENDING`, `MUSE_SELECTED`) cannot mint a sent or human state.
-A second provider send in the same authorization generation is preserved and
-classified as `COLLISION_DUPLICATE_SEND_DNR`, not silently deduplicated.
+**Input-authentication boundary:** this compiler does not dereference
+`source_ref` and therefore does not authenticate a caller's `source_class`.
+Its packet is valid only after an upstream collector has bound each event to
+retained provider/human/procurement/coordination evidence. Output carries
+`input_authentication.verified_by_compiler=false` and
+`UPSTREAM_AUTHENTICATED_RETAINED_EVENTS` so a caller-asserted packet cannot be
+mistaken for independently verified truth.
+
+Within that pre-authenticated packet, provider state must come from
+provider-class events; human reply/decline or partner acceptance must come from
+human-class events. Coordination intent (`TAKE`, `MUSE_PENDING`,
+`MUSE_SELECTED`) cannot mint or erase a sent/human state. Supersession is
+same-source only, strictly later in time, and cannot reach backward across
+generations. A second provider send in the same authorization generation is
+preserved and classified as `COLLISION_DUPLICATE_SEND_DNR`, not silently
+deduplicated. A later coordination generation cannot hide an earlier retained
+provider send.
 
 Each event repeats the lane/opportunity/counterparty/purpose identity, so a
 retained event transplanted from another lane fails closed. Alternate route IDs
@@ -69,10 +81,13 @@ python -m coordination.revenue_lane_state.cli verify \
 - Pragmatic-style human timeline decline;
 - Kentucky-style stale `no partner contact` after outreach;
 - transport bounce vs human decline;
-- strict JSON, duplicate keys/event IDs, floats/nonfinite, unsafe integers,
-  bool-as-int, lone surrogates, control-shaped IDs, future events,
-  generation regression, event transplant, replay/currentness, supersession,
-  malformed projection blocks, semantic tamper, and CLI create-exclusive replay.
+- strict JSON, duplicate keys/event IDs, floats/nonfinite, lexically oversized
+  integers, deep nesting, unsafe integers, bool-as-int, lone surrogates,
+  control-shaped IDs, future events, bounded event count/depth/nodes/bytes,
+  generation regression, cross-generation retained provider truth,
+  same-source/strict-time supersession, supersession-cycle rejection, event
+  transplant, replay/currentness, malformed projection blocks, semantic tamper,
+  and CLI create-exclusive replay.
 
 Expected proof:
 `python -m unittest -v test_revenue_lane_current_state.py`,
