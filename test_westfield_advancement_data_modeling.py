@@ -37,7 +37,7 @@ class WestfieldAdvancementRetainedTests(unittest.TestCase):
             timeout=60,
         )
         self.assertEqual(proc.returncode, 0, proc.stdout)
-        self.assertIn("Ran 16 tests", proc.stdout)
+        self.assertIn("Ran 19 tests", proc.stdout)
         self.assertIn("OK", proc.stdout)
 
     def test_nested_suite_normal(self):
