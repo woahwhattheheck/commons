@@ -32,6 +32,23 @@ PAY_CONVERT_SHELF_LIVE_BUYS = frozenset(
         "https://buy.stripe.com/7sYdR8ckZgHLbCN50K43S0y",
     }
 )
+COMMERCE_CONVERT_SHELF_LIVE_BUYS = frozenset(
+    {
+        "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
+        "https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b",
+        "https://buy.stripe.com/9B600i98N77b9uFeBk43S0c",
+        "https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d",
+        "https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e",
+        "https://buy.stripe.com/7sYdR8ckZgHLbCN50K43S0y",
+        "https://buy.stripe.com/14AfZg1Gl3UZ7mxfFo43S0x",
+        "https://buy.stripe.com/28E9AS70F6378qB2SC43S0w",
+        "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
+    }
+)
+CONVERT_SHELF_LIVE_BUYS = {
+    "pay.html": PAY_CONVERT_SHELF_LIVE_BUYS,
+    "commerce.html": COMMERCE_CONVERT_SHELF_LIVE_BUYS,
+}
 FORBIDDEN = (
     r"\brouting[_\s-]?number\b.+\d{9}\b",
     r"\baccount[_\s-]?number\b.+\d{8,17}\b",
@@ -263,10 +280,11 @@ def live_buy_urls(html: str) -> set[str]:
 
 
 def html_stripe_url_errors(name: str, text: str) -> list[str]:
-    """tips/commerce stay inert; pay.html convert shelf reuses existing live buys only."""
-    if name == "pay.html":
+    """tips stay inert; pay/commerce convert shelves reuse existing live buys only."""
+    allowed = CONVERT_SHELF_LIVE_BUYS.get(name)
+    if allowed is not None:
         found = live_buy_urls(text)
-        if found != PAY_CONVERT_SHELF_LIVE_BUYS:
+        if found != allowed:
             return [
                 "%s convert shelf must reuse exactly the existing live buy.stripe.com URLs"
                 % name

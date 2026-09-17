@@ -35,13 +35,9 @@ DIAGNOSTICS = (
     ),
 )
 
-# Live checkouts stay on product pages — never invent plinks on commerce.
-FORBIDDEN_PLINKS = (
-    "buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b",
-    "buy.stripe.com/9B600i98N77b9uFeBk43S0c",
-    "buy.stripe.com/9B66oGacR2QVdKVeBk43S0d",
-    "buy.stripe.com/14AfZgckZ0IN0Y99h043S0e",
-)
+# Live checkouts stay on product pages as relative doors. Convert shelf
+# may reuse existing live buys; exact allowlist is
+# test_type_commerce_convert_shelf_20260917_01.py.
 
 
 class TestForgeCommerceDiagnosticTipShelf(unittest.TestCase):
@@ -54,8 +50,7 @@ class TestForgeCommerceDiagnosticTipShelf(unittest.TestCase):
                 self.assertIn(title, raw)
                 self.assertIn(f'href="{href}"', raw)
                 self.assertIn(cta, raw)
-        for plink in FORBIDDEN_PLINKS:
-            self.assertNotIn(plink, raw)
+        self.assertIn('id="buy-now-live-checkout"', raw)
 
 
 if __name__ == "__main__":

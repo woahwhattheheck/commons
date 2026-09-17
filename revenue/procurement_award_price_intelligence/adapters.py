@@ -15,7 +15,7 @@ from datetime import datetime, timezone
 from html import unescape
 from html.parser import HTMLParser
 from pathlib import Path
-from urllib.parse import urlsplit
+from urllib.parse import parse_qsl, urlsplit
 from urllib.request import Request, urlopen
 
 from revenue.procurement_award_price_intelligence import engine
@@ -51,6 +51,37 @@ MODES = {"LIVE_HTML", "TABULAR_PDF_TEXT", "OCR"}
 STATES = {"EXACT", "REVIEWED", "AMBIGUOUS"}
 COVERAGE = {"COMPLETE_RECORD", "COMPLETE_TABLE", "PARTIAL", "UNKNOWN"}
 DISPOSITIONS = {"INCLUDED_BY_SOURCE", "REJECTED_BY_SOURCE", "UNKNOWN"}
+
+# Buyer-hosted source pages legitimately use a narrow set of public routing
+# parameters. Keep those code-owned rather than accepting arbitrary query
+# strings that could contain signed URLs, bearer tokens, or caller secrets.
+PUBLIC_QUERY_VALUE = {
+    "guid": re.compile(r"^[0-9a-f-]{1,64}$", re.I),
+    "id": re.compile(r"^[0-9]{1,20}$"),
+    "options": re.compile(r"^$"),
+    "search": re.compile(r"^$"),
+    "bidid": re.compile(r"^[0-9]{0,20}$"),
+}
+PUBLIC_QUERY_KEYS = {
+    "coralgables.legistar.com": {"guid", "id", "options", "search"},
+    "mwrd.legistar.com": {"guid", "id", "options", "search"},
+    "aurora-il.legistar.com": {"guid", "id", "options", "search"},
+    "ocala.legistar.com": {"guid", "id", "options", "search"},
+    "www.cityofcoweta-ok.gov": {"bidid"},
+    "files.topeka.gov": set(),
+}
+
+# Host ownership alone is not an endpoint boundary. These exact public paths
+# prevent caller- or redirect-controlled opaque path segments from becoming
+# durable evidence fields. Adding a new buyer route requires a code change.
+PUBLIC_PATHS = {
+    "coralgables.legistar.com": {"/LegislationDetail.aspx"},
+    "mwrd.legistar.com": {"/LegislationDetail.aspx"},
+    "aurora-il.legistar.com": {"/LegislationDetail.aspx"},
+    "ocala.legistar.com": {"/LegislationDetail.aspx"},
+    "www.cityofcoweta-ok.gov": {"/DocumentCenter/View/2084/260427-Bid-Tab-PDF"},
+    "files.topeka.gov": {"/business/procurement/bid-tabulations/2026/Bid%206.pdf"},
+}
 
 INPUT_KEYS = {
     "schema", "dataset_id", "max_source_age_seconds", "truth_boundary",
@@ -115,18 +146,51 @@ def _parse_utc(value, where):
         raise AdapterError(f"{where}: invalid UTC timestamp") from exc
 
 
+def _validate_public_query(parsed, value, where):
+    if "#" in value or parsed.fragment:
+        raise AdapterError(f"{where}: fragment forbidden in durable public source URI")
+    if not parsed.query:
+        if "?" in value:
+            raise AdapterError(f"{where}: empty query delimiter forbidden")
+        return
+    try:
+        pairs = parse_qsl(parsed.query, keep_blank_values=True, strict_parsing=True)
+    except ValueError as exc:
+        raise AdapterError(f"{where}: malformed public query") from exc
+    allowed = PUBLIC_QUERY_KEYS.get(parsed.hostname.lower(), set())
+    seen = set()
+    if not pairs:
+        raise AdapterError(f"{where}: empty public query forbidden")
+    for key, query_value in pairs:
+        folded = key.casefold()
+        if folded in seen or folded not in allowed:
+            raise AdapterError(f"{where}: non-public query key forbidden")
+        pattern = PUBLIC_QUERY_VALUE[folded]
+        if not pattern.fullmatch(query_value):
+            raise AdapterError(f"{where}: non-public query value forbidden")
+        seen.add(folded)
+
+
 def _validate_uri(value, allowed_hosts, where="source.uri"):
     value = _text(value, where, limit=2048)
     parsed = urlsplit(value)
+    try:
+        port = parsed.port
+    except ValueError as exc:
+        raise AdapterError(f"{where}: valid public HTTPS port required") from exc
+    host = parsed.hostname.lower() if parsed.hostname else None
     if (
         parsed.scheme != "https"
-        or not parsed.hostname
+        or host is None
         or parsed.username is not None
         or parsed.password is not None
-        or parsed.fragment
-        or parsed.hostname.lower() not in allowed_hosts
+        or host not in allowed_hosts
+        or port not in (None, 443)
     ):
         raise AdapterError(f"{where}: HTTPS code-owned buyer host required")
+    if parsed.path not in PUBLIC_PATHS.get(host, set()):
+        raise AdapterError(f"{where}: code-owned buyer path required")
+    _validate_public_query(parsed, value, where)
     return value
 
 

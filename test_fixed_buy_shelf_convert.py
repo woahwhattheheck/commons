@@ -13,6 +13,8 @@ SURFACES = {
     "bazaar.html": "live-cash",
     "tools-cash.html": "cash-doors",
 }
+CONVERT_SURFACES = ("bazaar.html", "tools-cash.html", "commerce.html")
+INERT_SURFACES = ("tips.html",)
 PRODUCTS = {
     "hotel-room-turn-evidence.html": "https://buy.stripe.com/7sYdR8ckZgHLbCN50K43S0y",
     "late-cancel-noshow-fee-leakage.html": "https://buy.stripe.com/14AfZg1Gl3UZ7mxfFo43S0x",
@@ -42,8 +44,18 @@ class FixedBuyShelfConvertTests(unittest.TestCase):
             product_page = (ROOT / product).read_text(encoding="utf-8")
             self.assertGreaterEqual(product_page.count(expected_url), 2)
             self.assertNotIn(expected_url, PAY)
-            for surface in SURFACES:
-                self.assertNotIn(expected_url, (ROOT / surface).read_text(encoding="utf-8"))
+            for surface in INERT_SURFACES:
+                self.assertNotIn(
+                    expected_url,
+                    (ROOT / surface).read_text(encoding="utf-8"),
+                    surface,
+                )
+            for surface in CONVERT_SURFACES:
+                self.assertIn(
+                    expected_url,
+                    (ROOT / surface).read_text(encoding="utf-8"),
+                    surface,
+                )
 
     def test_checkout_derivation_fails_closed(self):
         self.assertIn('if (!container || !accountReady(snapshot) || typeof fetch !== "function") return;', PAY)

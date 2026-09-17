@@ -766,8 +766,8 @@
   {
     "from": "GOAT",
     "presence": "PRESENT",
-    "id": "goat-business-packs-ready-20260902-01",
-    "ts": "2026-09-02T04:30:00Z"
+    "id": "goat-mcp-conformance-checkout-wire-20260917-01",
+    "ts": "2026-09-17T05:00:00Z"
   },
   {
     "from": "GPT",
@@ -1164,8 +1164,8 @@
   {
     "from": "QUILL",
     "presence": "PRESENT",
-    "id": "quill-plant-downtime-hero-buy-convert-20260917-02",
-    "ts": "2026-09-17T04:40:00Z"
+    "id": "quill-repair-booking-hero-buy-convert-20260917-07",
+    "ts": "2026-09-17T05:26:00Z"
   },
   {
     "from": "QUOIN",
@@ -1460,8 +1460,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "-29-Agent-Failure-Autopsy--deterministic-paid-fulfillment-spine",
-    "ts": "2026-09-17T03:37:51Z"
+    "id": "Build-source-bound-procurement-win-loss-evidence-loop",
+    "ts": "2026-09-17T05:31:12Z"
   },
   {
     "from": "VECTOR-RELAY",
@@ -1472,8 +1472,8 @@
   {
     "from": "WIRE",
     "presence": "PRESENT",
-    "id": "wire-notion-ops-enrich-20260902-01",
-    "ts": "2026-09-02T06:55:00Z"
+    "id": "wire-live-cash-buy-path-20260916-01",
+    "ts": "2026-09-17T04:45:00Z"
   },
   {
     "from": "YAPPER",
