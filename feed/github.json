@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 82,
-    "open_pull_requests": 25,
-    "runs_in_progress": 19,
-    "runs_queued": 2449
+    "open_issues": 81,
+    "open_pull_requests": 27,
+    "runs_in_progress": 20,
+    "runs_queued": 2384
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,6 +69,50 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "wire-authorship-accordion-convert-shelf-20260917-01",
+      "created_at": "2026-09-17T09:38:50Z",
+      "draft": false,
+      "head_sha": "c67a50748f17428b26b24a86ba0c0da4c52195f2",
+      "number": 15542,
+      "title": "WIRE: authorship.html + accordion.html convert shelf (existing Autopsy $29 + White Box hour $250)",
+      "updated_at": "2026-09-17T09:38:50Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/attested-runs-distribution-convert-shelf-e9cd",
+      "created_at": "2026-09-17T09:37:01Z",
+      "draft": false,
+      "head_sha": "df698739deb1eb93071370a074085f886c698582",
+      "number": 15541,
+      "title": "GOAT: wire existing Autopsy and White Box hour buys onto attested-runs and distribution",
+      "updated_at": "2026-09-17T09:37:01Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zeta/human-workshare-markdown-destination-20260917",
+      "created_at": "2026-09-17T09:30:08Z",
+      "draft": false,
+      "head_sha": "2ef7e8aa1f3143c008f88195ec42dfc2fef76364",
+      "number": 15540,
+      "title": "Close human-workshare hidden Markdown destination authority bypass",
+      "updated_at": "2026-09-17T09:36:59Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol/onewriter-retained-source-parses-clean-20260917",
+      "created_at": "2026-09-17T09:13:01Z",
+      "draft": false,
+      "head_sha": "613b8fbeeb8965fd37fb0c17d1e25d0c741750ee",
+      "number": 15536,
+      "title": "ci: retain OneWriter normal and optimized contract",
+      "updated_at": "2026-09-17T09:13:01Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "z-sol/onewriter-retained-source-parses-20260917",
       "created_at": "2026-09-17T09:11:06Z",
       "draft": false,
@@ -76,28 +120,6 @@
       "number": 15534,
       "title": "ci: retain OneWriter normal and optimized contract",
       "updated_at": "2026-09-17T09:11:06Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "cursor/goat-free-sample-humans-convert-shelf-997a",
-      "created_at": "2026-09-17T09:08:56Z",
-      "draft": false,
-      "head_sha": "7dc85ca4d9c031d49b87059a543559521fe64ffb",
-      "number": 15532,
-      "title": "GOAT: wire existing Autopsy and White Box hour buys onto free-sample and humans",
-      "updated_at": "2026-09-17T09:08:56Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "cursor/latch-annex-archive-convert-shelf-5a2c",
-      "created_at": "2026-09-17T09:04:48Z",
-      "draft": false,
-      "head_sha": "c5ced8c1b751608701a3788f02b1f0cbe88becfd",
-      "number": 15529,
-      "title": "Wire existing $29 and $250 Buy links onto annex and archive shelves",
-      "updated_at": "2026-09-17T09:12:34Z"
     },
     {
       "author": "woahwhattheheck",
@@ -127,10 +149,10 @@
       "branch": "main",
       "created_at": "2026-09-17T08:57:54Z",
       "draft": false,
-      "head_sha": "c2809f062260eb26439d08257a2c70fd9d3a084a",
+      "head_sha": "18c8920f2a0ba86b455e6ad792f9259ecd6e8a23",
       "number": 15514,
       "title": "Rejoin 688cbc main into projector evidence branch",
-      "updated_at": "2026-09-17T09:12:28Z"
+      "updated_at": "2026-09-17T09:38:54Z"
     },
     {
       "author": "woahwhattheheck",
@@ -153,28 +175,6 @@
       "number": 15507,
       "title": "Recover Okaloosa notice truth with guarded audit freshness",
       "updated_at": "2026-09-17T09:09:06Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/emergent-builderfest-onewriter-20260917",
-      "created_at": "2026-09-17T08:51:46Z",
-      "draft": false,
-      "head_sha": "78f5b53af961c116d455c824e9ff37d7a0b8256e",
-      "number": 15494,
-      "title": "feat: ship OneWriter Emergent Builder Fest source packet",
-      "updated_at": "2026-09-17T09:08:18Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "moraine/muse-v2-retained-trigger-15469-20260917",
-      "created_at": "2026-09-17T08:50:32Z",
-      "draft": false,
-      "head_sha": "a25ff1bcb579b0d6a705e37231d15789d279bb8a",
-      "number": 15487,
-      "title": "Retain Muse v2 trigger and non-vacuous execution proof",
-      "updated_at": "2026-09-17T08:50:32Z"
     }
   ],
   "open_heads": {
@@ -197,185 +197,187 @@
     "15494": "78f5b53af961c116d455c824e9ff37d7a0b8256e",
     "15507": "18e9c988c227d8cde0d0d2556a7dcbb02e55f9a4",
     "15511": "bbfa94d7566631c1789fc135a4c654539c90e064",
-    "15514": "c2809f062260eb26439d08257a2c70fd9d3a084a",
+    "15514": "18c8920f2a0ba86b455e6ad792f9259ecd6e8a23",
     "15525": "32b4fc62a30db43fc73b2b36f005bf541dd26c8c",
     "15526": "f02d9d1e910c5330d4dd7aaf08174c5e61300447",
-    "15529": "c5ced8c1b751608701a3788f02b1f0cbe88becfd",
-    "15532": "7dc85ca4d9c031d49b87059a543559521fe64ffb",
-    "15534": "2898aa00c66d5788b0d42c3f392d732b1587d8c9"
+    "15534": "2898aa00c66d5788b0d42c3f392d732b1587d8c9",
+    "15536": "613b8fbeeb8965fd37fb0c17d1e25d0c741750ee",
+    "15540": "2ef7e8aa1f3143c008f88195ec42dfc2fef76364",
+    "15541": "df698739deb1eb93071370a074085f886c698582",
+    "15542": "c67a50748f17428b26b24a86ba0c0da4c52195f2"
   },
-  "pulls_listed": 25,
+  "pulls_listed": 27,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 128.9,
+  "queue_depth_per_runner": 119.2,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "cursor/type-agent-triage-control-convert-shelf-4791",
-      "closed_at": "2026-09-17T09:11:26Z",
-      "head_sha": "ce0b44765449e9cc58104782436bb970fb888878",
-      "merged_at": "2026-09-17T09:11:26Z",
-      "number": 15492,
+      "branch": "cursor/goat-free-sample-humans-convert-shelf-997a",
+      "closed_at": "2026-09-17T09:25:22Z",
+      "head_sha": "7e0c8dd01dd1e0b6532957c9312672e4a2ddf10e",
+      "merged_at": "2026-09-17T09:25:22Z",
+      "number": 15532,
       "state": "MERGED",
-      "title": "TYPE: wire existing live buys onto agent-triage and agent-control"
+      "title": "GOAT: wire existing Autopsy and White Box hour buys onto free-sample and humans"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zsa-0445/rule30-equal-frequency-20260917",
-      "closed_at": "2026-09-17T09:07:21Z",
-      "head_sha": "5b1fb4c2e9147a36f1ecdb9c666ccf546042ce2e",
-      "merged_at": "2026-09-17T09:07:21Z",
-      "number": 15531,
+      "branch": "cursor/type-action-capabilities-convert-shelf-bdf4",
+      "closed_at": "2026-09-17T09:23:27Z",
+      "head_sha": "b595219f504fa0d3b5e8dce623982c7b5efcdbc6",
+      "merged_at": "2026-09-17T09:23:27Z",
+      "number": 15539,
       "state": "MERGED",
-      "title": "Rule 30: prove conditional center-trace bijection"
+      "title": "TYPE: action + capabilities convert shelf (Autopsy $29 + White Box hour $250)"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "solstice/route-quarantine-no-auto-alias-20260917",
-      "closed_at": "2026-09-17T09:06:17Z",
-      "head_sha": "2686b3e59c47e22b17728b4a46a2da4a147cd929",
-      "merged_at": null,
-      "number": 15483,
-      "state": "CLOSED",
-      "title": "Stop blocked routes from triggering automatic alias research"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/route-quarantine-retained-proof-20260917",
-      "closed_at": "2026-09-17T09:05:55Z",
-      "head_sha": "59a3d4bdcce2908eefb6eaf4f8b3f2d8d2158f58",
-      "merged_at": "2026-09-17T09:05:54Z",
-      "number": 15527,
+      "branch": "zsa-0445/inbound-lead-control-20260917",
+      "closed_at": "2026-09-17T09:21:29Z",
+      "head_sha": "35caea9c35bb8bf4fa7f551460897b650953e317",
+      "merged_at": "2026-09-17T09:21:28Z",
+      "number": 15538,
       "state": "MERGED",
-      "title": "Route quarantine: close retained-proof false green"
+      "title": "Revenue ops: control inbound lead SLA, response ownership and DNR"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "quill-data-weather-convert-shelf-20260917-01",
-      "closed_at": "2026-09-17T09:05:09Z",
-      "head_sha": "a3091717f3ecd791cbe702a8d8eab64569f0747c",
-      "merged_at": "2026-09-17T09:05:09Z",
-      "number": 15530,
+      "branch": "wire-arbitrage-attested-convert-shelf-20260917-01",
+      "closed_at": "2026-09-17T09:16:13Z",
+      "head_sha": "0f31f5ad212e62abf9d6288545c5428464ea5919",
+      "merged_at": "2026-09-17T09:16:13Z",
+      "number": 15537,
       "state": "MERGED",
-      "title": "QUILL: data.html + weather.html convert shelf (existing Autopsy $29 + White Box hour $250)"
+      "title": "WIRE: arbitrage.html + attested-inference.html convert shelf (existing Autopsy $29 + White Box hour $250)"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-sol/runtime-provenance-zero-discovery-crossversion-20260917",
-      "closed_at": "2026-09-17T09:05:06Z",
-      "head_sha": "a7b2e2e6b2ebfe93f8fe29fc9abbf11e9bd4009c",
-      "merged_at": "2026-09-17T09:05:06Z",
-      "number": 15488,
+      "branch": "cursor/latch-annex-archive-convert-shelf-5a2c",
+      "closed_at": "2026-09-17T09:15:31Z",
+      "head_sha": "f98cc24f11e7b2fcd42f3920b68b322bafdf44b9",
+      "merged_at": "2026-09-17T09:15:31Z",
+      "number": 15529,
       "state": "MERGED",
-      "title": "Test: make runtime-provenance zero-discovery proof cross-version"
+      "title": "Wire existing $29 and $250 Buy links onto annex and archive shelves"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "swarmz/procurement-qualification-gate-rejoin-20260917",
-      "closed_at": "2026-09-17T09:04:42Z",
-      "head_sha": "701d5b0837db82a98257167a371ae3d1e70c4569",
-      "merged_at": "2026-09-17T09:04:42Z",
-      "number": 15518,
+      "branch": "quill-books-salon-convert-shelf-20260917-01",
+      "closed_at": "2026-09-17T09:13:09Z",
+      "head_sha": "083001718187933677597c3427d96cf68fa704d5",
+      "merged_at": "2026-09-17T09:13:09Z",
+      "number": 15535,
       "state": "MERGED",
-      "title": "Revenue: add reusable prime vs workshare procurement qualification gate"
+      "title": "QUILL: books.html + salon.html convert shelf (existing Autopsy $29 + White Box hour $250)"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zeta-sol/opencv-retained-ci-current-main-20260917",
-      "closed_at": "2026-09-17T09:04:20Z",
-      "head_sha": "d73f9a42bc85d708f773a469458ea50aab513c0c",
-      "merged_at": null,
-      "number": 15528,
-      "state": "CLOSED",
-      "title": "OpenCV CI: clean current-main retained proof successor"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-z/opencv-retained-ci-clean-20260917",
-      "closed_at": "2026-09-17T09:03:45Z",
-      "head_sha": "372dae1eb3c4009a3fa3baf2332d1fb1903f76d1",
-      "merged_at": null,
-      "number": 15497,
-      "state": "CLOSED",
-      "title": "Clean successor: retain OpenCV evidence gate inside tests workflow"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsf-0432/opencv-workflow-surface-closure-20260917",
-      "closed_at": "2026-09-17T09:03:41Z",
-      "head_sha": "37030ef4fbcfe09aff2bdd05fc8489288af538de",
-      "merged_at": null,
-      "number": 15465,
-      "state": "CLOSED",
-      "title": "Fold OpenCV visual-evidence gate into retained CI surface"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-z/solstice-agent-toolcall-gate-14146",
-      "closed_at": "2026-09-17T09:02:48Z",
-      "head_sha": "8e14aedd80fbf0e5afe61f36b4581bc4d108bf4f",
-      "merged_at": "2026-09-17T09:02:48Z",
-      "number": 15524,
+      "branch": "z-sol/ridgway-zerograd-nitsche-20260916",
+      "closed_at": "2026-09-17T04:02:35Z",
+      "head_sha": "0ca44b36c91b6d6f9c61a03a76640e7ac4697238",
+      "merged_at": "2026-09-17T04:02:35Z",
+      "number": 15236,
       "state": "MERGED",
-      "title": "Recover #14146 agent tool-call evidence gate"
+      "title": "Research: reduce Ridgway zero-gradient prize to concrete Scott\u2013Vogelius/Nitsche gaps"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zrg-0442/muse-ledger-delta-linear-fix-20260917",
-      "closed_at": "2026-09-17T09:02:45Z",
-      "head_sha": "2e4ab02725092fe7f6aa87ce9034a2015bc85b5e",
-      "merged_at": "2026-09-17T09:02:45Z",
-      "number": 15515,
+      "branch": "cursor/goat-corpus-spy22-keep-2155",
+      "closed_at": "2026-09-17T03:59:00Z",
+      "head_sha": "973a70caa09dc4c2cf7a288fa2ae4609db2bce7c",
+      "merged_at": "2026-09-17T03:59:00Z",
+      "number": 15235,
       "state": "MERGED",
-      "title": "Outbound: make Muse receipt-ledger verification truly linear"
+      "title": "GOAT: KEEP Larger fixed on leftover spy-22 corpus ground MD"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "swarm-z/opencv-workflow-surface-final-20260917",
-      "closed_at": "2026-09-17T09:02:12Z",
-      "head_sha": "290f67cf22b93b4bf9a71ec18a15db3c16461225",
-      "merged_at": "2026-09-17T09:02:12Z",
-      "number": 15520,
+      "branch": "z-lattice/private-posted-contracts-20260916",
+      "closed_at": "2026-09-17T03:54:56Z",
+      "head_sha": "a28fb8b70a76d6ee53763f85f02327c917494dc6",
+      "merged_at": "2026-09-17T03:54:56Z",
+      "number": 15234,
       "state": "MERGED",
-      "title": "Finalize workflow surface: retain OpenCV evidence gate inside tests"
+      "title": "Revenue: ship buyer-posted contract bid packet"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "grok/runtime-provenance-canonical-json-export-20260917",
-      "closed_at": "2026-09-17T09:01:52Z",
-      "head_sha": "c1e3196f62bd8a75faa44a269915df29f15b4d88",
-      "merged_at": "2026-09-17T09:01:52Z",
-      "number": 15522,
+      "branch": "cursor/goat-work-automation-xyz-keep-703a",
+      "closed_at": "2026-09-17T03:50:19Z",
+      "head_sha": "69717e8a66d4a1172c161bf218d4db175b8344f9",
+      "merged_at": "2026-09-17T03:50:19Z",
+      "number": 15233,
       "state": "MERGED",
-      "title": "Re-export canonical_json so runtime-provenance focused discovery stays non-vacuous"
+      "title": "GOAT: KEEP Larger fixed on leftover work-automation/xyz-zero ground MD"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "wire-boards-builds-convert-shelf-20260917-01",
-      "closed_at": "2026-09-17T09:01:26Z",
-      "head_sha": "96c96604722a2360ff058150eabe77e4737ba400",
-      "merged_at": "2026-09-17T09:01:26Z",
-      "number": 15519,
+      "branch": "z-autopsyloop/autopsy-29-fulfillment-20260916",
+      "closed_at": "2026-09-17T03:50:14Z",
+      "head_sha": "b76f1bbbfd9bfb1592c29246763541afd44f1e30",
+      "merged_at": "2026-09-17T03:50:14Z",
+      "number": 15232,
       "state": "MERGED",
-      "title": "Wire boards.html + builds.html convert shelf (existing Autopsy $29 + White Box hour $250)"
+      "title": "Revenue: deterministic $29 Agent Failure Autopsy fulfillment spine"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-lattice/outbound-muse-trust-hardening-20260916",
+      "closed_at": "2026-09-17T03:41:47Z",
+      "head_sha": "ec7f4d3f8919ee747e2f69a415e6e3a6ddad362f",
+      "merged_at": "2026-09-17T03:41:47Z",
+      "number": 15230,
+      "state": "MERGED",
+      "title": "Security: authenticate Muse evidence for outbound readiness"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/goat-vent-visual-keep-a9e1",
+      "closed_at": "2026-09-17T03:41:20Z",
+      "head_sha": "b0c5b28b251eff82f9da55a51eb0479b43fd7ad0",
+      "merged_at": "2026-09-17T03:41:20Z",
+      "number": 15231,
+      "state": "MERGED",
+      "title": "GOAT: KEEP Larger fixed on leftover vent/visual/wake/whisper/width200 ground MD"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol/oss-grant-eligibility-packet-20260916",
+      "closed_at": "2026-09-17T03:39:33Z",
+      "head_sha": "3cf7da0e5a25d6dc44efe3d0495831d0cdfea1d6",
+      "merged_at": "2026-09-17T03:39:33Z",
+      "number": 15186,
+      "state": "MERGED",
+      "title": "Revenue: compile source-bound OSS grant eligibility packets"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol/jersey-dn827803-vitagroup-20260916",
+      "closed_at": "2026-09-17T03:39:07Z",
+      "head_sha": "b7858670f79962ad022cf13dcd7c5bf6dbbfa891",
+      "merged_at": "2026-09-17T03:39:07Z",
+      "number": 15229,
+      "state": "MERGED",
+      "title": "Revenue: bind Jersey DN827803 portal boundary and paid vitagroup route"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T09:12:46Z",
+  "unchanged_since": "2026-09-17T09:39:10Z",
   "undatable_pulls": []
 }
