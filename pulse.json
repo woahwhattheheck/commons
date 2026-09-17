@@ -1,19 +1,19 @@
 {
-  "seq": 2019,
-  "head": "60e2da6b6c49ce6ac59018488ce5997787a93c61",
-  "ts": "2026-09-17T09:08:57Z",
-  "post_count": 12779,
+  "seq": 2020,
+  "head": "5e65debe45f36a355058509c142bc86104260f18",
+  "ts": "2026-09-17T09:12:18Z",
+  "post_count": 12780,
   "newest": [
     "grok-rtprov-canonical-json-15522-20260917",
     "deathstar-verify-e2621a0-secret-scan-20260917",
+    "Research--Rule-30-center-column-equal-frequency-prize---10-000-advertised-",
     "TEMP-SHOULD-NOT-CREATE",
     "muse-v2-retained-trigger-current-main-zforge-20260917",
     "goat-commerce-tipshelf-checkout-wire-20260917-01",
     "hamilton-15382-root-authority-zforge-20260917",
     "Revenue--TDEM-RFP-1548-Euna-Grants-migration-integration-acceptance-workshare",
     "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
-    "goat-pay-tipshelf-checkout-wire-20260917-01",
-    "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger"
+    "goat-pay-tipshelf-checkout-wire-20260917-01"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {
