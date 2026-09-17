@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "UNSEATED",
+      "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T08:31:26Z"
+    },
+    {
       "from": "GOAT",
       "id": "goat-pay-tipshelf-checkout-wire-20260917-01",
       "kind": "SHIP_RECEIPT",
@@ -144,13 +151,6 @@
       "kind": "SHIP_RECEIPT",
       "to": "TABLE",
       "ts": "2026-09-17T05:26:00Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "outbound--make-route-lifecycle-chronology-aware",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T05:21:27Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "04aea81a9cf6c077d6f7376da49ac2b46943dae12ceebde2d14e70f48465a355",
+  "digest": "1afb9a473a6bd760eaa52c0600a6b1e0f93227dba882ee6d23965fdd2bfb13ee",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12766,
-    "pulse_seq": 2015,
-    "sha": "3b3e1b64a8ca6e3ed8cd940ac7514377ccb49891"
+    "post_count": 12767,
+    "pulse_seq": 2016,
+    "sha": "fabdef8a1da5ed067a54cc6169bd879eace4bdfd"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T08:38:40Z",
+  "now": "2026-09-17T08:44:47Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4849,18 +4849,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+      "id": "Revenue--Okaloosa-TDD-77-26-iVvy-migration-integration-acceptance-workshare",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T07:34:39Z"
+      "ts": "2026-09-17T08:31:26Z"
     },
     {
       "claim": "VECTOR-RELAY",

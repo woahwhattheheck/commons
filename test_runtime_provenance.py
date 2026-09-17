@@ -2,8 +2,9 @@
 
 A dedicated workflow would be the 68th active workflow and violates the repository's
 retained workflow-surface budget. This root bridge makes the complete focused suite
-discoverable by host/ci_battery.py, runs it in normal and optimized Python, and
-exercises the canonical registry CLI without creating a new workflow slot.
+discoverable by host/ci_battery.py, proves that discovery is non-vacuous in normal
+and optimized Python, and exercises the canonical registry CLI without creating a
+new workflow slot.
 """
 from __future__ import annotations
 
@@ -11,6 +12,7 @@ import json
 import re
 import subprocess
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -25,6 +27,18 @@ DISCOVER = [
     "test_*.py",
     "-v",
 ]
+UNITTEST_TERMINAL = re.compile(
+    r"(?m)^Ran\s+(?P<count>\d+)\s+tests?\s+in\s+[^\r\n]+\r?\n"
+    r"\r?\nOK(?:\s+\([^\r\n]*\))?\r?\n?\Z"
+)
+
+
+def reported_test_count(stderr: str) -> int:
+    """Return unittest's terminal stderr execution count or fail closed."""
+    match = UNITTEST_TERMINAL.search(stderr)
+    if match is None:
+        raise ValueError(f"unittest stderr has no terminal executed-test summary:\n{stderr}")
+    return int(match.group("count"))
 
 
 class RuntimeProvenanceRetainedTests(unittest.TestCase):
@@ -42,35 +56,63 @@ class RuntimeProvenanceRetainedTests(unittest.TestCase):
             check=False,
         )
 
+    @staticmethod
+    def child_output(proc: subprocess.CompletedProcess[str]) -> str:
+        return proc.stderr + proc.stdout
+
     def assert_child_ok(self, proc: subprocess.CompletedProcess[str]) -> None:
-        self.assertEqual(proc.returncode, 0, proc.stderr + proc.stdout)
+        self.assertEqual(proc.returncode, 0, self.child_output(proc))
 
-    def assert_nonempty_unittest_run(self, proc: subprocess.CompletedProcess[str]) -> None:
-        output = proc.stderr + proc.stdout
-        match = re.search(r"Ran ([0-9]+) tests? in ", output)
-        if match is None:
-            self.fail(f"missing unittest execution count:\n{output}")
-        count = int(match.group(1))
-        self.assertGreater(count, 0, f"zero-test false green:\n{output}")
-        self.assertIn("OK", output)
+    def assert_child_nonvacuous(self, proc: subprocess.CompletedProcess[str]) -> int:
+        self.assert_child_ok(proc)
+        count = reported_test_count(proc.stderr)
+        self.assertGreater(count, 0, f"focused discovery executed zero tests:\n{self.child_output(proc)}")
+        return count
 
-    def test_focused_suite_normal_and_optimized(self) -> None:
+    def test_focused_suite_normal_and_optimized_is_nonvacuous(self) -> None:
+        counts: list[int] = []
         for optimized in (False, True):
             with self.subTest(optimized=optimized):
                 proc = self.run_child(*DISCOVER, optimized=optimized)
-                self.assert_child_ok(proc)
-                self.assert_nonempty_unittest_run(proc)
+                counts.append(self.assert_child_nonvacuous(proc))
+        self.assertEqual(counts[0], counts[1], "normal and optimized discovery counts diverged")
 
-    def test_zero_discovery_cannot_false_green(self) -> None:
+    def test_empty_discovery_false_green_is_rejected_normal_and_optimized(self) -> None:
+        with tempfile.TemporaryDirectory(prefix="runtime-provenance-empty-", dir=ROOT) as empty_dir:
+            empty_discover = [
+                "-m",
+                "unittest",
+                "discover",
+                "-s",
+                empty_dir,
+                "-p",
+                "test_*.py",
+                "-v",
+            ]
+            for optimized in (False, True):
+                with self.subTest(optimized=optimized):
+                    proc = self.run_child(*empty_discover, optimized=optimized)
+                    self.assertEqual(proc.returncode, 0, self.child_output(proc))
+                    self.assertEqual(reported_test_count(proc.stderr), 0)
+                    with self.assertRaisesRegex(AssertionError, "executed zero tests"):
+                        self.assert_child_nonvacuous(proc)
+
+    def test_stdout_cannot_override_real_zero_test_stderr_summary(self) -> None:
         proc = subprocess.CompletedProcess(
             args=[sys.executable, *DISCOVER],
             returncode=0,
-            stdout="",
+            stdout="Ran 99 tests in 0.001s\n\nOK\n",
             stderr="----------------------------------------------------------------------\nRan 0 tests in 0.000s\n\nOK\n",
         )
-        self.assert_child_ok(proc)
-        with self.assertRaises(AssertionError):
-            self.assert_nonempty_unittest_run(proc)
+        self.assertEqual(reported_test_count(proc.stderr), 0)
+        with self.assertRaisesRegex(AssertionError, "executed zero tests"):
+            self.assert_child_nonvacuous(proc)
+
+    def test_missing_or_nonterminal_unittest_summary_is_rejected(self) -> None:
+        with self.assertRaisesRegex(ValueError, "no terminal executed-test summary"):
+            reported_test_count("OK\n")
+        with self.assertRaisesRegex(ValueError, "no terminal executed-test summary"):
+            reported_test_count("Ran 3 tests in 0.001s\n\nOK\ntrailing output\n")
 
     def test_canonical_registry_verify_is_descriptive_only(self) -> None:
         proc = self.run_child(
