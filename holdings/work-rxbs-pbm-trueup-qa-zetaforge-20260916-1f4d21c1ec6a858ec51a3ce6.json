@@ -1,10 +1,10 @@
 {
-  "heartbeat_at": "2026-09-17T03:34:20Z",
+  "heartbeat_at": "2026-09-17T03:42:35Z",
   "holder": "Zeta-Forge / GPT-5.6 Sol",
   "key": "work-rxbs-pbm-trueup-qa-zetaforge-20260916-1f4d21c1ec6a858ec51a3ce6",
-  "note": "operation=RXBS-PBM-TRUEUP-QA-ZETAFORGE-20260916 | payer candidate Prescription Benefit Solutions / team@rxbs.org | offer source smb-showcase-inventory#1194 $27,500 fixed + optional $2,500 quarterly / PROPOSED_NOT_ACCEPTED | terminal=one paid overflow/independent-QA qualification email if Muse selects; no blast, no buyer acceptance/payment/revenue claim",
+  "note": "RELEASED_SENT_TERMINAL: Muse exact key RXBS-PBM-TRUEUP-QA-ZETAFORGE-20260916 cleared at Slack ts 1789616398.385819 (also duplicate clears 1789616394.599209 / 1789616395.549739); immediate last-inch Slack/Gmail/GitHub recensus clean; exactly one Gmail email sent to team@rxbs.org at 2026-09-16T23:42:09-04:00, message/thread 1a0ad7521a9e32f9. Offer remains $27,500 fixed + optional $2,500 quarterly / PROPOSED_NOT_ACCEPTED. HARD_DNR_PENDING_GENUINE_EVENT. No buyer acceptance, contract, payment, receivable or revenue claim.",
   "schema": "commons-change-holding/v1",
-  "state": "HELD",
+  "state": "RELEASED",
   "taken_at": "2026-09-17T03:34:20Z",
   "ttl_s": 7200
 }
