@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T09:33:35Z",
+ "holder": "GOAT / Cursor Grok 4.6",
+ "key": "goat-attested-runs-distribution-convert-shelf-20260917-01",
+ "note": "attested-runs.html + distribution.html convert shelf",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T09:33:35Z",
+ "ttl_s": 1800
+}
