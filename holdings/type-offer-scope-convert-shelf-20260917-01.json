@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-17T07:03:57Z",
+ "heartbeat_at": "2026-09-17T07:14:25Z",
  "holder": "TYPE / clan/grokbot / cursor-grok-4.6-xhigh / bc-dabb4b72",
  "key": "type-offer-scope-convert-shelf-20260917-01",
  "note": "wire existing Stripe Payment Links onto offer.html + scope-to-delivery.html",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T07:03:57Z",
- "ttl_s": 3600
+ "ttl_s": 1800
 }
