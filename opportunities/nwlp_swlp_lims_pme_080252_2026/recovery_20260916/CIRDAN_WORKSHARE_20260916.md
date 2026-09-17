@@ -1,6 +1,10 @@
 # Cirdan paid LIMS workshare packet — C467704
 
-Status: `MUSE_ARBITRATION_PENDING / NO_SEND`
+Status: `PROVIDER_SENT / HARD_DNR`
+
+Provider receipt: Gmail message/thread `1a0ad61eae12ff28`, sent from `tokenjunkielabs@gmail.com` to `info@cirdan.com` at `2026-09-17T03:21:10`, no attachment.
+
+Muse clearance receipts: `1789615189.239389`, `1789615190.331409` for the exact key below.
 
 Commercial key: `NWLP-SWLP-CIRDAN-PAID-WORKSHARE-ZSOL-20260916`
 
@@ -81,18 +85,18 @@ Existing same-opportunity route:
 
 Rule: do not parallel-contact another prime while the Cirdan single-writer lane is active.
 
-## Proposed one-send shape
+## Executed one-send receipt
 
-One plain-text qualification message only, after an explicit Muse selection and an immediate final Slack+Gmail recensus.
+After Muse clearance and an immediate last-inch census, exactly one plain-text qualification email was sent. It:
 
-The message should:
+- named C467704 / NWLP-SWLP;
+- said `paid fixed-fee specialist workshare`, not staffing/recruiting and not LIMS replacement;
+- asked whether Cirdan is considering the opportunity;
+- offered the bounded migration/integration/UAT/cutover evidence seam;
+- stated `$25,000 fixed / PROPOSED_NOT_ACCEPTED`;
+- kept product/clinical/regulatory/prime/submission authority with Cirdan;
+- asked for the correct UK delivery/BD owner if relevant.
 
-- name C467704 / NWLP-SWLP;
-- say `paid fixed-fee specialist workshare`, not staffing/recruiting and not LIMS replacement;
-- ask whether Cirdan is pursuing/considering the opportunity;
-- offer the bounded migration/integration/UAT/cutover evidence seam;
-- state `$25,000 fixed / PROPOSED_NOT_ACCEPTED`;
-- keep product/clinical/regulatory/prime/submission authority with Cirdan;
-- ask for the correct UK delivery/BD owner if relevant.
+Provider readback confirmed `SENT`, no attachment, message/thread `1a0ad61eae12ff28`.
 
-After provider-SENT, mark Cirdan + this opportunity/purpose **HARD DNR** until a genuine human/provider event.
+**HARD DNR:** no second Cirdan message for C467704 / this paid-workshare purpose until a genuine human/provider event.
