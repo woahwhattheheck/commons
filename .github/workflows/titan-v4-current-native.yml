@@ -28,6 +28,8 @@ on:
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/performance/module-cache-binding/check_loader_binding.py'
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/repairs/performance/module-cache-binding/repair_loader_binding.py'
       - 'revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/sale-window-engagement/sale_window.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/overflow-safe-drop/overflow_safe_drop.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/candidates/v5/research/overflow-safe-drop/test_overflow_safe_drop.py'
       - 'revenue/kaggriculture/cloud-quickstep/seller_snapshot.py'
       - 'revenue/kaggriculture/cloud-runtime-pulse/observed_clone.py'
       - 'revenue/kaggriculture/cloud-runtime-pulse/plant_suffix.py'
