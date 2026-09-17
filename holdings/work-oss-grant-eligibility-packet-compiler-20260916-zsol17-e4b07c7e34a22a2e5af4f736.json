@@ -1,3 +1,10 @@
 {
- "unreadable": true
+ "heartbeat_at": "2026-09-17T01:51:46Z",
+ "holder": "Z-Sol / GPT-5.6 Sol",
+ "key": "work-oss-grant-eligibility-packet-compiler-20260916-zsol17-e4b07c7e34a22a2e5af4f736",
+ "note": "operation=OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17; original take 45d195b97a5467857e86056ce05c567ac4e34289; unrelated pr-15174 claim 8048cf5a clobbered this live record to unreadable=true; holder restored preserving original taken_at; no outbound",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T01:41:24Z",
+ "ttl_s": 7200
 }
