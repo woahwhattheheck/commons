@@ -577,22 +577,6 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 15734,
-   "author": "woahwhattheheck",
-   "title": "OneWriter: restore strict deployment identifier contract",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15734",
-   "base_freshness": {
-    "base_sha": "e182cad7382b7d7b49dab7bcbed14eea54cfa0c0",
-    "main_sha": "93f16474245efa9caac3590cb138ce58bc7c06fb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 15627,
    "author": "woahwhattheheck",
    "title": "Build Commercial Laundry Route & Linen Custody Operations Desk",
@@ -785,12 +769,12 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 15751,
+   "number": 15643,
    "author": "woahwhattheheck",
-   "title": "Outreach qualification firewall: fail closed before send",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15751",
+   "title": "Fix pilot-renewal receipt reseal and current-clock authority",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15643",
    "base_freshness": {
-    "base_sha": "eaa9a6484412a03e6b0cd1826c7feedae5f9148b",
+    "base_sha": "0d41a463ab2f7598cc211af8036e397228e8155a",
     "main_sha": "93f16474245efa9caac3590cb138ce58bc7c06fb",
     "ahead_by": null,
     "behind_by": null,
@@ -801,12 +785,28 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 15728,
+   "number": 15731,
    "author": "woahwhattheheck",
-   "title": "Revenue: compile explicit payoff paths for uncompensated work",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15728",
+   "title": "feat: exact-head ship fence for moving-main + CI truth",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15731",
    "base_freshness": {
-    "base_sha": "e182cad7382b7d7b49dab7bcbed14eea54cfa0c0",
+    "base_sha": "885e43d803fe3d94b02dc7fa650f565cae7b8c45",
+    "main_sha": "93f16474245efa9caac3590cb138ce58bc7c06fb",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15758,
+   "author": "woahwhattheheck",
+   "title": "Revenue coordination: canonical current-state compiler + stale-body guard",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15758",
+   "base_freshness": {
+    "base_sha": "0d05eab6fb34681c9903b7820de8bcb8a54db72f",
     "main_sha": "93f16474245efa9caac3590cb138ce58bc7c06fb",
     "ahead_by": null,
     "behind_by": null,
@@ -849,6 +849,54 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
+   "number": 15761,
+   "author": "woahwhattheheck",
+   "title": "TITAN V5: bind post-auth WHEAT carry census to D2 source",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15761",
+   "base_freshness": {
+    "base_sha": "d498af472c632ea1c6ab40914a2c4fa3f2b8fec5",
+    "main_sha": "93f16474245efa9caac3590cb138ce58bc7c06fb",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15751,
+   "author": "woahwhattheheck",
+   "title": "Outreach qualification firewall: fail closed before send",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15751",
+   "base_freshness": {
+    "base_sha": "eaa9a6484412a03e6b0cd1826c7feedae5f9148b",
+    "main_sha": "93f16474245efa9caac3590cb138ce58bc7c06fb",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15728,
+   "author": "woahwhattheheck",
+   "title": "Revenue: compile explicit payoff paths for uncompensated work",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15728",
+   "base_freshness": {
+    "base_sha": "e182cad7382b7d7b49dab7bcbed14eea54cfa0c0",
+    "main_sha": "93f16474245efa9caac3590cb138ce58bc7c06fb",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
    "number": 15756,
    "author": "woahwhattheheck",
    "title": "Add deterministic stale Actions queue auditor",
@@ -865,28 +913,12 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 15758,
+   "number": 15734,
    "author": "woahwhattheheck",
-   "title": "Revenue coordination: canonical current-state compiler + stale-body guard",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15758",
+   "title": "OneWriter: restore strict deployment identifier contract",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15734",
    "base_freshness": {
-    "base_sha": "0d05eab6fb34681c9903b7820de8bcb8a54db72f",
-    "main_sha": "93f16474245efa9caac3590cb138ce58bc7c06fb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 15643,
-   "author": "woahwhattheheck",
-   "title": "Fix pilot-renewal receipt reseal and current-clock authority",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15643",
-   "base_freshness": {
-    "base_sha": "0d41a463ab2f7598cc211af8036e397228e8155a",
+    "base_sha": "e182cad7382b7d7b49dab7bcbed14eea54cfa0c0",
     "main_sha": "93f16474245efa9caac3590cb138ce58bc7c06fb",
     "ahead_by": null,
     "behind_by": null,
@@ -902,39 +934,7 @@
    "title": "Policy: enforce no public Commons backlinks on customer surfaces",
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15726",
    "base_freshness": {
-    "base_sha": "885e43d803fe3d94b02dc7fa650f565cae7b8c45",
-    "main_sha": "93f16474245efa9caac3590cb138ce58bc7c06fb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 15731,
-   "author": "woahwhattheheck",
-   "title": "feat: exact-head ship fence for moving-main + CI truth",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15731",
-   "base_freshness": {
-    "base_sha": "885e43d803fe3d94b02dc7fa650f565cae7b8c45",
-    "main_sha": "93f16474245efa9caac3590cb138ce58bc7c06fb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 15761,
-   "author": "woahwhattheheck",
-   "title": "TITAN V5: bind post-auth WHEAT carry census to D2 source",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15761",
-   "base_freshness": {
-    "base_sha": "d498af472c632ea1c6ab40914a2c4fa3f2b8fec5",
+    "base_sha": "576ed0b469c0666e7cf03cbc73053349c9bfedf7",
     "main_sha": "93f16474245efa9caac3590cb138ce58bc7c06fb",
     "ahead_by": null,
     "behind_by": null,
