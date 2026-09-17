@@ -5,9 +5,11 @@ from typing import Any
 from .common import (
     ALLOWED_EVIDENCE_KINDS, ALLOWED_EVIDENCE_STATUS, GateError, SCHEMA, TRUTH_CEILING,
     _bool, _dt, _exact_keys, _id, _int, _list, _obj, _parse_source, _sha, _str, _unique, _z,
+    ensure_unicode_scalars,
 )
 
 def normalize(raw: Any) -> dict[str, Any]:
+    ensure_unicode_scalars(raw)
     root = _obj(raw, "root")
     allowed_root = {
         "schema", "engagement", "sources", "evidence", "commercial_baseline",
@@ -58,6 +60,8 @@ def normalize(raw: Any) -> dict[str, Any]:
         }
         if obj.get("valid_through") is not None:
             row["valid_through"] = _z(_dt(obj["valid_through"], f"{where}.valid_through"))
+        if kind == "DNR" and "valid_through" not in row:
+            raise GateError(f"{where}.valid_through: current DNR evidence requires explicit validity")
         evidence.append(row)
     _unique([x["id"] for x in evidence], "evidence")
     evidence_ids = {x["id"] for x in evidence}
@@ -75,6 +79,8 @@ def normalize(raw: Any) -> dict[str, Any]:
         "generation": _int(base["generation"], "commercial_baseline.generation", 1),
         "acceptance_evidence_id": evidence_ref(base["acceptance_evidence_id"], "commercial_baseline.acceptance_evidence_id"),
     }
+    if commercial_baseline["generation"] != engagement["generation"]:
+        raise GateError("commercial_baseline.generation must match engagement.generation")
 
     change_orders: list[dict[str, Any]] = []
     for i, item in enumerate(_list(root["change_orders"], "change_orders")):
@@ -85,13 +91,18 @@ def normalize(raw: Any) -> dict[str, Any]:
         state_value = _str(obj["state"], f"{where}.state").upper()
         if state_value not in {"APPROVED", "PROPOSED", "REJECTED"}:
             raise GateError(f"{where}.state: unsupported")
+        generation = _int(obj["generation"], f"{where}.generation", 1)
+        if generation <= commercial_baseline["generation"]:
+            raise GateError(f"{where}.generation: must follow commercial baseline generation")
         change_orders.append({
             "id": _id(obj["id"], f"{where}.id"),
-            "generation": _int(obj["generation"], f"{where}.generation", 1),
+            "generation": generation,
             "state": state_value,
             "approval_evidence_id": evidence_ref(obj["approval_evidence_id"], f"{where}.approval_evidence_id"),
         })
     _unique([x["id"] for x in change_orders], "change_orders")
+    if len({x["generation"] for x in change_orders}) != len(change_orders):
+        raise GateError("change_orders: duplicate generation")
 
     milestones: list[dict[str, Any]] = []
     for i, item in enumerate(_list(root["milestones"], "milestones")):
@@ -136,13 +147,7 @@ def normalize(raw: Any) -> dict[str, Any]:
         state_value = _str(obj["state"], f"{where}.state").upper()
         if state_value not in {"OPEN", "CLOSED", "OBSERVED"}:
             raise GateError(f"{where}.state: unsupported")
-        findings.append({
-            "id": _id(obj["id"], f"{where}.id"),
-            "category": _id(obj["category"], f"{where}.category"),
-            "state": state_value,
-            "summary": _str(obj["summary"], f"{where}.summary"),
-            "evidence_id": evidence_ref(obj["evidence_id"], f"{where}.evidence_id"),
-        })
+        findings.append({"id": _id(obj["id"], f"{where}.id"), "category": _id(obj["category"], f"{where}.category"), "state": state_value, "summary": _str(obj["summary"], f"{where}.summary"), "evidence_id": evidence_ref(obj["evidence_id"], f"{where}.evidence_id")})
     _unique([x["id"] for x in findings], "support_findings")
 
     gaps: list[dict[str, Any]] = []
@@ -157,13 +162,7 @@ def normalize(raw: Any) -> dict[str, Any]:
         state_value = _str(obj["state"], f"{where}.state").upper()
         if state_value not in {"OPEN", "CLOSED"}:
             raise GateError(f"{where}.state: unsupported")
-        gaps.append({
-            "id": _id(obj["id"], f"{where}.id"),
-            "kind": kind,
-            "blocking": _bool(obj["blocking"], f"{where}.blocking"),
-            "state": state_value,
-            "evidence_id": evidence_ref(obj["evidence_id"], f"{where}.evidence_id"),
-        })
+        gaps.append({"id": _id(obj["id"], f"{where}.id"), "kind": kind, "blocking": _bool(obj["blocking"], f"{where}.blocking"), "state": state_value, "evidence_id": evidence_ref(obj["evidence_id"], f"{where}.evidence_id")})
     _unique([x["id"] for x in gaps], "gaps")
 
     window = _obj(root["renewal_window"], "renewal_window")
@@ -184,12 +183,7 @@ def normalize(raw: Any) -> dict[str, Any]:
         if obj["state"] != TRUTH_CEILING:
             raise GateError(f"{where}.state: must remain {TRUTH_CEILING}")
         refs = [evidence_ref(x, f"{where}.supporting_evidence_ids") for x in _list(obj["supporting_evidence_ids"], f"{where}.supporting_evidence_ids")]
-        hypotheses.append({
-            "id": _id(obj["id"], f"{where}.id"),
-            "statement": _str(obj["statement"], f"{where}.statement"),
-            "state": TRUTH_CEILING,
-            "supporting_evidence_ids": sorted(refs),
-        })
+        hypotheses.append({"id": _id(obj["id"], f"{where}.id"), "statement": _str(obj["statement"], f"{where}.statement"), "state": TRUTH_CEILING, "supporting_evidence_ids": sorted(refs)})
     _unique([x["id"] for x in hypotheses], "expansion_hypotheses")
 
     communication = _obj(root["communication"], "communication")
@@ -198,12 +192,7 @@ def normalize(raw: Any) -> dict[str, Any]:
     send_state = _str(communication["send_state"], "communication.send_state").upper()
     if send_state != "NOT_AUTHORIZED":
         raise GateError("communication.send_state must be NOT_AUTHORIZED")
-    normalized_communication = {
-        "muse_key": _id(communication["muse_key"], "communication.muse_key"),
-        "organization_id": _id(communication["organization_id"], "communication.organization_id"),
-        "route_id": _id(communication["route_id"], "communication.route_id"),
-        "send_state": send_state,
-    }
+    normalized_communication = {"muse_key": _id(communication["muse_key"], "communication.muse_key"), "organization_id": _id(communication["organization_id"], "communication.organization_id"), "route_id": _id(communication["route_id"], "communication.route_id"), "send_state": send_state}
     if normalized_communication["organization_id"] != engagement["organization_id"]:
         raise GateError("communication.organization_id must match engagement.organization_id")
 
@@ -222,4 +211,3 @@ def normalize(raw: Any) -> dict[str, Any]:
         "expansion_hypotheses": sorted(hypotheses, key=lambda x: x["id"]),
         "communication": normalized_communication,
     }
-
