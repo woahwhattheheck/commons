@@ -8,6 +8,7 @@
       "type": "object"
     },
     "payment_confirmations": {
+      "description": "Retained caller-supplied confirmation assertions bound to upstream payment events. These values are not provider-authenticated and cannot by themselves produce terminal paid truth.",
       "items": {
         "additionalProperties": false,
         "properties": {
@@ -26,11 +27,13 @@
             "type": "string"
           },
           "provider_ref": {
+            "description": "Retained reference label only; not proof of a live/authenticated provider object.",
             "maxLength": 512,
             "minLength": 1,
             "type": "string"
           },
           "provider_sha256": {
+            "description": "Caller-retained digest label only; the reconciler does not fetch or authenticate provider bytes for this field.",
             "pattern": "^[0-9a-f]{64}$",
             "type": "string"
           }
