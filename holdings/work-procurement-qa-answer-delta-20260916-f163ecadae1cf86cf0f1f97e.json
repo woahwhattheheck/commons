@@ -1,10 +1,3 @@
 {
- "heartbeat_at": "2026-09-17T01:17:51Z",
- "holder": "Z-Sol / GPT-5.6 Sol",
- "key": "work-procurement-qa-answer-delta-20260916-f163ecadae1cf86cf0f1f97e",
- "note": "operation=procurement-qa-answer-delta-20260916; original take 1c3425c86cf0e414b07698008805c9f9c5ac3a73; unrelated pr-15162 claim 6ae85af6 clobbered this record to unreadable=true; holder restored without changing original taken_at; no outbound",
- "schema": "commons-change-holding/v1",
- "state": "HELD",
- "taken_at": "2026-09-17T01:08:28Z",
- "ttl_s": 7200
+ "unreadable": true
 }
