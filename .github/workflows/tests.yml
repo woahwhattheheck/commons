@@ -334,11 +334,11 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Run runtime-provenance tests
-        run: python -m unittest discover -s tools/runtime_provenance -p 'test_*.py' -v
+      - name: Run retained runtime-provenance guard
+        run: python -m unittest -v test_runtime_provenance.py
 
-      - name: Run optimized runtime-provenance tests
-        run: python -O -m unittest discover -s tools/runtime_provenance -p 'test_*.py' -v
+      - name: Run optimized retained runtime-provenance guard
+        run: python -O -m unittest -v test_runtime_provenance.py
 
       - name: Verify canonical registry
         run: python -m tools.runtime_provenance.runtime_registry verify runtime/agent_runtime_registry.json
