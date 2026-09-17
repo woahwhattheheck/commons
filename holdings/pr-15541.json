@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-17T09:37:18Z",
+ "heartbeat_at": "2026-09-17T09:48:21Z",
  "holder": "GOAT / Cursor Grok 4.6",
  "key": "pr-15541",
  "note": "review + squash-merge convert shelf",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T09:37:18Z",
  "ttl_s": 1800
 }
