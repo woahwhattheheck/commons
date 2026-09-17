@@ -1,8 +1,8 @@
 """Bounded canonical JSON primitives for verifier-owned artifact boundaries.
 
 The library is intentionally dependency-free. It accepts only exact built-in
-JSON shapes, preflights direct objects iteratively, and accounts for canonical
-serialized byte work before calling json.dumps().
+JSON shapes, freezes direct objects into a verifier-owned generation, and
+accounts for canonical serialized byte work before calling json.dumps().
 """
 
 from __future__ import annotations
@@ -55,11 +55,7 @@ def _charge(total: int, amount: int, maximum: int) -> int:
 
 
 def _json_string_utf8_length(value: str, remaining: int) -> int:
-    """Return exact ensure_ascii=False JSON string byte length, bounded.
-
-    This deliberately does not call json.dumps(), so a caller-supplied giant
-    scalar is rejected before the general serializer can allocate its result.
-    """
+    """Return exact ensure_ascii=False JSON string byte length, bounded."""
 
     if type(value) is not str:
         raise BoundaryError("non_plain_json")
@@ -149,16 +145,22 @@ def _scalar_length(value: Any, limits: Limits, remaining: int) -> int:
     raise BoundaryError("non_plain_json")
 
 
-def _preflight(value: Any, limits: Limits) -> int:
-    """Validate exact JSON shape and return the canonical byte count."""
+def _freeze_and_measure(value: Any, limits: Limits) -> tuple[Any, int]:
+    """Freeze one admitted generation and return its canonical byte count.
+
+    Container snapshots are bounded before allocation and every serialized
+    occurrence is frozen independently. The later serializer therefore never
+    rereads caller-owned mutable containers.
+    """
 
     nodes = 0
     total = 0
     active: set[int] = set()
-    stack: list[tuple[Any, int, int]] = [(value, 1, 0)]
+    root: list[Any] = [None]
+    stack: list[tuple[Any, int, Any, Any, int]] = [(value, 1, root, 0, 0)]
 
     while stack:
-        current, depth, state = stack.pop()
+        current, depth, parent, slot, state = stack.pop()
         if state:
             active.remove(id(current))
             continue
@@ -175,11 +177,26 @@ def _preflight(value: Any, limits: Limits) -> int:
             ident = id(current)
             if ident in active:
                 raise BoundaryError("cycle")
+
+            member_count = len(current)
+            if member_count > limits.max_nodes - nodes:
+                raise BoundaryError("too_complex")
+            total = _charge(
+                total,
+                2 + max(0, member_count - 1),
+                limits.max_bytes,
+            )
+
+            snapshot = tuple(current)
+            if len(snapshot) != member_count:
+                raise BoundaryError("concurrent_mutation")
+            frozen: list[Any] = [None] * member_count
+            parent[slot] = frozen
+
             active.add(ident)
-            total = _charge(total, 2 + max(0, len(current) - 1), limits.max_bytes)
-            stack.append((current, depth, 1))
-            for item in reversed(current):
-                stack.append((item, depth + 1, 0))
+            stack.append((current, depth, None, None, 1))
+            for index in range(member_count - 1, -1, -1):
+                stack.append((snapshot[index], depth + 1, frozen, index, 0))
             continue
 
         if current_type is dict:
@@ -188,43 +205,59 @@ def _preflight(value: Any, limits: Limits) -> int:
             ident = id(current)
             if ident in active:
                 raise BoundaryError("cycle")
-            active.add(ident)
 
             member_count = len(current)
+            remaining_nodes = limits.max_nodes - nodes
+            if member_count > remaining_nodes // 2:
+                raise BoundaryError("too_complex")
             total = _charge(
                 total,
                 2 + max(0, member_count - 1) + member_count,
                 limits.max_bytes,
             )
-            stack.append((current, depth, 1))
 
-            items = list(current.items())
-            for key, _ in items:
+            try:
+                snapshot = tuple(current.items())
+            except RuntimeError:
+                raise BoundaryError("concurrent_mutation") from None
+            if len(snapshot) != member_count:
+                raise BoundaryError("concurrent_mutation")
+
+            frozen_dict: dict[str, Any] = {}
+            parent[slot] = frozen_dict
+            active.add(ident)
+            stack.append((current, depth, None, None, 1))
+
+            for key, _ in snapshot:
                 if type(key) is not str:
                     raise BoundaryError("non_string_key")
                 nodes += 1
                 if nodes > limits.max_nodes:
                     raise BoundaryError("too_complex")
-                key_len = _json_string_utf8_length(key, limits.max_bytes - total)
+                key_len = _json_string_utf8_length(
+                    key,
+                    limits.max_bytes - total,
+                )
                 total = _charge(total, key_len, limits.max_bytes)
 
-            for _, child in reversed(items):
-                stack.append((child, depth + 1, 0))
+            for key, child in reversed(snapshot):
+                stack.append((child, depth + 1, frozen_dict, key, 0))
             continue
 
         scalar_len = _scalar_length(current, limits, limits.max_bytes - total)
         total = _charge(total, scalar_len, limits.max_bytes)
+        parent[slot] = current
 
-    return total
+    return root[0], total
 
 
 def canonical_bytes(value: Any, *, limits: Limits = DEFAULT_LIMITS) -> bytes:
     """Return deterministic canonical JSON bytes after bounded admission."""
 
-    expected_length = _preflight(value, limits)
+    frozen, expected_length = _freeze_and_measure(value, limits)
     try:
         text = json.dumps(
-            value,
+            frozen,
             sort_keys=True,
             separators=(",", ":"),
             ensure_ascii=False,
