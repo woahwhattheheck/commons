@@ -194,6 +194,25 @@ class GateTests(unittest.TestCase):
         p = base_payload(); p["route"] = {"kind":"url","value":"https://u:p@example.com/contact","source_url":"https://example.com/","source_class":"FIRST_PARTY","observed_at":"2026-09-17T01:00:00Z"}
         with self.assertRaises(EvidenceError): compile_decision(p)
 
+    def test_schema_required_omits_speaker_fields(self):
+        schema_path = pathlib.Path(__file__).resolve().parents[1] / "route_evidence.schema.json"
+        schema = json.loads(schema_path.read_text(encoding="utf-8"))
+        self.assertEqual(
+            schema["required"],
+            ["schema", "as_of", "buyer_scope", "offer_key", "purpose_key", "route"],
+        )
+        self.assertIn("seat", schema["properties"])
+
+    def test_compile_rejects_blank_evidence_seat(self):
+        missing = base_payload()
+        del missing["seat"]
+        with self.assertRaises(EvidenceError):
+            compile_decision(missing)
+        blank = base_payload()
+        blank["seat"] = "   "
+        with self.assertRaises(EvidenceError):
+            compile_decision(blank)
+
     def test_deterministic_projection(self):
         p = base_payload()
         self.assertEqual(compile_decision(copy.deepcopy(p)), compile_decision(copy.deepcopy(p)))
