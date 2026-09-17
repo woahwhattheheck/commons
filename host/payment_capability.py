@@ -126,13 +126,9 @@ def _timestamp(value: Any, field: str) -> datetime:
     ):
         raise RegistryError("%s must be an offset-aware ISO-8601 timestamp" % field)
     normalized = value[:-1] + "+00:00" if value.endswith("Z") else value
-    # ISO-8601 allows extra fractional digits; datetime.fromisoformat is
-    # microsecond-capped, so keep the first six digits instead of dropping
-    # a real observed timestamp.
     normalized = re.sub(r"(\.\d{6})\d+(?=[+-])", r"\1", normalized)
     try:
         parsed = datetime.fromisoformat(normalized)
-
     except ValueError as exc:
         raise RegistryError("%s must be a real timestamp" % field) from exc
     if parsed.tzinfo is None or parsed.utcoffset() is None:
@@ -153,7 +149,6 @@ def owner_action_url_ok(url: str) -> bool:
         return False
     try:
         from urllib.parse import urlparse
-
         parsed = urlparse(url)
     except ValueError:
         return False
@@ -186,10 +181,18 @@ def owner_usable(rail: dict[str, Any]) -> bool:
 
 
 def catalog_checkouts(catalog: dict[str, Any]) -> dict[str, str]:
-    """Return exact Stripe URLs for every catalog-proven active checkout."""
+    """Return active Stripe checkouts, failing closed on duplicate SKU ids."""
+    counts: dict[str, int] = {}
+    for listing in catalog.get("listings") or []:
+        if isinstance(listing, dict) and isinstance(listing.get("id"), str):
+            sku = listing["id"]
+            counts[sku] = counts.get(sku, 0) + 1
     out: dict[str, str] = {}
     for listing in catalog.get("listings") or []:
         if not isinstance(listing, dict) or not isinstance(listing.get("id"), str):
+            continue
+        sku = listing["id"]
+        if counts.get(sku) != 1:
             continue
         checkout = listing.get("checkout") if isinstance(listing.get("checkout"), dict) else {}
         url = checkout.get("url")
@@ -202,12 +205,12 @@ def catalog_checkouts(catalog: dict[str, Any]) -> dict[str, str]:
             and isinstance(url, str)
             and STRIPE_URL_RE.fullmatch(url)
         ):
-            out[listing["id"]] = url
+            out[sku] = url
     return out
 
 
 def catalog_checkout_evidence(catalog: dict[str, Any]) -> dict[str, dict[str, str]]:
-    """Return timestamp-valid catalog checkout evidence keyed by SKU."""
+    """Return evidence from the same unique listing admitted as active."""
     active = catalog_checkouts(catalog)
     out: dict[str, dict[str, str]] = {}
     for listing in catalog.get("listings") or []:
@@ -401,7 +404,6 @@ def compose_errors(root: str, registry: dict[str, Any], projected: dict[str, Any
 
 
 def live_stripe_checkout_urls(html: str) -> set[str]:
-    """Canonical https://(buy|donate).stripe.com/<path> identities found in HTML."""
     return {
         "https://buy.stripe.com/%s" % path
         for path in BUY_HOST_PATH_RE.findall(html)
@@ -412,34 +414,21 @@ def live_stripe_checkout_urls(html: str) -> set[str]:
 
 
 def html_stripe_url_errors(name: str, text: str) -> list[str]:
-    """tips/pay convert shelves reuse existing Stripe URLs; commerce/payment-capability are exact live buys."""
     if name == "tips.html":
         found = live_stripe_checkout_urls(text)
         if found != TIPS_CONVERT_SHELF_LIVE_CHECKOUTS:
-            return [
-                "%s convert shelf must reuse exactly the existing tip-shelf Stripe URLs"
-                % name
-            ]
+            return ["%s convert shelf must reuse exactly the existing tip-shelf Stripe URLs" % name]
         return []
     if name == "pay.html":
         found = live_stripe_checkout_urls(text)
         if found != PAY_CONVERT_SHELF_LIVE_CHECKOUTS:
-            return [
-                "%s convert shelf must reuse exactly the existing pay Stripe URLs"
-                % name
-            ]
+            return ["%s convert shelf must reuse exactly the existing pay Stripe URLs" % name]
         return []
     allowed = CONVERT_SHELF_LIVE_BUYS.get(name)
     if allowed is not None:
-        found = {
-            "https://buy.stripe.com/%s" % path
-            for path in BUY_HOST_PATH_RE.findall(text)
-        }
+        found = {"https://buy.stripe.com/%s" % path for path in BUY_HOST_PATH_RE.findall(text)}
         if found != allowed:
-            return [
-                "%s convert shelf must reuse exactly the existing live buy.stripe.com URLs"
-                % name
-            ]
+            return ["%s convert shelf must reuse exactly the existing live buy.stripe.com URLs" % name]
         if "donate.stripe.com" in text.lower():
             return ["%s must not invent donate.stripe.com URLs" % name]
         return []
@@ -457,11 +446,7 @@ def html_surface_errors(root: str) -> list[str]:
         if paypal_me.search(text):
             errors.append("%s must not invent a PayPal.me" % name)
         if "mailto:tokenjunkielabs@gmail.com" not in text and name in (
-            "pay.html",
-            "tips.html",
-            "commerce.html",
-            "payment-capability.html",
-            "owner-now-revenue.html",
+            "pay.html", "tips.html", "commerce.html", "payment-capability.html", "owner-now-revenue.html",
         ):
             errors.append("%s must keep the provider-neutral contact fallback" % name)
     text = _read(root, "payment-capability.html")
@@ -499,12 +484,8 @@ def html_surface_errors(root: str) -> list[str]:
 
 
 def storefront_policy_errors(projected: dict[str, Any]) -> list[str]:
-    """Public storefront follows the registry. Dead Stripe stays honest."""
     errors: list[str] = []
-    stripe_row = next(
-        (row for row in projected["rails"] if row["id"] == "stripe-livemode-acct_1U6HI9ATH4EDE7XD"),
-        {},
-    )
+    stripe_row = next((row for row in projected["rails"] if row["id"] == "stripe-livemode-acct_1U6HI9ATH4EDE7XD"), {})
     if stripe_row.get("chargeable"):
         if not projected["has_lawfully_chargeable_path"]:
             errors.append("chargeable Stripe rail must remain owner-usable")
@@ -513,12 +494,7 @@ def storefront_policy_errors(projected: dict[str, Any]) -> list[str]:
     else:
         if projected["has_public_storefront"] or projected["active_storefront_rail_id"]:
             errors.append("inert Stripe must hide the public storefront")
-        invented = [
-            row["id"]
-            for row in projected["rails"]
-            if row["id"] != "stripe-livemode-acct_1U6HI9ATH4EDE7XD"
-            and row.get("public_presentation") == "EXPOSE"
-        ]
+        invented = [row["id"] for row in projected["rails"] if row["id"] != "stripe-livemode-acct_1U6HI9ATH4EDE7XD" and row.get("public_presentation") == "EXPOSE"]
         if invented:
             errors.append("unproven rails must stay inert: %s" % ",".join(invented))
     if "paypal-wallet-unmeasured" not in projected["inert_rails"]:
@@ -531,15 +507,13 @@ def storefront_policy_errors(projected: dict[str, Any]) -> list[str]:
 def measure_root(root: str) -> dict[str, Any]:
     registry = _load(root, REGISTRY)
     catalog = _load(root, CATALOG)
-    blob = "\n".join(
-        [
-            _read(root, REGISTRY),
-            _read(root, os.path.join("ground", "PAYMENT_CAPABILITY.md")),
-            _read(root, os.path.join("host", "payment_capability.py")),
-            _read(root, "payment-capability.html"),
-            _read(root, "payment-capability.js"),
-        ]
-    )
+    blob = "\n".join([
+        _read(root, REGISTRY),
+        _read(root, os.path.join("ground", "PAYMENT_CAPABILITY.md")),
+        _read(root, os.path.join("host", "payment_capability.py")),
+        _read(root, "payment-capability.html"),
+        _read(root, "payment-capability.js"),
+    ])
     errors: list[str] = []
     hits = forbidden_hits(blob)
     if hits:
@@ -573,8 +547,6 @@ def measure_root(root: str) -> dict[str, Any]:
                 errors.append("rail %s owner action URL is not an official provider UI" % rid)
         if rail.get("public_presentation") == "EXPOSE" and rail.get("capability_state") != "CHARGEABLE":
             errors.append("rail %s cannot EXPOSE unless CHARGEABLE" % rid)
-        if rail.get("capability_state") != "CHARGEABLE" and rail.get("canonical_links"):
-            pass
         if rail.get("id") != "stripe-livemode-acct_1U6HI9ATH4EDE7XD" and rail.get("public_presentation") == "EXPOSE":
             errors.append("non-Stripe rail must stay inert until a later evidence pass")
     projected = project(registry, catalog)
@@ -613,15 +585,8 @@ def _self_test() -> bool:
         "schema_version": "commons-payment-capability/v1",
         "kind": "PAYMENT_CAPABILITY_REGISTRY",
         "observed_at": "2026-08-28T16:43:00Z",
-        "cash": {
-            "collected_usd": 0,
-            "authorization": "NOT_LANDED",
-            "bank_available": "NOT_LANDED",
-        },
-        "intake_fallback": {
-            "kind": "PROVIDER_NEUTRAL_INTAKE",
-            "url": "mailto:tokenjunkielabs@gmail.com",
-        },
+        "cash": {"collected_usd": 0, "authorization": "NOT_LANDED", "bank_available": "NOT_LANDED"},
+        "intake_fallback": {"kind": "PROVIDER_NEUTRAL_INTAKE", "url": "mailto:tokenjunkielabs@gmail.com"},
         "rails": [
             {
                 "id": "stripe-dead",
@@ -630,18 +595,8 @@ def _self_test() -> bool:
                 "charges_enabled": False,
                 "payouts_enabled": False,
                 "public_presentation": "INERT",
-                "canonical_links": [
-                    {
-                        "sku": "sku-tip-20260826",
-                        "url": "https://donate.stripe.com/fZucN40Ch9fj7mxgJs43S08",
-                        "link_active": True,
-                        "livemode": True,
-                    }
-                ],
-                "evidence": {
-                    "reference": "fixture",
-                    "observed_at": "2026-08-28T16:43:00Z",
-                },
+                "canonical_links": [{"sku": "sku-tip-20260826", "url": "https://donate.stripe.com/fZucN40Ch9fj7mxgJs43S08", "link_active": True, "livemode": True}],
+                "evidence": {"reference": "fixture", "observed_at": "2026-08-28T16:43:00Z"},
                 "required_owner_actions": [],
                 "supported_skus": [],
                 "currencies": ["usd"],
@@ -653,19 +608,8 @@ def _self_test() -> bool:
                 "capability_state": "INERT_NEEDS_OWNER_KYC",
                 "charges_enabled": False,
                 "public_presentation": "INERT",
-                "evidence": {
-                    "reference": "fixture",
-                    "observed_at": "2026-08-28T16:43:00Z",
-                },
-                "required_owner_actions": [
-                    {
-                        "id": "paypal-business-signup",
-                        "blocking": True,
-                        "kind": "EXTERNAL_OWNER_ACTION",
-                        "label": "Open PayPal",
-                        "url": "https://www.paypal.com/bizsignup",
-                    }
-                ],
+                "evidence": {"reference": "fixture", "observed_at": "2026-08-28T16:43:00Z"},
+                "required_owner_actions": [{"id": "paypal-business-signup", "blocking": True, "kind": "EXTERNAL_OWNER_ACTION", "label": "Open PayPal", "url": "https://www.paypal.com/bizsignup"}],
                 "supported_skus": [],
                 "currencies": ["usd"],
                 "settlement_destination": {"kind": "unmeasured", "status": "NONE"},
@@ -673,19 +617,7 @@ def _self_test() -> bool:
         ],
     }
     fixture_catalog = {
-        "listings": [
-            {
-                "id": "sku-tip-20260826",
-                "checkout": {
-                    "status": "ACTIVE_CHARGEABLE",
-                    "provider": "stripe",
-                    "url": "https://donate.stripe.com/fZucN40Ch9fj7mxgJs43S08",
-                    "link_active": True,
-                    "account_charges_enabled": True,
-                    "account_payouts_enabled": True,
-                },
-            }
-        ]
+        "listings": [{"id": "sku-tip-20260826", "checkout": {"status": "ACTIVE_CHARGEABLE", "provider": "stripe", "url": "https://donate.stripe.com/fZucN40Ch9fj7mxgJs43S08", "link_active": True, "account_charges_enabled": True, "account_payouts_enabled": True}}]
     }
     projected = project(dead, fixture_catalog)
     if projected["has_public_storefront"] or projected["public_rails"]:
@@ -702,23 +634,7 @@ def _self_test() -> bool:
         "intake_fallback": {"url": "mailto:tokenjunkielabs@gmail.com"},
         "rails": [
             dead["rails"][0],
-            {
-                "id": "paypal-live-fixture",
-                "provider": "paypal",
-                "capability_state": "CHARGEABLE",
-                "charges_enabled": True,
-                "payouts_enabled": True,
-                "public_presentation": "EXPOSE",
-                "canonical_links": [],
-                "evidence": {
-                    "reference": "fixture-paypal",
-                    "observed_at": "2026-08-28T16:43:00Z",
-                },
-                "required_owner_actions": [],
-                "supported_skus": ["sku-tip-20260826"],
-                "currencies": ["usd"],
-                "settlement_destination": {"kind": "paypal_balance", "status": "verified"},
-            },
+            {"id": "paypal-live-fixture", "provider": "paypal", "capability_state": "CHARGEABLE", "charges_enabled": True, "payouts_enabled": True, "public_presentation": "EXPOSE", "canonical_links": [], "evidence": {"reference": "fixture-paypal", "observed_at": "2026-08-28T16:43:00Z"}, "required_owner_actions": [], "supported_skus": ["sku-tip-20260826"], "currencies": ["usd"], "settlement_destination": {"kind": "paypal_balance", "status": "verified"}},
         ],
     }
     alt = project(live, fixture_catalog)
