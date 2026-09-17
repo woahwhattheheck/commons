@@ -52,7 +52,7 @@ class ConsolidatedRevenueGuardWorkflowTests(unittest.TestCase):
 
     def test_oss_grant_eligibility_normal_and_optimized(self) -> None:
         module = "revenue.oss_grant_eligibility_packet.test_compiler"
-        self.run_ok("-m", "py_compile", "revenue/oss_grant_eligibility_packet/__init__.py", "revenue/oss_grant_eligibility_packet/__main__.py", "revenue/oss_grant_eligibility_packet/compiler.py", "revenue/oss_grant_eligibility_packet/test_compiler.py")
+        self.run_ok("-m", "py_compile", "revenue/oss_grant_eligibility_packet/__init__.py", "revenue/oss_grant_eligibility_packet/__main__.py", "revenue/oss_grant_eligibility_packet/cli.py", "revenue/oss_grant_eligibility_packet/compiler.py", "revenue/oss_grant_eligibility_packet/test_compiler.py")
         self.run_ok("-m", "unittest", "-v", module)
         self.run_ok("-O", "-m", "unittest", "-v", module)
         with tempfile.TemporaryDirectory() as td:
