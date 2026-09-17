@@ -85,7 +85,7 @@ class OneWriterTests(unittest.TestCase):
             d=copy.deepcopy(self.d); d["events"][index][field]=value
             with self.subTest(field=field,value=repr(value)), self.assertRaisesRegex(a.ContractError,"trimmed nonempty|control characters"): a.replay(self.m,d)
     def test_invisible_unicode_evidence_rejected(self):
-        cases=((4,"human_evidence_id","\u200b","non-visible Unicode"),(4,"human_evidence_id","human-thread-001\u034f","Default_Ignorable"),(2,"provider_receipt","provider-sent-001\ufe0f","Default_Ignorable"),(8,"provider_receipt","provider-bounce-001\u115f","Default_Ignorable"))
+        cases=((4,"human_evidence_id","\u200b","non-visible Unicode"),(4,"human_evidence_id","human-thread-001\u034f","Default_Ignorable"),(2,"provider_receipt","provider-sent-001\ufe0f","Default_Ignorable"),(8,"provider_receipt","provider-bounce-001\u115f","Default_Ignorable"),(4,"human_evidence_id","\u0301","visible base"))
         for index,field,value,pattern in cases:
             d=copy.deepcopy(self.d); d["events"][index][field]=value
             with self.subTest(field=field,value=value.encode("unicode_escape")), self.assertRaisesRegex(a.ContractError,pattern): a.replay(self.m,d)
