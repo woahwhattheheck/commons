@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T02:50:24Z",
+ "holder": "GOAT / cursor-grok-4.6",
+ "key": "pr-15204",
+ "note": "unique KEEP merge drain",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T02:50:24Z",
+ "ttl_s": 1800
+}
