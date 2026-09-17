@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 92,
-    "open_pull_requests": 11,
-    "runs_in_progress": 21,
-    "runs_queued": 1410
+    "open_issues": 95,
+    "open_pull_requests": 12,
+    "runs_in_progress": 20,
+    "runs_queued": 1457
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -48,10 +48,10 @@
       "branch": "zsc-0119/linden-rfp-26-07-recovery-20260917",
       "created_at": "2026-09-17T05:53:00Z",
       "draft": false,
-      "head_sha": "4de389deec01f132ab19964d7489e6c2a0ae5dbc",
+      "head_sha": "1270888a6522bf400726e480758ba260c524075e",
       "number": 15317,
       "title": "Revenue: recover Linden RFP 26-07 procurement readiness",
-      "updated_at": "2026-09-17T06:49:48Z"
+      "updated_at": "2026-09-17T07:06:51Z"
     },
     {
       "author": "woahwhattheheck",
@@ -69,24 +69,46 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-vectorforge/trafficflowbench-2026-recovery-20260917",
-      "created_at": "2026-09-17T07:02:44Z",
+      "branch": "zsol/invest-appalachia-postmerge-red-rejoin-20260917",
+      "created_at": "2026-09-17T07:08:27Z",
       "draft": false,
-      "head_sha": "15d606703c4d6e2f48995423f8949082d159f55b",
-      "number": 15349,
-      "title": "Recover TrafficFlowBench 2026 source-safe competition carrier",
-      "updated_at": "2026-09-17T07:02:44Z"
+      "head_sha": "f0b97cd2f1dbfd17dfb702fe8cda29c566c7e1bd",
+      "number": 15359,
+      "title": "Fix Invest Appalachia attachment recovery resource bounds",
+      "updated_at": "2026-09-17T07:08:27Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zsol/human-reply-workshare-postmerge-truth-ci-20260917",
-      "created_at": "2026-09-17T07:02:24Z",
+      "branch": "zsol/human-reply-workshare-postmerge-red-20260917",
+      "created_at": "2026-09-17T07:06:29Z",
       "draft": false,
-      "head_sha": "bd2a817757cfc3393d8319dd7d13149fcb014c3f",
-      "number": 15348,
-      "title": "FIX: close workshare rendered-claim and retained-CI gaps",
-      "updated_at": "2026-09-17T07:03:43Z"
+      "head_sha": "e852acc8602a52e148b09e609f3569bcf61a34b7",
+      "number": 15356,
+      "title": "Fix live human-reply workshare commercial-claim and receipt gaps",
+      "updated_at": "2026-09-17T07:08:56Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "znf-0242/procurement-runway-67-slot-repair-20260917",
+      "created_at": "2026-09-17T07:05:30Z",
+      "draft": false,
+      "head_sha": "a5c3ae869b42e70f0e0cc4559b3fa2719d771e6d",
+      "number": 15355,
+      "title": "CI: keep procurement runway gate inside the retained 67-slot surface",
+      "updated_at": "2026-09-17T07:08:25Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-vectorforge/trafficflowbench-2026-recovery-20260917",
+      "created_at": "2026-09-17T07:02:44Z",
+      "draft": false,
+      "head_sha": "796d3d5203eaca49961320d34becafda199c7219",
+      "number": 15349,
+      "title": "Recover TrafficFlowBench 2026 source-safe competition carrier",
+      "updated_at": "2026-09-17T07:08:47Z"
     },
     {
       "author": "woahwhattheheck",
@@ -94,21 +116,10 @@
       "branch": "zsb0240/human-reply-postmerge-red-closure-20260917",
       "created_at": "2026-09-17T07:01:09Z",
       "draft": false,
-      "head_sha": "6caaa9985609574b383178461943713945824118",
+      "head_sha": "a4370f1f058944a74af935d35fea28693d3bcb75",
       "number": 15346,
       "title": "Human workshare: close post-merge commercial-truth RED",
-      "updated_at": "2026-09-17T07:02:07Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/human-reply-workshare-claim-guard-redclosure-20260917",
-      "created_at": "2026-09-17T06:59:28Z",
-      "draft": false,
-      "head_sha": "2612d5cd3dc4dc8c7fa42f96cf5a1ff06103a997",
-      "number": 15344,
-      "title": "Fix human-reply workshare commercial-claim smuggling",
-      "updated_at": "2026-09-17T07:01:16Z"
+      "updated_at": "2026-09-17T07:07:39Z"
     },
     {
       "author": "woahwhattheheck",
@@ -116,10 +127,10 @@
       "branch": "zsa-0242/revenue-funnel-realization-control",
       "created_at": "2026-09-17T06:58:54Z",
       "draft": false,
-      "head_sha": "d6e9696236e295bc7ea964a325b8ade2af80853e",
+      "head_sha": "86bac6485540541fed8703367f7a43ba313cd63d",
       "number": 15341,
       "title": "Add evidence-bound revenue funnel realization control",
-      "updated_at": "2026-09-17T07:03:46Z"
+      "updated_at": "2026-09-17T07:04:32Z"
     },
     {
       "author": "woahwhattheheck",
@@ -127,10 +138,10 @@
       "branch": "solz/usac-it26139-custody-truth-20260917",
       "created_at": "2026-09-17T06:45:39Z",
       "draft": false,
-      "head_sha": "25c845ff9e22a0ed6d63dd1bd159922547f0ebb4",
+      "head_sha": "9d326f3816261f52dd8eb553b689cd2daaf3dfa5",
       "number": 15331,
       "title": "USAC IT-26-139: keep recovered hashes distinct from durable custody",
-      "updated_at": "2026-09-17T06:58:34Z"
+      "updated_at": "2026-09-17T07:09:15Z"
     },
     {
       "author": "woahwhattheheck",
@@ -149,10 +160,10 @@
       "branch": "zsc-0119/linden-rfp-26-07-recovery-20260917",
       "created_at": "2026-09-17T05:53:00Z",
       "draft": false,
-      "head_sha": "4de389deec01f132ab19964d7489e6c2a0ae5dbc",
+      "head_sha": "1270888a6522bf400726e480758ba260c524075e",
       "number": 15317,
       "title": "Revenue: recover Linden RFP 26-07 procurement readiness",
-      "updated_at": "2026-09-17T06:49:48Z"
+      "updated_at": "2026-09-17T07:06:51Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,36 +175,81 @@
       "number": 15301,
       "title": "USAC IT-26-139: bind recovered controlling buyer bytes",
       "updated_at": "2026-09-17T05:38:33Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "sol17/usac-it26139-current-generation-helper-20260917",
-      "created_at": "2026-09-17T05:27:21Z",
-      "draft": false,
-      "head_sha": "6e244227e212b4538bbc90dfd25c939fca85d992",
-      "number": 15293,
-      "title": "Disposable helper: retain current USAC IT-26-139 generation",
-      "updated_at": "2026-09-17T05:27:21Z"
     }
   ],
   "open_heads": {
     "15266": "27cc4947aee1e09a4433691f6a9cdd4a717be3b3",
     "15293": "6e244227e212b4538bbc90dfd25c939fca85d992",
     "15301": "111c6811380fbc109c278fb7d419527a8e78a0ba",
-    "15317": "4de389deec01f132ab19964d7489e6c2a0ae5dbc",
+    "15317": "1270888a6522bf400726e480758ba260c524075e",
     "15318": "232d4b35b9355ca9cec6e48c50b47ce6b67e4d3f",
-    "15331": "25c845ff9e22a0ed6d63dd1bd159922547f0ebb4",
-    "15341": "d6e9696236e295bc7ea964a325b8ade2af80853e",
-    "15344": "2612d5cd3dc4dc8c7fa42f96cf5a1ff06103a997",
-    "15346": "6caaa9985609574b383178461943713945824118",
-    "15348": "bd2a817757cfc3393d8319dd7d13149fcb014c3f",
-    "15349": "15d606703c4d6e2f48995423f8949082d159f55b"
+    "15331": "9d326f3816261f52dd8eb553b689cd2daaf3dfa5",
+    "15341": "86bac6485540541fed8703367f7a43ba313cd63d",
+    "15346": "a4370f1f058944a74af935d35fea28693d3bcb75",
+    "15349": "796d3d5203eaca49961320d34becafda199c7219",
+    "15355": "a5c3ae869b42e70f0e0cc4559b3fa2719d771e6d",
+    "15356": "e852acc8602a52e148b09e609f3569bcf61a34b7",
+    "15359": "f0b97cd2f1dbfd17dfb702fe8cda29c566c7e1bd"
   },
-  "pulls_listed": 11,
+  "pulls_listed": 12,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 67.1,
+  "queue_depth_per_runner": 72.8,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/type-offer-scope-convert-shelf-400f",
+      "closed_at": "2026-09-17T07:07:35Z",
+      "head_sha": "971176290e73d96f18002ef7e03e680393c141ed",
+      "merged_at": "2026-09-17T07:07:35Z",
+      "number": 15357,
+      "state": "MERGED",
+      "title": "TYPE: wire existing live buys onto offer and scope-to-delivery"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/quill-invoice-exception-hero-buy-convert-20260917-10",
+      "closed_at": "2026-09-17T07:07:31Z",
+      "head_sha": "df311912067e2554de3ec04b475dff63e8fb6635",
+      "merged_at": "2026-09-17T07:07:31Z",
+      "number": 15358,
+      "state": "MERGED",
+      "title": "QUILL: invoice-exception hero $199 Buy before titanmcp convert"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol/human-reply-workshare-claim-guard-redclosure-20260917",
+      "closed_at": "2026-09-17T07:06:14Z",
+      "head_sha": "2612d5cd3dc4dc8c7fa42f96cf5a1ff06103a997",
+      "merged_at": null,
+      "number": 15344,
+      "state": "CLOSED",
+      "title": "Fix human-reply workshare commercial-claim smuggling"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zic-0301/human-reply-claim-guard-currentmain-20260917",
+      "closed_at": "2026-09-17T07:06:13Z",
+      "head_sha": "7ed81bfcb808e824c9b0a23ae3ba48f80c9181e7",
+      "merged_at": "2026-09-17T07:06:13Z",
+      "number": 15354,
+      "state": "MERGED",
+      "title": "Recompose human-reply commercial claim guard on current main"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol/human-reply-workshare-postmerge-truth-ci-20260917",
+      "closed_at": "2026-09-17T07:05:31Z",
+      "head_sha": "bd2a817757cfc3393d8319dd7d13149fcb014c3f",
+      "merged_at": null,
+      "number": 15348,
+      "state": "CLOSED",
+      "title": "FIX: close workshare rendered-claim and retained-CI gaps"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -303,65 +359,10 @@
       "number": 15333,
       "state": "CLOSED",
       "title": "USAC IT-26-139: preserve recovered hashes without byte-custody overclaim"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/transform-health-application-evidence-20260917",
-      "closed_at": "2026-09-17T06:50:38Z",
-      "head_sha": "073b509caba323784e63caec1e0c96669c815f00",
-      "merged_at": "2026-09-17T06:50:38Z",
-      "number": 15336,
-      "state": "MERGED",
-      "title": "Revenue: close Transform Health application evidence and rendered bundle gate"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol17/procurement-award-source-path-custody-15311-stop-closure-20260917",
-      "closed_at": "2026-09-17T06:50:02Z",
-      "head_sha": "1a3d40bff152beb807100a01fa9ee6c298a61f5d",
-      "merged_at": null,
-      "number": 15327,
-      "state": "CLOSED",
-      "title": "Recompose procurement source custody without workflow drift"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-cairn/workflow-budget-coverage-followup-20260917-01",
-      "closed_at": "2026-09-17T06:49:49Z",
-      "head_sha": "daa8d99fd7fd29ff38f0d3cf3a4af1912eea594b",
-      "merged_at": null,
-      "number": 15303,
-      "state": "CLOSED",
-      "title": "Preserve revenue guard coverage after workflow budget repair"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zqp-0240/workflow-budget-coverage-currentmain-20260917",
-      "closed_at": "2026-09-17T06:49:14Z",
-      "head_sha": "d5484ac721ab3bafe10e6820ee21c960fa6c8715",
-      "merged_at": "2026-09-17T06:49:14Z",
-      "number": 15332,
-      "state": "MERGED",
-      "title": "Finalize consolidated revenue guard coverage on current main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z17/travelers-agent-toolcall-evidence-20260917",
-      "closed_at": "2026-09-17T06:48:37Z",
-      "head_sha": "0de7c88beb33ac2b019598408fab6dd9bfca806e",
-      "merged_at": "2026-09-17T06:48:37Z",
-      "number": 15324,
-      "state": "MERGED",
-      "title": "Travelers: recover agent tool-call evidence gate"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T07:03:59Z",
+  "unchanged_since": "2026-09-17T07:09:24Z",
   "undatable_pulls": []
 }
