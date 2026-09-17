@@ -17,6 +17,19 @@
 
 Reference facts are retained normalized facts with `source_factset_sha256`; they are **not represented as hashes of the remote HTML bytes**. The route-map Git blob and reference-program file bytes are independently bound so any local rule-generation change requires a new digest.
 
+## Reference-generation currentness
+
+Program facts can change independently of project evidence, so `PACKET_READY` is additionally fenced by a **code-owned seven-day currentness horizon** (`REFERENCE_GENERATION_MAX_AGE_SECONDS = 604800`). The caller cannot widen or disable this horizon through the input document.
+
+Both clocks must be current relative to `input.evaluated_at`:
+
+- top-level `reference_programs.json.generated_at`;
+- the selected program's `observed_at`.
+
+If either timestamp is in the future or more than seven days old, packet state is `HOLD_PROGRAM_CURRENTNESS` even when every project fact is fresh and mechanically verified. The packet retains the policy horizon, both ages, and a deterministic `REFERENCE_GENERATION_CURRENT | REFERENCE_GENERATION_STALE | REFERENCE_GENERATION_FUTURE` reason. Existing `SOURCE_CONFLICT`, `NOT_ACCEPTING`, and closed-program holds still take the same program-level precedence and can never be bypassed by fresh project evidence.
+
+This is intentionally a **recensus requirement**, not an automatic network refresh. Before a stale generation can become ready again, re-open the listed first-party sources, create a new retained generation, and rerun the compiler.
+
 ## Gate model
 
 Each rule has a scope:
@@ -33,10 +46,10 @@ Every gate emits only:
 
 Program-level packet state is one of:
 
-- `PACKET_READY` — program generation is current and every mechanical eligibility/artifact gate is verified. Selector HOLDs are retained and do not imply ineligibility.
+- `PACKET_READY` — program generation is within the code-owned currentness horizon and every mechanical eligibility/artifact gate is verified. Selector HOLDs are retained and do not imply ineligibility.
 - `OWNER_FACTS_REQUIRED` — at least one mechanical fact/artifact is missing.
-- `HOLD_SOURCE_CONFLICT` — a mechanical gate has contradictory/stale/future evidence or does not satisfy a retained mechanical constraint.
-- `HOLD_PROGRAM_CURRENTNESS` — program is closed/not accepting or the retained first-party source generation is conflicting.
+- `HOLD_SOURCE_CONFLICT` — a mechanical gate has contradictory/stale/future project evidence or does not satisfy a retained mechanical constraint.
+- `HOLD_PROGRAM_CURRENTNESS` — program is closed/not accepting, retained first-party sources conflict, or the retained bundle/program observation is stale/future.
 
 ## Project evidence
 
@@ -80,7 +93,7 @@ Outputs are create-exclusive and never overwrite existing files. The receipt bin
 ## Updating program rules
 
 1. Re-open the exact first-party sources listed in the retained program entry.
-2. Update normalized `source_facts`, `rules`, `observed_at`, program state, and any first-party conflicts.
+2. Update normalized `source_facts`, `rules`, `observed_at`, program state, and any first-party conflicts; set top-level `generated_at` to the new retained generation time.
 3. Recompute each `source_factset_sha256` from canonical JSON of the exact `source_facts` array.
 4. If Commons' sponsor route map changed, update the retained Git blob SHA-1 and route source ids together.
 5. Run the full normal + `python -O` suite and CLI compile/verify.
