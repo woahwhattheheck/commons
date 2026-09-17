@@ -17,7 +17,7 @@ from revenue.revenue_funnel_control.engine import (
 
 SCHEMA = "TJL_ACCEPTED_WORK_TO_CASH_V1"
 BUNDLE_SCHEMA = "TJL_ACCEPTED_WORK_TO_CASH_BUNDLE_V1"
-TRUTH_BOUNDARY = "COMPOSED_RETAINED_EVIDENCE_NOT_LIVE_PROVIDER_QUERY"
+TRUTH_BOUNDARY = "COMPOSED_RETAINED_EVIDENCE_NOT_PROVIDER_AUTHENTICATED"
 ROUTE_SOURCE_CLASSES = frozenset(
     {"BUYER_MESSAGE", "SPONSOR_MESSAGE", "PROVIDER_DIRECTORY", "ORGANIZER_RULES"}
 )
@@ -176,13 +176,16 @@ def _validate_confirmation(
     provider_ref = _text(row["provider_ref"], f"{oid}.provider_ref", 512)
     provider_sha = _sha(row["provider_sha256"], f"{oid}.provider_sha256")
     if provider_ref == payment["ref"] and provider_sha == payment["sha256"]:
-        raise ReconcilerError(f"{oid}: provider confirmation must be independently bound")
+        raise ReconcilerError(
+            f"{oid}: copied retained payment evidence is not a separate confirmation"
+        )
     return {
         "opportunity_id": oid,
         "payment_event_id": event_id,
         "observed_at": observed.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "provider_ref": provider_ref,
         "provider_sha256": provider_sha,
+        "authentication": "RETAINED_ASSERTION_NOT_PROVIDER_AUTHENTICATED",
     }
 
 
@@ -195,9 +198,9 @@ def _cash_state(
         return "NO_PAYMENT_EVIDENCE"
     n = sum((opportunity["id"], e["id"]) in confirmations for e in payments)
     if n == len(payments):
-        return "ALL_PAYMENT_EVENTS_PROVIDER_CONFIRMED"
+        return "RETAINED_CONFIRMATIONS_COMPLETE_UNAUTHENTICATED"
     if n:
-        return "PARTIAL_PROVIDER_CONFIRMATION"
+        return "RETAINED_CONFIRMATIONS_PARTIAL_UNAUTHENTICATED"
     return "RETAINED_PAYMENT_EVENTS_UNCONFIRMED"
 
 
@@ -220,8 +223,9 @@ def _terminal(
     target = opportunity["settlement_target_cents"]
 
     if stage == "PAID":
-        if cash_state == "ALL_PAYMENT_EVENTS_PROVIDER_CONFIRMED":
-            return "DONE_PAID", "CLOSED_CONFIRMED", 90
+        # This generation has no provider-authenticated cash evidence boundary.
+        # Retained confirmation assertions can enrich review context but can never
+        # turn an upstream retained PAYMENT_RECEIVED assertion into terminal truth.
         return "VERIFY_PROVIDER_CASH", "CASH_EVIDENCE", 0
     if stage in {"OVERPAID_RECONCILE", "PARTIALLY_PAID", "PAYMENT_RECORDED_TARGET_UNKNOWN"}:
         return "RECONCILE_PAYMENT_EVIDENCE", "CASH_EVIDENCE", 0
@@ -399,6 +403,8 @@ def compile_packet(document: Any) -> dict[str, Any]:
             "queue_uses_headline_amount": False,
             "live_provider_query_performed": False,
             "provider_confirmation_is_retained_evidence_not_authentication": True,
+            "provider_authenticated_payment_evidence_available": False,
+            "terminal_paid_requires_provider_authenticated_evidence": True,
         },
     }
 
