@@ -17,18 +17,18 @@ python -m revenue.swarmops_dossier.cli compile packet.json policy.json \
 python -m revenue.swarmops_dossier.cli verify packet.json policy.json dossier.json
 ```
 
-The exported current library functions capture one clock generation plus the compiler, canonical serializer, parser, wrapper, semantic projector, schema, and mode used for verification when `current.py` initializes. Rebinding those package-module names afterward cannot change the already-exported verifier generation. Candidate ingress is frozen only from exact built-in JSON containers/scalars before semantic access, so stateful `dict`/`list` subclasses cannot present one view during authentication and another during freshness comparison.
+The exported current library functions capture one clock generation plus the direct compiler, canonical serializer, parser, wrapper, semantic projector, freezer, schema, and mode references used by `current.py` when it initializes. Rebinding those names on the `current` module afterward cannot change the already-exported verifier generation. Before current compile/verify performs semantic work, packet, policy, trusted-commercial authority, and candidate inputs are copied only from exact built-in JSON containers/scalars into one frozen generation. This prevents stateful `dict`/`list` subclasses from presenting different evidence to candidate authentication and fresh-current replay. The freezer's nested recursion is local to its captured function object, so rebinding the module freezer name cannot alter nested reads.
 
-This is an in-process evidence boundary, **not same-process hostile-code attestation**. A caller that mutates the Python interpreter or dependency modules (including stdlib clock sources) before module initialization/reload is outside this contract. Direct replacement of the exported functions is likewise outside the boundary. The v4 mode is deliberately named `CURRENT_SEMANTIC_SNAPSHOT` rather than claiming unforgeable process-clock provenance.
+This is an in-process evidence boundary, **not same-process hostile-code attestation**. Mutation of the Python interpreter, builtins/stdlib sources, or the internal globals of captured dependency functions such as the underlying engine is outside this contract, whether performed before or after `current.py` initializes. Closure-cell surgery or direct replacement of exported public functions is likewise outside the boundary. The protections above are specifically against untrusted input shape/state and ordinary rebinding of the direct `current.py` dependency names after its API generation is built. The v4 mode is deliberately named `CURRENT_SEMANTIC_SNAPSHOT` rather than claiming unforgeable process-clock provenance.
 
 Current verification ordering is fail-closed:
 
-1. require exact plain-JSON candidate ingress plus schema/mode;
-2. parse the candidate's recorded `as_of`;
+1. freeze packet, policy, trusted-commercial authority, and candidate into exact plain-JSON values;
+2. require candidate schema/mode and parse its recorded `as_of`;
 3. exact-recompile the candidate at that instant and require byte-for-byte canonical receipt equality;
 4. **only after candidate authentication completes**, sample the sealed verifier clock;
 5. reject candidate times in that verifier's future;
-6. recompile against the fresh verifier instant and compare the complete semantic projection, excluding only `as_of` and the two receipt hashes that necessarily vary with evaluation time.
+6. recompile the same frozen inputs against the fresh verifier instant and compare the complete semantic projection, excluding only `as_of` and the two receipt hashes that necessarily vary with evaluation time.
 
 A verification pause therefore cannot cross a freshness boundary while reusing a pre-authentication clock sample. A stale once-ready snapshot fails when required evidence changes classification/status. A recent caller-constructed snapshot may verify if it is byte-valid and its semantics are genuinely still current; that is intentional and does not assert timestamp provenance.
 
@@ -87,7 +87,7 @@ python -O -m unittest -v revenue.swarmops_dossier.test_engine
 python -O -m unittest -v revenue.swarmops_dossier.test_current revenue.swarmops_dossier.test_current_hardening
 ```
 
-`source-parses` is enrolled to run the SwarmOps currentness suites in normal and real optimized Python whenever this package changes. The retained hostile battery covers stale replay, future time, receipt tamper, module clock-name rebinding, reload cleanup, semantic-dependency rebinding, post-authentication clock ordering across a freshness boundary, exact plain-JSON ingress, historical/current separation, public CLI rejection of caller `--as-of`, and the explicit recent-snapshot truth-narrowing behavior.
+`source-parses` is enrolled to run the SwarmOps currentness suites in normal and real optimized Python whenever this package changes. The retained hostile battery covers stale replay, future time, receipt tamper, module clock-name rebinding, reload cleanup, direct current-module dependency rebinding, post-authentication clock ordering across a freshness boundary, frozen multi-pass packet/policy/trust/candidate inputs, exact plain-JSON ingress, historical/current separation, public CLI rejection of caller `--as-of`, and the explicit recent-snapshot truth-narrowing behavior.
 
 ## Authority ceiling
 
