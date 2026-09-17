@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 91,
     "open_pull_requests": 35,
-    "runs_in_progress": 13,
-    "runs_queued": 220
+    "runs_in_progress": 12,
+    "runs_queued": 223
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -72,10 +72,10 @@
       "branch": "zsol/evidence-broker-15769-provenance-closure-20260917",
       "created_at": "2026-09-17T23:56:31Z",
       "draft": false,
-      "head_sha": "f0a99c18f1738f8efaa169e9bc249f2f3437c0ca",
+      "head_sha": "56ea3469e3c71674a7b037d1b7e1846ded4ca5f0",
       "number": 15796,
       "title": "Truth-narrow exact-head evidence broker provenance",
-      "updated_at": "2026-09-17T23:56:31Z"
+      "updated_at": "2026-09-17T23:58:05Z"
     },
     {
       "author": "woahwhattheheck",
@@ -86,7 +86,7 @@
       "head_sha": "69c2fe9e6a6d6fd350dfd990383b2ec1dbb3b86d",
       "number": 15794,
       "title": "Muse: rejoin atomic send lease onto current main",
-      "updated_at": "2026-09-17T23:56:51Z"
+      "updated_at": "2026-09-17T23:58:16Z"
     },
     {
       "author": "woahwhattheheck",
@@ -108,7 +108,7 @@
       "head_sha": "84c6c867e5ee31d40b7c998be673c3887a116ac1",
       "number": 15758,
       "title": "Revenue coordination: canonical current-state compiler + stale-body guard",
-      "updated_at": "2026-09-17T23:57:16Z"
+      "updated_at": "2026-09-17T23:58:42Z"
     },
     {
       "author": "woahwhattheheck",
@@ -130,7 +130,7 @@
       "head_sha": "6b09abe5dc29a3b191841831a030d3120800f564",
       "number": 15751,
       "title": "Outreach qualification firewall: fail closed before send",
-      "updated_at": "2026-09-17T21:13:24Z"
+      "updated_at": "2026-09-17T23:58:20Z"
     },
     {
       "author": "woahwhattheheck",
@@ -196,9 +196,9 @@
     "15684": "a5aca2b07b41ca47fc3e914b172584fbc3712788",
     "15699": "43ada9c1b6a2152d1fd65d95ed41ccade89be98f",
     "15700": "08fa986edbb83cfb91fa75924997f23fc929eb3d",
-    "15707": "0b29fd5b301ee4bab775cab4f3ab3a035bb8b65f",
+    "15707": "13b6e6674d1057b23a022bf03bd6ce3ec67b648b",
     "15714": "49f70c1b3d26a1caffe7edb0cb5dc5fa6263c517",
-    "15717": "1030aa92d19100b114897a7bff6e76205070f397",
+    "15717": "8fdf3b2205c781697f68409beefe233b7df664a7",
     "15721": "f691d4d452180f1df152a4b504b730fa4854f000",
     "15724": "0bc0e6b19aed5ea71598c6ab6b914a828bc8a6f4",
     "15728": "cb58a8a194a40c354da2e68cb266c733fb6b77c5",
@@ -212,11 +212,11 @@
     "15758": "84c6c867e5ee31d40b7c998be673c3887a116ac1",
     "15761": "6bd10e7d848ced3a14bfb8f557af849cdfd4ae9f",
     "15794": "69c2fe9e6a6d6fd350dfd990383b2ec1dbb3b86d",
-    "15796": "f0a99c18f1738f8efaa169e9bc249f2f3437c0ca"
+    "15796": "56ea3469e3c71674a7b037d1b7e1846ded4ca5f0"
   },
   "pulls_listed": 35,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 16.9,
+  "queue_depth_per_runner": 18.6,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -386,6 +386,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T23:57:25Z",
+  "unchanged_since": "2026-09-17T23:58:55Z",
   "undatable_pulls": []
 }
