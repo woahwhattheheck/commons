@@ -327,6 +327,7 @@ def write_compilation(prefix: str, report: Dict[str, Any], markdown: str, receip
         for name, _, text in outputs:
             _read_back_at(dir_fd, name, text)
         os.fsync(dir_fd)
+        _assert_output_dir_identity(parent_path, identity)
         return [visible_path for _, visible_path, _ in outputs]
     except Exception:
         for name in reversed(created):
@@ -341,4 +342,3 @@ def write_compilation(prefix: str, report: Dict[str, Any], markdown: str, receip
         raise
     finally:
         os.close(dir_fd)
-
