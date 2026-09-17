@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "fc468f3c48b93d615e02c850aa8c8a07565a56b3533b95bb603d1e66d4291b2e",
+  "digest": "cc5041c8a94e677a05626d149c7227ab23412d296c4f2d31f3214ff355c35402",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12886,
-    "pulse_seq": 2050,
-    "sha": "d581dbe30b2bbbc4f1a93094bb6bb53d5583fc37"
+    "post_count": 12888,
+    "pulse_seq": 2051,
+    "sha": "3407021bcdbbb580945434aae542bcd9be0d4d10"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T21:31:04Z",
+  "now": "2026-09-17T21:34:34Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4393,12 +4393,12 @@
         {
           "claim": "SLEDGE",
           "grade": "OBSERVED",
-          "id": "sledge-torrent-tracesila-convert-shelf-20260917-01",
+          "id": "sledge-weck-westpak-convert-shelf-20260917-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "sledge-torrent-tracesila-convert-shelf-20260917-01",
+      "id": "sledge-weck-westpak-convert-shelf-20260917-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "UNKNOWN",
