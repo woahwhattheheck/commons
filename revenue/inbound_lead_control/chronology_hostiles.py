@@ -9,6 +9,7 @@ import sys
 import textwrap
 import unittest
 
+from revenue.inbound_lead_control import _engine_v1
 from revenue.inbound_lead_control.engine import InputError, compile_snapshot
 from revenue.inbound_lead_control.test_engine import _doc, _event
 
@@ -24,7 +25,7 @@ class InboundLeadChronologyHostiles(unittest.TestCase):
             messages.append(str(caught.exception))
         self.assertEqual(messages[0], messages[1])
 
-    def test_same_second_human_intent_escalation_is_order_invariant_hold(self):
+    def test_same_second_human_intent_escalation_fails_closed_in_both_orders(self):
         events = [
             _event(
                 "E-general",
@@ -57,6 +58,15 @@ class InboundLeadChronologyHostiles(unittest.TestCase):
         ]
         self._rejects_both_orders(events)
 
+    def test_private_legacy_import_path_is_also_fenced(self):
+        doc = _doc()
+        doc["leads"][0]["events"] = [
+            _event("E-in", "HUMAN_INBOUND", "2026-09-17T08:55:00Z", content="human"),
+            _event("E-out", "OUTBOUND_SENT", "2026-09-17T08:55:00Z", content="sent"),
+        ]
+        with self.assertRaisesRegex(InputError, "chronology ambiguity"):
+            _engine_v1.compile_snapshot(doc)
+
     def test_distinct_seconds_preserve_existing_state_machine(self):
         doc = _doc()
         doc["leads"][0]["events"] = [
@@ -72,6 +82,7 @@ class InboundLeadChronologyHostiles(unittest.TestCase):
         code = textwrap.dedent(
             r'''
             import copy
+            from revenue.inbound_lead_control import _engine_v1
             from revenue.inbound_lead_control.engine import InputError, compile_snapshot
             from revenue.inbound_lead_control.test_engine import _doc, _event
 
@@ -89,22 +100,23 @@ class InboundLeadChronologyHostiles(unittest.TestCase):
                     _event("E-bounce", "BOUNCE", "2026-09-17T08:55:00Z", content="bounce"),
                 ],
             ]
-            for events in cases:
-                messages = []
-                for ordered in (events, list(reversed(events))):
-                    doc = _doc()
-                    doc["leads"][0]["events"] = copy.deepcopy(ordered)
-                    try:
-                        compile_snapshot(doc)
-                    except InputError as exc:
-                        message = str(exc)
-                        if "chronology ambiguity" not in message:
-                            raise SystemExit(11)
-                        messages.append(message)
-                    else:
-                        raise SystemExit(12)
-                if messages[0] != messages[1]:
-                    raise SystemExit(13)
+            for compiler in (compile_snapshot, _engine_v1.compile_snapshot):
+                for events in cases:
+                    messages = []
+                    for ordered in (events, list(reversed(events))):
+                        doc = _doc()
+                        doc["leads"][0]["events"] = copy.deepcopy(ordered)
+                        try:
+                            compiler(doc)
+                        except InputError as exc:
+                            message = str(exc)
+                            if "chronology ambiguity" not in message:
+                                raise SystemExit(11)
+                            messages.append(message)
+                        else:
+                            raise SystemExit(12)
+                    if messages[0] != messages[1]:
+                        raise SystemExit(13)
             '''
         )
         root = Path(__file__).resolve().parents[2]
