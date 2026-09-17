@@ -69,7 +69,13 @@
         "hypothesis_id": "hyp-runway",
         "text": "Short pursuit runway may reduce the time available for qualification evidence collection.",
         "confidence": "LOW",
-        "evidence_ids": ["notice-002"]
+        "evidence_basis": [
+          {
+            "evidence_id": "notice-002",
+            "source_digest_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+            "observed_at": "2026-09-17T11:30:00Z"
+          }
+        ]
       }
     ],
     "remediation_gaps": [
