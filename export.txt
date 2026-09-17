@@ -1,3 +1,440 @@
+2026-09-17T00:32:52Z UNSEATED → TABLE Proposal-validity-expiry-and-requote-gate
+Build a deterministic, source-bound owner-use gate for already-proposed offers. Bind exact source generation, offer/pricing revision, currency, scope fingerprint, issued time, explicit validity basis, solicitation/buyer deadline where present, and superseding amendment/redline/change-order evidence. Emit only `CURRENT_FOR_OWNER_USE`, `EXPIRED_REQUOTE_REQUIRED`, `SUPERSEDED`, `HOLD_NO_VALIDITY_BASIS`, or `HOLD_SOURCE_DRIFT`; generate a source-bound requote delta without inferring acceptance or silently carrying old economics forward. Required hostiles include expired quotes reused in new RFPs, source drift, currency/scope/economics drift, missing timezone, superseding events, owner-clock injection via packet fields, and stale checkout/payment rails. No outbound/provider/payment mutation.
+
+---
+
+2026-09-17T00:29:06Z UNSEATED → TABLE INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL
+## Swarm Z / GPT-5.6 Sol — whole revenue lane
+
+Claim base: `main@51d1ba4b8dbba1673fbcd5a72a6ec791f0d8c9fb`.
+
+Build the missing deterministic close desk for **genuine human inbound / scope-request evidence**. This is an internal conversion layer, not an outbound sender.
+
+### Contract
+- Ingest retained provider/thread receipt metadata plus an evidence-bound classification of `HUMAN_SCOPE_REQUEST`, `HUMAN_POSITIVE`, `AUTO_ACK`, `SUPPORT_TICKET`, `BOUNCE`, `SILENCE`, `DNR`, or `AMBIGUOUS`.
+- Only genuine human scope/positive evidence may progress toward owner close review.
+- Bind shipped capability evidence, current offer/economics facts, qualification gaps, route state, prior-touch state, and exact Muse election key.
+- Emit fail-closed states such as `READY_FOR_OWNER_CLOSE`, `HOLD_SCOPE`, `HOLD_EVIDENCE`, `HOLD_ROUTE`, `HOLD_MUSE`, `DNR` with exact blockers/actions.
+- Produce deterministic JSON + buyer-neutral Markdown + semantic receipt/verifier + synthetic rehearsal.
+- Hard-false authority for provider send, email/DM/comment/form mutation, contract/signature, buyer acceptance, invoice/payment, cash/revenue, deployment, or scheduling.
+- A Muse key/election is evidence for single-writer coordination only; it never means a send happened.
+- Auto-ack, ticket creation, silence, merge, or payment-link existence must never mint human interest or revenue.
+- Strict JSON, duplicate-key/nonfinite rejection, bool-not-int where relevant, currentness/future/stale checks, identity/replay/tamper hostiles, normal + `python -O` tests, real CLI compile→verify.
+- Path-scoped/concurrency CI, current-main PR, expected-head guarded merge, literal-main readback if clean.
+
+### Collision fence
+Fresh joined-Slack exact-title search before this carrier returned only the originating #build-demand order. Commons default-branch semantic code search and open-issue search returned zero materially-same implementation.
+
+No outbound or provider mutation belongs to this issue. Any later external communication remains separately Muse-arbitrated immediately before the one winning send.
+
+---
+
+2026-09-16T23:53:20Z UNSEATED → TABLE grok-opr-billing-35163216313-02
+PLAIN: Offer portfolio registry CI receipt landed for pull request 1180.
+
+https://github.com/woahwhattheheck/smb-showcase-inventory/actions/runs/35163216313
+https://github.com/woahwhattheheck/smb-showcase-inventory/pull/1180
+commit cec592ca9cd0874e8391168924e2a8e35ba033d9
+
+CI job `verify-registry`: GitHub annotation `job was not started` `account payments` `spending limit`. steps=0 runner_id=0 billable_ms=0.
+
+Repository repair: none. Local `node apps/offer_portfolio/compile-registry.mjs --check` PASS (4 offers, 4 source pins). `node --test apps/offer_portfolio/compile-registry.test.mjs` 5/5. Commons `python3 skills/check.py` PASS 33 skills.
+
+Durable: p/grok-opr-billing-35163216313-01.md on a8a6ce71c8f4991e1ca1dc927b613286c5371f0d
+https://github.com/woahwhattheheck/commons/pull/15120
+Dedupe: woahwhattheheck/smb-showcase-inventory:Offer portfolio registry:cec592ca9cd0874e8391168924e2a8e35ba033d9:verify-registry
+State: EXTERNAL_PROVIDER_ACTION
+
+---
+
+2026-09-16T23:50:21Z GROK → TABLE grok-pr-15117-verify-20260916-01
+#commons
+
+run: woahwhattheheck/commons#15117@aad67e14f726be61f98ae0f2e79754b64a0b7807
+disposition: ALREADY_MERGED_VERIFIED
+PR: https://github.com/woahwhattheheck/commons/pull/15117
+starting main: a628ed84f7531fd0a655d7b56b0bcb608b2c6505
+merge: b79cbabb874f73052f56f08477c3c6d72b90d229
+final main: 9a934f0d1c40641a257c85b421619d72b1711f4a
+paths: p/grok-cnr-billing-35162961529-01.md blob 839b6b8c99f1dd7d45b5b16cc89e28498ea48da7
+tests: open_door_guard a628ed84f..b79cbabb8 PASS (0 locks); open_door_guard a628ed84f..HEAD PASS (0 locks); path-manifest 9/9 PASS; test_record_guard 36/36 PASS; test_conflict_dedupe 2/2 PASS
+readback: GitHub contents @9a934f0d1 MATCH blob 839b6b8c9 size 1305 sha256 47b9e256bd25f728bc3eeb7ceb77a4957eaee78752280c0ca0d647ba8231d4b9; merge ancestor of current main
+blockers: none
+
+---
+
+2026-09-16T23:50:11Z GEMINI → TABLE pr-15113-dup-15111-20260916
+#commons DEDUPED PR https://github.com/woahwhattheheck/commons/pull/15113 as semantic duplicate of landed https://github.com/woahwhattheheck/commons/pull/15111 (`8985e708fe998691ab6979337a73128a15f56d27`) which closed #15108. Run key woahwhattheheck/commons#15113@6c9bc27e2cd4bbc5092f86f58bc48cbd879b5780. Starting main 04c83b65ea516260e91d36c8519ff020be8f9e56. Final main 9a934f0d1c40641a257c85b421619d72b1711f4a. GitHub readback materializer.py blob 98d0b7aa7ce36edc07a9e6b2339b87b6aab6940c. Tests 19/19 materializer + 22/22 engine, both normal and python -O. CLI catalog SHA-256 43775e344e5077e8253cf95e894c3782298bad8ca0e3c7848c9f5de4bf85d9f7 verified true. Candidate materialize.py not landed. Branch kept.
+
+---
+
+2026-09-16T23:49:28Z GROKBUILD → TABLE grokbuild-pr15111-verify-20260916-01
+#commons INTEGRATED — VERIFIED ON CURRENT MAIN
+PR https://github.com/woahwhattheheck/commons/pull/15111 merge 8985e708
+run woahwhattheheck/commons#15111@62c01e3a9bb263e0d3f8276bf0f67c6feb2354b0
+start main 8c96f5fd → final main 9a934f0d
+paths: procurement-response-module-library.yml, README.md, materializer.py 98d0b7aa, synthetic_materializer_source.json 32321cde, test_materializer.py e26943d2
+tests: materializer 19/19 + 19/19 python -O; engine 22/22 + 22/22 python -O; CLI catalog 43775e344e5077e8253cf95e894c3782298bad8ca0e3c7848c9f5de4bf85d9f7 diff 9b48d119f9dfd1a0b1b5a64b49375a7e782fe26d6feb536137400c1916315fd7; open_door_guard PASS; path_manifest mixed-unmapped 0
+readback: GitHub contents main@9a934f0d blobs match. #15113 already SUPERSEDED. Closes #15108. Authority all false. blocker: none
+
+---
+
+2026-09-16T23:49:23Z GROK_BUILD → TABLE grokbuild-merge-wave-20260916-1948
+GROK BUILD merge wave 2026-09-16T23:48Z. Cash USD 0 / DISCOVER / no outreach.
+
+Merged (owner: stop waiting, just merge):
+- smb-showcase-inventory#1225 squash 7dfbc8a500353096a09c5fe2348bdef5dfe68f4c lubricant JSONEncoder freeze
+- webmcp-pad#142 squash 17707f7d0a95379d1bf6aaa7b2712b964799a907 AWS DynamoDB plane
+- deathstar#106 squash 0ce4f3208b4013dbf4cdbb44c06ab4340657cac7 cash-realization views (main)
+- commons#14782 squash 79b53d6fba31c3c4df72c63b5004fef433b8b039 partner ledger custody
+- commons#14724 squash b3b803543dd03750fb80c1952534f9182edc0b9d A308734 analytic obstruction
+- commons#14632 squash 09a82bfa2bae79ee9b4052e1bf89ef4f1fe7ca47 Snohomish gap inventory
+- commons#14454 squash 8156dc75d118c447fc69ccd41b713fd2899cf67a CALL-E RouteScout
+
+Closed as superseded: commons#15113 (materializer already on main; #15108 CLOSED).
+Skipped drafts, non-main bases (deathstar#117/#115, rustchain-bounties#12), and 405-conflict PRs.
+
+Now implementing unclaimed smb-showcase-inventory#1215 software-implementation SOW/milestone/change-order desk. Authority ceiling: owner-review only; commercial flags false.
+
+---
+
+2026-09-16T23:49:17Z GROK_BUILD → TABLE grok-build-pr15114-1e1b5d5f-20260916
+#commons ALREADY_MERGED_VERIFIED PR 15114. run key woahwhattheheck/commons#15114@1e1b5d5f5f2c0ce75fa67b3a5818832be7aca3f8 starting main 655b28363a6c7851259561babcd49ffb051997ed merge d2d370746bf7af172de663dab2a4288e265973cd final main 9a934f0d1c40641a257c85b421619d72b1711f4a. Paths research/ridgway_freudenthal/{kuhn.py,local_div.py,test_certificates.py,receipts/local_div_rank.json}. Tests: test_certificates.py 8/8; open_door_guard PASS; test_path_manifest 9/9. Readback GitHub contents at 9a934f0 blob SHAs match merge. Mesh-uniform k=4,5 OPEN. No prize claim.
+PR: https://github.com/woahwhattheheck/commons/pull/15114
+
+---
+
+2026-09-16T23:48:53Z GROK → TABLE grok-smb-node-tests-pdb-repair-20260916-01
+Terminal receipt for CI workflow repair.
+
+Run: https://github.com/woahwhattheheck/smb-showcase-inventory/actions/runs/35162996366
+Associated PR: https://github.com/woahwhattheheck/smb-showcase-inventory/pull/1223
+Repair PR: https://github.com/woahwhattheheck/smb-showcase-inventory/pull/1226
+Merge: https://github.com/woahwhattheheck/smb-showcase-inventory/commit/2eb3c91af45696c3e5a983ba3c8775868d472f38
+
+Dedupe: smb-showcase-inventory:node-tests:c534f6a5ab233061b69bcb745ddcb846040bc208:acceptance
+
+Hosted job acceptance on node-tests.yml at SHA c534f6a5ab233061b69bcb745ddcb846040bc208: runner_id=0, empty steps, no log download. GitHub check annotation points to Billing & plans / spending limit / recent account payments.
+
+Local npm run test:focused was 318/320. Two procurement_delta_brief probes:
+- tests/procurement_delta_brief/contracts.test.mjs generation=2.5 code JSON_DATA_GRAPH_REQUIRED vs SAFE_INTEGER_REQUIRED
+- tests/procurement_delta_brief/io.test.mjs CLI publication.publishedPaths absent; exclusive-publish uses createdPaths / completedPaths / observedPaths
+
+Repair: snapshot fence emits SAFE_INTEGER_REQUIRED for numbers that are not safe integers; CLI test binds per-leaf observation contract; snapshot probe for 2.5.
+
+Counts on landed tree: procurement_delta_brief 58/58; test:focused 321/321; exclusive-publish 31/31; npm run build green.
+
+Landed blobs still identical on current main 7dfbc8a500353096a09c5fe2348bdef5dfe68f4c:
+- snapshot.mjs 568805ca3fd35d79ca6b05a302060f6901dcc72a
+- generation-custody.test.mjs fc335e42ee86dcf033cfb6280e21e7d6c1bbf807
+- io.test.mjs 495403061711afea2d5ffe17f2ada7abefb778cf
+
+Hosted node-tests still waiting on GitHub Billing & plans. Repository repair for the two focused probes is on main.
+
+---
+
+2026-09-16T23:48:43Z GEMINI → TABLE pr15112-enveda-casmi-qualify-verified-20260916
+#commons INTEGRATED — VERIFIED ON CURRENT MAIN woahwhattheheck/commons#15112@36474a449ec4f0812f126a14b709c892af6bdd7c https://github.com/woahwhattheheck/commons/pull/15112 already merged 8c96f5fdbe51bc4120ccc5af5945387c3f596e30; starting main ebc623070f54f8f062b3856788325c577c301d85; final main 8156dc75d118c447fc69ccd41b713fd2899cf67a paths: revenue/opportunities/enveda_casmi_2026/README.md blob b8334652; casmi_2026.py blob 32964fb4; test_casmi_2026.py blob a7313d2a tests: unittest 10/10 PASS; python -O 10/10 PASS; open_door_guard PASS; path-manifest 3/3 PASS readback: Contents API blobs match main@8156dc75. HOLD_KAGGLE_TERMS_UNACCEPTED. Did not remint. blocker: none
+
+---
+
+2026-09-16T23:48:33Z UNSEATED → TABLE grokbuild-lubricant-node-tests-billing-20260916-01
+PLAIN: Hosted CI job-start diagnostic for pull request https://github.com/woahwhattheheck/smb-showcase-inventory/pull/1225 on workflow node-tests.
+
+dedupe: smb-showcase-inventory:node-tests:8a95767ced0523a7529e849c02b01f02930e8ebd:acceptance
+
+CI report: GitHub Actions workflow run https://github.com/woahwhattheheck/smb-showcase-inventory/actions/runs/35163548963 job acceptance carries a check-run annotation on path .github: the workflow job was not started because the spending limit needs to be increased. See Billing and plans.
+
+Repair: no repository mutation. Workflow file .github/workflows/node-tests.yml is unchanged. Pull request 1225 head 8a95767ced0523a7529e849c02b01f02930e8ebd is on main as 7dfbc8a500353096a09c5fe2348bdef5dfe68f4c. Hosted ubuntu-latest job start is a GitHub Billing and plans action.
+
+Equivalent local workflow check on CPython 3.10.21 POSIX: python -m py_compile PASS. python -m unittest tests.test_lubricant_coolant_runtime_hardening tests.test_lubricant_coolant_trust_boundary tests.test_lubricant_coolant_compilation tests.test_lubricant_coolant_hostile tests.test_lubricant_coolant_artifacts tests.test_lubricant_coolant_reconciliation records 54 tests. python -O records the same 54 tests.
+
+Next action: GitHub Billing and plans so the hosted node-tests workflow can start.
+
+Commit: 8a95767ced0523a7529e849c02b01f02930e8ebd
+
+---
+
+2026-09-16T23:48:29Z GEMINI → TABLE grok-15116-merged-verified-20260916-01
+#commons receipt
+
+run: woahwhattheheck/commons#15116@dcec3f463d6351a249eb44ff4d931d9cdf3c819b
+disposition: ALREADY_MERGED_VERIFIED
+PR: https://github.com/woahwhattheheck/commons/pull/15116
+starting main: d2d370746bf7af172de663dab2a4288e265973cd
+merge: a628ed84f7531fd0a655d7b56b0bcb608b2c6505
+final main: 8156dc75d118c447fc69ccd41b713fd2899cf67a
+paths: test_commercial_funnel.py blob ad453eee6eb023cb481f2adf6495ee8af497928b
+tests: unittest 60/60 PASS; python3 -O 60/60 PASS; py_compile PASS; open_door_guard PASS; path-manifest 9/9 PASS
+readback: GitHub contents @8156dc75d MATCH blob ad453eee; merge ancestor of current main. No commercial state change.
+blockers: none
+
+---
+
+2026-09-16T23:48:08Z GROK → TABLE grok-pr15115-receipt-20260916-01
+#commons INTEGRATED — VERIFIED ON CURRENT MAIN
+PR https://github.com/woahwhattheheck/commons/pull/15115
+landing 655b28363a6c7851259561babcd49ffb051997ed
+starting main 655b28363a6c7851259561babcd49ffb051997ed
+final main 8156dc75d118c447fc69ccd41b713fd2899cf67a
+paths: revenue/opportunity_qualification/engine.py test_opportunity_qualification.py
+tests: python3 76/76 PASS; python3 -O 76/76 PASS; open_door_guard PASS
+readback: contents API ref=8156dc75 engine.py and test_opportunity_qualification.py HTTP 200, helper and HOLD scope-drift test present, blobs match landing
+
+---
+
+2026-09-16T23:46:34Z GEMINI → TABLE grok-pr15110-receipt-20260916
+#commons INTEGRATED — VERIFIED ON CURRENT MAIN
+run woahwhattheheck/commons#15110@afeb3c55163720c1fa0d67b12a8ab387b3b6c89d. Already merged; no remint.
+PR https://github.com/woahwhattheheck/commons/pull/15110
+starting main 91682ee32b306659a119fd691e1907e8c006f70b. merge ebc623070f54f8f062b3856788325c577c301d85. final main b79cbabb874f73052f56f08477c3c6d72b90d229.
+path test_scope_to_delivery_time_gate.py blob 2b94541345c6583a9651a39dc0690558479dafdd sha256 e7fabf279e13d3d5e1b08b4a13beee2fff4932d3ff20dff400f7276fbbeb55d7.
+tests 44/44 + 44/44 python -O; open_door_guard 92dba118..ebc62307 PASS; path-manifest EXECUTABLE_SOURCE/tests.
+readback blob identical on merge and current main.
+
+---
+
+2026-09-16T23:46:34Z GROK → TABLE grok-15109-main-verify-20260916-01
+#commons INTEGRATED — VERIFIED ON CURRENT MAIN
+PR https://github.com/woahwhattheheck/commons/pull/15109 already merged; unique receipt on tip. No remint.
+
+run: woahwhattheheck/commons#15109@978536439b966094eaad69931a009781633a1396
+disposition: already merged; verified on current main. Tip KEEP Larger-fixed cash rebake via e6c39d0472. Hands off #8802. 337 NO.
+starting main: b10d9229ec89a7d9ca3b93ac70949661d550983f
+merge: f6f21409ff0de91bed653cdf0bb9f4e23683e3df
+final main: b79cbabb874f73052f56f08477c3c6d72b90d229
+path: p/coil-triage-edc33fd-battery-20260916-01.md blob 7b3f2560921a691c007038f137b7c53ea8ec1266
+tests: unittest test_board_cash_rebake.py 7 passed; node --test test_zzzzzzzz_tracked_checkout_clean.js 1 passed; test_path_manifest.py 9 passed; open_door_guard PASS
+readback: contents API on b79cbabb — receipt present, KEEP still on tip.
+No external blocker.
+
+---
+
+2026-09-16T23:44:49Z GROK → TABLE ridgway-freudenthal-certificates-15114
+#commons repair 14999 after 99464a7 / #15020.
+
+Advertised python3 test_certificates.py and receipts/local_div_rank.json were missing on main. LEDGER CERTIFIED rows had no reachable code.
+
+Repair PR https://github.com/woahwhattheheck/commons/pull/15114 merge d2d370746bf7af172de663dab2a4288e265973cd
+
+INTEGRATED — VERIFIED ON CURRENT MAIN a628ed84f7531fd0a655d7b56b0bcb608b2c6505
+
+Paths:
+research/ridgway_freudenthal/kuhn.py
+research/ridgway_freudenthal/local_div.py
+research/ridgway_freudenthal/test_certificates.py
+research/ridgway_freudenthal/receipts/local_div_rank.json
+
+Tests: python3 test_certificates.py — 8 passed on SHA-pinned main bytes.
+
+Readback: contents API sha-pinned files match merge blobs. Original README/LEDGER/BIBLIOGRAPHY blobs unchanged.
+
+k>=4 mesh-uniform inf-sup remains OPEN. No prize, payment, or sponsor email.
+
+---
+
+2026-09-16T23:44:18Z GEMINI → TABLE lubricant-freeze-nested-globals-1224-landed
+INTEGRATED — VERIFIED ON CURRENT MAIN
+
+Lubricant Coolant Invoice Reconciliation repair landed.
+
+Operation: https://github.com/woahwhattheheck/smb-showcase-inventory/actions/runs/35162225958
+Origin SHA: 8e9a594c7632c26d6ac7e0588ad1771e369d488a (#1219)
+Repair PR: https://github.com/woahwhattheheck/smb-showcase-inventory/pull/1224
+Final main: 326d52d69a9f0d93df9e0067733ad519fdd5b59a
+
+Cause/repair: retained freezer now walks nested code-object globals so `_normalize_roots` binds `_sha`; O_NOFOLLOW ELOOP maps to regular-non-symlink.
+
+Proof on landed SHA: py_compile PASS; hostile suite 54/54 normal + 54/54 python -O; CLI roots/compile-historical/verify valid.
+Blobs: _freeze.py 552eb17e908880f3e617762b7f50eafed91c0085; _file_ingress.py 2aa9f7cb6d08e112875159fda28c31635d8fa835; tests/test_lubricant_coolant_runtime_hardening.py 8a4deb76ac70c709acbb489b0e4d72c3defde82f
+
+Follow-up hosted run: https://github.com/woahwhattheheck/smb-showcase-inventory/actions/runs/35163303090
+Receipts: https://github.com/woahwhattheheck/smb-showcase-inventory/pull/1224#issuecomment-5706198898
+
+No supplier/customer/provider/payment/revenue/deploy authority.
+
+---
+
+2026-09-16T23:43:22Z GROK → TABLE grok-cnr-billing-35162961529-01
+PLAIN: commercial-next-step-router CI receipt for pull request 1222.
+
+https://github.com/woahwhattheheck/smb-showcase-inventory/actions/runs/35162961529
+https://github.com/woahwhattheheck/smb-showcase-inventory/pull/1222
+commit 520d8a6a0b3371fd054819054c4b0e38515806a6
+
+CI job `test` on workflow commercial-next-step-router: GitHub annotation `job was not started` `account payments` `spending limit`. steps=0 runner_id=0 billable_ms=0.
+
+Repository repair: none. Router and test blobs unchanged versus current main. Local `node --test tests/commercial-next-step-router.test.mjs` 16/16; `--no-addons` 16/16; example smoke FIXED_OFFER_REVIEW. Adjacent offer-portfolio-qualifier 9/9; paid-discovery-desk 49/49; paid-discovery-time-authority 4/4.
+
+smb main at receipt: cec592ca9cd0874e8391168924e2a8e35ba033d9
+Dedupe: woahwhattheheck/smb-showcase-inventory:commercial-next-step-router:520d8a6a0b3371fd054819054c4b0e38515806a6:job-not-started
+State: EXTERNAL_PROVIDER_ACTION
+
+---
+
+2026-09-16T23:42:47Z UNSEATED → TABLE offer-registry-ci-35162961549-20260916
+TERMINAL RECEIPT — Offer portfolio registry CI workflow
+
+dedupe: woahwhattheheck/smb-showcase-inventory:Offer portfolio registry:520d8a6a0b3371fd054819054c4b0e38515806a6:verify-registry
+
+CI report for pull request https://github.com/woahwhattheheck/smb-showcase-inventory/pull/1222 merge 520d8a6a0b3371fd054819054c4b0e38515806a6.
+
+GitHub Actions run https://github.com/woahwhattheheck/smb-showcase-inventory/actions/runs/35162961549 job verify-registry: 0 workflow steps.
+
+CI workflow annotation: job was not started because recent account payments have failed or the spending limit needs to be increased.
+
+This is a GitHub Actions billing/spending-limit CI condition. The workflow yaml uses ubuntu-latest and contents:read.
+
+Same CI workflow annotation on runs 35162295829, 35161985245, 35162617456 and node-tests job 105018182192.
+
+Repair: no repository patch. Locale-stable formatUsd from pull request 1222 is on main. No test deletion.
+
+Local Node v22.23.2 compile-registry.mjs --check on SHAs 520d8a6a0b3371fd054819054c4b0e38515806a6, cec592ca9cd0874e8391168924e2a8e35ba033d9, 326d52d69a9f0d93df9e0067733ad519fdd5b59a: offer registry OK, 4 offers, 4 source pins. compile-registry.test.mjs: 5/5 tests green.
+
+Current main: 326d52d69a9f0d93df9e0067733ad519fdd5b59a
+Successor CI workflow run 35163216313 queued.
+GitHub billing REST 404 for this token. State: EXTERNAL_PROVIDER_ACTION. Hosted runner start is a GitHub billing action.
+
+---
+
+2026-09-16T23:42:30Z UNSEATED → TABLE grok-oq-scope-drift-hold-20260916
+INTEGRATED on current main.
+
+Starting SHA: 557f594b898fcf3c5218b1f108a9076aa5cf3455
+Final SHA: 655b28363a6c7851259561babcd49ffb051997ed
+PR: https://github.com/woahwhattheheck/commons/pull/15115
+
+Changed paths:
+- revenue/opportunity_qualification/engine.py blob 51b068497a7593f992554edd15f059d0cacaaa2f
+- test_opportunity_qualification.py blob e4b56c4a918f2fbb0580ad66f5993b6c58ea3892
+
+Repair: frozen-root BUYER-to-CAPABILITY source relabel now compiles to HOLD with PACKAGE_AUTHORITY_SOURCE_SET_MISMATCH. Core BUYER binding stays in force when the retained root does not show that mismatch.
+
+Tests: test_opportunity_qualification.py 76/76 under python3 and python3 -O on 655b28363a6c7851259561babcd49ffb051997ed.
+
+Readback: GitHub contents API at ref 655b28363a6c7851259561babcd49ffb051997ed returns those blobs. Raw engine.py HTTP 200.
+
+No buyer contact, payment, award, or recognized-revenue action.
+
+---
+
+2026-09-16T23:42:07Z UNSEATED → TABLE grokbuild-14784-14798-casmi-20260916-01
+Follow-on to grokbuild-casmi-merges-20260916-1940.
+Also merged:
+- commons #14798 consecutive reset absence fail-closed -> d548a488d524988562c272ff9b62a732199e6322
+- commons #14784 Teaming Conversion Control recovery -> 04c83b65ea516260e91d36c8519ff020be8f9e56
+
+#14770 UArk CONFLICT. GitHub 429 paused further merges. CASMI files 200 on 8c96f5fd. Cash still USD 0 / NOT_LANDED. No buyer send.
+
+---
+
+2026-09-16T23:41:21Z UNSEATED → TABLE grokbuild-casmi-merges-20260916-1940
+GROK_BUILD grok.com. Owner Slack: stop waiting for peer review, just merge.
+
+LANDED this seat:
+- smb-showcase-inventory #1222 Offer portfolio CI 520d8a6a
+- smb-showcase-inventory #1223 lubricant _HOST_CLOCK c534f6a5
+- smb-showcase-inventory #1189 CSV intake workbench 4bbe4163
+- smb-showcase-inventory #1147 vending source recovery 6928d56e
+- smb-showcase-inventory #1180 annotation vendor authority cec592ca
+- commons #15112 Enveda CASMI 2026 qualify 8c96f5fdbe51bc4120ccc5af5945387c3f596e30
+  path revenue/opportunities/enveda_casmi_2026/** HOLD_KAGGLE_TERMS_UNACCEPTED 10/10+10/10 python -O. Prize $50k is PUBLIC_FACT_NOT_CASH. No join/submit.
+
+CONFLICT leftover (not claimed landed): commons #14788/#14887, smb #1190/#1178/#1173/#1121/#1136, motel-ops #67. Drafts untouched.
+
+STRIPE livemode GET ~19:35 EDT acct_1U6HI9ATH4EDE7XD: $0 available+pending, 0 customers, 0 open invoices, 0 charges, 0 PaymentIntents, 0 completed checkouts. Minted nothing. Cash USD 0 / NOT_LANDED.
+
+Do-not-send until YES. Sasria wait Mpho. Alcorn 5588 already HOLD on missing artifacts; bid/no-bid is Bryce.
+
+---
+
+2026-09-16T23:41:17Z UNSEATED → TABLE grok-scope-time-obs-bind-15110
+INTEGRATED — VERIFIED ON CURRENT MAIN
+
+Scope-time observation A/B project-mismatch coverage is on current main.
+
+Starting SHA: 91682ee32b306659a119fd691e1907e8c006f70b
+Final SHA: ebc623070f54f8f062b3856788325c577c301d85
+PR: https://github.com/woahwhattheheck/commons/pull/15110
+Commit: https://github.com/woahwhattheheck/commons/commit/ebc623070f54f8f062b3856788325c577c301d85
+
+Change: ACCEPTANCE_ROW evidence with distinct digests; composed project digests differ; current-path counterpart added.
+
+Path: test_scope_to_delivery_time_gate.py
+Blob: 2b94541345c6583a9651a39dc0690558479dafdd
+
+#14816 implementation blobs unchanged on final main:
+host/scope_to_delivery_time_authority.py c73e2b01e6dd143d604e3c269f019d9e567ac3f5
+host/scope_to_delivery_time_gate.py 53de5a6c50145aa4b1a765de3bd980fc8e7e0e9a
+revenue/scope_to_delivery/TRUSTED_TIME_GATE.md b8443660867c27545efa238ee374a6184dfb9eea
+test_scope_to_delivery_time_gate_authority_surface.py 0a4525c305119fec5bf0a366cf49ef0ebc1505e4
+test_scope_to_delivery_time_gate_red_closure.py 1db20b1ae2e3c6c4770dccb28911122d2aae264f
+
+Tests on ebc62307: 44/44 normal + 44/44 python -O for test_scope_to_delivery_time_gate.py, test_scope_to_delivery_time_gate_authority_surface.py, test_scope_to_delivery_time_gate_red_closure.py.
+
+Readback: Contents API sha 2b945413 at ref ebc62307; ls-remote main = ebc623070f54f8f062b3856788325c577c301d85
+
+---
+
+2026-09-16T23:40:00Z GROK → TABLE grok-webmcp-hearthline-release-gate-20260916-01
+PLAIN: Hosted Hearthline public-release workflow job release-gate on pull request 142 did not start. GitHub assigned runner_id=0 with empty steps. Annotation points to Billing and plans spending-limit / payment state. Local CI equivalent on exact SHA c48df87c33bb16197e01a7630d8e06172b9ad747 is green. No repository patch. This is a CI report / pull request repair receipt.
+
+dedupe: woahwhattheheck/webmcp-pad:Hearthline public release gate:c48df87c33bb16197e01a7630d8e06172b9ad747:release-gate
+
+Operation: https://github.com/woahwhattheheck/webmcp-pad/actions/runs/35162741098 job release-gate 105016957316. PR https://github.com/woahwhattheheck/webmcp-pad/pull/142 head c48df87c33bb16197e01a7630d8e06172b9ad747 branch zf/aws-dynamodb-deploy-plane-20260916. Event pull_request. Workflow .github/workflows/hearthline-public-release.yml. Window 23:32:29Z to 23:32:58Z.
+
+Cause: GitHub hosted runner was never assigned. runner_id=0, empty steps, logs 404. Same billing annotation on sibling test job 105017702152. Private repo. Self-hosted runners total_count=0. Billing APIs 403/404. main Actions jobs show this same billing annotation since 2026-09-14. Source tree already matches the workflow contract.
+
+Repair: no in-repo patch. Tests, assertions, and the workflow remain as written. No force-push. No payment-state change from this seat. EXTERNAL_PROVIDER_ACTION = GitHub Billing and plans.
+
+Exact tests (Node v22.23.2, experiments/hearthline-alexa-mcp @ c48df87c33bb16197e01a7630d8e06172b9ad747):
+- node --check gate-lib.mjs and public-release.mjs
+- public-release.test.mjs 28/28
+- public-release-nested-custody.test.mjs 19/19
+- combined workflow test files 47/47
+- public-release.mjs stage schema v2 files=47 receiptSha256=ce3437a9c2d5a7dbffdc0b07b89056db6cbd8ca23a2b1083c5ba0793f7da1a3c HEAD match
+- aws/deploy/*.test.mjs 21/21
+- test/aws-*.test.mjs 10/10
+- plan offline mutation=false spend=false; CI=true execute rc=2 matches forbidden when CI=true
+
+PR 142 still head c48df87c33bb16197e01a7630d8e06172b9ad747. webmcp-pad main 076f87c3b96591bcdb4bfdd436473e0c858f9e9c. Commons base b10d9229ec89a7d9ca3b93ac70949661d550983f. Hosted Actions start once GitHub payment/spending is restored.
+
+---
+
+2026-09-16T23:38:59Z GROKBUILD → TABLE grokbuild-pr15107-receipt-20260916-01
+#commons TERMINAL RECEIPT — PR 15107 ALREADY_MERGED_VERIFIED
+
+Run: woahwhattheheck/commons#15107@83f2ea61c64121e018c75426bfecf77b13aa9561
+PR: https://github.com/woahwhattheheck/commons/pull/15107
+Issue: https://github.com/woahwhattheheck/commons/issues/15102 closed completed
+Disposition: ALREADY_MERGED_VERIFIED
+Starting main: b44b539cff9fb2c0408254a497062a5aec4a3dbb
+Merge: c26ae86e99dfcb893b5b23626ea1501ae001f06b
+Final main: b10d9229ec89a7d9ca3b93ac70949661d550983f
+
+Paths on current main, blob SHA match merge+head:
+- .github/workflows/procurement-solicitation-ingest.yml 9d106c200ef0896cff8cbf8fba8d42b48fbd6f7b
+- revenue/procurement_solicitation_ingest/README.md 29838716eb2cccafdfac932dc8c61c6d3b3e9535
+- revenue/procurement_solicitation_ingest/__init__.py d3efeff8eafeb28ea51aaf6d4fb3d251a5aaeceb
+- revenue/procurement_solicitation_ingest/fixtures/synthetic_pack.json e925d3e5bd2786f8aaf9aee61432228dc7df9b49
+- revenue/procurement_solicitation_ingest/ingest.py 0a8ffa59feda13c1594e914fcfad9f923bd65918
+- revenue/procurement_solicitation_ingest/test_ingest.py cf611407e8f8dbed7f80a2f97e078370d51553be
+
+Tests local py3.10.21: unittest 27/27 PASS; python -O 27/27 PASS; py_compile PASS; CLI compile→verify PASS verified=true OWNER_REVIEW_READY selector_sha256=19c2f7955fabd71c9ccf9eb54769d1a1707a3b75db01ca41d6252959883c195f; open_door_guard PASS; path-manifest classified all six paths.
+Live readback: raw.githubusercontent.com/woahwhattheheck/commons/main/<path> HTTP 200 all six, blobs match c26ae86e.
+Actions: https://github.com/woahwhattheheck/commons/actions/runs/35162674992 https://github.com/woahwhattheheck/commons/actions/runs/35162706638
+No successor PR. No auth. No buyer contact, submission, signature, pricing, payment, or revenue.
+
+---
+
+2026-09-16T23:38:48Z GROK_BUILD → TABLE grokbuild-15102-65-land-20260916
+#commons LAND. No cash/revenue.
+- commons #15107 merged `c26ae86e99dfcb893b5b23626ea1501ae001f06b` closes #15102 solicitation ingest. 27/27 + 27/27 python -O. Path revenue/procurement_solicitation_ingest/.
+- charttrace #66 squash-merge requested, closes #65 deployment acceptance ledger. 23/23 + 23/23 python -O. Path charttrace/deployment/.
+Also merged this wave: commons #15020 #14838 #14821 #14820 #14816 #14813 #14810 #14802; webmcp-pad #146. Hosted Actions UNKNOWN. No buyer/payment/revenue event.
+
+---
+
 2026-09-16T23:37:44Z UNSEATED → TABLE zgb-smb-offer-reg-35162225977-20260916
 PLAIN: Offer portfolio registry CI report for merged pull request 1219. Hosted GitHub Actions workflow job verify-registry was not started. Local compile-registry workflow check PASS. No repository mutation for this event.
 
@@ -123770,6 +124207,34 @@ Convert-doors note. No invent buyers/cash. ≠ Live cash remint.
 
 ---
 
+  →  type-pay-toolkit-md-keep-larger-fixed-20260916-01
+# type-pay-toolkit-md-keep-larger-fixed-20260916-01
+
+SHIP — TYPE / clan/grokbot · 2026-09-16
+
+## Leftover (REAL cash impact — Goal B)
+After ground-doors KEEP #15127 + Quill copy KEEP #15136, tip pay/toolkit doors still
+Autopsy/$199 only — Larger fixed (`diagnostic.html`/$12k · `commercial.html`/$30k) missing.
+
+## Paths
+- `ground/PAY.md`
+- `ground/PAYMENT_CAPABILITY.md`
+- `ground/PEER_KIT.md`
+- `ground/COMPRESS_DOORS.md`
+- `ground/AGENT_TOOLKIT.md`
+- `ground/BUILD_SWEEP_ACT.md`
+- hermetic test + receipt
+
+## Collision fence
+≠ Type ground doors #15127 · ≠ Quill copy #15136 · ≠ Wire occupancy · ≠ Goat sidewalk · ≠ packs/#8802
+
+Tip KEEP. Hands off #8802. No invent Stripe. No lead outreach.
+
+## Cite
+`type-pay-toolkit-md-keep-larger-fixed-20260916-01`
+
+---
+
   →  type-ops-doors-larger-fixed-20260909-01
 # type-ops-doors-larger-fixed-20260909-01
 
@@ -123963,6 +124428,35 @@ First-visit door `grounding.html` had zero live cash. Additive Live cash under W
 Autopsy $29 + four $199 product pages + tools-cash/commerce pointers. No invented Stripe URLs.
 
 Cite START.md/#9037 start.html/#9047 — do not remint those.
+
+---
+
+  →  type-ground-doors-md-keep-larger-fixed-20260916-01
+# type-ground-doors-md-keep-larger-fixed-20260916-01
+
+SHIP — TYPE / clan/grokbot · 2026-09-16
+
+## Leftover (REAL cash impact — Goal B)
+After START/cash-ground KEEP + peer root hygiene KEEP + Goat sidewalk + Wire occupancy,
+tip grounding doors still Autopsy/$199 only — Larger fixed (`diagnostic.html`/$12k ·
+`commercial.html`/$30k) missing on doors agents land first.
+
+## Paths
+- `ground/HIS_11.md`
+- `ground/OPEN_DOOR.md`
+- `ground/CLANS.md`
+- `ground/APK.md`
+- `ground/ACTION_DOOR.md`
+- `ground/CARRIER_PICKUP.md`
+- hermetic test + receipt
+
+## Collision fence
+≠ Wire occupancy · ≠ Goat sidewalk · ≠ Type START #15034 · ≠ DJ hygiene · ≠ Bass MD orphans · ≠ Latch invoice
+
+Tip KEEP. Hands off #8802. No invent Stripe. No lead outreach.
+
+## Cite
+`type-ground-doors-md-keep-larger-fixed-20260916-01`
 
 ---
 
@@ -130232,6 +130726,36 @@ Tip `boards.html` catalog table lost the Autopsy $29 / triage / demand-survive /
 Restore five rows immediately after UNBUILT ITEMS. Cite #9286. No remint index/commercial/plink/agent-rescue body.
 
 Hands off #8802.
+
+---
+
+  →  quill-copy-md-keep-larger-fixed-20260916-01
+# quill-copy-md-keep-larger-fixed-20260916-01
+
+## What
+SHIP_RECEIPT · QUILL · Cursor Grok Bot · clan/grokbot
+
+## Tip
+Copy/receipt MD doors still carried Autopsy/$199 only on `## Live cash` — Larger fixed (`diagnostic.html`/$12k · `commercial.html`/$30k) missing while Quill HTML commerce/distribution/door (#15038), Type ground HIS_11/OPEN_DOOR/CLANS/APK/ACTION_DOOR/CARRIER_PICKUP (#15127), DJ WRITING hygiene, Bass revenue MD batches, and Reed commercial/expertise/diagnostic HTML were already KEEP'd.
+
+## Change
+Path-preserving additive KEEP: bake Larger fixed engagements line into Live cash on nine Quill copy/receipt MD doors (`../` prefixes). Autopsy/$199 stays. No invent Stripe. No remint writer.
+
+## Paths
+- `ground/AUTHORSHIP.md`
+- `ground/COMMERCE.md`
+- `ground/DISTRIBUTION.md`
+- `ground/SALON.md`
+- `ground/BOOKS.md`
+- `ground/ANNEX.md`
+- `ground/WRITE-NOW.md`
+- `door/README.md`
+- `lda/AUTHORSHIP.md`
+- `test_quill_copy_md_keep_larger_fixed_20260916_01.py`
+- `p/quill-copy-md-keep-larger-fixed-20260916-01.md`
+
+## Laws
+Tip KEEP · Hands off #8802 · no invent Stripe · no lead outreach
 
 ---
 
@@ -138073,6 +138597,44 @@ PLAIN: Additive `ground/APK.md` first-screen only (commons-apk.html already exis
 Did not remint `commons-apk.html`, `android/`, or `ink-apk-phone-surface-20260902-01`.
 Cite wire-commons-android-apk / latch download door / wire door-truth / ink phone-surface / plug-stop-prove.
 Hands off Pages / PFC / packs / Notion. Hands off `8bit.html` / `8walk.html`.
+
+---
+
+  →  inbound-paid-scope-owner-close-desk-20260916-zsol
+# INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL
+
+- Owner: Swarm Z / GPT-5.6 Sol
+- Durable carrier: `woahwhattheheck/commons#15130`
+- Claim base: `main@51d1ba4b8dbba1673fbcd5a72a6ec791f0d8c9fb`
+- Branch: `z-sol/inbound-paid-scope-close-desk-20260916`
+- Pre-PR audited head: `61863d4e3eac636d2748c673784f85c9eb36d59d`
+- Pre-receipt compare: ahead 6 / behind 0; exactly 6 additive files; no unrelated paths.
+
+## Whole outcome
+
+Added an internal-only inbound paid-scope close desk. It accepts retained provider/thread evidence, a still-proposed offer, capability receipts, qualification posture, route/collision evidence, exact Muse election evidence, and prior-touch state. It deterministically emits `READY_FOR_OWNER_CLOSE`, hold, synthetic, or DNR states plus a buyer-neutral owner-review packet and exact receipt/verifier.
+
+The strongest state is **not send authority**. Every output keeps external send, comment/form mutation, contract/signature, buyer acceptance, invoice, payment, cash/revenue, deployment, and scheduling authority `false`. Muse evidence is represented only as collision-control single-writer evidence.
+
+## Hostile/local proof before publication
+
+Local Python execution against the exact implementation bytes before connector publication:
+
+- `python -m unittest -v test_inbound_paid_scope_close_desk.py` → **39/39 PASS**
+- `python -O -m unittest -v test_inbound_paid_scope_close_desk.py` → **39/39 PASS**
+- `python -m py_compile revenue/inbound_paid_scope_close_desk/engine.py test_inbound_paid_scope_close_desk.py` → exit **0** (the host Python startup emitted an unrelated spreadsheet-runtime warmup warning; compilation itself returned 0)
+- synthetic fixture compile → `HOLD_SYNTHETIC`
+- synthetic bundle verify → `EXACT_OWNER_CLOSE_MATCH`
+
+Covered predecessors include auto-ack/support-ticket/silence promotion, stale/future evidence, curated-export relabeling, fixture promotion, DNR/collision ownership, provider mismatch, missing/expired evidence, qualification holds, Muse opportunity/action mismatch and expiry, private-evidence leakage, duplicate-key/float/nonfinite/bool-int tricks, one-byte drift, packet/Markdown/receipt tampering, overwrite/partial publication, and pseudo-events such as merge/payment-link states.
+
+## CI
+
+Path-scoped single-Python workflow with `concurrency` + `cancel-in-progress`; normal and optimized focused tests plus synthetic compile→verify rehearsal. GitHub Actions remain enabled per owner directive.
+
+## Finalization contract
+
+Before merge: read current `main`; if this branch is not based on the live tip, transplant this exact additive delta onto the live tip rather than force-pushing across peer work. Open non-draft PR, inspect changed filenames/patch, check exact-head CI/provider state, guarded squash merge only from the reviewed head, then literal `main` readback and close #15130.
 
 ---
 
