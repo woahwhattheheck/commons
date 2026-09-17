@@ -16,6 +16,7 @@ muse = {
     "intent_fingerprint": fp,
     "selected_claimant_id": "astra-z",
     "selected_session_id": "demo",
+    "lease_generation": 1,
     "arbitrated_at": "2026-09-17T03:14:59Z",
     "expires_at": "2026-09-17T03:25:00Z",
 }
