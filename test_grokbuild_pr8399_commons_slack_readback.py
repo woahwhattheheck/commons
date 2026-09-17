@@ -14,7 +14,7 @@ LEFTOVER = ROOT / "p/grokbuild-pr8399-commons-slack-20260902-01.md"
 KEEP = {
     "p/grokbuild-pr8399-commons-slack-20260902-01.md": "1905dd74",
     "p/grokbuild-stealable-occupancy-keep-match-20260902-01.md": "dc058b13",
-    "test_grokbuild_stealable_occupancy_keep_match.py": "73452d7c",
+    "test_grokbuild_stealable_occupancy_keep_match.py": "27bedc22",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "host/stealable_lanes.py": "60ac60e1",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
@@ -28,7 +28,7 @@ KEEP = {
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",
     "p/grokbuild-pr8402-verify-20260902-01.md": "3524e382",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
-    "hub_pages.py": "f3c00421",
+    "hub_pages.py": "12186f65",
     "door.js": "c06cc197",
     "api/mcp.py": "393da756",
     "ground/OWNER_NOW.md": "a17b0afb",

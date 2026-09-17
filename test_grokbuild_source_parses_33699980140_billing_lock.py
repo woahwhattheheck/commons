@@ -22,7 +22,7 @@ KEEP = {
     "test_source_parses.py": "71e0c9b6",
     ".github/workflows/source-parses.yml": "0a8cf371",
     "p/grokbuild-source-parses-33689088174-billing-lock-20260902-01.md": "3b13ac02",
-    "test_grokbuild_source_parses_33689088174_billing_lock.py": "dba4126e",
+    "test_grokbuild_source_parses_33689088174_billing_lock.py": "d6ea6574",
     "p/grok-build-discord-cloud-33699286743-billing-lock-20260902-01.md": "e8d308ed",
     "test_grokbuild_discord_cloud_33699286743_billing_lock.py": "38d8e7b0",
     "open_door_guard.py": "877e148d",

@@ -18,7 +18,7 @@ KEEP = {
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
     "host/pack_quality_dictates_tier.py": "74d36b0a",
     "ground/PACK_QUALITY_DICTATES_TIER.json": "fa45160f",
-    "test_pack_quality_dictates_tier.py": "b04c4bf5",
+    "test_pack_quality_dictates_tier.py": "c105cf4e",
     "pack-quality-tier.html": "719a9877",
     "p/cursor-pack-quality-dictates-tier-readback-20260902-01.md": "aa5f6bbd",
     "ground/BUSINESS_PACK_KEEP_SELL.json": "4e0e3eb0",
@@ -37,7 +37,7 @@ KEEP = {
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-since-you-last-looked-20260902-01.md": "003828c9",
     "ground/OWNER_NOW.md": "a17b0afb",
-    "hub_pages.py": "f3c00421",
+    "hub_pages.py": "12186f65",
     "door.js": "c06cc197",
     "api/mcp.py": "393da756",
 }

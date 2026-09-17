@@ -19,13 +19,13 @@ WORKFLOW = ROOT / ".github/workflows/tests.yml"
 
 KEEP = {
     "p/grokbuild-occupancy-landed-work-keep-lift-20260902-01.md": "67a8a527",
-    "test_grokbuild_occupancy_landed_work_keep_lift.py": "385f717f",
+    "test_grokbuild_occupancy_landed_work_keep_lift.py": "d23722cb",
     "p/grokbuild-occupancy-landed-work-keep-lift-readback-20260902-01.md": "892bc4c0",
-    "test_grokbuild_occupancy_landed_work_keep_lift_readback.py": "ef056425",
+    "test_grokbuild_occupancy_landed_work_keep_lift_readback.py": "1e89603c",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "host/stealable_lanes.py": "60ac60e1",
     "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md": "b2df1cf1",
-    "test_stealable_lanes_occupancy.py": "639fcb6c",
+    "test_stealable_lanes_occupancy.py": "745dcd19",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     ".github/workflows/tests.yml": "57d36525",
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",

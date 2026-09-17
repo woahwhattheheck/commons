@@ -18,10 +18,10 @@ KEEP = {
     "p/cursor-since-you-last-looked-20260902-01.md": "003828c9",
     "host/since_you_last_looked.py": "3578783c",
     "ground/SINCE_YOU_LAST_LOOKED.json": "749c8220",
-    "test_since_you_last_looked.py": "7d01674b",
+    "test_since_you_last_looked.py": "f8accf0c",
     "since-you-last-looked.html": "a58c4a99",
     "p/cursor-since-you-last-looked-readback-20260902-01.md": "bc71c9fe",
-    "test_cursor_since_you_last_looked_readback.py": "7afe25ad",
+    "test_cursor_since_you_last_looked_readback.py": "8c1aee76",
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
@@ -30,7 +30,7 @@ KEEP = {
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "ground/OWNER_NOW.md": "a17b0afb",
     "grounding.html": "51dcc0af",
-    "hub_pages.py": "f3c00421",
+    "hub_pages.py": "12186f65",
 }
 
 

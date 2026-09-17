@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parent
 HREF = 'href="./keep-sell.html"'
 TITLE = ">KEEP vs SELL</a>"
 COPY = "Factory classification ledger. Marketing stays Bryce. No invented Stripe URLs."
-HUB_BLOB = "f3c00421"
+HUB_BLOB = "12186f65"
 STALE_HUB = "7a8f24d5"
 BOARDS_BLOB = "486b13e1"
 STALE_BOARDS = "a44e8e3e"

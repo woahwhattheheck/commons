@@ -26,7 +26,7 @@ CHUNK_HTML = "c4a48395"
 STALE_CHUNK_HTML = "1304e4ec"
 HELPER = "0fc25108"
 STALE_HELPER = "95dd6557"
-MERGE = "d727225a"
+MERGE = "3a738da0"
 ORIGINALS = (
     "test_merge_on_pr.py",
     "test_pr7915_closed_unmerged.py",

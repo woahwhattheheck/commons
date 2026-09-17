@@ -19,9 +19,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 CLAUDE_BLOB = "858efbba"
 STALE_CLAUDE = "22119134"
-AGENTS_BLOB = "02f52b07"
+AGENTS_BLOB = "8ca269cd"
 STALE_AGENTS = "cdd4b502"
 STALE_AGENTS_SHA = "07109651"
+SAME_LOOP_BLOB = "f45d3a49"
 STALE_SAME_LOOP = "6ffe17b0"
 CARRIERS = (
     "test_commerce_agents_same_loop.py",
@@ -102,7 +103,7 @@ class TestWireBattery35147646349KeepLift(unittest.TestCase):
         self.assertTrue(agents.startswith(AGENTS_BLOB), agents)
         self.assertFalse(agents.startswith(STALE_AGENTS), agents)
         self.assertFalse(agents.startswith(STALE_AGENTS_SHA), agents)
-        self.assertTrue(same_loop.startswith("629e8893"), same_loop)
+        self.assertTrue(same_loop.startswith(SAME_LOOP_BLOB), same_loop)
         self.assertFalse(same_loop.startswith(STALE_SAME_LOOP), same_loop)
         stale: list[str] = []
         for name in CARRIERS:

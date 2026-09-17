@@ -13,7 +13,6 @@ class LatchMiscDoorsLiveCashTest(unittest.TestCase):
                 text = (ROOT / name).read_text(encoding="utf-8")
                 for n in REQUIRED:
                     self.assertIn(n, text, f"{name} missing {n}")
-<<<<<<< HEAD
                 if name in ("autogtm.html", "8walk.html"):
                     # Convert shelves reuse existing live Payment Links.
                     # Live cash product-page doors stay relative.

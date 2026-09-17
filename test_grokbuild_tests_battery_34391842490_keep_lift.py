@@ -18,7 +18,7 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-HUB = "f3c00421"
+HUB = "12186f65"
 STALE_HUB = "d0bd0e8d"
 BOARDS = "486b13e1"
 STALE_BOARDS = "143730a0"
