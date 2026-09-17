@@ -11,6 +11,7 @@ GATE_STATES = {"SATISFIED", "UNSATISFIED", "UNKNOWN"}
 REG_STATES = {"NOT_REQUIRED", "OPEN", "COMPLETE", "CLOSED", "UNKNOWN"}
 SOURCE_KINDS = {"SOLICITATION_CONTROL", "PARTNER_EVIDENCE", "REGISTRATION_EVIDENCE", "OWNER_WORKSHARE_EVIDENCE"}
 SOURCE_STATES = {"CURRENT", "STALE", "UNKNOWN"}
+GATE_EVIDENCE_KINDS = {"PARTNER_EVIDENCE", "REGISTRATION_EVIDENCE"}
 
 
 class QualificationError(ValueError):
@@ -147,11 +148,16 @@ def _refs(raw: Any, field: str, sources: dict[str, dict[str, str]], required: bo
 
 def _gate(raw: Any, field: str, sources: dict[str, dict[str, str]]) -> dict[str, Any]:
     obj = _obj(raw, field)
-    keys = {"gate_id", "label", "phase", "requirement", "source_refs"}
+    keys = {"gate_id", "label", "phase", "requirement", "required_evidence_kind", "source_refs"}
     _shape(obj, field, keys, keys)
     phase = _text(obj["phase"], f"{field}.phase")
     if phase not in PHASES:
         raise QualificationError(f"{field}.phase invalid")
+    required_evidence_kind = _text(obj["required_evidence_kind"], f"{field}.required_evidence_kind")
+    if required_evidence_kind not in GATE_EVIDENCE_KINDS:
+        raise QualificationError(
+            f"{field}.required_evidence_kind must be PARTNER_EVIDENCE or REGISTRATION_EVIDENCE"
+        )
     refs = _refs(obj["source_refs"], f"{field}.source_refs", sources, True)
     if not any(sources[r["source_id"]]["kind"] == "SOLICITATION_CONTROL" for r in refs):
         raise QualificationError(f"{field} must bind solicitation-control evidence")
@@ -160,6 +166,7 @@ def _gate(raw: Any, field: str, sources: dict[str, dict[str, str]]) -> dict[str,
         "label": _text(obj["label"], f"{field}.label"),
         "phase": phase,
         "requirement": _text(obj["requirement"], f"{field}.requirement"),
+        "required_evidence_kind": required_evidence_kind,
         "source_refs": refs,
     }
 
@@ -177,8 +184,10 @@ def _registration(raw: Any, field: str, sources: dict[str, dict[str, str]]) -> d
         raise QualificationError(f"{field}.UNKNOWN cannot claim evidence")
     if state != "UNKNOWN" and not any(sources[r["source_id"]]["kind"] == "SOLICITATION_CONTROL" for r in req):
         raise QualificationError(f"{field} requirement must bind solicitation control")
-    if state == "COMPLETE" and not any(sources[r["source_id"]]["kind"] != "SOLICITATION_CONTROL" for r in evidence):
-        raise QualificationError(f"{field}.COMPLETE requires partner-specific completion evidence")
+    if state == "COMPLETE" and not any(
+        sources[r["source_id"]]["kind"] == "REGISTRATION_EVIDENCE" for r in evidence
+    ):
+        raise QualificationError(f"{field}.COMPLETE requires REGISTRATION_EVIDENCE completion evidence")
     return {
         "state": state,
         "deadline": None if obj.get("deadline") is None else _date(obj["deadline"], f"{field}.deadline"),
@@ -213,23 +222,27 @@ def _workshare(raw: Any, field: str) -> dict[str, Any]:
     }
 
 
-def _disposition(raw: Any, field: str, sources: dict[str, dict[str, str]], gate_ids: set[str]) -> dict[str, Any]:
+def _disposition(
+    raw: Any,
+    field: str,
+    sources: dict[str, dict[str, str]],
+    gates: dict[str, dict[str, Any]],
+) -> dict[str, Any]:
     obj = _obj(raw, field)
     keys = {"gate_id", "state", "evidence_refs", "note"}
     _shape(obj, field, keys, {"gate_id", "state", "evidence_refs"})
     gid, state = _text(obj["gate_id"], f"{field}.gate_id"), _text(obj["state"], f"{field}.state")
-    if gid not in gate_ids or state not in GATE_STATES:
+    gate = gates.get(gid)
+    if gate is None or state not in GATE_STATES:
         raise QualificationError(f"{field} gate/state invalid")
     refs = _refs(obj["evidence_refs"], f"{field}.evidence_refs", sources, state != "UNKNOWN")
     if state == "UNKNOWN" and refs:
         raise QualificationError(f"{field}.UNKNOWN cannot claim evidence")
     if state != "UNKNOWN" and not any(
-        sources[r["source_id"]]["kind"] in {"PARTNER_EVIDENCE", "REGISTRATION_EVIDENCE"}
-        for r in refs
+        sources[r["source_id"]]["kind"] == gate["required_evidence_kind"] for r in refs
     ):
         raise QualificationError(
-            f"{field}.{state} requires partner-specific evidence; "
-            "solicitation requirement text alone cannot decide partner qualification"
+            f"{field}.{state} requires {gate['required_evidence_kind']} evidence for gate {gid}"
         )
     return {
         "gate_id": gid,
@@ -263,14 +276,18 @@ def normalize_input(raw: Any) -> dict[str, Any]:
     gates = [_gate(v, f"hard_gates[{i}]", sources) for i, v in enumerate(_arr(doc["hard_gates"], "hard_gates"))]
     if not gates or len({g["gate_id"] for g in gates}) != len(gates):
         raise QualificationError("hard_gates must be non-empty with unique gate_id")
-    gate_ids = {g["gate_id"] for g in gates}
+    gate_map = {g["gate_id"]: g for g in gates}
+    gate_ids = set(gate_map)
 
     partners = []
     for i, raw_partner in enumerate(_arr(doc["partners"], "partners")):
         field, pobj = f"partners[{i}]", _obj(raw_partner, f"partners[{i}]")
         pkeys = {"name", "registration", "gate_dispositions", "paid_workshare"}
         _shape(pobj, field, pkeys, pkeys)
-        dispositions = [_disposition(v, f"{field}.gate_dispositions[{j}]", sources, gate_ids) for j, v in enumerate(_arr(pobj["gate_dispositions"], f"{field}.gate_dispositions"))]
+        dispositions = [
+            _disposition(v, f"{field}.gate_dispositions[{j}]", sources, gate_map)
+            for j, v in enumerate(_arr(pobj["gate_dispositions"], f"{field}.gate_dispositions"))
+        ]
         ids = [d["gate_id"] for d in dispositions]
         if len(ids) != len(set(ids)) or set(ids) != gate_ids:
             raise QualificationError(f"{field}.gate_dispositions must cover every hard gate exactly once")
