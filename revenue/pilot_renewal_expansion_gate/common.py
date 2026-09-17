@@ -8,6 +8,7 @@ import os
 from pathlib import Path
 import re
 import stat
+from types import MappingProxyType
 from datetime import datetime, timezone
 from typing import Any
 
@@ -15,7 +16,7 @@ SCHEMA = "pilot-renewal-expansion/v1"
 RECEIPT_SCHEMA = "pilot-renewal-expansion-receipt/v1"
 TRUTH_CEILING = "PROPOSED_NOT_ACCEPTED"
 TERMINAL_STATES = {"READY_FOR_RENEWAL_REVIEW", "HOLD_ACCEPTANCE", "HOLD_PAYMENT", "HOLD_WINDOW", "HOLD_EVIDENCE", "DNR"}
-AUTHORITY = {
+AUTHORITY = MappingProxyType({
     "external_send_authorized": False,
     "contract_or_signature_authorized": False,
     "buyer_acceptance_established": False,
@@ -25,7 +26,7 @@ AUTHORITY = {
     "deployment_authorized": False,
     "scheduling_authorized": False,
     "crm_mutation_authorized": False,
-}
+})
 ID_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$")
 SHA_RE = re.compile(r"^[0-9a-f]{64}$")
 MAX_INPUT_BYTES = 1_000_000
