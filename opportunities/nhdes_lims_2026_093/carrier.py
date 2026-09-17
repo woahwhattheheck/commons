@@ -165,6 +165,24 @@ def _make_runtime_generation():
     json_dumps = json.dumps
     sha256 = hashlib.sha256
 
+    # Runtime semantics must not fall back through module globals and then builtins.
+    # Capture the entire authority/currentness dependency generation once, at import.
+    carrier_error = CarrierError
+    type_fn = type
+    set_fn = set
+    sorted_fn = sorted
+    any_fn = any
+    len_fn = len
+    dict_type = dict
+    list_type = list
+    str_type = str
+    int_type = int
+    type_error = TypeError
+    value_error = ValueError
+    unicode_error = UnicodeError
+    recursion_error = RecursionError
+    overflow_error = OverflowError
+
     expected_opportunity = {
         "id": opportunity_id,
         "buyer": "New Hampshire Department of Environmental Services / Department of Information Technology",
@@ -245,42 +263,42 @@ def _make_runtime_generation():
                 separators=(",", ":"),
                 allow_nan=False,
             ).encode("utf-8", "strict")
-        except (TypeError, ValueError, UnicodeError, RecursionError, OverflowError) as exc:
-            raise CarrierError(f"cannot canonicalize: {exc}") from exc
+        except (type_error, value_error, unicode_error, recursion_error, overflow_error) as exc:
+            raise carrier_error(f"cannot canonicalize: {exc}") from exc
 
     def dgst(value: Any) -> str:
         return sha256(canon(value)).hexdigest()
 
     def exact_dict(value: Any, keys: set[str], where: str) -> dict[str, Any]:
-        if type(value) is not dict:
-            raise CarrierError(f"{where} must be an object")
-        if set(value) != keys:
-            raise CarrierError(f"{where} keys mismatch")
+        if type_fn(value) is not dict_type:
+            raise carrier_error(f"{where} must be an object")
+        if set_fn(value) != keys:
+            raise carrier_error(f"{where} keys mismatch")
         return value
 
     def all_false(value: Any, expected_keys: set[str], where: str) -> None:
         data = exact_dict(value, expected_keys, where)
-        if any(item is not False for item in data.values()):
-            raise CarrierError(f"{where} must remain all false")
+        if any_fn(item is not False for item in data.values()):
+            raise carrier_error(f"{where} must remain all false")
 
     def aware_timestamp(value: Any, where: str) -> datetime:
-        if type(value) is not str or not value or len(value) > 40:
-            raise CarrierError(f"{where} must be an offset-aware ISO timestamp")
+        if type_fn(value) is not str_type or not value or len_fn(value) > 40:
+            raise carrier_error(f"{where} must be an offset-aware ISO timestamp")
         try:
             parsed = datetime_fromisoformat(value)
-        except ValueError as exc:
-            raise CarrierError(f"{where} must be an offset-aware ISO timestamp") from exc
+        except value_error as exc:
+            raise carrier_error(f"{where} must be an offset-aware ISO timestamp") from exc
         if parsed.tzinfo is None or parsed.utcoffset() is None:
-            raise CarrierError(f"{where} must include a UTC offset")
+            raise carrier_error(f"{where} must include a UTC offset")
         return parsed.astimezone(utc)
 
     def response_due_date(value: Any) -> date:
-        if type(value) is not str:
-            raise CarrierError("opportunity.response_due must be YYYY-MM-DD")
+        if type_fn(value) is not str_type:
+            raise carrier_error("opportunity.response_due must be YYYY-MM-DD")
         try:
             return date_fromisoformat(value)
-        except ValueError as exc:
-            raise CarrierError("opportunity.response_due must be YYYY-MM-DD") from exc
+        except value_error as exc:
+            raise carrier_error("opportunity.response_due must be YYYY-MM-DD") from exc
 
     def authority_false() -> dict[str, bool]:
         return {key: False for key in authority_keys}
@@ -301,20 +319,22 @@ def _make_runtime_generation():
             "source",
         )
         if source["schema"] != source_schema:
-            raise CarrierError("source schema mismatch")
+            raise carrier_error("source schema mismatch")
         if source["source_state"] != "RAW_PACKET_NOT_ACQUIRED":
-            raise CarrierError("source state must remain RAW_PACKET_NOT_ACQUIRED")
+            raise carrier_error("source state must remain RAW_PACKET_NOT_ACQUIRED")
         aware_timestamp(source["checked_at"], "source.checked_at")
         if source["opportunity"] != expected_opportunity:
-            raise CarrierError("opportunity binding mismatch")
+            raise carrier_error("opportunity binding mismatch")
         response_due_date(source["opportunity"]["response_due"])
         if source["buyer_need"] != expected_buyer_need:
-            raise CarrierError("buyer need binding mismatch")
+            raise carrier_error("buyer need binding mismatch")
         if source["reported_bidder_requirements"] != expected_reported_gates:
-            raise CarrierError("reported bidder gate binding mismatch")
+            raise carrier_error("reported bidder gate binding mismatch")
         notes = source["source_notes"]
-        if type(notes) is not list or len(notes) < 3 or any(type(item) is not str or not item for item in notes):
-            raise CarrierError("source notes malformed")
+        if type_fn(notes) is not list_type or len_fn(notes) < 3 or any_fn(
+            type_fn(item) is not str_type or not item for item in notes
+        ):
+            raise carrier_error("source notes malformed")
         all_false(
             source["external_authority"],
             {
@@ -347,28 +367,28 @@ def _make_runtime_generation():
             "candidate_snapshot",
         )
         if candidate["schema"] != candidate_schema:
-            raise CarrierError("candidate schema mismatch")
+            raise carrier_error("candidate schema mismatch")
         evidence_before = aware_timestamp(candidate["evidence_checked_before"], "candidate.evidence_checked_before")
         if candidate["candidate"] != expected_candidate:
-            raise CarrierError("candidate identity binding mismatch")
+            raise carrier_error("candidate identity binding mismatch")
 
         evidence = candidate["first_party_evidence"]
-        if type(evidence) is not list or not evidence:
-            raise CarrierError("first-party evidence missing")
-        urls: set[str] = set()
+        if type_fn(evidence) is not list_type or not evidence:
+            raise carrier_error("first-party evidence missing")
+        urls: set[str] = set_fn()
         for row in evidence:
             row = exact_dict(row, {"url", "supports"}, "candidate evidence row")
-            if type(row["url"]) is not str or type(row["supports"]) is not list:
-                raise CarrierError("candidate evidence row types invalid")
-            if any(type(item) is not str or not item for item in row["supports"]):
-                raise CarrierError("candidate evidence support text invalid")
+            if type_fn(row["url"]) is not str_type or type_fn(row["supports"]) is not list_type:
+                raise carrier_error("candidate evidence row types invalid")
+            if any_fn(type_fn(item) is not str_type or not item for item in row["supports"]):
+                raise carrier_error("candidate evidence support text invalid")
             urls.add(row["url"])
-        if urls != set(required_candidate_urls):
-            raise CarrierError("candidate evidence URL set mismatch")
+        if urls != set_fn(required_candidate_urls):
+            raise carrier_error("candidate evidence URL set mismatch")
 
-        gaps = exact_dict(candidate["qualification_gaps"], set(required_gaps), "qualification_gaps")
-        if any(item != "UNVERIFIED" for item in gaps.values()):
-            raise CarrierError("candidate qualification gaps must remain UNVERIFIED")
+        gaps = exact_dict(candidate["qualification_gaps"], set_fn(required_gaps), "qualification_gaps")
+        if any_fn(item != "UNVERIFIED" for item in gaps.values()):
+            raise carrier_error("candidate qualification gaps must remain UNVERIFIED")
 
         collision = exact_dict(
             candidate["collision_preflight"],
@@ -382,12 +402,12 @@ def _make_runtime_generation():
             "collision_preflight",
         )
         for key in ("slack_exact_history", "gmail_exact_history", "owned_github_exact_history"):
-            if type(collision[key]) is not int or collision[key] != 0:
-                raise CarrierError(f"{key} must be exact zero in the retained historical preflight")
+            if type_fn(collision[key]) is not int_type or collision[key] != 0:
+                raise carrier_error(f"{key} must be exact zero in the retained historical preflight")
         if collision["requires_fresh_last_inch_recensus"] is not True:
-            raise CarrierError("last-inch recensus must be required")
+            raise carrier_error("last-inch recensus must be required")
         if collision["requires_muse_single_writer_clearance"] is not True:
-            raise CarrierError("Muse clearance must be required")
+            raise carrier_error("Muse clearance must be required")
 
         current = exact_dict(
             candidate["current_collision"],
@@ -403,18 +423,18 @@ def _make_runtime_generation():
             "current_collision",
         )
         if current["status"] != "ACTIVE_ORG_ROUTE_COLLISION_HOLD":
-            raise CarrierError("current collision must remain an active HOLD in this generation")
+            raise carrier_error("current collision must remain an active HOLD in this generation")
         observed = aware_timestamp(current["observed_at"], "current_collision.observed_at")
         if evidence_before > observed:
-            raise CarrierError("historical preflight must precede the observed collision")
+            raise carrier_error("historical preflight must precede the observed collision")
         if current["same_org"] is not True or current["same_route"] is not True:
-            raise CarrierError("current collision must bind same organization and route")
+            raise carrier_error("current collision must bind same organization and route")
         if current["competing_operation"] != expected_collision_operation:
-            raise CarrierError("current collision competing operation mismatch")
-        if type(current["muse_arbitration_ts"]) is not str or not current["muse_arbitration_ts"]:
-            raise CarrierError("current collision Muse arbitration receipt missing")
+            raise carrier_error("current collision competing operation mismatch")
+        if type_fn(current["muse_arbitration_ts"]) is not str_type or not current["muse_arbitration_ts"]:
+            raise carrier_error("current collision Muse arbitration receipt missing")
         if current["muse_resolution"] != "PENDING":
-            raise CarrierError("current collision Muse resolution must remain PENDING in this generation")
+            raise carrier_error("current collision Muse resolution must remain PENDING in this generation")
 
         all_false(
             candidate["external_authority"],
@@ -434,7 +454,7 @@ def _make_runtime_generation():
         validate_source_fn(source)
         validate_candidate_fn(candidate)
         if now.tzinfo is None or now.utcoffset() is None:
-            raise CarrierError("runtime now must be timezone-aware")
+            raise carrier_error("runtime now must be timezone-aware")
         now_utc = now.astimezone(utc)
         future_limit = now_utc + timedelta_type(seconds=max_clock_skew_seconds)
         source_checked = aware_timestamp(source["checked_at"], "source.checked_at")
@@ -465,10 +485,10 @@ def _make_runtime_generation():
         current = candidate["current_collision"]
         if current["status"] == "ACTIVE_ORG_ROUTE_COLLISION_HOLD" or current["muse_resolution"] == "PENDING":
             holds.append("ACTIVE_ORG_ROUTE_COLLISION_PENDING_MUSE")
-        return sorted(set(holds))
+        return sorted_fn(set_fn(holds))
 
     def posture_for_fn(holds: list[str]) -> str:
-        held = set(holds)
+        held = set_fn(holds)
         if "RESPONSE_DEADLINE_PASSED" in held:
             return "HOLD_RESPONSE_DEADLINE_PASSED"
         if held & {"SOURCE_STATE_FUTURE", "CANDIDATE_EVIDENCE_FUTURE", "COLLISION_STATE_FUTURE"}:
@@ -569,16 +589,16 @@ def _make_runtime_generation():
             "money_state": "NO_ACCEPTANCE_NO_RECEIVABLE_NO_REVENUE",
             "authority": authority_false(),
         }
-        receipt = dict(body)
+        receipt = dict_type(body)
         receipt["receipt_hash"] = dgst(body)
         return receipt
 
     def verify_receipt_fn(receipt: Any, source: dict[str, Any], candidate: dict[str, Any]) -> None:
-        if type(receipt) is not dict:
-            raise CarrierError("receipt must be an object")
+        if type_fn(receipt) is not dict_type:
+            raise carrier_error("receipt must be an object")
         expected = build_receipt_fn(source, candidate)
         if canon(receipt) != canon(expected):
-            raise CarrierError("receipt mismatch or runtime gate changed")
+            raise carrier_error("receipt mismatch or runtime gate changed")
 
     return (
         validate_source_fn,
