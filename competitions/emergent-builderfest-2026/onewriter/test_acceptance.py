@@ -110,8 +110,13 @@ class OneWriterTests(unittest.TestCase):
         for index,field,value,pattern in cases:
             d=copy.deepcopy(self.d); d["events"][index][field]=value
             with self.subTest(field=field,value=value.encode("unicode_escape")), self.assertRaisesRegex(a.ContractError,pattern): a.replay(self.m,d)
+    def test_event_ids_use_same_strict_unicode_admission(self):
+        cases=(("\u200b","non-visible Unicode"),("evt-001\u034f","Default_Ignorable"),("evt-001\ufe0f","Default_Ignorable"),("evt-001\u115f","Default_Ignorable"),("\u0301","visible base"),(" padded-event","trimmed nonempty"))
+        for value,pattern in cases:
+            d=copy.deepcopy(self.d); d["events"][0]["id"]=value
+            with self.subTest(value=value.encode("unicode_escape")), self.assertRaisesRegex(a.ContractError,pattern): a.evaluate(self.m,d)
     def test_visible_combining_unicode_evidence_remains_admitted(self):
-        value="provider-cafe\u0301-001"; self.assertEqual(a.evidence_id(value,"provider_receipt"),value)
+        value="provider-cafe\u0301-001"; self.assertEqual(a.evidence_id(value,"provider_receipt"),value); self.assertEqual(a.evidence_id("evt-cafe\u0301-001","event id"),"evt-cafe\u0301-001")
     def test_real_cli_normal_and_optimized(self):
         for optimized in (False,True):
             cmd=[sys.executable]+(["-O"] if optimized else [])+[str(A),"replay",str(M),str(E)]; run=subprocess.run(cmd,cwd=HERE,text=True,capture_output=True,check=False)
