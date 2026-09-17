@@ -4,6 +4,7 @@ from dataclasses import dataclass
 import hashlib
 import json
 import re
+import unicodedata
 from typing import Any, Mapping
 
 SCHEMA = "human-reply-paid-workshare/v1"
@@ -138,20 +139,28 @@ _PACKS: dict[str, dict[str, Any]] = {
     },
 }
 
-_FORBIDDEN_SCOPE_ASSERTIONS = (
-    re.compile(r"\bbuyer (?:has )?accepted\b", re.I),
-    re.compile(r"\b(?:we|tjlabs) (?:have |has )?(?:been )?awarded\b", re.I),
-    re.compile(r"\baward (?:is )?secured\b", re.I),
-    re.compile(r"\b(?:already |were |was )?paid\b", re.I),
-    re.compile(r"\bpayment (?:was |is )?received\b", re.I),
-    re.compile(r"\bbooked revenue\b", re.I),
-    re.compile(r"\brecognized revenue\b", re.I),
-    re.compile(r"\bsigned contract\b", re.I),
-    re.compile(r"\b(?:existing|current) customer\b", re.I),
-    re.compile(r"\bguaranteed (?:savings|outcome|roi|acceptance|award)\b", re.I),
+# Every pattern is run against a punctuation-folded, NFKC/casefolded semantic
+# skeleton. This prevents Markdown/punctuation insertion and Unicode width
+# compatibility forms from turning caller text into unsupported commercial facts.
+_FORBIDDEN_COMMERCIAL_ASSERTIONS = (
+    re.compile(r"\bbuyer (?:has )?accepted\b"),
+    re.compile(r"\baccepted by (?:the )?buyer\b"),
+    re.compile(r"\b(?:we|tjlabs) (?:have |has )?(?:been )?awarded\b"),
+    re.compile(r"\baward (?:is )?secured\b"),
+    re.compile(r"\b(?:already |were |was )?paid\b"),
+    re.compile(r"\bpayment (?:was |is )?received\b"),
+    re.compile(r"\bbooked revenue\b"),
+    re.compile(r"\brecognized revenue\b"),
+    re.compile(r"\bsigned contract\b"),
+    re.compile(r"\bcontract (?:is |was |has been )?signed\b"),
+    re.compile(r"\b(?:existing|current) customer\b"),
+    re.compile(r"\bcustomer relationship\b"),
+    re.compile(r"\binvoice (?:was |is )?(?:issued|sent)\b"),
+    re.compile(r"\bguaranteed (?:savings|outcome|roi|acceptance|award)\b"),
 )
 _TOKEN_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:/-]{0,127}$")
 _SAFE_LABEL_RE = re.compile(r"^[^\x00\r\n]{1,160}$")
+_UNSAFE_UNICODE_CATEGORIES = {"Cc", "Cf", "Cs", "Zl", "Zp"}
 
 
 class WorkshareError(ValueError):
@@ -245,13 +254,44 @@ def _token(value: Any, where: str) -> str:
     return value
 
 
+def _normalize_rendered_text(value: Any, where: str, *, max_len: int) -> str:
+    raw = _plain_str(value, where, max_len=max_len)
+    text = unicodedata.normalize("NFKC", raw).strip()
+    if not text:
+        raise WorkshareError(f"{where} must not be blank")
+    if len(text) > max_len:
+        raise WorkshareError(f"{where} normalized text exceeds {max_len}")
+    for char in text:
+        if unicodedata.category(char) in _UNSAFE_UNICODE_CATEGORIES:
+            raise WorkshareError(f"{where} contains unsupported Unicode control/format characters")
+    return text
+
+
+def _commercial_skeleton(text: str) -> str:
+    # Preserve letters/numbers; treat punctuation/Markdown separators as spaces.
+    # NFKC above has already collapsed width/compatibility forms.
+    folded = text.casefold()
+    skeleton = "".join(char if char.isalnum() else " " for char in folded)
+    return " ".join(skeleton.split())
+
+
+def _reject_commercial_assertions(text: str, where: str) -> None:
+    skeleton = _commercial_skeleton(text)
+    for pattern in _FORBIDDEN_COMMERCIAL_ASSERTIONS:
+        if pattern.search(skeleton):
+            raise WorkshareError(f"{where} contains unsupported commercial/outcome assertion")
+
+
+def _rendered_text(value: Any, where: str, *, max_len: int) -> str:
+    text = _normalize_rendered_text(value, where, max_len=max_len)
+    _reject_commercial_assertions(text, where)
+    return text
+
+
 def _label(value: Any, where: str) -> str:
-    value = _plain_str(value, where, max_len=160)
+    value = _rendered_text(value, where, max_len=160)
     if not _SAFE_LABEL_RE.fullmatch(value):
         raise WorkshareError(f"{where} has unsafe label characters")
-    value = value.strip()
-    if not value:
-        raise WorkshareError(f"{where} must not be blank")
     return value
 
 
@@ -268,9 +308,7 @@ def _list_of_lines(value: Any, where: str, *, minimum: int = 1, maximum: int = 8
         raise WorkshareError(f"{where} must be an array of {minimum}..{maximum} one-line strings")
     out: list[str] = []
     for i, item in enumerate(value):
-        text = _plain_str(item, f"{where}[{i}]", max_len=240).strip()
-        if not text:
-            raise WorkshareError(f"{where}[{i}] must not be blank")
+        text = _rendered_text(item, f"{where}[{i}]", max_len=240)
         if text in out:
             raise WorkshareError(f"{where} contains duplicate item")
         out.append(text)
@@ -278,13 +316,7 @@ def _list_of_lines(value: Any, where: str, *, minimum: int = 1, maximum: int = 8
 
 
 def _scope_text(value: Any) -> str:
-    text = _plain_str(value, "scope.one_line", max_len=320).strip()
-    if not text:
-        raise WorkshareError("scope.one_line must not be blank")
-    for pattern in _FORBIDDEN_SCOPE_ASSERTIONS:
-        if pattern.search(text):
-            raise WorkshareError("scope.one_line contains unsupported commercial/outcome assertion")
-    return text
+    return _rendered_text(value, "scope.one_line", max_len=320)
 
 
 def _evidence_state(value: Any) -> dict[str, bool]:
@@ -478,13 +510,27 @@ def compile_offer(raw: Mapping[str, Any]) -> CompiledOffer:
     )
 
 
+def _validated_compiled_offer(compiled: CompiledOffer) -> tuple[dict[str, Any], str]:
+    if not isinstance(compiled, CompiledOffer):
+        raise WorkshareError("compiled offer must be CompiledOffer")
+    normalized = normalize_offer(_expect_map(compiled.normalized, "compiled.normalized"))
+    expected_markdown = render_offer_markdown(normalized)
+    expected_sha256 = hashlib.sha256(canonical_json(normalized).encode("utf-8")).hexdigest()
+    if compiled.markdown != expected_markdown:
+        raise WorkshareError("compiled markdown does not match normalized offer")
+    if compiled.receipt_sha256 != expected_sha256:
+        raise WorkshareError("compiled receipt hash does not match normalized offer")
+    return normalized, expected_sha256
+
+
 def render_receipt_json(compiled: CompiledOffer) -> str:
+    normalized, expected_sha256 = _validated_compiled_offer(compiled)
     return canonical_json(
         {
             "schema": "human-reply-paid-workshare-receipt/v1",
-            "offer_id": compiled.normalized["offer_id"],
-            "pack_id": compiled.normalized["pack_id"],
+            "offer_id": normalized["offer_id"],
+            "pack_id": normalized["pack_id"],
             "commercial_state": COMMERCIAL_STATE,
-            "normalized_sha256": compiled.receipt_sha256,
+            "normalized_sha256": expected_sha256,
         }
     )
