@@ -62,6 +62,14 @@ class OneWriterTests(unittest.TestCase):
     def test_extra_event_authority_field(self):
         d=copy.deepcopy(self.d); d["events"][0]["send_authorized"]=True
         with self.assertRaisesRegex(a.ContractError,"key set changed"): a.replay(self.m,d)
+    def test_whitespace_provider_evidence_rejected(self):
+        for index in (2,8):
+            d=copy.deepcopy(self.d); d["events"][index]["provider_receipt"]="   "
+            with self.subTest(event=d["events"][index]["kind"]):
+                with self.assertRaisesRegex(a.ContractError,"provider_receipt must be trimmed nonempty"): a.replay(self.m,d)
+    def test_whitespace_human_evidence_cannot_reopen(self):
+        d=copy.deepcopy(self.d); d["events"][4]["human_evidence_id"]="   "
+        with self.assertRaisesRegex(a.ContractError,"human_evidence_id must be trimmed nonempty"): a.replay(self.m,d)
     def test_real_cli_normal_and_optimized(self):
         for optimized in (False,True):
             cmd=[sys.executable]+(["-O"] if optimized else [])+[str(A),"replay",str(M),str(E)]; run=subprocess.run(cmd,cwd=HERE,text=True,capture_output=True,check=False)
@@ -73,4 +81,12 @@ class OneWriterTests(unittest.TestCase):
             for optimized in (False,True):
                 cmd=[sys.executable]+(["-O"] if optimized else [])+[str(A),"replay",str(M),str(p)]; run=subprocess.run(cmd,cwd=HERE,text=True,capture_output=True,check=False)
                 with self.subTest(optimized=optimized): self.assertEqual(run.returncode,2); self.assertIn("key set changed",run.stderr)
+    def test_whitespace_evidence_cli_normal_and_optimized(self):
+        cases=((2,"provider_receipt","provider_receipt must be trimmed nonempty"),(8,"provider_receipt","provider_receipt must be trimmed nonempty"),(4,"human_evidence_id","human_evidence_id must be trimmed nonempty"))
+        with tempfile.TemporaryDirectory() as td:
+            for index,field,needle in cases:
+                d=copy.deepcopy(self.d); d["events"][index][field]="   "; p=Path(td)/f"h-{index}.json"; p.write_text(json.dumps(d))
+                for optimized in (False,True):
+                    cmd=[sys.executable]+(["-O"] if optimized else [])+[str(A),"replay",str(M),str(p)]; run=subprocess.run(cmd,cwd=HERE,text=True,capture_output=True,check=False)
+                    with self.subTest(event=d["events"][index]["kind"],optimized=optimized): self.assertEqual(run.returncode,2); self.assertIn(needle,run.stderr)
 if __name__=="__main__": unittest.main()
