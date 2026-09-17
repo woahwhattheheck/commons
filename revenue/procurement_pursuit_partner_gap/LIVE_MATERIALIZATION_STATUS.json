@@ -1,0 +1,10 @@
+{
+  "as_of_commit": "ccab91f74dfec13e1dcb8228b422e044fbc19e08",
+  "external_contact_authorized": false,
+  "minimum_live_carriers": 5,
+  "operation": "LIVE-PURSUIT-GAP-TO-PARTNER-SHORTLIST-20260916-ZSOL",
+  "provider_authentication_performed": false,
+  "reason": "No trustworthy 5-10 item retained-current pursuit carrier set with source URI, source SHA-256, and currentness metadata was proven for this build. Synthetic fixtures exercise the compiler but are not live pursuit truth.",
+  "schema": "procurement-pursuit-partner-gap/live-materialization-status/v1",
+  "status": "LIVE_MATERIALIZATION_BLOCKED_NO_VERIFIED_CARRIER_SET"
+}
