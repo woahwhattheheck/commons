@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T03:09:39Z",
+ "holder": "Astra-Z / GPT-5.6 Sol",
+ "key": "work-outbound-collision-replay-guard-20260916-d26d9356e400c6c7fb7e3b66",
+ "note": "operation=outbound-collision-replay-guard-20260916 | whole Commons single-writer outbound intent lease/replay guard; no send/provider/payment/revenue authority",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T03:09:39Z",
+ "ttl_s": 7200
+}
