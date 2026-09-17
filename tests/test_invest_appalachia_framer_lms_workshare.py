@@ -12,6 +12,7 @@ assert SPEC and SPEC.loader
 workshare = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(workshare)
 
+
 class InvestAppalachiaWorkshareTests(unittest.TestCase):
     def setUp(self):
         self.packet = workshare.load_json(LANE / "current_packet.json")
@@ -81,6 +82,60 @@ class InvestAppalachiaWorkshareTests(unittest.TestCase):
                 workshare.load_json(p)
         finally:
             p.unlink(missing_ok=True)
+
+    def test_runtime_semantics_ignore_post_import_global_rebinding(self):
+        baseline = workshare.evaluate(self.packet, self.ws)
+        original_error = workshare.WorkshareError
+        originals = {
+            "SCHEMA": workshare.SCHEMA,
+            "OPPORTUNITY_ID": workshare.OPPORTUNITY_ID,
+            "QUALIFICATION_GENERATION_SHA256": workshare.QUALIFICATION_GENERATION_SHA256,
+            "WORKSHARE_SHA256": workshare.WORKSHARE_SHA256,
+            "PRICE_USD": workshare.PRICE_USD,
+            "BUYER_CAP_USD": workshare.BUYER_CAP_USD,
+            "canonical_json": workshare.canonical_json,
+            "digest": workshare.digest,
+            "load_json": workshare.load_json,
+            "validate_qualification_generation": workshare.validate_qualification_generation,
+            "validate_workshare": workshare.validate_workshare,
+            "WorkshareError": workshare.WorkshareError,
+        }
+
+        class ForgedWorkshareError(Exception):
+            pass
+
+        try:
+            workshare.SCHEMA = "forged"
+            workshare.OPPORTUNITY_ID = "forged"
+            workshare.QUALIFICATION_GENERATION_SHA256 = "f" * 64
+            workshare.WORKSHARE_SHA256 = "f" * 64
+            workshare.PRICE_USD = 60000
+            workshare.BUYER_CAP_USD = 999999
+            workshare.canonical_json = lambda value: b"forged"
+            workshare.digest = lambda value: "f" * 64
+            workshare.load_json = lambda path: {"forged": True}
+            workshare.validate_qualification_generation = lambda packet: None
+            workshare.validate_workshare = lambda value: value
+            workshare.WorkshareError = ForgedWorkshareError
+
+            rebuilt = workshare.evaluate(self.packet, self.ws)
+            self.assertEqual(rebuilt, baseline)
+            self.assertEqual(rebuilt["specialist_price_usd"], 24000)
+            self.assertEqual(rebuilt["buyer_budget_cap_usd"], 60000)
+            self.assertEqual(rebuilt["commercial_status"], "PROPOSED_NOT_ACCEPTED")
+            self.assertEqual(rebuilt["prime_posture"], "NO_CHANGE_PRIME_HOLD")
+            self.assertFalse(rebuilt["partner_contact_authorized"])
+            self.assertFalse(rebuilt["payment_authorized"])
+            self.assertFalse(rebuilt["award_or_revenue_asserted"])
+
+            forged = copy.deepcopy(self.ws)
+            forged["commercial"]["commercial_status"] = "ACCEPTED"
+            with self.assertRaises(original_error):
+                workshare.evaluate(self.packet, forged)
+        finally:
+            for name, value in originals.items():
+                setattr(workshare, name, value)
+
 
 if __name__ == "__main__":
     unittest.main()
