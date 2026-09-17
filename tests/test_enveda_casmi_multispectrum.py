@@ -16,6 +16,7 @@ sys.path.insert(0, str(ROOT))
 
 from competitions.enveda_casmi_2026.multispectrum import (  # noqa: E402
     PUBLIC_CONTRACT_SHA256,
+    RESULT_SCHEMA,
     MultiSpectrumError,
     digest,
     normalize_fixture,
@@ -58,6 +59,12 @@ class CasmiMultiSpectrumTests(unittest.TestCase):
         with self.assertRaises(MultiSpectrumError):
             validate_public_contract(raw)
 
+    def test_preview_revalidates_exact_public_contract(self):
+        raw = self.contract()
+        raw["authority"]["competition_submission"] = True
+        with self.assertRaises(MultiSpectrumError):
+            render_submission_preview_csv(raw, self.fixture())
+
     def test_baseline_is_deterministic_and_molecule_grouped(self):
         one = self.result()
         two = run_multispectrum_baseline(copy.deepcopy(self.fixture()))
@@ -71,11 +78,22 @@ class CasmiMultiSpectrumTests(unittest.TestCase):
         self.assertFalse(one["submission_used"])
         self.assertIn("NOT_KAGGLE_SCORE", one["metric_kind"])
 
+    def test_result_receipt_is_self_consistent(self):
+        result = self.result()
+        claimed = result["result_sha256"]
+        core = dict(result)
+        core.pop("result_sha256")
+        self.assertEqual(digest(core), claimed)
+        self.assertEqual(result["fixture_sha256"], digest(self.fixture()))
+
     def test_multispectrum_aggregation_recovers_from_one_misleading_spectrum(self):
         row = next(row for row in self.result()["rows"] if row["molecule_id"] == "M-001")
         self.assertEqual(row["expected_rank"], 1)
         ranked = {item["candidate_id"]: item for item in row["ranking"]}
-        self.assertGreater(ranked["C-D"]["per_spectrum_scores"][2], ranked["C-A"]["per_spectrum_scores"][2])
+        self.assertGreater(
+            ranked["C-D"]["per_spectrum_scores"][2],
+            ranked["C-A"]["per_spectrum_scores"][2],
+        )
         self.assertGreater(ranked["C-A"]["aggregate_score"], ranked["C-D"]["aggregate_score"])
 
     def test_reciprocal_rank_at_25_boundary(self):
@@ -99,6 +117,12 @@ class CasmiMultiSpectrumTests(unittest.TestCase):
         with self.assertRaisesRegex(MultiSpectrumError, "only SYNTHETIC"):
             run_multispectrum_baseline(raw)
 
+    def test_preview_dataset_authority_relabel_is_rejected(self):
+        raw = self.fixture()
+        raw["dataset_kind"] = "PUBLIC_OPEN"
+        with self.assertRaisesRegex(MultiSpectrumError, "only SYNTHETIC"):
+            submission_preview_rows(self.contract(), raw)
+
     def test_caller_authored_provenance_cannot_widen_public_open_admission(self):
         raw = self.fixture()
         raw["dataset_kind"] = "PUBLIC_OPEN"
@@ -118,9 +142,29 @@ class CasmiMultiSpectrumTests(unittest.TestCase):
         with self.assertRaises(MultiSpectrumError):
             normalize_fixture(raw)
 
+    def test_forged_result_schema_cannot_enter_preview(self):
+        forged = {
+            "schema": RESULT_SCHEMA,
+            "dataset_kind": "SYNTHETIC",
+            "rows": [{"molecule_id": "FORGED", "ranking": [{"smiles": "C"}]}],
+            "result_sha256": "0" * 64,
+        }
+        with self.assertRaisesRegex(MultiSpectrumError, "fixture shape/schema mismatch"):
+            submission_preview_rows(self.contract(), forged)
+
+    def test_even_valid_stale_result_receipt_cannot_enter_preview(self):
+        stale = self.result()
+        core = dict(stale)
+        receipt = core.pop("result_sha256")
+        self.assertEqual(digest(core), receipt)
+        with self.assertRaisesRegex(MultiSpectrumError, "fixture shape/schema mismatch"):
+            render_submission_preview_csv(self.contract(), stale)
+
     def test_more_than_sixteen_query_spectra_is_rejected(self):
         raw = self.fixture()
-        raw["molecules"][0]["spectra"] = [copy.deepcopy(raw["molecules"][0]["spectra"][0]) for _ in range(17)]
+        raw["molecules"][0]["spectra"] = [
+            copy.deepcopy(raw["molecules"][0]["spectra"][0]) for _ in range(17)
+        ]
         with self.assertRaises(MultiSpectrumError):
             run_multispectrum_baseline(raw)
 
@@ -150,36 +194,36 @@ class CasmiMultiSpectrumTests(unittest.TestCase):
             normalize_fixture(raw)
 
     def test_submission_preview_is_one_row_per_molecule_with_exact_columns(self):
-        result = self.result()
-        rows = submission_preview_rows(result)
+        rows = submission_preview_rows(self.contract(), self.fixture())
         self.assertEqual([row["molecule_id"] for row in rows], ["M-001", "M-002"])
         self.assertTrue(all(1 <= len(row["smiles"].split(";")) <= 25 for row in rows))
-        rendered = render_submission_preview_csv(result)
+        rendered = render_submission_preview_csv(self.contract(), self.fixture())
         parsed = list(csv.DictReader(io.StringIO(rendered)))
         self.assertEqual(list(parsed[0]), ["molecule_id", "smiles"])
         self.assertEqual(len(parsed), 2)
 
-    def test_submission_preview_dedupes_and_caps_at_twenty_five(self):
-        result = copy.deepcopy(self.result())
-        ranking = []
-        for i in range(31):
-            smiles = "C" if i in (0, 1) else f"C{'C' * i}O"
-            ranking.append({"candidate_id": f"X-{i}", "smiles": smiles})
-        result["rows"] = [{"molecule_id": "M-X", "ranking": ranking}]
-        rows = submission_preview_rows(result)
+    def test_submission_preview_dedupes_and_caps_at_twenty_five_after_recompile(self):
+        raw = self.fixture()
+        template = copy.deepcopy(raw["candidates"][0])
+        for i in range(30):
+            row = copy.deepcopy(template)
+            row["candidate_id"] = f"X-{i:02d}"
+            row["smiles"] = "N" if i in (0, 1) else ("N" + "C" * i)
+            raw["candidates"].append(row)
+        rows = submission_preview_rows(self.contract(), raw)
         values = rows[0]["smiles"].split(";")
         self.assertEqual(len(values), 25)
         self.assertEqual(len(values), len(set(values)))
 
-    def test_submission_unsafe_separator_or_newline_is_rejected(self):
+    def test_submission_unsafe_separator_or_newline_is_rejected_before_preview(self):
         raw = self.fixture()
         raw["candidates"][0]["smiles"] = "C;C"
         with self.assertRaises(MultiSpectrumError):
-            run_multispectrum_baseline(raw)
-        result = self.result()
-        result["rows"][0]["ranking"][0]["smiles"] = "C\nC"
+            render_submission_preview_csv(self.contract(), raw)
+        raw = self.fixture()
+        raw["candidates"][0]["smiles"] = "C\nC"
         with self.assertRaises(MultiSpectrumError):
-            submission_preview_rows(result)
+            submission_preview_rows(self.contract(), raw)
 
     def test_strict_loader_rejects_duplicate_keys_and_nonfinite(self):
         with tempfile.TemporaryDirectory() as td:
@@ -203,7 +247,9 @@ class CasmiMultiSpectrumTests(unittest.TestCase):
     def test_cli_baseline_and_preview(self):
         baseline = subprocess.run(
             [sys.executable, str(MODULE), "baseline", str(CONTRACT), str(FIXTURE)],
-            capture_output=True, text=True, timeout=10,
+            capture_output=True,
+            text=True,
+            timeout=10,
         )
         self.assertEqual(baseline.returncode, 0, baseline.stderr)
         payload = json.loads(baseline.stdout)
@@ -212,7 +258,9 @@ class CasmiMultiSpectrumTests(unittest.TestCase):
 
         preview = subprocess.run(
             [sys.executable, str(MODULE), "preview", str(CONTRACT), str(FIXTURE)],
-            capture_output=True, text=True, timeout=10,
+            capture_output=True,
+            text=True,
+            timeout=10,
         )
         self.assertEqual(preview.returncode, 0, preview.stderr)
         rows = list(csv.DictReader(io.StringIO(preview.stdout)))
@@ -226,8 +274,10 @@ class CasmiMultiSpectrumTests(unittest.TestCase):
             path = Path(td) / "public-open.json"
             path.write_text(json.dumps(raw), encoding="utf-8")
             proc = subprocess.run(
-                [sys.executable, str(MODULE), "baseline", str(CONTRACT), str(path)],
-                capture_output=True, text=True, timeout=10,
+                [sys.executable, str(MODULE), "preview", str(CONTRACT), str(path)],
+                capture_output=True,
+                text=True,
+                timeout=10,
             )
         self.assertEqual(proc.returncode, 2)
         self.assertIn("only SYNTHETIC", proc.stderr)
