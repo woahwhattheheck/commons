@@ -1,9 +1,7 @@
 import concurrent.futures
 import io
 import json
-import os
 import re
-import shutil
 import socket
 import sqlite3
 import tempfile
@@ -13,7 +11,6 @@ import urllib.error
 import urllib.request
 import uuid
 import zipfile
-from contextlib import closing
 from pathlib import Path
 
 import server
@@ -44,14 +41,13 @@ OPAQUE_REFERENCES = ('ROUTE-DEMO-ALDER', 'vendor:route/2026-09-16', 'R-0001', 'a
 class DeskTests(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
-        self.addCleanup(self.tmp.cleanup)  # runs after every cleanup a test registers later, so pinned desks close first
         self.path = Path(self.tmp.name) / 'desk.sqlite3'
         self.desk = Desk(self.path)
         self.brand = self.write('brand/create', name='Test brand')['id']
         self.creator = self.write('creator/create', handle='creator.one', consent_on='2026-09-01', payout_route_ref='ROUTE-1')['id']
 
     def tearDown(self):
-        self.desk.close()
+        self.tmp.cleanup()
 
     def write(self, op, **data):
         return self.desk.write(op, {'operation_id': uuid.uuid4().hex, **data})
@@ -282,198 +278,32 @@ class DeskTests(unittest.TestCase):
             Desk(link)
         self.assertEqual(server.main(['--db', str(link), '--port', '0']), 2)
 
-    def test_every_connection_is_bound_to_the_database_the_desk_opened(self):
-        real = Path(self.tmp.name) / 'bound.sqlite3'
-        desk = Desk(real)
-        self.addCleanup(desk.close)
-        desk.write('brand/create', {'operation_id': 'bound-1', 'name': 'Bound brand'})
-        foreign_path = Path(self.tmp.name) / 'foreign.sqlite3'
-        foreign = Desk(foreign_path)
-        foreign.write('brand/create', {'operation_id': 'foreign-1', 'name': 'Foreign brand'})
-        foreign.close()
-        original = real.read_bytes()
-        # 1. Another valid desk database is written over the path in place.
-        real.write_bytes(foreign_path.read_bytes())
-        attempts = (('snapshot', desk.snapshot),
-                    ('write', lambda: desk.write('brand/create', {'operation_id': 'bound-2', 'name': 'Never lands'})),
-                    ('export', lambda: desk.export('0' * 32)))
-        for step, call in attempts:
-            with self.subTest(step=step), self.assertRaises(DeskError) as caught:
-                call()
-            self.assertEqual(caught.exception.status, 503)
-            self.assertIn('substituted', str(caught.exception))
-        with closing(sqlite3.connect(real)) as db:  # the substituted database received nothing
-            self.assertEqual([r[0] for r in db.execute('SELECT name FROM brands')], ['Foreign brand'])
-        real.write_bytes(original)  # the desk's own database is back at the path and the desk resumes
-        self.assertEqual([b['name'] for b in desk.snapshot()['brands']], ['Bound brand'])
-        # 2. The path is renamed away and re-pointed at another database.
-        aside = Path(self.tmp.name) / 'aside.sqlite3'
-        try:
-            os.replace(real, aside)
-        except PermissionError:
-            pass  # this platform keeps the pinned database in place while the desk holds it
-        else:
-            try:
-                real.symlink_to(foreign_path)
-            except (OSError, NotImplementedError):
-                shutil.copyfile(foreign_path, real)
-            with self.assertRaises(DeskError) as caught:
-                desk.snapshot()
-            self.assertEqual(caught.exception.status, 503)
-            real.unlink()
-            os.replace(aside, real)
-        self.assertEqual([b['name'] for b in desk.snapshot()['brands']], ['Bound brand'])
-        # 3. A file that is not a SQLite database, and a database that is not a desk database, are refused at startup.
+    def test_startup_refuses_files_that_are_not_desk_databases_and_leaves_them_untouched(self):
         text = Path(self.tmp.name) / 'text.sqlite3'
         text.write_bytes(b'not a database\n' * 20)
         with self.assertRaises(DeskError):
             Desk(text)
+        self.assertEqual(text.read_bytes(), b'not a database\n' * 20)
         self.assertEqual(server.main(['--db', str(text), '--port', '0']), 2)
         other = Path(self.tmp.name) / 'other.sqlite3'
-        with closing(sqlite3.connect(other)) as db:
-            db.execute('CREATE TABLE notes (id INTEGER PRIMARY KEY)')
-            db.commit()
-        with self.assertRaises(DeskError):
-            Desk(other)
-        # 4. A desk database written before identities existed is adopted once, then bound like any other.
-        legacy = Path(self.tmp.name) / 'legacy.sqlite3'
-        Desk(legacy).close()
-        with closing(sqlite3.connect(legacy)) as db:
-            db.execute('PRAGMA application_id=0')
-            db.execute('PRAGMA user_version=0')
-        adopted = Desk(legacy)
-        self.addCleanup(adopted.close)
-        self.assertNotEqual(adopted.identity, (0, 0))
-        again = Desk(legacy)
-        self.assertEqual(again.identity, adopted.identity)
-        again.close()
-        with self.assertRaises(DeskError):
-            again.snapshot()
-
-    def test_database_swapped_between_the_check_and_the_open_is_refused_at_startup(self):
-        foreign_path = Path(self.tmp.name) / 'foreign.sqlite3'
-        Desk(foreign_path).close()
-        existing = Path(self.tmp.name) / 'existing.sqlite3'
-        Desk(existing).close()
-        cloned = Path(self.tmp.name) / 'cloned.sqlite3'
-        Desk(cloned).close()
-        clone = Path(self.tmp.name) / 'cloned-copy.sqlite3'
-        shutil.copyfile(cloned, clone)  # a byte copy carries the same header identity
-        with closing(sqlite3.connect(clone)) as db:
-            db.execute("INSERT INTO brands (id, name) VALUES ('clone-only', 'Clone brand')")
-            db.commit()
-        genuine = server.sqlite3.connect
-        for victim, substitute in ((existing, foreign_path), (Path(self.tmp.name) / 'fresh.sqlite3', foreign_path), (cloned, clone)):
-            outcome = {}
-
-            def swapping_connect(path, *args, **kwargs):
-                # Between the desk's own open and the SQLite open, the path is re-pointed at another database.
-                if str(path) == str(victim) and 'swapped' not in outcome:
-                    outcome['swapped'] = True
-                    try:
-                        os.replace(victim, victim.with_suffix('.aside'))
-                    except PermissionError:
-                        outcome['pinned'] = True  # the handle taken first keeps the file where it is on this platform
-                    else:
-                        shutil.copyfile(substitute, victim)
-                        outcome['substituted_bytes'] = victim.read_bytes()
-                return genuine(path, *args, **kwargs)
-
-            server.sqlite3.connect = swapping_connect
-            try:
-                try:
-                    desk = Desk(victim)
-                except DeskError as caught:
-                    self.assertEqual(caught.status, 503)
-                    self.assertNotIn('pinned', outcome)
-                    # The substituted target received nothing: refused before any statement ran.
-                    self.assertEqual(victim.read_bytes(), outcome['substituted_bytes'])
-                else:
-                    desk.close()
-                    self.assertIn('pinned', outcome)
-            finally:
-                server.sqlite3.connect = genuine
-            self.assertIn('swapped', outcome)
-
-    def test_same_identity_clone_swapped_in_for_the_open_and_out_again_is_refused(self):
-        real = Path(self.tmp.name) / 'owned.sqlite3'
-        desk = Desk(real)
-        self.addCleanup(desk.close)
-        desk.write('brand/create', {'operation_id': 'own-1', 'name': 'Own brand'})
-        clone = Path(self.tmp.name) / 'owned-clone.sqlite3'
-        shutil.copyfile(real, clone)  # same header identity as the desk's database
-        with closing(sqlite3.connect(clone)) as db:
-            db.execute("INSERT INTO brands (id, name) VALUES ('clone-only', 'Clone brand')")
-            db.commit()
-            self.assertEqual((db.execute('PRAGMA application_id').fetchone()[0], db.execute('PRAGMA user_version').fetchone()[0]), desk.identity)
-        clone_bytes = clone.read_bytes()
-        aside = Path(self.tmp.name) / 'owned-aside.sqlite3'
-        genuine = server.sqlite3.connect
-        outcome = {}
-
-        def racing_connect(path, *args, **kwargs):
-            # The clone answers to the path only for the instant of the SQLite open; the desk's own file is back before the open returns.
-            if str(path) != str(real):
-                return genuine(path, *args, **kwargs)
-            try:
-                os.replace(real, aside)
-            except PermissionError:
-                outcome['pinned'] = True  # the pinned handle keeps the file in place on this platform
-                return genuine(path, *args, **kwargs)
-            os.replace(clone, real)
-            try:
-                return genuine(path, *args, **kwargs)
-            finally:
-                os.replace(real, clone)
-                os.replace(aside, real)
-                outcome['raced'] = True
-
-        server.sqlite3.connect = racing_connect
+        db = sqlite3.connect(other)
         try:
-            for step, call in (('snapshot', desk.snapshot),
-                               ('write', lambda: desk.write('brand/create', {'operation_id': 'own-2', 'name': 'Never in clone'}))):
-                try:
-                    result = call()
-                except DeskError as caught:
-                    self.assertEqual(caught.status, 503)
-                    self.assertIn('raced', outcome)
-                else:
-                    self.assertIn('pinned', outcome)
-                    if step == 'snapshot':
-                        self.assertEqual([b['name'] for b in result['brands']], ['Own brand'])
-            if 'raced' in outcome:
-                with self.assertRaises(DeskError) as caught:
-                    desk.export('0' * 32)
-                self.assertEqual(caught.exception.status, 503)
+            db.execute('CREATE TABLE notes (id INTEGER PRIMARY KEY, body TEXT)')
+            db.execute("INSERT INTO notes (body) VALUES ('kept')")
+            db.commit()
         finally:
-            server.sqlite3.connect = genuine
-        self.assertEqual(clone.read_bytes(), clone_bytes)  # the clone received nothing
-        names = [b['name'] for b in desk.snapshot()['brands']]
-        self.assertNotIn('Clone brand', names)
-        self.assertEqual(names, ['Own brand'] if 'raced' in outcome else ['Never in clone', 'Own brand'])
-
-    def test_descriptor_proof_rule(self):
-        pinned_path = Path(self.tmp.name) / 'pinned.bin'
-        pinned_path.write_bytes(b'pinned')
-        other_path = Path(self.tmp.name) / 'other.bin'
-        other_path.write_bytes(b'other')
-        flags = os.O_RDONLY | getattr(os, 'O_BINARY', 0)
-        pinned_fd = os.open(pinned_path, flags)
-        self.addCleanup(os.close, pinned_fd)
-        other_fd = os.open(other_path, flags)
-        self.addCleanup(os.close, other_fd)
-        found = os.fstat(pinned_fd)
-        pinned = (found.st_dev, found.st_ino)
-        closed = os.open(other_path, flags)
-        os.close(closed)
-        proof = server._descriptor_proof
-        self.assertTrue(proof(set(), {pinned_fd}, pinned))  # the open produced a descriptor on the pinned file
-        self.assertTrue(proof(set(), set(), pinned))  # SQLite reused one of its own parked descriptors
-        self.assertTrue(proof(set(), {closed}, pinned))  # a descriptor closed again (the listing's own handle) decides nothing
-        self.assertFalse(proof(set(), {other_fd}, pinned))  # the open produced a descriptor on another file
-        self.assertTrue(proof(set(), {other_fd, pinned_fd}, pinned))  # an unrelated descriptor cannot hide a proven one
-        self.assertFalse(proof({pinned_fd}, {pinned_fd, other_fd}, pinned))  # a pre-existing pinned descriptor is not this open's
-        self.assertIn(server.CUSTODY_PROOF, ('descriptor', 'handle'))
+            db.close()
+        before = other.read_bytes()
+        with self.assertRaises(DeskError) as caught:
+            Desk(other)
+        self.assertIn('not a desk database', str(caught.exception))
+        self.assertEqual(other.read_bytes(), before)
+        self.assertEqual(server.main(['--db', str(other), '--port', '0']), 2)
+        self.assertEqual(other.read_bytes(), before)
+        empty = Path(self.tmp.name) / 'empty.sqlite3'
+        empty.write_bytes(b'')
+        Desk(empty).write('brand/create', {'operation_id': 'empty-1', 'name': 'From empty'})
+        self.assertEqual([b['name'] for b in Desk(empty).snapshot()['brands']], ['From empty'])
 
     def test_ported_urls_keep_their_identity_and_malformed_ports_are_refused(self):
         campaign = self.campaign()
@@ -843,7 +673,6 @@ class HttpTests(unittest.TestCase):
         self.server.shutdown()
         self.server.server_close()
         self.thread.join(timeout=5)
-        self.desk.close()
         self.tmp.cleanup()
 
     def call(self, path, payload=None):
@@ -962,25 +791,6 @@ class HttpTests(unittest.TestCase):
         status, body, _ = self.call('/api/brand/create', {'operation_id': 'strict-ok', 'name': 'Strict brand'})
         self.assertEqual(status, 200, body)
         self.assertEqual(len(self.desk.snapshot()['brands']), 1)
-
-    def test_substituted_database_gets_a_clean_503_and_the_desk_resumes(self):
-        path = Path(self.tmp.name) / 'desk.sqlite3'
-        original = path.read_bytes()
-        foreign = Path(self.tmp.name) / 'foreign.sqlite3'
-        Desk(foreign).close()
-        path.write_bytes(foreign.read_bytes())
-        status, body, content_type = self.call('/api/state')
-        self.assertEqual(status, 503)
-        self.assertIn('application/json', content_type)
-        self.assertIn('substituted', json.loads(body)['error'])
-        status, body, _ = self.call('/api/brand/create', {'operation_id': 'sub-1', 'name': 'Never lands'})
-        self.assertEqual(status, 503)
-        path.write_bytes(original)
-        status, body, _ = self.call('/api/state')
-        self.assertEqual(status, 200)
-        self.assertEqual(json.loads(body)['brands'], [])
-        with closing(sqlite3.connect(foreign)) as db:
-            self.assertEqual(db.execute('SELECT count(*) FROM brands').fetchone()[0], 0)
 
     def test_malformed_oversized_short_and_unknown_route_bodies_get_clean_replies(self):
         head = b'POST /api/brand/create HTTP/1.1\r\nHost: 127.0.0.1\r\nContent-Type: application/json\r\n'
