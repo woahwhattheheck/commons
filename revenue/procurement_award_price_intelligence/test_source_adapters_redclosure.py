@@ -4,10 +4,12 @@ import copy
 import json
 import unittest
 
+from revenue.procurement_award_price_intelligence import engine
 from revenue.procurement_award_price_intelligence.source_adapters import Error, compile
 from revenue.procurement_award_price_intelligence.test_source_adapters import (
     award,
     bid,
+    contract,
     document,
     raw,
     request,
@@ -15,20 +17,33 @@ from revenue.procurement_award_price_intelligence.test_source_adapters import (
 
 
 class SourceAdapterRedClosureTests(unittest.TestCase):
-    def test_query_and_fragment_source_uris_fail_closed(self):
+    def test_query_fragment_and_encoded_secret_source_uris_fail_closed(self):
         secret_uris = (
             "https://buyer.example.gov/award?token=secret-value",
             "https://buyer.example.gov/award?X-Amz-Signature=deadbeef",
             "https://buyer.example.gov/award#access_token=secret-value",
             "https://buyer.example.gov/award?",
             "https://buyer.example.gov/award#",
+            "https://buyer.example.gov/%3Ftoken%3Dsecret-value",
+            "https://buyer.example.gov/%23access_token%3Dsecret-value",
+            "https://buyer.example.gov/award%3FX-Amz-Signature%3Ddeadbeef",
+            "https://buyer.example.gov/%253Ftoken%253Dsecret-value",
+            "https://buyer.example.gov/%25%33%46token%3Dsecret-value",
         )
         for uri in secret_uris:
             doc = document("AWARD_NOTICE_JSON_V1", award(), "AWARD_NOTICE")
             doc["source"]["uri"] = uri
             with self.subTest(uri=uri):
-                with self.assertRaisesRegex(Error, "queryless fragmentless https URI"):
+                with self.assertRaisesRegex(Error, "query|fragment"):
                     compile(raw(request([doc])))
+
+    def test_ordinary_encoded_path_is_preserved(self):
+        uri = "https://buyer.example.gov/award%20notice/public%2Fcopy"
+        doc = document("AWARD_NOTICE_JSON_V1", award(), "AWARD_NOTICE")
+        doc["source"]["uri"] = uri
+        price_bytes, _, _ = compile(raw(request([doc])))
+        price = json.loads(price_bytes)
+        self.assertEqual(uri, price["sources"][0]["uri"])
 
     def test_raw_source_cannot_be_reminted_under_fresh_source_identity(self):
         first = document("AWARD_NOTICE_JSON_V1", award(), "AWARD_NOTICE", source_id="source-a")
@@ -57,6 +72,70 @@ class SourceAdapterRedClosureTests(unittest.TestCase):
         with self.assertRaisesRegex(Error, "duplicate retained raw source"):
             compile(raw(request([first, second])))
 
+    def test_changed_award_identity_does_not_add_statistical_weight(self):
+        first = document("AWARD_NOTICE_JSON_V1", award(), "AWARD_NOTICE", source_id="source-a")
+        second_payload = award()
+        second_payload["award_id"] = "a2"
+        second = document("AWARD_NOTICE_JSON_V1", second_payload, "AWARD_NOTICE", source_id="source-b")
+        second["source"]["sha256"] = "b" * 64
+        price_bytes, _, _ = compile(raw(request([first, second])))
+        packet = json.loads(engine.compile(price_bytes)[0])
+        self.assertEqual("PRICE_EVIDENCE_READY", packet["status"])
+        self.assertEqual(1, packet["comparable_groups"][0]["count"])
+        self.assertEqual(1, len(packet["admissible_observations"]))
+        self.assertEqual(
+            {"source-a", "source-b"},
+            set(packet["admissible_observations"][0]["source_ids"]),
+        )
+
+    def test_award_notice_and_executed_contract_corroborate_one_claim(self):
+        first = document("AWARD_NOTICE_JSON_V1", award(), "AWARD_NOTICE", source_id="source-a")
+        contract_payload = contract()
+        contract_payload.update(
+            opportunity_id="opp1",
+            vendor="Vendor LLC",
+            base_amount_minor=123400,
+            option_amount_minor=None,
+            option_term_months=None,
+        )
+        second = document(
+            "EXECUTED_CONTRACT_JSON_V1",
+            contract_payload,
+            "EXECUTED_CONTRACT",
+            source_id="source-b",
+        )
+        second["source"]["sha256"] = "b" * 64
+        price_bytes, _, _ = compile(raw(request([first, second])))
+        packet = json.loads(engine.compile(price_bytes)[0])
+        self.assertEqual("PRICE_EVIDENCE_READY", packet["status"])
+        self.assertEqual(1, packet["comparable_groups"][0]["count"])
+        self.assertEqual(
+            {"source-a", "source-b"},
+            {source["source_id"] for source in packet["admissible_observations"][0]["sources"]},
+        )
+
+    def test_same_claim_different_signature_still_holds_conflict(self):
+        first = document("AWARD_NOTICE_JSON_V1", award(), "AWARD_NOTICE", source_id="source-a")
+        second_payload = award()
+        second_payload.update(award_id="a2", award_amount_minor=999999)
+        second = document("AWARD_NOTICE_JSON_V1", second_payload, "AWARD_NOTICE", source_id="source-b")
+        second["source"]["sha256"] = "b" * 64
+        price_bytes, _, _ = compile(raw(request([first, second])))
+        packet = json.loads(engine.compile(price_bytes)[0])
+        self.assertEqual("HOLD_SOURCE_CONFLICT", packet["status"])
+        self.assertEqual(1, len(packet["conflicts"]))
+
+    def test_distinct_claim_same_value_still_counts_twice(self):
+        first = document("AWARD_NOTICE_JSON_V1", award(), "AWARD_NOTICE", source_id="source-a")
+        second_payload = award()
+        second_payload.update(award_id="a2", vendor="Other Vendor")
+        second = document("AWARD_NOTICE_JSON_V1", second_payload, "AWARD_NOTICE", source_id="source-b")
+        second["source"]["sha256"] = "b" * 64
+        price_bytes, _, _ = compile(raw(request([first, second])))
+        packet = json.loads(engine.compile(price_bytes)[0])
+        self.assertEqual("PRICE_EVIDENCE_READY", packet["status"])
+        self.assertEqual(2, packet["comparable_groups"][0]["count"])
+
     def test_legitimate_multiple_rows_live_inside_one_retained_source(self):
         payload = bid()
         payload["rows"] = [
@@ -67,9 +146,11 @@ class SourceAdapterRedClosureTests(unittest.TestCase):
         price_bytes, packet_bytes, _ = compile(raw(request([doc])))
         price = json.loads(price_bytes)
         packet = json.loads(packet_bytes)
+        downstream = json.loads(engine.compile(price_bytes)[0])
         self.assertEqual(1, len(price["sources"]))
         self.assertEqual(2, len(price["observations"]))
         self.assertEqual(2, packet["emitted_observation_count"])
+        self.assertEqual(2, downstream["comparable_groups"][0]["count"])
         self.assertEqual({"A LLC", "B LLC"}, {row["vendor"] for row in price["observations"]})
 
 
