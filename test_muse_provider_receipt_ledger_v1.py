@@ -298,7 +298,7 @@ class LedgerTests(unittest.TestCase):
         proof = ledger.build_request_bound_proof(request, token=self.token)
         self.assertNotIn(self.token, json.dumps(proof, sort_keys=True))
 
-    def test_terminal_composition_requires_same_selected_slack_generation_and_keeps_send_false(self):
+    def test_terminal_composition_requires_current_visible_selected_generation_and_keeps_send_false(self):
         self.init()
         request, _ = request_and_receipt("a")
         proof = ledger.build_request_bound_proof(request, token=self.token)
@@ -306,7 +306,14 @@ class LedgerTests(unittest.TestCase):
         slack_receipt = {
             "payload": {
                 **facts,
-                "effective_observation": "SELECTED",
+                "schema_version": "outbound-muse-slack-provider-evidence/v1",
+                "authority_mode": "PROVIDER_AUTHENTICATED_SLACK_DM_EVIDENCE_V1",
+                "visibility_model": "CURRENT_VISIBLE_SLACK_WEB_API_ONLY",
+                "deleted_history_authenticated": False,
+                "requester_control_history_authenticated": False,
+                "prior_receipt_ledger_authenticated": False,
+                "terminal_election_authorized": False,
+                "current_visible_effective_observation": "SELECTED",
                 "external_send_authorized": False,
                 "side_effects_authorized": False,
                 "requires_current_worker_lease_possession": True,
@@ -314,11 +321,20 @@ class LedgerTests(unittest.TestCase):
             }
         }
         fake = types.ModuleType("tools.outbound_send_guard.muse_slack_provider_v1")
-        fake.verify_provider_evidence = lambda req, rec: req is request and rec is slack_receipt
+        fake.PROVIDER_SCHEMA = "outbound-muse-slack-provider-evidence/v1"
+        fake.AUTHORITY_MODE = "PROVIDER_AUTHENTICATED_SLACK_DM_EVIDENCE_V1"
+        fake.VISIBILITY_MODEL = "CURRENT_VISIBLE_SLACK_WEB_API_ONLY"
+        fake.verify_provider_evidence = lambda req, rec: req is request and type(rec) is dict and type(rec.get("payload")) is dict
         name = "tools.outbound_send_guard.muse_slack_provider_v1"
         with mock.patch.dict(sys.modules, {name: fake}):
             self.assertTrue(
                 ledger.verify_terminal_coordination(request, slack_receipt, proof, token=self.token)
+            )
+            obsolete = copy.deepcopy(slack_receipt)
+            del obsolete["payload"]["current_visible_effective_observation"]
+            obsolete["payload"]["effective_observation"] = "SELECTED"
+            self.assertFalse(
+                ledger.verify_terminal_coordination(request, obsolete, proof, token=self.token)
             )
             bad = copy.deepcopy(slack_receipt)
             bad["payload"]["candidate_sha256"] = "f" * 64
