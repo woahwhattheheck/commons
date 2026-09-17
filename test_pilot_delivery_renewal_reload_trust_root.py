@@ -1,10 +1,15 @@
 import builtins
+import contextlib
 import importlib
 import importlib.util
+import io
+import json
 import sys
+import tempfile
 import unittest
+from pathlib import Path
 
-from revenue.pilot_delivery_renewal_expansion_gate import engine
+from revenue.pilot_delivery_renewal_expansion_gate import common, engine
 from revenue.pilot_delivery_renewal_expansion_gate.test_gate import current_packet
 
 
@@ -70,6 +75,7 @@ class ReloadStableTrustRootTests(unittest.TestCase):
 
         self.assertIs(probe.compile_current, original_compile)
         self.assertIs(probe.verify_receipt, original_verify)
+        self.assertIs(probe.GateError, engine.GateError)
         after = probe.compile_current(packet)
         self.assertEqual(after["state"], engine.HOLD_ACCEPTANCE)
         self.assertEqual(after["commercial_generation"], 2)
@@ -97,6 +103,47 @@ class ReloadStableTrustRootTests(unittest.TestCase):
 
         self.assertIs(engine.compile_current, original_compile)
         with self.assertRaisesRegex(engine.GateError, "integer required"):
+            engine.compile_current(packet)
+
+    def test_common_reload_preserves_public_error_generation_and_cli_catches_it(self):
+        stable_error = engine.GateError
+        importlib.reload(common)
+        self.assertIsNot(common.GateError, stable_error)
+        importlib.reload(engine)
+        self.assertIs(engine.GateError, stable_error)
+
+        packet = current_packet()
+        packet["baseline"]["generation"] = True
+        with self.assertRaisesRegex(stable_error, "integer required"):
+            engine.compile_current(packet)
+
+        with tempfile.TemporaryDirectory() as td:
+            packet_path = Path(td) / "packet.json"
+            packet_path.write_text(json.dumps(packet), encoding="utf-8")
+            stderr = io.StringIO()
+            with contextlib.redirect_stderr(stderr):
+                rc = engine.main(["compile", str(packet_path)])
+            self.assertEqual(rc, 2)
+            self.assertIn("ERROR:", stderr.getvalue())
+            self.assertNotIn("Traceback", stderr.getvalue())
+
+    def test_packet_large_child_fails_at_node_budget(self):
+        packet = current_packet()
+        packet["oversized_untrusted_child"] = [None] * 10_001
+        with self.assertRaisesRegex(engine.GateError, "node budget exceeded"):
+            engine.compile_current(packet)
+
+    def test_receipt_large_child_fails_at_node_budget(self):
+        packet = current_packet()
+        receipt = engine.compile_current(packet)
+        receipt["oversized_untrusted_child"] = [None] * 10_001
+        with self.assertRaisesRegex(engine.GateError, "node budget exceeded"):
+            engine.verify_receipt(packet, receipt)
+
+    def test_packet_large_string_fails_at_byte_budget(self):
+        packet = current_packet()
+        packet["oversized_untrusted_text"] = "x" * 1_000_001
+        with self.assertRaisesRegex(engine.GateError, "byte budget exceeded"):
             engine.compile_current(packet)
 
 
