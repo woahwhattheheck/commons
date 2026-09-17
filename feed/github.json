@@ -3,7 +3,7 @@
     "open_issues": 104,
     "open_pull_requests": 16,
     "runs_in_progress": 20,
-    "runs_queued": 1098
+    "runs_queued": 1101
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -197,8 +197,19 @@
   },
   "pulls_listed": 16,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 54.9,
+  "queue_depth_per_runner": 55.0,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "quill/future-requests-md-keep-larger-fixed-20260916-01",
+      "closed_at": "2026-09-17T00:49:15Z",
+      "head_sha": "2bcc1dcdfb05a5277bb12752e40a737935ae69d4",
+      "merged_at": "2026-09-17T00:49:15Z",
+      "number": 15148,
+      "state": "MERGED",
+      "title": "QUILL: FUTURE/REQUESTS MD KEEP Larger-fixed (20260916-01)"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -345,17 +356,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "grok/webmcp-hearthline-release-gate-receipt-20260916",
-      "closed_at": "2026-09-16T23:53:24Z",
-      "head_sha": "50a0fd98cc0041252cecaef4c943024acce88b3e",
-      "merged_at": "2026-09-16T23:53:24Z",
-      "number": 15119,
-      "state": "MERGED",
-      "title": "Post Hearthline public-release gate billing receipt"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "grok/opr-ci-receipt-35163216313",
       "closed_at": "2026-09-16T23:51:58Z",
       "head_sha": "d391892c7f4054dcb09e45df285fa393ef440569",
@@ -367,6 +367,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T00:48:49Z",
+  "unchanged_since": "2026-09-17T00:50:17Z",
   "undatable_pulls": []
 }
