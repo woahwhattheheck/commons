@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 105,
-    "open_pull_requests": 18,
-    "runs_in_progress": 20,
-    "runs_queued": 1141
+    "open_issues": 104,
+    "open_pull_requests": 20,
+    "runs_in_progress": 19,
+    "runs_queued": 1150
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,6 +69,28 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "cursor/goat-ground-retirement-md-keep-larger-fixed-1770",
+      "created_at": "2026-09-17T01:37:48Z",
+      "draft": false,
+      "head_sha": "3a731395f64820fc658e17108a1f272021cac165",
+      "number": 15173,
+      "title": "GOAT: KEEP Larger fixed on leftover retirement/delta/profile ground MD",
+      "updated_at": "2026-09-17T01:37:48Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol-oss-funding-route-recensus-20260916",
+      "created_at": "2026-09-17T01:36:16Z",
+      "draft": false,
+      "head_sha": "64d0d13fe4939c56f399333e5f50f3fc07fea464",
+      "number": 15172,
+      "title": "Revenue: add offline OSS funding route freshness recensus",
+      "updated_at": "2026-09-17T01:37:08Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "cursor/latch-ops-pack-md-keep-larger-fixed-6ee1",
       "created_at": "2026-09-17T01:08:09Z",
       "draft": false,
@@ -116,10 +138,10 @@
       "branch": "fpc-7ddb/creator-reward-campaign",
       "created_at": "2026-09-17T00:22:37Z",
       "draft": false,
-      "head_sha": "ca189147eac0bed240481a0345a421a3ac75a2a1",
+      "head_sha": "cf4b46202359511ae5ece281d858281b085a9691",
       "number": 15125,
       "title": "revenue/hive/creator-reward-campaign: HIVE021 creator reward campaign desk",
-      "updated_at": "2026-09-17T01:08:41Z"
+      "updated_at": "2026-09-17T01:32:43Z"
     },
     {
       "author": "woahwhattheheck",
@@ -153,28 +175,6 @@
       "number": 14788,
       "title": "Finalize reply-event identity authority and canonical funnel",
       "updated_at": "2026-09-16T22:43:05Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zlh-p6r8/uark-current-authority-recovery-20260915",
-      "created_at": "2026-09-16T00:27:58Z",
-      "draft": false,
-      "head_sha": "68049d74646c9a09b4e3d3275f2f6aea3bd5bdba",
-      "number": 14770,
-      "title": "UArk: freeze direct CLI authority and truth labels",
-      "updated_at": "2026-09-16T01:17:52Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zircon/learn2design-v3-depth-throughput-20260915",
-      "created_at": "2026-09-15T07:38:47Z",
-      "draft": true,
-      "head_sha": "6e8761343b10ec3518fd1a6a002594ac6076d38a",
-      "number": 14705,
-      "title": "Learn2Design: v3 depth/throughput hybrid + matched public matrix",
-      "updated_at": "2026-09-15T07:46:57Z"
     }
   ],
   "open_heads": {
@@ -191,16 +191,84 @@
     "14788": "ffaff5aa571aaccedd41f82c0eba85b09586f230",
     "14871": "4b938fd21134e1600659fa7c33eff5fc873f7579",
     "14873": "81dbcfb0701f543e2e4098f4fbd0883bd2e0a84f",
-    "15125": "ca189147eac0bed240481a0345a421a3ac75a2a1",
+    "15125": "cf4b46202359511ae5ece281d858281b085a9691",
     "15133": "3ed2e58aa746b415ca627c368ca0efb177ae74c9",
     "15137": "9bd368e81ae1849840e2b575178fa391fdc34730",
     "15157": "70715a0b2e6368c38ec17c5f237431f3a6b57854",
-    "15159": "92fe5e9750888e2cc6ceba6e914e9e3aa988eec6"
+    "15159": "92fe5e9750888e2cc6ceba6e914e9e3aa988eec6",
+    "15172": "64d0d13fe4939c56f399333e5f50f3fc07fea464",
+    "15173": "3a731395f64820fc658e17108a1f272021cac165"
   },
-  "pulls_listed": 18,
+  "pulls_listed": 20,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 57.0,
+  "queue_depth_per_runner": 60.5,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol/procurement-qa-answer-delta-20260916",
+      "closed_at": "2026-09-17T01:36:44Z",
+      "head_sha": "c46a674a03765ffd1654a358872ef83e9669f3a7",
+      "merged_at": "2026-09-17T01:36:44Z",
+      "number": 15171,
+      "state": "MERGED",
+      "title": "Revenue: compile buyer Q&A answers into exact procurement deltas"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "paid-runner/scibase-open-bounty-capture-20260916",
+      "closed_at": "2026-09-17T01:31:36Z",
+      "head_sha": "8c984fd0f5f587492af9179c418d43cb26325a0a",
+      "merged_at": "2026-09-17T01:31:36Z",
+      "number": 15169,
+      "state": "MERGED",
+      "title": "Revenue: capture current SCIBASE bounty economics"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/goat-wake-loop-md-keep-larger-fixed-8a48",
+      "closed_at": "2026-09-17T01:30:21Z",
+      "head_sha": "c2762d76cbafcefe58359ba62177778df2daeb1f",
+      "merged_at": "2026-09-17T01:30:21Z",
+      "number": 15168,
+      "state": "MERGED",
+      "title": "GOAT: KEEP Larger fixed on leftover wake/cloud ground MD"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol-public-procurement-award-comparable-corpus-20260916",
+      "closed_at": "2026-09-17T01:24:10Z",
+      "head_sha": "55360d73636dde36e51f9222e5fd36d486ac1e5d",
+      "merged_at": "2026-09-17T01:24:10Z",
+      "number": 15166,
+      "state": "MERGED",
+      "title": "Revenue: add current public procurement comparable corpus"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "quill/paste-pages-annex-md-keep-larger-fixed-20260916-03",
+      "closed_at": "2026-09-17T01:23:21Z",
+      "head_sha": "d72b18f58409a726b80cfffc2def0f4277eeacb9",
+      "merged_at": "2026-09-17T01:23:21Z",
+      "number": 15167,
+      "state": "MERGED",
+      "title": "QUILL: paste/pages/annex MD KEEP Larger-fixed (20260916-03)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/goat-memory-md-keep-larger-fixed-8a48",
+      "closed_at": "2026-09-17T01:21:49Z",
+      "head_sha": "f5cc69ba0b0d61dc7fd00de825c6d661cb359a7a",
+      "merged_at": "2026-09-17T01:21:49Z",
+      "number": 15165,
+      "state": "MERGED",
+      "title": "GOAT: KEEP Larger fixed on leftover memory MD"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -299,76 +367,10 @@
       "number": 15149,
       "state": "MERGED",
       "title": "Revenue: compile verified diagnostics into owner-review follow-ons"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "cursor/goat-execute-land-keep-larger-fixed-1d5c",
-      "closed_at": "2026-09-17T00:54:37Z",
-      "head_sha": "af6261fa9a1baf72b0f3d2aa697e1e69f0022877",
-      "merged_at": "2026-09-17T00:54:37Z",
-      "number": 15151,
-      "state": "MERGED",
-      "title": "GOAT: KEEP Larger fixed on execute/land law MD"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "quill/future-requests-md-keep-larger-fixed-20260916-01",
-      "closed_at": "2026-09-17T00:49:15Z",
-      "head_sha": "2bcc1dcdfb05a5277bb12752e40a737935ae69d4",
-      "merged_at": "2026-09-17T00:49:15Z",
-      "number": 15148,
-      "state": "MERGED",
-      "title": "QUILL: FUTURE/REQUESTS MD KEEP Larger-fixed (20260916-01)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "forgeglass/buyer-redline-scope-delta-20260916",
-      "closed_at": "2026-09-17T00:47:19Z",
-      "head_sha": "3dce2aca7e4a81fa8af0371927931ad788159447",
-      "merged_at": "2026-09-17T00:47:19Z",
-      "number": 15147,
-      "state": "MERGED",
-      "title": "revenue: compile buyer redlines into paid-scope deltas"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "type/build-quote-md-keep-larger-fixed-20260916-01",
-      "closed_at": "2026-09-17T00:46:04Z",
-      "head_sha": "739a6a51ae31f345e8aa4fb46de56b00f353ea69",
-      "merged_at": "2026-09-17T00:46:04Z",
-      "number": 15146,
-      "state": "MERGED",
-      "title": "TYPE: KEEP Larger fixed on build/quote ground doors"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol2/procurement-award-source-adapters-20260916",
-      "closed_at": "2026-09-17T00:44:00Z",
-      "head_sha": "69a7ba15eac36a86f8cc9573077a31da0c027396",
-      "merged_at": "2026-09-17T00:44:00Z",
-      "number": 15143,
-      "state": "MERGED",
-      "title": "Revenue: add source-bound procurement award adapters"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "grok/titan-reset-worker-prewarm-20260916",
-      "closed_at": "2026-09-17T00:17:02Z",
-      "head_sha": "cb3e8963a23ff3dd09adc380701519113b53556f",
-      "merged_at": "2026-09-17T00:17:02Z",
-      "number": 15124,
-      "state": "MERGED",
-      "title": "test: prewarm reset workers on the act thread"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T01:19:04Z",
+  "unchanged_since": "2026-09-17T01:38:10Z",
   "undatable_pulls": []
 }
