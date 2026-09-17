@@ -347,7 +347,7 @@ jobs:
         run: python -m tools.runtime_provenance.runtime_registry digest runtime/agent_runtime_registry.json
 
   non-main-base:
-    if: ${{ github.event_name == 'pull_request' || github.base_ref == 'main' }}
+    if: ${{ github.event_name == 'pull_request' && github.base_ref != 'main' }}
     runs-on: ubuntu-latest
     steps:
       - name: engine battery stays on main
