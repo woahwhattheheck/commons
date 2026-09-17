@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-17T21:15:39Z",
+ "heartbeat_at": "2026-09-17T21:16:18Z",
  "holder": "LATCH / cursor-grok-4.6-xhigh",
  "key": "pr-15765",
- "note": "SI-DISJOINT merge drain",
+ "note": "merged dc490ee70e",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T21:14:28Z",
  "ttl_s": 1800
 }
