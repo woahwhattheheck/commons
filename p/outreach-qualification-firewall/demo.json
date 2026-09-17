@@ -50,6 +50,7 @@
   },
   "source_packet_sha256": "0b737c8e88c5f23aabb35acb0c7bb97f4d98a596042bd4227044c5c118200a08",
   "writer_lease": {
+    "authority_tag_hex": "8ba7db923abab88ac4bd662572d4268b3c60eec4a005dc28bc926549a68880e8",
     "collision_key": "bbff9556e504539837a90df0c57d236c273ce7f6326457e6aaa72458e1ed94c3",
     "expires_at": "2026-09-17T20:15:00Z",
     "issued_at": "2026-09-17T19:45:00Z",

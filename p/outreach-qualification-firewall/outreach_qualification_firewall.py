@@ -7,6 +7,7 @@ from firewall_codec import (
     sha256_hex,
     strict_json_loads,
     _process_utc_now,
+    _utc,
     _utc_text,
 )
 from firewall_model import (

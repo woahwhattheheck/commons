@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import copy
+import hashlib
+import hmac
 import json
 import os
 import subprocess
@@ -9,6 +11,9 @@ import tempfile
 import unittest
 from datetime import timedelta
 from pathlib import Path
+
+TEST_WRITER_KEY_HEX = "11" * 32
+os.environ.setdefault("OUTREACH_WRITER_LEASE_AUTHORITY_KEY_HEX", TEST_WRITER_KEY_HEX)
 
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
@@ -33,6 +38,13 @@ def rebind_lease(data):
     data["writer_lease"]["collision_key"] = fw.compute_dedupe_key(normalized_source, normalized_contact)
 
 
+def resign_lease(data):
+    lease = data["writer_lease"]
+    message = {k: lease[k] for k in ("lease_id", "collision_key", "seat", "session_nonce", "issued_at", "expires_at", "status")}
+    lease["authority_tag_hex"] = hmac.new(
+        bytes.fromhex(TEST_WRITER_KEY_HEX), fw.canonical_json(message), hashlib.sha256
+    ).hexdigest()
+
 
 class FirewallDecisionTests(unittest.TestCase):
     def test_historical_can_qualify_owner_but_never_send(self):
@@ -42,11 +54,12 @@ class FirewallDecisionTests(unittest.TestCase):
         self.assertIn("HOLD_HISTORICAL_EVALUATION", out["hold_reasons"])
         self.assertTrue(fw.verify_receipt(packet(), out))
 
-    def test_current_positive_requires_go(self):
+    def test_current_positive_requires_authenticated_go(self):
         data = packet()
         now = fw._process_utc_now()
         data["writer_lease"]["issued_at"] = fw._utc_text(now - timedelta(seconds=60))
         data["writer_lease"]["expires_at"] = fw._utc_text(now + timedelta(seconds=600))
+        resign_lease(data)
         out = fw.compile_current(data)
         self.assertTrue(out["qualified_for_owner_review"])
         self.assertTrue(out["authorized_to_send"])
@@ -59,6 +72,7 @@ class FirewallDecisionTests(unittest.TestCase):
         data["writer_lease"]["issued_at"] = fw._utc_text(now - timedelta(seconds=60))
         data["writer_lease"]["expires_at"] = fw._utc_text(now + timedelta(seconds=600))
         data["writer_lease"]["status"] = "SELECTED"
+        resign_lease(data)
         out = fw.compile_current(data)
         self.assertTrue(out["qualified_for_owner_review"])
         self.assertFalse(out["authorized_to_send"])
@@ -139,6 +153,7 @@ class FirewallDecisionTests(unittest.TestCase):
                 out = fw.compile_current(data)
                 self.assertFalse(out["authorized_to_send"])
                 self.assertIn(reason, out["hold_reasons"])
+                self.assertIn("HOLD_WRITER_LEASE_UNAUTHENTICATED", out["hold_reasons"])
 
     def test_expired_and_future_lease_block_send(self):
         data = packet()
@@ -149,7 +164,6 @@ class FirewallDecisionTests(unittest.TestCase):
         data["writer_lease"]["issued_at"] = "2098-01-01T00:00:00Z"
         data["writer_lease"]["expires_at"] = "2098-01-01T00:30:00Z"
         self.assertIn("HOLD_WRITER_LEASE_NOT_YET_VALID", fw.compile_current(data)["hold_reasons"])
-
 
     def test_future_source_observation_holds(self):
         data = packet()
@@ -165,4 +179,3 @@ class FirewallDecisionTests(unittest.TestCase):
         data["writer_lease"]["expires_at"] = "2026-09-17T20:00:01Z"
         with self.assertRaisesRegex(fw.FirewallError, "one-hour ceiling"):
             fw.compile_historical(data, as_of=HIST)
-
