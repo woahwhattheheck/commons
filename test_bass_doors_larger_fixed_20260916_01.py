@@ -40,6 +40,8 @@ TARGETS = (
 # (type-embassy-glyphs-convert-shelf-20260917-01).
 # flipbook.html convert shelf reuses the same two live Payment Links
 # (type-flipbook-compress-convert-shelf-20260917-01).
+# insights.html and grounding.html convert shelves reuse the same two
+# live Payment Links (type-insights-grounding-convert-shelf-20260917-01).
 VERIFIED_PRODUCT_CHECKOUT = {
     'invoice-exception-pack.html': (
         b'https://buy.stripe.com/14A00i84Jdvz36hdxg43S0l',
@@ -76,6 +78,14 @@ VERIFIED_PRODUCT_CHECKOUT = {
         b'https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07',
     ),
     'flipbook.html': (
+        b'https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g',
+        b'https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07',
+    ),
+    'insights.html': (
+        b'https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g',
+        b'https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07',
+    ),
+    'grounding.html': (
         b'https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g',
         b'https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07',
     ),
