@@ -23,9 +23,17 @@ import sys
 from pathlib import Path
 from typing import Any
 
-import test_worker_reset as reset
-
+# ``python -I /abs/path/to/this.py`` deliberately does not prepend the script
+# directory to sys.path.  The hosted live-source proof uses isolated mode, so
+# bootstrap only this reviewed verifier directory before importing its retained
+# sibling harness.  Candidate/source roots are still added separately by the
+# retained loader and are never inferred from the caller working directory.
 HERE = Path(__file__).resolve()
+LAB = HERE.parent
+if str(LAB) not in sys.path:
+    sys.path.insert(0, str(LAB))
+
+import test_worker_reset as reset
 
 
 def install_deterministic_deadline(root: Path):
@@ -47,10 +55,11 @@ def install_deterministic_deadline(root: Path):
     deadline = titan_runtime.deadline
     original = deadline._DeadlineTimer
     if getattr(original, "_titan_reset_deterministic_oracle", False):
-        return original
+        return getattr(original, "_titan_reset_original_timer", original)
 
     class _NoWallClockTimer:
         _titan_reset_deterministic_oracle = True
+        _titan_reset_original_timer = original
 
         def __init__(self, seconds):
             self.seconds = float(seconds)
