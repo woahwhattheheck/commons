@@ -237,6 +237,20 @@ class CurrentSemanticGenerationTests(unittest.TestCase):
         with self.assertRaisesRegex(engine.GateError, "integer outside supported range"):
             engine.verify_receipt(p, receipt)
 
+    def test_oversized_packet_list_fails_before_child_traversal(self):
+        bomb = [object()] + [None] * 12_000
+        p = {"bomb": bomb, **current_packet()}
+        with self.assertRaisesRegex(engine.GateError, "node budget exceeded"):
+            engine.compile_current(p)
+
+    def test_oversized_receipt_list_fails_before_child_traversal(self):
+        p = current_packet()
+        receipt = engine.compile_current(p)
+        bomb = [object()] + [None] * 12_000
+        oversized = {"bomb": bomb, **receipt}
+        with self.assertRaisesRegex(engine.GateError, "node budget exceeded"):
+            engine.verify_receipt(p, oversized)
+
 
 if __name__ == "__main__":
     unittest.main()
