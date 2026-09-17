@@ -76,9 +76,9 @@ def verify_historical_dossier(
         expected = compile_historical_dossier(
             packet, policy, as_of, trusted_commercial_receipts
         )
-        return canonical_bytes(expected) == canonical_bytes(candidate)
     except (DossierError, TypeError, ValueError, OverflowError):
         return False
+    return canonical_bytes(expected) == canonical_bytes(candidate)
 
 
 def _current_semantics(
@@ -99,26 +99,32 @@ def _freeze_plain_json(
     _error: type[Exception] = DossierError,
     _finite: Callable[[float], bool] = math.isfinite,
 ) -> Any:
-    """Copy only exact built-in JSON values before any semantic access."""
-    if value is None or type(value) in {str, int, bool}:
-        return value
-    if type(value) is float:
-        if not _finite(value):
-            raise _error(f"{path}: non-finite number")
-        return value
-    if type(value) is list:
-        return [
-            _freeze_plain_json(item, f"{path}[{idx}]", _error, _finite)
-            for idx, item in enumerate(value)
-        ]
-    if type(value) is dict:
-        out: dict[str, Any] = {}
-        for key, item in value.items():
-            if type(key) is not str:
-                raise _error(f"{path}: non-string object key")
-            out[key] = _freeze_plain_json(item, f"{path}.{key}", _error, _finite)
-        return out
-    raise _error(f"{path}: exact plain JSON value required")
+    """Copy only exact built-in JSON values before any semantic access.
+
+    Recursion stays inside this function's local closure. Once the exported
+    verifier captures this function object, later module-name rebinding cannot
+    substitute a different recursive path for nested values.
+    """
+
+    def freeze(item: Any, where: str) -> Any:
+        if item is None or type(item) in {str, int, bool}:
+            return item
+        if type(item) is float:
+            if not _finite(item):
+                raise _error(f"{where}: non-finite number")
+            return item
+        if type(item) is list:
+            return [freeze(child, f"{where}[{idx}]") for idx, child in enumerate(item)]
+        if type(item) is dict:
+            out: dict[str, Any] = {}
+            for key, child in item.items():
+                if type(key) is not str:
+                    raise _error(f"{where}: non-string object key")
+                out[key] = freeze(child, f"{where}.{key}")
+            return out
+        raise _error(f"{where}: exact plain JSON value required")
+
+    return freeze(value, path)
 
 
 def _clock_text(
