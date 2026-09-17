@@ -6,7 +6,7 @@ This is a deterministic owner-review product for the commercial handoff **after 
 
 The compiler binds an exact engagement generation to source-bound evidence for:
 
-- accepted commercial baseline;
+- accepted commercial baseline with an exact set of approved change-order IDs;
 - approved change-order lineage;
 - required delivered **and buyer-accepted** milestones;
 - payment state backed by settlement evidence rather than invoice/link state;
@@ -24,11 +24,11 @@ Terminal states are exactly:
 
 ## Current-time authority
 
-The production CLI samples process UTC. Candidate JSON cannot choose the verifier clock. Current verification re-evaluates all time-sensitive evidence and the renewal window at verification time, so an old READY receipt cannot be replayed indefinitely.
+The production CLI samples process UTC internally; candidate JSON and the public current CLI cannot choose the verifier instant. Verification first reproduces and matches the candidate packet at its recorded instant, **then** samples process UTC and re-evaluates every time-sensitive source/evidence edge plus the renewal window. An old READY receipt therefore cannot be replayed indefinitely. Currentness is truth-narrowed to a trusted Python interpreter/stdlib clock boundary; this package does not claim an unforgeable hardware or remote time source.
 
 ## Strictness
 
-- strict UTF-8 JSON with duplicate-key and non-finite-number rejection;
+- strict UTF-8 JSON with duplicate-key, non-finite-number, over-large-integer runtime failure, and surrogate-text rejection;
 - exact field sets and exact booleans/integers (no `true == 1` aliasing);
 - unique IDs and source/evidence binding;
 - future/expired evidence fails closed;
