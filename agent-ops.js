@@ -255,7 +255,7 @@
       button.disabled = true; text(status, "Dispatching " + packet.id + " with one stable id across relay fallback…");
       dispatchOperation(packet, fetcher).then(function (receipt) {
         renderReceipts(document, retainReceipt(storage, receipt));
-        text(status, "CARRIER_ACCEPTED at " + receipt.carrier + ". Execution and Git durability remain PENDING for " + packet.id + ".");
+        text(status, "CARRIER_ACCEPTED at " + receipt.carrier + ". Execution and Git durability remain PENDING for " + receipt.id + ".");
         button.disabled = false;
       }).catch(function (error) { text(status, "No carrier accepted " + packet.id + ": " + error.message); button.disabled = false; });
     });
