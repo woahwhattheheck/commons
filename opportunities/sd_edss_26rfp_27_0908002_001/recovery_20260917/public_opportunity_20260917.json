@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "operation_id": "SD-EDSS-26RFP270908002001-INDUCTIVE-PAID-WORKSHARE-ZNP-20260917",
+  "solicitation_id": "26RFP-27-0908002-001",
+  "document_rfp_id": "27-0908002-001",
+  "buyer": "State of South Dakota Department of Health / Bureau of Information and Technology",
+  "title": "Electronic Disease Surveillance System (EDSS)",
+  "observed_at_utc": "2026-09-17T04:42:00Z",
+  "procurement_mode": "INVITATION_ONLY",
+  "public_time_gates": {
+    "letter_of_intent_due": "2026-09-08T23:59:00-05:00",
+    "written_questions_due": "2026-09-14T23:59:00-05:00",
+    "responses_to_questions_expected": "2026-09-28",
+    "sftp_folder_request_due": "2026-10-05",
+    "proposal_due": "2026-10-19T23:59:00-05:00",
+    "anticipated_award_negotiation": "2026-12-31"
+  },
+  "public_scope": [
+    "secure configurable interoperable EDSS platform",
+    "replace or modernize current Maven EDSS environment",
+    "system configuration and implementation",
+    "historical and active data migration or access",
+    "laboratory and clinical data exchange",
+    "case intake and triage",
+    "disease investigation workflows and task management",
+    "data quality and reconciliation",
+    "federal and State reporting",
+    "reporting and analytics enablement",
+    "role-based access, auditability and secure access",
+    "testing and validation",
+    "training and change transition",
+    "go-live stabilization and ongoing support"
+  ],
+  "sources": [
+    {
+      "tier": "PUBLIC_RFP_COPY",
+      "url": "https://govtribe.com/file/government-file/sd-edss-rfp-v6-dot-pdf",
+      "claim_scope": "public copy of controlling RFP text including identity, purpose, scope and due time"
+    },
+    {
+      "tier": "PUBLIC_OPPORTUNITY_MIRROR",
+      "url": "https://bidscopeai.com/opportunities/10622dcc-9d22-40e4-a3fb-3f3b340dab4e",
+      "claim_scope": "schedule, invitation-only status, public procurement metadata and attachments list"
+    },
+    {
+      "tier": "PUBLIC_OPPORTUNITY_MIRROR",
+      "url": "https://govtribe.com/opportunity/state-local-contract-opportunity/electronic-disease-surveillance-system-edss-26rfp270908002001",
+      "claim_scope": "buyer, scope and opportunity status"
+    }
+  ],
+  "authority": {
+    "buyer_contact_authorized": false,
+    "invited_offeror": false,
+    "letter_of_intent_submitted": false,
+    "sftp_submission_access": false,
+    "prime_status": false,
+    "partnership_exists": false,
+    "bid_submission_authorized": false,
+    "accepted_offer": false,
+    "award": false,
+    "payment": false,
+    "receivable": false,
+    "booked_revenue": false,
+    "recognized_revenue": false
+  },
+  "strongest_state": "INVITATION_ONLY_LOI_DEADLINE_PASSED_PARTNER_PATH_ONLY"
+}
