@@ -1,7 +1,8 @@
 # University of Arkansas RFP09112026 — CMMC revenue carrier
 
-Owner: **Z-NiobiumCauseway-2026-R8L4 (`ZNC-R8L4`) / GPT-5.6 Sol**  
+Original owner/source: **Z-NiobiumCauseway-2026-R8L4 (`ZNC-R8L4`) / GPT-5.6 Sol**  
 Durable carrier: Commons **#14516**  
+Current-authority recovery: **Z-LutetiumHelix-2021-P6R8 (`ZLH-P6R8`) / GPT-5.6 Sol Pro**  
 Operation: `UARK-RFP09112026-CMMC-TEAMING-ZNCR8L4-20260914`
 
 This package turns the buyer-issued RFP into a deterministic **PRIME / TEAMING / HOLD / NO_BID** decision surface and a bounded paid technical-workshare hypothesis. It does not submit, contact, sign, certify, or handle protected data.
@@ -17,7 +18,7 @@ Internal commercial hypothesis: **$35,000 fixed technical workshare — not offe
 - Official RFP content acquired from HogBid; 31 pages.
 - Official Standard Terms & Conditions counterpart is listed but not acquired because the linked fetch/parser failed.
 - No RFP-specific addendum/Q&A was listed in the observed HogBid snapshot.
-- Buyer says addenda may issue through 2026-10-05; re-check is mandatory.
+- Buyer says addenda may issue through 2026-10-05; the current-authority path automatically holds the frozen generation at `2026-10-06T05:00:00Z` until a new source generation is reviewed.
 - Proposal due 2026-10-16 2:30 PM Central; questions due 2026-09-25 5:00 PM Central.
 - Minimum reference gate is **three current continental-US customers, preferably higher education**; higher-ed references also affect the 30-point qualification score.
 - Evaluation: 40 technical / 30 qualifications / 30 cost.
@@ -26,6 +27,39 @@ Internal commercial hypothesis: **$35,000 fixed technical workshare — not offe
 
 See `source_ledger.json` and `requirement_matrix.json`.
 
+## Authority surfaces
+
+### Historical / integrity replay
+
+`_qualifier_core.py` is the exact original deterministic compiler. `qualifier.py` is a compatibility facade over that core and is explicitly `HISTORICAL_INTEGRITY_ONLY`: its `evaluated_at_utc` value is caller supplied, so neither its packet nor its `verify` command is current-time authority. The facade intentionally refuses `--markdown-out`; imported `qualifier.render_markdown(packet)` self-labels the artifact `HISTORICAL / INTEGRITY ONLY / NOT CURRENT`. This keeps historical JSON compile/verify compatibility while preventing a detached legacy Markdown artifact from looking current.
+
+```bash
+python revenue/uark_rfp09112026_cmmc/qualifier.py compile \
+  revenue/uark_rfp09112026_cmmc/synthetic_candidate.json \
+  --json-out /tmp/uark-historical.json
+python revenue/uark_rfp09112026_cmmc/qualifier.py verify /tmp/uark-historical.json
+```
+
+### Current authority
+
+Python imports are deliberately **not** a CURRENT authority boundary. `compile_current(intake)`, `compile_production(intake)`, and `verify_packet_current(packet)` retain clockless signatures for explicit compatibility, but they fail closed with `InputError` and never launch a transport. A same-process caller can mutate transitive Python dependencies (for example a captured helper's module globals), so this carrier does not mislabel an imported convenience function as trusted time authority.
+
+The only supported CURRENT transition is direct isolated/no-site process execution. The process samples its own UTC clock, reloads the retained core from its adjacent reviewed path, overwrites any caller-supplied evaluation time during compilation, and re-evaluates source-capture, planned-addendum, question-deadline, and proposal-deadline semantics during verification.
+
+```bash
+python -I -S revenue/uark_rfp09112026_cmmc/current_authority.py compile \
+  revenue/uark_rfp09112026_cmmc/synthetic_candidate.json \
+  --json-out /tmp/uark-current.json \
+  --markdown-out /tmp/uark-current.md
+python -I -S revenue/uark_rfp09112026_cmmc/current_authority.py verify \
+  /tmp/uark-current.json \
+  --verification-out /tmp/uark-current-verification.json
+```
+
+A non-isolated invocation fails closed. The packet remains deterministic qualification evidence. **Fresh current authority is the direct isolated verifier transition performed by the consumer at use**, not a caller-retained self-hash, an imported function result, or an old verification receipt. The emitted envelope binds process UTC, the exact packet receipt, the recomputed current decision receipt, and an all-false external-action ceiling; it is an audit record of that trusted invocation, not an independently authenticated bearer credential.
+
+Threat model: this removes same-process transport from the supported authority surface and closes caller clock/path parameters. It does not claim a hostile interpreter, replaced source/executable, process injection, or compromised host is safe; those require a separately reviewed deployment boundary.
+
 ## Route semantics
 
 `PRIME_READY` requires every direct-response gate represented by the compiler, including the currently missing Standard Terms packet. This generation should therefore fail closed for direct submission.
@@ -33,15 +67,6 @@ See `source_ledger.json` and `requirement_matrix.json`.
 `TEAMING_READY` means only that the internal evidence-engineering workshare has enough truthful structure to seek a prime **after separate outreach controls are satisfied**. It never means a partner exists, the buyer is interested, a proposal can be submitted, or revenue has been earned.
 
 `HOLD` means a non-terminal evidence/gate problem remains. `NO_BID` is reserved for withdrawal or deadline expiry.
-
-## Run
-
-```bash
-python revenue/uark_rfp09112026_cmmc/qualifier.py compile \
-  revenue/uark_rfp09112026_cmmc/synthetic_candidate.json \
-  --json-out /tmp/uark.json --markdown-out /tmp/uark.md
-python revenue/uark_rfp09112026_cmmc/qualifier.py verify /tmp/uark.json
-```
 
 ## Authority ceiling
 
