@@ -174,17 +174,17 @@ def _build_current_api(
 ):
     """Build current APIs around one import-generation-owned semantic snapshot.
 
-    Current compilation must not resolve mutable module globals for time, validation,
-    decision states, commercial lineage, canonicalization, authority, or trusted
-    container views. The snapshot below gives the normalizer and helpers private global
-    dictionaries captured at import, freezes mutable enum sets, and closes current APIs
-    over that generation. Current entrypoints also freeze packet/receipt inputs exactly
-    once to exact built-in plain-JSON containers and UTF-8 scalar text before any
-    semantic read, so stateful mapping/list subclasses cannot present different views to
-    authentication and recompilation phases and Python-only surrogate text cannot leak
-    into canonical serialization. Ordinary module/global rebinding therefore cannot
-    substitute caller-selected current time or semantics. Direct function/closure
-    surgery remains outside this cooperative in-process boundary.
+    Current compilation must not resolve mutable module globals or the process-global
+    builtins table for time, validation, decision states, commercial lineage,
+    canonicalization, authority, or trusted container views. Semantic clones receive a
+    private copy of the import-time builtins mapping before they are created. Current
+    entrypoints freeze packet/receipt inputs exactly once to exact built-in plain-JSON
+    containers and UTF-8 scalar text before any semantic read, so stateful mapping/list
+    subclasses cannot present different views to authentication and recompilation phases
+    and Python-only surrogate text cannot leak into canonical serialization. Ordinary
+    module/global/builtins rebinding therefore cannot substitute caller-selected current
+    time or semantics. Direct function/closure surgery remains outside this cooperative
+    in-process boundary.
     """
 
     def _clone_function(fn, private_globals):
@@ -193,6 +193,13 @@ def _build_current_api(
         return clone
 
     common_globals = dict(vars(_common))
+    source_builtins = common_globals.get("__builtins__")
+    if type(source_builtins) is dict:
+        sealed_builtins = dict(source_builtins)
+    else:
+        sealed_builtins = dict(vars(source_builtins))
+    common_globals["__builtins__"] = dict(sealed_builtins)
+
     common_helpers = (
         "_keys", "_string", "_bool", "_int", "_enum", "_sha", "_ts", "_dt", "_age", "_uri", "_source"
     )
@@ -200,6 +207,7 @@ def _build_current_api(
         common_globals[name] = _clone_function(getattr(_common, name), common_globals)
 
     model_globals = dict(vars(_model))
+    model_globals["__builtins__"] = dict(sealed_builtins)
     for name in common_helpers:
         model_globals[name] = common_globals[name]
     for name in (
@@ -211,6 +219,7 @@ def _build_current_api(
     sealed_normalize = _clone_function(_model._normalize, model_globals)
 
     engine_globals = dict(globals())
+    engine_globals["__builtins__"] = dict(sealed_builtins)
     sealed_commercial_generation = _clone_function(_commercial_generation_source, engine_globals)
     sealed_expected_total = _clone_function(_expected_total_source, engine_globals)
     decision_globals = dict(engine_globals)
