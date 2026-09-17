@@ -13,6 +13,13 @@ from typing import Any
 
 SCHEMA_VERSION = 1
 SAFE_INT_MAX = (1 << 53) - 1
+MAX_INPUT_BYTES = 1_000_000
+MAX_JSON_DEPTH = 64
+MAX_JSON_NODES = 100_000
+MAX_STRING_UTF8_BYTES = 262_144
+MAX_EVENTS = 4_096
+MAX_CANONICAL_BYTES = 2_000_000
+MAX_SAFE_INT_DIGITS = len(str(SAFE_INT_MAX))
 STATE_BEGIN = "<!-- REVENUE_LANE_CURRENT_STATE:BEGIN -->"
 STATE_END = "<!-- REVENUE_LANE_CURRENT_STATE:END -->"
 
@@ -85,7 +92,13 @@ def _reject_float(value: str) -> None:
 
 
 def _parse_int(value: str) -> int:
-    number = int(value)
+    digits = value[1:] if value.startswith("-") else value
+    if not digits or len(digits) > MAX_SAFE_INT_DIGITS:
+        raise ContractError("unsafe integer")
+    try:
+        number = int(value)
+    except ValueError as exc:
+        raise ContractError("unsafe integer") from exc
     if abs(number) > SAFE_INT_MAX:
         raise ContractError("unsafe integer")
     return number
@@ -100,13 +113,66 @@ def _object_no_dupes(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
     return out
 
 
+def _validate_json_value(value: Any) -> None:
+    stack: list[tuple[Any, int]] = [(value, 0)]
+    seen_containers: set[int] = set()
+    nodes = 0
+    while stack:
+        item, depth = stack.pop()
+        nodes += 1
+        if nodes > MAX_JSON_NODES:
+            raise ContractError("JSON node limit exceeded")
+        if depth > MAX_JSON_DEPTH:
+            raise ContractError("JSON depth limit exceeded")
+        item_type = type(item)
+        if item_type is str:
+            try:
+                encoded = item.encode("utf-8", "strict")
+            except UnicodeEncodeError as exc:
+                raise ContractError("lone surrogate forbidden") from exc
+            if len(encoded) > MAX_STRING_UTF8_BYTES:
+                raise ContractError("JSON string byte limit exceeded")
+        elif item_type is int:
+            if abs(item) > SAFE_INT_MAX:
+                raise ContractError("unsafe integer")
+        elif item_type is bool or item is None:
+            continue
+        elif item_type is list:
+            marker = id(item)
+            if marker in seen_containers:
+                raise ContractError("container alias or cycle forbidden")
+            seen_containers.add(marker)
+            for child in reversed(item):
+                stack.append((child, depth + 1))
+        elif item_type is dict:
+            marker = id(item)
+            if marker in seen_containers:
+                raise ContractError("container alias or cycle forbidden")
+            seen_containers.add(marker)
+            for key, child in reversed(list(item.items())):
+                if type(key) is not str:
+                    raise ContractError("JSON object keys must be exact strings")
+                stack.append((child, depth + 1))
+                stack.append((key, depth + 1))
+        else:
+            raise ContractError("non-JSON value type")
+
+
 def strict_json_loads(data: bytes | str) -> Any:
     if isinstance(data, bytes):
+        if len(data) > MAX_INPUT_BYTES:
+            raise ContractError("JSON input byte limit exceeded")
         try:
             text = data.decode("utf-8", "strict")
         except UnicodeDecodeError as exc:
             raise ContractError("invalid UTF-8") from exc
     elif isinstance(data, str):
+        try:
+            encoded = data.encode("utf-8", "strict")
+        except UnicodeEncodeError as exc:
+            raise ContractError("invalid UTF-8") from exc
+        if len(encoded) > MAX_INPUT_BYTES:
+            raise ContractError("JSON input byte limit exceeded")
         text = data
     else:
         raise TypeError("strict_json_loads accepts bytes or str")
@@ -120,28 +186,14 @@ def strict_json_loads(data: bytes | str) -> Any:
         )
     except ContractError:
         raise
-    except (json.JSONDecodeError, UnicodeError) as exc:
+    except (json.JSONDecodeError, UnicodeError, RecursionError, ValueError) as exc:
         raise ContractError("invalid JSON") from exc
-    _validate_unicode(value)
+    _validate_json_value(value)
     return value
 
 
-def _validate_unicode(value: Any) -> None:
-    if isinstance(value, str):
-        try:
-            value.encode("utf-8", "strict")
-        except UnicodeEncodeError as exc:
-            raise ContractError("lone surrogate forbidden") from exc
-    elif isinstance(value, list):
-        for item in value:
-            _validate_unicode(item)
-    elif isinstance(value, dict):
-        for key, item in value.items():
-            _validate_unicode(key)
-            _validate_unicode(item)
-
-
 def canonical_bytes(value: Any) -> bytes:
+    _validate_json_value(value)
     try:
         text = json.dumps(
             value,
@@ -150,9 +202,12 @@ def canonical_bytes(value: Any) -> bytes:
             separators=(",", ":"),
             allow_nan=False,
         )
-        return text.encode("utf-8", "strict")
-    except (TypeError, ValueError, UnicodeError) as exc:
+        payload = text.encode("utf-8", "strict")
+    except (TypeError, ValueError, UnicodeError, RecursionError) as exc:
         raise ContractError("value is not canonicalizable") from exc
+    if len(payload) > MAX_CANONICAL_BYTES:
+        raise ContractError("canonical JSON byte limit exceeded")
+    return payload
 
 
 def sha256_bytes(data: bytes) -> str:
@@ -206,6 +261,7 @@ class ParsedEvent:
 
 
 def validate_packet(packet: Any, evaluation_time: str) -> tuple[dict[str, Any], list[ParsedEvent], datetime]:
+    _validate_json_value(packet)
     if not isinstance(packet, dict):
         raise ContractError("root must be object")
     _require_exact_keys(packet, ROOT_KEYS)
@@ -222,6 +278,8 @@ def validate_packet(packet: Any, evaluation_time: str) -> tuple[dict[str, Any], 
     events_raw = packet["events"]
     if not isinstance(events_raw, list) or not events_raw:
         raise ContractError("events must be non-empty list")
+    if len(events_raw) > MAX_EVENTS:
+        raise ContractError("event count limit exceeded")
     parsed: list[ParsedEvent] = []
     seen: set[str] = set()
     for raw in events_raw:
@@ -257,6 +315,13 @@ def validate_packet(packet: Any, evaluation_time: str) -> tuple[dict[str, Any], 
             if supersedes == event_id:
                 raise ContractError("event cannot supersede itself")
         parsed.append(ParsedEvent(raw, event_id, generation, kind, source_class, occurred_at, route_id, supersedes))
+    chronological = sorted(parsed, key=lambda e: (e.occurred_at, e.generation, e.event_id))
+    max_generation = 0
+    for event in chronological:
+        if event.generation < max_generation:
+            raise ContractError("generation chronology regressed")
+        max_generation = max(max_generation, event.generation)
+
     by_id = {event.event_id: event for event in parsed}
     superseded: set[str] = set()
     for event in parsed:
@@ -264,8 +329,12 @@ def validate_packet(packet: Any, evaluation_time: str) -> tuple[dict[str, Any], 
             target = by_id.get(event.supersedes)
             if target is None:
                 raise ContractError("supersedes target missing")
-            if target.occurred_at > event.occurred_at:
+            if target.occurred_at >= event.occurred_at:
                 raise ContractError("supersession chronology invalid")
+            if event.generation < target.generation:
+                raise ContractError("supersession generation regressed")
+            if event.source_class != target.source_class:
+                raise ContractError("supersession source authority mismatch")
             if target.event_id in superseded:
                 raise ContractError("multiple supersessions of one event")
             superseded.add(target.event_id)
@@ -273,11 +342,6 @@ def validate_packet(packet: Any, evaluation_time: str) -> tuple[dict[str, Any], 
     if not active:
         raise ContractError("all events superseded")
     active.sort(key=lambda e: (e.occurred_at, e.generation, e.event_id))
-    max_generation = 0
-    for event in active:
-        if event.generation < max_generation:
-            raise ContractError("generation chronology regressed")
-        max_generation = max(max_generation, event.generation)
     normalized = {
         "schema_version": SCHEMA_VERSION,
         **identity,
@@ -308,47 +372,57 @@ def reduce_state(events: list[ParsedEvent], eval_dt: datetime, currentness_secon
     elif "HUMAN_REPLY" in kinds:
         state = "HUMAN_REPLY_ACTIONABLE"
     else:
-        latest_gen = _latest_generation(events)
-        generation_events = [event for event in events if event.generation == latest_gen]
-        generation_kinds = {event.kind for event in generation_events}
-        sent = [event for event in generation_events if event.kind == "PROVIDER_SENT"]
-        bounced = [event for event in generation_events if event.kind == "BOUNCED"]
-        if len(sent) >= 2:
+        sent = [event for event in events if event.kind == "PROVIDER_SENT"]
+        bounced = [event for event in events if event.kind == "BOUNCED"]
+        dead_routes = [event for event in events if event.kind == "DEAD_ROUTE"]
+        sends_by_generation: dict[int, int] = {}
+        for event in sent:
+            sends_by_generation[event.generation] = sends_by_generation.get(event.generation, 0) + 1
+        duplicate_send = any(count >= 2 for count in sends_by_generation.values())
+        if duplicate_send:
             state = "COLLISION_DUPLICATE_SEND_DNR"
-        elif "DNR" in generation_kinds:
+        elif "DNR" in kinds:
             state = "SENT_DNR_PENDING_EVENT" if sent else "HOLD_EVIDENCE"
-        elif "DEAD_ROUTE" in generation_kinds:
-            state = "BOUNCED_DEAD_ROUTE"
-        elif sent and bounced:
-            state = "BOUNCED_DEAD_ROUTE"
         elif sent:
-            state = "SENT_DNR_PENDING_EVENT"
-        elif bounced:
+            latest_sent = max(sent, key=lambda event: (event.occurred_at, event.generation, event.event_id))
+            transport_terminals = bounced + dead_routes
+            latest_terminal = (
+                max(transport_terminals, key=lambda event: (event.occurred_at, event.generation, event.event_id))
+                if transport_terminals else None
+            )
+            state = (
+                "BOUNCED_DEAD_ROUTE"
+                if latest_terminal is not None and latest_terminal.occurred_at >= latest_sent.occurred_at
+                else "SENT_DNR_PENDING_EVENT"
+            )
+        elif bounced or dead_routes:
             state = "BOUNCED_DEAD_ROUTE"
-        elif "PROVIDER_SEND_ATTEMPTED" in generation_kinds:
+        elif "PROVIDER_SEND_ATTEMPTED" in kinds or "LEASE_CONSUMED" in kinds:
             state = "SEND_ATTEMPTED_PROVIDER_UNKNOWN"
-        elif "LEASE_CONSUMED" in generation_kinds:
-            state = "SEND_ATTEMPTED_PROVIDER_UNKNOWN"
-        elif "MUSE_SELECTED" in generation_kinds:
-            state = "SELECTED_UNCONSUMED_NO_SEND_AUTHORITY"
-        elif "MUSE_PENDING" in generation_kinds:
-            state = "MUSE_PENDING_NO_AUTHORITY"
-        elif "PACKET_RECEIVED" in kinds:
-            state = "PACKET_RECEIVED"
-        elif "PACKET_REQUESTED" in kinds:
-            state = "PACKET_PENDING"
-        elif "QUESTION_SENT" in kinds and "BUYER_ACK" not in kinds:
-            state = "BUYER_QUESTION_PENDING"
-        elif "BUYER_ACK" in kinds:
-            state = "HOLD_EVIDENCE"
-        elif "EVIDENCE_HOLD" in kinds:
-            state = "HOLD_EVIDENCE"
-        elif "TAKE" in kinds:
-            state = "CLAIMED_NO_OUTBOUND"
-        elif "RESEARCHED" in kinds:
-            state = "RESEARCHED_NOT_CONTACTED"
         else:
-            state = "HOLD_EVIDENCE"
+            latest_gen = _latest_generation(events)
+            generation_events = [event for event in events if event.generation == latest_gen]
+            generation_kinds = {event.kind for event in generation_events}
+            if "MUSE_SELECTED" in generation_kinds:
+                state = "SELECTED_UNCONSUMED_NO_SEND_AUTHORITY"
+            elif "MUSE_PENDING" in generation_kinds:
+                state = "MUSE_PENDING_NO_AUTHORITY"
+            elif "PACKET_RECEIVED" in kinds:
+                state = "PACKET_RECEIVED"
+            elif "PACKET_REQUESTED" in kinds:
+                state = "PACKET_PENDING"
+            elif "QUESTION_SENT" in kinds and "BUYER_ACK" not in kinds:
+                state = "BUYER_QUESTION_PENDING"
+            elif "BUYER_ACK" in kinds:
+                state = "HOLD_EVIDENCE"
+            elif "EVIDENCE_HOLD" in kinds:
+                state = "HOLD_EVIDENCE"
+            elif "TAKE" in kinds:
+                state = "CLAIMED_NO_OUTBOUND"
+            elif "RESEARCHED" in kinds:
+                state = "RESEARCHED_NOT_CONTACTED"
+            else:
+                state = "HOLD_EVIDENCE"
     latest = max(events, key=lambda event: (event.occurred_at, event.generation, event.event_id))
     age = (eval_dt - latest.occurred_at).total_seconds()
     if state in ACTIONABLE_CURRENT_STATES and age > currentness_seconds:
@@ -471,6 +545,10 @@ def compile_state(packet: dict[str, Any], *, body_text: str, evaluation_time: st
         "evaluation_time": evaluation_time,
         "state": state,
         "event_digest_sha256": event_digest,
+        "input_authentication": {
+            "verified_by_compiler": False,
+            "requirement": "UPSTREAM_AUTHENTICATED_RETAINED_EVENTS",
+        },
         "authority": {
             "send": False,
             "muse": False,
