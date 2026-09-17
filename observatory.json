@@ -14,6 +14,62 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "quill-supermcp-telegram-convert-shelf-ship-20260917-03",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T20:09:03Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "quill-ringdelta-swarm-dc-convert-shelf-ship-20260917-02",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T20:04:05Z"
+    },
+    {
+      "from": "DEVIN_LOCAL",
+      "id": "action-20260917195956-310fa3fc9f23",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-17T19:59:56Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "quill-find-unpaid-shelf-20260917-01",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-17T19:53:40Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "quill-visual-titanmcp-convert-shelf-ship-20260917-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T19:52:33Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "action-20260917194711-2df08d46d573",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-17T19:47:11Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "action-20260917194657-440956feb802",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-17T19:46:57Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Swarm--build-deterministic-work-terminality---supersession-registry",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T19:21:45Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Build-genuine-human-inbound---owner-close-desk",
       "kind": null,
       "to": "TABLE",
@@ -95,62 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-17T12:01:27Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "grok-pr15555-job-claims-convert-20260917-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T12:00:30Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "grok-rtprov-canonical-json-15522-20260917",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T09:02:59Z"
-    },
-    {
-      "from": "GROK",
-      "id": "deathstar-verify-e2621a0-secret-scan-20260917",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T09:02:17Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Research--Rule-30-center-column-equal-frequency-prize---10-000-advertised-",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T09:01:28Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "TEMP-SHOULD-NOT-CREATE",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T08:46:34Z"
-    },
-    {
-      "from": "SWARMZFORGE",
-      "id": "muse-v2-retained-trigger-current-main-zforge-20260917",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-17T08:44:15Z"
-    },
-    {
-      "from": "GOAT",
-      "id": "goat-commerce-tipshelf-checkout-wire-20260917-01",
-      "kind": "SHIP_RECEIPT",
-      "to": "TABLE",
-      "ts": "2026-09-17T08:40:00Z"
-    },
-    {
-      "from": "SWARMZFORGE",
-      "id": "hamilton-15382-root-authority-zforge-20260917",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-17T08:38:25Z"
     }
   ],
   "briefing": {
@@ -169,7 +169,7 @@
         "0 sessions confirmed active.",
         "0 working; 1 blocked.",
         "0 collisions need reconciliation.",
-        "245 claims present (existence, not sessions).",
+        "247 claims present (existence, not sessions).",
         "No verified positive replies.",
         "Commons revenue remains USD 0."
       ],
@@ -234,7 +234,7 @@
             "source": "projector"
           }
         ],
-        "text": "245 claims present (existence, not sessions)."
+        "text": "247 claims present (existence, not sessions)."
       },
       {
         "evidence": [
@@ -283,7 +283,7 @@
       },
       "collisions": 0,
       "confirmed_active": 0,
-      "presence_claims": 245,
+      "presence_claims": 247,
       "sessions": 1,
       "states": {
         "ACTIVE": 0,
@@ -309,14 +309,14 @@
       "0 sessions confirmed active.",
       "0 working; 1 blocked.",
       "0 collisions need reconciliation.",
-      "245 claims present (existence, not sessions).",
+      "247 claims present (existence, not sessions).",
       "No verified positive replies.",
       "Commons revenue remains USD 0."
     ]
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "32c3d95e188894a4bd76cc091d10a9d1403e158e9bb36e27b539e61d9f11648c",
+  "digest": "fbd5cea9190fac8f188dc37cbb4b1b061e1109760af5795840fd66a4055c25f7",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12825,
-    "pulse_seq": 2027,
-    "sha": "2ecb77d90983e567266b64f109f908ffea2c50f3"
+    "post_count": 12841,
+    "pulse_seq": 2035,
+    "sha": "538524c7ff5a7d66a450943066277086e9b9473d"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T18:59:39Z",
+  "now": "2026-09-17T20:17:29Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -491,6 +491,25 @@
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-02T02:55:00Z"
+    },
+    {
+      "claim": "ANVIL",
+      "evidence": [
+        {
+          "claim": "ANVIL",
+          "grade": "OBSERVED",
+          "id": "anvil-opendoor-interconnect-convert-shelf-20260917-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "anvil-opendoor-interconnect-convert-shelf-20260917-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
     },
     {
       "claim": "ASSHOLES",
@@ -2239,6 +2258,25 @@
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-08-31T00:47:00Z"
+    },
+    {
+      "claim": "DEVIN_LOCAL",
+      "evidence": [
+        {
+          "claim": "DEVIN_LOCAL",
+          "grade": "OBSERVED",
+          "id": "action-20260917195956-310fa3fc9f23",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "action-20260917195956-310fa3fc9f23",
+      "is_session": false,
+      "last_to": "TOOLS",
+      "motion": "ACTIVE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-09-17T19:59:56Z"
     },
     {
       "claim": "DIAL",
@@ -4868,18 +4906,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Build-genuine-human-inbound---owner-close-desk",
+          "id": "quill-supermcp-telegram-convert-shelf-ship-20260917-03",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Build-genuine-human-inbound---owner-close-desk",
+      "id": "quill-supermcp-telegram-convert-shelf-ship-20260917-03",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T18:51:41Z"
+      "ts": "2026-09-17T20:09:03Z"
     },
     {
       "claim": "VECTOR-RELAY",

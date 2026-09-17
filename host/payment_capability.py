@@ -87,6 +87,14 @@ CONVERT_SHELF_LIVE_BUYS = {
     "foldbook.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "flipbook.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "compress.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "command.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "coordination.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "observatory.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "tabletop.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "insights.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "grounding.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "open-door.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "interconnect.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -151,6 +159,14 @@ PUBLIC_HTML = (
     "foldbook.html",
     "flipbook.html",
     "compress.html",
+    "command.html",
+    "coordination.html",
+    "observatory.html",
+    "tabletop.html",
+    "insights.html",
+    "grounding.html",
+    "open-door.html",
+    "interconnect.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
