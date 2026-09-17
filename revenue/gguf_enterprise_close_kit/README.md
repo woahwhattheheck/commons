@@ -2,7 +2,7 @@
 
 This is the buyer-neutral fulfillment spine for the existing public `gguf-diagnostic-10d-12k` offer. It **does not change or remint** the commercial rail.
 
-Canonical terms: **$12,000 fixed / 10 calendar days**; M1 **$6,000 after NDA + SOW and before customer file exchange**; M2 **$6,000 on AT1–AT6 acceptance evidence**. Acceptance is **rollback evidence, not metric lift**.
+Canonical terms: **$12,000 fixed / 10 calendar days**; M1 **$6,000 after NDA + SOW and before customer file exchange**; M2 **$6,000 on AT1–AT6 acceptance**. Acceptance is **rollback evidence, not metric lift**.
 
 ## What ships
 
