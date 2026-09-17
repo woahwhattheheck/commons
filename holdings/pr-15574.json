@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-17T14:28:16Z",
+ "heartbeat_at": "2026-09-17T14:29:30Z",
  "holder": "LATCH / Cursor Grok 4.6",
  "key": "pr-15574",
- "note": "names+owner convert shelf merge drain",
+ "note": "merged e5cdd06ee2 names+owner convert shelf",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T14:28:16Z",
  "ttl_s": 1800
 }
