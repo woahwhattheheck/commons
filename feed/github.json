@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 84,
-    "open_pull_requests": 18,
-    "runs_in_progress": 18,
-    "runs_queued": 265
+    "open_pull_requests": 16,
+    "runs_in_progress": 20,
+    "runs_queued": 281
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -18,7 +18,7 @@
       "head_sha": "27cc4947aee1e09a4433691f6a9cdd4a717be3b3",
       "number": 15266,
       "title": "Measure Learn2Design curvature on pinned public organizer problem",
-      "updated_at": "2026-09-17T04:50:56Z"
+      "updated_at": "2026-09-17T18:58:03Z"
     },
     {
       "author": "woahwhattheheck",
@@ -30,17 +30,6 @@
       "number": 15382,
       "title": "Fix Hamilton pursuit evidence, deadline, and semantic receipt authority",
       "updated_at": "2026-09-17T08:45:47Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-checkoutsentinel/inbound-reply-15408-red-closure-20260917",
-      "created_at": "2026-09-17T08:24:53Z",
-      "draft": false,
-      "head_sha": "3cc03d75f1a28d0231dc1ef697f7d583987c804f",
-      "number": 15431,
-      "title": "Fix inbound-reply Unicode collision and same-second send authority",
-      "updated_at": "2026-09-17T18:57:00Z"
     },
     {
       "author": "woahwhattheheck",
@@ -63,30 +52,30 @@
       "number": 15494,
       "title": "feat: ship OneWriter Emergent Builder Fest source packet",
       "updated_at": "2026-09-17T09:08:18Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-swarm/onewriter-builderfest-current-main-20260917",
+      "created_at": "2026-09-17T09:02:55Z",
+      "draft": false,
+      "head_sha": "f02d9d1e910c5330d4dd7aaf08174c5e61300447",
+      "number": 15526,
+      "title": "Integrate OneWriter Emergent Builder Fest source packet on current main",
+      "updated_at": "2026-09-17T09:02:55Z"
     }
   ],
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-axiom-1442/proposal-validity-requote-15608",
-      "created_at": "2026-09-17T18:57:20Z",
+      "branch": "z-axiom-1442/proposal-validity-requote-current-main-15608",
+      "created_at": "2026-09-17T18:58:14Z",
       "draft": false,
-      "head_sha": "08268dda33c6feb71a96a918257fbcc7e92a8718",
-      "number": 15623,
-      "title": "Revenue: add deterministic proposal validity / requote gate",
-      "updated_at": "2026-09-17T18:57:20Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol/inbound-reply-15431-stopfix-20260917",
-      "created_at": "2026-09-17T18:54:55Z",
-      "draft": false,
-      "head_sha": "8971365c08e8bdff5fbdff939579b792604c91be",
-      "number": 15620,
-      "title": "Fix inbound-reply authority predecessors on current main",
-      "updated_at": "2026-09-17T18:57:11Z"
+      "head_sha": "748c483970c7d2246aae4d3da73dabdfc1325a3f",
+      "number": 15624,
+      "title": "Revenue: current-main proposal validity / requote gate",
+      "updated_at": "2026-09-17T18:58:14Z"
     },
     {
       "author": "woahwhattheheck",
@@ -105,10 +94,10 @@
       "branch": "z-atlasforge/swarmops-current-freshness-20260917",
       "created_at": "2026-09-17T18:46:46Z",
       "draft": false,
-      "head_sha": "9ed77a2269e383ef2c21b43b5aa99bd77a35bd04",
+      "head_sha": "7e646edc22b3c105d8e8719496393f96a636b8c4",
       "number": 15613,
       "title": "SwarmOps: make current readiness verifier-clock owned",
-      "updated_at": "2026-09-17T18:57:10Z"
+      "updated_at": "2026-09-17T18:58:22Z"
     },
     {
       "author": "woahwhattheheck",
@@ -160,10 +149,10 @@
       "branch": "fix/titan-v5-d2-runtime-binding",
       "created_at": "2026-09-17T18:24:24Z",
       "draft": false,
-      "head_sha": "610076bffd7d8aa4838433cf5dc6106ec87c45d2",
+      "head_sha": "34800c7d618cdf88c57a415f57c8227262a46700",
       "number": 15592,
       "title": "TITAN V5: correct D2 archive authority runtime member binding and status",
-      "updated_at": "2026-09-17T18:47:44Z"
+      "updated_at": "2026-09-17T18:58:09Z"
     },
     {
       "author": "woahwhattheheck",
@@ -175,32 +164,74 @@
       "number": 15586,
       "title": "Close Okaloosa root-schema authority bypass on current main",
       "updated_at": "2026-09-17T18:21:39Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol/onewriter-retained-source-parses-clean-20260917",
+      "created_at": "2026-09-17T09:13:01Z",
+      "draft": false,
+      "head_sha": "613b8fbeeb8965fd37fb0c17d1e25d0c741750ee",
+      "number": 15536,
+      "title": "ci: retain OneWriter normal and optimized contract",
+      "updated_at": "2026-09-17T09:13:01Z"
     }
   ],
   "open_heads": {
     "15266": "27cc4947aee1e09a4433691f6a9cdd4a717be3b3",
     "15382": "67ea52d849be72b4c348f7e09356d61e25a17ba2",
-    "15431": "3cc03d75f1a28d0231dc1ef697f7d583987c804f",
     "15459": "9b9a15a5f926239447e30222bf3bb55e065db87a",
     "15494": "78f5b53af961c116d455c824e9ff37d7a0b8256e",
     "15526": "f02d9d1e910c5330d4dd7aaf08174c5e61300447",
     "15534": "2898aa00c66d5788b0d42c3f392d732b1587d8c9",
     "15536": "613b8fbeeb8965fd37fb0c17d1e25d0c741750ee",
     "15586": "900a39aeff21104ec4601c9ebc310fbc5457e872",
-    "15592": "610076bffd7d8aa4838433cf5dc6106ec87c45d2",
+    "15592": "34800c7d618cdf88c57a415f57c8227262a46700",
     "15593": "45ef55442471a64293a6e7cfa1eea2b32306fce0",
     "15598": "d324fe85bc9dfa1ebca6e798878998c80bd1aa2f",
     "15602": "b3db151fa171c0af6d2b051b27c21c5849cb9ede",
     "15612": "8745584bbddd52359f84c7f8bda956df0713d05f",
-    "15613": "9ed77a2269e383ef2c21b43b5aa99bd77a35bd04",
+    "15613": "7e646edc22b3c105d8e8719496393f96a636b8c4",
     "15617": "9e4fb086b01c2a194a50d8db3a3a24d5ecad095a",
-    "15620": "8971365c08e8bdff5fbdff939579b792604c91be",
-    "15623": "08268dda33c6feb71a96a918257fbcc7e92a8718"
+    "15624": "748c483970c7d2246aae4d3da73dabdfc1325a3f"
   },
-  "pulls_listed": 18,
+  "pulls_listed": 16,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 14.7,
+  "queue_depth_per_runner": 14.1,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-axiom-1442/proposal-validity-requote-15608",
+      "closed_at": "2026-09-17T18:58:33Z",
+      "head_sha": "08268dda33c6feb71a96a918257fbcc7e92a8718",
+      "merged_at": null,
+      "number": 15623,
+      "state": "CLOSED",
+      "title": "Revenue: add deterministic proposal validity / requote gate"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-checkoutsentinel/inbound-reply-15408-red-closure-20260917",
+      "closed_at": "2026-09-17T18:58:18Z",
+      "head_sha": "3cc03d75f1a28d0231dc1ef697f7d583987c804f",
+      "merged_at": null,
+      "number": 15431,
+      "state": "CLOSED",
+      "title": "Fix inbound-reply Unicode collision and same-second send authority"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol/inbound-reply-15431-stopfix-20260917",
+      "closed_at": "2026-09-17T18:57:49Z",
+      "head_sha": "8971365c08e8bdff5fbdff939579b792604c91be",
+      "merged_at": "2026-09-17T18:57:49Z",
+      "number": 15620,
+      "state": "MERGED",
+      "title": "Fix inbound-reply authority predecessors on current main"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -325,28 +356,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zsol/casmi-predecessor-rank-parity-15600",
-      "closed_at": "2026-09-17T18:50:55Z",
-      "head_sha": "c1155ae0ef242254365d1219a6e555b83fbafc0c",
-      "merged_at": "2026-09-17T18:50:55Z",
-      "number": 15614,
-      "state": "MERGED",
-      "title": "fix(CASMI): preserve frozen predecessor rank precision"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "cursor/latch-discord-mirrors-convert-shelf-e3ae",
-      "closed_at": "2026-09-17T18:48:32Z",
-      "head_sha": "c6b210358d673fc5906d952c47513ce974347c0e",
-      "merged_at": "2026-09-17T18:48:32Z",
-      "number": 15611,
-      "state": "MERGED",
-      "title": "Wire existing $29 and $250 Buy links onto discord and mirrors shelves"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "cursor/latch-net159-wakeup-convert-shelf-42a2",
       "closed_at": "2026-09-17T18:41:14Z",
       "head_sha": "6a9ddd3bb939101f6d78e872a1f97f5294ea5ffe",
@@ -354,21 +363,10 @@
       "number": 15603,
       "state": "MERGED",
       "title": "Wire existing $29 and $250 Buy links onto net159 and wakeup shelves"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-z/solstice-procurement-assembly-15343",
-      "closed_at": "2026-09-17T08:47:06Z",
-      "head_sha": "b200d6770ea1535b3737daa6d13e6c46f776a7de",
-      "merged_at": "2026-09-17T08:47:06Z",
-      "number": 15474,
-      "state": "MERGED",
-      "title": "Recover #15343 procurement submission assembly manifest"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T18:57:24Z",
+  "unchanged_since": "2026-09-17T18:58:47Z",
   "undatable_pulls": []
 }
