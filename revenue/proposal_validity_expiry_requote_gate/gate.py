@@ -15,7 +15,10 @@ without rewriting that large validated core:
 
 from typing import Any
 
-import _proposal_validity_core as _core
+if __package__:
+    from . import _proposal_validity_core as _core
+else:
+    import _proposal_validity_core as _core
 
 # Preserve the canonical module surface for callers/tests. Public current APIs
 # are replaced below; the core's evaluator globals are patched only at the two
