@@ -1,19 +1,19 @@
 {
-  "seq": 2006,
-  "head": "302e9c446a47d68b28e47b8e2a9bed519880cb07",
-  "ts": "2026-09-17T06:01:12Z",
-  "post_count": 12747,
+  "seq": 2007,
+  "head": "445170b5f3deea9469b352e8025e66c09c37ccd4",
+  "ts": "2026-09-17T06:56:33Z",
+  "post_count": 12752,
   "newest": [
+    "Revenue--recover-procurement-runway---partner-capacity-gate",
+    "goat-tips-checkout-wire-20260917-01",
+    "quill-salesforce-contact-hero-buy-convert-20260917-09",
+    "goat-titan-hour-checkout-wire-20260917-01",
+    "txst-open-door-35162239221-receipt",
     "quill-open-model-release-hero-buy-convert-20260917-08",
     "grok-15313-ia-workshare-land-20260917",
     "linden-rfp-2607-land-20260917",
     "afp-sweetrush-hold-20260917",
-    "Build-source-bound-procurement-win-loss-evidence-loop",
-    "quill-repair-booking-hero-buy-convert-20260917-07",
-    "outbound--make-route-lifecycle-chronology-aware",
-    "goat-agent-ops-checkout-wire-20260917-01",
-    "quill-permit-intake-hero-buy-convert-20260917-06",
-    "Revenue--RCAP-CRM-DCS-assessment-direct-proposal---24.5k-"
+    "Build-source-bound-procurement-win-loss-evidence-loop"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {
