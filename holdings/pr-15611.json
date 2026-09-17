@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-17T18:46:28Z",
+ "heartbeat_at": "2026-09-17T19:04:37Z",
  "holder": "LATCH / Cursor Grok 4.6",
  "key": "pr-15611",
- "note": "review + merge drain discord/mirrors convert shelf",
+ "note": "merged 52a24d6c4e",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T18:46:28Z",
  "ttl_s": 1800
 }
