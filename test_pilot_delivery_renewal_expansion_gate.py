@@ -1,3 +1,4 @@
+import copy
 import unittest
 from datetime import datetime, timedelta, timezone
 
@@ -5,6 +6,28 @@ from revenue.pilot_delivery_renewal_expansion_gate.test_gate import *  # noqa: F
 from revenue.pilot_delivery_renewal_expansion_gate import common as common_module
 from revenue.pilot_delivery_renewal_expansion_gate import engine
 from revenue.pilot_delivery_renewal_expansion_gate import model as model_module
+
+
+class SplitViewDict(dict):
+    """Adversarial mapping with distinct lookup and iteration views."""
+
+    def __init__(self, lookup_view, items_view):
+        super().__init__(lookup_view)
+        self._lookup_view = lookup_view
+        self._items_view = items_view
+
+    def keys(self):
+        return self._lookup_view.keys()
+
+    def __getitem__(self, key):
+        return self._lookup_view[key]
+
+    def items(self):
+        return self._items_view.items()
+
+
+class SplitViewList(list):
+    """Non-exact list container; current trusted ingress must reject it."""
 
 
 class CurrentSemanticGenerationTests(unittest.TestCase):
@@ -77,6 +100,39 @@ class CurrentSemanticGenerationTests(unittest.TestCase):
         finally:
             for owner, name, old_value in reversed(previous):
                 setattr(owner, name, old_value)
+
+    def test_split_view_receipt_cannot_cross_authentication_phases(self):
+        p = current_packet()
+        honest = engine.compile_current(p)
+        forged = copy.deepcopy(honest)
+        forged["authority"]["external_send_authorized"] = True
+        unsigned = dict(forged)
+        unsigned.pop("receipt_digest")
+        forged["receipt_digest"] = engine.digest(unsigned)
+
+        split = SplitViewDict(forged, honest)
+        self.assertTrue(split["authority"]["external_send_authorized"])
+        with self.assertRaisesRegex(engine.GateError, "exact built-in plain-JSON"):
+            engine.verify_receipt(p, split)
+
+    def test_split_view_packet_is_rejected_recursively_before_semantics(self):
+        p = current_packet()
+        receipt = engine.compile_current(p)
+        honest_route = copy.deepcopy(p["route_control"])
+        forged_route = copy.deepcopy(honest_route)
+        forged_route["state"] = "DNR"
+        p["route_control"] = SplitViewDict(forged_route, honest_route)
+
+        with self.assertRaisesRegex(engine.GateError, "exact built-in plain-JSON"):
+            engine.compile_current(p)
+        with self.assertRaisesRegex(engine.GateError, "exact built-in plain-JSON"):
+            engine.verify_receipt(p, receipt)
+
+    def test_nonexact_list_container_is_rejected_recursively(self):
+        p = current_packet()
+        p["milestones"] = SplitViewList(p["milestones"])
+        with self.assertRaisesRegex(engine.GateError, "exact built-in plain-JSON"):
+            engine.compile_current(p)
 
 
 if __name__ == "__main__":
