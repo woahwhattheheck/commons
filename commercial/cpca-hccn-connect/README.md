@@ -3,7 +3,7 @@
 Operation support owner: `Z-OsmiumSemaphore-1738-K4N7` (`ZOSM-K4N7`) / GPT-5.6 Sol  
 Original pursuit owner remains `ZLF-B8R3` / Commons #13848.
 
-This package converts the buyer-issued 16-page CPCA HCCN Connect RFP into a deterministic no-fabrication qualification gate. It is **not** a proposal, price commitment, healthcare qualification claim, signature, or submission tool.
+This package converts the buyer-issued 16-page CPCA HCCN Connect RFP into deterministic no-fabrication qualification, workshare, and evidence-assembly gates. It is **not** a proposal, price commitment, healthcare qualification claim, signature, or submission tool.
 
 ## Controlling packet
 
@@ -27,43 +27,63 @@ The packet is materially stricter than the public landing-page summary:
 - Page 10 scoring: domain expertise 30%, relevant experience 25%, references/past performance 15%, approach/capacity 15%, cost reasonableness 15%.
 - Pages 10-12: qualification does not guarantee work. Marketplace onboarding can include an Engagement Agreement and BAA; projects are time-and-materials with monthly approved hours.
 
-## Current truthful posture: HOLD
+## Current truthful posture: application HOLD
 
-`current_evidence.json` intentionally starts with unknown owner/legal/staff/reference/pricing/signature facts as `HOLD` or `MISSING`. During this recovery pass, connected GitHub search did not locate source-bound FQHC/safety-net health-center past performance. That does **not** prove no off-repo evidence exists, so the carrier does not convert the absence into a categorical organizational claim.
+`current_evidence.json` intentionally starts with unknown owner/legal/staff/reference/pricing/signature facts as `HOLD` or `MISSING`. Connected repository evidence did not establish source-bound FQHC/safety-net health-center past performance. That does **not** prove no private evidence exists, so the carrier does not convert absence into a categorical organizational claim.
 
-A direct-prime application must remain `HOLD` until the mandatory experience, references, personnel, recent comparable engagements, licensing/insurance, rate sheet, and signature/submission authority are source-bound. The engine refuses to treat empty/unsourced reference or engagement counts as proof.
+A direct-prime application remains `HOLD` until mandatory experience, references, personnel, recent comparable engagements, licensing/insurance, rate sheet, signatures, package, and submission authority are source-bound. Empty or unsourced reference/engagement counts never pass.
 
-The most defensible recovery route, if direct-prime evidence remains unavailable, is **healthcare-prime teaming**: identify a genuinely qualified healthcare/FQHC/HCCN prime, obtain explicit relationship authority, bind that prime's eligibility and safety-net experience, and confine TJLabs to a support scope for which TJLabs can prove its own subject-matter and delivery track record. The code returns `TEAMING_READY` only when that named-prime evidence and support-scope proof are present; otherwise it remains `HOLD`.
+Healthcare-prime teaming remains the most defensible recovery route when direct-prime evidence is unavailable: identify a genuinely qualified healthcare/FQHC/HCCN prime, obtain explicit written relationship and credential-use authority, bind that prime's exact applicant evidence privately, and confine TJLabs to separately supported AI work.
+
+### Critical legacy-state boundary
+
+The historical subcontract branch in `cpca_qualify.py` can emit a value named `TEAMING_READY` from a named prime, two retained source strings, a relationship flag, and selected TJLabs support-gate proof **while mandatory applicant blockers still exist**. Therefore:
+
+- treat legacy subcontract `TEAMING_READY` as a **workshare/relationship signal only**;
+- never translate it into CPCA applicant qualification, application readiness, submission readiness, partner status, or buyer approval;
+- use `cpca_partner_readiness.py` to compile the separated partner state;
+- in this generation `application.state` remains `HOLD`, even when a caller supplies a complete source manifest, because no provider-authenticated private-evidence adapter exists.
+
+The partner compiler hard-codes `provider_authenticated_evidence_available=false`, `caller_manifest_can_authorize_readiness=false`, and every contact, credential-use, price, staffing, signature, submission, award, payment, and revenue authority bit to false.
 
 ## Teaming recovery artifacts
 
-The direct-prime `HOLD` has a bounded follow-on that does not weaken the evidence gate:
+The direct-prime `HOLD` has bounded follow-ons that do not weaken the buyer gate:
 
 - [`teaming_shortlist.md`](./teaming_shortlist.md) ranks public-evidence healthcare-prime candidates by buyer-gate overlap, TJLabs complementarity, and competitor/self-sufficiency risk.
-- [`teaming_outreach_packets.md`](./teaming_outreach_packets.md) stages exact candidate-specific messages and a Muse single-writer arbitration template. Its state is **DRAFT ONLY / NOT SENT**.
+- [`teaming_outreach_packets.md`](./teaming_outreach_packets.md) stages candidate-specific drafts and Muse single-writer arbitration. Its state is **DRAFT ONLY / NOT SENT**.
+- [`partner_workshare/`](./partner_workshare/) compiles a strict post-positive-response division-of-responsibility packet. Its highest state is internal review, never application readiness or external authority.
+- [`partner_intake_and_authority.md`](./partner_intake_and_authority.md) is the staged anti-spam, evidence, relationship, commercial, and package checklist.
+- [`cpca_partner_readiness.py`](./cpca_partner_readiness.py) truth-narrows the legacy subcontract signal and emits a canonical application-HOLD receipt.
 
-These files do not make any candidate a partner and do not authorize contact. Before any outbound email, re-run Slack + Gmail collision checks, obtain Muse `SELECT`, and re-fence again immediately before send. A positive response still does not satisfy `TEAMING_READY` until explicit relationship authority and source-bound prime/support evidence are entered into the qualification carrier.
+These artifacts do not make any candidate a partner and do not authorize contact. Before any outbound message, re-run Slack + Gmail collision checks, obtain Muse `SELECT` for the exact destination/subject/body, and re-fence immediately before send.
 
-## Use
+## Use and retained proof
 
 ```bash
 cd commercial/cpca-hccn-connect
 python3 cpca_qualify.py current_evidence.json
 python3 -m unittest -v test_cpca_qualify.py
+python3 -m unittest -v test_cpca_partner_readiness.py
+python3 -O -m unittest -v test_cpca_partner_readiness.py
+python3 partner_workshare/test_workshare.py -v
+python3 -O partner_workshare/test_workshare.py -v
 ```
 
-The CLI emits a canonical result plus a SHA-256 receipt. Missing gates default to `MISSING`; nothing defaults to pass. Every non-count gate marked `PROVEN` must carry at least one explicit `gate_sources` entry; references, recent engagements, and safety-net experience are proven only from their own source-bound records.
+The root-level `test_cpca_partner_readiness.py` bridge reruns the full partner-readiness hostile suite in normal and optimized Python, requires a positive test count, and prevents a false-green zero-test run. Canonical receipts are recompiled from source inputs; mutation does not verify.
 
 ## State meanings
 
 - `PRIME_READY`: all direct-prime mandatory gates for the selected domain/service type are source-bound `PROVEN` before the deadline.
-- `TEAMING_READY`: a named healthcare prime has source-bound eligibility + safety-net evidence + explicit relationship authority, and every claimed TJLabs support gate is proven.
+- legacy subcontract `TEAMING_READY`: historical workshare/relationship signal only; **not** application readiness.
+- `WORKSHARE_DISCUSSION_READY`: a named healthcare-prime lane and bounded TJLabs support scope are concrete enough to discuss; `application.state` remains `HOLD`.
+- `INTERNAL_TEAMING_REVIEW_READY`: the separate workshare packet has source-bound internal-review inputs; it still does not authorize credentials, application readiness, contact, pricing, contract, or submission.
 - `HOLD`: one or more required facts remain missing/held; do not submit.
-- `NO_BID`: deadline has passed (or a future extension may add other terminal conditions).
+- `NO_BID`: deadline has passed or another explicit terminal condition closes the route.
 
 ## Authority ceiling
 
-Every result preserves these as false unless a separately authorized external process proves otherwise: buyer-contact authority, committed price, signed attestation, proposal submission, award, payment, and recognized revenue. This repository carrier does not send email, submit Smartsheet forms, sign attestations, accept contracts, or manufacture healthcare credentials.
+Every repository result keeps buyer-contact, credential-use, committed-price, staffing, signature/attestation, proposal submission, contract, award, invoice, payment, receivable, accounting, and recognized-revenue authority false. This repository does not send email, submit Smartsheet forms, sign attestations, accept contracts, borrow healthcare credentials, or recognize revenue.
 
 ## Live cash
 
