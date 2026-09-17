@@ -1,303 +1,203 @@
-"""Fail-closed pursuit gate for Hamilton County RFP 065-26/JW.
+"""Fail-closed Hamilton pursuit gate with inode-custody retained evidence.
 
-Discovery mirrors can guide investigation but cannot establish buyer requirements,
-deadlines, teaming permission, or submission authority.
+The decision engine lives in ``_gate_core``.  This front module hardens the only
+source-tree trust boundary for owner/partner evidence, then installs that binder
+into the core before re-exporting the public gate API.
 """
 from __future__ import annotations
 
-import argparse
-import hashlib
-import json
-from datetime import datetime, timezone
-from pathlib import Path
-from typing import Any, Mapping, Sequence
+import os
+import stat
+from pathlib import Path, PurePosixPath
+from typing import Any, Mapping
 
-OPPORTUNITY_ID = "065-26/JW"
-BUYER_CONTROL_FIELDS = {
-    "response_deadline", "question_deadline", "submission_mechanics",
-    "teaming_rules", "evaluation_criteria", "mandatory_requirements",
-}
-SOURCE_AUTHORITIES = {
-    "OFFICIAL_PORTAL_ENTRY", "OFFICIAL_CONTROLLING_PACKET", "OFFICIAL_ADDENDUM",
-    "MIRROR", "INTERNAL_EVIDENCE",
-}
-PRIME_GATES = (
-    "submission_mechanics", "eligibility", "security_compliance",
-    "past_performance", "insurance_legal", "pricing",
-)
-SPECIALIST_GATES = ("integration_engineering", "validation_evidence", "delivery_capacity")
+from . import _gate_core as _core
 
-
-class GateError(ValueError):
-    pass
-
-
-def _pairs_no_dupes(pairs):
-    out = {}
-    for key, value in pairs:
-        if key in out:
-            raise GateError(f"duplicate JSON key: {key}")
-        out[key] = value
-    return out
+GateError = _core.GateError
+OPPORTUNITY_ID = _core.OPPORTUNITY_ID
+EVIDENCE_ARTIFACT_SCHEMA = _core.EVIDENCE_ARTIFACT_SCHEMA
+MAX_RETAINED_EVIDENCE_BYTES = _core.MAX_RETAINED_EVIDENCE_BYTES
+BUYER_CONTROL_FIELDS = _core.BUYER_CONTROL_FIELDS
+SOURCE_AUTHORITIES = _core.SOURCE_AUTHORITIES
+PRIME_GATES = _core.PRIME_GATES
+SPECIALIST_GATES = _core.SPECIALIST_GATES
+ALL_GATES = _core.ALL_GATES
+EVIDENCE_CLASSES = _core.EVIDENCE_CLASSES
+OFFICIAL_EVIDENCE_CLASSES = _core.OFFICIAL_EVIDENCE_CLASSES
+INTERNAL_EVIDENCE_KIND = _core.INTERNAL_EVIDENCE_KIND
+loads_strict = _core.loads_strict
+canonical_bytes = _core.canonical_bytes
+digest = _core.digest
+_raw_digest = _core._raw_digest
+_str = _core._str
+_sha = _core._sha
+_string_list = _core._string_list
 
 
-def _reject_constant(value):
-    raise GateError(f"non-finite JSON number: {value}")
+def _retained_evidence_path(value: Any, sid: str) -> Path:
+    raw = _str(value, f"{sid}.retained_artifact.path")
+    if "\\" in raw:
+        raise GateError(f"{sid}.retained_artifact.path must use POSIX separators")
+    rel = PurePosixPath(raw)
+    if rel.is_absolute() or ".." in rel.parts or rel.parts[:1] != ("retained_evidence",):
+        raise GateError(f"{sid}.retained_artifact.path must stay under retained_evidence/")
+    if len(rel.parts) != 2 or rel.suffix != ".json":
+        raise GateError(
+            f"{sid}.retained_artifact.path must name one JSON file directly under retained_evidence/"
+        )
 
-
-def loads_strict(text: str) -> Any:
+    package_dir = Path(__file__).resolve().parent
+    base = package_dir / "retained_evidence"
     try:
-        return json.loads(text, object_pairs_hook=_pairs_no_dupes, parse_constant=_reject_constant)
-    except GateError:
-        raise
-    except json.JSONDecodeError as exc:
-        raise GateError(str(exc)) from exc
+        base_st = os.lstat(base)
+    except OSError as exc:
+        raise GateError(f"{sid}.retained_artifact retained_evidence directory is unavailable") from exc
+    if not stat.S_ISDIR(base_st.st_mode) or stat.S_ISLNK(base_st.st_mode):
+        raise GateError(f"{sid}.retained_artifact retained_evidence directory must be a real directory")
+    return base / rel.name
 
 
-def canonical_bytes(value: Any) -> bytes:
-    return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"), allow_nan=False).encode()
-
-
-def digest(value: Any) -> str:
-    return hashlib.sha256(canonical_bytes(value)).hexdigest()
-
-
-def _bool(value: Any, label: str) -> bool:
-    if type(value) is not bool:
-        raise GateError(f"{label} must be a JSON boolean")
-    return value
-
-
-def _str(value: Any, label: str) -> str:
-    if type(value) is not str or not value.strip():
-        raise GateError(f"{label} must be a non-empty string")
-    return value
-
-
-def _time(value: str, label: str) -> datetime:
-    _str(value, label)
-    try:
-        dt = datetime.fromisoformat(value.replace("Z", "+00:00"))
-    except ValueError as exc:
-        raise GateError(f"{label} must be ISO-8601") from exc
-    if dt.tzinfo is None:
-        raise GateError(f"{label} must include timezone")
-    return dt.astimezone(timezone.utc)
-
-
-def _sha(value: Any, label: str) -> str:
-    value = _str(value, label)
-    if len(value) != 64 or any(c not in "0123456789abcdef" for c in value):
-        raise GateError(f"{label} must be lowercase sha256 hex")
-    return value
-
-
-def _source_index(ledger: Mapping[str, Any]):
-    if type(ledger) is not dict or ledger.get("opportunity_id") != OPPORTUNITY_ID:
-        raise GateError("source ledger opportunity_id mismatch")
-    sources = ledger.get("sources")
-    if type(sources) is not list:
-        raise GateError("sources must be an array")
-    out = {}
-    for idx, source in enumerate(sources):
-        if type(source) is not dict:
-            raise GateError(f"sources[{idx}] must be an object")
-        sid = _str(source.get("id"), f"sources[{idx}].id")
-        if sid in out:
-            raise GateError(f"duplicate source id: {sid}")
-        authority = _str(source.get("authority"), f"{sid}.authority")
-        if authority not in SOURCE_AUTHORITIES:
-            raise GateError(f"unsupported source authority: {authority}")
-        retrieved = _bool(source.get("retrieved"), f"{sid}.retrieved")
-        _str(source.get("url"), f"{sid}.url")
-        _time(source.get("observed_at"), f"{sid}.observed_at")
-        claims = source.get("claims", {})
-        controls = source.get("controls", [])
-        if type(claims) is not dict:
-            raise GateError(f"{sid}.claims must be object")
-        if type(controls) is not list or any(type(x) is not str for x in controls):
-            raise GateError(f"{sid}.controls must be string array")
-        if authority in {"MIRROR", "INTERNAL_EVIDENCE", "OFFICIAL_PORTAL_ENTRY"}:
-            forbidden = BUYER_CONTROL_FIELDS.intersection(controls)
-            if forbidden:
-                raise GateError(f"{sid} cannot control buyer fields as {authority}: {sorted(forbidden)}")
-        if retrieved:
-            _sha(source.get("content_sha256"), f"{sid}.content_sha256")
-        out[sid] = source
-    return out
-
-
-def _official_value(sources, field):
-    values = []
-    for sid, source in sources.items():
-        if not source["retrieved"] or source["authority"] not in {"OFFICIAL_CONTROLLING_PACKET", "OFFICIAL_ADDENDUM"}:
-            continue
-        if field in source.get("controls", []) and field in source.get("claims", {}):
-            values.append((source["claims"][field], sid))
-    if not values:
-        return None, None
-    first = values[0][0]
-    if any(value != first for value, _ in values[1:]):
-        raise GateError(f"conflicting official authority for {field}")
-    return first, ",".join(sorted(sid for _, sid in values))
-
-
-def _requirements_index(requirements):
-    if type(requirements) is not dict or requirements.get("opportunity_id") != OPPORTUNITY_ID:
-        raise GateError("requirements opportunity_id mismatch")
-    rows = requirements.get("requirements")
-    if type(rows) is not list:
-        raise GateError("requirements must be an array")
-    out = {}
-    for idx, row in enumerate(rows):
-        if type(row) is not dict:
-            raise GateError(f"requirement[{idx}] must be object")
-        rid = _str(row.get("id"), f"requirement[{idx}].id")
-        if rid in out:
-            raise GateError(f"duplicate requirement id: {rid}")
-        state = _str(row.get("state"), f"{rid}.state")
-        if state not in {"PROVEN", "GAP", "UNKNOWN", "NOT_APPLICABLE"}:
-            raise GateError(f"unsupported requirement state: {state}")
-        evidence = row.get("evidence")
-        if type(evidence) is not list or any(type(x) is not str or not x for x in evidence):
-            raise GateError(f"{rid}.evidence must be string array")
-        out[rid] = row
-    return out
-
-
-def _proven(gates, rid):
-    row = gates.get(rid)
-    return bool(row and row.get("state") == "PROVEN" and row.get("evidence"))
-
-
-def compile_pursuit(ledger: Mapping[str, Any], requirements: Mapping[str, Any], *, now: str):
-    now_dt = _time(now, "now")
-    sources = _source_index(ledger)
-    gates = _requirements_index(requirements)
-    controlling = sorted(
-        sid for sid, src in sources.items()
-        if src["retrieved"] and src["authority"] == "OFFICIAL_CONTROLLING_PACKET"
+def _generation(st: os.stat_result) -> tuple[int, int, int, int, int, int, int]:
+    return (
+        st.st_dev,
+        st.st_ino,
+        stat.S_IFMT(st.st_mode),
+        st.st_nlink,
+        st.st_size,
+        getattr(st, "st_mtime_ns", int(st.st_mtime * 1_000_000_000)),
+        getattr(st, "st_ctime_ns", int(st.st_ctime * 1_000_000_000)),
     )
-    official_packet = bool(controlling)
-    deadline_raw, deadline_source = _official_value(sources, "response_deadline")
-    teaming_raw, teaming_source = _official_value(sources, "teaming_rules")
-    submission_raw, submission_source = _official_value(sources, "submission_mechanics")
-
-    decision = "HOLD"
-    reasons = []
-    if not official_packet:
-        reasons.append("CONTROLLING_PACKET_NOT_ACQUIRED")
-
-    if deadline_raw is not None:
-        if type(deadline_raw) is not str:
-            raise GateError("official response_deadline must be string")
-        if now_dt >= _time(deadline_raw, "official response_deadline"):
-            decision = "NO_BID"
-            reasons.append("OFFICIAL_RESPONSE_DEADLINE_PASSED")
-
-    missing_prime = [rid for rid in PRIME_GATES if not _proven(gates, rid)]
-    missing_specialist = [rid for rid in SPECIALIST_GATES if not _proven(gates, rid)]
-
-    if decision != "NO_BID":
-        if not official_packet:
-            decision = "HOLD"
-        elif submission_raw is None:
-            decision = "HOLD"
-            reasons.append("SUBMISSION_MECHANICS_UNCONTROLLED")
-        elif not missing_prime:
-            decision = "PRIME"
-        elif teaming_raw is True and not missing_specialist and _proven(gates, "partner_prime"):
-            decision = "TEAMING"
-        else:
-            decision = "HOLD"
-            if teaming_raw is None:
-                reasons.append("TEAMING_RULES_UNCONTROLLED")
-            elif teaming_raw is False:
-                reasons.append("TEAMING_NOT_ALLOWED_BY_RETAINED_OFFICIAL_AUTHORITY")
-            if missing_specialist:
-                reasons.append("SPECIALIST_EVIDENCE_GAPS")
-            if not _proven(gates, "partner_prime"):
-                reasons.append("PARTNER_PRIME_NOT_PROVEN")
-
-    if decision in {"HOLD", "TEAMING"} and missing_prime:
-        reasons.append("PRIME_GATES_UNPROVEN")
-
-    mirrors = [
-        {"source_id": sid, "claims": src.get("claims", {}), "authority": "DISCOVERY_ONLY_NOT_BUYER_CONTROL"}
-        for sid, src in sorted(sources.items()) if src["authority"] == "MIRROR"
-    ]
-    work_orders = []
-    if "CONTROLLING_PACKET_NOT_ACQUIRED" in reasons:
-        work_orders.append({"id": "RECOVER_CONTROLLING_RFP_PACKET", "priority": 1,
-                            "stop_condition": "exact official packet/addenda retained with sha256 and reviewed"})
-    if "TEAMING_RULES_UNCONTROLLED" in reasons:
-        work_orders.append({"id": "BIND_TEAMING_AND_SUBCONTRACT_RULES", "priority": 2,
-                            "stop_condition": "official packet/addendum controls teaming_rules"})
-    if missing_prime:
-        work_orders.append({"id": "CLOSE_PRIME_QUALIFICATION_GAPS", "priority": 3, "gates": missing_prime,
-                            "stop_condition": "each gate proven or prime posture abandoned"})
-    if decision == "HOLD" and not missing_specialist:
-        work_orders.append({"id": "PREPARE_PAID_SPECIALIST_TEAMING_SCOPE", "priority": 4,
-                            "stop_condition": "official teaming permission plus evidence-backed prime partner"})
-
-    packet = {
-        "schema": "hamilton-065-26-jw-pursuit/v1",
-        "opportunity_id": OPPORTUNITY_ID,
-        "evaluation_time": now_dt.isoformat().replace("+00:00", "Z"),
-        "decision": decision,
-        "reasons": sorted(set(reasons)),
-        "authority": {
-            "official_packet_sources": controlling,
-            "response_deadline_source": deadline_source,
-            "teaming_rules_source": teaming_source,
-            "submission_mechanics_source": submission_source,
-            "mirror_can_control_buyer_terms": False,
-        },
-        "gaps": {"prime": missing_prime, "specialist": missing_specialist},
-        "mirror_intelligence": mirrors,
-        "work_orders": sorted(work_orders, key=lambda x: (x["priority"], x["id"])),
-        "external_authority": {
-            "county_contact": False, "portal_registration": False, "question_submission": False,
-            "proposal_submission": False, "signature": False, "pricing_commitment": False,
-            "partner_representation": False, "award": False, "payment": False, "revenue": False,
-        },
-    }
-    packet["receipt_sha256"] = digest(packet)
-    return packet
 
 
-def verify_receipt(packet: Mapping[str, Any]) -> bool:
-    if type(packet) is not dict or type(packet.get("receipt_sha256")) is not str:
-        return False
-    body = dict(packet)
-    claimed = body.pop("receipt_sha256")
-    return digest(body) == claimed
+def _validate_retained_stat(st: os.stat_result, sid: str) -> None:
+    if not stat.S_ISREG(st.st_mode):
+        raise GateError(f"{sid}.retained_artifact must resolve to a regular file")
+    if st.st_nlink != 1:
+        raise GateError(f"{sid}.retained_artifact must have exactly one filesystem link")
+    if st.st_size <= 0 or st.st_size > MAX_RETAINED_EVIDENCE_BYTES:
+        raise GateError(f"{sid}.retained_artifact has invalid retained byte length")
 
 
-def _read(path: Path):
-    raw = path.read_bytes()
-    if len(raw) > 2_000_000:
-        raise GateError(f"{path} exceeds 2MB")
+def _read_retained_evidence(path: Path, sid: str) -> bytes:
+    """Read one confined, single-link file generation through one descriptor."""
     try:
-        return loads_strict(raw.decode("utf-8"))
+        parent_pre = os.lstat(path.parent)
+        pre = os.lstat(path)
+    except FileNotFoundError as exc:
+        raise GateError(f"{sid}.retained_artifact is not retained in source tree") from exc
+    except OSError as exc:
+        raise GateError(f"{sid}.retained_artifact cannot be inspected") from exc
+    if not stat.S_ISDIR(parent_pre.st_mode) or stat.S_ISLNK(parent_pre.st_mode):
+        raise GateError(f"{sid}.retained_artifact.path must not traverse symlinks")
+    if stat.S_ISLNK(pre.st_mode):
+        raise GateError(f"{sid}.retained_artifact.path must not traverse symlinks")
+    _validate_retained_stat(pre, sid)
+
+    flags = os.O_RDONLY | getattr(os, "O_BINARY", 0) | getattr(os, "O_NOFOLLOW", 0)
+    try:
+        fd = os.open(path, flags)
+    except OSError as exc:
+        raise GateError(f"{sid}.retained_artifact cannot be opened without following links") from exc
+    try:
+        opened = os.fstat(fd)
+        _validate_retained_stat(opened, sid)
+        if _generation(opened) != _generation(pre):
+            raise GateError(f"{sid}.retained_artifact generation changed before read")
+
+        chunks: list[bytes] = []
+        remaining = MAX_RETAINED_EVIDENCE_BYTES + 1
+        while remaining > 0:
+            chunk = os.read(fd, min(65_536, remaining))
+            if not chunk:
+                break
+            chunks.append(chunk)
+            remaining -= len(chunk)
+        raw = b"".join(chunks)
+        after_fd = os.fstat(fd)
+    except OSError as exc:
+        raise GateError(f"{sid}.retained_artifact cannot be read") from exc
+    finally:
+        os.close(fd)
+
+    try:
+        parent_post = os.lstat(path.parent)
+        post = os.lstat(path)
+    except OSError as exc:
+        raise GateError(f"{sid}.retained_artifact generation disappeared during read") from exc
+    _validate_retained_stat(after_fd, sid)
+    _validate_retained_stat(post, sid)
+    if (parent_pre.st_dev, parent_pre.st_ino) != (parent_post.st_dev, parent_post.st_ino):
+        raise GateError(f"{sid}.retained_artifact directory generation changed during read")
+    expected = _generation(pre)
+    if _generation(after_fd) != expected or _generation(post) != expected:
+        raise GateError(f"{sid}.retained_artifact generation changed during read")
+    if len(raw) != pre.st_size or len(raw) > MAX_RETAINED_EVIDENCE_BYTES:
+        raise GateError(f"{sid}.retained_artifact has invalid retained byte length")
+    return raw
+
+
+def _internal_artifact_binding(source: Mapping[str, Any], sid: str) -> tuple[str, str]:
+    locator = source.get("retained_artifact")
+    if type(locator) is not dict or set(locator) != {"path", "sha256"}:
+        raise GateError(f"{sid}.retained_artifact must contain exact path and sha256 fields")
+    expected_sha = _sha(locator.get("sha256"), f"{sid}.retained_artifact.sha256")
+    source_sha = _sha(source.get("content_sha256"), f"{sid}.content_sha256")
+    if expected_sha != source_sha:
+        raise GateError(f"{sid}.retained_artifact.sha256 must equal source content_sha256")
+
+    path = _retained_evidence_path(locator.get("path"), sid)
+    raw = _read_retained_evidence(path, sid)
+    if _raw_digest(raw) != expected_sha:
+        raise GateError(f"{sid}.content_sha256 does not authenticate retained file bytes")
+    try:
+        artifact = loads_strict(raw.decode("utf-8"))
     except UnicodeDecodeError as exc:
-        raise GateError(f"{path} is not utf-8") from exc
+        raise GateError(f"{sid}.retained_artifact is not utf-8") from exc
+
+    required = {"schema", "source_id", "opportunity_id", "binding", "evidence"}
+    if type(artifact) is not dict or set(artifact) != required:
+        raise GateError(f"{sid}.retained_artifact has unexpected record fields")
+    if artifact.get("schema") != EVIDENCE_ARTIFACT_SCHEMA:
+        raise GateError(f"{sid}.retained_artifact schema mismatch")
+    if artifact.get("source_id") != sid:
+        raise GateError(f"{sid}.retained_artifact source_id mismatch")
+    if artifact.get("opportunity_id") != OPPORTUNITY_ID:
+        raise GateError(f"{sid}.retained_artifact opportunity_id mismatch")
+
+    binding = artifact.get("binding")
+    if type(binding) is not dict or set(binding) != {"requirement_id", "evidence_class"}:
+        raise GateError(f"{sid}.retained_artifact.binding must contain exact binding fields")
+    rid = _str(binding.get("requirement_id"), f"{sid}.retained_artifact.binding.requirement_id")
+    evidence_class = _str(binding.get("evidence_class"), f"{sid}.retained_artifact.binding.evidence_class")
+    if rid not in EVIDENCE_CLASSES or evidence_class not in EVIDENCE_CLASSES[rid]:
+        raise GateError(f"{sid}.retained_artifact binding is not admissible: {rid}/{evidence_class}")
+    if evidence_class in OFFICIAL_EVIDENCE_CLASSES:
+        raise GateError(f"{sid}.retained_artifact cannot use an official evidence class")
+    expected_kind = INTERNAL_EVIDENCE_KIND.get(evidence_class)
+    if expected_kind is None:
+        raise GateError(f"{sid}.retained_artifact unsupported internal evidence class")
+
+    evidence = artifact.get("evidence")
+    if type(evidence) is not dict or set(evidence) != {"kind", "facts", "refs"}:
+        raise GateError(f"{sid}.retained_artifact.evidence must contain exact kind/facts/refs")
+    if evidence.get("kind") != expected_kind:
+        raise GateError(f"{sid}.retained_artifact.evidence.kind must be {expected_kind}")
+    _string_list(evidence.get("facts"), f"{sid}.retained_artifact.evidence.facts")
+    _string_list(evidence.get("refs"), f"{sid}.retained_artifact.evidence.refs")
+    return rid, evidence_class
 
 
-def main(argv: Sequence[str] | None = None) -> int:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--ledger", type=Path, required=True)
-    parser.add_argument("--requirements", type=Path, required=True)
-    parser.add_argument("--now", required=True)
-    parser.add_argument("--out", type=Path)
-    args = parser.parse_args(argv)
-    packet = compile_pursuit(_read(args.ledger), _read(args.requirements), now=args.now)
-    encoded = canonical_bytes(packet) + b"\n"
-    if args.out:
-        args.out.write_bytes(encoded)
-    else:
-        print(encoded.decode(), end="")
-    return 0
+# Install the hardened trust boundary into the byte-stable reviewed core.
+_core._retained_evidence_path = _retained_evidence_path
+_core._internal_artifact_binding = _internal_artifact_binding
+
+compile_pursuit = _core.compile_pursuit
+verify_receipt = _core.verify_receipt
+main = _core.main
+
+
+def __getattr__(name: str):
+    return getattr(_core, name)
 
 
 if __name__ == "__main__":
