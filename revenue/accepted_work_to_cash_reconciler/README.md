@@ -91,6 +91,6 @@ python -m unittest -v test_accepted_work_to_cash_reconciler.py
 python -O -m unittest -v test_accepted_work_to_cash_reconciler.py
 ```
 
-The root test is enrolled in the existing Commons retained test workflow, and the
-workflow path filter includes this package so later package-only changes still run
-the test battery.
+The root test is enrolled by the existing Commons `test_*.py` retained-test path.
+This product intentionally adds no new standalone workflow slot; exact-head CI is
+read from the retained Commons battery before merge.
