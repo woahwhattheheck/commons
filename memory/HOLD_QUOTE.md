@@ -22,6 +22,8 @@ Verified product pages only — no invented Stripe links. Quote-less HOLDs are v
 - [$199 repair diagnostic](../repair-booking-preflight.html)
 - [$199 plant diagnostic](../plant-downtime-handoff.html)
 
+Larger fixed engagements (separate product pages; checkout/intent stays there): [GGUF diagnostic · $12,000 / 10 days](../diagnostic.html) · [White Box pilot · $30,000 / 30 days](../commercial.html). Not remints of tip SKUs.
+
 Cite ground/HOLD_QUOTE.md Live cash — do not remint.
 
 ## Contest product (titanmcp)
