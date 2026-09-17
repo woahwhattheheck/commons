@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T03:21:17Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "OUTBOUND-COLLISION-REPLAY-GUARD-20260916",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-16T23:48:29Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-pr15115-receipt-20260916-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:48:08Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "057d9c7ac7dde25e7db803cb7ef31da506ed2e615baa7d7b54af82ade9969608",
+  "digest": "3a8e928e3d5fb9fe095b6027d7fecc8fef74d832110a1eca00ec5bc70770eeaa",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12716,
-    "pulse_seq": 1993,
-    "sha": "25ee6e29ed3bd12a9991378bc735257b49bb20f0"
+    "post_count": 12717,
+    "pulse_seq": 1994,
+    "sha": "15454213a10ebfc12f72e737dc0762d67060d81a"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T03:22:57Z",
+  "now": "2026-09-17T03:27:08Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4849,18 +4849,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "OUTBOUND-COLLISION-REPLAY-GUARD-20260916",
+          "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "OUTBOUND-COLLISION-REPLAY-GUARD-20260916",
+      "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T03:10:11Z"
+      "ts": "2026-09-17T03:21:17Z"
     },
     {
       "claim": "VECTOR-RELAY",

@@ -1460,8 +1460,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "OUTBOUND-COLLISION-REPLAY-GUARD-20260916",
-    "ts": "2026-09-17T03:10:11Z"
+    "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
+    "ts": "2026-09-17T03:21:17Z"
   },
   {
     "from": "VECTOR-RELAY",
