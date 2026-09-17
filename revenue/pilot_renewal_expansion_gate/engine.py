@@ -4,7 +4,7 @@ from datetime import datetime, timedelta, timezone
 from typing import Any
 
 from .common import (
-    AUTHORITY, GateError, RECEIPT_SCHEMA, SCHEMA, TERMINAL_STATES, TRUTH_CEILING,
+    GateError, RECEIPT_SCHEMA, SCHEMA, TERMINAL_STATES, TRUTH_CEILING,
     _dt, _exact_keys, _obj, _sha, _z, canonical_json, sha256,
 )
 from .schema import normalize
@@ -133,7 +133,17 @@ def evaluate(doc: dict[str, Any], verified_at: datetime) -> dict[str, Any]:
         "approved_change_orders": [x for x in doc["change_orders"] if x["state"] == "APPROVED"],
         "milestones": doc["milestones"], "payments": doc["payments"], "support_findings": doc["support_findings"],
         "gaps": doc["gaps"], "renewal_window": doc["renewal_window"], "expansion_hypotheses": doc["expansion_hypotheses"],
-        "communication": doc["communication"], "reasons": reasons, "authority": dict(AUTHORITY),
+        "communication": doc["communication"], "reasons": reasons, "authority": {
+            "external_send_authorized": False,
+            "contract_or_signature_authorized": False,
+            "buyer_acceptance_established": False,
+            "renewal_or_expansion_approved": False,
+            "invoice_or_payment_authorized": False,
+            "cash_or_revenue_recognized": False,
+            "deployment_authorized": False,
+            "scheduling_authorized": False,
+            "crm_mutation_authorized": False,
+        },
     }
 
 
@@ -146,7 +156,17 @@ def compile_packet(raw: Any, verified_at: datetime) -> tuple[dict[str, Any], dic
         "normalized_input_sha256": sha256(canonical_json(doc)),
         "packet_sha256": sha256(canonical_json(packet)),
         "decision": packet["decision"], "verified_at": packet["verified_at"],
-        "valid_until": doc["renewal_window"]["close_at"], "authority": dict(AUTHORITY),
+        "valid_until": doc["renewal_window"]["close_at"], "authority": {
+            "external_send_authorized": False,
+            "contract_or_signature_authorized": False,
+            "buyer_acceptance_established": False,
+            "renewal_or_expansion_approved": False,
+            "invoice_or_payment_authorized": False,
+            "cash_or_revenue_recognized": False,
+            "deployment_authorized": False,
+            "scheduling_authorized": False,
+            "crm_mutation_authorized": False,
+        },
     }
     receipt = dict(receipt_core)
     receipt["receipt_sha256"] = sha256(canonical_json(receipt_core))
@@ -171,7 +191,24 @@ def _authenticate_candidate(raw: Any, packet: Any, receipt: Any) -> tuple[dict[s
         raise GateError("packet digest mismatch")
     if receipt_obj["decision"] != packet_obj.get("decision"):
         raise GateError("receipt/packet decision mismatch")
-    if receipt_obj["authority"] != AUTHORITY or packet_obj.get("authority") != AUTHORITY:
+    authority_keys = (
+        "external_send_authorized",
+        "contract_or_signature_authorized",
+        "buyer_acceptance_established",
+        "renewal_or_expansion_approved",
+        "invoice_or_payment_authorized",
+        "cash_or_revenue_recognized",
+        "deployment_authorized",
+        "scheduling_authorized",
+        "crm_mutation_authorized",
+    )
+    def authority_is_sealed(value: Any) -> bool:
+        return (
+            type(value) is dict
+            and len(value) == len(authority_keys)
+            and all(key in value and type(value[key]) is bool and value[key] is False for key in authority_keys)
+        )
+    if not authority_is_sealed(receipt_obj["authority"]) or not authority_is_sealed(packet_obj.get("authority")):
         raise GateError("authority block mismatch")
     if receipt_obj["valid_until"] != doc["renewal_window"]["close_at"]:
         raise GateError("receipt valid_until is not bound to renewal window")
@@ -198,7 +235,17 @@ def _finish_verification(
         "current_valid": current_valid,
         "verification_mode": "PROCESS_CURRENT" if current_authority else "HISTORICAL_REPLAY_NON_CURRENT",
         "compiled_decision": receipt_obj["decision"], "current_decision": current["decision"],
-        "verified_at": _z(now), "valid_until": receipt_obj["valid_until"], "authority": dict(AUTHORITY),
+        "verified_at": _z(now), "valid_until": receipt_obj["valid_until"], "authority": {
+            "external_send_authorized": False,
+            "contract_or_signature_authorized": False,
+            "buyer_acceptance_established": False,
+            "renewal_or_expansion_approved": False,
+            "invoice_or_payment_authorized": False,
+            "cash_or_revenue_recognized": False,
+            "deployment_authorized": False,
+            "scheduling_authorized": False,
+            "crm_mutation_authorized": False,
+        },
     }
 
 
