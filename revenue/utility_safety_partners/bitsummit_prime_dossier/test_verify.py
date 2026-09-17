@@ -18,6 +18,7 @@ class DossierVerifierTests(unittest.TestCase):
         result = verify_payload(load())
         self.assertTrue(result["ok"])
         self.assertGreaterEqual(result["item_count"], 15)
+        self.assertEqual(len(result["covered_gates"]), 9)
         for status in ("SUPPORTED", "PARTNER_CONFIRMATION_REQUIRED", "OWNER_INPUT", "GAP"):
             self.assertGreater(result["status_counts"][status], 0)
 
@@ -32,6 +33,27 @@ class DossierVerifierTests(unittest.TestCase):
         p = load()
         target = next(x for x in p["items"] if x["id"] == "public_contact_route")
         target["marketing_claim"] = True
+        with self.assertRaises(VerificationError):
+            verify_payload(p)
+
+    def test_supported_partner_policy_claim_cannot_widen(self):
+        p = load()
+        target = next(x for x in p["items"] if x["id"] == "privacy_policy_exists")
+        target["claim"] = "BITSUMMIT satisfies all Utility Safety privacy and security requirements."
+        with self.assertRaises(VerificationError):
+            verify_payload(p)
+
+    def test_supported_route_limitations_cannot_be_weakened(self):
+        p = load()
+        target = next(x for x in p["items"] if x["id"] == "public_contact_route")
+        target["limitations"] = "BITSUMMIT is ready and eligible to prime the bid."
+        with self.assertRaises(VerificationError):
+            verify_payload(p)
+
+    def test_supported_issuer_claim_cannot_widen(self):
+        p = load()
+        target = next(x for x in p["items"] if x["id"] == "ibm_partner_directory_identity")
+        target["claim"] = "IBM confirms BITSUMMIT meets all buyer eligibility requirements."
         with self.assertRaises(VerificationError):
             verify_payload(p)
 
@@ -94,6 +116,40 @@ class DossierVerifierTests(unittest.TestCase):
         p = load()
         target = next(x for x in p["items"] if x["id"] == "security_managed_service_claims")
         target["status"] = "SUPPORTED"
+        with self.assertRaises(VerificationError):
+            verify_payload(p)
+
+    def test_hard_gate_taxonomy_tamper_rejected(self):
+        p = load()
+        p["hard_gate_categories"].remove("pricing")
+        with self.assertRaises(VerificationError):
+            verify_payload(p)
+
+    def test_unknown_item_gate_rejected(self):
+        p = load()
+        target = next(x for x in p["items"] if x["id"] == "audited_financials")
+        target["gates"] = ["made_up_gate"]
+        with self.assertRaises(VerificationError):
+            verify_payload(p)
+
+    def test_every_hard_gate_requires_evidence_coverage(self):
+        p = load()
+        for item in p["items"]:
+            item["gates"] = [g for g in item["gates"] if g != "pricing"]
+            if not item["gates"]:
+                item["gates"] = ["signatures_legal_delivery"]
+        with self.assertRaises(VerificationError):
+            verify_payload(p)
+
+    def test_status_definition_tamper_rejected(self):
+        p = load()
+        p["status_definitions"]["SUPPORTED"] = "Anything we want to say is proven."
+        with self.assertRaises(VerificationError):
+            verify_payload(p)
+
+    def test_owner_attribution_tamper_rejected(self):
+        p = load()
+        p["owner"] = "someone else"
         with self.assertRaises(VerificationError):
             verify_payload(p)
 
