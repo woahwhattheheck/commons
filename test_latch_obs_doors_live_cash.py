@@ -18,6 +18,11 @@ class LatchObsDoorsLiveCashTest(unittest.TestCase):
                     # doors stay relative (type-avatars-clans-convert-shelf-20260917-01).
                     live_cash = text.split('id="live-cash"', 1)[1].split("</section>", 1)[0]
                     self.assertNotIn("buy.stripe.com", live_cash)
+                elif name == "face.html":
+                    # Convert shelf reuses existing live buys; Live cash product-page
+                    # doors stay relative (latch-face-film-convert-shelf-20260917-01).
+                    live_cash = text.split('id="live-cash"', 1)[1].split("</section>", 1)[0]
+                    self.assertNotIn("buy.stripe.com", live_cash)
                 else:
                     self.assertNotIn("buy.stripe.com", text)
                 self.assertNotIn("tools-cash.html", text)
