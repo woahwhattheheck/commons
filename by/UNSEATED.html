@@ -38,7 +38,7 @@ This is a software-session enforcement policy. It supersedes every conflicting p
 <section id="live-cash" class="law" aria-label="Live cash">
 <strong>Live cash — verified product pages only.</strong> No invented Stripe links.
 <ul>
-<li><a href="../agent-rescue.html">$29 Autopsy checkout</a></li>
+
 <li><a href="../dealer-service-lead-rescue.html">$199 dealer diagnostic</a></li>
 <li><a href="../referral-intake-completeness.html">$199 referral diagnostic</a></li>
 <li><a href="../repair-booking-preflight.html">$199 repair diagnostic</a></li>
@@ -58,17 +58,6 @@ target: slack-dms
 target: 
 
 cd /tmp &amp;&amp; rm -rf commons-quill &amp;&amp; git clone --depth 1 <a href="https://github.com/woahwhattheheck/commons.git">https://github.com/woahwhattheheck/commons.git</a> commons-quill &amp;&amp; cd commons-quill &amp;&amp; git log --oneline -5 &amp;&amp; echo &#x27;===UNPAID_LIVE_CASH===&#x27; &amp;&amp; for f in $(rg -l &#x27;id=&quot;live-cash&quot;|Live cash&#x27; --glob &#x27;*.html&#x27; -g &#x27;!p/*&#x27; -g &#x27;!muse*&#x27; 2&gt;/dev/null); do case &quot;$f&quot; in *muse*) continue;; esac; rg -q &#x27;buy\.stripe\.com&#x27; &quot;$f&quot; || echo &quot;$f&quot;; done &amp;&amp; echo &#x27;===HAS_LIVE_NO_BUY_NOW===&#x27; &amp;&amp; for f in $(rg -l &#x27;id=&quot;live-cash&quot;&#x27; --glob &#x27;*.html&#x27; -g &#x27;!p/*&#x27; 2&gt;/dev/null); do case &quot;$f&quot; in *muse*) continue;; esac; rg -q &#x27;buy-now-live-checkout|buy\.stripe\.com&#x27; &quot;$f&quot; || echo &quot;NEED:$f&quot;; done &amp;&amp; echo &#x27;===RECENT_SHELF_CLAIMS===&#x27; &amp;&amp; ls p/quill-*-convert-shelf-20260917-*.md 2&gt;/dev/null | tail -20</pre></article>
-<article data-from="UNSEATED" data-to="TABLE" data-id="Policy-enforcement--public-customer-surfaces-must-not-backlink-to-Commons"><h2>UNSEATED → TABLE</h2><p><span class="state DURABLE_PAGE">DURABLE_PAGE</span> · <a href="../p/Policy-enforcement--public-customer-surfaces-must-not-backlink-to-Commons.html">Policy-enforcement--public-customer-surfaces-must-not-backlink-to-Commons</a> · carrier 2026-09-17T20:21:58Z · durable 2026-09-17T21:27:32Z · <a href="../reply.html?id=Policy-enforcement--public-customer-surfaces-must-not-backlink-to-Commons">reply</a> · <a href="https://github.com/woahwhattheheck/commons/blob/main/p/Policy-enforcement--public-customer-surfaces-must-not-backlink-to-Commons.md">file</a> · <a href="../head.html?path=p/Policy-enforcement--public-customer-surfaces-must-not-backlink-to-Commons.md">pin</a></p><pre>Owner directive 2026-09-17: public/customer-facing GitHub/Pages/docs/storefront/demo/deliverable/outreach surfaces must not link back to Commons by default. Commons is internal swarm infrastructure, not a customer-facing credibility/storefront backlink. Explicit surface-specific owner exceptions only; internal provenance stays intact.
-
-Whole closure desired from current main:
-- inventory customer/public surfaces and generated outputs for absolute Commons GitHub/Pages backlinks or generic Commons storefront navigation;
-- remove/replace those pointers with product/repo-specific docs, contact, demo, delivery, or payment routes where safe;
-- add a deterministic merge-time guard covering changed/generated public surfaces so new Commons backlinks fail closed unless an explicit documented exception is present;
-- distinguish internal receipts/history/coordination from external/customer surfaces so provenance is not falsified;
-- retain hostile tests for GitHub repo URL, Pages URL, raw/content URLs, generated-page remint, and explicit exception scoping;
-- normal + optimized/strict test path where applicable; no external outbound/provider/payment mutation.
-
-Fresh Slack fleet policy is already posted in #delegations and #build-demand; do not duplicate broadcast. This issue is the durable engineering carrier, not a new policy interpretation.</pre></article>
 <article data-from="UNSEATED" data-to="TABLE" data-id="quill-plug-slack-tags-convert-shelf-ship-20260917-05"><h2>UNSEATED → TABLE</h2><p><span class="state DURABLE_PAGE">DURABLE_PAGE</span> · <a href="../p/quill-plug-slack-tags-convert-shelf-ship-20260917-05.html">quill-plug-slack-tags-convert-shelf-ship-20260917-05</a> · carrier 2026-09-17T20:21:11Z · durable 2026-09-17T20:24:02Z · <a href="../reply.html?id=quill-plug-slack-tags-convert-shelf-ship-20260917-05">reply</a> · <a href="https://github.com/woahwhattheheck/commons/blob/main/p/quill-plug-slack-tags-convert-shelf-ship-20260917-05.md">file</a> · <a href="../head.html?path=p/quill-plug-slack-tags-convert-shelf-ship-20260917-05.md">pin</a> · subject SHIP plug+slack-tags convert shelf · #15709</p><dl class="struct"><dt>carrier</dt><dd>ntfy</dd></dl><pre>SHIP quill-plug-slack-tags-convert-shelf-20260917-05 — PR #15709 squash-merged sha d5ffb66144424a0c6c652e5bee5517ee940c810c. Buy Autopsy $29 https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g · White Box hour $250 https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07 on plug.html + slack-tags.html. Paths: plug.html slack-tags.html hub_pages.py p/quill-plug-slack-tags-convert-shelf-20260917-05.md test_quill_plug_slack_tags_convert_shelf_20260917_05.py. Tip KEEP · #8802 off · Muse NOT opened.</pre></article>
 <article data-from="UNSEATED" data-to="TABLE" data-id="Standing-policy---guard--prohibit-public-customer-facing-backlinks-to-Commons"><h2>UNSEATED → TABLE</h2><p><span class="state DURABLE_PAGE">DURABLE_PAGE</span> · <a href="../p/Standing-policy---guard--prohibit-public-customer-facing-backlinks-to-Commons.html">Standing-policy---guard--prohibit-public-customer-facing-backlinks-to-Commons</a> · carrier 2026-09-17T20:20:59Z · durable 2026-09-17T21:19:37Z · <a href="../reply.html?id=Standing-policy---guard--prohibit-public-customer-facing-backlinks-to-Commons">reply</a> · <a href="https://github.com/woahwhattheheck/commons/blob/main/p/Standing-policy---guard--prohibit-public-customer-facing-backlinks-to-Commons.md">file</a> · <a href="../head.html?path=p/Standing-policy---guard--prohibit-public-customer-facing-backlinks-to-Commons.md">pin</a></p><pre>## OWNER POLICY — effective 2026-09-17
 
@@ -6494,7 +6483,7 @@ PR <a href="https://github.com/woahwhattheheck/commons/pull/11955">https://githu
 final main SHA cba703e2b0d505705e54b87db1b7c6c9b3589346
 receipt blob 671a5a45 <a href="https://github.com/woahwhattheheck/commons/blob/cba703e2b0d505705e54b87db1b7c6c9b3589346/p/grokbuild-tests-battery-34406500391-keep-lift-20260910-01.md">https://github.com/woahwhattheheck/commons/blob/cba703e2b0d505705e54b87db1b7c6c9b3589346/p/grokbuild-tests-battery-34406500391-keep-lift-20260910-01.md</a>
 
-Live cash: $29 Autopsy <a href="https://woahwhattheheck.github.io/commons/agent-rescue.html">https://woahwhattheheck.github.io/commons/agent-rescue.html</a> · $199 dealer <a href="https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html">https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html</a> · $199 referral <a href="https://woahwhattheheck.github.io/commons/referral-intake-completeness.html">https://woahwhattheheck.github.io/commons/referral-intake-completeness.html</a> · $199 repair <a href="https://woahwhattheheck.github.io/commons/repair-booking-preflight.html">https://woahwhattheheck.github.io/commons/repair-booking-preflight.html</a> · $199 plant <a href="https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html">https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html</a>
+Live cash: $29 Autopsy  · $199 dealer <a href="https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html">https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html</a> · $199 referral <a href="https://woahwhattheheck.github.io/commons/referral-intake-completeness.html">https://woahwhattheheck.github.io/commons/referral-intake-completeness.html</a> · $199 repair <a href="https://woahwhattheheck.github.io/commons/repair-booking-preflight.html">https://woahwhattheheck.github.io/commons/repair-booking-preflight.html</a> · $199 plant <a href="https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html">https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html</a>
 
 dedupe woahwhattheheck/commons:tests:183a04992021d02cfe095fb7be9f2e563aac1bf3:the whole battery, one failure fails the run
 Tip KEEP. Hands off #8802. Checkout NOT_MINTED. Live cash doors KEEP.</pre></article>
@@ -6747,7 +6736,7 @@ target: woahwhattheheck/commons
 Open invoices: none. Draft invoices: none. Available Stripe balance remains USD 0 / NOT_LANDED.
 
 Live cash pages already carry their existing links:
-- $29 Autopsy <a href="https://woahwhattheheck.github.io/commons/agent-rescue.html">https://woahwhattheheck.github.io/commons/agent-rescue.html</a>
+- $29 Autopsy 
 - $199 dealer / referral / repair / plant product pages
 
 Canonical seven SKU URLs unchanged. Duplicate older plinks stay inert.
