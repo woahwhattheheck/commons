@@ -1,0 +1,61 @@
+{
+  "contact": {
+    "contact_ref": "synthetic-contact",
+    "org_ref": "synthetic-org",
+    "purpose_ref": "paid-qualification-001",
+    "relationship_evidence_ref": "rel-evidence-001",
+    "relationship_evidence_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+    "relationship_state": "OPEN",
+    "route": "paid@example.com",
+    "route_type": "EMAIL"
+  },
+  "economics": {
+    "amount_minor": 750000,
+    "compensation_basis": "FIXED",
+    "currency": "USD",
+    "quantity_max": 1,
+    "scope_ref": "bounded-scope-001",
+    "workshare_ref": "workshare-001"
+  },
+  "qualifications": [
+    {
+      "disposition": "SATISFIED",
+      "evidence_ref": "evidence-bidder",
+      "evidence_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "gate_id": "bidder-eligibility",
+      "required_for_outreach": true
+    },
+    {
+      "disposition": "SATISFIED",
+      "evidence_ref": "evidence-capacity",
+      "evidence_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "gate_id": "delivery-capacity",
+      "required_for_outreach": true
+    }
+  ],
+  "requesting_seat": "synthetic-seat",
+  "schema": "outreach-qualification-firewall.v1",
+  "session_nonce": "synthetic-session-001",
+  "source_packet": {
+    "deadline_at": "2099-01-01T00:00:00Z",
+    "min_runway_seconds": 86400,
+    "observed_at": "2026-09-17T19:00:00Z",
+    "opportunity_id": "synthetic-opportunity-001",
+    "registration_required": false,
+    "registration_state": "NOT_REQUIRED",
+    "source_generation": "gen-001",
+    "source_uri": "https://example.com/opportunity/001",
+    "submission_route": "https://example.com/submit",
+    "submission_route_type": "PORTAL"
+  },
+  "source_packet_sha256": "0b737c8e88c5f23aabb35acb0c7bb97f4d98a596042bd4227044c5c118200a08",
+  "writer_lease": {
+    "collision_key": "bbff9556e504539837a90df0c57d236c273ce7f6326457e6aaa72458e1ed94c3",
+    "expires_at": "2026-09-17T20:15:00Z",
+    "issued_at": "2026-09-17T19:45:00Z",
+    "lease_id": "lease-synthetic-001",
+    "seat": "synthetic-seat",
+    "session_nonce": "synthetic-session-001",
+    "status": "GO"
+  }
+}
