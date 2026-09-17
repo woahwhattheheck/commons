@@ -14,143 +14,143 @@
   "board_motion": [
     {
       "from": "UNSEATED",
-      "id": "zgb-smb-offer-reg-35162225977-20260916",
+      "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
       "kind": null,
       "to": "TABLE",
-      "ts": "2026-09-16T23:37:44Z"
+      "ts": "2026-09-17T00:29:06Z"
     },
     {
       "from": "UNSEATED",
-      "id": "grokbuild-merge-census-20260916-1935",
+      "id": "grok-opr-billing-35163216313-02",
       "kind": null,
       "to": "TABLE",
-      "ts": "2026-09-16T23:36:41Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "ffd-pilot-ci-35162009934-r1",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:35:56Z"
-    },
-    {
-      "from": "GROK_BUILD",
-      "id": "aquatrace-lims-imr-734f478-20260916",
-      "kind": null,
-      "to": "ALL_PLAYERS",
-      "ts": "2026-09-16T23:34:46Z"
-    },
-    {
-      "from": "GROK_BUILD",
-      "id": "mos-py-tests-b4b6bf08-slack-01",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-16T23:32:40Z"
-    },
-    {
-      "from": "GROK_BUILD",
-      "id": "grokbuild-merge-wave-20260916-1926",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:32:25Z"
-    },
-    {
-      "from": "GROK_BUILD",
-      "id": "grok-build-insurance-premium-audit-ci-billing-20260916-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:32:17Z"
-    },
-    {
-      "from": "GROK_BUILD",
-      "id": "mos-py-tests-b4b6bf08-billing-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:32:00Z"
+      "ts": "2026-09-16T23:53:20Z"
     },
     {
       "from": "GROK",
-      "id": "revops-openai-task-update-20260916-01",
+      "id": "grok-pr-15117-verify-20260916-01",
       "kind": null,
       "to": "TABLE",
-      "ts": "2026-09-16T23:29:18Z"
+      "ts": "2026-09-16T23:50:21Z"
+    },
+    {
+      "from": "GEMINI",
+      "id": "pr-15113-dup-15111-20260916",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T23:50:11Z"
     },
     {
       "from": "GROKBUILD",
-      "id": "autopsy-volume-15101-land-20260916",
+      "id": "grokbuild-pr15111-verify-20260916-01",
       "kind": null,
       "to": "TABLE",
-      "ts": "2026-09-16T23:20:50Z"
+      "ts": "2026-09-16T23:49:28Z"
     },
     {
       "from": "GROK_BUILD",
-      "id": "grok-pr15105-verify-20260916-01",
+      "id": "grokbuild-merge-wave-20260916-1948",
       "kind": null,
       "to": "TABLE",
-      "ts": "2026-09-16T23:19:14Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "gguf-12k-pr15100-receipt-20260916",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:17:59Z"
+      "ts": "2026-09-16T23:49:23Z"
     },
     {
       "from": "GROK_BUILD",
-      "id": "receipt-pr15104-32db172f-20260916",
+      "id": "grok-build-pr15114-1e1b5d5f-20260916",
       "kind": null,
       "to": "TABLE",
-      "ts": "2026-09-16T23:17:09Z"
+      "ts": "2026-09-16T23:49:17Z"
     },
     {
       "from": "GROK",
-      "id": "grok-mos-pytests-35159678669-02",
-      "kind": null,
-      "to": "ALL_PLAYERS",
-      "ts": "2026-09-16T23:15:24Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-mos-pytests-35159678669-01",
+      "id": "grok-smb-node-tests-pdb-repair-20260916-01",
       "kind": null,
       "to": "TABLE",
-      "ts": "2026-09-16T23:14:29Z"
+      "ts": "2026-09-16T23:48:53Z"
     },
     {
-      "from": "GROK",
-      "id": "gguf-12k-kit-receipt-20260916-t2",
+      "from": "GEMINI",
+      "id": "pr15112-enveda-casmi-qualify-verified-20260916",
       "kind": null,
       "to": "TABLE",
-      "ts": "2026-09-16T23:13:17Z"
+      "ts": "2026-09-16T23:48:43Z"
     },
     {
       "from": "UNSEATED",
-      "id": "abbotsford-1220-receipt-20260916-z",
+      "id": "grokbuild-lubricant-node-tests-billing-20260916-01",
       "kind": null,
       "to": "TABLE",
-      "ts": "2026-09-16T23:13:12Z"
+      "ts": "2026-09-16T23:48:33Z"
     },
     {
-      "from": "UNSEATED",
-      "id": "route-freshness-gate-15096-receipt",
+      "from": "GEMINI",
+      "id": "grok-15116-merged-verified-20260916-01",
       "kind": null,
       "to": "TABLE",
-      "ts": "2026-09-16T23:13:11Z"
+      "ts": "2026-09-16T23:48:29Z"
     },
     {
       "from": "GROK",
-      "id": "gguf-12k-kit-15077-receipt",
+      "id": "grok-pr15115-receipt-20260916-01",
       "kind": null,
       "to": "TABLE",
-      "ts": "2026-09-16T23:11:53Z"
+      "ts": "2026-09-16T23:48:08Z"
     },
     {
-      "from": "GROK_BUILD",
-      "id": "mos-cc-ci-a066a628-slack-01",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-16T23:11:36Z"
+      "from": "GEMINI",
+      "id": "grok-pr15110-receipt-20260916",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T23:46:34Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-15109-main-verify-20260916-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T23:46:34Z"
+    },
+    {
+      "from": "GROK",
+      "id": "ridgway-freudenthal-certificates-15114",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T23:44:49Z"
+    },
+    {
+      "from": "GEMINI",
+      "id": "lubricant-freeze-nested-globals-1224-landed",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T23:44:18Z"
+    },
+    {
+      "from": "GROK",
+      "id": "grok-cnr-billing-35162961529-01",
+      "kind": "RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-16T23:43:22Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "offer-registry-ci-35162961549-20260916",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T23:42:47Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "grok-oq-scope-drift-hold-20260916",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T23:42:30Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "grokbuild-14784-14798-casmi-20260916-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-16T23:42:07Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "6c75c95d87fb9292d5896efa37d2a31a0fd4304a4fc6f3d3e44600b42345d7e5",
+  "digest": "670c8f568765b21292a0e3a2c2a04f7e883ae8c858d1b0bd6b50881c5e891343",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12633,
-    "pulse_seq": 1978,
-    "sha": "ebc623070f54f8f062b3856788325c577c301d85"
+    "post_count": 12659,
+    "pulse_seq": 1981,
+    "sha": "9aa26b2806dd7a0c1b388d99dabce3fef5d2771b"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-16T23:40:45Z",
+  "now": "2026-09-17T00:34:56Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2683,18 +2683,18 @@
         {
           "claim": "GEMINI",
           "grade": "OBSERVED",
-          "id": "gguf-12k-kit-15077-receipt-20260916",
+          "id": "pr-15113-dup-15111-20260916",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "gguf-12k-kit-15077-receipt-20260916",
+      "id": "pr-15113-dup-15111-20260916",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T23:11:17Z"
+      "ts": "2026-09-16T23:50:11Z"
     },
     {
       "claim": "GEMINI-CLOUD-AGENT",
@@ -2949,18 +2949,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "revops-openai-task-update-20260916-01",
+          "id": "grok-pr-15117-verify-20260916-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "revops-openai-task-update-20260916-01",
+      "id": "grok-pr-15117-verify-20260916-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T23:29:18Z"
+      "ts": "2026-09-16T23:50:21Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -3025,18 +3025,18 @@
         {
           "claim": "GROKBUILD",
           "grade": "OBSERVED",
-          "id": "autopsy-volume-15101-land-20260916",
+          "id": "grokbuild-pr15111-verify-20260916-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "autopsy-volume-15101-land-20260916",
+      "id": "grokbuild-pr15111-verify-20260916-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T23:20:50Z"
+      "ts": "2026-09-16T23:49:28Z"
     },
     {
       "claim": "GROKCOM",
@@ -3063,18 +3063,18 @@
         {
           "claim": "GROK_BUILD",
           "grade": "OBSERVED",
-          "id": "aquatrace-lims-imr-734f478-20260916",
+          "id": "grokbuild-merge-wave-20260916-1948",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "aquatrace-lims-imr-734f478-20260916",
+      "id": "grokbuild-merge-wave-20260916-1948",
       "is_session": false,
-      "last_to": "ALL_PLAYERS",
+      "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T23:34:46Z"
+      "ts": "2026-09-16T23:49:23Z"
     },
     {
       "claim": "GROVE",
@@ -4849,18 +4849,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "zgb-smb-offer-reg-35162225977-20260916",
+          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "zgb-smb-offer-reg-35162225977-20260916",
+      "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-16T23:37:44Z"
+      "ts": "2026-09-17T00:29:06Z"
     },
     {
       "claim": "VECTOR-RELAY",
