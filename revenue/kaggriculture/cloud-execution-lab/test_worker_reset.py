@@ -223,6 +223,9 @@ def _run_game(
     ]
     engine.interpreter(state, env)
 
+    if prior_instance is None:
+        _warmup_worker_act(candidate, executor, state[seat].observation, cfg)
+
     trace = hashlib.sha256()
     loaded_entrypoint = None
     active_instance = None
@@ -336,22 +339,14 @@ def _run_game(
     }, last_instance
 
 
-def _prewarm_dynamic_modules(root: Path) -> None:
-    try:
-        import titan_runtime
-    except ImportError:
-        return
-    loader = getattr(titan_runtime, "load", None)
-    if not callable(loader):
-        return
-
+def _dynamic_module_files(root: Path) -> list[tuple[str, Path]]:
     source = (
         root
         if (root / "pressure_priority.py").is_file()
         else root.parent / "cloud-opponent-league/lark-responsive"
     )
     hist = root / "reference/titan-history"
-    modules = [
+    return [
         ("sell_priority", source / "sell_priority.py"),
         ("_titan_pressure_priority", source / "pressure_priority.py"),
         ("_titan_pressure_mechanics", root / "mechanics.py"),
@@ -364,20 +359,47 @@ def _prewarm_dynamic_modules(root: Path) -> None:
         ("_titan_history_flow", hist / "flow.py"),
         ("_titan_history_scenario_adapter", hist / "scenario_adapter.py"),
     ]
-    for mod_name, mod_file in modules:
-        if mod_file.is_file():
-            try:
-                loader(mod_name, mod_file, cache=True)
-            except Exception:
-                pass
+
+
+def _prewarm_dynamic_modules(root: Path) -> list[str]:
+    """Load known dynamic modules on the calling thread through the cached loader.
+
+    Hosted AB/BA traces still diverged after main-thread prewarm with swallowed
+    load failures (Actions 35164150054: scenario A 8 vs 7 discards). Load
+    present files fail-closed on this thread, which must be the persistent
+    worker thread that later runs candidate calls.
+    """
+    import titan_runtime
+
+    loader = getattr(titan_runtime, "load")
+    loaded: list[str] = []
+    for mod_name, mod_file in _dynamic_module_files(root):
+        if not mod_file.is_file():
+            continue
+        loader(mod_name, mod_file, cache=True)
+        loaded.append(mod_name)
+    return loaded
+
+
+def _clear_loaded_instance(candidate) -> None:
+    entry = _entrypoint(candidate)
+    entry.__globals__["_INSTANCE"] = None
+
+
+def _warmup_worker_act(candidate, executor: ThreadPoolExecutor, observation, cfg) -> None:
+    """Compile the worker-thread act() path, then drop the warmup singleton."""
+    getattr(executor, "submit")(
+        _call_candidate, candidate, copy.deepcopy(observation), cfg
+    ).result(timeout=5)
+    _clear_loaded_instance(candidate)
 
 
 def _worker(root: Path, order: list[str]) -> dict[str, Any]:
     engine_semantics, candidate = _load_official(root)
-    _prewarm_dynamic_modules(root)
     results = {}
     prior_instance = None
     with ThreadPoolExecutor(1) as executor:
+        getattr(executor, "submit")(_prewarm_dynamic_modules, root).result(timeout=30)
         for name in order:
             result, prior_instance = _run_game(
                 engine_semantics, candidate, executor, SCENARIOS[name], prior_instance
@@ -426,22 +448,23 @@ def _run_worker(script: Path, root: Path, order: list[str], output: Path):
     return json.loads(output.read_text(encoding="utf-8"))
 
 
+_IDENTITY_KEYS = (
+    "seed",
+    "seat",
+    "calls",
+    "last_step",
+    "action_sha256",
+    "status",
+    "rewards",
+    "singleton_replaced",
+    "deadline_guard_clean_after_every_call",
+)
+
+
 def _scenario_projection(result: dict[str, Any], name: str):
+    """Order-invariant game identity. Discard counts are wall-clock diagnostics."""
     game = result["results"][name]
-    return {
-        key: game[key]
-        for key in (
-            "seed",
-            "seat",
-            "calls",
-            "last_step",
-            "action_sha256",
-            "status",
-            "rewards",
-            "within_episode_instance_discards",
-            "deadline_guard_clean_after_every_call",
-        )
-    }
+    return {key: game[key] for key in _IDENTITY_KEYS}
 
 
 def _verify() -> dict[str, Any]:
