@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: Apache-2.0
 from __future__ import annotations
 
+import subprocess
 import sys
 import unittest
 from pathlib import Path
@@ -34,6 +35,22 @@ class DeterministicResetOracleContracts(unittest.TestCase):
         finally:
             deadline._DeadlineTimer = original
 
+    def test_isolated_launcher_can_import_retained_sibling_harness(self):
+        completed = subprocess.run(
+            [sys.executable, "-I", str(deterministic.HERE), "--help"],
+            cwd=LAB.parent,
+            capture_output=True,
+            text=True,
+            timeout=20,
+            check=False,
+        )
+        self.assertEqual(
+            completed.returncode,
+            0,
+            msg=f"stdout={completed.stdout}\nstderr={completed.stderr}",
+        )
+        self.assertIn("--worker", completed.stdout)
+
     def test_production_source_is_not_rewritten_by_oracle(self):
         source = (LAB / "main.py").read_text(encoding="utf-8")
         self.assertIn("timer = deadline._DeadlineTimer(remaining)", source)
@@ -51,7 +68,7 @@ class DeterministicResetOracleContracts(unittest.TestCase):
             source,
         )
         self.assertIn(
-            "cloud-execution-lab/test_worker_reset_deterministic.py \\",
+            "python3 -B revenue/kaggriculture/cloud-execution-lab/test_worker_reset_deterministic.py",
             source,
         )
         self.assertIn("test_reset_invariance_deterministic_oracle.py", source)
