@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 108,
-    "open_pull_requests": 19,
+    "open_issues": 109,
+    "open_pull_requests": 22,
     "runs_in_progress": 19,
-    "runs_queued": 985
+    "runs_queued": 996
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -66,6 +66,39 @@
     }
   ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol/outbound-collision-replay-guard-20260916",
+      "created_at": "2026-09-17T03:22:41Z",
+      "draft": false,
+      "head_sha": "5ba6e2db903e44c0e27d6cd2b90f95334d02b1d4",
+      "number": 15219,
+      "title": "Outbound collision/replay guard for single-writer revenue contact",
+      "updated_at": "2026-09-17T03:22:41Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zeta-forge/hale-creek-khemia-teaming-20260916",
+      "created_at": "2026-09-17T03:22:10Z",
+      "draft": false,
+      "head_sha": "9abfaa679342b32bee7f6fb83ba59157daef5d87",
+      "number": 15218,
+      "title": "Revenue: recover Hale Creek Khemia LIMS teaming lane",
+      "updated_at": "2026-09-17T03:22:10Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "astra-z/outbound-collision-replay-guard-20260916",
+      "created_at": "2026-09-17T03:21:05Z",
+      "draft": false,
+      "head_sha": "a27621c3f360cb0df7ea9a9b21275cc10e500dbc",
+      "number": 15216,
+      "title": "Revenue: add outbound collision replay guard",
+      "updated_at": "2026-09-17T03:21:05Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -142,39 +175,6 @@
       "number": 14873,
       "title": "Disposable helper: retain USAC IT-26-139 buyer bytes",
       "updated_at": "2026-09-16T17:08:51Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zswf-q7r4/nysdec-hale-creek-lims-rfi-14864",
-      "branch": "sol-z/nysdec-workflow-budget-14867-20260916",
-      "created_at": "2026-09-16T14:07:13Z",
-      "draft": false,
-      "head_sha": "4b938fd21134e1600659fa7c33eff5fc873f7579",
-      "number": 14871,
-      "title": "Donor: keep NYS DEC carrier inside workflow budget",
-      "updated_at": "2026-09-16T16:41:02Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zplh-x4q7/reply-event-finalization-20260915",
-      "created_at": "2026-09-16T02:02:40Z",
-      "draft": false,
-      "head_sha": "ffaff5aa571aaccedd41f82c0eba85b09586f230",
-      "number": 14788,
-      "title": "Finalize reply-event identity authority and canonical funnel",
-      "updated_at": "2026-09-17T02:27:42Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zlh-p6r8/uark-current-authority-recovery-20260915",
-      "created_at": "2026-09-16T00:27:58Z",
-      "draft": false,
-      "head_sha": "68049d74646c9a09b4e3d3275f2f6aea3bd5bdba",
-      "number": 14770,
-      "title": "UArk: freeze direct CLI authority and truth labels",
-      "updated_at": "2026-09-16T01:17:52Z"
     }
   ],
   "open_heads": {
@@ -196,12 +196,26 @@
     "15137": "9bd368e81ae1849840e2b575178fa391fdc34730",
     "15157": "70715a0b2e6368c38ec17c5f237431f3a6b57854",
     "15159": "92fe5e9750888e2cc6ceba6e914e9e3aa988eec6",
-    "15186": "45f831da0dff563c96c455709bfd03260d82b829"
+    "15186": "45f831da0dff563c96c455709bfd03260d82b829",
+    "15216": "a27621c3f360cb0df7ea9a9b21275cc10e500dbc",
+    "15218": "9abfaa679342b32bee7f6fb83ba59157daef5d87",
+    "15219": "5ba6e2db903e44c0e27d6cd2b90f95334d02b1d4"
   },
-  "pulls_listed": 19,
+  "pulls_listed": 22,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 51.8,
+  "queue_depth_per_runner": 52.4,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/goat-tjlabs-topics-keep-larger-11be",
+      "closed_at": "2026-09-17T03:20:26Z",
+      "head_sha": "686a2183fa075ec9047c9cace956bc86767046a2",
+      "merged_at": "2026-09-17T03:20:26Z",
+      "number": 15215,
+      "state": "MERGED",
+      "title": "GOAT: KEEP Larger fixed on leftover tjlabs/topics/two-paths ground MD"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -326,13 +340,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "quill/sitting-remint-md-keep-larger-fixed-20260916-09",
-      "closed_at": "2026-09-17T02:32:12Z",
-      "head_sha": "a93c7d2e39a9e393aa18a9a1ae134bf032a3522e",
-      "merged_at": "2026-09-17T02:32:12Z",
-      "number": 15199,
+      "branch": "grok-build/mos-cc-ci-a066a628-billing-01",
+      "closed_at": "2026-09-16T23:12:45Z",
+      "head_sha": "8764b6368372360ed0a68a44839febb9d9a30187",
+      "merged_at": "2026-09-16T23:12:45Z",
+      "number": 15105,
       "state": "MERGED",
-      "title": "QUILL: sitting-remint MD KEEP Larger-fixed (20260916-09)"
+      "title": "post: CompControl CI report for motel-ops-suite pull request 247"
     },
     {
       "author": "woahwhattheheck",
@@ -355,21 +369,10 @@
       "number": 15104,
       "state": "MERGED",
       "title": "Abbotsford RFP 1220-2026-4235 digital waste calendar carrier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "sol-z/gguf-12k-close-kit-redfix-20260916",
-      "closed_at": "2026-09-16T23:06:41Z",
-      "head_sha": "582bb140295002eb919ba8f10d2bfbc2c2615974",
-      "merged_at": "2026-09-16T23:06:40Z",
-      "number": 15100,
-      "state": "MERGED",
-      "title": "Revenue: harden $12k GGUF close kit exact-byte replay + AT4/AT6"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T03:17:28Z",
+  "unchanged_since": "2026-09-17T03:23:22Z",
   "undatable_pulls": []
 }
