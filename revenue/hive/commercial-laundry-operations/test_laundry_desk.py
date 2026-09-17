@@ -193,6 +193,52 @@ class DeskCase(unittest.TestCase):
         with self.assertRaises(StateConflict):
             self.desk.draft_invoice("i.invoice.2", stop)
 
+    def test_max_bound_identifiers_survive_full_lifecycle(self):
+        customer_id = "c" * 255
+        site_id = "s" * 255
+        route_code = "r" * 255
+        item_code = "i" * 255
+        self.desk.add_customer("max.customer", customer_id, "Max Customer")
+        self.desk.add_site("max.site", site_id, customer_id, "Max Site")
+        self.desk.add_agreement("max.agreement", "g" * 255, site_id, item_code, 321, "2026-01-01")
+        self.desk.add_service_plan("max.plan", "p" * 255, site_id, route_code, 0, 30, "2026-01-01")
+        route = self.desk.create_daily_route("max.route", "2026-09-21", route_code).value
+        stop_id = route["stops"][0]["stop_id"]
+        self.assertLessEqual(len(route["route_id"]), 255)
+        self.assertLessEqual(len(stop_id), 255)
+        self.assertEqual(self.desk.route_snapshot(route["route_id"])["stops"][0]["stop_id"], stop_id)
+        self.desk.pickup("max.pickup", stop_id, {item_code: 3}, ["max-bin-in"])
+        processed = self.desk.process("max.process", stop_id, {item_code: 2}, {item_code: 1}).value
+        self.assertEqual(len(processed["open_exception_ids"]), 1)
+        exception_id = processed["open_exception_ids"][0]
+        self.assertLessEqual(len(exception_id), 255)
+        self.desk.resolve_exception("max.resolve", exception_id, "DAMAGE_ACCEPTED", "Owner accepted recorded damage")
+        self.desk.deliver("max.deliver", stop_id, {item_code: 2}, ["max-bin-out"])
+        invoice = self.desk.draft_invoice("max.invoice", stop_id).value
+        self.assertLessEqual(len(invoice["invoice_id"]), 255)
+        self.assertEqual(invoice["total_cents"], 642)
+
+    def test_near_limit_stop_exception_id_remains_resolvable(self):
+        route_code = "r" * 110
+        site_id = "s" * 118
+        item_code = "linen"
+        self.desk.add_customer("near.customer", "near-customer", "Near Bound Customer")
+        self.desk.add_site("near.site", site_id, "near-customer", "Near Bound Site")
+        self.desk.add_agreement("near.agreement", "near-agreement", site_id, item_code, 200, "2026-01-01")
+        self.desk.add_service_plan("near.plan", "near-plan", site_id, route_code, 0, 40, "2026-01-01")
+        route = self.desk.create_daily_route("near.route", "2026-09-21", route_code).value
+        stop_id = route["stops"][0]["stop_id"]
+        self.assertGreater(len(stop_id), 240)
+        self.assertLessEqual(len(stop_id), 255)
+        self.desk.pickup("near.pickup", stop_id, {item_code: 5}, ["near-in"])
+        processed = self.desk.process("near.process", stop_id, {item_code: 4}, {item_code: 1}).value
+        exception_id = processed["open_exception_ids"][0]
+        self.assertLessEqual(len(exception_id), 255)
+        self.desk.resolve_exception("near.resolve", exception_id, "DAMAGE_ACCEPTED", "Near-bound exception resolved")
+        self.desk.deliver("near.deliver", stop_id, {item_code: 4}, ["near-out"])
+        invoice = self.desk.draft_invoice("near.invoice", stop_id).value
+        self.assertEqual(invoice["total_cents"], 800)
+
     def test_cli_export_is_create_exclusive(self):
         stop = self._route()["stops"][0]["stop_id"]
         self._good_stop(stop, "x")
