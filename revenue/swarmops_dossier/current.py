@@ -95,7 +95,7 @@ def _current_semantics(
 
 def _freeze_plain_json(
     value: Any,
-    path: str = "candidate",
+    path: str = "value",
     _error: type[Exception] = DossierError,
     _finite: Callable[[float], bool] = math.isfinite,
 ) -> Any:
@@ -143,7 +143,7 @@ def _build_current_api(
     _canonical: Callable[[Any], bytes] = canonical_bytes,
     _parse: Callable[[Any, str], datetime] = _parse_utc,
     _semantics: Callable[[dict[str, Any]], bytes] = _current_semantics,
-    _freeze: Callable[[Any], Any] = _freeze_plain_json,
+    _freeze: Callable[..., Any] = _freeze_plain_json,
     _schema: str = OUTPUT_SCHEMA,
     _mode: str = CURRENT_MODE,
     _error: type[Exception] = DossierError,
@@ -161,13 +161,27 @@ def _build_current_api(
     """
     verification_errors = (_error, TypeError, ValueError, OverflowError)
 
+    def _frozen_inputs(
+        packet: Any,
+        policy: Any,
+        trusted_commercial_receipts: Any,
+    ) -> tuple[Any, Any, Any]:
+        return (
+            _freeze(packet, "packet"),
+            _freeze(policy, "policy"),
+            _freeze(trusted_commercial_receipts, "trusted_commercial_receipts"),
+        )
+
     def compile_current_dossier(
         packet: Any,
         policy: Any,
         trusted_commercial_receipts: Any = None,
     ) -> dict[str, Any]:
+        frozen_packet, frozen_policy, frozen_trusted = _frozen_inputs(
+            packet, policy, trusted_commercial_receipts
+        )
         now = clock()
-        core = _compile(packet, policy, now, trusted_commercial_receipts)
+        core = _compile(frozen_packet, frozen_policy, now, frozen_trusted)
         return _wrap(core, _mode)
 
     def verify_current_dossier(
@@ -179,13 +193,16 @@ def _build_current_api(
         if type(candidate) is not dict:
             return False
         try:
-            frozen = _freeze(candidate)
-            if frozen.get("schema") != _schema:
+            frozen_packet, frozen_policy, frozen_trusted = _frozen_inputs(
+                packet, policy, trusted_commercial_receipts
+            )
+            frozen_candidate = _freeze(candidate, "candidate")
+            if frozen_candidate.get("schema") != _schema:
                 return False
-            if frozen.get("evaluation_mode") != _mode:
+            if frozen_candidate.get("evaluation_mode") != _mode:
                 return False
 
-            candidate_as_of = frozen.get("as_of")
+            candidate_as_of = frozen_candidate.get("as_of")
             candidate_time = _parse(candidate_as_of, "candidate.as_of")
 
             # Authenticate the exact candidate first. Current time is sampled
@@ -193,10 +210,13 @@ def _build_current_api(
             # freshness boundary crossed during authentication cannot reuse an
             # earlier clock sample.
             original_core = _compile(
-                packet, policy, candidate_as_of, trusted_commercial_receipts
+                frozen_packet,
+                frozen_policy,
+                candidate_as_of,
+                frozen_trusted,
             )
             expected_candidate = _wrap(original_core, _mode)
-            if _canonical(expected_candidate) != _canonical(frozen):
+            if _canonical(expected_candidate) != _canonical(frozen_candidate):
                 return False
 
             now_text = clock()
@@ -205,7 +225,10 @@ def _build_current_api(
                 return False
 
             fresh_core = _compile(
-                packet, policy, now_text, trusted_commercial_receipts
+                frozen_packet,
+                frozen_policy,
+                now_text,
+                frozen_trusted,
             )
             fresh = _wrap(fresh_core, _mode)
             return _semantics(expected_candidate) == _semantics(fresh)
