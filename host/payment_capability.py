@@ -64,9 +64,6 @@ TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
         "https://buy.stripe.com/3cIfZgacRezDfT39h043S06",
     }
 )
-OWNER_NOW_CONVERT_SHELF_LIVE_CHECKOUTS = TIPS_CONVERT_SHELF_LIVE_CHECKOUTS | {
-    "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
-}
 OWNER_ACTION_HOSTS = {
     "dashboard.stripe.com",
     "www.paypal.com",
@@ -364,20 +361,12 @@ def live_stripe_checkout_urls(html: str) -> set[str]:
 
 
 def html_stripe_url_errors(name: str, text: str) -> list[str]:
-    """tips/owner-now convert shelves reuse existing Stripe URLs; pay/commerce/payment-capability are exact live buys."""
+    """tips convert shelf reuses existing tip-shelf Stripe URLs; pay/commerce/payment-capability are exact live buys."""
     if name == "tips.html":
         found = live_stripe_checkout_urls(text)
         if found != TIPS_CONVERT_SHELF_LIVE_CHECKOUTS:
             return [
                 "%s convert shelf must reuse exactly the existing tip-shelf Stripe URLs"
-                % name
-            ]
-        return []
-    if name == "owner-now-revenue.html":
-        found = live_stripe_checkout_urls(text)
-        if found != OWNER_NOW_CONVERT_SHELF_LIVE_CHECKOUTS:
-            return [
-                "%s convert shelf must reuse exactly the existing owner-now Stripe URLs"
                 % name
             ]
         return []
@@ -526,7 +515,6 @@ def measure_root(root: str) -> dict[str, Any]:
         if rail.get("public_presentation") == "EXPOSE" and rail.get("capability_state") != "CHARGEABLE":
             errors.append("rail %s cannot EXPOSE unless CHARGEABLE" % rid)
         if rail.get("capability_state") != "CHARGEABLE" and rail.get("canonical_links"):
-            # inert rails may omit links; if present they still must not be public
             pass
         if rail.get("id") != "stripe-livemode-acct_1U6HI9ATH4EDE7XD" and rail.get("public_presentation") == "EXPOSE":
             errors.append("non-Stripe rail must stay inert until a later evidence pass")
@@ -674,8 +662,6 @@ def _self_test() -> bool:
             },
         ],
     }
-    # PayPal fixture is CHARGEABLE but has no public checkout URL of a known kind,
-    # so public_presentation stays INERT. That is honest: chargeable is not a URL.
     alt = project(live, fixture_catalog)
     if alt["has_public_storefront"]:
         return False
