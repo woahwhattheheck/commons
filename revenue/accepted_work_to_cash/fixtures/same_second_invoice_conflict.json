@@ -1,0 +1,21 @@
+{
+  "schema": "TJL_ACCEPTED_WORK_TO_CASH_V1",
+  "evaluation_at": "2026-09-17T07:30:00Z",
+  "freshness_seconds": 86400,
+  "items": [
+    {
+      "id": "conflict",
+      "title": "Same-second conflicting invoices",
+      "payer": "Synthetic payer",
+      "program": "Adversarial fixture",
+      "lane": "OTHER",
+      "currency": "USD",
+      "advertised_amount_cents": 10000,
+      "events": [
+        {"id": "accepted", "kind": "ACCEPTED", "observed_at": "2026-09-16T10:00:00Z", "source_class": "BUYER_MESSAGE", "ref": "buyer:synthetic/conflict/accept", "sha256": "8888888888888888888888888888888888888888888888888888888888888888", "amount_cents": 10000, "route": null, "purpose": null},
+        {"id": "invoice-a", "kind": "INVOICE_ISSUED", "observed_at": "2026-09-16T11:00:00Z", "source_class": "PROVIDER_RECEIPT", "ref": "invoice:synthetic/conflict/a", "sha256": "9999999999999999999999999999999999999999999999999999999999999999", "amount_cents": 9000, "route": null, "purpose": null},
+        {"id": "invoice-z", "kind": "INVOICE_ISSUED", "observed_at": "2026-09-16T11:00:00Z", "source_class": "PROVIDER_RECEIPT", "ref": "invoice:synthetic/conflict/z", "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "amount_cents": 11000, "route": null, "purpose": null}
+      ]
+    }
+  ]
+}
