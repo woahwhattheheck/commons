@@ -167,6 +167,16 @@ class QualificationTests(unittest.TestCase):
         with self.assertRaises(q.ContractError):
             q.compile_current(b(c))
 
+    def test_invalid_owner_claim_state_is_rejected_by_requirement_name(self):
+        c = candidate()
+        first = q.OWNER_GATES[0]
+        c["owner_claims"][first] = "YES"
+        with self.assertRaises(q.ContractError) as ctx:
+            q.compile_current(b(c))
+        message = str(ctx.exception)
+        self.assertIn("invalid owner claim state", message)
+        self.assertIn(first, message)
+
 
     def test_unverified_discovery_deadline_never_closes_current_carrier(self):
         report = q._compile_at(

@@ -132,9 +132,9 @@ def _validate_candidate(candidate: Any) -> dict[str, Any]:
         raise ContractError("invalid requested_posture")
 
     owner = _must_exact_keys(c["owner_claims"], set(OWNER_GATES), "owner_claims")
-    for gate in OWNER_GATES:
-        if owner[gate] not in {"UNKNOWN", "CLAIMED_SUPPORTED", "CLAIMED_GAP"}:
-            raise ContractError(f"invalid owner claim state for {gate}")
+    for requirement in OWNER_GATES:
+        if owner[requirement] not in {"UNKNOWN", "CLAIMED_SUPPORTED", "CLAIMED_GAP"}:
+            raise ContractError(f"invalid owner claim state for {requirement}")
 
     partner = _must_exact_keys(c["partner_claims"], {"status", "cures"}, "partner_claims")
     if partner["status"] not in {"NONE", "CANDIDATE_IDENTIFIED", "CLAIMED_COMMITTED"}:

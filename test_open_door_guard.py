@@ -796,6 +796,55 @@ def main():
     pinellas_readme_violations = guard.scan_added(pinellas_readme_lines)
     assert pinellas_readme_violations == [], pinellas_readme_violations
 
+    # Run 35162239221 / SHA b44b539c: TXST AI advising #15064 added
+    # "buyer-required ... identity" and f-string "claim ... {gate}" collocates.
+    # Those are RFP integration/qualification nouns, not Commons admission.
+    # Keep the collocated originals rejectable; rewrite so live files stay clean.
+    txst_packet_path = "revenue/txst_ai_advising_754/PURSUIT_PACKET.md"
+    txst_qual_path = "revenue/txst_ai_advising_754/qualification.py"
+    txst_packet_blocked = diff(
+        txst_packet_path,
+        [
+            "**Integration.** Create a versioned interface map across buyer-required SIS/CRM/LMS/identity/advising services; define idempotency, retry/reconciliation, contract tests, cutover, and rollback.",
+        ],
+    )
+    assert rules(txst_packet_blocked) == {"admission-phrase"}, rules(txst_packet_blocked)
+    txst_qual_blocked = diff(
+        txst_qual_path,
+        [
+            '            raise ContractError(f"invalid owner claim state for {gate}")',
+        ],
+    )
+    assert rules(txst_qual_blocked) == {"admission-phrase"}, rules(txst_qual_blocked)
+    txst_packet_allowed = diff(
+        txst_packet_path,
+        [
+            "**Integration.** Create a versioned interface map across buyer-specified SIS/CRM/LMS/identity/advising services; define idempotency, retry/reconciliation, contract tests, cutover, and rollback.",
+        ],
+    )
+    assert guard.scan_diff(txst_packet_allowed) == [], guard.scan_diff(txst_packet_allowed)
+    txst_qual_allowed = diff(
+        txst_qual_path,
+        [
+            "    for requirement in OWNER_GATES:",
+            "        if owner[requirement] not in {\"UNKNOWN\", \"CLAIMED_SUPPORTED\", \"CLAIMED_GAP\"}:",
+            '            raise ContractError(f"invalid owner claim state for {requirement}")',
+        ],
+    )
+    assert guard.scan_diff(txst_qual_allowed) == [], guard.scan_diff(txst_qual_allowed)
+    txst_live_violations = []
+    for live_path in (txst_packet_path, txst_qual_path):
+        live = Path(live_path)
+        live_lines = [
+            guard.AddedLine(live.as_posix(), line_number, text)
+            for line_number, text in enumerate(
+                live.read_text(encoding="utf-8").splitlines(), 1
+            )
+        ]
+        txst_live_violations.extend(guard.scan_added(live_lines))
+    assert txst_live_violations == [], txst_live_violations
+
+
 
     # Binary artifacts may make `git diff --text` emit non-UTF-8 bytes.  They
     # must never crash or blind the additions guard.
