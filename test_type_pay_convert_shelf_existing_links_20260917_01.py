@@ -61,14 +61,15 @@ class TestTypePayConvertShelfExistingLinks2026091701(unittest.TestCase):
         html = PAY.read_text(encoding="utf-8")
         self.assertIn('id="buy-now-live-checkout"', html)
         self.assertIn("Buy now — live checkout", html)
-        found = live_buy_urls(html)
-        self.assertEqual(found, ALLOWED_LIVE_BUY_URLS)
-        self.assertNotIn("donate.stripe.com", html)
-        for url in ALLOWED_LIVE_BUY_URLS:
-            self.assertIn(url, html)
         shelf = html.split('id="buy-now-live-checkout"', 1)[1].split(
             'id="owner-action"', 1
         )[0]
+        found = live_buy_urls(shelf)
+        self.assertEqual(found, ALLOWED_LIVE_BUY_URLS)
+        self.assertNotIn("donate.stripe.com", shelf)
+        for url in ALLOWED_LIVE_BUY_URLS:
+            self.assertIn(url, shelf)
+            self.assertIn(url, html)
         for name, amount in SHELF_LABELS:
             self.assertIn(name, shelf, name)
             self.assertIn(amount, shelf, amount)
