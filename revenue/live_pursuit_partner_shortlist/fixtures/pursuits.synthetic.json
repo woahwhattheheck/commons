@@ -1,0 +1,65 @@
+{
+  "schema_version": "live-pursuit-partner-shortlist/v1",
+  "as_of": "2026-09-17T15:30:00-04:00",
+  "materialization_mode": "SYNTHETIC",
+  "verified_carrier_set": [],
+  "pursuits": [
+    {
+      "pursuit_id": "SYN-001",
+      "source_uri": "fixtures/source-a.json",
+      "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "source_observed_at": "2026-09-17T12:00:00-04:00",
+      "source_valid_until": "2026-09-30T23:59:00-04:00",
+      "requirements": [
+        {
+          "requirement_id": "R1",
+          "text": "Current TJLabs API integration evidence",
+          "mandatory": true,
+          "partner_eligible": true,
+          "category": "CAPABILITY",
+          "capability_key": "api-integration"
+        },
+        {
+          "requirement_id": "R2",
+          "text": "Named comparable public-sector reference",
+          "mandatory": true,
+          "partner_eligible": true,
+          "category": "REFERENCE",
+          "capability_key": "public-sector-reference"
+        },
+        {
+          "requirement_id": "R3",
+          "text": "Security assurance evidence",
+          "mandatory": true,
+          "partner_eligible": true,
+          "category": "SECURITY",
+          "capability_key": "security-assurance"
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "owner": "TJLABS",
+          "category": "CAPABILITY",
+          "status": "VERIFIED",
+          "source_uri": "fixtures/e1.json",
+          "source_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "observed_at": "2026-09-17T12:10:00-04:00",
+          "valid_until": "2026-09-30T23:59:00-04:00",
+          "covers_requirement_ids": ["R1"]
+        },
+        {
+          "evidence_id": "E2",
+          "owner": "PRIME",
+          "category": "SECURITY",
+          "status": "VERIFIED",
+          "source_uri": "fixtures/e2.json",
+          "source_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "observed_at": "2026-09-17T12:10:00-04:00",
+          "valid_until": "2026-09-30T23:59:00-04:00",
+          "covers_requirement_ids": ["R3"]
+        }
+      ]
+    }
+  ]
+}
