@@ -30,12 +30,15 @@ DISCOVER = [
 TEST_COUNT = re.compile(r"\bRan\s+(\d+)\s+tests?\s+in\b")
 
 
-def reported_test_count(output: str) -> int:
-    """Return unittest's terminal executed-test count, rejecting missing summaries."""
-    matches = TEST_COUNT.findall(output)
-    if not matches:
-        raise ValueError(f"unittest output has no executed-test summary:\n{output}")
-    return int(matches[-1])
+def reported_test_count(summary_stream: str) -> int:
+    """Return the one unittest-runner count from its stderr summary stream."""
+    matches = TEST_COUNT.findall(summary_stream)
+    if len(matches) != 1:
+        raise ValueError(
+            "unittest summary stream must contain exactly one executed-test summary; "
+            f"found {len(matches)}:\n{summary_stream}"
+        )
+    return int(matches[0])
 
 
 class RuntimeProvenanceRetainedTests(unittest.TestCase):
@@ -62,9 +65,15 @@ class RuntimeProvenanceRetainedTests(unittest.TestCase):
 
     def assert_child_nonvacuous(self, proc: subprocess.CompletedProcess[str]) -> int:
         self.assert_child_ok(proc)
-        output = self.child_output(proc)
-        count = reported_test_count(output)
-        self.assertGreater(count, 0, f"focused discovery executed zero tests:\n{output}")
+        # unittest's TextTestRunner writes its authoritative summary to stderr.
+        # Do not parse combined output: discovered modules control stdout and could
+        # otherwise print a forged trailing "Ran N tests" line after a real zero.
+        count = reported_test_count(proc.stderr)
+        self.assertGreater(
+            count,
+            0,
+            f"focused discovery executed zero tests:\n{self.child_output(proc)}",
+        )
         return count
 
     def test_focused_suite_normal_and_optimized_is_nonvacuous(self) -> None:
@@ -91,13 +100,26 @@ class RuntimeProvenanceRetainedTests(unittest.TestCase):
                 with self.subTest(optimized=optimized):
                     proc = self.run_child(*empty_discover, optimized=optimized)
                     self.assertEqual(proc.returncode, 0, self.child_output(proc))
-                    self.assertEqual(reported_test_count(self.child_output(proc)), 0)
+                    self.assertEqual(reported_test_count(proc.stderr), 0)
                     with self.assertRaisesRegex(AssertionError, "executed zero tests"):
                         self.assert_child_nonvacuous(proc)
 
-    def test_missing_unittest_summary_is_rejected(self) -> None:
-        with self.assertRaisesRegex(ValueError, "no executed-test summary"):
+    def test_stdout_cannot_spoof_the_unittest_summary(self) -> None:
+        forged = subprocess.CompletedProcess(
+            args=[sys.executable],
+            returncode=0,
+            stdout="Ran 99 tests in 0.001s\n\nOK\n",
+            stderr="----------------------------------------------------------------------\nRan 0 tests in 0.000s\n\nOK\n",
+        )
+        self.assertEqual(reported_test_count(forged.stderr), 0)
+        with self.assertRaisesRegex(AssertionError, "executed zero tests"):
+            self.assert_child_nonvacuous(forged)
+
+    def test_missing_or_ambiguous_unittest_summary_is_rejected(self) -> None:
+        with self.assertRaisesRegex(ValueError, "exactly one executed-test summary"):
             reported_test_count("OK")
+        with self.assertRaisesRegex(ValueError, "exactly one executed-test summary"):
+            reported_test_count("Ran 0 tests in 0.000s\nRan 99 tests in 0.001s\nOK")
 
     def test_canonical_registry_verify_is_descriptive_only(self) -> None:
         proc = self.run_child(
