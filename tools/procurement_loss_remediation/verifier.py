@@ -26,6 +26,7 @@ def verify_plan(raw_input: Any, raw_receipt: Any) -> dict[str, Any]:
         "source_receipt_sha256",
         "source_outcome",
         "source_hold_reasons",
+        "source_evidence",
         "status",
         "buyer_reasons",
         "internal_hypotheses",
@@ -52,8 +53,9 @@ def verify_plan(raw_input: Any, raw_receipt: Any) -> dict[str, Any]:
         raise RemediationVerificationError("receipt_sha256 mismatch")
 
     # Recompile from the independently revalidated source packet and require
-    # exact semantic equality.  This catches status, attribution, basis,
-    # authority, source-receipt and ordering tampering, not merely hash edits.
+    # exact semantic equality. This catches source-evidence projections,
+    # status, attribution, basis, authority, source-receipt and ordering
+    # tampering, not merely hash edits.
     expected = compile_plan(normalized)
     if raw_receipt != expected:
         raise RemediationVerificationError("semantic remediation receipt mismatch")
