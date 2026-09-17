@@ -16,9 +16,9 @@ The compiler detects, among other cases:
 - a route with a retained hard-bounce (`HOLD_DEAD_ROUTE`) without converting that transport failure into organization rejection;
 - explicit human negative/opt-out at route-purpose or whole-counterparty scope;
 - a genuine retained human reply, which converts the lane to inbound review rather than fresh outbound;
-- future-dated, reordered, duplicate, semantically duplicated under reminted source ids, orphaned, cross-counterparty, noncanonical, or malformed evidence.
+- future-dated, reordered, duplicate, semantically duplicated under reminted source ids, orphaned, cross-counterparty, noncanonical, oversized, over-deep, unsafe-integer, or malformed evidence.
 
-Callers may lengthen cooldowns but cannot weaken the code-owned floors: six hours for counterparty contact and 72 hours for same-opportunity/same-purpose pursuit contact.
+Callers may lengthen cooldowns but cannot weaken the code-owned floors: six hours for counterparty contact and 72 hours for same-opportunity/same-purpose pursuit contact. Direct Python objects are admitted through the same bounded JSON model before canonicalization: exact integers are limited to ±(2^53−1), canonical bytes to 1 MiB, nesting to 64 levels, and total JSON nodes to 100,000. Boundary failures normalize to `GuardError` rather than leaking interpreter `ValueError`/`RecursionError`.
 
 ## Response lineage and reopen semantics
 
@@ -94,4 +94,4 @@ Provider sends require `provider_message_id`. Bounces and human responses must r
 
 ## Proof
 
-The retained root suite exercises strict JSON ingress, retained-time receipt replay, cross-route and cross-key collisions, route-scoped bounces, response opportunity/route/purpose/thread transplant rejection, exact negative-to-reopen binding, packet-transplant rejection, Unicode/noncanonical identifiers, cooldown-floor protection, future/reordered/duplicate evidence, CPython large-integer parser normalization, multiple-negative reopen isolation, hard-bounce precedence, changed-source-id semantic duplicates across sends/replies/negatives/reopens, future self-resealed snapshot rejection, old self-resealed snapshot truth degradation plus fresh re-evaluation, process-clock callback injection resistance, and source-literal hard-false authority under ordinary module rebinding. The same suite is required under normal Python and real `python -O`.
+The retained root suite exercises strict JSON ingress, retained-time receipt replay, cross-route and cross-key collisions, route-scoped bounces, response opportunity/route/purpose/thread transplant rejection, exact negative-to-reopen binding, packet-transplant rejection, Unicode/noncanonical identifiers, cooldown-floor protection, future/reordered/duplicate evidence, CPython large-integer parser normalization plus direct-API huge-integer/depth/size containment, multiple-negative reopen isolation, hard-bounce precedence, changed-source-id semantic duplicates across sends/replies/negatives/reopens, future self-resealed snapshot rejection, old self-resealed snapshot truth degradation plus fresh re-evaluation, process-clock callback injection resistance, and source-literal hard-false authority under ordinary module rebinding. The same suite is required under normal Python and real `python -O`.
