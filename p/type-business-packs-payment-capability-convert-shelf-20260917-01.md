@@ -37,4 +37,6 @@ Exact reused URLs (same nine as resources.html convert shelf):
 
 Hermetic: `test_type_business_packs_payment_capability_convert_shelf_20260917_01.py` — both HTML files contain exactly those nine `buy.stripe.com` host paths plus first-screen Buy now shelf language.
 
+SHA: `6650b28291b0de43e04e4cc901b51e389c8ed972` (candidate). Land SHA is current `origin/main` after merge.
+
 Cite `type-business-packs-payment-capability-convert-shelf-20260917-01`. Tip KEEP. #8802 off. No invent Stripe.
