@@ -13,6 +13,26 @@ from test_accepted_work_to_cash_reconciler import (
 )
 
 
+def _paid_events(oid: str) -> list[dict]:
+    return _base_events(oid) + [
+        _event(f"{oid}-a", "ACCEPTED", "2026-09-17T03:00:00Z", "BUYER_MESSAGE"),
+        _event(
+            f"{oid}-i",
+            "INVOICE_ISSUED",
+            "2026-09-17T04:00:00Z",
+            "BUYER_MESSAGE",
+            amount=500_000,
+        ),
+        _event(
+            f"{oid}-p",
+            "PAYMENT_RECEIVED",
+            "2026-09-17T05:00:00Z",
+            "PROVIDER_RECEIPT",
+            amount=500_000,
+        ),
+    ]
+
+
 class AcceptedWorkToCashHostileTests(unittest.TestCase):
     def test_same_second_dnr_beats_inbound_independent_of_event_id(self):
         events = _base_events("tie-dnr") + [
@@ -40,12 +60,8 @@ class AcceptedWorkToCashHostileTests(unittest.TestCase):
         self.assertEqual(item["contact_state"], "AMBIGUOUS_SAME_TIME_CONTACT")
         self.assertEqual(item["terminal_action"], "HOLD_CONTACT_AMBIGUITY")
 
-    def test_provider_confirmation_must_be_independently_bound(self):
-        events = _base_events("self-confirm") + [
-            _event("self-confirm-a", "ACCEPTED", "2026-09-17T03:00:00Z", "BUYER_MESSAGE"),
-            _event("self-confirm-i", "INVOICE_ISSUED", "2026-09-17T04:00:00Z", "BUYER_MESSAGE", amount=500_000),
-            _event("self-confirm-p", "PAYMENT_RECEIVED", "2026-09-17T05:00:00Z", "PROVIDER_RECEIPT", amount=500_000),
-        ]
+    def test_exact_payment_evidence_copy_is_rejected(self):
+        events = _paid_events("self-confirm")
         payment = events[-1]
         confirmation = {
             "opportunity_id": "self-confirm",
@@ -54,7 +70,7 @@ class AcceptedWorkToCashHostileTests(unittest.TestCase):
             "provider_ref": payment["ref"],
             "provider_sha256": payment["sha256"],
         }
-        with self.assertRaisesRegex(ReconcilerError, "independently bound"):
+        with self.assertRaisesRegex(ReconcilerError, "copied retained payment evidence"):
             compile_packet(
                 _document(
                     [_opportunity("self-confirm", events)],
@@ -62,26 +78,61 @@ class AcceptedWorkToCashHostileTests(unittest.TestCase):
                 )
             )
 
-    def test_distinct_provider_confirmation_still_closes_paid(self):
-        events = _base_events("separate-confirm") + [
-            _event("separate-confirm-a", "ACCEPTED", "2026-09-17T03:00:00Z", "BUYER_MESSAGE"),
-            _event("separate-confirm-i", "INVOICE_ISSUED", "2026-09-17T04:00:00Z", "BUYER_MESSAGE", amount=500_000),
-            _event("separate-confirm-p", "PAYMENT_RECEIVED", "2026-09-17T05:00:00Z", "PROVIDER_RECEIPT", amount=500_000),
-        ]
+    def test_arbitrary_distinct_ref_and_digest_cannot_close_paid(self):
+        events = _paid_events("arbitrary")
         confirmation = {
-            "opportunity_id": "separate-confirm",
-            "payment_event_id": "separate-confirm-p",
+            "opportunity_id": "arbitrary",
+            "payment_event_id": "arbitrary-p",
             "observed_at": "2026-09-17T06:00:00Z",
-            "provider_ref": "provider://separate/receipt",
-            "provider_sha256": _sha("independent-provider-receipt"),
+            "provider_ref": "provider://invented/receipt",
+            "provider_sha256": _sha("invented-provider-receipt"),
+        }
+        packet = compile_packet(
+            _document([_opportunity("arbitrary", events)], confirmations=[confirmation])
+        )
+        item = packet["items"][0]
+        self.assertEqual(item["cash_state"], "RETAINED_CONFIRMATIONS_COMPLETE_UNAUTHENTICATED")
+        self.assertEqual(item["terminal_action"], "VERIFY_PROVIDER_CASH")
+        self.assertFalse(packet["summary"]["provider_authenticated_payment_evidence_available"])
+
+    def test_route_evidence_relabelled_as_cash_confirmation_cannot_close_paid(self):
+        events = _paid_events("route-copy")
+        route = _route("route-copy")
+        confirmation = {
+            "opportunity_id": "route-copy",
+            "payment_event_id": "route-copy-p",
+            "observed_at": "2026-09-17T06:45:00Z",
+            "provider_ref": route["ref"],
+            "provider_sha256": route["sha256"],
         }
         item = compile_packet(
             _document(
-                [_opportunity("separate-confirm", events)],
+                [_opportunity("route-copy", events)],
+                routes=[route],
                 confirmations=[confirmation],
             )
         )["items"][0]
-        self.assertEqual(item["terminal_action"], "DONE_PAID")
+        self.assertEqual(item["terminal_action"], "VERIFY_PROVIDER_CASH")
+        self.assertEqual(item["cash_state"], "RETAINED_CONFIRMATIONS_COMPLETE_UNAUTHENTICATED")
+
+    def test_different_ref_with_copied_payment_digest_cannot_close_paid(self):
+        events = _paid_events("digest-copy")
+        payment = events[-1]
+        confirmation = {
+            "opportunity_id": "digest-copy",
+            "payment_event_id": "digest-copy-p",
+            "observed_at": "2026-09-17T06:00:00Z",
+            "provider_ref": "provider://different/ref",
+            "provider_sha256": payment["sha256"],
+        }
+        item = compile_packet(
+            _document(
+                [_opportunity("digest-copy", events)],
+                confirmations=[confirmation],
+            )
+        )["items"][0]
+        self.assertEqual(item["terminal_action"], "VERIFY_PROVIDER_CASH")
+        self.assertEqual(item["cash_state"], "RETAINED_CONFIRMATIONS_COMPLETE_UNAUTHENTICATED")
 
 
 if __name__ == "__main__":
