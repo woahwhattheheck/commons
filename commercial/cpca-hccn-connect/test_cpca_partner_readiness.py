@@ -82,24 +82,57 @@ def fake_legacy(blockers=()):
     }
 
 
+class FlippingPrime(dict):
+    """Reviewer-shaped stateful nested mapping; trusted APIs must reject it."""
+
+    def __init__(self):
+        super().__init__(
+            name="",
+            eligibility_source="",
+            safety_net_experience_source="",
+            relationship_authority=False,
+        )
+        self._answers = {
+            "name": "Injected Prime",
+            "eligibility_source": "urn:injected:eligibility",
+            "safety_net_experience_source": "urn:injected:safety",
+            "relationship_authority": True,
+        }
+
+    def get(self, key, default=None):
+        if key in self._answers:
+            return self._answers[key]
+        return super().get(key, default)
+
+
+class ReceiptSubclass(dict):
+    pass
+
+
 class PartnerReadinessTests(unittest.TestCase):
-    def test_code_owned_predecessor_teaming_signal_is_discussion_only(self):
+    def test_caller_invented_teaming_evidence_never_mints_workshare_readiness(self):
         spec, evidence = teaming_case()
         receipt = p.make_receipt(spec, evidence)
-        self.assertEqual("WORKSHARE_DISCUSSION_READY", receipt["state"])
-        self.assertEqual("DISCUSSION_READY", receipt["workshare"]["state"])
-        self.assertTrue(receipt["workshare"]["source_bound"])
+        self.assertEqual("TEAMING_READY", receipt["legacy_workshare_signal"]["state"])
+        self.assertEqual("HOLD", receipt["state"])
+        self.assertEqual("HOLD", receipt["workshare"]["state"])
+        self.assertIn("provider_authenticated_workshare_evidence", receipt["workshare"]["blockers"])
+        self.assertFalse(receipt["workshare"]["source_bound"])
+        self.assertTrue(receipt["workshare"]["receipt_bound"])
+        self.assertFalse(receipt["workshare"]["provider_authenticated_evidence_available"])
+        self.assertFalse(receipt["legacy_workshare_signal"]["discussion_authority"])
         self.assertEqual("HOLD", receipt["application"]["state"])
-        self.assertIn("provider_authenticated_prime_application_evidence", receipt["application"]["blockers"])
-        self.assertFalse(receipt["legacy_workshare_signal"]["application_authority"])
         self.assertTrue(all(value is False for value in receipt["authority"].values()))
 
-    def test_complete_caller_manifest_still_cannot_authorize_application(self):
+    def test_complete_caller_manifest_still_cannot_authorize_workshare_or_application(self):
         spec, evidence = teaming_case()
         evidence["partner_application_evidence"] = complete_manifest(spec, evidence)
         receipt = p.make_receipt(spec, evidence)
-        self.assertEqual("WORKSHARE_DISCUSSION_READY", receipt["state"])
+        self.assertEqual("TEAMING_READY", receipt["legacy_workshare_signal"]["state"])
+        self.assertEqual("HOLD", receipt["state"])
+        self.assertEqual("HOLD", receipt["workshare"]["state"])
         self.assertEqual("HOLD", receipt["application"]["state"])
+        self.assertIn("provider_authenticated_workshare_evidence", receipt["workshare"]["blockers"])
         self.assertIn("provider_authenticated_prime_application_evidence", receipt["application"]["blockers"])
         self.assertFalse(receipt["application"]["provider_authenticated_evidence_available"])
         self.assertFalse(receipt["application"]["caller_manifest_can_authorize_readiness"])
@@ -112,9 +145,28 @@ class PartnerReadinessTests(unittest.TestCase):
         self.assertEqual("HOLD", result["state"])
         self.assertEqual("HOLD", result["workshare"]["state"])
         self.assertFalse(result["workshare"]["source_bound"])
-        self.assertFalse(result["legacy_workshare_signal"]["trusted_origin"])
-        self.assertEqual(["trusted_legacy_predecessor_required"], result["application"]["blockers"])
-        self.assertIsNone(result["binding"])
+        self.assertFalse(result["legacy_workshare_signal"]["trusted_code_origin"])
+        self.assertFalse(result["legacy_workshare_signal"]["discussion_authority"])
+        self.assertIn("trusted_legacy_predecessor_required", result["application"]["blockers"])
+        self.assertIn("diagnostic_evidence_sha256", result["binding"])
+
+    def test_nested_stateful_mapping_is_rejected_before_predecessor_reads_it(self):
+        spec, evidence = teaming_case()
+        evidence["healthcare_prime"] = FlippingPrime()
+        with self.assertRaisesRegex(ValueError, "exact plain JSON types"):
+            p.make_receipt(spec, evidence)
+
+    def test_frozen_snapshot_clones_isolate_evaluator_mutation_from_binding(self):
+        _, evidence = teaming_case()
+        frozen, raw = p._freeze_json_object(evidence, "evidence")
+        eval_copy = p._clone_frozen_object(raw, "eval")
+        bind_copy = p._clone_frozen_object(raw, "bind")
+        original = bind_copy["healthcare_prime"]["name"]
+        eval_copy["healthcare_prime"]["name"] = "Evaluator Mutation"
+        eval_copy["gate_status"]["subject_matter_expertise"] = "HOLD"
+        self.assertEqual(original, bind_copy["healthcare_prime"]["name"])
+        self.assertEqual("PROVEN", bind_copy["gate_status"]["subject_matter_expertise"])
+        self.assertEqual(p.canonical_bytes(frozen), p.canonical_bytes(bind_copy))
 
     def test_noncanonical_spec_substitution_fails_closed(self):
         spec, evidence = teaming_case()
@@ -178,6 +230,18 @@ class PartnerReadinessTests(unittest.TestCase):
         forged["receipt_sha256"] = p.canonical_digest(unsigned)
         self.assertFalse(p.verify_receipt(spec, evidence, forged))
 
+    def test_rehashed_forged_workshare_state_fails_semantic_verify(self):
+        spec, evidence = teaming_case()
+        receipt = p.make_receipt(spec, evidence)
+        forged = copy.deepcopy(receipt)
+        forged["state"] = "WORKSHARE_DISCUSSION_READY"
+        forged["workshare"]["state"] = "DISCUSSION_READY"
+        forged["workshare"]["source_bound"] = True
+        unsigned = dict(forged)
+        unsigned.pop("receipt_sha256")
+        forged["receipt_sha256"] = p.canonical_digest(unsigned)
+        self.assertFalse(p.verify_receipt(spec, evidence, forged))
+
     def test_malformed_application_source_object_fails_closed(self):
         spec, evidence = teaming_case()
         evidence["partner_application_evidence"] = complete_manifest(spec, evidence)
@@ -189,6 +253,7 @@ class PartnerReadinessTests(unittest.TestCase):
         spec, evidence = teaming_case()
         receipt = p.make_receipt(spec, evidence)
         self.assertTrue(p.verify_receipt(spec, evidence, receipt))
+        self.assertEqual("cpca-partner-readiness/v3", receipt["schema"])
         self.assertEqual(p.canonical_digest(spec), receipt["binding"]["qualification_spec_sha256"])
         self.assertEqual(
             hashlib.sha256((ROOT / "qualification_spec.json").read_bytes()).hexdigest(),
@@ -197,6 +262,10 @@ class PartnerReadinessTests(unittest.TestCase):
         self.assertEqual(
             spec["source_packet"]["sha256"],
             receipt["binding"]["qualification_source_packet"]["sha256"],
+        )
+        self.assertEqual(
+            hashlib.sha256(p.canonical_bytes(evidence)).hexdigest(),
+            receipt["binding"]["evidence_sha256"],
         )
 
     def test_receipt_binds_exact_predecessor_result(self):
@@ -207,8 +276,19 @@ class PartnerReadinessTests(unittest.TestCase):
         self.assertEqual("TEAMING_READY", legacy_result["state"])
         self.assertEqual(p.canonical_digest(legacy_result), receipt["binding"]["legacy_result_sha256"])
 
-    def test_cli_rejects_removed_legacy_override(self):
+    def test_nonfinite_evidence_is_rejected_before_evaluation(self):
         spec, evidence = teaming_case()
+        evidence["evidence_notes"] = [float("nan")]
+        with self.assertRaisesRegex(ValueError, "non-finite"):
+            p.make_receipt(spec, evidence)
+
+    def test_receipt_mapping_subclass_is_rejected_by_verifier(self):
+        spec, evidence = teaming_case()
+        receipt = p.make_receipt(spec, evidence)
+        self.assertFalse(p.verify_receipt(spec, evidence, ReceiptSubclass(receipt)))
+
+    def test_cli_rejects_removed_legacy_override(self):
+        _, evidence = teaming_case()
         temp = ROOT / ".cpca_partner_readiness_test_evidence.json"
         try:
             temp.write_text(json.dumps(evidence), encoding="utf-8")
