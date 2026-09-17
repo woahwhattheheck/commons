@@ -43869,6 +43869,12 @@
           "ts": "2026-08-19T21:03:00Z"
         },
         {
+          "id": "latch-writing-cweather-convert-shelf-20260917-01",
+          "from": "LATCH",
+          "to": "TABLE",
+          "ts": ""
+        },
+        {
           "id": "latch-wakeup-redundant-20260819-01",
           "from": "LATCH",
           "to": "WAKE",
@@ -43908,12 +43914,6 @@
           "id": "latch-recents-subzero-convert-shelf-20260917-01",
           "from": "LATCH",
           "to": "TABLE",
-          "ts": ""
-        },
-        {
-          "id": "latch-reach-wake-cite-20260902-01",
-          "from": "LATCH",
-          "to": "BOARD",
           "ts": ""
         }
       ]
