@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="index,follow">
+  <title>Invoice Resolution Portal Pilot — $2,500 authorization</title>
+  <meta name="description" content="A bounded one-invoice resolution workflow pilot with a verified $2,500 Stripe authorization rail and written-scope capture boundary.">
+  <link rel="stylesheet" href="./commons.css?v=20260823f">
+  <style>
+    body{max-width:64rem}.hero{padding:1rem 0}.hero h1{font-size:clamp(2.1rem,6vw,4.6rem);line-height:1;margin:.3rem 0 1rem}.lead{font-size:1.2rem;max-width:52rem}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:.8rem}.card,.truth{border:1px solid #383840;border-radius:12px;padding:1rem;background:#111114}.money{font:800 1.6rem/1.2 ui-monospace,monospace}.cta{display:inline-block;border:1px solid #62b879;border-radius:8px;padding:.65rem .9rem;font-weight:800}.secondary{border-color:#d0a252}.small{opacity:.78}.truth{border-left:4px solid #d0a252}code{word-break:break-word}.action-list strong{font-family:ui-monospace,monospace}
+  </style>
+</head>
+<body>
+<section id="trust-through-proof" class="law trust-law" aria-label="Trust after proof — operating law"><strong>TRUST AFTER PROOF.</strong> <a href="./trust.html">Read “On Trust.”</a> Proof is cached. Build unless the bytes moved. Commerce is included: when the offer, delivery path, and payment road are verified, ask for the sale and fulfill it. Never invent buyers, replies, payments, or results.</section>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./commerce.html">commerce</a> · <a href="./payment-capability.html">payment rails</a> · <a href="./pay.html">pay</a> · <a href="mailto:tokenjunkielabs@gmail.com">email</a></p>
+
+<header class="hero">
+  <p class="small">Token Junkie Labs · fixed pilot · one invoice generation · buyer-facing intake</p>
+  <h1>Invoice Resolution Portal Pilot</h1>
+  <p class="lead">Turn one exact invoice generation into a deterministic owner-review workflow for a bounded customer request, with replay-safe evidence, digest-only attachments, explicit HOLD states, and no invoice mutation or autonomous payment action.</p>
+  <p><span class="money">$2,500 USD authorization</span> · 1 invoice · 1 resolution workflow · 1 buyer-facing intake surface</p>
+  <p><a class="cta" href="https://buy.stripe.com/8x23cuckZ2QV9uFfFo43S0z" rel="noopener noreferrer" target="_blank">Open verified Stripe authorization — $2,500</a></p>
+  <p class="small"><strong>Authorization is not settlement or cash.</strong> The live Stripe rail uses manual capture. We confirm the exact invoice/revision, bounded workflow, delivery inputs, and written acceptance criteria before capture; if the scope cannot be accepted, the authorization is canceled.</p>
+</header>
+
+<div class="grid">
+  <div class="card"><span>Fixed pilot</span><div class="money">$2,500 USD</div><span class="small">Manual-capture authorization; scope confirmation precedes capture.</span></div>
+  <div class="card"><span>Scope</span><div class="money">1 invoice</div><span class="small">Exact invoice ID + revision + snapshot SHA-256.</span></div>
+  <div class="card"><span>Capacity</span><div class="money">1 active buyer</div><span class="small">The verified Payment Link is limited to one completed session.</span></div>
+</div>
+
+<p><a class="cta" href="https://buy.stripe.com/8x23cuckZ2QV9uFfFo43S0z" rel="noopener noreferrer" target="_blank">Authorize $2,500 in Stripe</a> <a class="cta secondary" href="mailto:tokenjunkielabs@gmail.com?subject=Invoice%20Resolution%20Portal%20Pilot%20%E2%80%94%20scope&body=ORGANIZATION%3A%20%0AINVOICE_SYSTEM%3A%20%0ASYNTHETIC_OR_MINIMIZED_FIXTURE_AVAILABLE%3A%20%0APUBLIC_NONCONFIDENTIAL_OBJECTIVE%3A%20">Scope by email first</a></p>
+<p class="truth"><strong>Economic truth:</strong> this page exposes an active provider authorization rail. It does not prove that any buyer accepted scope, that a charge was captured, that funds settled, that a payout reached a bank, or that revenue was recognized. Provider state remains provider truth.</p>
+<p class="small">Provider proof: <a href="./land/invoice-resolution-portal-payment-link-20260917.md">2026-09-17 authenticated livemode receipt</a>. Fulfillment proof: <a href="./revenue/invoice_resolution_portal_pilot/README.md">landed one-invoice pilot carrier</a> from Commons #15386.</p>
+
+<h2>Exactly three bounded request actions</h2>
+<ul class="action-list">
+  <li><strong>ACKNOWLEDGE_BALANCE</strong> — records the customer request; it does not itself change the invoice.</li>
+  <li><strong>OPEN_DISPUTE</strong> — opens an evidence workflow; it does not adjudicate the dispute.</li>
+  <li><strong>REQUEST_PAYMENT_PLAN_DISCUSSION</strong> — records a request for discussion; it does not approve a plan.</li>
+</ul>
+
+<h2>What you provide</h2>
+<ul>
+  <li>One invoice ID and revision plus SHA-256 of the exact invoice snapshot.</li>
+  <li>ISO currency, invoice amount and balance in integer minor units, and source-observed UTC timestamp.</li>
+  <li>An opaque non-contact customer reference and one of the three allowed request actions.</li>
+  <li>SHA-256 of the customer statement and, when needed, evidence IDs/classes plus SHA-256 digests.</li>
+  <li>The prior event-chain checkpoint only when this generation extends an earlier delivered packet.</li>
+</ul>
+<p class="small">Do not send card/bank information, credentials, passwords, API tokens, customer contact data, unrestricted statement narrative, or source invoice documents through the compiler boundary. Start with synthetic or safely minimized fixtures.</p>
+
+<h2>What you receive</h2>
+<ul>
+  <li>A deterministic JSON owner-review packet and buyer-facing Markdown review export bound to the exact invoice generation.</li>
+  <li>Replay-safe request and evidence handling: identical retries are idempotent; conflicting reuse fails closed to HOLD.</li>
+  <li>An ordered event hash chain and retained-prefix checkpoint so history mutation is detectable.</li>
+  <li>Explicit HOLD reasons for generation drift, chronology/future evidence, conflicting replay, evidence without a request, and out-of-scope multiple requests.</li>
+  <li>A semantic verifier and delivery receipt checklist for the accepted fixture.</li>
+</ul>
+
+<h2>Acceptance boundary</h2>
+<p>The pilot is source-ready only when one exact invoice generation is bound across every event; at most one canonical request is active; conflicting replay fails closed; evidence cannot silently transplant across invoice/request identity; retained history still matches its prior checkpoint; future/out-of-order evidence holds; strict input rejects ambiguous or private-field payloads; packet tampering fails verification; and the same focused suite survives normal and optimized execution.</p>
+
+<h2>Authority boundary</h2>
+<p>The shipped carrier cannot send buyer messages, take payment, approve a payment plan, adjudicate a dispute, modify an invoice, make accounting or legal conclusions, claim customer acceptance, claim payment, or claim revenue. <code>OWNER_REVIEW_READY</code> means only that the evidence package is coherent enough for a human owner to review.</p>
+
+<h2>Optional integration is separate</h2>
+<p>A <strong>$5,000 integration</strong> exists only as a proposed follow-on in the shipped fulfillment contract. It has no checkout on this page and is not accepted or authorized by opening the $2,500 pilot rail. Any adapter, production connection, deployment, or broader workflow requires a separate written scope.</p>
+
+<h2>Start and capture condition</h2>
+<p>The Stripe rail uses manual capture. Work starts only after the exact invoice generation, accepted fixture boundary, delivery contact, and written acceptance criteria are explicit. Opening or completing an authorization does not let this static page infer capture, settlement, payout, cash, or revenue.</p>
+<p><a class="cta" href="https://buy.stripe.com/8x23cuckZ2QV9uFfFo43S0z" rel="noopener noreferrer" target="_blank">Open $2,500 Stripe authorization</a> <a class="cta secondary" href="./commerce.html">Back to commerce</a></p>
+</body>
+</html>
