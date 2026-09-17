@@ -23,13 +23,13 @@ A host that actually owns a complete snapshot can call `compile_intake(..., trus
 
 `issue_host_snapshot_authority()` exists only for protected host integration after that host has independently established snapshot completeness. It signs:
 
-- one stable authority ID, generation, key ID, and issuance time;
+- one stable authority ID, generation, key ID, issuance time, and compiling `actorSeat`;
 - the exact snapshot source ref/digest/time;
 - a SHA-256 commitment over every normalized opportunity ID and its complete normalized event set;
 - exact opportunity and event counts; and
 - the authoritative custody/status completeness booleans.
 
-The packet source, projection digest, counts, completeness assertions, authority chronology, and HMAC must all match. Removing a TAKE, DNR, or whole opportunity; resealing only the packet snapshot digest; transplanting authority between snapshots; changing completeness after authority capture; supplying a fake second authority mapping; or verifying under a different/missing host capability fails closed.
+The packet actor seat, source, projection digest, counts, completeness assertions, authority chronology, and HMAC must all match. Removing a TAKE, DNR, or whole opportunity; relabelling the compiling seat; resealing only the packet snapshot digest; transplanting authority between snapshots; changing completeness after authority capture; supplying a fake second authority mapping; or verifying under a different/missing host capability fails closed. Authenticated snapshots are also subject to a code-owned 300-second maximum age at `trusted_as_of`; an old once-complete snapshot cannot be replayed later as current availability.
 
 If no authenticated snapshot authority is supplied, effective custody and status completeness are both forced to `false`, regardless of packet booleans. The compiler therefore emits `UNKNOWN` ownership plus explicit `CUSTODY-INCOMPLETE` / `STATUS-INCOMPLETE` blockers rather than deriving `AVAILABLE` from absence.
 
@@ -56,7 +56,7 @@ Compilation still calls the real merged `revenue.opportunity_portfolio.normalize
 
 ## Authority ceiling
 
-The adapter is read-only. Every receipt fixes these to false: contact, send, submission, merge, spend, payment mutation, buyer acceptance, and revenue recognition authority. A downstream portfolio `EXECUTE_NOW` result is still human execution review exactly as defined by the allocator; this package does not add provider or external-action authority.
+The adapter is read-only. Every receipt fixes these to false from source-literal maps in both compilation and verification: contact, send, submission, merge, spend, payment mutation, buyer acceptance, and revenue recognition authority. There is no mutable module authority template whose rebinding can widen a receipt. A downstream portfolio `EXECUTE_NOW` result is still human execution review exactly as defined by the allocator; this package does not add provider or external-action authority.
 
 ## CLI
 
