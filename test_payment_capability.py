@@ -135,6 +135,7 @@ class PaymentCapability(unittest.TestCase):
             "tips.html",
             "commerce.html",
             "payment-capability.html",
+            "owner-now-revenue.html",
         ):
             html = (ROOT / name).read_text(encoding="utf-8")
             self.assertNotRegex(html, r"paypal\.me/")
@@ -153,6 +154,10 @@ class PaymentCapability(unittest.TestCase):
         pay_js = (ROOT / "pay.js").read_text(encoding="utf-8")
         self.assertIn("payment_capability/registry.json", pay_js)
         self.assertIn("failover-owner-action", pay_js)
+        self.assertIn('checkout.status !== "ACTIVE_CHARGEABLE"', pay_js)
+        self.assertIn("checkout.link_active !== true", pay_js)
+        self.assertIn("canonicalRailMatches(snapshot, listing)", pay_js)
+        self.assertIn("inert_duplicate_urls", pay_js)
 
     def test_payment_capability_js_parses_and_keeps_html_escapes(self):
         js = (ROOT / "payment-capability.js").read_text(encoding="utf-8")
