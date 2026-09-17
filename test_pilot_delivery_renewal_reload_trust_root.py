@@ -21,6 +21,22 @@ class ReloadStableTrustRootTests(unittest.TestCase):
         packet["payment"]["commercial_generation"] = 1
         return packet
 
+    def _assert_public_error_and_cli(self, stable_error):
+        packet = current_packet()
+        packet["baseline"]["generation"] = True
+        with self.assertRaisesRegex(stable_error, "integer required"):
+            engine.compile_current(packet)
+
+        with tempfile.TemporaryDirectory() as td:
+            packet_path = Path(td) / "packet.json"
+            packet_path.write_text(json.dumps(packet), encoding="utf-8")
+            stderr = io.StringIO()
+            with contextlib.redirect_stderr(stderr):
+                rc = engine.main(["compile", str(packet_path)])
+            self.assertEqual(rc, 2)
+            self.assertIn("ERROR:", stderr.getvalue())
+            self.assertNotIn("Traceback", stderr.getvalue())
+
     def test_hostile_max_during_reload_cannot_ratify_generation_one(self):
         packet = self._generation_one_claim_packet()
         control = engine.compile_current(packet)
@@ -105,27 +121,29 @@ class ReloadStableTrustRootTests(unittest.TestCase):
         with self.assertRaisesRegex(engine.GateError, "integer required"):
             engine.compile_current(packet)
 
+    def test_common_gate_error_rebind_then_engine_reload_preserves_public_generation(self):
+        stable_error = engine.GateError
+        prior_common_error = common.GateError
+
+        class ReplacementGateError(ValueError):
+            pass
+
+        try:
+            common.GateError = ReplacementGateError
+            importlib.reload(engine)
+            self.assertIs(engine.GateError, stable_error)
+            self._assert_public_error_and_cli(stable_error)
+        finally:
+            common.GateError = prior_common_error
+            importlib.reload(engine)
+
     def test_common_reload_preserves_public_error_generation_and_cli_catches_it(self):
         stable_error = engine.GateError
         importlib.reload(common)
         self.assertIsNot(common.GateError, stable_error)
         importlib.reload(engine)
         self.assertIs(engine.GateError, stable_error)
-
-        packet = current_packet()
-        packet["baseline"]["generation"] = True
-        with self.assertRaisesRegex(stable_error, "integer required"):
-            engine.compile_current(packet)
-
-        with tempfile.TemporaryDirectory() as td:
-            packet_path = Path(td) / "packet.json"
-            packet_path.write_text(json.dumps(packet), encoding="utf-8")
-            stderr = io.StringIO()
-            with contextlib.redirect_stderr(stderr):
-                rc = engine.main(["compile", str(packet_path)])
-            self.assertEqual(rc, 2)
-            self.assertIn("ERROR:", stderr.getvalue())
-            self.assertNotIn("Traceback", stderr.getvalue())
+        self._assert_public_error_and_cli(stable_error)
 
     def test_packet_large_child_fails_at_node_budget(self):
         packet = current_packet()
