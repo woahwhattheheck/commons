@@ -18,7 +18,7 @@ CARRIER_SCRIPT_RE = re.compile(
     r'(<script src="\./carrier\.js\?v=)([A-Za-z0-9]+)("></script>)'
 )
 CATALOG = {
-    "humans.html": "d3302dc413993c303311bda04743fffab60f5da6",
+    "humans.html": "8319e678b9622eced3516a13a43d507eafa0b327",
     "revenue/human_outcomes/offers.json": "1b72639aaea1a3d41c0d2419470add5a3ca8d839",
     "revenue/human_outcomes/README.md": "66c64b6eba9b7aba035223940676bb134590a660",
     "revenue/human_outcomes/fulfillment.md": "fbaf8be09bc4bc544ea470670f3eb6435ebc5838",
