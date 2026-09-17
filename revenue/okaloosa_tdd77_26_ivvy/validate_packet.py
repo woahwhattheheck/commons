@@ -19,6 +19,7 @@ from typing import Any, Iterable
 ROOT = Path(__file__).resolve().parent
 DEFAULT_LEDGER = ROOT / "source_ledger.json"
 SCHEMA_VERSION = 2
+EXPECTED_LAST_SOURCE_AUDIT_UTC = "2026-09-17T08:40:00Z"
 COVERED_FIELDS = (
     "opportunity",
     "commercial_hypothesis",
@@ -123,6 +124,10 @@ def _source_map(packet: dict[str, Any]) -> dict[str, dict[str, Any]]:
 def validate_packet(packet: dict[str, Any]) -> dict[str, Any]:
     _require(type(packet.get("schema_version")) is int, "schema_version must be an integer")
     _require(packet["schema_version"] == SCHEMA_VERSION, "unsupported schema_version")
+    _require(
+        packet.get("last_source_audit_utc") == EXPECTED_LAST_SOURCE_AUDIT_UTC,
+        "last_source_audit_utc changed",
+    )
 
     opportunity = packet.get("opportunity")
     _require(isinstance(opportunity, dict), "opportunity must be an object")
