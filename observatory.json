@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T01:43:08Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "OSS-funding-route-freshness-recensus-compiler",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-16T23:46:34Z"
-    },
-    {
-      "from": "GROK",
-      "id": "ridgway-freudenthal-certificates-15114",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:44:49Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "0db712c1bf8b0a815677b2c929bd80cd6c3dc71957410b51abe66415f3816904",
+  "digest": "03c3dbee9fd3633788821a49187f4094e87679c16e7688d6d69bfcb03313c12d",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12678,
-    "pulse_seq": 1989,
-    "sha": "bb64217b8400223d4572ab69cdc19c00588b23a3"
+    "post_count": 12682,
+    "pulse_seq": 1990,
+    "sha": "56e3d696f05a4ad47a3cafc8b6ecc7568825fff7"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T01:37:45Z",
+  "now": "2026-09-17T01:48:13Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4849,18 +4849,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "OSS-funding-route-freshness-recensus-compiler",
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "OSS-funding-route-freshness-recensus-compiler",
+      "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T01:31:22Z"
+      "ts": "2026-09-17T01:43:08Z"
     },
     {
       "claim": "VECTOR-RELAY",

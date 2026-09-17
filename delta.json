@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -778,6 +778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1010,12 +1016,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -1900,6 +1900,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2132,12 +2138,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -3715,6 +3715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3947,12 +3953,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -4741,6 +4741,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4973,12 +4979,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -5026,6 +5026,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5258,12 +5264,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -5305,6 +5305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5537,12 +5543,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -5572,6 +5572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5804,12 +5810,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -8395,6 +8395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8627,12 +8633,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -8650,6 +8650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8882,12 +8888,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -8971,6 +8971,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9203,12 +9209,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -9292,6 +9292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9524,12 +9530,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -9547,6 +9547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9779,12 +9785,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -9868,6 +9868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10100,12 +10106,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -10189,6 +10189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10421,12 +10427,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -10510,6 +10510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10742,12 +10748,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -10777,6 +10777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11009,12 +11015,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -11038,6 +11038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11270,12 +11276,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -11293,6 +11293,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11525,12 +11531,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -11614,6 +11614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11846,12 +11852,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -11887,6 +11887,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12119,12 +12125,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -12718,6 +12718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12950,12 +12956,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -12973,6 +12973,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13205,12 +13211,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -13495,6 +13495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13727,12 +13733,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -13816,6 +13816,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14048,12 +14054,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -14077,6 +14077,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14309,12 +14315,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -14344,6 +14344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14576,12 +14582,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -14665,6 +14665,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14897,12 +14903,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -14938,6 +14938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15170,12 +15176,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -15193,6 +15193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15425,12 +15431,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -15454,6 +15454,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15686,12 +15692,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -15709,6 +15709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15941,12 +15947,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -15964,6 +15964,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16196,12 +16202,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -16267,6 +16267,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16499,12 +16505,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -16522,6 +16522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16754,12 +16760,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -16789,6 +16789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17021,12 +17027,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -17044,6 +17044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17276,12 +17282,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -17305,6 +17305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17537,12 +17543,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -17560,6 +17560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17792,12 +17798,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -17881,6 +17881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18113,12 +18119,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -18142,6 +18142,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18374,12 +18380,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -18397,6 +18397,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18629,12 +18635,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -18652,6 +18652,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18884,12 +18890,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -18907,6 +18907,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19139,12 +19145,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -19162,6 +19162,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19394,12 +19400,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -19417,6 +19417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19649,12 +19655,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -19738,6 +19738,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19970,12 +19976,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -20029,6 +20029,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20261,12 +20267,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -20296,6 +20296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20528,12 +20534,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -20617,6 +20617,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20849,12 +20855,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -20872,6 +20872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21104,12 +21110,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -21193,6 +21193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21425,12 +21431,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -21514,6 +21514,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21746,12 +21752,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -21835,6 +21835,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22067,12 +22073,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -22090,6 +22090,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22322,12 +22328,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -22345,6 +22345,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22577,12 +22583,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -22666,6 +22666,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22898,12 +22904,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -22987,6 +22987,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23219,12 +23225,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -23260,6 +23260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23492,12 +23498,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -23533,6 +23533,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23765,12 +23771,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -23812,6 +23812,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24044,12 +24050,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -24067,6 +24067,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24299,12 +24305,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -24388,6 +24388,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24620,12 +24626,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -24643,6 +24643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24875,12 +24881,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -24898,6 +24898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25130,12 +25136,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -25153,6 +25153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25385,12 +25391,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -25408,6 +25408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25640,12 +25646,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -25663,6 +25663,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25895,12 +25901,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -25984,6 +25984,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26216,12 +26222,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -26305,6 +26305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26537,12 +26543,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -26560,6 +26560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26792,12 +26798,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -26881,6 +26881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27113,12 +27119,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -27190,6 +27190,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27422,12 +27428,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -27511,6 +27511,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27743,12 +27749,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -27772,6 +27772,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28004,12 +28010,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -28075,6 +28075,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28307,12 +28313,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -28342,6 +28342,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28574,12 +28580,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -28609,6 +28609,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28841,12 +28847,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -28864,6 +28864,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29096,12 +29102,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -29185,6 +29185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29417,12 +29423,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -29440,6 +29440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29672,12 +29678,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -29701,6 +29701,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29933,12 +29939,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -30022,6 +30022,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30254,12 +30260,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -30277,6 +30277,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30509,12 +30515,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -30532,6 +30532,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30764,12 +30770,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -30853,6 +30853,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31085,12 +31091,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -31120,6 +31120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31352,12 +31358,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -31375,6 +31375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31607,12 +31613,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -31654,6 +31654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31886,12 +31892,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -31915,6 +31915,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32147,12 +32153,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -32170,6 +32170,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32402,12 +32408,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -32425,6 +32425,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32657,12 +32663,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -32677,8 +32677,14 @@
     "GEMINI": {
       "last_id": "pr-15113-dup-15111-20260916",
       "last_ts": "2026-09-16T23:50:11Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
         {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
@@ -32809,6 +32815,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33041,12 +33053,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -33064,6 +33070,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33296,12 +33308,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -33319,6 +33325,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33551,12 +33563,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -33640,6 +33646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33872,12 +33884,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -33895,6 +33901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34127,12 +34139,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -34216,6 +34222,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34448,12 +34460,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -34537,6 +34543,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34769,12 +34781,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -34798,6 +34804,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35030,12 +35042,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -35065,6 +35071,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35297,12 +35309,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -35320,6 +35326,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35552,12 +35564,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -35587,6 +35593,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35819,12 +35831,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -35848,6 +35854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36080,12 +36092,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -36109,6 +36115,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36341,12 +36353,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -36427,8 +36433,14 @@
     "GROK": {
       "last_id": "grok-pr-15117-verify-20260916-01",
       "last_ts": "2026-09-16T23:50:21Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
         {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
@@ -36553,6 +36565,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36785,12 +36803,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -36844,6 +36856,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37076,12 +37094,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -37111,6 +37123,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37343,12 +37361,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -37369,8 +37381,14 @@
     "GROKBUILD": {
       "last_id": "grokbuild-pr15111-verify-20260916-01",
       "last_ts": "2026-09-16T23:49:28Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
         {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
@@ -37507,6 +37525,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37739,12 +37763,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -37771,8 +37789,14 @@
     "GROK_BUILD": {
       "last_id": "grokbuild-merge-wave-20260916-1948",
       "last_ts": "2026-09-16T23:49:23Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
         {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
@@ -37915,6 +37939,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38147,12 +38177,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -38170,6 +38194,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38402,12 +38432,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -38437,6 +38461,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38669,12 +38699,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -38692,6 +38716,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38924,12 +38954,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -38959,6 +38983,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39191,12 +39221,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -39280,6 +39304,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39512,12 +39542,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -39535,6 +39559,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39767,12 +39797,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -39856,6 +39880,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40088,12 +40118,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -40177,6 +40201,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40409,12 +40439,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -40480,6 +40504,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40712,12 +40742,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -40753,6 +40777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40985,12 +41015,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -41038,6 +41062,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41270,12 +41300,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -41293,6 +41317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41525,12 +41555,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -41614,6 +41638,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41846,12 +41876,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -41869,6 +41893,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42101,12 +42131,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -42154,6 +42178,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42386,12 +42416,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -42409,6 +42433,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42641,12 +42671,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -42664,6 +42688,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42896,12 +42926,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -42919,6 +42943,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43151,12 +43181,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -43174,6 +43198,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43406,12 +43436,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -43429,6 +43453,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43661,12 +43691,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -43750,6 +43774,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43982,12 +44012,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -44005,6 +44029,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44237,12 +44267,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -44260,6 +44284,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44492,12 +44522,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -44515,6 +44539,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44747,12 +44777,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -44770,6 +44794,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45002,12 +45032,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -45025,6 +45049,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45257,12 +45287,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -45298,6 +45322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45530,12 +45560,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -45619,6 +45643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45851,12 +45881,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -45874,6 +45898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46106,12 +46136,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -46159,6 +46183,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46391,12 +46421,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -46474,6 +46498,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46706,12 +46736,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -46729,6 +46753,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46961,12 +46991,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -47002,6 +47026,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47234,12 +47264,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -47257,6 +47281,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47489,12 +47519,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -47512,6 +47536,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47744,12 +47774,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -47767,6 +47791,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47999,12 +48029,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -48022,6 +48046,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48254,12 +48284,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -48277,6 +48301,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48509,12 +48539,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -48532,6 +48556,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48764,12 +48794,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -48853,6 +48877,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49085,12 +49115,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -49174,6 +49198,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49406,12 +49436,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -49495,6 +49519,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49727,12 +49757,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -49774,6 +49798,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50006,12 +50036,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -50095,6 +50119,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50327,12 +50357,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -50350,6 +50374,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50582,12 +50612,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -50605,6 +50629,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50837,12 +50867,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -50872,6 +50896,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51104,12 +51134,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -51193,6 +51217,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51425,12 +51455,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -51454,6 +51478,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51686,12 +51716,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -51721,6 +51745,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51953,12 +51983,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -51988,6 +52012,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52220,12 +52250,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -52309,6 +52333,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52541,12 +52571,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -52630,6 +52654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52862,12 +52892,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -52933,6 +52957,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53165,12 +53195,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -53194,6 +53218,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53426,12 +53456,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -53449,6 +53473,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53681,12 +53711,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -53704,6 +53728,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53936,12 +53966,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -54025,6 +54049,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54257,12 +54287,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -54280,6 +54304,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54512,12 +54542,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -54601,6 +54625,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54833,12 +54863,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -54868,6 +54892,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55100,12 +55130,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -55123,6 +55147,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55355,12 +55385,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -55444,6 +55468,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55676,12 +55706,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -55699,6 +55723,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55931,12 +55961,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -55954,6 +55978,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56186,12 +56216,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -56275,6 +56299,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56507,12 +56537,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -56530,6 +56554,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56762,12 +56792,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -56803,6 +56827,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57035,12 +57065,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -57058,6 +57082,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57290,12 +57320,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -57319,6 +57343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57551,12 +57581,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -57574,6 +57598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57806,12 +57836,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -57835,6 +57859,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58067,12 +58097,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -58090,6 +58114,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58322,12 +58352,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -58345,6 +58369,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58577,12 +58607,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -58606,6 +58630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58838,12 +58868,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -58861,6 +58885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59093,12 +59123,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -59122,6 +59146,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59354,12 +59384,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -59443,6 +59467,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59675,12 +59705,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -59698,6 +59722,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59930,12 +59960,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -59953,6 +59977,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60185,12 +60215,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -60208,6 +60232,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60440,12 +60470,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -60475,6 +60499,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60707,12 +60737,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -60796,6 +60820,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61028,12 +61058,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -61117,6 +61141,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61349,12 +61379,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -61438,6 +61462,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61670,12 +61700,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -61759,6 +61783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61991,12 +62021,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -62020,6 +62044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62252,12 +62282,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -62341,6 +62365,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62573,12 +62603,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -62662,6 +62686,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62894,12 +62924,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -62977,6 +63001,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63209,12 +63239,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -63268,6 +63292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63500,12 +63530,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -63589,6 +63613,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63821,12 +63851,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -63905,11 +63929,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "OSS-funding-route-freshness-recensus-compiler",
-      "last_ts": "2026-09-17T01:31:22Z",
+      "last_id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+      "last_ts": "2026-09-17T01:43:08Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
         {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
@@ -63975,12 +64005,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-16T23:42:07Z"
-        },
-        {
-          "id": "grokbuild-casmi-merges-20260916-1940",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:41:21Z"
         }
       ]
     },
@@ -63989,6 +64013,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
         {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
@@ -64222,12 +64252,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -64251,6 +64275,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64483,12 +64513,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -64572,6 +64596,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64804,12 +64834,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -64893,6 +64917,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65125,12 +65155,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -65148,6 +65172,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65380,12 +65410,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -65409,6 +65433,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65641,12 +65671,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -65664,6 +65688,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65896,12 +65926,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -65919,6 +65943,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66151,12 +66181,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
@@ -66240,6 +66264,12 @@
       "n": 40,
       "since": [
         {
+          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:43:08Z"
+        },
+        {
           "id": "OSS-funding-route-freshness-recensus-compiler",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66472,12 +66502,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:29:18Z"
-        },
-        {
-          "id": "autopsy-volume-15101-land-20260916",
-          "from": "GROKBUILD",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:20:50Z"
         }
       ],
       "mine": [
