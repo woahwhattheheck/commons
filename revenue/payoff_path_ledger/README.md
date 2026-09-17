@@ -4,17 +4,44 @@ This package makes one internal operating rule deterministic: **uncompensated wo
 
 It classifies exact work generations across bug bounties, competition prizes, paid discovery, partner workshare, product conversion, already-paid work, and strategic-unpaid work. `AMOUNT_UNKNOWN` is explicit and is never treated as zero.
 
-## External evidence trust root
+## External evidence and completeness trust roots
 
-External term/outcome evidence is not trusted because a packet labels itself a bounty, paid work, or settled. Every `term_evidence` and `outcome_evidence` row carries an `auth_tag_hex`: HMAC-SHA256 over the complete normalized row (including exact work ID/generation, source ID/SHA, class/kind, observation/currentness, and economics) under the **host-retained** `PAYOFF_PATH_EVIDENCE_AUTHORITY_KEY_HEX` capability. The 32-byte lowercase-hex key is read only from the host environment; it is never accepted from packet/API/CLI arguments and is never emitted. A relabel, source remint, work transplant, outcome change, or economics mutation invalidates the tag. Receipts retain only SHA-256 of the active authority key so key-generation changes are visible without exposing the key.
+A packet does not become bounty, paid-work, settled, duplicate-free, or complete merely by labeling itself that way.
 
-The compiler intentionally does **not** include a signing command. An evidence authority must authenticate source facts outside the packet-ingest path, then issue the tag. Without the host capability, any packet containing external term/outcome evidence fails closed. Bounded `STRATEGIC_UNPAID` and plan-only `PRODUCT_CONVERSION` packets need no external-evidence key because they do not claim external compensation/outcome facts.
+Every external `term_evidence` and `outcome_evidence` row carries `auth_tag_hex`: HMAC-SHA256 over the complete normalized row under the **host-retained** `PAYOFF_PATH_EVIDENCE_AUTHORITY_KEY_HEX` capability. The tag binds exact work ID/generation, source ID/SHA, class/kind, observation/currentness, and economics. Relabeling, reminting, transplanting, or changing economics without an authority retag fails closed.
 
-`PRODUCT_CONVERSION` without authenticated cash terms and every `STRATEGIC_UNPAID` lane require a nonempty conversion milestone, a strictly positive effort ceiling, and an expiry/review boundary. The compiler validates retained structure/provenance; it **does not establish that a milestone is realistic, likely, externally accepted, or economically attractive**.
+Positive readiness also depends on negative-space evidence: no omitted settlement, duplicate/custody conflict, or contradictory term. Therefore `evidence_scope_status = COMPLETE` is never trusted by itself. A COMPLETE packet must carry a host-authenticated `scope_attestation` binding:
 
-Settled outcome for the exact work generation dominates attractive payoff evidence. An active duplicate/custody conflict also blocks a positive state. Current verification re-evaluates expiry/staleness against a process-clock capability captured when the module API is built; assigning a later module `_NOW` name cannot rewind current verification.
+- exact `subject_work_id` and `subject_generation_sha256`;
+- an exact census-source ID and SHA-256 generation;
+- SHA-256 of the complete term/outcome evidence census, including row authentication tags;
+- observation time and validity boundary.
 
-Positive states are internal policy states only. Authority is emitted from source-literal exact-false booleans and verified with exact bool type identity; it does not authorize contact, Muse election/consume, acceptance of terms, contract/signature, bounty/competition submission, invoice/receivable creation, payment/funds movement, cash or revenue claims, tax/accounting conclusions, or provider/account mutation. The implementation performs no network I/O.
+Removing only a signed adverse row changes the census digest and invalidates the completeness attestation even though all remaining row tags still verify. Missing, forged, stale, expired, future, wrong-subject, or wrong-census completeness authority yields `HOLD_INCOMPLETE_EVIDENCE`. `PARTIAL` packets cannot carry a completeness attestation and also hold incomplete.
+
+The host key is never accepted from packet/API/CLI arguments and is never emitted. Receipts retain only SHA-256 of the active key. The compiler intentionally has no signing CLI: an evidence authority must authenticate source facts and census completeness outside the packet-ingest path, then issue the tags.
+
+## Bounded strategic/product conversion
+
+`PRODUCT_CONVERSION` without authenticated cash terms and every `STRATEGIC_UNPAID` lane require a nonempty conversion milestone, a strictly positive effort ceiling, and an expiry/review boundary. A positive plan-only state still requires authenticated census completeness, because readiness depends on the absence of settlement/duplicate/conflicting evidence. The compiler validates retained structure/provenance; it **does not establish that a milestone is realistic, likely, externally accepted, or economically attractive**.
+
+Exact-generation `SETTLED` dominates attractive payoff evidence. An active duplicate/custody conflict also blocks readiness. Current verification re-evaluates row and completeness currentness against a process-clock capability captured when the public API is built; assigning a later module `_NOW` name cannot rewind it.
+
+## Strict ingress
+
+Both parsed JSON and direct Python-object ingress are bounded before policy evaluation:
+
+- exact built-in JSON types only;
+- duplicate-key, float/nonfinite, unsafe integer, invalid UTF-8/lone-surrogate refusal;
+- per-container row bound;
+- maximum JSON nesting depth and total graph-node budget;
+- recursive overflow normalized to `GateError` rather than leaking raw `RecursionError`.
+
+Canonicalization and trust-bearing validators/compilers retain their intended dependency generation rather than re-resolving mutable module globals.
+
+## Authority ceiling
+
+Positive states are internal policy states only. Authority is emitted from source-literal exact-false booleans and verified with exact bool type identity. It does not authorize contact, Muse election/consume, acceptance of terms, contract/signature, bounty/competition submission, invoice/receivable creation, payment/funds movement, cash or revenue claims, tax/accounting conclusions, or provider/account mutation. The implementation performs no network I/O.
 
 ## CLI
 
@@ -24,4 +51,4 @@ python -m revenue.payoff_path_ledger verify-integrity packet.json receipt.json
 python -m revenue.payoff_path_ledger verify-current packet.json receipt.json
 ```
 
-`compile` uses create-exclusive output and refuses to overwrite an existing file. `example.json` demonstrates the no-external-evidence bounded strategic path and therefore runs without the host HMAC capability.
+`compile` uses create-exclusive output and refuses to overwrite an existing file. `example.json` is intentionally a no-secret `PARTIAL` strategic packet; it compiles to `HOLD_INCOMPLETE_EVIDENCE`, demonstrating that a local caller cannot mint completeness without evidence-authority participation.
