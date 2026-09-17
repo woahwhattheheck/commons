@@ -167,6 +167,7 @@ jobs:
           revenue/organization_outbound_chain/__init__.py
           revenue/organization_outbound_chain/chain.py
           revenue/organization_outbound_chain/adapters.py
+          revenue/organization_outbound_chain/provider_boundary.py
           revenue/organization_outbound_chain/registry.py
           tests/test_organization_outbound_chain.py
       - name: Organization outbound chain hostile and registry tests
