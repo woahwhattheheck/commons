@@ -7,6 +7,7 @@ from revenue.procurement_runway_gate.engine import (
     canonical_json_bytes as runway_bytes,
     compile_gate as compile_runway,
     make_receipt as runway_receipt,
+    validate_input as normalize_runway,
     verify_bundle as verify_runway,
 )
 
@@ -65,9 +66,10 @@ def _state(partner, gates, sources, runway, as_of, selected, controls_current):
 def compile_qualification(raw: Any) -> dict[str, Any]:
     doc = normalize_input(raw)
     try:
-        upstream = compile_runway(doc["runway_input"])
+        runway_doc = normalize_runway(doc["runway_input"])
+        upstream = compile_runway(runway_doc)
         upstream_receipt = runway_receipt(upstream)
-        verify_runway(doc["runway_input"], upstream, upstream_receipt)
+        verify_runway(runway_doc, upstream, upstream_receipt)
     except Exception as exc:
         raise QualificationError("runway bundle failed semantic recompilation") from exc
     rows = upstream.get("opportunities")
@@ -98,6 +100,7 @@ def compile_qualification(raw: Any) -> dict[str, Any]:
             **AUTHORITY_FALSE,
         })
     binding = {
+        "runway_input_sha256": hashlib.sha256(runway_bytes(runway_doc)).hexdigest(),
         "runway_output_schema": upstream.get("schema"),
         "runway_output_sha256": hashlib.sha256(runway_bytes(upstream)).hexdigest(),
         "runway_receipt_sha256": digest(upstream_receipt),
@@ -128,6 +131,7 @@ def make_receipt(raw_input: Any, output: dict[str, Any]) -> dict[str, Any]:
         "output_sha256": digest(output),
         "opportunity_id": doc["opportunity_id"],
         "as_of": doc["as_of"],
+        "runway_input_sha256": output["runway_binding"]["runway_input_sha256"],
         "runway_output_sha256": output["runway_binding"]["runway_output_sha256"],
         "runway_receipt_sha256": output["runway_binding"]["runway_receipt_sha256"],
         **AUTHORITY_FALSE,

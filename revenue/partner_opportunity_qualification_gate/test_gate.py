@@ -108,6 +108,15 @@ class QualificationGateTests(unittest.TestCase):
     newout=compile_qualification(q)
     with self.assertRaises(QualificationError): verify_bundle(q,newout,old)
 
+  def test_upstream_input_generation_remint_changes_binding_even_if_runway_output_same(self):
+    p=packet(); out=compile_qualification(p); old=make_receipt(p,out)
+    q=copy.deepcopy(p)
+    q['runway_input']['opportunities'][0]['mandatory_delivery_window_days']=10
+    newout=compile_qualification(q)
+    self.assertEqual(out['runway_binding']['runway_output_sha256'],newout['runway_binding']['runway_output_sha256'])
+    self.assertNotEqual(out['runway_binding']['runway_input_sha256'],newout['runway_binding']['runway_input_sha256'])
+    with self.assertRaises(QualificationError): verify_bundle(q,out,old)
+
   def test_control_source_must_match_runway(self):
     p=packet(); p['sources'][0]['url']='https://attacker.example/rfp.pdf'
     with self.assertRaises(QualificationError): compile_qualification(p)

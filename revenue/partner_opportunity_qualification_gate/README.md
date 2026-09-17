@@ -70,7 +70,7 @@ The phase, requirement text, and required evidence kind are retained owner inter
 
 ## Upstream runway composition
 
-The input embeds exactly one ordinary `procurement-runway-gate-input/v1` packet. This compiler invokes the canonical upstream compiler, creates its deterministic receipt, runs the upstream semantic verifier, and binds both upstream output and receipt SHA-256 values into the qualification output and receipt.
+The input embeds exactly one ordinary `procurement-runway-gate-input/v1` packet. This compiler normalizes the exact upstream runway input document, invokes the canonical upstream compiler, creates its deterministic receipt, runs the upstream semantic verifier, and binds the normalized upstream input, upstream output, and upstream receipt SHA-256 values into the qualification output and receipt. A semantic runway-input generation change therefore cannot replay an older qualification receipt merely because it happens to compile to the same runway output.
 
 The qualification packet's `as_of` and `opportunity_id` must match that upstream packet exactly.
 
@@ -135,4 +135,4 @@ python -O -m unittest -v revenue.partner_opportunity_qualification_gate.test_gat
 python -m unittest -v test_partner_opportunity_qualification_gate.py
 ```
 
-The hostile suite covers source-digest remint, solicitation-source transplant, stale source/evidence, registration requirement-vs-completion separation, generic partner evidence attempting to mint registration completion, cross-partner SAM/registration evidence transplant, orphan/nonpartner subject claims, source identity retyping/rebinding, missing/invalid gate evidence-kind declarations, cross-kind gate evidence transplant, unknown/expired registration, unknown pre-outreach gates, DNR dominance, missing paid seam, missing/duplicate gates, strict integer typing, duplicate JSON keys, order invariance, semantic receipt verification, and the separate capacity-question state.
+The hostile suite covers upstream-input generation remint with unchanged runway output, source-digest remint, solicitation-source transplant, stale source/evidence, registration requirement-vs-completion separation, generic partner evidence attempting to mint registration completion, cross-partner SAM/registration evidence transplant, orphan/nonpartner subject claims, source identity retyping/rebinding, missing/invalid gate evidence-kind declarations, cross-kind gate evidence transplant, unknown/expired registration, unknown pre-outreach gates, DNR dominance, missing paid seam, missing/duplicate gates, strict integer typing, duplicate JSON keys, order invariance, semantic receipt verification, and the separate capacity-question state.
