@@ -1,6 +1,10 @@
 from __future__ import annotations
 
+from copy import deepcopy
+from datetime import datetime
 import dis
+import json
+from pathlib import Path
 import types
 import unittest
 
@@ -14,6 +18,9 @@ ROOTS = (
     carrier.source_manifest_digest,
     carrier.example_owner_input,
     carrier.loads_strict,
+)
+BOUNDARY = json.loads(
+    Path(__file__).with_name("INTEGRITY_BOUNDARY.json").read_text(encoding="utf-8")
 )
 
 
@@ -42,15 +49,39 @@ def _carrier_functions():
     return found
 
 
-def _freevar(fn: types.FunctionType, name: str):
+def _cell(fn: types.FunctionType, name: str):
     closure = fn.__closure__ or ()
     cells = dict(zip(fn.__code__.co_freevars, closure))
     if name not in cells:
         raise AssertionError(f"{fn.__qualname__} has no freevar {name!r}")
-    return cells[name].cell_contents
+    return cells[name]
+
+
+def _freevar(fn: types.FunctionType, name: str):
+    return _cell(fn, name).cell_contents
 
 
 class SemanticGenerationTest(unittest.TestCase):
+    def test_boundary_contract_is_explicitly_cooperative_only(self):
+        self.assertEqual(
+            BOUNDARY["public_api_boundary"],
+            "COOPERATIVE_IN_PROCESS_ONLY_NOT_HOSTILE_RUNTIME",
+        )
+        self.assertTrue(BOUNDARY["resists_module_global_rebinding"])
+        self.assertTrue(BOUNDARY["resists_helper_symbol_rebinding"])
+        self.assertTrue(
+            BOUNDARY["resists_public_compiler_symbol_rebinding_in_verifier"]
+        )
+        self.assertFalse(BOUNDARY["resists_cpython_closure_cell_mutation"])
+        self.assertFalse(BOUNDARY["hostile_same_process_python_supported"])
+        self.assertFalse(BOUNDARY["machine_strong_same_process_integrity_claimed"])
+        self.assertFalse(BOUNDARY["externally_isolated_source_verified_runner_provided"])
+        self.assertEqual(
+            BOUNDARY["caller_supplied_evaluation_time"],
+            "REPLAY_ONLY_NOT_CURRENT",
+        )
+        self.assertFalse(BOUNDARY["current_submission_authority_claimed"])
+
     def test_reachable_runtime_generation_has_no_global_opcode(self):
         offenders = []
         for fn in _carrier_functions():
@@ -86,7 +117,7 @@ class SemanticGenerationTest(unittest.TestCase):
         ]
         self.assertEqual(exported_aliases, [])
 
-    def test_global_namespace_poison_does_not_change_bytecode_proven_packet(self):
+    def test_global_namespace_poison_does_not_change_cooperative_generation(self):
         owner = complete_input()
         baseline = carrier.compile_packet(owner)
         poison = {
@@ -111,6 +142,78 @@ class SemanticGenerationTest(unittest.TestCase):
                     delattr(carrier, name)
                 else:
                     setattr(carrier, name, value)
+
+    def test_closure_cell_source_digest_can_self_remint_only_inside_unsupported_hostile_runtime(self):
+        compile_impl = _freevar(carrier.compile_packet, "compile_impl")
+        source_cell = _cell(compile_impl, "source_digest")
+        original = source_cell.cell_contents
+        forged = "0" * 64
+        owner = complete_input()
+        owner["source_manifest_digest"] = forged
+        try:
+            source_cell.cell_contents = forged
+            packet = carrier.compile_packet(owner)
+            self.assertEqual(packet["source_manifest_digest"], forged)
+            self.assertTrue(carrier.verify_packet(packet, owner))
+            self.assertFalse(BOUNDARY["resists_cpython_closure_cell_mutation"])
+            self.assertFalse(BOUNDARY["hostile_same_process_python_supported"])
+        finally:
+            source_cell.cell_contents = original
+        self.assertEqual(carrier.source_manifest_digest(), original)
+
+    def test_closure_cell_buyer_route_can_self_remint_only_inside_unsupported_hostile_runtime(self):
+        compile_impl = _freevar(carrier.compile_packet, "compile_impl")
+        route_cell = _cell(compile_impl, "buyer_submission_email")
+        original = route_cell.cell_contents
+        forged = "attacker@example.test"
+        owner = complete_input()
+        owner["submission"]["email"] = forged
+        try:
+            route_cell.cell_contents = forged
+            packet = carrier.compile_packet(owner)
+            self.assertEqual(packet["buyer"]["submission_email"], forged)
+            self.assertNotIn("SUBMISSION_METADATA_MISMATCH", packet["blockers"])
+            self.assertTrue(carrier.verify_packet(packet, owner))
+            self.assertFalse(BOUNDARY["machine_strong_same_process_integrity_claimed"])
+        finally:
+            route_cell.cell_contents = original
+
+    def test_closure_cell_deadline_can_reopen_replay_only_inside_unsupported_hostile_runtime(self):
+        compile_impl = _freevar(carrier.compile_packet, "compile_impl")
+        deadline_cell = _cell(compile_impl, "deadline")
+        original = deadline_cell.cell_contents
+        owner = complete_input()
+        owner["evaluated_at"] = "2026-10-02T10:00:00-04:00"
+        baseline = carrier.compile_packet(owner)
+        self.assertIn("PROPOSAL_DEADLINE_PASSED", baseline["blockers"])
+        try:
+            deadline_cell.cell_contents = datetime.fromisoformat(
+                "2099-12-31T23:59:59-04:00"
+            )
+            packet = carrier.compile_packet(owner)
+            self.assertNotIn("PROPOSAL_DEADLINE_PASSED", packet["blockers"])
+            self.assertEqual(
+                packet["evaluation_time_authority"],
+                "CALLER_SUPPLIED_REPLAY_ONLY_NOT_CURRENT",
+            )
+            self.assertFalse(packet["current_deadline_readiness_claimed"])
+            self.assertTrue(carrier.verify_packet(packet, owner))
+            self.assertFalse(BOUNDARY["hostile_same_process_python_supported"])
+        finally:
+            deadline_cell.cell_contents = original
+
+    def test_public_compiler_symbol_rebinding_still_does_not_change_verifier(self):
+        owner = complete_input()
+        baseline = carrier.compile_packet(owner)
+        forged = deepcopy(baseline)
+        forged["authority"]["submission_authorized"] = True
+        original = carrier.compile_packet
+        try:
+            carrier.compile_packet = lambda ignored: forged
+            self.assertTrue(carrier.verify_packet(baseline, owner))
+            self.assertFalse(carrier.verify_packet(forged, owner))
+        finally:
+            carrier.compile_packet = original
 
 
 if __name__ == "__main__":
