@@ -10,16 +10,14 @@ from revenue.quiet_carrier_deadline_sweep.sweep import SweepError, compile_sweep
 HERE = pathlib.Path(__file__).resolve().parents[1]
 FIX = HERE / "candidates.json"
 
-
 def payload():
     return json.loads(FIX.read_text())
-
 
 class SweepTests(unittest.TestCase):
     def test_impo_ranks_first_and_snoco_second(self):
         out = compile_sweep(payload())
         self.assertEqual([x["id"] for x in out["ranked_actionability"]], ["IMPO-MTP2055-2026", "SNOCO-RFP-26-0791BC"])
-        self.assertEqual([x["rank"] for x in out["ranked_actionability"]], [1, 2])
+        self.assertEqual([x["rank"] for x in out["ranked_actionability"]], [1,2])
 
     def test_active_usac_is_excluded(self):
         out = compile_sweep(payload())
@@ -82,7 +80,7 @@ class SweepTests(unittest.TestCase):
 
     def test_deterministic_digest(self):
         a = compile_sweep(payload()); b = compile_sweep(payload())
-        self.assertEqual(a, b)
+        self.assertEqual(a,b)
         self.assertRegex(a["input_digest_sha256"], r"^[0-9a-f]{64}$")
 
     def test_markdown_contains_required_columns(self):
@@ -97,6 +95,4 @@ class SweepTests(unittest.TestCase):
         self.assertEqual(proc.returncode, 0, proc.stderr)
         self.assertEqual(json.loads(proc.stdout)["ranked_actionability"][0]["id"], "IMPO-MTP2055-2026")
 
-
-if __name__ == "__main__":
-    unittest.main()
+if __name__ == "__main__": unittest.main()
