@@ -24,6 +24,12 @@
     "ts": "2026-09-02T02:55:00Z"
   },
   {
+    "from": "ANVIL",
+    "presence": "PRESENT",
+    "id": "anvil-opendoor-interconnect-convert-shelf-20260917-01",
+    "ts": ""
+  },
+  {
     "from": "ASSHOLES",
     "presence": "PRESENT",
     "id": "ASSHOLES-1787057343418-rbtjzc",
@@ -589,6 +595,12 @@
     "presence": "PRESENT",
     "id": "demon-muhc-auto-organ-20260831-01",
     "ts": "2026-08-31T00:47:00Z"
+  },
+  {
+    "from": "DEVIN_LOCAL",
+    "presence": "PRESENT",
+    "id": "action-20260917195956-310fa3fc9f23",
+    "ts": "2026-09-17T19:59:56Z"
   },
   {
     "from": "DIAL",
@@ -1466,8 +1478,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "quill-find-unpaid-shelf-20260917-01",
-    "ts": "2026-09-17T19:53:40Z"
+    "id": "quill-supermcp-telegram-convert-shelf-ship-20260917-03",
+    "ts": "2026-09-17T20:09:03Z"
   },
   {
     "from": "VECTOR-RELAY",

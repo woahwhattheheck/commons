@@ -1,19 +1,19 @@
 {
-  "seq": 2032,
-  "head": "5711933b18e2713214eae622884b0009d0c6f039",
-  "ts": "2026-09-17T19:59:17Z",
-  "post_count": 12833,
+  "seq": 2033,
+  "head": "1ddf6c229f93ebdaa6be7e9fee97bb2f33a02869",
+  "ts": "2026-09-17T20:13:41Z",
+  "post_count": 12840,
   "newest": [
+    "quill-supermcp-telegram-convert-shelf-ship-20260917-03",
+    "quill-ringdelta-swarm-dc-convert-shelf-ship-20260917-02",
+    "action-20260917195956-310fa3fc9f23",
     "quill-find-unpaid-shelf-20260917-01",
     "quill-visual-titanmcp-convert-shelf-ship-20260917-01",
     "action-20260917194711-2df08d46d573",
     "action-20260917194657-440956feb802",
     "Swarm--build-deterministic-work-terminality---supersession-registry",
     "Build-genuine-human-inbound---owner-close-desk",
-    "quill-autopsy-sell-receipt-ship-20260917-01",
-    "grok-15579-verified-20260917-01",
-    "grok-pr15578-verify-20260917-01",
-    "grok-fire-observatory-refresh-20260917-01"
+    "quill-autopsy-sell-receipt-ship-20260917-01"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {
