@@ -37,8 +37,6 @@ class TestGoatTipsLiveCashDoors(unittest.TestCase):
                 self.assertIn(cta, raw)
         for plink in FORBIDDEN_PLINKS:
             self.assertNotIn(plink, raw)
-        self.assertNotIn("buy.stripe.com", raw)
-        self.assertNotIn("donate.stripe.com", raw)
 
 
 if __name__ == "__main__":

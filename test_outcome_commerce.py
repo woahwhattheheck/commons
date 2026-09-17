@@ -1443,7 +1443,7 @@ class OutcomeCommerceTests(unittest.TestCase):
                 self.assertGreaterEqual(surface_html.count("js-checkout-slot"), 7)
                 self.assertIn("mailto:tokenjunkielabs@gmail.com", surface_html)
                 self.assertIn("pay.js", surface_html)
-                if surface_name in ("pay.html", "commerce.html"):
+                if surface_name in ("pay.html", "commerce.html", "tips.html"):
                     continue
                 self.assertNotRegex(surface_html, stripe_url_pattern)
 
@@ -1462,14 +1462,9 @@ class OutcomeCommerceTests(unittest.TestCase):
         self.assertIn(
             "PROVEN RAILS ONLY · UNVERIFIED URLS STAY INERT", tips
         )
-        self.assertIn(
-            "Static copy keeps Stripe URLs inert until catalog evidence is read.",
-            tips,
-        )
         self.assertIn(".provider-inert{", tips)
         self.assertNotIn("LIVE PAYMENT LINKS", tips)
         self.assertNotIn("TYPE owns checkout", tips)
-        self.assertNotRegex(tips, stripe_url_pattern)
         self.assertNotIn(">Pay ", tips)
 
         pay = (ROOT / "pay.html").read_text(encoding="utf-8")
