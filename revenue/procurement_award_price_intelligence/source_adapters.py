@@ -381,7 +381,7 @@ def compile(raw: bytes):
     if not isinstance(request["documents"], list) or not request["documents"]:
         raise Error("documents: non-empty list required")
     sources, observations, holds, audits = [], [], [], []
-    seen_sources, seen_raw_sources = set(), set()
+    seen_sources, seen_raw_sources, seen_payloads = set(), set(), set()
     for index, document in enumerate(request["documents"]):
         where = f"documents[{index}]"
         _keys(document, ("adapter", "source", "payload_sha256", "payload"), where)
@@ -401,6 +401,9 @@ def compile(raw: bytes):
         payload_sha = _sha(document["payload_sha256"], where + ".payload_sha256")
         if payload_sha != digest(canon(payload)):
             raise Error(where + ": payload_sha256 mismatch")
+        if payload_sha in seen_payloads:
+            raise Error(where + ": duplicate structured source payload")
+        seen_payloads.add(payload_sha)
         sources.append(source)
         emitted = _HANDLER[adapter](source, payload, holds)
         observations.extend(emitted)
