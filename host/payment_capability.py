@@ -163,6 +163,8 @@ CONVERT_SHELF_LIVE_BUYS = {
     "the-world.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "fleet-work-order.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "image-drop.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "muhl-train.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "post-http.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -303,6 +305,8 @@ PUBLIC_HTML = (
     "the-world.html",
     "fleet-work-order.html",
     "image-drop.html",
+    "muhl-train.html",
+    "post-http.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
