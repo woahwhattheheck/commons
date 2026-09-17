@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+from datetime import date, datetime, timedelta, timezone
 import hashlib
 import json
 import os
@@ -8,6 +9,7 @@ from pathlib import Path
 import stat
 import sys
 from typing import Any
+from zoneinfo import ZoneInfo
 
 SOURCE_SCHEMA = "nhdes_lims_2026_093.source.v1"
 CANDIDATE_SCHEMA = "nhdes_lims_2026_093.partner_candidate.v1"
@@ -15,6 +17,9 @@ RECEIPT_SCHEMA = "nhdes_lims_2026_093.teaming_receipt.v1"
 OPPORTUNITY_ID = "RFP NHDES/DoIT 2026-093"
 MAX_INPUT_BYTES = 256 * 1024
 MAX_RECEIPT_BYTES = 512 * 1024
+MAX_STATE_AGE_SECONDS = 24 * 60 * 60
+MAX_CLOCK_SKEW_SECONDS = 5 * 60
+BUYER_TIMEZONE = "America/New_York"
 
 AUTHORITY = {
     "buyer_contact_authorized": False,
@@ -69,6 +74,7 @@ EXPECTED_CANDIDATE = {
     "official_contact_url": "https://www.lablynx.com/contact-us/",
 }
 
+EXPECTED_COLLISION_OPERATION = "ALBERTA-AB-2026-06140-LABLYNX-PARTNER-CONVERSION-ZSOL-20260917"
 REQUIRED_CANDIDATE_URLS = frozenset(
     {
         "https://www.lablynx.com/resources/case-studies/lims-vendor-security-audit/",
@@ -77,7 +83,6 @@ REQUIRED_CANDIDATE_URLS = frozenset(
         "https://www.lablynx.com/contact-us/",
     }
 )
-
 REQUIRED_GAPS = frozenset(
     {
         "pursuing_nhdes_2026_093",
@@ -130,11 +135,7 @@ def _reject_constant(token: str) -> Any:
 def parse_json_bytes(raw: bytes, *, where: str) -> Any:
     try:
         text = raw.decode("utf-8", "strict")
-        value = json.loads(
-            text,
-            object_pairs_hook=_pairs,
-            parse_constant=_reject_constant,
-        )
+        value = json.loads(text, object_pairs_hook=_pairs, parse_constant=_reject_constant)
         canonical_json(value)
         return value
     except CarrierError:
@@ -213,6 +214,27 @@ def _all_false(value: Any, expected_keys: set[str], where: str) -> None:
         raise CarrierError(f"{where} must remain all false")
 
 
+def _aware_timestamp(value: Any, where: str) -> datetime:
+    if type(value) is not str or not value or len(value) > 40:
+        raise CarrierError(f"{where} must be an offset-aware ISO timestamp")
+    try:
+        parsed = datetime.fromisoformat(value)
+    except ValueError as exc:
+        raise CarrierError(f"{where} must be an offset-aware ISO timestamp") from exc
+    if parsed.tzinfo is None or parsed.utcoffset() is None:
+        raise CarrierError(f"{where} must include a UTC offset")
+    return parsed.astimezone(timezone.utc)
+
+
+def _response_due_date(value: Any) -> date:
+    if type(value) is not str:
+        raise CarrierError("opportunity.response_due must be YYYY-MM-DD")
+    try:
+        return date.fromisoformat(value)
+    except ValueError as exc:
+        raise CarrierError("opportunity.response_due must be YYYY-MM-DD") from exc
+
+
 def validate_source(value: Any) -> dict[str, Any]:
     source = _exact_dict(
         value,
@@ -232,10 +254,10 @@ def validate_source(value: Any) -> dict[str, Any]:
         raise CarrierError("source schema mismatch")
     if source["source_state"] != "RAW_PACKET_NOT_ACQUIRED":
         raise CarrierError("source state must remain RAW_PACKET_NOT_ACQUIRED")
-    if type(source["checked_at"]) is not str or not source["checked_at"]:
-        raise CarrierError("source checked_at missing")
+    _aware_timestamp(source["checked_at"], "source.checked_at")
     if source["opportunity"] != EXPECTED_OPPORTUNITY:
         raise CarrierError("opportunity binding mismatch")
+    _response_due_date(source["opportunity"]["response_due"])
     if source["buyer_need"] != EXPECTED_BUYER_NEED:
         raise CarrierError("buyer need binding mismatch")
     if source["reported_bidder_requirements"] != EXPECTED_REPORTED_GATES:
@@ -265,19 +287,19 @@ def validate_candidate(value: Any) -> dict[str, Any]:
         value,
         {
             "schema",
-            "checked_at",
+            "evidence_checked_before",
             "candidate",
             "first_party_evidence",
             "qualification_gaps",
             "collision_preflight",
+            "current_collision",
             "external_authority",
         },
         "candidate_snapshot",
     )
     if candidate["schema"] != CANDIDATE_SCHEMA:
         raise CarrierError("candidate schema mismatch")
-    if type(candidate["checked_at"]) is not str or not candidate["checked_at"]:
-        raise CarrierError("candidate checked_at missing")
+    evidence_before = _aware_timestamp(candidate["evidence_checked_before"], "candidate.evidence_checked_before")
     if candidate["candidate"] != EXPECTED_CANDIDATE:
         raise CarrierError("candidate identity binding mismatch")
 
@@ -296,7 +318,7 @@ def validate_candidate(value: Any) -> dict[str, Any]:
         raise CarrierError("candidate evidence URL set mismatch")
 
     gaps = _exact_dict(candidate["qualification_gaps"], set(REQUIRED_GAPS), "qualification_gaps")
-    if any(value != "UNVERIFIED" for value in gaps.values()):
+    if any(item != "UNVERIFIED" for item in gaps.values()):
         raise CarrierError("candidate qualification gaps must remain UNVERIFIED")
 
     collision = _exact_dict(
@@ -312,11 +334,38 @@ def validate_candidate(value: Any) -> dict[str, Any]:
     )
     for key in ("slack_exact_history", "gmail_exact_history", "owned_github_exact_history"):
         if type(collision[key]) is not int or collision[key] != 0:
-            raise CarrierError(f"{key} must be exact zero at retained preflight")
+            raise CarrierError(f"{key} must be exact zero in the retained historical preflight")
     if collision["requires_fresh_last_inch_recensus"] is not True:
         raise CarrierError("last-inch recensus must be required")
     if collision["requires_muse_single_writer_clearance"] is not True:
         raise CarrierError("Muse clearance must be required")
+
+    current = _exact_dict(
+        candidate["current_collision"],
+        {
+            "status",
+            "observed_at",
+            "same_org",
+            "same_route",
+            "competing_operation",
+            "muse_arbitration_ts",
+            "muse_resolution",
+        },
+        "current_collision",
+    )
+    if current["status"] != "ACTIVE_ORG_ROUTE_COLLISION_HOLD":
+        raise CarrierError("current collision must remain an active HOLD in this generation")
+    observed = _aware_timestamp(current["observed_at"], "current_collision.observed_at")
+    if evidence_before > observed:
+        raise CarrierError("historical preflight must precede the observed collision")
+    if current["same_org"] is not True or current["same_route"] is not True:
+        raise CarrierError("current collision must bind same organization and route")
+    if current["competing_operation"] != EXPECTED_COLLISION_OPERATION:
+        raise CarrierError("current collision competing operation mismatch")
+    if type(current["muse_arbitration_ts"]) is not str or not current["muse_arbitration_ts"]:
+        raise CarrierError("current collision Muse arbitration receipt missing")
+    if current["muse_resolution"] != "PENDING":
+        raise CarrierError("current collision Muse resolution must remain PENDING in this generation")
 
     _all_false(
         candidate["external_authority"],
@@ -333,9 +382,70 @@ def validate_candidate(value: Any) -> dict[str, Any]:
     return candidate
 
 
+def _now_utc() -> datetime:
+    return datetime.now(timezone.utc)
+
+
+def evaluate_runtime_state(source: dict[str, Any], candidate: dict[str, Any], *, now: datetime) -> list[str]:
+    """Return fail-closed runtime holds at a supplied trusted clock value.
+
+    Production compile/verify never accept a caller clock; they call _now_utc().
+    Tests use this pure helper to pin stale/future/deadline predecessors.
+    """
+    validate_source(source)
+    validate_candidate(candidate)
+    if now.tzinfo is None or now.utcoffset() is None:
+        raise CarrierError("runtime now must be timezone-aware")
+    now_utc = now.astimezone(timezone.utc)
+    future_limit = now_utc + timedelta(seconds=MAX_CLOCK_SKEW_SECONDS)
+    source_checked = _aware_timestamp(source["checked_at"], "source.checked_at")
+    evidence_before = _aware_timestamp(candidate["evidence_checked_before"], "candidate.evidence_checked_before")
+    collision_observed = _aware_timestamp(candidate["current_collision"]["observed_at"], "current_collision.observed_at")
+
+    holds: list[str] = []
+    if source_checked > future_limit:
+        holds.append("SOURCE_STATE_FUTURE")
+    elif now_utc - source_checked > timedelta(seconds=MAX_STATE_AGE_SECONDS):
+        holds.append("SOURCE_STATE_STALE")
+
+    if evidence_before > future_limit:
+        holds.append("CANDIDATE_EVIDENCE_FUTURE")
+    elif now_utc - evidence_before > timedelta(seconds=MAX_STATE_AGE_SECONDS):
+        holds.append("CANDIDATE_EVIDENCE_STALE")
+
+    if collision_observed > future_limit:
+        holds.append("COLLISION_STATE_FUTURE")
+    elif now_utc - collision_observed > timedelta(seconds=MAX_STATE_AGE_SECONDS):
+        holds.append("COLLISION_STATE_STALE")
+
+    due = _response_due_date(source["opportunity"]["response_due"])
+    buyer_day = now_utc.astimezone(ZoneInfo(BUYER_TIMEZONE)).date()
+    if buyer_day > due:
+        holds.append("RESPONSE_DEADLINE_PASSED")
+
+    current = candidate["current_collision"]
+    if current["status"] == "ACTIVE_ORG_ROUTE_COLLISION_HOLD" or current["muse_resolution"] == "PENDING":
+        holds.append("ACTIVE_ORG_ROUTE_COLLISION_PENDING_MUSE")
+    return sorted(set(holds))
+
+
+def _posture_for(holds: list[str]) -> str:
+    held = set(holds)
+    if "RESPONSE_DEADLINE_PASSED" in held:
+        return "HOLD_RESPONSE_DEADLINE_PASSED"
+    if held & {"SOURCE_STATE_FUTURE", "CANDIDATE_EVIDENCE_FUTURE", "COLLISION_STATE_FUTURE"}:
+        return "HOLD_FUTURE_STATE_INVALID"
+    if held & {"SOURCE_STATE_STALE", "CANDIDATE_EVIDENCE_STALE", "COLLISION_STATE_STALE"}:
+        return "HOLD_STALE_SOURCE_OR_COLLISION_STATE"
+    if "ACTIVE_ORG_ROUTE_COLLISION_PENDING_MUSE" in held:
+        return "HOLD_ACTIVE_ORG_COLLISION_PENDING_MUSE"
+    return "READY_FOR_MUSE_GATED_PARTNER_INQUIRY_ONLY"
+
+
 def build_receipt(source: dict[str, Any], candidate: dict[str, Any]) -> dict[str, Any]:
     validate_source(source)
     validate_candidate(candidate)
+    runtime_holds = evaluate_runtime_state(source, candidate, now=_now_utc())
 
     body: dict[str, Any] = {
         "schema": RECEIPT_SCHEMA,
@@ -348,8 +458,15 @@ def build_receipt(source: dict[str, Any], candidate: dict[str, Any]) -> dict[str
             "canonical_packet_required_before_bid_or_registration": True,
             "fresh_official_source_recensus_required_before_external_action": True,
         },
+        "runtime_gate": {
+            "buyer_timezone": BUYER_TIMEZONE,
+            "response_due_date": source["opportunity"]["response_due"],
+            "max_state_age_seconds": MAX_STATE_AGE_SECONDS,
+            "max_clock_skew_seconds": MAX_CLOCK_SKEW_SECONDS,
+            "holds": runtime_holds,
+        },
         "prime_posture": "HOLD_RAW_PACKET_AND_EXTERNAL_PRIME_EVIDENCE",
-        "partner_conversion_posture": "READY_FOR_MUSE_GATED_PARTNER_INQUIRY_ONLY",
+        "partner_conversion_posture": _posture_for(runtime_holds),
         "candidate": {
             "name": EXPECTED_CANDIDATE["name"],
             "route": EXPECTED_CANDIDATE["route"],
@@ -358,6 +475,8 @@ def build_receipt(source: dict[str, Any], candidate: dict[str, Any]) -> dict[str
             "govramp_authorization": "UNVERIFIED",
             "nist_sp_800_171": "UNVERIFIED",
             "prime_willingness": "UNVERIFIED",
+            "current_collision_status": candidate["current_collision"]["status"],
+            "muse_resolution": candidate["current_collision"]["muse_resolution"],
         },
         "why_inquiry_is_grounded": [
             "candidate publishes a state-government LIMS security-audit case grounded in NIST CSF / SP 800-53",
@@ -423,7 +542,7 @@ def verify_receipt(receipt: Any, source: dict[str, Any], candidate: dict[str, An
         raise CarrierError("receipt must be an object")
     expected = build_receipt(source, candidate)
     if canonical_json(receipt) != canonical_json(expected):
-        raise CarrierError("receipt mismatch")
+        raise CarrierError("receipt mismatch or runtime gate changed")
 
 
 def write_exclusive(path: Path, value: Any) -> None:
