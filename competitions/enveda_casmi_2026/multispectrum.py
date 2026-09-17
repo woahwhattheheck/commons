@@ -1,6 +1,8 @@
 """Molecule-grouped multi-spectrum diagnostic baseline for Enveda CASMI 2026.
 
-Uses only SYNTHETIC/PUBLIC_OPEN fixtures. It cannot sign in, accept Kaggle
+Uses only SYNTHETIC fixtures. PUBLIC_OPEN is intentionally held until a
+reviewed adapter evidence-binds source identity, retained bytes, observation
+generation, and license/use class. This module cannot sign in, accept Kaggle
 rules, download gated data, submit, or claim eligibility/prizes/revenue.
 """
 from __future__ import annotations
@@ -180,8 +182,10 @@ def normalize_fixture(raw: Mapping[str, Any]) -> dict[str, Any]:
     }
     if type(raw) is not dict or set(raw) != expected or raw.get("schema") != FIXTURE_SCHEMA:
         raise MultiSpectrumError("multispectrum fixture shape/schema mismatch")
-    if raw["dataset_kind"] not in {"SYNTHETIC", "PUBLIC_OPEN"}:
-        raise MultiSpectrumError("competition-gated data is not admitted")
+    if raw["dataset_kind"] != "SYNTHETIC":
+        raise MultiSpectrumError(
+            "only SYNTHETIC fixtures are admitted until provenance and license are evidence-bound"
+        )
     fragment_tol = _number(raw["fragment_tolerance_da"], "fragment_tolerance_da")
     precursor_tol = _number(raw["precursor_tolerance_da"], "precursor_tolerance_da")
     if fragment_tol > 2 or precursor_tol > 20:
