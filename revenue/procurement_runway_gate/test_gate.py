@@ -113,7 +113,7 @@ class GateTests(unittest.TestCase):
         p = partner(state="EXPLICIT_LEAD_TIME_DAYS", lead=2)
         p["capacity"]["evidence_urls"] = []
         with self.assertRaises(GateError):
-            compile_gate(doc(opp(partners=[p]))
+            compile_gate(doc(opp(partners=[p])))
 
     def test_bad_date_rejected(self):
         bad = opp()
