@@ -28,10 +28,47 @@ EXPECTED_SOURCE_URLS = {
     "buyer_official": "https://www.westfield.ma.edu/offices/open-general-bids",
     "partner_public": "https://khowconsulting.com/",
 }
+EXPECTED_SOURCE_NOTES = {
+    "buyer_official": (
+        "Pinned public source identity only; compiler does not authenticate live "
+        "availability."
+    ),
+    "partner_public": (
+        "Pinned public profile identity only; not evidence of pursuit, partnership, "
+        "or solicitation-specific qualification."
+    ),
+}
 SOURCE_PROVENANCE_MODE = "PINNED_PUBLIC_IDENTITIES_NOT_LIVE_PROVIDER_AUTHENTICATED"
 
 ENTITY_KEY_POLICY = "CONSTITUENT_HOUSEHOLD_GROUP_BEFORE_SPLIT_V1"
 TIME_ANCHOR_POLICY = "FEATURES_KNOWABLE_AT_CUTOFF_OUTCOMES_STRICTLY_AFTER_V1"
+
+EXPECTED_DELIVERABLES = (
+    "source-to-feature provenance ledger",
+    "entity and household duplicate-control report",
+    "time-anchored training and holdout contract",
+    "calibration and ranked-lift acceptance report",
+    "reproducible model-card and handoff receipt",
+)
+EXPECTED_EXCLUSIONS = (
+    "buyer portal submission",
+    "prime responsibility",
+    "reference ownership",
+    "production-data custody",
+    "campaign strategy representation",
+)
+EXPECTED_HANDOFF_ARTIFACTS = (
+    "data dictionary/provenance map",
+    "split manifest",
+    "metric definitions",
+    "model/config digest",
+    "acceptance exception log",
+)
+EXPECTED_METRICS = {
+    "calibration": "brier_and_reliability",
+    "ranking": "lift_at_k",
+    "evaluation_split": "temporal_holdout",
+}
 
 REQUIRED_CHECKS = {
     "source_provenance",
@@ -145,6 +182,23 @@ def _expect_str_list(value: Any, where: str) -> list[str]:
     return out
 
 
+def _expect_exact_str_list(
+    value: Any,
+    expected: tuple[str, ...],
+    where: str,
+) -> list[str]:
+    if not isinstance(value, list) or len(value) != len(expected):
+        raise ContractError(
+            f"{where}: must equal the code-owned Westfield values in canonical order"
+        )
+    out = _expect_str_list(value, where)
+    if tuple(out) != expected:
+        raise ContractError(
+            f"{where}: must equal the code-owned Westfield values in canonical order"
+        )
+    return list(expected)
+
+
 def _validate_authority(authority: dict[str, Any]) -> None:
     _expect_keys(authority, required=AUTHORITY_KEYS, where="authority")
     for key in sorted(authority):
@@ -182,12 +236,12 @@ def _validate_sources(value: Any) -> list[dict[str, str]]:
             raise ContractError(f"sources[{i}]: must be object")
         _expect_keys(
             row,
-            required={"kind", "url"},
-            optional={"note"},
+            required={"kind", "url", "note"},
             where=f"sources[{i}]",
         )
         kind = _expect_str(row["kind"], f"sources[{i}].kind")
         url = _expect_str(row["url"], f"sources[{i}].url")
+        note = _expect_str(row["note"], f"sources[{i}].note")
         if kind in by_kind:
             raise ContractError(f"sources[{i}].kind: duplicate {kind!r}")
         if kind not in EXPECTED_SOURCE_URLS:
@@ -196,10 +250,11 @@ def _validate_sources(value: Any) -> list[dict[str, str]]:
             raise ContractError(
                 f"sources[{i}].url: does not match code-owned {kind!r} source"
             )
-        record = {"kind": kind, "url": url}
-        if "note" in row:
-            record["note"] = _expect_str(row["note"], f"sources[{i}].note")
-        by_kind[kind] = record
+        if note != EXPECTED_SOURCE_NOTES[kind]:
+            raise ContractError(
+                f"sources[{i}].note: must equal the code-owned {kind!r} boundary note"
+            )
+        by_kind[kind] = {"kind": kind, "url": url, "note": note}
 
     if set(by_kind) != set(EXPECTED_SOURCE_URLS):
         raise ContractError("sources: all code-owned source roles are required")
@@ -209,29 +264,20 @@ def _validate_sources(value: Any) -> list[dict[str, str]]:
 def _validate_metrics(metrics: dict[str, Any]) -> dict[str, str]:
     _expect_keys(
         metrics,
-        required={"calibration", "ranking", "evaluation_split"},
+        required=set(EXPECTED_METRICS),
         where="model_acceptance.metrics",
     )
-    calibration = _expect_str(
-        metrics["calibration"], "model_acceptance.metrics.calibration"
-    )
-    ranking = _expect_str(metrics["ranking"], "model_acceptance.metrics.ranking")
-    evaluation_split = _expect_str(
-        metrics["evaluation_split"], "model_acceptance.metrics.evaluation_split"
-    )
-    if calibration not in {"brier_and_reliability", "log_loss_and_reliability"}:
-        raise ContractError("model_acceptance.metrics.calibration: unsupported")
-    if ranking not in {"lift_at_k", "precision_recall_at_k"}:
-        raise ContractError("model_acceptance.metrics.ranking: unsupported")
-    if evaluation_split != "temporal_holdout":
-        raise ContractError(
-            "model_acceptance.metrics.evaluation_split: temporal_holdout required"
-        )
-    return {
-        "calibration": calibration,
-        "ranking": ranking,
-        "evaluation_split": evaluation_split,
+    normalized = {
+        key: _expect_str(metrics[key], f"model_acceptance.metrics.{key}")
+        for key in EXPECTED_METRICS
     }
+    for key, expected in EXPECTED_METRICS.items():
+        if normalized[key] != expected:
+            raise ContractError(
+                f"model_acceptance.metrics.{key}: "
+                "must equal the code-owned Westfield value"
+            )
+    return dict(EXPECTED_METRICS)
 
 
 def compile_acceptance(manifest: dict[str, Any]) -> dict[str, Any]:
@@ -290,10 +336,16 @@ def compile_acceptance(manifest: dict[str, Any]) -> dict[str, Any]:
         required={"deliverables", "exclusions"},
         where="workshare",
     )
-    deliverables = _expect_str_list(
-        workshare["deliverables"], "workshare.deliverables"
+    deliverables = _expect_exact_str_list(
+        workshare["deliverables"],
+        EXPECTED_DELIVERABLES,
+        "workshare.deliverables",
     )
-    exclusions = _expect_str_list(workshare["exclusions"], "workshare.exclusions")
+    exclusions = _expect_exact_str_list(
+        workshare["exclusions"],
+        EXPECTED_EXCLUSIONS,
+        "workshare.exclusions",
+    )
 
     model_acceptance = manifest["model_acceptance"]
     if not isinstance(model_acceptance, dict):
@@ -333,8 +385,9 @@ def compile_acceptance(manifest: dict[str, Any]) -> dict[str, Any]:
     if not isinstance(metrics, dict):
         raise ContractError("model_acceptance.metrics: must be object")
     normalized_metrics = _validate_metrics(metrics)
-    handoff = _expect_str_list(
+    handoff = _expect_exact_str_list(
         model_acceptance["handoff_artifacts"],
+        EXPECTED_HANDOFF_ARTIFACTS,
         "model_acceptance.handoff_artifacts",
     )
 

@@ -39,7 +39,7 @@ Deliverables:
 1. **Source-to-feature provenance ledger** — each candidate predictor bound to its source field, transformation, as-of date and allowed use.
 2. **Entity + household leakage controls** — constituent dedupe and household grouping before train/validation partitioning so the same donor unit cannot leak across folds.
 3. **Temporal validation contract** — features must be knowable at the historical scoring cutoff; gift/bequest outcomes must occur strictly after that cutoff.
-4. **Calibration + ranked-lift acceptance** — Brier/reliability plus lift-at-k (or precision/recall-at-k by agreement), not accuracy theater on an imbalanced outcome.
+4. **Calibration + ranked-lift acceptance** — Brier/reliability plus lift-at-k, not accuracy theater on an imbalanced outcome.
 5. **Reproducible handoff** — split manifest, metric definitions, model/config digest, exception ledger and a content-addressed acceptance receipt.
 
 Excluded unless separately contracted: buyer portal submission, campaign-strategy leadership, production-data custody, prime responsibility, reference ownership, buyer commitments, or independent certification.
@@ -51,7 +51,7 @@ The manifest uses closed policy IDs instead of free-form promises:
 - `CONSTITUENT_HOUSEHOLD_GROUP_BEFORE_SPLIT_V1`
 - `FEATURES_KNOWABLE_AT_CUTOFF_OUTCOMES_STRICTLY_AFTER_V1`
 
-The required-check set is exact, temporal holdout is mandatory, source roles/URLs are fixed, and receipt verification recompiles the full normalized plan. Notes remain descriptive only and cannot create live-provider authority.
+The required-check set is exact and temporal holdout is mandatory. Source roles, URLs, and their boundary notes are code-owned. The canonical deliverables, exclusions, handoff artifacts, and metric selections are also code-owned and order-bound. Caller prose cannot substitute a stronger award/payment/submission/data-access claim and then rehash it into a valid acceptance receipt. Receipt verification recompiles this full normalized plan.
 
 ## Executable contract
 
