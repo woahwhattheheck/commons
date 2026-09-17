@@ -15,6 +15,8 @@ For every source transaction whose source stage is in the policy's active set, t
 - required roles remain present;
 - active source transactions cannot disappear or point to a missing target row.
 
+Every supplied transaction-map row must resolve both endpoints to the retained source and target snapshots. The map may also contain valid mappings for inactive source transactions; those rows remain bound evidence, while `PARITY` evaluates only source transactions whose stages are in `active_source_stages`.
+
 The report binds the normalized semantics of the source generation, target generation, identity map, and policy by SHA-256. Array order is normalized before hashing, so reordering offices, agents, transactions, relationship rows, or identity-map rows does not change the report or receipt; IDs, generation numbers, mappings, values, stages, statuses, cents, and splits still do. `verify_report()` recompiles semantics and requires canonical report equality, so resealing a modified report is not sufficient.
 
 ## Truth boundary
@@ -27,7 +29,7 @@ A `PARITY` result means only that the supplied, internally valid offline generat
 
 ## Resource and publication custody
 
-CLI inputs must be strict canonical UTF-8 JSON. Duplicate keys, non-finite values, non-regular input files, oversized inputs, excessive JSON depth/node count, input-generation mutation during read, and non-exclusive output paths fail closed. The direct Python object API separately enforces aggregate snapshot and identity-map row ceilings in addition to per-list/per-relationship limits.
+CLI inputs must be strict canonical UTF-8 JSON. Duplicate keys, non-finite values, non-regular input files, oversized inputs, excessive JSON depth/node count, input-generation mutation during read, and non-exclusive output paths fail closed. The direct Python object API separately enforces aggregate snapshot and identity-map row ceilings before expensive derived-map construction, in addition to per-list/per-relationship limits.
 
 Output creation is exclusive. On platforms with `dir_fd` support, the writer retains the output parent descriptor as well as the output file descriptor through write/fsync and the final publication check. Before success, it requires the visible leaf to remain a regular file with the same device/inode generation as the retained output descriptor and requires the visible parent pathname to still resolve to the retained parent generation. On platforms without `dir_fd`, it performs the same non-followed final leaf-generation check by pathname. Failed output publication truncates only the retained owned descriptor best-effort and never pathname-unlinks a possible foreign successor; an owned zero-byte tombstone may remain for explicit cleanup.
 
