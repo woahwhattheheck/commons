@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 83,
-    "open_pull_requests": 27,
-    "runs_in_progress": 15,
-    "runs_queued": 583
+    "open_issues": 84,
+    "open_pull_requests": 26,
+    "runs_in_progress": 17,
+    "runs_queued": 618
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -23,59 +23,114 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zforge/cpca-readiness-current-main-20260917",
-      "created_at": "2026-09-17T08:39:31Z",
+      "branch": "zsol/okaloosa-openworld-authority-15507-20260917",
+      "created_at": "2026-09-17T18:11:52Z",
       "draft": false,
-      "head_sha": "9b9a15a5f926239447e30222bf3bb55e065db87a",
-      "number": 15459,
-      "title": "CPCA: truth-narrow teaming discussion vs application readiness",
-      "updated_at": "2026-09-17T08:46:56Z"
+      "head_sha": "900a39aeff21104ec4601c9ebc310fbc5457e872",
+      "number": 15586,
+      "title": "Close Okaloosa root-schema authority bypass on current main",
+      "updated_at": "2026-09-17T19:23:24Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zsol/emergent-builderfest-onewriter-20260917",
-      "created_at": "2026-09-17T08:51:46Z",
+      "branch": "zironwood/procurement-loss-remediation-15154",
+      "created_at": "2026-09-17T18:24:59Z",
       "draft": false,
-      "head_sha": "78f5b53af961c116d455c824e9ff37d7a0b8256e",
-      "number": 15494,
-      "title": "feat: ship OneWriter Emergent Builder Fest source packet",
-      "updated_at": "2026-09-17T09:08:18Z"
+      "head_sha": "86e8a05dcefd28c7b9968a019a2521ff242c80cb",
+      "number": 15593,
+      "title": "revenue: turn procurement outcome evidence into remediation gaps (#15154)",
+      "updated_at": "2026-09-17T19:33:03Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-swarm/onewriter-builderfest-current-main-20260917",
-      "created_at": "2026-09-17T09:02:55Z",
+      "branch": "swarmz/hamilton-retained-evidence-trustroot-20260917",
+      "created_at": "2026-09-17T18:35:02Z",
       "draft": false,
-      "head_sha": "f02d9d1e910c5330d4dd7aaf08174c5e61300447",
-      "number": 15526,
-      "title": "Integrate OneWriter Emergent Builder Fest source packet on current main",
-      "updated_at": "2026-09-17T09:02:55Z"
+      "head_sha": "d324fe85bc9dfa1ebca6e798878998c80bd1aa2f",
+      "number": 15598,
+      "title": "Close Hamilton retained-evidence trust root",
+      "updated_at": "2026-09-17T18:56:50Z"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-sol/onewriter-retained-source-parses-20260917",
-      "created_at": "2026-09-17T09:11:06Z",
+      "branch": "z-atlasforge/swarmops-current-freshness-20260917",
+      "created_at": "2026-09-17T18:46:46Z",
       "draft": false,
-      "head_sha": "2898aa00c66d5788b0d42c3f392d732b1587d8c9",
-      "number": 15534,
-      "title": "ci: retain OneWriter normal and optimized contract",
-      "updated_at": "2026-09-17T09:11:06Z"
+      "head_sha": "7e646edc22b3c105d8e8719496393f96a636b8c4",
+      "number": 15613,
+      "title": "SwarmOps: make current readiness verifier-clock owned",
+      "updated_at": "2026-09-17T19:01:48Z"
     }
   ],
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "cursor/writing-cweather-convert-shelf-974d",
-      "created_at": "2026-09-17T19:30:05Z",
+      "branch": "zforge/swarm-terminality-registry-15654",
+      "created_at": "2026-09-17T19:36:20Z",
       "draft": false,
-      "head_sha": "f3ffb5fa230e37558a183b2759cd283f2e1711ae",
-      "number": 15660,
-      "title": "Wire existing $29 and $250 Buy links onto writing and cweather shelves",
-      "updated_at": "2026-09-17T19:30:05Z"
+      "head_sha": "b15f4225a5beacae43720356c189e1f87cadca58",
+      "number": 15670,
+      "title": "Swarm: deterministic work terminality / supersession registry",
+      "updated_at": "2026-09-17T19:37:09Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol17/onewriter-retained-proof-current-main-20260917",
+      "created_at": "2026-09-17T19:35:49Z",
+      "draft": false,
+      "head_sha": "806c5f1d05c8677260cf3eee4e100d313703ba15",
+      "number": 15668,
+      "title": "Retain current OneWriter hostile proof on source-parses",
+      "updated_at": "2026-09-17T19:35:49Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/observatory-tabletop-convert-shelf-dce0",
+      "created_at": "2026-09-17T19:35:29Z",
+      "draft": false,
+      "head_sha": "009fbef54fcad4874290e3ba09ebbce8d379d5e1",
+      "number": 15666,
+      "title": "feat(observatory): first-screen convert shelf on observatory and tabletop",
+      "updated_at": "2026-09-17T19:37:23Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-z/onewriter-retained-ci-fresh-main-20260917",
+      "created_at": "2026-09-17T19:35:17Z",
+      "draft": false,
+      "head_sha": "b5b2ddfd7ba8b81bdc4faf4d8bb410145d851651",
+      "number": 15665,
+      "title": "ci: retain OneWriter hostile contract on current source-parses",
+      "updated_at": "2026-09-17T19:35:17Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol/recover-live-pursuit-partner-shortlist-15142-20260917",
+      "created_at": "2026-09-17T19:33:32Z",
+      "draft": false,
+      "head_sha": "7caf882dec8f3cf4a2a425a2537b40bb48374e2a",
+      "number": 15663,
+      "title": "revenue: recover live pursuit partner-capability shortlist",
+      "updated_at": "2026-09-17T19:35:37Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol-1447/muse-atomic-send-lease-15659",
+      "created_at": "2026-09-17T19:32:55Z",
+      "draft": false,
+      "head_sha": "1618b2feb40e49434477e15f662ba1d9cf978d6e",
+      "number": 15662,
+      "title": "Muse: atomically consume session-bound send leases (#15659)",
+      "updated_at": "2026-09-17T19:35:16Z"
     },
     {
       "author": "woahwhattheheck",
@@ -105,10 +160,10 @@
       "branch": "zcl-1442/usp-bitsummit-prime-evidence-dossier-20260917",
       "created_at": "2026-09-17T19:24:37Z",
       "draft": false,
-      "head_sha": "baccc4096872eb8e14b80fef16d61e754d57eca4",
+      "head_sha": "d895a79bebc80afb2fcd099237b633d6cc526a7c",
       "number": 15656,
       "title": "Retain hardened BITSUMMIT prime-evidence donor for Utility Safety",
-      "updated_at": "2026-09-17T19:30:29Z"
+      "updated_at": "2026-09-17T19:33:05Z"
     },
     {
       "author": "woahwhattheheck",
@@ -120,96 +175,117 @@
       "number": 15655,
       "title": "Build Indiana IOT observability paid-teaming pursuit carrier",
       "updated_at": "2026-09-17T19:23:35Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-axiom-1442/canonical-proposal-validity-hardening-15608",
-      "created_at": "2026-09-17T19:19:35Z",
-      "draft": false,
-      "head_sha": "9dee00d3021f45272c22b86493c75191ce596b16",
-      "number": 15653,
-      "title": "Revenue: harden canonical proposal validity / requote gate",
-      "updated_at": "2026-09-17T19:20:53Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol17/cpca-15617-clean-current-main-20260917",
-      "created_at": "2026-09-17T19:17:19Z",
-      "draft": false,
-      "head_sha": "1a21b5828c2aeefb1aad7f0ed1091395e89a0854",
-      "number": 15650,
-      "title": "Recover CPCA partner-readiness v3 on current main",
-      "updated_at": "2026-09-17T19:17:19Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zpal1445/outreach-qualification-firewall-20260917",
-      "created_at": "2026-09-17T19:13:27Z",
-      "draft": false,
-      "head_sha": "58fa00e328f506a8e387859dc0444d7f723626cc",
-      "number": 15646,
-      "title": "Build fail-closed outreach qualification firewall",
-      "updated_at": "2026-09-17T19:19:50Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zkf-1448/hamilton-15598-stop-closure-20260917",
-      "created_at": "2026-09-17T19:12:36Z",
-      "draft": false,
-      "head_sha": "6612877215e419e87cf648e1092c870e389b7c0c",
-      "number": 15645,
-      "title": "Close Hamilton qualification and retained-evidence trust roots",
-      "updated_at": "2026-09-17T19:13:54Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-z/pilot-renewal-reseal-clock-fix-15641",
-      "created_at": "2026-09-17T19:11:45Z",
-      "draft": false,
-      "head_sha": "d513c3519eb7b403f3f3ccf406bb191d6209279e",
-      "number": 15643,
-      "title": "Fix pilot-renewal receipt reseal and current-clock authority",
-      "updated_at": "2026-09-17T19:20:47Z"
     }
   ],
   "open_heads": {
     "15382": "67ea52d849be72b4c348f7e09356d61e25a17ba2",
-    "15459": "9b9a15a5f926239447e30222bf3bb55e065db87a",
-    "15494": "78f5b53af961c116d455c824e9ff37d7a0b8256e",
-    "15526": "f02d9d1e910c5330d4dd7aaf08174c5e61300447",
-    "15534": "2898aa00c66d5788b0d42c3f392d732b1587d8c9",
-    "15536": "613b8fbeeb8965fd37fb0c17d1e25d0c741750ee",
     "15586": "900a39aeff21104ec4601c9ebc310fbc5457e872",
     "15593": "86e8a05dcefd28c7b9968a019a2521ff242c80cb",
     "15598": "d324fe85bc9dfa1ebca6e798878998c80bd1aa2f",
     "15613": "7e646edc22b3c105d8e8719496393f96a636b8c4",
-    "15617": "1b15b0776b6e9b8f778d3d8ba53c6563dc0eecdc",
     "15627": "923220a269de75ae886d63d5bf86e367761b8d16",
     "15629": "6345c5464547c085861ac9c3e671022731d82aae",
     "15631": "cfcb3c63410fe8aa80bb54a6a3b01c998a0ab855",
-    "15635": "64d65de2f223205eb1c4410634aa41e197c7b680",
+    "15635": "06c1a34da280fcd5d85202fb849a147aa5d53bdf",
     "15636": "9030d8d9066558f9969ff80d2bff394c51801f8c",
-    "15640": "05a0194e1d2593a63db7f4e656ee434ce78ec7be",
+    "15640": "a8a6d8b76f785b33ca58e0d939ea9211dfabc7b5",
     "15643": "d513c3519eb7b403f3f3ccf406bb191d6209279e",
     "15645": "6612877215e419e87cf648e1092c870e389b7c0c",
-    "15646": "58fa00e328f506a8e387859dc0444d7f723626cc",
+    "15646": "f60563eb09f15372933b203fa9de35a03d943700",
     "15650": "1a21b5828c2aeefb1aad7f0ed1091395e89a0854",
     "15653": "9dee00d3021f45272c22b86493c75191ce596b16",
     "15655": "c7183f25b84af7f85ae7f0e46b268f7237f178bb",
-    "15656": "baccc4096872eb8e14b80fef16d61e754d57eca4",
+    "15656": "d895a79bebc80afb2fcd099237b633d6cc526a7c",
     "15657": "3bfea04e4ee890c76953ebd7c57c15e612ed722b",
     "15658": "672f42ac2d626f554e9c10dd4b1a0b6f01776428",
-    "15660": "f3ffb5fa230e37558a183b2759cd283f2e1711ae"
+    "15662": "1618b2feb40e49434477e15f662ba1d9cf978d6e",
+    "15663": "7caf882dec8f3cf4a2a425a2537b40bb48374e2a",
+    "15665": "b5b2ddfd7ba8b81bdc4faf4d8bb410145d851651",
+    "15666": "009fbef54fcad4874290e3ba09ebbce8d379d5e1",
+    "15668": "806c5f1d05c8677260cf3eee4e100d313703ba15",
+    "15670": "b15f4225a5beacae43720356c189e1f87cadca58"
   },
-  "pulls_listed": 27,
+  "pulls_listed": 26,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 38.9,
+  "queue_depth_per_runner": 36.4,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol/onewriter-retained-source-parses-clean-20260917",
+      "closed_at": "2026-09-17T19:36:28Z",
+      "head_sha": "613b8fbeeb8965fd37fb0c17d1e25d0c741750ee",
+      "merged_at": null,
+      "number": 15536,
+      "state": "CLOSED",
+      "title": "ci: retain OneWriter normal and optimized contract"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol/onewriter-retained-source-parses-20260917",
+      "closed_at": "2026-09-17T19:36:17Z",
+      "head_sha": "2898aa00c66d5788b0d42c3f392d732b1587d8c9",
+      "merged_at": null,
+      "number": 15534,
+      "state": "CLOSED",
+      "title": "ci: retain OneWriter normal and optimized contract"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/writing-cweather-convert-shelf-974d",
+      "closed_at": "2026-09-17T19:36:09Z",
+      "head_sha": "f3ffb5fa230e37558a183b2759cd283f2e1711ae",
+      "merged_at": "2026-09-17T19:36:09Z",
+      "number": 15660,
+      "state": "MERGED",
+      "title": "Wire existing $29 and $250 Buy links onto writing and cweather shelves"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zforge/cpca-readiness-current-main-20260917",
+      "closed_at": "2026-09-17T19:33:35Z",
+      "head_sha": "9b9a15a5f926239447e30222bf3bb55e065db87a",
+      "merged_at": null,
+      "number": 15459,
+      "state": "CLOSED",
+      "title": "CPCA: truth-narrow teaming discussion vs application readiness"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol/emergent-builderfest-onewriter-20260917",
+      "closed_at": "2026-09-17T19:33:34Z",
+      "head_sha": "78f5b53af961c116d455c824e9ff37d7a0b8256e",
+      "merged_at": null,
+      "number": 15494,
+      "state": "CLOSED",
+      "title": "feat: ship OneWriter Emergent Builder Fest source packet"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol17/cpca-15459-current-main-recovery-20260917",
+      "closed_at": "2026-09-17T19:33:23Z",
+      "head_sha": "1b15b0776b6e9b8f778d3d8ba53c6563dc0eecdc",
+      "merged_at": null,
+      "number": 15617,
+      "state": "CLOSED",
+      "title": "Recover CPCA partner-readiness truth boundary on current main"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-swarm/onewriter-builderfest-current-main-20260917",
+      "closed_at": "2026-09-17T19:32:28Z",
+      "head_sha": "f02d9d1e910c5330d4dd7aaf08174c5e61300447",
+      "merged_at": null,
+      "number": 15526,
+      "state": "CLOSED",
+      "title": "Integrate OneWriter Emergent Builder Fest source packet on current main"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -297,87 +373,10 @@
       "number": 15634,
       "state": "CLOSED",
       "title": "Wire existing $29 and $250 Buy links onto recents and subzero shelves"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zhelix/latch-recents-subzero-currentmain-20260917",
-      "closed_at": "2026-09-17T19:14:00Z",
-      "head_sha": "b1c08a827dbc38efe995235f9ac51d835e970ec9",
-      "merged_at": null,
-      "number": 15644,
-      "state": "CLOSED",
-      "title": "Revenue: recover live checkout shelves on recents and subzero"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "sol-z/recents-subzero-checkout-shelf-15634-20260917",
-      "closed_at": "2026-09-17T19:13:18Z",
-      "head_sha": "1365879810d351e8e868105fe372108bd18025ac",
-      "merged_at": "2026-09-17T19:13:18Z",
-      "number": 15642,
-      "state": "MERGED",
-      "title": "Recover existing checkout shelf on current main"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-fallowforge/learn2design-curvature-evidence-35183466350-20260917",
-      "closed_at": "2026-09-17T19:11:55Z",
-      "head_sha": "db0af143e37608c32a950326c42a8d7b88c602d3",
-      "merged_at": "2026-09-17T19:11:55Z",
-      "number": 15637,
-      "state": "MERGED",
-      "title": "Learn2Design: retain curvature public-matrix negative evidence"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarmz/hamilton-retained-inode-custody-20260917",
-      "closed_at": "2026-09-17T19:09:24Z",
-      "head_sha": "6bf2e4ef4383d3c3a90645b3ff0f2bf41e65f33d",
-      "merged_at": null,
-      "number": 15628,
-      "state": "CLOSED",
-      "title": "Harden Hamilton retained-evidence inode custody"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-foundry/partner-opportunity-qualification-gate-20260917",
-      "closed_at": "2026-09-17T19:08:11Z",
-      "head_sha": "d68053936f1b7c218e980b0b3773c90c54ff375d",
-      "merged_at": null,
-      "number": 15612,
-      "state": "CLOSED",
-      "title": "Revenue: add source-bound partner opportunity qualification gate"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/emergent-onewriter-source-20260917",
-      "closed_at": "2026-09-17T19:07:58Z",
-      "head_sha": "a94b112cefd77c88d6f8c7b2b55a94d1a245606f",
-      "merged_at": "2026-09-17T19:07:58Z",
-      "number": 15602,
-      "state": "MERGED",
-      "title": "Build OneWriter atomic cross-route outreach-control packet for Emergent Builder Fest"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-z/inbound-reply-default-ignorable-fix-20260917",
-      "closed_at": "2026-09-17T19:07:09Z",
-      "head_sha": "886adb378e4c34abc863ad48697d5ef628f80d82",
-      "merged_at": "2026-09-17T19:07:09Z",
-      "number": 15633,
-      "state": "MERGED",
-      "title": "Fix inbound-reply default-ignorable binding aliases"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T19:31:55Z",
+  "unchanged_since": "2026-09-17T19:37:30Z",
   "undatable_pulls": []
 }
