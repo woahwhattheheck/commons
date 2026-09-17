@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import re
 import unittest
+from datetime import datetime, timedelta, timezone
 
 from tools.relationship_contact_guard import guard
 from tools.relationship_contact_guard.guard import GuardError, compile_guard, verify_guard
@@ -106,6 +108,122 @@ class RelationshipGuardDirectBoundaryTests(unittest.TestCase):
             self.assertEqual(calls, 0)
         finally:
             guard.json.dumps = original
+
+    def test_exported_policy_rebinding_cannot_weaken_loaded_generation(self):
+        occurred_at = (datetime.now(timezone.utc) - timedelta(minutes=1)).replace(microsecond=0)
+        sent = {
+            "event_id": "sent-policy-root-1",
+            "kind": "PROVIDER_SENT",
+            "occurred_at": occurred_at.isoformat(timespec="seconds").replace("+00:00", "Z"),
+            "counterparty_id": "example.com",
+            "opportunity_id": "other-rfp",
+            "route": "other@example.com",
+            "purpose": "other-purpose",
+            "provider_message_id": "msg-policy-root-1",
+        }
+        packet = {"candidate": candidate(), "events": [sent]}
+        artifact = compile_guard(packet)
+        self.assertEqual(artifact["decision"]["status"], "HOLD_RECENT_COUNTERPARTY_CONTACT")
+
+        names = (
+            "MIN_RELATIONSHIP_COOLDOWN_SECONDS",
+            "MIN_PURSUIT_COOLDOWN_SECONDS",
+            "MAX_JSON_BYTES",
+            "MAX_EVENTS",
+            "MAX_SAFE_INTEGER",
+            "MAX_JSON_DEPTH",
+            "MAX_JSON_NODES",
+            "IDENT_RE",
+            "OPAQUE_RE",
+            "HEX64_RE",
+            "KINDS",
+            "SCOPES",
+            "SCHEMA",
+            "ARTIFACT_SCHEMA",
+            "VERIFICATION_SCHEMA",
+            "AUTHORITY",
+        )
+        original = {name: getattr(guard, name) for name in names}
+        try:
+            guard.MIN_RELATIONSHIP_COOLDOWN_SECONDS = 0
+            guard.MIN_PURSUIT_COOLDOWN_SECONDS = 0
+            guard.MAX_JSON_BYTES = 10**9
+            guard.MAX_EVENTS = 10**9
+            guard.MAX_SAFE_INTEGER = 10**100
+            guard.MAX_JSON_DEPTH = 10**6
+            guard.MAX_JSON_NODES = 10**9
+            guard.IDENT_RE = re.compile(r".*")
+            guard.OPAQUE_RE = re.compile(r".*")
+            guard.HEX64_RE = re.compile(r".*")
+            guard.KINDS = {"EVIL"}
+            guard.SCOPES = {"EVIL"}
+            guard.SCHEMA = "evil-schema"
+            guard.ARTIFACT_SCHEMA = "evil-artifact"
+            guard.VERIFICATION_SCHEMA = "evil-verification"
+            guard.AUTHORITY = {"send_authorized": True}
+
+            zero_packet = {
+                "candidate": candidate(
+                    relationship_cooldown_seconds=0,
+                    pursuit_cooldown_seconds=0,
+                ),
+                "events": [sent],
+            }
+            with self.assertRaisesRegex(GuardError, "integer must be >= 21600"):
+                compile_guard(zero_packet)
+
+            fresh = compile_guard(packet)
+            self.assertEqual(fresh["artifact_schema"], "relationship-contact-guard-artifact/v3")
+            self.assertEqual(fresh["decision"]["schema"], "relationship-contact-guard/v3")
+            self.assertEqual(fresh["decision"]["status"], "HOLD_RECENT_COUNTERPARTY_CONTACT")
+            self.assertFalse(any(fresh["decision"]["authority"].values()))
+
+            verified = verify_guard(packet, artifact)
+            self.assertEqual(verified["verification_schema"], "relationship-contact-guard-verification/v1")
+            self.assertEqual(verified["fresh_status"], "HOLD_RECENT_COUNTERPARTY_CONTACT")
+            self.assertFalse(any(verified["authority"].values()))
+
+            bad_kind = dict(sent)
+            bad_kind["event_id"] = "bad-kind-1"
+            bad_kind["provider_message_id"] = "bad-kind-msg-1"
+            bad_kind["kind"] = "EVIL"
+            with self.assertRaisesRegex(GuardError, "unsupported event kind"):
+                compile_guard({"candidate": candidate(), "events": [bad_kind]})
+
+            bad_ident = {"candidate": candidate(counterparty_id="UPPER"), "events": []}
+            with self.assertRaisesRegex(GuardError, "canonical lowercase ASCII identifier"):
+                compile_guard(bad_ident)
+
+            scoped_send = dict(sent)
+            scoped_send.update({
+                "event_id": "scope-send-1",
+                "provider_message_id": "scope-msg-1",
+                "opportunity_id": "example-rfp-1",
+                "route": "sales@example.com",
+                "purpose": "paid-qa-workshare",
+            })
+            negative = {
+                "event_id": "scope-negative-1",
+                "kind": "HUMAN_NEGATIVE",
+                "occurred_at": occurred_at.isoformat(timespec="seconds").replace("+00:00", "Z"),
+                "counterparty_id": "example.com",
+                "opportunity_id": "example-rfp-1",
+                "route": "sales@example.com",
+                "purpose": "paid-qa-workshare",
+                "in_reply_to_message_id": "scope-msg-1",
+                "scope": "EVIL",
+            }
+            with self.assertRaisesRegex(GuardError, "requires valid scope"):
+                compile_guard({"candidate": candidate(), "events": [scoped_send, negative]})
+
+            deep = "leaf"
+            for _ in range(guard.MAX_JSON_DEPTH if guard.MAX_JSON_DEPTH < 1000 else 66):
+                deep = [deep]
+            with self.assertRaisesRegex(GuardError, "depth limit"):
+                compile_guard({"candidate": candidate(), "events": [], "deep": deep})
+        finally:
+            for name, value in original.items():
+                setattr(guard, name, value)
 
 
 if __name__ == "__main__":
