@@ -16,7 +16,7 @@ def main() -> int:
     p.add_argument("route_id")
     p = sub.add_parser("customer-snapshot")
     p.add_argument("customer_id")
-    sub.add_parser("integrity")
+    p = sub.add_parser("integrity")
     p = sub.add_parser("export-route")
     p.add_argument("route_id")
     p.add_argument("directory")
