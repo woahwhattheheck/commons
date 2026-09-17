@@ -29,9 +29,9 @@ Terminal money event: a qualified LIMS prime accepts the paid specialist worksha
 
 ## Partner candidate: LabLynx
 
-The retained candidate snapshot records only current first-party claims and explicit gaps.
+The retained candidate snapshot records only first-party claims and explicit qualification gaps.
 
-Grounding for one inquiry:
+Grounding for one future inquiry:
 
 - LabLynx publishes a recent case study describing a state-government LIMS deployment subject to annual independent security audit, grounded in the NIST Cybersecurity Framework and SP 800-53.
 - LabLynx advertises implementation, migration, integration, validation, hosting, support, and training services.
@@ -40,17 +40,32 @@ Grounding for one inquiry:
 
 Not proved and therefore `UNVERIFIED`: whether LabLynx is pursuing this RFP, GovRAMP authorization, NIST SP 800-171 compliance, CONUS hosting for this offer, required insurance/background checks, New Hampshire references, willingness to prime/team, or implementation bandwidth.
 
-### Post-snapshot organization collision
+### Active organization collision
 
-The retained `collision_preflight` zero counts are **historical pre-TAKE observations only**. The snapshot now labels its observation window explicitly as before the NHDES TAKE at `2026-09-17T00:37:14-04:00`; it is not a claim that Slack remains empty.
+The retained `collision_preflight` zero counts are **historical pre-TAKE observations only**. `evidence_checked_before` is an upper bound on that preflight observation window; it is not a current-clearance timestamp.
 
 At 00:38:55 EDT, a separate swarm seat claimed a distinct Alberta LIMS opportunity using the **same LabLynx organization and the same `sales@lablynx.com` route** under operation `ALBERTA-AB-2026-06140-LABLYNX-PARTNER-CONVERSION-ZSOL-20260917`. This is an organization-level collision for outbound purposes even though the buyers differ.
 
-Therefore current operational state is **NO SEND / HOLD PENDING MUSE ORG-LEVEL ADJUDICATION**. An org-level arbitration request was posted to Muse at Slack ts `1789620147.584609`. This later event does not rewrite the pre-TAKE evidence snapshot and does not grant contact authority.
+That event is now machine-readable in `current_collision` as `ACTIVE_ORG_ROUTE_COLLISION_HOLD` with Muse resolution `PENDING`. The arbitration request is bound to Slack ts `1789620147.584609`.
+
+The compiler therefore emits **`HOLD_ACTIVE_ORG_COLLISION_PENDING_MUSE`**, not READY. Removing the collision or setting a local file to `CLEAR_NHDES` is rejected by this generation; a genuine Muse result requires a successor source update and fresh review.
+
+## Runtime currentness gate
+
+Currentness is code-owned rather than prose-only:
+
+- `source.checked_at`, `candidate.evidence_checked_before`, and `current_collision.observed_at` must be offset-aware ISO timestamps;
+- future state beyond a 5-minute clock-skew allowance fails closed;
+- retained source/candidate/collision state older than 24 hours fails closed and requires recensus/rebuild;
+- after buyer-local date **2026-10-23** (`America/New_York`), the carrier emits `HOLD_RESPONSE_DEADLINE_PASSED`;
+- production compile/verify obtain the clock internally; there is no CLI `--now` or caller-supplied clock;
+- verifier recompilation also re-evaluates the runtime gate, so an old receipt cannot remain valid after a freshness/deadline boundary changes.
+
+The runtime gate does not convert retained public-index facts into buyer-official facts. Prime posture remains `HOLD_RAW_PACKET_AND_EXTERNAL_PRIME_EVIDENCE` until the canonical packet and external qualification evidence exist.
 
 ## Authority and single-writer boundary
 
-The compiler can reach only `READY_FOR_MUSE_GATED_PARTNER_INQUIRY_ONLY` while prime posture remains `HOLD_RAW_PACKET_AND_EXTERNAL_PRIME_EVIDENCE`. That state means *eligible to ask Muse*, not eligible to send. The post-snapshot collision above currently keeps external execution on HOLD unless Muse explicitly binds this NHDES lane as the single writer.
+Even a future runtime state with no machine HOLD can reach only `READY_FOR_MUSE_GATED_PARTNER_INQUIRY_ONLY`, which means *eligible to ask Muse*, never permission to send.
 
 Before any partner message, all of the following are mandatory again at the last inch:
 
@@ -63,7 +78,7 @@ Before any partner message, all of the following are mandatory again at the last
 
 The carrier grants no buyer contact, conference registration, partner contact, prime qualification claim, bid submission, contract acceptance, payment, or revenue authority.
 
-## Deterministic use
+## Compile / verify
 
 ```bash
 python opportunities/nhdes_lims_2026_093/carrier.py compile \
@@ -85,4 +100,4 @@ python -O -m unittest -v tests.test_nhdes_lims_2026_093
 python -m unittest -v test_nhdes_lims_2026_093
 ```
 
-The hostile suite prevents source-state promotion, GovRAMP/NIST self-certification, candidate qualification promotion, file-authored outbound authority, collision-gate weakening, receipt tampering, duplicate/nonfinite JSON, and output overwrite.
+The hostile suite pins source-state promotion, GovRAMP/NIST self-certification, candidate qualification promotion, file-authored outbound authority, historical-preflight misuse, active org-route collision HOLD, future/stale source and candidate state, post-deadline execution, offset-aware timestamp requirements, receipt tampering, duplicate/nonfinite JSON, and output overwrite.
