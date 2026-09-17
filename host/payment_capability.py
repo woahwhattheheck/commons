@@ -50,10 +50,19 @@ COMMERCE_CONVERT_SHELF_LIVE_BUYS = frozenset(
         "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
     }
 )
+PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS = frozenset(
+    {
+        "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
+        "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
+    }
+)
 CONVERT_SHELF_LIVE_BUYS = {
     "pay.html": PAY_CONVERT_SHELF_LIVE_BUYS,
     "commerce.html": COMMERCE_CONVERT_SHELF_LIVE_BUYS,
     "payment-capability.html": COMMERCE_CONVERT_SHELF_LIVE_BUYS,
+    "reply-to-revenue.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "claude-paste.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "mcp-tool-drift.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -94,6 +103,8 @@ PUBLIC_HTML = (
     "payment-capability.html",
     "reply-to-revenue.html",
     "owner-now-revenue.html",
+    "claude-paste.html",
+    "mcp-tool-drift.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
