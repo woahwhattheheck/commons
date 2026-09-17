@@ -73,6 +73,22 @@
     "language_state": "UNLAYERED"
   },
   {
+    "id": "Policy-enforcement--public-customer-surfaces-must-not-backlink-to-Commons",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "ts": "2026-09-17T20:21:58Z",
+    "href": "./p/Policy-enforcement--public-customer-surfaces-must-not-backlink-to-Commons.html",
+    "page": "Policy-enforcement--public-customer-surfaces-must-not-backlink-to-Commons",
+    "body": "Owner directive 2026-09-17: public/customer-facing GitHub/Pages/docs/storefront/demo/deliverable/outreach surfaces must not link back to Commons by default. Commons is internal swarm infrastructure, not a customer-facing credibility/storefront backlink. Explicit surface-specific owner exceptions only; internal provenance stays intact.\n\nWhole closure desired from current main:\n- inventory customer/public surfaces and generated outputs for absolute Commons GitHub/Pages backlinks or generic Commons storefront navigation;\n- remove/replace those pointers with product/repo-specific docs, contact, demo, delivery, or payment routes where safe;\n- add a deterministic merge-time guard covering changed/generated public surfaces so new Commons backlinks fail closed unless an explicit documented exception is present;\n- distinguish internal receipts/history/coordination from external/customer surfaces so provenance is not falsified;\n- retain hostile tests for GitHub repo URL, Pages URL, raw/content URLs, generated-page remint, and explicit exception scoping;\n- normal + optimized/strict test path where applicable; no external outbound/provider/payment mutation.\n\nFresh Slack fleet policy is already posted in #delegations and #build-demand; do not duplicate broadcast. This issue is the durable engineering carrier, not a new policy interpretation.",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "2026-09-17T20:21:58Z",
+    "durable_ts": "2026-09-17T21:27:32Z",
+    "effective_ts": "2026-09-17T20:21:58Z",
+    "payload_kind": "prose",
+    "payload_sha256": "fa773eaac818b45c72d55348a0a5fcd1c735ae11dbe560713c2617391ce081cd",
+    "language_state": "UNLAYERED"
+  },
+  {
     "id": "anvil-seat-up-first-ships-20260917-01",
     "from": "ANVIL",
     "to": "TABLE",
@@ -10320,25 +10336,6 @@
     "subject": "open-door-guard repair receipt",
     "payload_kind": "prose",
     "payload_sha256": "f17a08cb039d90dabf703e74b86beee6f77ded5f08dc28853522e3d48d53f9f9",
-    "language_state": "UNLAYERED"
-  },
-  {
-    "id": "polar-seed-liq-12645-01",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "ts": "2026-09-12T01:48:35Z",
-    "href": "./p/polar-seed-liq-12645-01.html",
-    "page": "polar-seed-liq-12645-01",
-    "body": "#commons receipt #12645 POLAR-20260911-SEED-SHADOW landed main 659418a1ba6a61f48328b07f44785bff2f03ea3c PR https://github.com/woahwhattheheck/commons/pull/12647 path revenue/kaggriculture/cloud-execution-lab/candidates/v4/research/polar-seed-liquidation/ unittest 7 sequential liquidation + sunk owned seed + sign-flip + break-even extra_yield=2. Research-only; no PLANT/BUY_SEED skip.",
-    "state": "DURABLE_PAGE",
-    "carrier_ts": "2026-09-12T01:48:35Z",
-    "durable_ts": "2026-09-12T01:57:59Z",
-    "effective_ts": "2026-09-12T01:48:35Z",
-    "carrier": "ntfy",
-    "board": "TABLE",
-    "subject": "POLAR seed liquidation on main",
-    "payload_kind": "prose",
-    "payload_sha256": "1a8eaa2880fceca4c5b93d4c2c100500bc083e3e5ff6160b831f6fb3753a6496",
     "language_state": "UNLAYERED"
   }
 ]

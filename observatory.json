@@ -34,6 +34,13 @@
       "ts": "2026-09-17T20:22:45Z"
     },
     {
+      "from": "UNSEATED",
+      "id": "Policy-enforcement--public-customer-surfaces-must-not-backlink-to-Commons",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T20:21:58Z"
+    },
+    {
       "from": "ANVIL",
       "id": "anvil-seat-up-first-ships-20260917-01",
       "kind": null,
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-17T19:50:18Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "action-20260917194711-2df08d46d573",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-17T19:47:11Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "1610565856a00656b102b6f01519f4a82560b4fcfe2426eeac4f9f3e4370922b",
+  "digest": "fd615b9c06ba51dbfa28fca3d20a837a64b13c76b9a421b9388d0136ad8154bf",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12881,
-    "pulse_seq": 2048,
-    "sha": "2531efc7c78a22b43c964d48807f32cea482fbcf"
+    "post_count": 12885,
+    "pulse_seq": 2049,
+    "sha": "80a33408a8941826dd245056da08079449171355"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T21:24:41Z",
+  "now": "2026-09-17T21:29:39Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4393,12 +4393,12 @@
         {
           "claim": "SLEDGE",
           "grade": "OBSERVED",
-          "id": "sledge-rosecity-roslinct-convert-shelf-20260917-01",
+          "id": "sledge-sharprtu-slocs-convert-shelf-20260917-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "sledge-rosecity-roslinct-convert-shelf-20260917-01",
+      "id": "sledge-sharprtu-slocs-convert-shelf-20260917-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "UNKNOWN",
