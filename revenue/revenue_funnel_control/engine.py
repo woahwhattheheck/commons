@@ -137,11 +137,11 @@ def _make_core():
             return None, "UNKNOWN"
         latest_at = matches[-1]["observed_at"]
         latest_matches = [event for event in matches if event["observed_at"] == latest_at]
-        amounts = {event["amount_cents"] for event in latest_matches}
-        if len(amounts) > 1:
-            raise error_cls(f"ambiguous same-time settlement amounts at {latest_at}")
-        chosen = latest_matches[-1]
-        return chosen["amount_cents"], chosen["kind"]
+        claims = {(event["kind"], event["amount_cents"]) for event in latest_matches}
+        if len(claims) > 1:
+            raise error_cls(f"ambiguous same-time settlement claims at {latest_at}")
+        ((kind, amount),) = tuple(claims)
+        return amount, kind
 
     def settlement_target(events: list[dict[str, Any]], reference_amount: int | None) -> tuple[int | None, str]:
         for kinds in (
