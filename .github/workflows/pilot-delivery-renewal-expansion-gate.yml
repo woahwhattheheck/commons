@@ -5,12 +5,14 @@ on:
     paths:
       - 'revenue/pilot_delivery_renewal_expansion_gate/**'
       - 'test_pilot_delivery_renewal_expansion_gate.py'
+      - 'test_pilot_delivery_renewal_reload_trust_root.py'
       - '.github/workflows/pilot-delivery-renewal-expansion-gate.yml'
   push:
     branches: [main]
     paths:
       - 'revenue/pilot_delivery_renewal_expansion_gate/**'
       - 'test_pilot_delivery_renewal_expansion_gate.py'
+      - 'test_pilot_delivery_renewal_reload_trust_root.py'
       - '.github/workflows/pilot-delivery-renewal-expansion-gate.yml'
 
 permissions:
@@ -35,12 +37,20 @@ jobs:
       - name: Compile
         run: >-
           python -m py_compile
+          revenue/pilot_delivery_renewal_expansion_gate/_trusted_runtime.py
           revenue/pilot_delivery_renewal_expansion_gate/common.py
           revenue/pilot_delivery_renewal_expansion_gate/model.py
           revenue/pilot_delivery_renewal_expansion_gate/engine.py
           revenue/pilot_delivery_renewal_expansion_gate/test_gate.py
           test_pilot_delivery_renewal_expansion_gate.py
+          test_pilot_delivery_renewal_reload_trust_root.py
       - name: Contract tests
-        run: python -m unittest -v test_pilot_delivery_renewal_expansion_gate
+        run: >-
+          python -m unittest -v
+          test_pilot_delivery_renewal_expansion_gate
+          test_pilot_delivery_renewal_reload_trust_root
       - name: Optimized contract tests
-        run: python -O -m unittest -v test_pilot_delivery_renewal_expansion_gate
+        run: >-
+          python -O -m unittest -v
+          test_pilot_delivery_renewal_expansion_gate
+          test_pilot_delivery_renewal_reload_trust_root
