@@ -12,10 +12,29 @@ import unicodedata
 
 
 _SENTINEL = "_human_reply_claim_guard_installed"
-_GUARD_VERSION = "human-reply-claim-guard/v5"
+_GUARD_VERSION = "human-reply-claim-guard/v6"
 _RELOAD_FINDER_SENTINEL = "_human_reply_claim_guard_reload_finder"
 _CORE_NAME = "revenue.human_reply_workshare_kit.core"
 _UNSAFE_UNICODE_CATEGORIES = {"Cc", "Cf", "Cs", "Zl", "Zp"}
+# Python's stdlib exposes Unicode general categories but not the derived
+# Default_Ignorable_Code_Point property. The existing category fence catches
+# all Cf format controls; these ranges cover the non-Cf default-ignorables and
+# variation selectors that can remain render-invisible after NFKC and split an
+# otherwise forbidden visible assertion (for example rece\uFE0Fived).
+_DEFAULT_IGNORABLE_NON_CF_RANGES = (
+    (0x034F, 0x034F),  # COMBINING GRAPHEME JOINER
+    (0x115F, 0x1160),  # Hangul fillers
+    (0x17B4, 0x17B5),  # Khmer inherent vowels
+    (0x180B, 0x180D),  # Mongolian free variation selectors 1-3
+    (0x180F, 0x180F),  # Mongolian free variation selector 4
+    (0x2065, 0x2065),  # reserved default-ignorable
+    (0x3164, 0x3164),  # Hangul filler
+    (0xFE00, 0xFE0F),  # variation selectors 1-16
+    (0xFFA0, 0xFFA0),  # halfwidth Hangul filler
+    (0xFFF0, 0xFFF8),  # reserved default-ignorables
+    (0xE0000, 0xE001F),
+    (0xE0080, 0xE0FFF),  # includes variation selector supplement
+)
 _HTML_MARKUP = re.compile(r"<(?:/?[A-Za-z][^<>]*|![^<>]*|\?[^<>]*)>")
 # Markdown destinations can be semantically invisible in rendered text.  For
 # example, ``Buyer [](https://example.invalid) accepted`` screens as source text
@@ -50,14 +69,24 @@ _FORBIDDEN_RENDERED_ASSERTIONS = (
 )
 
 
+def _is_default_ignorable_non_cf(char: str) -> bool:
+    codepoint = ord(char)
+    return any(start <= codepoint <= end for start, end in _DEFAULT_IGNORABLE_NON_CF_RANGES)
+
+
 def _screen_form(core: ModuleType, text: str, where: str) -> str:
     # Caller-rendered text is a one-line commercial artifact boundary. Reject
-    # invisible controls/formatters and Unicode line/paragraph separators rather
-    # than allowing them to split a dangerous assertion into regex-safe pieces.
+    # invisible controls/formatters, default-ignorables, variation selectors,
+    # and Unicode line/paragraph separators rather than allowing them to split
+    # a dangerous assertion into regex-safe pieces. Ordinary visible combining
+    # marks remain admissible; this is not a blanket Mn ban.
     for char in text:
-        if unicodedata.category(char) in _UNSAFE_UNICODE_CATEGORIES:
+        if (
+            unicodedata.category(char) in _UNSAFE_UNICODE_CATEGORIES
+            or _is_default_ignorable_non_cf(char)
+        ):
             raise core.WorkshareError(
-                f"{where} contains unsafe Unicode control/format character"
+                f"{where} contains unsafe Unicode control/format/default-ignorable character"
             )
 
     # Compatibility normalization closes fullwidth and compatibility-glyph
