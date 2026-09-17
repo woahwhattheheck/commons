@@ -59,9 +59,13 @@ TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
         "https://buy.stripe.com/3cIfZgacRezDfT39h043S06",
     }
 )
+WHITEBOX_HOUR_CHECKOUT = "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07"
 OWNER_NOW_CONVERT_SHELF_LIVE_CHECKOUTS = TIPS_CONVERT_SHELF_LIVE_CHECKOUTS | {
-    "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
+    WHITEBOX_HOUR_CHECKOUT,
 }
+PAY_CONVERT_SHELF_LIVE_CHECKOUTS = (
+    PAY_CONVERT_SHELF_LIVE_BUYS | TIPS_CONVERT_SHELF_LIVE_CHECKOUTS | {WHITEBOX_HOUR_CHECKOUT}
+)
 FORBIDDEN = (
     r"\brouting[_\s-]?number\b.+\d{9}\b",
     r"\baccount[_\s-]?number\b.+\d{8,17}\b",
@@ -301,7 +305,7 @@ def live_stripe_checkout_urls(html: str) -> set[str]:
 
 
 def html_stripe_url_errors(name: str, text: str) -> list[str]:
-    """tips/owner-now convert shelves reuse existing Stripe URLs; pay/commerce reuse live buys."""
+    """tips/owner-now/pay convert shelves reuse existing Stripe URLs; commerce reuses live buys."""
     if name == "tips.html":
         found = live_stripe_checkout_urls(text)
         if found != TIPS_CONVERT_SHELF_LIVE_CHECKOUTS:
@@ -315,6 +319,14 @@ def html_stripe_url_errors(name: str, text: str) -> list[str]:
         if found != OWNER_NOW_CONVERT_SHELF_LIVE_CHECKOUTS:
             return [
                 "%s convert shelf must reuse exactly the existing owner-now Stripe URLs"
+                % name
+            ]
+        return []
+    if name == "pay.html":
+        found = live_stripe_checkout_urls(text)
+        if found != PAY_CONVERT_SHELF_LIVE_CHECKOUTS:
+            return [
+                "%s convert shelf must reuse exactly the existing pay Stripe URLs"
                 % name
             ]
         return []
