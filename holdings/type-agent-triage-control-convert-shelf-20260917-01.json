@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-17T08:45:23Z",
+ "heartbeat_at": "2026-09-17T09:12:04Z",
  "holder": "TYPE / clan/grokbot",
  "key": "type-agent-triage-control-convert-shelf-20260917-01",
  "note": "wire existing payment-capability Buy now shelf onto agent-triage.html + agent-control.html",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T08:45:23Z",
  "ttl_s": 1800
 }
