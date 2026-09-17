@@ -88,7 +88,7 @@ Server-side:
 
 ## Retained evidence identifier contract
 
-`provider_receipt` and `human_evidence_id` are opaque retained-evidence identifiers, not notes. Validate them **before** any state transition. An admitted identifier is exact trimmed nonempty text of **1–240 characters** with **no ASCII control characters**. Reject whitespace-only, padded, overlong, or control-character values rather than silently normalizing them. Do not use language truthiness as the evidence gate. Enforce workspace-wide uniqueness after admission.
+`provider_receipt` and `human_evidence_id` are opaque retained-evidence identifiers, not notes. Validate them **before** any state transition. An admitted identifier is exact trimmed nonempty text of **1–240 characters**, with **no ASCII control characters, no Unicode category-C codepoints, and no non-category-C Default_Ignorable codepoints**. Reject whitespace-only, padded, overlong, control/format/private/unassigned, grapheme-joiner, Hangul-filler, variation-selector, or other Default_Ignorable-bearing values rather than silently normalizing them. Ordinary visible combining marks remain admissible. Enforce workspace-wide uniqueness after admission.
 
 ## State rules
 
@@ -166,7 +166,7 @@ Implement tests proving:
 8. SENT hard-fences all routes for that organization lane;
 9. BOUNCE yields DEAD_ROUTE, never labels buyer rejection, and does not automatically enable fallback alias;
 10. HUMAN_EVENT requires unique admitted evidence and reopens boundedly;
-11. whitespace-only, padded, overlong, and control-character provider/human evidence ids are rejected before transition;
+11. whitespace-only, padded, overlong, category-C, and Default_Ignorable-bearing provider/human evidence ids are rejected before transition, while ordinary visible combining marks remain admissible;
 12. after HUMAN_EVENT_REOPEN, an explicit new route can be leased;
 13. HOLD blocks claims and cannot revoke live lease;
 14. provider/human evidence uniqueness;
