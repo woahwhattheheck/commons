@@ -16,6 +16,11 @@ from . import _engine_v1 as _legacy
 InputError = _legacy.InputError
 SCHEMA_VERSION = _legacy.SCHEMA_VERSION
 
+# Save byte-preserved implementations before the package-level compatibility
+# fence below rewires the private legacy module's public entry points.
+_compile_snapshot_v1 = _legacy.compile_snapshot
+_render_markdown_v1 = _legacy.render_markdown
+
 _STATE_EVENT_KINDS = frozenset({"HUMAN_INBOUND", "OUTBOUND_SENT", "BOUNCE"})
 
 
@@ -74,7 +79,7 @@ def compile_snapshot(document: Mapping[str, Any]) -> dict[str, Any]:
     """Compile retained evidence after fail-closed chronology preflight."""
 
     _reject_ambiguous_chronology(document)
-    return _legacy.compile_snapshot(document)
+    return _compile_snapshot_v1(document)
 
 
 def verify_compiled(document: Mapping[str, Any], compiled: Mapping[str, Any]) -> bool:
@@ -90,7 +95,14 @@ def verify_compiled(document: Mapping[str, Any], compiled: Mapping[str, Any]) ->
 def render_markdown(compiled: Mapping[str, Any]) -> str:
     """Render deterministic queue text using the byte-preserved v1 renderer."""
 
-    return _legacy.render_markdown(compiled)
+    return _render_markdown_v1(compiled)
+
+
+# Importing a submodule first still executes package ``__init__``.  Rebinding
+# these legacy entry points therefore prevents an ordinary caller from bypassing
+# the chronology fence merely by naming the byte-preserved implementation.
+_legacy.compile_snapshot = compile_snapshot
+_legacy.verify_compiled = verify_compiled
 
 
 def __getattr__(name: str):
