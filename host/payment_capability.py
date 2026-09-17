@@ -69,6 +69,8 @@ CONVERT_SHELF_LIVE_BUYS = {
     "subzero-quote.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "data-license.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "gemini-mcp.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "manual.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "pixel-portfolio.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -117,6 +119,8 @@ PUBLIC_HTML = (
     "subzero-quote.html",
     "data-license.html",
     "gemini-mcp.html",
+    "manual.html",
+    "pixel-portfolio.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
