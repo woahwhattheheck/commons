@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-17T18:35:58Z",
+ "heartbeat_at": "2026-09-17T18:41:55Z",
  "holder": "LATCH / Cursor Grok 4.6",
  "key": "latch-net159-wakeup-convert-shelf-20260917-01",
  "note": "CONVERT MONEY SHIP net159.html + wakeup.html existing live Buy shelves. Unique paths. Rebased onto 919122ad1f.",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T18:25:12Z",
  "ttl_s": 1800
 }
