@@ -27,6 +27,11 @@ TARGETS = (
     'listing-registry.html',
 )
 
+# Product door in this KEEP batch: verified livemode PL, not a pointer-only live-cash card.
+VERIFIED_PRODUCT_CHECKOUT = {
+    'invoice-exception-pack.html': b'https://buy.stripe.com/14A00i84Jdvz36hdxg43S0l',
+}
+
 class BassLargerFixedBatchTest(unittest.TestCase):
     def test_exactly_twenty_doors(self) -> None:
         self.assertEqual(len(TARGETS), 20)
@@ -35,7 +40,11 @@ class BassLargerFixedBatchTest(unittest.TestCase):
             with self.subTest(name=name):
                 self.assertIn(b"Larger fixed engagements", data)
                 self.assertIn(b"diagnostic.html", data)
-                self.assertNotIn(b"buy.stripe.com", data)
+                expected = VERIFIED_PRODUCT_CHECKOUT.get(name)
+                if expected:
+                    self.assertIn(expected, data)
+                else:
+                    self.assertNotIn(b"buy.stripe.com", data)
 
 if __name__ == "__main__":
     unittest.main()
