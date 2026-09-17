@@ -37,7 +37,7 @@ A contest impact claim is publishable only when:
 - synthetic-demo counts are excluded;
 - a prevented duplicate is counted only when a second claim was actually denied against a live matching **organization-lane** lease;
 - a route change did not mint a new lane;
-- provider/human evidence IDs passed the exact trimmed nonempty 1–240 rule, contain no ASCII controls, no Unicode category-C codepoints, and no non-category-C Default_Ignorable codepoints;
+- provider/human evidence IDs passed the exact trimmed nonempty 1–240 rule, contain no ASCII controls, no Unicode category-C codepoints, no non-category-C Default_Ignorable codepoints, and include at least one visible base codepoint outside Unicode C/M/Z categories;
 - a dead route is not called buyer rejection;
 - provider SENT is not called interest;
 - human reply is not inferred from auto-acks, tickets, silence, or provider acceptance.
