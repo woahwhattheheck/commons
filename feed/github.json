@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 93,
-    "open_pull_requests": 34,
-    "runs_in_progress": 15,
-    "runs_queued": 280
+    "open_issues": 91,
+    "open_pull_requests": 35,
+    "runs_in_progress": 13,
+    "runs_queued": 220
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -29,7 +29,7 @@
       "head_sha": "fc2ad19ab3179b7d46e5d405cc163aa8ff3806f8",
       "number": 15627,
       "title": "Build Commercial Laundry Route & Linen Custody Operations Desk",
-      "updated_at": "2026-09-17T20:44:18Z"
+      "updated_at": "2026-09-17T23:21:00Z"
     },
     {
       "author": "woahwhattheheck",
@@ -62,10 +62,32 @@
       "head_sha": "465dae5023f734ee845eb06a1b4d8b2c051e7cd5",
       "number": 15635,
       "title": "Recover Nebius ProofPatch evidence-bound coding agent",
-      "updated_at": "2026-09-17T20:56:21Z"
+      "updated_at": "2026-09-17T23:28:35Z"
     }
   ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol/evidence-broker-15769-provenance-closure-20260917",
+      "created_at": "2026-09-17T23:56:31Z",
+      "draft": false,
+      "head_sha": "f0a99c18f1738f8efaa169e9bc249f2f3437c0ca",
+      "number": 15796,
+      "title": "Truth-narrow exact-head evidence broker provenance",
+      "updated_at": "2026-09-17T23:56:31Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol17/muse-atomic-send-lease-main-rejoin-20260917",
+      "created_at": "2026-09-17T23:52:32Z",
+      "draft": false,
+      "head_sha": "69c2fe9e6a6d6fd350dfd990383b2ec1dbb3b86d",
+      "number": 15794,
+      "title": "Muse: rejoin atomic send lease onto current main",
+      "updated_at": "2026-09-17T23:56:51Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -83,10 +105,10 @@
       "branch": "z-sol/revenue-lane-current-state-15750",
       "created_at": "2026-09-17T21:01:50Z",
       "draft": false,
-      "head_sha": "e9021d91fbc7e4f61afc5cba904674d0be99b7cc",
+      "head_sha": "84c6c867e5ee31d40b7c998be673c3887a116ac1",
       "number": 15758,
       "title": "Revenue coordination: canonical current-state compiler + stale-body guard",
-      "updated_at": "2026-09-17T21:19:14Z"
+      "updated_at": "2026-09-17T23:57:16Z"
     },
     {
       "author": "woahwhattheheck",
@@ -153,28 +175,6 @@
       "number": 15731,
       "title": "feat: exact-head ship fence for moving-main + CI truth",
       "updated_at": "2026-09-17T21:02:51Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "relay-z/deploy-transport-preflight-15671",
-      "created_at": "2026-09-17T20:32:52Z",
-      "draft": false,
-      "head_sha": "9ddf5f322a886a19b48d08356545ac90f7be7501",
-      "number": 15730,
-      "title": "Deploy transport source-binding preflight successor",
-      "updated_at": "2026-09-17T20:51:03Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "solz/payoff-path-ledger-15712-20260917",
-      "created_at": "2026-09-17T20:32:33Z",
-      "draft": false,
-      "head_sha": "cb58a8a194a40c354da2e68cb266c733fb6b77c5",
-      "number": 15728,
-      "title": "Revenue: compile explicit payoff paths for uncompensated work",
-      "updated_at": "2026-09-17T21:12:49Z"
     }
   ],
   "open_heads": {
@@ -194,12 +194,11 @@
     "15668": "a0806469a08003c3ae84752d7a23d61fa7cd8109",
     "15682": "f662b16c6949317f782a8d72e1d4281e9ebaa8ed",
     "15684": "a5aca2b07b41ca47fc3e914b172584fbc3712788",
-    "15687": "827f1a67ed0fdd820df9d2586261005607a63922",
     "15699": "43ada9c1b6a2152d1fd65d95ed41ccade89be98f",
     "15700": "08fa986edbb83cfb91fa75924997f23fc929eb3d",
-    "15707": "c7f6f4bd9a103b7afdf077e690eec8ecd5fa9406",
+    "15707": "0b29fd5b301ee4bab775cab4f3ab3a035bb8b65f",
     "15714": "49f70c1b3d26a1caffe7edb0cb5dc5fa6263c517",
-    "15717": "b6821d9c7ce8fd9bf8d4dd4fd1f3113d6ae7bea7",
+    "15717": "1030aa92d19100b114897a7bff6e76205070f397",
     "15721": "f691d4d452180f1df152a4b504b730fa4854f000",
     "15724": "0bc0e6b19aed5ea71598c6ab6b914a828bc8a6f4",
     "15728": "cb58a8a194a40c354da2e68cb266c733fb6b77c5",
@@ -210,13 +209,59 @@
     "15734": "2a8d940c5207c273f797e73a9a5004b305b186a8",
     "15751": "6b09abe5dc29a3b191841831a030d3120800f564",
     "15756": "48c8eeb97aff1485e3cae4f518a6a03b89304cf0",
-    "15758": "e9021d91fbc7e4f61afc5cba904674d0be99b7cc",
-    "15761": "6bd10e7d848ced3a14bfb8f557af849cdfd4ae9f"
+    "15758": "84c6c867e5ee31d40b7c998be673c3887a116ac1",
+    "15761": "6bd10e7d848ced3a14bfb8f557af849cdfd4ae9f",
+    "15794": "69c2fe9e6a6d6fd350dfd990383b2ec1dbb3b86d",
+    "15796": "f0a99c18f1738f8efaa169e9bc249f2f3437c0ca"
   },
-  "pulls_listed": 34,
+  "pulls_listed": 35,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 18.7,
+  "queue_depth_per_runner": 16.9,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol17/muse-send-lease-main-rejoin-20260917",
+      "closed_at": "2026-09-17T23:55:05Z",
+      "head_sha": "868f58c2a70c1e69f563e629ed3f0b5f43889669",
+      "merged_at": null,
+      "number": 15795,
+      "state": "CLOSED",
+      "title": "Muse: rejoin atomic send lease on current main"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarmz/opportunity-intake-trusted-completeness-14130-20260917",
+      "closed_at": "2026-09-17T23:51:08Z",
+      "head_sha": "827f1a67ed0fdd820df9d2586261005607a63922",
+      "merged_at": "2026-09-17T23:51:08Z",
+      "number": 15687,
+      "state": "MERGED",
+      "title": "fix: bind opportunity-intake completeness to trusted snapshot authority"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "anvil/titan-slack-lane-wire-20260917",
+      "closed_at": "2026-09-17T23:29:56Z",
+      "head_sha": "f7a4004d933ad859f489ecc68c0b01e41626932f",
+      "merged_at": "2026-09-17T23:29:56Z",
+      "number": 15791,
+      "state": "MERGED",
+      "title": "Wire titan_hands slack lane to env-token HTTP path (#15789)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "anvil/convert-shelf-49-20260917",
+      "closed_at": "2026-09-17T23:19:30Z",
+      "head_sha": "2a26f4284262b6b8dc96eda7a8652f1dfb29d664",
+      "merged_at": "2026-09-17T23:19:30Z",
+      "number": 15790,
+      "state": "MERGED",
+      "title": "Add $49 convert-shelf pack (WO-CONVERT-SHELF-49)"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -297,17 +342,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "devin/sledge-muhltrain-posthttp",
-      "closed_at": "2026-09-17T21:49:30Z",
-      "head_sha": "922e2a1e5c0aafac1dbf73c7fd448ce14d39bcff",
-      "merged_at": "2026-09-17T21:49:30Z",
-      "number": 15783,
-      "state": "MERGED",
-      "title": "convert shelf: muhl-train + post-http (sledge-muhltrain-posthttp-convert-shelf-20260917-01)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "devin/sledge-prooftoproposal-theworld",
       "closed_at": "2026-09-17T21:44:22Z",
       "head_sha": "8f53d1bc124abe23565ffb0a76e04b0d4f8926a6",
@@ -315,28 +349,6 @@
       "number": 15781,
       "state": "MERGED",
       "title": "convert shelf: proof-to-proposal + the-world (sledge-prooftoproposal-theworld-convert-shelf-20260917-01)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "devin/sledge-pixelunify-proofspiral",
-      "closed_at": "2026-09-17T21:37:31Z",
-      "head_sha": "7a134d8bca27715f9714c0ca77534eb7aae2b693",
-      "merged_at": "2026-09-17T21:37:31Z",
-      "number": 15779,
-      "state": "MERGED",
-      "title": "convert shelf: pixel unify + proof spiral (sledge-pixelunify-proofspiral-convert-shelf-20260917-01)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "devin/sledge-organabio-subzero",
-      "closed_at": "2026-09-17T21:35:46Z",
-      "head_sha": "1eba73f1ac49d45a2760e90a1d017c08c4cb4b15",
-      "merged_at": "2026-09-17T21:35:46Z",
-      "number": 15778,
-      "state": "MERGED",
-      "title": "convert shelf: organabio donor coa + subzero proof (sledge-organabio-subzero-convert-shelf-20260917-01)"
     },
     {
       "author": "woahwhattheheck",
@@ -370,21 +382,10 @@
       "number": 15775,
       "state": "MERGED",
       "title": "convert shelf: torrent workorder + trace sila (sledge-torrent-tracesila-convert-shelf-20260917-01)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "devin/sledge-sharprtu-slocs",
-      "closed_at": "2026-09-17T21:28:30Z",
-      "head_sha": "94589a49fa7637fe9d9d03e0a4f84868471b34f3",
-      "merged_at": "2026-09-17T21:28:30Z",
-      "number": 15774,
-      "state": "MERGED",
-      "title": "convert shelf: sharp rtu + slo cls (sledge-sharprtu-slocs-convert-shelf-20260917-01)"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T23:16:02Z",
+  "unchanged_since": "2026-09-17T23:57:25Z",
   "undatable_pulls": []
 }
