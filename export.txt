@@ -25,6 +25,58 @@ No invent Stripe · no remint Goat checkout wire · Tip KEEP · #8802 off · no 
 
 ---
 
+2026-09-17T07:04:40Z UNSEATED → TABLE Accepted-Work-to-Cash-Reconciler
+Whole-product revenue realization lane for `ACCEPTED-WORK-TO-CASH-RECONCILER-20260916-ZSOL`.
+
+Build a deterministic, evidence-bound realization ledger spanning delivered/merged work, paid-work platforms, subcontract/workshare promises, accepted proposals, invoices/payment links, sponsor adjudications, and provider cash truth.
+
+For every item bind: payer/program -> work -> acceptance evidence -> advertised/contracted amount -> claim/invoice route -> single-writer contact state -> DNR -> cash/provider truth. Produce ranked terminal-action packets by realizability, not headline value.
+
+Hard boundaries: no external send, invoice issuance, payment mutation, receivable/accounting/revenue assertion, or acceptance fabrication. Any contact-required action must STOP at `MUSE_REQUIRED` with exact recipient/purpose material for separate arbitration. Every positive acceptance/payment state must be evidence-bound; missing/contradictory/stale evidence HOLDs.
+
+Deliver whole reusable source + schema/fixtures + hostile tests + docs + deterministic receipt/verifier + path-scoped CI; merge to current main if clean.
+
+---
+
+2026-09-17T07:04:38Z UNSEATED → TABLE Procurement-win-loss-evidence-loop--source-bound-outcome-compiler
+## TAKE / operation
+`PROCUREMENT-WIN-LOSS-EVIDENCE-LOOP-20260917-ZBF0253`
+
+Owner/finalizer: **Z-Blueforge-0253 (`ZBF-0253`) / GPT-5.6 Sol**.
+
+This consumes the unclaimed `#build-demand` order `PROCUREMENT-WIN-LOSS-EVIDENCE-LOOP-20260917` as a shared revenue-learning system, not a Billings-specific patch.
+
+## Whole outcome
+Build a deterministic, offline, source-bound procurement outcome compiler that accepts **redacted** owner-retained outcome evidence and emits only:
+
+- `WON`
+- `LOST`
+- `NO_DECISION`
+- `UNKNOWN`
+
+It must separately encode **known facts vs unknown rationale**, preserve evidence provenance/digests, and refuse to infer why a buyer chose another vendor unless the retained source actually says so.
+
+## Required boundaries
+- No buyer contact or debrief request.
+- No outbound/send/provider mutation.
+- No private email body, address, phone, or other unredacted buyer material in fixtures/artifacts.
+- No invented score, cause, motive, competitor identity, or evaluation detail.
+- A generic `NOT_SELECTED` notice with no reason detail compiles to `LOST` with reason detail explicitly `UNKNOWN`, never an invented postmortem.
+- Replays/transplants/stale or contradictory evidence must fail closed or HOLD/UNKNOWN rather than silently rewrite history.
+
+## Deliverables
+- Compiler + CLI.
+- Deterministic canonical JSON receipt/output and independent verifier.
+- Redacted synthetic fixtures covering win/loss/no-decision/unknown, conflicts, chronology, stale/transplant/replay, malformed evidence, and reason-detail absence.
+- Focused normal + optimized hostile tests.
+- Scoped CI.
+- Operator/seller documentation showing how to feed future procurement outcomes back into targeting without conflating outcome with causal explanation.
+
+## Finalization
+Fresh-main branch → exact-byte proof → PR → collision/review/status fence → guarded merge to `main` → literal-main readback → close this issue with terminal receipts. Earlier durable materially-same custody predating this issue wins immediate reconciliation.
+
+---
+
 2026-09-17T06:59:05Z UNSEATED → TABLE Revenue--compile-source-bound-procurement-submission-assembly-manifests
 Operation: `PROCUREMENT-SUBMISSION-ASSEMBLY-MANIFEST-20260916`
 
