@@ -364,7 +364,7 @@ def _candidate_scores(
     molecule: Mapping[str, Any],
     candidate: Mapping[str, Any],
     fixture: Mapping[str, Any],
-) -> tuple[int, int, int, int]:
+) -> tuple[float, int, int, int, int]:
     baseline_each: list[float] = []
     loss_each: list[int] = []
     for query in molecule["spectra"]:
@@ -389,10 +389,14 @@ def _candidate_scores(
         baseline_each.append(frag_best)
         loss_each.append(_to_ppm(loss_best))
 
-    # Reproduce the frozen multispectrum predecessor aggregation exactly:
-    # 70% mean of per-spectrum best scores + 30% max.
+    # Frozen multispectrum.py ranks the aggregate after round(..., 12).
+    # Keep that 12-decimal float as the ranking key; ppm is projection only.
     baseline_mean = sum(baseline_each) / len(baseline_each)
-    predecessor = _to_ppm(0.70 * baseline_mean + 0.30 * max(baseline_each))
+    predecessor_rank_score = round(
+        0.70 * baseline_mean + 0.30 * max(baseline_each),
+        12,
+    )
+    predecessor_ppm = _to_ppm(predecessor_rank_score)
 
     # The successor deliberately removes the max-spectrum bonus and uses a robust
     # median across spectra for both evidence spaces before blending.
@@ -403,7 +407,13 @@ def _candidate_scores(
         + loss_consensus * fixture["neutral_loss_weight_bp"]
         + WEIGHT_SCALE // 2
     ) // WEIGHT_SCALE
-    return predecessor, fragment_consensus, loss_consensus, combined
+    return (
+        predecessor_rank_score,
+        predecessor_ppm,
+        fragment_consensus,
+        loss_consensus,
+        combined,
+    )
 
 
 def reciprocal_rank_ppm(rank: int) -> int:
@@ -422,9 +432,13 @@ def compile_fixture(raw_fixture: Mapping[str, Any]) -> dict[str, Any]:
         spectrum_count += len(molecule["spectra"])
         ranking: list[dict[str, Any]] = []
         for candidate in fixture["candidates"]:
-            predecessor_score, fragment_consensus, loss_consensus, combined = (
-                _candidate_scores(molecule, candidate, fixture)
-            )
+            (
+                predecessor_rank_score,
+                predecessor_score,
+                fragment_consensus,
+                loss_consensus,
+                combined,
+            ) = _candidate_scores(molecule, candidate, fixture)
             ranking.append(
                 {
                     "candidate_id": candidate["candidate_id"],
@@ -433,11 +447,12 @@ def compile_fixture(raw_fixture: Mapping[str, Any]) -> dict[str, Any]:
                     "fragment_median_consensus_ppm": fragment_consensus,
                     "neutral_loss_consensus_ppm": loss_consensus,
                     "combined_consensus_ppm": combined,
+                    "_predecessor_rank_score": predecessor_rank_score,
                 }
             )
         predecessor = sorted(
             ranking,
-            key=lambda x: (-x["absolute_fragment_predecessor_ppm"], x["candidate_id"]),
+            key=lambda x: (-x["_predecessor_rank_score"], x["candidate_id"]),
         )
         successor = sorted(
             ranking,
@@ -474,7 +489,20 @@ def compile_fixture(raw_fixture: Mapping[str, Any]) -> dict[str, Any]:
                     }
                     for x in predecessor[:25]
                 ],
-                "successor_top25": successor[:25],
+                "successor_top25": [
+                    {
+                        k: x[k]
+                        for k in (
+                            "candidate_id",
+                            "smiles",
+                            "absolute_fragment_predecessor_ppm",
+                            "fragment_median_consensus_ppm",
+                            "neutral_loss_consensus_ppm",
+                            "combined_consensus_ppm",
+                        )
+                    }
+                    for x in successor[:25]
+                ],
             }
         )
     count = len(rows)
