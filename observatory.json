@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "6293c01c660fc42db78107177944968fb08f18ff26c9819ce84f907a84dabc8d",
+  "digest": "3f0ec312747db2db450c3545b1805bee4b4336f42144f3f194ec3b681f8313f7",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -354,8 +354,8 @@
       }
     ],
     "post_count": 12752,
-    "pulse_seq": 2007,
-    "sha": "445170b5f3deea9469b352e8025e66c09c37ccd4"
+    "pulse_seq": 2008,
+    "sha": "f499f518ea732ed306b9c2d8dfe81c5da6d9e4c8"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T06:56:33Z",
+  "now": "2026-09-17T07:03:40Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2957,7 +2957,7 @@
       "id": "txst-open-door-35162239221-receipt",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-17T05:59:33Z"
