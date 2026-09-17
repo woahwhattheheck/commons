@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - zsol/nhdes-15255-builtin-shadow-donor-20260917
-    paths:
-      - .swarm/nhdes-15255-builtin-shadow.patch
 
 permissions:
   contents: write
