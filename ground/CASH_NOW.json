@@ -17,6 +17,12 @@
   ],
   "product_shelf": "tools-cash.html",
   "product_catalog": "commerce.html",
+  "larger_fixed": [
+    {"label": "GGUF diagnostic · $12,000 / 10 days", "path": "diagnostic.html", "amount_usd": 12000, "days": 10},
+    {"label": "White Box pilot · $30,000 / 30 days", "path": "commercial.html", "amount_usd": 30000, "days": 30}
+  ],
+  "larger_fixed_note": "Larger fixed engagements (separate product pages; checkout/intent stays there). Not remints of tip SKUs.",
+  "cite_larger_fixed": "goat-cash-now-json-keep-larger-fixed-20260916-01",
   "claim": "reed-ground-cash-now-autopsy-doors-20260909-01",
   "forbidden_in_public": [
     "bank account number",
