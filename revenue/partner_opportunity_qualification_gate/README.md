@@ -34,8 +34,11 @@ Every retained source has:
 - exact HTTP(S) URL
 - exact SHA-256 of the retained bytes
 - `observed_on`
+- `subject_partner`
 
-Every source reference carries **both source ID and SHA-256**. Reusing the same source ID after its bytes change therefore creates a new semantic generation; an old receipt cannot verify against it.
+`PARTNER_EVIDENCE` and `REGISTRATION_EVIDENCE` must name exactly one `subject_partner` that exists in the packet. `SOLICITATION_CONTROL` and `OWNER_WORKSHARE_EVIDENCE` must keep `subject_partner: null`. This is a retained operator classification used for deterministic routing; it is **not** an external certification that the evidence is true or legally sufficient.
+
+Every source reference carries **both source ID and SHA-256**. Reusing the same source ID after its bytes change therefore creates a new semantic generation; an old receipt cannot verify against it. The same retained URL or bytes cannot be relabeled across evidence kind or partner subject, so duplicate aliases cannot turn an RFP into partner proof or transplant one partner's evidence onto another candidate.
 
 Hard-gate definitions must cite at least one `SOLICITATION_CONTROL` source, and every solicitation-control URL must also be present in the exact upstream runway opportunity's `source_urls`. This prevents a hard-gate packet for one solicitation from being transplanted onto another runway row.
 
@@ -44,14 +47,14 @@ Each hard gate must also declare one closed `required_evidence_kind`:
 - `PARTNER_EVIDENCE`, or
 - `REGISTRATION_EVIDENCE`.
 
-A decided disposition (`SATISFIED` or `UNSATISFIED`) must cite current exact-digest evidence of **that gate's declared kind**. A generic partner capability source cannot satisfy a registration-specific gate, registration evidence cannot satisfy a gate explicitly requiring ordinary partner evidence, and the RFP/addendum that defines the requirement cannot prove the partner's disposition.
+A decided disposition (`SATISFIED` or `UNSATISFIED`) must cite current exact-digest evidence of **that gate's declared kind bound to that exact partner**. A generic partner capability source cannot satisfy a registration-specific gate, registration evidence cannot satisfy a gate explicitly requiring ordinary partner evidence, another partner's evidence cannot satisfy this partner's gate, and the RFP/addendum that defines the requirement cannot prove the partner's disposition.
 
 Registration deliberately separates:
 
 - `requirement_refs`: controlling `SOLICITATION_CONTROL` evidence that says what registration/screening is required; and
 - `evidence_refs`: partner-specific evidence that the requirement is actually complete.
 
-`registration.state = COMPLETE` requires at least one exact `REGISTRATION_EVIDENCE` source. An RFP, generic `PARTNER_EVIDENCE`, or `OWNER_WORKSHARE_EVIDENCE` source cannot mint registration completion.
+`registration.state = COMPLETE` requires at least one exact `REGISTRATION_EVIDENCE` source whose `subject_partner` is the partner being evaluated. An RFP, generic `PARTNER_EVIDENCE`, `OWNER_WORKSHARE_EVIDENCE`, or another partner's registration source cannot mint registration completion.
 
 ## Gate phases
 
@@ -102,6 +105,7 @@ The compiler is offline metadata integrity. It does not fetch URLs, log into SAM
 - explicit gate-specific required evidence kinds;
 - a three-reference gate retained for `PRE_SUBMISSION`;
 - registration requirement evidence separated from exact registration-completion evidence;
+- explicit per-source partner-subject binding for partner/registration evidence;
 - a bounded `$5,000` owner-authored TJLabs workshare;
 - all external/commercial authority false.
 
@@ -131,4 +135,4 @@ python -O -m unittest -v revenue.partner_opportunity_qualification_gate.test_gat
 python -m unittest -v test_partner_opportunity_qualification_gate.py
 ```
 
-The hostile suite covers source-digest remint, solicitation-source transplant, stale source/evidence, registration requirement-vs-completion separation, generic partner evidence attempting to mint registration completion, missing/invalid gate evidence-kind declarations, cross-kind gate evidence transplant, unknown/expired registration, unknown pre-outreach gates, DNR dominance, missing paid seam, missing/duplicate gates, strict integer typing, duplicate JSON keys, order invariance, semantic receipt verification, and the separate capacity-question state.
+The hostile suite covers source-digest remint, solicitation-source transplant, stale source/evidence, registration requirement-vs-completion separation, generic partner evidence attempting to mint registration completion, cross-partner SAM/registration evidence transplant, orphan/nonpartner subject claims, source identity retyping/rebinding, missing/invalid gate evidence-kind declarations, cross-kind gate evidence transplant, unknown/expired registration, unknown pre-outreach gates, DNR dominance, missing paid seam, missing/duplicate gates, strict integer typing, duplicate JSON keys, order invariance, semantic receipt verification, and the separate capacity-question state.

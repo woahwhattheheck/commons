@@ -12,6 +12,7 @@ REG_STATES = {"NOT_REQUIRED", "OPEN", "COMPLETE", "CLOSED", "UNKNOWN"}
 SOURCE_KINDS = {"SOLICITATION_CONTROL", "PARTNER_EVIDENCE", "REGISTRATION_EVIDENCE", "OWNER_WORKSHARE_EVIDENCE"}
 SOURCE_STATES = {"CURRENT", "STALE", "UNKNOWN"}
 GATE_EVIDENCE_KINDS = {"PARTNER_EVIDENCE", "REGISTRATION_EVIDENCE"}
+PARTNER_SOURCE_KINDS = GATE_EVIDENCE_KINDS
 
 
 class QualificationError(ValueError):
@@ -21,7 +22,7 @@ class QualificationError(ValueError):
 def canonical_json_bytes(value: Any) -> bytes:
     try:
         return (json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"), allow_nan=False) + "\n").encode()
-    except (TypeError, ValueError) as exc:
+    except (TypeError, ValueError, UnicodeEncodeError) as exc:
         raise QualificationError("value is not canonical-JSON encodable") from exc
 
 
@@ -67,6 +68,8 @@ def _arr(value: Any, field: str) -> list[Any]:
 def _text(value: Any, field: str) -> str:
     if type(value) is not str or not value or value != value.strip():
         raise QualificationError(f"{field} must be a non-empty trimmed string")
+    if any(0xD800 <= ord(ch) <= 0xDFFF for ch in value):
+        raise QualificationError(f"{field} contains a surrogate code point")
     return value
 
 
@@ -110,13 +113,19 @@ def _shape(obj: dict[str, Any], field: str, allowed: set[str], required: set[str
         raise QualificationError(f"{field} missing keys: {sorted(missing)}")
 
 
-def _source(raw: Any, field: str) -> dict[str, str]:
+def _source(raw: Any, field: str) -> dict[str, Any]:
     obj = _obj(raw, field)
-    keys = {"source_id", "kind", "status", "url", "sha256", "observed_on"}
+    keys = {"source_id", "kind", "status", "url", "sha256", "observed_on", "subject_partner"}
     _shape(obj, field, keys, keys)
     kind, status = _text(obj["kind"], f"{field}.kind"), _text(obj["status"], f"{field}.status")
     if kind not in SOURCE_KINDS or status not in SOURCE_STATES:
         raise QualificationError(f"{field} kind/status invalid")
+    if kind in PARTNER_SOURCE_KINDS:
+        subject_partner = _text(obj["subject_partner"], f"{field}.subject_partner")
+    else:
+        if obj["subject_partner"] is not None:
+            raise QualificationError(f"{field}.subject_partner must be null for {kind}")
+        subject_partner = None
     return {
         "source_id": _text(obj["source_id"], f"{field}.source_id"),
         "kind": kind,
@@ -124,10 +133,11 @@ def _source(raw: Any, field: str) -> dict[str, str]:
         "url": _url(obj["url"], f"{field}.url"),
         "sha256": _sha(obj["sha256"], f"{field}.sha256"),
         "observed_on": _date(obj["observed_on"], f"{field}.observed_on"),
+        "subject_partner": subject_partner,
     }
 
 
-def _refs(raw: Any, field: str, sources: dict[str, dict[str, str]], required: bool = False) -> list[dict[str, str]]:
+def _refs(raw: Any, field: str, sources: dict[str, dict[str, Any]], required: bool = False) -> list[dict[str, str]]:
     out = []
     for i, row in enumerate(_arr(raw, field)):
         obj = _obj(row, f"{field}[{i}]")
@@ -146,7 +156,7 @@ def _refs(raw: Any, field: str, sources: dict[str, dict[str, str]], required: bo
     return sorted(out, key=lambda x: (x["source_id"], x["source_sha256"]))
 
 
-def _gate(raw: Any, field: str, sources: dict[str, dict[str, str]]) -> dict[str, Any]:
+def _gate(raw: Any, field: str, sources: dict[str, dict[str, Any]]) -> dict[str, Any]:
     obj = _obj(raw, field)
     keys = {"gate_id", "label", "phase", "requirement", "required_evidence_kind", "source_refs"}
     _shape(obj, field, keys, keys)
@@ -171,7 +181,12 @@ def _gate(raw: Any, field: str, sources: dict[str, dict[str, str]]) -> dict[str,
     }
 
 
-def _registration(raw: Any, field: str, sources: dict[str, dict[str, str]]) -> dict[str, Any]:
+def _registration(
+    raw: Any,
+    field: str,
+    sources: dict[str, dict[str, Any]],
+    partner_name: str,
+) -> dict[str, Any]:
     obj = _obj(raw, field)
     keys = {"state", "deadline", "requirement_refs", "evidence_refs"}
     _shape(obj, field, keys, {"state", "requirement_refs", "evidence_refs"})
@@ -184,10 +199,20 @@ def _registration(raw: Any, field: str, sources: dict[str, dict[str, str]]) -> d
         raise QualificationError(f"{field}.UNKNOWN cannot claim evidence")
     if state != "UNKNOWN" and not any(sources[r["source_id"]]["kind"] == "SOLICITATION_CONTROL" for r in req):
         raise QualificationError(f"{field} requirement must bind solicitation control")
-    if state == "COMPLETE" and not any(
-        sources[r["source_id"]]["kind"] == "REGISTRATION_EVIDENCE" for r in evidence
+    if any(
+        sources[r["source_id"]]["kind"] in PARTNER_SOURCE_KINDS
+        and sources[r["source_id"]]["subject_partner"] != partner_name
+        for r in evidence
     ):
-        raise QualificationError(f"{field}.COMPLETE requires REGISTRATION_EVIDENCE completion evidence")
+        raise QualificationError(f"{field} contains evidence for a different partner")
+    if state == "COMPLETE" and not any(
+        sources[r["source_id"]]["kind"] == "REGISTRATION_EVIDENCE"
+        and sources[r["source_id"]]["subject_partner"] == partner_name
+        for r in evidence
+    ):
+        raise QualificationError(
+            f"{field}.COMPLETE requires REGISTRATION_EVIDENCE bound to partner {partner_name}"
+        )
     return {
         "state": state,
         "deadline": None if obj.get("deadline") is None else _date(obj["deadline"], f"{field}.deadline"),
@@ -225,8 +250,9 @@ def _workshare(raw: Any, field: str) -> dict[str, Any]:
 def _disposition(
     raw: Any,
     field: str,
-    sources: dict[str, dict[str, str]],
+    sources: dict[str, dict[str, Any]],
     gates: dict[str, dict[str, Any]],
+    partner_name: str,
 ) -> dict[str, Any]:
     obj = _obj(raw, field)
     keys = {"gate_id", "state", "evidence_refs", "note"}
@@ -238,11 +264,20 @@ def _disposition(
     refs = _refs(obj["evidence_refs"], f"{field}.evidence_refs", sources, state != "UNKNOWN")
     if state == "UNKNOWN" and refs:
         raise QualificationError(f"{field}.UNKNOWN cannot claim evidence")
+    if any(
+        sources[r["source_id"]]["kind"] in PARTNER_SOURCE_KINDS
+        and sources[r["source_id"]]["subject_partner"] != partner_name
+        for r in refs
+    ):
+        raise QualificationError(f"{field} contains evidence for a different partner")
     if state != "UNKNOWN" and not any(
-        sources[r["source_id"]]["kind"] == gate["required_evidence_kind"] for r in refs
+        sources[r["source_id"]]["kind"] == gate["required_evidence_kind"]
+        and sources[r["source_id"]]["subject_partner"] == partner_name
+        for r in refs
     ):
         raise QualificationError(
-            f"{field}.{state} requires {gate['required_evidence_kind']} evidence for gate {gid}"
+            f"{field}.{state} requires {gate['required_evidence_kind']} evidence "
+            f"bound to partner {partner_name} for gate {gid}"
         )
     return {
         "gate_id": gid,
@@ -271,7 +306,34 @@ def normalize_input(raw: Any) -> dict[str, Any]:
         raise QualificationError("duplicate source_id")
     if any(s["observed_on"] > as_of for s in source_rows):
         raise QualificationError("source observed_on cannot be after as_of")
+    identities = [(s["url"], s["sha256"]) for s in source_rows]
+    if len(identities) != len(set(identities)):
+        raise QualificationError("duplicate source URL/digest identity")
+    sha_scopes: dict[str, tuple[str, str | None]] = {}
+    url_scopes: dict[str, tuple[str, str | None]] = {}
+    for source in source_rows:
+        scope = (source["kind"], source["subject_partner"])
+        prior_sha_scope = sha_scopes.setdefault(source["sha256"], scope)
+        prior_url_scope = url_scopes.setdefault(source["url"], scope)
+        if prior_sha_scope != scope or prior_url_scope != scope:
+            raise QualificationError(
+                "source bytes/URL cannot be relabeled across evidence kind or partner subject"
+            )
     sources = {s["source_id"]: s for s in source_rows}
+
+    raw_partners = _arr(doc["partners"], "partners")
+    partner_names = [
+        _text(_obj(raw_partner, f"partners[{i}]").get("name"), f"partners[{i}].name")
+        for i, raw_partner in enumerate(raw_partners)
+    ]
+    if not partner_names or len({name.casefold() for name in partner_names}) != len(partner_names):
+        raise QualificationError("partners must be non-empty with unique names")
+    partner_name_set = set(partner_names)
+    if any(
+        source["subject_partner"] is not None and source["subject_partner"] not in partner_name_set
+        for source in source_rows
+    ):
+        raise QualificationError("partner-specific source subject must name a partner in this packet")
 
     gates = [_gate(v, f"hard_gates[{i}]", sources) for i, v in enumerate(_arr(doc["hard_gates"], "hard_gates"))]
     if not gates or len({g["gate_id"] for g in gates}) != len(gates):
@@ -280,25 +342,26 @@ def normalize_input(raw: Any) -> dict[str, Any]:
     gate_ids = set(gate_map)
 
     partners = []
-    for i, raw_partner in enumerate(_arr(doc["partners"], "partners")):
+    for i, raw_partner in enumerate(raw_partners):
         field, pobj = f"partners[{i}]", _obj(raw_partner, f"partners[{i}]")
         pkeys = {"name", "registration", "gate_dispositions", "paid_workshare"}
         _shape(pobj, field, pkeys, pkeys)
+        partner_name = partner_names[i]
         dispositions = [
-            _disposition(v, f"{field}.gate_dispositions[{j}]", sources, gate_map)
+            _disposition(v, f"{field}.gate_dispositions[{j}]", sources, gate_map, partner_name)
             for j, v in enumerate(_arr(pobj["gate_dispositions"], f"{field}.gate_dispositions"))
         ]
         ids = [d["gate_id"] for d in dispositions]
         if len(ids) != len(set(ids)) or set(ids) != gate_ids:
             raise QualificationError(f"{field}.gate_dispositions must cover every hard gate exactly once")
         partners.append({
-            "name": _text(pobj["name"], f"{field}.name"),
-            "registration": _registration(pobj["registration"], f"{field}.registration", sources),
+            "name": partner_name,
+            "registration": _registration(
+                pobj["registration"], f"{field}.registration", sources, partner_name
+            ),
             "gate_dispositions": sorted(dispositions, key=lambda d: d["gate_id"]),
             "paid_workshare": _workshare(pobj["paid_workshare"], f"{field}.paid_workshare"),
         })
-    if not partners or len({p["name"].casefold() for p in partners}) != len(partners):
-        raise QualificationError("partners must be non-empty with unique names")
     return {
         "schema": SCHEMA,
         "as_of": as_of,

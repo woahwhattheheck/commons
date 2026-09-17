@@ -3,7 +3,7 @@ from revenue.partner_opportunity_qualification_gate.engine import QualificationE
 from revenue.partner_opportunity_qualification_gate.validation import load_strict_json_text
 
 def ref(i, ch): return {'source_id':i,'source_sha256':ch*64}
-def src(i, kind, ch, url, status='CURRENT'): return {'source_id':i,'kind':kind,'status':status,'url':url,'sha256':ch*64,'observed_on':'2026-09-17'}
+def src(i, kind, ch, url, status='CURRENT', subject_partner=None): return {'source_id':i,'kind':kind,'status':status,'url':url,'sha256':ch*64,'observed_on':'2026-09-17','subject_partner':subject_partner}
 
 def packet():
     return {
@@ -19,8 +19,8 @@ def packet():
       },
       'sources':[
         src('rfp','SOLICITATION_CONTROL','a','https://buyer.example/rfp.pdf'),
-        src('sam','PARTNER_EVIDENCE','b','https://partner.example/sam'),
-        src('reg','REGISTRATION_EVIDENCE','c','https://buyer.example/registration'),
+        src('sam','PARTNER_EVIDENCE','b','https://partner.example/sam',subject_partner='Example MSP'),
+        src('reg','REGISTRATION_EVIDENCE','c','https://buyer.example/registration',subject_partner='Example MSP'),
       ],
       'hard_gates':[
         {'gate_id':'active-sam','label':'Active SAM','phase':'PRE_OUTREACH','requirement':'Partner must evidence active SAM registration','required_evidence_kind':'PARTNER_EVIDENCE','source_refs':[ref('rfp','a')]},
@@ -36,6 +36,19 @@ def packet():
         'paid_workshare':{'state':'DEFINED','fixed_fee_minor':500000,'currency':'USD','scope':'qualification evidence matrix','acceptance_criteria':['matrix source-bound'],'exclusions':['prime responsibility']}
       }]
     }
+
+
+def add_unknown_partner(p, name='Other MSP'):
+    p['partners'].append({
+      'name':name,
+      'registration':{'state':'UNKNOWN','deadline':None,'requirement_refs':[],'evidence_refs':[]},
+      'gate_dispositions':[
+        {'gate_id':'active-sam','state':'UNKNOWN','evidence_refs':[]},
+        {'gate_id':'three-refs','state':'UNKNOWN','evidence_refs':[]},
+      ],
+      'paid_workshare':{'state':'UNDEFINED'}
+    })
+    return p
 
 class QualificationGateTests(unittest.TestCase):
   def test_ready_and_receipt(self):
@@ -120,7 +133,35 @@ class QualificationGateTests(unittest.TestCase):
     with self.assertRaises(QualificationError): compile_qualification(p)
 
   def test_unsatisfied_gate_still_requires_its_evidence_kind(self):
-    p=packet(); p['hard_gates'][0]['required_evidence_kind']='REGISTRATION_EVIDENCE'; p['partners'][0]['gate_dispositions'][0]['state']='UNSATISFIED'
+    p=packet()
+    p['hard_gates'][0]['required_evidence_kind']='REGISTRATION_EVIDENCE'
+    p['partners'][0]['gate_dispositions'][0]['state']='UNSATISFIED'
+    with self.assertRaises(QualificationError): compile_qualification(p)
+
+  def test_gate_evidence_cannot_cross_partner_subject(self):
+    p=add_unknown_partner(packet()); p['sources'][1]['subject_partner']='Other MSP'
+    with self.assertRaises(QualificationError): compile_qualification(p)
+
+  def test_registration_evidence_cannot_cross_partner_subject(self):
+    p=add_unknown_partner(packet()); p['sources'][2]['subject_partner']='Other MSP'
+    with self.assertRaises(QualificationError): compile_qualification(p)
+
+  def test_partner_source_subject_must_exist(self):
+    p=packet(); p['sources'][1]['subject_partner']='Ghost MSP'
+    with self.assertRaises(QualificationError): compile_qualification(p)
+
+  def test_nonpartner_source_cannot_claim_partner_subject(self):
+    p=packet(); p['sources'][0]['subject_partner']='Example MSP'
+    with self.assertRaises(QualificationError): compile_qualification(p)
+
+  def test_source_identity_cannot_be_retyped(self):
+    p=packet()
+    p['sources'].append(src('rfp-as-partner','PARTNER_EVIDENCE','a','https://attacker.example/rfp-copy',subject_partner='Example MSP'))
+    with self.assertRaises(QualificationError): compile_qualification(p)
+
+  def test_source_identity_cannot_be_rebound_to_other_partner(self):
+    p=add_unknown_partner(packet())
+    p['sources'].append(src('sam-other','PARTNER_EVIDENCE','b','https://other.example/sam',subject_partner='Other MSP'))
     with self.assertRaises(QualificationError): compile_qualification(p)
 
   def test_duplicate_gate_rejected(self):

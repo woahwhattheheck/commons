@@ -140,7 +140,8 @@
       "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
       "source_id": "rfp",
       "status": "CURRENT",
-      "url": "https://buyer.example/rfp.pdf"
+      "url": "https://buyer.example/rfp.pdf",
+      "subject_partner": null
     },
     {
       "kind": "PARTNER_EVIDENCE",
@@ -148,7 +149,8 @@
       "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
       "source_id": "sam",
       "status": "CURRENT",
-      "url": "https://partner.example/sam"
+      "url": "https://partner.example/sam",
+      "subject_partner": "Example MSP"
     },
     {
       "kind": "REGISTRATION_EVIDENCE",
@@ -156,7 +158,8 @@
       "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
       "source_id": "reg",
       "status": "CURRENT",
-      "url": "https://buyer.example/registration"
+      "url": "https://buyer.example/registration",
+      "subject_partner": "Example MSP"
     }
   ]
 }
