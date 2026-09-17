@@ -165,7 +165,8 @@ def _build_current_api(*, _datetime_cls=_stdlib_datetime, _timezone_obj=_stdlib_
     builtin_len = sealed_builtins["len"]
     max_abs_integer = 10**15
     max_plain_nodes = 10_000
-    max_plain_bytes = 1_000_000
+    max_plain_chars = 2_000_000
+    max_plain_bytes = 8_000_000
 
     def _canonical(value: Any) -> bytes:
         return (json_dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n").encode("utf-8")
@@ -185,14 +186,17 @@ def _build_current_api(*, _datetime_cls=_stdlib_datetime, _timezone_obj=_stdlib_
 
     def _freeze_plain_json(value: Any, label: str) -> Any:
         """Bounded copy of one exact built-in JSON tree before semantic reads."""
-        budget = {"nodes": 0, "bytes": 0}
+        budget = {"nodes": 0, "chars": 0, "bytes": 0}
 
-        def spend(nodes: int = 0, bytes_: int = 0) -> None:
+        def spend(nodes: int = 0, chars: int = 0, bytes_: int = 0) -> None:
             if budget["nodes"] + nodes > max_plain_nodes:
                 raise _gate_error(f"{label}: node budget exceeded")
+            if budget["chars"] + chars > max_plain_chars:
+                raise _gate_error(f"{label}: character budget exceeded")
             if budget["bytes"] + bytes_ > max_plain_bytes:
                 raise _gate_error(f"{label}: byte budget exceeded")
             budget["nodes"] += nodes
+            budget["chars"] += chars
             budget["bytes"] += bytes_
 
         def freeze(current: Any, where: str, depth: int) -> Any:
@@ -209,8 +213,10 @@ def _build_current_api(*, _datetime_cls=_stdlib_datetime, _timezone_obj=_stdlib_
                 for key, item in current.items():
                     if builtin_type(key) is not builtin_str:
                         raise _gate_error(f"{where}: string object keys required")
-                    if builtin_len(key) > max_plain_bytes - budget["bytes"]:
-                        raise _gate_error(f"{where}: byte budget exceeded")
+                    key_chars = builtin_len(key)
+                    if key_chars > max_plain_chars - budget["chars"]:
+                        raise _gate_error(f"{where}: character budget exceeded")
+                    spend(chars=key_chars)
                     _checked_text(key, f"{where}: object key")
                     key_bytes = json_dumps(key, ensure_ascii=False).encode("utf-8")
                     spend(bytes_=builtin_len(key_bytes) + 1)
@@ -232,8 +238,10 @@ def _build_current_api(*, _datetime_cls=_stdlib_datetime, _timezone_obj=_stdlib_
                 spend(bytes_=4 if current else 5)
                 return current
             if kind is builtin_str:
-                if builtin_len(current) > max_plain_bytes - budget["bytes"]:
-                    raise _gate_error(f"{where}: byte budget exceeded")
+                text_chars = builtin_len(current)
+                if text_chars > max_plain_chars - budget["chars"]:
+                    raise _gate_error(f"{where}: character budget exceeded")
+                spend(chars=text_chars)
                 _checked_text(current, where)
                 text_bytes = json_dumps(current, ensure_ascii=False).encode("utf-8")
                 spend(bytes_=builtin_len(text_bytes))
