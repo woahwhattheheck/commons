@@ -107,6 +107,7 @@ class AcceptanceTests(unittest.TestCase):
             {
                 "kind": "buyer_official",
                 "url": "https://www.westfield.ma.edu/offices/open-general-bids",
+                "note": "Pinned public source identity only; compiler does not authenticate live availability.",
             }
         )
         with self.assertRaises(ContractError):
@@ -153,15 +154,17 @@ class AcceptanceTests(unittest.TestCase):
         with self.assertRaises(ContractError):
             compile_acceptance(bad)
 
-    def test_source_note_does_not_create_live_provider_authority(self):
-        bad = copy.deepcopy(MANIFEST)
-        bad["sources"][0]["note"] = "LIVE VERIFIED FOREVER"
-        plan = compile_acceptance(bad)
-        self.assertFalse(plan["source_provenance"]["live_provider_authenticated"])
-        self.assertEqual(
-            plan["source_provenance"]["mode"],
-            SOURCE_PROVENANCE_MODE,
+    def test_source_note_is_code_owned_not_authority_prose(self):
+        attempts = (
+            "LIVE VERIFIED FOREVER",
+            "Westfield awarded and paid Token Junkie Labs",
+            "KHow accepted Token Junkie Labs as its subcontractor",
         )
+        for attempt in attempts:
+            bad = copy.deepcopy(MANIFEST)
+            bad["sources"][0]["note"] = attempt
+            with self.subTest(attempt=attempt), self.assertRaises(ContractError):
+                compile_acceptance(bad)
 
     def test_transplanted_manifest_cannot_be_rehashed_into_valid_receipt(self):
         bad = copy.deepcopy(MANIFEST)
@@ -182,6 +185,77 @@ class AcceptanceTests(unittest.TestCase):
         self.assertFalse(truth["award_received"])
         self.assertFalse(truth["payment_received"])
         self.assertFalse(truth["revenue_recognized"])
+
+    def test_signed_scope_vocab_is_code_owned(self):
+        attempts = (
+            ("deliverables", "Westfield awarded and paid Token Junkie Labs"),
+            ("exclusions", "buyer portal submission included and authorized"),
+        )
+        for field, replacement in attempts:
+            bad = copy.deepcopy(MANIFEST)
+            bad["workshare"][field][0] = replacement
+            with self.subTest(field=field), self.assertRaises(ContractError):
+                compile_acceptance(bad)
+
+        bad = copy.deepcopy(MANIFEST)
+        bad["model_acceptance"]["handoff_artifacts"][0] = (
+            "buyer-approved production-data export"
+        )
+        with self.assertRaises(ContractError):
+            compile_acceptance(bad)
+
+        for field in ("deliverables", "exclusions"):
+            bad = copy.deepcopy(MANIFEST)
+            bad["workshare"][field].reverse()
+            with self.subTest(field=field, mutation="reorder"), self.assertRaises(ContractError):
+                compile_acceptance(bad)
+
+        bad = copy.deepcopy(MANIFEST)
+        bad["model_acceptance"]["handoff_artifacts"].reverse()
+        with self.assertRaises(ContractError):
+            compile_acceptance(bad)
+
+    def test_metric_choices_are_code_owned(self):
+        attempts = {
+            "calibration": "log_loss_and_reliability",
+            "ranking": "precision_recall_at_k",
+            "evaluation_split": "random_split",
+        }
+        for field, replacement in attempts.items():
+            bad = copy.deepcopy(MANIFEST)
+            bad["model_acceptance"]["metrics"][field] = replacement
+            with self.subTest(field=field), self.assertRaises(ContractError):
+                compile_acceptance(bad)
+
+    def test_false_signed_scope_cannot_be_resealed(self):
+        mutations = []
+
+        bad = copy.deepcopy(MANIFEST)
+        bad["workshare"]["deliverables"][0] = (
+            "Westfield awarded and paid Token Junkie Labs"
+        )
+        mutations.append(bad)
+
+        bad = copy.deepcopy(MANIFEST)
+        bad["workshare"]["exclusions"][0] = (
+            "buyer portal submission included and authorized"
+        )
+        mutations.append(bad)
+
+        bad = copy.deepcopy(MANIFEST)
+        bad["model_acceptance"]["handoff_artifacts"][0] = (
+            "buyer-approved production-data export"
+        )
+        mutations.append(bad)
+
+        bad = copy.deepcopy(MANIFEST)
+        bad["sources"][1]["note"] = "KHow confirmed this workshare"
+        mutations.append(bad)
+
+        for index, mutated in enumerate(mutations):
+            with self.subTest(index=index), self.assertRaises(ContractError):
+                make_receipt(mutated)
+            self.assertFalse(verify_receipt(mutated, make_receipt(MANIFEST)))
 
 
 if __name__ == "__main__":
