@@ -35,10 +35,10 @@ def _refresh_source(raw: dict) -> None:
 
 
 class ProcurementLossRemediationTests(unittest.TestCase):
-    def test_stated_buyer_reason_produces_actionable_gap(self):
+    def test_stated_buyer_reason_is_diagnostic_only_without_authenticated_source(self):
         receipt = compile_plan(packet("stated_loss"))
         self.assertEqual(receipt["source_outcome"], "LOST")
-        self.assertEqual(receipt["status"], "ACTIONABLE_GAPS")
+        self.assertEqual(receipt["status"], "HOLD_CONTRADICTION")
         self.assertEqual(len(receipt["source_evidence"]), 1)
         source = receipt["source_evidence"][0]
         self.assertEqual(source["evidence_id"], "notice-001")
@@ -47,18 +47,43 @@ class ProcurementLossRemediationTests(unittest.TestCase):
         self.assertEqual(source["evidence_status"], "CURRENT")
         self.assertEqual(len(receipt["buyer_reasons"]), 1)
         reason = receipt["buyer_reasons"][0]
-        self.assertEqual(reason["statement_attribution"], "BUYER_STATED_SOURCE_BOUND")
+        self.assertEqual(
+            reason["statement_attribution"],
+            "CALLER_RETAINED_STATED_SOURCE_BOUND_NOT_BUYER_AUTHENTICATED",
+        )
+        self.assertIs(reason["buyer_source_authenticated"], False)
         self.assertEqual(reason["category_attribution"], "OPERATOR_TAXONOMY_CLASSIFICATION")
         self.assertEqual(reason["category"], "QUALIFICATION_EVIDENCE")
-        self.assertTrue(receipt["remediation_gaps"][0]["basis_valid"])
+        self.assertFalse(receipt["remediation_gaps"][0]["basis_valid"])
+        self.assertIn("buyer_reason_not_authenticated:reason-qualification", receipt["hold_reasons"])
         self.assertTrue(all(value is False for value in receipt["authority"].values()))
+
+    def test_forged_buyer_notice_digest_and_stated_rationale_cannot_authorize_gap(self):
+        raw = packet("stated_loss")
+        fact = raw["outcome_record"]["evidence"][0]
+        fact["source_kind"] = "BUYER_NOTICE"
+        fact["source_digest_sha256"] = "a" * 64
+        raw["buyer_reason_mappings"][0]["source_digest_sha256"] = "a" * 64
+        _refresh_source(raw)
+        receipt = compile_plan(raw)
+        self.assertEqual(receipt["source_outcome"], "LOST")
+        self.assertEqual(receipt["status"], "HOLD_CONTRADICTION")
+        self.assertEqual(receipt["source_evidence"][0]["source_kind"], "BUYER_NOTICE")
+        self.assertEqual(receipt["source_evidence"][0]["source_digest_sha256"], "a" * 64)
+        self.assertIs(receipt["buyer_reasons"][0]["buyer_source_authenticated"], False)
+        self.assertEqual(
+            receipt["buyer_reasons"][0]["statement_attribution"],
+            "CALLER_RETAINED_STATED_SOURCE_BOUND_NOT_BUYER_AUTHENTICATED",
+        )
+        self.assertFalse(receipt["remediation_gaps"][0]["basis_valid"])
+        self.assertIn("buyer_reason_not_authenticated:reason-qualification", receipt["hold_reasons"])
 
     def test_receipt_verifier_accepts_exact_packet(self):
         raw = packet("stated_loss")
         receipt = compile_plan(raw)
         result = verify_plan(raw, receipt)
         self.assertEqual(result["status"], "VERIFIED")
-        self.assertEqual(result["remediation_status"], "ACTIONABLE_GAPS")
+        self.assertEqual(result["remediation_status"], "HOLD_CONTRADICTION")
 
     def test_unknown_buyer_reason_can_support_only_internal_hypothesis_gap(self):
         receipt = compile_plan(packet("unknown_reason_internal_hypothesis"))
@@ -242,6 +267,7 @@ class ProcurementLossRemediationTests(unittest.TestCase):
         raw["remediation_gaps"] = []
         receipt = compile_plan(raw)
         self.assertEqual(receipt["status"], "NO_ACTIONABLE_GAP")
+        self.assertIs(receipt["buyer_reasons"][0]["buyer_source_authenticated"], False)
 
     def test_private_locator_shaped_hypothesis_is_rejected(self):
         raw = packet("unknown_reason_internal_hypothesis")
