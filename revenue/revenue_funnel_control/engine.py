@@ -5,10 +5,9 @@ import hashlib
 import json
 import os
 import stat
-from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Iterable, Mapping
+from typing import Any
 
 SCHEMA = "TJL_REVENUE_FUNNEL_V1"
 BUNDLE_SCHEMA = "TJL_REVENUE_FUNNEL_BUNDLE_V1"
@@ -121,13 +120,36 @@ def _money(value: Any, where: str, *, optional: bool = False) -> int | None:
     return value
 
 
-def _stage_for(kinds: set[str], paid_total: int, reference_amount: int | None) -> str:
+def _latest(events: list[dict[str, Any]], kind: str) -> dict[str, Any] | None:
+    matches = [e for e in events if e["kind"] == kind]
+    return matches[-1] if matches else None
+
+
+def _latest_amount(events: list[dict[str, Any]], kinds: set[str]) -> tuple[int | None, str]:
+    matches = [e for e in events if e["kind"] in kinds and e["amount_cents"] is not None]
+    if not matches:
+        return None, "UNKNOWN"
+    chosen = matches[-1]
+    return chosen["amount_cents"], chosen["kind"]
+
+
+def _settlement_target(events: list[dict[str, Any]], reference_amount: int | None) -> tuple[int | None, str]:
+    for kinds in ({"INVOICE_ISSUED"}, {"AWARDED"}, {"PROPOSAL_SENT", "CLAIM_SUBMITTED"}):
+        amount, source = _latest_amount(events, kinds)
+        if amount is not None:
+            return amount, source
+    if reference_amount is not None:
+        return reference_amount, "REFERENCE_AMOUNT"
+    return None, "UNKNOWN"
+
+
+def _stage_for(kinds: set[str], paid_total: int, settlement_target: int | None) -> str:
     if paid_total:
-        if reference_amount is None:
+        if settlement_target is None:
             return "PAYMENT_RECORDED_TARGET_UNKNOWN"
-        if paid_total < reference_amount:
+        if paid_total < settlement_target:
             return "PARTIALLY_PAID"
-        if paid_total == reference_amount:
+        if paid_total == settlement_target:
             return "PAID"
         return "OVERPAID_RECONCILE"
     if "INVOICE_ISSUED" in kinds or "AWARDED" in kinds:
@@ -139,11 +161,6 @@ def _stage_for(kinds: set[str], paid_total: int, reference_amount: int | None) -
     if "QUALIFIED" in kinds:
         return "QUALIFIED"
     return "DISCOVERED"
-
-
-def _latest(events: list[dict[str, Any]], kind: str) -> dict[str, Any] | None:
-    matches = [e for e in events if e["kind"] == kind]
-    return matches[-1] if matches else None
 
 
 def _next_action(stage: str, events: list[dict[str, Any]]) -> str:
@@ -159,7 +176,7 @@ def _next_action(stage: str, events: list[dict[str, Any]]) -> str:
         return "INBOUND_ONLY_DNR"
     if last_collision and (not last_muse or last_collision["observed_at"] >= last_muse["observed_at"]):
         return "HOLD_COLLISION"
-    if stage in {"PAID"}:
+    if stage == "PAID":
         return "DONE_PAID"
     if stage == "OVERPAID_RECONCILE":
         return "RECONCILE_OVERPAYMENT"
@@ -176,13 +193,7 @@ def _next_action(stage: str, events: list[dict[str, Any]]) -> str:
     return "QUALIFY"
 
 
-def _validate_event(
-    raw: Any,
-    *,
-    opportunity_id: str,
-    evaluation_at: datetime,
-    reference_amount: int | None,
-) -> dict[str, Any]:
+def _validate_event(raw: Any, *, opportunity_id: str, evaluation_at: datetime) -> dict[str, Any]:
     e = _exact_dict(raw, EVENT_KEYS, f"{opportunity_id}.event")
     event_id = _bounded_text(e["id"], f"{opportunity_id}.event.id", maximum=120)
     kind = _bounded_text(e["kind"], f"{event_id}.kind", maximum=40)
@@ -202,9 +213,8 @@ def _validate_event(
             raise FunnelError(f"{event_id}: payment needs positive amount")
         if source_class != "PROVIDER_RECEIPT":
             raise FunnelError(f"{event_id}: payment requires PROVIDER_RECEIPT retained evidence")
-    elif amount is not None:
-        if kind not in {"AWARDED", "INVOICE_ISSUED", "PROPOSAL_SENT", "CLAIM_SUBMITTED"}:
-            raise FunnelError(f"{event_id}: amount not allowed for {kind}")
+    elif amount is not None and kind not in {"AWARDED", "INVOICE_ISSUED", "PROPOSAL_SENT", "CLAIM_SUBMITTED"}:
+        raise FunnelError(f"{event_id}: amount not allowed for {kind}")
     if kind in {"DNR", "COLLISION_HOLD", "MUSE_CLEAR", "OUTBOUND_SENT", "INBOUND_RECEIVED"} and amount is not None:
         raise FunnelError(f"{event_id}: control/contact events cannot carry amount")
     return {
@@ -216,6 +226,10 @@ def _validate_event(
         "sha256": sha,
         "amount_cents": amount,
     }
+
+
+def _has_at_or_before(events: list[dict[str, Any]], current: dict[str, Any], kinds: set[str]) -> bool:
+    return any(e["kind"] in kinds and e["observed_at"] <= current["observed_at"] for e in events)
 
 
 def _compile_opportunity(raw: Any, evaluation_at: datetime, threshold: int) -> dict[str, Any]:
@@ -231,7 +245,7 @@ def _compile_opportunity(raw: Any, evaluation_at: datetime, threshold: int) -> d
     reference_amount = _money(op["reference_amount_cents"], f"{op_id}.reference_amount_cents", optional=True)
     if type(op["events"]) is not list:
         raise FunnelError(f"{op_id}.events: array required")
-    events = [_validate_event(e, opportunity_id=op_id, evaluation_at=evaluation_at, reference_amount=reference_amount) for e in op["events"]]
+    events = [_validate_event(e, opportunity_id=op_id, evaluation_at=evaluation_at) for e in op["events"]]
     ids = [e["id"] for e in events]
     if len(ids) != len(set(ids)):
         raise FunnelError(f"{op_id}: duplicate event id")
@@ -250,35 +264,34 @@ def _compile_opportunity(raw: Any, evaluation_at: datetime, threshold: int) -> d
     if "PAYMENT_RECEIVED" in kinds and not ({"AWARDED", "INVOICE_ISSUED"} & kinds):
         raise FunnelError(f"{op_id}: payment requires award or invoice evidence")
 
-    # Presence is not chronology. Every milestone must have a qualifying predecessor
-    # at or before its own observation time; a later event cannot retroactively
-    # authorize an earlier acceptance, award, invoice, or payment.
-    seen: set[str] = set()
     for e in events:
         kind = e["kind"]
-        if kind in {"PROPOSAL_SENT", "CLAIM_SUBMITTED"} and "QUALIFIED" not in seen:
+        if kind in {"PROPOSAL_SENT", "CLAIM_SUBMITTED"} and not _has_at_or_before(events, e, {"QUALIFIED"}):
             raise FunnelError(f"{op_id}: {kind} predates qualification")
-        if kind in {"ACCEPTED", "MERGED"} and not ({"PROPOSAL_SENT", "CLAIM_SUBMITTED"} & seen):
+        if kind in {"ACCEPTED", "MERGED"} and not _has_at_or_before(events, e, {"PROPOSAL_SENT", "CLAIM_SUBMITTED"}):
             raise FunnelError(f"{op_id}: {kind} predates proposal/claim")
-        if kind in {"AWARDED", "INVOICE_ISSUED"} and not ({"ACCEPTED", "MERGED"} & seen):
+        if kind in {"AWARDED", "INVOICE_ISSUED"} and not _has_at_or_before(events, e, {"ACCEPTED", "MERGED"}):
             raise FunnelError(f"{op_id}: {kind} predates accepted/merged evidence")
-        if kind == "PAYMENT_RECEIVED" and not ({"AWARDED", "INVOICE_ISSUED"} & seen):
+        if kind == "PAYMENT_RECEIVED" and not _has_at_or_before(events, e, {"AWARDED", "INVOICE_ISSUED"}):
             raise FunnelError(f"{op_id}: payment predates award/invoice")
-        seen.add(kind)
 
     payment_total = sum(e["amount_cents"] or 0 for e in events if e["kind"] == "PAYMENT_RECEIVED")
-    stage = _stage_for(kinds, payment_total, reference_amount)
+    settlement_target, target_source = _settlement_target(events, reference_amount)
+    stage = _stage_for(kinds, payment_total, settlement_target)
     action = _next_action(stage, events)
 
-    economic_gap = (
-        reference_amount is not None
-        and stage in {"ACCEPTED_OR_MERGED", "INVOICED_OR_AWARDED", "PARTIALLY_PAID"}
-    )
+    economic_gap = stage in {
+        "ACCEPTED_OR_MERGED",
+        "INVOICED_OR_AWARDED",
+        "PARTIALLY_PAID",
+        "PAYMENT_RECORDED_TARGET_UNKNOWN",
+        "OVERPAID_RECONCILE",
+    }
     small_batch_candidate = bool(
         economic_gap
-        and reference_amount is not None
-        and reference_amount <= threshold
-        and action in {"COLLECTION_REVIEW", "RECONCILE_PAYMENT_STATE"}
+        and settlement_target is not None
+        and settlement_target <= threshold
+        and action in {"COLLECTION_REVIEW", "RECONCILE_PAYMENT_STATE", "RECONCILE_OVERPAYMENT"}
     )
     return {
         "id": op_id,
@@ -286,11 +299,13 @@ def _compile_opportunity(raw: Any, evaluation_at: datetime, threshold: int) -> d
         "lane": lane,
         "currency": currency,
         "reference_amount_cents": reference_amount,
+        "settlement_target_cents": settlement_target,
+        "settlement_target_source": target_source,
         "events": events,
         "stage": stage,
         "next_action": action,
         "payment_received_cents": payment_total,
-        "economically_unfinished": bool(economic_gap),
+        "economically_unfinished": economic_gap,
         "micro_batch_candidate": small_batch_candidate,
         "evidence_root_sha256": _digest(events),
     }
