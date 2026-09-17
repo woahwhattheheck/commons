@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T11:18:35Z",
+ "holder": "LATCH / Cursor Grok 4.6",
+ "key": "latch-8bit-8walk-convert-shelf-20260917-01",
+ "note": "CONVERT MONEY SHIP: first-screen Buy CTAs on 8bit.html + 8walk.html",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T11:18:35Z",
+ "ttl_s": 1800
+}
