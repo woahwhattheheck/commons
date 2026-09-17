@@ -153,7 +153,8 @@ def compile_packet(raw: Any, verified_at: datetime) -> tuple[dict[str, Any], dic
     return doc, packet, receipt
 
 
-def _verify_at(raw: Any, packet: Any, receipt: Any, verified_at: datetime, *, current_authority: bool) -> dict[str, Any]:
+def _authenticate_candidate(raw: Any, packet: Any, receipt: Any) -> tuple[dict[str, Any], dict[str, Any], datetime]:
+    """Authenticate and reproduce candidate bytes without sampling current time."""
     doc = normalize(raw)
     packet_obj = _obj(packet, "packet")
     receipt_obj = _obj(receipt, "receipt")
@@ -179,6 +180,13 @@ def _verify_at(raw: Any, packet: Any, receipt: Any, verified_at: datetime, *, cu
     compiled_at = _dt(receipt_obj["verified_at"], "receipt.verified_at")
     if canonical_json(evaluate(doc, compiled_at)) != canonical_json(packet_obj):
         raise GateError("packet does not reproduce from bound input and verifier timestamp")
+    return doc, receipt_obj, compiled_at
+
+
+def _finish_verification(
+    doc: dict[str, Any], receipt_obj: dict[str, Any], compiled_at: datetime,
+    verified_at: datetime, *, current_authority: bool,
+) -> dict[str, Any]:
     now = verified_at.astimezone(timezone.utc)
     if compiled_at > now:
         raise GateError("receipt is future-dated relative to verifier")
@@ -194,6 +202,11 @@ def _verify_at(raw: Any, packet: Any, receipt: Any, verified_at: datetime, *, cu
     }
 
 
+def _verify_at(raw: Any, packet: Any, receipt: Any, verified_at: datetime, *, current_authority: bool) -> dict[str, Any]:
+    doc, receipt_obj, compiled_at = _authenticate_candidate(raw, packet, receipt)
+    return _finish_verification(doc, receipt_obj, compiled_at, verified_at, current_authority=current_authority)
+
+
 def _make_process_clock_apis():
     bound_now = datetime.now
     bound_utc = timezone.utc
@@ -202,7 +215,9 @@ def _make_process_clock_apis():
     def verify_current(raw: Any, packet: Any, receipt: Any, verified_at: datetime | None = None) -> dict[str, Any]:
         if verified_at is not None:
             return _verify_at(raw, packet, receipt, verified_at, current_authority=False)
-        return _verify_at(raw, packet, receipt, bound_now(bound_utc), current_authority=True)
+        doc, receipt_obj, compiled_at = _authenticate_candidate(raw, packet, receipt)
+        current_instant = bound_now(bound_utc)
+        return _finish_verification(doc, receipt_obj, compiled_at, current_instant, current_authority=True)
     return compile_current, verify_current
 
 compile_current, verify_current = _make_process_clock_apis()
