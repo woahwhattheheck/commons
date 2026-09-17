@@ -1,0 +1,68 @@
+name: ARC3 SAGE evidence scope
+
+on:
+  pull_request:
+    paths:
+      - 'competitions/arc-agi-3-2026/sage_symbolic_planner.py'
+      - 'competitions/arc-agi-3-2026/_sage_symbolic_planner_core.py'
+      - 'competitions/arc-agi-3-2026/test_sage_symbolic_planner.py'
+      - 'competitions/arc-agi-3-2026/test_sage_evidence_reachability.py'
+      - 'competitions/arc-agi-3-2026/test_planner_evidence_scope.py'
+      - 'competitions/arc-agi-3-2026/planner_scope_benchmark.py'
+      - 'competitions/arc-agi-3-2026/SYMBOLIC_PLANNER.md'
+      - '.github/workflows/arc3-sage-evidence-scope.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'competitions/arc-agi-3-2026/sage_symbolic_planner.py'
+      - 'competitions/arc-agi-3-2026/_sage_symbolic_planner_core.py'
+      - 'competitions/arc-agi-3-2026/test_sage_symbolic_planner.py'
+      - 'competitions/arc-agi-3-2026/test_sage_evidence_reachability.py'
+      - 'competitions/arc-agi-3-2026/test_planner_evidence_scope.py'
+      - 'competitions/arc-agi-3-2026/planner_scope_benchmark.py'
+      - 'competitions/arc-agi-3-2026/SYMBOLIC_PLANNER.md'
+      - '.github/workflows/arc3-sage-evidence-scope.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  evidence-scope:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Normal focused tests
+        working-directory: competitions/arc-agi-3-2026
+        run: >-
+          python -m unittest -v
+          test_sage_symbolic_planner.py
+          test_sage_evidence_reachability.py
+          test_planner_evidence_scope.py
+      - name: Optimized focused tests
+        working-directory: competitions/arc-agi-3-2026
+        run: >-
+          python -O -m unittest -v
+          test_sage_symbolic_planner.py
+          test_sage_evidence_reachability.py
+          test_planner_evidence_scope.py
+      - name: Synthetic benchmarks
+        working-directory: competitions/arc-agi-3-2026
+        run: |
+          python planner_benchmark.py
+          python planner_scope_benchmark.py
+      - name: Compile focused sources
+        working-directory: competitions/arc-agi-3-2026
+        run: >-
+          python -m py_compile
+          sage_symbolic_planner.py
+          test_sage_symbolic_planner.py
+          test_sage_evidence_reachability.py
+          test_planner_evidence_scope.py
+          planner_scope_benchmark.py
