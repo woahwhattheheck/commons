@@ -1,0 +1,39 @@
+{
+  "authority_field_digest_sha256": "72d690318fcbc62409c8c5735d4510efffb5e8571f0db3a9df82cb4fc409bc14",
+  "checked_at": "2026-09-17T01:46:40-04:00",
+  "controlling_facts": {
+    "budget_cap_minor": 21500000,
+    "currency": "USD",
+    "evaluation_points": {"past_project_experience": 30, "project_approach": 35, "project_team": 35},
+    "lead_liability_insurance_required": true,
+    "prebid_at": "2026-09-23T11:00:00-04:00",
+    "proposal_due_at": "2026-10-06T17:00:00-04:00",
+    "qualifications_page_limit": 16,
+    "questions_due_at": "2026-09-16T10:00:00-04:00",
+    "released_at": "2026-09-09T10:00:00-04:00",
+    "required_forms": ["Form A", "Form B", "Form C", "Title VI assurances", "signed questions addendum", "separate quote PDF"],
+    "response_route": "email:procurement@indympo.gov",
+    "response_subject": "MTP 2055",
+    "subconsultant_form": "Form B — Partnering Vendor",
+    "subconsultants_permitted": true,
+    "vendor_profile_required_if_selected": true
+  },
+  "external_authority": {"accept_contract": false, "commit_pricing": false, "contact_buyer": false, "register_prebid": false, "register_vendor": false, "sign_forms": false, "spend_funds": false, "submit_proposal": false},
+  "procurement_page_state": "OFFICIAL_CURRENT",
+  "procurement_page_url": "https://indympo.gov/procurement/",
+  "questions_addendum": {"expected_publication_date": "2026-09-23", "official_page_note": "Questions Addendum (coming September 23. Submit with Proposal)", "state": "NOT_YET_POSTED"},
+  "raw_pdf_bytes_retained": false,
+  "raw_pdf_custody_note": "The official PDF is publicly readable in the browser source. This execution environment's separate binary download transport could not resolve the S3 host, so no raw-byte hash is inferred or fabricated.",
+  "raw_pdf_sha256": null,
+  "rfp_page_count": 34,
+  "rfp_public_readable": true,
+  "rfp_url": "https://s3-us-east-2.amazonaws.com/mpo-website-2025/wp-media-folder-impo/wp-content/uploads/2026/09/IMPO-MTP-RFP-09.09.2026.pdf",
+  "schema": "impo-mtp2055-public-source-snapshot/v1",
+  "source_references": [
+    {"authority": "OFFICIAL_BUYER_PAGE", "id": "S1", "reference": "https://indympo.gov/procurement/", "supports": "Current procurement listing, Sep23 addendum publication note, pre-bid meeting, Oct6 deadline, communication rules"},
+    {"authority": "OFFICIAL_RFP", "id": "S2", "reference": "RFP cover + page 1", "supports": "Release time, questions deadline, pre-bid time, Oct6 17:00 ET proposal deadline"},
+    {"authority": "OFFICIAL_RFP", "id": "S3", "reference": "RFP page 2", "supports": "$215,000 NTE budget and Jan 2027-Dec 2028 delivery horizon"},
+    {"authority": "OFFICIAL_RFP", "id": "S4", "reference": "RFP pages 9-11", "supports": "Email route/subject, 16-page response limit, forms exclusions, team/project/resume constraints, quote detail, evaluation weights"},
+    {"authority": "OFFICIAL_RFP", "id": "S5", "reference": "RFP pages 10, 14-15, 20", "supports": "Lead insurance posture, vendor/UEI fields, Partnering Vendor Form B, subcontracting permitted"}
+  ]
+}
