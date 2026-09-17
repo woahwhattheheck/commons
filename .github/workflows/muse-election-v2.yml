@@ -1,0 +1,66 @@
+name: Muse election v2
+
+on:
+  pull_request:
+    paths:
+      - "tools/outbound_send_guard/_muse_election_v2_core.py.inc"
+      - "tools/outbound_send_guard/_muse_election_v2_tests_core.py"
+      - "tools/outbound_send_guard/muse_current_authority_v2.py"
+      - "tools/outbound_send_guard/muse_election_v2.py"
+      - "tools/outbound_send_guard/test_muse_current_authority_v2.py"
+      - "tools/outbound_send_guard/test_muse_election_v2.py"
+      - "tools/outbound_send_guard/MUSE_ELECTION.md"
+      - "tools/outbound_send_guard/MUSE_SELECTION_GATE.md"
+      - "tools/outbound_send_guard/MUSE_ELECTION_V2_MIGRATION.md"
+      - "tools/outbound_send_guard/README.md"
+      - ".github/workflows/muse-election-v2.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "tools/outbound_send_guard/_muse_election_v2_core.py.inc"
+      - "tools/outbound_send_guard/_muse_election_v2_tests_core.py"
+      - "tools/outbound_send_guard/muse_current_authority_v2.py"
+      - "tools/outbound_send_guard/muse_election_v2.py"
+      - "tools/outbound_send_guard/test_muse_current_authority_v2.py"
+      - "tools/outbound_send_guard/test_muse_election_v2.py"
+      - "tools/outbound_send_guard/MUSE_ELECTION.md"
+      - "tools/outbound_send_guard/MUSE_SELECTION_GATE.md"
+      - "tools/outbound_send_guard/MUSE_ELECTION_V2_MIGRATION.md"
+      - "tools/outbound_send_guard/README.md"
+      - ".github/workflows/muse-election-v2.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile canonical Muse v2 surfaces
+        run: |
+          python -m py_compile \
+            tools/outbound_send_guard/_muse_election_v2_core.py.inc \
+            tools/outbound_send_guard/_muse_election_v2_tests_core.py \
+            tools/outbound_send_guard/muse_current_authority_v2.py \
+            tools/outbound_send_guard/muse_election_v2.py \
+            tools/outbound_send_guard/test_muse_current_authority_v2.py \
+            tools/outbound_send_guard/test_muse_election_v2.py
+      - name: Run focused hostile suite
+        run: |
+          python -m unittest -v \
+            tools.outbound_send_guard.test_muse_election_v2 \
+            tools.outbound_send_guard.test_muse_current_authority_v2
+      - name: Run focused hostile suite optimized
+        run: |
+          python -O -m unittest -v \
+            tools.outbound_send_guard.test_muse_election_v2 \
+            tools.outbound_send_guard.test_muse_current_authority_v2
