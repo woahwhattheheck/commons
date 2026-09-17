@@ -31,9 +31,14 @@ AUTHORITY_FALSE = {
     "revenue_recognized": False,
 }
 
-def _state(partner, gates, sources, runway, as_of, selected, controls_current):
-    if runway["runway_state"] not in {"READY", "ASK_CAPACITY_FIRST"} or partner["name"] not in selected:
+def _state(partner, gates, sources, runway, as_of, selected_timing, controls_current):
+    timing_status = selected_timing.get(partner["name"])
+    if runway["runway_state"] not in {"READY", "ASK_CAPACITY_FIRST"} or timing_status is None:
         return "HOLD_RUNWAY", [f"runway state/selection does not admit partner: {runway['runway_state']}"]
+    if timing_status == "EXPLICIT_MISS":
+        return "HOLD_RUNWAY", ["candidate upstream timing status is EXPLICIT_MISS"]
+    if timing_status not in {"EXPLICIT_FIT", "EXPLICIT_NO_KNOWN_CONFLICT", "UNKNOWN_CAPACITY"}:
+        return "HOLD_RUNWAY", [f"candidate upstream timing status is unsupported: {timing_status}"]
     if runway["contact_state"] != "ELIGIBLE_FOR_SEPARATE_MUSE_ELECTION_ONLY":
         return "HOLD_CONTACT_POLICY", [f"upstream contact policy is {runway['contact_state']}"]
     if not controls_current:
@@ -58,8 +63,8 @@ def _state(partner, gates, sources, runway, as_of, selected, controls_current):
         return "HOLD_HARD_GATE", sorted(blocking) + later
     if partner["paid_workshare"]["state"] != "DEFINED":
         return "HOLD_NO_PAID_SEAM", ["paid TJLabs workshare is undefined"] + later
-    if runway["runway_state"] == "ASK_CAPACITY_FIRST":
-        return "READY_FOR_CAPACITY_MUSE_ELECTION_ONLY", ["qualification gates clear; upstream capacity remains unverified"] + later
+    if timing_status == "UNKNOWN_CAPACITY":
+        return "READY_FOR_CAPACITY_MUSE_ELECTION_ONLY", ["qualification gates clear; this candidate upstream capacity remains unverified"] + later
     return "READY_FOR_MUSE_ELECTION_ONLY", ["runway, contact policy, registration, pre-outreach gates, and paid seam are bounded"] + later
 
 
@@ -79,7 +84,13 @@ def compile_qualification(raw: Any) -> dict[str, Any]:
     selected_rows = runway.get("selected_partners")
     if type(selected_rows) is not list:
         raise QualificationError("runway selected_partners malformed")
-    selected = {r.get("name") for r in selected_rows if type(r) is dict and type(r.get("name")) is str}
+    selected_timing = {}
+    for index, row in enumerate(selected_rows):
+        if type(row) is not dict or type(row.get("name")) is not str or type(row.get("timing_status")) is not str:
+            raise QualificationError(f"runway selected_partners[{index}] malformed")
+        if row["name"] in selected_timing:
+            raise QualificationError("runway selected_partners contains duplicate partner name")
+        selected_timing[row["name"]] = row["timing_status"]
     sources = {s["source_id"]: s for s in doc["sources"]}
     controls = [s for s in doc["sources"] if s["kind"] == "SOLICITATION_CONTROL"]
     if not controls:
@@ -89,7 +100,7 @@ def compile_qualification(raw: Any) -> dict[str, Any]:
     gates = {g["gate_id"]: g for g in doc["hard_gates"]}
     partner_rows = []
     for partner in doc["partners"]:
-        state, reasons = _state(partner, gates, sources, runway, doc["as_of"], selected, all(s["status"] == "CURRENT" for s in controls))
+        state, reasons = _state(partner, gates, sources, runway, doc["as_of"], selected_timing, all(s["status"] == "CURRENT" for s in controls))
         partner_rows.append({
             "name": partner["name"],
             "state": state,

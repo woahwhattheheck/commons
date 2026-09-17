@@ -38,6 +38,33 @@ def packet():
     }
 
 
+
+
+def add_qualified_partner(p, name, suffix, lead_time_days=None, capacity_state='EXPLICIT_LEAD_TIME_DAYS'):
+    source_ch = {'other':'d','third':'f'}[suffix]
+    reg_ch = {'other':'e','third':'0'}[suffix]
+    p['sources'].extend([
+      src(f'{suffix}-sam','PARTNER_EVIDENCE',source_ch,f'https://{suffix}.example/sam',subject_partner=name),
+      src(f'{suffix}-reg','REGISTRATION_EVIDENCE',reg_ch,f'https://buyer.example/{suffix}-registration',subject_partner=name),
+    ])
+    if capacity_state == 'UNVERIFIED':
+      capacity={'state':'UNVERIFIED','evidence_urls':[]}
+    else:
+      capacity={'state':'EXPLICIT_LEAD_TIME_DAYS','lead_time_days':lead_time_days,'evidence_urls':[f'https://{suffix}.example/capacity']}
+    p['runway_input']['opportunities'][0]['partners'].append({
+      'name':name,'capability_evidence_urls':[f'https://{suffix}.example/services'],'capacity':capacity,'conflicts_dnr':[]
+    })
+    p['partners'].append({
+      'name':name,
+      'registration':{'state':'COMPLETE','deadline':None,'requirement_refs':[ref('rfp','a')],'evidence_refs':[ref(f'{suffix}-reg',reg_ch)]},
+      'gate_dispositions':[
+        {'gate_id':'active-sam','state':'SATISFIED','evidence_refs':[ref(f'{suffix}-sam',source_ch)]},
+        {'gate_id':'three-refs','state':'UNKNOWN','evidence_refs':[]},
+      ],
+      'paid_workshare':{'state':'DEFINED','fixed_fee_minor':500000,'currency':'USD','scope':'qualification evidence matrix','acceptance_criteria':['matrix source-bound'],'exclusions':['prime responsibility']}
+    })
+    return p
+
 def add_unknown_partner(p, name='Other MSP'):
     p['partners'].append({
       'name':name,
@@ -189,6 +216,27 @@ class QualificationGateTests(unittest.TestCase):
   def test_bool_not_int(self):
     p=packet(); p['partners'][0]['paid_workshare']['fixed_fee_minor']=True
     with self.assertRaises(QualificationError): compile_qualification(p)
+
+
+  def test_selected_partner_with_explicit_miss_holds_even_when_other_partner_makes_runway_ready(self):
+    p=packet()
+    p['runway_input']['opportunities'][0]['dates']['start']={'date':'2026-09-20','label':'start','evidence_urls':['https://buyer.example/rfp.pdf']}
+    add_qualified_partner(p,'Other MSP','other',lead_time_days=10)
+    out=compile_qualification(p)
+    rows={row['name']:row for row in out['partners']}
+    self.assertEqual(out['runway_binding']['runway_state'],'READY')
+    self.assertEqual(rows['Example MSP']['state'],'READY_FOR_MUSE_ELECTION_ONLY')
+    self.assertEqual(rows['Other MSP']['state'],'HOLD_RUNWAY')
+    self.assertIn('EXPLICIT_MISS',rows['Other MSP']['reasons'][0])
+
+  def test_unknown_capacity_candidate_gets_capacity_question_even_when_other_partner_makes_runway_ready(self):
+    p=packet()
+    add_qualified_partner(p,'Other MSP','other',capacity_state='UNVERIFIED')
+    out=compile_qualification(p)
+    rows={row['name']:row for row in out['partners']}
+    self.assertEqual(out['runway_binding']['runway_state'],'READY')
+    self.assertEqual(rows['Example MSP']['state'],'READY_FOR_MUSE_ELECTION_ONLY')
+    self.assertEqual(rows['Other MSP']['state'],'READY_FOR_CAPACITY_MUSE_ELECTION_ONLY')
 
   def test_ask_capacity_is_separate_muse_state(self):
     p=packet(); p['runway_input']['opportunities'][0]['partners'][0]['capacity']={'state':'UNVERIFIED','evidence_urls':[]}
