@@ -21,6 +21,17 @@ on:
       - 'revenue/hive/intake-crm-workflow/**'
       - 'revenue/cas_actuarial_llm_benchmark/**'
       - 'revenue/commercial_funnel/**'
+      - 'revenue/agent_failure_autopsy_fulfillment/**'
+      - 'agent-autopsy-sample.html'
+      - 'revenue/oss_grant_eligibility_packet/**'
+      - 'revenue/outbound_collision_guard/**'
+      - 'tests/test_outbound_collision_guard.py'
+      - 'tests/test_outbound_collision_guard_release_boundary.py'
+      - 'revenue/outbound_collision_replay_guard/**'
+      - 'test_outbound_collision_replay_guard.py'
+      - 'revenue/rfp_clarification_questions/**'
+      - 'revenue/procurement_solicitation_ingest/**'
+      - 'test_retired_revenue_workflow_coverage.py'
       - 'test_carrier_from_memory.js'
       - 'test_diagnostic_dlp.js'
       - 'test_dio_crlf.py'
@@ -47,6 +58,17 @@ on:
       - 'revenue/hive/intake-crm-workflow/**'
       - 'revenue/cas_actuarial_llm_benchmark/**'
       - 'revenue/commercial_funnel/**'
+      - 'revenue/agent_failure_autopsy_fulfillment/**'
+      - 'agent-autopsy-sample.html'
+      - 'revenue/oss_grant_eligibility_packet/**'
+      - 'revenue/outbound_collision_guard/**'
+      - 'tests/test_outbound_collision_guard.py'
+      - 'tests/test_outbound_collision_guard_release_boundary.py'
+      - 'revenue/outbound_collision_replay_guard/**'
+      - 'test_outbound_collision_replay_guard.py'
+      - 'revenue/rfp_clarification_questions/**'
+      - 'revenue/procurement_solicitation_ingest/**'
+      - 'test_retired_revenue_workflow_coverage.py'
       - 'test_carrier_from_memory.js'
       - 'test_diagnostic_dlp.js'
       - 'test_dio_crlf.py'
@@ -112,6 +134,46 @@ jobs:
             test_payment_ready.py
             test_revenue_recovery.py
             test_revenue_recovery_unicode_nfkc.py
+          )
+          if [ -z "$base" ] || [ "$base" = "$zero" ] || ! git cat-file -e "$base^{commit}" 2>/dev/null; then
+            echo 'changed=true' >> "$GITHUB_OUTPUT"
+          elif git diff --quiet "$base" HEAD -- "${paths[@]}"; then
+            echo 'changed=false' >> "$GITHUB_OUTPUT"
+          else
+            echo 'changed=true' >> "$GITHUB_OUTPUT"
+          fi
+      - name: detect retired-workflow coverage delta against event base
+        id: retired
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PUSH_BEFORE_SHA: ${{ github.event.before }}
+        run: |
+          set -eu
+          base=""
+          case "$EVENT_NAME" in
+            pull_request) base="$PR_BASE_SHA" ;;
+            push) base="$PUSH_BEFORE_SHA" ;;
+            workflow_dispatch)
+              echo 'changed=true' >> "$GITHUB_OUTPUT"
+              exit 0
+              ;;
+          esac
+          zero='0000000000000000000000000000000000000000'
+          paths=(
+            revenue/agent_failure_autopsy_fulfillment
+            agent-autopsy-sample.html
+            revenue/oss_grant_eligibility_packet
+            revenue/outbound_collision_guard
+            tests/test_outbound_collision_guard.py
+            tests/test_outbound_collision_guard_release_boundary.py
+            revenue/outbound_collision_replay_guard
+            test_outbound_collision_replay_guard.py
+            revenue/rfp_clarification_questions
+            revenue/procurement_solicitation_ingest
+            test_retired_revenue_workflow_coverage.py
+            .github/workflows/revenue-hardening.yml
           )
           if [ -z "$base" ] || [ "$base" = "$zero" ] || ! git cat-file -e "$base^{commit}" 2>/dev/null; then
             echo 'changed=true' >> "$GITHUB_OUTPUT"
@@ -190,6 +252,38 @@ jobs:
           node --check test_diagnostic_dlp.js
           node --check test_carrier_from_memory.js
           python -c "import json,pathlib; [json.loads(path.read_text(encoding='utf-8')) for path in pathlib.Path('revenue/payment_ready').glob('*.json')]"
+      - uses: actions/setup-python@v5
+        if: steps.retired.outputs.changed == 'true'
+        with:
+          python-version: '3.9'
+      - name: retired revenue suites on Python 3.9
+        if: steps.retired.outputs.changed == 'true'
+        run: python test_retired_revenue_workflow_coverage.py
+      - uses: actions/setup-python@v5
+        if: steps.retired.outputs.changed == 'true'
+        with:
+          python-version: '3.10'
+      - name: retired revenue suites on Python 3.10
+        if: steps.retired.outputs.changed == 'true'
+        run: python test_retired_revenue_workflow_coverage.py
+      - uses: actions/setup-python@v5
+        if: steps.retired.outputs.changed == 'true'
+        with:
+          python-version: '3.11'
+      - name: retired revenue suites on Python 3.11
+        if: steps.retired.outputs.changed == 'true'
+        run: python test_retired_revenue_workflow_coverage.py
+      - uses: actions/setup-python@v5
+        if: steps.retired.outputs.changed == 'true'
+        with:
+          python-version: '3.13'
+      - name: retired revenue suites on Python 3.13
+        if: steps.retired.outputs.changed == 'true'
+        run: python test_retired_revenue_workflow_coverage.py
+      - uses: actions/setup-python@v5
+        if: steps.retired.outputs.changed == 'true'
+        with:
+          python-version: '3.12'
       - name: no admission lock in the landed commit
         run: git show --format= --no-ext-diff HEAD | python open_door_guard.py --diff-file -
       - name: whitespace guard
