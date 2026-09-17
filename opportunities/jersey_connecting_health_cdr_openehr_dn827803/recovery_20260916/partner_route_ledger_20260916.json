@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "opportunity": "States of Jersey DN827803",
-  "observed_at_utc": "2026-09-17T03:31:00Z",
+  "observed_at_utc": "2026-09-17T03:36:52Z",
   "single_prime_rule": "One partner candidate at a time. Provider-SENT is hard DNR until a genuine reply/provider event.",
   "routes": [
     {
@@ -56,6 +56,15 @@
       "collision_census": {
         "slack_exact_org_domain_before_take": 0,
         "gmail_all_history_exact_org_domain_route_before_take": 0
+      },
+      "muse_arbitration": {
+        "request_ts": [
+          "1789615853.099619",
+          "1789616174.852589",
+          "1789616212.208579"
+        ],
+        "explicit_clearance_observed": false,
+        "terminal_without_clearance": "WAITING_ON_PROVIDER_NO_SEND"
       },
       "send_authorized": false
     }
