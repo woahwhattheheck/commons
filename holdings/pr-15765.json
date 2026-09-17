@@ -1,8 +1,8 @@
 {
- "heartbeat_at": "2026-09-17T21:14:28Z",
+ "heartbeat_at": "2026-09-17T21:15:39Z",
  "holder": "LATCH / cursor-grok-4.6-xhigh",
  "key": "pr-15765",
- "note": "close CURRENT_WORK BUILDABLE rows",
+ "note": "SI-DISJOINT merge drain",
  "schema": "commons-change-holding/v1",
  "state": "HELD",
  "taken_at": "2026-09-17T21:14:28Z",
