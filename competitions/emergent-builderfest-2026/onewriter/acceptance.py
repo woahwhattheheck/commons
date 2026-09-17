@@ -7,7 +7,7 @@ from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from urllib.parse import urlsplit
 
-EXPECTED_DIGEST="5d91e5f639d684eb8eb5cca4ddcbcefc8c78cb7c3c060a398d604d2dad599a80"
+EXPECTED_DIGEST="4b15651ae153dff379375d285f3a705a2ce4b87014d5d1e08e2dea490251f553"
 ROOT_KEYS={"schema_version","product","collision_key","states","events","lease","invariants","authority","contract_digest_sha256"}
 EVENT_KEYS={"id","at_utc","kind","actor","org","domain","route","purpose","opportunity","lease_seconds","provider_receipt","human_evidence_id","reason","expect"}
 AUTHORITY={"email_send_authorized":False,"dm_send_authorized":False,"form_submit_authorized":False,"provider_mutation_authorized":False,"contract_authorized":False,"signature_authorized":False,"payment_authorized":False,"cash_or_revenue_authorized":False,"contest_submission_authorized":False}
@@ -17,7 +17,7 @@ FIELDS=["org","domain","purpose","opportunity"]
 NORMALIZATION={"org":"unicode-casefold-trim-collapse-space","domain":"idna-host-lower-strip-scheme-www-path-trailing-dot","route":"unicode-casefold-trim-collapse-space","purpose":"unicode-casefold-trim-collapse-space","opportunity":"unicode-casefold-trim-collapse-space"}
 EVIDENCE_ID_MAX=240
 _DEFAULT_IGNORABLE_NON_C_RANGES=((0x034F,0x034F),(0x115F,0x1160),(0x17B4,0x17B5),(0x180B,0x180D),(0x180F,0x180F),(0x3164,0x3164),(0xFE00,0xFE0F),(0xFFA0,0xFFA0),(0xE0100,0xE01EF))
-INVARIANTS=["exactly_one_active_lease_per_collision_key","active_lease_blocks_parallel_claims_across_routes","expired_lease_may_be_recovered_with_an_explicit_route","sent_requires_current_lease_holder_matching_leased_route_and_provider_receipt","sent_hard_fences_lane_until_genuine_human_event","bounce_requires_current_lease_holder_matching_leased_route_and_provider_receipt","bounce_is_route_failure_not_buyer_rejection","human_event_requires_distinct_retained_evidence","human_event_reopens_only_a_bounded_next_action","hold_blocks_claims_until_new_human_event","event_ids_provider_receipts_and_human_evidence_ids_are_single_use","timestamps_are_strictly_monotone_utc","no_event_grants_external_send_authority"]
+INVARIANTS=["exactly_one_active_lease_per_collision_key","active_lease_blocks_parallel_claims_across_routes","ordinary_expired_lease_may_be_recovered_with_an_explicit_route","sent_requires_current_lease_holder_matching_leased_route_and_provider_receipt","sent_hard_fences_lane_until_genuine_human_event","bounce_requires_current_lease_holder_matching_leased_route_and_provider_receipt","bounce_is_route_failure_not_buyer_rejection","human_event_requires_distinct_retained_evidence","human_event_reopens_only_a_bounded_next_action","hold_blocks_claims_until_new_human_event","event_ids_provider_receipts_and_human_evidence_ids_are_single_use","timestamps_are_strictly_monotone_utc","no_event_grants_external_send_authority"]
 
 class ContractError(ValueError): pass
 def require(ok,msg):
