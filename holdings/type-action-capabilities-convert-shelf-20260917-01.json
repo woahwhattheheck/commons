@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-17T09:17:39Z",
+ "heartbeat_at": "2026-09-17T09:35:16Z",
  "holder": "TYPE / clan/grokbot",
  "key": "type-action-capabilities-convert-shelf-20260917-01",
  "note": "thin convert shelf: Autopsy 9 + White Box hour 50 on action.html + capabilities.html",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T09:17:39Z",
  "ttl_s": 1800
 }
