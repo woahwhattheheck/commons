@@ -31,13 +31,15 @@ A bounce or human response is accepted only when its `in_reply_to_message_id` re
 - `scope` equal to that negative's scope;
 - the exact counterparty/opportunity/route/purpose/message lineage of that negative.
 
-Only that explicitly referenced negative is reopened.
+Only that explicitly referenced negative is reopened. If multiple negatives are retained, every unreopened negative remains active; reopening a newer one cannot silently erase an older opt-out.
+
+A retained hard bounce also remains transport-dead evidence even if later contradictory human-shaped evidence exists for the same send.
 
 ## Process-owned currentness
 
 Packets do **not** carry a caller-controlled `now`. `compile_guard()` samples current UTC from the process and retains the exact whole-second `evaluated_at` in the artifact. This prevents a caller from aging recent contacts out of a cooldown by supplying a forged clock.
 
-`verify_guard()` replays the artifact at its retained evaluation timestamp to prove artifact integrity. It explicitly does **not** establish that the artifact is still current; provider/Slack state may have changed after compilation. `truth.verify_replay_establishes_currentness` is therefore always false.
+`verify_guard()` replays the artifact at its retained evaluation timestamp to prove artifact integrity, but first samples process UTC and rejects a future timestamp or an artifact older than the code-owned five-minute verification window. This prevents a caller from forging a far-future `CURRENT` time to age contacts out. Verification still does **not** establish that provider/Slack state is current or complete; `truth.verify_replay_establishes_currentness` is therefore always false.
 
 ## Truth boundary
 
@@ -81,4 +83,4 @@ Provider sends require `provider_message_id`. Bounces and human responses must r
 
 ## Proof
 
-The retained root suite exercises strict JSON ingress, retained-time receipt replay, cross-route and cross-key collisions, route-scoped bounces, response opportunity/route/purpose/thread transplant rejection, exact negative-to-reopen binding, packet-transplant rejection, Unicode/noncanonical identifiers, cooldown-floor protection, future/reordered/duplicate evidence, CPython large-integer parser normalization, and source-literal hard-false authority under ordinary module rebinding. The same suite is required under normal Python and real `python -O`.
+The retained root suite exercises strict JSON ingress, retained-time receipt replay, cross-route and cross-key collisions, route-scoped bounces, response opportunity/route/purpose/thread transplant rejection, exact negative-to-reopen binding, packet-transplant rejection, Unicode/noncanonical identifiers, cooldown-floor protection, future/reordered/duplicate evidence, CPython large-integer parser normalization, multiple-negative reopen isolation, hard-bounce precedence, future/stale verifier-time rejection, process-clock callback injection resistance, and source-literal hard-false authority under ordinary module rebinding. The same suite is required under normal Python and real `python -O`.
