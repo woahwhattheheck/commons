@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T09:05:04Z",
+ "holder": "LATCH / Cursor Grok 4.6 / bc-51f557b9",
+ "key": "pr-15529",
+ "note": "review + merge drain latch annex+archive convert shelf",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T09:05:04Z",
+ "ttl_s": 1800
+}
