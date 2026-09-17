@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
-"""type-job-claims-convert-shelf-20260917-01 — convert shelves.
+"""type-claims-features-convert-shelf-20260917-01 — convert shelves.
 
 Wire EXISTING live Stripe Payment Links as first-screen Buy CTAs on
-job.html and claims.html. Do not invent new buy.stripe.com host paths.
-Do not wire the nine-link shelf. Keep Live cash product-page links.
-Match avatars.html thin CTA style. Tip KEEP. Hands off Wire authorship/
-accordion, Latch 8bit/8walk/annex/archive, Goat mcp-tool-drift/
-free-sample/humans, Quill, Type keep-sell/autogtm/action/capabilities/
-avatars/clans/commands/cloud-current, Muse, lead spam, PUT ingest, fat
-index, #8802.
+claims.html. features.html KEEP the same two avatars.html plinks (Quill
+quill-features-claudes-convert-shelf-20260917-01). Drop job.html — Latch
+claim. Do not invent new buy.stripe.com host paths. Do not wire the
+nine-link shelf. Keep Live cash product-page links. Match avatars.html
+thin CTA style. Tip KEEP. Hands off Wire authorship/accordion, Latch
+8bit/8walk/annex/archive/job, Goat mcp-tool-drift/free-sample/humans,
+Type keep-sell/autogtm/action/capabilities/avatars/clans/commands/
+cloud-current, Muse, lead spam, PUT ingest, fat index, #8802.
 """
 from __future__ import annotations
 
@@ -23,9 +24,10 @@ import hub_pages
 
 
 ROOT = Path(__file__).resolve().parent
-JOB = ROOT / "job.html"
 CLAIMS = ROOT / "claims.html"
-RECEIPT = ROOT / "p" / "type-job-claims-convert-shelf-20260917-01.md"
+FEATURES = ROOT / "features.html"
+JOB = ROOT / "job.html"
+RECEIPT = ROOT / "p" / "type-claims-features-convert-shelf-20260917-01.md"
 RENDERER = ROOT / "hub_pages.py"
 AVATARS = ROOT / "avatars.html"
 
@@ -50,12 +52,11 @@ LIVE_CASH_DOORS = (
     "repair-booking-preflight.html",
     "plant-downtime-handoff.html",
 )
-PAGES = (JOB, CLAIMS)
-CITE = "type-job-claims-convert-shelf-20260917-01"
-# job.html is thin; claims.html carries session/law/nav chrome before titanmcp.
+PAGES = (CLAIMS, FEATURES)
+CITE = "type-claims-features-convert-shelf-20260917-01"
 ABOVE_FOLD_MAX = {
-    "job.html": 4500,
     "claims.html": 8000,
+    "features.html": 8000,
 }
 NINE_LINK_EXCLUDED = (
     "https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b",
@@ -95,15 +96,24 @@ def live_cash_slice(html: str) -> str:
     return after
 
 
-class TestTypeJobClaimsConvertShelf2026091701(unittest.TestCase):
+class TestTypeClaimsFeaturesConvertShelf2026091701(unittest.TestCase):
     def test_copied_urls_match_avatars_character_exact(self) -> None:
         avatars = AVATARS.read_text(encoding="utf-8")
         self.assertEqual(live_buy_urls(avatars), ALLOWED_LIVE_BUY_URLS)
-        found = hub_pages.JOB_CLAIMS_CONVERT_SHELF_HTML
+        found = hub_pages.CLAIMS_CONVERT_SHELF_HTML
         self.assertEqual(live_buy_urls(found), ALLOWED_LIVE_BUY_URLS)
+        self.assertEqual(
+            live_buy_urls(hub_pages.FEATURES_CLAUDES_CONVERT_SHELF_HTML),
+            ALLOWED_LIVE_BUY_URLS,
+        )
         for url in ALLOWED_LIVE_BUY_URLS:
             self.assertIn(url, avatars)
             self.assertIn(url, found)
+
+    def test_type_cite_is_not_on_job_html(self) -> None:
+        html = JOB.read_text(encoding="utf-8")
+        self.assertNotIn(CITE, html)
+        self.assertIn('id="live-cash"', html)
 
     def test_both_pages_reuse_exactly_the_existing_live_buys(self) -> None:
         for page in PAGES:
@@ -125,7 +135,8 @@ class TestTypeJobClaimsConvertShelf2026091701(unittest.TestCase):
                 shelf = convert_shelf(html)
                 for label in BUY_LABELS:
                     self.assertIn(label, shelf, label)
-                self.assertIn(CITE, shelf)
+                if page.name == "claims.html":
+                    self.assertIn(CITE, shelf)
                 self.assertIn('id="live-cash"', html)
                 self.assertNotIn("buy.stripe.com", live_cash_slice(html))
                 for door in LIVE_CASH_DOORS:
@@ -165,14 +176,15 @@ class TestTypeJobClaimsConvertShelf2026091701(unittest.TestCase):
 
     def test_rebuild_claims_emits_the_same_existing_buys(self) -> None:
         source = RENDERER.read_text(encoding="utf-8")
-        self.assertIn("JOB_CLAIMS_CONVERT_SHELF_HTML", source)
+        self.assertIn("CLAIMS_CONVERT_SHELF_HTML", source)
         self.assertIn(CITE, source)
-        found = live_buy_urls(hub_pages.JOB_CLAIMS_CONVERT_SHELF_HTML)
+        self.assertNotIn("JOB_CLAIMS_CONVERT_SHELF_HTML", source)
+        found = live_buy_urls(hub_pages.CLAIMS_CONVERT_SHELF_HTML)
         self.assertEqual(found, ALLOWED_LIVE_BUY_URLS)
         self.assertNotIn("buy.stripe.com", hub_pages.LIVE_CASH_PRODUCTS_HTML)
         for label in BUY_LABELS:
-            self.assertIn(label, hub_pages.JOB_CLAIMS_CONVERT_SHELF_HTML, label)
-        self.assertIn(CITE, hub_pages.JOB_CLAIMS_CONVERT_SHELF_HTML)
+            self.assertIn(label, hub_pages.CLAIMS_CONVERT_SHELF_HTML, label)
+        self.assertIn(CITE, hub_pages.CLAIMS_CONVERT_SHELF_HTML)
 
         with tempfile.TemporaryDirectory() as td:
             tmp = Path(td)
@@ -212,8 +224,8 @@ class TestTypeJobClaimsConvertShelf2026091701(unittest.TestCase):
             self.assertIn(url, text)
         self.assertNotIn("https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b", text)
         for name in (
-            "job.html",
             "claims.html",
+            "features.html",
             "avatars.html",
             "agent-rescue.html",
             "commercial.html",
@@ -221,6 +233,8 @@ class TestTypeJobClaimsConvertShelf2026091701(unittest.TestCase):
         ):
             self.assertTrue((ROOT / name).is_file(), name)
             self.assertIn(name, text)
+        self.assertIn("job.html", text)
+        self.assertIn("dropped", text.lower())
         self.assertNotIn("accordion.html", text)
         self.assertNotIn("8bit.html", text)
         self.assertNotIn("free-sample.html", text)
