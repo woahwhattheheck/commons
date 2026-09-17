@@ -296,18 +296,11 @@ def evaluate(
         "send_evidence_sha256": digest_object(send_evidence_raw),
         "route_bundle_sha256": digest_object(route_bundle_raw),
         "send_guard_receipt_sha256": _text(send_guard.get("receipt_sha256"), "send guard digest", 64),
-        "alternate_route_research_required": route_state == "BLOCKED",
-        "research_obligation": (
-            {
-                "kind": "FIND_INDEPENDENT_PUBLIC_BUSINESS_ROUTE",
-                "failed_route_sha256": hashlib.sha256(recipient.encode("utf-8")).hexdigest(),
-                "automatic_replacement_forbidden": True,
-                "candidate_route_requires_independent_source": True,
-                "candidate_route_requires_fresh_send_guard": True,
-            }
-            if route_state == "BLOCKED"
-            else None
-        ),
+        # A route block is transport truth about this exact recipient only. It must
+        # never manufacture a duty to hunt another alias or create a new contact
+        # generation. Deliberate alternate-route work starts outside this receipt.
+        "alternate_route_research_required": False,
+        "research_obligation": None,
         "route_review_required": route_state == "HOLD",
         "same_route_send_authorized": False,
         "alternate_route_send_requires_fresh_preflight": True,
