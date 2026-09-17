@@ -19,16 +19,16 @@ MATCH = ROOT / "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md
 WORKFLOW = ROOT / ".github/workflows/pr-collision-notice.yml"
 
 KEEP = {
-    "pr_collision_notice.py": "39dc815a",
-    "test_pr_collision_notice.py": "a4890883",
-    ".github/workflows/pr-collision-notice.yml": "b0a853dd",
+    "pr_collision_notice.py": "381d6b9b",
+    "test_pr_collision_notice.py": "18a87c08",
+    ".github/workflows/pr-collision-notice.yml": "1c2ebcd5",
     "p/grokbuild-pr-collision-notice-33689085107-billing-lock-20260902-01.md": "594b5e71",
-    "test_grokbuild_pr_collision_notice_33689085107_billing_lock.py": "bdc1d2f3",
+    "test_grokbuild_pr_collision_notice_33689085107_billing_lock.py": "becbf9bb",
     "p/grokbuild-pr-collision-notice-33689347426-billing-lock-20260902-01.md": "e92d45af",
-    "test_grokbuild_pr_collision_notice_33689347426_billing_lock.py": "3fa295ad",
+    "test_grokbuild_pr_collision_notice_33689347426_billing_lock.py": "10323229",
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
-    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "a5c72234",
+    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "3a20217f",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "p/grok-build-local-compute-guard-billing-lock-20260902-01.md": "de59bf75",
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",
@@ -36,7 +36,7 @@ KEEP = {
     "p/grok-build-llms-txt-billing-lock-20260902-01.md": "cf9c9f40",
     "p/grok-resources-tab-freshness-billing-lock-20260902-01.md": "ac39fe78",
     "open_door_guard.py": "877e148d",
-    "test_open_door_guard.py": "7ced9bb7",
+    "test_open_door_guard.py": "6a512428",
 }
 
 

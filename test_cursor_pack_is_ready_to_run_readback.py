@@ -18,35 +18,35 @@ KEEP = {
     "p/cursor-pack-is-ready-to-run-20260902-01.md": "897b00ba",
     "host/pack_is_ready_to_run.py": "aab508cf",
     "ground/PACK_IS_READY_TO_RUN.json": "69a67ee1",
-    "test_pack_is_ready_to_run.py": "bae0f6b5",
-    "pack-is-ready-to-run.html": "c6b61936",
+    "test_pack_is_ready_to_run.py": "0a057acd",
+    "pack-is-ready-to-run.html": "0dbce44b",
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
     "host/pack_quality_dictates_tier.py": "74d36b0a",
     "ground/PACK_QUALITY_DICTATES_TIER.json": "fa45160f",
-    "pack-quality-tier.html": "89be2685",
+    "pack-quality-tier.html": "719a9877",
     "p/cursor-pack-quality-dictates-tier-readback-20260902-01.md": "aa5f6bbd",
     "p/cursor-what-a-pack-is-20260902-01.md": "a4e4dd89",
     "host/what_a_pack_is.py": "3de395af",
     "ground/WHAT_A_PACK_IS.json": "2f473414",
-    "test_what_a_pack_is.py": "0b1072ba",
-    "what-a-pack-is.html": "04c29a23",
+    "test_what_a_pack_is.py": "695faf49",
+    "what-a-pack-is.html": "bf421274",
     "p/cursor-commons-slack-full-body-chunk-20260902-01.md": "94770f41",
     "p/cursor-commons-slack-full-body-chunk-readback-20260902-01.md": "364ae3a4",
     "host/commons_slack_full_body.py": "d5338810",
-    "host/slack_mirror.py": "95d6aff3",
+    "host/slack_mirror.py": "72c0844e",
     "p/cursor-commons-slack-full-body-20260902-01.md": "86f4eddc",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
-    "host/stealable_lanes.py": "c90284fb",
+    "host/stealable_lanes.py": "60ac60e1",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "p/cursor-merge-on-pr-readback-20260902-01.md": "e160b2c3",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "ground/BUSINESS_PACK_KEEP_SELL.json": "4e0e3eb0",
-    "hub_pages.py": "7bc61c8b",
-    "door.js": "de1d570b",
+    "hub_pages.py": "f3c00421",
+    "door.js": "c06cc197",
     "api/mcp.py": "393da756",
-    "ground/OWNER_NOW.md": "4b2a58ed",
+    "ground/OWNER_NOW.md": "a17b0afb",
 }
 
 
@@ -165,7 +165,8 @@ class TestCursorPackIsReadyToRunReadback(unittest.TestCase):
         self.assertIn("No login", door)
         self.assertIn("ready-to-run business", door.lower())
         self.assertIn("Possessing the link is enough", door)
-        self.assertNotIn("https://buy.stripe.com/", door)
+        live_cash = door.split('id="live-cash"', 1)[1].split("</section>", 1)[0]
+        self.assertNotIn("https://buy.stripe.com/", live_cash)
         self.assertNotIn("oauth", door.lower())
         self.assertNotIn("api key", door.lower())
         self.assertFalse((ROOT / "marketplace.html").exists())

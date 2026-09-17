@@ -19,24 +19,24 @@ WORKFLOW = ROOT / ".github/workflows/tests.yml"
 
 KEEP = {
     "p/grokbuild-occupancy-landed-work-keep-lift-20260902-01.md": "67a8a527",
-    "test_grokbuild_occupancy_landed_work_keep_lift.py": "e24deef3",
+    "test_grokbuild_occupancy_landed_work_keep_lift.py": "8403975b",
     "p/grokbuild-occupancy-landed-work-keep-lift-readback-20260902-01.md": "892bc4c0",
-    "test_grokbuild_occupancy_landed_work_keep_lift_readback.py": "329ca247",
+    "test_grokbuild_occupancy_landed_work_keep_lift_readback.py": "16a1399c",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
-    "host/stealable_lanes.py": "c90284fb",
+    "host/stealable_lanes.py": "60ac60e1",
     "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md": "b2df1cf1",
-    "test_stealable_lanes_occupancy.py": "b77acbd1",
+    "test_stealable_lanes_occupancy.py": "639fcb6c",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
-    ".github/workflows/tests.yml": "fd94b65c",
+    ".github/workflows/tests.yml": "57d36525",
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "p/grok-build-llms-txt-33687829181-billing-lock-20260902-01.md": "3183564c",
     "p/grok-build-llms-txt-billing-lock-20260902-01.md": "cf9c9f40",
     "p/grok-build-local-compute-guard-billing-lock-20260902-01.md": "de59bf75",
     "p/grok-resources-tab-freshness-billing-lock-20260902-01.md": "ac39fe78",
-    "ground/OWNER_NOW.md": "4b2a58ed",
+    "ground/OWNER_NOW.md": "a17b0afb",
     "open_door_guard.py": "877e148d",
-    "test_open_door_guard.py": "7ced9bb7",
+    "test_open_door_guard.py": "6a512428",
 }
 
 

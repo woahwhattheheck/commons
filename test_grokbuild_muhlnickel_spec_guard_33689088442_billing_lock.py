@@ -22,14 +22,14 @@ VERIFY = ROOT / "p/grokbuild-pr8414-verify-20260902-01.md"
 WORKFLOW = ROOT / ".github/workflows/muhlnickel-spec-guard.yml"
 
 KEEP = {
-    ".github/workflows/muhlnickel-spec-guard.yml": "098a23f7",
+    ".github/workflows/muhlnickel-spec-guard.yml": "132dc670",
     "muhlnickel_spec_guard.py": "8bd147aa",
     "test_muhlnickel_spec_guard.py": "c023622f",
     "p/grok-build-muhlnickel-spec-guard-33689243569-billing-lock-20260902-01.md": "7032fbcf",
     "test_grokbuild_muhlnickel_spec_guard_33689243569_billing_lock.py": "9fab6bdd",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "p/cursor-merge-on-pr-readback-20260902-01.md": "e160b2c3",
-    "test_cursor_merge_on_pr_readback.py": "58d7bb78",
+    "test_cursor_merge_on_pr_readback.py": "5b367c28",
     "host/merge_on_pr.py": "0270094d",
     "p/grokbuild-pr8414-verify-20260902-01.md": "587cc1cf",
 }

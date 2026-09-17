@@ -18,11 +18,11 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-HUB = "7bc61c8b"
+HUB = "f3c00421"
 STALE_HUB = "d0bd0e8d"
-BOARDS = "c7531a1e"
+BOARDS = "486b13e1"
 STALE_BOARDS = "143730a0"
-AUTOGTM = "2fe108f4"
+AUTOGTM = "b6ff1bfd"
 STALE_AUTOGTM = "dbbc96a5"
 ORIGINALS = (
     "test_keep_sell_hub_pages_keep_lift.py",

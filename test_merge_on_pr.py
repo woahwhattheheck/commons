@@ -19,7 +19,7 @@ KEEP = {
     "ground/SPRINT_INTEGRATION.json": "eba10870",
     "ground/SPRINT_INTEGRATION.md": "79504401",
     "host/pr7915_closed_unmerged.py": "9d56ea0e",
-    "test_pr7915_closed_unmerged.py": "b0fa2ef2",
+    "test_pr7915_closed_unmerged.py": "d2e1c397",
     "p/cursor-pr7915-closed-unmerged-readback-20260902-01.md": "2a7f31a4",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "host/harborline_qualify_live_probe.py": "2c1797b2",
@@ -31,11 +31,11 @@ KEEP = {
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
-    "hub_pages.py": "7bc61c8b",
-    "door.js": "de1d570b",
+    "hub_pages.py": "f3c00421",
+    "door.js": "c06cc197",
     "api/mcp.py": "393da756",
     "repo_pulse.py": "298716e9",
-    "autogtm.html": "2fe108f4",
+    "autogtm.html": "b6ff1bfd",
 }
 
 

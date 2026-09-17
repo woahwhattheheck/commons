@@ -18,12 +18,12 @@ PRIOR = ROOT / "p/grokbuild-open-door-guard-33718116356-billing-lock-20260903-01
 
 KEEP = {
     "p/grokbuild-open-door-guard-33723631068-billing-lock-20260903-01.md": "ba9914fd",
-    "test_grokbuild_open_door_guard_33723631068_billing_lock.py": "a9ace761",
+    "test_grokbuild_open_door_guard_33723631068_billing_lock.py": "ee6d2d7d",
     "p/grok-build-repo-pulse-billing-lock-20260903-01.md": "b6e5953c",
     "p/grokbuild-open-door-guard-33718116356-billing-lock-20260903-01.md": "25781cf5",
     "open_door_guard.py": "877e148d",
-    "test_open_door_guard.py": "7ced9bb7",
-    ".github/workflows/open-door-guard.yml": "e7321d35",
+    "test_open_door_guard.py": "6a512428",
+    ".github/workflows/open-door-guard.yml": "ac6c46c4",
 }
 
 

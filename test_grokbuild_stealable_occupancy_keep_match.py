@@ -20,15 +20,15 @@ KEEP_UNREAD = {
     "p/grokbuild-occupancy-landed-work-keep-lift-20260902-01.md": "67a8a527",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
-    "host/stealable_lanes.py": "c90284fb",
+    "host/stealable_lanes.py": "60ac60e1",
     "p/cursor-stealable-lanes-roles-readback-20260902-01.md": "ada92980",
     "p/grokbuild-pr8353-stealable-lanes-20260902-01.md": "87bdb237",
     "p/grok-build-pr8353-caec56f3-terminal-20260902-01.md": "7e8db90d",
-    "ground/OWNER_NOW.md": "4b2a58ed",
-    "hub_pages.py": "7bc61c8b",
-    "door.js": "de1d570b",
+    "ground/OWNER_NOW.md": "a17b0afb",
+    "hub_pages.py": "f3c00421",
+    "door.js": "c06cc197",
     "api/mcp.py": "393da756",
-    "autogtm.html": "2fe108f4",
+    "autogtm.html": "b6ff1bfd",
 }
 
 
@@ -42,7 +42,7 @@ class TestGrokbuildStealableOccupancyKeepMatch(unittest.TestCase):
     def test_occupancy_keep_no_longer_freezes_stale_stealable_test(self) -> None:
         occ = importlib.import_module("test_stealable_lanes_occupancy")
         self.assertNotEqual(occ.KEEP.get("test_stealable_lanes.py"), "721adc44")
-        self.assertTrue(git_blob("test_stealable_lanes.py").startswith("0ae52a78"))
+        self.assertTrue(git_blob("test_stealable_lanes.py").startswith("306dd0a3"))
         occupancy = subprocess.run(
             ["python3", "-m", "unittest", "test_stealable_lanes_occupancy.py"],
             cwd=ROOT,
