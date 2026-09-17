@@ -34,8 +34,8 @@
     "scope_label": "Cloud LIMS implementation for two public laboratories",
     "source_kind": "CONTROLLING_PACKET",
     "source_observed_at": "2026-09-17T08:00:00Z",
-    "source_ref": "internal-fixture://municipal-lims-like/source-packet",
-    "source_sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+    "source_ref": "repo://revenue/procurement_qualification_gate/municipal_lims_like_source.txt",
+    "source_sha256": "d5ac81e9cbafce5342d60374a212ff0dbff69c63dfa3fe0d987a5f5a9c076338"
   },
   "prime_readiness": {
     "deployed_product_proof": {
