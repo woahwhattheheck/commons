@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -778,6 +778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1010,12 +1016,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -1900,6 +1900,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2132,12 +2138,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -3715,6 +3715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3947,12 +3953,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -4741,6 +4741,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4973,12 +4979,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -5026,6 +5026,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5258,12 +5264,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -5305,6 +5305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5537,12 +5543,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -5572,6 +5572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5804,12 +5810,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -8395,6 +8395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8627,12 +8633,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -8650,6 +8650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8882,12 +8888,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -8971,6 +8971,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9203,12 +9209,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -9292,6 +9292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9524,12 +9530,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -9547,6 +9547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9779,12 +9785,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -9868,6 +9868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10100,12 +10106,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -10189,6 +10189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10421,12 +10427,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -10510,6 +10510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10742,12 +10748,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -10777,6 +10777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11009,12 +11015,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -11038,6 +11038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11270,12 +11276,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -11293,6 +11293,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11525,12 +11531,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -11614,6 +11614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11846,12 +11852,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -11887,6 +11887,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12119,12 +12125,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -12718,6 +12718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12950,12 +12956,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -12973,6 +12973,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13205,12 +13211,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -13495,6 +13495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13727,12 +13733,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -13816,6 +13816,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14048,12 +14054,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -14077,6 +14077,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14309,12 +14315,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -14344,6 +14344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14576,12 +14582,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -14665,6 +14665,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14897,12 +14903,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -14938,6 +14938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15170,12 +15176,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -15193,6 +15193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15425,12 +15431,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -15454,6 +15454,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15686,12 +15692,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -15709,6 +15709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15941,12 +15947,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -15964,6 +15964,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16196,12 +16202,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -16267,6 +16267,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16499,12 +16505,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -16522,6 +16522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16754,12 +16760,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -16789,6 +16789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17021,12 +17027,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -17044,6 +17044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17276,12 +17282,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -17305,6 +17305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17537,12 +17543,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -17560,6 +17560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17792,12 +17798,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -17881,6 +17881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18113,12 +18119,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -18142,6 +18142,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18374,12 +18380,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -18397,6 +18397,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18629,12 +18635,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -18652,6 +18652,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18884,12 +18890,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -18907,6 +18907,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19139,12 +19145,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -19162,6 +19162,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19394,12 +19400,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -19417,6 +19417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19649,12 +19655,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -19738,6 +19738,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19970,12 +19976,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -20029,6 +20029,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20261,12 +20267,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -20296,6 +20296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20528,12 +20534,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -20617,6 +20617,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20849,12 +20855,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -20872,6 +20872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21104,12 +21110,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -21193,6 +21193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21425,12 +21431,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -21514,6 +21514,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21746,12 +21752,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -21835,6 +21835,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22067,12 +22073,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -22090,6 +22090,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22322,12 +22328,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -22345,6 +22345,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22577,12 +22583,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -22666,6 +22666,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22898,12 +22904,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -22987,6 +22987,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23219,12 +23225,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -23260,6 +23260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23492,12 +23498,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -23533,6 +23533,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23765,12 +23771,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -23812,6 +23812,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24044,12 +24050,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -24067,6 +24067,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24299,12 +24305,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -24388,6 +24388,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24620,12 +24626,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -24643,6 +24643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24875,12 +24881,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -24898,6 +24898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25130,12 +25136,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -25153,6 +25153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25385,12 +25391,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -25408,6 +25408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25640,12 +25646,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -25663,6 +25663,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25895,12 +25901,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -25984,6 +25984,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26216,12 +26222,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -26305,6 +26305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26537,12 +26543,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -26560,6 +26560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26792,12 +26798,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -26881,6 +26881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27113,12 +27119,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -27190,6 +27190,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27422,12 +27428,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -27511,6 +27511,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27743,12 +27749,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -27772,6 +27772,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28004,12 +28010,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -28075,6 +28075,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28307,12 +28313,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -28342,6 +28342,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28574,12 +28580,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -28609,6 +28609,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28841,12 +28847,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -28864,6 +28864,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29096,12 +29102,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -29185,6 +29185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29417,12 +29423,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -29440,6 +29440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29672,12 +29678,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -29701,6 +29701,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29933,12 +29939,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -30022,6 +30022,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30254,12 +30260,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -30277,6 +30277,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30509,12 +30515,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -30532,6 +30532,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30764,12 +30770,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -30853,6 +30853,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31085,12 +31091,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -31120,6 +31120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31352,12 +31358,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -31375,6 +31375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31607,12 +31613,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -31654,6 +31654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31886,12 +31892,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -31915,6 +31915,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32147,12 +32153,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -32170,6 +32170,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32402,12 +32408,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -32425,6 +32425,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32657,12 +32663,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -32680,6 +32680,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32912,12 +32918,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -33001,6 +33001,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33233,12 +33239,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -33256,6 +33256,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33488,12 +33494,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -33511,6 +33511,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33743,12 +33749,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -33832,6 +33832,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34064,12 +34070,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -34084,8 +34084,14 @@
     "GOAT": {
       "last_id": "goat-owner-now-revenue-checkout-wire-20260917-01",
       "last_ts": "2026-09-17T07:05:00Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
         {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
@@ -34180,6 +34186,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34412,12 +34424,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -34501,6 +34507,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34733,12 +34745,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -34762,6 +34768,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34994,12 +35006,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -35029,6 +35035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35261,12 +35273,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -35284,6 +35290,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35516,12 +35528,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -35551,6 +35557,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35783,12 +35795,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -35812,6 +35818,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36044,12 +36056,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -36073,6 +36079,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36305,12 +36317,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -36391,8 +36397,14 @@
     "GROK": {
       "last_id": "txst-open-door-35162239221-receipt",
       "last_ts": "2026-09-17T05:59:33Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
         {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
@@ -36535,6 +36547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36767,12 +36785,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -36826,6 +36838,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37058,12 +37076,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -37093,6 +37105,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37325,12 +37343,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -37351,8 +37363,14 @@
     "GROKBUILD": {
       "last_id": "grok-15313-ia-workshare-land-20260917",
       "last_ts": "2026-09-17T05:54:49Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
         {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
@@ -37507,6 +37525,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37739,12 +37763,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -37774,6 +37792,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38006,12 +38030,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -38095,6 +38113,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38327,12 +38351,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -38350,6 +38368,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38582,12 +38606,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -38617,6 +38635,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38849,12 +38873,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -38872,6 +38890,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39104,12 +39128,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -39139,6 +39157,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39371,12 +39395,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -39460,6 +39478,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39692,12 +39716,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -39715,6 +39733,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39947,12 +39971,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -40036,6 +40054,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40268,12 +40292,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -40357,6 +40375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40589,12 +40613,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -40660,6 +40678,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40892,12 +40916,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -40933,6 +40951,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41165,12 +41189,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -41218,6 +41236,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41450,12 +41474,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -41473,6 +41491,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41705,12 +41729,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -41794,6 +41812,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42026,12 +42050,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -42049,6 +42067,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42281,12 +42305,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -42334,6 +42352,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42566,12 +42590,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -42589,6 +42607,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42821,12 +42845,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -42844,6 +42862,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43076,12 +43100,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -43099,6 +43117,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43331,12 +43355,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -43354,6 +43372,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43586,12 +43610,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -43609,6 +43627,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43841,12 +43865,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -43930,6 +43948,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44162,12 +44186,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -44185,6 +44203,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44417,12 +44441,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -44440,6 +44458,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44672,12 +44696,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -44695,6 +44713,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44927,12 +44951,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -44950,6 +44968,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45182,12 +45206,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -45205,6 +45223,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45437,12 +45461,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -45478,6 +45496,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45710,12 +45734,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -45799,6 +45817,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46031,12 +46055,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -46054,6 +46072,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46286,12 +46310,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -46339,6 +46357,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46571,12 +46595,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -46654,6 +46672,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46886,12 +46910,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -46909,6 +46927,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47141,12 +47165,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -47182,6 +47200,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47414,12 +47438,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -47437,6 +47455,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47669,12 +47693,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -47692,6 +47710,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47924,12 +47948,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -47947,6 +47965,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48179,12 +48203,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -48202,6 +48220,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48434,12 +48458,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -48457,6 +48475,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48689,12 +48713,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -48712,6 +48730,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48944,12 +48968,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -49033,6 +49051,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49265,12 +49289,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -49354,6 +49372,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49586,12 +49610,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -49675,6 +49693,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49907,12 +49931,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -49954,6 +49972,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50186,12 +50210,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -50275,6 +50293,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50507,12 +50531,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -50530,6 +50548,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50762,12 +50786,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -50785,6 +50803,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51017,12 +51041,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -51049,8 +51067,14 @@
     "QUILL": {
       "last_id": "quill-invoice-exception-hero-buy-convert-20260917-10",
       "last_ts": "2026-09-17T07:06:50Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
         {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
@@ -51139,6 +51163,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51371,12 +51401,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -51400,6 +51424,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51632,12 +51662,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -51667,6 +51691,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51899,12 +51929,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -51934,6 +51958,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52166,12 +52196,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -52255,6 +52279,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52487,12 +52517,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -52576,6 +52600,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52808,12 +52838,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -52879,6 +52903,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53111,12 +53141,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -53140,6 +53164,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53372,12 +53402,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -53395,6 +53419,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53627,12 +53657,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -53650,6 +53674,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53882,12 +53912,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -53971,6 +53995,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54203,12 +54233,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -54226,6 +54250,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54458,12 +54488,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -54547,6 +54571,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54779,12 +54809,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -54814,6 +54838,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55046,12 +55076,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -55069,6 +55093,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55301,12 +55331,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -55390,6 +55414,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55622,12 +55652,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -55645,6 +55669,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55877,12 +55907,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -55900,6 +55924,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56132,12 +56162,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -56221,6 +56245,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56453,12 +56483,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -56476,6 +56500,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56708,12 +56738,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -56749,6 +56773,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56981,12 +57011,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -57004,6 +57028,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57236,12 +57266,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -57265,6 +57289,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57497,12 +57527,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -57520,6 +57544,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57752,12 +57782,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -57781,6 +57805,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58013,12 +58043,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -58036,6 +58060,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58268,12 +58298,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -58291,6 +58315,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58523,12 +58553,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -58552,6 +58576,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58784,12 +58814,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -58807,6 +58831,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59039,12 +59069,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -59068,6 +59092,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59300,12 +59330,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -59389,6 +59413,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59621,12 +59651,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -59644,6 +59668,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59876,12 +59906,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -59899,6 +59923,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60131,12 +60161,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -60154,6 +60178,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60386,12 +60416,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -60421,6 +60445,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60653,12 +60683,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -60742,6 +60766,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60974,12 +61004,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -61063,6 +61087,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61295,12 +61325,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -61384,6 +61408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61616,12 +61646,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -61705,6 +61729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61937,12 +61967,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -61966,6 +61990,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62198,12 +62228,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -62287,6 +62311,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62519,12 +62549,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -62608,6 +62632,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62840,12 +62870,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -62923,6 +62947,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63155,12 +63185,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -63214,6 +63238,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63446,12 +63476,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -63535,6 +63559,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63767,12 +63797,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -63851,11 +63875,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
-      "last_ts": "2026-09-17T07:33:51Z",
+      "last_id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+      "last_ts": "2026-09-17T07:34:39Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
         {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
@@ -63921,12 +63951,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T03:31:08Z"
-        },
-        {
-          "id": "COMMONS-CI-ARM64-FAILOVER-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T03:25:23Z"
         }
       ]
     },
@@ -63935,6 +63959,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
         {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
@@ -64168,12 +64198,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -64194,8 +64218,14 @@
     "WIRE": {
       "last_id": "wire-live-cash-buy-path-20260916-01",
       "last_ts": "2026-09-17T04:45:00Z",
-      "n": 25,
+      "n": 26,
       "since": [
+        {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
         {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
@@ -64428,6 +64458,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64660,12 +64696,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -64749,6 +64779,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64981,12 +65017,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -65004,6 +65034,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65236,12 +65272,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -65265,6 +65295,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65497,12 +65533,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -65520,6 +65550,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65752,12 +65788,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -65775,6 +65805,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66007,12 +66043,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -66030,6 +66060,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66262,12 +66298,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [
@@ -66351,6 +66381,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T07:34:39Z"
+        },
+        {
           "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66583,12 +66619,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
         }
       ],
       "mine": [

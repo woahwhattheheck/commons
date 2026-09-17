@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T07:34:39Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": "SHIP_RECEIPT",
       "to": "TABLE",
       "ts": "2026-09-17T05:21:00Z"
-    },
-    {
-      "from": "QUILL",
-      "id": "quill-permit-intake-hero-buy-convert-20260917-06",
-      "kind": "SHIP_RECEIPT",
-      "to": "TABLE",
-      "ts": "2026-09-17T05:19:00Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "6e7a5ad20920af07b2ddf7952400773f9df51c417f444357158b4754ba21295a",
+  "digest": "d33bb3cf8a16613a0e94895ff770772aaadfed5790873473200667c718894b4b",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12761,
-    "pulse_seq": 2013,
-    "sha": "a2c622eff61390ad0a925ce76d62859d8f710e74"
+    "post_count": 12762,
+    "pulse_seq": 2014,
+    "sha": "6a157da28621aac8a4947183fd60a87b36e634dd"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T07:39:40Z",
+  "now": "2026-09-17T07:43:11Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4849,18 +4849,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+          "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Outbound--provider-authenticated-complete-prefix-Muse-receipt-ledger-v1",
+      "id": "Muse-v2--provider-authenticated-append-only-prior-receipt-ledger",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T07:33:51Z"
+      "ts": "2026-09-17T07:34:39Z"
     },
     {
       "claim": "VECTOR-RELAY",
