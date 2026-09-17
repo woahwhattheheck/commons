@@ -26,6 +26,8 @@ on:
       - 'revenue/organization_outbound_lease/**'
       - 'tests/test_organization_outbound_lease.py'
       - 'tests/test_organization_outbound_lease_trust.py'
+      - 'revenue/organization_outbound_chain/**'
+      - 'tests/test_organization_outbound_chain.py'
   pull_request:
     paths: *entrypoint_paths
   workflow_dispatch:
@@ -147,3 +149,27 @@ jobs:
         run: python -m unittest -q tests.test_organization_outbound_lease tests.test_organization_outbound_lease_trust
       - name: Organization outbound lease optimized Python tests
         run: python -O -m unittest -q tests.test_organization_outbound_lease tests.test_organization_outbound_lease_trust
+
+  organization-outbound-chain:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.10', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile mandatory organization outbound chain
+        run: >-
+          python -m py_compile
+          revenue/organization_outbound_chain/__init__.py
+          revenue/organization_outbound_chain/chain.py
+          revenue/organization_outbound_chain/adapters.py
+          revenue/organization_outbound_chain/registry.py
+          tests/test_organization_outbound_chain.py
+      - name: Organization outbound chain hostile and registry tests
+        run: python -m unittest -q tests.test_organization_outbound_chain
+      - name: Organization outbound chain optimized Python tests
+        run: python -O -m unittest -q tests.test_organization_outbound_chain
