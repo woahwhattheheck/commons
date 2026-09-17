@@ -8,6 +8,7 @@ import json
 import os
 import re
 import stat
+import tempfile
 import urllib.request
 import zipfile
 from pathlib import PurePosixPath
@@ -242,27 +243,65 @@ def fetch_and_analyze_official_zip(*, timeout_seconds: float = 30.0) -> dict[str
 
 
 def _write_receipt_exclusive(path: str, rendered: str) -> None:
-    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
-    if hasattr(os, "O_NOFOLLOW"):
-        flags |= os.O_NOFOLLOW
+    """Publish one durable receipt without overwrite or unsafe failure cleanup.
+
+    Bytes are first written and fsynced to a private same-directory inode. The
+    final pathname is created only by an atomic hard-link operation, which fails
+    if any object already occupies that name. Failure cleanup therefore touches
+    only the private staging pathname and can never unlink a later foreign
+    successor at the requested final path. A post-link identity check fails
+    closed if the final name is replaced before publication returns.
+    """
+    target = os.path.abspath(os.fspath(path))
+    parent = os.path.dirname(target) or os.curdir
+    basename = os.path.basename(target)
+    if not basename:
+        raise AttachmentRecoveryError("receipt output must name a file")
+
+    fd = -1
+    temp_path: str | None = None
     try:
-        fd = os.open(path, flags, 0o600)
-    except OSError as exc:
-        raise AttachmentRecoveryError(f"cannot create receipt output exclusively: {exc}") from exc
-    created = os.fstat(fd)
-    try:
-        with os.fdopen(fd, "w", encoding="utf-8", newline="\n") as handle:
-            handle.write(rendered)
-            handle.flush()
-            os.fsync(handle.fileno())
-    except OSError as exc:
         try:
-            current = os.stat(path, follow_symlinks=False)
-            if (current.st_dev, current.st_ino) == (created.st_dev, created.st_ino):
-                os.unlink(path)
-        except OSError:
-            pass
-        raise AttachmentRecoveryError(f"cannot write receipt: {exc}") from exc
+            fd, temp_path = tempfile.mkstemp(prefix=f".{basename}.", suffix=".tmp", dir=parent)
+            if hasattr(os, "fchmod"):
+                os.fchmod(fd, 0o600)
+        except OSError as exc:
+            raise AttachmentRecoveryError(f"cannot create private receipt staging file: {exc}") from exc
+
+        try:
+            with os.fdopen(fd, "w", encoding="utf-8", newline="\n") as handle:
+                fd = -1  # fdopen owns the descriptor from this point forward.
+                handle.write(rendered)
+                handle.flush()
+                os.fsync(handle.fileno())
+                owned = os.fstat(handle.fileno())
+        except OSError as exc:
+            raise AttachmentRecoveryError(f"cannot write receipt staging file: {exc}") from exc
+
+        try:
+            os.link(temp_path, target, follow_symlinks=False)
+        except (FileExistsError, OSError) as exc:
+            raise AttachmentRecoveryError(f"cannot publish receipt output exclusively: {exc}") from exc
+
+        try:
+            current = os.stat(target, follow_symlinks=False)
+            staged = os.stat(temp_path, follow_symlinks=False)
+        except OSError as exc:
+            raise AttachmentRecoveryError(f"cannot verify receipt publication identity: {exc}") from exc
+        expected_identity = (owned.st_dev, owned.st_ino)
+        if (current.st_dev, current.st_ino) != expected_identity or (staged.st_dev, staged.st_ino) != expected_identity:
+            raise AttachmentRecoveryError("receipt publication identity changed after atomic no-overwrite link")
+    finally:
+        if fd >= 0:
+            try:
+                os.close(fd)
+            except OSError:
+                pass
+        if temp_path is not None:
+            try:
+                os.unlink(temp_path)
+            except OSError:
+                pass
 
 
 def main(argv: list[str] | None = None) -> int:
