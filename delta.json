@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -778,6 +778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1010,12 +1016,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -1900,6 +1900,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2132,12 +2138,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -3715,6 +3715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3947,12 +3953,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -4741,6 +4741,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4973,12 +4979,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -5026,6 +5026,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5258,12 +5264,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -5305,6 +5305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5537,12 +5543,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -5572,6 +5572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5804,12 +5810,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -8395,6 +8395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8627,12 +8633,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -8650,6 +8650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8882,12 +8888,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -8971,6 +8971,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9203,12 +9209,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -9292,6 +9292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9524,12 +9530,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -9547,6 +9547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9779,12 +9785,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -9868,6 +9868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10100,12 +10106,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -10189,6 +10189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10421,12 +10427,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -10510,6 +10510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10742,12 +10748,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -10777,6 +10777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11009,12 +11015,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -11038,6 +11038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11270,12 +11276,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -11293,6 +11293,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11525,12 +11531,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -11614,6 +11614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11846,12 +11852,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -11887,6 +11887,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12119,12 +12125,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -12718,6 +12718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12950,12 +12956,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -12973,6 +12973,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13205,12 +13211,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -13495,6 +13495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13727,12 +13733,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -13816,6 +13816,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14048,12 +14054,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -14077,6 +14077,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14309,12 +14315,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -14344,6 +14344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14576,12 +14582,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -14665,6 +14665,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14897,12 +14903,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -14938,6 +14938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15170,12 +15176,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -15193,6 +15193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15425,12 +15431,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -15454,6 +15454,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15686,12 +15692,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -15709,6 +15709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15941,12 +15947,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -15964,6 +15964,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16196,12 +16202,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -16267,6 +16267,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16499,12 +16505,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -16522,6 +16522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16754,12 +16760,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -16789,6 +16789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17021,12 +17027,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -17044,6 +17044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17276,12 +17282,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -17305,6 +17305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17537,12 +17543,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -17560,6 +17560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17792,12 +17798,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -17881,6 +17881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18113,12 +18119,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -18142,6 +18142,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18374,12 +18380,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -18397,6 +18397,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18629,12 +18635,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -18652,6 +18652,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18884,12 +18890,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -18907,6 +18907,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19139,12 +19145,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -19162,6 +19162,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19394,12 +19400,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -19417,6 +19417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19649,12 +19655,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -19738,6 +19738,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19970,12 +19976,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -20029,6 +20029,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20261,12 +20267,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -20296,6 +20296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20528,12 +20534,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -20617,6 +20617,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20849,12 +20855,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -20872,6 +20872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21104,12 +21110,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -21193,6 +21193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21425,12 +21431,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -21514,6 +21514,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21746,12 +21752,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -21835,6 +21835,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22067,12 +22073,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -22090,6 +22090,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22322,12 +22328,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -22345,6 +22345,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22577,12 +22583,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -22666,6 +22666,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22898,12 +22904,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -22987,6 +22987,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23219,12 +23225,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -23260,6 +23260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23492,12 +23498,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -23533,6 +23533,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23765,12 +23771,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -23812,6 +23812,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24044,12 +24050,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -24067,6 +24067,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24299,12 +24305,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -24388,6 +24388,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24620,12 +24626,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -24643,6 +24643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24875,12 +24881,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -24898,6 +24898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25130,12 +25136,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -25153,6 +25153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25385,12 +25391,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -25408,6 +25408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25640,12 +25646,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -25663,6 +25663,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25895,12 +25901,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -25984,6 +25984,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26216,12 +26222,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -26305,6 +26305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26537,12 +26543,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -26560,6 +26560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26792,12 +26798,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -26881,6 +26881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27113,12 +27119,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -27190,6 +27190,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27422,12 +27428,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -27511,6 +27511,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27743,12 +27749,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -27772,6 +27772,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28004,12 +28010,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -28075,6 +28075,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28307,12 +28313,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -28342,6 +28342,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28574,12 +28580,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -28609,6 +28609,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28841,12 +28847,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -28864,6 +28864,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29096,12 +29102,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -29185,6 +29185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29417,12 +29423,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -29440,6 +29440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29672,12 +29678,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -29701,6 +29701,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29933,12 +29939,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -30022,6 +30022,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30254,12 +30260,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -30277,6 +30277,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30509,12 +30515,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -30532,6 +30532,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30764,12 +30770,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -30853,6 +30853,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31085,12 +31091,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -31120,6 +31120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31352,12 +31358,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -31375,6 +31375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31607,12 +31613,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -31654,6 +31654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31886,12 +31892,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -31915,6 +31915,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32147,12 +32153,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -32170,6 +32170,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32402,12 +32408,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -32425,6 +32425,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32657,12 +32663,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -32677,8 +32677,14 @@
     "GEMINI": {
       "last_id": "pr-15113-dup-15111-20260916",
       "last_ts": "2026-09-16T23:50:11Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
         {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
@@ -32815,6 +32821,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33047,12 +33059,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -33070,6 +33076,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33302,12 +33314,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -33325,6 +33331,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33557,12 +33569,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -33646,6 +33652,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33878,12 +33890,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -33901,6 +33907,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34133,12 +34145,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -34222,6 +34228,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34454,12 +34466,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -34543,6 +34549,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34775,12 +34787,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -34804,6 +34810,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35036,12 +35048,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -35071,6 +35077,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35303,12 +35315,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -35326,6 +35332,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35558,12 +35570,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -35593,6 +35599,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35825,12 +35837,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -35854,6 +35860,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36086,12 +36098,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -36115,6 +36121,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36347,12 +36359,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -36431,60 +36437,17 @@
       ]
     },
     "GROK": {
-      "last_id": "grok-pr-15117-verify-20260916-01",
-      "last_ts": "2026-09-16T23:50:21Z",
-      "n": 8,
-      "since": [
-        {
-          "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:43:08Z"
-        },
-        {
-          "id": "OSS-funding-route-freshness-recensus-compiler",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:31:22Z"
-        },
-        {
-          "id": "Revenue--current-public-procurement-award-comparable-corpus",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T01:08:44Z"
-        },
-        {
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:59:47Z"
-        },
-        {
-          "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:58:40Z"
-        },
-        {
-          "id": "Proposal-validity-expiry-and-requote-gate",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:32:52Z"
-        },
-        {
-          "id": "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T00:29:06Z"
-        },
-        {
-          "id": "grok-opr-billing-35163216313-02",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:53:20Z"
-        }
-      ],
+      "last_id": "grok-ws-repair-35159989477-20260916",
+      "last_ts": "2026-09-17T02:53:25Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
         {
           "id": "grok-pr-15117-verify-20260916-01",
           "from": "GROK",
@@ -36550,12 +36513,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-09-16T23:13:17Z"
-        },
-        {
-          "id": "gguf-12k-kit-15077-receipt",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:11:53Z"
         }
       ]
     },
@@ -36564,6 +36521,12 @@
       "last_ts": "2026-09-09T16:44:05Z",
       "n": 40,
       "since": [
+        {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
         {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
@@ -36797,12 +36760,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -36856,6 +36813,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37088,12 +37051,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -37123,6 +37080,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37355,12 +37318,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -37381,8 +37338,14 @@
     "GROKBUILD": {
       "last_id": "grokbuild-pr15111-verify-20260916-01",
       "last_ts": "2026-09-16T23:49:28Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
         {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
@@ -37525,6 +37488,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37757,12 +37726,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -37789,8 +37752,14 @@
     "GROK_BUILD": {
       "last_id": "grokbuild-merge-wave-20260916-1948",
       "last_ts": "2026-09-16T23:49:23Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
         {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
@@ -37939,6 +37908,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38171,12 +38146,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -38194,6 +38163,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38426,12 +38401,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -38461,6 +38430,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38693,12 +38668,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -38716,6 +38685,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38948,12 +38923,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -38983,6 +38952,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39215,12 +39190,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -39304,6 +39273,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39536,12 +39511,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -39559,6 +39528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39791,12 +39766,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -39880,6 +39849,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40112,12 +40087,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -40201,6 +40170,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40433,12 +40408,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -40504,6 +40473,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40736,12 +40711,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -40777,6 +40746,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41009,12 +40984,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -41062,6 +41031,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41294,12 +41269,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -41317,6 +41286,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41549,12 +41524,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -41638,6 +41607,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41870,12 +41845,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -41893,6 +41862,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42125,12 +42100,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -42178,6 +42147,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42410,12 +42385,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -42433,6 +42402,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42665,12 +42640,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -42688,6 +42657,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42920,12 +42895,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -42943,6 +42912,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43175,12 +43150,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -43198,6 +43167,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43430,12 +43405,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -43453,6 +43422,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43685,12 +43660,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -43761,7 +43730,7 @@
           "ts": ""
         },
         {
-          "id": "latch-manual-rebuild-battery-clean-20260916-01",
+          "id": "latch-pack-paperwork-md-keep-larger-fixed-20260916-01",
           "from": "LATCH",
           "to": "TABLE",
           "ts": ""
@@ -43773,6 +43742,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
         {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
@@ -44006,12 +43981,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -44029,6 +43998,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44261,12 +44236,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -44284,6 +44253,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44516,12 +44491,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -44539,6 +44508,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44771,12 +44746,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -44794,6 +44763,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45026,12 +45001,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -45049,6 +45018,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45281,12 +45256,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -45322,6 +45291,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45554,12 +45529,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -45643,6 +45612,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45875,12 +45850,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -45898,6 +45867,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46130,12 +46105,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -46183,6 +46152,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46415,12 +46390,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -46498,6 +46467,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46730,12 +46705,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -46753,6 +46722,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46985,12 +46960,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -47026,6 +46995,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47258,12 +47233,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -47281,6 +47250,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47513,12 +47488,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -47536,6 +47505,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47768,12 +47743,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -47791,6 +47760,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48023,12 +47998,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -48046,6 +48015,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48278,12 +48253,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -48301,6 +48270,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48533,12 +48508,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -48556,6 +48525,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48788,12 +48763,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -48877,6 +48846,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49109,12 +49084,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -49198,6 +49167,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49430,12 +49405,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -49519,6 +49488,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49751,12 +49726,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -49798,6 +49767,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50030,12 +50005,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -50119,6 +50088,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50351,12 +50326,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -50374,6 +50343,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50606,12 +50581,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -50629,6 +50598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50861,12 +50836,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -50896,6 +50865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51128,12 +51103,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -51217,6 +51186,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51449,12 +51424,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -51478,6 +51447,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51710,12 +51685,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -51745,6 +51714,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51977,12 +51952,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -52012,6 +51981,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52244,12 +52219,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -52333,6 +52302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52565,12 +52540,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -52654,6 +52623,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52886,12 +52861,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -52957,6 +52926,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53189,12 +53164,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -53218,6 +53187,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53450,12 +53425,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -53473,6 +53442,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53705,12 +53680,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -53728,6 +53697,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53960,12 +53935,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -54049,6 +54018,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54281,12 +54256,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -54304,6 +54273,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54536,12 +54511,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -54625,6 +54594,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54857,12 +54832,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -54892,6 +54861,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55124,12 +55099,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -55147,6 +55116,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55379,12 +55354,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -55468,6 +55437,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55700,12 +55675,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -55723,6 +55692,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55955,12 +55930,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -55978,6 +55947,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56210,12 +56185,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -56299,6 +56268,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56531,12 +56506,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -56554,6 +56523,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56786,12 +56761,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -56827,6 +56796,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57059,12 +57034,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -57082,6 +57051,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57314,12 +57289,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -57343,6 +57312,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57575,12 +57550,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -57598,6 +57567,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57830,12 +57805,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -57859,6 +57828,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58091,12 +58066,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -58114,6 +58083,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58346,12 +58321,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -58369,6 +58338,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58601,12 +58576,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -58630,6 +58599,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58862,12 +58837,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -58885,6 +58854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59117,12 +59092,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -59146,6 +59115,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59378,12 +59353,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -59467,6 +59436,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59699,12 +59674,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -59722,6 +59691,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59954,12 +59929,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -59977,6 +59946,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60209,12 +60184,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -60232,6 +60201,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60464,12 +60439,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -60499,6 +60468,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60731,12 +60706,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -60820,6 +60789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61052,12 +61027,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -61141,6 +61110,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61373,12 +61348,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -61462,6 +61431,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61694,12 +61669,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -61783,6 +61752,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62015,12 +61990,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -62044,6 +62013,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62276,12 +62251,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -62365,6 +62334,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62597,12 +62572,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -62686,6 +62655,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62918,12 +62893,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -63001,6 +62970,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63233,12 +63208,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -63292,6 +63261,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63524,12 +63499,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -63613,6 +63582,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63845,12 +63820,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -63931,8 +63900,15 @@
     "UNSEATED": {
       "last_id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
       "last_ts": "2026-09-17T01:43:08Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        }
+      ],
       "mine": [
         {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
@@ -64014,6 +63990,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64246,12 +64228,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -64275,6 +64251,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64507,12 +64489,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -64596,6 +64572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64828,12 +64810,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -64917,6 +64893,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65149,12 +65131,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -65172,6 +65148,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65404,12 +65386,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -65433,6 +65409,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65665,12 +65647,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -65688,6 +65664,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65920,12 +65902,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -65943,6 +65919,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66175,12 +66157,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [
@@ -66264,6 +66240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-ws-repair-35159989477-20260916",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-09-17T02:53:25Z"
+        },
+        {
           "id": "OSS-GRANT-ELIGIBILITY-PACKET-COMPILER-20260916-ZSOL17",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66496,12 +66478,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:32:00Z"
-        },
-        {
-          "id": "revops-openai-task-update-20260916-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:29:18Z"
         }
       ],
       "mine": [

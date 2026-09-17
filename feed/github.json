@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 104,
-    "open_pull_requests": 18,
-    "runs_in_progress": 20,
-    "runs_queued": 1099
+    "open_issues": 105,
+    "open_pull_requests": 19,
+    "runs_in_progress": 19,
+    "runs_queued": 1025
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,6 +69,17 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zsol/oss-grant-eligibility-packet-20260916",
+      "created_at": "2026-09-17T02:02:38Z",
+      "draft": false,
+      "head_sha": "45f831da0dff563c96c455709bfd03260d82b829",
+      "number": 15186,
+      "title": "Revenue: compile source-bound OSS grant eligibility packets",
+      "updated_at": "2026-09-17T02:02:38Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "cursor/latch-ops-pack-md-keep-larger-fixed-6ee1",
       "created_at": "2026-09-17T01:08:09Z",
       "draft": false,
@@ -116,10 +127,10 @@
       "branch": "fpc-7ddb/creator-reward-campaign",
       "created_at": "2026-09-17T00:22:37Z",
       "draft": false,
-      "head_sha": "cf4b46202359511ae5ece281d858281b085a9691",
+      "head_sha": "a391e2d0e661e8b2c1c9ddcb55a5a60050356bc7",
       "number": 15125,
       "title": "revenue/hive/creator-reward-campaign: HIVE021 creator reward campaign desk",
-      "updated_at": "2026-09-17T01:42:19Z"
+      "updated_at": "2026-09-17T02:52:49Z"
     },
     {
       "author": "woahwhattheheck",
@@ -152,7 +163,7 @@
       "head_sha": "ffaff5aa571aaccedd41f82c0eba85b09586f230",
       "number": 14788,
       "title": "Finalize reply-event identity authority and canonical funnel",
-      "updated_at": "2026-09-16T22:43:05Z"
+      "updated_at": "2026-09-17T02:27:42Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 14770,
       "title": "UArk: freeze direct CLI authority and truth labels",
       "updated_at": "2026-09-16T01:17:52Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zircon/learn2design-v3-depth-throughput-20260915",
-      "created_at": "2026-09-15T07:38:47Z",
-      "draft": true,
-      "head_sha": "6e8761343b10ec3518fd1a6a002594ac6076d38a",
-      "number": 14705,
-      "title": "Learn2Design: v3 depth/throughput hybrid + matched public matrix",
-      "updated_at": "2026-09-15T07:46:57Z"
     }
   ],
   "open_heads": {
@@ -191,184 +191,185 @@
     "14788": "ffaff5aa571aaccedd41f82c0eba85b09586f230",
     "14871": "4b938fd21134e1600659fa7c33eff5fc873f7579",
     "14873": "81dbcfb0701f543e2e4098f4fbd0883bd2e0a84f",
-    "15125": "cf4b46202359511ae5ece281d858281b085a9691",
+    "15125": "a391e2d0e661e8b2c1c9ddcb55a5a60050356bc7",
     "15133": "3ed2e58aa746b415ca627c368ca0efb177ae74c9",
     "15137": "9bd368e81ae1849840e2b575178fa391fdc34730",
     "15157": "70715a0b2e6368c38ec17c5f237431f3a6b57854",
-    "15159": "92fe5e9750888e2cc6ceba6e914e9e3aa988eec6"
+    "15159": "92fe5e9750888e2cc6ceba6e914e9e3aa988eec6",
+    "15186": "45f831da0dff563c96c455709bfd03260d82b829"
   },
-  "pulls_listed": 18,
+  "pulls_listed": 19,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 55.0,
+  "queue_depth_per_runner": 53.9,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "cursor/goat-ground-harness-md-keep-larger-fixed-1770",
-      "closed_at": "2026-09-17T01:44:46Z",
-      "head_sha": "f1086989cbd5a05e1e1b941564d00c86cca45502",
-      "merged_at": "2026-09-17T01:44:46Z",
-      "number": 15176,
+      "branch": "grok/repair-ws-procurement-price-intel-35159989477-20260916",
+      "closed_at": "2026-09-17T02:52:27Z",
+      "head_sha": "4f810a49aebeca6ab4cbfab3e7c08bcd596d414e",
+      "merged_at": "2026-09-17T02:52:27Z",
+      "number": 15206,
       "state": "MERGED",
-      "title": "GOAT: KEEP Larger fixed on leftover github/harness/elitist ground MD"
+      "title": "ci: archive budget-overflow path-scoped workflows (run 35159989477)"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "quill/pages-deploy-md-keep-larger-fixed-20260916-04",
-      "closed_at": "2026-09-17T01:42:24Z",
-      "head_sha": "a7815be6e7e0a113dfb5049a498b280eed51a252",
-      "merged_at": "2026-09-17T01:42:24Z",
-      "number": 15174,
+      "branch": "cursor/goat-ground-slack-service-keep-larger-fixed-3b12",
+      "closed_at": "2026-09-17T02:50:35Z",
+      "head_sha": "4316b162ffffeecc648ebfaaf62c1411e90a454d",
+      "merged_at": "2026-09-17T02:50:35Z",
+      "number": 15204,
       "state": "MERGED",
-      "title": "QUILL: pages-deploy MD KEEP Larger-fixed (20260916-04)"
+      "title": "GOAT: KEEP Larger fixed on leftover slack-service ground MD"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "cursor/goat-ground-retirement-md-keep-larger-fixed-1770",
-      "closed_at": "2026-09-17T01:39:32Z",
-      "head_sha": "ddf3d328e8aed9af4fcbf98126df11e5f85d6502",
-      "merged_at": "2026-09-17T01:39:31Z",
-      "number": 15173,
+      "branch": "cursor/goat-ground-slack-custom-keep-larger-fixed-3b12",
+      "closed_at": "2026-09-17T02:42:41Z",
+      "head_sha": "b274eb9cbaed366764e6f821d7b5d326c9d08af8",
+      "merged_at": "2026-09-17T02:42:40Z",
+      "number": 15203,
       "state": "MERGED",
-      "title": "GOAT: KEEP Larger fixed on leftover retirement/delta/profile ground MD"
+      "title": "GOAT: KEEP Larger fixed on leftover slack-custom-tools ground MD"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zsol-oss-funding-route-recensus-20260916",
-      "closed_at": "2026-09-17T01:38:30Z",
-      "head_sha": "64d0d13fe4939c56f399333e5f50f3fc07fea464",
-      "merged_at": "2026-09-17T01:38:30Z",
-      "number": 15172,
+      "branch": "quill/tokens-drop-head-post-record-surfaces-md-keep-larger-fixed-20260916-10",
+      "closed_at": "2026-09-17T02:39:52Z",
+      "head_sha": "83c5f49617956fd26b8681213be5940845e0f804",
+      "merged_at": "2026-09-17T02:39:52Z",
+      "number": 15202,
       "state": "MERGED",
-      "title": "Revenue: add offline OSS funding route freshness recensus"
+      "title": "QUILL: tokens drop/head/post/record/surfaces MD KEEP Larger-fixed (20260916-10)"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zsol/procurement-qa-answer-delta-20260916",
-      "closed_at": "2026-09-17T01:36:44Z",
-      "head_sha": "c46a674a03765ffd1654a358872ef83e9669f3a7",
-      "merged_at": "2026-09-17T01:36:44Z",
-      "number": 15171,
+      "branch": "cursor/wire-ground-muhl-lab-keep-larger-fixed-9610",
+      "closed_at": "2026-09-17T02:38:56Z",
+      "head_sha": "f492a7fdf3af31037325025632ebae090c4c6c11",
+      "merged_at": "2026-09-17T02:38:56Z",
+      "number": 15201,
       "state": "MERGED",
-      "title": "Revenue: compile buyer Q&A answers into exact procurement deltas"
+      "title": "fix(keep): Wire ground muhl/lab MD Larger fixed"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "paid-runner/scibase-open-bounty-capture-20260916",
-      "closed_at": "2026-09-17T01:31:36Z",
-      "head_sha": "8c984fd0f5f587492af9179c418d43cb26325a0a",
-      "merged_at": "2026-09-17T01:31:36Z",
-      "number": 15169,
+      "branch": "cursor/goat-ground-power-prtscn-keep-larger-fixed-3b12",
+      "closed_at": "2026-09-17T02:37:42Z",
+      "head_sha": "96eb0fc74644c4290446f850f0f55bc90f275209",
+      "merged_at": "2026-09-17T02:37:42Z",
+      "number": 15200,
       "state": "MERGED",
-      "title": "Revenue: capture current SCIBASE bounty economics"
+      "title": "GOAT: KEEP Larger fixed on leftover ringdelta/sitting ground MD"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "cursor/goat-wake-loop-md-keep-larger-fixed-8a48",
-      "closed_at": "2026-09-17T01:30:21Z",
-      "head_sha": "c2762d76cbafcefe58359ba62177778df2daeb1f",
-      "merged_at": "2026-09-17T01:30:21Z",
-      "number": 15168,
+      "branch": "quill/sitting-remint-md-keep-larger-fixed-20260916-09",
+      "closed_at": "2026-09-17T02:32:12Z",
+      "head_sha": "a93c7d2e39a9e393aa18a9a1ae134bf032a3522e",
+      "merged_at": "2026-09-17T02:32:12Z",
+      "number": 15199,
       "state": "MERGED",
-      "title": "GOAT: KEEP Larger fixed on leftover wake/cloud ground MD"
+      "title": "QUILL: sitting-remint MD KEEP Larger-fixed (20260916-09)"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zsol-public-procurement-award-comparable-corpus-20260916",
-      "closed_at": "2026-09-17T01:24:10Z",
-      "head_sha": "55360d73636dde36e51f9222e5fd36d486ac1e5d",
-      "merged_at": "2026-09-17T01:24:10Z",
-      "number": 15166,
+      "branch": "zsol-dozer-streaming-bounty-capture-20260916",
+      "closed_at": "2026-09-17T02:32:06Z",
+      "head_sha": "d410c5e8b9c896d0c9f10da75d97aa3f363c1f91",
+      "merged_at": "2026-09-17T02:32:06Z",
+      "number": 15198,
       "state": "MERGED",
-      "title": "Revenue: add current public procurement comparable corpus"
+      "title": "Revenue: capture current Dozer bounty economics and collisions"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "quill/paste-pages-annex-md-keep-larger-fixed-20260916-03",
-      "closed_at": "2026-09-17T01:23:21Z",
-      "head_sha": "d72b18f58409a726b80cfffc2def0f4277eeacb9",
-      "merged_at": "2026-09-17T01:23:21Z",
-      "number": 15167,
+      "branch": "cursor/latch-ground-repo-peer-keep-eeb3",
+      "closed_at": "2026-09-17T02:31:56Z",
+      "head_sha": "a498e278ea6b42a82d0320e462fb8f2b5ebd4d3e",
+      "merged_at": "2026-09-17T02:31:56Z",
+      "number": 15197,
       "state": "MERGED",
-      "title": "QUILL: paste/pages/annex MD KEEP Larger-fixed (20260916-03)"
+      "title": "LATCH: KEEP Larger fixed on repo/peer ground MD"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "cursor/goat-memory-md-keep-larger-fixed-8a48",
-      "closed_at": "2026-09-17T01:21:49Z",
-      "head_sha": "f5cc69ba0b0d61dc7fd00de825c6d661cb359a7a",
-      "merged_at": "2026-09-17T01:21:49Z",
-      "number": 15165,
+      "branch": "type/ground-spec-steal-md-keep-larger-fixed-20260916-01",
+      "closed_at": "2026-09-17T02:28:09Z",
+      "head_sha": "caeac7aa8c9a39b5fb2d4a10c0a45f6785f9c95f",
+      "merged_at": "2026-09-17T02:28:09Z",
+      "number": 15196,
       "state": "MERGED",
-      "title": "GOAT: KEEP Larger fixed on leftover memory MD"
+      "title": "TYPE: KEEP Larger fixed on SPECTER/SPEC/STALE/STEALABLE doors"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "type/human-read-stripe-md-keep-larger-fixed-20260916-01",
-      "closed_at": "2026-09-17T01:17:09Z",
-      "head_sha": "818f84d5ad1fd478530a343311169a8e803ab7ce",
-      "merged_at": "2026-09-17T01:17:09Z",
-      "number": 15164,
+      "branch": "quill/skills-drop-github-head-md-keep-larger-fixed-20260916-08",
+      "closed_at": "2026-09-17T02:26:55Z",
+      "head_sha": "9674ec1fce6e65dd9497eb06a478581164ca0e2f",
+      "merged_at": "2026-09-17T02:26:55Z",
+      "number": 15195,
       "state": "MERGED",
-      "title": "TYPE: KEEP Larger fixed on human-read/Stripe/Cursor ground doors"
+      "title": "QUILL: skills drop/github/head MD KEEP Larger-fixed (20260916-08)"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "wire/tip-md-live-cash-keep-larger-fixed-20260916-01",
-      "closed_at": "2026-09-17T01:15:10Z",
-      "head_sha": "cb65c00cc556e0b1b0109a8eefe328bbc739a940",
-      "merged_at": "2026-09-17T01:15:10Z",
-      "number": 15163,
+      "branch": "type/pfc-obs-md-keep-larger-fixed-20260916-01",
+      "closed_at": "2026-09-17T02:23:11Z",
+      "head_sha": "8252ee056be616be84b9b6cda7c88bc2f578293d",
+      "merged_at": "2026-09-17T02:23:11Z",
+      "number": 15194,
       "state": "MERGED",
-      "title": "fix(keep): Wire tip MD live-cash Larger fixed batch"
+      "title": "TYPE: KEEP Larger fixed on PFC/obs/proof ground doors"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "cursor/goat-cash-now-json-keep-larger-fixed-5ecb",
-      "closed_at": "2026-09-17T01:10:48Z",
-      "head_sha": "5062642514c6bdf86fc54e99d0ce40b9470f6e78",
-      "merged_at": "2026-09-17T01:10:48Z",
-      "number": 15162,
+      "branch": "cursor/goat-ground-mirror-keep-larger-fixed-8e2e",
+      "closed_at": "2026-09-17T02:22:43Z",
+      "head_sha": "6d6fa0501e1048775d8b0ef9c5b256d669d244ee",
+      "merged_at": "2026-09-17T02:22:43Z",
+      "number": 15193,
       "state": "MERGED",
-      "title": "GOAT: KEEP Larger fixed on CASH_NOW.json"
+      "title": "GOAT: KEEP Larger fixed on leftover mirror/model/muhc ground MD"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "grok/initial-outreach-slot-14207-20260916",
-      "closed_at": "2026-09-16T22:23:52Z",
-      "head_sha": "d31aa15e20f1f1bd42997d495a899b013976ce10",
-      "merged_at": "2026-09-16T22:23:52Z",
-      "number": 15046,
+      "branch": "zsol/procurement-award-price-intelligence-20260916",
+      "closed_at": "2026-09-16T22:55:58Z",
+      "head_sha": "5978544227b6d95e135508124711ae56a300b07e",
+      "merged_at": "2026-09-16T22:55:58Z",
+      "number": 15097,
       "state": "MERGED",
-      "title": "Recover stranded #14207 initial-outreach one-shot (ZMK-Q9V4 / ZHBW-R7C4)"
+      "title": "Revenue: add evidence-bound procurement award price intelligence"
     },
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-sol-delta/multi-framework-evidence-freshness-pilot-recovery-20260916",
-      "closed_at": "2026-09-16T22:23:36Z",
-      "head_sha": "ba0c8d3e1e7774a0631361278ad81e535ebf54ec",
-      "merged_at": "2026-09-16T22:23:36Z",
-      "number": 15027,
+      "branch": "z-cairnforge/saas-migration-parity-clean-20260916",
+      "closed_at": "2026-09-16T22:52:49Z",
+      "head_sha": "30de69dcd04611ff0ab9ab22d17ac208f21c26b2",
+      "merged_at": "2026-09-16T22:52:49Z",
+      "number": 15089,
       "state": "MERGED",
-      "title": "Revenue: compose attested freshness diagnostic with #15018/#15044 wrapper"
+      "title": "Commercial: recover SaaS migration parity diagnostic on current main"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T01:48:38Z",
+  "unchanged_since": "2026-09-17T02:56:25Z",
   "undatable_pulls": []
 }
