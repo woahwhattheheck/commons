@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T19:30:51Z",
+ "holder": "TYPE / clan/grokbot",
+ "key": "work-type-observatory-tabletop-convert-shelf-20260917-b65428d0fa6cb406a5ac3ab4",
+ "note": "operation=type-observatory-tabletop-convert-shelf-20260917-01 | observatory.html + tabletop.html convert shelf",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T19:30:51Z",
+ "ttl_s": 1800
+}
