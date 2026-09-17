@@ -268,9 +268,13 @@ def compile_batch(source: Any) -> dict[str, Any]:
             "evidence_bytes": sum(item["bytes"] for item in case["intake"]["evidence_items"]),
             "source_case": case,
         })
+    queueable_cases = [
+        row for row in compiled_cases
+        if not (row["state"] == "REFUND_REQUIRED" and row["refund_satisfied"])
+    ]
     queue = [
         {"case_ref": row["case_ref"], "state": row["state"], "case_digest": row["case_digest"]}
-        for row in sorted(compiled_cases, key=lambda row: (STATE_PRIORITY[row["state"]], row["case_ref"]))
+        for row in sorted(queueable_cases, key=lambda row: (STATE_PRIORITY[row["state"]], row["case_ref"]))
     ]
     semantic = {
         "schema": PACKET_SCHEMA,
@@ -327,6 +331,20 @@ def render_report(packet: dict[str, Any]) -> str:
             "- reason(s): " + "; ".join(case["reasons"]),
             "",
         ]
+    terminal_refunds = [
+        row for row in packet["cases"]
+        if row["state"] == "REFUND_REQUIRED" and row["refund_satisfied"]
+    ]
+    if terminal_refunds:
+        lines += ["## Completed refunds", ""]
+        for case in terminal_refunds:
+            lines += [
+                f"### {case['case_ref']}",
+                "- terminal: `refund satisfied`",
+                f"- payment: `{case['payment_state']}`",
+                "- reason(s): " + "; ".join(case["reasons"]),
+                "",
+            ]
     lines += [
         "## Authority ceiling",
         "",

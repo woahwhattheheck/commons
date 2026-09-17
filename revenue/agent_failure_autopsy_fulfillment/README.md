@@ -18,7 +18,7 @@ A buyer-facing page, intake brief, queue row, Git commit, or packet is **not** p
    - `READY_FOR_ANALYSIS`
    - `REFUND_REQUIRED`
    - `DELIVERED`
-6. Completed delivery or refund requires an explicit operator receipt digest; neither is inferred from intent or checkout.
+6. Completed delivery or refund requires an explicit operator receipt digest; neither is inferred from intent or checkout. Once a refund is satisfied by provider `REFUNDED` state or a refund-receipt digest, the case remains in packet history but is removed from the active work queue.
 7. For a later larger engagement, use the existing `$12k GGUF` / `$30k White Box` pages. This package cannot claim that a buyer accepted either offer.
 
 ## Strict ingress
