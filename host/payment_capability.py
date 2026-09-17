@@ -95,6 +95,8 @@ CONVERT_SHELF_LIVE_BUYS = {
     "grounding.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "open-door.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "interconnect.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "merge-on-pr.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "landed-work.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -167,6 +169,8 @@ PUBLIC_HTML = (
     "grounding.html",
     "open-door.html",
     "interconnect.html",
+    "merge-on-pr.html",
+    "landed-work.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
