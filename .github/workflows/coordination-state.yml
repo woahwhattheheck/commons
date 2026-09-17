@@ -24,6 +24,10 @@ on:
       - "ground/SWARM_ORDER.md"
       - "ground/SWARM_EXECUTION_AUTHORITY.md"
       - "test_coordination_state.py"
+      - "host/claim_pr.py"
+      - "host/claim_work.py"
+      - "test_claim_pr.py"
+      - "test_coordination_holdings_preservation.py"
       - ".github/workflows/coordination-state.yml"
 
 concurrency:
@@ -49,10 +53,14 @@ jobs:
             /test_swarm_review.py
             /test_swarm_review_pr_binding.py
             /test_coordination_state.py
+            /host/claim_pr.py
+            /host/claim_work.py
+            /test_claim_pr.py
+            /test_coordination_holdings_preservation.py
       - name: Contract tests
-        run: python3 -m unittest -v test_coordination_state.py test_swarm_review.py test_swarm_review_pr_binding.py
+        run: python3 -m unittest -v test_coordination_state.py test_swarm_review.py test_swarm_review_pr_binding.py test_claim_pr.py test_coordination_holdings_preservation.py
       - name: Contract tests optimized
-        run: python3 -O -m unittest -v test_coordination_state.py test_swarm_review.py test_swarm_review_pr_binding.py
+        run: python3 -O -m unittest -v test_coordination_state.py test_swarm_review.py test_swarm_review_pr_binding.py test_claim_pr.py test_coordination_holdings_preservation.py
 
   publish:
     if: github.event_name != 'pull_request'
