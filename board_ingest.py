@@ -327,6 +327,28 @@ BOARDS_BUILDS_CONVERT_SHELF = (
     "No new Payment Links.</p>\n"
     "</section>\n"
 )
+ARBITRAGE_ATTESTED_CONVERT_PAGES = ("arbitrage.html", "attested-inference.html")
+ARBITRAGE_ATTESTED_CONVERT_SHELF = (
+    '<section id="buy-now-live-checkout" class="law" '
+    'aria-label="Buy now — live checkout">\n'
+    "<strong>Buy now — live checkout.</strong> Existing live Payment Links. "
+    "No invented Stripe. A click is intent, not cash.\n"
+    "<p>\n"
+    '<a class="cta" data-checkout '
+    'href="https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g">'
+    "Buy Autopsy $29</a>\n"
+    '<a class="cta" data-checkout '
+    'href="https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07">'
+    "Buy one White Box hour $250</a>\n"
+    "</p>\n"
+    '<p class="note">Reuse only. Cite '
+    "<code>wire-arbitrage-attested-convert-shelf-20260917-01</code>. Sources: "
+    '<a href="./agent-rescue.html">agent-rescue.html</a> · '
+    '<a href="./commercial.html">commercial.html</a> / '
+    '<a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. '
+    "No new Payment Links.</p>\n"
+    "</section>\n"
+)
 TOOLS_CASH_HOOK = (
     '<p class="note" id="cash-hook"><strong>Catalog cash</strong> — '
     '<a href="./tools.json"><code>tools.json</code> → <code>cash</code></a>: '
@@ -503,6 +525,56 @@ def splice_boards_builds_convert_shelf(root=None):
                     "%s lost live-cash splice point for convert shelf" % name
                 )
             text = text[:idx] + BOARDS_BUILDS_CONVERT_SHELF + text[idx:]
+            changed = True
+        if ".cta{" not in text:
+            css_mark = 'href="./commons.css'
+            css_at = text.find(css_mark)
+            close = text.find(">", css_at) if css_at >= 0 else -1
+            if close < 0:
+                raise RuntimeError(
+                    "%s lost commons.css splice point for convert CTA" % name
+                )
+            insert_at = close + 1
+            if insert_at < len(text) and text[insert_at] == "\n":
+                insert_at += 1
+            text = text[:insert_at] + TOOLS_CONVERT_SHELF_STYLE + text[insert_at:]
+            changed = True
+        if changed:
+            _write(path, text)
+            any_changed = True
+    return any_changed
+
+
+def splice_arbitrage_attested_convert_shelf(root=None):
+    """Keep arbitrage.html + attested-inference.html convert shelves across remints.
+
+    Tip KEEP pages may lose a first-screen Buy shelf on rebuild. Compose the
+    existing Autopsy $29 + White Box hour $250 Payment Links back. Prefer
+    insert before <main> (arbitrage first-screen) else before live-cash
+    (attested-inference). Same cash-doors splice pattern as boards/builds
+    (#15519). Cite wire-arbitrage-attested-convert-shelf-20260917-01.
+    Do not remint leftover bytes. Hands off action.html / capabilities.html.
+    """
+    base = root or ROOT
+    any_changed = False
+    for name in ARBITRAGE_ATTESTED_CONVERT_PAGES:
+        path = os.path.join(base, name)
+        if not os.path.isfile(path):
+            continue
+        with open(path, encoding="utf-8") as handle:
+            text = handle.read()
+        changed = False
+        if 'id="buy-now-live-checkout"' not in text:
+            idx = -1
+            for needle in ("<main", '<section id="live-cash"', '<p id="live-cash"'):
+                idx = text.find(needle)
+                if idx >= 0:
+                    break
+            if idx < 0:
+                raise RuntimeError(
+                    "%s lost first-screen splice point for convert shelf" % name
+                )
+            text = text[:idx] + ARBITRAGE_ATTESTED_CONVERT_SHELF + text[idx:]
             changed = True
         if ".cta{" not in text:
             css_mark = 'href="./commons.css'
@@ -3597,6 +3669,7 @@ def rebuild():
     splice_tools_cash_doors()
     splice_live_delta_convert_shelf()
     splice_boards_builds_convert_shelf()
+    splice_arbitrage_attested_convert_shelf()
     splice_features_digit_seat()
     write_mail(rows, write_pulse(rows))
     # Observatory consumes these freshly emitted bakes, including pulse. Keep
