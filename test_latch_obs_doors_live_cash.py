@@ -5,6 +5,12 @@ import unittest
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 PAGES = ["visual.html","look.html","shots.html","face.html","mirrors.html","avatars.html","nojs.html","reply.html"]
+CONVERT_SHELF = frozenset({
+    "avatars.html",  # type-avatars-clans-convert-shelf-20260917-01
+    "face.html",  # latch-face-film-convert-shelf-20260917-01
+    "look.html",  # type-look-loop-convert-shelf-20260917-01 already on main
+    "nojs.html",  # latch-nojs-post-convert-shelf-20260917-01
+})
 REQUIRED = ['id="live-cash"', "./agent-rescue.html", "./dealer-service-lead-rescue.html", "./referral-intake-completeness.html", "./repair-booking-preflight.html", "./plant-downtime-handoff.html", "$29 Autopsy", "$199 dealer diagnostic"]
 class LatchObsDoorsLiveCashTest(unittest.TestCase):
     def test_all(self) -> None:
@@ -13,16 +19,11 @@ class LatchObsDoorsLiveCashTest(unittest.TestCase):
                 text = (ROOT / name).read_text(encoding="utf-8")
                 for n in REQUIRED:
                     self.assertIn(n, text, f"{name} missing {n}")
-                if name == "avatars.html":
+                if name in CONVERT_SHELF:
                     # Convert shelf reuses existing live buys; Live cash product-page
-                    # doors stay relative (type-avatars-clans-convert-shelf-20260917-01).
+                    # doors stay relative.
                     live_cash = text.split('id="live-cash"', 1)[1].split("</section>", 1)[0]
-                    self.assertNotIn("buy.stripe.com", live_cash)
-                elif name == "face.html":
-                    # Convert shelf reuses existing live buys; Live cash product-page
-                    # doors stay relative (latch-face-film-convert-shelf-20260917-01).
-                    live_cash = text.split('id="live-cash"', 1)[1].split("</section>", 1)[0]
-                    self.assertNotIn("buy.stripe.com", live_cash)
+                    self.assertNotIn("buy.stripe.com", live_cash, name)
                 else:
                     self.assertNotIn("buy.stripe.com", text)
                 self.assertNotIn("tools-cash.html", text)
