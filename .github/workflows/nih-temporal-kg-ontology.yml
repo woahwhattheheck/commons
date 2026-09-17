@@ -1,0 +1,58 @@
+name: nih-temporal-kg-ontology
+
+on:
+  pull_request:
+    paths:
+      - "research/nih_temporal_kg_2026/temporal_evidence.py"
+      - "research/nih_temporal_kg_2026/ontology/**"
+      - ".github/workflows/nih-temporal-kg-ontology.yml"
+  push:
+    branches: [main]
+    paths:
+      - "research/nih_temporal_kg_2026/temporal_evidence.py"
+      - "research/nih_temporal_kg_2026/ontology/**"
+      - ".github/workflows/nih-temporal-kg-ontology.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  conformance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile exact source
+        run: |
+          python -m py_compile \
+            research/nih_temporal_kg_2026/temporal_evidence.py \
+            research/nih_temporal_kg_2026/ontology/profile.py \
+            research/nih_temporal_kg_2026/ontology/test_profile.py \
+            research/nih_temporal_kg_2026/ontology/__init__.py
+      - name: Package import smoke
+        run: |
+          python - <<'PY'
+          from research.nih_temporal_kg_2026.ontology import profile
+          print(profile._parent_module_path())
+          PY
+      - name: Hostile conformance suite
+        run: python -m unittest -v research.nih_temporal_kg_2026.ontology.test_profile
+      - name: Hostile conformance suite under optimized interpreter
+        run: python -O -m unittest -v research.nih_temporal_kg_2026.ontology.test_profile
+      - name: CLI round trip and receipt verification
+        run: |
+          tmp="$(mktemp -d)"
+          trap 'rm -rf "$tmp"' EXIT
+          python research/nih_temporal_kg_2026/ontology/profile.py export \
+            research/nih_temporal_kg_2026/ontology/example.jsonl \
+            "$tmp/example.nt" --receipt "$tmp/receipt.json"
+          python research/nih_temporal_kg_2026/ontology/profile.py import \
+            "$tmp/example.nt" "$tmp/roundtrip.jsonl"
+          cmp research/nih_temporal_kg_2026/ontology/example.jsonl "$tmp/roundtrip.jsonl"
+          python research/nih_temporal_kg_2026/ontology/profile.py verify \
+            "$tmp/receipt.json" \
+            research/nih_temporal_kg_2026/ontology/example.jsonl \
+            "$tmp/example.nt"
