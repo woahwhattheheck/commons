@@ -1,0 +1,55 @@
+name: Alcorn RFP 5588 response pack
+
+on:
+  pull_request:
+    paths:
+      - 'commercial/alcorn-rfp-5588/qualification.py'
+      - 'commercial/alcorn-rfp-5588/qualification_guarded.py'
+      - 'commercial/alcorn-rfp-5588/qualification_spec.json'
+      - 'commercial/alcorn-rfp-5588/current_evidence.json'
+      - 'commercial/alcorn-rfp-5588/current_result.json'
+      - 'commercial/alcorn-rfp-5588/response_pack/**'
+      - '.github/workflows/alcorn-rfp-5588-response-pack.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'commercial/alcorn-rfp-5588/qualification.py'
+      - 'commercial/alcorn-rfp-5588/qualification_guarded.py'
+      - 'commercial/alcorn-rfp-5588/qualification_spec.json'
+      - 'commercial/alcorn-rfp-5588/current_evidence.json'
+      - 'commercial/alcorn-rfp-5588/current_result.json'
+      - 'commercial/alcorn-rfp-5588/response_pack/**'
+      - '.github/workflows/alcorn-rfp-5588-response-pack.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  response-pack:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile Python sources
+        run: |
+          python -m py_compile \
+            commercial/alcorn-rfp-5588/qualification.py \
+            commercial/alcorn-rfp-5588/qualification_guarded.py \
+            commercial/alcorn-rfp-5588/response_pack/response_pack.py \
+            commercial/alcorn-rfp-5588/response_pack/test_response_pack.py
+      - name: Compile current response receipt
+        run: python commercial/alcorn-rfp-5588/response_pack/response_pack.py compile
+      - name: Compile current response receipt under optimized Python
+        run: python -O commercial/alcorn-rfp-5588/response_pack/response_pack.py compile
+      - name: Run response-pack hostile suite
+        run: python -m unittest commercial/alcorn-rfp-5588/response_pack/test_response_pack.py -v
+      - name: Run response-pack hostile suite under optimized Python
+        run: python -O -m unittest commercial/alcorn-rfp-5588/response_pack/test_response_pack.py -v
+      - name: Generate and verify deterministic receipt
+        run: |
+          receipt="$(mktemp)"
+          python commercial/alcorn-rfp-5588/response_pack/response_pack.py compile --write "$receipt"
+          python commercial/alcorn-rfp-5588/response_pack/response_pack.py verify "$receipt"
