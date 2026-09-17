@@ -89,6 +89,8 @@ class ReachabilityBoundaryTests(unittest.TestCase):
         self.assertIsNone(successor.observation)
         self.assertEqual(successor.terminal, "NOT_FINISHED")
         self.assertEqual(successor.cumulative_progress, 0)
+        self.assertEqual(successor.available_actions, ())
+        self.assertEqual(adapter.hypotheses(successor), ())
 
     def test_global_fallback_cannot_promote_other_predecessor_win(self):
         current = Obs(((9, 9), (9, 9)), ("ACTION1",))
@@ -167,7 +169,7 @@ class ReachabilityBoundaryTests(unittest.TestCase):
         public = SageEvidenceAdapter(model, current, candidate_factory=self.candidates)
         old = predecessor.SageEvidenceAdapter(model, current, candidate_factory=self.candidates)
 
-        self.assertEqual(REACHABILITY_POLICY, "exact-predecessor-concrete-reachability/v1")
+        self.assertEqual(REACHABILITY_POLICY, "exact-predecessor-full-animation-unanimous-concrete-reachability/v3")
         self.assertNotEqual(public.model_digest, old.model_digest)
         public_again = SageEvidenceAdapter(model, current, candidate_factory=self.candidates)
         self.assertEqual(public.model_digest, public_again.model_digest)
