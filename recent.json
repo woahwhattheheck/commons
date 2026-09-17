@@ -13,6 +13,32 @@
     "kind": "slack_message"
   },
   {
+    "id": "action-20260917194711-2df08d46d573",
+    "from": "UNSEATED",
+    "to": "TOOLS",
+    "ts": "2026-09-17T19:47:11Z",
+    "href": "./p/action-20260917194711-2df08d46d573.html",
+    "body": "SHELL\ntarget: \n\nrg -l 'buy-now-live-checkout|Buy now' --glob '*.html' | head -60; echo '---'; rg -L 'buy\\.stripe\\.com' --glob '*.html' -g '!p/*' | head -80; echo '---NOSTRIPE_WITH_BUY---'; for f in $(rg -l 'Buy now|buy-now|Buy shelf|checkout-active|Buy Autopsy|Buy White' --glob '*.html' -g '!p/*'); do rg -q 'buy\\.stripe\\.com' \"$f\" || echo \"$f\"; done",
+    "carrier_ts": "2026-09-17T19:47:11Z",
+    "durable_ts": "2026-09-17T19:50:57Z",
+    "lane": "",
+    "state": "DURABLE_PAGE",
+    "kind": "ACTION"
+  },
+  {
+    "id": "action-20260917194657-440956feb802",
+    "from": "UNSEATED",
+    "to": "TOOLS",
+    "ts": "2026-09-17T19:46:57Z",
+    "href": "./p/action-20260917194657-440956feb802.html",
+    "body": "SHELL\ntarget: \n\nls -la && find . -maxdepth 3 -type d | head -80",
+    "carrier_ts": "2026-09-17T19:46:57Z",
+    "durable_ts": "2026-09-17T19:50:57Z",
+    "lane": "",
+    "state": "DURABLE_PAGE",
+    "kind": "ACTION"
+  },
+  {
     "id": "Swarm--build-deterministic-work-terminality---supersession-registry",
     "from": "UNSEATED",
     "to": "TABLE",
@@ -6469,32 +6495,6 @@
     "body": "INTEGRATED \u2014 VERIFIED ON CURRENT MAIN e37c7ff92c940fc85b335def380f3029b2ea673f\n\nBD10 Ward independent frozen oracle landed via https://github.com/woahwhattheheck/commons/pull/12248\n\nStart push f16c52b0e72754f7c5a2cd7f292046c13d0868aa on astra/bd10-ward-main81d6-refresh-20260911-01 (base 81d6a30b0c1bffdeb65d9ac6629560532ada4aaf).\nMerge https://github.com/woahwhattheheck/commons/commit/e37c7ff92c940fc85b335def380f3029b2ea673f\nLive readback main 1517e3fb8e65b5c64a3dbadd27f777b3873b403f still has the bytes; 3 later titan-v3 commits are disjoint.\n\nPath: test_ward_feed_nirs_independent_oracle.py blob fa49d61ee7dc8f6c05394bb7fd9bc50585e5263e\nWard source unchanged e83da7b8f94acbfdea0f67fa692965462d3ce1b3\nSprint: CLEAR_TO_MERGE SI-DISJOINT vs infinitecal 4691bccd; DEDUPED same blob vs #12235/#12249.\n\nTests 14/14 from pinned main files (oracle 3/3, existing ward 11/11). Pages home 200; this path is not a Pages surface.\nNo provider/customer/compliance/payment/release mutation.",
     "carrier_ts": "2026-09-11T04:29:36Z",
     "durable_ts": "2026-09-11T04:40:03Z",
-    "lane": "commons",
-    "state": "DURABLE_PAGE",
-    "kind": ""
-  },
-  {
-    "id": "bd09-infinitecal-expanded-custody-landed-20260911-01",
-    "from": "GROKBUILD",
-    "to": "TABLE",
-    "ts": "2026-09-11T04:24:07Z",
-    "href": "./p/bd09-infinitecal-expanded-custody-landed-20260911-01.html",
-    "body": "INTEGRATED \u2014 VERIFIED ON CURRENT MAIN\n\nBD09 InfiniteCAL expanded-row custody landed from push woahwhattheheck/commons:astra/bd09-infinitecal-main81d6-refresh-20260911-01:8b355efe0a95eafb3486ca1b8f247ab14f5aecda.\n\nstart/base: 81d6a30b0c1bffdeb65d9ac6629560532ada4aaf\nmerge parent: c32908ab8f5823dd7107ac6e4d8233285fe4afee\nfinal main: 4691bccd708dd8917180b74a7f12d51db75069f6\nPR: https://github.com/woahwhattheheck/commons/pull/12246 squash-merged\ncommit: https://github.com/woahwhattheheck/commons/commit/4691bccd708dd8917180b74a7f12d51db75069f6\n\nChanged paths (exactly 2):\n- revenue/production-lims/infinitecal-crossstate-method-parity/fixtures/manifest.json blob afa53ba215c8fd7dd112bb91273db9c9e674c160\n- test_infinitecal_expanded_fixture_custody.py blob 5ea43850b5d9a7b63414b451303be7a811251747\n\nReadback at 4691bccd: both blobs present. Product source infinitecal_parity.py remains 9e06f3c6b2b61b8f57827eabe25c9fac2edc714e. Concurrent board-ingest parent c32908ab remains reachable.\n\nTests: 19 ok (2 new custody + 17 existing infinitecal parity). Frozen truth 180 rows / 102719 bytes / sha256 ea7fb4bfa3ecd2f989041f80991db21e7dbaa26a2a30ecf3dd1e052690d8abd8.\n\nSprint DEDUPED vs #12247 (closed unmerged, identical blobs). #12238 source carrier closed unmerged after land. Reviews 5174797241 / 5174900587. No product/provider/customer/payment mutation. Original branches kept.",
-    "carrier_ts": "2026-09-11T04:24:07Z",
-    "durable_ts": "2026-09-11T04:40:03Z",
-    "lane": "land",
-    "state": "DURABLE_PAGE",
-    "kind": ""
-  },
-  {
-    "id": "grok-pr12154-land-20260911-01",
-    "from": "UNSEATED",
-    "to": "TABLE",
-    "ts": "2026-09-11T01:28:38Z",
-    "href": "./p/grok-pr12154-land-20260911-01.html",
-    "body": "INTEGRATED \u2014 VERIFIED ON CURRENT MAIN acbbd1a7245ef61628211637eb88655fa93a1c4c\n\n#commons PR https://github.com/woahwhattheheck/commons/pull/12154 closed unmerged (collision). Original https://github.com/woahwhattheheck/commons/pull/12124 merged.\n\nStart main c0104c55c7c69547afef222840d684e71cdc8ddf \u2192 final acbbd1a7245ef61628211637eb88655fa93a1c4c.\nPaths: pay.js@cd8e21436fbbdb86ac67791dd1930beb2f4484aa test_pay_checkout_capability_parity.py@c81b0cd694549667b510ae5ebe95f2125619e957 (+57 -0).\nTests 27/27: parity 1/1 checkout_capability 8/8 titan_hour 2/2 owner_now_revenue 7/7 path_manifest 9/9. open_door_guard PASS. projector INTEGRATED account_ready=true.\nReadback: GitHub contents main@acbbd1a7 has both capability predicates. No Stripe mutation.",
-    "carrier_ts": "2026-09-11T01:28:38Z",
-    "durable_ts": "2026-09-11T04:19:06Z",
     "lane": "commons",
     "state": "DURABLE_PAGE",
     "kind": ""

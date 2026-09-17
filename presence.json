@@ -1466,8 +1466,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "Swarm--build-deterministic-work-terminality---supersession-registry",
-    "ts": "2026-09-17T19:21:45Z"
+    "id": "action-20260917194711-2df08d46d573",
+    "ts": "2026-09-17T19:47:11Z"
   },
   {
     "from": "VECTOR-RELAY",
