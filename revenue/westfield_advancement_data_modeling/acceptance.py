@@ -6,52 +6,133 @@ live procurement sources, or create buyer/prime/payment/revenue authority.
 """
 from __future__ import annotations
 
+from dataclasses import dataclass
 import hashlib
 import json
 from typing import Any, Iterable
 
-SCHEMA = "advancement-model-acceptance/v2"
-RECEIPT_SCHEMA = "advancement-model-acceptance-receipt/v2"
 
-COMMERCIAL_STATE = "PROPOSED_NOT_ACCEPTED"
-COMMERCIAL_ROLE = "paid_subcontract_workshare"
-PRICING_POSTURE = "UNPRICED_SCOPE_NEGOTIATION_REQUIRED"
+@dataclass(frozen=True)
+class _SemanticRoot:
+    schema: str
+    receipt_schema: str
+    commercial_state: str
+    commercial_role: str
+    pricing_posture: str
+    opportunity: tuple[tuple[str, str], ...]
+    sources: tuple[tuple[str, str, str], ...]
+    source_provenance_mode: str
+    entity_key_policy: str
+    time_anchor_policy: str
+    deliverables: tuple[str, ...]
+    exclusions: tuple[str, ...]
+    handoff_artifacts: tuple[str, ...]
+    metrics: tuple[tuple[str, str], ...]
+    required_checks: frozenset[str]
+    authority_keys: frozenset[str]
 
-EXPECTED_OPPORTUNITY = {
-    "buyer": "Westfield State University",
-    "solicitation": "RFP #2027-002 Advancement Data Modeling",
-    "deadline": "2026-09-25",
-    "submission_route": "Bonfire/Euna",
-}
 
-EXPECTED_SOURCE_URLS = {
-    "buyer_official": "https://www.westfield.ma.edu/offices/open-general-bids",
-    "partner_public": "https://khowconsulting.com/",
-}
-SOURCE_PROVENANCE_MODE = "PINNED_PUBLIC_IDENTITIES_NOT_LIVE_PROVIDER_AUTHENTICATED"
+# Authority is captured once in an immutable generation. Public EXPECTED_* symbols
+# below are compatibility/introspection mirrors only; compile/mint/verify never
+# consult them after function definition.
+_SEALED_ROOT = _SemanticRoot(
+    schema="advancement-model-acceptance/v2",
+    receipt_schema="advancement-model-acceptance-receipt/v2",
+    commercial_state="PROPOSED_NOT_ACCEPTED",
+    commercial_role="paid_subcontract_workshare",
+    pricing_posture="UNPRICED_SCOPE_NEGOTIATION_REQUIRED",
+    opportunity=(
+        ("buyer", "Westfield State University"),
+        ("solicitation", "RFP #2027-002 Advancement Data Modeling"),
+        ("deadline", "2026-09-25"),
+        ("submission_route", "Bonfire/Euna"),
+    ),
+    sources=(
+        (
+            "buyer_official",
+            "https://www.westfield.ma.edu/offices/open-general-bids",
+            "Pinned public source identity only; compiler does not authenticate live availability.",
+        ),
+        (
+            "partner_public",
+            "https://khowconsulting.com/",
+            "Pinned public profile identity only; not evidence of pursuit, partnership, or solicitation-specific qualification.",
+        ),
+    ),
+    source_provenance_mode=(
+        "PINNED_PUBLIC_IDENTITIES_NOT_LIVE_PROVIDER_AUTHENTICATED"
+    ),
+    entity_key_policy="CONSTITUENT_HOUSEHOLD_GROUP_BEFORE_SPLIT_V1",
+    time_anchor_policy="FEATURES_KNOWABLE_AT_CUTOFF_OUTCOMES_STRICTLY_AFTER_V1",
+    deliverables=(
+        "source-to-feature provenance ledger",
+        "entity and household duplicate-control report",
+        "time-anchored training and holdout contract",
+        "calibration and ranked-lift acceptance report",
+        "reproducible model-card and handoff receipt",
+    ),
+    exclusions=(
+        "buyer portal submission",
+        "prime responsibility",
+        "reference ownership",
+        "production-data custody",
+        "campaign strategy representation",
+    ),
+    handoff_artifacts=(
+        "data dictionary/provenance map",
+        "split manifest",
+        "metric definitions",
+        "model/config digest",
+        "acceptance exception log",
+    ),
+    metrics=(
+        ("calibration", "brier_and_reliability"),
+        ("ranking", "lift_at_k"),
+        ("evaluation_split", "temporal_holdout"),
+    ),
+    required_checks=frozenset(
+        {
+            "source_provenance",
+            "entity_deduplication",
+            "household_leakage",
+            "temporal_leakage",
+            "target_window",
+            "calibration",
+            "ranking_lift",
+            "reproducible_handoff",
+        }
+    ),
+    authority_keys=frozenset(
+        {
+            "prime_vendor_confirmed",
+            "buyer_approved",
+            "references_verified",
+            "production_data_access",
+            "award_received",
+            "payment_received",
+            "revenue_recognized",
+        }
+    ),
+)
 
-ENTITY_KEY_POLICY = "CONSTITUENT_HOUSEHOLD_GROUP_BEFORE_SPLIT_V1"
-TIME_ANCHOR_POLICY = "FEATURES_KNOWABLE_AT_CUTOFF_OUTCOMES_STRICTLY_AFTER_V1"
-
-REQUIRED_CHECKS = {
-    "source_provenance",
-    "entity_deduplication",
-    "household_leakage",
-    "temporal_leakage",
-    "target_window",
-    "calibration",
-    "ranking_lift",
-    "reproducible_handoff",
-}
-AUTHORITY_KEYS = {
-    "prime_vendor_confirmed",
-    "buyer_approved",
-    "references_verified",
-    "production_data_access",
-    "award_received",
-    "payment_received",
-    "revenue_recognized",
-}
+# Compatibility/introspection mirrors. Deliberately not an authority source.
+SCHEMA = _SEALED_ROOT.schema
+RECEIPT_SCHEMA = _SEALED_ROOT.receipt_schema
+COMMERCIAL_STATE = _SEALED_ROOT.commercial_state
+COMMERCIAL_ROLE = _SEALED_ROOT.commercial_role
+PRICING_POSTURE = _SEALED_ROOT.pricing_posture
+EXPECTED_OPPORTUNITY = dict(_SEALED_ROOT.opportunity)
+EXPECTED_SOURCE_URLS = {kind: url for kind, url, _ in _SEALED_ROOT.sources}
+EXPECTED_SOURCE_NOTES = {kind: note for kind, _, note in _SEALED_ROOT.sources}
+SOURCE_PROVENANCE_MODE = _SEALED_ROOT.source_provenance_mode
+ENTITY_KEY_POLICY = _SEALED_ROOT.entity_key_policy
+TIME_ANCHOR_POLICY = _SEALED_ROOT.time_anchor_policy
+EXPECTED_DELIVERABLES = _SEALED_ROOT.deliverables
+EXPECTED_EXCLUSIONS = _SEALED_ROOT.exclusions
+EXPECTED_HANDOFF_ARTIFACTS = _SEALED_ROOT.handoff_artifacts
+EXPECTED_METRICS = dict(_SEALED_ROOT.metrics)
+REQUIRED_CHECKS = _SEALED_ROOT.required_checks
+AUTHORITY_KEYS = _SEALED_ROOT.authority_keys
 
 
 class ContractError(ValueError):
@@ -99,18 +180,18 @@ def canonical_json(value: Any) -> str:
         raise ContractError("value is not canonical-JSON encodable") from exc
 
 
-def sha256_json(value: Any) -> str:
-    return hashlib.sha256(canonical_json(value).encode("utf-8")).hexdigest()
+def sha256_json(value: Any, _canonical_json=canonical_json) -> str:
+    return hashlib.sha256(_canonical_json(value).encode("utf-8")).hexdigest()
 
 
 def _expect_keys(
     obj: dict[str, Any],
     *,
-    required: set[str],
-    optional: set[str] | None = None,
+    required: set[str] | frozenset[str],
+    optional: set[str] | frozenset[str] | None = None,
     where: str,
 ) -> None:
-    optional = optional or set()
+    optional = optional or frozenset()
     missing = required - obj.keys()
     extra = obj.keys() - required - optional
     if missing:
@@ -145,8 +226,28 @@ def _expect_str_list(value: Any, where: str) -> list[str]:
     return out
 
 
-def _validate_authority(authority: dict[str, Any]) -> None:
-    _expect_keys(authority, required=AUTHORITY_KEYS, where="authority")
+def _expect_exact_str_list(
+    value: Any,
+    expected: tuple[str, ...],
+    where: str,
+) -> list[str]:
+    if not isinstance(value, list) or len(value) != len(expected):
+        raise ContractError(
+            f"{where}: must equal the code-owned Westfield values in canonical order"
+        )
+    out = _expect_str_list(value, where)
+    if tuple(out) != expected:
+        raise ContractError(
+            f"{where}: must equal the code-owned Westfield values in canonical order"
+        )
+    return list(expected)
+
+
+def _validate_authority(
+    authority: dict[str, Any],
+    root: _SemanticRoot,
+) -> None:
+    _expect_keys(authority, required=root.authority_keys, where="authority")
     for key in sorted(authority):
         if _expect_bool(authority[key], f"authority.{key}"):
             raise ContractError(
@@ -154,26 +255,37 @@ def _validate_authority(authority: dict[str, Any]) -> None:
             )
 
 
-def _validate_opportunity(value: Any) -> dict[str, str]:
+def _validate_opportunity(
+    value: Any,
+    root: _SemanticRoot,
+) -> dict[str, str]:
     if not isinstance(value, dict):
         raise ContractError("opportunity: must be object")
-    _expect_keys(value, required=set(EXPECTED_OPPORTUNITY), where="opportunity")
+    expected = dict(root.opportunity)
+    _expect_keys(value, required=frozenset(expected), where="opportunity")
     normalized = {
         key: _expect_str(value[key], f"opportunity.{key}")
-        for key in EXPECTED_OPPORTUNITY
+        for key in expected
     }
-    for key, expected in EXPECTED_OPPORTUNITY.items():
-        if normalized[key] != expected:
+    for key, expected_value in expected.items():
+        if normalized[key] != expected_value:
             raise ContractError(
                 f"opportunity.{key}: must equal the code-owned Westfield value"
             )
-    return dict(EXPECTED_OPPORTUNITY)
+    return expected
 
 
-def _validate_sources(value: Any) -> list[dict[str, str]]:
-    if not isinstance(value, list) or len(value) != len(EXPECTED_SOURCE_URLS):
+def _validate_sources(
+    value: Any,
+    root: _SemanticRoot,
+) -> list[dict[str, str]]:
+    expected = {
+        kind: (url, note)
+        for kind, url, note in root.sources
+    }
+    if not isinstance(value, list) or len(value) != len(expected):
         raise ContractError(
-            f"sources: exactly {len(EXPECTED_SOURCE_URLS)} admitted source rows required"
+            f"sources: exactly {len(expected)} admitted source rows required"
         )
 
     by_kind: dict[str, dict[str, str]] = {}
@@ -182,59 +294,64 @@ def _validate_sources(value: Any) -> list[dict[str, str]]:
             raise ContractError(f"sources[{i}]: must be object")
         _expect_keys(
             row,
-            required={"kind", "url"},
-            optional={"note"},
+            required={"kind", "url", "note"},
             where=f"sources[{i}]",
         )
         kind = _expect_str(row["kind"], f"sources[{i}].kind")
         url = _expect_str(row["url"], f"sources[{i}].url")
+        note = _expect_str(row["note"], f"sources[{i}].note")
         if kind in by_kind:
             raise ContractError(f"sources[{i}].kind: duplicate {kind!r}")
-        if kind not in EXPECTED_SOURCE_URLS:
+        if kind not in expected:
             raise ContractError(f"sources[{i}].kind: unadmitted source role")
-        if url != EXPECTED_SOURCE_URLS[kind]:
+        expected_url, expected_note = expected[kind]
+        if url != expected_url:
             raise ContractError(
                 f"sources[{i}].url: does not match code-owned {kind!r} source"
             )
-        record = {"kind": kind, "url": url}
-        if "note" in row:
-            record["note"] = _expect_str(row["note"], f"sources[{i}].note")
-        by_kind[kind] = record
+        if note != expected_note:
+            raise ContractError(
+                f"sources[{i}].note: must equal the code-owned {kind!r} boundary note"
+            )
+        by_kind[kind] = {"kind": kind, "url": url, "note": note}
 
-    if set(by_kind) != set(EXPECTED_SOURCE_URLS):
+    if set(by_kind) != set(expected):
         raise ContractError("sources: all code-owned source roles are required")
     return [by_kind[kind] for kind in sorted(by_kind)]
 
 
-def _validate_metrics(metrics: dict[str, Any]) -> dict[str, str]:
+def _validate_metrics(
+    metrics: dict[str, Any],
+    root: _SemanticRoot,
+) -> dict[str, str]:
+    expected = dict(root.metrics)
     _expect_keys(
         metrics,
-        required={"calibration", "ranking", "evaluation_split"},
+        required=frozenset(expected),
         where="model_acceptance.metrics",
     )
-    calibration = _expect_str(
-        metrics["calibration"], "model_acceptance.metrics.calibration"
-    )
-    ranking = _expect_str(metrics["ranking"], "model_acceptance.metrics.ranking")
-    evaluation_split = _expect_str(
-        metrics["evaluation_split"], "model_acceptance.metrics.evaluation_split"
-    )
-    if calibration not in {"brier_and_reliability", "log_loss_and_reliability"}:
-        raise ContractError("model_acceptance.metrics.calibration: unsupported")
-    if ranking not in {"lift_at_k", "precision_recall_at_k"}:
-        raise ContractError("model_acceptance.metrics.ranking: unsupported")
-    if evaluation_split != "temporal_holdout":
-        raise ContractError(
-            "model_acceptance.metrics.evaluation_split: temporal_holdout required"
-        )
-    return {
-        "calibration": calibration,
-        "ranking": ranking,
-        "evaluation_split": evaluation_split,
+    normalized = {
+        key: _expect_str(metrics[key], f"model_acceptance.metrics.{key}")
+        for key in expected
     }
+    for key, expected_value in expected.items():
+        if normalized[key] != expected_value:
+            raise ContractError(
+                f"model_acceptance.metrics.{key}: "
+                "must equal the code-owned Westfield value"
+            )
+    return expected
 
 
-def compile_acceptance(manifest: dict[str, Any]) -> dict[str, Any]:
+def compile_acceptance(
+    manifest: dict[str, Any],
+    _root: _SemanticRoot = _SEALED_ROOT,
+) -> dict[str, Any]:
+    """Compile against the import-generation semantic root.
+
+    Ordinary module-global mutation/rebinding cannot alter this captured root.
+    Replacing function code/defaults/closures is outside this metadata contract.
+    """
     if not isinstance(manifest, dict):
         raise ContractError("manifest: must be object")
     _expect_keys(
@@ -250,10 +367,10 @@ def compile_acceptance(manifest: dict[str, Any]) -> dict[str, Any]:
         },
         where="manifest",
     )
-    if manifest["schema"] != SCHEMA:
-        raise ContractError(f"schema: expected {SCHEMA!r}")
+    if manifest["schema"] != _root.schema:
+        raise ContractError(f"schema: expected {_root.schema!r}")
 
-    opportunity = _validate_opportunity(manifest["opportunity"])
+    opportunity = _validate_opportunity(manifest["opportunity"], _root)
 
     commercial = manifest["commercial"]
     if not isinstance(commercial, dict):
@@ -263,24 +380,26 @@ def compile_acceptance(manifest: dict[str, Any]) -> dict[str, Any]:
         required={"role", "state", "pricing_posture"},
         where="commercial",
     )
-    if commercial["role"] != COMMERCIAL_ROLE:
-        raise ContractError(f"commercial.role: {COMMERCIAL_ROLE} required")
-    if commercial["state"] != COMMERCIAL_STATE:
+    if commercial["role"] != _root.commercial_role:
+        raise ContractError(
+            f"commercial.role: {_root.commercial_role} required"
+        )
+    if commercial["state"] != _root.commercial_state:
         raise ContractError(
             "commercial.state: this pre-award carrier is pinned to "
             "PROPOSED_NOT_ACCEPTED"
         )
-    if commercial["pricing_posture"] != PRICING_POSTURE:
+    if commercial["pricing_posture"] != _root.pricing_posture:
         raise ContractError(
             "commercial.pricing_posture: unpriced scope-negotiation sentinel required"
         )
 
-    sources = _validate_sources(manifest["sources"])
+    sources = _validate_sources(manifest["sources"], _root)
 
     authority = manifest["authority"]
     if not isinstance(authority, dict):
         raise ContractError("authority: must be object")
-    _validate_authority(authority)
+    _validate_authority(authority, _root)
 
     workshare = manifest["workshare"]
     if not isinstance(workshare, dict):
@@ -290,10 +409,16 @@ def compile_acceptance(manifest: dict[str, Any]) -> dict[str, Any]:
         required={"deliverables", "exclusions"},
         where="workshare",
     )
-    deliverables = _expect_str_list(
-        workshare["deliverables"], "workshare.deliverables"
+    deliverables = _expect_exact_str_list(
+        workshare["deliverables"],
+        _root.deliverables,
+        "workshare.deliverables",
     )
-    exclusions = _expect_str_list(workshare["exclusions"], "workshare.exclusions")
+    exclusions = _expect_exact_str_list(
+        workshare["exclusions"],
+        _root.exclusions,
+        "workshare.exclusions",
+    )
 
     model_acceptance = manifest["model_acceptance"]
     if not isinstance(model_acceptance, dict):
@@ -309,13 +434,15 @@ def compile_acceptance(manifest: dict[str, Any]) -> dict[str, Any]:
         },
         where="model_acceptance",
     )
-    if model_acceptance["entity_key_policy"] != ENTITY_KEY_POLICY:
+    if model_acceptance["entity_key_policy"] != _root.entity_key_policy:
         raise ContractError(
-            f"model_acceptance.entity_key_policy: expected {ENTITY_KEY_POLICY}"
+            "model_acceptance.entity_key_policy: expected "
+            f"{_root.entity_key_policy}"
         )
-    if model_acceptance["time_anchor_policy"] != TIME_ANCHOR_POLICY:
+    if model_acceptance["time_anchor_policy"] != _root.time_anchor_policy:
         raise ContractError(
-            f"model_acceptance.time_anchor_policy: expected {TIME_ANCHOR_POLICY}"
+            "model_acceptance.time_anchor_policy: expected "
+            f"{_root.time_anchor_policy}"
         )
 
     checks = set(
@@ -324,7 +451,7 @@ def compile_acceptance(manifest: dict[str, Any]) -> dict[str, Any]:
             "model_acceptance.required_checks",
         )
     )
-    if checks != REQUIRED_CHECKS:
+    if checks != _root.required_checks:
         raise ContractError(
             "model_acceptance.required_checks: must equal the closed required set"
         )
@@ -332,30 +459,31 @@ def compile_acceptance(manifest: dict[str, Any]) -> dict[str, Any]:
     metrics = model_acceptance["metrics"]
     if not isinstance(metrics, dict):
         raise ContractError("model_acceptance.metrics: must be object")
-    normalized_metrics = _validate_metrics(metrics)
-    handoff = _expect_str_list(
+    normalized_metrics = _validate_metrics(metrics, _root)
+    handoff = _expect_exact_str_list(
         model_acceptance["handoff_artifacts"],
+        _root.handoff_artifacts,
         "model_acceptance.handoff_artifacts",
     )
 
     return {
-        "schema": SCHEMA,
+        "schema": _root.schema,
         "opportunity": opportunity,
         "commercial": {
-            "role": COMMERCIAL_ROLE,
-            "state": COMMERCIAL_STATE,
-            "pricing_posture": PRICING_POSTURE,
+            "role": _root.commercial_role,
+            "state": _root.commercial_state,
+            "pricing_posture": _root.pricing_posture,
         },
         "sources": sources,
         "source_provenance": {
-            "mode": SOURCE_PROVENANCE_MODE,
+            "mode": _root.source_provenance_mode,
             "live_provider_authenticated": False,
         },
-        "authority": {key: False for key in sorted(AUTHORITY_KEYS)},
+        "authority": {key: False for key in sorted(_root.authority_keys)},
         "acceptance_plan": {
-            "entity_key_policy": ENTITY_KEY_POLICY,
-            "time_anchor_policy": TIME_ANCHOR_POLICY,
-            "required_checks": sorted(REQUIRED_CHECKS),
+            "entity_key_policy": _root.entity_key_policy,
+            "time_anchor_policy": _root.time_anchor_policy,
+            "required_checks": sorted(_root.required_checks),
             "metrics": normalized_metrics,
             "deliverables": deliverables,
             "handoff_artifacts": handoff,
@@ -364,15 +492,20 @@ def compile_acceptance(manifest: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def make_receipt(manifest: dict[str, Any]) -> dict[str, Any]:
-    plan = compile_acceptance(manifest)
+def make_receipt(
+    manifest: dict[str, Any],
+    _root: _SemanticRoot = _SEALED_ROOT,
+    _compile=compile_acceptance,
+    _sha256=sha256_json,
+) -> dict[str, Any]:
+    plan = _compile(manifest)
     return {
-        "schema": RECEIPT_SCHEMA,
-        "manifest_sha256": sha256_json(manifest),
-        "plan_sha256": sha256_json(plan),
+        "schema": _root.receipt_schema,
+        "manifest_sha256": _sha256(manifest),
+        "plan_sha256": _sha256(plan),
         "truth": {
-            "commercial_state": COMMERCIAL_STATE,
-            "source_provenance_mode": SOURCE_PROVENANCE_MODE,
+            "commercial_state": _root.commercial_state,
+            "source_provenance_mode": _root.source_provenance_mode,
             "live_provider_authenticated": False,
             "submission_authorized": False,
             "award_received": False,
@@ -382,9 +515,16 @@ def make_receipt(manifest: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def verify_receipt(manifest: dict[str, Any], receipt: dict[str, Any]) -> bool:
+def verify_receipt(
+    manifest: dict[str, Any],
+    receipt: dict[str, Any],
+    _make_receipt=make_receipt,
+    _canonical_json=canonical_json,
+) -> bool:
     try:
-        return canonical_json(receipt) == canonical_json(make_receipt(manifest))
+        return _canonical_json(receipt) == _canonical_json(
+            _make_receipt(manifest)
+        )
     except (ContractError, TypeError, ValueError):
         return False
 
