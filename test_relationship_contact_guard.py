@@ -258,6 +258,34 @@ class RelationshipGuardTests(unittest.TestCase):
         out = self.compile([s, r])
         self.assertEqual(out["decision"]["status"], "HOLD_INBOUND_REVIEW")
 
+    def test_14b_old_reply_on_other_opportunity_keeps_relationship_inbound(self):
+        # A genuine old human reply remains relationship-level inbound custody
+        # even after both contact cooldown windows have elapsed and the new
+        # candidate uses a different opportunity, route, and purpose.
+        s = sent(
+            event_id="s-other-opportunity",
+            seconds_ago=4 * 24 * 3600,
+            route="old-route@example.com",
+            purpose="old-purpose",
+            opportunity="old-rfp",
+            message="m-old-opportunity",
+        )
+        r = reply(
+            seconds_ago=(4 * 24 * 3600) - 60,
+            route="old-route@example.com",
+            purpose="old-purpose",
+            opportunity="old-rfp",
+            message="m-old-opportunity",
+        )
+        out = self.compile(
+            [s, r],
+            opportunity_id="new-rfp",
+            route="new-route@example.com",
+            purpose="new-purpose",
+        )
+        self.assertEqual(out["decision"]["status"], "HOLD_INBOUND_REVIEW")
+        self.assertEqual(out["decision"]["blocker_event_ids"], ["r1"])
+
     def test_15_response_opportunity_transplant_rejected(self):
         s = sent()
         r = reply(opportunity="different-rfp")
