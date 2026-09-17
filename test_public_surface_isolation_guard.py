@@ -26,6 +26,16 @@ class PublicSurfaceIsolationGuardTests(unittest.TestCase):
         hits = guard.scan_text("public/catalog.json", f'{{"source":"{RAW_URL}","api":"{API_URL}"}}', self.no_grants())
         self.assertEqual({h.url for h in hits}, {RAW_URL, API_URL})
 
+    def test_http_and_protocol_relative_repo_backlinks_are_rejected(self):
+        variants = (
+            "http://github.com/woahwhattheheck/commons",
+            "//www.github.com/woahwhattheheck/commons/issues/15713",
+        )
+        for url in variants:
+            with self.subTest(url=url):
+                hits = guard.scan_text("storefront.html", f'<a href="{url}">x</a>', self.no_grants())
+                self.assertEqual([hit.url for hit in hits], [url])
+
     def test_relative_product_routes_and_plain_commons_text_are_allowed(self):
         text = '<a href="./commerce.html">Buy</a><p>Commons coordinates this work.</p>'
         self.assertEqual(guard.scan_text("commerce.html", text, self.no_grants()), [])

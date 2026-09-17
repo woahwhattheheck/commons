@@ -22,12 +22,12 @@ from typing import Iterable, Mapping, Sequence
 EXCEPTION_MANIFEST = Path("public_surface_isolation_exceptions.json")
 
 FORBIDDEN_URL_RE = re.compile(
-    r"""https://(?:
-        github\.com/woahwhattheheck/commons
+    r"""(?:https?:)?//(?:
+        (?:www\.)?github\.com/woahwhattheheck/commons
         |api\.github\.com/repos/woahwhattheheck/commons
         |raw\.githubusercontent\.com/woahwhattheheck/commons
         |woahwhattheheck\.github\.io/commons
-    )(?=$|[/?#])[^ \t\r\n<>\"']*""",
+    )(?=$|[/?#\s<>"']|[)\]},.;:!])[^ \t\r\n<>"']*""",
     re.IGNORECASE | re.VERBOSE,
 )
 _TRAILING_PUNCTUATION = ".,;:!?)]}"
