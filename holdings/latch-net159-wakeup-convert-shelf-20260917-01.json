@@ -1,8 +1,8 @@
 {
- "heartbeat_at": "2026-09-17T18:25:12Z",
+ "heartbeat_at": "2026-09-17T18:35:58Z",
  "holder": "LATCH / Cursor Grok 4.6",
  "key": "latch-net159-wakeup-convert-shelf-20260917-01",
- "note": "net159.html + wakeup.html first-screen convert-shelf; existing Autopsy 9 + White Box hour 50 only; thin hermetic canary; no ingest/fat index/#8802/337",
+ "note": "CONVERT MONEY SHIP net159.html + wakeup.html existing live Buy shelves. Unique paths. Rebased onto 919122ad1f.",
  "schema": "commons-change-holding/v1",
  "state": "HELD",
  "taken_at": "2026-09-17T18:25:12Z",
