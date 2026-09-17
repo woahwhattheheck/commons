@@ -1,10 +1,24 @@
-# Instructions — convert shelf recipe
+# Instructions — convert-shelf recipe
 
-1. Open the buyer’s public HTML door (or Carrd custom code / Notion site embed).
-2. Paste the section from `sample-shelf.html` near the top of the first screen (above the fold).
-3. Replace `OWNER_PASTE_PAYMENT_LINK` with the buyer’s **existing** live Payment Link only. Never invent a Stripe URL.
-4. Replace the button label with the buyer’s real SKU name and price.
-5. Optional related upsell (EXISTING TJLabs PL only if the buyer wants White Box): https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07 — do not default Autopsy (SCRAPPED).
-6. Ship. Do not remint tip-shelf IDs. Tip KEEP. #8802 off.
+1. Collect intake (`intake.md`): product name, current page URL, the buyer's
+   existing payment/checkout URL, price label, three bullets, proof line,
+   footer contact, optional accent color.
+2. Fill a `context.json` with those fields. Validate:
+   `python3 host/convert_shelf_pack.py --validate-context context.json --json`
+   — required keys present, https URL, no SCRAPPED Autopsy link, no unknown fields.
+3. Render: `python3 host/convert_shelf_pack.py --render context.json > shelf.html`.
+   Text fields are HTML-escaped; the payment URL lands verbatim in the CTA href.
+4. Open `shelf.html` and eyeball it: title, price, bullets, proof, and the buy
+   button pointing at **their** URL — nothing else.
+5. If any `MISSING_FIELD` marker appears, the context was incomplete — fix the
+   context, never hand-edit the rendered file.
+6. Deliver `shelf.html` + the filled `context.json` to the intake email, and
+   record the splice in the receipt (`receipt` section of the `--canary`
+   output shows the shape).
 
-Fence: do not paste this onto Commons doors you do not own as “more shelf spam.” This pack is a produce-to-sell product for EXTERNAL indie SaaS buyers.
+Fence: the buyer's existing checkout URL only — never mint, never invent.
+Never Bryce-as-buyer. Tip KEEP. #8802 off.
+
+Canary (this land's sample): `python3 host/convert_shelf_pack.py --canary --json`
+re-renders `sample/context.json`, validates the splice, and rewrites
+`sample/shelf.rendered.html`.
