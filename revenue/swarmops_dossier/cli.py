@@ -119,11 +119,14 @@ def _render_output(dossier: dict) -> str:
 def main(argv: list[str] | None = None) -> int:
     """Compile/verify the unprivileged prospect-safe surface.
 
-    Public CLI use owns its evaluation clock: no caller-supplied timestamp can
-    create or verify CURRENT readiness. Historical replay is a library/test
-    boundary only. A hidden argv-injection compatibility seam exists solely for
-    retained programmatic tests and always yields HISTORICAL_INTEGRITY_ONLY /
-    NON_CURRENT output; public command-line invocation rejects that flag.
+    Public CLI compile owns its evaluation instant: it accepts no caller-selected
+    current timestamp. Current verify does not attest provenance of a candidate's
+    recorded ``as_of``; it authenticates that candidate exactly and then proves
+    its full readiness semantics still match a fresh verifier clock evaluation.
+    Historical replay is a library/test boundary only. A hidden argv-injection
+    compatibility seam exists solely for retained programmatic tests and always
+    yields HISTORICAL_INTEGRITY_ONLY / NON_CURRENT output; public command-line
+    invocation rejects that flag.
 
     Deliberately no CLI flag accepts commercial-truth authority. Hosts that
     independently authenticate buyer/payment/accounting facts must call the
