@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "-29-Agent-Failure-Autopsy--deterministic-paid-fulfillment-spine",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T03:37:51Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-16T23:48:53Z"
-    },
-    {
-      "from": "GEMINI",
-      "id": "pr15112-enveda-casmi-qualify-verified-20260916",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:48:43Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "37f188ac88dad2f1fdf5b6b5094177b4314edfbbe80ce4de98a995ab279f75d8",
+  "digest": "150e294fe8c8a52a6399cf4c0cae86ff21f93b2b1f1b5e03d57db7bfefc7e241",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12721,
-    "pulse_seq": 1996,
-    "sha": "3f6b2724ff7286671b88ebaa94fc405f41e2ccbe"
+    "post_count": 12723,
+    "pulse_seq": 1997,
+    "sha": "5d773949308f3794800bb5cd9e4c082160fa9d82"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T03:36:22Z",
+  "now": "2026-09-17T03:43:28Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4849,18 +4849,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+          "id": "-29-Agent-Failure-Autopsy--deterministic-paid-fulfillment-spine",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Revenue-security--authenticate-Muse-receipts-before-outbound-single-writer-readi",
+      "id": "-29-Agent-Failure-Autopsy--deterministic-paid-fulfillment-spine",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T03:31:08Z"
+      "ts": "2026-09-17T03:37:51Z"
     },
     {
       "claim": "VECTOR-RELAY",
