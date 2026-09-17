@@ -1,58 +1,53 @@
+#!/usr/bin/env python3
+"""Retained root bridge for the canonical Muse publication-election v2 suites."""
 from __future__ import annotations
 
-from pathlib import Path
+import re
 import subprocess
 import sys
 import unittest
+from pathlib import Path
 
-from tools.outbound_send_guard.test_muse_current_authority_v2 import CurrentAuthorityDonorTests
-from tools.outbound_send_guard.test_muse_election_v2 import MuseElectionV2Tests
-
-
-_CANONICAL_SURFACES = (
-    "tools/outbound_send_guard/_muse_election_v2_core.py.inc",
-    "tools/outbound_send_guard/_muse_election_v2_tests_core.py",
-    "tools/outbound_send_guard/muse_current_authority_v2.py",
-    "tools/outbound_send_guard/muse_election_v2.py",
-    "tools/outbound_send_guard/test_muse_current_authority_v2.py",
-    "tools/outbound_send_guard/test_muse_election_v2.py",
+ROOT = Path(__file__).resolve().parent
+MODULES = (
+    "tools.outbound_send_guard.test_muse_election_v2",
+    "tools.outbound_send_guard.test_muse_current_authority_v2",
 )
+_RAN = re.compile(r"Ran\s+(\d+)\s+tests?\b")
 
 
 class MuseElectionV2RetainedTests(unittest.TestCase):
-    """Retain canonical Muse-v2 normal/optimized proof without a new workflow slot."""
-
-    def test_canonical_surfaces_compile_normal_and_optimized(self):
-        root = Path(__file__).resolve().parent
-        for relative in _CANONICAL_SURFACES:
-            source = (root / relative).read_text(encoding="utf-8")
-            with self.subTest(path=relative, optimize=0):
-                compile(source, relative, "exec", optimize=0)
-            with self.subTest(path=relative, optimize=2):
-                compile(source, relative, "exec", optimize=2)
-
-    def test_complete_nested_suites_execute_under_python_o(self):
-        root = Path(__file__).resolve().parent
-        proc = subprocess.run(
-            [
-                sys.executable,
-                "-O",
-                "-m",
-                "unittest",
-                "-v",
-                "tools.outbound_send_guard.test_muse_election_v2",
-                "tools.outbound_send_guard.test_muse_current_authority_v2",
-            ],
-            cwd=root,
+    def _run_suite(self, *, optimized: bool) -> None:
+        command = [sys.executable]
+        if optimized:
+            command.append("-O")
+        command.extend(["-m", "unittest", "-v", *MODULES])
+        completed = subprocess.run(
+            command,
+            cwd=ROOT,
+            text=True,
             stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
+            stderr=subprocess.PIPE,
             check=False,
             timeout=180,
         )
-        output = proc.stdout.decode("utf-8", "replace")
-        self.assertEqual(proc.returncode, 0, output)
-        self.assertIn("OK", output)
+        combined = completed.stdout + "\n" + completed.stderr
+        self.assertEqual(
+            completed.returncode,
+            0,
+            f"canonical Muse v2 suite failed ({'optimized' if optimized else 'normal'}):\n{combined}",
+        )
+        match = _RAN.search(combined)
+        self.assertIsNotNone(match, f"unittest did not report an executed test count:\n{combined}")
+        self.assertGreater(int(match.group(1)), 0, f"canonical Muse v2 suite executed zero tests:\n{combined}")
+        self.assertIn("OK", combined)
+
+    def test_canonical_v2_normal(self) -> None:
+        self._run_suite(optimized=False)
+
+    def test_canonical_v2_optimized(self) -> None:
+        self._run_suite(optimized=True)
 
 
 if __name__ == "__main__":
-    unittest.main(verbosity=2)
+    unittest.main()
