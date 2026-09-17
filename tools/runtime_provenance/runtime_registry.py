@@ -14,7 +14,7 @@ from typing import Any, Iterable, Optional, Union
 from ._model import (
     MAX_AGE_SECONDS_DEFAULT, SCHEMA, UNKNOWN, RecordAssessment, RegistryError,
     _contains_secret_like_data, _parse_time, _require_exact_type,
-    _require_nonempty_string, registry_digest,
+    _require_nonempty_string, canonical_json, registry_digest,
 )
 from ._validation import _critical_unknowns, _unknown, _validate_record_shape
 
