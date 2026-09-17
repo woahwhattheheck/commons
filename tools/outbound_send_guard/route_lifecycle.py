@@ -240,49 +240,69 @@ def _parse(raw: dict[str, Any]) -> tuple[str, str, datetime, datetime, str, list
 def evaluate(raw: dict[str, Any], *, source_sha256: str | None = None) -> dict[str, Any]:
     capture_id, recipient, sent_at, as_of, query_id, events, duplicates = _parse(raw)
     provider_message_id = _text(raw.get("provider_message_id"), "evidence.provider_message_id", 256)
-    blocking: list[Event] = []
-    holding: list[Event] = []
+    recipient_blocks: list[Event] = []
+    destination_blocks: list[Event] = []
+    temporary_holds: list[Event] = []
+    review_holds: list[Event] = []
     delivered: list[Event] = []
     reasons: list[str] = []
 
     for event in events:
         if event.kind in {"complaint", "unsubscribe"}:
-            blocking.append(event)
+            recipient_blocks.append(event)
             continue
         if event.kind == "delivered":
             delivered.append(event)
             continue
-        assert event.kind == "dsn"
-        assert event.enhanced_status is not None and event.smtp_code is not None
+        if event.kind != "dsn" or event.enhanced_status is None or event.smtp_code is None:
+            raise RouteError("normalized event has an invalid internal kind")
         if event.enhanced_status == "5.1.1":
-            blocking.append(event)
+            destination_blocks.append(event)
+        elif event.smtp_code // 100 == 4:
+            temporary_holds.append(event)
         else:
-            holding.append(event)
+            review_holds.append(event)
 
-    if blocking and delivered:
-        decision = "HOLD_ROUTE"
-        authority = "unknown"
-        reasons.append("delivery evidence conflicts with a route-blocking event")
-    elif blocking:
+    if recipient_blocks:
         decision = "BLOCK_ROUTE"
         authority = "complete"
-        if any(event.kind == "unsubscribe" for event in blocking):
-            reasons.append("recipient unsubscribe evidence blocks this route")
-        if any(event.kind == "complaint" for event in blocking):
-            reasons.append("recipient complaint evidence blocks this route")
-        if any(event.kind == "dsn" and event.enhanced_status == "5.1.1" for event in blocking):
-            reasons.append("enhanced status 5.1.1 proves a bad destination mailbox for this route")
-    elif holding and delivered:
+        if any(event.kind == "unsubscribe" for event in recipient_blocks):
+            reasons.append("recipient unsubscribe evidence blocks future use of this route")
+        if any(event.kind == "complaint" for event in recipient_blocks):
+            reasons.append("recipient complaint evidence blocks future use of this route")
+        if delivered:
+            reasons.append("delivery evidence does not erase later or earlier recipient opt-out/complaint intent")
+    elif destination_blocks and delivered:
         decision = "HOLD_ROUTE"
         authority = "unknown"
-        reasons.append("delivery evidence conflicts with an SMTP failure event")
-    elif holding:
+        reasons.append("delivery evidence conflicts with enhanced-status 5.1.1 route-blocking evidence")
+    elif destination_blocks:
+        decision = "BLOCK_ROUTE"
+        authority = "complete"
+        reasons.append("enhanced status 5.1.1 proves a bad destination mailbox for this route")
+    elif review_holds and delivered:
+        decision = "HOLD_ROUTE"
+        authority = "unknown"
+        reasons.append("delivery evidence conflicts with a non-allowlisted permanent SMTP failure event")
+    elif review_holds:
         decision = "HOLD_ROUTE"
         authority = "complete"
-        if any(event.smtp_code is not None and event.smtp_code // 100 == 4 for event in holding):
-            reasons.append("temporary SMTP failure requires a fresh route check before retry")
-        if any(event.smtp_code is not None and event.smtp_code // 100 == 5 for event in holding):
-            reasons.append("permanent SMTP failure is not an allowlisted dead-mailbox code; hold for route review")
+        reasons.append("permanent SMTP failure is not an allowlisted dead-mailbox code; hold for route review")
+    elif temporary_holds and delivered:
+        latest_temporary = max(event.observed_at for event in temporary_holds)
+        latest_delivery = max(event.observed_at for event in delivered)
+        if latest_delivery > latest_temporary:
+            decision = "DELIVERED"
+            authority = "complete"
+            reasons.append("explicit delivery evidence strictly postdates all temporary SMTP failures for the exact route send")
+        else:
+            decision = "HOLD_ROUTE"
+            authority = "unknown"
+            reasons.append("a temporary SMTP failure is not followed by strictly later delivery evidence")
+    elif temporary_holds:
+        decision = "HOLD_ROUTE"
+        authority = "complete"
+        reasons.append("temporary SMTP failure requires a fresh route check before retry")
     elif delivered:
         decision = "DELIVERED"
         authority = "complete"
@@ -292,7 +312,8 @@ def evaluate(raw: dict[str, Any], *, source_sha256: str | None = None) -> dict[s
         authority = "complete"
         reasons.append("complete lookup contains no delivery or failure event for the exact provider message")
 
-    assert decision in DECISIONS
+    if decision not in DECISIONS:
+        raise RouteError("internal decision is outside the receipt contract")
     refs = [f"{event.kind}:{event.event_id}" for event in events]
     payload = {
         "schema_version": RECEIPT_SCHEMA,

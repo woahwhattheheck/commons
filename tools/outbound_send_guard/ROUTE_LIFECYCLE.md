@@ -8,7 +8,7 @@ This tool does neither. It emits one read-only receipt:
 
 - `BLOCK_ROUTE`: exact route is suppressed. v1 grants this only for explicit complaint/unsubscribe evidence or DSN enhanced status `5.1.1` (bad destination mailbox).
 - `HOLD_ROUTE`: retry is not authorized because the route has a temporary, non-allowlisted permanent, or internally conflicting delivery signal.
-- `DELIVERED`: an explicit delivery event exists for the exact provider message and recipient.
+- `DELIVERED`: an explicit delivery event exists for the exact provider message and recipient, including the narrow case where it strictly postdates all temporary 4xx DSNs for that same message/recipient.
 - `UNCONFIRMED`: a complete lookup has no delivery/failure event for that exact message.
 
 **No decision authorizes another send.** Every receipt has `same_route_resend_authorized=false`, `alternate_route_requires_independent_send_guard=true`, and `side_effects_authorized=false`. A different public/business route must independently pass the existing outbound-send guard and its complete mailbox+Slack evidence compiler.
@@ -26,9 +26,19 @@ Supported event kinds:
 - `complaint`;
 - `unsubscribe`.
 
-Exact duplicate event IDs collapse. Reuse of an event ID with changed facts fails closed. A delivery event coexisting with any failure/block signal becomes `HOLD_ROUTE/unknown`; the reducer does not guess which provider event is authoritative.
+Exact duplicate event IDs collapse. Reuse of an event ID with changed facts fails closed. Events are normalized into timestamp order before decision reduction, so collector input order cannot change route state.
 
-v1 intentionally hard-blocks only `5.1.1` among DSN codes. Other 5xx statuses (policy rejection, mailbox-full variants, etc.) are `HOLD_ROUTE`, because a permanent SMTP failure does not necessarily prove the address itself is dead. 4xx is also `HOLD_ROUTE`.
+v1 decision precedence is intentionally asymmetric:
+
+1. Recipient `complaint` or `unsubscribe` evidence is a durable future-contact block. Delivery evidence never erases recipient intent, regardless of whether the opt-out/complaint was observed before or after delivery.
+2. DSN `5.1.1` still means bad destination mailbox. If exact-route delivery evidence coexists with `5.1.1`, the contradictory transport evidence fails closed as `HOLD_ROUTE/unknown` rather than guessing.
+3. Non-allowlisted permanent 5xx DSNs remain `HOLD_ROUTE`; later delivery does not silently reinterpret those failures.
+4. Temporary 4xx DSNs remain `HOLD_ROUTE` unless explicit delivery evidence for the exact provider message and recipient **strictly postdates every temporary 4xx event**. That narrow recovered-delivery case settles to `DELIVERED`. Equal timestamps do not satisfy the rule and remain `HOLD_ROUTE/unknown`.
+5. With no block/hold evidence, explicit delivery is `DELIVERED`; a complete empty lookup is `UNCONFIRMED`.
+
+This temporal rule models normal SMTP deferral followed by successful delivery without converting contradictory permanent evidence into send authority. Even a `DELIVERED` receipt never authorizes resend or alternate-route contact.
+
+v1 intentionally hard-blocks only `5.1.1` among DSN codes. Other 5xx statuses (policy rejection, mailbox-full variants, etc.) are `HOLD_ROUTE`, because a permanent SMTP failure does not necessarily prove the address itself is dead. A 4xx is temporary route evidence and is only superseded by strictly later exact-route delivery as described above.
 
 ## CLI
 
@@ -49,3 +59,5 @@ python -m py_compile tools/outbound_send_guard/route_lifecycle.py tools/outbound
 python -m unittest -v tools.outbound_send_guard.test_route_lifecycle
 python -O -m unittest -v tools.outbound_send_guard.test_route_lifecycle
 ```
+
+The regression suite includes chronology hostile cases for temporary-failure recovery, equal/late temporary failures, recipient opt-out/complaint precedence, and permanent-failure conflicts.
