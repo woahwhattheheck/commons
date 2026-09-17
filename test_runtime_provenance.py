@@ -1,0 +1,81 @@
+"""Retain runtime-provenance verification inside the existing Commons test battery.
+
+A dedicated workflow would be the 68th active workflow and violates the repository's
+retained workflow-surface budget. This root bridge makes the complete focused suite
+discoverable by host/ci_battery.py, runs it in normal and optimized Python, and
+exercises the canonical registry CLI without creating a new workflow slot.
+"""
+from __future__ import annotations
+
+import json
+import subprocess
+import sys
+import unittest
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent
+DISCOVER = [
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tools/runtime_provenance",
+    "-p",
+    "test_*.py",
+    "-v",
+]
+
+
+class RuntimeProvenanceRetainedTests(unittest.TestCase):
+    def run_child(self, *args: str, optimized: bool = False) -> subprocess.CompletedProcess[str]:
+        command = [sys.executable]
+        if optimized:
+            command.append("-O")
+        command.extend(args)
+        return subprocess.run(
+            command,
+            cwd=ROOT,
+            text=True,
+            capture_output=True,
+            timeout=60,
+            check=False,
+        )
+
+    def assert_child_ok(self, proc: subprocess.CompletedProcess[str]) -> None:
+        self.assertEqual(proc.returncode, 0, proc.stderr + proc.stdout)
+
+    def test_focused_suite_normal_and_optimized(self) -> None:
+        for optimized in (False, True):
+            with self.subTest(optimized=optimized):
+                proc = self.run_child(*DISCOVER, optimized=optimized)
+                self.assert_child_ok(proc)
+                self.assertIn("OK", proc.stderr + proc.stdout)
+
+    def test_canonical_registry_verify_is_descriptive_only(self) -> None:
+        proc = self.run_child(
+            "-m",
+            "tools.runtime_provenance.runtime_registry",
+            "verify",
+            "runtime/agent_runtime_registry.json",
+        )
+        self.assert_child_ok(proc)
+        receipt = json.loads(proc.stdout)
+        self.assertFalse(receipt["external_send_authorized"])
+        self.assertFalse(receipt["provider_mutation_authorized"])
+        self.assertFalse(receipt["payment_authorized"])
+        self.assertFalse(receipt["credential_authorized"])
+        self.assertFalse(receipt["deployment_mutation_authorized"])
+
+    def test_canonical_registry_digest_is_sha256(self) -> None:
+        proc = self.run_child(
+            "-m",
+            "tools.runtime_provenance.runtime_registry",
+            "digest",
+            "runtime/agent_runtime_registry.json",
+        )
+        self.assert_child_ok(proc)
+        self.assertRegex(proc.stdout.strip(), r"^[0-9a-f]{64}$")
+
+
+if __name__ == "__main__":
+    unittest.main()
