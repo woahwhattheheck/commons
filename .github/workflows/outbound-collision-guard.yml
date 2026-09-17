@@ -1,0 +1,36 @@
+name: outbound-collision-guard
+
+on:
+  pull_request:
+    paths:
+      - "revenue/outbound_collision_guard/**"
+      - "tests/test_outbound_collision_guard.py"
+      - "tests/test_outbound_collision_guard_release_boundary.py"
+      - ".github/workflows/outbound-collision-guard.yml"
+  push:
+    branches: [main]
+    paths:
+      - "revenue/outbound_collision_guard/**"
+      - "tests/test_outbound_collision_guard.py"
+      - "tests/test_outbound_collision_guard_release_boundary.py"
+      - ".github/workflows/outbound-collision-guard.yml"
+
+concurrency:
+  group: outbound-collision-guard-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.13"]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m py_compile revenue/outbound_collision_guard/core.py tests/test_outbound_collision_guard.py tests/test_outbound_collision_guard_release_boundary.py
+      - run: python -m unittest -v tests.test_outbound_collision_guard tests.test_outbound_collision_guard_release_boundary
+      - run: python -O -m unittest -v tests.test_outbound_collision_guard tests.test_outbound_collision_guard_release_boundary
+      - run: python -m revenue.outbound_collision_guard.demo
