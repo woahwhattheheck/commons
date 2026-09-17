@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import copy
+from datetime import datetime, timezone
 import importlib.util
 import json
 from pathlib import Path
@@ -14,6 +15,7 @@ LANE = ROOT / "opportunities" / "nhdes_lims_2026_093"
 CARRIER_PATH = LANE / "carrier.py"
 SOURCE_PATH = LANE / "source_snapshot.json"
 CANDIDATE_PATH = LANE / "partner_candidate.json"
+NOW = datetime(2026, 9, 17, 4, 50, 0, tzinfo=timezone.utc)
 
 _spec = importlib.util.spec_from_file_location("nhdes_lims_2026_093_carrier", CARRIER_PATH)
 assert _spec is not None and _spec.loader is not None
@@ -32,8 +34,10 @@ class NhdesLims2026093CarrierTests(unittest.TestCase):
         self.assertEqual(receipt["prime_posture"], "HOLD_RAW_PACKET_AND_EXTERNAL_PRIME_EVIDENCE")
         self.assertEqual(
             receipt["partner_conversion_posture"],
-            "READY_FOR_MUSE_GATED_PARTNER_INQUIRY_ONLY",
+            "HOLD_ACTIVE_ORG_COLLISION_PENDING_MUSE",
         )
+        self.assertIn("ACTIVE_ORG_ROUTE_COLLISION_PENDING_MUSE", receipt["runtime_gate"]["holds"])
+        self.assertEqual(receipt["candidate"]["muse_resolution"], "PENDING")
         self.assertEqual(receipt["money_state"], "NO_ACCEPTANCE_NO_RECEIVABLE_NO_REVENUE")
         self.assertTrue(all(value is False for value in receipt["authority"].values()))
 
@@ -71,7 +75,7 @@ class NhdesLims2026093CarrierTests(unittest.TestCase):
         with self.assertRaises(carrier.CarrierError):
             carrier.validate_candidate(forged)
 
-    def test_collision_preflight_must_be_zero_and_fresh_muse_gate_stays_required(self) -> None:
+    def test_historical_preflight_cannot_be_rewritten_as_current_clearance(self) -> None:
         forged = copy.deepcopy(self.candidate)
         forged["collision_preflight"]["gmail_exact_history"] = 1
         with self.assertRaises(carrier.CarrierError):
@@ -80,6 +84,63 @@ class NhdesLims2026093CarrierTests(unittest.TestCase):
         forged["collision_preflight"]["requires_muse_single_writer_clearance"] = False
         with self.assertRaises(carrier.CarrierError):
             carrier.validate_candidate(forged)
+
+    def test_active_org_route_collision_is_machine_hold(self) -> None:
+        holds = carrier.evaluate_runtime_state(self.source, self.candidate, now=NOW)
+        self.assertIn("ACTIVE_ORG_ROUTE_COLLISION_PENDING_MUSE", holds)
+        self.assertEqual(carrier._posture_for(holds), "HOLD_ACTIVE_ORG_COLLISION_PENDING_MUSE")
+        forged = copy.deepcopy(self.candidate)
+        forged["current_collision"]["status"] = "NO_COLLISION"
+        with self.assertRaises(carrier.CarrierError):
+            carrier.validate_candidate(forged)
+        forged = copy.deepcopy(self.candidate)
+        forged["current_collision"]["muse_resolution"] = "CLEAR_NHDES"
+        with self.assertRaises(carrier.CarrierError):
+            carrier.validate_candidate(forged)
+
+    def test_future_source_state_fails_closed(self) -> None:
+        forged = copy.deepcopy(self.source)
+        forged["checked_at"] = "2026-09-18T00:00:00-04:00"
+        holds = carrier.evaluate_runtime_state(forged, self.candidate, now=NOW)
+        self.assertIn("SOURCE_STATE_FUTURE", holds)
+        self.assertEqual(carrier._posture_for(holds), "HOLD_FUTURE_STATE_INVALID")
+
+    def test_stale_source_state_fails_closed(self) -> None:
+        forged = copy.deepcopy(self.source)
+        forged["checked_at"] = "2026-09-15T00:00:00-04:00"
+        holds = carrier.evaluate_runtime_state(forged, self.candidate, now=NOW)
+        self.assertIn("SOURCE_STATE_STALE", holds)
+        self.assertEqual(carrier._posture_for(holds), "HOLD_STALE_SOURCE_OR_COLLISION_STATE")
+
+    def test_future_and_stale_candidate_state_fail_closed(self) -> None:
+        future = copy.deepcopy(self.candidate)
+        future["current_collision"]["observed_at"] = "2026-09-18T00:00:00-04:00"
+        future["evidence_checked_before"] = "2026-09-17T00:37:14-04:00"
+        holds = carrier.evaluate_runtime_state(self.source, future, now=NOW)
+        self.assertIn("COLLISION_STATE_FUTURE", holds)
+        self.assertEqual(carrier._posture_for(holds), "HOLD_FUTURE_STATE_INVALID")
+
+        stale = copy.deepcopy(self.candidate)
+        stale["evidence_checked_before"] = "2026-09-15T00:00:00-04:00"
+        holds = carrier.evaluate_runtime_state(self.source, stale, now=NOW)
+        self.assertIn("CANDIDATE_EVIDENCE_STALE", holds)
+        self.assertEqual(carrier._posture_for(holds), "HOLD_STALE_SOURCE_OR_COLLISION_STATE")
+
+    def test_post_deadline_execution_fails_closed(self) -> None:
+        after_deadline = datetime(2026, 10, 24, 12, 0, 0, tzinfo=timezone.utc)
+        holds = carrier.evaluate_runtime_state(self.source, self.candidate, now=after_deadline)
+        self.assertIn("RESPONSE_DEADLINE_PASSED", holds)
+        self.assertEqual(carrier._posture_for(holds), "HOLD_RESPONSE_DEADLINE_PASSED")
+
+    def test_timestamps_must_be_offset_aware(self) -> None:
+        forged = copy.deepcopy(self.source)
+        forged["checked_at"] = "2026-09-17T00:40:00"
+        with self.assertRaises(carrier.CarrierError):
+            carrier.validate_source(forged)
+        forged_candidate = copy.deepcopy(self.candidate)
+        forged_candidate["current_collision"]["observed_at"] = "2026-09-17T00:38:55"
+        with self.assertRaises(carrier.CarrierError):
+            carrier.validate_candidate(forged_candidate)
 
     def test_receipt_tamper_fails_recompile_verification(self) -> None:
         receipt = carrier.build_receipt(self.source, self.candidate)
@@ -119,6 +180,7 @@ class NhdesLims2026093CarrierTests(unittest.TestCase):
             self.assertTrue(out.is_file())
             parsed = json.loads(out.read_text(encoding="utf-8"))
             self.assertEqual(parsed["specialist_offer"]["commercial_status"], "PROPOSED_NOT_ACCEPTED")
+            self.assertEqual(parsed["partner_conversion_posture"], "HOLD_ACTIVE_ORG_COLLISION_PENDING_MUSE")
 
             verify_cmd = [
                 sys.executable,
