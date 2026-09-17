@@ -13,8 +13,11 @@ Admission is mechanical:
 
 - HTTPS only;
 - default HTTPS port only (`443` or omitted);
-- no userinfo, query, or fragment;
-- the same checks are repeated after each recursive percent-decode generation so encoded/double-encoded userinfo/query/fragment forms fail closed.
+- no userinfo syntax, query, or fragment;
+- userinfo is rejected by **presence**, not by credential truthiness: an authority delimiter such as `https://@host/...`, `https://:@host/...`, or `https://user:@host/...` is forbidden even when the parsed username/password is an empty string;
+- the same checks are repeated after each recursive percent-decode generation, so encoded and multiply encoded userinfo/query/fragment forms fail closed before any evidence row is emitted.
+
+The authority-only userinfo fence does not ban ordinary `@` bytes in a path. An admitted locator such as `https://buyer.example.gov/public/@archive/award.pdf` remains subject to the same path policy below: the exact path never reaches price or memo output and is retained only by locator digest.
 
 After admission, the caller path is **not exported** to the price engine. Engine-facing `sources[*].uri` is reduced to a canonical origin (`https://<canonical-host>`). The exact caller locator is bound only by SHA-256 in adapter-only custody evidence:
 
@@ -77,6 +80,6 @@ python -m revenue.procurement_award_price_intelligence.source_adapters \
 
 `test_source_adapters.py` covers structured-source semantics, strict parsing, authority ceilings, deterministic receipts, CLI create-only publication, and the origin+locator-digest contract.
 
-`test_source_adapters_redclosure.py` pins the historical STOP-MERGE predecessors: literal/encoded/double-encoded query, fragment and userinfo rejection; arbitrary literal/encoded/double-encoded caller paths reduced to origin-only output with exact-locator digest custody; raw/payload anti-remint; claim-level corroboration/conflict; distinct-claim positives; and legitimate multi-row bid tabulations.
+`test_source_adapters_redclosure.py` pins the historical STOP-MERGE predecessors: literal/encoded/double-encoded query, fragment and nonempty userinfo rejection; literal/encoded/multiply-encoded **empty-userinfo syntax** rejection; path `@` positive control; arbitrary literal/encoded/double-encoded caller paths reduced to origin-only output with exact-locator digest custody; raw/payload anti-remint; claim-level corroboration/conflict; distinct-claim positives; and legitimate multi-row bid tabulations.
 
 The retained root `test_procurement_award_adapter_guard.py` executes engine, current-main live-adapter custody, retained-source adapter, and retained-source red-closure suites under both normal Python and `python -O`. Because that root guard changes in the recovery carrier, the repository's canonical `tests` workflow admits the battery on pull requests and main. The archived `ci/workflow-recipes/procurement-award-price-intelligence.yml` remains byte-identical to current main; this recovery does not mutate archived workflow inventory or add active workflow surface.
