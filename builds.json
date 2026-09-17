@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 23,
+ "n_open_prs": 25,
  "open_prs": [
   {
    "number": 15629,
@@ -657,12 +657,12 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 15613,
+   "number": 15643,
    "author": "woahwhattheheck",
-   "title": "SwarmOps: harden current semantic readiness verification",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15613",
+   "title": "Fix pilot-renewal receipt reseal and current-clock authority",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15643",
    "base_freshness": {
-    "base_sha": "5418abf718cfadb94af014095a416bd8f8cc7e9e",
+    "base_sha": "0d41a463ab2f7598cc211af8036e397228e8155a",
     "main_sha": "a18de051b158c5a1e8bc60caf4ae977e35f10fb8",
     "ahead_by": null,
     "behind_by": null,
@@ -673,12 +673,44 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 15643,
+   "number": 15692,
    "author": "woahwhattheheck",
-   "title": "Fix pilot-renewal receipt reseal and current-clock authority",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15643",
+   "title": "LATCH demand-survive+first-night convert shelf EXISTING buys",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15692",
    "base_freshness": {
-    "base_sha": "0d41a463ab2f7598cc211af8036e397228e8155a",
+    "base_sha": "c3bf51c4a510a2b4f20f73bfc94f3c23c3ea06c8",
+    "main_sha": "a18de051b158c5a1e8bc60caf4ae977e35f10fb8",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15627,
+   "author": "woahwhattheheck",
+   "title": "Build Commercial Laundry Route & Linen Custody Operations Desk",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15627",
+   "base_freshness": {
+    "base_sha": "e8e5e08fddddf4333e34476319b48012ffe5566d",
+    "main_sha": "a18de051b158c5a1e8bc60caf4ae977e35f10fb8",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15613,
+   "author": "woahwhattheheck",
+   "title": "SwarmOps: harden current semantic readiness verification",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15613",
+   "base_freshness": {
+    "base_sha": "5418abf718cfadb94af014095a416bd8f8cc7e9e",
     "main_sha": "a18de051b158c5a1e8bc60caf4ae977e35f10fb8",
     "ahead_by": null,
     "behind_by": null,
@@ -705,12 +737,12 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 15627,
+   "number": 15693,
    "author": "woahwhattheheck",
-   "title": "Build Commercial Laundry Route & Linen Custody Operations Desk",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15627",
+   "title": "Wire existing $29 and $250 Buy links onto owner-now-revenue and paid-opportunities shelves",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15693",
    "base_freshness": {
-    "base_sha": "e8e5e08fddddf4333e34476319b48012ffe5566d",
+    "base_sha": "d1da58441f5cbbc067fbe77abc23d923532f1049",
     "main_sha": "a18de051b158c5a1e8bc60caf4ae977e35f10fb8",
     "ahead_by": null,
     "behind_by": null,
