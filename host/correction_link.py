@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""Machine-link a correction to the claim it supersedes and invalidate that original.
+"""Machine-link supersession/completion to current-truth board projections.
 
-`supersedes:` is already recorded on the correction. This module is the missing
-half: the original is no longer presented as current truth on HEAD surfaces.
+`supersedes:` is already recorded on a correction. This module derives the
+reverse invalidation link so the original is no longer presented as current
+truth on HEAD surfaces. An explicit completion signal uses the same projection
+tombstone without deleting or rewriting the historical source record.
 
-Append-only: never rewrite or delete p/{id}.md. Slack delete stays owner-only.
+Append-only projections: never delete p/{id}.md. Slack delete stays owner-only.
 No auth. No gates. No seats.
 """
 
@@ -14,6 +16,7 @@ from typing import Any, Iterable, Mapping, MutableMapping, Sequence
 
 
 CURRENT_STATES = ("", "DURABLE_PAGE")
+COMPLETED_STATE = "COMPLETED"
 
 
 def _sid(value: Any) -> str:
@@ -30,6 +33,19 @@ def _supersedes(item: Mapping[str, Any]) -> str:
 
 def _ts(item: Mapping[str, Any]) -> str:
     return str(item.get("ts") or item.get("durable_ts") or item.get("carrier_ts") or "")
+
+
+def _is_completed(item: Mapping[str, Any]) -> bool:
+    """Return whether a source explicitly declares terminal task completion.
+
+    `state: COMPLETED` is the canonical durable signal. `completed_at` is also
+    accepted so callers can preserve an existing lifecycle state while adding
+    an auditable completion timestamp. Neither signal removes source history.
+    """
+    return (
+        str(item.get("state") or "").strip().upper() == COMPLETED_STATE
+        or bool(_sid(item.get("completed_at")))
+    )
 
 
 def _children(items: Iterable[Mapping[str, Any]]) -> dict[str, list[tuple[str, str]]]:
@@ -76,9 +92,21 @@ def invalidation_map(items: Iterable[Mapping[str, Any]]) -> dict[str, str]:
 
 
 def annotate_item(item: MutableMapping[str, Any], imap: Mapping[str, str]) -> MutableMapping[str, Any]:
-    """Stamp derived invalidation onto a listing/card row. Does not touch p/."""
+    """Stamp derived terminal state onto a listing/card row; never touch p/."""
     mid = _item_id(item)
-    if mid and mid in imap:
+    if not mid:
+        return item
+
+    if _is_completed(item):
+        # Existing renderers already suppress rows with `invalidated_by`. For a
+        # completed task with no separate completion post, self-reference is a
+        # deterministic projection tombstone: the historical p/{id}.md remains
+        # addressable while current/action surfaces stop advertising the work.
+        item["state"] = COMPLETED_STATE
+        item["invalidated_by"] = _sid(item.get("completion_receipt")) or mid
+        return item
+
+    if mid in imap:
         item["invalidated_by"] = imap[mid]
         if str(item.get("state") or "") in CURRENT_STATES:
             item["state"] = "SUPERSEDED"
@@ -100,7 +128,7 @@ def annotate_rows(rows: Iterable[Sequence[Any]]) -> dict[str, str]:
 
 def is_current(item: Mapping[str, Any], imap: Mapping[str, str] | None = None) -> bool:
     mid = _item_id(item)
-    if not mid:
+    if not mid or _is_completed(item):
         return False
     if item.get("invalidated_by"):
         return False
@@ -110,13 +138,13 @@ def is_current(item: Mapping[str, Any], imap: Mapping[str, str] | None = None) -
 
 
 def current_truth(items: Sequence[Mapping[str, Any]]) -> list[Mapping[str, Any]]:
-    """Listing/feed rows that are still current after machine-link invalidation."""
+    """Listing/feed rows still current after supersession/completion semantics."""
     imap = invalidation_map(items)
     return [item for item in items if is_current(item, imap)]
 
 
 def current_recent(items: Sequence[Mapping[str, Any]], limit: int) -> list[Mapping[str, Any]]:
-    """Current-truth recent slice. Hidden rows stay out. Superseded originals stay out."""
+    """Current-truth recent slice. Hidden, superseded, and completed rows stay out."""
     out: list[Mapping[str, Any]] = []
     for item in current_truth(items):
         if str(item.get("hidden") or "") == "1":
