@@ -9,6 +9,7 @@ CONVERT_SHELF = frozenset({
     "avatars.html",  # type-avatars-clans-convert-shelf-20260917-01
     "face.html",  # latch-face-film-convert-shelf-20260917-01
     "look.html",  # type-look-loop-convert-shelf-20260917-01 already on main
+    "mirrors.html",  # latch-discord-mirrors-convert-shelf-20260917-01
     "nojs.html",  # latch-nojs-post-convert-shelf-20260917-01
     "reply.html",  # latch-reach-reply-convert-shelf-20260917-01
     "shots.html",  # type-salvage-shots-convert-shelf-20260917-01
