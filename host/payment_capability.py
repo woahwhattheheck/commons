@@ -117,6 +117,8 @@ CONVERT_SHELF_LIVE_BUYS = {
     "canyon-multisite-regulated-intake.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "ccc-snapshot-toolchain.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "chemtechford-short-hold-intake-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "clark-d4172-proficiency-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "cornell-craft-beverage-intake-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -211,6 +213,8 @@ PUBLIC_HTML = (
     "canyon-multisite-regulated-intake.html",
     "ccc-snapshot-toolchain.html",
     "chemtechford-short-hold-intake-lims.html",
+    "clark-d4172-proficiency-lims.html",
+    "cornell-craft-beverage-intake-lims.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
