@@ -158,6 +158,8 @@ _FORBIDDEN_COMMERCIAL_ASSERTIONS = (
     re.compile(r"\binvoice (?:was |is )?(?:issued|sent)\b"),
     re.compile(r"\bguaranteed (?:savings|outcome|roi|acceptance|award)\b"),
 )
+# Compatibility alias for the independently landed post-merge guard on main.
+_FORBIDDEN_SCOPE_ASSERTIONS = _FORBIDDEN_COMMERCIAL_ASSERTIONS
 _TOKEN_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:/-]{0,127}$")
 _SAFE_LABEL_RE = re.compile(r"^[^\x00\r\n]{1,160}$")
 _UNSAFE_UNICODE_CATEGORIES = {"Cc", "Cf", "Cs", "Zl", "Zp"}
