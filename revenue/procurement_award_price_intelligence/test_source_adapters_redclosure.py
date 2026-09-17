@@ -29,12 +29,14 @@ class SourceAdapterRedClosureTests(unittest.TestCase):
             "https://buyer.example.gov/award%3FX-Amz-Signature%3Ddeadbeef",
             "https://buyer.example.gov/%253Ftoken%253Dsecret-value",
             "https://buyer.example.gov/%25%33%46token%3Dsecret-value",
+            "https://user%3Asecret%40buyer.example.gov/award",
+            "https://user%253Asecret%2540buyer.example.gov/award",
         )
         for uri in secret_uris:
             doc = document("AWARD_NOTICE_JSON_V1", award(), "AWARD_NOTICE")
             doc["source"]["uri"] = uri
             with self.subTest(uri=uri):
-                with self.assertRaisesRegex(Error, "query|fragment"):
+                with self.assertRaisesRegex(Error, "credential|query|fragment"):
                     compile(raw(request([doc])))
 
     def test_ordinary_encoded_path_is_preserved(self):
