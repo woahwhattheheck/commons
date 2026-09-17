@@ -113,6 +113,8 @@ def compile_submission(
     The receipt binds the exact ordered ``submission_key`` generation. Keep that
     same key iterable for ``verify_compiled_submission``.
     """
+    if require_complete is not True:
+        raise ValueError("source-safe compiler requires complete predictions")
     tables = {
         "state": _table(state_rows, "state"),
         "queue": _table(queue_rows, "queue"),
@@ -136,9 +138,7 @@ def compile_submission(
         values = tables[task].get(key)
         if values is None:
             gaps[task] += 1
-            if require_complete:
-                raise ValueError(f"missing {task} value for key {key}")
-            values = tuple(0.0 for _ in VALUES[task])
+            raise ValueError(f"missing {task} value for key {key}")
         out = {
             "submission_id": sid,
             "task": task,
@@ -160,7 +160,7 @@ def compile_submission(
         "submissionKeySha256": key_hasher.hexdigest(),
         "rows": row_count,
         "gaps": gaps,
-        "requireComplete": bool(require_complete),
+        "requireComplete": True,
         "csvSha256": hashlib.sha256(payload.encode("utf-8")).hexdigest(),
         "authority": authority_ceiling(),
     }
@@ -194,14 +194,12 @@ def verify_compiled_submission(
         return False
     if type(receipt.get("rows")) is not int or receipt["rows"] <= 0:
         return False
-    if type(receipt.get("requireComplete")) is not bool:
+    if receipt.get("requireComplete") is not True:
         return False
     gaps = receipt.get("gaps")
     if not isinstance(gaps, Mapping) or set(gaps) != set(KEYS):
         return False
-    if any(type(gaps[task]) is not int or gaps[task] < 0 for task in KEYS):
-        return False
-    if receipt["requireComplete"] and any(gaps[task] != 0 for task in KEYS):
+    if any(type(gaps[task]) is not int or gaps[task] != 0 for task in KEYS):
         return False
     if hashlib.sha256(payload.encode("utf-8")).hexdigest() != receipt["csvSha256"]:
         return False
