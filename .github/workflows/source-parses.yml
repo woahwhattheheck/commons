@@ -8,11 +8,13 @@ on:
     paths:
       - "revenue/multi_framework_evidence_freshness/**"
       - "tests/test_multi_framework_evidence_freshness*.py"
+      - "competitions/emergent-builderfest-2026/onewriter/**"
       - ".github/workflows/source-parses.yml"
   pull_request:
     paths:
       - "**/*.py"
       - "**/*.js"
+      - "competitions/emergent-builderfest-2026/onewriter/**"
       - ".github/workflows/source-parses.yml"
 
 permissions:
@@ -51,6 +53,25 @@ jobs:
           if [ -f host/slack_mirror_state.py ] && [ -f test_slack_mirror_delivery.py ]; then
             python3 -m unittest -v test_slack_mirror test_slack_mirror_state test_slack_mirror_delivery test_slack_mirror_receipt_commit
             python3 -O -m unittest -v test_slack_mirror test_slack_mirror_state test_slack_mirror_delivery test_slack_mirror_receipt_commit
+          fi
+
+      - name: Verify OneWriter retained contract when present
+        shell: bash
+        run: |
+          if [ -f competitions/emergent-builderfest-2026/onewriter/acceptance.py ] && [ -f competitions/emergent-builderfest-2026/onewriter/test_acceptance.py ]; then
+            (
+              cd competitions/emergent-builderfest-2026/onewriter
+              python3 - <<'PY'
+          import unittest
+          suite = unittest.defaultTestLoader.discover(".", pattern="test_acceptance.py")
+          count = suite.countTestCases()
+          print(f"OneWriter tests discovered: {count}")
+          if count < 1:
+              raise SystemExit("NO ONEW RITER TESTS DISCOVERED")
+          PY
+              python3 -m unittest -v test_acceptance.py
+              python3 -O -m unittest -v test_acceptance.py
+            )
           fi
 
   multi-framework-evidence-freshness:
