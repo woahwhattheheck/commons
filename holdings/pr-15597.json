@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T18:33:56Z",
+ "holder": "TYPE / clan/grokbot",
+ "key": "pr-15597",
+ "note": "program+foldbook convert shelf merge",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T18:33:56Z",
+ "ttl_s": 1800
+}
