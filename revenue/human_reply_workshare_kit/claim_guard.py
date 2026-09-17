@@ -2,14 +2,34 @@ from __future__ import annotations
 
 from types import ModuleType
 from typing import Any, Mapping
+import unicodedata
 
 
 _SENTINEL = "_human_reply_claim_guard_installed"
+_UNSAFE_UNICODE_CATEGORIES = {"Cc", "Cf", "Cs", "Zl", "Zp"}
+
+
+def _screen_form(core: ModuleType, text: str, where: str) -> str:
+    # Caller-rendered text is a one-line commercial artifact boundary.  Reject
+    # invisible controls/formatters and Unicode line/paragraph separators rather
+    # than allowing them to split a dangerous assertion into regex-safe pieces.
+    for char in text:
+        if unicodedata.category(char) in _UNSAFE_UNICODE_CATEGORIES:
+            raise core.WorkshareError(
+                f"{where} contains unsafe Unicode control/format character"
+            )
+
+    # Compatibility normalization closes fullwidth and compatibility-glyph
+    # variants.  Whitespace collapse closes non-ASCII spacing variants while the
+    # original caller text remains unchanged for rendering after it is screened.
+    normalized = unicodedata.normalize("NFKC", text)
+    return " ".join(normalized.split())
 
 
 def _guard_emitted_text(core: ModuleType, text: str, where: str) -> str:
+    screened = _screen_form(core, text, where)
     for pattern in core._FORBIDDEN_SCOPE_ASSERTIONS:
-        if pattern.search(text):
+        if pattern.search(screened):
             raise core.WorkshareError(
                 f"{where} contains unsupported commercial/outcome assertion"
             )
@@ -28,10 +48,10 @@ def _guard_normalized(core: ModuleType, normalized: Mapping[str, Any]) -> None:
 def install_claim_guard(core: ModuleType) -> None:
     """Close unsupported-claim smuggling across every caller text emitted by the kit.
 
-    The v1 engine already guarded ``scope.one_line`` but rendered labels and input
-    bounds without the same commercial-truth check.  Package import installs this
-    guard onto the canonical core module so ``package.core`` imports and the CLI
-    share one fail-closed boundary while preserving the original engine bytes.
+    The v1 engine guarded only ``scope.one_line`` and screened ASCII-shaped text.
+    Package import installs this guard onto the canonical core module so normal
+    package imports, ``package.core`` imports, and the CLI share one fail-closed
+    commercial-text boundary while preserving the original workshare economics.
     """
 
     if getattr(core, _SENTINEL, False):
