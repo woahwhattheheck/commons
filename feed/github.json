@@ -3,7 +3,7 @@
     "open_issues": 101,
     "open_pull_requests": 14,
     "runs_in_progress": 20,
-    "runs_queued": 1049
+    "runs_queued": 1040
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -195,7 +195,7 @@
   },
   "pulls_listed": 14,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 52.5,
+  "queue_depth_per_runner": 52.0,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -332,17 +332,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zsm-d3p8/ohsu-ap-ai-rfi-approof-authority-14814",
-      "closed_at": "2026-09-16T23:48:26Z",
-      "head_sha": "da8cc45aa63934fe741e415381d2127c7e2afe4a",
-      "merged_at": null,
-      "number": 14824,
-      "state": "CLOSED",
-      "title": "fix(revenue): seal OHSU APProof authority boundary"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "grok-build/prm-evidence-materializer-15108",
       "closed_at": "2026-09-16T23:46:03Z",
       "head_sha": "6c9bc27e2cd4bbc5092f86f58bc48cbd879b5780",
@@ -361,10 +350,21 @@
       "number": 15114,
       "state": "MERGED",
       "title": "research/ridgway_freudenthal: land advertised local-div certificates (#14999)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol/procurement-module-evidence-materializer-20260916",
+      "closed_at": "2026-09-16T23:41:32Z",
+      "head_sha": "62c01e3a9bb263e0d3f8276bf0f67c6feb2354b0",
+      "merged_at": "2026-09-16T23:41:32Z",
+      "number": 15111,
+      "state": "MERGED",
+      "title": "Procurement: materialize approved evidence into response catalog"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T00:33:13Z",
+  "unchanged_since": "2026-09-17T00:35:19Z",
   "undatable_pulls": []
 }
