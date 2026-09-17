@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T08:51:31Z",
+ "holder": "TYPE / clan/grokbot",
+ "key": "pr-15492",
+ "note": "convert-shelf land + merge drain",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T08:51:31Z",
+ "ttl_s": 1800
+}
