@@ -3,13 +3,17 @@ from __future__ import annotations
 from copy import deepcopy
 from hashlib import sha256
 import json
+import os
 import unittest
+from unittest import mock
 
 from revenue.opportunity_portfolio_intake.cli import _pairs
 from revenue.opportunity_portfolio_intake.intake import (
     IntakeError,
+    SNAPSHOT_AUTHORITY_KEY_ENV,
     SNAPSHOT_AUTHORITY_SCHEMA,
     compile_intake,
+    issue_host_snapshot_authority,
     normalize_intake,
     verify_receipt,
 )
@@ -64,23 +68,18 @@ def packet(events: list[dict[str, object]] | None = None, *, custody: bool = Tru
     }
 
 
+TEST_HOST_KEY = "4b" * 32
+os.environ[SNAPSHOT_AUTHORITY_KEY_ENV] = TEST_HOST_KEY
+AUTHORITY_ISSUED = "2026-09-14T01:00:30Z"
+
 def trusted_authority(payload: dict[str, object], *, authority_id: str = "test-authority",
                       generation: str = "g1") -> dict[str, object]:
-    # Deliberately compute the commitment independently of production helpers.
-    normalized = normalize_intake(payload)
-    projection = [{"id": item["id"], "events": item["events"]}
-                  for item in normalized["opportunities"]]
-    return {
-        "schema": SNAPSHOT_AUTHORITY_SCHEMA,
-        "authorityId": authority_id,
-        "generation": generation,
-        "snapshotSource": deepcopy(normalized["snapshot"]["source"]),
-        "eventProjectionSha256": sha256(canonical(projection)).hexdigest(),
-        "opportunityCount": len(normalized["opportunities"]),
-        "eventCount": sum(len(item["events"]) for item in normalized["opportunities"]),
-        "custodyComplete": normalized["snapshot"]["custodyComplete"],
-        "statusComplete": normalized["snapshot"]["statusComplete"],
-    }
+    return issue_host_snapshot_authority(
+        payload,
+        authority_id=authority_id,
+        generation=generation,
+        issued_at_utc=AUTHORITY_ISSUED,
+    )
 
 
 TRUSTED = "2026-09-14T01:01:00Z"
@@ -111,6 +110,27 @@ class IntakeTests(unittest.TestCase):
         self.assertFalse(receipt["snapshotAuthority"]["trusted"])
         self.assertFalse(receipt["snapshotAuthority"]["effectiveCustodyComplete"])
         self.assertFalse(receipt["snapshotAuthority"]["effectiveStatusComplete"])
+
+    def test_plain_second_mapping_cannot_self_authenticate(self):
+        p = packet()
+        forged = trusted_authority(p)
+        forged["macSha256"] = "0" * 64
+        with self.assertRaisesRegex(IntakeError, "MAC does not match host capability"):
+            compile_intake(p, trusted_as_of=TRUSTED, trusted_snapshot_authority=forged)
+
+    def test_missing_host_capability_cannot_consume_valid_authority(self):
+        p = packet()
+        authority = trusted_authority(p)
+        with mock.patch.dict(os.environ, {}, clear=True):
+            with self.assertRaisesRegex(IntakeError, "capability is not provisioned"):
+                compile_intake(p, trusted_as_of=TRUSTED, trusted_snapshot_authority=authority)
+
+    def test_wrong_host_capability_cannot_consume_valid_authority(self):
+        p = packet()
+        authority = trusted_authority(p)
+        with mock.patch.dict(os.environ, {SNAPSHOT_AUTHORITY_KEY_ENV: "5c" * 32}, clear=False):
+            with self.assertRaisesRegex(IntakeError, "MAC does not match host capability"):
+                compile_intake(p, trusted_as_of=TRUSTED, trusted_snapshot_authority=authority)
 
     def test_this_seat_take(self):
         r = self.compile([event("e1", "TAKE", "2026-09-14T00:50:00Z", actorSeat="ZEP-B4N8")])
@@ -192,11 +212,12 @@ class IntakeTests(unittest.TestCase):
         self.assertEqual(self.blockers(r)["STATUS-INCOMPLETE"], "OPEN")
 
     def test_packet_true_cannot_override_trusted_incomplete(self):
-        p = packet(custody=True, status=True)
-        a = trusted_authority(p)
-        a["custodyComplete"] = False
+        authoritative = packet(custody=False, status=True)
+        a = trusted_authority(authoritative)
+        candidate = deepcopy(authoritative)
+        candidate["snapshot"]["custodyComplete"] = True
         with self.assertRaisesRegex(IntakeError, "custodyComplete disagrees"):
-            compile_intake(p, trusted_as_of=TRUSTED, trusted_snapshot_authority=a)
+            compile_intake(candidate, trusted_as_of=TRUSTED, trusted_snapshot_authority=a)
 
     def test_omitted_take_cannot_reuse_complete_authority(self):
         full = packet([event("e1", "TAKE", "2026-09-14T00:50:00Z", actorSeat="OTHER-1")])
@@ -264,9 +285,8 @@ class IntakeTests(unittest.TestCase):
     def test_snapshot_future_rejected(self):
         p = packet()
         p["snapshot"]["source"]["observedAt"] = "2026-09-14T01:02:00Z"
-        a = trusted_authority(p)
         with self.assertRaisesRegex(IntakeError, "snapshot.*future"):
-            compile_intake(p, trusted_as_of=TRUSTED, trusted_snapshot_authority=a)
+            compile_intake(p, trusted_as_of=TRUSTED)
 
     def test_event_array_permutation_is_irrelevant(self):
         events = [
