@@ -5,6 +5,11 @@ competition-gated, private, or otherwise externally sourced spectra require a
 separate code-owned source manifest with independently reviewed exact-byte
 provenance and license/use authority before admission.
 
+Preview rendering is stricter than result rendering: callers provide the exact
+reviewed public contract plus a SYNTHETIC fixture. Preview code validates both,
+re-runs the baseline itself, and verifies the generated result receipt. A
+caller-authored RESULT_SCHEMA mapping is never a preview authority.
+
 This module cannot sign in, accept Kaggle rules, download gated data, submit,
 or claim eligibility, prizes, payment, or revenue.
 """
@@ -77,12 +82,15 @@ def read_json(path: Path) -> dict[str, Any]:
             raise MultiSpectrumError(f"JSON input is not a regular file: {path}")
         if meta.st_size > MAX_JSON_BYTES:
             raise MultiSpectrumError(f"JSON input exceeds {MAX_JSON_BYTES} bytes: {path}")
-        raw = b""
-        while len(raw) <= MAX_JSON_BYTES:
-            chunk = os.read(fd, min(65536, MAX_JSON_BYTES + 1 - len(raw)))
+        chunks: list[bytes] = []
+        size = 0
+        while size <= MAX_JSON_BYTES:
+            chunk = os.read(fd, min(65536, MAX_JSON_BYTES + 1 - size))
             if not chunk:
                 break
-            raw += chunk
+            chunks.append(chunk)
+            size += len(chunk)
+        raw = b"".join(chunks)
         if len(raw) > MAX_JSON_BYTES:
             raise MultiSpectrumError(f"JSON input exceeds {MAX_JSON_BYTES} bytes: {path}")
     finally:
@@ -405,12 +413,34 @@ def run_multispectrum_baseline(raw_fixture: Mapping[str, Any]) -> dict[str, Any]
     return {**result_core, "result_sha256": digest(result_core)}
 
 
-def submission_preview_rows(result: Mapping[str, Any]) -> list[dict[str, str]]:
-    if type(result) is not dict or result.get("schema") != RESULT_SCHEMA:
-        raise MultiSpectrumError("result schema mismatch")
-    rows = result.get("rows")
-    if type(rows) is not list or not rows:
-        raise MultiSpectrumError("result rows missing")
+def _verified_preview_result(
+    raw_contract: Mapping[str, Any],
+    raw_fixture: Mapping[str, Any],
+) -> dict[str, Any]:
+    """Compile preview state from admitted inputs; caller-authored results are not accepted."""
+    validate_public_contract(raw_contract)
+    result = run_multispectrum_baseline(raw_fixture)
+    if result.get("dataset_kind") != "SYNTHETIC":
+        raise MultiSpectrumError("preview result is not synthetic")
+    if result.get("fixture_sha256") != digest(raw_fixture):
+        raise MultiSpectrumError("preview result fixture receipt mismatch")
+    result_sha256 = result.get("result_sha256")
+    if type(result_sha256) is not str or len(result_sha256) != 64:
+        raise MultiSpectrumError("preview result receipt missing")
+    core = dict(result)
+    core.pop("result_sha256", None)
+    if digest(core) != result_sha256:
+        raise MultiSpectrumError("preview result receipt mismatch")
+    return result
+
+
+def submission_preview_rows(
+    raw_contract: Mapping[str, Any],
+    raw_fixture: Mapping[str, Any],
+) -> list[dict[str, str]]:
+    """Render rows only from a freshly compiled, verified SYNTHETIC fixture."""
+    result = _verified_preview_result(raw_contract, raw_fixture)
+    rows = result["rows"]
     out: list[dict[str, str]] = []
     seen_molecules: set[str] = set()
     for i, row in enumerate(rows):
@@ -443,8 +473,11 @@ def submission_preview_rows(result: Mapping[str, Any]) -> list[dict[str, str]]:
     return out
 
 
-def render_submission_preview_csv(result: Mapping[str, Any]) -> str:
-    rows = submission_preview_rows(result)
+def render_submission_preview_csv(
+    raw_contract: Mapping[str, Any],
+    raw_fixture: Mapping[str, Any],
+) -> str:
+    rows = submission_preview_rows(raw_contract, raw_fixture)
     stream = io.StringIO(newline="")
     writer = csv.DictWriter(
         stream,
@@ -471,12 +504,14 @@ def parser() -> argparse.ArgumentParser:
 def main(argv: list[str] | None = None) -> int:
     args = parser().parse_args(argv)
     try:
-        validate_public_contract(read_json(args.contract))
-        result = run_multispectrum_baseline(read_json(args.fixture))
+        contract = read_json(args.contract)
+        fixture = read_json(args.fixture)
+        validate_public_contract(contract)
         if args.command == "baseline":
+            result = run_multispectrum_baseline(fixture)
             print(json.dumps(result, sort_keys=True, indent=2, allow_nan=False))
         else:
-            print(render_submission_preview_csv(result), end="")
+            print(render_submission_preview_csv(contract, fixture), end="")
         return 0
     except MultiSpectrumError as exc:
         print(f"CASMI_MULTISPECTRUM_HOLD: {exc}", file=sys.stderr)
