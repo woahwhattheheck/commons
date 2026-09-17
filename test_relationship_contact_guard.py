@@ -158,6 +158,7 @@ class RelationshipGuardTests(unittest.TestCase):
         self.assertEqual(out["decision"]["evaluation_mode"], "CURRENT")
         self.assertTrue(out["decision"]["truth"]["evaluation_time_is_process_owned"])
         self.assertFalse(out["decision"]["truth"]["verify_replay_establishes_currentness"])
+        self.assertEqual(out["decision"]["truth"]["verification_freshness_window_seconds"], 300)
         self.assertFalse(out["decision"]["truth"]["no_conflict_is_send_permission"])
         self.assertFalse(any(out["decision"]["authority"].values()))
 
@@ -377,7 +378,67 @@ class RelationshipGuardTests(unittest.TestCase):
         with self.assertRaises(GuardError):
             verify_guard(packet, artifact)
 
-    def test_33_authority_ceiling_exact_false(self):
+
+    def test_33_older_unreopened_counterparty_negative_survives_newer_reopen(self):
+        s = sent(
+            seconds_ago=5 * 24 * 3600,
+            route="sales@example.com",
+            purpose="paid-qa-workshare",
+        )
+        n1 = negative(
+            "COUNTERPARTY",
+            event_id="n1",
+            seconds_ago=5 * 24 * 3600 - 60,
+        )
+        n2 = negative(
+            "COUNTERPARTY",
+            event_id="n2",
+            seconds_ago=4 * 24 * 3600,
+        )
+        o2 = reopen(
+            blocker="n2",
+            event_id="o2",
+            seconds_ago=24 * 3600,
+        )
+        out = self.compile([s, n1, n2, o2])
+        self.assertEqual(out["decision"]["status"], "HOLD_COUNTERPARTY_OPT_OUT")
+        self.assertEqual(out["decision"]["blocker_event_ids"], ["n1"])
+
+    def test_34_hard_bounce_dominates_later_contradictory_human_event(self):
+        s = sent(route="sales@example.com", purpose="paid-qa-workshare", seconds_ago=5000)
+        b = bounce(route="sales@example.com", purpose="paid-qa-workshare", seconds_ago=4900)
+        r = reply(route="sales@example.com", purpose="paid-qa-workshare", seconds_ago=4800)
+        out = self.compile([s, b, r])
+        self.assertEqual(out["decision"]["status"], "HOLD_DEAD_ROUTE")
+
+    def test_35_verify_rejects_future_current_timestamp_before_replay(self):
+        packet = {"candidate": candidate(), "events": []}
+        artifact = compile_guard(packet)
+        artifact["decision"]["evaluated_at"] = stamp(seconds_ahead=3600)
+        with self.assertRaisesRegex(GuardError, "future"):
+            verify_guard(packet, artifact)
+
+    def test_36_verify_rejects_stale_current_timestamp_before_replay(self):
+        packet = {"candidate": candidate(), "events": []}
+        artifact = compile_guard(packet)
+        artifact["decision"]["evaluated_at"] = stamp(seconds_ago=600)
+        with self.assertRaisesRegex(GuardError, "stale"):
+            verify_guard(packet, artifact)
+
+    def test_37_injected_clock_helper_attribute_cannot_age_out_current_contact(self):
+        original = getattr(guard, "_current_time", None)
+        try:
+            guard._current_time = lambda: datetime(2099, 1, 1, tzinfo=timezone.utc)
+            out = self.compile([sent()])
+            self.assertEqual(out["decision"]["status"], "HOLD_RECENT_COUNTERPARTY_CONTACT")
+            self.assertFalse(out["decision"]["evaluated_at"].startswith("2099-"))
+        finally:
+            if original is None:
+                delattr(guard, "_current_time")
+            else:
+                guard._current_time = original
+
+    def test_38_authority_ceiling_exact_false(self):
         out = self.compile()
         self.assertEqual(set(out["decision"]["authority"]), set(guard.AUTHORITY))
         self.assertFalse(any(out["decision"]["authority"].values()))
