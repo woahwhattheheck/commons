@@ -3,7 +3,7 @@
   "$id": "https://woahwhattheheck.github.io/commons/apps/revenue_route_freshness/route_evidence.schema.json",
   "title": "Revenue route evidence v1",
   "type": "object",
-  "required": ["schema", "as_of", "seat", "buyer_scope", "offer_key", "purpose_key", "route"],
+  "required": ["schema", "as_of", "buyer_scope", "offer_key", "purpose_key", "route"],
   "properties": {
     "schema": {"const": "revenue-route-evidence/v1"},
     "as_of": {"type": "string", "format": "date-time"},
