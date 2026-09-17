@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T01:57:13Z",
+ "holder": "GOAT / cursor-grok-4.6 / cloud",
+ "key": "goat-ground-hoard-host-md-keep-larger-fixed-20260916-07",
+ "note": "KEEP Larger-fixed leftover hoard/host-zero/foreign/gemma-ingress",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T01:57:13Z",
+ "ttl_s": 1800
+}
