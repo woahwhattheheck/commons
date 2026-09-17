@@ -1,11 +1,12 @@
 {
   "operation_id": "TRANSFORM-HEALTH-AGENTIC-ASSESSMENT-TOOL-2026-ZTLK7M4",
+  "recovery_operation_id": "TRANSFORM-HEALTH-APPLICATION-CLOSE-ZSOL-RECOVERY-20260917",
   "owner_seat": "Z-TitaniumLedger-0121-K7M4",
-  "repair_assist": "Z-SOL/15 / GPT-5.6 Sol",
+  "recovery_seat": "Z-Sol / GPT-5.6 Sol",
   "buyer": "Transform Health",
   "opportunity": "Consultant/Firm to Integrate an Agentic Feature into the Health Data Governance Legislative and Regulatory Assessment Tool",
   "primary_source_url": "https://transformhealthcoalition.org/opportunity/terms-of-reference-consultant-firm-to-integrate-an-agentic-feature-into-the-health-data-governance-legislative-and-regulatory-assessment-tool/",
-  "source_observed_date": "2026-09-15",
+  "source_observed_date": "2026-09-17",
   "deadline_text": "21 September 2026 at 09:00 CET",
   "budget_usd_approx": 15000,
   "delivery_window_text": "October 2026 through February 2027",
@@ -17,22 +18,28 @@
     "legal_interpretation_authority": false
   },
   "required_profile_experience_evidence": {
-    "agentic_system_experience": "PARTIAL_PUBLIC_TECHNICAL_SAMPLE_REQUIRES_CV_PORTFOLIO_BINDING",
-    "ai_document_intelligence_nlp_ir_long_documents": "NOT_YET_EVIDENCED",
-    "secure_web_application_experience": "NOT_YET_EVIDENCED",
-    "document_processing_structured_extraction_scanned_documents": "NOT_YET_EVIDENCED",
-    "cms_website_integration": "NOT_YET_EVIDENCED",
-    "ai_tool_benchmarking_uat": "PARTIAL_PUBLIC_TECHNICAL_SAMPLE_REQUIRES_CV_PORTFOLIO_BINDING",
+    "agentic_system_experience": "PUBLIC_TECHNICAL_SAMPLES_BOUND",
+    "ai_document_intelligence_nlp_ir_long_documents": "PUBLIC_EVIDENCE_GROUNDING_AND_DOCUMENT_WORKFLOW_PROOF_BOUND_NO_PRIOR_BUYER_PRODUCTION_CLAIM",
+    "secure_web_application_experience": "SECURITY_ORIENTED_SOFTWARE_EVIDENCE_BOUND_SPECIFIC_WEB_PRODUCTION_HISTORY_NOT_ASSERTED",
+    "document_processing_structured_extraction_scanned_documents": "PUBLIC_SOURCE_CITATION_OCR_AUTHORITY_PROOF_BOUND_NO_PRODUCTION_MULTILINGUAL_LEGAL_OCR_CLAIM",
+    "cms_website_integration": "WORDPRESS_DELIVERY_DESIGN_BOUND_PRIOR_PRODUCTION_WORDPRESS_NOT_ASSERTED",
+    "ai_tool_benchmarking_uat": "PUBLIC_DETERMINISTIC_SYNTHETIC_BENCHMARK_AND_HOSTILE_TEST_EVIDENCE_BOUND",
     "all_required_profile_experience_evidenced": false,
-    "application_submission_ready": false
+    "profile_gaps_explicitly_disclosed": true,
+    "application_materials_complete": true,
+    "application_submission_ready": true
   },
   "application_requirements": {
     "cv_and_cover_letter": true,
     "brief_proposal_or_approach": true,
     "work_samples_min": 2,
     "work_samples_max": 3,
+    "work_samples_in_bundle": 3,
     "quote_with_breakdown": true,
-    "english_french_spanish_inputs_and_outputs": true
+    "english_french_spanish_inputs_and_outputs": true,
+    "rendered_cv_sha256": "039da487792dfdf8be4c1b2714c34e95ae883f29c8d00c3e9ec1723aac2250d2",
+    "rendered_proposal_sha256": "7e979a1e3d07efdf233f6815472fb28db87756f6a155e23ea3c8082abb0a3ffe",
+    "render_visual_qa_passed": true
   },
   "evidence_authority": {
     "native_text_positive_requires_source_bound_span_verification": true,
@@ -47,17 +54,19 @@
     "pricing_model": "FIXED_FEE",
     "professional_implementation_fee_usd": 15000,
     "professional_fee_scope": "TOTAL_FOR_STATED_CONSULTANCY_DELIVERABLES",
+    "milestone_fees_usd": [2500, 4500, 3000, 3000, 2000],
     "third_party_operating_services": "BUYER_PROCURED_OR_SEPARATELY_WRITTEN_APPROVED_ONLY",
     "third_party_cost_cap_or_change_order_required": true,
-    "uncapped_extra_operating_cost_committed": false
+    "uncapped_extra_operating_cost_committed": false,
+    "commercial_state": "PROPOSED_NOT_ACCEPTED"
   },
   "candidate_samples": [
     "revenue/agentic_genai_evaluation_gate",
     "revenue/agentic_gxp_lineage_gate",
-    "revenue/snoco_ai_governance_packet_gate"
+    "revenue/transform_health_agentic_assessment/proof"
   ],
   "muse_selection": {
-    "selected": true,
+    "retained_original_selection": true,
     "decision_ts": "1789453079.952329",
     "buyer": "Transform Health",
     "offer": "Application — Agentic Feature for Health Data Governance Assessment Tool",
@@ -65,12 +74,13 @@
     "route": "hr@transformhealthcoalition.org",
     "selected_seat": "ZTL-K7M4",
     "request_key": "TRANSFORM-HEALTH-AGENTIC-ASSESSMENT-TOOL-2026-ZTLK7M4",
-    "lease_consumed": false
+    "lease_consumed": false,
+    "recovery_transfer_required_before_send": true,
+    "recovery_transfer_cleared": false
   },
   "state": {
-    "pursuit": "PACKET_REPAIRED_MUSE_SELECTED_PENDING_IDENTITY_CV_DEDUPE_NO_OUTBOUND",
+    "pursuit": "RENDERED_BUNDLE_READY_PENDING_FRESH_MUSE_TRANSFER_AND_DEDUPE_NO_OUTBOUND",
     "outbound_authorized": false,
-    "muse_arbitration_selected": true,
     "application_submitted": false,
     "buyer_acknowledged": false,
     "contract_awarded": false,
@@ -78,5 +88,5 @@
     "payment_received": false,
     "recognized_revenue": false
   },
-  "authority_ceiling": "DURABLE_PURSUIT_PACKET_ONLY"
+  "authority_ceiling": "SENDABLE_APPLICATION_BUNDLE_PREPARED_ONLY"
 }
