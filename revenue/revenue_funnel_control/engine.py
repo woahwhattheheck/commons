@@ -250,6 +250,22 @@ def _compile_opportunity(raw: Any, evaluation_at: datetime, threshold: int) -> d
     if "PAYMENT_RECEIVED" in kinds and not ({"AWARDED", "INVOICE_ISSUED"} & kinds):
         raise FunnelError(f"{op_id}: payment requires award or invoice evidence")
 
+    # Presence is not chronology. Every milestone must have a qualifying predecessor
+    # at or before its own observation time; a later event cannot retroactively
+    # authorize an earlier acceptance, award, invoice, or payment.
+    seen: set[str] = set()
+    for e in events:
+        kind = e["kind"]
+        if kind in {"PROPOSAL_SENT", "CLAIM_SUBMITTED"} and "QUALIFIED" not in seen:
+            raise FunnelError(f"{op_id}: {kind} predates qualification")
+        if kind in {"ACCEPTED", "MERGED"} and not ({"PROPOSAL_SENT", "CLAIM_SUBMITTED"} & seen):
+            raise FunnelError(f"{op_id}: {kind} predates proposal/claim")
+        if kind in {"AWARDED", "INVOICE_ISSUED"} and not ({"ACCEPTED", "MERGED"} & seen):
+            raise FunnelError(f"{op_id}: {kind} predates accepted/merged evidence")
+        if kind == "PAYMENT_RECEIVED" and not ({"AWARDED", "INVOICE_ISSUED"} & seen):
+            raise FunnelError(f"{op_id}: payment predates award/invoice")
+        seen.add(kind)
+
     payment_total = sum(e["amount_cents"] or 0 for e in events if e["kind"] == "PAYMENT_RECEIVED")
     stage = _stage_for(kinds, payment_total, reference_amount)
     action = _next_action(stage, events)
@@ -373,9 +389,17 @@ def _load_json_strict(path: Path, *, limit: int = 8_000_000) -> Any:
         before = os.fstat(fd)
         if not stat.S_ISREG(before.st_mode) or before.st_size > limit:
             raise FunnelError("input changed or is not regular")
-        raw = os.read(fd, limit + 1)
+        chunks: list[bytes] = []
+        remaining = limit + 1
+        while remaining:
+            chunk = os.read(fd, min(131072, remaining))
+            if not chunk:
+                break
+            chunks.append(chunk)
+            remaining -= len(chunk)
+        raw = b"".join(chunks)
         after = os.fstat(fd)
-        if len(raw) > limit or (before.st_dev, before.st_ino, before.st_size) != (after.st_dev, after.st_ino, after.st_size):
+        if len(raw) > limit or len(raw) != before.st_size or (before.st_dev, before.st_ino, before.st_size) != (after.st_dev, after.st_ino, after.st_size):
             raise FunnelError("input changed while reading")
     finally:
         os.close(fd)
