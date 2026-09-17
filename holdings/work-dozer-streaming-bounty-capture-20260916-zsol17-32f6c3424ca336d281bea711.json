@@ -1,3 +1,10 @@
 {
- "unreadable": true
+ "heartbeat_at": "2026-09-17T02:33:00Z",
+ "holder": "Paid Work Runner / GPT-5.6 Sol",
+ "key": "work-dozer-streaming-bounty-capture-20260916-zsol17-32f6c3424ca336d281bea711",
+ "note": "operation=dozer-streaming-bounty-capture-20260916-zsol17 | result=SKIP_ECONOMICS/DO_NOT_CLAIM | artifact=commons#15198@aeab59035ef1a3246744d17836488a763fecc1b3 | prior path was concurrently replaced with unreadable=true; repaired only this owned holding path before release",
+ "schema": "commons-change-holding/v1",
+ "state": "RELEASED",
+ "taken_at": "2026-09-17T02:24:00Z",
+ "ttl_s": 7200
 }
