@@ -1,14 +1,21 @@
 {
  "lanes": [
+  {"canonical":15137,"chain":[15135,15137],"content_keys":["5b5b6faae48041c5"],"families":["PROCUREMENT-AWARD-SOURCE-INGEST-ADAPTERS-20260916-ZSOL"],"lane":"lane-15135","open":[15137],"state":"OPEN","title":"feat(procurement): ingest structured award-source evidence"},
+  {"canonical":15124,"chain":[15121,15124],"content_keys":["f1d6ff2a76494e85"],"families":[],"lane":"lane-15121","open":[],"state":"MERGED","title":"test: prewarm reset workers on the act thread"},
+  {"canonical":15085,"chain":[15075,15085],"content_keys":["6e3ebe270588c9ed","b52536eb82de9772"],"families":[],"lane":"lane-15075","open":[],"state":"MERGED","title":"revenue: ship security questionnaire evidence pack (current-main successor)"},
   {"canonical":14960,"chain":[14958,14960],"content_keys":["46976841903f293e"],"families":[],"lane":"lane-14958","open":[],"state":"MERGED","title":"GROK: unbuilt-items.json live_cash larger_fixed (grok-unbuilt-items-json-larger-fixed-20260916-01)"},
   {"canonical":14778,"chain":[14648,14778],"content_keys":["c636782afa443072"],"families":[],"lane":"lane-14648","open":[],"state":"MERGED","title":"Recover reviewed ADIA structural-break carrier on current main"},
   {"canonical":14766,"chain":[14612,14766],"content_keys":["ea9bc69c255a26b1"],"families":[],"lane":"lane-14612","open":[],"state":"MERGED","title":"NIH SPARK: recover reviewed reload-authority repair onto current main"},
-  {"canonical":14594,"chain":[14584,14594],"content_keys":["aaed93723cc0af07","d2033eba217e795b"],"families":[],"lane":"lane-14584","open":[],"state":"MERGED","title":"Fix NIH SPARK retrieval receipt authority after #14584"},
-  {"canonical":14532,"chain":[14492,14511,14532],"content_keys":["26fc3e1040620893","a936c324666fd668"],"families":["COMMERCIAL-DEAL-ROOM-PROVIDER-TOCTOU-RECOVERY-ZRCF9K2","COMMERCIAL-DEAL-ROOM-RELOAD-GUARD-ZCMH4V9"],"lane":"lane-14492","open":[],"state":"MERGED","title":"fix(revenue): keep Deal Room guards active across engine reloads"}
+  {"canonical":14594,"chain":[14584,14594],"content_keys":["aaed93723cc0af07","d2033eba217e795b"],"families":[],"lane":"lane-14584","open":[],"state":"MERGED","title":"Fix NIH SPARK retrieval receipt authority after #14584"}
  ],
  "note": "lanes with two or more members; an open pull request row without a lane field is a lane of its own",
- "observed_at": "2026-09-16T22:49:41Z",
+ "observed_at": "2026-09-17T01:15:35Z",
  "recent_closed": [
+  {"closed_at":"2026-09-17T00:38:31Z","content_key":"5b5b6faae48041c5","created_at":"2026-09-17T00:37:31Z","head":"9bd368e81ae1849840e2b575178fa391fdc34730","links":[],"markers":[],"number":15135,"state":"CLOSED","title":"feat(procurement): ingest structured award-source evidence"},
+  {"closed_at":"2026-09-17T00:17:02Z","content_key":"UNKNOWN","created_at":"2026-09-17T00:16:10Z","head":"cb3e8963a23ff3dd09adc380701519113b53556f","links":[15121],"markers":[],"number":15124,"state":"MERGED","title":"test: prewarm reset workers on the act thread"},
+  {"closed_at":"2026-09-16T23:53:21Z","content_key":"f1d6ff2a76494e85","created_at":"2026-09-16T23:52:08Z","head":"e19f85351ea544eb4d7701acc25e7db43d945925","links":[],"markers":[],"number":15121,"state":"MERGED","title":"test: eliminate reset order dependence via dynamic module pre-warming"},
+  {"closed_at":"2026-09-16T23:05:06Z","content_key":"6e3ebe270588c9ed","created_at":"2026-09-16T22:47:17Z","head":"a11b5f8c4d0029af6c24089ea0c32ba1365c43db","links":[],"markers":[],"number":15085,"state":"MERGED","title":"revenue: ship security questionnaire evidence pack (current-main successor)"},
+  {"closed_at":"2026-09-16T22:47:30Z","content_key":"b52536eb82de9772","created_at":"2026-09-16T22:40:39Z","head":"b47dcaa97490ca092bcec617bacab7f06ca37b16","links":[15085],"markers":[],"number":15075,"state":"CLOSED","title":"revenue: ship security questionnaire evidence pack"},
   {"closed_at":"2026-09-16T20:26:56Z","content_key":"46976841903f293e","created_at":"2026-09-16T20:26:47Z","head":"6a997f370904b78aa478ed5789f190aa86fde1c7","links":[],"markers":[],"number":14960,"state":"MERGED","title":"GROK: unbuilt-items.json live_cash larger_fixed (grok-unbuilt-items-json-larger-fixed-20260916-01)"},
   {"closed_at":"2026-09-16T20:26:46Z","content_key":"46976841903f293e","created_at":"2026-09-16T20:24:47Z","head":"6a997f370904b78aa478ed5789f190aa86fde1c7","links":[],"markers":[],"number":14958,"state":"CLOSED","title":"GROK: unbuilt-items.json live_cash larger_fixed (grok-unbuilt-items-json-larger-fixed-20260916-01)"},
   {"closed_at":"2026-09-16T00:42:07Z","content_key":"UNKNOWN","created_at":"2026-09-16T00:41:42Z","head":"e1a9ecd58f320fddd073d5cdabda3842cf6c6bd0","links":[],"markers":[],"number":14778,"state":"MERGED","title":"Recover reviewed ADIA structural-break carrier on current main"},
@@ -16,10 +23,7 @@
   {"closed_at":"2026-09-16T00:43:19Z","content_key":"c636782afa443072","created_at":"2026-09-15T05:20:59Z","head":"d422798850c2803484a2da2b77df3e515196bc74","links":[14778],"markers":[],"number":14648,"state":"CLOSED","title":"research: recover and re-verify ADIA structural-break carrier on current main"},
   {"closed_at":"2026-09-16T00:16:42Z","content_key":"ea9bc69c255a26b1","created_at":"2026-09-15T03:27:34Z","head":"a46937dbeaa21caa72c30cbb03b8d535163ccc13","links":[],"markers":[],"number":14612,"state":"CLOSED","title":"NIH SPARK: preserve retrieval authority across baseline reloads"},
   {"closed_at":"2026-09-15T03:18:07Z","content_key":"d2033eba217e795b","created_at":"2026-09-15T03:17:04Z","head":"5f220b5347830b33b0bdb5d988768f1cf0d1d389","links":[],"markers":[],"number":14594,"state":"MERGED","title":"Fix NIH SPARK retrieval receipt authority after #14584"},
-  {"closed_at":"2026-09-15T03:10:00Z","content_key":"aaed93723cc0af07","created_at":"2026-09-15T03:06:17Z","head":"8b92b25189ef9fe08da1f247bca7de589fbdbf42","links":[14594],"markers":[],"number":14584,"state":"MERGED","title":"Recover NIH SPARK PubMed deterministic retrieval baseline"},
-  {"closed_at":"2026-09-15T01:10:12Z","content_key":"a936c324666fd668","created_at":"2026-09-15T01:03:50Z","head":"343b8541f49013fb81cf63440bac44b44e3c1f1e","links":[],"markers":["COMMERCIAL-DEAL-ROOM-RELOAD-GUARD-ZCMH4V9"],"number":14532,"state":"MERGED","title":"fix(revenue): keep Deal Room guards active across engine reloads"},
-  {"closed_at":"2026-09-15T00:54:23Z","content_key":"26fc3e1040620893","created_at":"2026-09-15T00:53:09Z","head":"fa74f894648fa832444486f3305bb9856fac8561","links":[14532],"markers":["COMMERCIAL-DEAL-ROOM-PROVIDER-TOCTOU-RECOVERY-ZRCF9K2"],"number":14511,"state":"MERGED","title":"fix(revenue): close Deal Room provider Mapping TOCTOU"},
-  {"closed_at":"2026-09-15T00:53:30Z","content_key":"26fc3e1040620893","created_at":"2026-09-15T00:46:29Z","head":"5f4137eb469cab51e8d7ad3c75e3496a9d9137a7","links":[],"markers":["COMMERCIAL-DEAL-ROOM-PROVIDER-TOCTOU-RECOVERY-ZRCF9K2"],"number":14492,"state":"CLOSED","title":"fix(revenue): close Deal Room provider Mapping TOCTOU"}
+  {"closed_at":"2026-09-15T03:10:00Z","content_key":"aaed93723cc0af07","created_at":"2026-09-15T03:06:17Z","head":"8b92b25189ef9fe08da1f247bca7de589fbdbf42","links":[14594],"markers":[],"number":14584,"state":"MERGED","title":"Recover NIH SPARK PubMed deterministic retrieval baseline"}
  ],
  "repo": "woahwhattheheck/commons",
  "schema": "commons-coordination-lanes/v1"
