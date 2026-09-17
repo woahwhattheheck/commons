@@ -9,13 +9,16 @@ STOPs: public-clock rebinding and irrelevant/pre-issue old-source history.
 """
 
 import datetime as dt
+import importlib
 from pathlib import Path
 import sys
 
 # Work under direct execution, unittest discovery, and dotted module invocation.
 TEST_DIR = Path(__file__).resolve().parent
-if str(TEST_DIR) not in sys.path:
-    sys.path.insert(0, str(TEST_DIR))
+ROOT = TEST_DIR.parent
+for path in (str(TEST_DIR), str(ROOT)):
+    if path not in sys.path:
+        sys.path.insert(0, path)
 
 import _proposal_validity_predecessor_suite as _pre
 
@@ -32,6 +35,14 @@ class GateTests(_pre.GateTests):
     def process_packet(self, a=None, b=None, now=NOW):
         evaluate, _verify = gate._build_current_api_for_test(lambda: now)
         return evaluate(a or issued_v2(), b or current_v2())
+
+    def test_package_import_surface_loads_hardened_facade(self):
+        packaged = importlib.import_module(
+            "revenue.proposal_validity_expiry_requote_gate.gate"
+        )
+        self.assertTrue(callable(packaged.evaluate_offer))
+        self.assertTrue(callable(packaged.verify_packet))
+        self.assertTrue(hasattr(packaged, "_build_current_api_for_test"))
 
     def test_old_current_packet_does_not_verify_after_runtime_expiry(self):
         a = issued_v2()
