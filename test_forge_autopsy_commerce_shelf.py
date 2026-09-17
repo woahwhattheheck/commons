@@ -17,8 +17,9 @@ class TestForgeAutopsyCommerceShelf(unittest.TestCase):
         self.assertIn("$29 once", raw)
         self.assertIn('href="./agent-rescue.html"', raw)
         self.assertIn("Open $29 Autopsy checkout", raw)
-        # Do not invent a second plink on this page.
-        self.assertNotIn("buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g", raw)
+        # Convert shelf may reuse the existing Autopsy live buy; exact
+        # allowlist is test_type_commerce_convert_shelf_20260917_01.py.
+        self.assertIn('id="buy-now-live-checkout"', raw)
 
 
 if __name__ == "__main__":

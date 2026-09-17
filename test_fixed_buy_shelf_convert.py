@@ -13,8 +13,8 @@ SURFACES = {
     "bazaar.html": "live-cash",
     "tools-cash.html": "cash-doors",
 }
-CONVERT_SURFACES = ("bazaar.html", "tools-cash.html")
-INERT_SURFACES = ("tips.html", "commerce.html")
+CONVERT_SURFACES = ("bazaar.html", "tools-cash.html", "commerce.html")
+INERT_SURFACES = ("tips.html",)
 PRODUCTS = {
     "hotel-room-turn-evidence.html": "https://buy.stripe.com/7sYdR8ckZgHLbCN50K43S0y",
     "late-cancel-noshow-fee-leakage.html": "https://buy.stripe.com/14AfZg1Gl3UZ7mxfFo43S0x",

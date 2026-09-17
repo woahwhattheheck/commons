@@ -1443,7 +1443,7 @@ class OutcomeCommerceTests(unittest.TestCase):
                 self.assertGreaterEqual(surface_html.count("js-checkout-slot"), 7)
                 self.assertIn("mailto:tokenjunkielabs@gmail.com", surface_html)
                 self.assertIn("pay.js", surface_html)
-                if surface_name == "pay.html":
+                if surface_name in ("pay.html", "commerce.html"):
                     continue
                 self.assertNotRegex(surface_html, stripe_url_pattern)
 
