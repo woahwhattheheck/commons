@@ -225,6 +225,20 @@ class RelationshipGuardDirectBoundaryTests(unittest.TestCase):
             for name, value in original.items():
                 setattr(guard, name, value)
 
+    def test_public_entrypoints_reject_dependency_injection(self):
+        packet = {"candidate": candidate(), "events": []}
+        forged = {"artifact_schema": "forged", "decision": {"status": "NO_CONFLICT_FOUND"}}
+
+        with self.assertRaises(TypeError):
+            compile_guard(packet, _compile_at_fn=lambda frozen, now, mode: forged)
+
+        artifact = compile_guard(packet)
+        with self.assertRaises(TypeError):
+            verify_guard(packet, artifact, _digest_fn=lambda value: "0" * 64)
+
+        with self.assertRaises(TypeError):
+            verify_guard(packet, artifact, _canonical_bytes_fn=lambda value: b"forged")
+
 
 if __name__ == "__main__":
     unittest.main()
