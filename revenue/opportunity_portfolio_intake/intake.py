@@ -25,6 +25,7 @@ SNAPSHOT_AUTHORITY_SCHEMA = 'commons-opportunity-portfolio-intake-snapshot-autho
 SNAPSHOT_AUTHORITY_KEY_ID = 'opportunity-intake-host-v1'
 SNAPSHOT_AUTHORITY_KEY_ENV = 'OPPORTUNITY_INTAKE_SNAPSHOT_AUTHORITY_KEY_HEX'
 MIN_SNAPSHOT_AUTHORITY_KEY_BYTES = 32
+MAX_TRUSTED_SNAPSHOT_AGE_SECONDS = 300
 PORTFOLIO_SCHEMA = 'commons-opportunity-portfolio/v1'
 MAX_OPPORTUNITIES = 64
 MAX_EVENTS_PER_OPPORTUNITY = 512
@@ -35,7 +36,6 @@ _RESERVED_BLOCKERS = {'DNR', 'CLOSED', 'ALREADY-SHIPPED', 'CUSTODY-INCOMPLETE', 
 _EVENT_KINDS = {'TAKE', 'RELEASE', 'EXPIRE', 'BLOCKER_OPEN', 'BLOCKER_RESOLVED', 'DNR', 'BUYER_REOPEN', 'CLOSED', 'SHIPPED'}
 _ORIGINS = {'BUYER', 'SOURCE_AUTHORITY', 'INTERNAL'}
 _SECRET_PATTERNS = (re.compile('-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----'), re.compile('\\bgh[pousr]_[A-Za-z0-9]{20,}\\b'), re.compile('\\bsk-(?:proj-)?[A-Za-z0-9_-]{20,}\\b'), re.compile('\\bxox[baprs]-[A-Za-z0-9-]{20,}\\b'), re.compile('\\bAKIA[0-9A-Z]{16}\\b'))
-_AUTHORITY = {'contactAuthorized': False, 'sendAuthorized': False, 'submissionAuthorized': False, 'mergeAuthorized': False, 'spendAuthorized': False, 'paymentMutationAuthorized': False, 'buyerAcceptanceEstablished': False, 'revenueRecognitionAuthorized': False}
 
 class IntakeError(ValueError):
     """Fail-closed intake or verification error."""
@@ -172,7 +172,7 @@ def _normalize_opportunity(value: Any, index: int) -> dict[str, Any]:
     facts_copy.setdefault('labels', [])
     facts_copy.setdefault('exclusiveGroup', None)
     events_raw = _list(raw['events'], f'{field}.events')
-    if len(events_raw) > MAX_EVENTS_PER_OPPORTUNITY:
+    if len(events_raw) > MAX_EVENTS_PER_OPPORTUNITIES:
         raise IntakeError(f'{field}.events: too many events')
     normalized = [_normalize_event(event, f'{field}.events[{i}]') for i, event in enumerate(events_raw)]
     by_id: dict[str, dict[str, Any]] = {}
@@ -240,14 +240,14 @@ def _load_snapshot_authority_key() -> bytes:
 
 def _snapshot_authority_payload(authority: dict[str, Any]) -> dict[str, Any]:
     return {key: authority[key] for key in (
-        'schema', 'authorityId', 'generation', 'keyId', 'issuedAtUtc',
+        'schema', 'authorityId', 'generation', 'keyId', 'issuedAtUtc', 'actorSeat',
         'snapshotSource', 'eventProjectionSha256', 'opportunityCount',
         'eventCount', 'custodyComplete', 'statusComplete',
     )}
 
 def _normalize_snapshot_authority(value: Any) -> dict[str, Any]:
     raw = _dict(value, 'trusted_snapshot_authority')
-    expected = {'schema', 'authorityId', 'generation', 'keyId', 'issuedAtUtc', 'snapshotSource', 'eventProjectionSha256', 'opportunityCount', 'eventCount', 'custodyComplete', 'statusComplete', 'macSha256'}
+    expected = {'schema', 'authorityId', 'generation', 'keyId', 'issuedAtUtc', 'actorSeat', 'snapshotSource', 'eventProjectionSha256', 'opportunityCount', 'eventCount', 'custodyComplete', 'statusComplete', 'macSha256'}
     if set(raw) != expected:
         raise IntakeError('trusted_snapshot_authority: fields differ from authority contract')
     if raw['schema'] != SNAPSHOT_AUTHORITY_SCHEMA:
@@ -258,10 +258,11 @@ def _normalize_snapshot_authority(value: Any) -> dict[str, Any]:
     if key_id != SNAPSHOT_AUTHORITY_KEY_ID:
         raise IntakeError('trusted_snapshot_authority.keyId: untrusted key id')
     issued = _fmt_utc(_parse_utc(raw['issuedAtUtc'], 'trusted_snapshot_authority.issuedAtUtc'))
+    actor_seat = _str(raw['actorSeat'], 'trusted_snapshot_authority.actorSeat', pattern=_ID)
     source = _source(raw['snapshotSource'], 'trusted_snapshot_authority.snapshotSource')
     projection = _str(raw['eventProjectionSha256'], 'trusted_snapshot_authority.eventProjectionSha256', pattern=_SHA256)
     mac = _str(raw['macSha256'], 'trusted_snapshot_authority.macSha256', pattern=_SHA256)
-    return {'schema': SNAPSHOT_AUTHORITY_SCHEMA, 'authorityId': authority_id, 'generation': generation, 'keyId': key_id, 'issuedAtUtc': issued, 'snapshotSource': source, 'eventProjectionSha256': projection, 'opportunityCount': _int(raw['opportunityCount'], 'trusted_snapshot_authority.opportunityCount'), 'eventCount': _int(raw['eventCount'], 'trusted_snapshot_authority.eventCount'), 'custodyComplete': _bool(raw['custodyComplete'], 'trusted_snapshot_authority.custodyComplete'), 'statusComplete': _bool(raw['statusComplete'], 'trusted_snapshot_authority.statusComplete'), 'macSha256': mac}
+    return {'schema': SNAPSHOT_AUTHORITY_SCHEMA, 'authorityId': authority_id, 'generation': generation, 'keyId': key_id, 'issuedAtUtc': issued, 'actorSeat': actor_seat, 'snapshotSource': source, 'eventProjectionSha256': projection, 'opportunityCount': _int(raw['opportunityCount'], 'trusted_snapshot_authority.opportunityCount'), 'eventCount': _int(raw['eventCount'], 'trusted_snapshot_authority.eventCount'), 'custodyComplete': _bool(raw['custodyComplete'], 'trusted_snapshot_authority.custodyComplete'), 'statusComplete': _bool(raw['statusComplete'], 'trusted_snapshot_authority.statusComplete'), 'macSha256': mac}
 
 def _verify_snapshot_authority_capability(authority: dict[str, Any]) -> None:
     key = _load_snapshot_authority_key()
@@ -294,6 +295,7 @@ def issue_host_snapshot_authority(
         'generation': generation,
         'keyId': SNAPSHOT_AUTHORITY_KEY_ID,
         'issuedAtUtc': _fmt_utc(issued),
+        'actorSeat': normalized['actorSeat'],
         'snapshotSource': normalized['snapshot']['source'],
         'eventProjectionSha256': _snapshot_projection_sha256(normalized),
         'opportunityCount': len(normalized['opportunities']),
@@ -314,10 +316,15 @@ def _resolve_snapshot_authority(normalized: dict[str, Any], trusted_snapshot_aut
     _verify_snapshot_authority_capability(authority)
     issued = _parse_utc(authority['issuedAtUtc'], 'trusted_snapshot_authority.issuedAtUtc')
     snapshot_at = _parse_utc(authority['snapshotSource']['observedAt'], 'trusted_snapshot_authority.snapshotSource.observedAt')
+    if authority['actorSeat'] != normalized['actorSeat']:
+        raise IntakeError('trusted snapshot authority actorSeat does not match packet actorSeat')
     if issued < snapshot_at:
         raise IntakeError('trusted snapshot authority predates its snapshot generation')
     if issued > trusted_as_of:
         raise IntakeError('trusted snapshot authority is newer than trusted_as_of')
+    snapshot_age_seconds = int((trusted_as_of - snapshot_at).total_seconds())
+    if snapshot_age_seconds > MAX_TRUSTED_SNAPSHOT_AGE_SECONDS:
+        raise IntakeError(f'trusted snapshot is older than {MAX_TRUSTED_SNAPSHOT_AGE_SECONDS} seconds')
     if _canonical(authority['snapshotSource']) != _canonical(normalized['snapshot']['source']):
         raise IntakeError('trusted snapshot authority source does not match packet snapshot generation')
     if authority['eventProjectionSha256'] != projection_sha:
@@ -330,7 +337,7 @@ def _resolve_snapshot_authority(normalized: dict[str, Any], trusted_snapshot_aut
         raise IntakeError('packet custodyComplete disagrees with trusted snapshot authority')
     if authority['statusComplete'] != normalized['snapshot']['statusComplete']:
         raise IntakeError('packet statusComplete disagrees with trusted snapshot authority')
-    return (authority['custodyComplete'], authority['statusComplete'], {'trusted': True, 'authorityId': authority['authorityId'], 'generation': authority['generation'], 'keyId': authority['keyId'], 'issuedAtUtc': authority['issuedAtUtc'], 'authorityDigestSha256': _digest(authority), 'eventProjectionSha256': projection_sha, 'effectiveCustodyComplete': authority['custodyComplete'], 'effectiveStatusComplete': authority['statusComplete']})
+    return (authority['custodyComplete'], authority['statusComplete'], {'trusted': True, 'authorityId': authority['authorityId'], 'generation': authority['generation'], 'keyId': authority['keyId'], 'issuedAtUtc': authority['issuedAtUtc'], 'actorSeat': authority['actorSeat'], 'authorityDigestSha256': _digest(authority), 'eventProjectionSha256': projection_sha, 'effectiveCustodyComplete': authority['custodyComplete'], 'effectiveStatusComplete': authority['statusComplete']})
 
 def _evidence_digest(event: dict[str, Any]) -> str:
     return event['source']['digestSha256']
@@ -455,7 +462,7 @@ def _compile_normalized(normalized: dict[str, Any], trusted_as_of_text: str, tru
         allocator_receipt = compile_portfolio(portfolio_input, trusted_as_of=trusted_as_of_text)
     except PortfolioError as exc:
         raise IntakeError(f'downstream opportunity_portfolio rejected intake: {exc}') from exc
-    body = {'schema': RECEIPT_SCHEMA, 'trustedAsOf': _fmt_utc(trusted_as_of), 'normalizedIntake': normalized, 'normalizedIntakeSha256': _digest(normalized), 'snapshotAuthority': authority_binding, 'portfolioInput': portfolio_input, 'portfolioInputSha256': _digest(portfolio_input), 'allocatorReceiptDigestSha256': allocator_receipt['receiptDigestSha256'], 'folds': sorted(folds, key=lambda fold: fold['id']), 'authority': dict(_AUTHORITY)}
+    body = {'schema': RECEIPT_SCHEMA, 'trustedAsOf': _fmt_utc(trusted_as_of), 'normalizedIntake': normalized, 'normalizedIntakeSha256': _digest(normalized), 'snapshotAuthority': authority_binding, 'portfolioInput': portfolio_input, 'portfolioInputSha256': _digest(portfolio_input), 'allocatorReceiptDigestSha256': allocator_receipt['receiptDigestSha256'], 'folds': sorted(folds, key=lambda fold: fold['id']), 'authority': {'contactAuthorized': False, 'sendAuthorized': False, 'submissionAuthorized': False, 'mergeAuthorized': False, 'spendAuthorized': False, 'paymentMutationAuthorized': False, 'buyerAcceptanceEstablished': False, 'revenueRecognitionAuthorized': False}}
     return {**body, 'receiptDigestSha256': _digest(body)}
 
 def compile_intake(payload: Any, *, trusted_as_of: str, trusted_snapshot_authority: Any | None=None) -> dict[str, Any]:
@@ -493,6 +500,6 @@ def verify_receipt(receipt: Any, *, trusted_snapshot_authority: Any | None=None)
     rebuilt = compile_intake(raw.get('normalizedIntake'), trusted_as_of=raw.get('trustedAsOf'), trusted_snapshot_authority=trusted_snapshot_authority)
     if _canonical(rebuilt) != _canonical(raw):
         raise IntakeError('receipt: deterministic recompilation mismatch')
-    if raw.get('authority') != _AUTHORITY:
+    if raw.get('authority') != {'contactAuthorized': False, 'sendAuthorized': False, 'submissionAuthorized': False, 'mergeAuthorized': False, 'spendAuthorized': False, 'paymentMutationAuthorized': False, 'buyerAcceptanceEstablished': False, 'revenueRecognitionAuthorized': False}:
         raise IntakeError('receipt: authority ceiling mismatch')
     return raw
