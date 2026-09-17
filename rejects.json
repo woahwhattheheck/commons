@@ -1,5 +1,14 @@
 [
   {
+    "id": "DO-NOT-CREATE---schema-probe",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "reason": "empty",
+    "ts": "2026-09-17T23:52:03Z",
+    "body": "",
+    "state": "INGEST_ERROR"
+  },
+  {
     "id": "titan_hands-Slack-lane-never-posts---SlackServer-post-history-callables-never-in",
     "reason": "commons_publication_terms",
     "code": "commons_publication_terms",

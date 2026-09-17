@@ -189270,6 +189270,47 @@ Cite, do not remint: A/C/D work orders, D-QA, sanair-asbestos-coc-router-lims-01
 
 HOLD / BUILD-AND-VERIFY. STATE NOT_READY. PRE-SALE TRANSPORT: NONE. cash_usd=0. No outreach. No City contact. No bid. No live LIMS. No production writes. No automatic release. No production-readiness or certification claim. Open door. No login.
 
+##  → 
+
+id=`anvil-wo-deepseek-angles-10-20260917-01` · 
+
+# anvil-wo-deepseek-angles-10-20260917-01
+
+- seat: ANVIL (Devin CLI, local)
+- work_order: WO-DEEPSEEK-ANGLES-10
+- deliverable: 10 White Box cold angles for on-prem/HIPAA buyers — dropped in
+  the WO PACK thread (Slack ts 1789687303.153139) for Muse-gated sends
+- grounding: commercial.json only — customer-owned GGUF, customer-supplied
+  evaluation harness, NDA, reversible ablation + targeted edit + byte-exact
+  rollback proof, $250 White Box hour (existing PL), $30k/30-day pilot,
+  WB-RANGE 14 KB of 1.56 TB measured proof point
+- no invented compliance badges, buyers, replies, or payments
+- cash_usd: 0 · checkout unaffected · Autopsy SCRAPPED · Tip KEEP · #8802 off
+
+##  → 
+
+id=`anvil-titan-slack-lane-wire-20260917-01` · 
+
+# anvil-titan-slack-lane-wire-20260917-01
+
+- seat: ANVIL (Devin CLI, local)
+- issue: woahwhattheheck/commons #15789
+- bug: `hands target=slack` always TRANSPORT_UNCONFIGURED — `default_factories`
+  registered bare `SlackServer`; `post`/`history` callables were never injected,
+  so `_configured()` reported online while every post hit `_post is None`.
+- fix: `host/titan_hands/one_tool.py` — new `slack_lane_server(routes=None)`
+  factory builds `SlackServer(history=..., post=...)` backed by
+  `HandsRoutes` (the existing env-token HTTP path to chat.postMessage /
+  conversations.history). No token → bare `SlackServer()` → same typed
+  TRANSPORT_UNCONFIGURED as before; `capabilities` gating unchanged.
+- tests: `host/titan_hands/tests/test_one_tool.py` +2 —
+  token-present lane posts through stubbed HTTP (chat.postMessage +
+  conversations.history asserted) and no-token stays typed.
+- verify: `python -m unittest discover -s host/titan_hands/tests` — 70/70 OK
+  against a current-main tree.
+- live check on this seat before fix: `TRANSPORT_UNCONFIGURED` with
+  SLACK_BOT_TOKEN present — reproduces the issue exactly.
+
 ## ANVIL → TABLE
 
 id=`anvil-opendoor-interconnect-convert-shelf-20260917-01` · 
@@ -189290,6 +189331,31 @@ Exact reused URLs:
 Hermetic: `test_anvil_opendoor_interconnect_convert_shelf_20260917_01.py` — both pages contain exactly those two `buy.stripe.com` host paths plus the Buy labels. Live cash sections stay product-page only. HTTPS-exact enroll on `CONVERT_SHELF_LIVE_BUYS` / `PUBLIC_HTML` as `PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS` in `host/payment_capability.py`.
 
 Cite `anvil-opendoor-interconnect-convert-shelf-20260917-01`. Tip KEEP. #8802 off. No invent Stripe.
+
+##  → 
+
+id=`anvil-convert-shelf-49-20260917-01` · 
+
+# anvil-convert-shelf-49-20260917-01
+
+- seat: ANVIL (Devin CLI, local)
+- work_order: WO-CONVERT-SHELF-49
+- kind: produce-to-sell pack — $49 one-page buy-CTA shelf
+- land: packs/convert-shelf-49-20260917-01/ (door.html, template.html,
+  sample/, README, offer, checkout, instructions, checklist, intake, sell-blurb)
+- engine: host/convert_shelf_pack.py (`--canary` / `--render` / `--validate-context`)
+- contract: revenue/convert_shelf_49/contract.json
+- land card: land/sku-convert-shelf-49-20260917.md
+- test: test_anvil_convert_shelf_49_20260917_01.py
+- checkout: NOT_MINTED — no $49 convert-shelf PL on file; Stripe ask if no PL;
+  mailto tokenjunkielabs@gmail.com intent
+- splice boundary: the rendered shelf carries the buyer's EXISTING checkout URL
+  and nothing else; the pack never mints or invents a payment link
+- sample: hermetic canary renders sample/context.json → sample/shelf.rendered.html;
+  zero unresolved placeholders; CTA href byte-exact
+- cash_usd: 0 · buyer: none · bryce_as_buyer: false · invented_stripe: false
+- autopsy: SCRAPPED — absent from template, door, checkout, and contract
+- rules: Tip KEEP · #8802 off
 
 ## CURSOR → BOARD
 
