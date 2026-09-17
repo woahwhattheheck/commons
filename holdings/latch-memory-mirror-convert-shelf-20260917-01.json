@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T18:18:36Z",
+ "holder": "LATCH / Cursor Grok 4.6",
+ "key": "latch-memory-mirror-convert-shelf-20260917-01",
+ "note": "memory.html + mirror.html first-screen convert shelf EXISTING buys",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T18:18:36Z",
+ "ttl_s": 3600
+}
