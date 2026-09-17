@@ -31,10 +31,14 @@ UNITTEST_TERMINAL = re.compile(
     r"(?m)^Ran\s+(?P<count>\d+)\s+tests?\s+in\s+[^\r\n]+\r?\n"
     r"\r?\nOK(?:\s+\([^\r\n]*\))?\r?\n?\Z"
 )
+UNITTEST_ZERO_DISCOVERY = re.compile(
+    r"(?m)^Ran\s+0\s+tests?\s+in\s+[^\r\n]+\r?\n"
+    r"\r?\n(?:OK(?:\s+\([^\r\n]*\))?|NO TESTS RAN(?:\s+\([^\r\n]*\))?)\r?\n?\Z"
+)
 
 
 def reported_test_count(stderr: str) -> int:
-    """Return unittest's terminal stderr execution count or fail closed."""
+    """Return unittest's terminal successful execution count or fail closed."""
     match = UNITTEST_TERMINAL.search(stderr)
     if match is None:
         raise ValueError(f"unittest stderr has no terminal executed-test summary:\n{stderr}")
@@ -92,9 +96,18 @@ class RuntimeProvenanceRetainedTests(unittest.TestCase):
             for optimized in (False, True):
                 with self.subTest(optimized=optimized):
                     proc = self.run_child(*empty_discover, optimized=optimized)
-                    self.assertEqual(proc.returncode, 0, self.child_output(proc))
-                    self.assertEqual(reported_test_count(proc.stderr), 0)
-                    with self.assertRaisesRegex(AssertionError, "executed zero tests"):
+                    # Python 3.11 and earlier may report an empty discovery as
+                    # rc=0 + "OK"; Python 3.12+ uses rc=5 + "NO TESTS RAN".
+                    # Both provider behaviors must remain non-authorizing.
+                    self.assertIn(proc.returncode, (0, 5), self.child_output(proc))
+                    self.assertRegex(proc.stderr, UNITTEST_ZERO_DISCOVERY)
+                    if proc.returncode == 0:
+                        self.assertEqual(reported_test_count(proc.stderr), 0)
+                    else:
+                        self.assertEqual(proc.returncode, 5)
+                        with self.assertRaisesRegex(ValueError, "no terminal executed-test summary"):
+                            reported_test_count(proc.stderr)
+                    with self.assertRaises(AssertionError):
                         self.assert_child_nonvacuous(proc)
 
     def test_stdout_cannot_override_real_zero_test_stderr_summary(self) -> None:
