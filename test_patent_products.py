@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """Canaries for the patent-products door, sales insert, receipt, and registry.
 
-The door is proof/catalog, never a storefront. The insert is internal and
-must not invent payment links, buyers, cash, or device actuation.
+Patent product cards stay proof/catalog, never a storefront for those
+three tools. The insert is internal and must not invent payment links,
+buyers, cash, or device actuation. Commons convert shelf on the door
+reuses existing live Payment Links already on product pages.
 """
 from __future__ import annotations
 
@@ -29,11 +31,13 @@ TESTS = (
 )
 
 BANNED_EVERYWHERE = (
-    "buy.stripe.com",
-    "stripe.com/buy",
     "shopify.com",
     "fire 337",
     "fire_action",
+)
+BANNED_PAYMENT_ON_INSERT_AND_RECEIPT = (
+    "buy.stripe.com",
+    "stripe.com/buy",
 )
 
 
@@ -62,6 +66,10 @@ class TestPatentProductSurfaces(unittest.TestCase):
         for path in (DOOR, INSERT, POST):
             body = path.read_text().lower()
             for banned in BANNED_EVERYWHERE:
+                self.assertNotIn(banned.lower(), body, f"{banned} in {path}")
+        for path in (INSERT, POST):
+            body = path.read_text().lower()
+            for banned in BANNED_PAYMENT_ON_INSERT_AND_RECEIPT:
                 self.assertNotIn(banned.lower(), body, f"{banned} in {path}")
 
     def test_receipt_preserves_id_and_boundaries(self):
