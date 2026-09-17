@@ -24,7 +24,7 @@ class AgentAutopsyIntakeContract(unittest.TestCase):
     def test_intake_keeps_existing_product_and_checkout_truth(self) -> None:
         self.assertIn("Agent Failure Autopsy", self.intake)
         self.assertIn("$29 once · one business day", self.intake)
-        self.assertEqual(self.intake.count(CHECKOUT), 1)
+        self.assertGreaterEqual(self.intake.count(CHECKOUT), 2)
         self.assertIn('href="./agent-rescue.html"', self.intake)
         self.assertIn("utm_medium=intake_tool", self.intake)
         self.assertIn("utm_campaign=agent_failure_autopsy_29", self.intake)

@@ -253,6 +253,36 @@ CASH_DOORS_POINTER = (
 )
 CASH_DOORS_NEEDLE = "</section>\n<section>\n<h2>Catalog</h2>"
 CASH_DOORS_REPLACEMENT = "</section>\n" + CASH_DOORS_POINTER + "<section>\n<h2>Catalog</h2>"
+TOOLS_CONVERT_SHELF_STYLE = (
+    "<style>\n"
+    ".cta{display:inline-block;margin:.45rem .4rem .45rem 0;"
+    "padding:.7rem 1.05rem;border:1px solid #62b879;border-radius:8px;"
+    "background:#f0f0f2;color:#09090b!important;font-weight:800;"
+    "text-decoration:none}\n"
+    ".cta:hover{filter:brightness(1.06)}\n"
+    "</style>\n"
+)
+TOOLS_CONVERT_SHELF = (
+    '<section id="buy-now-live-checkout" class="law" '
+    'aria-label="Buy now — live checkout">\n'
+    "<strong>Buy now — live checkout.</strong> Existing live Payment Links. "
+    "No invented Stripe. A click is intent, not cash.\n"
+    "<p>\n"
+    '<a class="cta" data-checkout '
+    'href="https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g">'
+    "Buy Autopsy $29</a>\n"
+    '<a class="cta" data-checkout '
+    'href="https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07">'
+    "Buy one White Box hour $250</a>\n"
+    "</p>\n"
+    '<p class="note">Reuse only. Cite '
+    "<code>wire-tools-toolbench-convert-shelf-20260917-01</code>. Sources: "
+    '<a href="./agent-rescue.html">agent-rescue.html</a> · '
+    '<a href="./commercial.html">commercial.html</a> / '
+    '<a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. '
+    "No new Payment Links.</p>\n"
+    "</section>\n"
+)
 TOOLS_CASH_HOOK = (
     '<p class="note" id="cash-hook"><strong>Catalog cash</strong> — '
     '<a href="./tools.json"><code>tools.json</code> → <code>cash</code></a>: '
@@ -302,7 +332,9 @@ def splice_tools_cash_doors(root=None):
     hub_pages.rebuild_tools remints tools.html from the catalog and drops the
     unique live-cash pointer. Compose it back after each rebuild. Do not remint
     hub_pages.py leftover bytes. Also restore the unique leftover cash-hook and
-    DIGIT door cites that rebuild_tools does not emit.
+    DIGIT door cites that rebuild_tools does not emit. Also restore the
+    tools.html convert shelf (existing Autopsy $29 + White Box hour $250)
+    that rebuild_tools drops; cite wire-tools-toolbench-convert-shelf-20260917-01.
     """
     path = os.path.join(root or ROOT, "tools.html")
     with open(path, encoding="utf-8") as handle:
@@ -330,6 +362,24 @@ def splice_tools_cash_doors(root=None):
             text, ok = _insert_note_after_id(text, "cash-doors", TOOLS_DIGIT_DOOR)
         if not ok:
             raise RuntimeError("tools.html lost the splice point for digit-door")
+        changed = True
+    if 'id="buy-now-live-checkout"' not in text:
+        needle = '<section id="live-cash"'
+        idx = text.find(needle)
+        if idx < 0:
+            raise RuntimeError("tools.html lost live-cash splice point for convert shelf")
+        text = text[:idx] + TOOLS_CONVERT_SHELF + text[idx:]
+        changed = True
+    if ".cta{" not in text:
+        css_mark = 'href="./commons.css'
+        css_at = text.find(css_mark)
+        close = text.find(">", css_at) if css_at >= 0 else -1
+        if close < 0:
+            raise RuntimeError("tools.html lost commons.css splice point for convert CTA")
+        insert_at = close + 1
+        if insert_at < len(text) and text[insert_at] == "\n":
+            insert_at += 1
+        text = text[:insert_at] + TOOLS_CONVERT_SHELF_STYLE + text[insert_at:]
         changed = True
     if changed:
         _write(path, text)

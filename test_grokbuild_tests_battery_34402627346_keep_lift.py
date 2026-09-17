@@ -43,14 +43,14 @@ DEDUPE = (
     "236c87f0f877e00a76f36714bf439b064c54cbce:"
     "the whole battery, one failure fails the run"
 )
-TOOLS = "e8a088aa"
+TOOLS = "e970539c"
 STALE_TOOLS = "3f632f0a"
-BUILDS = "51c69d17"
-STALE_BUILDS = "c1313e23"
-FEATURES = "90d7e47b"
+BUILDS = "aebf4372"
+STALE_BUILDS = "5a93f3f9"
+FEATURES = "b0128863"
 STALE_FEATURES = "5a37e0a8"
-INGEST = "174bab0a"
-LEDGER = "35a08aea"
+INGEST = "f482b75b"
+LEDGER = "d46d4c1c"
 HUB = "7bc61c8b"
 
 
@@ -112,6 +112,15 @@ class TestGrokbuildTestsBattery34402627346KeepLift(unittest.TestCase):
             self.assertIn('id="cash-hook"', tools)
             self.assertIn('id="digit-door"', tools)
             self.assertIn("coil-tools-json-live-cash-20260905-01", tools)
+            self.assertIn('id="buy-now-live-checkout"', tools)
+            self.assertIn("Buy Autopsy $29", tools)
+            self.assertIn("Buy one White Box hour $250", tools)
+            self.assertIn(
+                "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g", tools
+            )
+            self.assertIn(
+                "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07", tools
+            )
             self.assertNotIn("hygiene seat", tools)
             written = {}
             builds_ledger.project(str(tmp), lambda p, t: written.__setitem__(p, t))
@@ -157,7 +166,6 @@ class TestGrokbuildTestsBattery34402627346KeepLift(unittest.TestCase):
                 board_ingest.TOOLS_CASH_HOOK,
                 board_ingest.TOOLS_DIGIT_DOOR,
                 board_ingest.FEATURES_DIGIT_SEAT,
-                (ROOT / "tools.html").read_text(encoding="utf-8"),
                 (ROOT / "builds.html").read_text(encoding="utf-8"),
                 (ROOT / "features.html").read_text(encoding="utf-8"),
                 receipt,
@@ -165,6 +173,12 @@ class TestGrokbuildTestsBattery34402627346KeepLift(unittest.TestCase):
         )
         self.assertNotIn('type="password"', cites)
         self.assertNotIn("buy.stripe.com", cites)
+        # Convert shelf on tools.html reuses existing live buys; Live cash
+        # product-page doors stay relative (wire-tools-toolbench-convert-shelf-20260917-01).
+        tools_html = (ROOT / "tools.html").read_text(encoding="utf-8")
+        live_cash = tools_html.split('id="live-cash"', 1)[1].split("</section>", 1)[0]
+        self.assertNotIn("buy.stripe.com", live_cash)
+        self.assertNotIn('type="password"', tools_html)
 
 
 if __name__ == "__main__":
