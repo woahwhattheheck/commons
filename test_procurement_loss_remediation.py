@@ -35,6 +35,12 @@ class ProcurementLossRemediationTests(unittest.TestCase):
         receipt = compile_plan(packet("stated_loss"))
         self.assertEqual(receipt["source_outcome"], "LOST")
         self.assertEqual(receipt["status"], "ACTIONABLE_GAPS")
+        self.assertEqual(len(receipt["source_evidence"]), 1)
+        source = receipt["source_evidence"][0]
+        self.assertEqual(source["evidence_id"], "notice-001")
+        self.assertEqual(source["source_digest_sha256"], "1" * 64)
+        self.assertEqual(source["observed_at"], "2026-09-17T11:00:00Z")
+        self.assertEqual(source["evidence_status"], "CURRENT")
         self.assertEqual(len(receipt["buyer_reasons"]), 1)
         reason = receipt["buyer_reasons"][0]
         self.assertEqual(reason["statement_attribution"], "BUYER_STATED_SOURCE_BOUND")
@@ -142,7 +148,7 @@ class ProcurementLossRemediationTests(unittest.TestCase):
     def test_tampered_remediation_receipt_is_rejected(self):
         raw = packet("stated_loss")
         receipt = compile_plan(raw)
-        receipt["status"] = "NO_ACTIONABLE_GAP"
+        receipt["source_evidence"][0]["evidence_status"] = "WITHDRAWN"
         with self.assertRaises(RemediationVerificationError):
             verify_plan(raw, receipt)
 
