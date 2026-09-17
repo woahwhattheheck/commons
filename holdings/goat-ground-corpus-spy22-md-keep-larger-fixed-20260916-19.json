@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T03:56:35Z",
+ "holder": "GOAT / cursor-grok-4.6",
+ "key": "goat-ground-corpus-spy22-md-keep-larger-fixed-20260916-19",
+ "note": "KEEP Larger-fixed leftover spy-22 corpus ground MD",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T03:56:35Z",
+ "ttl_s": 1800
+}
