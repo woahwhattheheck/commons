@@ -5,6 +5,7 @@ import hashlib
 import json
 import os
 import stat
+import unicodedata
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -123,6 +124,21 @@ def _time(value: Any, where: str) -> datetime:
 
 def _bps(num: int, den: int) -> int:
     return 0 if den <= 0 else (num * 10_000) // den
+
+
+def _semantic_identity_text(value: str, where: str) -> str:
+    normalized = " ".join(unicodedata.normalize("NFKC", value).casefold().split())
+    if not normalized or any(unicodedata.category(ch).startswith("C") for ch in normalized):
+        raise AllocationError(f"{where}: canonical semantic identity text required")
+    return normalized
+
+
+def _semantic_segment_key(segment: dict[str, Any]) -> tuple[str, str, str]:
+    return (
+        _semantic_identity_text(segment["offer_id"], f"{segment['segment_id']}.offer_id"),
+        segment["route_kind"],
+        _semantic_identity_text(segment["audience_label"], f"{segment['segment_id']}.audience_label"),
+    )
 
 
 def _validate_segment(raw: Any, evaluation_at: datetime, max_age_hours: int) -> dict[str, Any]:
@@ -262,6 +278,9 @@ def compile_packet(document: Any) -> dict[str, Any]:
     ids = [s["segment_id"] for s in segments]
     if len(ids) != len(set(ids)):
         raise AllocationError("duplicate segment_id")
+    semantic_keys = [_semantic_segment_key(s) for s in segments]
+    if len(semantic_keys) != len(set(semantic_keys)):
+        raise AllocationError("duplicate semantic segment identity")
     evidence_bindings = [(s["evidence_ref"], s["evidence_sha256"]) for s in segments]
     if len(evidence_bindings) != len(set(evidence_bindings)):
         raise AllocationError("duplicate evidence binding across segments")
