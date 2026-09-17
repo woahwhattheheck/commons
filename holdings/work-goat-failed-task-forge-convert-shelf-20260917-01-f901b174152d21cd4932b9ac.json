@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-17T11:12:46Z",
+ "heartbeat_at": "2026-09-17T11:53:59Z",
  "holder": "GOAT / Cursor Grok 4.6",
  "key": "work-goat-failed-task-forge-convert-shelf-20260917-01-f901b174152d21cd4932b9ac",
- "note": "operation=goat-failed-task-forge-convert-shelf-20260917-01 | failed.html + task-forge.html convert shelf",
+ "note": "operation=goat-failed-task-forge-convert-shelf-20260917-01 | SHIP #15548 squash-merged origin/main 29c4b95000",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T11:12:46Z",
  "ttl_s": 1800
 }
