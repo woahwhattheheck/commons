@@ -659,8 +659,14 @@ def _contains_sensitive_value(text: str, query_depth: int) -> bool:
     source, decoding_overflow = decode_percent_layers(raw_source)
     if decoding_overflow:
         return True
-    assignment_source = unicodedata.normalize("NFKC", source).casefold()
-    if any(pattern.search(source) for pattern in SENSITIVE_PATTERNS):
+    canonical_source = unicodedata.normalize("NFKC", source)
+    assignment_source = canonical_source.casefold()
+    source_candidates = (source,) if canonical_source == source else (source, canonical_source)
+    if any(
+        pattern.search(candidate)
+        for candidate in source_candidates
+        for pattern in SENSITIVE_PATTERNS
+    ):
         return True
     if _json_assignment_has_sensitive_value(assignment_source, query_depth):
         return True
@@ -691,24 +697,25 @@ def _contains_sensitive_value(text: str, query_depth: int) -> bool:
                 break
             glued_source = glued_source[current.end():]
             current = FIELD_ASSIGNMENT_START_RE.match(glued_source)
-    try:
-        parsed_json = json.loads(source)
-    except json.JSONDecodeError:
-        pass
-    except (MemoryError, RecursionError, TypeError, ValueError):
-        return True
-    else:
-        if _json_has_sensitive_field(parsed_json, query_depth):
+    for json_source in source_candidates:
+        try:
+            parsed_json = json.loads(json_source)
+        except json.JSONDecodeError:
+            continue
+        except (MemoryError, RecursionError, TypeError, ValueError):
             return True
-    if _url_query_has_sensitive_value(raw_source, query_depth):
-        return True
-    if source != raw_source:
-        if _url_query_has_sensitive_value(source, query_depth):
+        else:
+            if _json_has_sensitive_field(parsed_json, query_depth):
+                return True
+    scanned_components: set[str] = set()
+    for candidate in (raw_source, source, canonical_source):
+        if candidate in scanned_components:
+            continue
+        scanned_components.add(candidate)
+        if _url_query_has_sensitive_value(candidate, query_depth):
             return True
-    if _bare_component_has_sensitive_value(raw_source, query_depth):
-        return True
-    if source != raw_source and _bare_component_has_sensitive_value(source, query_depth):
-        return True
+        if _bare_component_has_sensitive_value(candidate, query_depth):
+            return True
     return False
 
 
