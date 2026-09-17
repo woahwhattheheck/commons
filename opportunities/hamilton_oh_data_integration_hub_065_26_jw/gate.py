@@ -10,6 +10,8 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
+import stat
 from datetime import datetime, timezone
 from pathlib import Path, PurePosixPath
 from typing import Any, Mapping, Sequence
@@ -144,7 +146,7 @@ def _sha(value: Any, label: str) -> str:
     return value
 
 
-def _retained_evidence_path(value: Any, sid: str) -> Path:
+def _retained_evidence_leaf(value: Any, sid: str) -> str:
     raw = _str(value, f"{sid}.retained_artifact.path")
     if "\\" in raw:
         raise GateError(f"{sid}.retained_artifact.path must use POSIX separators")
@@ -157,26 +159,64 @@ def _retained_evidence_path(value: Any, sid: str) -> Path:
         raise GateError(
             f"{sid}.retained_artifact.path must name one JSON file directly under retained_evidence/"
         )
+    return rel.name
 
+
+def _read_retained_evidence_bytes(value: Any, sid: str) -> bytes:
+    """Read one source-owned evidence inode through one no-follow fd generation."""
+    leaf = _retained_evidence_leaf(value, sid)
     package_dir = Path(__file__).resolve().parent
-    base = (package_dir / "retained_evidence").resolve()
-    candidate = package_dir.joinpath(*rel.parts)
-    cursor = package_dir
-    for part in rel.parts:
-        cursor = cursor / part
-        if cursor.is_symlink():
-            raise GateError(f"{sid}.retained_artifact.path must not traverse symlinks")
+    base = package_dir / "retained_evidence"
+    dir_flags = os.O_RDONLY | getattr(os, "O_DIRECTORY", 0) | getattr(os, "O_NOFOLLOW", 0)
+    file_flags = os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0) | getattr(os, "O_NONBLOCK", 0)
     try:
-        resolved = candidate.resolve(strict=True)
-    except FileNotFoundError as exc:
-        raise GateError(f"{sid}.retained_artifact is not retained in source tree") from exc
+        dir_fd = os.open(base, dir_flags)
+    except OSError as exc:
+        raise GateError(f"{sid}.retained_artifact evidence directory cannot be opened safely") from exc
     try:
-        resolved.relative_to(base)
-    except ValueError as exc:
-        raise GateError(f"{sid}.retained_artifact.path escapes retained_evidence/") from exc
-    if not resolved.is_file():
-        raise GateError(f"{sid}.retained_artifact must resolve to a regular file")
-    return resolved
+        directory = os.fstat(dir_fd)
+        if not stat.S_ISDIR(directory.st_mode):
+            raise GateError(f"{sid}.retained_artifact evidence root is not a directory")
+        try:
+            fd = os.open(leaf, file_flags, dir_fd=dir_fd)
+        except OSError as exc:
+            raise GateError(f"{sid}.retained_artifact is not retained in source tree") from exc
+        try:
+            before = os.fstat(fd)
+            if not stat.S_ISREG(before.st_mode):
+                raise GateError(f"{sid}.retained_artifact must resolve to a regular file")
+            if before.st_nlink != 1:
+                raise GateError(f"{sid}.retained_artifact must have exactly one filesystem link")
+            if before.st_size <= 0 or before.st_size > MAX_RETAINED_EVIDENCE_BYTES:
+                raise GateError(f"{sid}.retained_artifact has invalid retained byte length")
+
+            chunks: list[bytes] = []
+            size = 0
+            while size <= MAX_RETAINED_EVIDENCE_BYTES:
+                chunk = os.read(fd, min(65536, MAX_RETAINED_EVIDENCE_BYTES + 1 - size))
+                if not chunk:
+                    break
+                chunks.append(chunk)
+                size += len(chunk)
+            raw = b"".join(chunks)
+            after = os.fstat(fd)
+            before_id = (
+                before.st_dev, before.st_ino, before.st_mode, before.st_nlink,
+                before.st_size, before.st_mtime_ns, before.st_ctime_ns,
+            )
+            after_id = (
+                after.st_dev, after.st_ino, after.st_mode, after.st_nlink,
+                after.st_size, after.st_mtime_ns, after.st_ctime_ns,
+            )
+            if before_id != after_id:
+                raise GateError(f"{sid}.retained_artifact changed during authenticated read")
+            if not raw or len(raw) > MAX_RETAINED_EVIDENCE_BYTES or len(raw) != before.st_size:
+                raise GateError(f"{sid}.retained_artifact has invalid retained byte length")
+            return raw
+        finally:
+            os.close(fd)
+    finally:
+        os.close(dir_fd)
 
 
 def _internal_artifact_binding(
@@ -193,13 +233,7 @@ def _internal_artifact_binding(
     if expected_sha != source_sha:
         raise GateError(f"{sid}.retained_artifact.sha256 must equal source content_sha256")
 
-    path = _retained_evidence_path(locator.get("path"), sid)
-    try:
-        raw = path.read_bytes()
-    except OSError as exc:
-        raise GateError(f"{sid}.retained_artifact cannot be read") from exc
-    if not raw or len(raw) > MAX_RETAINED_EVIDENCE_BYTES:
-        raise GateError(f"{sid}.retained_artifact has invalid retained byte length")
+    raw = _read_retained_evidence_bytes(locator.get("path"), sid)
     if _raw_digest(raw) != expected_sha:
         raise GateError(f"{sid}.content_sha256 does not authenticate retained file bytes")
     try:
