@@ -1,10 +1,11 @@
 from __future__ import annotations
 
 import copy
+import hashlib
 import unittest
 
 from revenue.trafficflowbench_2026.benchmark import synthetic_evidence
-from revenue.trafficflowbench_2026.contract import UPSTREAM, authority_ceiling, contract_receipt, validate_authority_claims
+from revenue.trafficflowbench_2026.contract import UPSTREAM, authority_ceiling, canonical_json_bytes, contract_receipt, validate_authority_claims
 from revenue.trafficflowbench_2026.methods import projected_ridge_odme, queue_wave_forecast, reconstruct_state, triangular_fd_flow_cap
 from revenue.trafficflowbench_2026.scoring import odme_score, physics_score, queue_iou, state_regime_score, total_score
 from revenue.trafficflowbench_2026.submission import compile_submission, verify_compiled_submission
@@ -140,7 +141,7 @@ class SubmissionTests(unittest.TestCase):
         payload, receipt = compile_submission(self.keys, state_rows=self.state, queue_rows=self.queue, odme_rows=self.odme)
         payload2, receipt2 = compile_submission(self.keys, state_rows=self.state, queue_rows=self.queue, odme_rows=self.odme)
         self.assertEqual((payload, receipt), (payload2, receipt2))
-        self.assertTrue(verify_compiled_submission(payload, receipt))
+        self.assertTrue(verify_compiled_submission(payload, receipt, self.keys))
         self.assertIn("1,state,70.0,2100.0,0.0,0.0", payload)
         self.assertIn("2,queue,0.0,0.0,1.0,0.0", payload)
 
@@ -157,12 +158,34 @@ class SubmissionTests(unittest.TestCase):
 
     def test_receipt_tamper_fails(self):
         payload, receipt = compile_submission(self.keys, state_rows=self.state, queue_rows=self.queue, odme_rows=self.odme)
-        self.assertFalse(verify_compiled_submission(payload + "x", receipt))
+        self.assertFalse(verify_compiled_submission(payload + "x", receipt, self.keys))
         authority_tamper = copy.deepcopy(receipt)
         authority_tamper["authority"]["submissionSent"] = True
-        self.assertFalse(verify_compiled_submission(payload, authority_tamper))
+        self.assertFalse(verify_compiled_submission(payload, authority_tamper, self.keys))
         source_tamper = dict(receipt, upstreamCommit="deadbeef")
-        self.assertFalse(verify_compiled_submission(payload, source_tamper))
+        self.assertFalse(verify_compiled_submission(payload, source_tamper, self.keys))
+
+    def test_receipt_exact_keys_and_submission_key_generation_are_bound(self):
+        payload, receipt = compile_submission(self.keys, state_rows=self.state, queue_rows=self.queue, odme_rows=self.odme)
+        missing = dict(receipt)
+        del missing["gaps"]
+        self.assertFalse(verify_compiled_submission(payload, missing, self.keys))
+        extra = dict(receipt, surprise="field")
+        self.assertFalse(verify_compiled_submission(payload, extra, self.keys))
+        wrong_keys = copy.deepcopy(self.keys)
+        wrong_keys[0]["link_id"] = "OTHER"
+        self.assertFalse(verify_compiled_submission(payload, receipt, wrong_keys))
+        self.assertFalse(verify_compiled_submission(payload, receipt, list(reversed(self.keys))))
+
+    def test_rehashed_task_column_forgery_still_fails(self):
+        payload, receipt = compile_submission(self.keys, state_rows=self.state, queue_rows=self.queue, odme_rows=self.odme)
+        forged_payload = payload.replace("1,state,70.0,2100.0,0.0,0.0", "1,state,70.0,2100.0,0.0,9.0")
+        forged = copy.deepcopy(receipt)
+        forged["csvSha256"] = hashlib.sha256(forged_payload.encode("utf-8")).hexdigest()
+        body = dict(forged)
+        body.pop("receiptSha256")
+        forged["receiptSha256"] = hashlib.sha256(canonical_json_bytes(body)).hexdigest()
+        self.assertFalse(verify_compiled_submission(forged_payload, forged, self.keys))
 
     def test_task_specific_schema_edges_fail_closed(self):
         bad_regime = [dict(self.state[0], mask_regime="R4")]
@@ -178,7 +201,7 @@ class SubmissionTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             compile_submission(bad_keys, state_rows=self.state, queue_rows=self.queue, odme_rows=self.odme)
         payload, _ = compile_submission(self.keys, state_rows=self.state, queue_rows=self.queue, odme_rows=self.odme)
-        self.assertFalse(verify_compiled_submission(payload, []))
+        self.assertFalse(verify_compiled_submission(payload, [], self.keys))
 
 
 if __name__ == "__main__":
