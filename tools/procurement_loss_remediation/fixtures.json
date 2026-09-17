@@ -1,0 +1,117 @@
+{
+  "stated_loss": {
+    "outcome_record": {
+      "schema": "procurement-outcome-evidence/v1",
+      "opportunity_id": "SYNTH-LOSS-001",
+      "compiled_at": "2026-09-17T12:00:00Z",
+      "evidence": [
+        {
+          "evidence_id": "notice-001",
+          "bound_opportunity_id": "SYNTH-LOSS-001",
+          "source_kind": "BUYER_NOTICE",
+          "source_digest_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+          "observed_at": "2026-09-17T11:00:00Z",
+          "captured_at": "2026-09-17T11:05:00Z",
+          "evidence_status": "CURRENT",
+          "redacted": true,
+          "decision_signal": "NOT_SELECTED",
+          "rationale": {
+            "status": "STATED",
+            "text": "Required implementation reference was not demonstrated."
+          }
+        }
+      ]
+    },
+    "buyer_reason_mappings": [
+      {
+        "reason_id": "reason-reference-proof",
+        "evidence_id": "notice-001",
+        "source_digest_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+        "category": "QUALIFICATION_EVIDENCE"
+      }
+    ],
+    "internal_hypotheses": [],
+    "remediation_gaps": [
+      {
+        "gap_id": "gap-reference-proof",
+        "version": 1,
+        "gap_kind": "EVIDENCE",
+        "rail": "OPPORTUNITY_QUALIFICATION",
+        "basis_type": "BUYER_REASON",
+        "basis_id": "reason-reference-proof",
+        "action": "Require source-bound qualifying-reference evidence before prime-ready promotion."
+      }
+    ]
+  },
+  "unknown_reason_internal_hypothesis": {
+    "outcome_record": {
+      "schema": "procurement-outcome-evidence/v1",
+      "opportunity_id": "SYNTH-LOSS-002",
+      "compiled_at": "2026-09-17T12:00:00Z",
+      "evidence": [
+        {
+          "evidence_id": "notice-002",
+          "bound_opportunity_id": "SYNTH-LOSS-002",
+          "source_kind": "BUYER_NOTICE",
+          "source_digest_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+          "observed_at": "2026-09-17T11:30:00Z",
+          "captured_at": "2026-09-17T11:35:00Z",
+          "evidence_status": "CURRENT",
+          "redacted": true,
+          "decision_signal": "NOT_SELECTED",
+          "rationale": {"status": "UNKNOWN"}
+        }
+      ]
+    },
+    "buyer_reason_mappings": [],
+    "internal_hypotheses": [
+      {
+        "hypothesis_id": "hyp-runway",
+        "text": "Short pursuit runway may reduce the time available for qualification evidence collection.",
+        "confidence": "LOW",
+        "evidence_basis": [
+          {
+            "evidence_id": "notice-002",
+            "source_digest_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+            "observed_at": "2026-09-17T11:30:00Z"
+          }
+        ]
+      }
+    ],
+    "remediation_gaps": [
+      {
+        "gap_id": "gap-runway-screen",
+        "version": 1,
+        "gap_kind": "PROCESS",
+        "rail": "OPPORTUNITY_QUALIFICATION",
+        "basis_type": "INTERNAL_HYPOTHESIS",
+        "basis_id": "hyp-runway",
+        "action": "Track minimum pursuit runway as an internal qualification signal without assigning buyer causation."
+      }
+    ]
+  },
+  "pending_source": {
+    "outcome_record": {
+      "schema": "procurement-outcome-evidence/v1",
+      "opportunity_id": "SYNTH-HOLD-003",
+      "compiled_at": "2026-09-17T12:00:00Z",
+      "evidence": [
+        {
+          "evidence_id": "portal-003",
+          "bound_opportunity_id": "SYNTH-HOLD-003",
+          "source_kind": "PROCUREMENT_PORTAL",
+          "source_digest_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+          "observed_at": "2026-09-17T11:45:00Z",
+          "captured_at": "2026-09-17T11:46:00Z",
+          "evidence_status": "CURRENT",
+          "redacted": true,
+          "decision_signal": "PENDING",
+          "rationale": {"status": "UNKNOWN"}
+        }
+      ]
+    },
+    "buyer_reason_mappings": [],
+    "internal_hypotheses": [],
+    "remediation_gaps": []
+  }
+}
