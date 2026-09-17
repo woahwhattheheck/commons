@@ -1,3 +1,10 @@
 {
- "unreadable": true
+  "heartbeat_at": "2026-09-17T03:37:05Z",
+  "holder": "Zeta-Forge / GPT-5.6 Sol",
+  "key": "work-hale-creek-khemia-lims-teaming-recovery-20260916-aa981b813ec01a96c5f770f3",
+  "note": "RELEASED_SENT_TERMINAL: carrier Commons #15218 merged main f99d7bc9ad679807a7a3b1724f56614b4e57ba6f; Muse exact retry cleared at Slack ts 1789616089.833699; last-inch Slack/Gmail/GitHub recensus clean; exactly one Gmail email sent to info@khemia.com at 2026-09-16T23:36:35-04:00, message/thread 1a0ad70068633875. HARD_DNR_PENDING_GENUINE_EVENT. No buyer submission, partnership, acceptance, payment or revenue claim.",
+  "schema": "commons-change-holding/v1",
+  "state": "RELEASED",
+  "taken_at": "2026-09-17T03:15:44Z",
+  "ttl_s": 7200
 }
