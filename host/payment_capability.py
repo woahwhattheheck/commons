@@ -91,6 +91,8 @@ CONVERT_SHELF_LIVE_BUYS = {
     "coordination.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "observatory.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "tabletop.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "insights.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "grounding.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -159,6 +161,8 @@ PUBLIC_HTML = (
     "coordination.html",
     "observatory.html",
     "tabletop.html",
+    "insights.html",
+    "grounding.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
