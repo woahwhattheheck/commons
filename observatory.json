@@ -13,6 +13,41 @@
   ],
   "board_motion": [
     {
+      "from": "QUILL",
+      "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-17T07:06:50Z"
+    },
+    {
+      "from": "GOAT",
+      "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-17T07:05:00Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Accepted-Work-to-Cash-Reconciler",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T07:04:40Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Procurement-win-loss-evidence-loop--source-bound-outcome-compiler",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T07:04:38Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Revenue--compile-source-bound-procurement-submission-assembly-manifests",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T06:59:05Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "Revenue--recover-procurement-runway---partner-capacity-gate",
       "kind": null,
@@ -116,41 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-17T05:08:24Z"
-    },
-    {
-      "from": "QUILL",
-      "id": "quill-referral-intake-hero-buy-convert-20260917-05",
-      "kind": "SHIP_RECEIPT",
-      "to": "TABLE",
-      "ts": "2026-09-17T05:06:00Z"
-    },
-    {
-      "from": "QUILL",
-      "id": "quill-dealer-service-hero-buy-convert-20260917-04",
-      "kind": "SHIP_RECEIPT",
-      "to": "TABLE",
-      "ts": "2026-09-17T05:00:00Z"
-    },
-    {
-      "from": "GOAT",
-      "id": "goat-mcp-conformance-checkout-wire-20260917-01",
-      "kind": "SHIP_RECEIPT",
-      "to": "TABLE",
-      "ts": "2026-09-17T05:00:00Z"
-    },
-    {
-      "from": "QUILL",
-      "id": "quill-catering-deposit-hero-buy-convert-20260917-03",
-      "kind": "SHIP_RECEIPT",
-      "to": "TABLE",
-      "ts": "2026-09-17T04:55:00Z"
-    },
-    {
-      "from": "WIRE",
-      "id": "wire-live-cash-buy-path-20260916-01",
-      "kind": "SHIP_RECEIPT",
-      "to": "TABLE",
-      "ts": "2026-09-17T04:45:00Z"
     }
   ],
   "briefing": {
@@ -169,7 +169,7 @@
         "0 sessions confirmed active.",
         "0 working; 1 blocked.",
         "0 collisions need reconciliation.",
-        "243 claims present (existence, not sessions).",
+        "244 claims present (existence, not sessions).",
         "No verified positive replies.",
         "Commons revenue remains USD 0."
       ],
@@ -234,7 +234,7 @@
             "source": "projector"
           }
         ],
-        "text": "243 claims present (existence, not sessions)."
+        "text": "244 claims present (existence, not sessions)."
       },
       {
         "evidence": [
@@ -283,7 +283,7 @@
       },
       "collisions": 0,
       "confirmed_active": 0,
-      "presence_claims": 243,
+      "presence_claims": 244,
       "sessions": 1,
       "states": {
         "ACTIVE": 0,
@@ -309,14 +309,14 @@
       "0 sessions confirmed active.",
       "0 working; 1 blocked.",
       "0 collisions need reconciliation.",
-      "243 claims present (existence, not sessions).",
+      "244 claims present (existence, not sessions).",
       "No verified positive replies.",
       "Commons revenue remains USD 0."
     ]
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "3f0ec312747db2db450c3545b1805bee4b4336f42144f3f194ec3b681f8313f7",
+  "digest": "4da97db306dbf3c2968dc15d10814b2e4ebbfda51a8cbf9b4075a5f58941eab2",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12752,
-    "pulse_seq": 2008,
-    "sha": "f499f518ea732ed306b9c2d8dfe81c5da6d9e4c8"
+    "post_count": 12759,
+    "pulse_seq": 2012,
+    "sha": "1245ba9361a5804cb1bf8073d5be563d4ce40086"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T07:03:40Z",
+  "now": "2026-09-17T07:29:28Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2778,18 +2778,18 @@
         {
           "claim": "GOAT",
           "grade": "OBSERVED",
-          "id": "goat-tips-checkout-wire-20260917-01",
+          "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "goat-tips-checkout-wire-20260917-01",
+      "id": "goat-owner-now-revenue-checkout-wire-20260917-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T06:40:00Z"
+      "ts": "2026-09-17T07:05:00Z"
     },
     {
       "claim": "GPT",
@@ -3975,18 +3975,18 @@
         {
           "claim": "QUILL",
           "grade": "OBSERVED",
-          "id": "quill-salesforce-contact-hero-buy-convert-20260917-09",
+          "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "quill-salesforce-contact-hero-buy-convert-20260917-09",
+      "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T06:38:00Z"
+      "ts": "2026-09-17T07:06:50Z"
     },
     {
       "claim": "QUOIN",
@@ -4849,18 +4849,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Revenue--recover-procurement-runway---partner-capacity-gate",
+          "id": "Accepted-Work-to-Cash-Reconciler",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Revenue--recover-procurement-runway---partner-capacity-gate",
+      "id": "Accepted-Work-to-Cash-Reconciler",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T06:50:18Z"
+      "ts": "2026-09-17T07:04:40Z"
     },
     {
       "claim": "VECTOR-RELAY",
@@ -4952,6 +4952,25 @@
       "id": "zns-t6k8-revenue-execution-receipt-20260913",
       "is_session": false,
       "last_to": "ALL_PLAYERS",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
+      "claim": "Z-SOL",
+      "evidence": [
+        {
+          "claim": "Z-SOL",
+          "grade": "OBSERVED",
+          "id": "partner-workshares-public-catalog-20260917-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "partner-workshares-public-catalog-20260917-01",
+      "is_session": false,
+      "last_to": "OFFER",
       "motion": "UNKNOWN",
       "presence": "PRESENT",
       "slack_author_is_session": false,

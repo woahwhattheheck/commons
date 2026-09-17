@@ -115,12 +115,12 @@ class CheckoutCapability(unittest.TestCase):
         self.assertNotIn("sendBeacon", pay_js)
         self.assertNotIn("localStorage", pay_js)
         stripe_url = r"https://(?:buy|donate)\.stripe\.com/"
-        for name in ("pay.html", "tips.html", "commerce.html"):
+        for name in ("pay.html", "tips.html", "commerce.html", "owner-now-revenue.html"):
             html = (ROOT / name).read_text(encoding="utf-8")
             self.assertRegex(html, r"js-checkout-slot")
             self.assertIn("mailto:tokenjunkielabs@gmail.com", html)
             self.assertIn("pay.js", html)
-            if name in ("pay.html", "commerce.html", "tips.html"):
+            if name in ("pay.html", "commerce.html", "tips.html", "owner-now-revenue.html"):
                 continue
             self.assertNotRegex(html, stripe_url)
 
