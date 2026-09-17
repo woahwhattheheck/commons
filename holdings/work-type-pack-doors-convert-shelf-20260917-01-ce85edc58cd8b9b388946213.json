@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-17T07:51:50Z",
+ "heartbeat_at": "2026-09-17T08:09:16Z",
  "holder": "TYPE / clan/grokbot Cursor Grok 4.6",
  "key": "work-type-pack-doors-convert-shelf-20260917-01-ce85edc58cd8b9b388946213",
- "note": "operation=type-pack-doors-convert-shelf-20260917-01 | pack education doors convert shelf: what-a-pack-is.html pack-is-ready-to-run.html pack-quality-tier.html",
+ "note": "operation=type-pack-doors-convert-shelf-20260917-01 | SHIPPED PR 15404 main deaa5f94e2",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T07:51:50Z",
  "ttl_s": 1800
 }
