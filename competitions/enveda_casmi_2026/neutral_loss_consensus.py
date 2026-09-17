@@ -390,7 +390,8 @@ def _candidate_scores(
         loss_each.append(_to_ppm(loss_best))
 
     # Reproduce the frozen multispectrum predecessor aggregation exactly:
-    # 70% mean of per-spectrum best scores + 30% max.
+    # 70% mean of per-spectrum best scores + 30% max. The returned ppm value is
+    # a display/receipt projection only; ranking retains the frozen 12-decimal key.
     baseline_mean = sum(baseline_each) / len(baseline_each)
     predecessor = _to_ppm(0.70 * baseline_mean + 0.30 * max(baseline_each))
 
@@ -404,6 +405,34 @@ def _candidate_scores(
         + WEIGHT_SCALE // 2
     ) // WEIGHT_SCALE
     return predecessor, fragment_consensus, loss_consensus, combined
+
+
+def _frozen_predecessor_rank_score(
+    molecule: Mapping[str, Any],
+    candidate: Mapping[str, Any],
+    fixture: Mapping[str, Any],
+) -> float:
+    """Return the exact ranking key used by frozen multispectrum.py.
+
+    The predecessor publishes integer ppm for compact deterministic receipt data,
+    but ranking must occur before that 1e-6 projection. Frozen multispectrum.py
+    ranks round(0.70*mean + 0.30*max, 12) with candidate_id as the tie-breaker.
+    """
+    per_spectrum: list[float] = []
+    for query in molecule["spectra"]:
+        per_spectrum.append(
+            max(
+                _baseline_pair(
+                    query,
+                    ref,
+                    fixture["fragment_tolerance_da"],
+                    fixture["precursor_tolerance_da"],
+                )
+                for ref in candidate["reference_spectra"]
+            )
+        )
+    mean_score = sum(per_spectrum) / len(per_spectrum)
+    return round(0.70 * mean_score + 0.30 * max(per_spectrum), 12)
 
 
 def reciprocal_rank_ppm(rank: int) -> int:
@@ -433,12 +462,19 @@ def compile_fixture(raw_fixture: Mapping[str, Any]) -> dict[str, Any]:
                     "fragment_median_consensus_ppm": fragment_consensus,
                     "neutral_loss_consensus_ppm": loss_consensus,
                     "combined_consensus_ppm": combined,
+                    "_frozen_predecessor_rank_score": _frozen_predecessor_rank_score(
+                        molecule, candidate, fixture
+                    ),
                 }
             )
         predecessor = sorted(
             ranking,
-            key=lambda x: (-x["absolute_fragment_predecessor_ppm"], x["candidate_id"]),
+            key=lambda x: (-x["_frozen_predecessor_rank_score"], x["candidate_id"]),
         )
+        # The hidden rank key is not part of the result schema or receipt; it only
+        # preserves frozen predecessor ordering before ppm display quantization.
+        for item in ranking:
+            del item["_frozen_predecessor_rank_score"]
         successor = sorted(
             ranking,
             key=lambda x: (-x["combined_consensus_ppm"], x["candidate_id"]),
