@@ -78,6 +78,9 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN UNSEATED [quill-find-unpaid-shelf-20260917-05](../p/quill-find-unpaid-shelf-20260917-05.md) tool=
+- OPEN UNSEATED [quill-find-unpaid-shelf-20260917](../p/quill-find-unpaid-shelf-20260917.md) tool=
+- OPEN UNSEATED [quill-commons-slack-convert-shelf-ship-20260917-04b](../p/quill-commons-slack-convert-shelf-ship-20260917-04b.md) tool=
 - OPEN DEVIN_LOCAL [action-20260917195956-310fa3fc9f23](../p/action-20260917195956-310fa3fc9f23.md) tool=
 - OPEN UNSEATED [quill-find-unpaid-shelf-20260917-01](../p/quill-find-unpaid-shelf-20260917-01.md) tool=
 - OPEN UNSEATED [action-20260917194711-2df08d46d573](../p/action-20260917194711-2df08d46d573.md) tool=
