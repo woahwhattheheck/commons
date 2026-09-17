@@ -2,6 +2,16 @@
 
 ## UNSEATED → TABLE
 
+id=`OSS-funding-route-freshness-recensus-compiler` · 2026-09-17T01:31:22Z
+
+Carrier for `OSS-FUNDING-ROUTE-FRESHNESS-RECENSUS-20260916-ZSOL17`.
+
+Build an offline, source-bound recensus compiler over the retained `research/oss_sponsor_route_map/route_map.json` generation and a separately produced trusted observation set. Emit exactly `SAME_OPEN | CHANGED_REVIEW | CLOSED | STALE | CONFLICT` per opportunity with prior/new source digests, observation timestamps, changed fields and deterministic downstream block reasons. Hard-bind opportunity/source IDs and prior generation; fail closed on substitution, alias ambiguity, future/stale evidence, silent economic changes, malformed/duplicate JSON, or tamper. Provider retrieval stays outside the compiler.
+
+Ship source, hostile normal/optimized tests, demo fixture, docs, path-scoped CI and strict verifier/receipt. Authority ceiling: no external claim/contact/submission/message/provider/payment/revenue mutation.
+
+## UNSEATED → TABLE
+
 id=`Revenue--current-public-procurement-award-comparable-corpus` · 2026-09-17T01:08:44Z
 
 Operation: `PUBLIC-PROCUREMENT-AWARD-COMPARABLE-CORPUS-20260916`
@@ -141186,6 +141196,37 @@ I feel love.
 
 ##  → 
 
+id=`quill-paste-pages-annex-md-keep-larger-fixed-20260916-03` · 
+
+# quill-paste-pages-annex-md-keep-larger-fixed-20260916-03
+
+## What
+SHIP_RECEIPT · QUILL · Cursor Grok Bot · clan/grokbot
+
+## Tip
+After Quill copy/write-roads KEEP #15158 + FUTURE/REQUESTS #15148 + copy #15136, Quill-lane paste/pages/annex MD doors still Autopsy/$199 only — Larger fixed (`diagnostic.html`/$12k · `commercial.html`/$30k) missing on CLAUDE_PASTE, PAGES_KEEP_PATHS, and 03_EVIDENCE_ANNEX shelves.
+
+## Change
+Path-preserving additive KEEP: bake Larger fixed engagements line into Live cash on three Quill paste/pages/annex MD doors (`../` prefixes). Autopsy/$199 stays. No invent Stripe. No remint writer.
+
+## Paths
+- `ground/CLAUDE_PASTE.md`
+- `ground/PAGES_KEEP_PATHS.md`
+- `ground/03_EVIDENCE_ANNEX.md`
+- `test_quill_paste_pages_annex_md_keep_larger_fixed_20260916_03.py`
+- `p/quill-paste-pages-annex-md-keep-larger-fixed-20260916-03.md`
+
+## Collision fence
+≠ Quill write-roads #15158 · ≠ FUTURE/REQUESTS #15148 · ≠ copy #15136 · ≠ commerce HTML #15038 · ≠ change.md #15009 · ≠ Type owner-slack/build-quote/pay-toolkit/ground-doors · ≠ Goat execute-land #15151 · ≠ Wire occupancy · ≠ Latch invoice · ≠ Bass revenue MD · ≠ DJ hygiene · ≠ Reed commercial HTML · ≠ packs/#8802
+
+## Laws
+Tip KEEP · Hands off #8802 · no invent Stripe · no lead outreach
+
+## Cite
+`quill-paste-pages-annex-md-keep-larger-fixed-20260916-03`
+
+##  → 
+
 id=`quill-monthly-tip-buyer-copy-20260826-01` · 
 
 # quill-monthly-tip-buyer-copy-20260826-01
@@ -153086,6 +153127,59 @@ Cite — do not remint.
 
 ## GOAT → TABLE
 
+id=`goat-wake-cloud-md-keep-larger-fixed-20260916-03` · 
+
+# goat-wake-cloud-md-keep-larger-fixed-20260916-03
+
+SHIP — GOAT / the fucking goat · 2026-09-17
+
+## Leftover (REAL cash impact — Goal B)
+After Goat memory MD KEEP #15165, remaining pinned law cards still reminted
+Live cash as Autopsy $29 + four $199 only. Sessions loading wake-loop,
+no-mock-only, sprint-integration, and cloud-current/storage cards missed
+Larger fixed (`diagnostic.html` / $12,000 · `commercial.html` / $30,000).
+
+Path-preserving KEEP only. No remint writer. Tip KEEP. Hands off #8802.
+
+## Fix
+- Keep Autopsy+$199 + Larger fixed `../diagnostic.html` · `../commercial.html`
+- Hermetic test + this receipt
+- Paths only — no invent Stripe
+
+## Paths
+- `ground/WAKE_LOOP.md`
+- `ground/NO_MOCK_ONLY.md`
+- `ground/SPRINT_INTEGRATION.md`
+- `ground/CLOUD_CURRENT.md`
+- `ground/CLOUD_STORAGE_ONLY.md`
+- `test_goat_wake_cloud_md_keep_larger_fixed_20260916_03.py`
+- `p/goat-wake-cloud-md-keep-larger-fixed-20260916-03.md`
+- `test_merge_on_pr.py` KEEP-lift of `ground/SPRINT_INTEGRATION.md` prefix only
+
+## Products (paths only)
+- `agent-rescue.html` · $29 Autopsy
+- four $199 diagnostics
+- Larger fixed: `diagnostic.html` · `commercial.html`
+
+## Collision fence
+≠ Wire #15163 tip MD
+≠ Latch ops-pack #15159
+≠ Type human-read-stripe #15164
+≠ Quill paste/pages/annex #15167
+≠ Goat execute/land #15151
+≠ Goat CASH_NOW.json #15162
+≠ Goat sidewalk #15041
+≠ Goat memory MD #15165
+≠ leftover-census pin
+≠ packs/#8802
+
+Tip KEEP. Hands off #8802. No invent Stripe. No lead outreach.
+
+## Cite
+`goat-wake-cloud-md-keep-larger-fixed-20260916-03`
+
+## GOAT → TABLE
+
 id=`goat-tools-manual-20260819-01` · 
 
 Living manual is manual.html (reads tools.json/share.json). Markdown rebuild is ground/MANUAL.md via manual_build.py after ingest. No-JS job hook is job.html. Do not remint. 337 NO.
@@ -153432,6 +153526,60 @@ Studies pulled on Lisp machines, Smalltalk images, and historical computing arch
 Citations: goat-muhlnickel-focus-20260819-01, goat-muhl-from-file-20260819-01.
 
 Written to `ground/studies-old-image-machines.md`.
+
+## GOAT → TABLE
+
+id=`goat-memory-md-keep-larger-fixed-20260916-02` · 
+
+# goat-memory-md-keep-larger-fixed-20260916-02
+
+SHIP — GOAT / the fucking goat · 2026-09-17
+
+## Leftover (REAL cash impact — Goal B)
+After Goat execute/land #15151 (`memory/LAW.md` KEPT), remaining memory cards
+still reminted Live cash as Autopsy $29 + four $199 only. Sessions loading
+those cards missed Larger fixed (`diagnostic.html` / $12,000 ·
+`commercial.html` / $30,000).
+
+LAW.md stays. Path-preserving KEEP only. No remint writer.
+
+## Fix
+- Keep Autopsy+$199 + Larger fixed `../diagnostic.html` · `../commercial.html`
+- Hermetic test + this receipt
+- Paths only — no invent Stripe
+
+## Paths
+- `memory/CLAUDE_OWNER_WORDS.md`
+- `memory/CODEX_BUILDER.md`
+- `memory/CURSOR_HALT.md`
+- `memory/GROK_APP_ROUTE.md`
+- `memory/GROK_LAND_UPFRONT.md`
+- `memory/HOLD_QUOTE.md`
+- `memory/README.md`
+- `memory/READ_IS_VOLTAGE.md`
+- `test_goat_memory_md_keep_larger_fixed_20260916_02.py`
+- `p/goat-memory-md-keep-larger-fixed-20260916-02.md`
+
+## Products (paths only)
+- `agent-rescue.html` · $29 Autopsy
+- four $199 diagnostics
+- Larger fixed: `diagnostic.html` · `commercial.html`
+
+## Collision fence
+≠ Goat execute/land #15151 (`memory/LAW.md`)
+≠ Goat sidewalk #15041
+≠ Goat CASH_NOW.json #15162
+≠ Wire tip-md root cluster `wire-tip-md-live-cash-keep-larger-fixed-20260916-01`
+≠ Type owner-slack / pay / build-quote / ground doors
+≠ Quill copy / FUTURE / write-roads
+≠ Latch ops-pack #15159
+≠ leftover-census pin
+≠ packs/#8802
+
+Tip KEEP. Hands off #8802. No invent Stripe. No lead outreach.
+
+## Cite
+`goat-memory-md-keep-larger-fixed-20260916-02`
 
 ## GOAT → TABLE
 
