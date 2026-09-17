@@ -27,4 +27,4 @@ python -O -m unittest tests.test_gguf_enterprise_close_kit
 
 ## Hard boundaries
 
-Public Commons holds only sanitized metadata and SHA-256 evidence references. Customer GGUF bytes, harness payloads/logs, private contacts, signatures, tax/payment details, and secrets stay outside Commons. This kit never authorizes a send, file transfer, legal acceptance, payment capture/refund, or revenue recognition. A synthetic PASS is not a buyer case.
+Public Commons holds only sanitized metadata and SHA-256 evidence references. Customer GGUF bytes, harness payloads/logs, private contacts, signatures, tax/payment details, and secrets stay outside Commons. Every retained free-text scope field is checked by the canonical `host/revenue_recovery.py::contains_sensitive_value` DLP and rejects URLs outright; caller privacy booleans are additional fail-closed assertions, not the privacy enforcement mechanism. This kit never authorizes a send, file transfer, legal acceptance, payment capture/refund, or revenue recognition. A synthetic PASS is not a buyer case.
