@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-17T14:02:32Z",
+ "heartbeat_at": "2026-09-17T14:16:46Z",
  "holder": "LATCH",
  "key": "pr-15571",
  "note": "latch-court-dests-convert-shelf-20260917-01 unique leftover CLEAR_TO_MERGE",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T14:02:32Z",
  "ttl_s": 1800
 }
