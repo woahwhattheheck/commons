@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tokenjunkielabs.local/schemas/accepted-work-to-cash-v1.json",
+  "title": "TJL Accepted Work to Cash Portfolio",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "evaluation_at", "freshness_seconds", "items"],
+  "properties": {
+    "schema": {"const": "TJL_ACCEPTED_WORK_TO_CASH_V1"},
+    "evaluation_at": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"},
+    "freshness_seconds": {"type": "integer", "minimum": 1, "maximum": 2592000},
+    "items": {"type": "array", "maxItems": 5000, "items": {"$ref": "#/$defs/item"}}
+  },
+  "$defs": {
+    "nullableMoney": {"oneOf": [{"type": "null"}, {"type": "integer", "minimum": 0, "maximum": 1000000000000000}]},
+    "nullableText": {"oneOf": [{"type": "null"}, {"type": "string", "minLength": 1, "maxLength": 320}]},
+    "event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "observed_at", "source_class", "ref", "sha256", "amount_cents", "route", "purpose"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1, "maxLength": 120},
+        "kind": {"enum": ["DELIVERED", "MERGED", "ACCEPTED", "AWARDED", "CLAIM_ROUTE_READY", "CLAIM_SUBMITTED", "INVOICE_ISSUED", "PAYMENT_LINK_ISSUED", "PAYMENT_RECEIVED", "CONTACT_REQUIRED", "MUSE_CLEAR", "OUTBOUND_SENT", "HUMAN_REPLY", "DNR", "REJECTED", "CANCELED"]},
+        "observed_at": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"},
+        "source_class": {"enum": ["GITHUB", "BUYER_MESSAGE", "SPONSOR_MESSAGE", "PLATFORM_RECEIPT", "PROVIDER_RECEIPT", "PAYMENT_PROVIDER", "SLACK", "INTERNAL_RETAINED"]},
+        "ref": {"type": "string", "minLength": 1, "maxLength": 512},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "amount_cents": {"$ref": "#/$defs/nullableMoney"},
+        "route": {"$ref": "#/$defs/nullableText"},
+        "purpose": {"$ref": "#/$defs/nullableText"}
+      }
+    },
+    "item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "payer", "program", "lane", "currency", "advertised_amount_cents", "events"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1, "maxLength": 120},
+        "title": {"type": "string", "minLength": 1, "maxLength": 240},
+        "payer": {"type": "string", "minLength": 1, "maxLength": 240},
+        "program": {"type": "string", "minLength": 1, "maxLength": 240},
+        "lane": {"enum": ["BOUNTY", "CONTRACT", "SUBCONTRACT", "COMPETITION", "PLATFORM", "PRODUCT", "OTHER"]},
+        "currency": {"type": "string", "pattern": "^[A-Z]{3,8}$"},
+        "advertised_amount_cents": {"$ref": "#/$defs/nullableMoney"},
+        "events": {"type": "array", "maxItems": 2000, "items": {"$ref": "#/$defs/event"}}
+      }
+    }
+  }
+}
