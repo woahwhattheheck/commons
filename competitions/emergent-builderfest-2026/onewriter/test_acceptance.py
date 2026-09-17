@@ -24,8 +24,7 @@ class OneWriterTests(unittest.TestCase):
         d=copy.deepcopy(self.d); d["events"][5]["lease_seconds"]=30
         probe=copy.deepcopy(d["events"][3]); probe.update({"id":"evt-006b","actor":"agent-after-expiry","at_utc":"2026-09-17T12:02:50Z","route":"email:another@northstar.invalid","reason":"attempt stale recovery after the one human-authorized lease expired","expect":{"decision":"DENIED_HARD_DNR","state":"HARD_DNR"}})
         d["events"].insert(6,probe); r=self.eval_receipts(d)["evt-006b"]
-        self.assertEqual((r["prior_state"],r["decision"],r["state"]),("HARD_DNR","DENIED_HARD_DNR","HARD_DNR")); self.assertTrue(r["reopen_expiry_refenced"])
-        self.assertEqual(r["lane_route"],"email:ops@northstar.invalid")
+        self.assertEqual((r["prior_state"],r["decision"],r["state"]),("HARD_DNR","DENIED_HARD_DNR","HARD_DNR")); self.assertTrue(r["reopen_expiry_refenced"]); self.assertEqual(r["lane_route"],"email:ops@northstar.invalid")
     def test_provider_outcome_must_match_leased_route(self):
         d=copy.deepcopy(self.d); d["events"][2]["route"]="email:founder@northstar.invalid"
         with self.assertRaisesRegex(a.ContractError,"does not match current leased route"): a.replay(self.m,d)
@@ -106,6 +105,13 @@ class OneWriterTests(unittest.TestCase):
         for index,field,value in cases:
             d=copy.deepcopy(self.d); d["events"][index][field]=value
             with self.subTest(field=field,value=repr(value)), self.assertRaisesRegex(a.ContractError,"trimmed nonempty|control characters"): a.replay(self.m,d)
+    def test_invisible_unicode_evidence_rejected(self):
+        cases=((4,"human_evidence_id","\u200b","non-visible Unicode"),(4,"human_evidence_id","human-thread-001\u034f","Default_Ignorable"),(2,"provider_receipt","provider-sent-001\ufe0f","Default_Ignorable"),(8,"provider_receipt","provider-bounce-001\u115f","Default_Ignorable"),(4,"human_evidence_id","\u0301","visible base"))
+        for index,field,value,pattern in cases:
+            d=copy.deepcopy(self.d); d["events"][index][field]=value
+            with self.subTest(field=field,value=value.encode("unicode_escape")), self.assertRaisesRegex(a.ContractError,pattern): a.replay(self.m,d)
+    def test_visible_combining_unicode_evidence_remains_admitted(self):
+        value="provider-cafe\u0301-001"; self.assertEqual(a.evidence_id(value,"provider_receipt"),value)
     def test_real_cli_normal_and_optimized(self):
         for optimized in (False,True):
             cmd=[sys.executable]+(["-O"] if optimized else [])+[str(A),"replay",str(M),str(E)]; run=subprocess.run(cmd,cwd=HERE,text=True,capture_output=True,check=False)
