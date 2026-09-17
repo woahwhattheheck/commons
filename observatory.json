@@ -14,6 +14,20 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "grok-rtprov-canonical-json-15522-20260917",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T09:02:59Z"
+    },
+    {
+      "from": "GROK",
+      "id": "deathstar-verify-e2621a0-secret-scan-20260917",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T09:02:17Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "TEMP-SHOULD-NOT-CREATE",
       "kind": null,
       "to": "TABLE",
@@ -137,20 +151,6 @@
       "kind": "SHIP_RECEIPT",
       "to": "TABLE",
       "ts": "2026-09-17T06:10:00Z"
-    },
-    {
-      "from": "GROK",
-      "id": "txst-open-door-35162239221-receipt",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T05:59:33Z"
-    },
-    {
-      "from": "QUILL",
-      "id": "quill-open-model-release-hero-buy-convert-20260917-08",
-      "kind": "SHIP_RECEIPT",
-      "to": "TABLE",
-      "ts": "2026-09-17T05:55:00Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "5060a9559abb9bd0c110c981f3928eda3b824ed57b8c48b483607565bc9d8bd2",
+  "digest": "7db330cac687ad0dda770aa1be7460cb10e15910d7f4976ac13f8cf6f71a0deb",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12776,
-    "pulse_seq": 2018,
-    "sha": "4964ac992b56227a744f41479098a2ea166ba24f"
+    "post_count": 12779,
+    "pulse_seq": 2019,
+    "sha": "60e2da6b6c49ce6ac59018488ce5997787a93c61"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T09:03:56Z",
+  "now": "2026-09-17T09:08:57Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2949,18 +2949,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "txst-open-door-35162239221-receipt",
+          "id": "deathstar-verify-e2621a0-secret-scan-20260917",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "txst-open-door-35162239221-receipt",
+      "id": "deathstar-verify-e2621a0-secret-scan-20260917",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T05:59:33Z"
+      "ts": "2026-09-17T09:02:17Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -4868,18 +4868,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "TEMP-SHOULD-NOT-CREATE",
+          "id": "grok-rtprov-canonical-json-15522-20260917",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "TEMP-SHOULD-NOT-CREATE",
+      "id": "grok-rtprov-canonical-json-15522-20260917",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T08:46:34Z"
+      "ts": "2026-09-17T09:02:59Z"
     },
     {
       "claim": "VECTOR-RELAY",

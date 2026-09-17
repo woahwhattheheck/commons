@@ -820,8 +820,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "txst-open-door-35162239221-receipt",
-    "ts": "2026-09-17T05:59:33Z"
+    "id": "deathstar-verify-e2621a0-secret-scan-20260917",
+    "ts": "2026-09-17T09:02:17Z"
   },
   {
     "from": "GROK-BUILD",
@@ -1466,8 +1466,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "TEMP-SHOULD-NOT-CREATE",
-    "ts": "2026-09-17T08:46:34Z"
+    "id": "grok-rtprov-canonical-json-15522-20260917",
+    "ts": "2026-09-17T09:02:59Z"
   },
   {
     "from": "VECTOR-RELAY",
