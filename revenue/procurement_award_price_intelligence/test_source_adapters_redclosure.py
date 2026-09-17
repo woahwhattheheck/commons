@@ -40,6 +40,38 @@ class SourceAdapterRedClosureTests(unittest.TestCase):
                 with self.assertRaisesRegex(Error, "credential|query|fragment"):
                     compile(raw(request([doc])))
 
+    def test_syntactically_present_empty_userinfo_fails_closed_at_every_decode_generation(self):
+        # urllib.parse represents some empty userinfo forms as empty strings.
+        # Presence is still a credential-bearing authority syntax and must never
+        # be admitted merely because bool(username/password) is false.
+        userinfo_uris = (
+            "https://@buyer.example.gov/award",
+            "https://:@buyer.example.gov/award",
+            "https://user:@buyer.example.gov/award",
+            "https://%40buyer.example.gov/award",
+            "https://%3A%40buyer.example.gov/award",
+            "https://user%3A%40buyer.example.gov/award",
+            "https://%2540buyer.example.gov/award",
+            "https://%253A%2540buyer.example.gov/award",
+            "https://user%253A%2540buyer.example.gov/award",
+        )
+        for uri in userinfo_uris:
+            doc = document("AWARD_NOTICE_JSON_V1", award(), "AWARD_NOTICE")
+            doc["source"]["uri"] = uri
+            with self.subTest(uri=uri):
+                with self.assertRaisesRegex(Error, "credential"):
+                    compile(raw(request([doc])))
+
+    def test_at_sign_in_path_is_not_misclassified_as_authority_userinfo(self):
+        uri = "https://buyer.example.gov/public/@archive/award.pdf"
+        doc = document("AWARD_NOTICE_JSON_V1", award(), "AWARD_NOTICE")
+        doc["source"]["uri"] = uri
+        price_bytes, packet_bytes, receipt_bytes = compile(raw(request([doc])))
+        locator_sha = hashlib.sha256(uri.encode("utf-8")).hexdigest()
+        self.assertEqual("https://buyer.example.gov", json.loads(price_bytes)["sources"][0]["uri"])
+        self.assertEqual(locator_sha, json.loads(packet_bytes)["source_audit"][0]["source_locator_sha256"])
+        self.assertEqual(locator_sha, json.loads(receipt_bytes)["source_locator_sha256s"][0]["sha256"])
+
     def test_arbitrary_path_bytes_are_digest_only_and_never_reach_price_or_memo(self):
         locators = (
             "https://buyer.example.gov/download/opaque-secret-signed-path/award.pdf",
