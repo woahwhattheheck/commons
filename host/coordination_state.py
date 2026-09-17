@@ -366,6 +366,10 @@ class GitError(RuntimeError):
     pass
 
 
+class HoldingUnreadable(GitError):
+    """The holding for the key being written could not be read from the tip; nothing is written."""
+
+
 class _Done:
     def __init__(self, returncode, stdout, stderr):
         self.returncode = returncode
@@ -1242,7 +1246,7 @@ def state_commit(git, files, branch, message, parent=None):
     for name in sorted(files):
         blob = git.out("hash-object", "-w", "--stdin", input_text=files[name]).strip()
         entries.append("100644 blob %s\t%s" % (blob, name))
-    tree = git.out("mktree", input_text="\n".join(entries) + "\n").strip()
+    tree = git.out("mktree", "--missing", input_text="\n".join(entries) + "\n").strip()
     args = ["commit-tree", tree, "-m", message]
     if parent:
         args[2:2] = ["-p", parent]
@@ -1321,17 +1325,60 @@ def _holding_path(key):
     return "holdings/%s.json" % key
 
 
-def _read_holdings(git, commit):
+class _Preserved(dict):
+    """A holding carried forward from the parent tree by blob id; its bytes are never re-serialized."""
+    __slots__ = ("blob",)
+
+    def __init__(self, blob):
+        super().__init__()
+        self.blob = blob
+
+
+def _holding_entries(git, commit):
+    """{path: blob id} for every holdings/*.json in `commit`, read from the tree alone."""
+    entries = {}
+    for line in git.out("ls-tree", "-r", commit).splitlines():
+        meta, _, path = line.partition("\t")
+        parts = meta.split()
+        if len(parts) == 3 and parts[1] == "blob" and path.startswith("holdings/") and path.endswith(".json"):
+            entries[path] = parts[2]
+    return entries
+
+
+def _read_holding(git, commit, path, blob):
+    """Parse one holding by blob id, fetching that single blob on demand in a blobless clone."""
+    if git.run("cat-file", "-e", blob, check=False).returncode != 0:
+        git.run("cat-file", "-e", blob, lazy=True, check=False)
+    try:
+        record = json.loads(git.out("cat-file", "-p", blob))
+    except (GitError, ValueError) as exc:
+        raise HoldingUnreadable("%s at %s: %s" % (path, str(commit)[:12], exc)) from exc
+    if type(record) is not dict:
+        raise HoldingUnreadable("%s at %s: holding is not a JSON object" % (path, str(commit)[:12]))
+    return record
+
+
+def _read_holdings(git, commit, want=None):
+    """Holdings of `commit`.
+
+    With `want` (a holdings path) only that holding is parsed; every other holding is
+    carried by blob id so a later commit keeps its bytes exactly, whether or not this
+    clone holds the blob. Without `want` every holding is parsed for listing, and one
+    that cannot be read is carried by blob id rather than replaced by a placeholder.
+    """
     if not commit:
         return {}
-    listing = git.out("ls-tree", "-r", "--name-only", commit)
     found = {}
-    for path in listing.split("\n"):
-        if path.startswith("holdings/") and path.endswith(".json"):
-            try:
-                found[path] = json.loads(git.out("show", "%s:%s" % (commit, path)))
-            except (GitError, ValueError):
-                found[path] = {"unreadable": True}
+    for path, blob in _holding_entries(git, commit).items():
+        if want is not None and path != want:
+            found[path] = _Preserved(blob)
+            continue
+        try:
+            found[path] = _read_holding(git, commit, path, blob)
+        except HoldingUnreadable:
+            if want is not None:
+                raise
+            found[path] = _Preserved(blob)
     return found
 
 
@@ -1348,22 +1395,29 @@ def _holding_live(record, now):
 
 
 def _holdings_commit(git, parent, holdings, message, when):
-    files = {path: _dump(record) for path, record in holdings.items()}
+    """A commit on `parent` whose holdings tree is `holdings`: carried holdings keep their
+    exact parent blob id; only records given as parsed dicts are serialized."""
+    files = {path: record for path, record in holdings.items()}
     files["README.md"] = ("# state/claims\n\nChange holdings written by "
                           "host/coordination_state.py, one file per change key, "
                           "fast-forward only. Coordination state, never a gate.\n")
     entries = []
     for path in sorted(files):
-        blob = git.out("hash-object", "-w", "--stdin", input_text=files[path]).strip()
+        record = files[path]
+        if isinstance(record, _Preserved):
+            blob = record.blob
+        else:
+            text = record if isinstance(record, str) else _dump(record)
+            blob = git.out("hash-object", "-w", "--stdin", input_text=text).strip()
         entries.append((path, blob))
     # mktree cannot nest; build holdings/ as a subtree.
     sub = [e for e in entries if e[0].startswith("holdings/")]
     top = [e for e in entries if not e[0].startswith("holdings/")]
     lines = ["100644 blob %s\t%s" % (blob, path.split("/", 1)[1]) for path, blob in sub]
-    subtree = git.out("mktree", input_text="\n".join(lines) + "\n").strip() if lines else EMPTY_TREE
+    subtree = git.out("mktree", "--missing", input_text="\n".join(lines) + "\n").strip() if lines else EMPTY_TREE
     root_lines = ["100644 blob %s\t%s" % (blob, path) for path, blob in top]
     root_lines.append("040000 tree %s\tholdings" % subtree)
-    tree = git.out("mktree", input_text="\n".join(root_lines) + "\n").strip()
+    tree = git.out("mktree", "--missing", input_text="\n".join(root_lines) + "\n").strip()
     args = ["commit-tree", tree, "-m", message]
     if parent:
         args[2:2] = ["-p", parent]
@@ -1374,13 +1428,18 @@ def holding_write(git, key, holder, action, ttl_s=1800, note="", now=None,
                   remote="origin", branch=HOLDINGS_BRANCH, push=True, attempts=3):
     """take / renew / release one change key. Returns what the branch now says."""
     fixed_now = now
+    path = _holding_path(key)
+    tip = None
     for _ in range(attempts):
         tip = _remote_tip(git, branch, remote)
         if tip:
             git.fetch([tip], remote)
-        holdings = _read_holdings(git, tip)
+        try:
+            holdings = _read_holdings(git, tip, want=path)
+        except HoldingUnreadable as exc:
+            return {"ok": False, "key": key, "tip": tip,
+                    "reason": "the current holding for this key could not be read; nothing written (%s)" % exc}
         observed_now = fixed_now if fixed_now is not None else _now()
-        path = _holding_path(key)
         current = holdings.get(path)
         live = _holding_live(current, observed_now)
         if action == "take" and live and current.get("holder") != holder:
@@ -1397,7 +1456,9 @@ def holding_write(git, key, holder, action, ttl_s=1800, note="", now=None,
                 if prior is not None and prior > stamp_moment:
                     stamp_moment = prior
         stamp = _iso(stamp_moment)
-        record = dict(current or {})
+        # A record that is not a holding of this schema (for example a legacy placeholder)
+        # is vacant: nothing from it is carried into the new record and no holder is invented.
+        record = dict(current) if isinstance(current, dict) and current.get("schema") == HOLDING_SCHEMA else {}
         record.update({"schema": HOLDING_SCHEMA, "key": key, "holder": holder,
                        "heartbeat_at": stamp, "ttl_s": int(ttl_s)})
         if action == "take" and (not live or (current or {}).get("holder") != holder):
@@ -1419,7 +1480,8 @@ def holding_write(git, key, holder, action, ttl_s=1800, note="", now=None,
         if "non-fast-forward" not in done.stderr and "fetch first" not in done.stderr:
             return {"ok": False, "key": key, "reason": done.stderr.strip()[-300:]}
         # Someone else wrote first; re-read and decide again with a fresh runtime clock.
-    return {"ok": False, "key": key, "reason": "branch kept moving; retry"}
+    return {"ok": False, "key": key, "reason": "branch kept moving; retry",
+            "conflict": "non-fast-forward", "attempts": int(attempts), "tip": tip}
 
 
 def holdings_list(git, remote="origin", branch=HOLDINGS_BRANCH, now=None):
@@ -1430,10 +1492,13 @@ def holdings_list(git, remote="origin", branch=HOLDINGS_BRANCH, now=None):
     rows = []
     for path, record in sorted(_read_holdings(git, tip).items()):
         live = _holding_live(record, now)
-        rows.append({"key": path[len("holdings/"):-5], "holder": record.get("holder"),
-                     "state": record.get("state"), "live": live,
-                     "heartbeat_at": record.get("heartbeat_at"), "ttl_s": record.get("ttl_s"),
-                     "note": record.get("note", "")})
+        row = {"key": path[len("holdings/"):-5], "holder": record.get("holder"),
+               "state": record.get("state"), "live": live,
+               "heartbeat_at": record.get("heartbeat_at"), "ttl_s": record.get("ttl_s"),
+               "note": record.get("note", "")}
+        if isinstance(record, _Preserved):
+            row["unreadable"] = True  # reported in the listing only; the blob itself is carried untouched
+        rows.append(row)
     return {"branch": branch, "tip": tip, "holdings": rows}
 
 

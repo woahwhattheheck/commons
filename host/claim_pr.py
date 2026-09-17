@@ -85,7 +85,17 @@ def write_pr_holding(
         tip = cs._remote_tip(git, cs.HOLDINGS_BRANCH, remote)
         if tip:
             git.fetch([tip], remote)
-        holdings = cs._read_holdings(git, tip)
+        try:
+            holdings = cs._read_holdings(git, tip, want=path)
+        except cs.HoldingUnreadable as exc:
+            return {
+                "pr": pr,
+                "action": action,
+                "ok": False,
+                "key": key,
+                "tip": tip,
+                "reason": "the current holding for this key could not be read; nothing written (%s)" % exc,
+            }
         current = holdings.get(path)
         observed_now = now if now is not None else cs._now()
         live = _pr_holding_live(current, observed_now)
@@ -128,7 +138,7 @@ def write_pr_holding(
             else observed_now
         )
         stamp = cs._iso(write_now)
-        record = dict(current or {})
+        record = dict(current) if isinstance(current, dict) and current.get("schema") == cs.HOLDING_SCHEMA else {}
         record.update(
             {
                 "schema": cs.HOLDING_SCHEMA,
