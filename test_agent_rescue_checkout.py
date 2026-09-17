@@ -194,6 +194,25 @@ class AgentFailureDiagnosticPageTests(unittest.TestCase):
                     self.assertNotIn("client_reference_id", params)
                     self.assertNotIn("UNTRUSTED", href)
 
+    def test_hero_buy_cta_precedes_intake_secondary(self):
+        """First-screen convert: attested Buy PL after price, before free intake."""
+        hero = self.page.split('<header class="hero">', 1)[1].split('</header>', 1)[0]
+        buy_at = hero.find('data-checkout')
+        intake_at = hero.find('agent-autopsy-intake.html')
+        price_at = hero.find('class="price"')
+        self.assertNotEqual(buy_at, -1)
+        self.assertNotEqual(intake_at, -1)
+        self.assertNotEqual(price_at, -1)
+        self.assertLess(price_at, buy_at)
+        self.assertLess(buy_at, intake_at)
+        self.assertIn('Buy Agent Failure Autopsy — $29', hero)
+        self.assertIn(CHECKOUT_URL, hero)
+        self.assertNotIn('titanmcp-pad-pointer', hero)
+
+    def test_titanmcp_pointer_stays_after_hero_buy_path(self):
+        after = self.page.split('</header>', 1)[1]
+        self.assertIn('id="titanmcp-pad-pointer"', after)
+
     def test_page_does_not_solicit_or_expose_secret_material(self):
         for marker in ("API keys", "tokens", "passwords", "customer records", "production secrets"):
             self.assertIn(marker, self.page)
