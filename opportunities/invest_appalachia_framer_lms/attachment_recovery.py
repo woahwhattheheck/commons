@@ -19,6 +19,8 @@ MAX_MEMBER_BYTES = 25 * 1024 * 1024
 MAX_REGULAR_MEMBERS = 64
 MAX_TOTAL_UNCOMPRESSED_BYTES = 100 * 1024 * 1024
 EXPECTED_LABELS = ("A", "B", "C", "D")
+PROVENANCE_OFFICIAL_FETCH = "OFFICIAL_URL_FETCHED"
+PROVENANCE_LOCAL = "LOCAL_BYTES_UNVERIFIED_PROVENANCE"
 _RETRIEVED_AT = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$")
 _ATTACHMENT = re.compile(r"(?:^|[^a-z0-9])attachment[\s._-]*([a-d])(?:[^a-z0-9]|$)", re.I)
 _LEADING = re.compile(r"^([a-d])(?:[\s._-]+)", re.I)
@@ -42,6 +44,10 @@ def _validate_retrieved_at(value: str) -> str:
     if parsed.strftime("%Y-%m-%dT%H:%M:%SZ") != value:
         raise AttachmentRecoveryError("retrieved_at_utc must be canonical UTC YYYY-MM-DDTHH:MM:SSZ")
     return value
+
+
+def _observed_utc_now() -> str:
+    return datetime.now(timezone.utc).replace(microsecond=0).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
 def _safe_name(name: str) -> str:
@@ -74,7 +80,13 @@ def _attachment_label(name: str) -> str | None:
     return match.group(1).upper() if match else None
 
 
-def analyze_zip(data: bytes, *, retrieved_at_utc: str, source_url: str = SOURCE_URL) -> dict[str, Any]:
+def _analyze_zip_bytes(
+    data: bytes,
+    *,
+    provenance_mode: str,
+    source_url: str | None,
+    retrieved_at_utc: str | None,
+) -> dict[str, Any]:
     if not isinstance(data, (bytes, bytearray)):
         raise AttachmentRecoveryError("ZIP payload must be bytes")
     data = bytes(data)
@@ -82,9 +94,18 @@ def analyze_zip(data: bytes, *, retrieved_at_utc: str, source_url: str = SOURCE_
         raise AttachmentRecoveryError("ZIP payload is empty")
     if len(data) > MAX_ZIP_BYTES:
         raise AttachmentRecoveryError("ZIP payload exceeds bounded size")
-    if source_url != SOURCE_URL:
-        raise AttachmentRecoveryError("source URL must remain bound to the official buyer ZIP")
-    retrieved_at_utc = _validate_retrieved_at(retrieved_at_utc)
+
+    if provenance_mode == PROVENANCE_LOCAL:
+        if source_url is not None or retrieved_at_utc is not None:
+            raise AttachmentRecoveryError("local-byte provenance cannot assert an official URL or retrieval time")
+    elif provenance_mode == PROVENANCE_OFFICIAL_FETCH:
+        if source_url != SOURCE_URL:
+            raise AttachmentRecoveryError("official-fetch provenance must remain bound to the exact buyer ZIP URL")
+        if retrieved_at_utc is None:
+            raise AttachmentRecoveryError("official-fetch provenance requires an observed retrieval time")
+        retrieved_at_utc = _validate_retrieved_at(retrieved_at_utc)
+    else:
+        raise AttachmentRecoveryError("unsupported provenance mode")
 
     members: list[dict[str, Any]] = []
     labels: dict[str, str] = {}
@@ -140,11 +161,15 @@ def analyze_zip(data: bytes, *, retrieved_at_utc: str, source_url: str = SOURCE_
     missing = [label for label in EXPECTED_LABELS if label not in labels]
     extra_labels = [label for label in labels if label not in EXPECTED_LABELS]
     exact = not missing and not extra_labels and not unexpected and len(members) == len(EXPECTED_LABELS)
-    status = "RECOVERED_EXACT_A_D_UNREVIEWED" if exact else "RECOVERED_MEMBER_SET_HOLD"
+    if provenance_mode == PROVENANCE_OFFICIAL_FETCH:
+        status = "OFFICIAL_FETCH_EXACT_A_D_UNREVIEWED" if exact else "OFFICIAL_FETCH_MEMBER_SET_HOLD"
+    else:
+        status = "LOCAL_BYTES_EXACT_A_D_UNVERIFIED_PROVENANCE" if exact else "LOCAL_BYTES_MEMBER_SET_HOLD"
 
     receipt: dict[str, Any] = {
-        "schema": "invest_appalachia_framer_lms.attachment_recovery_receipt.v1",
-        "source_url": SOURCE_URL,
+        "schema": "invest_appalachia_framer_lms.attachment_recovery_receipt.v2",
+        "provenance_mode": provenance_mode,
+        "source_url": source_url,
         "retrieved_at_utc": retrieved_at_utc,
         "zip_sha256": _sha256(data),
         "zip_size_bytes": len(data),
@@ -162,12 +187,31 @@ def analyze_zip(data: bytes, *, retrieved_at_utc: str, source_url: str = SOURCE_
     return receipt
 
 
-def fetch_official_zip(*, timeout_seconds: float = 30.0) -> bytes:
+def analyze_zip(
+    data: bytes,
+    *,
+    source_url: str | None = None,
+    retrieved_at_utc: str | None = None,
+) -> dict[str, Any]:
+    """Analyze caller-supplied bytes without asserting where or when they were retrieved."""
+    if source_url is not None or retrieved_at_utc is not None:
+        raise AttachmentRecoveryError(
+            "caller-supplied bytes cannot assert official-source provenance; use fetch_and_analyze_official_zip()"
+        )
+    return _analyze_zip_bytes(
+        data,
+        provenance_mode=PROVENANCE_LOCAL,
+        source_url=None,
+        retrieved_at_utc=None,
+    )
+
+
+def _fetch_official_zip(*, timeout_seconds: float = 30.0) -> tuple[bytes, str]:
     if timeout_seconds <= 0:
         raise AttachmentRecoveryError("timeout_seconds must be positive")
     request = urllib.request.Request(
         SOURCE_URL,
-        headers={"User-Agent": "TJLabs-Invest-Appalachia-Attachment-Recovery/1.0"},
+        headers={"User-Agent": "TJLabs-Invest-Appalachia-Attachment-Recovery/2.0"},
         method="GET",
     )
     try:
@@ -176,13 +220,25 @@ def fetch_official_zip(*, timeout_seconds: float = 30.0) -> bytes:
             if final_url != SOURCE_URL:
                 raise AttachmentRecoveryError(f"unexpected redirect target: {final_url}")
             data = response.read(MAX_ZIP_BYTES + 1)
+            retrieved_at_utc = _observed_utc_now()
     except AttachmentRecoveryError:
         raise
     except Exception as exc:
         raise AttachmentRecoveryError(f"official ZIP fetch failed: {exc}") from exc
     if len(data) > MAX_ZIP_BYTES:
         raise AttachmentRecoveryError("ZIP payload exceeds bounded size")
-    return data
+    return data, retrieved_at_utc
+
+
+def fetch_and_analyze_official_zip(*, timeout_seconds: float = 30.0) -> dict[str, Any]:
+    """Fetch the exact buyer URL and bind the receipt to the observed successful retrieval event."""
+    data, retrieved_at_utc = _fetch_official_zip(timeout_seconds=timeout_seconds)
+    return _analyze_zip_bytes(
+        data,
+        provenance_mode=PROVENANCE_OFFICIAL_FETCH,
+        source_url=SOURCE_URL,
+        retrieved_at_utc=retrieved_at_utc,
+    )
 
 
 def _write_receipt_exclusive(path: str, rendered: str) -> None:
@@ -193,34 +249,44 @@ def _write_receipt_exclusive(path: str, rendered: str) -> None:
         fd = os.open(path, flags, 0o600)
     except OSError as exc:
         raise AttachmentRecoveryError(f"cannot create receipt output exclusively: {exc}") from exc
+    created = os.fstat(fd)
     try:
         with os.fdopen(fd, "w", encoding="utf-8", newline="\n") as handle:
             handle.write(rendered)
             handle.flush()
             os.fsync(handle.fileno())
     except OSError as exc:
+        try:
+            current = os.stat(path, follow_symlinks=False)
+            if (current.st_dev, current.st_ino) == (created.st_dev, created.st_ino):
+                os.unlink(path)
+        except OSError:
+            pass
         raise AttachmentRecoveryError(f"cannot write receipt: {exc}") from exc
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Recover and verify Invest Appalachia Framer LMS attachment ZIP")
     source = parser.add_mutually_exclusive_group(required=True)
-    source.add_argument("--zip", dest="zip_path", help="analyze already-retained official ZIP bytes")
-    source.add_argument("--fetch", action="store_true", help="fetch the exact official buyer ZIP URL")
-    parser.add_argument("--retrieved-at-utc", required=True, help="exact UTC timestamp, e.g. 2026-09-17T07:00:00Z")
+    source.add_argument(
+        "--zip",
+        dest="zip_path",
+        help="analyze local ZIP bytes as unverified provenance (never asserts an official retrieval)",
+    )
+    source.add_argument("--fetch", action="store_true", help="fetch and bind the exact official buyer ZIP URL")
     parser.add_argument("--output", help="optional new JSON receipt path; existing paths are never overwritten")
     args = parser.parse_args(argv)
 
     if args.fetch:
-        data = fetch_official_zip()
+        receipt = fetch_and_analyze_official_zip()
     else:
         try:
             with open(args.zip_path, "rb") as handle:
                 data = handle.read(MAX_ZIP_BYTES + 1)
         except OSError as exc:
             raise AttachmentRecoveryError(f"cannot read ZIP: {exc}") from exc
+        receipt = analyze_zip(data)
 
-    receipt = analyze_zip(data, retrieved_at_utc=args.retrieved_at_utc)
     rendered = json.dumps(receipt, indent=2, sort_keys=True) + "\n"
     if args.output:
         _write_receipt_exclusive(args.output, rendered)
