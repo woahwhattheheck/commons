@@ -21,6 +21,12 @@ class T(unittest.TestCase):
                 # Convert shelf reuses existing live buys; exact allowlist is
                 # test_type_resources_catalog_convert_shelf_20260917_01.py.
                 continue
+            if name == "keyb.html":
+                # Convert shelf reuses existing live buys; Live cash product-page
+                # doors stay relative (latch-head-keyb-convert-shelf-20260917-01).
+                live_cash = text.split('id="live-cash"', 1)[1].split("</section>", 1)[0]
+                self.assertNotIn("buy.stripe.com", live_cash, name)
+                continue
             self.assertNotIn("buy.stripe.com", text, name)
 if __name__ == "__main__":
     unittest.main()
