@@ -50,6 +50,41 @@ class RelationshipGuardDirectBoundaryTests(unittest.TestCase):
         with self.assertRaisesRegex(GuardError, "canonical bytes"):
             compile_guard(packet)
 
+    def test_direct_oversized_list_hits_node_fence_before_child_inspection(self):
+        hostile_events = [object()] + [None] * guard.MAX_JSON_NODES
+        packet = {"candidate": candidate(), "events": hostile_events}
+        with self.assertRaisesRegex(GuardError, "node limit exceeded before child traversal"):
+            compile_guard(packet)
+
+    def test_direct_oversized_dict_hits_key_value_node_fence_before_child_inspection(self):
+        hostile = {"trap": object()}
+        hostile.update({f"k{i:05d}": None for i in range((guard.MAX_JSON_NODES // 2) + 1)})
+        packet = {"candidate": candidate(), "events": [], "hostile": hostile}
+        with self.assertRaisesRegex(GuardError, "node limit exceeded before child traversal"):
+            compile_guard(packet)
+
+    def test_direct_oversize_string_rejects_before_serializer_entry(self):
+        packet = {
+            "candidate": candidate(purpose="p"),
+            "events": [],
+            "padding": "x" * (guard.MAX_JSON_BYTES + 1),
+        }
+        original = guard.json.dumps
+        calls = 0
+
+        def bomb(*args, **kwargs):
+            nonlocal calls
+            calls += 1
+            raise AssertionError("full canonical serializer entered")
+
+        guard.json.dumps = bomb
+        try:
+            with self.assertRaisesRegex(GuardError, "canonical bytes"):
+                compile_guard(packet)
+            self.assertEqual(calls, 0)
+        finally:
+            guard.json.dumps = original
+
 
 if __name__ == "__main__":
     unittest.main()
