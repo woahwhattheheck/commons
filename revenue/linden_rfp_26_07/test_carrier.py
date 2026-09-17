@@ -13,7 +13,7 @@ from revenue.linden_rfp_26_07.carrier import (
     verify_packet,
 )
 
-DIGESTS = [f"{i:064x}"[ -64:] for i in range(1, 6)]
+DIGESTS = [f"{i:064x}"[-64:] for i in range(1, 6)]
 SOURCE = json.loads(
     Path(__file__).with_name("source_manifest.json").read_text(encoding="utf-8")
 )
