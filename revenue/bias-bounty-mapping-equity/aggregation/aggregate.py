@@ -604,7 +604,9 @@ def _canonicalize_bound_sql(sql: str, registry: Mapping[str, str],
     canonical = sql
     for key, path in registry.items():
         digest = str(generations[key]["sha256"])
-        canonical = canonical.replace(str(path), f"sha256://{digest}/{key}")
+        source_literal = _sql_string(str(path))
+        digest_literal = _sql_string(f"sha256://{digest}/{key}")
+        canonical = canonical.replace(source_literal, digest_literal)
     return canonical
 
 
@@ -802,10 +804,11 @@ class _MaterializedSources:
 
 
 def _stream_response_to_retained_fd(key: str, uri: str, response: BinaryIO, temp_root: Path) -> tuple[int, str, dict[str, object]]:
-    """Stream one response into an anonymous inode, then retain it read-only."""
+    """Stream one response into an anonymous, descriptor-retained read-only inode."""
     hasher = hashlib.sha256()
     byte_count = 0
     writer = tempfile.TemporaryFile(mode="w+b", dir=temp_root)
+    fd: Optional[int] = None
     try:
         while True:
             chunk = response.read(8 * 1024 * 1024)
@@ -820,13 +823,33 @@ def _stream_response_to_retained_fd(key: str, uri: str, response: BinaryIO, temp
         os.fsync(writer.fileno())
         if byte_count <= 0:
             raise AggregationError(f"{key}: empty source object")
-        fd = os.open(f"/proc/self/fd/{writer.fileno()}", os.O_RDONLY)
+        flags = os.O_RDONLY | getattr(os, "O_CLOEXEC", 0)
+        fd = os.open(f"/proc/self/fd/{writer.fileno()}", flags)
         stat = os.fstat(fd)
         if stat.st_size != byte_count:
-            os.close(fd)
             raise AggregationError(f"{key}: retained source size changed during materialization")
-    finally:
+        os.fchmod(fd, 0o400)
+    except Exception:
+        if fd is not None:
+            try:
+                os.close(fd)
+            except OSError:
+                pass
+        try:
+            writer.close()
+        except Exception:
+            pass
+        raise
+    try:
         writer.close()
+    except Exception:
+        assert fd is not None
+        try:
+            os.close(fd)
+        except OSError:
+            pass
+        raise
+    assert fd is not None
     digest = hasher.hexdigest()
     return fd, f"/proc/self/fd/{fd}", {
         "uri": uri,
@@ -835,7 +858,6 @@ def _stream_response_to_retained_fd(key: str, uri: str, response: BinaryIO, temp
         "generation": f"sha256:{digest}",
     }
 
-
 def _materialize_one(key: str, uri: str, temp_root: Path, _opener=_URL_OPEN) -> tuple[int, str, dict[str, object]]:
     _safe_source(uri)
     try:
@@ -843,13 +865,10 @@ def _materialize_one(key: str, uri: str, temp_root: Path, _opener=_URL_OPEN) -> 
     except Exception as exc:
         raise AggregationError(f"{key}: public source download failed") from exc
     try:
-        final_url = getattr(response, "geturl", lambda: uri)()
-        parts = urlsplit(str(final_url))
-        if parts.scheme != "https" or parts.username or parts.password:
-            raise AggregationError(f"{key}: source redirect left credential-free HTTPS")
-        token = _forbidden_token(str(final_url))
-        if token is not None:
-            raise AggregationError(f"{key}: source redirect contains forbidden token {token!r}")
+        final_url = str(getattr(response, "geturl", lambda: uri)())
+        _safe_source(final_url)
+        if _decode_bounded(final_url) != _decode_bounded(uri):
+            raise AggregationError(f"{key}: source redirect changed canonical public object")
         return _stream_response_to_retained_fd(key, uri, response, temp_root)
     finally:
         close = getattr(response, "close", None)

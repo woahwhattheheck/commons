@@ -192,5 +192,56 @@ class GenerationCustodyRegressionTests(unittest.TestCase):
                 os.close(fd)
 
 
+class RedirectCanonicalizationAndModeHostiles(unittest.TestCase):
+    class _Response(io.BytesIO):
+        def __init__(self, final_url: str) -> None:
+            super().__init__(b"authoritative-bytes")
+            self._final_url = final_url
+
+        def geturl(self) -> str:
+            return self._final_url
+
+    def test_cross_origin_and_different_object_redirects_fail_closed(self) -> None:
+        uri = a.source_registry("northern-ca")["sample"]
+        hostile_final_urls = (
+            "https://example.com/authoritative.csv",
+            a.source_registry("northern-ca")["tracts"],
+        )
+        with tempfile.TemporaryDirectory() as td:
+            for final_url in hostile_final_urls:
+                with self.subTest(final_url=final_url), self.assertRaises(a.AggregationError):
+                    a._materialize_one(
+                        "sample",
+                        uri,
+                        Path(td),
+                        _opener=lambda _uri, timeout, final_url=final_url: self._Response(final_url),
+                    )
+
+    def test_canonicalization_is_exact_under_fd_prefix_collision(self) -> None:
+        keys = tuple(a.source_registry("northern-ca"))
+        registry = {key: f"/proc/self/fd/{100 + index}" for index, key in enumerate(keys)}
+        registry[keys[0]] = "/proc/self/fd/3"
+        registry[keys[1]] = "/proc/self/fd/30"
+        generations = {
+            key: {"sha256": hashlib.sha256(key.encode()).hexdigest(), "bytes": 1}
+            for key in keys
+        }
+        query = a._aggregate_query_for_registry("northern-ca", registry)
+        canonical = a._canonicalize_bound_sql(query, registry, generations)
+        self.assertNotIn("/proc/self/fd/", canonical)
+        for key in keys:
+            self.assertIn(f"sha256://{generations[key]['sha256']}/{key}", canonical)
+
+    def test_retained_generation_mode_has_no_write_bits(self) -> None:
+        uri = a.source_registry("northern-ca")["sample"]
+        with tempfile.TemporaryDirectory() as td:
+            fd, _path, _generation = a._stream_response_to_retained_fd(
+                "sample", uri, io.BytesIO(b"read-only"), Path(td)
+            )
+            try:
+                self.assertEqual(os.fstat(fd).st_mode & 0o222, 0)
+            finally:
+                os.close(fd)
+
 if __name__ == "__main__":
     unittest.main()
