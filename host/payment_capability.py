@@ -52,6 +52,7 @@ COMMERCE_CONVERT_SHELF_LIVE_BUYS = frozenset(
 CONVERT_SHELF_LIVE_BUYS = {
     "pay.html": PAY_CONVERT_SHELF_LIVE_BUYS,
     "commerce.html": COMMERCE_CONVERT_SHELF_LIVE_BUYS,
+    "payment-capability.html": COMMERCE_CONVERT_SHELF_LIVE_BUYS,
 }
 OWNER_ACTION_HOSTS = {
     "dashboard.stripe.com",
@@ -338,7 +339,7 @@ def compose_errors(root: str, registry: dict[str, Any], projected: dict[str, Any
 
 
 def html_stripe_url_errors(name: str, text: str) -> list[str]:
-    """tips/payment-capability stay inert; pay/commerce convert shelves are exact live buys."""
+    """tips stay inert; pay/commerce/payment-capability convert shelves are exact live buys."""
     allowed = CONVERT_SHELF_LIVE_BUYS.get(name)
     if allowed is not None:
         found = {
