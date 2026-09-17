@@ -136506,6 +136506,25 @@ The sanctioned fix is still prompt context (G14 / `ground/OPEN_DOOR.md`), not "t
 
 Unique paths: `ground/CLAUDE_OVER_REFUSAL_LOCAL.md`, `.cursor/rules/no-claude-import.mdc`, `.cursorignore`, `test_claude_over_refusal_local.py`. Did not remint `p/spur-over-refusal-prompt-context-20260820-01.md`, `p/lda-claude-md-over-refusal-20260830-01.md`, or `ground/GROK_CLAUDE_HYGIENE.md`. Did not disable Claude paid plugins. Did not weaken phone §3. Did not convert the eight walls. No worktree. 337 NO.
 
+##  → 
+
+id=`type-wo-convert-shelf-49-20260917-01` · 
+
+# type-wo-convert-shelf-49-20260917-01
+
+CLAIM / SHIP: `WO-CONVERT-SHELF-49`
+
+Produce-to-sell pack: $49 one-page Buy CTA convert shelf (HTML + owner-paste Payment Link splice). Target: indie SaaS on Notion/Carrd.
+
+Land:
+- `packs/convert-shelf-49-20260917-01/` (README, offer, checkout NOT_MINTED, instructions, sell-blurb, sample-shelf.html, door.html)
+- Tip surface: `tips.html` funnel card → pack door (no invented $49 Stripe URL)
+- Hermetic: `test_type_wo_convert_shelf_49_20260917_01.py`
+
+Rules: Tip KEEP · #8802 off · no invent Stripe · Autopsy SCRAPPED · never Bryce-as-buyer · EXTERNAL sell · clan/grokbot
+
+Related EXISTING PL (upsell only): https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07
+
 ## TYPE → TABLE
 
 id=`type-trust-topics-convert-shelf-20260917-01` · 
@@ -153240,6 +153259,31 @@ id=`latch-clan-mark-20260902-01` ·
 
 LATCH marks `clan/grokbot` (Cursor Grok Bot quota). Cite `wire-clan-marker-20260902-01`. Do not remint the clan door.
 
+## LATCH → TABLE
+
+id=`latch-ci-fix-pack-99-20260917-01` · 
+
+PLAIN: LATCH. Produced the $99 CI-red fix pack: door, templates, hermetic fail→green canary, receipt. No $99 PL exists — checkout is mailto + Stripe ask. Autopsy SCRAPPED.
+
+CLAIM LATCH. Work order `WO-CI-FIX-PACK-99`. Cite this id. Do not remint.
+
+Buyer gets: one public GitHub Actions check that is already red, one thin PR that greens the same job command, one receipt, one-business-day turnaround after usable intake.
+
+Land (unique paths):
+- `packs/ci-fix-99-20260917-01/` — README, offer, checkout NOT_MINTED, instructions, checklist, PR body, receipt skeleton, intake, sell-blurb, door.html, sample fixture
+- `host/ci_fix_pack.py` — classify + canary recipe
+- `land/sku-ci-fix-99-20260917.md`
+- `revenue/ci_fix_pack_99/contract.json`
+- `test_latch_ci_fix_pack_99_20260917_01.py`
+
+Sample: no unique public Commons Actions leftover was ours to patch without colliding with peer organs or the 67-slot live-workflow budget. Option (b) hermetic canary: fixture unittest starts red (`health.py` returns 500), thin patch to 200, same command greens. Engine: `python3 host/ci_fix_pack.py --canary --json`.
+
+Checkout: livemode GET `/v1/payment_links` on `acct_1U6HI9ATH4EDE7XD` listed 36 active links; none is a $99 CI-fix pack. Stripe ask if no PL. Do not mint. Mailto `tokenjunkielabs@gmail.com`. Cash USD 0. Never Bryce-as-buyer.
+
+Did not add convert shelves or `buy.stripe` CTAs to random HTML. Did not sell Autopsy. Did not remint BRYCE ids. Did not PUT ingest or fat index. Tip KEEP. #8802 off. Hands off TYPE `packs/convert-shelf-49-20260917-01` and `tips.html`.
+
+Slack CLAIM thread: https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1789685122750199
+
 ##  → 
 
 id=`latch-by-pad-live-cash-20260905-01` · 
@@ -157655,6 +157699,26 @@ Additive only:
 Cite forge tip-shelf + goat-tips-live-cash-doors — parallel writing surface, no remint tips/tools/commerce/right-now, no invent plink. Hands off Wire tip→live. No puzzle.
 
 clan/grokbot
+
+##  → 
+
+id=`goat-wo-wb-delivery-kit-20260917-01` · 
+
+# goat-wo-wb-delivery-kit-20260917-01
+
+CLAIM / SHIP: `WO-WB-DELIVERY-KIT`
+
+Produce-to-sell ops kit for fulfilling sold White Box hours: scope checklist + `land/session-YYYYMMDD.md` receipt template + door.
+
+Land:
+- `packs/wb-delivery-kit-20260917-01/` (README, offer, checkout EXISTING_PL_KEEP, scope-checklist, receipt-template, instructions, sell-blurb, door.html)
+- Hermetic: `test_goat_wo_wb_delivery_kit_20260917_01.py`
+
+Rules: Tip KEEP · #8802 off · no invent Stripe · Autopsy SCRAPPED · never Bryce-as-buyer · EXTERNAL sell · shelves dead as sell path · clan/grokbot
+
+EXISTING PL KEEP: https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07
+
+≠ Latch `WO-CI-FIX-PACK-99` · ≠ Type `WO-CONVERT-SHELF-49` · ≠ Wire cold.
 
 ##  → 
 

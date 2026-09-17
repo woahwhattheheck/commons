@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "75e321dc5f61d66a86268aac237d2a0fb9814bc80904ccf8ca1af18442a3e7c6",
+  "digest": "86994607cdbc0d23cd573b1f18a843f62e2d817d003734eeaaa264f6dfc08a52",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12895,
-    "pulse_seq": 2055,
-    "sha": "80bceaa3030492117647af12d4b1db5c674db14f"
+    "post_count": 12898,
+    "pulse_seq": 2056,
+    "sha": "71a7d150e8f22de94daac50c9328b4bfcf456571"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T22:40:56Z",
+  "now": "2026-09-17T23:15:02Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2273,7 +2273,7 @@
       "id": "devin-jev-systemone-swarm-20260917-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-17T21:54:11Z"

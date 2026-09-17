@@ -1,5 +1,14 @@
 [
   {
+    "id": "titan_hands-Slack-lane-never-posts---SlackServer-post-history-callables-never-in",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "unfavorable_finding",
+    "ts": "2026-09-17T23:07:14Z",
+    "body": ""
+  },
+  {
     "id": "Build-fail-closed-pre-send-outreach-qualification-firewall",
     "reason": "commons_publication_terms",
     "code": "commons_publication_terms",
