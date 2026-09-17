@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 91,
-    "open_pull_requests": 34,
-    "runs_in_progress": 19,
-    "runs_queued": 981
+    "open_issues": 90,
+    "open_pull_requests": 35,
+    "runs_in_progress": 15,
+    "runs_queued": 1014
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -62,10 +62,32 @@
       "head_sha": "e1d13bf240395e5dafe1a300d915c88980b51aeb",
       "number": 15635,
       "title": "Recover Nebius ProofPatch evidence-bound coding agent",
-      "updated_at": "2026-09-17T20:37:48Z"
+      "updated_at": "2026-09-17T20:42:51Z"
     }
   ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swe2max/paidopps-rightnow-convert-shelf-20260917",
+      "created_at": "2026-09-17T20:41:49Z",
+      "draft": false,
+      "head_sha": "462aeb41629633ceec832cb0ec6e239b89f59c61",
+      "number": 15741,
+      "title": "Wire existing $29 and $250 Buy links onto paid-opportunities and right-now shelves",
+      "updated_at": "2026-09-17T20:41:49Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol/product-lifecycle-tombstone-15736-20260917",
+      "created_at": "2026-09-17T20:41:17Z",
+      "draft": false,
+      "head_sha": "57b7f8aa6c7a78099d249462f9f8c2ed59724f91",
+      "number": 15739,
+      "title": "revenue: tombstone retired checkouts against stale shelf resurrection",
+      "updated_at": "2026-09-17T20:41:17Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -75,7 +97,7 @@
       "head_sha": "ad08bb07ccb60f1c48231910601802275c179afe",
       "number": 15734,
       "title": "OneWriter: restore strict deployment identifier contract",
-      "updated_at": "2026-09-17T20:34:31Z"
+      "updated_at": "2026-09-17T20:41:37Z"
     },
     {
       "author": "woahwhattheheck",
@@ -86,7 +108,7 @@
       "head_sha": "7dc930d3ac5fd03f96b76102974108f5483265ab",
       "number": 15733,
       "title": "research: prove pressure-trace consistency blocker for #14998",
-      "updated_at": "2026-09-17T20:38:38Z"
+      "updated_at": "2026-09-17T20:42:44Z"
     },
     {
       "author": "woahwhattheheck",
@@ -94,10 +116,10 @@
       "branch": "sol-z/bounded-canonical-json-20260917",
       "created_at": "2026-09-17T20:33:25Z",
       "draft": false,
-      "head_sha": "ae5e956b271de7c5cc62241b0c74c3fc3a7af211",
+      "head_sha": "5b0a8cb68d32941c7acba3043c3b93402808f190",
       "number": 15732,
       "title": "infra: add bounded canonical JSON verifier boundary",
-      "updated_at": "2026-09-17T20:38:57Z"
+      "updated_at": "2026-09-17T20:41:18Z"
     },
     {
       "author": "woahwhattheheck",
@@ -108,7 +130,7 @@
       "head_sha": "8c2493740a304b469ff25c45a5f6a95bf9a8d257",
       "number": 15731,
       "title": "feat: exact-head ship fence for moving-main + CI truth",
-      "updated_at": "2026-09-17T20:38:46Z"
+      "updated_at": "2026-09-17T20:40:03Z"
     },
     {
       "author": "woahwhattheheck",
@@ -130,7 +152,7 @@
       "head_sha": "ecb080e6f272e13ed085213f8b37abfe8ce364b2",
       "number": 15728,
       "title": "Revenue: compile explicit payoff paths for uncompensated work",
-      "updated_at": "2026-09-17T20:35:02Z"
+      "updated_at": "2026-09-17T20:42:35Z"
     },
     {
       "author": "woahwhattheheck",
@@ -153,28 +175,6 @@
       "number": 15726,
       "title": "Policy: enforce no public Commons backlinks on customer surfaces",
       "updated_at": "2026-09-17T20:35:35Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol/alcorn-5588-response-pack-20260917",
-      "created_at": "2026-09-17T20:29:39Z",
-      "draft": false,
-      "head_sha": "856a51ad2ffd92fe4172f6c172d09e8f7542d695",
-      "number": 15725,
-      "title": "Revenue: complete Alcorn RFP 5588 internal response pack without widening authority",
-      "updated_at": "2026-09-17T20:38:51Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/indiana-observability-trustroot-20260917",
-      "created_at": "2026-09-17T20:29:32Z",
-      "draft": false,
-      "head_sha": "0bc0e6b19aed5ea71598c6ab6b914a828bc8a6f4",
-      "number": 15724,
-      "title": "Close Indiana IOT retained-evidence trust-root defect",
-      "updated_at": "2026-09-17T20:32:31Z"
     }
   ],
   "open_heads": {
@@ -185,38 +185,72 @@
     "15635": "e1d13bf240395e5dafe1a300d915c88980b51aeb",
     "15636": "dc8af881b2b4dc49ec7423c6629d012b2577c9ca",
     "15640": "f12c16e86832c4ab2990847ce8a2f3874480bcd8",
-    "15643": "977c5e1f346a82140b6d237102f4af1260426d21",
+    "15643": "de1321dd91c4c66387644699441b45907950149d",
     "15645": "70b8ddcb296db1faff3f2b62c0688aa9647ea408",
-    "15653": "9dee00d3021f45272c22b86493c75191ce596b16",
+    "15653": "efe45a22aba233a317e0f3e02f27f3cdc0fad8e7",
     "15656": "b972392658f06a04880f6d32a646e6f061557471",
     "15657": "db205be68cb31e3cc37beca55fc5287fb65d54a6",
-    "15658": "672f42ac2d626f554e9c10dd4b1a0b6f01776428",
     "15662": "7d64ec1c9f86240cc6e79beff696b756d5b2a8dd",
     "15668": "a0806469a08003c3ae84752d7a23d61fa7cd8109",
     "15682": "f662b16c6949317f782a8d72e1d4281e9ebaa8ed",
     "15684": "a5aca2b07b41ca47fc3e914b172584fbc3712788",
-    "15687": "5a1b9582f70b0d4a747cb9349b9890bf99225bdd",
+    "15687": "827f1a67ed0fdd820df9d2586261005607a63922",
     "15699": "43ada9c1b6a2152d1fd65d95ed41ccade89be98f",
-    "15700": "85c9f666a01b56a3294b8dc6e8e2a9ef7e5b767c",
+    "15700": "08fa986edbb83cfb91fa75924997f23fc929eb3d",
     "15707": "c7f6f4bd9a103b7afdf077e690eec8ecd5fa9406",
     "15714": "644a392eafdad02e7f351650150647c029e00c92",
-    "15717": "7161b95ac7593da433e465c129c2deb5ab8ba71f",
-    "15721": "6831a33f6c44b7fc3ffcb2d6b2df5dc19fa6c248",
+    "15717": "de547da198775b7cd27669fc8fe0c5fd64717130",
+    "15721": "1676c1be1324dd2a98c3158c654c6bfbab820840",
     "15724": "0bc0e6b19aed5ea71598c6ab6b914a828bc8a6f4",
-    "15725": "856a51ad2ffd92fe4172f6c172d09e8f7542d695",
+    "15725": "c3ffdeee6082697de3e8136d94ed5284a4a1813a",
     "15726": "182e5d1bdf4e2c52ef2dce219a864b1572ca2c63",
     "15727": "86d342fdd4365c20ab5563772fe93ed1c2d5b81a",
     "15728": "ecb080e6f272e13ed085213f8b37abfe8ce364b2",
     "15730": "9ddf5f322a886a19b48d08356545ac90f7be7501",
     "15731": "8c2493740a304b469ff25c45a5f6a95bf9a8d257",
-    "15732": "ae5e956b271de7c5cc62241b0c74c3fc3a7af211",
+    "15732": "5b0a8cb68d32941c7acba3043c3b93402808f190",
     "15733": "7dc930d3ac5fd03f96b76102974108f5483265ab",
-    "15734": "ad08bb07ccb60f1c48231910601802275c179afe"
+    "15734": "ad08bb07ccb60f1c48231910601802275c179afe",
+    "15739": "57b7f8aa6c7a78099d249462f9f8c2ed59724f91",
+    "15741": "462aeb41629633ceec832cb0ec6e239b89f59c61"
   },
-  "pulls_listed": 34,
+  "pulls_listed": 35,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 51.6,
+  "queue_depth_per_runner": 67.6,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "devin/sledge-atgrokcmdp-atsasphalt-convert-shelf",
+      "closed_at": "2026-09-17T20:41:43Z",
+      "head_sha": "87de3c47d23469d0cd054e5ed16de6c7b9c9bca6",
+      "merged_at": "2026-09-17T20:41:43Z",
+      "number": 15740,
+      "state": "MERGED",
+      "title": "convert shelf: at-grok cmdp + ats asphalt (sledge-atgrokcmdp-atsasphalt-convert-shelf-20260917-01)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol/onewriter-bounded-reopen-currentmain-20260917",
+      "closed_at": "2026-09-17T20:40:12Z",
+      "head_sha": "672f42ac2d626f554e9c10dd4b1a0b6f01776428",
+      "merged_at": null,
+      "number": 15658,
+      "state": "CLOSED",
+      "title": "OneWriter: close bounded-reopen and receipt-causation post-merge gaps"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "devin/sledge-aquatracef-atgrokadapter-convert-shelf",
+      "closed_at": "2026-09-17T20:39:34Z",
+      "head_sha": "a86f67c7a711c5be0c300de369e35d51f089b17f",
+      "merged_at": "2026-09-17T20:39:34Z",
+      "number": 15738,
+      "state": "MERGED",
+      "title": "convert shelf: aquatrace wo-f + at-grok adapter (sledge-aquatracef-atgrokadapter-convert-shelf-20260917-01)"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -348,43 +382,10 @@
       "number": 15718,
       "state": "MERGED",
       "title": "convert shelf: merge-on-pr + landed-work (sledge-mergeonpr-landedwork-convert-shelf-20260917-01)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "research/14999-alfyorov-zhang-import-audit-zsol",
-      "closed_at": "2026-09-17T20:23:57Z",
-      "head_sha": "fa100e0e8866e286322c6199230f16c7c48114d6",
-      "merged_at": "2026-09-17T20:23:57Z",
-      "number": 15701,
-      "state": "MERGED",
-      "title": "research: audit Zhang imports behind Alfyorov k=4,5 claim (#14999)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zironwood/procurement-loss-remediation-15154",
-      "closed_at": "2026-09-17T20:22:46Z",
-      "head_sha": "39c7e357b3dc439b9b21ceebd31d855c48cf5cac",
-      "merged_at": null,
-      "number": 15593,
-      "state": "CLOSED",
-      "title": "revenue: turn procurement outcome evidence into remediation gaps (#15154)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "devin/anvil-ownerrevenue-paidopps-convert-shelf-20260917",
-      "closed_at": "2026-09-17T20:22:41Z",
-      "head_sha": "c6881846c63368116cab883b252535c22b68f5ec",
-      "merged_at": null,
-      "number": 15693,
-      "state": "CLOSED",
-      "title": "Wire existing $29 and $250 Buy links onto owner-now-revenue and paid-opportunities shelves"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T20:39:04Z",
+  "unchanged_since": "2026-09-17T20:43:04Z",
   "undatable_pulls": []
 }
