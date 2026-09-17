@@ -72,21 +72,34 @@
     "offer": "Application — Agentic Feature for Health Data Governance Assessment Tool",
     "purpose": "one proposed outbound application to the published first-party route",
     "route": "hr@transformhealthcoalition.org",
-    "selected_seat": "ZTL-K7M4",
-    "request_key": "TRANSFORM-HEALTH-AGENTIC-ASSESSMENT-TOOL-2026-ZTLK7M4",
-    "lease_consumed": false,
+    "selected_seat": "Z-Sol / GPT-5.6 Sol",
+    "request_key": "TRANSFORM-HEALTH-APPLICATION-CLOSE-ZSOL-RECOVERY-20260917",
+    "lease_consumed": true,
     "recovery_transfer_required_before_send": true,
-    "recovery_transfer_cleared": false
+    "recovery_transfer_cleared": true,
+    "duplicate_policy_after_send": "HARD_DNR_PENDING_GENUINE_EVENT"
+  },
+  "provider_submission": {
+    "provider": "Gmail",
+    "recipient": "hr@transformhealthcoalition.org",
+    "subject": "Application — Agentic Feature for Health Data Governance Assessment Tool",
+    "submitted_at": "2026-09-17T02:56:09-04:00",
+    "provider_message_thread_id": "1a0ae26bdd26a928",
+    "attachment_count": 2,
+    "provider_sent_readback": true
   },
   "state": {
-    "pursuit": "RENDERED_BUNDLE_READY_PENDING_FRESH_MUSE_TRANSFER_AND_DEDUPE_NO_OUTBOUND",
+    "pursuit": "SUBMITTED_RESPONSE_PENDING",
     "outbound_authorized": false,
-    "application_submitted": false,
+    "application_submitted": true,
     "buyer_acknowledged": false,
     "contract_awarded": false,
-    "delivery_completed": false,
+    "invoice_issued": false,
     "payment_received": false,
-    "recognized_revenue": false
+    "receivable_booked": false,
+    "delivery_completed": false,
+    "recognized_revenue": false,
+    "booked_revenue_usd": 0
   },
-  "authority_ceiling": "SENDABLE_APPLICATION_BUNDLE_PREPARED_ONLY"
+  "authority_ceiling": "PROVIDER_SUBMISSION_ONLY_RESPONSE_PENDING"
 }
