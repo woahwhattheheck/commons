@@ -125,6 +125,12 @@ CONVERT_SHELF_LIVE_BUYS = {
     "ddl-crosssite-method-proficiency-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "discount-concession-leakage.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "eagletrax-split-sample-preflight-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "elevatebio-pittsburgh-replication-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "highpower-ssf-receiving-gate-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "kincell-rtp-qc-release-bridge-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "lexington-mrf-diversion-gate.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "luvak-ssa-lab-analytics-cutover-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "made-scientific-princeton-rapid-qc-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -227,6 +233,12 @@ PUBLIC_HTML = (
     "ddl-crosssite-method-proficiency-lims.html",
     "discount-concession-leakage.html",
     "eagletrax-split-sample-preflight-lims.html",
+    "elevatebio-pittsburgh-replication-lims.html",
+    "highpower-ssf-receiving-gate-lims.html",
+    "kincell-rtp-qc-release-bridge-lims.html",
+    "lexington-mrf-diversion-gate.html",
+    "luvak-ssa-lab-analytics-cutover-lims.html",
+    "made-scientific-princeton-rapid-qc-lims.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
