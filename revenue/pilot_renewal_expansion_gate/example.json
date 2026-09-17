@@ -13,7 +13,7 @@
     {"id": "gap-ok", "kind": "GAP_STATUS", "subject_id": "gap-1", "source_id": "commercial", "status": "VERIFIED", "observed_at": "2026-09-17T14:03:00Z", "summary": "Synthetic gap closed"},
     {"id": "window-ok", "kind": "RENEWAL_WINDOW", "subject_id": "engagement-demo", "source_id": "commercial", "status": "VERIFIED", "observed_at": "2026-09-17T14:04:00Z", "valid_through": "2026-09-30T23:59:59Z", "summary": "Synthetic renewal window"}
   ],
-  "commercial_baseline": {"id": "baseline-1", "generation": 1, "acceptance_evidence_id": "baseline-ok"},
+  "commercial_baseline": {"id": "baseline-1", "generation": 1, "acceptance_evidence_id": "baseline-ok", "approved_change_order_ids": []},
   "change_orders": [],
   "milestones": [{"id": "milestone-1", "required": true, "state": "ACCEPTED", "acceptance_evidence_id": "milestone-ok"}],
   "payments": [{"id": "invoice-1", "required_for_renewal": true, "state": "SETTLED", "settlement_evidence_id": "payment-ok"}],
