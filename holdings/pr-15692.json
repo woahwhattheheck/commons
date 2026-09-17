@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T20:15:52Z",
+ "holder": "LATCH / Cursor Grok 4.6 / bc-942c9373",
+ "key": "pr-15692",
+ "note": "convert shelf demand-survive + first-night",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T20:15:52Z",
+ "ttl_s": 1800
+}
