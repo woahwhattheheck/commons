@@ -39,6 +39,8 @@ Every source reference carries **both source ID and SHA-256**. Reusing the same 
 
 Hard-gate definitions must cite at least one `SOLICITATION_CONTROL` source, and every solicitation-control URL must also be present in the exact upstream runway opportunity's `source_urls`. This prevents a hard-gate packet for one solicitation from being transplanted onto another runway row.
 
+A decided partner gate (`SATISFIED` or `UNSATISFIED`) must cite at least one `PARTNER_EVIDENCE` or `REGISTRATION_EVIDENCE` source. The RFP/addendum that defines a requirement is not evidence that a particular partner satisfies it.
+
 Registration deliberately separates:
 
 - `requirement_refs`: controlling evidence that says what registration/screening is required; and

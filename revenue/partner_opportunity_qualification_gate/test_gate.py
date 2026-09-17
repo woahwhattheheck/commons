@@ -99,6 +99,10 @@ class QualificationGateTests(unittest.TestCase):
     p=packet(); p['hard_gates'][0]['source_refs']=[ref('sam','b')]
     with self.assertRaises(QualificationError): compile_qualification(p)
 
+  def test_gate_disposition_cannot_use_requirement_as_partner_evidence(self):
+    p=packet(); p['partners'][0]['gate_dispositions'][0]['evidence_refs']=[ref('rfp','a')]
+    with self.assertRaises(QualificationError): compile_qualification(p)
+
   def test_duplicate_gate_rejected(self):
     p=packet(); p['hard_gates'].append(copy.deepcopy(p['hard_gates'][0]))
     with self.assertRaises(QualificationError): compile_qualification(p)

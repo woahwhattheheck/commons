@@ -223,6 +223,14 @@ def _disposition(raw: Any, field: str, sources: dict[str, dict[str, str]], gate_
     refs = _refs(obj["evidence_refs"], f"{field}.evidence_refs", sources, state != "UNKNOWN")
     if state == "UNKNOWN" and refs:
         raise QualificationError(f"{field}.UNKNOWN cannot claim evidence")
+    if state != "UNKNOWN" and not any(
+        sources[r["source_id"]]["kind"] in {"PARTNER_EVIDENCE", "REGISTRATION_EVIDENCE"}
+        for r in refs
+    ):
+        raise QualificationError(
+            f"{field}.{state} requires partner-specific evidence; "
+            "solicitation requirement text alone cannot decide partner qualification"
+        )
     return {
         "gate_id": gid,
         "state": state,
