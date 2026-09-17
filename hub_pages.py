@@ -260,6 +260,25 @@ VISUAL_TITANMCP_CONVERT_SHELF_HTML = """
 </section>
 """
 
+# First-screen Buy convert shelf for ringdelta.html + swarm-dc.html. Existing live
+# Payment Links only (Autopsy $29 + White Box hour $250). Cite
+# quill-ringdelta-swarm-dc-convert-shelf-20260917-02. Tip KEEP. #8802 off. Not Type
+# insights/grounding, Latch dj-trail/hub-eyes, Wire sell/X, Goat tip shelves, or
+# Quill prior shelves including visual/titanmcp. Pages are static; constants
+# document the shelf for remint peers.
+RINGDELTA_SWARM_DC_CONVERT_SHELF_STYLE = ENTRY_CONVERT_SHELF_STYLE
+RINGDELTA_SWARM_DC_CONVERT_SHELF_HTML = """
+<section id="buy-now-live-checkout" class="law" aria-label="Buy now — live checkout">
+<strong>Buy now — live checkout.</strong> Existing live Payment Links. No invented Stripe. A click is intent, not cash.
+<p>
+<a class="cta" data-checkout href="https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g">Buy Autopsy $29</a>
+<a class="cta" data-checkout href="https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07">Buy one White Box hour $250</a>
+</p>
+<p class="note">Reuse only. Cite <code>quill-ringdelta-swarm-dc-convert-shelf-20260917-02</code>. Sources: <a href="./agent-rescue.html">agent-rescue.html</a> · <a href="./commercial.html">commercial.html</a> / <a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. No new Payment Links.</p>
+</section>
+"""
+
+
 def _preserve_live_cash(prev, doc):
     """Keep tip Autopsy/$199 product doors across hub remints.
 
