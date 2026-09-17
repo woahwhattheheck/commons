@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T03:34:15Z",
+ "holder": "FPC-7DDB",
+ "key": "work-oss-grant-packet-15186-currentness-recovery-2026-efad4894c4454e83d897cfe1",
+ "note": "operation=oss-grant-packet-15186-currentness-recovery-20260916 | repair of PR #15186: code-owned generation validity horizon",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T03:34:15Z",
+ "ttl_s": 7200
+}
