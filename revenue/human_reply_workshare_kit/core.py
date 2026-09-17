@@ -114,59 +114,74 @@ def _sanitize_normalized(normalized: Mapping[str, Any]) -> dict[str, Any]:
     return out
 
 
-def normalize_offer(raw: Mapping[str, Any]) -> dict[str, Any]:
-    # The byte-identical legacy generation owns schema, economics, evidence
-    # state, pack selection, and token gates. This successor adds only the
-    # buyer-facing rendered-text truth boundary.
-    return _sanitize_normalized(_legacy.normalize_offer(raw))
+def _build_guarded_authority_api() -> tuple[Any, Any, Any, Any]:
+    """Capture frozen primitives and expose only current guarded authority.
 
+    The original authority-bearing function objects remain closure-private. Before
+    this module returns, the retained legacy module is rebound to these guarded
+    successors, so a normal first import of ``_core_legacy`` receives the same
+    commercial-truth and receipt-integrity contract as ``core``.
+    """
 
-def render_offer_markdown(normalized: Mapping[str, Any]) -> str:
-    # Direct render callers must re-enter the complete normalization contract;
-    # they cannot bypass token/economic/evidence gates by forging a normalized
-    # mapping and calling the renderer directly.
-    checked = normalize_offer(normalized)
-    return _legacy.render_offer_markdown(checked)
+    legacy_normalize = _legacy.normalize_offer
+    legacy_render = _legacy.render_offer_markdown
 
+    def guarded_normalize_offer(raw: Mapping[str, Any]) -> dict[str, Any]:
+        return _sanitize_normalized(legacy_normalize(raw))
 
-def compile_offer(raw: Mapping[str, Any]) -> CompiledOffer:
-    normalized = normalize_offer(raw)
-    encoded = canonical_json(normalized).encode("utf-8")
-    receipt = hashlib.sha256(encoded).hexdigest()
-    return CompiledOffer(
-        normalized=normalized,
-        markdown=_legacy.render_offer_markdown(normalized),
-        receipt_sha256=receipt,
+    def guarded_render_offer_markdown(normalized: Mapping[str, Any]) -> str:
+        checked = guarded_normalize_offer(normalized)
+        return legacy_render(checked)
+
+    def guarded_compile_offer(raw: Mapping[str, Any]) -> CompiledOffer:
+        normalized = guarded_normalize_offer(raw)
+        encoded = canonical_json(normalized).encode("utf-8")
+        receipt = hashlib.sha256(encoded).hexdigest()
+        return CompiledOffer(
+            normalized=normalized,
+            markdown=legacy_render(normalized),
+            receipt_sha256=receipt,
+        )
+
+    def guarded_render_receipt_json(compiled: CompiledOffer) -> str:
+        if not isinstance(compiled, CompiledOffer):
+            raise WorkshareError("compiled offer must be CompiledOffer")
+        normalized = guarded_normalize_offer(compiled.normalized)
+        expected_markdown = legacy_render(normalized)
+        expected_sha256 = hashlib.sha256(canonical_json(normalized).encode("utf-8")).hexdigest()
+        if compiled.markdown != expected_markdown:
+            raise WorkshareError("compiled markdown does not match normalized offer")
+        if compiled.receipt_sha256 != expected_sha256:
+            raise WorkshareError("compiled receipt hash does not match normalized offer")
+        return canonical_json(
+            {
+                "schema": "human-reply-paid-workshare-receipt/v1",
+                "offer_id": normalized["offer_id"],
+                "pack_id": normalized["pack_id"],
+                "commercial_state": COMMERCIAL_STATE,
+                "normalized_sha256": expected_sha256,
+            }
+        )
+
+    return (
+        guarded_normalize_offer,
+        guarded_render_offer_markdown,
+        guarded_compile_offer,
+        guarded_render_receipt_json,
     )
 
 
-def _validated_compiled_offer(compiled: CompiledOffer) -> tuple[dict[str, Any], str]:
-    # CompiledOffer is a public dataclass, so its fields are caller-controlled
-    # at this boundary. A receipt is evidence only if the represented state can
-    # be recompiled by the current generation and its derived fields agree.
-    if not isinstance(compiled, CompiledOffer):
-        raise WorkshareError("compiled offer must be CompiledOffer")
-    normalized = normalize_offer(compiled.normalized)
-    expected_markdown = _legacy.render_offer_markdown(normalized)
-    expected_sha256 = hashlib.sha256(canonical_json(normalized).encode("utf-8")).hexdigest()
-    if compiled.markdown != expected_markdown:
-        raise WorkshareError("compiled markdown does not match normalized offer")
-    if compiled.receipt_sha256 != expected_sha256:
-        raise WorkshareError("compiled receipt hash does not match normalized offer")
-    return normalized, expected_sha256
+normalize_offer, render_offer_markdown, compile_offer, render_receipt_json = _build_guarded_authority_api()
+del _build_guarded_authority_api
 
-
-def render_receipt_json(compiled: CompiledOffer) -> str:
-    normalized, expected_sha256 = _validated_compiled_offer(compiled)
-    return canonical_json(
-        {
-            "schema": "human-reply-paid-workshare-receipt/v1",
-            "offer_id": normalized["offer_id"],
-            "pack_id": normalized["pack_id"],
-            "commercial_state": COMMERCIAL_STATE,
-            "normalized_sha256": expected_sha256,
-        }
-    )
+# Close the ordinary direct-import bypass in the retained implementation module.
+# Importing any package submodule first initializes this package and this canonical
+# module. Rebind every authority-bearing legacy callable before that import can
+# return to its caller; the old schema/economics primitives remain closure-private.
+_legacy.normalize_offer = normalize_offer
+_legacy.render_offer_markdown = render_offer_markdown
+_legacy.compile_offer = compile_offer
+_legacy.render_receipt_json = render_receipt_json
 
 
 def __getattr__(name: str) -> Any:
