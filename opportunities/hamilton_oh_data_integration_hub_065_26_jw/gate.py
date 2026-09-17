@@ -13,6 +13,7 @@ from pathlib import Path
 from typing import Any, Mapping, Sequence
 
 OPPORTUNITY_ID = "065-26/JW"
+EVIDENCE_ARTIFACT_SCHEMA = "hamilton-065-26-jw-evidence/v1"
 BUYER_CONTROL_FIELDS = {
     "response_deadline", "question_deadline", "submission_mechanics",
     "teaming_rules", "evaluation_criteria", "mandatory_requirements",
@@ -106,6 +107,37 @@ def _sha(value: Any, label: str) -> str:
     return value
 
 
+def _artifact_binding_index(source: Mapping[str, Any], sid: str) -> set[tuple[str, str]]:
+    artifact = source.get("retained_artifact")
+    if type(artifact) is not dict:
+        raise GateError(f"{sid}.retained_artifact required for positive evidence")
+    if artifact.get("schema") != EVIDENCE_ARTIFACT_SCHEMA:
+        raise GateError(f"{sid}.retained_artifact schema mismatch")
+    if artifact.get("source_id") != sid:
+        raise GateError(f"{sid}.retained_artifact source_id mismatch")
+    if artifact.get("opportunity_id") != OPPORTUNITY_ID:
+        raise GateError(f"{sid}.retained_artifact opportunity_id mismatch")
+    bindings = artifact.get("bindings")
+    if type(bindings) is not list:
+        raise GateError(f"{sid}.retained_artifact bindings must be an array")
+    out: set[tuple[str, str]] = set()
+    for idx, binding in enumerate(bindings):
+        if type(binding) is not dict or set(binding) != {"requirement_id", "evidence_class"}:
+            raise GateError(f"{sid}.retained_artifact.bindings[{idx}] must contain exact binding fields")
+        rid = _str(binding.get("requirement_id"), f"{sid}.retained_artifact.bindings[{idx}].requirement_id")
+        evidence_class = _str(binding.get("evidence_class"), f"{sid}.retained_artifact.bindings[{idx}].evidence_class")
+        if rid not in EVIDENCE_CLASSES or evidence_class not in EVIDENCE_CLASSES[rid]:
+            raise GateError(f"{sid}.retained_artifact binding is not admissible: {rid}/{evidence_class}")
+        pair = (rid, evidence_class)
+        if pair in out:
+            raise GateError(f"{sid}.retained_artifact contains duplicate evidence binding")
+        out.add(pair)
+    expected_sha = _sha(source.get("content_sha256"), f"{sid}.content_sha256")
+    if digest(artifact) != expected_sha:
+        raise GateError(f"{sid}.content_sha256 does not authenticate retained_artifact bytes")
+    return out
+
+
 def _source_index(ledger: Mapping[str, Any]):
     if type(ledger) is not dict or ledger.get("opportunity_id") != OPPORTUNITY_ID:
         raise GateError("source ledger opportunity_id mismatch")
@@ -163,6 +195,7 @@ def _evidence_index(manifest: Mapping[str, Any], sources):
     if type(rows) is not list:
         raise GateError("evidence manifest evidence must be an array")
     out = {}
+    source_binding_cache: dict[str, set[tuple[str, str]]] = {}
     for idx, row in enumerate(rows):
         if type(row) is not dict:
             raise GateError(f"evidence[{idx}] must be object")
@@ -184,6 +217,10 @@ def _evidence_index(manifest: Mapping[str, Any], sources):
             raise GateError(f"{eid}.source_id must resolve to retained source")
         if source.get("content_sha256") != content_sha:
             raise GateError(f"{eid}.content_sha256 does not bind source")
+        if source_id not in source_binding_cache:
+            source_binding_cache[source_id] = _artifact_binding_index(source, source_id)
+        if (rid, evidence_class) not in source_binding_cache[source_id]:
+            raise GateError(f"{eid} is not authenticated by retained source artifact binding")
         authority = source["authority"]
         if evidence_class in OFFICIAL_EVIDENCE_CLASSES:
             if authority not in {"OFFICIAL_CONTROLLING_PACKET", "OFFICIAL_ADDENDUM"}:
