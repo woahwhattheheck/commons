@@ -73,6 +73,33 @@ for row in cases:
         raise SystemExit("reload admitted render-invisible default-ignorable")
 '''
 
+_RELOAD_INLINE_FORMATTING_PREDECESSOR = r'''
+import importlib
+from revenue.human_reply_workshare_kit import core
+from revenue.human_reply_workshare_kit.test_core import base_record
+
+for _ in range(3):
+    if importlib.reload(core) is not core:
+        raise SystemExit("core reload changed module identity")
+
+cases = []
+row = base_record()
+row["opportunity_label"] = "Payment rece**iv**ed for the pilot"
+cases.append(row)
+row = base_record()
+row["scope"]["input_bounds"] = ["one entity", "Buyer ac**ce**pted this scope"]
+cases.append(row)
+
+for row in cases:
+    try:
+        core.compile_offer(row)
+    except core.WorkshareError as exc:
+        if "unsupported commercial/outcome assertion" not in str(exc):
+            raise SystemExit("wrong inline-format rejection after reload: " + str(exc))
+    else:
+        raise SystemExit("reload admitted renderer-equivalent inline Markdown assertion")
+'''
+
 
 class HumanReplyWorkshareMarkdownDestinationTests(unittest.TestCase):
     def test_destination_syntax_fails_closed_across_every_rendered_field(self):
@@ -123,13 +150,38 @@ class HumanReplyWorkshareMarkdownDestinationTests(unittest.TestCase):
                 ):
                     core.compile_offer(row)
 
-    def test_plain_bracket_text_without_destination_remains_admissible(self):
+    def test_inline_formatting_delimiters_cannot_split_forbidden_visible_assertions(self):
+        mutations = (
+            lambda row: row.__setitem__(
+                "counterparty_label", "Buyer ac**ce**pted this scope"
+            ),
+            lambda row: row.__setitem__(
+                "opportunity_label", "Payment rece**iv**ed for the pilot"
+            ),
+            lambda row: row["scope"].__setitem__(
+                "one_line", "Invoice se`n`t yesterday"
+            ),
+            lambda row: row["scope"].__setitem__(
+                "input_bounds",
+                ["one entity", "Customer rela~~tion~~ship is confirmed"],
+            ),
+        )
+        for mutate in mutations:
+            row = base_record()
+            mutate(row)
+            with self.subTest(row=row):
+                with self.assertRaisesRegex(
+                    core.WorkshareError, "unsupported commercial/outcome assertion"
+                ):
+                    core.compile_offer(row)
+
+    def test_plain_bracket_and_harmless_inline_formatting_remain_admissible(self):
         row = base_record("DATA_MIGRATION_ACCEPTANCE")
         row["scope"]["one_line"] = (
-            "Legacy reconciliation and acceptance evidence [owner note] for one frozen batch."
+            "Legacy reconciliation and **acceptance evidence** [owner note] for one frozen batch."
         )
         compiled = core.compile_offer(row)
-        self.assertIn("acceptance evidence [owner note]", compiled.markdown)
+        self.assertIn("**acceptance evidence** [owner note]", compiled.markdown)
 
     def test_default_ignorables_and_variation_selectors_fail_closed(self):
         mutations = (
@@ -198,6 +250,21 @@ class HumanReplyWorkshareMarkdownDestinationTests(unittest.TestCase):
         with self.assertRaisesRegex(core.WorkshareError, "default-ignorable"):
             core.render_receipt_json(forged)
 
+    def test_public_renderer_and_receipt_reenter_inline_format_guard(self):
+        compiled = core.compile_offer(base_record())
+        forged_normalized = copy.deepcopy(dict(compiled.normalized))
+        forged_normalized["opportunity_label"] = "Payment rece**iv**ed for the pilot"
+        with self.assertRaisesRegex(core.WorkshareError, "unsupported commercial/outcome"):
+            core.render_offer_markdown(forged_normalized)
+
+        forged = core.CompiledOffer(
+            normalized=forged_normalized,
+            markdown=compiled.markdown,
+            receipt_sha256=compiled.receipt_sha256,
+        )
+        with self.assertRaisesRegex(core.WorkshareError, "unsupported commercial/outcome"):
+            core.render_receipt_json(forged)
+
     def test_reload_seal_retains_destination_guard_normal_and_optimized(self):
         for optimized in (False, True):
             command = [sys.executable]
@@ -224,6 +291,26 @@ class HumanReplyWorkshareMarkdownDestinationTests(unittest.TestCase):
             if optimized:
                 command.append("-O")
             command.extend(["-c", _RELOAD_DEFAULT_IGNORABLE_PREDECESSOR])
+            completed = subprocess.run(
+                command,
+                cwd=ROOT,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True,
+                timeout=120,
+            )
+            self.assertEqual(
+                completed.returncode,
+                0,
+                f"optimized={optimized}\n{completed.stdout}",
+            )
+
+    def test_reload_seal_retains_inline_format_guard_normal_and_optimized(self):
+        for optimized in (False, True):
+            command = [sys.executable]
+            if optimized:
+                command.append("-O")
+            command.extend(["-c", _RELOAD_INLINE_FORMATTING_PREDECESSOR])
             completed = subprocess.run(
                 command,
                 cwd=ROOT,
