@@ -21,7 +21,9 @@ class BlinkLandHtmlLiveCashTest(unittest.TestCase):
         self.assertIn("repair-booking-preflight.html", text)
         self.assertIn("plant-downtime-handoff.html", text)
         self.assertIn("$199", text)
-        self.assertNotIn("buy.stripe.com", text)
+        live_cash = text.split('id="live-cash"', 1)[1]
+        live_cash = live_cash.split("</section>", 1)[0]
+        self.assertNotIn("buy.stripe.com", live_cash)
 
 
 if __name__ == "__main__":

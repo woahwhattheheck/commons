@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+import re
 import unittest
 from pathlib import Path
 
@@ -27,9 +28,17 @@ TARGETS = (
     'listing-registry.html',
 )
 
-# Product door in this KEEP batch: verified livemode PL, not a pointer-only live-cash card.
+# Product doors in this KEEP batch: verified livemode PLs, not pointer-only
+# live-cash cards. land.html convert shelf reuses existing Autopsy $29 +
+# White Box hour $250 Payment Links (wire-entry-land-convert-shelf-20260917-01).
 VERIFIED_PRODUCT_CHECKOUT = {
-    'invoice-exception-pack.html': b'https://buy.stripe.com/14A00i84Jdvz36hdxg43S0l',
+    'invoice-exception-pack.html': (
+        b'https://buy.stripe.com/14A00i84Jdvz36hdxg43S0l',
+    ),
+    'land.html': (
+        b'https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g',
+        b'https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07',
+    ),
 }
 
 class BassLargerFixedBatchTest(unittest.TestCase):
@@ -42,7 +51,16 @@ class BassLargerFixedBatchTest(unittest.TestCase):
                 self.assertIn(b"diagnostic.html", data)
                 expected = VERIFIED_PRODUCT_CHECKOUT.get(name)
                 if expected:
-                    self.assertIn(expected, data)
+                    for url in expected:
+                        self.assertIn(url, data)
+                    found = {
+                        b'https://buy.stripe.com/' + path
+                        for path in re.findall(
+                            br'https?://buy\.stripe\.com/([A-Za-z0-9_-]+)',
+                            data,
+                        )
+                    }
+                    self.assertEqual(found, set(expected))
                 else:
                     self.assertNotIn(b"buy.stripe.com", data)
 
