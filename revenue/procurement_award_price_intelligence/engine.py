@@ -127,6 +127,7 @@ def normalize(v):
     return {"dataset_id":s(v["dataset_id"],"dataset_id",True),"generated_at":now,"sources":sorted(src,key=lambda x:x["source_id"]),"source_map":sm,"observations":sorted(obs,key=lambda x:x["observation_id"]),"target":{"target_id":s(t["target_id"],"target.target_id",True),"currency":cur,"basis":bas,"unit":unit,"term_months":term,"allowed_price_kinds":allowed}}
 
 def comp_tuple(x): return (x["currency"],x["basis"],x["unit"],x["term_months"])
+def claim_signature(x): return (x["opportunity_id"],x["vendor"],x["amount_minor"])+comp_tuple(x)+(x["price_kind"],)
 def fresh_official(o,sm):
     rows=[sm[x] for x in o["source_ids"]]
     return any(x["authority"]=="BUYER_OFFICIAL" and not x["stale"] for x in rows)
@@ -142,11 +143,18 @@ def compile(raw:bytes):
     official=[o for o in eligible_kind if fresh_official(o,sm)]
     byclaim={}
     for o in official: byclaim.setdefault(o["claim_key"],[]).append(o)
-    conflicts=[]
+    conflicts=[]; claim_rows=[]
     for ck,rows in sorted(byclaim.items()):
-        signatures={(x["amount_minor"],)+comp_tuple(x)+(x["price_kind"],) for x in rows}
-        if len(signatures)>1: conflicts.append({"claim_key":ck,"observation_ids":sorted(x["observation_id"] for x in rows)})
-    comparable=[o for o in official if comp_tuple(o)==target_tuple]
+        signatures={claim_signature(x) for x in rows}
+        if len(signatures)>1:
+            conflicts.append({"claim_key":ck,"observation_ids":sorted(x["observation_id"] for x in rows)})
+            claim_rows.extend(rows)
+            continue
+        ordered=sorted(rows,key=lambda x:x["observation_id"])
+        merged={**ordered[0]}
+        merged["source_ids"]=sorted({source_id for row in ordered for source_id in row["source_ids"]})
+        claim_rows.append(merged)
+    comparable=[o for o in claim_rows if comp_tuple(o)==target_tuple]
     stale_matching=[o for o in eligible_kind if comp_tuple(o)==target_tuple and stale_official(o,sm) and not fresh_official(o,sm)]
     if conflicts:
         status="HOLD_SOURCE_CONFLICT"; reasons=[f"authoritative claim conflict: {x['claim_key']}" for x in conflicts]
