@@ -131,11 +131,15 @@ def _split_uri(value, where, encoded=False):
         port = parts.port
     except ValueError as exc:
         raise Error(f"{where}: invalid https URI") from exc
+    # Userinfo is a syntactic authority component, not a truthy credential value.
+    # Reject its presence even when username/password parse as empty strings, and
+    # retain the raw authority-delimiter check as a fail-closed parser boundary.
     if (
         parts.scheme != "https"
         or not parts.hostname
         or parts.username is not None
         or parts.password is not None
+        or "@" in parts.netloc
         or parts.query
         or parts.fragment
         or "?" in value

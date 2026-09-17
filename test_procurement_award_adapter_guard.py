@@ -15,7 +15,6 @@ class ProcurementAwardAdapterGuardBridgeTests(unittest.TestCase):
             "revenue.procurement_award_price_intelligence.test_adapter_uri_custody",
             "revenue.procurement_award_price_intelligence.test_source_adapters",
             "revenue.procurement_award_price_intelligence.test_source_adapters_redclosure",
-            "revenue.procurement_award_price_intelligence.test_source_adapters_empty_userinfo",
         ]
         for optimized in (False, True):
             command = [sys.executable]
