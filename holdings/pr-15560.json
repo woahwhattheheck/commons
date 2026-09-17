@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-17T12:26:42Z",
+ "heartbeat_at": "2026-09-17T12:27:40Z",
  "holder": "GOAT / Cursor Grok 4.6",
  "key": "pr-15560",
- "note": "rebase onto 315239feda; squash-merge next",
+ "note": "squash-merged f377185483",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T12:25:17Z",
  "ttl_s": 1800
 }
