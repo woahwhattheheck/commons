@@ -156,25 +156,17 @@ def _compile(
     return result
 
 
-def _semantic_projection(receipt: dict[str, Any]) -> dict[str, Any]:
-    projected = dict(receipt)
-    projected.pop("evaluated_at", None)
-    projected.pop("receipt_digest", None)
-    return projected
-
-
 def _build_current_api(
     *,
     _datetime_cls=_stdlib_datetime,
     _timezone_obj=_stdlib_timezone,
     _compiler=_compile,
     _decision_source=_decision,
-    _commercial_generation_fn=_commercial_generation,
-    _expected_total_fn=_expected_total,
+    _commercial_generation_source=_commercial_generation,
+    _expected_total_source=_expected_total,
     _function_type=_FunctionType,
     _common=_common_module,
     _model=_model_module,
-    _projection=_semantic_projection,
     _receipt_schema=RECEIPT_SCHEMA,
     _states=frozenset(STATES),
     _gate_error=GateError,
@@ -183,8 +175,8 @@ def _build_current_api(
     """Build current APIs around one import-generation-owned semantic snapshot.
 
     Current compilation must not resolve mutable module globals for time, validation,
-    decision states, canonicalization, authority, or trusted container views. The
-    snapshot below gives the normalizer and its common helpers private global
+    decision states, commercial lineage, canonicalization, authority, or trusted
+    container views. The snapshot below gives the normalizer and helpers private global
     dictionaries captured at import, freezes mutable enum sets, and closes current APIs
     over that generation. Current entrypoints also freeze packet/receipt inputs exactly
     once to exact built-in plain-JSON containers before any semantic read, so stateful
@@ -217,11 +209,14 @@ def _build_current_api(
         model_globals[name] = frozenset(model_globals[name])
     sealed_normalize = _clone_function(_model._normalize, model_globals)
 
-    decision_globals = dict(globals())
+    engine_globals = dict(globals())
+    sealed_commercial_generation = _clone_function(_commercial_generation_source, engine_globals)
+    sealed_expected_total = _clone_function(_expected_total_source, engine_globals)
+    decision_globals = dict(engine_globals)
     sealed_decision = _clone_function(_decision_source, decision_globals)
     sealed_decision.__kwdefaults__.update({
-        "_commercial_generation_fn": _commercial_generation_fn,
-        "_expected_total_fn": _expected_total_fn,
+        "_commercial_generation_fn": sealed_commercial_generation,
+        "_expected_total_fn": sealed_expected_total,
         "_dt_fn": common_globals["_dt"],
     })
 
@@ -234,6 +229,7 @@ def _build_current_api(
     builtin_str = str
     builtin_int = int
     builtin_bool = bool
+    builtin_enumerate = enumerate
 
     def _canonical(value: Any) -> bytes:
         return (json_dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n").encode("utf-8")
@@ -257,10 +253,19 @@ def _build_current_api(
                 frozen[key] = _freeze_plain_json(item, f"{label}.{key}", depth + 1)
             return frozen
         if kind is builtin_list:
-            return [_freeze_plain_json(item, f"{label}[{index}]", depth + 1) for index, item in enumerate(value)]
+            return [
+                _freeze_plain_json(item, f"{label}[{index}]", depth + 1)
+                for index, item in builtin_enumerate(value)
+            ]
         if value is None or kind is builtin_str or kind is builtin_int or kind is builtin_bool:
             return value
         raise _gate_error(f"{label}: exact built-in plain-JSON value required")
+
+    def _project(receipt: dict[str, Any]) -> dict[str, Any]:
+        projected = builtin_dict(receipt)
+        projected.pop("evaluated_at", None)
+        projected.pop("receipt_digest", None)
+        return projected
 
     def _sealed_compile(packet: dict[str, Any], now: str) -> dict[str, Any]:
         return _compiler(
@@ -269,8 +274,8 @@ def _build_current_api(
             _ts_fn=common_globals["_ts"],
             _normalize_fn=sealed_normalize,
             _decision_fn=sealed_decision,
-            _commercial_generation_fn=_commercial_generation_fn,
-            _expected_total_fn=_expected_total_fn,
+            _commercial_generation_fn=sealed_commercial_generation,
+            _expected_total_fn=sealed_expected_total,
             _digest_fn=_digest_fn,
             _authority_flags_fn=_authority_flags_fn,
             _receipt_schema=_receipt_schema,
@@ -288,14 +293,14 @@ def _build_current_api(
         frozen_packet = _freeze_plain_json(packet, "packet")
         supplied = _freeze_plain_json(receipt, "receipt")
         claimed = supplied.get("receipt_digest")
-        unsigned = dict(supplied)
+        unsigned = builtin_dict(supplied)
         unsigned.pop("receipt_digest", None)
-        if not isinstance(claimed, str) or claimed != _digest_fn(unsigned):
+        if builtin_type(claimed) is not builtin_str or claimed != _digest_fn(unsigned):
             raise _gate_error("receipt: digest mismatch")
         if supplied.get("schema") != _receipt_schema or supplied.get("state") not in _states:
             raise _gate_error("receipt: unsupported schema/state")
         evaluated_at = supplied.get("evaluated_at")
-        if not isinstance(evaluated_at, str):
+        if builtin_type(evaluated_at) is not builtin_str:
             raise _gate_error("receipt: evaluated_at required")
 
         try:
@@ -325,7 +330,7 @@ def _build_current_api(
             "current_state": current["state"],
             "current_reasons": current["reasons"],
             "current_receipt_digest": current["receipt_digest"],
-            "still_current": _canonical(_projection(historical)) == _canonical(_projection(current)),
+            "still_current": _canonical(_project(historical)) == _canonical(_project(current)),
         }
 
     return compile_current, verify_receipt
