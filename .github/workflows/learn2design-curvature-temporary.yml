@@ -1,0 +1,78 @@
+name: Learn2Design curvature temporary public matrix
+
+on:
+  pull_request:
+    paths:
+      - 'revenue/learn2design2026/curvature/**'
+      - '.github/workflows/learn2design-curvature-temporary.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: curvature-public-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+
+jobs:
+  public-development:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      JAX_PLATFORM_NAME: cpu
+      JAX_ENABLE_X64: 'true'
+      OMP_NUM_THREADS: '2'
+      OPENBLAS_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+    steps:
+      - name: Checkout exact candidate head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Checkout frozen organizer context
+        uses: actions/checkout@v4
+        with:
+          repository: artificial-scientist-lab/Learn2Design-2026
+          ref: 84a4b0a4c7e0f3b702459ffc8ba6a1d84d34cefa
+          path: _organizer_learn2design
+          persist-credentials: false
+      - name: Install real organizer CPU package
+        run: |
+          python -m pip install --disable-pip-version-check 'dfbench==0.3.3'
+          mkdir -p /tmp/curvature-public
+          python -m pip freeze > /tmp/curvature-public/pip-freeze.txt
+      - name: Exact source and history-contract tests
+        run: |
+          set -euo pipefail
+          python -m unittest discover -s revenue/learn2design2026/curvature -v 2>&1 | tee /tmp/curvature-public/tests.txt
+          python -m py_compile revenue/learn2design2026/curvature/*.py
+      - name: Matched public cells with full batched feasibility
+        run: |
+          set -euo pipefail
+          for seed in 7 42 73; do
+            case "$seed" in
+              7) arms='curvature_b8 v2_b8 v2_default_b16' ;;
+              42) arms='v2_b8 v2_default_b16 curvature_b8' ;;
+              73) arms='v2_default_b16 curvature_b8 v2_b8' ;;
+            esac
+            for arm in $arms; do
+              python revenue/learn2design2026/curvature/public_run.py \
+                --arm "$arm" --seed "$seed" --seconds 30 \
+                --organizer _organizer_learn2design \
+                --out "/tmp/curvature-public/$seed-$arm.json" \
+                2>&1 | tee "/tmp/curvature-public/$seed-$arm.log"
+            done
+          done
+          sha256sum /tmp/curvature-public/*.json /tmp/curvature-public/*.log /tmp/curvature-public/*.txt > /tmp/curvature-public/SHA256SUMS
+      - name: Preserve terminal logs and observations
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: curvature-public-${{ github.event.pull_request.head.sha }}
+          path: /tmp/curvature-public/
+          if-no-files-found: warn
+          retention-days: 14
