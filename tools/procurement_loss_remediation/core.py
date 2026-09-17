@@ -46,7 +46,9 @@ MAX_TEXT = 400
 _HEX64_RE = re.compile(r"^[0-9a-f]{64}$")
 _EMAILISH_RE = re.compile(r"\S+@\S+")
 _URL_RE = re.compile(r"(?i)\b(?:https?|ftp)://|\bwww\.")
-_PHONEISH_RE = re.compile(r"(?<!\w)\+?\d[\d(). -]{6,}\d(?!\w)")
+# Intentionally catches common separator variants including slash/colon. This
+# is a conservative private-text fence, not a phone-number parser.
+_PHONEISH_RE = re.compile(r"(?<!\w)\+?\d[\d(). /:-]{6,}\d(?!\w)")
 
 
 class RemediationError(ValueError):
@@ -188,23 +190,40 @@ def normalize_input(raw: Any) -> dict[str, Any]:
     for index, raw_hypothesis in enumerate(hypotheses_raw):
         label = f"record.internal_hypotheses[{index}]"
         row = _dict(raw_hypothesis, label)
-        _exact(row, {"hypothesis_id", "text", "confidence", "evidence_ids"}, label)
+        _exact(row, {"hypothesis_id", "text", "confidence", "evidence_basis"}, label)
         hypothesis_id = _text(row.get("hypothesis_id"), f"{label}.hypothesis_id")
         if hypothesis_id in seen_hypothesis_ids:
             raise RemediationError("duplicate hypothesis_id")
         seen_hypothesis_ids.add(hypothesis_id)
-        refs_raw = _list(row.get("evidence_ids"), f"{label}.evidence_ids", 64)
-        refs = [_text(item, f"{label}.evidence_ids[]") for item in refs_raw]
-        if not refs:
-            raise RemediationError(f"{label}.evidence_ids must not be empty")
-        if len(set(refs)) != len(refs):
-            raise RemediationError(f"{label}.evidence_ids contains duplicates")
+        refs_raw = _list(row.get("evidence_basis"), f"{label}.evidence_basis", 64)
+        if not refs_raw:
+            raise RemediationError(f"{label}.evidence_basis must not be empty")
+        refs: list[dict[str, str]] = []
+        seen_evidence_ids: set[str] = set()
+        for ref_index, raw_ref in enumerate(refs_raw):
+            ref_label = f"{label}.evidence_basis[{ref_index}]"
+            ref = _dict(raw_ref, ref_label)
+            _exact(ref, {"evidence_id", "source_digest_sha256", "observed_at"}, ref_label)
+            evidence_id = _text(ref.get("evidence_id"), f"{ref_label}.evidence_id")
+            if evidence_id in seen_evidence_ids:
+                raise RemediationError(f"{label}.evidence_basis contains duplicate evidence_id")
+            seen_evidence_ids.add(evidence_id)
+            refs.append(
+                {
+                    "evidence_id": evidence_id,
+                    "source_digest_sha256": _sha(ref.get("source_digest_sha256"), f"{ref_label}.source_digest_sha256"),
+                    # Exact equality to the independently verified source fact
+                    # below is the timestamp/currentness trust boundary here.
+                    "observed_at": _text(ref.get("observed_at"), f"{ref_label}.observed_at", 64),
+                }
+            )
+        refs.sort(key=lambda item: item["evidence_id"])
         hypotheses.append(
             {
                 "hypothesis_id": hypothesis_id,
                 "text": _text(row.get("text"), f"{label}.text", MAX_TEXT, private_safe=True),
                 "confidence": _enum(row.get("confidence"), CONFIDENCE, f"{label}.confidence"),
-                "evidence_ids": sorted(refs),
+                "evidence_basis": refs,
             }
         )
     hypotheses.sort(key=lambda row: row["hypothesis_id"])
@@ -248,7 +267,7 @@ def normalize_input(raw: Any) -> dict[str, Any]:
 def derive_semantics(normalized: dict[str, Any]) -> dict[str, Any]:
     receipt = normalized["outcome_receipt"]
     source_statements = {row["evidence_id"]: row for row in receipt["rationale"]["statements"]}
-    known_fact_ids = {row["evidence_id"] for row in receipt["known_facts"]}
+    known_facts = {row["evidence_id"]: row for row in receipt["known_facts"]}
     hold_reasons: set[str] = set()
     buyer_reasons: list[dict[str, Any]] = []
     reason_ids: set[str] = set()
@@ -281,21 +300,60 @@ def derive_semantics(normalized: dict[str, Any]) -> dict[str, Any]:
 
     missing_statement_ids = sorted(set(source_statements) - mapped_evidence)
 
-    hypothesis_ids: set[str] = set()
+    valid_hypothesis_ids: set[str] = set()
     hypotheses: list[dict[str, Any]] = []
     for hypothesis in normalized["internal_hypotheses"]:
-        missing_evidence = sorted(set(hypothesis["evidence_ids"]) - known_fact_ids)
-        if missing_evidence:
-            hold_reasons.add(f"hypothesis_unknown_evidence:{hypothesis['hypothesis_id']}")
-        hypothesis_ids.add(hypothesis["hypothesis_id"])
-        hypotheses.append({**hypothesis, "attribution": "INTERNAL_HYPOTHESIS_NOT_BUYER_FACT"})
+        basis_valid = True
+        bound_evidence: list[dict[str, Any]] = []
+        for ref in hypothesis["evidence_basis"]:
+            fact = known_facts.get(ref["evidence_id"])
+            if fact is None:
+                basis_valid = False
+                hold_reasons.add(f"hypothesis_unknown_evidence:{hypothesis['hypothesis_id']}:{ref['evidence_id']}")
+                continue
+            if fact["source_digest_sha256"] != ref["source_digest_sha256"] or fact["observed_at"] != ref["observed_at"]:
+                basis_valid = False
+                hold_reasons.add(f"hypothesis_evidence_binding_mismatch:{hypothesis['hypothesis_id']}:{ref['evidence_id']}")
+                continue
+            if fact["evidence_status"] != "CURRENT":
+                basis_valid = False
+                hold_reasons.add(f"hypothesis_noncurrent_evidence:{hypothesis['hypothesis_id']}:{ref['evidence_id']}")
+                continue
+            if fact["mapped_outcome"] == "UNKNOWN":
+                basis_valid = False
+                hold_reasons.add(f"hypothesis_nonterminal_evidence:{hypothesis['hypothesis_id']}:{ref['evidence_id']}")
+                continue
+            bound_evidence.append(
+                {
+                    "evidence_id": fact["evidence_id"],
+                    "source_kind": fact["source_kind"],
+                    "source_digest_sha256": fact["source_digest_sha256"],
+                    "observed_at": fact["observed_at"],
+                    "evidence_status": fact["evidence_status"],
+                    "decision_signal": fact["decision_signal"],
+                    "mapped_outcome": fact["mapped_outcome"],
+                }
+            )
+        if basis_valid:
+            valid_hypothesis_ids.add(hypothesis["hypothesis_id"])
+        hypotheses.append(
+            {
+                "hypothesis_id": hypothesis["hypothesis_id"],
+                "text": hypothesis["text"],
+                "confidence": hypothesis["confidence"],
+                "evidence_basis": hypothesis["evidence_basis"],
+                "bound_evidence": sorted(bound_evidence, key=lambda item: item["evidence_id"]),
+                "basis_valid": basis_valid,
+                "attribution": "INTERNAL_HYPOTHESIS_NOT_BUYER_FACT",
+            }
+        )
 
     gaps: list[dict[str, Any]] = []
     for gap in normalized["remediation_gaps"]:
         valid_basis = (
             gap["basis_id"] in reason_ids
             if gap["basis_type"] == "BUYER_REASON"
-            else gap["basis_id"] in hypothesis_ids
+            else gap["basis_id"] in valid_hypothesis_ids
         )
         if not valid_basis:
             hold_reasons.add(f"gap_unbound_basis:{gap['gap_id']}@{gap['version']}")
