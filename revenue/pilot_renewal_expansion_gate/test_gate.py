@@ -8,6 +8,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from unittest.mock import patch
 
+import revenue.pilot_renewal_expansion_gate.engine as engine_module
 from revenue.pilot_renewal_expansion_gate.common import AUTHORITY, GateError, TRUTH_CEILING, canonical_json, strict_loads, _read_regular
 from revenue.pilot_renewal_expansion_gate.engine import compile_packet, verify_current
 from revenue.pilot_renewal_expansion_gate.gate import _atomic_write, render_markdown
@@ -174,6 +175,38 @@ class GateTests(unittest.TestCase):
         self.assertEqual(result["verification_mode"], "HISTORICAL_REPLAY_NON_CURRENT")
         result2 = verify_current(raw, packet, receipt, datetime(2026, 10, 1, 0, 0, tzinfo=timezone.utc))
         self.assertFalse(result2["current_valid"]); self.assertNotEqual(result2["current_decision"], "READY_FOR_RENEWAL_REVIEW")
+
+    def test_process_clock_sampled_after_candidate_authentication(self):
+        raw = sample()
+        raw["renewal_window"]["close_at"] = "2026-09-17T18:00:00Z"
+        before_boundary = datetime(2026, 9, 17, 17, 59, 59, tzinfo=timezone.utc)
+        after_boundary = datetime(2026, 9, 17, 18, 0, 1, tzinfo=timezone.utc)
+        _, packet, receipt = compile_packet(raw, before_boundary)
+        events: list[str] = []
+        real_normalize = engine_module.normalize
+
+        class BoundaryDateTime(datetime):
+            @classmethod
+            def now(cls, tz=None):
+                events.append("clock")
+                value = after_boundary if "normalize" in events else before_boundary
+                if tz is None:
+                    return value.replace(tzinfo=None)
+                return value.astimezone(tz)
+
+        with patch.object(engine_module, "datetime", BoundaryDateTime):
+            _, process_verify = engine_module._make_process_clock_apis()
+
+        def tracked_normalize(value):
+            events.append("normalize")
+            return real_normalize(value)
+
+        with patch.object(engine_module, "normalize", side_effect=tracked_normalize):
+            result = process_verify(raw, packet, receipt)
+        self.assertLess(events.index("normalize"), events.index("clock"))
+        self.assertFalse(result["current_valid"])
+        self.assertEqual(result["current_decision"], "HOLD_WINDOW")
+        self.assertEqual(result["verification_mode"], "PROCESS_CURRENT")
 
     def test_future_source_observation_invalidates_bound_evidence(self):
         d = sample(); d["sources"][0]["observed_at"] = "2026-09-18T00:00:00Z"
