@@ -330,6 +330,18 @@ def compile_plan(raw: Any) -> dict[str, Any]:
     normalized = normalize_input(raw)
     semantics = derive_semantics(normalized)
     source_receipt = normalized["outcome_receipt"]
+    source_evidence = [
+        {
+            "evidence_id": row["evidence_id"],
+            "source_kind": row["source_kind"],
+            "source_digest_sha256": row["source_digest_sha256"],
+            "observed_at": row["observed_at"],
+            "evidence_status": row["evidence_status"],
+            "decision_signal": row["decision_signal"],
+            "mapped_outcome": row["mapped_outcome"],
+        }
+        for row in source_receipt["known_facts"]
+    ]
     unsigned = {
         "schema": RECEIPT_SCHEMA,
         "opportunity_id": source_receipt["opportunity_id"],
@@ -337,6 +349,7 @@ def compile_plan(raw: Any) -> dict[str, Any]:
         "source_receipt_sha256": source_receipt["receipt_sha256"],
         "source_outcome": semantics["source_outcome"],
         "source_hold_reasons": semantics["source_hold_reasons"],
+        "source_evidence": source_evidence,
         "status": semantics["status"],
         "buyer_reasons": semantics["buyer_reasons"],
         "internal_hypotheses": semantics["internal_hypotheses"],
