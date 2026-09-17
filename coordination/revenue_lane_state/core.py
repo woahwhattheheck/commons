@@ -75,6 +75,17 @@ ACTIONABLE_CURRENT_STATES = {
     "PACKET_PENDING",
     "PACKET_RECEIVED",
 }
+CURRENTNESS_BASIS_KINDS = {
+    "CLAIMED_NO_OUTBOUND": {"TAKE"},
+    "MUSE_PENDING_NO_AUTHORITY": {"MUSE_PENDING"},
+    "SELECTED_UNCONSUMED_NO_SEND_AUTHORITY": {"MUSE_SELECTED"},
+    "SEND_ATTEMPTED_PROVIDER_UNKNOWN": {"PROVIDER_SEND_ATTEMPTED", "LEASE_CONSUMED"},
+    "HUMAN_REPLY_ACTIONABLE": {"HUMAN_REPLY"},
+    "PARTNER_CONFIRMED": {"PARTNER_ACCEPTED"},
+    "BUYER_QUESTION_PENDING": {"QUESTION_SENT"},
+    "PACKET_PENDING": {"PACKET_REQUESTED"},
+    "PACKET_RECEIVED": {"PACKET_RECEIVED"},
+}
 
 _ID_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:/@+-]{0,199}$")
 
@@ -333,8 +344,8 @@ def validate_packet(packet: Any, evaluation_time: str) -> tuple[dict[str, Any], 
                 raise ContractError("supersession chronology invalid")
             if event.generation < target.generation:
                 raise ContractError("supersession generation regressed")
-            if event.source_class != target.source_class:
-                raise ContractError("supersession source authority mismatch")
+            if target.source_class != "coordination" or event.source_class != "coordination":
+                raise ContractError("external provider/human/procurement evidence is immutable")
             if target.event_id in superseded:
                 raise ContractError("multiple supersessions of one event")
             superseded.add(target.event_id)
@@ -375,10 +386,10 @@ def reduce_state(events: list[ParsedEvent], eval_dt: datetime, currentness_secon
         sent = [event for event in events if event.kind == "PROVIDER_SENT"]
         bounced = [event for event in events if event.kind == "BOUNCED"]
         dead_routes = [event for event in events if event.kind == "DEAD_ROUTE"]
-        sends_by_generation: dict[int, int] = {}
-        for event in sent:
-            sends_by_generation[event.generation] = sends_by_generation.get(event.generation, 0) + 1
-        duplicate_send = any(count >= 2 for count in sends_by_generation.values())
+        # No packet-authenticated reopen event exists in schema v1. Therefore a
+        # caller-controlled generation/route change cannot reset send permission:
+        # a second retained provider send in the same business lane is a collision.
+        duplicate_send = len(sent) >= 2
         if duplicate_send:
             state = "COLLISION_DUPLICATE_SEND_DNR"
         elif "DNR" in kinds:
@@ -423,10 +434,18 @@ def reduce_state(events: list[ParsedEvent], eval_dt: datetime, currentness_secon
                 state = "RESEARCHED_NOT_CONTACTED"
             else:
                 state = "HOLD_EVIDENCE"
-    latest = max(events, key=lambda event: (event.occurred_at, event.generation, event.event_id))
-    age = (eval_dt - latest.occurred_at).total_seconds()
-    if state in ACTIONABLE_CURRENT_STATES and age > currentness_seconds:
-        return "HOLD_EVIDENCE"
+    if state in ACTIONABLE_CURRENT_STATES:
+        basis_kinds = CURRENTNESS_BASIS_KINDS[state]
+        basis_events = [event for event in events if event.kind in basis_kinds]
+        if not basis_events:
+            raise ContractError("currentness basis missing")
+        latest_basis = max(
+            basis_events,
+            key=lambda event: (event.occurred_at, event.generation, event.event_id),
+        )
+        age = (eval_dt - latest_basis.occurred_at).total_seconds()
+        if age > currentness_seconds:
+            return "HOLD_EVIDENCE"
     return state
 
 
