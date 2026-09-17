@@ -71,6 +71,8 @@ CONVERT_SHELF_LIVE_BUYS = {
     "gemini-mcp.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "manual.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "pixel-portfolio.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "todo.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "redundancy.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -121,6 +123,8 @@ PUBLIC_HTML = (
     "gemini-mcp.html",
     "manual.html",
     "pixel-portfolio.html",
+    "todo.html",
+    "redundancy.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
