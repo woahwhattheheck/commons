@@ -151,6 +151,8 @@ CONVERT_SHELF_LIVE_BUYS = {
     "trace-sila-ml-iatf-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "wadsworth-five-site-consolidation-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "ward-feed-nirs-intake-validator-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "weck-coc-preaccession-validator-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "westpak-scope-capacity-routing-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -279,6 +281,8 @@ PUBLIC_HTML = (
     "trace-sila-ml-iatf-lims.html",
     "wadsworth-five-site-consolidation-lims.html",
     "ward-feed-nirs-intake-validator-lims.html",
+    "weck-coc-preaccession-validator-lims.html",
+    "westpak-scope-capacity-routing-lims.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
