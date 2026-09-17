@@ -246,6 +246,50 @@ class HostedResetCheckoutContracts(unittest.TestCase):
             )
         self.assertEqual(result.returncode, 0, result.stderr)
 
+    def test_prewarm_fail_closed_and_worker_thread_submit(self):
+        source = Path(reset.__file__).read_text(encoding="utf-8")
+        self.assertIn(
+            'getattr(executor, "submit")(_prewarm_dynamic_modules, root)',
+            source,
+        )
+        self.assertIn("_warmup_worker_act", source)
+        self.assertNotIn("except Exception:\n                pass", source)
+        self.assertTrue(hasattr(reset, "_IDENTITY_KEYS"))
+        self.assertNotIn("within_episode_instance_discards", reset._IDENTITY_KEYS)
+        self.assertIn("action_sha256", reset._IDENTITY_KEYS)
+        self.assertIn("rewards", reset._IDENTITY_KEYS)
+
+    def test_prewarm_loads_present_live_modules(self):
+        with tempfile.TemporaryDirectory(prefix="titan-reset-prewarm-") as folder:
+            dest = Path(folder) / "live"
+            reset.materialize_live_worker_root(LAB, dest)
+            if str(dest) not in sys.path:
+                sys.path.insert(0, str(dest))
+            loaded = reset._prewarm_dynamic_modules(dest)
+        self.assertIn("sell_priority", loaded)
+        self.assertIn("_titan_pressure_priority", loaded)
+        self.assertIn("_titan_pressure_mechanics", loaded)
+
+    def test_prewarm_present_file_load_failure_is_not_swallowed(self):
+        with tempfile.TemporaryDirectory(prefix="titan-reset-prewarm-hostile-") as folder:
+            dest = Path(folder)
+            (dest / "pressure_priority.py").write_text("not a module", encoding="utf-8")
+            (dest / "sell_priority.py").write_text("raise RuntimeError('hostile sell')\n", encoding="utf-8")
+            (dest / "mechanics.py").write_text("# missing\n", encoding="utf-8")
+            import types
+            fake = types.ModuleType("titan_runtime")
+
+            def boom(name, path, *, cache=False):
+                raise RuntimeError(f"load failed {name}")
+
+            fake.load = boom
+            sys.modules["titan_runtime"] = fake
+            try:
+                with self.assertRaises(RuntimeError):
+                    reset._prewarm_dynamic_modules(dest)
+            finally:
+                sys.modules.pop("titan_runtime", None)
+
 
 if __name__ == "__main__":
     unittest.main()
