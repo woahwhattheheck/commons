@@ -69,6 +69,7 @@ def evidence_id(v,name):
     require(not any(ord(ch)<32 or ord(ch)==127 for ch in v),f"{name} contains control characters")
     require(not any(ord(ch)>127 and unicodedata.category(ch).startswith("C") for ch in v),f"{name} contains non-visible Unicode control/format/private/unassigned codepoints")
     require(not any(_default_ignorable_non_c(ch) for ch in v),f"{name} contains Unicode Default_Ignorable codepoints")
+    require(any(unicodedata.category(ch)[0] not in {"C","M","Z"} for ch in v),f"{name} must contain at least one visible base codepoint")
     return v
 def identity(e): return {"org":norm_text(e["org"],"org"),"domain":norm_domain(e["domain"]),"purpose":norm_text(e["purpose"],"purpose"),"opportunity":norm_text(e["opportunity"],"opportunity")}
 def event_route(e): return norm_text(e["route"],"route")
