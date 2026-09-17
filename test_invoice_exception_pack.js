@@ -29,10 +29,9 @@ assert.equal(contract.moves_money,false); assert.equal(contract.requires_login,f
 const html=fs.readFileSync("invoice-exception-pack.html","utf8");
 ["PUBLIC OPEN DOOR","NO LOGIN","$199","$2,500","one business day","Force crash","Retry","Roll back","Duplicate replay","Copy JSON","Exact buyer intake","never pays an invoice","tokenjunkielabs@gmail.com"].forEach(x=>assert(html.includes(x),x));
 assert(html.includes("invoice-exception-pack.js?v=20260831a")); assert(!/type=["']password["']/.test(html));
-assert(html.includes('class="js-checkout-slot"'));
-assert(html.includes('data-sku="invoice-exception-pack"'));
-assert(html.includes("pay.js"));
-assert(!html.includes("buy.stripe.com"));
+assert(html.includes("https://buy.stripe.com/14A00i84Jdvz36hdxg43S0l"));
+assert(!html.includes('class="js-checkout-slot"'));
+assert(!html.includes("pay.js"));
 assert(html.includes("</ul></article>"));
 assert(!html.includes("</ul><  <p"));
 console.log("invoice-exception-pack: 5 acceptance groups PASS");
