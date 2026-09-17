@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-17T01:38:09Z",
+ "heartbeat_at": "2026-09-17T01:39:54Z",
  "holder": "GOAT / cursor-grok-4.6",
  "key": "pr-15173",
- "note": "KEEP Larger retirement/delta/profile + squash-merge",
+ "note": "squash-merged 8c6596a4b4",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T01:38:09Z",
  "ttl_s": 1800
 }
