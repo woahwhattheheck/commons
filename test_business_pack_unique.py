@@ -121,7 +121,10 @@ class BusinessPackUniqueTest(unittest.TestCase):
         self.assertIn("odds", self.door.lower())
         self.assertIn("similar is not a clone", self.card.lower())
         self.assertIn("mystery", self.card.lower())
-        self.assertNotIn("stripe.com", self.door.lower())
+        self.assertNotIn("donate.stripe.com", self.door.lower())
+        self.assertIn("https://buy.stripe.com/", self.door.lower())
+        self.assertIn("do not invent stripe payment links", self.door.lower())
+        self.assertIn("not_minted", self.door.lower())
 
     def test_shared_template_and_vertical_are_not_clone_when_instance_differs(self) -> None:
         sales = [
