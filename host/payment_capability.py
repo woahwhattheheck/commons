@@ -67,6 +67,8 @@ CONVERT_SHELF_LIVE_BUYS = {
     "task-forge.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "subzero-receipt.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "subzero-quote.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "data-license.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "gemini-mcp.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -113,6 +115,8 @@ PUBLIC_HTML = (
     "task-forge.html",
     "subzero-receipt.html",
     "subzero-quote.html",
+    "data-license.html",
+    "gemini-mcp.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
