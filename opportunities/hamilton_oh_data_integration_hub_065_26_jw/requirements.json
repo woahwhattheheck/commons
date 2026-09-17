@@ -7,8 +7,8 @@
     {"evidence": [], "id": "past_performance", "note": "No owner evidence of required justice integration references retained.", "state": "UNKNOWN"},
     {"evidence": [], "id": "insurance_legal", "note": "No controlling insurance/legal schedule retained.", "state": "UNKNOWN"},
     {"evidence": [], "id": "pricing", "note": "No official pricing workbook or authority retained.", "state": "UNKNOWN"},
-    {"evidence": ["commons-public-engineering-carrier"], "id": "integration_engineering", "note": "Internal specialist capability only; not a buyer reference.", "state": "PROVEN"},
-    {"evidence": ["commons-deterministic-evidence-tooling"], "id": "validation_evidence", "note": "Internal specialist capability only.", "state": "PROVEN"},
+    {"evidence": [], "id": "integration_engineering", "note": "Prior unbound capability label retired; retain a source/digest-bound owner capability artifact before PROVEN.", "state": "UNKNOWN"},
+    {"evidence": [], "id": "validation_evidence", "note": "Prior unbound capability label retired; retain a source/digest-bound owner capability artifact before PROVEN.", "state": "UNKNOWN"},
     {"evidence": [], "id": "delivery_capacity", "note": "Named staffing/capacity for this procurement is unbound.", "state": "UNKNOWN"},
     {"evidence": [], "id": "partner_prime", "note": "No evidenced prime partner selected.", "state": "UNKNOWN"}
   ]
