@@ -59,9 +59,6 @@ TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
         "https://buy.stripe.com/3cIfZgacRezDfT39h043S06",
     }
 )
-OWNER_NOW_CONVERT_SHELF_LIVE_CHECKOUTS = TIPS_CONVERT_SHELF_LIVE_CHECKOUTS | {
-    "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
-}
 FORBIDDEN = (
     r"\brouting[_\s-]?number\b.+\d{9}\b",
     r"\baccount[_\s-]?number\b.+\d{8,17}\b",
@@ -301,20 +298,12 @@ def live_stripe_checkout_urls(html: str) -> set[str]:
 
 
 def html_stripe_url_errors(name: str, text: str) -> list[str]:
-    """tips/owner-now convert shelves reuse existing Stripe URLs; pay/commerce reuse live buys."""
+    """tips convert shelf reuses existing tip-shelf Stripe URLs; pay/commerce reuse live buys."""
     if name == "tips.html":
         found = live_stripe_checkout_urls(text)
         if found != TIPS_CONVERT_SHELF_LIVE_CHECKOUTS:
             return [
                 "%s convert shelf must reuse exactly the existing tip-shelf Stripe URLs"
-                % name
-            ]
-        return []
-    if name == "owner-now-revenue.html":
-        found = live_stripe_checkout_urls(text)
-        if found != OWNER_NOW_CONVERT_SHELF_LIVE_CHECKOUTS:
-            return [
-                "%s convert shelf must reuse exactly the existing owner-now Stripe URLs"
                 % name
             ]
         return []
@@ -336,7 +325,7 @@ def html_stripe_url_errors(name: str, text: str) -> list[str]:
 
 def html_surface_errors(root: str) -> list[str]:
     errors: list[str] = []
-    for name in ("pay.html", "tips.html", "commerce.html", "owner-now-revenue.html"):
+    for name in ("pay.html", "tips.html", "commerce.html"):
         text = _read(root, name)
         errors.extend(html_stripe_url_errors(name, text))
         if "js-checkout-slot" not in text:
