@@ -22,6 +22,7 @@ AttachmentRecoveryTests = _nested.AttachmentRecoveryTests
 
 class AttachmentRecoveryOptimizedBridgeTests(unittest.TestCase):
     def test_nested_suite_passes_under_python_optimized(self):
+        expected = unittest.defaultTestLoader.loadTestsFromTestCase(AttachmentRecoveryTests).countTestCases()
         env = os.environ.copy()
         inherited = env.get("PYTHONPATH")
         env["PYTHONPATH"] = str(_ROOT) if not inherited else str(_ROOT) + os.pathsep + inherited
@@ -35,7 +36,7 @@ class AttachmentRecoveryOptimizedBridgeTests(unittest.TestCase):
             check=False,
         )
         self.assertEqual(completed.returncode, 0, completed.stdout)
-        self.assertIn("Ran 14 tests", completed.stdout)
+        self.assertIn(f"Ran {expected} tests", completed.stdout)
         self.assertRegex(completed.stdout, r"(?m)^OK$")
 
 
