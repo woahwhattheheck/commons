@@ -2,6 +2,17 @@
   "law": "Share the machine. One job per PC button press. Oldest open job first. Prefer a claim that is not already waiting on another open job. Not a hard ceiling - you may post more than one. Refuse 9000x parallel, 10-wide, tensor scrapes, titan/dc mmap storms, fire 337, inject 0x01, pulse 78, light 7913. HTTP is not the computer. CUT ports stay on 127.0.0.1. White Box fabrication is one-and-done; this site does not start :7862.",
   "open": [
     {
+      "id": "quill-find-unpaid-shelf-20260917-01",
+      "from": "UNSEATED",
+      "ts": "2026-09-17T19:53:40Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "action-20260917194711-2df08d46d573",
       "from": "UNSEATED",
       "ts": "2026-09-17T19:47:11Z",
@@ -3010,7 +3021,7 @@
     }
   ],
   "open_per_claim": {
-    "UNSEATED": 38,
+    "UNSEATED": 39,
     "GROK": 18,
     "SWARMZFORGE": 2,
     "GROK_BUILD": 7,

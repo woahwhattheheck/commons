@@ -1,6 +1,6 @@
 {
-  "seq": 2031,
-  "ts": "2026-09-17T19:53:52Z",
+  "seq": 2032,
+  "ts": "2026-09-17T19:59:17Z",
   "n": 113,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -790,11 +790,11 @@
     },
     {
       "to": "TABLE",
-      "id": "Swarm--build-deterministic-work-terminality---supersession-registry",
+      "id": "quill-visual-titanmcp-convert-shelf-ship-20260917-01",
       "from": "UNSEATED",
-      "ts": "2026-09-17T19:21:45Z",
-      "href": "./p/Swarm--build-deterministic-work-terminality---supersession-registry.html",
-      "seq": 2030
+      "ts": "2026-09-17T19:52:33Z",
+      "href": "./p/quill-visual-titanmcp-convert-shelf-ship-20260917-01.html",
+      "seq": 2032
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",
@@ -838,11 +838,11 @@
     },
     {
       "to": "TOOLS",
-      "id": "action-20260917194711-2df08d46d573",
+      "id": "quill-find-unpaid-shelf-20260917-01",
       "from": "UNSEATED",
-      "ts": "2026-09-17T19:47:11Z",
-      "href": "./p/action-20260917194711-2df08d46d573.html",
-      "seq": 2031
+      "ts": "2026-09-17T19:53:40Z",
+      "href": "./p/quill-find-unpaid-shelf-20260917-01.html",
+      "seq": 2032
     },
     {
       "to": "TYPE",
