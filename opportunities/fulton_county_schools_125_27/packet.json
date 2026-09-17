@@ -1,0 +1,118 @@
+{
+  "authority": {
+    "accepted_workshare": false,
+    "award_claimed": false,
+    "buyer_contact_authorized": false,
+    "muse_clearance_present": false,
+    "payment_claimed": false,
+    "portal_submission_authorized": false,
+    "revenue_claimed": false,
+    "signature_authorized": false,
+    "target_contact_authorized": false
+  },
+  "operation": "FCS-12527-PURSUIT-PACKET-RECOVERY-ZSOL-20260917",
+  "opportunity": {
+    "budget": "UNKNOWN",
+    "buyer": "Fulton County School System",
+    "questions_deadline": "2026-09-15T16:00:00-04:00",
+    "registry_id": "PE-55101-NONST-2027-000000191",
+    "response_channel": "Euna Procurement / Bonfire",
+    "response_deadline": "2026-09-29T14:30:00-04:00",
+    "solicitation": "125-27 Professional and Consulting Services for the Strategy and Technology Division",
+    "source_state": "PUBLIC_SOURCE_BOUND"
+  },
+  "qualification": {
+    "buyer_question_window": "CLOSED",
+    "direct_prime_ready": false,
+    "known_owner_side_blockers": [
+      "portal/account currentness not evidenced",
+      "supplier-registration currentness not evidenced",
+      "Georgia/E-Verify or solicitation form completion not evidenced",
+      "insurance requirements not evidenced",
+      "qualifying references not evidenced",
+      "authorized signer/legal authority not evidenced",
+      "addenda/mandatory-form completeness not evidenced",
+      "prime staffing and buyer pricing not evidenced"
+    ],
+    "posture": "TEAM_ONLY"
+  },
+  "schema_version": 1,
+  "sources": [
+    {
+      "claim": "FCS contracting authority and procurement process surface",
+      "class": "BUYER_OFFICIAL",
+      "url": "https://www.fultonschools.org/all-departments/financial-services/contracting/contracting-solicitations"
+    },
+    {
+      "claim": "controlling Georgia procurement registry identity",
+      "class": "BUYER_REGISTRY",
+      "url": "https://ssl.doas.state.ga.us/gpr//eventDetails?eSourceNumber=PE-55101-NONST-2027-000000191&sourceSystemType=gpr20"
+    },
+    {
+      "claim": "secondary scope/date cross-check only; not controlling",
+      "class": "MARKETPLACE_MIRROR",
+      "url": "https://discover.govdash.com/solicitations/01a03920-a17a-7459-af71-96c2c8b6c6d1--125-27-professional-and-consulting-services-for-the-strategy-and-technology-divi"
+    },
+    {
+      "claim": "MGT education-market capability evidence",
+      "class": "TARGET_FIRST_PARTY",
+      "url": "https://www.mgt.us/markets/education/"
+    },
+    {
+      "claim": "MGT K-12 AI capability evidence",
+      "class": "TARGET_FIRST_PARTY",
+      "url": "https://mgt.us/ai-playbook/"
+    },
+    {
+      "claim": "MGT SLED technology/data/cloud/implementation evidence",
+      "class": "TARGET_FIRST_PARTY",
+      "url": "https://mgt.us/technology/"
+    },
+    {
+      "claim": "public Technology Solutions leadership route evidence",
+      "class": "TARGET_FIRST_PARTY",
+      "url": "https://mgt.us/people/omar-bhatti/"
+    }
+  ],
+  "target": {
+    "collision_census": {
+      "captured_at": "2026-09-17T00:49:00-04:00",
+      "gmail_domain_or_route": 0,
+      "slack_domain_since_2026_09_01": 0,
+      "slack_exact_route": 0
+    },
+    "fit": [
+      "state/local/education public-sector focus",
+      "PreK-12 education practice",
+      "current K-12 AI offerings",
+      "technology, cloud and data implementation services"
+    ],
+    "organization": "MGT",
+    "role": "EVP MGT and President, Technology Solutions Group",
+    "route": "obhatti@mgt.us",
+    "state": "RESEARCHED_NOT_CONTACTED"
+  },
+  "workshare": {
+    "deliverables": [
+      "source-bound AI/data requirements traceability and evidence matrix",
+      "data-pipeline and MLOps replay/idempotency acceptance evidence",
+      "AI architecture/evaluation test receipts and exception ledger",
+      "integration and load-test evidence matrix for prime-owned interfaces",
+      "reproducible owner/prime handoff packet with unresolved-assumption register"
+    ],
+    "excluded_authority": [
+      "prime qualification or reference claims",
+      "buyer communications or questions",
+      "portal registration or proposal submission",
+      "buyer-facing pricing or commercial terms",
+      "legal/E-Verify/insurance certification",
+      "security/compliance attestation",
+      "staffing commitments",
+      "customer-data access",
+      "signature, contract, award, invoice, payment or revenue authority"
+    ],
+    "fixed_price_usd": 25000,
+    "state": "PROPOSED_NOT_ACCEPTED",
+    "target_duration_business_days_after_complete_intake": 15
+  }
+}
