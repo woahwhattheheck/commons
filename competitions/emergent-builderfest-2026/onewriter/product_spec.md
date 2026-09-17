@@ -58,7 +58,7 @@ Compute only from retained receipts: claim attempts/grants, collisions prevented
 
 ## Retained identifier contract
 
-Event ids, `provider_receipt`, and `human_evidence_id` are workspace identifiers. Evidence identifiers are opaque retained-evidence identities, not notes. Admission is exact: **trimmed nonempty text, 1–240 characters, no ASCII control characters**. Reject whitespace-only, padded, overlong, or control-character values; do not silently trim them and do not rely on language truthiness.
+Event ids, `provider_receipt`, and `human_evidence_id` are opaque workspace identifiers, not notes. All three use one exact admission contract: **trimmed nonempty text, 1–240 characters, no ASCII control characters, no Unicode category-C codepoints, no non-category-C Default_Ignorable codepoints, and at least one visible base codepoint outside Unicode C/M/Z categories**. Reject whitespace-only, padded, overlong, control/format/private/unassigned, grapheme-joiner, Hangul-filler, variation-selector, other Default_Ignorable-bearing, or combining-mark-only values rather than silently normalizing them. Ordinary combining marks remain admissible when attached to a visible base.
 
 All admitted event/provider/human identifiers share **one workspace uniqueness namespace**. An identifier first used as a provider receipt cannot later masquerade as human evidence; human evidence cannot be recycled as provider evidence; and neither may collide with an event id.
 
@@ -94,7 +94,7 @@ The app is acceptable for business-use rehearsal only if:
 7. provider outcomes verify current holder, live lease, matching leased route, and admitted evidence id;
 8. provider SENT creates a hard fence;
 9. provider BOUNCE is route failure, never human rejection, and does not auto-authorize fallback outreach;
-10. provider/human evidence IDs reject whitespace-only, padded, overlong, and control-character values;
+10. event/provider/human identifiers reject whitespace-only, padded, overlong, ASCII-control, Unicode category-C, non-category-C Default_Ignorable, and combining-mark-only values while admitting ordinary combining Unicode attached to a visible base;
 11. human reopen requires a nonempty unique admitted evidence id;
 12. after genuine reopen, exactly one bounded lease may select a new route; if it expires unused, the lane returns to its exact prior fence and ordinary stale recovery is forbidden;
 13. event ids, provider receipts, and human evidence ids share one workspace uniqueness namespace, including cross-type reuse rejection;
