@@ -27,6 +27,7 @@ _STATES = {
     "EVIDENCE_HOLD",
 }
 _EVENT_KINDS = {"HUMAN_INBOUND", "OUTBOUND_SENT", "BOUNCE", "MUSE_SELECTED"}
+_STATE_DRIVING_EVENT_KINDS = {"HUMAN_INBOUND", "OUTBOUND_SENT", "BOUNCE"}
 _INTENTS = {"GENERAL", "MEETING", "BINDING_TERMS"}
 _PRIORITIES = {"HOT", "WARM", "GENERAL"}
 _HEX64 = re.compile(r"^[0-9a-f]{64}$")
@@ -117,6 +118,29 @@ def _event_semantic_key(event: Mapping[str, Any]) -> tuple[str, ...]:
         event["occurred_utc"],
         event["content_sha256"],
     )
+
+
+def _reject_ambiguous_chronology(events: Sequence[Mapping[str, Any]], lead: Mapping[str, Any]) -> None:
+    """Fail closed when retained second precision cannot authenticate event order."""
+
+    route = lead["route_key"]
+    thread = lead["thread_key"]
+    by_second: dict[str, list[Mapping[str, Any]]] = {}
+    for event in events:
+        if event["kind"] not in _STATE_DRIVING_EVENT_KINDS:
+            continue
+        if event["route_key"] != route or event["thread_key"] != thread:
+            continue
+        by_second.setdefault(event["occurred_utc"], []).append(event)
+
+    for occurred, tied in sorted(by_second.items()):
+        if len(tied) <= 1:
+            continue
+        event_ids = sorted(str(event["event_id"]) for event in tied)
+        raise InputError(
+            "chronology ambiguity: state-driving events share "
+            f"route/thread second {occurred}: {event_ids}"
+        )
 
 
 def _validate_event(raw: Any, lead_id: str, as_of: datetime) -> dict[str, Any]:
@@ -394,6 +418,7 @@ def compile_snapshot(document: Mapping[str, Any]) -> dict[str, Any]:
                 raise InputError("semantic duplicate provider event under a different id/ref")
             all_event_semantics.add(semantic)
             events.append(e)
+        _reject_ambiguous_chronology(events, lead)
         claims = []
         for craw in _list(l.get("claims"), "lead.claims"):
             c = _validate_claim(craw, lead, as_of)
