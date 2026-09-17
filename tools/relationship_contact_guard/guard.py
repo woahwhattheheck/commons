@@ -1,0 +1,550 @@
+#!/usr/bin/env python3
+"""Deterministic relationship-level outbound collision guard.
+
+This module is diagnostic only. It never authorizes external contact. A
+NO_CONFLICT_FOUND result means only that the retained packet supplied to this
+compiler did not expose a relationship collision at a process-owned evaluation
+time. Fresh provider census and an independent session-bound Muse consume/GO
+gate remain required.
+"""
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import math
+import re
+from pathlib import Path
+from typing import Any, Mapping, Sequence
+
+SCHEMA = "relationship-contact-guard/v2"
+ARTIFACT_SCHEMA = "relationship-contact-guard-artifact/v2"
+MAX_JSON_BYTES = 1_048_576
+MAX_EVENTS = 10_000
+MIN_RELATIONSHIP_COOLDOWN_SECONDS = 6 * 60 * 60
+MIN_PURSUIT_COOLDOWN_SECONDS = 72 * 60 * 60
+IDENT_RE = re.compile(r"^[a-z0-9][a-z0-9._@:+/\-]{0,254}$")
+OPAQUE_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:@/+=\-]{0,511}$")
+HEX64_RE = re.compile(r"^[0-9a-f]{64}$")
+KINDS = {"PROVIDER_SENT", "PROVIDER_BOUNCE", "HUMAN_REPLY", "HUMAN_NEGATIVE", "HUMAN_REOPEN"}
+SCOPES = {"ROUTE_PURPOSE", "COUNTERPARTY"}
+
+# Compatibility/export surface only. Compile/verify semantics deliberately do
+# not read this mutable module object; source-literal authority is emitted
+# inside _compile_at().
+AUTHORITY = {
+    "send_authorized": False,
+    "muse_authorized": False,
+    "provider_send_proven": False,
+    "buyer_acceptance_proven": False,
+    "contract_proven": False,
+    "payment_proven": False,
+    "cash_proven": False,
+    "revenue_recognized": False,
+}
+
+
+class GuardError(ValueError):
+    pass
+
+
+def _pairs(pairs: Sequence[tuple[str, Any]]) -> dict[str, Any]:
+    out: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in out:
+            raise GuardError(f"duplicate JSON key: {key}")
+        out[key] = value
+    return out
+
+
+def _bad_constant(value: str) -> None:
+    raise GuardError(f"non-finite JSON constant forbidden: {value}")
+
+
+def _plain(value: Any, path: str = "$") -> None:
+    if value is None or type(value) in (str, bool, int):
+        return
+    if type(value) is float:
+        if not math.isfinite(value):
+            raise GuardError(f"{path}: non-finite number")
+        return
+    if type(value) is list:
+        for i, item in enumerate(value):
+            _plain(item, f"{path}[{i}]")
+        return
+    if type(value) is dict:
+        for key, item in value.items():
+            if type(key) is not str:
+                raise GuardError(f"{path}: non-string JSON key")
+            _plain(item, f"{path}.{key}")
+        return
+    raise GuardError(f"{path}: exact plain JSON types required")
+
+
+def canonical_bytes(value: Any) -> bytes:
+    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=True, allow_nan=False).encode()
+
+
+def digest(value: Any) -> str:
+    return hashlib.sha256(canonical_bytes(value)).hexdigest()
+
+
+def _decode_json_bytes(raw: bytes, label: str) -> Any:
+    try:
+        text = raw.decode("utf-8")
+        return json.loads(text, object_pairs_hook=_pairs, parse_constant=_bad_constant)
+    except GuardError:
+        raise
+    except (UnicodeDecodeError, json.JSONDecodeError, ValueError) as exc:
+        raise GuardError(f"{label}: invalid strict JSON") from exc
+
+
+def _freeze(value: Any, label: str) -> dict[str, Any]:
+    if type(value) is not dict:
+        raise GuardError(f"{label}: top level must be a plain object")
+    _plain(value, label)
+    raw = canonical_bytes(value)
+    frozen = _decode_json_bytes(raw, label)
+    if type(frozen) is not dict:
+        raise GuardError(f"{label}: top level must be a plain object")
+    return frozen
+
+
+def load_json(path: Path) -> dict[str, Any]:
+    raw = path.read_bytes()
+    if len(raw) > MAX_JSON_BYTES:
+        raise GuardError(f"{path}: exceeds {MAX_JSON_BYTES} bytes")
+    value = _decode_json_bytes(raw, str(path))
+    return _freeze(value, str(path))
+
+
+def _keys(obj: Mapping[str, Any], required: set[str], allowed: set[str], label: str) -> None:
+    keys = set(obj)
+    missing = sorted(required - keys)
+    unknown = sorted(keys - allowed)
+    if missing:
+        raise GuardError(f"{label}: missing keys: {', '.join(missing)}")
+    if unknown:
+        raise GuardError(f"{label}: unknown keys: {', '.join(unknown)}")
+
+
+def _ident(value: Any, label: str) -> str:
+    if type(value) is not str or not IDENT_RE.fullmatch(value):
+        raise GuardError(f"{label}: canonical lowercase ASCII identifier required")
+    return value
+
+
+def _opaque(value: Any, label: str) -> str:
+    if type(value) is not str or not OPAQUE_RE.fullmatch(value):
+        raise GuardError(f"{label}: bounded ASCII identifier required")
+    return value
+
+
+def _time(value: Any, label: str):
+    # Local import intentionally avoids trusting a mutable module-level
+    # datetime/timezone binding for current evaluation semantics.
+    from datetime import datetime as _datetime, timezone as _timezone
+
+    if type(value) is not str or not value.endswith("Z"):
+        raise GuardError(f"{label}: canonical UTC Z timestamp required")
+    try:
+        dt = _datetime.fromisoformat(value[:-1] + "+00:00")
+    except ValueError as exc:
+        raise GuardError(f"{label}: invalid timestamp") from exc
+    if dt.tzinfo != _timezone.utc or value != dt.isoformat(timespec="seconds").replace("+00:00", "Z"):
+        raise GuardError(f"{label}: whole-second canonical UTC timestamp required")
+    return dt
+
+
+def _current_time():
+    # Process-owned wall time. There is no caller-provided "now" field.
+    from datetime import datetime as _datetime, timezone as _timezone
+
+    return _datetime.now(_timezone.utc).replace(microsecond=0)
+
+
+def _format_time(dt) -> str:
+    return dt.isoformat(timespec="seconds").replace("+00:00", "Z")
+
+
+def _cooldown(value: Any, minimum: int, label: str) -> int:
+    if type(value) is not int or value < minimum:
+        raise GuardError(f"{label}: integer must be >= {minimum}")
+    return value
+
+
+def _candidate(raw: Mapping[str, Any]) -> dict[str, Any]:
+    required = {"counterparty_id", "opportunity_id", "route", "purpose"}
+    allowed = required | {"relationship_cooldown_seconds", "pursuit_cooldown_seconds"}
+    _keys(raw, required, allowed, "candidate")
+    return {
+        "counterparty_id": _ident(raw["counterparty_id"], "candidate.counterparty_id"),
+        "opportunity_id": _ident(raw["opportunity_id"], "candidate.opportunity_id"),
+        "route": _ident(raw["route"], "candidate.route"),
+        "purpose": _ident(raw["purpose"], "candidate.purpose"),
+        "relationship_cooldown_seconds": _cooldown(
+            raw.get("relationship_cooldown_seconds", MIN_RELATIONSHIP_COOLDOWN_SECONDS),
+            MIN_RELATIONSHIP_COOLDOWN_SECONDS,
+            "candidate.relationship_cooldown_seconds",
+        ),
+        "pursuit_cooldown_seconds": _cooldown(
+            raw.get("pursuit_cooldown_seconds", MIN_PURSUIT_COOLDOWN_SECONDS),
+            MIN_PURSUIT_COOLDOWN_SECONDS,
+            "candidate.pursuit_cooldown_seconds",
+        ),
+    }
+
+
+def _event(raw: Mapping[str, Any], index: int, counterparty: str) -> dict[str, Any]:
+    label = f"events[{index}]"
+    required = {"event_id", "kind", "occurred_at", "counterparty_id", "opportunity_id", "route", "purpose"}
+    allowed = required | {
+        "provider_message_id",
+        "provider_thread_id",
+        "scope",
+        "in_reply_to_message_id",
+        "reopens_event_id",
+    }
+    _keys(raw, required, allowed, label)
+    kind = raw["kind"]
+    if type(kind) is not str or kind not in KINDS:
+        raise GuardError(f"{label}.kind: unsupported event kind")
+    out = {
+        "event_id": _opaque(raw["event_id"], f"{label}.event_id"),
+        "kind": kind,
+        "occurred_at": raw["occurred_at"],
+        "counterparty_id": _ident(raw["counterparty_id"], f"{label}.counterparty_id"),
+        "opportunity_id": _ident(raw["opportunity_id"], f"{label}.opportunity_id"),
+        "route": _ident(raw["route"], f"{label}.route"),
+        "purpose": _ident(raw["purpose"], f"{label}.purpose"),
+    }
+    _time(out["occurred_at"], f"{label}.occurred_at")
+    if out["counterparty_id"] != counterparty:
+        raise GuardError(f"{label}: cross-counterparty event transplant")
+    for field in ("provider_message_id", "provider_thread_id", "in_reply_to_message_id", "reopens_event_id"):
+        if field in raw:
+            out[field] = _opaque(raw[field], f"{label}.{field}")
+
+    if kind == "PROVIDER_SENT":
+        if "provider_message_id" not in out:
+            raise GuardError(f"{label}: PROVIDER_SENT requires provider_message_id")
+        if "in_reply_to_message_id" in out or "reopens_event_id" in out or "scope" in raw:
+            raise GuardError(f"{label}: PROVIDER_SENT has incompatible response fields")
+    elif kind == "PROVIDER_BOUNCE":
+        if "in_reply_to_message_id" not in out:
+            raise GuardError(f"{label}: PROVIDER_BOUNCE requires in_reply_to_message_id")
+        if "scope" in raw or "reopens_event_id" in out:
+            raise GuardError(f"{label}: PROVIDER_BOUNCE has incompatible fields")
+    elif kind == "HUMAN_REPLY":
+        if "in_reply_to_message_id" not in out:
+            raise GuardError(f"{label}: HUMAN_REPLY requires in_reply_to_message_id")
+        if "scope" in raw or "reopens_event_id" in out:
+            raise GuardError(f"{label}: HUMAN_REPLY has incompatible fields")
+    elif kind == "HUMAN_NEGATIVE":
+        if "in_reply_to_message_id" not in out:
+            raise GuardError(f"{label}: HUMAN_NEGATIVE requires in_reply_to_message_id")
+        scope = raw.get("scope")
+        if type(scope) is not str or scope not in SCOPES:
+            raise GuardError(f"{label}: HUMAN_NEGATIVE requires valid scope")
+        out["scope"] = scope
+        if "reopens_event_id" in out:
+            raise GuardError(f"{label}: HUMAN_NEGATIVE cannot reopen another event")
+    elif kind == "HUMAN_REOPEN":
+        if "in_reply_to_message_id" not in out or "reopens_event_id" not in out:
+            raise GuardError(f"{label}: HUMAN_REOPEN requires in_reply_to_message_id and reopens_event_id")
+        scope = raw.get("scope")
+        if type(scope) is not str or scope not in SCOPES:
+            raise GuardError(f"{label}: HUMAN_REOPEN requires valid scope")
+        out["scope"] = scope
+
+    return out
+
+
+def _bind_response(event: Mapping[str, Any], send: Mapping[str, Any], label: str) -> None:
+    for field in ("counterparty_id", "opportunity_id", "route", "purpose"):
+        if event[field] != send[field]:
+            raise GuardError(f"{label}: response/bounce transplant changes referenced send {field}")
+    # Thread identity is optional, but when present it is exact-generation
+    # evidence: a response cannot add, omit, or swap the referenced send thread.
+    if event.get("provider_thread_id") != send.get("provider_thread_id"):
+        raise GuardError(f"{label}: response/bounce thread does not match referenced send")
+
+
+def _validate(packet: Mapping[str, Any], now) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    _keys(packet, {"candidate", "events"}, {"candidate", "events"}, "packet")
+    if type(packet["candidate"]) is not dict or type(packet["events"]) is not list:
+        raise GuardError("packet candidate/events types invalid")
+    candidate = _candidate(packet["candidate"])
+    if len(packet["events"]) > MAX_EVENTS:
+        raise GuardError("too many events")
+    events = [_event(raw, i, candidate["counterparty_id"]) for i, raw in enumerate(packet["events"])]
+
+    seen_event: set[str] = set()
+    seen_provider: set[str] = set()
+    send_by_message: dict[str, dict[str, Any]] = {}
+    event_by_id: dict[str, dict[str, Any]] = {}
+    last = None
+
+    for i, event in enumerate(events):
+        label = f"events[{i}]"
+        dt = _time(event["occurred_at"], f"{label}.occurred_at")
+        if dt > now:
+            raise GuardError(f"{label}: future-dated event")
+        if last is not None and dt < last:
+            raise GuardError("events: chronology must be nondecreasing")
+        last = dt
+
+        if event["event_id"] in seen_event:
+            raise GuardError("duplicate event_id")
+        seen_event.add(event["event_id"])
+
+        mid = event.get("provider_message_id")
+        if mid is not None:
+            if mid in seen_provider:
+                raise GuardError("duplicate provider_message_id")
+            seen_provider.add(mid)
+
+        if event["kind"] == "PROVIDER_SENT":
+            send_by_message[event["provider_message_id"]] = event
+        ref = event.get("in_reply_to_message_id")
+        if ref is not None:
+            send = send_by_message.get(ref)
+            if send is None:
+                raise GuardError(f"{label}: orphan response/bounce reference")
+            _bind_response(event, send, label)
+
+        if event["kind"] == "HUMAN_REOPEN":
+            blocker = event_by_id.get(event["reopens_event_id"])
+            if blocker is None or blocker["kind"] != "HUMAN_NEGATIVE":
+                raise GuardError(f"{label}: reopen must reference an earlier HUMAN_NEGATIVE")
+            if event["scope"] != blocker["scope"]:
+                raise GuardError(f"{label}: reopen scope does not match referenced negative")
+            for field in ("counterparty_id", "opportunity_id", "route", "purpose", "in_reply_to_message_id"):
+                if event[field] != blocker[field]:
+                    raise GuardError(f"{label}: reopen does not exactly bind referenced negative {field}")
+
+        event_by_id[event["event_id"]] = event
+
+    return candidate, events
+
+
+def _send_state(send: Mapping[str, Any], events: Sequence[Mapping[str, Any]]) -> str:
+    mid = send["provider_message_id"]
+    later = [e for e in events if e.get("in_reply_to_message_id") == mid]
+    state = "DELIVERED_UNANSWERED"
+    for event in later:
+        if event["kind"] == "PROVIDER_BOUNCE":
+            state = "BOUNCED"
+        elif event["kind"] in {"HUMAN_REPLY", "HUMAN_NEGATIVE", "HUMAN_REOPEN"}:
+            state = "HUMAN_EVENT"
+    return state
+
+
+def _latest_scoped(events: Sequence[Mapping[str, Any]], scope: str, candidate: Mapping[str, Any]):
+    matches = []
+    for event in events:
+        if event["kind"] != "HUMAN_NEGATIVE" or event.get("scope") != scope:
+            continue
+        if scope == "ROUTE_PURPOSE" and (
+            event["route"] != candidate["route"] or event["purpose"] != candidate["purpose"]
+        ):
+            continue
+        matches.append(event)
+    return matches[-1] if matches else None
+
+
+def _reopened_after(events: Sequence[Mapping[str, Any]], blocker: Mapping[str, Any]) -> bool:
+    blocker_time = _time(blocker["occurred_at"], "blocker.occurred_at")
+    for event in events:
+        if event["kind"] != "HUMAN_REOPEN":
+            continue
+        if event.get("reopens_event_id") != blocker["event_id"]:
+            continue
+        if _time(event["occurred_at"], "reopen.occurred_at") > blocker_time:
+            return True
+    return False
+
+
+def _compile_at(frozen: Mapping[str, Any], now, evaluation_mode: str) -> dict[str, Any]:
+    candidate, events = _validate(frozen, now)
+    status = "NO_CONFLICT_FOUND"
+    reasons: list[str] = []
+    blockers: list[str] = []
+
+    org_negative = _latest_scoped(events, "COUNTERPARTY", candidate)
+    route_negative = _latest_scoped(events, "ROUTE_PURPOSE", candidate)
+    if org_negative is not None and not _reopened_after(events, org_negative):
+        status = "HOLD_COUNTERPARTY_OPT_OUT"
+        reasons.append("retained human negative event applies to the whole counterparty")
+        blockers.append(org_negative["event_id"])
+    elif route_negative is not None and not _reopened_after(events, route_negative):
+        status = "HOLD_ROUTE_PURPOSE_OPT_OUT"
+        reasons.append("retained human negative event applies to this route/purpose")
+        blockers.append(route_negative["event_id"])
+
+    sends = [(e, _send_state(e, events)) for e in events if e["kind"] == "PROVIDER_SENT"]
+    if status == "NO_CONFLICT_FOUND":
+        bounced = [e for e, state in sends if state == "BOUNCED" and e["route"] == candidate["route"]]
+        if bounced:
+            status = "HOLD_DEAD_ROUTE"
+            reasons.append("current route has a retained hard-bounce event; bounce is route-scoped, not counterparty rejection")
+            blockers.append(bounced[-1]["event_id"])
+    if status == "NO_CONFLICT_FOUND":
+        exact = [
+            e
+            for e, state in sends
+            if state == "DELIVERED_UNANSWERED"
+            and e["route"] == candidate["route"]
+            and e["purpose"] == candidate["purpose"]
+        ]
+        if exact:
+            status = "HOLD_EXACT_DNR"
+            reasons.append("same route/purpose has provider-SENT with no later human/provider resolution")
+            blockers.append(exact[-1]["event_id"])
+    if status == "NO_CONFLICT_FOUND":
+        recent = []
+        for send, state in sends:
+            if state == "BOUNCED":
+                continue
+            age = int((now - _time(send["occurred_at"], "send.occurred_at")).total_seconds())
+            if age < candidate["relationship_cooldown_seconds"]:
+                recent.append((send, age))
+        if recent:
+            send, age = recent[-1]
+            status = "HOLD_RECENT_COUNTERPARTY_CONTACT"
+            reasons.append(
+                f"same counterparty has recent non-bounced provider send "
+                f"({age}s < {candidate['relationship_cooldown_seconds']}s)"
+            )
+            blockers.append(send["event_id"])
+    if status == "NO_CONFLICT_FOUND":
+        recent = []
+        for send, state in sends:
+            if (
+                state == "BOUNCED"
+                or send["opportunity_id"] != candidate["opportunity_id"]
+                or send["purpose"] != candidate["purpose"]
+            ):
+                continue
+            age = int((now - _time(send["occurred_at"], "send.occurred_at")).total_seconds())
+            if age < candidate["pursuit_cooldown_seconds"]:
+                recent.append((send, age))
+        if recent:
+            send, age = recent[-1]
+            status = "HOLD_RECENT_PURSUIT_CONTACT"
+            reasons.append(
+                f"same opportunity/purpose has recent non-bounced provider send "
+                f"({age}s < {candidate['pursuit_cooldown_seconds']}s)"
+            )
+            blockers.append(send["event_id"])
+
+    replies = [
+        e
+        for e in events
+        if e["kind"] == "HUMAN_REPLY" and e["opportunity_id"] == candidate["opportunity_id"]
+    ]
+    if status == "NO_CONFLICT_FOUND" and replies:
+        status = "HOLD_INBOUND_REVIEW"
+        reasons.append("retained human reply exists; relationship should be handled as inbound context")
+        blockers.append(replies[-1]["event_id"])
+    if not reasons:
+        reasons.append(
+            "no relationship conflict found in supplied retained packet; "
+            "packet completeness and provider authentication are not established"
+        )
+
+    # Source-literal authority ceiling. Do not replace this with AUTHORITY.copy():
+    # that exported compatibility object is intentionally non-semantic.
+    authority = {
+        "send_authorized": False,
+        "muse_authorized": False,
+        "provider_send_proven": False,
+        "buyer_acceptance_proven": False,
+        "contract_proven": False,
+        "payment_proven": False,
+        "cash_proven": False,
+        "revenue_recognized": False,
+    }
+    decision = {
+        "schema": SCHEMA,
+        "evaluation_mode": evaluation_mode,
+        "evaluated_at": _format_time(now),
+        "status": status,
+        "candidate": candidate,
+        "blocker_event_ids": blockers,
+        "reasons": reasons,
+        "retained_event_count": len(events),
+        "input_sha256": digest(frozen),
+        "authority": authority,
+        "next_gate": (
+            "HOLD_AND_RECONCILE"
+            if status != "NO_CONFLICT_FOUND"
+            else "FRESH_SLACK_GMAIL_RECENSUS_THEN_SESSION_BOUND_MUSE_CONSUME_GO"
+        ),
+        "truth": {
+            "retained_packet_complete": False,
+            "provider_authentication_established_here": False,
+            "no_conflict_is_send_permission": False,
+            "evaluation_time_is_process_owned": evaluation_mode == "CURRENT",
+            "verify_replay_establishes_currentness": False,
+        },
+    }
+    core = {"artifact_schema": ARTIFACT_SCHEMA, "decision": decision}
+    return {**core, "receipt_sha256": digest(core)}
+
+
+def compile_guard(packet: Mapping[str, Any]) -> dict[str, Any]:
+    frozen = _freeze(packet, "packet")
+    return _compile_at(frozen, _current_time(), "CURRENT")
+
+
+def verify_guard(packet: Mapping[str, Any], artifact: Mapping[str, Any]) -> bool:
+    frozen_artifact = _freeze(artifact, "artifact")
+    decision = frozen_artifact.get("decision")
+    if type(decision) is not dict:
+        raise GuardError("artifact decision missing")
+    if decision.get("evaluation_mode") != "CURRENT":
+        raise GuardError("artifact evaluation_mode must be CURRENT")
+    evaluated_at = _time(decision.get("evaluated_at"), "artifact.decision.evaluated_at")
+
+    frozen_packet = _freeze(packet, "packet")
+    expected = _compile_at(frozen_packet, evaluated_at, "CURRENT")
+    if canonical_bytes(frozen_artifact) != canonical_bytes(expected):
+        raise GuardError("artifact does not exactly match deterministic retained-time recompile")
+    receipt = frozen_artifact.get("receipt_sha256")
+    if type(receipt) is not str or not HEX64_RE.fullmatch(receipt):
+        raise GuardError("artifact receipt_sha256 malformed")
+    core = {"artifact_schema": frozen_artifact["artifact_schema"], "decision": frozen_artifact["decision"]}
+    if digest(core) != receipt:
+        raise GuardError("artifact receipt mismatch")
+    if any(frozen_artifact["decision"]["authority"].values()):
+        raise GuardError("artifact authority ceiling widened")
+    return True
+
+
+def _write(path: Path, value: Any) -> None:
+    path.write_text(json.dumps(value, sort_keys=True, indent=2, ensure_ascii=True, allow_nan=False) + "\n", encoding="utf-8")
+
+
+def main(argv: Sequence[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    sub = parser.add_subparsers(dest="command", required=True)
+    cp = sub.add_parser("compile")
+    cp.add_argument("packet", type=Path)
+    cp.add_argument("output", type=Path)
+    vp = sub.add_parser("verify")
+    vp.add_argument("packet", type=Path)
+    vp.add_argument("artifact", type=Path)
+    args = parser.parse_args(argv)
+    if args.command == "compile":
+        artifact = compile_guard(load_json(args.packet))
+        _write(args.output, artifact)
+        print(artifact["receipt_sha256"])
+        return 0
+    verify_guard(load_json(args.packet), load_json(args.artifact))
+    print("OK")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
