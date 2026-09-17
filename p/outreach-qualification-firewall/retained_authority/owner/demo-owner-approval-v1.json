@@ -1,0 +1,12 @@
+{
+  "schema": "tjlabs-owner-approval-receipt/v1",
+  "provider": "TJLabsOwnerApproval",
+  "root_id": "tjlabs-owner-root-v1",
+  "generation": "demo-owner-gen-1",
+  "source_ref": "fixture://owner-approval/demo-owner-gen-1",
+  "status": "APPROVED",
+  "reviewer": "Synthetic Owner Fixture",
+  "qualification_digest": "6a6dd84bd1a7350ddfc6a2fcc59a4491a1ee34675783cfb7e14479ed327e110c",
+  "issued_at_utc": "2020-01-01T00:00:00Z",
+  "expires_at_utc": "2099-12-30T00:00:00Z"
+}

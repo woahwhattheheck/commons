@@ -1,0 +1,13 @@
+{
+  "schema": "tjlabs-muse-writer-lease-receipt/v1",
+  "provider": "SlackMuse",
+  "root_id": "tjlabs-muse-root-v1",
+  "generation": "demo-muse-gen-1",
+  "source_ref": "fixture://muse/demo-muse-gen-1",
+  "status": "SELECTED",
+  "key": "DEMO-1-EMAIL-ZPAL1445",
+  "selected_writer": "Z-Palisade-1445",
+  "action_digest": "f9901eae619ad426f32b98eb2025a10bd7b1fcd09744fcec25786921a29b8bd9",
+  "issued_at_utc": "2020-01-01T00:00:00Z",
+  "expires_at_utc": "2099-12-30T00:00:00Z"
+}

@@ -1,0 +1,51 @@
+{
+  "action": {
+    "content_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "kind": "EMAIL",
+    "purpose": "bounded paid workshare inquiry",
+    "route": "OPPS@EXAMPLE.COM"
+  },
+  "economics": {
+    "amount": "5000.00",
+    "basis": "FIXED_FEE",
+    "bounded_scope": "one retained-export acceptance pilot",
+    "currency": "USD",
+    "payment_path_state": "PROVEN"
+  },
+  "eligibility": {
+    "gates": [
+      {
+        "evidence_refs": ["source#prime"],
+        "name": "prime eligibility",
+        "state": "PROVEN"
+      },
+      {
+        "evidence_refs": [],
+        "name": "partner onboarding",
+        "state": "NOT_REQUIRED"
+      }
+    ]
+  },
+  "opportunity": {
+    "deadline_utc": "2099-12-31T23:59:59Z",
+    "id": "DEMO-1",
+    "min_runway_hours": 48
+  },
+  "owner_review_receipt_id": "demo-owner-approval-v1",
+  "prior_actions": [],
+  "schema": "tjlabs-outreach-qualification/v2",
+  "source": {"source_id": "demo-source-v1"},
+  "submission": {
+    "kind": "PORTAL",
+    "locator": "https://buyer.example/submit",
+    "registration_required": false,
+    "registration_state": "NOT_REQUIRED",
+    "route_state": "PROVEN"
+  },
+  "target": {
+    "contact": "opps@example.com",
+    "organization": "Example Buyer",
+    "relationship_state": "OPEN"
+  },
+  "writer_lease_receipt_id": "demo-muse-lease-v1"
+}

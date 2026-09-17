@@ -1,0 +1,15 @@
+{
+  "muse": {
+    "demo-muse-lease-v1": {
+      "file": "demo-muse-lease-v1.json",
+      "sha256": "3253e63cc09dc0fa21ad33c980cfc75d1f8fe7c59a379dec77f876cda5492eef"
+    }
+  },
+  "owner": {
+    "demo-owner-approval-v1": {
+      "file": "demo-owner-approval-v1.json",
+      "sha256": "90f3fe7e82b63dc1eaf5a2a1004a5562a88be675899a07dbe931d2cec116618c"
+    }
+  },
+  "schema": "tjlabs-authority-index/v1"
+}

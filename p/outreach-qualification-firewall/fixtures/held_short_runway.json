@@ -1,55 +1,11 @@
 {
-  "action": {
-    "content_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
-    "kind": "EMAIL",
-    "purpose": "bounded paid workshare inquiry",
-    "route": "OPPS@EXAMPLE.COM"
-  },
-  "as_of_utc": "2026-09-17T19:00:00Z",
-  "economics": {
-    "amount": "5000.00",
-    "basis": "FIXED_FEE",
-    "bounded_scope": "one retained-export acceptance pilot",
-    "currency": "USD",
-    "payment_path_state": "PROVEN"
-  },
-  "eligibility": {
-    "gates": [
-      {
-        "evidence_refs": [
-          "source#prime"
-        ],
-        "name": "prime eligibility",
-        "state": "PROVEN"
-      },
-      {
-        "evidence_refs": [],
-        "name": "partner onboarding",
-        "state": "NOT_REQUIRED"
-      }
-    ]
-  },
-  "opportunity": {
-    "deadline_utc": "2026-09-18T18:59:59Z",
-    "id": "DEMO-1",
-    "min_runway_hours": 48
-  },
-  "prior_actions": [],
-  "schema": "tjlabs-outreach-qualification/v1",
-  "source": {
-    "locator": "fixtures/source_authority.json",
-    "sha256": "abbb5caf8d84885d798a5f921f9f870c3f2db26e6a82c677d5ea17160c77339e"
-  },
-  "submission": {
-    "kind": "PORTAL",
-    "locator": "https://buyer.example/submit",
-    "registration_required": false,
-    "registration_state": "NOT_REQUIRED",
-    "route_state": "PROVEN"
-  },
-  "target": {
-    "contact": "opps@example.com",
-    "organization": "Example Buyer",
-    "relationship_state": "OPEN"
-  }
+  "schema": "tjlabs-outreach-qualification/v2",
+  "source": {"source_id": "demo-source-v1"},
+  "opportunity": {"id": "DEMO-1", "deadline_utc": "2026-09-18T18:59:59Z", "min_runway_hours": 48},
+  "submission": {"kind": "PORTAL", "locator": "https://buyer.example/submit", "route_state": "PROVEN", "registration_required": false, "registration_state": "NOT_REQUIRED"},
+  "eligibility": {"gates": [{"name": "prime eligibility", "state": "PROVEN", "evidence_refs": ["source#prime"]}]},
+  "economics": {"basis": "FIXED_FEE", "amount": "5000.00", "currency": "USD", "bounded_scope": "one retained-export acceptance pilot", "payment_path_state": "PROVEN"},
+  "target": {"organization": "Example Buyer", "contact": "opps@example.com", "relationship_state": "OPEN"},
+  "action": {"kind": "EMAIL", "route": "opps@example.com", "purpose": "bounded paid workshare inquiry", "content_sha256": "0000000000000000000000000000000000000000000000000000000000000000"},
+  "prior_actions": []
 }

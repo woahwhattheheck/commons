@@ -1,0 +1,9 @@
+{
+  "schema": "tjlabs-retained-source-index/v1",
+  "sources": {
+    "demo-source-v1": {
+      "file": "source_authority.json",
+      "sha256": "abbb5caf8d84885d798a5f921f9f870c3f2db26e6a82c677d5ea17160c77339e"
+    }
+  }
+}

@@ -56,7 +56,7 @@ Compute only from retained receipts: claim attempts/grants, collisions prevented
 
 ## Retained evidence identifier contract
 
-`provider_receipt` and `human_evidence_id` are opaque retained-evidence identifiers, not notes. Admission is exact: **trimmed nonempty text, 1–240 characters, no ASCII control characters**. Reject whitespace-only, padded, overlong, or control-character values; do not silently trim them and do not rely on language truthiness. Admitted IDs remain globally single-use in the workspace.
+`provider_receipt` and `human_evidence_id` are opaque retained-evidence identifiers, not notes. Admission is exact: **trimmed nonempty text, 1–240 characters, no ASCII control characters, no Unicode category-C codepoints, no non-category-C Default_Ignorable codepoints, and at least one visible base codepoint outside Unicode C/M/Z categories**. Reject whitespace-only, padded, overlong, control/format/private/unassigned, grapheme-joiner, Hangul-filler, variation-selector, other Default_Ignorable-bearing, or combining-mark-only values rather than silently normalizing them. Ordinary combining marks remain admissible when attached to a visible base. Admitted IDs remain globally single-use in the workspace.
 
 ## State transitions
 
@@ -89,7 +89,7 @@ The app is acceptable for business-use rehearsal only if:
 7. provider outcomes verify current holder, live lease, matching leased route, and admitted evidence id;
 8. provider SENT creates a hard fence;
 9. provider BOUNCE is route failure, never human rejection, and does not auto-authorize fallback outreach;
-10. provider/human evidence IDs reject whitespace-only, padded, overlong, and control-character values;
+10. provider/human evidence IDs reject whitespace-only, padded, overlong, category-C, Default_Ignorable-bearing, and combining-mark-only values while admitting ordinary combining Unicode attached to a visible base;
 11. human reopen requires a nonempty unique admitted evidence id;
 12. after genuine reopen, the next lease may select a new route explicitly;
 13. event ids and provider/human evidence ids are unique;

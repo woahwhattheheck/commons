@@ -1,80 +1,91 @@
-# Outreach Qualification Firewall
+# Outreach Qualification Firewall v2
 
-A deterministic, fail-closed pre-send gate for Token Junkie Labs revenue outreach.
+A deterministic, fail-closed pre-send gate for Token Junkie Labs revenue outreach. The package **never sends anything**.
 
-This package exists because **a commercially interesting opportunity is not the same thing as a send-ready opportunity**. Before an outbound action reaches a prospect, partner, sponsor, maintainer, or buyer, the firewall requires retained evidence for the opportunity, adequate deadline runway, a proven response route, qualification/registration facts, a bounded paid TJLabs seam, an open relationship state, deduplication, owner review, and a single-writer lease bound to the exact action.
+## Authority model
 
-The code **never sends anything**.
+`authorized_to_send` is deliberately impossible to mint from candidate JSON alone.
 
-## Decision model
+Current evaluation has three trust domains:
 
-There are two deliberately different outputs:
+1. **Candidate packet** - opportunity/action facts and receipt *identifiers* only. It cannot carry a clock, owner approval object, Muse selection object, source path, or source digest.
+2. **Repository-retained evidence** - the controlling source is selected only from `retained_sources/index.json`; owner and Muse receipts are selected only from `retained_authority/index.json`. Both indexes are raw-byte SHA-256 pinned in `firewall.py`. Files are opened beneath fixed package roots with no-follow, regular-file, single-hard-link, inode/generation checks.
+3. **Process current time** - current send readiness calls the process clock internally. The CLI exposes no `--now`. An explicit `--historical-at` mode exists only for replay and is permanently non-authorizing, even when the packet references otherwise-valid owner/Muse receipts.
 
-- `qualified_for_owner_review`: the retained facts are complete enough for a human owner to decide whether the exact outreach action should proceed.
-- `authorized_to_send`: the qualification still passes *and* a current owner approval and current single-writer lease both bind the exact qualification and action digests.
+Adding or replacing a trusted source/authority receipt therefore requires changing repository-retained bytes **and** the pinned index digest under code review; changing a candidate packet is insufficient.
 
-A packet may therefore be commercially qualified while remaining unauthorized to send. That is the normal state before owner review / Muse arbitration.
+## Digest chain
 
-## Trust boundary
+The evaluator derives a stable `qualification_digest` over source identity + opportunity + route/registration + eligibility + economics + target/action + dedupe/prior-action facts. It then derives `action_digest` from the exact qualification digest, dedupe identity, and action.
 
-The evaluator requires four independently supplied things:
+An independently retained owner receipt must have:
+- schema `tjlabs-owner-approval-receipt/v1`
+- provider `TJLabsOwnerApproval`
+- root `tjlabs-owner-root-v1`
+- unique generation/source reference
+- `APPROVED` status
+- exact `qualification_digest`
+- valid issued/expiry interval
 
-1. a JSON qualification packet;
-2. the retained controlling-source bytes;
-3. an evaluator-supplied canonical UTC `--now`;
-4. the executing writer identity.
+An independently retained Muse receipt must have:
+- schema `tjlabs-muse-writer-lease-receipt/v1`
+- provider `SlackMuse`
+- root `tjlabs-muse-root-v1`
+- unique generation/source reference/key
+- `SELECTED` status
+- exact selected writer
+- exact `action_digest`
+- valid issued/expiry interval
 
-The packet's `source.sha256` must match the retained bytes. `as_of_utc` must exactly equal the evaluator-supplied `--now`; callers cannot regain deadline runway by changing only the packet clock.
+Receipt byte SHA-256 values are themselves pinned in the retained authority index. Opportunity/action mutation therefore invalidates retained authority rather than silently inheriting it.
 
-The evaluator derives:
+## Qualification gates
 
-- `qualification_digest`: exact canonical qualification facts;
-- `dedupe_key`: normalized opportunity + organization + contact + route + purpose identity;
-- `action_digest`: the exact qualification digest + dedupe key + action.
+Current and historical evaluation both fail closed on:
+- deadline/minimum runway;
+- unproven response route or required registration;
+- `UNKNOWN` / `FAILED` eligibility;
+- non-positive/unbounded economics or unproven payment path;
+- DNR/BOUNCE/BLOCKED/CLOSED relationship state;
+- mismatched contact/transport;
+- materially duplicate pending/sent/delivered/accepted/paid action.
 
-Owner approval binds `qualification_digest`. A writer lease binds `action_digest` and an exact `selected_writer`. Changing the target, content hash, route, economics, evidence, clock, deadline, or qualification facts after review invalidates the authorization.
-
-## Required packet facts
-
-- `source`: retained locator + SHA-256.
-- `as_of_utc`: canonical whole-second UTC `Z`, equal to evaluator `--now`.
-- `opportunity`: stable ID, absolute deadline, integer minimum runway hours.
-- `submission`: route kind/locator, route proof state, registration requirement and registration state.
-- `eligibility.gates`: explicit named gates. `UNKNOWN` and `FAILED` never pass. A `PROVEN` gate must contain at least one evidence reference.
-- `economics`: `FIXED_FEE`, `HOURLY`, or `BOUNTY`; finite positive amount, uppercase currency, bounded scope, and a proven payment path.
-- `target`: organization, contact, and relationship state. `DNR`, `BOUNCE`, `BLOCKED`, and `CLOSED` are hard stops.
-- `action`: transport kind, exact route, purpose, and content SHA-256.
-- `prior_actions`: dedupe receipts; a materially identical `PENDING`, `SENT`, `DELIVERED`, `ACCEPTED`, or `PAID` action blocks another send.
-- optional `owner_review`: approval/rejection bound to the current `qualification_digest`, with explicit validity interval.
-- optional `writer_lease`: `SELECTED`/`HOLD`/`COLLISION`/`VOID`, exact writer, exact `action_digest`, and explicit validity interval.
-
-For email, the exact contact and action route must match after normalization. Case and `mailto:` aliases collapse to one dedupe identity.
+`qualified_for_owner_review` is distinct from `authorized_to_send`. Owner/Muse authority cannot override qualification blockers.
 
 ## CLI
 
+Current, process-time-owned evaluation:
+
 ```bash
-python p/outreach-qualification-firewall/firewall.py \
-  p/outreach-qualification-firewall/fixtures/qualified_owner_review.json \
-  --source p/outreach-qualification-firewall/fixtures/source_authority.json \
-  --now 2026-09-17T19:00:00Z \
-  --writer Z-Palisade-1445
+python p/outreach-qualification-firewall/firewall.py packet.json --writer Z-Palisade-1445
 ```
 
-Exit status is `0` only when `authorized_to_send=true`. A packet that merely qualifies for owner review exits `2`, making accidental automation fail closed.
+Historical replay (always exit 2 / never authorizes):
 
-The shipped `qualified_owner_review.json` fixture is intentionally fully qualified but has no owner review or writer lease, so it must **not** authorize outbound transport. `held_short_runway.json` is superficially attractive but fails the minimum-runway gate.
+```bash
+python p/outreach-qualification-firewall/firewall.py packet.json \
+  --writer Z-Palisade-1445 --historical-at 2026-09-17T19:00:00Z
+```
+
+There is intentionally no current-mode `--now` argument.
+
+## Fixtures
+
+- `qualified_owner_review.json` is complete enough for owner review but carries no authority receipt IDs.
+- `authorized_example.json` references two independently retained **synthetic example-only** receipts bound to `Example Buyer` / `opps@example.com`. This proves the positive path without embedding any live lead or transport.
+- `held_short_runway.json` is superficially attractive but fails historical minimum-runway evaluation.
+
+The retained source and authority fixture roots are synthetic proof material only, not claims that any real buyer, owner, or Muse action occurred.
 
 ## Proof
-
-Run:
 
 ```bash
 python p/outreach-qualification-firewall/test_firewall.py
 python -O p/outreach-qualification-firewall/test_firewall.py
 ```
 
-The suite covers mutable-clock replay and deadline boundaries; unknown/failed qualification and missing proof references; missing/unknown response route and registration; DNR/bounce/closed relationships; zero/non-finite economics and unknown payment path; retained-source byte tampering; normalized email aliases and duplicate prior actions; stale owner approval after semantic mutation; stale/foreign/expired writer lease; exact action-content mutation after review; malformed transport and target/route mismatch; and CLI non-zero behavior for owner-review-only packets.
+The hostile suite kills the predecessor where candidate JSON self-authors `Bryce/APPROVED` and `SELECTED`; coordinated packet+explicit-clock rollback; historical replay with valid receipt IDs; owner/Muse transplant after action/opportunity mutation; foreign-writer reuse; unretained/pathlike receipt IDs; self-authored source path/digest; source-index resealing; hard-link and symlink aliases; deadline boundary/runway; unknown eligibility/payment; DNR dominance; bad economics; alias dedupe; and duplicate prior sends.
 
 ## Truth ceiling
 
-This is deterministic decision-support and a pre-send safety/revenue-quality gate. It does **not** prove a buyer will respond, that a bidder/partner is qualified beyond retained evidence, that a solicitation is still authoritative, that a proposal was submitted, that an engagement exists, or that any award, payment, or revenue occurred. It never contacts anyone and never substitutes for owner review or Muse/single-writer arbitration.
+This is pre-send decision support. It does not prove buyer/partner qualification beyond retained evidence, does not authenticate Slack/Gmail by itself, does not contact anyone, and does not establish submission, acceptance, award, payment, or revenue. The repository-retained authority store is an integration boundary: a trusted ingestion process must retain provider-origin receipts before current-mode authorization can become true for a real action.
