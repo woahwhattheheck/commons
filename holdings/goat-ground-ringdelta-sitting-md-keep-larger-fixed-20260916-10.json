@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T02:34:58Z",
+ "holder": "GOAT / cursor-grok-4.6 / bc-593ae57f",
+ "key": "goat-ground-ringdelta-sitting-md-keep-larger-fixed-20260916-10",
+ "note": "KEEP Larger RINGDELTA/SETTLED_FACTS/SITTING_PR/SIZE_ONLY; yielded power/prtscn to Latch 15197",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T02:34:58Z",
+ "ttl_s": 1800
+}
