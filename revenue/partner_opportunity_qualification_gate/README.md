@@ -13,7 +13,7 @@ A timing-ready opportunity is not automatically qualification-ready.
 
 Per partner, the compiler emits exactly one bounded state:
 
-- `READY_FOR_MUSE_ELECTION_ONLY` — upstream runway is `READY`; upstream relationship/collision policy admits a separate Muse election; all `PRE_OUTREACH` hard gates are satisfied by current exact-digest evidence; registration/screening is not closed/unknown; and a paid TJLabs workshare is defined.
+- `READY_FOR_MUSE_ELECTION_ONLY` — upstream runway is `READY`; upstream relationship/collision policy admits a separate Muse election; all `PRE_OUTREACH` hard gates are satisfied by current evidence of each gate's explicitly required evidence kind; registration/screening is not closed/unknown; and a paid TJLabs workshare is defined.
 - `READY_FOR_CAPACITY_MUSE_ELECTION_ONLY` — the same qualification conditions hold, but the upstream runway gate is `ASK_CAPACITY_FIRST`. This authorizes nothing; it says only that a separately elected capacity question is the next possible external edge.
 - `HOLD_SOURCE` — solicitation-control evidence is stale/unknown.
 - `HOLD_RUNWAY` — the upstream runway state/partner selection does not admit the partner.
@@ -39,14 +39,19 @@ Every source reference carries **both source ID and SHA-256**. Reusing the same 
 
 Hard-gate definitions must cite at least one `SOLICITATION_CONTROL` source, and every solicitation-control URL must also be present in the exact upstream runway opportunity's `source_urls`. This prevents a hard-gate packet for one solicitation from being transplanted onto another runway row.
 
-A decided partner gate (`SATISFIED` or `UNSATISFIED`) must cite at least one `PARTNER_EVIDENCE` or `REGISTRATION_EVIDENCE` source. The RFP/addendum that defines a requirement is not evidence that a particular partner satisfies it.
+Each hard gate must also declare one closed `required_evidence_kind`:
+
+- `PARTNER_EVIDENCE`, or
+- `REGISTRATION_EVIDENCE`.
+
+A decided disposition (`SATISFIED` or `UNSATISFIED`) must cite current exact-digest evidence of **that gate's declared kind**. A generic partner capability source cannot satisfy a registration-specific gate, registration evidence cannot satisfy a gate explicitly requiring ordinary partner evidence, and the RFP/addendum that defines the requirement cannot prove the partner's disposition.
 
 Registration deliberately separates:
 
-- `requirement_refs`: controlling evidence that says what registration/screening is required; and
+- `requirement_refs`: controlling `SOLICITATION_CONTROL` evidence that says what registration/screening is required; and
 - `evidence_refs`: partner-specific evidence that the requirement is actually complete.
 
-`COMPLETE` cannot be asserted merely by citing an RFP that says registration is required.
+`registration.state = COMPLETE` requires at least one exact `REGISTRATION_EVIDENCE` source. An RFP, generic `PARTNER_EVIDENCE`, or `OWNER_WORKSHARE_EVIDENCE` source cannot mint registration completion.
 
 ## Gate phases
 
@@ -58,7 +63,7 @@ Each solicitation gate is classified as:
 
 Only unresolved `PRE_OUTREACH` gates block a partner approach. Later unresolved gates are retained in the output as later-stage holds; a `READY_*` state is **not** submission readiness, award eligibility, or a certification that a partner satisfies those later gates.
 
-This phase is a retained owner interpretation of the controlling packet. The compiler does not read legal text or determine eligibility itself.
+The phase, requirement text, and required evidence kind are retained owner interpretations of the controlling packet. The compiler does not read legal text or determine eligibility itself.
 
 ## Upstream runway composition
 
@@ -94,8 +99,9 @@ The compiler is offline metadata integrity. It does not fetch URLs, log into SAM
 - one source-bound solicitation;
 - exact upstream runway composition;
 - an active-SAM example as a `PRE_OUTREACH` hard gate;
+- explicit gate-specific required evidence kinds;
 - a three-reference gate retained for `PRE_SUBMISSION`;
-- registration requirement evidence separated from partner completion evidence;
+- registration requirement evidence separated from exact registration-completion evidence;
 - a bounded `$5,000` owner-authored TJLabs workshare;
 - all external/commercial authority false.
 
@@ -125,4 +131,4 @@ python -O -m unittest -v revenue.partner_opportunity_qualification_gate.test_gat
 python -m unittest -v test_partner_opportunity_qualification_gate.py
 ```
 
-The hostile suite covers source-digest remint, solicitation-source transplant, stale source/evidence, registration requirement-vs-completion separation, unknown/expired registration, unknown pre-outreach gates, DNR dominance, missing paid seam, missing/duplicate gates, strict integer typing, duplicate JSON keys, order invariance, semantic receipt verification, and the separate capacity-question state.
+The hostile suite covers source-digest remint, solicitation-source transplant, stale source/evidence, registration requirement-vs-completion separation, generic partner evidence attempting to mint registration completion, missing/invalid gate evidence-kind declarations, cross-kind gate evidence transplant, unknown/expired registration, unknown pre-outreach gates, DNR dominance, missing paid seam, missing/duplicate gates, strict integer typing, duplicate JSON keys, order invariance, semantic receipt verification, and the separate capacity-question state.
