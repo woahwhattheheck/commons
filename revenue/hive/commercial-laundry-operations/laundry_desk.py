@@ -2,11 +2,10 @@ from __future__ import annotations
 
 """Bounded-identity facade for the commercial laundry operations desk.
 
-The durable SQLite/state engine lives in :mod:`laundry_desk_core`.  This facade
-preserves its public API while making every derived identity satisfy the same
-255-character contract accepted for owner-authored identifiers.  Short derived
-IDs remain readable; over-bound IDs are deterministically bound to their full
-source tuple with SHA-256.
+The durable SQLite/state engine lives in :mod:`laundry_desk_core`. This facade
+preserves its public API while bounding derived identities, making owner-review
+projections inert, reconciling within-stop container custody, and enforcing one
+fleet-wide active owner for each physical container.
 """
 
 import csv
@@ -73,7 +72,7 @@ def _md_literal(value: str) -> str:
 
 
 class LaundryDesk(_core.LaundryDesk):
-    """Core desk with bounded deterministic route/stop/exception/invoice IDs."""
+    """Core desk with bounded IDs and fleet-wide physical-container custody."""
 
     def create_daily_route(self, operation_key: str, service_date: str, route_code: str) -> OperationResult:
         service_date = _core._iso_date(service_date, "service_date")
@@ -129,6 +128,83 @@ class LaundryDesk(_core.LaundryDesk):
             (exception_id, stop_id, kind, item_code, expected, actual),
         )
         return exception_id
+
+    @staticmethod
+    def _active_container_owner(
+        conn: _core.sqlite3.Connection,
+        container_id: str,
+        excluding_stop_id: str,
+    ) -> str | None:
+        """Return another stop that still owns the physical container.
+
+        Pickup custody is active while work is in-flight (PICKED_UP/PROCESSED).
+        A clean delivery releases the container. If delivery declares the pickup
+        container missing, ownership remains active until that specific
+        CUSTODY_MISSING exception is explicitly resolved. This makes a genuine
+        repack/transfer an operator-authored release rather than an implicit
+        duplicate assignment.
+        """
+        row = conn.execute(
+            "SELECT cc.stop_id FROM container_custody cc "
+            "JOIN stops s ON s.stop_id=cc.stop_id "
+            "WHERE cc.phase='PICKUP' AND cc.container_id=? AND cc.stop_id<>? AND ("
+            "s.state IN ('PICKED_UP','PROCESSED') OR ("
+            "s.state IN ('DELIVERED','INVOICE_DRAFTED') AND EXISTS ("
+            "SELECT 1 FROM exceptions e WHERE e.stop_id=cc.stop_id "
+            "AND e.kind='CUSTODY_MISSING' AND e.item_code=cc.container_id AND e.status='OPEN'"
+            "))) ORDER BY cc.stop_id LIMIT 1",
+            (container_id, excluding_stop_id),
+        ).fetchone()
+        return row["stop_id"] if row else None
+
+    def pickup(
+        self,
+        operation_key: str,
+        stop_id: str,
+        linen_counts: _core.Mapping[str, int],
+        container_ids: _core.Iterable[str],
+    ) -> OperationResult:
+        """Record pickup only when every physical container has one active owner.
+
+        The check and insert execute under the core desk's ``BEGIN IMMEDIATE``
+        operation transaction, so concurrent pickup attempts serialize and only
+        one stop can acquire a shared container.
+        """
+        stop_id = _core._ident(stop_id, "stop_id")
+        counts = _core._counts(linen_counts, "pickup counts")
+        containers = _core._containers(container_ids, "pickup containers")
+        payload = {"stop_id": stop_id, "linen_counts": counts, "container_ids": containers}
+
+        def mutate(conn: _core.sqlite3.Connection) -> dict[str, Any]:
+            row = conn.execute("SELECT route_id,state FROM stops WHERE stop_id=?", (stop_id,)).fetchone()
+            if not row:
+                raise ValidationError("unknown stop")
+            if row["state"] != "MANIFESTED":
+                raise StateConflict("pickup requires MANIFESTED stop")
+            for container_id in containers:
+                if self._active_container_owner(conn, container_id, stop_id) is not None:
+                    raise StateConflict("pickup container already has another active stop owner")
+            for item, qty in counts.items():
+                conn.execute(
+                    "INSERT INTO linen_counts(stop_id,phase,item_code,qty) VALUES (?,?,?,?)",
+                    (stop_id, "PICKUP", item, qty),
+                )
+            for container_id in containers:
+                conn.execute(
+                    "INSERT INTO container_custody(stop_id,phase,container_id) VALUES (?,?,?)",
+                    (stop_id, "PICKUP", container_id),
+                )
+            conn.execute(
+                "UPDATE stops SET state='PICKED_UP' WHERE stop_id=? AND state='MANIFESTED'",
+                (stop_id,),
+            )
+            conn.execute(
+                "UPDATE routes SET state='IN_PROGRESS' WHERE route_id=? AND state='MANIFESTED'",
+                (row["route_id"],),
+            )
+            return {"stop_id": stop_id, "state": "PICKED_UP", "pickup_counts": counts, "containers": containers}
+
+        return self._operation(operation_key, "PICKUP_RECORDED", "stop", stop_id, payload, mutate)
 
     def draft_invoice(self, operation_key: str, stop_id: str) -> OperationResult:
         stop_id = _core._ident(stop_id, "stop_id")
@@ -201,7 +277,6 @@ class LaundryDesk(_core.LaundryDesk):
 
         return self._operation(operation_key, "INVOICE_DRAFTED", "invoice", invoice_id, payload, mutate)
 
-
     def deliver(
         self,
         operation_key: str,
@@ -209,14 +284,7 @@ class LaundryDesk(_core.LaundryDesk):
         delivered_counts: _core.Mapping[str, int],
         container_ids: _core.Iterable[str],
     ) -> OperationResult:
-        """Record delivery and fail closed on unresolved custody discontinuity.
-
-        Pickup containers are the custody reference. If delivery uses a different
-        set, deterministic CUSTODY_MISSING/CUSTODY_UNEXPECTED exceptions are
-        opened. Legitimate repack/transfer can proceed only after an operator
-        explicitly resolves those exceptions; invoice drafting remains blocked
-        while any exception is open.
-        """
+        """Record delivery and fail closed on custody discontinuity/aliasing."""
         stop_id = _core._ident(stop_id, "stop_id")
         delivered = _core._counts(delivered_counts, "delivered counts")
         containers = _core._containers(container_ids, "delivery containers")
@@ -228,6 +296,13 @@ class LaundryDesk(_core.LaundryDesk):
                 raise ValidationError("unknown stop")
             if row["state"] != "PROCESSED":
                 raise StateConflict("delivery requires PROCESSED stop")
+            # An unexpected delivery container cannot be borrowed from another
+            # in-flight/missing-unreconciled chain. This prevents an operator
+            # from resolving a local mismatch into fleet-wide double custody.
+            for container_id in containers:
+                if self._active_container_owner(conn, container_id, stop_id) is not None:
+                    raise StateConflict("delivery container still belongs to another active stop")
+
             processed = self._phase_counts(conn, stop_id, "PROCESSED")
             item_codes = sorted(set(processed) | set(delivered))
             created: list[str] = []
@@ -240,9 +315,7 @@ class LaundryDesk(_core.LaundryDesk):
                 )
                 if actual != expected:
                     created.append(
-                        self._insert_exception(
-                            conn, stop_id, "DELIVERY_COUNT_MISMATCH", item, expected, actual
-                        )
+                        self._insert_exception(conn, stop_id, "DELIVERY_COUNT_MISMATCH", item, expected, actual)
                     )
 
             pickup_containers = {
@@ -256,15 +329,11 @@ class LaundryDesk(_core.LaundryDesk):
             delivery_containers = set(containers)
             for container_id in sorted(pickup_containers - delivery_containers):
                 created.append(
-                    self._insert_exception(
-                        conn, stop_id, "CUSTODY_MISSING", container_id, 1, 0
-                    )
+                    self._insert_exception(conn, stop_id, "CUSTODY_MISSING", container_id, 1, 0)
                 )
             for container_id in sorted(delivery_containers - pickup_containers):
                 created.append(
-                    self._insert_exception(
-                        conn, stop_id, "CUSTODY_UNEXPECTED", container_id, 0, 1
-                    )
+                    self._insert_exception(conn, stop_id, "CUSTODY_UNEXPECTED", container_id, 0, 1)
                 )
             for container_id in containers:
                 conn.execute(
