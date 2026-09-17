@@ -18,32 +18,34 @@ from revenue.revenue_funnel_control.engine import (
 SCHEMA = "TJL_ACCEPTED_WORK_TO_CASH_V1"
 BUNDLE_SCHEMA = "TJL_ACCEPTED_WORK_TO_CASH_BUNDLE_V1"
 TRUTH_BOUNDARY = "COMPOSED_RETAINED_EVIDENCE_NOT_LIVE_PROVIDER_QUERY"
-ROUTE_SOURCE_CLASSES = frozenset({"BUYER_MESSAGE", "SPONSOR_MESSAGE", "PROVIDER_DIRECTORY", "ORGANIZER_RULES"})
+ROUTE_SOURCE_CLASSES = frozenset(
+    {"BUYER_MESSAGE", "SPONSOR_MESSAGE", "PROVIDER_DIRECTORY", "ORGANIZER_RULES"}
+)
 EXTERNAL_ACCEPTANCE_CLASSES = frozenset({"BUYER_MESSAGE", "SPONSOR_MESSAGE"})
-AUTHORITY = {
-    "external_send": False,
-    "muse_selection": False,
-    "invoice_creation": False,
-    "provider_mutation": False,
-    "payment_movement": False,
-    "receivable_establishment": False,
-    "accounting_assertion": False,
-    "revenue_recognition": False,
-}
+_AUTHORITY_ITEMS = (
+    ("external_send", False),
+    ("muse_selection", False),
+    ("invoice_creation", False),
+    ("provider_mutation", False),
+    ("payment_movement", False),
+    ("receivable_establishment", False),
+    ("accounting_assertion", False),
+    ("revenue_recognition", False),
+)
 
 
 class ReconcilerError(ValueError):
     pass
 
 
+def _authority(_items=_AUTHORITY_ITEMS) -> dict[str, bool]:
+    return dict(_items)
+
+
 def _canonical(value: Any) -> bytes:
     try:
         return json.dumps(
-            value,
-            ensure_ascii=False,
-            allow_nan=False,
-            separators=(",", ":"),
-            sort_keys=True,
+            value, ensure_ascii=False, allow_nan=False, separators=(",", ":"), sort_keys=True
         ).encode("utf-8", "strict")
     except (TypeError, ValueError, UnicodeError, RecursionError) as exc:
         raise ReconcilerError(f"not canonical JSON: {exc}") from exc
@@ -53,19 +55,18 @@ def _digest(value: Any) -> str:
     return hashlib.sha256(_canonical(value)).hexdigest()
 
 
-def _exact_dict(value: Any, keys: set[str] | frozenset[str], where: str) -> dict[str, Any]:
+def _exact(value: Any, keys: set[str] | frozenset[str], where: str) -> dict[str, Any]:
     if type(value) is not dict or any(type(k) is not str for k in value):
         raise ReconcilerError(f"{where}: exact object required")
-    keyset = set(value)
-    expected = set(keys)
-    if keyset != expected:
+    have, want = set(value), set(keys)
+    if have != want:
         raise ReconcilerError(
-            f"{where}: exact keys required; missing={sorted(expected-keyset)}; extra={sorted(keyset-expected)}"
+            f"{where}: exact keys required; missing={sorted(want-have)}; extra={sorted(have-want)}"
         )
     return value
 
 
-def _bounded_text(value: Any, where: str, maximum: int = 512) -> str:
+def _text(value: Any, where: str, maximum: int = 512) -> str:
     if type(value) is not str or not value or len(value) > maximum:
         raise ReconcilerError(f"{where}: bounded nonempty string required")
     if any(ord(ch) < 32 for ch in value):
@@ -73,8 +74,8 @@ def _bounded_text(value: Any, where: str, maximum: int = 512) -> str:
     return value
 
 
-def _sha256(value: Any, where: str) -> str:
-    text = _bounded_text(value, where, 64)
+def _sha(value: Any, where: str) -> str:
+    text = _text(value, where, 64)
     if len(text) != 64 or any(ch not in "0123456789abcdef" for ch in text):
         raise ReconcilerError(f"{where}: lowercase sha256 required")
     return text
@@ -89,31 +90,25 @@ def _time(value: Any, where: str) -> datetime:
         raise ReconcilerError(f"{where}: invalid timestamp") from exc
 
 
-def _latest(events: list[dict[str, Any]], kind: str) -> dict[str, Any] | None:
-    rows = [event for event in events if event.get("kind") == kind]
-    return rows[-1] if rows else None
-
-
-def _event_after(left: dict[str, Any] | None, right: dict[str, Any] | None) -> bool:
-    if left is None:
-        return False
-    if right is None:
-        return True
-    return (left["observed_at"], left["id"]) > (right["observed_at"], right["id"])
-
-
 def _contact_state(events: list[dict[str, Any]]) -> str:
-    inbound = _latest(events, "INBOUND_RECEIVED")
-    outbound = _latest(events, "OUTBOUND_SENT")
-    dnr = _latest(events, "DNR")
-    collision = _latest(events, "COLLISION_HOLD")
-    if inbound is not None and _event_after(inbound, dnr) and _event_after(inbound, collision) and _event_after(inbound, outbound):
-        return "NEW_INBOUND"
-    if dnr is not None and not _event_after(inbound, dnr):
+    relevant = [
+        e for e in events
+        if e.get("kind") in {"INBOUND_RECEIVED", "OUTBOUND_SENT", "DNR", "COLLISION_HOLD"}
+    ]
+    if not relevant:
+        return "NO_ACTIVE_HOLD"
+    latest_at = max(e["observed_at"] for e in relevant)
+    kinds = {e["kind"] for e in relevant if e["observed_at"] == latest_at}
+    # Same-second ordering cannot be recovered from lexical event ids. Holds win.
+    if "DNR" in kinds:
         return "HARD_DNR"
-    if collision is not None and not _event_after(inbound, collision):
+    if "COLLISION_HOLD" in kinds:
         return "COLLISION_HOLD"
-    if outbound is not None and not _event_after(inbound, outbound):
+    if {"INBOUND_RECEIVED", "OUTBOUND_SENT"} <= kinds:
+        return "AMBIGUOUS_SAME_TIME_CONTACT"
+    if "INBOUND_RECEIVED" in kinds:
+        return "NEW_INBOUND"
+    if "OUTBOUND_SENT" in kinds:
         return "WAIT_EXTERNAL"
     return "NO_ACTIVE_HOLD"
 
@@ -129,68 +124,59 @@ def _acceptance_basis(events: list[dict[str, Any]]) -> str:
     return "NONE"
 
 
-def _validate_route(
-    raw: Any, opportunity_ids: set[str], evaluation_at: datetime
-) -> dict[str, Any]:
+def _validate_route(raw: Any, ids: set[str], evaluation_at: datetime) -> dict[str, Any]:
     keys = {
         "opportunity_id", "recipient", "purpose", "observed_at",
         "source_class", "ref", "sha256",
     }
-    route = _exact_dict(raw, keys, "route")
-    oid = _bounded_text(route["opportunity_id"], "route.opportunity_id", 120)
-    if oid not in opportunity_ids:
+    row = _exact(raw, keys, "route")
+    oid = _text(row["opportunity_id"], "route.opportunity_id", 120)
+    if oid not in ids:
         raise ReconcilerError(f"route {oid}: unknown opportunity")
-    recipient = _bounded_text(route["recipient"], f"{oid}.route.recipient", 320)
-    purpose = _bounded_text(route["purpose"], f"{oid}.route.purpose", 320)
-    observed = _time(route["observed_at"], f"{oid}.route.observed_at")
+    observed = _time(row["observed_at"], f"{oid}.route.observed_at")
     if observed > evaluation_at:
         raise ReconcilerError(f"route {oid}: future evidence")
-    source_class = _bounded_text(route["source_class"], f"{oid}.route.source_class", 40)
+    source_class = _text(row["source_class"], f"{oid}.route.source_class", 40)
     if source_class not in ROUTE_SOURCE_CLASSES:
         raise ReconcilerError(f"route {oid}: unsupported route source class")
-    ref = _bounded_text(route["ref"], f"{oid}.route.ref", 512)
-    sha = _sha256(route["sha256"], f"{oid}.route.sha256")
     return {
         "opportunity_id": oid,
-        "recipient": recipient,
-        "purpose": purpose,
+        "recipient": _text(row["recipient"], f"{oid}.route.recipient", 320),
+        "purpose": _text(row["purpose"], f"{oid}.route.purpose", 320),
         "observed_at": observed.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "source_class": source_class,
-        "ref": ref,
-        "sha256": sha,
+        "ref": _text(row["ref"], f"{oid}.route.ref", 512),
+        "sha256": _sha(row["sha256"], f"{oid}.route.sha256"),
     }
 
 
 def _validate_confirmation(
-    raw: Any,
-    opportunities: dict[str, dict[str, Any]],
-    evaluation_at: datetime,
+    raw: Any, opportunities: dict[str, dict[str, Any]], evaluation_at: datetime
 ) -> dict[str, Any]:
     keys = {
         "opportunity_id", "payment_event_id", "observed_at",
         "provider_ref", "provider_sha256",
     }
-    row = _exact_dict(raw, keys, "payment_confirmation")
-    oid = _bounded_text(row["opportunity_id"], "payment_confirmation.opportunity_id", 120)
+    row = _exact(raw, keys, "payment_confirmation")
+    oid = _text(row["opportunity_id"], "payment_confirmation.opportunity_id", 120)
     if oid not in opportunities:
         raise ReconcilerError(f"payment confirmation {oid}: unknown opportunity")
-    event_id = _bounded_text(row["payment_event_id"], f"{oid}.payment_event_id", 120)
-    payment_events = {
-        event["id"]: event
-        for event in opportunities[oid]["events"]
-        if event["kind"] == "PAYMENT_RECEIVED"
+    event_id = _text(row["payment_event_id"], f"{oid}.payment_event_id", 120)
+    payments = {
+        e["id"]: e for e in opportunities[oid]["events"] if e["kind"] == "PAYMENT_RECEIVED"
     }
-    if event_id not in payment_events:
+    if event_id not in payments:
         raise ReconcilerError(f"{oid}: confirmation does not bind a PAYMENT_RECEIVED event")
-    event = payment_events[event_id]
+    payment = payments[event_id]
     observed = _time(row["observed_at"], f"{oid}.payment_confirmation.observed_at")
-    event_time = _time(event["observed_at"], f"{oid}.{event_id}.observed_at")
-    if observed < event_time:
+    if observed < _time(payment["observed_at"], f"{oid}.{event_id}.observed_at"):
         raise ReconcilerError(f"{oid}: provider confirmation predates payment event")
     if observed > evaluation_at:
         raise ReconcilerError(f"{oid}: future provider confirmation")
-    provider_ref = _bounded_text(row["provider_ref"], f"{oid}.provider_ref", 512)
-    provider_sha = _sha256(row["provider_sha256"], f"{oid}.provider_sha256")
+    provider_ref = _text(row["provider_ref"], f"{oid}.provider_ref", 512)
+    provider_sha = _sha(row["provider_sha256"], f"{oid}.provider_sha256")
+    if provider_ref == payment["ref"] and provider_sha == payment["sha256"]:
+        raise ReconcilerError(f"{oid}: provider confirmation must be independently bound")
     return {
         "opportunity_id": oid,
         "payment_event_id": event_id,
@@ -202,36 +188,25 @@ def _validate_confirmation(
 
 def _cash_state(
     opportunity: dict[str, Any],
-    confirmations_by_event: dict[tuple[str, str], dict[str, Any]],
+    confirmations: dict[tuple[str, str], dict[str, Any]],
 ) -> str:
     payments = [e for e in opportunity["events"] if e["kind"] == "PAYMENT_RECEIVED"]
     if not payments:
         return "NO_PAYMENT_EVIDENCE"
-    confirmed = sum(
-        (opportunity["id"], event["id"]) in confirmations_by_event
-        for event in payments
-    )
-    if confirmed == len(payments):
+    n = sum((opportunity["id"], e["id"]) in confirmations for e in payments)
+    if n == len(payments):
         return "ALL_PAYMENT_EVENTS_PROVIDER_CONFIRMED"
-    if confirmed:
+    if n:
         return "PARTIAL_PROVIDER_CONFIRMATION"
     return "RETAINED_PAYMENT_EVENTS_UNCONFIRMED"
 
 
-def _route_for(
-    opportunity_id: str, routes_by_opportunity: dict[str, dict[str, Any]]
-) -> dict[str, Any] | None:
-    route = routes_by_opportunity.get(opportunity_id)
+def _public_route(route: dict[str, Any] | None) -> dict[str, Any] | None:
     if route is None:
         return None
-    return {
-        "recipient": route["recipient"],
-        "purpose": route["purpose"],
-        "observed_at": route["observed_at"],
-        "source_class": route["source_class"],
-        "ref": route["ref"],
-        "sha256": route["sha256"],
-    }
+    return {key: route[key] for key in (
+        "recipient", "purpose", "observed_at", "source_class", "ref", "sha256"
+    )}
 
 
 def _terminal(
@@ -248,131 +223,121 @@ def _terminal(
         if cash_state == "ALL_PAYMENT_EVENTS_PROVIDER_CONFIRMED":
             return "DONE_PAID", "CLOSED_CONFIRMED", 90
         return "VERIFY_PROVIDER_CASH", "CASH_EVIDENCE", 0
-
     if stage in {"OVERPAID_RECONCILE", "PARTIALLY_PAID", "PAYMENT_RECORDED_TARGET_UNKNOWN"}:
         return "RECONCILE_PAYMENT_EVIDENCE", "CASH_EVIDENCE", 0
-
     if stage == "INVOICED_OR_AWARDED":
         if target == 0:
             return "DONE_ZERO_VALUE", "CLOSED_ZERO_VALUE", 90
-        if contact == "NEW_INBOUND":
-            return "INBOUND_REVIEW", "SETTLEMENT_INSTRUMENT", 1
-        if contact == "HARD_DNR":
-            return "INBOUND_ONLY", "SETTLEMENT_INSTRUMENT", 1
-        if contact == "COLLISION_HOLD":
-            return "HOLD_COLLISION", "SETTLEMENT_INSTRUMENT", 1
-        if contact == "WAIT_EXTERNAL":
-            return "WAIT_EXTERNAL", "SETTLEMENT_INSTRUMENT", 1
+        mapping = {
+            "NEW_INBOUND": "INBOUND_REVIEW",
+            "HARD_DNR": "INBOUND_ONLY",
+            "COLLISION_HOLD": "HOLD_COLLISION",
+            "AMBIGUOUS_SAME_TIME_CONTACT": "HOLD_CONTACT_AMBIGUITY",
+            "WAIT_EXTERNAL": "WAIT_EXTERNAL",
+        }
+        if contact in mapping:
+            return mapping[contact], "SETTLEMENT_INSTRUMENT", 1
         if route is None:
             return "ROUTE_EVIDENCE_REQUIRED", "SETTLEMENT_INSTRUMENT", 1
         return "MUSE_REQUIRED", "SETTLEMENT_INSTRUMENT", 1
-
     if stage == "ACCEPTED_OR_MERGED":
         if acceptance == "EXTERNAL_ACCEPTANCE_EVIDENCE":
             return "OWNER_INVOICE_PREPARATION_REVIEW", "EXTERNAL_ACCEPTANCE", 2
         return "ACCEPTANCE_EVIDENCE_REQUIRED", "MERGED_OR_UNAUTHENTICATED_ACCEPTANCE", 3
-
     if stage == "PROPOSED_OR_CLAIMED":
-        if contact == "NEW_INBOUND":
-            return "INBOUND_REVIEW", "CLAIM_PENDING", 4
-        if contact == "HARD_DNR":
-            return "INBOUND_ONLY", "CLAIM_PENDING", 4
-        if contact == "COLLISION_HOLD":
-            return "HOLD_COLLISION", "CLAIM_PENDING", 4
-        return "WAIT_EXTERNAL", "CLAIM_PENDING", 4
-
+        mapping = {
+            "NEW_INBOUND": "INBOUND_REVIEW",
+            "HARD_DNR": "INBOUND_ONLY",
+            "COLLISION_HOLD": "HOLD_COLLISION",
+            "AMBIGUOUS_SAME_TIME_CONTACT": "HOLD_CONTACT_AMBIGUITY",
+        }
+        return mapping.get(contact, "WAIT_EXTERNAL"), "CLAIM_PENDING", 4
     if stage == "QUALIFIED":
-        if contact == "NEW_INBOUND":
-            return "INBOUND_REVIEW", "QUALIFIED", 5
-        if contact == "HARD_DNR":
-            return "INBOUND_ONLY", "QUALIFIED", 5
-        if contact == "COLLISION_HOLD":
-            return "HOLD_COLLISION", "QUALIFIED", 5
-        if contact == "WAIT_EXTERNAL":
-            return "WAIT_EXTERNAL", "QUALIFIED", 5
+        mapping = {
+            "NEW_INBOUND": "INBOUND_REVIEW",
+            "HARD_DNR": "INBOUND_ONLY",
+            "COLLISION_HOLD": "HOLD_COLLISION",
+            "AMBIGUOUS_SAME_TIME_CONTACT": "HOLD_CONTACT_AMBIGUITY",
+            "WAIT_EXTERNAL": "WAIT_EXTERNAL",
+        }
+        if contact in mapping:
+            return mapping[contact], "QUALIFIED", 5
         if route is None:
             return "ROUTE_EVIDENCE_REQUIRED", "QUALIFIED", 5
         return "MUSE_REQUIRED", "QUALIFIED", 5
-
     return "QUALIFICATION_REVIEW", "EARLY_STAGE", 6
 
 
 def compile_packet(document: Any) -> dict[str, Any]:
-    doc = _exact_dict(
-        document,
-        {"schema", "funnel_input", "routes", "payment_confirmations"},
-        "document",
+    doc = _exact(
+        document, {"schema", "funnel_input", "routes", "payment_confirmations"}, "document"
     )
     if doc["schema"] != SCHEMA:
         raise ReconcilerError("document.schema: unsupported")
     try:
-        funnel_bundle = compile_funnel_bundle(doc["funnel_input"])
+        upstream = compile_funnel_bundle(doc["funnel_input"])
     except FunnelError as exc:
         raise ReconcilerError(f"funnel_input: {exc}") from exc
-    if not verify_funnel_bundle(funnel_bundle):
+    if not verify_funnel_bundle(upstream):
         raise ReconcilerError("funnel_bundle: semantic verification failed")
-    funnel_packet = funnel_bundle["packet"]
-    if type(funnel_packet) is not dict:
+    packet = upstream["packet"]
+    if type(packet) is not dict:
         raise ReconcilerError("funnel_bundle.packet: object required")
-    if funnel_packet.get("truth_boundary") != "RETAINED_EVIDENCE_INPUT_NOT_PROVIDER_AUTHENTICATED":
+    if packet.get("truth_boundary") != "RETAINED_EVIDENCE_INPUT_NOT_PROVIDER_AUTHENTICATED":
         raise ReconcilerError("funnel_bundle.packet: unexpected truth boundary")
-    if funnel_packet.get("authority") != {
-        "external_send": False,
-        "muse_selection": False,
-        "provider_mutation": False,
-        "invoice_creation": False,
-        "payment_movement": False,
-        "receivable_establishment": False,
-        "revenue_recognition": False,
+    if packet.get("authority") != {
+        "external_send": False, "muse_selection": False, "provider_mutation": False,
+        "invoice_creation": False, "payment_movement": False,
+        "receivable_establishment": False, "revenue_recognition": False,
     }:
         raise ReconcilerError("funnel_bundle.packet: upstream authority widened")
 
-    evaluation_at = _time(funnel_packet.get("evaluation_at"), "funnel.evaluation_at")
-    raw_opportunities = funnel_packet.get("opportunities")
+    evaluation_at = _time(packet.get("evaluation_at"), "funnel.evaluation_at")
+    raw_opportunities = packet.get("opportunities")
     if type(raw_opportunities) is not list:
         raise ReconcilerError("funnel.opportunities: array required")
     opportunities: dict[str, dict[str, Any]] = {}
     for opportunity in raw_opportunities:
         if type(opportunity) is not dict:
             raise ReconcilerError("funnel opportunity: object required")
-        oid = _bounded_text(opportunity.get("id"), "funnel opportunity id", 120)
+        oid = _text(opportunity.get("id"), "funnel opportunity id", 120)
         if oid in opportunities:
             raise ReconcilerError("funnel: duplicate opportunity id")
         opportunities[oid] = opportunity
 
     if type(doc["routes"]) is not list:
         raise ReconcilerError("routes: array required")
-    routes = [_validate_route(row, set(opportunities), evaluation_at) for row in doc["routes"]]
-    route_ids = [route["opportunity_id"] for route in routes]
+    routes = [_validate_route(r, set(opportunities), evaluation_at) for r in doc["routes"]]
+    route_ids = [r["opportunity_id"] for r in routes]
     if len(route_ids) != len(set(route_ids)):
         raise ReconcilerError("duplicate route for opportunity")
     route_bindings = [(r["source_class"], r["ref"], r["sha256"]) for r in routes]
     if len(route_bindings) != len(set(route_bindings)):
         raise ReconcilerError("duplicate route evidence binding")
-    routes.sort(key=lambda row: row["opportunity_id"])
-    routes_by_opportunity = {row["opportunity_id"]: row for row in routes}
+    routes.sort(key=lambda r: r["opportunity_id"])
+    routes_by_id = {r["opportunity_id"]: r for r in routes}
 
     if type(doc["payment_confirmations"]) is not list:
         raise ReconcilerError("payment_confirmations: array required")
     confirmations = [
-        _validate_confirmation(row, opportunities, evaluation_at)
-        for row in doc["payment_confirmations"]
+        _validate_confirmation(r, opportunities, evaluation_at)
+        for r in doc["payment_confirmations"]
     ]
-    confirmation_keys = [(row["opportunity_id"], row["payment_event_id"]) for row in confirmations]
-    if len(confirmation_keys) != len(set(confirmation_keys)):
+    keys = [(r["opportunity_id"], r["payment_event_id"]) for r in confirmations]
+    if len(keys) != len(set(keys)):
         raise ReconcilerError("duplicate payment confirmation")
-    confirmation_bindings = [(row["provider_ref"], row["provider_sha256"]) for row in confirmations]
-    if len(confirmation_bindings) != len(set(confirmation_bindings)):
+    bindings = [(r["provider_ref"], r["provider_sha256"]) for r in confirmations]
+    if len(bindings) != len(set(bindings)):
         raise ReconcilerError("duplicate provider confirmation binding")
-    confirmations.sort(key=lambda row: (row["opportunity_id"], row["payment_event_id"]))
+    confirmations.sort(key=lambda r: (r["opportunity_id"], r["payment_event_id"]))
     confirmations_by_event = {
-        (row["opportunity_id"], row["payment_event_id"]): row for row in confirmations
+        (r["opportunity_id"], r["payment_event_id"]): r for r in confirmations
     }
 
     items: list[dict[str, Any]] = []
     for oid in sorted(opportunities):
         opportunity = opportunities[oid]
-        route = _route_for(oid, routes_by_opportunity)
+        route = _public_route(routes_by_id.get(oid))
         cash_state = _cash_state(opportunity, confirmations_by_event)
         action, band, priority = _terminal(opportunity, route, cash_state)
         item = {
@@ -394,9 +359,10 @@ def compile_packet(document: Any) -> dict[str, Any]:
                 "upstream_evidence_root_sha256": opportunity["evidence_root_sha256"],
                 "route": route,
                 "payment_confirmations": [
-                    row for row in confirmations if row["opportunity_id"] == oid
+                    r for r in confirmations if r["opportunity_id"] == oid
                 ],
             }),
+            "muse_packet": None,
         }
         if action == "MUSE_REQUIRED":
             if route is None:
@@ -406,36 +372,30 @@ def compile_packet(document: Any) -> dict[str, Any]:
                 "purpose": route["purpose"],
                 "authority": "REQUEST_ARBITRATION_ONLY_NOT_SEND_AUTHORITY",
             }
-        else:
-            item["muse_packet"] = None
         items.append(item)
 
     open_queue = [
         item["opportunity_id"]
         for item in sorted(
-            (item for item in items if not item["terminal_action"].startswith("DONE_")),
-            key=lambda item: (
-                item["realizability_priority"],
-                item["opportunity_id"],
-            ),
+            (i for i in items if not i["terminal_action"].startswith("DONE_")),
+            key=lambda i: (i["realizability_priority"], i["opportunity_id"]),
         )
     ]
-    action_counts: dict[str, int] = {}
+    counts: dict[str, int] = {}
     for item in items:
-        action_counts[item["terminal_action"]] = action_counts.get(item["terminal_action"], 0) + 1
-
+        counts[item["terminal_action"]] = counts.get(item["terminal_action"], 0) + 1
     return {
         "schema": SCHEMA,
         "evaluation_at": evaluation_at.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "truth_boundary": TRUTH_BOUNDARY,
-        "upstream_funnel_bundle_sha256": _digest(funnel_bundle),
-        "authority": dict(AUTHORITY),
+        "upstream_funnel_bundle_sha256": _digest(upstream),
+        "authority": _authority(),
         "items": items,
         "open_queue": open_queue,
         "summary": {
             "item_count": len(items),
             "open_count": len(open_queue),
-            "terminal_action_counts": dict(sorted(action_counts.items())),
+            "terminal_action_counts": dict(sorted(counts.items())),
             "queue_uses_headline_amount": False,
             "live_provider_query_performed": False,
             "provider_confirmation_is_retained_evidence_not_authentication": True,
@@ -446,17 +406,16 @@ def compile_packet(document: Any) -> dict[str, Any]:
 def compile_bundle(document: Any) -> dict[str, Any]:
     packet = compile_packet(document)
     normalized = json.loads(_canonical(document).decode("utf-8"))
-    receipt = {
-        "schema": BUNDLE_SCHEMA,
-        "input_sha256": _digest(normalized),
-        "packet_sha256": _digest(packet),
-        "authority": dict(AUTHORITY),
-    }
     return {
         "schema": BUNDLE_SCHEMA,
         "input": normalized,
         "packet": packet,
-        "receipt": receipt,
+        "receipt": {
+            "schema": BUNDLE_SCHEMA,
+            "input_sha256": _digest(normalized),
+            "packet_sha256": _digest(packet),
+            "authority": _authority(),
+        },
     }
 
 
@@ -466,13 +425,14 @@ def verify_bundle(bundle: Any) -> bool:
     if any(type(k) is not str for k in bundle) or bundle.get("schema") != BUNDLE_SCHEMA:
         return False
     receipt = bundle.get("receipt")
-    if type(receipt) is not dict or set(receipt) != {"schema", "input_sha256", "packet_sha256", "authority"}:
+    if type(receipt) is not dict or set(receipt) != {
+        "schema", "input_sha256", "packet_sha256", "authority"
+    }:
         return False
-    if receipt.get("schema") != BUNDLE_SCHEMA or receipt.get("authority") != AUTHORITY:
+    if receipt.get("schema") != BUNDLE_SCHEMA or receipt.get("authority") != _authority():
         return False
     try:
-        recomputed = compile_bundle(bundle["input"])
-        return _canonical(recomputed) == _canonical(bundle)
+        return _canonical(compile_bundle(bundle["input"])) == _canonical(bundle)
     except (ReconcilerError, KeyError, TypeError):
         return False
 
@@ -481,9 +441,7 @@ def load_json_strict(path: Path, limit: int = 8_000_000) -> Any:
     st = os.lstat(path)
     if not stat.S_ISREG(st.st_mode) or st.st_size > limit:
         raise ReconcilerError("input must be a bounded regular file")
-    flags = os.O_RDONLY
-    if hasattr(os, "O_NOFOLLOW"):
-        flags |= os.O_NOFOLLOW
+    flags = os.O_RDONLY | (getattr(os, "O_NOFOLLOW", 0))
     fd = os.open(path, flags)
     try:
         before = os.fstat(fd)
@@ -491,8 +449,7 @@ def load_json_strict(path: Path, limit: int = 8_000_000) -> Any:
             raise ReconcilerError("input changed or is not regular")
         if (st.st_dev, st.st_ino, st.st_size) != (before.st_dev, before.st_ino, before.st_size):
             raise ReconcilerError("input changed before retained read")
-        chunks: list[bytes] = []
-        remaining = limit + 1
+        chunks, remaining = [], limit + 1
         while remaining:
             chunk = os.read(fd, min(131072, remaining))
             if not chunk:
@@ -503,7 +460,9 @@ def load_json_strict(path: Path, limit: int = 8_000_000) -> Any:
         after = os.fstat(fd)
         if len(raw) > limit or len(raw) != before.st_size:
             raise ReconcilerError("input exceeds bound or changed")
-        if (before.st_dev, before.st_ino, before.st_size) != (after.st_dev, after.st_ino, after.st_size):
+        if (before.st_dev, before.st_ino, before.st_size) != (
+            after.st_dev, after.st_ino, after.st_size
+        ):
             raise ReconcilerError("input changed while reading")
     finally:
         os.close(fd)
@@ -542,37 +501,31 @@ def load_json_strict(path: Path, limit: int = 8_000_000) -> Any:
 
 def _publish_exclusive(path: Path, value: Any) -> None:
     payload = _canonical(value) + b"\n"
-    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
-    if hasattr(os, "O_NOFOLLOW"):
-        flags |= os.O_NOFOLLOW
+    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL | getattr(os, "O_NOFOLLOW", 0)
     fd = os.open(path, flags, 0o600)
     try:
         offset = 0
         while offset < len(payload):
             offset += os.write(fd, payload[offset:])
         os.fsync(fd)
-    except BaseException:
-        os.close(fd)
-        raise
-    else:
+    finally:
         os.close(fd)
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Accepted-work-to-cash reconciler")
     sub = parser.add_subparsers(dest="command", required=True)
-    compile_p = sub.add_parser("compile")
-    compile_p.add_argument("input", type=Path)
-    compile_p.add_argument("output", type=Path)
-    verify_p = sub.add_parser("verify")
-    verify_p.add_argument("bundle", type=Path)
+    comp = sub.add_parser("compile")
+    comp.add_argument("input", type=Path)
+    comp.add_argument("output", type=Path)
+    ver = sub.add_parser("verify")
+    ver.add_argument("bundle", type=Path)
     args = parser.parse_args(argv)
     try:
         if args.command == "compile":
             _publish_exclusive(args.output, compile_bundle(load_json_strict(args.input)))
             return 0
-        bundle = load_json_strict(args.bundle)
-        if not verify_bundle(bundle):
+        if not verify_bundle(load_json_strict(args.bundle)):
             raise ReconcilerError("bundle verification failed")
         return 0
     except (OSError, ReconcilerError) as exc:
