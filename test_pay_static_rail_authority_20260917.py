@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-"""Post-merge authority closure for Commons #15406 static pay rails.
+"""Compose leftover with #15413: static tip-shelf CTAs + pay.js hydrate stay.
 
-The LOW+WIDE tip shelf and White Box hour remain real catalog/SKU evidence,
-but pay.html may publish their Stripe anchors only through pay.js::railEligible.
-Static HTML and no-JS fallback are not provider-authenticated capability proof.
+LOW+WIDE tip-shelf and White Box hour reuse existing livemode Payment Links as
+static/noscript primary CTAs (same class as tips.html). Catalog slots and
+pay.js::railEligible remain. Type product buys stay in #buy-now-live-checkout.
+No invented Stripe URLs. Extra URLs still fail both capability validators.
 """
 from __future__ import annotations
 
 import importlib.util
-import re
 import unittest
 from pathlib import Path
 
@@ -26,7 +26,7 @@ TYPE_PRODUCT_BUYS = frozenset(
         "https://buy.stripe.com/7sYdR8ckZgHLbCN50K43S0y",
     }
 )
-RUNTIME_ONLY_RAILS = (
+TIP_SHELF_RAILS = (
     "https://donate.stripe.com/fZucN40Ch9fj7mxgJs43S08",
     "https://buy.stripe.com/3cIeVc5WB1MRgX7al443S03",
     "https://buy.stripe.com/3cIbJ0ckZgHL36h8cW43S04",
@@ -42,7 +42,7 @@ RUNTIME_SKUS = (
     "sku-boost-20260826",
     "sku-whitebox-hour-20260826",
 )
-STRIPE_RE = re.compile(r"https://(?:buy|donate)\.stripe\.com/[A-Za-z0-9_-]+")
+MUHL_URL = "https://buy.stripe.com/7sYbJ02Kpcrv9uF0Ku43S09"
 
 
 def _load_host(name: str):
@@ -57,53 +57,57 @@ def _load_host(name: str):
 
 checkout_capability = _load_host("checkout_capability")
 payment_capability = _load_host("payment_capability")
+PAY_URLS = TYPE_PRODUCT_BUYS | set(TIP_SHELF_RAILS)
 
 
 class TestPay15406StaticRailAuthorityClosure(unittest.TestCase):
-    def test_runtime_only_rails_are_not_static_or_noscript(self) -> None:
+    def test_tip_shelf_static_ctas_reuse_existing_links_and_keep_slots(self) -> None:
         html = PAY.read_text(encoding="utf-8")
         self.assertEqual(
-            checkout_capability.live_stripe_checkout_urls(html), TYPE_PRODUCT_BUYS
+            checkout_capability.live_stripe_checkout_urls(html), PAY_URLS
         )
         self.assertEqual(
-            payment_capability.live_stripe_checkout_urls(html), TYPE_PRODUCT_BUYS
+            payment_capability.live_stripe_checkout_urls(html), PAY_URLS
         )
         tail = html.split("<h2>LOW + WIDE</h2>", 1)[1]
-        for url in RUNTIME_ONLY_RAILS:
+        noscript = html.split("<noscript>", 1)[1].split("</noscript>", 1)[0]
+        for url in TIP_SHELF_RAILS:
             with self.subTest(url=url):
-                self.assertNotIn(url, tail)
-        if "<noscript>" in html:
-            noscript = html.split("<noscript>", 1)[1].split("</noscript>", 1)[0]
-            self.assertIsNone(STRIPE_RE.search(noscript))
+                self.assertIn(url, tail)
+                self.assertIn(url, noscript)
         for sku in RUNTIME_SKUS:
             with self.subTest(sku=sku):
                 self.assertIn(f'data-sku="{sku}"', html)
         self.assertIn('src="./pay.js?v=20260902a"', html)
+        self.assertIn("./land/sku-muhlnickel-titan-20260826.md", html)
+        self.assertNotIn(MUHL_URL, html)
+        buy_now = html.split('id="buy-now-live-checkout"', 1)[1].split(
+            'id="owner-action"', 1
+        )[0]
+        self.assertEqual(checkout_capability.live_buy_urls(buy_now), TYPE_PRODUCT_BUYS)
 
-    def test_both_static_validators_reject_each_runtime_only_rail(self) -> None:
+    def test_both_static_validators_reject_an_invented_stripe_url(self) -> None:
         html = PAY.read_text(encoding="utf-8")
-        marker = "<h2>LOW + WIDE</h2>"
-        self.assertIn(marker, html)
-        for url in RUNTIME_ONLY_RAILS:
-            with self.subTest(url=url):
-                forged = html.replace(
-                    marker,
-                    marker + f'\n<a class="checkout-active" href="{url}">forged</a>',
-                    1,
-                )
-                self.assertTrue(
-                    checkout_capability.html_stripe_url_errors("pay.html", forged)
-                )
-                self.assertTrue(
-                    payment_capability.html_stripe_url_errors("pay.html", forged)
-                )
-
-    def test_pay_specific_static_runtime_allowlist_is_absent(self) -> None:
-        self.assertFalse(
-            hasattr(checkout_capability, "PAY_CONVERT_SHELF_LIVE_CHECKOUTS")
+        forged = html.replace(
+            TIP_SHELF_RAILS[0],
+            TIP_SHELF_RAILS[0] + "\nhttps://buy.stripe.com/not-a-canonical-link",
+            1,
         )
-        self.assertFalse(
-            hasattr(payment_capability, "PAY_CONVERT_SHELF_LIVE_CHECKOUTS")
+        self.assertEqual(
+            checkout_capability.html_stripe_url_errors("pay.html", forged),
+            ["pay.html convert shelf must reuse exactly the existing pay Stripe URLs"],
+        )
+        self.assertEqual(
+            payment_capability.html_stripe_url_errors("pay.html", forged),
+            ["pay.html convert shelf must reuse exactly the existing pay Stripe URLs"],
+        )
+
+    def test_pay_convert_shelf_allowlist_is_type_buys_plus_existing_tip_and_hour(self) -> None:
+        self.assertEqual(
+            checkout_capability.PAY_CONVERT_SHELF_LIVE_CHECKOUTS, PAY_URLS
+        )
+        self.assertEqual(
+            payment_capability.PAY_CONVERT_SHELF_LIVE_CHECKOUTS, PAY_URLS
         )
         self.assertEqual(
             checkout_capability.CONVERT_SHELF_LIVE_BUYS["pay.html"],
@@ -131,9 +135,12 @@ class TestPay15406StaticRailAuthorityClosure(unittest.TestCase):
             with self.subTest(fragment=fragment):
                 self.assertIn(fragment, js)
 
-    def test_positive_static_regression_suite_is_retired(self) -> None:
-        self.assertFalse(
-            (ROOT / "test_goat_pay_tipshelf_checkout_wire_20260917.py").exists()
+    def test_positive_static_leftover_suite_is_present(self) -> None:
+        self.assertTrue(
+            (ROOT / "test_goat_pay_tipshelf_checkout_wire_20260917.py").is_file()
+        )
+        self.assertTrue(
+            (ROOT / "p" / "goat-pay-tipshelf-checkout-wire-20260917-01.md").is_file()
         )
 
 
