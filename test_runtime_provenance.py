@@ -25,6 +25,18 @@ DISCOVER = [
     "test_*.py",
     "-v",
 ]
+TEST_COUNT = re.compile(r"\bRan\s+(\d+)\s+tests?\s+in\b")
+
+
+def reported_test_count(summary_stream: str) -> int:
+    """Return the one unittest-runner count from its stderr summary stream."""
+    matches = TEST_COUNT.findall(summary_stream)
+    if len(matches) != 1:
+        raise ValueError(
+            "unittest summary stream must contain exactly one executed-test summary; "
+            f"found {len(matches)}:\n{summary_stream}"
+        )
+    return int(matches[0])
 
 
 class RuntimeProvenanceRetainedTests(unittest.TestCase):
@@ -42,24 +54,33 @@ class RuntimeProvenanceRetainedTests(unittest.TestCase):
             check=False,
         )
 
-    def assert_child_ok(self, proc: subprocess.CompletedProcess[str]) -> None:
-        self.assertEqual(proc.returncode, 0, proc.stderr + proc.stdout)
+    @staticmethod
+    def child_output(proc: subprocess.CompletedProcess[str]) -> str:
+        return proc.stderr + proc.stdout
 
-    def assert_nonempty_unittest_run(self, proc: subprocess.CompletedProcess[str]) -> None:
-        output = proc.stderr + proc.stdout
-        match = re.search(r"Ran ([0-9]+) tests? in ", output)
-        if match is None:
-            self.fail(f"missing unittest execution count:\n{output}")
-        count = int(match.group(1))
-        self.assertGreater(count, 0, f"zero-test false green:\n{output}")
-        self.assertIn("OK", output)
+    def assert_child_ok(self, proc: subprocess.CompletedProcess[str]) -> None:
+        self.assertEqual(proc.returncode, 0, self.child_output(proc))
+
+    def assert_nonempty_unittest_run(self, proc: subprocess.CompletedProcess[str]) -> int:
+        self.assert_child_ok(proc)
+        # TextTestRunner owns the subprocess stderr stream. Do not parse combined
+        # stderr+stdout: discovered modules control stdout and can print a forged
+        # trailing "Ran N tests" line after a real zero-test runner summary.
+        count = reported_test_count(proc.stderr)
+        self.assertGreater(
+            count,
+            0,
+            f"zero-test false green:\n{self.child_output(proc)}",
+        )
+        return count
 
     def test_focused_suite_normal_and_optimized(self) -> None:
+        counts: list[int] = []
         for optimized in (False, True):
             with self.subTest(optimized=optimized):
                 proc = self.run_child(*DISCOVER, optimized=optimized)
-                self.assert_child_ok(proc)
-                self.assert_nonempty_unittest_run(proc)
+                counts.append(self.assert_nonempty_unittest_run(proc))
+        self.assertEqual(counts[0], counts[1], "normal and optimized discovery counts diverged")
 
     def test_zero_discovery_cannot_false_green(self) -> None:
         proc = subprocess.CompletedProcess(
@@ -68,9 +89,25 @@ class RuntimeProvenanceRetainedTests(unittest.TestCase):
             stdout="",
             stderr="----------------------------------------------------------------------\nRan 0 tests in 0.000s\n\nOK\n",
         )
-        self.assert_child_ok(proc)
-        with self.assertRaises(AssertionError):
+        with self.assertRaisesRegex(AssertionError, "zero-test false green"):
             self.assert_nonempty_unittest_run(proc)
+
+    def test_stdout_cannot_spoof_the_unittest_summary(self) -> None:
+        proc = subprocess.CompletedProcess(
+            args=[sys.executable, *DISCOVER],
+            returncode=0,
+            stdout="Ran 99 tests in 0.001s\n\nOK\n",
+            stderr="----------------------------------------------------------------------\nRan 0 tests in 0.000s\n\nOK\n",
+        )
+        self.assertEqual(reported_test_count(proc.stderr), 0)
+        with self.assertRaisesRegex(AssertionError, "zero-test false green"):
+            self.assert_nonempty_unittest_run(proc)
+
+    def test_missing_or_ambiguous_unittest_summary_is_rejected(self) -> None:
+        with self.assertRaisesRegex(ValueError, "exactly one executed-test summary"):
+            reported_test_count("OK")
+        with self.assertRaisesRegex(ValueError, "exactly one executed-test summary"):
+            reported_test_count("Ran 0 tests in 0.000s\nRan 99 tests in 0.001s\nOK")
 
     def test_canonical_registry_verify_is_descriptive_only(self) -> None:
         proc = self.run_child(
