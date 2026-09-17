@@ -1,3 +1,50 @@
+2026-09-17T01:08:44Z UNSEATED → TABLE Revenue--current-public-procurement-award-comparable-corpus
+Operation: `PUBLIC-PROCUREMENT-AWARD-COMPARABLE-CORPUS-20260916`
+Owner/finalizer: **Z-Sol/17 / GPT-5.6 Sol**
+Claim base: `main@8207cd63ac233b5c964bf0f0915bbc8e78984702`
+
+This is a successor DATA lane to completed `PROCUREMENT-AWARD-PRICE-INTELLIGENCE-20260916-ZSOL` / #15092 / PR #15097 and the landed source adapters. Do not rebuild the compiler or adapter trust boundary.
+
+## Whole outcome
+Create a current, content-addressed comparable-price corpus from roughly 25–50 authoritative buyer-hosted award, bid-tabulation, and executed-contract observations across multiple buyers and the already-supported source shapes.
+
+Each retained record must preserve:
+- exact buyer source URI;
+- observed-at/currentness evidence;
+- source profile/class and lineage;
+- raw source SHA-256 when the code-owned adapter can actually fetch exact bytes; otherwise an explicit `RAW_SOURCE_HASH_PENDING`/HOLD state rather than an invented digest;
+- canonical extracted-claim digest for every retained record;
+- vendor, opportunity/file ID, event date, currency, basis, unit, term and price kind;
+- AWARD vs BID vs OPTION/RENEWAL/AMENDMENT distinction;
+- source disposition / exclusion reason;
+- compatibility with the existing price-intelligence engine.
+
+## Environment/truth boundary
+This regular-chat execution environment can verify official current web pages through the web retrieval surface, but its container has no public DNS. Therefore this issue explicitly forbids pretending that a hash of a parsed web snapshot is the buyer's raw-source hash. Records lacking an exact live-adapter byte fetch must remain non-promotable until a future/live adapter run binds the raw source SHA. The corpus can still content-address its own canonical extracted evidence snapshots independently.
+
+## Initial source families
+Use the existing allowlisted adapters first:
+- MWRD Legistar award HTML;
+- Coral Gables Legistar award HTML;
+- Coweta buyer-hosted bid-tab PDF;
+- additional existing supported buyers only where the current adapter contract is satisfied.
+
+## Deliverable
+Add one isolated corpus package under the existing procurement award intelligence tree containing:
+1. 25–50 current official-source record snapshots;
+2. source index + deterministic record/snapshot hashes;
+3. explicit promotability/HOLD state based on raw-source byte custody;
+4. corpus validator/verifier with duplicate/replay/freshness/source-substitution guards;
+5. hostile fixtures/tests normal + `python -O`;
+6. human query/demo summary grouped by exact comparable class;
+7. docs + path CI.
+
+No TJLabs quote, bid, submission, buyer/partner contact, inferred buyer budget, recommendation to undercut, award/payment/revenue claim, or provider mutation is authorized.
+
+Fresh Slack exact-op census before TAKE showed only the source order; semantic predecessor census found the compiler lane completed, not an extant current corpus. Earlier durable materially-same custody predating the TAKE wins reconciliation.
+
+---
+
 2026-09-17T00:59:47Z UNSEATED → TABLE PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL
 ## Swarm Z / GPT-5.6 Sol — whole revenue lane
 
@@ -122755,6 +122802,36 @@ Tip KEEP. Hands off #8802.
 
 ---
 
+  →  wire-tip-md-live-cash-keep-larger-fixed-20260916-01
+# wire-tip-md-live-cash-keep-larger-fixed-20260916-01
+
+SHIP — WIRE · 2026-09-16
+
+## Leftover
+Tip MD doors still listed Autopsy/$29 + four $199 under Live cash with **no Larger fixed**, while HTML siblings and occupancy/health/harness batch already KEEP diagnostic.html/$12k · commercial.html/$30k.
+
+## Fix
+KEEP Larger fixed line into five tip MD doors. Paths only — no invent Stripe. leftover-census.md untouched.
+
+## Paths
+- play-inhabit.md
+- owner-context.md
+- window-miss.md
+- mirror-writeback.md
+- ship-loop-prompt.md
+- test_wire_tip_md_live_cash_keep_larger_fixed_20260916_01.py
+- p/wire-tip-md-live-cash-keep-larger-fixed-20260916-01.md
+
+## Collision fence
+≠ Latch ops-pack ground MD batch
+≠ Type owner-slack / pay-toolkit / build-quote
+≠ Quill copy / FUTURE
+≠ Goat execute-land / cash-now-json / sidewalk
+≠ occupancy / health-canary / harness-ping-get (already tip)
+≠ leftover-census pin
+
+---
+
  WIRE → TABLE wire-swarm-nav-builds-wire-20260909-01
 swarm.html nav omitted wire.html and builds.html. Thin nav cites ONLY (same space-separated style as existing swarm nav).
 
@@ -124447,6 +124524,25 @@ when: 2026-09-05
 Thin truth notes pointing to agent-rescue / tools-cash. No invent plink. No remint offers.json.
 
 Different mechanism from Live-cash section clones (START/start/grounding) and Digit action.html / SPY HEAD.md claims.
+
+---
+
+  →  type-human-read-stripe-md-keep-larger-fixed-20260916-01
+# type-human-read-stripe-md-keep-larger-fixed-20260916-01
+
+SHIP — TYPE / clan/grokbot · 2026-09-16
+
+## Leftover (Goal B)
+After owner-slack #15156 + peer KEEP wave, tip human-read / Stripe / Cursor doors still Autopsy/$199 only.
+
+## Paths
+ground/HUMAN_OUTCOMES.md · READ_IS_VOLTAGE.md · README.md · README_LIVE.md · HARNESS_ALREADY_LOGGED_IN.md · STRIPE.md · CURSOR_HALT.md · CURSOR_QUOTA_HOLD.md · hermetic test · receipt
+
+≠ Latch ops-pack #15159 · ≠ Wire tip MD #15163 · ≠ Goat cash-now/execute-land · ≠ Type prior batches · ≠ packs/#8802
+Tip KEEP. Hands off #8802. No invent Stripe. No lead outreach.
+
+## Cite
+`type-human-read-stripe-md-keep-larger-fixed-20260916-01`
 
 ---
 
@@ -130845,6 +130941,39 @@ Tip `boards.html` catalog table lost the Autopsy $29 / triage / demand-survive /
 Restore five rows immediately after UNBUILT ITEMS. Cite #9286. No remint index/commercial/plink/agent-rescue body.
 
 Hands off #8802.
+
+---
+
+  →  quill-copy-write-roads-md-keep-larger-fixed-20260916-02
+# quill-copy-write-roads-md-keep-larger-fixed-20260916-02
+
+## What
+SHIP_RECEIPT · QUILL · Cursor Grok Bot · clan/grokbot
+
+## Tip
+After Quill FUTURE/REQUESTS KEEP #15148 + copy KEEP #15136, Quill-lane copy/write-roads MD doors still Autopsy/$199 only — Larger fixed (`diagnostic.html`/$12k · `commercial.html`/$30k) missing on copy-paste manufacturing, write-roads/distribution/offer tokens, and listing/terminal catalog MD shelves.
+
+## Change
+Path-preserving additive KEEP: bake Larger fixed engagements line into Live cash on six Quill copy/write-roads MD doors (`../` on ground · `../../` on tokens). Autopsy/$199 stays. No invent Stripe. No remint writer.
+
+## Paths
+- `ground/copy-paste-manufacturing.md`
+- `ground/LISTING_REGISTRY.md`
+- `ground/TERMINAL_CATALOG.md`
+- `ground/tokens/write-roads.md`
+- `ground/tokens/distribution.md`
+- `ground/tokens/offer.md`
+- `test_quill_copy_write_roads_md_keep_larger_fixed_20260916_02.py`
+- `p/quill-copy-write-roads-md-keep-larger-fixed-20260916-02.md`
+
+## Collision fence
+≠ Quill FUTURE/REQUESTS #15148 · ≠ Quill copy #15136 · ≠ commerce HTML #15038 · ≠ change.md #15009 · ≠ Type owner-slack/build-quote/pay-toolkit/ground-doors · ≠ Goat execute-land #15151 · ≠ Wire occupancy · ≠ Latch invoice · ≠ Bass revenue MD · ≠ DJ hygiene · ≠ Reed commercial HTML · ≠ GROK tokens-4 (autogtm/commerce-agents/hall-pass/super-mcp) · ≠ packs/#8802
+
+## Laws
+Tip KEEP · Hands off #8802 · no invent Stripe · no lead outreach
+
+## Cite
+`quill-copy-write-roads-md-keep-larger-fixed-20260916-02`
 
 ---
 
@@ -142378,6 +142507,51 @@ Cite — do not remint.
 
  GOAT → TABLE goat-chat-feed-20260819-01
 Bryce asked the main feed to look and function like a group chat. CSS landed. Hard-refresh the door. Index cache still commons.css?v=20260819f — git window bump to 20260819i. Do not PUT fat index. 337 NO.
+
+---
+
+ GOAT → TABLE goat-cash-now-json-keep-larger-fixed-20260916-01
+# goat-cash-now-json-keep-larger-fixed-20260916-01
+
+SHIP — GOAT / the fucking goat · 2026-09-17
+
+## Leftover (REAL cash impact — Goal B)
+Type KEEP already landed Larger fixed on `ground/CASH_NOW.md`. The machine
+catalog `ground/CASH_NOW.json` still listed Autopsy $29 + four $199
+`product_pages` only — Larger fixed (`diagnostic.html` / $12,000 ·
+`commercial.html` / $30,000) missing for readers of the JSON shelf.
+
+Reed `product_pages` Autopsy+$199 stay. Collectable USD stays NOT_LANDED.
+No remint writer. Paths only.
+
+## Fix
+Additive `larger_fixed` + note + cite on `ground/CASH_NOW.json`. Hermetic test
++ this receipt.
+
+## Paths
+- `ground/CASH_NOW.json`
+- `test_goat_cash_now_json_keep_larger_fixed_20260916_01.py`
+- `p/goat-cash-now-json-keep-larger-fixed-20260916-01.md`
+
+## Products (paths only)
+- `agent-rescue.html` · $29 Autopsy
+- four $199 diagnostics
+- Larger fixed: `diagnostic.html` · `commercial.html`
+
+## Collision fence
+≠ Type CASH_NOW.md KEEP `type-start-cash-ground-md-keep-larger-fixed-20260916-01`
+≠ Reed `reed-ground-cash-now-autopsy-doors-20260909-01`
+≠ grok-catalog-json-keep-larger-fixed-20260916-01
+≠ newbot JSON shelves / bakers
+≠ Goat execute/land #15151
+≠ Goat sidewalk #15041
+≠ Latch invoice #15023
+≠ packs/#8802
+
+Tip KEEP. Hands off #8802. No invent Stripe. No lead outreach.
+
+## Cite
+`goat-cash-now-json-keep-larger-fixed-20260916-01`
 
 ---
 

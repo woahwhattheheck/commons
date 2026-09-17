@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 103,
+    "open_issues": 105,
     "open_pull_requests": 18,
-    "runs_in_progress": 19,
-    "runs_queued": 1124
+    "runs_in_progress": 20,
+    "runs_queued": 1141
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,13 +69,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "quill/copy-write-roads-md-keep-larger-fixed-20260916-02",
-      "created_at": "2026-09-17T01:07:03Z",
+      "branch": "cursor/latch-ops-pack-md-keep-larger-fixed-6ee1",
+      "created_at": "2026-09-17T01:08:09Z",
       "draft": false,
-      "head_sha": "89eebc6fb27cbfce97b02af69ff17f4126f683c1",
-      "number": 15158,
-      "title": "QUILL: copy/write-roads MD KEEP Larger-fixed (20260916-02)",
-      "updated_at": "2026-09-17T01:07:03Z"
+      "head_sha": "92fe5e9750888e2cc6ceba6e914e9e3aa988eec6",
+      "number": 15159,
+      "title": "LATCH: KEEP Larger fixed on ops-pack ground MD",
+      "updated_at": "2026-09-17T01:10:16Z"
     },
     {
       "author": "woahwhattheheck",
@@ -119,7 +119,7 @@
       "head_sha": "ca189147eac0bed240481a0345a421a3ac75a2a1",
       "number": 15125,
       "title": "revenue/hive/creator-reward-campaign: HIVE021 creator reward campaign desk",
-      "updated_at": "2026-09-17T01:02:27Z"
+      "updated_at": "2026-09-17T01:08:41Z"
     },
     {
       "author": "woahwhattheheck",
@@ -195,12 +195,56 @@
     "15133": "3ed2e58aa746b415ca627c368ca0efb177ae74c9",
     "15137": "9bd368e81ae1849840e2b575178fa391fdc34730",
     "15157": "70715a0b2e6368c38ec17c5f237431f3a6b57854",
-    "15158": "89eebc6fb27cbfce97b02af69ff17f4126f683c1"
+    "15159": "92fe5e9750888e2cc6ceba6e914e9e3aa988eec6"
   },
   "pulls_listed": 18,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 59.2,
+  "queue_depth_per_runner": 57.0,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "type/human-read-stripe-md-keep-larger-fixed-20260916-01",
+      "closed_at": "2026-09-17T01:17:09Z",
+      "head_sha": "818f84d5ad1fd478530a343311169a8e803ab7ce",
+      "merged_at": "2026-09-17T01:17:09Z",
+      "number": 15164,
+      "state": "MERGED",
+      "title": "TYPE: KEEP Larger fixed on human-read/Stripe/Cursor ground doors"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "wire/tip-md-live-cash-keep-larger-fixed-20260916-01",
+      "closed_at": "2026-09-17T01:15:10Z",
+      "head_sha": "cb65c00cc556e0b1b0109a8eefe328bbc739a940",
+      "merged_at": "2026-09-17T01:15:10Z",
+      "number": 15163,
+      "state": "MERGED",
+      "title": "fix(keep): Wire tip MD live-cash Larger fixed batch"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/goat-cash-now-json-keep-larger-fixed-5ecb",
+      "closed_at": "2026-09-17T01:10:48Z",
+      "head_sha": "5062642514c6bdf86fc54e99d0ce40b9470f6e78",
+      "merged_at": "2026-09-17T01:10:48Z",
+      "number": 15162,
+      "state": "MERGED",
+      "title": "GOAT: KEEP Larger fixed on CASH_NOW.json"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "quill/copy-write-roads-md-keep-larger-fixed-20260916-02",
+      "closed_at": "2026-09-17T01:07:44Z",
+      "head_sha": "675dbd55d1374481fc11081ced6090497190430a",
+      "merged_at": "2026-09-17T01:07:44Z",
+      "number": 15158,
+      "state": "MERGED",
+      "title": "QUILL: copy/write-roads MD KEEP Larger-fixed (20260916-02)"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -314,61 +358,17 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-sol/inbound-paid-scope-close-desk-20260916-live",
-      "closed_at": "2026-09-17T00:41:26Z",
-      "head_sha": "e62268a1a4ac456e3ee84a25a49552afa631e413",
-      "merged_at": "2026-09-17T00:41:26Z",
-      "number": 15138,
+      "branch": "grok/titan-reset-worker-prewarm-20260916",
+      "closed_at": "2026-09-17T00:17:02Z",
+      "head_sha": "cb3e8963a23ff3dd09adc380701519113b53556f",
+      "merged_at": "2026-09-17T00:17:02Z",
+      "number": 15124,
       "state": "MERGED",
-      "title": "revenue: add inbound paid-scope owner-close desk"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "type/pay-toolkit-md-keep-larger-fixed-20260916-01",
-      "closed_at": "2026-09-17T00:40:55Z",
-      "head_sha": "c6aee6ab02905d92578f93043495302777918223",
-      "merged_at": "2026-09-17T00:40:55Z",
-      "number": 15140,
-      "state": "MERGED",
-      "title": "TYPE: KEEP Larger fixed on pay/toolkit ground doors"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zccw/proposal-validity-expiry-requote-15131",
-      "closed_at": "2026-09-17T00:40:34Z",
-      "head_sha": "24e8338baf6dbc4f073f6ee92460c44aac85b528",
-      "merged_at": "2026-09-17T00:40:34Z",
-      "number": 15139,
-      "state": "MERGED",
-      "title": "Add proposal validity expiry and requote gate"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol/procurement-award-source-adapters-20260916",
-      "closed_at": "2026-09-17T00:38:31Z",
-      "head_sha": "9bd368e81ae1849840e2b575178fa391fdc34730",
-      "merged_at": null,
-      "number": 15135,
-      "state": "CLOSED",
-      "title": "feat(procurement): ingest structured award-source evidence"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "forgeglass/partner-workshare-data-room-20260916",
-      "closed_at": "2026-09-17T00:37:39Z",
-      "head_sha": "4ae71149d5dc6bd0669ad0e1866e168cbb6e377b",
-      "merged_at": "2026-09-17T00:37:39Z",
-      "number": 15132,
-      "state": "MERGED",
-      "title": "revenue: add partner workshare conversion data room"
+      "title": "test: prewarm reset workers on the act thread"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T01:07:06Z",
+  "unchanged_since": "2026-09-17T01:19:04Z",
   "undatable_pulls": []
 }

@@ -1,9 +1,10 @@
 {
-  "seq": 1986,
-  "head": "990495567a47c0d21a195740353fbddc443fa82e",
-  "ts": "2026-09-17T01:06:37Z",
-  "post_count": 12669,
+  "seq": 1988,
+  "head": "5397a8d58989e9caf73bac956b7daf82a05320a3",
+  "ts": "2026-09-17T01:18:39Z",
+  "post_count": 12674,
   "newest": [
+    "Revenue--current-public-procurement-award-comparable-corpus",
     "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
     "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
     "Proposal-validity-expiry-and-requote-gate",
@@ -12,8 +13,7 @@
     "grok-pr-15117-verify-20260916-01",
     "pr-15113-dup-15111-20260916",
     "grokbuild-pr15111-verify-20260916-01",
-    "grokbuild-merge-wave-20260916-1948",
-    "grok-build-pr15114-1e1b5d5f-20260916"
+    "grokbuild-merge-wave-20260916-1948"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {

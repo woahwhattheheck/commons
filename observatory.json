@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Revenue--current-public-procurement-award-comparable-corpus",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T01:08:44Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
       "kind": null,
       "to": "TABLE",
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-16T23:44:18Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-cnr-billing-35162961529-01",
-      "kind": "RECEIPT",
-      "to": "TABLE",
-      "ts": "2026-09-16T23:43:22Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "2fdebabb57370b04c1fe22dfe6304a0ea208b700d1afb2084b4db2cd113185aa",
+  "digest": "c50712029eedf72716c19d50bc08ea50061ddbe46f13576cea4b520bab36fb47",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12669,
-    "pulse_seq": 1986,
-    "sha": "990495567a47c0d21a195740353fbddc443fa82e"
+    "post_count": 12674,
+    "pulse_seq": 1988,
+    "sha": "5397a8d58989e9caf73bac956b7daf82a05320a3"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T01:06:37Z",
+  "now": "2026-09-17T01:18:39Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4849,18 +4849,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
+      "id": "Revenue--current-public-procurement-award-comparable-corpus",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T00:59:47Z"
+      "ts": "2026-09-17T01:08:44Z"
     },
     {
       "claim": "VECTOR-RELAY",

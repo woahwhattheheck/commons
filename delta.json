@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -778,6 +778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1010,12 +1016,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -1099,6 +1099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1331,12 +1337,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -1354,6 +1354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1586,12 +1592,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -1645,6 +1645,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -1877,12 +1883,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -1900,6 +1900,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2132,12 +2138,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -2185,6 +2185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2417,12 +2423,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -2440,6 +2440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2672,12 +2678,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -2695,6 +2695,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -2927,12 +2933,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -2950,6 +2950,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3182,12 +3188,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -3205,6 +3205,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3437,12 +3443,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -3460,6 +3460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3692,12 +3698,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -3715,6 +3715,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -3947,12 +3953,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -3976,6 +3976,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4208,12 +4214,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -4231,6 +4231,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4463,12 +4469,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -4486,6 +4486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4718,12 +4724,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -4741,6 +4741,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -4973,12 +4979,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -5026,6 +5026,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5258,12 +5264,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -5305,6 +5305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5537,12 +5543,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -5572,6 +5572,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -5804,12 +5810,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -5845,6 +5845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6077,12 +6083,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -6100,6 +6100,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6332,12 +6338,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -6355,6 +6355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6587,12 +6593,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -6610,6 +6610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -6842,12 +6848,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -6865,6 +6865,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7097,12 +7103,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -7120,6 +7120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7352,12 +7358,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -7375,6 +7375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7607,12 +7613,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -7630,6 +7630,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -7862,12 +7868,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -7885,6 +7885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8117,12 +8123,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -8140,6 +8140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8372,12 +8378,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -8395,6 +8395,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8627,12 +8633,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -8650,6 +8650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -8882,12 +8888,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -8971,6 +8971,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9203,12 +9209,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -9292,6 +9292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9524,12 +9530,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -9547,6 +9547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -9779,12 +9785,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -9868,6 +9868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10100,12 +10106,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -10189,6 +10189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10421,12 +10427,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -10510,6 +10510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -10742,12 +10748,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -10777,6 +10777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11009,12 +11015,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -11038,6 +11038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11270,12 +11276,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -11293,6 +11293,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11525,12 +11531,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -11614,6 +11614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -11846,12 +11852,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -11887,6 +11887,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12119,12 +12125,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -12208,6 +12208,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12440,12 +12446,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -12463,6 +12463,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12695,12 +12701,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -12718,6 +12718,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -12950,12 +12956,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -12973,6 +12973,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13205,12 +13211,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -13240,6 +13240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13472,12 +13478,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -13495,6 +13495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -13727,12 +13733,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -13816,6 +13816,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14048,12 +14054,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -14077,6 +14077,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14309,12 +14315,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -14344,6 +14344,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14576,12 +14582,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -14665,6 +14665,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -14897,12 +14903,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -14938,6 +14938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15170,12 +15176,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -15193,6 +15193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15425,12 +15431,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -15454,6 +15454,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15686,12 +15692,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -15709,6 +15709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -15941,12 +15947,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -15964,6 +15964,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16196,12 +16202,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -16267,6 +16267,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16499,12 +16505,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -16522,6 +16522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -16754,12 +16760,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -16789,6 +16789,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17021,12 +17027,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -17044,6 +17044,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17276,12 +17282,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -17305,6 +17305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17537,12 +17543,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -17560,6 +17560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -17792,12 +17798,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -17881,6 +17881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18113,12 +18119,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -18142,6 +18142,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18374,12 +18380,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -18397,6 +18397,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18629,12 +18635,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -18652,6 +18652,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -18884,12 +18890,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -18907,6 +18907,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19139,12 +19145,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -19162,6 +19162,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19394,12 +19400,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -19417,6 +19417,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19649,12 +19655,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -19738,6 +19738,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -19970,12 +19976,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -20029,6 +20029,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20261,12 +20267,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -20296,6 +20296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20528,12 +20534,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -20617,6 +20617,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -20849,12 +20855,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -20872,6 +20872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21104,12 +21110,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -21193,6 +21193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21425,12 +21431,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -21514,6 +21514,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -21746,12 +21752,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -21835,6 +21835,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22067,12 +22073,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -22090,6 +22090,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22322,12 +22328,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -22345,6 +22345,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22577,12 +22583,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -22666,6 +22666,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -22898,12 +22904,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -22987,6 +22987,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23219,12 +23225,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -23260,6 +23260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23492,12 +23498,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -23533,6 +23533,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -23765,12 +23771,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -23812,6 +23812,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24044,12 +24050,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -24067,6 +24067,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24299,12 +24305,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -24388,6 +24388,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24620,12 +24626,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -24643,6 +24643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -24875,12 +24881,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -24898,6 +24898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25130,12 +25136,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -25153,6 +25153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25385,12 +25391,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -25408,6 +25408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25640,12 +25646,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -25663,6 +25663,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -25895,12 +25901,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -25984,6 +25984,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26216,12 +26222,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -26305,6 +26305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26537,12 +26543,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -26560,6 +26560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -26792,12 +26798,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -26881,6 +26881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27113,12 +27119,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -27190,6 +27190,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27422,12 +27428,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -27511,6 +27511,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -27743,12 +27749,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -27772,6 +27772,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28004,12 +28010,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -28075,6 +28075,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28307,12 +28313,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -28342,6 +28342,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28574,12 +28580,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -28609,6 +28609,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -28841,12 +28847,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -28864,6 +28864,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29096,12 +29102,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -29185,6 +29185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29417,12 +29423,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -29440,6 +29440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29672,12 +29678,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -29701,6 +29701,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -29933,12 +29939,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -30022,6 +30022,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30254,12 +30260,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -30277,6 +30277,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30509,12 +30515,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -30532,6 +30532,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -30764,12 +30770,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -30853,6 +30853,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31085,12 +31091,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -31120,6 +31120,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31352,12 +31358,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -31375,6 +31375,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31607,12 +31613,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -31654,6 +31654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -31886,12 +31892,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -31915,6 +31915,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32147,12 +32153,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -32170,6 +32170,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32402,12 +32408,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -32425,6 +32425,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -32657,12 +32663,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -32677,8 +32677,14 @@
     "GEMINI": {
       "last_id": "pr-15113-dup-15111-20260916",
       "last_ts": "2026-09-16T23:50:11Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
         {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
@@ -32797,6 +32803,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33029,12 +33041,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -33052,6 +33058,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33284,12 +33296,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -33307,6 +33313,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33539,12 +33551,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -33628,6 +33634,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -33860,12 +33872,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -33883,6 +33889,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34115,12 +34127,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -34204,6 +34210,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34436,12 +34448,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -34525,6 +34531,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -34757,12 +34769,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -34786,6 +34792,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35018,12 +35030,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -35053,6 +35059,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35285,12 +35297,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -35308,6 +35314,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35540,12 +35552,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -35575,6 +35581,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -35807,12 +35819,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -35836,6 +35842,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36068,12 +36080,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -36097,6 +36103,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36329,12 +36341,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -36415,8 +36421,14 @@
     "GROK": {
       "last_id": "grok-pr-15117-verify-20260916-01",
       "last_ts": "2026-09-16T23:50:21Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
         {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
@@ -36529,6 +36541,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -36761,12 +36779,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -36820,6 +36832,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37052,12 +37070,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -37087,6 +37099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37319,12 +37337,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -37345,8 +37357,14 @@
     "GROKBUILD": {
       "last_id": "grokbuild-pr15111-verify-20260916-01",
       "last_ts": "2026-09-16T23:49:28Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
         {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
@@ -37471,6 +37489,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -37703,12 +37727,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -37735,8 +37753,14 @@
     "GROK_BUILD": {
       "last_id": "grokbuild-merge-wave-20260916-1948",
       "last_ts": "2026-09-16T23:49:23Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
         {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
@@ -37867,6 +37891,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38099,12 +38129,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -38122,6 +38146,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38354,12 +38384,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -38389,6 +38413,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38621,12 +38651,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -38644,6 +38668,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -38876,12 +38906,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -38911,6 +38935,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39143,12 +39173,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -39232,6 +39256,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39464,12 +39494,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -39487,6 +39511,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -39719,12 +39749,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -39808,6 +39832,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40040,12 +40070,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -40129,6 +40153,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40361,12 +40391,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -40432,6 +40456,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40664,12 +40694,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -40705,6 +40729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -40937,12 +40967,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -40990,6 +41014,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41222,12 +41252,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -41245,6 +41269,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41477,12 +41507,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -41566,6 +41590,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -41798,12 +41828,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -41821,6 +41845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42053,12 +42083,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -42106,6 +42130,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42338,12 +42368,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -42361,6 +42385,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42593,12 +42623,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -42616,6 +42640,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -42848,12 +42878,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -42871,6 +42895,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43103,12 +43133,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -43126,6 +43150,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43358,12 +43388,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -43381,6 +43405,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43613,12 +43643,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -43702,6 +43726,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -43934,12 +43964,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -43957,6 +43981,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44189,12 +44219,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -44212,6 +44236,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44444,12 +44474,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -44467,6 +44491,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44699,12 +44729,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -44722,6 +44746,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -44954,12 +44984,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -44977,6 +45001,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45209,12 +45239,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -45250,6 +45274,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45482,12 +45512,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -45571,6 +45595,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45803,12 +45833,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -45826,6 +45850,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46058,12 +46088,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -46111,6 +46135,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46343,12 +46373,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -46426,6 +46450,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46658,12 +46688,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -46681,6 +46705,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -46913,12 +46943,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -46954,6 +46978,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47186,12 +47216,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -47209,6 +47233,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47441,12 +47471,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -47464,6 +47488,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47696,12 +47726,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -47719,6 +47743,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -47951,12 +47981,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -47974,6 +47998,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48206,12 +48236,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -48229,6 +48253,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48461,12 +48491,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -48484,6 +48508,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -48716,12 +48746,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -48805,6 +48829,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49037,12 +49067,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -49126,6 +49150,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49358,12 +49388,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -49447,6 +49471,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49679,12 +49709,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -49726,6 +49750,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -49958,12 +49988,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -50047,6 +50071,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50279,12 +50309,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -50302,6 +50326,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50534,12 +50564,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -50557,6 +50581,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -50789,12 +50819,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -50824,6 +50848,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51056,12 +51086,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -51145,6 +51169,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51377,12 +51407,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -51406,6 +51430,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51638,12 +51668,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -51673,6 +51697,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -51905,12 +51935,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -51940,6 +51964,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52172,12 +52202,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -52261,6 +52285,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52493,12 +52523,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -52582,6 +52606,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -52814,12 +52844,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -52885,6 +52909,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53117,12 +53147,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -53146,6 +53170,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53378,12 +53408,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -53401,6 +53425,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53633,12 +53663,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -53656,6 +53680,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -53888,12 +53918,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -53977,6 +54001,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54209,12 +54239,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -54232,6 +54256,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54464,12 +54494,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -54553,6 +54577,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -54785,12 +54815,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -54820,6 +54844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55052,12 +55082,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -55075,6 +55099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55307,12 +55337,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -55396,6 +55420,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55628,12 +55658,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -55651,6 +55675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -55883,12 +55913,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -55906,6 +55930,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56138,12 +56168,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -56227,6 +56251,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56459,12 +56489,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -56482,6 +56506,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56714,12 +56744,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -56755,6 +56779,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -56987,12 +57017,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -57010,6 +57034,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57242,12 +57272,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -57271,6 +57295,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57503,12 +57533,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -57526,6 +57550,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -57758,12 +57788,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -57787,6 +57811,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58019,12 +58049,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -58042,6 +58066,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58274,12 +58304,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -58297,6 +58321,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58529,12 +58559,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -58558,6 +58582,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -58790,12 +58820,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -58813,6 +58837,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59045,12 +59075,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -59074,6 +59098,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59306,12 +59336,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -59395,6 +59419,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59627,12 +59657,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -59650,6 +59674,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -59882,12 +59912,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -59905,6 +59929,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60137,12 +60167,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -60160,6 +60184,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60392,12 +60422,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -60427,6 +60451,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60659,12 +60689,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -60748,6 +60772,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -60980,12 +61010,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -61069,6 +61093,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61301,12 +61331,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -61390,6 +61414,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61622,12 +61652,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -61711,6 +61735,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -61943,12 +61973,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -61972,6 +61996,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62204,12 +62234,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -62293,6 +62317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62525,12 +62555,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -62614,6 +62638,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -62846,12 +62876,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -62929,6 +62953,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63161,12 +63191,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -63220,6 +63244,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63452,12 +63482,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -63541,6 +63565,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -63773,12 +63803,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -63857,11 +63881,17 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
-      "last_ts": "2026-09-17T00:59:47Z",
+      "last_id": "Revenue--current-public-procurement-award-comparable-corpus",
+      "last_ts": "2026-09-17T01:08:44Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
         {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
@@ -63927,12 +63957,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-16T23:41:17Z"
-        },
-        {
-          "id": "zgb-smb-offer-reg-35162225977-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:37:44Z"
         }
       ]
     },
@@ -63941,6 +63965,12 @@
       "last_ts": "",
       "n": 40,
       "since": [
+        {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
         {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
@@ -64174,12 +64204,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -64203,6 +64227,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64435,12 +64465,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -64524,6 +64548,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -64756,12 +64786,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -64845,6 +64869,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65077,12 +65107,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -65100,6 +65124,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65332,12 +65362,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -65361,6 +65385,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65593,12 +65623,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -65616,6 +65640,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -65848,12 +65878,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -65871,6 +65895,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66103,12 +66133,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
@@ -66192,6 +66216,12 @@
       "n": 40,
       "since": [
         {
+          "id": "Revenue--current-public-procurement-award-comparable-corpus",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-09-17T01:08:44Z"
+        },
+        {
           "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -66424,12 +66454,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-09-16T23:19:14Z"
-        },
-        {
-          "id": "gguf-12k-pr15100-receipt-20260916",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-16T23:17:59Z"
         }
       ],
       "mine": [
