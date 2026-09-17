@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 107,
+    "open_issues": 108,
     "open_pull_requests": 19,
-    "runs_in_progress": 20,
-    "runs_queued": 977
+    "runs_in_progress": 19,
+    "runs_queued": 985
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -200,8 +200,19 @@
   },
   "pulls_listed": 19,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 48.9,
+  "queue_depth_per_runner": 51.8,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/type-subzero-c-larger-keep-59b0",
+      "closed_at": "2026-09-17T03:16:36Z",
+      "head_sha": "fc8ffed389cb7445a68cc2fcbfb38539aed2ed07",
+      "merged_at": "2026-09-17T03:16:36Z",
+      "number": 15213,
+      "state": "MERGED",
+      "title": "TYPE: KEEP Larger fixed on SUBZERO ISPN\u2013RECEIPT wave C"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -326,13 +337,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zsol-dozer-streaming-bounty-capture-20260916",
-      "closed_at": "2026-09-17T02:32:06Z",
-      "head_sha": "d410c5e8b9c896d0c9f10da75d97aa3f363c1f91",
-      "merged_at": "2026-09-17T02:32:06Z",
-      "number": 15198,
+      "branch": "zsol/hyperagent-canonical-approval-authority-20260916",
+      "closed_at": "2026-09-16T23:11:49Z",
+      "head_sha": "6ff89dae9b935f84b3a43d1f7489eb19f5e66f32",
+      "merged_at": "2026-09-16T23:11:49Z",
+      "number": 15082,
       "state": "MERGED",
-      "title": "Revenue: capture current Dozer bounty economics and collisions"
+      "title": "Harden canonical Hyperagent approval authority"
     },
     {
       "author": "woahwhattheheck",
@@ -355,21 +366,10 @@
       "number": 15100,
       "state": "MERGED",
       "title": "Revenue: harden $12k GGUF close kit exact-byte replay + AT4/AT6"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol/enveda-casmi-2026-workbench-20260916",
-      "closed_at": "2026-09-16T23:05:22Z",
-      "head_sha": "1af2e5925dd9ea9dc8083f23e1901c583a167641",
-      "merged_at": "2026-09-16T23:05:22Z",
-      "number": 15099,
-      "state": "MERGED",
-      "title": "Competition: ship source-locked Enveda CASMI 2026 workbench"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T03:15:57Z",
+  "unchanged_since": "2026-09-17T03:17:28Z",
   "undatable_pulls": []
 }
