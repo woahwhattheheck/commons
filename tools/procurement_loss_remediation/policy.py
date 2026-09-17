@@ -30,16 +30,15 @@ def derive_semantics(normalized: dict[str, Any]) -> dict[str, Any]:
 
     # The predecessor's evidence-id + digest binding remains valuable integrity
     # evidence, but it cannot establish who authored the underlying bytes.
-    # Truth-narrow every mapped source statement accordingly.
+    # Truth-narrow every mapped source statement accordingly. Merely retaining
+    # a diagnostic statement is not itself a contradiction; authority is
+    # blocked when a BUYER_REASON is used to justify a remediation gap.
     diagnostic_reasons: list[dict[str, Any]] = []
     for reason in semantics["buyer_reasons"]:
         narrowed = dict(reason)
         narrowed["statement_attribution"] = CALLER_RETAINED_ATTRIBUTION
         narrowed["buyer_source_authenticated"] = False
         diagnostic_reasons.append(narrowed)
-        authentication_holds.add(
-            f"buyer_reason_not_authenticated:{reason['reason_id']}"
-        )
 
     # No BUYER_REASON may authorize a gap while the product has no independent
     # buyer/provider retained-source authentication boundary. Internal
@@ -50,6 +49,9 @@ def derive_semantics(normalized: dict[str, Any]) -> dict[str, Any]:
         narrowed = dict(gap)
         if narrowed["basis_type"] == "BUYER_REASON" and narrowed["basis_valid"]:
             narrowed["basis_valid"] = False
+            authentication_holds.add(
+                f"buyer_reason_not_authenticated:{narrowed['basis_id']}"
+            )
             authentication_holds.add(
                 f"buyer_reason_gap_not_authenticated:{narrowed['gap_id']}@{narrowed['version']}"
             )
@@ -66,8 +68,8 @@ def derive_semantics(normalized: dict[str, Any]) -> dict[str, Any]:
         status = "HOLD_CONTRADICTION"
     else:
         # Preserve every predecessor status that does not rely on an
-        # unauthenticated buyer-reason upgrade: digest mismatches, missing
-        # taxonomy mappings, internal hypotheses, and no-gap states.
+        # unauthenticated buyer-reason authorization: digest mismatches,
+        # missing taxonomy mappings, internal hypotheses, and no-gap states.
         status = semantics["status"]
 
     return {
