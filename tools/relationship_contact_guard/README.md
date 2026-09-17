@@ -6,7 +6,7 @@ It closes a fleet-level anti-spam gap that exact-recipient single-writer locks c
 
 ## What it binds
 
-A packet contains one proposed contact and an ordered retained event history. The guard binds canonical counterparty, opportunity, route, purpose, process-owned evaluation time, provider message/thread identifiers, human-response lineage, human-negative scope, explicit reopen target, and event chronology. It emits canonical JSON plus a SHA-256 semantic receipt.
+A packet contains one proposed contact and an ordered retained event history. The guard binds canonical counterparty, opportunity, route, purpose, evaluation timestamp, provider message/thread identifiers, human-response lineage, human-negative scope, explicit reopen target, and event chronology. It emits canonical JSON plus a SHA-256 **semantic consistency** receipt; that hash is not a signature and does not authenticate clock or provider provenance.
 
 The compiler detects, among other cases:
 
@@ -16,7 +16,7 @@ The compiler detects, among other cases:
 - a route with a retained hard-bounce (`HOLD_DEAD_ROUTE`) without converting that transport failure into organization rejection;
 - explicit human negative/opt-out at route-purpose or whole-counterparty scope;
 - a genuine retained human reply, which converts the lane to inbound review rather than fresh outbound;
-- future-dated, reordered, duplicate, orphaned, cross-counterparty, noncanonical, or malformed evidence.
+- future-dated, reordered, duplicate, semantically duplicated under reminted source ids, orphaned, cross-counterparty, noncanonical, or malformed evidence.
 
 Callers may lengthen cooldowns but cannot weaken the code-owned floors: six hours for counterparty contact and 72 hours for same-opportunity/same-purpose pursuit contact.
 
@@ -35,11 +35,22 @@ Only that explicitly referenced negative is reopened. If multiple negatives are 
 
 A retained hard bounce also remains transport-dead evidence even if later contradictory human-shaped evidence exists for the same send.
 
-## Process-owned currentness
+## Semantic duplicate fence
 
-Packets do **not** carry a caller-controlled `now`. `compile_guard()` samples current UTC from the process and retains the exact whole-second `evaluated_at` in the artifact. This prevents a caller from aging recent contacts out of a cooldown by supplying a forged clock.
+Source ids are not allowed to multiply evidence. Every normalized event receives a canonical semantic identity that excludes `event_id` and `provider_message_id` while retaining kind, timestamp, counterparty, opportunity, route, purpose, thread, scope, reply lineage, and reopen target when present. A second row with the same semantic identity is rejected even if those source ids were reminted. This is deliberately conservative: if two purported provider sends are indistinguishable after stripping caller-remintable source ids, the anti-spam guard does not assume they are separate sends.
 
-`verify_guard()` replays the artifact at its retained evaluation timestamp to prove artifact integrity, but first samples process UTC and rejects a future timestamp or an artifact older than the code-owned five-minute verification window. This prevents a caller from forging a far-future `CURRENT` time to age contacts out. Verification still does **not** establish that provider/Slack state is current or complete; `truth.verify_replay_establishes_currentness` is therefore always false.
+## Process-owned currentness and retained verification
+
+Packets do **not** carry a caller-controlled `now`. `compile_guard()` samples current UTC directly inside the public compiler and retains the exact whole-second `evaluated_at` in a `PROCESS_UTC_SNAPSHOT` artifact. This removes the direct candidate-clock attack.
+
+The retained artifact deliberately does **not** claim that its clock provenance is authenticated. Its truth surface sets `evaluation_time_process_origin_authenticated=false` and `retained_replay_establishes_currentness=false`. A SHA-256 receipt can prove semantic consistency with retained bytes, not that the timestamp originally came from a trusted clock.
+
+`verify_guard()` therefore performs two separate operations:
+
+1. It checks the retained artifact/receipt at the retained timestamp, rejecting a future-dated snapshot, while explicitly returning `retained_time_process_origin_verified=false` and `retained_status_is_current=false`.
+2. It samples fresh process UTC and recompiles the same retained packet as `PROCESS_UTC_VERIFY_FRESH`. That fresh decision is returned separately in the verification result.
+
+The fresh decision still cannot prove the retained packet complete or provider state current; those truths stay false and external contact still requires a fresh provider/Slack census plus Muse gating.
 
 ## Truth boundary
 
@@ -56,7 +67,7 @@ These fields are always false:
 - `cash_proven`
 - `revenue_recognized`
 
-`NO_CONFLICT_FOUND` means only **no conflict was found in the supplied retained packet at the retained process-owned evaluation time**. This compiler neither proves the packet complete nor authenticates current provider state. Before external mutation, the executor still needs a fresh Slack + provider census and the session-bound Muse lease/consume/GO protocol. A HOLD here cannot be overridden by treating another coordination receipt as send authority.
+`NO_CONFLICT_FOUND` means only **no conflict was found in the supplied retained packet at that decision's evaluation time**. The retained snapshot does not authenticate the process origin of its own timestamp, and neither compile nor verify proves the packet complete or authenticates current provider state. Before external mutation, the executor still needs a fresh Slack + provider census and the session-bound Muse lease/consume/GO protocol. A HOLD here cannot be overridden by treating another coordination receipt as send authority.
 
 ## CLI
 
@@ -83,4 +94,4 @@ Provider sends require `provider_message_id`. Bounces and human responses must r
 
 ## Proof
 
-The retained root suite exercises strict JSON ingress, retained-time receipt replay, cross-route and cross-key collisions, route-scoped bounces, response opportunity/route/purpose/thread transplant rejection, exact negative-to-reopen binding, packet-transplant rejection, Unicode/noncanonical identifiers, cooldown-floor protection, future/reordered/duplicate evidence, CPython large-integer parser normalization, multiple-negative reopen isolation, hard-bounce precedence, future/stale verifier-time rejection, process-clock callback injection resistance, and source-literal hard-false authority under ordinary module rebinding. The same suite is required under normal Python and real `python -O`.
+The retained root suite exercises strict JSON ingress, retained-time receipt replay, cross-route and cross-key collisions, route-scoped bounces, response opportunity/route/purpose/thread transplant rejection, exact negative-to-reopen binding, packet-transplant rejection, Unicode/noncanonical identifiers, cooldown-floor protection, future/reordered/duplicate evidence, CPython large-integer parser normalization, multiple-negative reopen isolation, hard-bounce precedence, changed-source-id semantic duplicates across sends/replies/negatives/reopens, future self-resealed snapshot rejection, old self-resealed snapshot truth degradation plus fresh re-evaluation, process-clock callback injection resistance, and source-literal hard-false authority under ordinary module rebinding. The same suite is required under normal Python and real `python -O`.
