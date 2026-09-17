@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 93,
-    "open_pull_requests": 34,
-    "runs_in_progress": 18,
-    "runs_queued": 1076
+    "open_pull_requests": 35,
+    "runs_in_progress": 14,
+    "runs_queued": 1090
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -62,10 +62,21 @@
       "head_sha": "465dae5023f734ee845eb06a1b4d8b2c051e7cd5",
       "number": 15635,
       "title": "Recover Nebius ProofPatch evidence-bound coding agent",
-      "updated_at": "2026-09-17T20:45:27Z"
+      "updated_at": "2026-09-17T20:56:21Z"
     }
   ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-keelwatch/actions-stale-queue-auditor-15747",
+      "created_at": "2026-09-17T20:57:49Z",
+      "draft": false,
+      "head_sha": "9a2054cd518c0e2100d8f46ecc4debd7710b47e5",
+      "number": 15756,
+      "title": "Add deterministic stale Actions queue auditor",
+      "updated_at": "2026-09-17T20:57:49Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -75,7 +86,7 @@
       "head_sha": "dcc6005af8492d61c26d10a46adedb390a881d2a",
       "number": 15753,
       "title": "revenue: make retired checkout tombstones monotonic and alias-hostile",
-      "updated_at": "2026-09-17T20:54:21Z"
+      "updated_at": "2026-09-17T20:56:25Z"
     },
     {
       "author": "woahwhattheheck",
@@ -119,7 +130,7 @@
       "head_sha": "8cd5546c7fef5d2d2b48101e7a40d134ddaed2b0",
       "number": 15732,
       "title": "infra: add bounded canonical JSON verifier boundary",
-      "updated_at": "2026-09-17T20:53:51Z"
+      "updated_at": "2026-09-17T20:56:38Z"
     },
     {
       "author": "woahwhattheheck",
@@ -130,7 +141,7 @@
       "head_sha": "3f958fc2ba0352e96040d476771c192b794a9f2f",
       "number": 15731,
       "title": "feat: exact-head ship fence for moving-main + CI truth",
-      "updated_at": "2026-09-17T20:53:30Z"
+      "updated_at": "2026-09-17T20:54:44Z"
     },
     {
       "author": "woahwhattheheck",
@@ -149,10 +160,10 @@
       "branch": "solz/payoff-path-ledger-15712-20260917",
       "created_at": "2026-09-17T20:32:33Z",
       "draft": false,
-      "head_sha": "1dc8cfbbed8bec54ba29fd5759b81077878d29cc",
+      "head_sha": "fbc7af4626723b19e09dee1f8b9dce6d7ea02fef",
       "number": 15728,
       "title": "Revenue: compile explicit payoff paths for uncompensated work",
-      "updated_at": "2026-09-17T20:52:58Z"
+      "updated_at": "2026-09-17T20:58:54Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 15727,
       "title": "Bin the Agent Failure Autopsy ($29) product",
       "updated_at": "2026-09-17T20:48:27Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol/public-commons-backlink-guard-15710",
-      "created_at": "2026-09-17T20:29:42Z",
-      "draft": false,
-      "head_sha": "182e5d1bdf4e2c52ef2dce219a864b1572ca2c63",
-      "number": 15726,
-      "title": "Policy: enforce no public Commons backlinks on customer surfaces",
-      "updated_at": "2026-09-17T20:35:35Z"
     }
   ],
   "open_heads": {
@@ -199,24 +199,47 @@
     "15700": "08fa986edbb83cfb91fa75924997f23fc929eb3d",
     "15707": "c7f6f4bd9a103b7afdf077e690eec8ecd5fa9406",
     "15714": "644a392eafdad02e7f351650150647c029e00c92",
-    "15717": "c7af4191898540cbe56a7948169db5baac7661f0",
+    "15717": "54e09511742f85ddabe26f90e680c60f691709e4",
     "15721": "f691d4d452180f1df152a4b504b730fa4854f000",
     "15724": "0bc0e6b19aed5ea71598c6ab6b914a828bc8a6f4",
-    "15726": "182e5d1bdf4e2c52ef2dce219a864b1572ca2c63",
+    "15726": "07a9a285194b301735514b290f6bc8c5ac1567b1",
     "15727": "86d342fdd4365c20ab5563772fe93ed1c2d5b81a",
-    "15728": "1dc8cfbbed8bec54ba29fd5759b81077878d29cc",
+    "15728": "fbc7af4626723b19e09dee1f8b9dce6d7ea02fef",
     "15730": "9ddf5f322a886a19b48d08356545ac90f7be7501",
     "15731": "3f958fc2ba0352e96040d476771c192b794a9f2f",
     "15732": "8cd5546c7fef5d2d2b48101e7a40d134ddaed2b0",
     "15733": "7dc930d3ac5fd03f96b76102974108f5483265ab",
     "15734": "ad08bb07ccb60f1c48231910601802275c179afe",
     "15751": "3ec4527a7c94d67f452765516a88057b6589e538",
-    "15753": "dcc6005af8492d61c26d10a46adedb390a881d2a"
+    "15753": "dcc6005af8492d61c26d10a46adedb390a881d2a",
+    "15756": "9a2054cd518c0e2100d8f46ecc4debd7710b47e5"
   },
-  "pulls_listed": 34,
+  "pulls_listed": 35,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 59.8,
+  "queue_depth_per_runner": 77.9,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "devin/sledge-clark-cornell",
+      "closed_at": "2026-09-17T20:57:18Z",
+      "head_sha": "ac05cd0702fcdb1c14351dbe25f58d77b36f59d4",
+      "merged_at": "2026-09-17T20:57:18Z",
+      "number": 15755,
+      "state": "MERGED",
+      "title": "convert shelf: clark d4172 + cornell craft (sledge-clark-cornell-convert-shelf-20260917-01)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "devin/sledge-ccc-chemtechford",
+      "closed_at": "2026-09-17T20:55:13Z",
+      "head_sha": "95f053364300d81f38407c6329eaa4e2aa9e8fc2",
+      "merged_at": "2026-09-17T20:55:13Z",
+      "number": 15754,
+      "state": "MERGED",
+      "title": "convert shelf: ccc snapshot + chemtechford (sledge-ccc-chemtechford-convert-shelf-20260917-01)"
+    },
     {
       "author": "woahwhattheheck",
       "base": "sol-z/bounded-canonical-json-20260917",
@@ -359,32 +382,10 @@
       "number": 15738,
       "state": "MERGED",
       "title": "convert shelf: aquatrace wo-f + at-grok adapter (sledge-aquatracef-atgrokadapter-convert-shelf-20260917-01)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-vectorforge/relationship-contact-guard-15675",
-      "closed_at": "2026-09-17T20:38:48Z",
-      "head_sha": "54d2024e2ff4224d35b958b023031a6c3e4f56ff",
-      "merged_at": null,
-      "number": 15683,
-      "state": "CLOSED",
-      "title": "Add relationship-level contact collision guard"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol-17/public-surface-isolation-15713",
-      "closed_at": "2026-09-17T20:38:40Z",
-      "head_sha": "40e0de8b92af1c8a79de4d4719796afec59a5f3d",
-      "merged_at": null,
-      "number": 15729,
-      "state": "CLOSED",
-      "title": "policy: enforce public surface isolation from Commons (#15713)"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T20:54:26Z",
+  "unchanged_since": "2026-09-17T20:59:08Z",
   "undatable_pulls": []
 }
