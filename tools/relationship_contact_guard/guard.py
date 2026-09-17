@@ -23,6 +23,7 @@ MAX_JSON_BYTES = 1_048_576
 MAX_EVENTS = 10_000
 MIN_RELATIONSHIP_COOLDOWN_SECONDS = 6 * 60 * 60
 MIN_PURSUIT_COOLDOWN_SECONDS = 72 * 60 * 60
+VERIFY_MAX_AGE_SECONDS = 5 * 60
 IDENT_RE = re.compile(r"^[a-z0-9][a-z0-9._@:+/\-]{0,254}$")
 OPAQUE_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:@/+=\-]{0,511}$")
 HEX64_RE = re.compile(r"^[0-9a-f]{64}$")
@@ -154,13 +155,6 @@ def _time(value: Any, label: str):
     if dt.tzinfo != _timezone.utc or value != dt.isoformat(timespec="seconds").replace("+00:00", "Z"):
         raise GuardError(f"{label}: whole-second canonical UTC timestamp required")
     return dt
-
-
-def _current_time():
-    # Process-owned wall time. There is no caller-provided "now" field.
-    from datetime import datetime as _datetime, timezone as _timezone
-
-    return _datetime.now(_timezone.utc).replace(microsecond=0)
 
 
 def _format_time(dt) -> str:
@@ -331,26 +325,13 @@ def _validate(packet: Mapping[str, Any], now) -> tuple[dict[str, Any], list[dict
 def _send_state(send: Mapping[str, Any], events: Sequence[Mapping[str, Any]]) -> str:
     mid = send["provider_message_id"]
     later = [e for e in events if e.get("in_reply_to_message_id") == mid]
-    state = "DELIVERED_UNANSWERED"
-    for event in later:
-        if event["kind"] == "PROVIDER_BOUNCE":
-            state = "BOUNCED"
-        elif event["kind"] in {"HUMAN_REPLY", "HUMAN_NEGATIVE", "HUMAN_REOPEN"}:
-            state = "HUMAN_EVENT"
-    return state
-
-
-def _latest_scoped(events: Sequence[Mapping[str, Any]], scope: str, candidate: Mapping[str, Any]):
-    matches = []
-    for event in events:
-        if event["kind"] != "HUMAN_NEGATIVE" or event.get("scope") != scope:
-            continue
-        if scope == "ROUTE_PURPOSE" and (
-            event["route"] != candidate["route"] or event["purpose"] != candidate["purpose"]
-        ):
-            continue
-        matches.append(event)
-    return matches[-1] if matches else None
+    # A retained hard bounce is transport evidence and remains route-dead even
+    # if later contradictory human-shaped evidence is present.
+    if any(event["kind"] == "PROVIDER_BOUNCE" for event in later):
+        return "BOUNCED"
+    if any(event["kind"] in {"HUMAN_REPLY", "HUMAN_NEGATIVE", "HUMAN_REOPEN"} for event in later):
+        return "HUMAN_EVENT"
+    return "DELIVERED_UNANSWERED"
 
 
 def _reopened_after(events: Sequence[Mapping[str, Any]], blocker: Mapping[str, Any]) -> bool:
@@ -365,19 +346,37 @@ def _reopened_after(events: Sequence[Mapping[str, Any]], blocker: Mapping[str, A
     return False
 
 
+def _active_scoped_negative(
+    events: Sequence[Mapping[str, Any]],
+    scope: str,
+    candidate: Mapping[str, Any],
+):
+    active = []
+    for event in events:
+        if event["kind"] != "HUMAN_NEGATIVE" or event.get("scope") != scope:
+            continue
+        if scope == "ROUTE_PURPOSE" and (
+            event["route"] != candidate["route"] or event["purpose"] != candidate["purpose"]
+        ):
+            continue
+        if not _reopened_after(events, event):
+            active.append(event)
+    return active[-1] if active else None
+
+
 def _compile_at(frozen: Mapping[str, Any], now, evaluation_mode: str) -> dict[str, Any]:
     candidate, events = _validate(frozen, now)
     status = "NO_CONFLICT_FOUND"
     reasons: list[str] = []
     blockers: list[str] = []
 
-    org_negative = _latest_scoped(events, "COUNTERPARTY", candidate)
-    route_negative = _latest_scoped(events, "ROUTE_PURPOSE", candidate)
-    if org_negative is not None and not _reopened_after(events, org_negative):
+    org_negative = _active_scoped_negative(events, "COUNTERPARTY", candidate)
+    route_negative = _active_scoped_negative(events, "ROUTE_PURPOSE", candidate)
+    if org_negative is not None:
         status = "HOLD_COUNTERPARTY_OPT_OUT"
         reasons.append("retained human negative event applies to the whole counterparty")
         blockers.append(org_negative["event_id"])
-    elif route_negative is not None and not _reopened_after(events, route_negative):
+    elif route_negative is not None:
         status = "HOLD_ROUTE_PURPOSE_OPT_OUT"
         reasons.append("retained human negative event applies to this route/purpose")
         blockers.append(route_negative["event_id"])
@@ -487,6 +486,7 @@ def _compile_at(frozen: Mapping[str, Any], now, evaluation_mode: str) -> dict[st
             "no_conflict_is_send_permission": False,
             "evaluation_time_is_process_owned": evaluation_mode == "CURRENT",
             "verify_replay_establishes_currentness": False,
+            "verification_freshness_window_seconds": VERIFY_MAX_AGE_SECONDS,
         },
     }
     core = {"artifact_schema": ARTIFACT_SCHEMA, "decision": decision}
@@ -494,8 +494,13 @@ def _compile_at(frozen: Mapping[str, Any], now, evaluation_mode: str) -> dict[st
 
 
 def compile_guard(packet: Mapping[str, Any]) -> dict[str, Any]:
+    # Sample process wall time directly in the public current compiler rather
+    # than through a mutable module-level clock callback.
+    from datetime import datetime as _datetime, timezone as _timezone
+
     frozen = _freeze(packet, "packet")
-    return _compile_at(frozen, _current_time(), "CURRENT")
+    now = _datetime.now(_timezone.utc).replace(microsecond=0)
+    return _compile_at(frozen, now, "CURRENT")
 
 
 def verify_guard(packet: Mapping[str, Any], artifact: Mapping[str, Any]) -> bool:
@@ -506,6 +511,14 @@ def verify_guard(packet: Mapping[str, Any], artifact: Mapping[str, Any]) -> bool
     if decision.get("evaluation_mode") != "CURRENT":
         raise GuardError("artifact evaluation_mode must be CURRENT")
     evaluated_at = _time(decision.get("evaluated_at"), "artifact.decision.evaluated_at")
+    from datetime import datetime as _datetime, timezone as _timezone
+
+    verify_now = _datetime.now(_timezone.utc).replace(microsecond=0)
+    verify_age = int((verify_now - evaluated_at).total_seconds())
+    if verify_age < 0:
+        raise GuardError("artifact evaluated_at is in the future")
+    if verify_age > VERIFY_MAX_AGE_SECONDS:
+        raise GuardError("artifact is too stale for current verification")
 
     frozen_packet = _freeze(packet, "packet")
     expected = _compile_at(frozen_packet, evaluated_at, "CURRENT")
