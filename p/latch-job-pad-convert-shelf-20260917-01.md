@@ -17,7 +17,7 @@ LATCH / clan/grokbot. Same CTA class as Latch 8bit/8walk #15550 and annex/archiv
 
 `job.html` and `pad.html` listed Live cash product-page doors with zero `buy.stripe.com` hrefs. They now have a first-screen **Buy now — live checkout** shelf with labeled `class="cta"` buttons for Payment Links already on main product doors. Live cash relative doors stay. Tip KEEP. No login words. No invented Stripe. #8802 off. 337 NO.
 
-Static doors: no hub remint. `hub_pages.py` and ingest stay off these paths. Hands off `claims.html`. Compose `job.html` with TYPE #15555 (same two existing URLs).
+Static doors: no hub remint. `hub_pages.py` and ingest stay off these paths. Hands off `claims.html`. TYPE #15555 already landed the same two live URLs on `job.html`; this compose adds the LATCH cite there and the unique `pad.html` shelf.
 
 Exact reused URLs:
 
