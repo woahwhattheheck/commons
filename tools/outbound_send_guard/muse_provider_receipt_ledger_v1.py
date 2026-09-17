@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
-"""Provider-authenticated append-only complete-prefix ledger for Muse v2 receipts."""
+"""Provider-authenticated append-only delta ledger for canonical Muse v2 receipts.
+
+Each provider generation stores one fixed-size delta record. Verification walks the
+single-parent ledger chain once, reads each manifest and newly-added receipt by
+exact provider path, and authenticates adjacent commit diffs. It never recursively
+enumerates the repository tree or reparses cumulative historical manifests.
+"""
 from __future__ import annotations
 
 import argparse, base64, hashlib, json, os, re, sys, urllib.error, urllib.parse, urllib.request
@@ -17,14 +23,17 @@ LEDGER_SCHEMA = "outbound-muse-provider-receipt-ledger/v1"
 ENTRY_SCHEMA = "outbound-muse-provider-receipt-ledger-entry/v1"
 PROOF_SCHEMA = "outbound-muse-provider-receipt-ledger-proof/v1"
 PREFIX_SCHEMA = "outbound-muse-provider-receipt-ledger-prefix/v1"
+PROVIDER_MANIFEST_SCHEMA = "outbound-muse-provider-receipt-ledger-delta-manifest/v1"
 MANIFEST_PATH = "provider/muse_receipt_ledger_v1/manifest.json"
 RECEIPT_PREFIX = "provider/muse_receipt_ledger_v1/receipts/"
 MAX_ENTRIES = 4096
 MAX_RESPONSE_BYTES = 8 * 1024 * 1024
+MAX_LEDGER_FILE_BYTES = 256 * 1024
 HEX40_64_RE = re.compile(r"^[0-9a-f]{40}(?:[0-9a-f]{24})?$")
 HEX64_RE = re.compile(r"^[0-9a-f]{64}$")
 ENTRY_FIELDS = {"schema_version","ordinal","receipt_sha256","receipt_path","request_sha256","request_id","publication_key","candidate_sha256","decision","compiled_at","selection_message_ts"}
 MANIFEST_FIELDS = {"schema_version","provider_repo","provider_ref","generation","genesis_parent_sha","previous_head_sha","entries","complete_prefix_sha256"}
+PROVIDER_MANIFEST_FIELDS = {"schema_version","provider_repo","provider_ref","generation","genesis_parent_sha","previous_head_sha","previous_prefix_sha256","entry","complete_prefix_sha256"}
 PROOF_FIELDS = {"schema_version","provider_repo","provider_ref","provider_head_sha","generation","entry_count","complete_prefix_sha256","manifest_sha256","request_sha256","request_id","publication_key","candidate_sha256","prior_receipt_ledger_authenticated","ledger_complete","terminal_election_authorized","requires_current_worker_lease_possession","requires_fresh_provider_preflight","external_send_authorized","side_effects_authorized"}
 
 class MuseProviderReceiptLedgerError(ValueError):
@@ -57,24 +66,19 @@ def _canon(value: Any) -> bytes:
 
 
 def _digest(value: Any) -> str: return hashlib.sha256(_canon(value)).hexdigest()
-
 def _sha(value: Any, label: str) -> str:
     if type(value) is not str or not HEX40_64_RE.fullmatch(value): raise MuseProviderReceiptLedgerError(f"{label}: Git object id required")
     return value
-
 def _hex64(value: Any, label: str) -> str:
     if type(value) is not str or not HEX64_RE.fullmatch(value): raise MuseProviderReceiptLedgerError(f"{label}: SHA-256 required")
     return value
-
 def _text(value: Any, label: str, max_len: int = 256) -> str:
     if type(value) is not str or not value or len(value) > max_len or any(ord(c) < 0x20 or ord(c) == 0x7f for c in value):
         raise MuseProviderReceiptLedgerError(f"{label}: bounded printable string required")
     return value
-
 def _uint(value: Any, label: str, limit: int) -> int:
     if type(value) is bool or type(value) is not int or value < 0 or value > limit: raise MuseProviderReceiptLedgerError(f"{label}: integer out of range")
     return value
-
 def _exact(obj: Any, fields: set[str], label: str) -> dict[str, Any]:
     if type(obj) is not dict or set(obj) != fields: raise MuseProviderReceiptLedgerError(f"{label}: exact fields required")
     return obj
@@ -106,12 +110,10 @@ def _get_ref(token: str) -> str:
     value = _api("GET", f"/repos/{PROVIDER_OWNER}/{PROVIDER_REPO}/git/ref/heads/{PROVIDER_BRANCH}", token=token)
     try: return _sha(value["object"]["sha"], "provider ref sha")
     except (KeyError, TypeError) as exc: raise MuseProviderReceiptLedgerError("malformed provider ref") from exc
-
 def _get_default_head(token: str) -> str:
     value = _api("GET", f"/repos/{PROVIDER_OWNER}/{PROVIDER_REPO}/git/ref/heads/main", token=token)
     try: return _sha(value["object"]["sha"], "main ref sha")
     except (KeyError, TypeError) as exc: raise MuseProviderReceiptLedgerError("malformed main ref") from exc
-
 def _get_commit(token: str, sha: str, *, require_single_parent: bool = True) -> dict[str, Any]:
     sha = _sha(sha, "commit sha")
     value = _api("GET", f"/repos/{PROVIDER_OWNER}/{PROVIDER_REPO}/git/commits/{sha}", token=token)
@@ -120,27 +122,45 @@ def _get_commit(token: str, sha: str, *, require_single_parent: bool = True) -> 
     except (KeyError, TypeError) as exc: raise MuseProviderReceiptLedgerError("malformed provider commit") from exc
     if require_single_parent and len(parents) != 1: raise MuseProviderReceiptLedgerError("ledger commit must have one parent")
     if not parents: raise MuseProviderReceiptLedgerError("provider commit must have at least one parent")
-    return {"sha": sha, "tree_sha": tree, "parent_sha": parents[0] if len(parents) == 1 else None, "parent_shas": parents}
+    return {"sha":sha,"tree_sha":tree,"parent_sha":parents[0] if len(parents)==1 else None,"parent_shas":parents}
 
-def _get_tree(token: str, sha: str) -> dict[str, str]:
-    value = _api("GET", f"/repos/{PROVIDER_OWNER}/{PROVIDER_REPO}/git/trees/{_sha(sha,'tree sha')}?recursive=1", token=token)
-    if type(value) is not dict or value.get("truncated") is True or type(value.get("tree")) is not list: raise MuseProviderReceiptLedgerError("provider tree incomplete/malformed")
-    out = {}
-    for row in value["tree"]:
-        if type(row) is dict and row.get("type") == "blob": out[_text(row.get("path"),"tree path",4096)] = _sha(row.get("sha"),"blob sha")
+
+def _content_file(token: str, path: str, ref: str, label: str) -> tuple[str, bytes]:
+    safe_path = "/".join(urllib.parse.quote(part, safe="") for part in path.split("/"))
+    query = urllib.parse.urlencode({"ref": _sha(ref,"content ref")})
+    value = _api("GET", f"/repos/{PROVIDER_OWNER}/{PROVIDER_REPO}/contents/{safe_path}?{query}", token=token)
+    if type(value) is not dict or value.get("type") != "file" or value.get("path") != path or value.get("encoding") != "base64" or type(value.get("content")) is not str:
+        raise MuseProviderReceiptLedgerError(f"{label}: malformed exact-path provider file")
+    blob = _sha(value.get("sha"), f"{label} blob")
+    try: raw = base64.b64decode("".join(value["content"].split()), validate=True)
+    except (ValueError, TypeError) as exc: raise MuseProviderReceiptLedgerError(f"{label}: invalid base64") from exc
+    if len(raw) > MAX_LEDGER_FILE_BYTES: raise MuseProviderReceiptLedgerError(f"{label}: provider file too large")
+    return blob, raw
+
+
+def _compare_paths(token: str, parent: str, head: str) -> dict[str,str]:
+    parent = _sha(parent,"compare parent"); head = _sha(head,"compare head")
+    value = _api("GET", f"/repos/{PROVIDER_OWNER}/{PROVIDER_REPO}/compare/{parent}...{head}", token=token)
+    if type(value) is not dict or value.get("status") != "ahead" or value.get("ahead_by") != 1 or value.get("behind_by") != 0 or value.get("total_commits") != 1 or type(value.get("files")) is not list:
+        raise MuseProviderReceiptLedgerError("adjacent ledger compare malformed")
+    out: dict[str,str] = {}
+    for row in value["files"]:
+        if type(row) is not dict: raise MuseProviderReceiptLedgerError("adjacent ledger compare row malformed")
+        path = _text(row.get("filename"),"compare path",4096); status = row.get("status")
+        if status not in {"added","modified","removed","renamed","copied","changed"} or path in out:
+            raise MuseProviderReceiptLedgerError("adjacent ledger compare row invalid")
+        out[path] = status
     return out
-
-def _get_blob(token: str, sha: str) -> bytes:
-    value = _api("GET", f"/repos/{PROVIDER_OWNER}/{PROVIDER_REPO}/git/blobs/{_sha(sha,'blob sha')}", token=token)
-    if type(value) is not dict or value.get("encoding") != "base64" or type(value.get("content")) is not str: raise MuseProviderReceiptLedgerError("provider blob malformed")
-    try: return base64.b64decode("".join(value["content"].split()), validate=True)
-    except (ValueError, TypeError) as exc: raise MuseProviderReceiptLedgerError("provider blob invalid base64") from exc
 
 
 def _receipt_path(sha: str) -> str: return RECEIPT_PREFIX + _hex64(sha,"receipt sha256") + ".json"
-def _prefix_digest(entries) -> str: return _digest({"schema_version":PREFIX_SCHEMA,"entries":entries})
-def _manifest(generation: int, genesis: str, previous: str | None, entries: list[Mapping[str,Any]]) -> dict[str,Any]:
-    return {"schema_version":LEDGER_SCHEMA,"provider_repo":PROVIDER_REPO_FULL_NAME,"provider_ref":PROVIDER_REF,"generation":generation,"genesis_parent_sha":_sha(genesis,"genesis sha"),"previous_head_sha":previous,"entries":list(entries),"complete_prefix_sha256":_prefix_digest(list(entries))}
+EMPTY_PREFIX_SHA256 = _digest({"schema_version":PREFIX_SCHEMA,"empty":True})
+def _prefix_step(previous: str, entry: Mapping[str,Any]) -> str:
+    return _digest({"schema_version":PREFIX_SCHEMA,"previous_prefix_sha256":_hex64(previous,"previous prefix"),"entry":entry})
+def _prefix_digest(entries) -> str:
+    digest = EMPTY_PREFIX_SHA256
+    for entry in entries: digest = _prefix_step(digest,entry)
+    return digest
 
 
 def _request_facts(request: Mapping[str,Any]) -> dict[str,str]:
@@ -169,17 +189,26 @@ def _validate_entry(raw: Any, ordinal: int) -> dict[str,Any]:
     return out
 
 
-def _validate_manifest(raw: Any) -> dict[str,Any]:
-    value = _exact(raw,MANIFEST_FIELDS,"manifest")
-    if value["schema_version"] != LEDGER_SCHEMA or value["provider_repo"] != PROVIDER_REPO_FULL_NAME or value["provider_ref"] != PROVIDER_REF: raise MuseProviderReceiptLedgerError("manifest identity mismatch")
-    generation = _uint(value["generation"],"generation",MAX_ENTRIES); rows = value["entries"]
-    if type(rows) is not list or len(rows) != generation: raise MuseProviderReceiptLedgerError("manifest generation mismatch")
-    entries = [_validate_entry(row,i) for i,row in enumerate(rows)]; genesis = _sha(value["genesis_parent_sha"],"genesis sha")
-    previous = value["previous_head_sha"]
+def _provider_manifest(generation: int, genesis: str, previous: str|None, previous_prefix: str|None, entry: Mapping[str,Any]|None) -> dict[str,Any]:
+    generation = _uint(generation,"generation",MAX_ENTRIES); genesis = _sha(genesis,"genesis sha")
     if generation == 0:
-        if previous is not None: raise MuseProviderReceiptLedgerError("generation zero previous head must be null")
-    else: previous = _sha(previous,"previous head")
-    if _hex64(value["complete_prefix_sha256"],"prefix sha") != _prefix_digest(entries): raise MuseProviderReceiptLedgerError("prefix digest mismatch")
+        if previous is not None or previous_prefix is not None or entry is not None: raise MuseProviderReceiptLedgerError("generation zero delta must be empty")
+        complete = EMPTY_PREFIX_SHA256
+    else:
+        previous = _sha(previous,"previous head"); previous_prefix = _hex64(previous_prefix,"previous prefix"); entry = _validate_entry(entry,generation-1); complete = _prefix_step(previous_prefix,entry)
+    return {"schema_version":PROVIDER_MANIFEST_SCHEMA,"provider_repo":PROVIDER_REPO_FULL_NAME,"provider_ref":PROVIDER_REF,"generation":generation,"genesis_parent_sha":genesis,"previous_head_sha":previous,"previous_prefix_sha256":previous_prefix,"entry":entry,"complete_prefix_sha256":complete}
+
+
+def _validate_provider_manifest(raw: Any) -> dict[str,Any]:
+    value = _exact(raw,PROVIDER_MANIFEST_FIELDS,"provider manifest")
+    if value["schema_version"] != PROVIDER_MANIFEST_SCHEMA or value["provider_repo"] != PROVIDER_REPO_FULL_NAME or value["provider_ref"] != PROVIDER_REF: raise MuseProviderReceiptLedgerError("provider manifest identity mismatch")
+    generation = _uint(value["generation"],"generation",MAX_ENTRIES); genesis = _sha(value["genesis_parent_sha"],"genesis sha")
+    manifest = _provider_manifest(generation,genesis,value["previous_head_sha"],value["previous_prefix_sha256"],value["entry"])
+    if _hex64(value["complete_prefix_sha256"],"complete prefix") != manifest["complete_prefix_sha256"]: raise MuseProviderReceiptLedgerError("provider manifest prefix mismatch")
+    return manifest
+
+
+def _validate_unique_entries(entries: list[Mapping[str,Any]]) -> None:
     for field in ("receipt_sha256","request_sha256"):
         vals=[e[field] for e in entries]
         if len(vals)!=len(set(vals)): raise MuseProviderReceiptLedgerError(f"duplicate {field}")
@@ -187,50 +216,69 @@ def _validate_manifest(raw: Any) -> dict[str,Any]:
     if len(pairs)!=len(set(pairs)): raise MuseProviderReceiptLedgerError("duplicate request generation")
     selected=[e["selection_message_ts"] for e in entries if e["selection_message_ts"] is not None]
     if len(selected)!=len(set(selected)): raise MuseProviderReceiptLedgerError("duplicate selection evidence")
-    return _manifest(generation,genesis,previous,entries)
 
 
-def _read_generation(token: str, head: str, *, verify_receipts: bool = True):
-    commit=_get_commit(token,head); tree=_get_tree(token,commit["tree_sha"]); receipt_paths={p for p in tree if p.startswith(RECEIPT_PREFIX)}
-    if any(p.startswith("provider/muse_receipt_ledger_v1/") and p!=MANIFEST_PATH and p not in receipt_paths for p in tree): raise MuseProviderReceiptLedgerError("undeclared ledger file")
-    blob=tree.get(MANIFEST_PATH)
-    if blob is None: raise MuseProviderReceiptLedgerError("manifest missing")
-    raw=_get_blob(token,blob); value=_parse_json_bytes(raw,"manifest")
-    if _canon(value)!=raw: raise MuseProviderReceiptLedgerError("manifest not canonical")
-    manifest=_validate_manifest(value); declared={e["receipt_path"] for e in manifest["entries"]}
-    if declared!=receipt_paths: raise MuseProviderReceiptLedgerError("receipt object set mismatch")
-    receipts=[]
-    if verify_receipts:
-        for entry in manifest["entries"]:
-            rraw=_get_blob(token,tree[entry["receipt_path"]]); obj=_parse_json_bytes(rraw,entry["receipt_path"])
-            if _canon(obj)!=rraw or hashlib.sha256(rraw).hexdigest()!=entry["receipt_sha256"]: raise MuseProviderReceiptLedgerError("receipt bytes/digest mismatch")
-            facts=_receipt_facts(obj)
-            for key in ("receipt_sha256","request_sha256","request_id","publication_key","candidate_sha256","decision","compiled_at","selection_message_ts"):
-                if facts[key]!=entry[key]: raise MuseProviderReceiptLedgerError(f"receipt metadata mismatch: {key}")
-            receipts.append(obj)
-    return manifest,commit,tree,receipts
+def _manifest_view(generation: int, genesis: str, previous: str|None, entries: list[Mapping[str,Any]], complete_prefix: str) -> dict[str,Any]:
+    if len(entries) != generation: raise MuseProviderReceiptLedgerError("materialized generation mismatch")
+    if _prefix_digest(entries) != _hex64(complete_prefix,"materialized prefix"): raise MuseProviderReceiptLedgerError("materialized prefix mismatch")
+    return {"schema_version":LEDGER_SCHEMA,"provider_repo":PROVIDER_REPO_FULL_NAME,"provider_ref":PROVIDER_REF,"generation":generation,"genesis_parent_sha":_sha(genesis,"genesis sha"),"previous_head_sha":previous,"entries":list(entries),"complete_prefix_sha256":complete_prefix}
+
+
+def _validate_manifest(raw: Any) -> dict[str,Any]:
+    value = _exact(raw,MANIFEST_FIELDS,"manifest")
+    if value["schema_version"] != LEDGER_SCHEMA or value["provider_repo"] != PROVIDER_REPO_FULL_NAME or value["provider_ref"] != PROVIDER_REF: raise MuseProviderReceiptLedgerError("manifest identity mismatch")
+    generation=_uint(value["generation"],"generation",MAX_ENTRIES); rows=value["entries"]
+    if type(rows) is not list or len(rows)!=generation: raise MuseProviderReceiptLedgerError("manifest generation mismatch")
+    entries=[_validate_entry(row,i) for i,row in enumerate(rows)]; _validate_unique_entries(entries)
+    previous=value["previous_head_sha"]
+    if generation==0:
+        if previous is not None: raise MuseProviderReceiptLedgerError("generation zero previous head must be null")
+    else: previous=_sha(previous,"previous head")
+    return _manifest_view(generation,_sha(value["genesis_parent_sha"],"genesis sha"),previous,entries,_hex64(value["complete_prefix_sha256"],"prefix sha"))
+
+
+def _read_provider_manifest(token: str, head: str) -> tuple[dict[str,Any],dict[str,Any]]:
+    commit=_get_commit(token,head); _blob,raw=_content_file(token,MANIFEST_PATH,head,"manifest")
+    value=_parse_json_bytes(raw,"manifest")
+    if _canon(value)!=raw: raise MuseProviderReceiptLedgerError("provider manifest not canonical")
+    return _validate_provider_manifest(value),commit
+
+
+def _read_receipt_for_entry(token: str, head: str, entry: Mapping[str,Any]) -> Mapping[str,Any]:
+    _blob,raw=_content_file(token,entry["receipt_path"],head,entry["receipt_path"])
+    obj=_parse_json_bytes(raw,entry["receipt_path"])
+    if _canon(obj)!=raw or hashlib.sha256(raw).hexdigest()!=entry["receipt_sha256"]: raise MuseProviderReceiptLedgerError("receipt bytes/digest mismatch")
+    facts=_receipt_facts(obj)
+    for key in ("receipt_sha256","request_sha256","request_id","publication_key","candidate_sha256","decision","compiled_at","selection_message_ts"):
+        if facts[key]!=entry[key]: raise MuseProviderReceiptLedgerError(f"receipt metadata mismatch: {key}")
+    return obj
 
 
 def _verify_remote_complete_prefix_state(token: str) -> dict[str,Any]:
-    start=_get_ref(token); head=start; newer=None; newer_tree=None; current=None; current_tree=None; current_receipts=None
-    for _ in range(MAX_ENTRIES+1):
-        is_current=current is None
-        manifest,commit,tree,receipts=_read_generation(token,head,verify_receipts=is_current)
-        if is_current:
-            current=manifest; current_tree=tree; current_receipts=receipts
+    start=_get_ref(token); head=start; newer=None; current=None; current_previous=None; entries_rev=[]; receipts_rev=[]; expected_generation=None
+    for _depth in range(MAX_ENTRIES+1):
+        manifest,commit=_read_provider_manifest(token,head)
+        if expected_generation is None:
+            expected_generation=manifest["generation"]; current=manifest; current_previous=manifest["previous_head_sha"]
+        if manifest["generation"]!=expected_generation: raise MuseProviderReceiptLedgerError("ledger generation gap")
         if newer is not None:
-            if newer["previous_head_sha"]!=head or newer["generation"]!=manifest["generation"]+1 or newer["genesis_parent_sha"]!=manifest["genesis_parent_sha"] or newer["entries"][:-1]!=manifest["entries"]: raise MuseProviderReceiptLedgerError("non-append ledger history")
-            for entry in manifest["entries"]:
-                path=entry["receipt_path"]
-                if newer_tree.get(path)!=tree.get(path): raise MuseProviderReceiptLedgerError("historical receipt blob changed")
+            if newer["previous_head_sha"]!=head or newer["generation"]!=manifest["generation"]+1 or newer["genesis_parent_sha"]!=manifest["genesis_parent_sha"] or newer["previous_prefix_sha256"]!=manifest["complete_prefix_sha256"]:
+                raise MuseProviderReceiptLedgerError("non-append delta ledger history")
+        changed=_compare_paths(token,commit["parent_sha"],head)
         if manifest["generation"]==0:
-            if commit["parent_sha"]!=manifest["genesis_parent_sha"]: raise MuseProviderReceiptLedgerError("genesis parent mismatch")
+            if commit["parent_sha"]!=manifest["genesis_parent_sha"] or changed!={MANIFEST_PATH:"added"}: raise MuseProviderReceiptLedgerError("invalid ledger genesis commit")
             break
-        if commit["parent_sha"]!=manifest["previous_head_sha"]: raise MuseProviderReceiptLedgerError("commit/manifest parent mismatch")
-        newer=manifest; newer_tree=tree; head=commit["parent_sha"]
+        entry=manifest["entry"]
+        expected={MANIFEST_PATH:"modified",entry["receipt_path"]:"added"}
+        if commit["parent_sha"]!=manifest["previous_head_sha"] or changed!=expected: raise MuseProviderReceiptLedgerError("ledger generation changed undeclared paths")
+        receipts_rev.append(_read_receipt_for_entry(token,head,entry)); entries_rev.append(entry)
+        newer=manifest; head=commit["parent_sha"]; expected_generation-=1
     else: raise MuseProviderReceiptLedgerError("ledger chain too long")
+    entries=list(reversed(entries_rev)); receipts=list(reversed(receipts_rev)); _validate_unique_entries(entries)
+    if current is None or len(entries)!=current["generation"]: raise MuseProviderReceiptLedgerError("ledger materialization mismatch")
+    view=_manifest_view(current["generation"],current["genesis_parent_sha"],current_previous,entries,current["complete_prefix_sha256"])
     if _get_ref(token)!=start: raise MuseProviderReceiptLedgerError("provider head changed during verification")
-    return {"provider_head_sha":start,"manifest":current,"tree":current_tree,"receipts":current_receipts}
+    return {"provider_head_sha":start,"manifest":view,"provider_manifest":current,"receipts":receipts}
 
 
 def verify_remote_complete_prefix(*, token: str|None=None) -> dict[str,Any]:
@@ -243,7 +291,6 @@ def _post_tree(token: str, base: str, files: Mapping[str,bytes]) -> str:
     value=_api("POST",f"/repos/{PROVIDER_OWNER}/{PROVIDER_REPO}/git/trees",body={"base_tree":_sha(base,"base tree"),"tree":rows},token=token)
     try:return _sha(value["sha"],"created tree")
     except (KeyError,TypeError) as exc: raise MuseProviderReceiptLedgerError("create-tree malformed") from exc
-
 def _post_commit(token: str, tree: str, parent: str, generation: int) -> str:
     value=_api("POST",f"/repos/{PROVIDER_OWNER}/{PROVIDER_REPO}/git/commits",body={"message":f"Muse receipt ledger generation {generation}","tree":_sha(tree,"tree"),"parents":[_sha(parent,"parent")]},token=token)
     try:return _sha(value["sha"],"created commit")
@@ -251,8 +298,8 @@ def _post_commit(token: str, tree: str, parent: str, generation: int) -> str:
 
 
 def initialize_remote_ledger(*, token: str|None=None) -> dict[str,Any]:
-    token=_token() if token is None else token; genesis=_get_default_head(token); base=_get_commit(token,genesis,require_single_parent=False); manifest=_manifest(0,genesis,None,[])
-    tree=_post_tree(token,base["tree_sha"],{MANIFEST_PATH:_canon(manifest)}); commit=_post_commit(token,tree,genesis,0)
+    token=_token() if token is None else token; genesis=_get_default_head(token); base=_get_commit(token,genesis,require_single_parent=False)
+    manifest=_provider_manifest(0,genesis,None,None,None); tree=_post_tree(token,base["tree_sha"],{MANIFEST_PATH:_canon(manifest)}); commit=_post_commit(token,tree,genesis,0)
     value=_api("POST",f"/repos/{PROVIDER_OWNER}/{PROVIDER_REPO}/git/refs",body={"ref":PROVIDER_REF,"sha":commit},token=token)
     try: observed=_sha(value["object"]["sha"],"created ref")
     except (KeyError,TypeError) as exc: raise MuseProviderReceiptLedgerError("create-ref malformed") from exc
@@ -261,8 +308,12 @@ def initialize_remote_ledger(*, token: str|None=None) -> dict[str,Any]:
 
 
 def append_receipt(receipt: Mapping[str,Any], *, token: str|None=None) -> dict[str,Any]:
-    token=_token() if token is None else token; state=verify_remote_complete_prefix(token=token); old=state["provider_head_sha"]; manifest=state["manifest"]
-    facts=_receipt_facts(receipt); entry=_entry(facts,manifest["generation"]); new=_validate_manifest(_manifest(manifest["generation"]+1,manifest["genesis_parent_sha"],old,manifest["entries"]+[entry]))
+    token=_token() if token is None else token; state=_verify_remote_complete_prefix_state(token); old=state["provider_head_sha"]; view=state["manifest"]
+    if view["generation"]>=MAX_ENTRIES: raise MuseProviderReceiptLedgerError("ledger capacity exhausted")
+    facts=_receipt_facts(receipt); entry=_entry(facts,view["generation"])
+    if any(e["receipt_sha256"]==entry["receipt_sha256"] or e["request_sha256"]==entry["request_sha256"] or (e["request_id"],e["candidate_sha256"])==(entry["request_id"],entry["candidate_sha256"]) or (entry["selection_message_ts"] is not None and e["selection_message_ts"]==entry["selection_message_ts"]) for e in view["entries"]):
+        raise MuseProviderReceiptLedgerError("duplicate receipt/request/selection evidence")
+    new=_provider_manifest(view["generation"]+1,view["genesis_parent_sha"],old,view["complete_prefix_sha256"],entry)
     base=_get_commit(token,old); tree=_post_tree(token,base["tree_sha"],{entry["receipt_path"]:facts["receipt_bytes"],MANIFEST_PATH:_canon(new)}); commit=_post_commit(token,tree,old,new["generation"])
     _api("PATCH",f"/repos/{PROVIDER_OWNER}/{PROVIDER_REPO}/git/refs/heads/{PROVIDER_BRANCH}",body={"sha":commit,"force":False},token=token)
     if _get_ref(token)!=commit: raise MuseProviderReceiptLedgerError("provider CAS/readback mismatch")
@@ -328,12 +379,10 @@ def _read(path: str, label: str):
     try:
         with open(path,"rb") as f: return _parse_json_bytes(f.read(),label)
     except OSError as exc: raise MuseProviderReceiptLedgerError(f"{label}: read failed") from exc
-
 def _write(value): sys.stdout.buffer.write(_canon(value))
 def _parser():
     p=argparse.ArgumentParser(description=__doc__); sub=p.add_subparsers(dest="command",required=True); sub.add_parser("init")
     a=sub.add_parser("append"); a.add_argument("--receipt",required=True); q=sub.add_parser("proof"); q.add_argument("--request",required=True); v=sub.add_parser("verify-proof"); v.add_argument("--request",required=True); v.add_argument("--proof",required=True); return p
-
 def main(argv=None):
     args=_parser().parse_args(argv)
     try:
