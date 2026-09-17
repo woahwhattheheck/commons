@@ -46,7 +46,7 @@ The retained `collision_preflight` zero counts are **historical pre-TAKE observa
 
 At 00:38:55 EDT, a separate swarm seat claimed a distinct Alberta LIMS opportunity using the **same LabLynx organization and the same `sales@lablynx.com` route** under operation `ALBERTA-AB-2026-06140-LABLYNX-PARTNER-CONVERSION-ZSOL-20260917`. This is an organization-level collision for outbound purposes even though the buyers differ.
 
-That event is now machine-readable in `current_collision` as `ACTIVE_ORG_ROUTE_COLLISION_HOLD` with Muse resolution `PENDING`. The arbitration request is bound to Slack ts `1789620147.584609`.
+That event is machine-readable in `current_collision` as `ACTIVE_ORG_ROUTE_COLLISION_HOLD` with Muse resolution `PENDING`. The arbitration request is bound to Slack ts `1789620147.584609`.
 
 The compiler therefore emits **`HOLD_ACTIVE_ORG_COLLISION_PENDING_MUSE`**, not READY. Removing the collision or setting a local file to `CLEAR_NHDES` is rejected by this generation; a genuine Muse result requires a successor source update and fresh review.
 
@@ -60,6 +60,12 @@ Currentness is code-owned rather than prose-only:
 - after buyer-local date **2026-10-23** (`America/New_York`), the carrier emits `HOLD_RESPONSE_DEADLINE_PASSED`;
 - production compile/verify obtain the clock internally; there is no CLI `--now` or caller-supplied clock;
 - verifier recompilation also re-evaluates the runtime gate, so an old receipt cannot remain valid after a freshness/deadline boundary changes.
+
+### Captured semantic generation
+
+The public `build_receipt` and `verify_receipt` callables are created once from a private runtime generation at import. That generation captures the real process clock function, UTC and buyer timezone, freshness/skew limits, canonical solicitation/candidate bindings, current collision contract, hashing/canonicalization functions, and a private all-false authority template. Production build/verify do **not** late-resolve the compatibility globals after import.
+
+`AUTHORITY` remains exposed only as an immutable `MappingProxyType` compatibility/readability view. Rebinding module globals such as `AUTHORITY`, `_now_utc`, `evaluate_runtime_state`, `_posture_for`, validators, digest/canonical functions, freshness constants, or buyer timezone cannot widen a compiled receipt or move its production clock. The CLI also captures the generated build/verify callables rather than late-resolving them on each invocation.
 
 The runtime gate does not convert retained public-index facts into buyer-official facts. Prime posture remains `HOLD_RAW_PACKET_AND_EXTERNAL_PRIME_EVIDENCE` until the canonical packet and external qualification evidence exist.
 
@@ -100,4 +106,4 @@ python -O -m unittest -v tests.test_nhdes_lims_2026_093
 python -m unittest -v test_nhdes_lims_2026_093
 ```
 
-The hostile suite pins source-state promotion, GovRAMP/NIST self-certification, candidate qualification promotion, file-authored outbound authority, historical-preflight misuse, active org-route collision HOLD, future/stale source and candidate state, post-deadline execution, offset-aware timestamp requirements, receipt tampering, duplicate/nonfinite JSON, and output overwrite.
+The hostile suite pins source-state promotion, GovRAMP/NIST self-certification, candidate qualification promotion, file-authored outbound authority, historical-preflight misuse, active org-route collision HOLD, future/stale source and candidate state, post-deadline execution, offset-aware timestamp requirements, post-import authority/clock/helper/constant rebinding, receipt tampering, duplicate/nonfinite JSON, and output overwrite.
