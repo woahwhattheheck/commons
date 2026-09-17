@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 93,
     "open_pull_requests": 37,
-    "runs_in_progress": 16,
-    "runs_queued": 1118
+    "runs_in_progress": 17,
+    "runs_queued": 1126
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -51,7 +51,7 @@
       "head_sha": "db0e8838d61cd6133154bf2008aefb5b94fc5acd",
       "number": 15631,
       "title": "ARC3 SAGE: close exact-evidence ambiguity and abstract lookahead (#14735)",
-      "updated_at": "2026-09-17T20:15:48Z"
+      "updated_at": "2026-09-17T21:11:12Z"
     },
     {
       "author": "woahwhattheheck",
@@ -75,7 +75,7 @@
       "head_sha": "9372c714fb558d2984fcbdc467262461100a9639",
       "number": 15761,
       "title": "TITAN V5: bind post-auth WHEAT carry census to D2 source",
-      "updated_at": "2026-09-17T21:05:33Z"
+      "updated_at": "2026-09-17T21:10:58Z"
     },
     {
       "author": "woahwhattheheck",
@@ -97,7 +97,7 @@
       "head_sha": "48c8eeb97aff1485e3cae4f518a6a03b89304cf0",
       "number": 15756,
       "title": "Add deterministic stale Actions queue auditor",
-      "updated_at": "2026-09-17T21:07:02Z"
+      "updated_at": "2026-09-17T21:08:12Z"
     },
     {
       "author": "woahwhattheheck",
@@ -127,10 +127,10 @@
       "branch": "zhl/onewriter-identity-contract-currentmain-20260917",
       "created_at": "2026-09-17T20:34:31Z",
       "draft": false,
-      "head_sha": "465ca2c93f80ad2aa8d7d7183be49e2690e0df4f",
+      "head_sha": "2a8d940c5207c273f797e73a9a5004b305b186a8",
       "number": 15734,
       "title": "OneWriter: restore strict deployment identifier contract",
-      "updated_at": "2026-09-17T21:06:12Z"
+      "updated_at": "2026-09-17T21:09:08Z"
     },
     {
       "author": "woahwhattheheck",
@@ -202,14 +202,14 @@
     "15717": "b6821d9c7ce8fd9bf8d4dd4fd1f3113d6ae7bea7",
     "15721": "f691d4d452180f1df152a4b504b730fa4854f000",
     "15724": "0bc0e6b19aed5ea71598c6ab6b914a828bc8a6f4",
-    "15726": "9a3b180cf2eb519f6f2aebd9aef6e7bfe34ea6ce",
+    "15726": "70b65b98948ccd0893395ba6d08fd6c037238d77",
     "15727": "86d342fdd4365c20ab5563772fe93ed1c2d5b81a",
     "15728": "a420680149f990a427c8e78cd2375cf3edea004b",
     "15730": "9ddf5f322a886a19b48d08356545ac90f7be7501",
     "15731": "9796d8857366291ef873aae725ffcec9887555eb",
     "15732": "8cd5546c7fef5d2d2b48101e7a40d134ddaed2b0",
     "15733": "7dc930d3ac5fd03f96b76102974108f5483265ab",
-    "15734": "465ca2c93f80ad2aa8d7d7183be49e2690e0df4f",
+    "15734": "2a8d940c5207c273f797e73a9a5004b305b186a8",
     "15751": "6b09abe5dc29a3b191841831a030d3120800f564",
     "15753": "dcc6005af8492d61c26d10a46adedb390a881d2a",
     "15756": "48c8eeb97aff1485e3cae4f518a6a03b89304cf0",
@@ -218,8 +218,30 @@
   },
   "pulls_listed": 37,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 69.9,
+  "queue_depth_per_runner": 66.2,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "devin/sledge-kincell-lexington",
+      "closed_at": "2026-09-17T21:10:26Z",
+      "head_sha": "96d020942df7e77a47b4d831034adc7152a97cda",
+      "merged_at": "2026-09-17T21:10:25Z",
+      "number": 15763,
+      "state": "MERGED",
+      "title": "convert shelf: kincell + lexington (sledge-kincell-lexington-convert-shelf-20260917-01)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "devin/sledge-elevatebio-highpower",
+      "closed_at": "2026-09-17T21:07:56Z",
+      "head_sha": "cd74545422f6f40ab62aab0dddbd30f94ae3494d",
+      "merged_at": "2026-09-17T21:07:56Z",
+      "number": 15762,
+      "state": "MERGED",
+      "title": "convert shelf: elevatebio + highpower (sledge-elevatebio-highpower-convert-shelf-20260917-01)"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -362,32 +384,10 @@
       "number": 15725,
       "state": "CLOSED",
       "title": "Revenue: complete Alcorn RFP 5588 internal response pack without widening authority"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "devin/sledge-baddl-billingsaccept-2",
-      "closed_at": "2026-09-17T20:46:59Z",
-      "head_sha": "e54c71bafbc5f5c2d54baf83eadc21fe1cbc08d0",
-      "merged_at": "2026-09-17T20:46:59Z",
-      "number": 15744,
-      "state": "MERGED",
-      "title": "convert shelf: baddl-eia + billings-1421 acceptance (sledge-baddl-billingsaccept-convert-shelf-20260917-01)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swe2max/paidopps-rightnow-convert-shelf-20260917-b",
-      "closed_at": "2026-09-17T20:44:35Z",
-      "head_sha": "98cd48d445394764d5d8cafe23c5c0679f138302",
-      "merged_at": "2026-09-17T20:44:35Z",
-      "number": 15742,
-      "state": "MERGED",
-      "title": "Wire existing $29 and $250 Buy links onto paid-opportunities and right-now shelves"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T21:07:15Z",
+  "unchanged_since": "2026-09-17T21:11:52Z",
   "undatable_pulls": []
 }
