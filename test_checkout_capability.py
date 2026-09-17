@@ -108,6 +108,9 @@ class CheckoutCapability(unittest.TestCase):
         pay_js = (ROOT / "pay.js").read_text(encoding="utf-8")
         self.assertIn("checkout.account_payouts_enabled !== true", js)
         self.assertIn("checkout.account_payouts_enabled !== true", pay_js)
+        self.assertIn('checkout.status !== "ACTIVE_CHARGEABLE"', pay_js)
+        self.assertIn("checkout.link_active !== true", pay_js)
+        self.assertIn("canonicalRailMatches(snapshot, listing)", pay_js)
         self.assertIn("inert_duplicate_urls", pay_js)
         self.assertIn("&amp;", pay_js)
         self.assertIn("&lt;", pay_js)
@@ -120,7 +123,7 @@ class CheckoutCapability(unittest.TestCase):
             self.assertRegex(html, r"js-checkout-slot")
             self.assertIn("mailto:tokenjunkielabs@gmail.com", html)
             self.assertIn("pay.js", html)
-            if name in ("pay.html", "commerce.html", "tips.html", "owner-now-revenue.html"):
+            if name in ("pay.html", "commerce.html", "tips.html"):
                 continue
             self.assertNotRegex(html, stripe_url)
 
