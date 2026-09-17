@@ -149,6 +149,22 @@ class HumanReplyWorkshareKitTests(unittest.TestCase):
         with self.assertRaisesRegex(WorkshareError, "one line"):
             compile_offer(row)
 
+    def test_blank_after_strip_values_are_rejected(self):
+        row = base_record()
+        row["counterparty_label"] = "   "
+        with self.assertRaisesRegex(WorkshareError, "must not be blank"):
+            compile_offer(row)
+
+        row = base_record()
+        row["scope"]["one_line"] = "   "
+        with self.assertRaisesRegex(WorkshareError, "must not be blank"):
+            compile_offer(row)
+
+        row = base_record()
+        row["scope"]["input_bounds"] = ["one entity", "   "]
+        with self.assertRaisesRegex(WorkshareError, "must not be blank"):
+            compile_offer(row)
+
     def test_input_bounds_cardinality_is_bounded(self):
         row = base_record()
         row["scope"]["input_bounds"] = [f"item {i}" for i in range(9)]
