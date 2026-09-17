@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from typing import Any
 
 from .common import (
@@ -9,9 +9,7 @@ from .common import (
 )
 from .schema import normalize
 
-
-def _generation_subject(subject_id: str, generation: int) -> str:
-    return f"{subject_id}:g{generation}"
+DNR_MAX_AGE = timedelta(days=7)
 
 
 def evaluate(doc: dict[str, Any], verified_at: datetime) -> dict[str, Any]:
@@ -40,6 +38,8 @@ def evaluate(doc: dict[str, Any], verified_at: datetime) -> dict[str, Any]:
             ok = False; detail.append("future evidence")
         if row.get("valid_through") is not None and _dt(row["valid_through"], "evidence.valid_through") < now:
             ok = False; detail.append("expired evidence")
+        if kind == "DNR" and row.get("valid_through") is None and now - observed > DNR_MAX_AGE:
+            ok = False; detail.append("DNR freshness horizon exceeded")
         if not ok:
             reasons.append({"code": "EVIDENCE_INVALID", "ref": eid, "detail": "; ".join(detail)})
         return ok
@@ -50,15 +50,14 @@ def evaluate(doc: dict[str, Any], verified_at: datetime) -> dict[str, Any]:
     else:
         acceptance_bad = False
         base = doc["commercial_baseline"]
-        base_subject = _generation_subject(base["id"], base["generation"])
-        if not check(base["acceptance_evidence_id"], "BASELINE_ACCEPTANCE", base_subject):
+        if not check(base["acceptance_evidence_id"], "BASELINE_ACCEPTANCE", base["id"]):
             acceptance_bad = True
-            reasons.append({"code": "BASELINE_NOT_ACCEPTED", "ref": base["id"], "detail": "exact baseline generation lacks current verified acceptance"})
+            reasons.append({"code": "BASELINE_NOT_ACCEPTED", "ref": base["id"], "detail": "exact generation-bound baseline lacks current verified acceptance"})
 
         for co in doc["change_orders"]:
-            if co["state"] == "APPROVED" and not check(co["approval_evidence_id"], "CHANGE_ORDER_APPROVAL", _generation_subject(co["id"], co["generation"])):
+            if co["state"] == "APPROVED" and not check(co["approval_evidence_id"], "CHANGE_ORDER_APPROVAL", co["id"]):
                 acceptance_bad = True
-                reasons.append({"code": "CHANGE_ORDER_APPROVAL_MISSING", "ref": co["id"], "detail": "exact approved change generation lacks matching current verified approval"})
+                reasons.append({"code": "CHANGE_ORDER_APPROVAL_MISSING", "ref": co["id"], "detail": "exact generation-bound change lacks matching current verified approval"})
             elif co["state"] != "APPROVED":
                 reasons.append({"code": "CHANGE_ORDER_NOT_IN_BASELINE", "ref": co["id"], "detail": f"state={co['state']} remains outside accepted commercial lineage"})
 
@@ -128,23 +127,13 @@ def evaluate(doc: dict[str, Any], verified_at: datetime) -> dict[str, Any]:
     if decision not in TERMINAL_STATES:
         raise AssertionError("unreachable decision")
     return {
-        "schema": SCHEMA,
-        "decision": decision,
-        "verified_at": _z(now),
-        "truth_ceiling": TRUTH_CEILING,
-        "engagement_id": doc["engagement"]["id"],
-        "organization_id": doc["engagement"]["organization_id"],
+        "schema": SCHEMA, "decision": decision, "verified_at": _z(now), "truth_ceiling": TRUTH_CEILING,
+        "engagement_id": doc["engagement"]["id"], "organization_id": doc["engagement"]["organization_id"],
         "commercial_baseline": doc["commercial_baseline"],
         "approved_change_orders": [x for x in doc["change_orders"] if x["state"] == "APPROVED"],
-        "milestones": doc["milestones"],
-        "payments": doc["payments"],
-        "support_findings": doc["support_findings"],
-        "gaps": doc["gaps"],
-        "renewal_window": doc["renewal_window"],
-        "expansion_hypotheses": doc["expansion_hypotheses"],
-        "communication": doc["communication"],
-        "reasons": reasons,
-        "authority": dict(AUTHORITY),
+        "milestones": doc["milestones"], "payments": doc["payments"], "support_findings": doc["support_findings"],
+        "gaps": doc["gaps"], "renewal_window": doc["renewal_window"], "expansion_hypotheses": doc["expansion_hypotheses"],
+        "communication": doc["communication"], "reasons": reasons, "authority": dict(AUTHORITY),
     }
 
 
@@ -156,10 +145,8 @@ def compile_packet(raw: Any, verified_at: datetime) -> tuple[dict[str, Any], dic
         "schema": RECEIPT_SCHEMA,
         "normalized_input_sha256": sha256(canonical_json(doc)),
         "packet_sha256": sha256(canonical_json(packet)),
-        "decision": packet["decision"],
-        "verified_at": packet["verified_at"],
-        "valid_until": doc["renewal_window"]["close_at"],
-        "authority": dict(AUTHORITY),
+        "decision": packet["decision"], "verified_at": packet["verified_at"],
+        "valid_until": doc["renewal_window"]["close_at"], "authority": dict(AUTHORITY),
     }
     receipt = dict(receipt_core)
     receipt["receipt_sha256"] = sha256(canonical_json(receipt_core))
@@ -170,11 +157,11 @@ def _verify_at(raw: Any, packet: Any, receipt: Any, verified_at: datetime, *, cu
     doc = normalize(raw)
     packet_obj = _obj(packet, "packet")
     receipt_obj = _obj(receipt, "receipt")
-    expected_receipt_fields = {"schema", "normalized_input_sha256", "packet_sha256", "decision", "verified_at", "valid_until", "authority", "receipt_sha256"}
-    _exact_keys(receipt_obj, expected_receipt_fields, "receipt", expected_receipt_fields)
+    fields = {"schema", "normalized_input_sha256", "packet_sha256", "decision", "verified_at", "valid_until", "authority", "receipt_sha256"}
+    _exact_keys(receipt_obj, fields, "receipt", fields)
     if receipt_obj["schema"] != RECEIPT_SCHEMA:
         raise GateError("receipt.schema mismatch")
-    core = {k: receipt_obj[k] for k in expected_receipt_fields - {"receipt_sha256"}}
+    core = {k: receipt_obj[k] for k in fields - {"receipt_sha256"}}
     if _sha(receipt_obj["receipt_sha256"], "receipt.receipt_sha256") != sha256(canonical_json(core)):
         raise GateError("receipt digest mismatch")
     if receipt_obj["normalized_input_sha256"] != sha256(canonical_json(doc)):
@@ -189,40 +176,33 @@ def _verify_at(raw: Any, packet: Any, receipt: Any, verified_at: datetime, *, cu
         raise GateError("receipt valid_until is not bound to renewal window")
     if receipt_obj["verified_at"] != packet_obj.get("verified_at"):
         raise GateError("receipt/packet verifier timestamp mismatch")
-
     compiled_at = _dt(receipt_obj["verified_at"], "receipt.verified_at")
-    expected_packet = evaluate(doc, compiled_at)
-    if canonical_json(expected_packet) != canonical_json(packet_obj):
+    if canonical_json(evaluate(doc, compiled_at)) != canonical_json(packet_obj):
         raise GateError("packet does not reproduce from bound input and verifier timestamp")
-
     now = verified_at.astimezone(timezone.utc)
-    current = evaluate(doc, now)
     if compiled_at > now:
         raise GateError("receipt is future-dated relative to verifier")
+    current = evaluate(doc, now)
     valid_until = _dt(receipt_obj["valid_until"], "receipt.valid_until")
-    same_decision = current["decision"] == receipt_obj["decision"]
-    current_valid = bool(current_authority and same_decision and now <= valid_until and current["decision"] == "READY_FOR_RENEWAL_REVIEW")
+    current_valid = bool(current_authority and current["decision"] == receipt_obj["decision"] == "READY_FOR_RENEWAL_REVIEW" and now <= valid_until)
     return {
-        "schema": "pilot-renewal-expansion-current-verification/v1",
-        "integrity_valid": True,
+        "schema": "pilot-renewal-expansion-current-verification/v1", "integrity_valid": True,
         "current_valid": current_valid,
         "verification_mode": "PROCESS_CURRENT" if current_authority else "HISTORICAL_REPLAY_NON_CURRENT",
-        "compiled_decision": receipt_obj["decision"],
-        "current_decision": current["decision"],
-        "verified_at": _z(now),
-        "valid_until": receipt_obj["valid_until"],
-        "authority": dict(AUTHORITY),
+        "compiled_decision": receipt_obj["decision"], "current_decision": current["decision"],
+        "verified_at": _z(now), "valid_until": receipt_obj["valid_until"], "authority": dict(AUTHORITY),
     }
 
 
-def _make_verify_current():
+def _make_process_clock_apis():
     bound_now = datetime.now
     bound_utc = timezone.utc
+    def compile_current(raw: Any) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
+        return compile_packet(raw, bound_now(bound_utc))
     def verify_current(raw: Any, packet: Any, receipt: Any, verified_at: datetime | None = None) -> dict[str, Any]:
-        """Verify currentness only with process time; explicit time is historical and never current-authorizing."""
         if verified_at is not None:
             return _verify_at(raw, packet, receipt, verified_at, current_authority=False)
         return _verify_at(raw, packet, receipt, bound_now(bound_utc), current_authority=True)
-    return verify_current
+    return compile_current, verify_current
 
-verify_current = _make_verify_current()
+compile_current, verify_current = _make_process_clock_apis()
