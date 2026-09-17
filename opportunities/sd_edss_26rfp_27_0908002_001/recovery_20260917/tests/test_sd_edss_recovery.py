@@ -31,7 +31,7 @@ class SdEdssCarrierTests(unittest.TestCase):
 
     def test_baseline(self):
         self.assertIn("INVITATION_ONLY_BOUND", mod.validate_public(self.public))
-        self.assertIn("MUSE_ARBITRATION_NOT_REQUESTED", mod.validate_partner(self.partner))
+        self.assertIn("HARD_DNR_PROVIDER_SENT", mod.validate_partner(self.partner))
 
     def test_duplicate_json_key_rejected(self):
         with tempfile.TemporaryDirectory() as td:
@@ -96,29 +96,45 @@ class SdEdssCarrierTests(unittest.TestCase):
         self.partner_bad(lambda p: p["routes"][0].__setitem__("candidate_confirmed_invited_participating", True))
 
     def test_pending_requires_request(self):
-        self.partner_bad(lambda p: p["routes"][0].__setitem__("state", "MUSE_ARBITRATION_PENDING"))
+        def mutate(p):
+            r=p["routes"][0]
+            r["state"]="MUSE_ARBITRATION_PENDING"
+            r["muse_arbitration"]={"request_ts":[],"explicit_clearance_observed":False,"clearance_ts":None,"terminal_without_clearance":"WAITING_ON_MUSE_NO_SEND"}
+            r["provider_send"]={"performed":False,"message_id":None,"thread_id":None,"sent_at":None}
+        self.partner_bad(mutate)
 
     def test_clear_requires_receipt(self):
         def mutate(p):
-            r=p["routes"][0]; r["state"]="MUSE_CLEAR_PROVIDER_SEND_PENDING"; r["muse_arbitration"]["request_ts"]=["x"]; r["muse_arbitration"]["explicit_clearance_observed"]=True
+            r=p["routes"][0]
+            r["state"]="MUSE_CLEAR_PROVIDER_SEND_PENDING"
+            r["muse_arbitration"]={"request_ts":["x"],"explicit_clearance_observed":True,"clearance_ts":None,"terminal_without_clearance":"WAITING_ON_MUSE_NO_SEND"}
+            r["provider_send"]={"performed":False,"message_id":None,"thread_id":None,"sent_at":None}
         self.partner_bad(mutate)
 
     def test_valid_muse_clear_still_no_repo_send_authority(self):
         p=copy.deepcopy(self.partner); r=p["routes"][0]
-        r["state"]="MUSE_CLEAR_PROVIDER_SEND_PENDING"; r["muse_arbitration"]["request_ts"]=["req"]; r["muse_arbitration"]["explicit_clearance_observed"]=True; r["muse_arbitration"]["clearance_ts"]="clear"
+        r["state"]="MUSE_CLEAR_PROVIDER_SEND_PENDING"
+        r["muse_arbitration"]={"request_ts":["req"],"explicit_clearance_observed":True,"clearance_ts":"clear","terminal_without_clearance":"WAITING_ON_MUSE_NO_SEND"}
+        r["provider_send"]={"performed":False,"message_id":None,"thread_id":None,"sent_at":None}
         self.assertIn("MUSE_CLEAR_PROVIDER_SEND_PENDING", mod.validate_partner(p)); self.assertFalse(r["send_authorized"])
 
     def test_provider_receipt_without_send_rejected(self):
-        self.partner_bad(lambda p: p["routes"][0]["provider_send"].__setitem__("message_id", "x"))
+        def mutate(p):
+            r=p["routes"][0]
+            r["state"]="MUSE_CLEAR_PROVIDER_SEND_PENDING"
+            r["provider_send"]={"performed":False,"message_id":"x","thread_id":None,"sent_at":None}
+        self.partner_bad(mutate)
 
     def test_provider_send_without_clearance_rejected(self):
         def mutate(p):
-            r=p["routes"][0]; r["state"]="HARD_DNR_PROVIDER_SENT"; r["provider_send"]={"performed":True,"message_id":"m","thread_id":"t","sent_at":"2026-09-17T00:00:00-04:00"}
+            r=p["routes"][0]
+            r["state"]="HARD_DNR_PROVIDER_SENT"
+            r["muse_arbitration"]={"request_ts":["req"],"explicit_clearance_observed":False,"clearance_ts":None,"terminal_without_clearance":"WAITING_ON_MUSE_NO_SEND"}
+            r["provider_send"]={"performed":True,"message_id":"m","thread_id":"t","sent_at":"2026-09-17T00:00:00-04:00"}
         self.partner_bad(mutate)
 
     def test_valid_provider_send_requires_clearance_and_dnr(self):
-        p=copy.deepcopy(self.partner); r=p["routes"][0]
-        r["state"]="HARD_DNR_PROVIDER_SENT"; r["muse_arbitration"]["request_ts"]=["req"]; r["muse_arbitration"]["explicit_clearance_observed"]=True; r["muse_arbitration"]["clearance_ts"]="clear"; r["provider_send"]={"performed":True,"message_id":"m","thread_id":"t","sent_at":"2026-09-17T00:00:00-04:00"}
-        self.assertIn("HARD_DNR_PROVIDER_SENT", mod.validate_partner(p)); self.assertFalse(r["revenue"])
+        self.assertIn("HARD_DNR_PROVIDER_SENT", mod.validate_partner(copy.deepcopy(self.partner)))
+        self.assertFalse(self.partner["routes"][0]["revenue"])
 
 if __name__ == "__main__": unittest.main()

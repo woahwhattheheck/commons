@@ -9,7 +9,7 @@
       "domain": "inductivehealth.com",
       "route": "solutions@inductivehealth.com",
       "route_evidence": "current InductiveHealth first-party collateral publishes solutions@inductivehealth.com",
-      "state": "MUSE_ARBITRATION_NOT_REQUESTED",
+      "state": "HARD_DNR_PROVIDER_SENT",
       "commercial_key": "SD-EDSS-26RFP270908002001-INDUCTIVE-PAID-WORKSHARE-ZNP-20260917",
       "commercial_hypothesis": {
         "amount_minor": 4000000,
@@ -59,16 +59,18 @@
         "gmail_all_history_material_prior_contact_before_take": 0
       },
       "muse_arbitration": {
-        "request_ts": [],
-        "explicit_clearance_observed": false,
-        "clearance_ts": null,
+        "request_ts": [
+          "1789620570.622749"
+        ],
+        "explicit_clearance_observed": true,
+        "clearance_ts": "1789620755.395339",
         "terminal_without_clearance": "WAITING_ON_MUSE_NO_SEND"
       },
       "provider_send": {
-        "performed": false,
-        "message_id": null,
-        "thread_id": null,
-        "sent_at": null
+        "performed": true,
+        "message_id": "1a0adbb533c2feed",
+        "thread_id": "1a0adbb533c2feed",
+        "sent_at": "2026-09-17T04:58:50Z"
       },
       "candidate_confirmed_invited_participating": false,
       "send_authorized": false,
