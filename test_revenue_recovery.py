@@ -323,6 +323,33 @@ class RevenueRecoveryTests(unittest.TestCase):
                 self.assertTrue(rr.contains_sensitive_value(value))
         self.assertFalse(rr.contains_sensitive_value("PUBLIC_CONTACT_URL: https://example.com/contact"))
 
+    def test_server_nfkc_normalizes_free_form_and_rejects_format_chars(self):
+        once_encoded = quote("contact jane＠example.test", safe="")
+        twice_encoded = quote(once_encoded, safe="")
+        hostile = (
+            "contact jane＠example.test",
+            "ｊａｎｅ＠ｅｘａｍｐｌｅ．ｔｅｓｔ",
+            "password＝hunter2",
+            "account number：123456789",
+            "pass\u200bword=hidden",
+            once_encoded,
+            twice_encoded,
+        )
+        for value in hostile:
+            with self.subTest(value=value):
+                self.assertTrue(rr.contains_sensitive_value(value))
+                self.assert_sensitive_signal_is_incomplete(value)
+
+        safe_url = "PUBLIC_CONTACT_URL: https://example.com/contact?next=%2Fpublic"
+        self.assertFalse(rr.contains_sensitive_value(safe_url))
+        temp, root = self.make_root(self.valid_post().replace(
+            "PUBLIC_CONTACT_URL: https://example.com/contact", safe_url
+        ))
+        try:
+            self.assertEqual(rr.purchase_intent_receipt(root, "buyer-signal")["state"], "RECORDED")
+        finally:
+            temp.cleanup()
+
     def test_server_rejects_camel_case_and_percent_encoded_full_posts(self):
         camel_names = {
             "routingNumber": "routing_number",
@@ -622,7 +649,7 @@ class RevenueRecoveryTests(unittest.TestCase):
 
         malformed_assignments = (
             "payload=[null,null",
-            'payload={"topic":"reproducibility",}',
+            '{"topic":"reproducibility",}',
         )
         for assignment in malformed_assignments:
             with self.subTest(malformed_json_assignment=assignment):
@@ -745,8 +772,7 @@ class RevenueRecoveryTests(unittest.TestCase):
                 ))
                 try:
                     self.assertEqual(
-                        rr.purchase_intent_receipt(root, "buyer-signal")["state"],
-                        "RECORDED",
+                        rr.purchase_intent_receipt(root, "buyer-signal")["state"], "RECORDED"
                     )
                 finally:
                     temp.cleanup()
@@ -934,8 +960,6 @@ class RevenueRecoveryTests(unittest.TestCase):
             )
         self.assertEqual(len(canonical_contact_keys), prospects["distinct_contacts_sent"])
 
-        # The receipt directory is append-only and can contain unrelated campaigns.
-        # Bind this funnel only to its declared routes and duplicate corrections.
         related_duplicate_receipts = []
         for path in receipt_paths:
             if "-duplicate-" not in path.name:
