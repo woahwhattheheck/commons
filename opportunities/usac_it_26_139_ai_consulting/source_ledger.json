@@ -1,9 +1,9 @@
 {
   "schema": "tjlabs.usac-it-26-139-source-ledger/v1",
-  "observed_at_utc": "2026-09-14T03:40:00Z",
+  "observed_at_utc": "2026-09-17T05:38:42Z",
   "buyer": "Universal Service Administrative Company",
   "solicitation": "IT-26-139",
-  "amendment_policy": "USAC procurement page is authoritative for later notices; recheck before any readiness claim.",
+  "amendment_policy": "USAC procurement page is authoritative for later notices; recheck and retain the current buyer-page generation before any readiness or submission claim.",
   "sources": [
     {
       "id": "buyer-page",
@@ -12,7 +12,7 @@
       "title": "RFP IT-26-139 – Artificial Intelligence (AI) Consulting and Support Services",
       "sha256": null,
       "byte_custody": false,
-      "notes": "Lists the RFP, Attachment 1 Bid Sheet, Attachment 2 Confidentiality Agreement, and Questions & Answers; warns contractors to monitor for later notices."
+      "notes": "Independent source review rechecked the first-party page on 2026-09-17 and still observed the RFP, Attachment 1 Bid Sheet, Attachment 2 Confidentiality Agreement, and Questions & Answers with no additional notice link; the current HTML generation is not retained byte-for-byte."
     },
     {
       "id": "rfp",
@@ -20,18 +20,18 @@
       "url": "https://www.usac.org/wp-content/uploads/about/documents/Procurement/RFP-IT-26-139-AI-Consulting-and-Support-Services.pdf",
       "title": "RFP IT-26-139 – AI Consulting and Support Services",
       "pages": 55,
-      "sha256": null,
+      "sha256": "fc278ff4c8ab5fff06b38e4d463b2cc119a2a5c27b7a527ba89ccc40a40decbe",
       "byte_custody": false,
-      "notes": "Controlling solicitation; issue 2026-08-31; proposal due 2026-09-30 11:00 ET."
+      "notes": "Provider artifact 10457019683 yielded this observed SHA-256, but the current repository/verifier does not materialize or consume the artifact bytes; HASH_KNOWN_ONLY, byte custody remains unproven. Issue 2026-08-31; proposal due 2026-09-30 11:00 ET."
     },
     {
       "id": "bid-sheet",
       "authority": "FIRST_PARTY_CONTROLLING",
-      "url": null,
+      "url": "https://www.usac.org/wp-content/uploads/about/documents/Procurement/IT-26-139-Attachment-1-Bid-Sheet.xlsx",
       "title": "Attachment 1 – Bid Sheet",
-      "sha256": null,
+      "sha256": "836f443922a2ea41d6b3804dd3ec80d7854149368edf617a7eab7a31349ff479",
       "byte_custody": false,
-      "notes": "First-party buyer page exposes the attachment, but this runtime did not retain its spreadsheet bytes. Must be recovered before submission readiness."
+      "notes": "Provider artifact 10457019683 yielded this observed SHA-256 and prior inert inspection reported one sheet Tab 1 - Summary, A1:E26, 20 non-empty cells, zero formulas; the current repository/verifier does not materialize or consume those bytes, so HASH_KNOWN_ONLY and byte custody remains unproven."
     },
     {
       "id": "confidentiality-agreement",
@@ -39,9 +39,9 @@
       "url": "https://www.usac.org/wp-content/uploads/about/documents/Procurement/IT-26-139-Attachment-2-USAC-Confidentiality-Agreement.pdf",
       "title": "Attachment 2 – USAC Confidentiality Agreement",
       "pages": 5,
-      "sha256": null,
+      "sha256": "c9471803056957b73d396f6379dcdaf4facd41a7bd90cb75ccc42e8f5a23370b",
       "byte_custody": false,
-      "notes": "Must be executed by Offeror and submitted with proposal."
+      "notes": "Provider artifact 10457019683 yielded this observed SHA-256, but the current repository/verifier does not materialize or consume the artifact bytes; HASH_KNOWN_ONLY, byte custody remains unproven. Execution/signature authority is separately held."
     },
     {
       "id": "q-and-a",
@@ -49,9 +49,9 @@
       "url": "https://www.usac.org/wp-content/uploads/about/documents/Procurement/IT-26-139-Questions-and-Answers.pdf",
       "title": "IT-26-139 Questions & Answers",
       "pages": 40,
-      "sha256": null,
+      "sha256": "3682d0351e322ac1e9e2f277dfed4dfed75b01ffaf34e554b7d5c259a07852bb",
       "byte_custody": false,
-      "notes": "Buyer-issued clarifications, including teaming, past performance, AI-use approval, page limits, staffing, insurance, and remote/on-site expectations."
+      "notes": "Provider artifact 10457019683 yielded this observed SHA-256, but the current repository/verifier does not materialize or consume the artifact bytes; HASH_KNOWN_ONLY, byte custody remains unproven. Buyer-issued clarifications remain controlling."
     }
   ]
 }
