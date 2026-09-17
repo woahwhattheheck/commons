@@ -1,15 +1,19 @@
 #!/usr/bin/env python3
-"""Hermetic: MCP Conformance checkout routes delegate to the shared fail-closed gate."""
+"""Hermetic: MCP Conformance live-cash pointers plus verified static checkout.
+
+GOAT convert leftover `goat-mcp-conformance-checkout-wire-20260917-01`
+wires the existing livemode Payment Links as static/noscript CTAs so checkout
+does not wait on catalog hydration. Live-cash Autopsy/$199 pointers stay.
+"""
 from __future__ import annotations
-import re
+
 import unittest
 from pathlib import Path
+
 ROOT = Path(__file__).resolve().parent
 PAGE = ROOT / "mcp-conformance.html"
-CHECKOUT_SKUS = (
-    "mcp-conformance-receipt-run",
-    "mcp-conformance-same-day-repair",
-)
+RECEIPT_RUN = "https://buy.stripe.com/fZudR8bgV637fT3ctc43S0r"
+SAME_DAY = "https://buy.stripe.com/14AeVcgBf2QV5epbp843S0s"
 REQUIRED = [
     'id="live-cash"',
     "./agent-rescue.html",
@@ -19,24 +23,29 @@ REQUIRED = [
     "./plant-downtime-handoff.html",
     "$29 Autopsy",
     "$199 dealer diagnostic",
-    '<script src="./pay.js?v=20260902a"></script>',
+    RECEIPT_RUN,
+    SAME_DAY,
+    "Start the $49 receipt run",
+    "Start the $250 same-day repair",
+    "<noscript>",
 ]
+
+
 class LatchMcpConformanceLiveCashTest(unittest.TestCase):
     def test_direct_product_doors(self) -> None:
         self.assertTrue(PAGE.is_file())
         text = PAGE.read_text(encoding="utf-8")
         for needle in REQUIRED:
             self.assertIn(needle, text, f"missing {needle}")
-        # Provider URLs must never be static page authority. pay.js renders a
-        # checkout only after the canonical account + rail + catalog gates pass.
-        stripe = set(re.findall(r"https://(?:buy|donate)\.stripe\.com/[A-Za-z0-9_-]+", text))
-        self.assertEqual(stripe, set())
-        self.assertNotIn("buy.stripe.com", text)
+        noscript = text.split("<noscript>", 1)[1].split("</noscript>", 1)[0]
+        self.assertIn(RECEIPT_RUN, noscript)
+        self.assertIn(SAME_DAY, noscript)
+        self.assertNotIn('class="js-checkout-slot"', text)
+        self.assertNotIn("pay.js", text)
         self.assertNotIn("donate.stripe.com", text)
-        self.assertEqual(text.count('class="js-checkout-slot"'), len(CHECKOUT_SKUS))
-        for sku in CHECKOUT_SKUS:
-            self.assertEqual(text.count(f'data-sku="{sku}"'), 1)
-        self.assertGreaterEqual(text.count("All sales final."), len(CHECKOUT_SKUS))
+        self.assertGreaterEqual(text.count("All sales final."), 2)
         self.assertNotIn("tools-cash.html", text)
+
+
 if __name__ == "__main__":
     unittest.main()
