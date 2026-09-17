@@ -32,10 +32,7 @@ class NhdesLims2026093CarrierTests(unittest.TestCase):
         receipt = carrier.build_receipt(self.source, self.candidate)
         carrier.verify_receipt(receipt, self.source, self.candidate)
         self.assertEqual(receipt["prime_posture"], "HOLD_RAW_PACKET_AND_EXTERNAL_PRIME_EVIDENCE")
-        self.assertEqual(
-            receipt["partner_conversion_posture"],
-            "HOLD_ACTIVE_ORG_COLLISION_PENDING_MUSE",
-        )
+        self.assertEqual(receipt["partner_conversion_posture"], "HOLD_ACTIVE_ORG_COLLISION_PENDING_MUSE")
         self.assertIn("ACTIVE_ORG_ROUTE_COLLISION_PENDING_MUSE", receipt["runtime_gate"]["holds"])
         self.assertEqual(receipt["candidate"]["muse_resolution"], "PENDING")
         self.assertEqual(receipt["money_state"], "NO_ACCEPTANCE_NO_RECEIVABLE_NO_REVENUE")
@@ -141,6 +138,50 @@ class NhdesLims2026093CarrierTests(unittest.TestCase):
         forged_candidate["current_collision"]["observed_at"] = "2026-09-17T00:38:55"
         with self.assertRaises(carrier.CarrierError):
             carrier.validate_candidate(forged_candidate)
+
+    def test_public_authority_mapping_is_immutable(self) -> None:
+        with self.assertRaises(TypeError):
+            carrier.AUTHORITY["partner_contact_authorized_by_carrier"] = True
+
+    def test_production_semantics_ignore_post_import_global_rebinding(self) -> None:
+        baseline = carrier.build_receipt(self.source, self.candidate)
+        originals = {
+            "AUTHORITY": carrier.AUTHORITY,
+            "_now_utc": carrier._now_utc,
+            "evaluate_runtime_state": carrier.evaluate_runtime_state,
+            "_posture_for": carrier._posture_for,
+            "validate_source": carrier.validate_source,
+            "validate_candidate": carrier.validate_candidate,
+            "canonical_json": carrier.canonical_json,
+            "digest": carrier.digest,
+            "MAX_STATE_AGE_SECONDS": carrier.MAX_STATE_AGE_SECONDS,
+            "MAX_CLOCK_SKEW_SECONDS": carrier.MAX_CLOCK_SKEW_SECONDS,
+            "BUYER_TIMEZONE": carrier.BUYER_TIMEZONE,
+        }
+        try:
+            carrier.AUTHORITY = {key: True for key in baseline["authority"]}
+            carrier._now_utc = lambda: datetime(2099, 1, 1, tzinfo=timezone.utc)
+            carrier.evaluate_runtime_state = lambda *args, **kwargs: []
+            carrier._posture_for = lambda holds: "READY_FOR_MUSE_GATED_PARTNER_INQUIRY_ONLY"
+            carrier.validate_source = lambda value: value
+            carrier.validate_candidate = lambda value: value
+            carrier.canonical_json = lambda value: b"forged"
+            carrier.digest = lambda value: "f" * 64
+            carrier.MAX_STATE_AGE_SECONDS = 10**12
+            carrier.MAX_CLOCK_SKEW_SECONDS = 10**12
+            carrier.BUYER_TIMEZONE = "UTC"
+
+            rebuilt = carrier.build_receipt(self.source, self.candidate)
+            self.assertEqual(rebuilt, baseline)
+            self.assertEqual(rebuilt["partner_conversion_posture"], "HOLD_ACTIVE_ORG_COLLISION_PENDING_MUSE")
+            self.assertTrue(all(value is False for value in rebuilt["authority"].values()))
+            self.assertEqual(rebuilt["runtime_gate"]["max_state_age_seconds"], 24 * 60 * 60)
+            self.assertEqual(rebuilt["runtime_gate"]["max_clock_skew_seconds"], 5 * 60)
+            self.assertEqual(rebuilt["runtime_gate"]["buyer_timezone"], "America/New_York")
+            carrier.verify_receipt(baseline, self.source, self.candidate)
+        finally:
+            for name, value in originals.items():
+                setattr(carrier, name, value)
 
     def test_receipt_tamper_fails_recompile_verification(self) -> None:
         receipt = carrier.build_receipt(self.source, self.candidate)
