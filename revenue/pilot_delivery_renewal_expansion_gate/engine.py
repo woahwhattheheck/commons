@@ -183,12 +183,15 @@ def _build_current_api(
     """Build current APIs around one import-generation-owned semantic snapshot.
 
     Current compilation must not resolve mutable module globals for time, validation,
-    decision states, canonicalization, or authority.  The snapshot below gives the
-    normalizer and its common helpers private global dictionaries captured at import,
-    freezes mutable enum sets, and closes current APIs over that generation.  Ordinary
-    module/global rebinding therefore cannot substitute caller-selected current time or
-    semantics.  Direct function/closure surgery remains outside this cooperative
-    in-process boundary.
+    decision states, canonicalization, authority, or trusted container views. The
+    snapshot below gives the normalizer and its common helpers private global
+    dictionaries captured at import, freezes mutable enum sets, and closes current APIs
+    over that generation. Current entrypoints also freeze packet/receipt inputs exactly
+    once to exact built-in plain-JSON containers before any semantic read, so stateful
+    mapping/list subclasses cannot present different views to authentication and
+    recompilation phases. Ordinary module/global rebinding therefore cannot substitute
+    caller-selected current time or semantics. Direct function/closure surgery remains
+    outside this cooperative in-process boundary.
     """
 
     def _clone_function(fn, private_globals):
@@ -225,6 +228,12 @@ def _build_current_api(
     json_dumps = _common.json.dumps
     sha256 = _common.hashlib.sha256
     authority_keys = tuple(_common.authority_flags())
+    builtin_type = type
+    builtin_dict = dict
+    builtin_list = list
+    builtin_str = str
+    builtin_int = int
+    builtin_bool = bool
 
     def _canonical(value: Any) -> bytes:
         return (json_dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n").encode("utf-8")
@@ -234,6 +243,24 @@ def _build_current_api(
 
     def _authority_flags_fn() -> dict[str, bool]:
         return {key: False for key in authority_keys}
+
+    def _freeze_plain_json(value: Any, label: str, depth: int = 0) -> Any:
+        """Copy one exact built-in JSON tree without consulting subclass hooks."""
+        if depth > 64:
+            raise _gate_error(f"{label}: nesting too deep")
+        kind = builtin_type(value)
+        if kind is builtin_dict:
+            frozen: dict[str, Any] = {}
+            for key, item in value.items():
+                if builtin_type(key) is not builtin_str:
+                    raise _gate_error(f"{label}: string object keys required")
+                frozen[key] = _freeze_plain_json(item, f"{label}.{key}", depth + 1)
+            return frozen
+        if kind is builtin_list:
+            return [_freeze_plain_json(item, f"{label}[{index}]", depth + 1) for index, item in enumerate(value)]
+        if value is None or kind is builtin_str or kind is builtin_int or kind is builtin_bool:
+            return value
+        raise _gate_error(f"{label}: exact built-in plain-JSON value required")
 
     def _sealed_compile(packet: dict[str, Any], now: str) -> dict[str, Any]:
         return _compiler(
@@ -253,13 +280,13 @@ def _build_current_api(
         return _datetime_cls.now(_timezone_obj.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
     def compile_current(packet: dict[str, Any]) -> dict[str, Any]:
-        return _sealed_compile(packet, _clock_text())
+        frozen_packet = _freeze_plain_json(packet, "packet")
+        return _sealed_compile(frozen_packet, _clock_text())
 
     def verify_receipt(packet: dict[str, Any], receipt: dict[str, Any]) -> dict[str, Any]:
         """Authenticate exact historical semantics, then re-evaluate at current UTC."""
-        if not isinstance(receipt, dict):
-            raise _gate_error("receipt: object required")
-        supplied = dict(receipt)
+        frozen_packet = _freeze_plain_json(packet, "packet")
+        supplied = _freeze_plain_json(receipt, "receipt")
         claimed = supplied.get("receipt_digest")
         unsigned = dict(supplied)
         unsigned.pop("receipt_digest", None)
@@ -272,17 +299,17 @@ def _build_current_api(
             raise _gate_error("receipt: evaluated_at required")
 
         try:
-            historical = _sealed_compile(packet, evaluated_at)
+            historical = _sealed_compile(frozen_packet, evaluated_at)
         except _gate_error as exc:
             raise _gate_error(f"receipt: historical recompile failed: {exc}") from exc
-        if _canonical(historical) != _canonical(receipt):
+        if _canonical(historical) != _canonical(supplied):
             raise _gate_error("receipt: semantic mismatch")
 
         current_now = _clock_text()
         if common_globals["_dt"](evaluated_at) > common_globals["_dt"](current_now):
             raise _gate_error("receipt: evaluated_at is in the future")
         try:
-            current = _sealed_compile(packet, current_now)
+            current = _sealed_compile(frozen_packet, current_now)
         except _gate_error as exc:
             return {
                 "integrity_valid": True,
