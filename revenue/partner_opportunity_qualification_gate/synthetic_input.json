@@ -6,6 +6,7 @@
       "label": "Active SAM",
       "phase": "PRE_OUTREACH",
       "requirement": "Partner must evidence active SAM registration",
+      "required_evidence_kind": "PARTNER_EVIDENCE",
       "source_refs": [
         {
           "source_id": "rfp",
@@ -18,6 +19,7 @@
       "label": "Three references",
       "phase": "PRE_SUBMISSION",
       "requirement": "Three recent references required",
+      "required_evidence_kind": "PARTNER_EVIDENCE",
       "source_refs": [
         {
           "source_id": "rfp",
