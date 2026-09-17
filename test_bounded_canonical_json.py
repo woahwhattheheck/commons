@@ -91,6 +91,20 @@ class BoundedCanonicalJsonTests(unittest.TestCase):
         limits = Limits(max_depth=10, max_nodes=3, max_bytes=1024)
         self.assert_code("too_complex", canonical_bytes, [1, 2, 3], limits=limits)
 
+    def test_dict_cardinality_is_fenced_before_snapshot_work(self):
+        limits = Limits(max_depth=10, max_nodes=4, max_bytes=1024)
+        with mock.patch.object(
+            core.json,
+            "dumps",
+            side_effect=AssertionError("serializer must not run"),
+        ):
+            self.assert_code(
+                "too_complex",
+                canonical_bytes,
+                {"a": 1, "b": 2},
+                limits=limits,
+            )
+
     def test_single_huge_scalar_is_rejected_before_serializer(self):
         limits = Limits(max_depth=10, max_nodes=100, max_bytes=64)
         value = {"x": "A" * 100}
@@ -111,6 +125,21 @@ class BoundedCanonicalJsonTests(unittest.TestCase):
             side_effect=AssertionError("serializer must not run"),
         ):
             self.assert_code("too_large", canonical_bytes, value, limits=limits)
+
+    def test_serializer_reads_detached_snapshot_not_caller_container(self):
+        source = {"x": [1]}
+        real_dumps = core.json.dumps
+
+        def inspect_and_mutate(value, *args, **kwargs):
+            self.assertIsNot(value, source)
+            self.assertIsNot(value["x"], source["x"])
+            source["x"].append(2)
+            return real_dumps(value, *args, **kwargs)
+
+        with mock.patch.object(core.json, "dumps", side_effect=inspect_and_mutate):
+            payload = canonical_bytes(source)
+        self.assertEqual(b'{"x":[1]}', payload)
+        self.assertEqual({"x": [1, 2]}, source)
 
     def test_strict_text_round_trip_uses_same_direct_object_budget(self):
         limits = Limits(max_depth=10, max_nodes=100, max_bytes=64)
