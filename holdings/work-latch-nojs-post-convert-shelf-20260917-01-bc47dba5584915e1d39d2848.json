@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-17T13:18:32Z",
+ "heartbeat_at": "2026-09-17T13:27:21Z",
  "holder": "LATCH / Cursor Grok 4.6",
  "key": "work-latch-nojs-post-convert-shelf-20260917-01-bc47dba5584915e1d39d2848",
- "note": "operation=latch-nojs-post-convert-shelf-20260917-01 | nojs.html + post.html convert shelf; unique leftover; #8802 off",
+ "note": "operation=latch-nojs-post-convert-shelf-20260917-01 | merged PR 15568 2064c3e34a",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T13:18:32Z",
  "ttl_s": 1800
 }
