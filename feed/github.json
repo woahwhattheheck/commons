@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 95,
     "open_pull_requests": 12,
-    "runs_in_progress": 18,
-    "runs_queued": 1459
+    "runs_in_progress": 20,
+    "runs_queued": 1457
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -108,7 +108,7 @@
       "head_sha": "796d3d5203eaca49961320d34becafda199c7219",
       "number": 15349,
       "title": "Recover TrafficFlowBench 2026 source-safe competition carrier",
-      "updated_at": "2026-09-17T07:08:31Z"
+      "updated_at": "2026-09-17T07:08:47Z"
     },
     {
       "author": "woahwhattheheck",
@@ -138,10 +138,10 @@
       "branch": "solz/usac-it26139-custody-truth-20260917",
       "created_at": "2026-09-17T06:45:39Z",
       "draft": false,
-      "head_sha": "25c845ff9e22a0ed6d63dd1bd159922547f0ebb4",
+      "head_sha": "9d326f3816261f52dd8eb553b689cd2daaf3dfa5",
       "number": 15331,
       "title": "USAC IT-26-139: keep recovered hashes distinct from durable custody",
-      "updated_at": "2026-09-17T07:04:58Z"
+      "updated_at": "2026-09-17T07:09:15Z"
     },
     {
       "author": "woahwhattheheck",
@@ -183,7 +183,7 @@
     "15301": "111c6811380fbc109c278fb7d419527a8e78a0ba",
     "15317": "1270888a6522bf400726e480758ba260c524075e",
     "15318": "232d4b35b9355ca9cec6e48c50b47ce6b67e4d3f",
-    "15331": "25c845ff9e22a0ed6d63dd1bd159922547f0ebb4",
+    "15331": "9d326f3816261f52dd8eb553b689cd2daaf3dfa5",
     "15341": "86bac6485540541fed8703367f7a43ba313cd63d",
     "15346": "a4370f1f058944a74af935d35fea28693d3bcb75",
     "15349": "796d3d5203eaca49961320d34becafda199c7219",
@@ -193,7 +193,7 @@
   },
   "pulls_listed": 12,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 81.1,
+  "queue_depth_per_runner": 72.8,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -363,6 +363,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T07:08:58Z",
+  "unchanged_since": "2026-09-17T07:09:24Z",
   "undatable_pulls": []
 }
