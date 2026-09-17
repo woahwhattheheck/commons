@@ -64,6 +64,9 @@ TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
         "https://buy.stripe.com/3cIfZgacRezDfT39h043S06",
     }
 )
+OWNER_NOW_CONVERT_SHELF_LIVE_CHECKOUTS = TIPS_CONVERT_SHELF_LIVE_CHECKOUTS | {
+    "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
+}
 OWNER_ACTION_HOSTS = {
     "dashboard.stripe.com",
     "www.paypal.com",
@@ -86,6 +89,7 @@ PUBLIC_HTML = (
     "commerce.html",
     "payment-capability.html",
     "reply-to-revenue.html",
+    "owner-now-revenue.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
@@ -360,12 +364,20 @@ def live_stripe_checkout_urls(html: str) -> set[str]:
 
 
 def html_stripe_url_errors(name: str, text: str) -> list[str]:
-    """tips convert shelf reuses existing tip-shelf Stripe URLs; pay/commerce/payment-capability are exact live buys."""
+    """tips/owner-now convert shelves reuse existing Stripe URLs; pay/commerce/payment-capability are exact live buys."""
     if name == "tips.html":
         found = live_stripe_checkout_urls(text)
         if found != TIPS_CONVERT_SHELF_LIVE_CHECKOUTS:
             return [
                 "%s convert shelf must reuse exactly the existing tip-shelf Stripe URLs"
+                % name
+            ]
+        return []
+    if name == "owner-now-revenue.html":
+        found = live_stripe_checkout_urls(text)
+        if found != OWNER_NOW_CONVERT_SHELF_LIVE_CHECKOUTS:
+            return [
+                "%s convert shelf must reuse exactly the existing owner-now Stripe URLs"
                 % name
             ]
         return []
@@ -401,6 +413,7 @@ def html_surface_errors(root: str) -> list[str]:
             "tips.html",
             "commerce.html",
             "payment-capability.html",
+            "owner-now-revenue.html",
         ):
             errors.append("%s must keep the provider-neutral contact fallback" % name)
     text = _read(root, "payment-capability.html")

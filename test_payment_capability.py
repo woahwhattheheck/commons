@@ -135,6 +135,7 @@ class PaymentCapability(unittest.TestCase):
             "tips.html",
             "commerce.html",
             "payment-capability.html",
+            "owner-now-revenue.html",
         ):
             html = (ROOT / name).read_text(encoding="utf-8")
             self.assertNotRegex(html, r"paypal\.me/")
@@ -144,6 +145,7 @@ class PaymentCapability(unittest.TestCase):
                 "commerce.html",
                 "payment-capability.html",
                 "tips.html",
+                "owner-now-revenue.html",
             ):
                 continue
             self.assertNotRegex(html, stripe_url)
