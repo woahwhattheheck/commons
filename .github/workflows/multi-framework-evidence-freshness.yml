@@ -1,0 +1,60 @@
+name: multi-framework-evidence-freshness
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'revenue/multi_framework_evidence_freshness/**'
+      - 'tests/test_multi_framework_evidence_freshness*.py'
+      - '.github/workflows/multi-framework-evidence-freshness.yml'
+  pull_request:
+    paths:
+      - 'revenue/multi_framework_evidence_freshness/**'
+      - 'tests/test_multi_framework_evidence_freshness*.py'
+      - '.github/workflows/multi-framework-evidence-freshness.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: "${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}"
+  cancel-in-progress: true
+
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out exact event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Compile gate and custody tests
+        run: |
+          python -m py_compile \
+            revenue/multi_framework_evidence_freshness/__init__.py \
+            revenue/multi_framework_evidence_freshness/gate.py \
+            revenue/multi_framework_evidence_freshness/custody.py \
+            revenue/multi_framework_evidence_freshness/golden.py \
+            revenue/multi_framework_evidence_freshness/cli.py \
+            tests/test_multi_framework_evidence_freshness.py \
+            tests/test_multi_framework_evidence_freshness_custody.py
+
+      - name: Normal Python gate battery
+        run: python -B -m unittest discover -s tests -p 'test_multi_framework_evidence_freshness*.py' -v
+
+      - name: Optimized Python gate battery
+        run: python -O -B -m unittest discover -s tests -p 'test_multi_framework_evidence_freshness*.py' -v
+
+      - name: Diff whitespace guard
+        run: git diff --check "${{ github.event.pull_request.base.sha || 'HEAD^' }}" HEAD -- revenue/multi_framework_evidence_freshness tests/test_multi_framework_evidence_freshness.py tests/test_multi_framework_evidence_freshness_custody.py .github/workflows/multi-framework-evidence-freshness.yml
