@@ -18,6 +18,7 @@ verify_receipt = gate.verify_receipt
 
 PACKAGE = Path(gate.__file__).resolve().parent
 RETAINED = PACKAGE / "retained_evidence"
+_OFFICIAL_CREATED: list[Path] = []
 IDS = (
     "submission_mechanics", "eligibility", "security_compliance", "past_performance",
     "insurance_legal", "pricing", "integration_engineering", "validation_evidence",
@@ -61,18 +62,66 @@ def row(reqs, rid):
     return next(item for item in reqs["requirements"] if item["id"] == rid)
 
 
-def official(ledger, deadline="2026-10-14T11:00:00-04:00", teaming=True):
+def _admit_test_leaf(path: Path, sha: str) -> None:
+    current = dict(gate.SOURCE_OWNED_RETAINED_EVIDENCE)
+    current[path.name] = sha
+    gate.SOURCE_OWNED_RETAINED_EVIDENCE = MappingProxyType(current)
+
+
+def official(
+    ledger,
+    deadline="2026-10-14T11:00:00-04:00",
+    teaming=True,
+    *,
+    source_id="packet",
+    authority="OFFICIAL_CONTROLLING_PACKET",
+):
+    """Create a genuinely retained/pinned official fixture for positive tests.
+
+    This is trusted-process test setup that simulates the source-code admission a
+    real official artifact would require. Production's source-owned map is empty.
+    """
     out = copy.deepcopy(ledger)
     claims = {"teaming_rules": teaming, "submission_mechanics": "official portal"}
     controls = ["teaming_rules", "submission_mechanics"]
     if deadline is not None:
         claims["response_deadline"] = deadline
         controls.append("response_deadline")
+    url = f"https://hamiltoncountyohio.gob2g.com/{source_id}"
+    observed_at = "2026-09-18T00:00:00Z"
+    record = {
+        "schema": gate.OFFICIAL_ARTIFACT_SCHEMA,
+        "source_id": source_id,
+        "opportunity_id": gate.OPPORTUNITY_ID,
+        "authority": authority,
+        "url": url,
+        "observed_at": observed_at,
+        "claims": claims,
+        "controls": controls,
+    }
+    RETAINED.mkdir(exist_ok=True)
+    with tempfile.NamedTemporaryFile(
+        mode="wb", dir=RETAINED, prefix=f"test-{source_id}-", suffix=".json", delete=False
+    ) as fh:
+        path = Path(fh.name)
+        raw = gate.canonical_bytes(record) + b"\n"
+        fh.write(raw)
+    _OFFICIAL_CREATED.append(path)
+    sha = hashlib.sha256(raw).hexdigest()
+    _admit_test_leaf(path, sha)
     out["sources"].append({
-        "id": "packet", "authority": "OFFICIAL_CONTROLLING_PACKET", "retrieved": True,
-        "content_sha256": "b" * 64,
-        "url": "https://hamiltoncountyohio.gob2g.com/packet",
-        "observed_at": "2026-09-18T00:00:00Z", "claims": claims, "controls": controls,
+        "id": source_id,
+        "authority": authority,
+        "retrieved": True,
+        "content_sha256": sha,
+        "retained_artifact": {
+            "path": f"retained_evidence/{path.name}",
+            "sha256": sha,
+        },
+        "url": url,
+        "observed_at": observed_at,
+        "claims": claims,
+        "controls": controls,
     })
     return out
 
@@ -82,14 +131,16 @@ class HamiltonPursuitGateTests(unittest.TestCase):
         self._original_index = gate.SOURCE_OWNED_RETAINED_EVIDENCE
         self.created: list[Path] = []
         self.pins: dict[str, str] = {}
+        _OFFICIAL_CREATED.clear()
 
     def tearDown(self):
         gate.SOURCE_OWNED_RETAINED_EVIDENCE = self._original_index
-        for path in self.created:
+        for path in self.created + list(_OFFICIAL_CREATED):
             try:
                 path.unlink()
             except FileNotFoundError:
                 pass
+        _OFFICIAL_CREATED.clear()
 
     def _retained(self, source_id, rid, evidence_class, *, facts=None, refs=None, pin=True):
         record = {
@@ -114,9 +165,7 @@ class HamiltonPursuitGateTests(unittest.TestCase):
         sha = hashlib.sha256(raw).hexdigest()
         if pin:
             self.pins[path.name] = sha
-            # Simulate the source-code change required to admit future reviewed evidence.
-            # Production SOURCE_OWNED_RETAINED_EVIDENCE is intentionally empty.
-            gate.SOURCE_OWNED_RETAINED_EVIDENCE = MappingProxyType(dict(self.pins))
+            _admit_test_leaf(path, sha)
         return path, sha
 
     def _bind(
@@ -187,16 +236,47 @@ class HamiltonPursuitGateTests(unittest.TestCase):
             now="2026-09-17T07:05:00Z",
         ))
 
+    def test_fabricated_official_row_cannot_mint_buyer_control_or_no_bid(self):
+        ledger = copy.deepcopy(BASE_LEDGER)
+        ledger["sources"].append({
+            "id": "fake-packet",
+            "authority": "OFFICIAL_CONTROLLING_PACKET",
+            "retrieved": True,
+            "content_sha256": "b" * 64,
+            "url": "https://example.invalid/fake-packet",
+            "observed_at": "2026-09-17T06:00:00Z",
+            "claims": {
+                "response_deadline": "2026-09-17T06:30:00Z",
+                "submission_mechanics": "fake portal",
+                "teaming_rules": True,
+            },
+            "controls": ["response_deadline", "submission_mechanics", "teaming_rules"],
+        })
+        with self.assertRaisesRegex(GateError, "retained_artifact"):
+            compile_pursuit(
+                ledger, BASE_REQS, BASE_EVIDENCE, now="2026-09-17T07:05:00Z"
+            )
+
+    def test_official_projection_must_exactly_match_retained_bytes(self):
+        ledger = official(BASE_LEDGER)
+        packet = next(item for item in ledger["sources"] if item["id"] == "packet")
+        packet["claims"]["response_deadline"] = "2026-09-17T01:00:00Z"
+        with self.assertRaisesRegex(GateError, "exactly match retained official artifact"):
+            compile_pursuit(
+                ledger, BASE_REQS, BASE_EVIDENCE, now="2026-09-18T01:00:00Z"
+            )
+
     def test_requirement_text_cannot_mint_owner_prime_satisfaction(self):
         for rid in ("eligibility", "security_compliance", "insurance_legal", "pricing"):
             with self.subTest(rid=rid):
                 ledger = official(BASE_LEDGER)
                 reqs = copy.deepcopy(BASE_REQS)
                 manifest = copy.deepcopy(BASE_EVIDENCE)
+                source = next(item for item in ledger["sources"] if item["id"] == "packet")
                 manifest["evidence"].append({
                     "id": f"official-{rid}", "opportunity_id": gate.OPPORTUNITY_ID,
                     "requirement_id": rid, "evidence_class": "OFFICIAL_REQUIREMENT",
-                    "content_sha256": "b" * 64, "source_id": "packet",
+                    "content_sha256": source["content_sha256"], "source_id": "packet",
                 })
                 row(reqs, rid).update({"state": "PROVEN", "evidence": [f"official-{rid}"]})
                 with self.assertRaisesRegex(GateError, "evidence_class not admissible"):
@@ -266,7 +346,7 @@ class HamiltonPursuitGateTests(unittest.TestCase):
             try:
                 os.link(outside, alias)
                 self.pins[alias.name] = sha
-                gate.SOURCE_OWNED_RETAINED_EVIDENCE = MappingProxyType(dict(self.pins))
+                _admit_test_leaf(alias, sha)
                 ledger = official(BASE_LEDGER)
                 reqs = copy.deepcopy(BASE_REQS)
                 manifest = copy.deepcopy(BASE_EVIDENCE)
@@ -358,6 +438,7 @@ class HamiltonPursuitGateTests(unittest.TestCase):
             ledger, BASE_REQS, BASE_EVIDENCE, now="2026-09-17T07:05:00Z"
         )
         self.assertEqual(packet["decision"], "NO_BID")
+        self.assertIn("OFFICIAL_RESPONSE_DEADLINE_PASSED", packet["reasons"])
 
     def test_rehashed_forged_prime_and_revenue_fail_semantic_verify(self):
         ledger, reqs, manifest = self._team_inputs()
@@ -409,10 +490,12 @@ class HamiltonPursuitGateTests(unittest.TestCase):
 
     def test_conflicting_official_authority_fails(self):
         ledger = official(BASE_LEDGER)
-        other = copy.deepcopy(ledger["sources"][-1])
-        other.update({"id": "addendum", "authority": "OFFICIAL_ADDENDUM", "content_sha256": "d" * 64})
-        other["claims"]["response_deadline"] = "2026-10-15T11:00:00-04:00"
-        ledger["sources"].append(other)
+        ledger = official(
+            ledger,
+            deadline="2026-10-15T11:00:00-04:00",
+            source_id="addendum",
+            authority="OFFICIAL_ADDENDUM",
+        )
         with self.assertRaisesRegex(GateError, "conflicting official authority"):
             compile_pursuit(ledger, BASE_REQS, BASE_EVIDENCE, now="2026-09-18T01:00:00Z")
 
