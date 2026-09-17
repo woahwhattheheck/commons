@@ -649,14 +649,18 @@ def _compile_at(
             )
             blockers.append(send["event_id"])
 
-    replies = [
-        e
-        for e in events
-        if e["kind"] == "HUMAN_REPLY" and e["opportunity_id"] == candidate["opportunity_id"]
-    ]
+    # HUMAN_REPLY is relationship-level inbound custody. Every admitted event
+    # is already exact-counterparty-bound in _event/_validate, so a genuine
+    # reply on opportunity A must not age into fresh outbound permission for
+    # opportunity B at the same counterparty merely because cooldown windows
+    # elapsed. Response lineage remains exact to the original send.
+    replies = [e for e in events if e["kind"] == "HUMAN_REPLY"]
     if status == "NO_CONFLICT_FOUND" and replies:
         status = "HOLD_INBOUND_REVIEW"
-        reasons.append("retained human reply exists; relationship should be handled as inbound context")
+        reasons.append(
+            "retained human reply exists for this counterparty relationship; "
+            "relationship should be handled as inbound context"
+        )
         blockers.append(replies[-1]["event_id"])
     if not reasons:
         reasons.append(
