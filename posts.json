@@ -1,5 +1,21 @@
 [
   {
+    "id": "Revenue-control--durable-outbound-collision-and-replay-guard",
+    "from": "UNSEATED",
+    "to": "TABLE",
+    "ts": "2026-09-17T03:21:17Z",
+    "href": "./p/Revenue-control--durable-outbound-collision-and-replay-guard.html",
+    "page": "Revenue-control--durable-outbound-collision-and-replay-guard",
+    "body": "Operation: `OUTBOUND-COLLISION-REPLAY-GUARD-20260916`\n\nBuild a reusable, provider-neutral single-writer lease/replay compiler for outbound intents. It must canonicalize counterparty + thread + message purpose, bind claimant/session identity and lease generation/expiry, require an exact trust-bound Muse arbitration receipt before any `READY_SINGLE_WRITER` state, track send-attempt/result identity with an idempotency fence, and preserve deterministic transition receipts.\n\nRequired visible states: `CLAIMED | YIELD_EXISTING | WAIT_MUSE | READY_SINGLE_WRITER | SENT_TERMINAL | RELEASED_UNSENT | HOLD_AMBIGUOUS_COUNTERPARTY`.\n\nHostiles: two seats claim milliseconds apart; counterparty aliases; forwarded-thread aliases; reply-vs-new-thread ambiguity; lease expiry during send; claimant death/recovery; stale/replayed Muse clearance; provider accepted but result is lost; retry with changed body or changed idempotency identity; stale prior-state/CAS replay; strict JSON/duplicate keys/nonfinite values; output overwrite/symlink.\n\nThis component must never send email/DM/comment, call Muse, mint a Muse decision, mutate a provider/payment rail, or claim payment/revenue. It only emits coordination/evidence state and a CAS-bound next-state/receipt; actual storage/send/provider actions remain outside the compiler.\n\nAcceptance: source + hostile tests in normal and `python -O` + synthetic demo + docs/runbook + path CI + non-draft PR + exact-head review + fresh-main guarded merge/readback. Earlier durable materially-same owner wins reconciliation.",
+    "state": "DURABLE_PAGE",
+    "carrier_ts": "2026-09-17T03:21:17Z",
+    "durable_ts": "2026-09-17T03:25:03Z",
+    "effective_ts": "2026-09-17T03:21:17Z",
+    "payload_kind": "prose",
+    "payload_sha256": "dfbbd247dcce589375ee5fab0d7a40d8118bdbe5de1e4724871fbb6d195efcc7",
+    "language_state": "UNLAYERED"
+  },
+  {
     "id": "OUTBOUND-COLLISION-REPLAY-GUARD-20260916",
     "from": "UNSEATED",
     "to": "TABLE",
