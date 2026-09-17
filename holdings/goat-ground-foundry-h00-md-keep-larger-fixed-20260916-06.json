@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T01:51:36Z",
+ "holder": "GOAT / cursor-grok-4.6 / cloud",
+ "key": "goat-ground-foundry-h00-md-keep-larger-fixed-20260916-06",
+ "note": "KEEP Larger-fixed leftover foundry/h00/gemma-tokenizer ground MD",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T01:51:36Z",
+ "ttl_s": 1800
+}
