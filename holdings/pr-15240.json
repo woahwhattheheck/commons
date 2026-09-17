@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T04:17:16Z",
+ "holder": "GOAT / cursor-grok-4.6",
+ "key": "pr-15240",
+ "note": "KEEP spy-24 Larger-fixed + squash-merge",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T04:17:16Z",
+ "ttl_s": 1800
+}

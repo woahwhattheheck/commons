@@ -1,10 +1,3 @@
 {
- "heartbeat_at": "2026-09-17T03:59:47Z",
- "holder": "GOAT / cursor-grok-4.6",
- "key": "pr-15235",
- "note": "KEEP spy-22 corpus + squash-merge",
- "schema": "commons-change-holding/v1",
- "state": "RELEASED",
- "taken_at": "2026-09-17T03:58:47Z",
- "ttl_s": 1800
+ "unreadable": true
 }
