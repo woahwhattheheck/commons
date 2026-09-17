@@ -17,13 +17,13 @@ import re
 from pathlib import Path
 from typing import Any, Mapping, Sequence
 
-SCHEMA = "relationship-contact-guard/v2"
-ARTIFACT_SCHEMA = "relationship-contact-guard-artifact/v2"
+SCHEMA = "relationship-contact-guard/v3"
+ARTIFACT_SCHEMA = "relationship-contact-guard-artifact/v3"
+VERIFICATION_SCHEMA = "relationship-contact-guard-verification/v1"
 MAX_JSON_BYTES = 1_048_576
 MAX_EVENTS = 10_000
 MIN_RELATIONSHIP_COOLDOWN_SECONDS = 6 * 60 * 60
 MIN_PURSUIT_COOLDOWN_SECONDS = 72 * 60 * 60
-VERIFY_MAX_AGE_SECONDS = 5 * 60
 IDENT_RE = re.compile(r"^[a-z0-9][a-z0-9._@:+/\-]{0,254}$")
 OPAQUE_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:@/+=\-]{0,511}$")
 HEX64_RE = re.compile(r"^[0-9a-f]{64}$")
@@ -264,6 +264,14 @@ def _bind_response(event: Mapping[str, Any], send: Mapping[str, Any], label: str
         raise GuardError(f"{label}: response/bounce thread does not match referenced send")
 
 
+def _semantic_event_key(event: Mapping[str, Any]) -> tuple[tuple[str, Any], ...]:
+    # event_id and provider_message_id are source identities, not semantic
+    # evidence identity. Reminting either must not turn one retained fact into
+    # two facts. provider_thread_id and all lineage/scope fields remain bound.
+    excluded = {"event_id", "provider_message_id"}
+    return tuple((key, event[key]) for key in sorted(event) if key not in excluded)
+
+
 def _validate(packet: Mapping[str, Any], now) -> tuple[dict[str, Any], list[dict[str, Any]]]:
     _keys(packet, {"candidate", "events"}, {"candidate", "events"}, "packet")
     if type(packet["candidate"]) is not dict or type(packet["events"]) is not list:
@@ -275,6 +283,7 @@ def _validate(packet: Mapping[str, Any], now) -> tuple[dict[str, Any], list[dict
 
     seen_event: set[str] = set()
     seen_provider: set[str] = set()
+    seen_semantic: set[tuple[tuple[str, Any], ...]] = set()
     send_by_message: dict[str, dict[str, Any]] = {}
     event_by_id: dict[str, dict[str, Any]] = {}
     last = None
@@ -291,6 +300,11 @@ def _validate(packet: Mapping[str, Any], now) -> tuple[dict[str, Any], list[dict
         if event["event_id"] in seen_event:
             raise GuardError("duplicate event_id")
         seen_event.add(event["event_id"])
+
+        semantic_key = _semantic_event_key(event)
+        if semantic_key in seen_semantic:
+            raise GuardError("duplicate semantic event")
+        seen_semantic.add(semantic_key)
 
         mid = event.get("provider_message_id")
         if mid is not None:
@@ -484,9 +498,9 @@ def _compile_at(frozen: Mapping[str, Any], now, evaluation_mode: str) -> dict[st
             "retained_packet_complete": False,
             "provider_authentication_established_here": False,
             "no_conflict_is_send_permission": False,
-            "evaluation_time_is_process_owned": evaluation_mode == "CURRENT",
-            "verify_replay_establishes_currentness": False,
-            "verification_freshness_window_seconds": VERIFY_MAX_AGE_SECONDS,
+            "evaluation_time_claim": evaluation_mode,
+            "evaluation_time_process_origin_authenticated": False,
+            "retained_replay_establishes_currentness": False,
         },
     }
     core = {"artifact_schema": ARTIFACT_SCHEMA, "decision": decision}
@@ -500,28 +514,33 @@ def compile_guard(packet: Mapping[str, Any]) -> dict[str, Any]:
 
     frozen = _freeze(packet, "packet")
     now = _datetime.now(_timezone.utc).replace(microsecond=0)
-    return _compile_at(frozen, now, "CURRENT")
+    return _compile_at(frozen, now, "PROCESS_UTC_SNAPSHOT")
 
 
-def verify_guard(packet: Mapping[str, Any], artifact: Mapping[str, Any]) -> bool:
+def verify_guard(packet: Mapping[str, Any], artifact: Mapping[str, Any]) -> dict[str, Any]:
+    """Verify retained artifact integrity, then freshly re-evaluate current semantics.
+
+    A semantic receipt is not a signature. The retained artifact cannot prove
+    that its own evaluated_at was originally sampled from process UTC, so this
+    verifier never upgrades that retained clock claim. Current diagnostic
+    status comes only from a fresh process-time evaluation performed here.
+    """
     frozen_artifact = _freeze(artifact, "artifact")
     decision = frozen_artifact.get("decision")
     if type(decision) is not dict:
         raise GuardError("artifact decision missing")
-    if decision.get("evaluation_mode") != "CURRENT":
-        raise GuardError("artifact evaluation_mode must be CURRENT")
+    if decision.get("evaluation_mode") != "PROCESS_UTC_SNAPSHOT":
+        raise GuardError("artifact evaluation_mode must be PROCESS_UTC_SNAPSHOT")
     evaluated_at = _time(decision.get("evaluated_at"), "artifact.decision.evaluated_at")
+
     from datetime import datetime as _datetime, timezone as _timezone
 
     verify_now = _datetime.now(_timezone.utc).replace(microsecond=0)
-    verify_age = int((verify_now - evaluated_at).total_seconds())
-    if verify_age < 0:
+    if evaluated_at > verify_now:
         raise GuardError("artifact evaluated_at is in the future")
-    if verify_age > VERIFY_MAX_AGE_SECONDS:
-        raise GuardError("artifact is too stale for current verification")
 
     frozen_packet = _freeze(packet, "packet")
-    expected = _compile_at(frozen_packet, evaluated_at, "CURRENT")
+    expected = _compile_at(frozen_packet, evaluated_at, "PROCESS_UTC_SNAPSHOT")
     if canonical_bytes(frozen_artifact) != canonical_bytes(expected):
         raise GuardError("artifact does not exactly match deterministic retained-time recompile")
     receipt = frozen_artifact.get("receipt_sha256")
@@ -532,8 +551,33 @@ def verify_guard(packet: Mapping[str, Any], artifact: Mapping[str, Any]) -> bool
         raise GuardError("artifact receipt mismatch")
     if any(frozen_artifact["decision"]["authority"].values()):
         raise GuardError("artifact authority ceiling widened")
-    return True
 
+    fresh = _compile_at(frozen_packet, verify_now, "PROCESS_UTC_VERIFY_FRESH")
+    if any(fresh["decision"]["authority"].values()):
+        raise GuardError("fresh verification authority ceiling widened")
+
+    return {
+        "verification_schema": VERIFICATION_SCHEMA,
+        "retained_integrity_verified": True,
+        "retained_time_process_origin_verified": False,
+        "retained_status_is_current": False,
+        "artifact_evaluated_at": frozen_artifact["decision"]["evaluated_at"],
+        "artifact_status": frozen_artifact["decision"]["status"],
+        "verification_evaluated_at": fresh["decision"]["evaluated_at"],
+        "fresh_status": fresh["decision"]["status"],
+        "fresh_decision": fresh["decision"],
+        "fresh_receipt_sha256": fresh["receipt_sha256"],
+        "authority": {
+            "send_authorized": False,
+            "muse_authorized": False,
+            "provider_send_proven": False,
+            "buyer_acceptance_proven": False,
+            "contract_proven": False,
+            "payment_proven": False,
+            "cash_proven": False,
+            "revenue_recognized": False,
+        },
+    }
 
 def _write(path: Path, value: Any) -> None:
     path.write_text(json.dumps(value, sort_keys=True, indent=2, ensure_ascii=True, allow_nan=False) + "\n", encoding="utf-8")
