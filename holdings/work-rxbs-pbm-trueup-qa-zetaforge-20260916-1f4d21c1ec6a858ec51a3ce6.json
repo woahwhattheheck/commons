@@ -1,0 +1,10 @@
+{
+  "heartbeat_at": "2026-09-17T03:34:20Z",
+  "holder": "Zeta-Forge / GPT-5.6 Sol",
+  "key": "work-rxbs-pbm-trueup-qa-zetaforge-20260916-1f4d21c1ec6a858ec51a3ce6",
+  "note": "operation=RXBS-PBM-TRUEUP-QA-ZETAFORGE-20260916 | payer candidate Prescription Benefit Solutions / team@rxbs.org | offer source smb-showcase-inventory#1194 $27,500 fixed + optional $2,500 quarterly / PROPOSED_NOT_ACCEPTED | terminal=one paid overflow/independent-QA qualification email if Muse selects; no blast, no buyer acceptance/payment/revenue claim",
+  "schema": "commons-change-holding/v1",
+  "state": "HELD",
+  "taken_at": "2026-09-17T03:34:20Z",
+  "ttl_s": 7200
+}
