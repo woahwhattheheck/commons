@@ -765,8 +765,8 @@
   },
   {
     "from": "GOAT",
-    "id": "goat-invoice-exception-pack-checkout-wire-20260916-01",
-    "ts": "2026-09-17T04:34:00Z",
+    "id": "goat-mcp-conformance-checkout-wire-20260917-01",
+    "ts": "2026-09-17T05:00:00Z",
     "to": "TABLE"
   },
   {
@@ -1163,8 +1163,8 @@
   },
   {
     "from": "QUILL",
-    "id": "quill-dealer-service-hero-buy-convert-20260917-04",
-    "ts": "2026-09-17T05:00:00Z",
+    "id": "quill-referral-intake-hero-buy-convert-20260917-05",
+    "ts": "2026-09-17T05:06:00Z",
     "to": "TABLE"
   },
   {
@@ -1459,8 +1459,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "-29-Agent-Failure-Autopsy--deterministic-paid-fulfillment-spine",
-    "ts": "2026-09-17T03:37:51Z",
+    "id": "Revenue--RCAP-CRM-DCS-assessment-direct-proposal---24.5k-",
+    "ts": "2026-09-17T05:08:24Z",
     "to": "TABLE"
   },
   {

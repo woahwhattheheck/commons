@@ -359,7 +359,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14356",
    "base_freshness": {
     "base_sha": "cd7560c64f7cde184a67b73fd218499d34edbf05",
-    "main_sha": "30b79fcdebf750a3085a1a1bf05c295796ec14b8",
+    "main_sha": "2e70be740b34781e052c8a1a46a4db5305630a68",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -375,7 +375,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14395",
    "base_freshness": {
     "base_sha": "b53c8e6bf1aa770ca41c47bb5fa6558cb27ed4e5",
-    "main_sha": "30b79fcdebf750a3085a1a1bf05c295796ec14b8",
+    "main_sha": "2e70be740b34781e052c8a1a46a4db5305630a68",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -391,7 +391,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14650",
    "base_freshness": {
     "base_sha": "a92826aef5a6867069450e9e5b52a78e9c3df740",
-    "main_sha": "30b79fcdebf750a3085a1a1bf05c295796ec14b8",
+    "main_sha": "2e70be740b34781e052c8a1a46a4db5305630a68",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -407,7 +407,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14658",
    "base_freshness": {
     "base_sha": "f7f86ce04a8a1e493cce18508acdd1807ab0cad6",
-    "main_sha": "30b79fcdebf750a3085a1a1bf05c295796ec14b8",
+    "main_sha": "2e70be740b34781e052c8a1a46a4db5305630a68",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -423,23 +423,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14664",
    "base_freshness": {
     "base_sha": "bcc29688e888b38a5ce6ee1feb734b3d0060636f",
-    "main_sha": "30b79fcdebf750a3085a1a1bf05c295796ec14b8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 14669,
-   "author": "woahwhattheheck",
-   "title": "Recover commercial-funnel evidence/time authority on current main",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/14669",
-   "base_freshness": {
-    "base_sha": "38e9cf6d6fdcbd6107d8d4bc52b5638c7e2e5d77",
-    "main_sha": "30b79fcdebf750a3085a1a1bf05c295796ec14b8",
+    "main_sha": "2e70be740b34781e052c8a1a46a4db5305630a68",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -455,7 +439,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14705",
    "base_freshness": {
     "base_sha": "e3170922572a541823049e78b2f0b3d7edeee6f0",
-    "main_sha": "30b79fcdebf750a3085a1a1bf05c295796ec14b8",
+    "main_sha": "2e70be740b34781e052c8a1a46a4db5305630a68",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -471,7 +455,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14770",
    "base_freshness": {
     "base_sha": "76265a2f09c98413d0706e9e472cb04a9163f0c0",
-    "main_sha": "30b79fcdebf750a3085a1a1bf05c295796ec14b8",
+    "main_sha": "2e70be740b34781e052c8a1a46a4db5305630a68",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -487,7 +471,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14871",
    "base_freshness": {
     "base_sha": "25aa0b5418a915ad97fad4dab9599c2868379e23",
-    "main_sha": "30b79fcdebf750a3085a1a1bf05c295796ec14b8",
+    "main_sha": "2e70be740b34781e052c8a1a46a4db5305630a68",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -503,7 +487,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/14873",
    "base_freshness": {
     "base_sha": "41d76a33cae55baee5bbb2b05a0f8a28701eac76",
-    "main_sha": "30b79fcdebf750a3085a1a1bf05c295796ec14b8",
+    "main_sha": "2e70be740b34781e052c8a1a46a4db5305630a68",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -519,7 +503,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15159",
    "base_freshness": {
     "base_sha": "8207cd63ac233b5c964bf0f0915bbc8e78984702",
-    "main_sha": "30b79fcdebf750a3085a1a1bf05c295796ec14b8",
+    "main_sha": "2e70be740b34781e052c8a1a46a4db5305630a68",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -535,7 +519,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15133",
    "base_freshness": {
     "base_sha": "fea8fb7b3d388e319643572508a0d68c7809bcd5",
-    "main_sha": "30b79fcdebf750a3085a1a1bf05c295796ec14b8",
+    "main_sha": "2e70be740b34781e052c8a1a46a4db5305630a68",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -551,7 +535,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15244",
    "base_freshness": {
     "base_sha": "27ad1f2533095b374d06eaf3e8610f49fd261cec",
-    "main_sha": "30b79fcdebf750a3085a1a1bf05c295796ec14b8",
+    "main_sha": "2e70be740b34781e052c8a1a46a4db5305630a68",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -567,7 +551,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15125",
    "base_freshness": {
     "base_sha": "467a5ac5188274ecea7ef38849cfa870dfa69e61",
-    "main_sha": "30b79fcdebf750a3085a1a1bf05c295796ec14b8",
+    "main_sha": "2e70be740b34781e052c8a1a46a4db5305630a68",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -583,7 +567,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15261",
    "base_freshness": {
     "base_sha": "8ca5122f6ac489bd02a4c987e96202a92789a3cc",
-    "main_sha": "30b79fcdebf750a3085a1a1bf05c295796ec14b8",
+    "main_sha": "2e70be740b34781e052c8a1a46a4db5305630a68",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -599,7 +583,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15266",
    "base_freshness": {
     "base_sha": "08485af56317e2a43f8b400f8d32b88e66570c5b",
-    "main_sha": "30b79fcdebf750a3085a1a1bf05c295796ec14b8",
+    "main_sha": "2e70be740b34781e052c8a1a46a4db5305630a68",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -615,23 +599,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15259",
    "base_freshness": {
     "base_sha": "09c541d56557d9e687be0d305e1ac6955d3c5e96",
-    "main_sha": "30b79fcdebf750a3085a1a1bf05c295796ec14b8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 15267,
-   "author": "woahwhattheheck",
-   "title": "Ship GGUF $12k enterprise close and delivery kit",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15267",
-   "base_freshness": {
-    "base_sha": "a1b4afd7d309cd0c3b5402ce4769b2d5cb21fd60",
-    "main_sha": "30b79fcdebf750a3085a1a1bf05c295796ec14b8",
+    "main_sha": "2e70be740b34781e052c8a1a46a4db5305630a68",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -647,23 +615,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15137",
    "base_freshness": {
     "base_sha": "30b79fcdebf750a3085a1a1bf05c295796ec14b8",
-    "main_sha": "30b79fcdebf750a3085a1a1bf05c295796ec14b8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "FRESH"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 15255,
-   "author": "woahwhattheheck",
-   "title": "Revenue: recover NHDES 2026-093 LIMS teaming conversion",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15255",
-   "base_freshness": {
-    "base_sha": "339b5084d7f90e0de6af43b8a464d05c46df8ffa",
-    "main_sha": "30b79fcdebf750a3085a1a1bf05c295796ec14b8",
+    "main_sha": "2e70be740b34781e052c8a1a46a4db5305630a68",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -678,8 +630,8 @@
    "title": "revenue/hive: recover creator-reward desk with pinned-FD SQLite custody",
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15256",
    "base_freshness": {
-    "base_sha": "747550fcd6d95367ed652548a7f05c13648b381c",
-    "main_sha": "30b79fcdebf750a3085a1a1bf05c295796ec14b8",
+    "base_sha": "30d01ba72d9700d84292003ae90f10dcd4d6f5d7",
+    "main_sha": "2e70be740b34781e052c8a1a46a4db5305630a68",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -695,7 +647,55 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15274",
    "base_freshness": {
     "base_sha": "339b5084d7f90e0de6af43b8a464d05c46df8ffa",
-    "main_sha": "30b79fcdebf750a3085a1a1bf05c295796ec14b8",
+    "main_sha": "2e70be740b34781e052c8a1a46a4db5305630a68",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15276,
+   "author": "woahwhattheheck",
+   "title": "GOAT: wire mcp-conformance $49/$250 checkout to existing Payment Links",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15276",
+   "base_freshness": {
+    "base_sha": "f789416729537bdb93b8c0d5f59e817501cc620f",
+    "main_sha": "2e70be740b34781e052c8a1a46a4db5305630a68",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15255,
+   "author": "woahwhattheheck",
+   "title": "Revenue: recover NHDES 2026-093 LIMS teaming conversion",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15255",
+   "base_freshness": {
+    "base_sha": "339b5084d7f90e0de6af43b8a464d05c46df8ffa",
+    "main_sha": "2e70be740b34781e052c8a1a46a4db5305630a68",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15267,
+   "author": "woahwhattheheck",
+   "title": "Ship GGUF $12k enterprise close and delivery kit",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15267",
+   "base_freshness": {
+    "base_sha": "a1b4afd7d309cd0c3b5402ce4769b2d5cb21fd60",
+    "main_sha": "2e70be740b34781e052c8a1a46a4db5305630a68",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
