@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-17T03:16:57Z",
+ "heartbeat_at": "2026-09-17T03:21:29Z",
  "holder": "GOAT / cursor-grok-4.6 / bc-9b592b14",
  "key": "goat-ground-tjlabs-topics-md-keep-larger-fixed-20260916-15",
  "note": "KEEP Larger on TJLABS/TOPICS/TWO_PATHS/TWO_ROOMS/UNBUILT_ITEMS",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T03:16:57Z",
  "ttl_s": 1800
 }
