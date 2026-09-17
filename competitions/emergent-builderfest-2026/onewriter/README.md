@@ -42,7 +42,7 @@ See `state_machine.json`, `acceptance.py`, and `product_spec.md`.
 
 ## Retained evidence identifier contract
 
-`provider_receipt` and `human_evidence_id` are opaque retained-evidence identifiers, not notes. Admission is exact: **trimmed nonempty text, 1–240 characters, no ASCII control characters**. Reject whitespace-only, padded, overlong, or control-character values; do not silently trim them and do not rely on language truthiness. Admitted IDs remain globally single-use in the workspace.
+`provider_receipt` and `human_evidence_id` are opaque retained-evidence identifiers, not notes. Admission is exact: **trimmed nonempty text, 1–240 characters, no ASCII control characters, no Unicode category-C codepoints, no non-category-C Default_Ignorable codepoints, and at least one visible base codepoint outside Unicode C/M/Z categories**. Reject whitespace-only, padded, overlong, control/format/private/unassigned, grapheme-joiner, Hangul-filler, variation-selector, other Default_Ignorable-bearing, or combining-mark-only values; do not silently normalize them. Ordinary combining marks remain admissible when attached to a visible base. Admitted IDs remain globally single-use in the workspace.
 
 ## Synthetic demo
 
@@ -71,7 +71,7 @@ python3 -m unittest test_acceptance.py -v
 python3 -O -m unittest test_acceptance.py -v
 ```
 
-The hostile suite rejects duplicate JSON keys, non-finite numbers, semantic contract remints, authority escalation, duplicate evidence IDs, nonmonotone timestamps, invalid lease types, non-holder outcomes, expired-holder outcomes, provider outcomes on the wrong route, malformed/credentialed/ported domains, whitespace/padded/control evidence IDs, and unknown authority-bearing event fields. It also proves cross-route collision and normalized-domain equivalence.
+The hostile suite rejects duplicate JSON keys, non-finite numbers, semantic contract remints, authority escalation, duplicate evidence IDs, nonmonotone timestamps, invalid lease types, non-holder outcomes, expired-holder outcomes, provider outcomes on the wrong route, malformed/credentialed/ported domains, whitespace/padded/control/category-C/Default_Ignorable/combining-only evidence IDs, and unknown authority-bearing event fields. It also proves ordinary combining evidence attached to a visible base remains admissible, cross-route collision, and normalized-domain equivalence.
 
 ## Emergent build handoff
 
