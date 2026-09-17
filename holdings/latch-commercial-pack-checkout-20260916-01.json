@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-17T04:51:36Z",
+ "heartbeat_at": "2026-09-17T04:55:10Z",
  "holder": "LATCH",
  "key": "latch-commercial-pack-checkout-20260916-01",
  "note": "PR #15248 unique fleet-work-order catalog slot leftover; Wire owns commercial/diagnostic; merge origin/main then SHIP",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T04:51:36Z",
  "ttl_s": 1800
 }
