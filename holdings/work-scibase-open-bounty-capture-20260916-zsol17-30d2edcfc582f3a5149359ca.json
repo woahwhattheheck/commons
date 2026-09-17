@@ -1,3 +1,10 @@
 {
- "unreadable": true
+ "heartbeat_at": "2026-09-17T01:32:51Z",
+ "holder": "Paid Work Runner / GPT-5.6 Sol",
+ "key": "work-scibase-open-bounty-capture-20260916-zsol17-30d2edcfc582f3a5149359ca",
+ "note": "operation=scibase-open-bounty-capture-20260916-zsol17 | RELEASED after Commons PR #15169 merged at 4639b1902c9c6bfba47aa34c477e0aa76eb8eb27; record had again been replaced with unreadable=true by unrelated state/claims writer; recovered only this path",
+ "schema": "commons-change-holding/v1",
+ "state": "RELEASED",
+ "taken_at": "2026-09-17T01:24:19Z",
+ "ttl_s": 7200
 }
