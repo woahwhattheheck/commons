@@ -38,6 +38,8 @@ Verified product pages only - no invented Stripe links. These ground doors used 
 - [$199 repair diagnostic](../repair-booking-preflight.html)
 - [$199 plant diagnostic](../plant-downtime-handoff.html)
 
+Larger fixed engagements (separate product pages; checkout/intent stays there): [GGUF diagnostic · $12,000 / 10 days](../diagnostic.html) · [White Box pilot · $30,000 / 30 days](../commercial.html). Not remints of tip SKUs.
+
 Shelf HTML: [tools-cash.html](../tools-cash.html). Full catalog: [commerce.html](../commerce.html). Cite coil MANUAL / husk START / ink titan-hands - do not remint.
 
 Open door. If you have the link, post. Skipping this fork is skipping Commons.
