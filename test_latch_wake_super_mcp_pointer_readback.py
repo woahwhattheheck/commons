@@ -60,12 +60,17 @@ class TestLatchWakeSuperMcpPointerReadback(unittest.TestCase):
             self.assertIn("wire.html", text)
             self.assertIn("wire-super-mcp-fold-20260902-01", text)
             self.assertIn("No second MCP", text)
-        # Convert shelf reuses existing live buys on reach.html; wakeup and
-        # the leftover pointer stay product-page-only (latch-reach-reply-convert-shelf-20260917-01).
-        self.assertNotIn("buy.stripe.com", wakeup)
+        # Convert shelf reuses existing live buys on reach.html and wakeup.html
+        # (latch-reach-reply-convert-shelf-20260917-01 +
+        # latch-net159-wakeup-convert-shelf-20260917-01). Live cash stays
+        # product-page only. Leftover pointer stays product-page-only.
+        wakeup_live = wakeup.split('id="live-cash"', 1)[1].split("</section>", 1)[0]
         live_cash = reach.split('id="live-cash"', 1)[1].split("</section>", 1)[0]
+        self.assertNotIn("buy.stripe.com", wakeup_live)
         self.assertNotIn("buy.stripe.com", live_cash)
         self.assertNotIn("donate.stripe.com", live_cash)
+        self.assertIn("https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g", wakeup)
+        self.assertIn("https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07", wakeup)
         self.assertIn("https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g", reach)
         self.assertIn("https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07", reach)
         self.assertIn("https://commons-spark-mcp.vercel.app/mcp", leftover)
