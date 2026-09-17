@@ -293,12 +293,15 @@ def verify_terminal_coordination(request: Mapping[str,Any], slack_provider_recei
     try:
         if not slack_provider.verify_provider_evidence(request,slack_provider_receipt) or not verify_request_bound_proof(request,ledger_proof,token=token): return False
         req=_request_facts(request); sp=slack_provider_receipt.get("payload"); lp=ledger_proof.get("payload")
-        if type(sp) is not dict or type(lp) is not dict or sp.get("current_visible_effective_observation")!="SELECTED": return False
+        if type(sp) is not dict or type(lp) is not dict: return False
+        if sp.get("schema_version")!=slack_provider.PROVIDER_SCHEMA or sp.get("authority_mode")!=slack_provider.AUTHORITY_MODE or sp.get("visibility_model")!=slack_provider.VISIBILITY_MODEL: return False
+        if sp.get("current_visible_effective_observation")!="SELECTED": return False
+        if sp.get("deleted_history_authenticated") is not False or sp.get("requester_control_history_authenticated") is not False or sp.get("prior_receipt_ledger_authenticated") is not False or sp.get("terminal_election_authorized") is not False: return False
         if any(sp.get(k)!=req[k] or lp.get(k)!=req[k] for k in req): return False
         for p in (sp,lp):
             if p.get("external_send_authorized") is not False or p.get("side_effects_authorized") is not False or p.get("requires_current_worker_lease_possession") is not True or p.get("requires_fresh_provider_preflight") is not True: return False
         return True
-    except (MuseProviderReceiptLedgerError,KeyError,TypeError,ValueError,OSError): return False
+    except (AttributeError,MuseProviderReceiptLedgerError,KeyError,TypeError,ValueError,OSError): return False
 
 
 def _read(path: str, label: str):
