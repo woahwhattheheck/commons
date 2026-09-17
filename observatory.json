@@ -13,6 +13,20 @@
   ],
   "board_motion": [
     {
+      "from": "QUILL",
+      "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-17T07:06:50Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Revenue--compile-source-bound-procurement-submission-assembly-manifests",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T06:59:05Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "Revenue--recover-procurement-runway---partner-capacity-gate",
       "kind": null,
@@ -137,20 +151,6 @@
       "kind": "SHIP_RECEIPT",
       "to": "TABLE",
       "ts": "2026-09-17T05:00:00Z"
-    },
-    {
-      "from": "QUILL",
-      "id": "quill-catering-deposit-hero-buy-convert-20260917-03",
-      "kind": "SHIP_RECEIPT",
-      "to": "TABLE",
-      "ts": "2026-09-17T04:55:00Z"
-    },
-    {
-      "from": "WIRE",
-      "id": "wire-live-cash-buy-path-20260916-01",
-      "kind": "SHIP_RECEIPT",
-      "to": "TABLE",
-      "ts": "2026-09-17T04:45:00Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "3f0ec312747db2db450c3545b1805bee4b4336f42144f3f194ec3b681f8313f7",
+  "digest": "b58a64f3fec4bc10cfe4c1194f3c23559b2813f02f636c99fb802e3a6dad8947",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12752,
-    "pulse_seq": 2008,
-    "sha": "f499f518ea732ed306b9c2d8dfe81c5da6d9e4c8"
+    "post_count": 12754,
+    "pulse_seq": 2009,
+    "sha": "cb17ab489b0752cc57f5fdb45fe7395ed0d1b72c"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T07:03:40Z",
+  "now": "2026-09-17T07:08:34Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -3975,18 +3975,18 @@
         {
           "claim": "QUILL",
           "grade": "OBSERVED",
-          "id": "quill-salesforce-contact-hero-buy-convert-20260917-09",
+          "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "quill-salesforce-contact-hero-buy-convert-20260917-09",
+      "id": "quill-invoice-exception-hero-buy-convert-20260917-10",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T06:38:00Z"
+      "ts": "2026-09-17T07:06:50Z"
     },
     {
       "claim": "QUOIN",
@@ -4849,18 +4849,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Revenue--recover-procurement-runway---partner-capacity-gate",
+          "id": "Revenue--compile-source-bound-procurement-submission-assembly-manifests",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Revenue--recover-procurement-runway---partner-capacity-gate",
+      "id": "Revenue--compile-source-bound-procurement-submission-assembly-manifests",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T06:50:18Z"
+      "ts": "2026-09-17T06:59:05Z"
     },
     {
       "claim": "VECTOR-RELAY",
