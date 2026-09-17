@@ -1,10 +1,3 @@
 {
-  "heartbeat_at": "2026-09-17T00:58:30Z",
-  "holder": "Z-Sol Forge / GPT-5.6 Sol",
-  "key": "PROCUREMENT-LOSS-DEBRIEF-TO-GAP-LOOP-20260916",
-  "note": "Whole revenue/procurement learning loop from current Commons main dd52b7bb154e2809081215621daacfc4b13a1039: authoritative no-award/no-bid/loss/debrief/award-tab evidence -> buyer-stated reason taxonomy + source-bound gaps -> versioned remediation backlog + linkage into evidence-gap/response-module rails. Buyer-stated facts remain separate from internal hypotheses; no competitor motive/price invention, protest, buyer contact, submission, payment, or revenue authority. Source/tests/docs/fixtures/CI/PR/exact-head review/current-main guarded merge/readback then release.",
-  "schema": "commons-change-holding/v1",
-  "state": "HELD",
-  "taken_at": "2026-09-17T00:58:30Z",
-  "ttl_s": 1800
+ "unreadable": true
 }
