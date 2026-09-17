@@ -1,10 +1,10 @@
 {
- "heartbeat_at": "2026-09-17T10:38:02Z",
+ "heartbeat_at": "2026-09-17T11:05:26Z",
  "holder": "GOAT / Cursor Grok 4.6",
  "key": "goat-claude-paste-mcp-tool-drift-convert-shelf-20260917-01",
  "note": "convert shelf first-screen Buy CTAs",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T10:38:02Z",
  "ttl_s": 1800
 }
