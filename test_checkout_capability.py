@@ -108,6 +108,9 @@ class CheckoutCapability(unittest.TestCase):
         pay_js = (ROOT / "pay.js").read_text(encoding="utf-8")
         self.assertIn("checkout.account_payouts_enabled !== true", js)
         self.assertIn("checkout.account_payouts_enabled !== true", pay_js)
+        self.assertIn('checkout.status !== "ACTIVE_CHARGEABLE"', pay_js)
+        self.assertIn("checkout.link_active !== true", pay_js)
+        self.assertIn("canonicalRailMatches(snapshot, listing)", pay_js)
         self.assertIn("inert_duplicate_urls", pay_js)
         self.assertIn("&amp;", pay_js)
         self.assertIn("&lt;", pay_js)
@@ -115,7 +118,7 @@ class CheckoutCapability(unittest.TestCase):
         self.assertNotIn("sendBeacon", pay_js)
         self.assertNotIn("localStorage", pay_js)
         stripe_url = r"https://(?:buy|donate)\.stripe\.com/"
-        for name in ("pay.html", "tips.html", "commerce.html"):
+        for name in ("pay.html", "tips.html", "commerce.html", "owner-now-revenue.html"):
             html = (ROOT / name).read_text(encoding="utf-8")
             self.assertRegex(html, r"js-checkout-slot")
             self.assertIn("mailto:tokenjunkielabs@gmail.com", html)
