@@ -320,7 +320,7 @@ def compile_packet(document: Any) -> dict[str, Any]:
 
     rows_by_id = {r["segment_id"]: r for r in rows}
     ready.sort(key=_rank_key)
-    cap = 0 if batch_size == 0 else max(1, (batch_size * share_bps + 9_999) // 10_000)
+    cap = 0 if batch_size == 0 else (batch_size * share_bps) // 10_000
     remaining_capacity = {
         s["segment_id"]: min(s["available_candidates"], cap) for s in ready
     }
