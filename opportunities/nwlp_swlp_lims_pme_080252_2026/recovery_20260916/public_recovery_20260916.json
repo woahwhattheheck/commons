@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "operation_id": "NWLP-SWLP-C467704-CONTROLLING-PACK-RECOVERY-20260916",
+  "source_operation_id": "NWLP-SWLP-LIMS-PME-080252-ZVHJ7P4-20260913",
+  "notice_id": "080252-2026",
+  "ocid": "ocds-h6vhtk-06ea51",
+  "atamis_contract_reference": "C467704",
+  "buyer": "Imperial College Healthcare NHS Trust",
+  "programme": "NWLP + SWLP Pathology IT LIMS preliminary market engagement",
+  "observed_at_utc": "2026-09-17T03:16:00Z",
+  "response_deadline_authority": {
+    "controlling_public_text": "Atamis opportunity metadata and notice text both state 1 October 2026 at 12:00 noon UK time.",
+    "deadline": "2026-10-01T12:00:00+01:00",
+    "conflict_note": "A Sell2Wales rendering also exposes an engagement due date of 23:59; do not use the later rendering to extend the buyer's explicit noon instruction."
+  },
+  "public_recovery": {
+    "opportunity_metadata_publicly_readable": true,
+    "questionnaire_referenced_as_attached": true,
+    "questionnaire_bytes_publicly_retrieved": false,
+    "questionnaire_sha256": null,
+    "public_attachment_link_found": false,
+    "authenticated_supplier_portal_or_owner_access_required_for_next_recovery_step": true,
+    "state": "HOLD_PORTAL_ATTACHMENT_AUTH_REQUIRED"
+  },
+  "sources": [
+    {
+      "kind": "buyer_portal_public_metadata",
+      "url": "https://atamis-1928.my.salesforce-sites.com/ProSpend__CS_PublicLandingPage",
+      "observed": "Public Atamis search lists C467704 and the detailed opportunity page reproduces the buyer notice, deadline and instruction to complete the attached questionnaire.",
+      "questionnaire_bytes": "NOT_EXPOSED_IN_PUBLIC_PAGE"
+    },
+    {
+      "kind": "public_procurement_notice_replica",
+      "url": "https://www.gwerthwchigymru.llyw.cymru/search/show/search_view.aspx?ID=AUG651154&catID=",
+      "observed": "Sell2Wales reproduces OCID ocds-h6vhtk-06ea51, buyer, scope, Nigel Weatherhead contact, and explicitly renders Has documents: No.",
+      "questionnaire_bytes": "NOT_PRESENT"
+    },
+    {
+      "kind": "public_fts_replica",
+      "url": "https://d3tenders.com/contract/?ocid=ocds-h6vhtk-06ea51",
+      "observed": "D3 reproduces notice identity, £28m value, scope and Atamis C467704 route; its notice-documents section exposes the preliminary notice only.",
+      "questionnaire_bytes": "NOT_PRESENT"
+    }
+  ],
+  "buyer_contact_public_notice": {
+    "name": "Nigel Weatherhead",
+    "email": "nigel.weatherhead1@nhs.net",
+    "phone": "07867538031",
+    "source": "Sell2Wales replica of the public notice",
+    "contact_authority": "INFORMATION_ONLY_NO_CONTACT_AUTHORITY"
+  },
+  "authority": {
+    "atamis_registration_authorized": false,
+    "atamis_login_authorized": false,
+    "buyer_contact_authorized": false,
+    "questionnaire_submission_authorized": false,
+    "supplier_representation_authorized": false,
+    "commercial_readiness": false,
+    "strongest_state": "HOLD_PORTAL_ATTACHMENT_AUTH_REQUIRED"
+  }
+}
