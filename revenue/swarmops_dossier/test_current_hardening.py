@@ -65,10 +65,10 @@ class CurrentVerifierHardeningTests(unittest.TestCase):
         stale = _forge_snapshot(self.packet, self.policy, old_as_of)
         self.assertEqual(stale["status"], "READY_FOR_OWNER_REVIEW")
 
-        tampered = current_module.compile_current_dossier(
-            _freshen(self.packet, _utc_text(datetime.now(timezone.utc))),
-            self.policy,
+        fresh_packet = _freshen(
+            self.packet, _utc_text(datetime.now(timezone.utc))
         )
+        tampered = current_module.compile_current_dossier(fresh_packet, self.policy)
         tampered["summary"]["DEMONSTRATED"] += 1
 
         with mock.patch.object(
@@ -80,6 +80,12 @@ class CurrentVerifierHardeningTests(unittest.TestCase):
         ), mock.patch.object(
             current_module, "_current_semantics", new=lambda _value: b"constant"
         ), mock.patch.object(
+            current_module, "_freeze_plain_json", new=lambda _value: {}
+        ), mock.patch.object(
+            current_module,
+            "_parse_utc",
+            new=lambda *_args, **_kwargs: datetime(2026, 9, 13, tzinfo=timezone.utc),
+        ), mock.patch.object(
             current_module,
             "_wrap_core",
             new=lambda core, mode: {"schema": "forged", "evaluation_mode": mode},
@@ -89,10 +95,18 @@ class CurrentVerifierHardeningTests(unittest.TestCase):
             )
             self.assertFalse(
                 current_module.verify_current_dossier(
-                    _freshen(self.packet, _utc_text(datetime.now(timezone.utc))),
-                    self.policy,
-                    tampered,
+                    fresh_packet, self.policy, tampered
                 )
+            )
+
+    def test_sealed_freezer_keeps_nested_plain_json_after_module_rebind(self):
+        packet = _freshen(self.packet, _utc_text(datetime.now(timezone.utc)))
+        candidate = current_module.compile_current_dossier(packet, self.policy)
+        with mock.patch.object(
+            current_module, "_freeze_plain_json", new=lambda _value: {}
+        ):
+            self.assertTrue(
+                current_module.verify_current_dossier(packet, self.policy, candidate)
             )
 
     def test_clock_is_sampled_after_candidate_authentication(self):
