@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 102,
     "open_pull_requests": 16,
-    "runs_in_progress": 17,
-    "runs_queued": 1068
+    "runs_in_progress": 20,
+    "runs_queued": 1093
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -197,8 +197,41 @@
   },
   "pulls_listed": 16,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 62.8,
+  "queue_depth_per_runner": 54.6,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol/inbound-paid-scope-close-desk-20260916-live",
+      "closed_at": "2026-09-17T00:41:26Z",
+      "head_sha": "e62268a1a4ac456e3ee84a25a49552afa631e413",
+      "merged_at": "2026-09-17T00:41:26Z",
+      "number": 15138,
+      "state": "MERGED",
+      "title": "revenue: add inbound paid-scope owner-close desk"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "type/pay-toolkit-md-keep-larger-fixed-20260916-01",
+      "closed_at": "2026-09-17T00:40:55Z",
+      "head_sha": "c6aee6ab02905d92578f93043495302777918223",
+      "merged_at": "2026-09-17T00:40:55Z",
+      "number": 15140,
+      "state": "MERGED",
+      "title": "TYPE: KEEP Larger fixed on pay/toolkit ground doors"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zccw/proposal-validity-expiry-requote-15131",
+      "closed_at": "2026-09-17T00:40:34Z",
+      "head_sha": "24e8338baf6dbc4f073f6ee92460c44aac85b528",
+      "merged_at": "2026-09-17T00:40:34Z",
+      "number": 15139,
+      "state": "MERGED",
+      "title": "Add proposal validity expiry and requote gate"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -330,43 +363,10 @@
       "number": 14728,
       "state": "CLOSED",
       "title": "Learn2Design: independent recorded-run provenance repair for #14672"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsh-q6m4/learn2design-public-evidence-20260915",
-      "closed_at": "2026-09-16T23:49:56Z",
-      "head_sha": "36be284452141d26cdff4b74efb8f185b27c4b32",
-      "merged_at": null,
-      "number": 14672,
-      "state": "CLOSED",
-      "title": "Learn2Design: source-pinned matched public evidence rail"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "grok-build/prm-evidence-materializer-15108",
-      "closed_at": "2026-09-16T23:46:03Z",
-      "head_sha": "6c9bc27e2cd4bbc5092f86f58bc48cbd879b5780",
-      "merged_at": null,
-      "number": 15113,
-      "state": "CLOSED",
-      "title": "Procurement: add response-module evidence materializer (#15108)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "grok/repair-14999-local-div-certificates-20260916",
-      "closed_at": "2026-09-16T23:43:43Z",
-      "head_sha": "22050f2019e29043ce57eb0453fed43d5212c3db",
-      "merged_at": "2026-09-16T23:43:43Z",
-      "number": 15114,
-      "state": "MERGED",
-      "title": "research/ridgway_freudenthal: land advertised local-div certificates (#14999)"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T00:39:08Z",
+  "unchanged_since": "2026-09-17T00:43:06Z",
   "undatable_pulls": []
 }
