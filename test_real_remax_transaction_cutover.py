@@ -153,6 +153,36 @@ class RealRemaxCutoverTest(unittest.TestCase):
                 write_exclusive(str(path), {"a": 2})
             self.assertEqual(b'{"a":1}', path.read_bytes())
 
+    def test_foreign_successor_swap_fails_and_preserves_foreign_file(self):
+        if os.name == "nt":
+            self.skipTest("Windows normally denies renaming an open output; POSIX hostile covers successor swap")
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "report.json"
+            displaced = Path(td) / "owned-displaced.json"
+            real_fsync = os.fsync
+            swapped = False
+
+            def swap_after_durability(fd):
+                nonlocal swapped
+                real_fsync(fd)
+                if not swapped and path.exists():
+                    swapped = True
+                    os.replace(path, displaced)
+                    path.write_bytes(b"FOREIGN")
+
+            with mock.patch("revenue.real_remax_transaction_cutover.cli.os.fsync", side_effect=swap_after_durability):
+                with self.assertRaisesRegex(CutoverError, "visible output generation changed"):
+                    write_exclusive(str(path), {"a": 1})
+            self.assertEqual(b"FOREIGN", path.read_bytes())
+            self.assertTrue(displaced.exists())
+            self.assertEqual(b"", displaced.read_bytes())
+
+    def test_direct_object_aggregate_bound(self):
+        source, target, mapping, policy = build_synthetic_bundle(3)
+        with mock.patch("revenue.real_remax_transaction_cutover.schema.MAX_ITEMS", 40):
+            with self.assertRaisesRegex(CutoverError, "aggregate 40 row limit"):
+                compile_cutover(source, target, mapping, policy)
+
     def test_failed_publication_keeps_owned_zero_byte_tombstone(self):
         with tempfile.TemporaryDirectory() as td:
             path = Path(td) / "report.json"
