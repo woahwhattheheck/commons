@@ -242,9 +242,7 @@ jobs:
     # Frozen titan composition PRs add dedicated path-scoped gates; running
     # live-pin KEEP/readback tests against that snapshot is a false red.
     if: ${{ github.event_name != 'pull_request' || github.base_ref == 'main' }}
-    # The battery is architecture-neutral Python/JS/git work. Route it to the
-    # hosted arm64 pool while ubuntu-latest x64 admission remains hours deep.
-    runs-on: ubuntu-24.04-arm
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         id: checkout
@@ -300,7 +298,7 @@ jobs:
 
   non-main-base:
     if: ${{ github.event_name == 'pull_request' && github.base_ref != 'main' }}
-    runs-on: ubuntu-24.04-arm
+    runs-on: ubuntu-latest
     steps:
       - name: engine battery stays on main
         run: |
