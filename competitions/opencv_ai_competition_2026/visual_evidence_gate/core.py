@@ -76,6 +76,8 @@ def _fmt_utc(dt: datetime) -> str:
 
 
 def _opencv_runtime(*, compatibility_mode: bool) -> dict[str, Any]:
+    if type(compatibility_mode) is not bool:
+        raise GateError("compatibility_mode must be a boolean")
     version = str(cv2.__version__)
     try:
         major = int(version.split(".", 1)[0])
@@ -91,7 +93,7 @@ def _opencv_runtime(*, compatibility_mode: bool) -> dict[str, Any]:
         "runtime_version": version,
         "required_major": REQUIRED_OPENCV_MAJOR,
         "opencv5_verified": verified,
-        "compatibility_mode": bool(compatibility_mode),
+        "compatibility_mode": compatibility_mode,
     }
 
 
@@ -246,8 +248,10 @@ def compile_synthetic_run(
     scenario: str,
     *,
     evaluated_at: str = "2026-09-17T08:00:00Z",
-    compatibility_mode: bool = True,
+    compatibility_mode: bool = False,
 ) -> dict[str, Any]:
+    if type(compatibility_mode) is not bool:
+        raise GateError("compatibility_mode must be a boolean")
     if scenario not in ALLOWED_SCENARIOS:
         raise GateError(f"unsupported synthetic scenario: {scenario!r}")
     evaluation_time = _parse_utc(evaluated_at, "evaluated_at")
@@ -343,8 +347,10 @@ def verify_trace(packet: Mapping[str, Any]) -> bool:
 def evaluate_synthetic_suite(
     *,
     evaluated_at: str = "2026-09-17T08:00:00Z",
-    compatibility_mode: bool = True,
+    compatibility_mode: bool = False,
 ) -> dict[str, Any]:
+    if type(compatibility_mode) is not bool:
+        raise GateError("compatibility_mode must be a boolean")
     rows: list[dict[str, Any]] = []
     passed = 0
     for scenario in sorted(EXPECTED_TERMINAL_STATES):
@@ -371,7 +377,7 @@ def evaluate_synthetic_suite(
     report: dict[str, Any] = {
         "schema": "opencv26-visual-evidence-evaluation/v1",
         "evaluated_at": evaluated_at,
-        "compatibility_mode": bool(compatibility_mode),
+        "compatibility_mode": compatibility_mode,
         "cases": rows,
         "passed": passed,
         "total": total,
