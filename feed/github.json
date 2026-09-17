@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 93,
     "open_pull_requests": 36,
-    "runs_in_progress": 12,
-    "runs_queued": 1177
+    "runs_in_progress": 16,
+    "runs_queued": 1183
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -217,8 +217,30 @@
   },
   "pulls_listed": 36,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 98.1,
+  "queue_depth_per_runner": 73.9,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "devin/sledge-weck-westpak",
+      "closed_at": "2026-09-17T21:33:27Z",
+      "head_sha": "fce2c9f6ec81eb6585bb6342110d555cd69aec3e",
+      "merged_at": "2026-09-17T21:33:27Z",
+      "number": 15777,
+      "state": "MERGED",
+      "title": "convert shelf: weck coc + westpak scope (sledge-weck-westpak-convert-shelf-20260917-01)"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "devin/sledge-wadsworth-ward",
+      "closed_at": "2026-09-17T21:31:53Z",
+      "head_sha": "b1ddf6bf7cc41c2e45a07a559e27245a269095e1",
+      "merged_at": "2026-09-17T21:31:53Z",
+      "number": 15776,
+      "state": "MERGED",
+      "title": "convert shelf: wadsworth five-site + ward feed nirs (sledge-wadsworth-ward-convert-shelf-20260917-01)"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -361,32 +383,10 @@
       "number": 15763,
       "state": "MERGED",
       "title": "convert shelf: kincell + lexington (sledge-kincell-lexington-convert-shelf-20260917-01)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "devin/sledge-elevatebio-highpower",
-      "closed_at": "2026-09-17T21:07:56Z",
-      "head_sha": "cd74545422f6f40ab62aab0dddbd30f94ae3494d",
-      "merged_at": "2026-09-17T21:07:56Z",
-      "number": 15762,
-      "state": "MERGED",
-      "title": "convert shelf: elevatebio + highpower (sledge-elevatebio-highpower-convert-shelf-20260917-01)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "devin/sledge-discountleak-eagletrax",
-      "closed_at": "2026-09-17T21:04:16Z",
-      "head_sha": "65981cd535f1bac3ed0de5fb077a816d1c301203",
-      "merged_at": "2026-09-17T21:04:16Z",
-      "number": 15760,
-      "state": "MERGED",
-      "title": "convert shelf: discount leak + eagletrax (sledge-discountleak-eagletrax-convert-shelf-20260917-01)"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T21:31:32Z",
+  "unchanged_since": "2026-09-17T21:35:04Z",
   "undatable_pulls": []
 }
