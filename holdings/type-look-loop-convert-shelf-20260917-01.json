@@ -1,9 +1,9 @@
 {
- "heartbeat_at": "2026-09-17T12:59:08Z",
+ "heartbeat_at": "2026-09-17T13:14:37Z",
  "holder": "TYPE",
  "key": "type-look-loop-convert-shelf-20260917-01",
  "schema": "commons-change-holding/v1",
- "state": "HELD",
+ "state": "RELEASED",
  "taken_at": "2026-09-17T12:59:08Z",
  "ttl_s": 1800
 }
