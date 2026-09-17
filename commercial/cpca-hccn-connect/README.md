@@ -35,7 +35,9 @@ A direct-prime application must remain `HOLD` until the mandatory experience, re
 
 The most defensible recovery route, if direct-prime evidence remains unavailable, is **healthcare-prime teaming**: identify a genuinely qualified healthcare/FQHC/HCCN prime, obtain explicit relationship authority, bind that prime's eligibility and safety-net experience, and confine TJLabs to a support scope for which TJLabs can prove its own subject-matter and delivery track record.
 
-The legacy `cpca_qualify.py` state `TEAMING_READY` is only a narrow **workshare-discussion signal**. It can be emitted while mandatory applicant/application blockers remain unresolved, so it must never be read as CPCA applicant readiness, submission readiness, or permission to use a prime's credentials. `cpca_partner_readiness.py` truth-narrows that legacy signal to `WORKSHARE_DISCUSSION_READY` and keeps the application at `HOLD`. This generation has no provider-authenticated private-evidence adapter; even a complete caller-authored application manifest is non-authorizing.
+The legacy `cpca_qualify.py` state `TEAMING_READY` is only a narrow **workshare-discussion signal**. It can be emitted while mandatory applicant/application blockers remain unresolved, so it must never be read as CPCA applicant readiness, submission readiness, or permission to use a prime's credentials. `cpca_partner_readiness.py` truth-narrows that signal to `WORKSHARE_DISCUSSION_READY` only after executing the repository-owned `cpca_qualify.py` bytes against the repository-owned canonical qualification specification. The v2 receipt binds exact specification semantics/file bytes, exact evidence bytes, prime identity fields, application-manifest/source identities, exact legacy implementation bytes, and the exact legacy result. Cross-prime/source/spec/evidence/legacy transplants therefore fail semantic verification even when visible state labels collide. Raw caller-authored legacy results are diagnostic-only and can emit only `HOLD`.
+
+This generation still has no provider-authenticated private-evidence adapter; even a complete caller-authored application manifest is non-authorizing and `application.state` remains `HOLD`.
 
 ## Teaming recovery artifacts
 
@@ -44,7 +46,7 @@ The direct-prime `HOLD` has a bounded follow-on that does not weaken the evidenc
 - [`teaming_shortlist.md`](./teaming_shortlist.md) ranks public-evidence healthcare-prime candidates by buyer-gate overlap, TJLabs complementarity, and competitor/self-sufficiency risk.
 - [`teaming_outreach_packets.md`](./teaming_outreach_packets.md) stages exact candidate-specific messages and a Muse single-writer arbitration template. Its state is **DRAFT ONLY / NOT SENT**.
 - [`partner_workshare/`](./partner_workshare/) is the executable positive-reply workshare packager. It fixes the healthcare-prime/TJLabs responsibility split, binds relationship and qualification evidence, renders a one-page review packet, and never grants external or commercial authority.
-- [`cpca_partner_readiness.py`](./cpca_partner_readiness.py) separates that useful workshare discussion from CPCA applicant/application readiness and emits a canonical receipt that exact-recompiles during verification.
+- [`cpca_partner_readiness.py`](./cpca_partner_readiness.py) separates that useful workshare discussion from CPCA applicant/application readiness and emits a source-bound canonical v2 receipt that exact-recompiles during verification.
 
 These artifacts do not make any candidate a partner and do not authorize contact. Before any outbound email or contact-form message, re-run Slack + Gmail collision checks, obtain Muse `SELECT`, and re-fence again immediately before send. A positive response or internally reviewable workshare still leaves the CPCA application at `HOLD` until separately provider-authenticated prime/application evidence and human authority exist.
 
@@ -58,14 +60,14 @@ python3 -m unittest -v test_cpca_qualify.py
 python3 -m unittest -v test_cpca_partner_readiness.py
 ```
 
-`cpca_qualify.py` emits the legacy qualification result plus a SHA-256 receipt. `cpca_partner_readiness.py` consumes the same source-bound specification/evidence and recompiles the legacy result before emitting the truth-narrowed partner/application receipt. Missing gates default to `MISSING`; nothing defaults to pass. Every non-count gate marked `PROVEN` must carry at least one explicit `gate_sources` entry; references, recent engagements, and safety-net experience are proven only from their own source-bound records.
+`cpca_qualify.py` emits the legacy qualification result plus a SHA-256 receipt. `cpca_partner_readiness.py` code-owns `qualification_spec.json` and `cpca_qualify.py`, consumes the supplied evidence, and emits the truth-narrowed source-bound partner/application receipt. There is no caller-selectable legacy evaluator or specification override on the partner-readiness CLI. Missing gates default to `MISSING`; nothing defaults to pass. Every non-count gate marked `PROVEN` must carry at least one explicit `gate_sources` entry; references, recent engagements, and safety-net experience are proven only from their own source-bound records.
 
 ## State meanings
 
 - `PRIME_READY`: all direct-prime mandatory gates for the selected domain/service type are source-bound `PROVEN` before the deadline.
 - `TEAMING_READY` (legacy qualifier only): named-prime relationship/support evidence is sufficient for a bounded workshare discussion; **not** applicant/application readiness.
-- `WORKSHARE_DISCUSSION_READY` (partner-readiness wrapper): the legacy workshare signal exists, while `application.state` remains `HOLD` and all external/commercial authority remains false.
-- `HOLD`: one or more required facts remain missing/held; do not submit.
+- `WORKSHARE_DISCUSSION_READY` (trusted partner-readiness path only): the code-owned legacy evaluator produced the workshare signal for the exact source-bound receipt inputs, while `application.state` remains `HOLD` and all external/commercial authority remains false.
+- `HOLD`: one or more required facts remain missing/held, or a caller supplied an untrusted raw predecessor result; do not submit.
 - `NO_BID`: deadline has passed (or a future extension may add other terminal conditions).
 
 ## Authority ceiling
