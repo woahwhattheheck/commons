@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "generated_date": "2026-09-17",
+  "lane": "OKALOOSA-TDD77-26-IVVY-ACCEPTANCE-ZSOL-20260917",
+  "buyer_opportunity": "Okaloosa County Tourism Department RFP TDD 77-26",
+  "potential_prime_context": "iVvy",
+  "commercial_state": "PROPOSED_NOT_ACCEPTED",
+  "proposed_price": {
+    "currency": "USD",
+    "amount": 35000,
+    "pricing_model": "FIXED"
+  },
+  "delivery_target_business_days": 15,
+  "sources": [
+    {
+      "role": "SECONDARY_PUBLIC_SOLICITATION_SUMMARY",
+      "url": "https://app.govly.com/public/opportunities/17031117",
+      "observed_date": "2026-09-17",
+      "supports": [
+        "publicly listed Okaloosa County Tourism Department RFP TDD 77-26 opportunity",
+        "publicly listed response due date of 2026-09-25",
+        "venue/event-management SaaS scope",
+        "multi-venue operations scope",
+        "buyer-named Workday integration requirement",
+        "buyer-named DocuSign integration requirement",
+        "buyer-named BluePay/Bluepay integration requirement",
+        "ten-year Ungerboeck/Momentus-family migration scope",
+        "training/support and security/audit requirement adjacency"
+      ],
+      "does_not_support": [
+        "substitution for the official current buyer packet or addenda",
+        "iVvy bid intent",
+        "iVvy qualification or RFP compliance",
+        "iVvy native connector availability for buyer-named systems",
+        "buyer acceptance of iVvy or TJLabs",
+        "submission authority",
+        "award, contract, payment, or revenue"
+      ]
+    },
+    {
+      "role": "IVVY_PUBLIC_VENUE_PRODUCT",
+      "url": "https://www.ivvy.com/venue-event-management-software/",
+      "observed_date": "2026-09-17",
+      "supports": [
+        "public cloud venue/event-management product adjacency",
+        "venue and event operations product adjacency"
+      ],
+      "does_not_support": [
+        "Okaloosa-specific architecture",
+        "TDD 77-26 compliance",
+        "bid intent or qualification",
+        "customer acceptance",
+        "contract or revenue"
+      ]
+    },
+    {
+      "role": "IVVY_PUBLIC_INTEGRATIONS",
+      "url": "https://www.ivvy.com/integrations/",
+      "observed_date": "2026-09-17",
+      "supports": [
+        "public claim of a broad integration ecosystem",
+        "public integration-category adjacency"
+      ],
+      "does_not_support": [
+        "native Workday integration for TDD 77-26",
+        "native DocuSign integration for TDD 77-26",
+        "native BluePay integration for TDD 77-26",
+        "buyer-specific integration acceptance",
+        "iVvy qualification or buyer acceptance"
+      ]
+    },
+    {
+      "role": "IVVY_PUBLIC_DEVELOPER_API",
+      "url": "https://developer.ivvy.com/getting-started",
+      "observed_date": "2026-09-17",
+      "supports": [
+        "public developer API availability",
+        "public API extensibility for CRM/POS/accounting and related integration use cases",
+        "authenticated API request model adjacency"
+      ],
+      "does_not_support": [
+        "a completed buyer-specific Workday/DocuSign/BluePay integration",
+        "production credentials or production access",
+        "Okaloosa acceptance",
+        "RFP compliance or qualification"
+      ]
+    },
+    {
+      "role": "IVVY_PUBLIC_MIGRATION_FAQ",
+      "url": "https://www.ivvy.com/faqs/",
+      "observed_date": "2026-09-17",
+      "supports": [
+        "public statement that migration from Momentus and other systems is supported",
+        "cloud-product and integration adjacency"
+      ],
+      "does_not_support": [
+        "availability or quality of Okaloosa source data",
+        "successful migration of ten years of Okaloosa history",
+        "buyer-specific migration mapping",
+        "final cutover readiness",
+        "bid intent, qualification, acceptance, or revenue"
+      ]
+    }
+  ],
+  "non_inferences": [
+    "A secondary solicitation summary is not the official controlling RFP/addenda set.",
+    "Public iVvy extensibility does not prove native buyer-named connectors.",
+    "Public Momentus migration support does not prove Okaloosa migration feasibility or data quality.",
+    "Preparing or merging this workshare does not establish iVvy interest, bid intent, qualification, or partner status.",
+    "Preparing or merging this workshare does not establish buyer acceptance, submission, award, contract, receivable, payment, booked revenue, or recognized revenue."
+  ],
+  "authority": {
+    "external_send_authorized": false,
+    "muse_selected": false,
+    "ivvy_interest_known": false,
+    "ivvy_bid_intent_known": false,
+    "ivvy_qualified_for_rfp": false,
+    "prime_relationship_exists": false,
+    "proposal_delivered": false,
+    "proposal_accepted": false,
+    "contract_exists": false,
+    "work_authorized": false,
+    "submission_authorized": false,
+    "county_submission_made": false,
+    "invoice_exists": false,
+    "payment_received": false,
+    "receivable_exists": false,
+    "booked_revenue": false,
+    "recognized_revenue": false
+  }
+}
