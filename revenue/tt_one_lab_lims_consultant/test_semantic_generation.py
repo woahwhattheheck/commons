@@ -3,6 +3,7 @@ from __future__ import annotations
 from copy import deepcopy
 from datetime import datetime
 import dis
+import hashlib
 import json
 from pathlib import Path
 import types
@@ -22,6 +23,27 @@ ROOTS = (
 BOUNDARY = json.loads(
     Path(__file__).with_name("INTEGRITY_BOUNDARY.json").read_text(encoding="utf-8")
 )
+
+
+def _canonical(value) -> bytes:
+    return json.dumps(
+        value,
+        sort_keys=True,
+        separators=(",", ":"),
+        ensure_ascii=False,
+        allow_nan=False,
+    ).encode("utf-8")
+
+
+def _digest(value) -> str:
+    return hashlib.sha256(_canonical(value)).hexdigest()
+
+
+def _recompute_outer_digest(packet: dict) -> dict:
+    forged = deepcopy(packet)
+    forged.pop("packet_digest", None)
+    forged["packet_digest"] = _digest(forged)
+    return forged
 
 
 def _carrier_functions():
@@ -81,6 +103,33 @@ class SemanticGenerationTest(unittest.TestCase):
             "REPLAY_ONLY_NOT_CURRENT",
         )
         self.assertFalse(BOUNDARY["current_submission_authority_claimed"])
+
+    def test_every_packet_binds_exact_boundary_and_digest(self):
+        owner = complete_input()
+        packet = carrier.compile_packet(owner)
+        self.assertEqual(packet["schema"], "tt-one-lab-lims-owner-review-packet/v3")
+        self.assertEqual(packet["integrity_boundary"], BOUNDARY)
+        self.assertEqual(packet["integrity_boundary_digest"], _digest(BOUNDARY))
+        self.assertTrue(carrier.verify_packet(packet, owner))
+
+    def test_detached_boundary_deletion_rejected_even_after_outer_digest_recompute(self):
+        owner = complete_input()
+        packet = carrier.compile_packet(owner)
+        forged = deepcopy(packet)
+        forged.pop("integrity_boundary")
+        forged = _recompute_outer_digest(forged)
+        self.assertFalse(carrier.verify_packet(forged, owner))
+
+    def test_detached_boundary_widening_rejected_even_after_both_digest_recomputes(self):
+        owner = complete_input()
+        packet = carrier.compile_packet(owner)
+        forged = deepcopy(packet)
+        forged["integrity_boundary"]["machine_strong_same_process_integrity_claimed"] = True
+        forged["integrity_boundary"]["hostile_same_process_python_supported"] = True
+        forged["integrity_boundary"]["resists_cpython_closure_cell_mutation"] = True
+        forged["integrity_boundary_digest"] = _digest(forged["integrity_boundary"])
+        forged = _recompute_outer_digest(forged)
+        self.assertFalse(carrier.verify_packet(forged, owner))
 
     def test_reachable_runtime_generation_has_no_global_opcode(self):
         offenders = []
@@ -154,6 +203,7 @@ class SemanticGenerationTest(unittest.TestCase):
             source_cell.cell_contents = forged
             packet = carrier.compile_packet(owner)
             self.assertEqual(packet["source_manifest_digest"], forged)
+            self.assertEqual(packet["integrity_boundary"], BOUNDARY)
             self.assertTrue(carrier.verify_packet(packet, owner))
             self.assertFalse(BOUNDARY["resists_cpython_closure_cell_mutation"])
             self.assertFalse(BOUNDARY["hostile_same_process_python_supported"])
@@ -173,6 +223,7 @@ class SemanticGenerationTest(unittest.TestCase):
             packet = carrier.compile_packet(owner)
             self.assertEqual(packet["buyer"]["submission_email"], forged)
             self.assertNotIn("SUBMISSION_METADATA_MISMATCH", packet["blockers"])
+            self.assertEqual(packet["integrity_boundary"], BOUNDARY)
             self.assertTrue(carrier.verify_packet(packet, owner))
             self.assertFalse(BOUNDARY["machine_strong_same_process_integrity_claimed"])
         finally:
@@ -197,6 +248,7 @@ class SemanticGenerationTest(unittest.TestCase):
                 "CALLER_SUPPLIED_REPLAY_ONLY_NOT_CURRENT",
             )
             self.assertFalse(packet["current_deadline_readiness_claimed"])
+            self.assertEqual(packet["integrity_boundary"], BOUNDARY)
             self.assertTrue(carrier.verify_packet(packet, owner))
             self.assertFalse(BOUNDARY["hostile_same_process_python_supported"])
         finally:
@@ -217,6 +269,7 @@ class SemanticGenerationTest(unittest.TestCase):
             packet = carrier.compile_packet(owner)
             self.assertTrue(packet["authority"]["submission_authorized"])
             self.assertTrue(packet["authority"]["revenue_claimed"])
+            self.assertEqual(packet["integrity_boundary"], BOUNDARY)
             self.assertTrue(carrier.verify_packet(packet, owner))
             self.assertFalse(BOUNDARY["resists_cpython_closure_cell_mutation"])
             self.assertFalse(BOUNDARY["hostile_same_process_python_supported"])
@@ -232,6 +285,7 @@ class SemanticGenerationTest(unittest.TestCase):
         baseline = carrier.compile_packet(owner)
         forged = deepcopy(baseline)
         forged["authority"]["submission_authorized"] = True
+        forged = _recompute_outer_digest(forged)
         original = carrier.compile_packet
         try:
             carrier.compile_packet = lambda ignored: forged
