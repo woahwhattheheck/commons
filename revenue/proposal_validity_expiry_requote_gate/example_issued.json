@@ -1,7 +1,8 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "offer_id": "EXAMPLE-OFFER-001",
   "source_generation": "example-source-v1",
+  "source_digest_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
   "pricing_revision": "price-r1",
   "currency": "USD",
   "scope": {

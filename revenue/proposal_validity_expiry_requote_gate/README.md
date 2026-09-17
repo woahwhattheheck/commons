@@ -2,7 +2,7 @@
 
 This is an **owner-review commercial-truth gate** for an offer that was already proposed. It does not send anything, accept terms, sign a contract, operate a checkout rail, authorize payment, or recognize revenue.
 
-The compiler compares an immutable issued-offer snapshot with the current offer/source snapshot and emits exactly one state:
+The compiler emits exactly one state:
 
 - `CURRENT_FOR_OWNER_USE`
 - `EXPIRED_REQUOTE_REQUIRED`
@@ -10,13 +10,35 @@ The compiler compares an immutable issued-offer snapshot with the current offer/
 - `HOLD_NO_VALIDITY_BASIS`
 - `HOLD_SOURCE_DRIFT`
 
-The issued snapshot binds `offer_id`, `source_generation`, `pricing_revision`, `currency`, exact scope/economics JSON, `issued_on`, explicit validity semantics, and an optional buyer/solicitation deadline. The current snapshot binds the same live commercial semantics plus explicit later `AMENDMENT`, `REDLINE`, or `CHANGE_ORDER` evidence.
+`CURRENT_FOR_OWNER_USE` is deliberately narrow: the exact issued commercial snapshot is still current enough for owner review under its explicit validity terms. It is not outbound authority and it is not evidence of buyer acceptance, contract execution, payment, cash, or revenue.
 
-A change in pricing revision, currency, scope, or economics is `SUPERSEDED`; it is never silently rolled into the old quote. A later applicable amendment/redline/change-order is also `SUPERSEDED`. Source-generation movement without an explicit changed commercial snapshot is `HOLD_SOURCE_DRIFT`. `NO_EXPIRY_STATED` remains an owner hold while still respecting an already-passed buyer deadline as an expiry cap. Missing timezone information fails closed.
+## Hardened v2 evidence
 
-`requote_delta` is always labeled `PROPOSED_NOT_ACCEPTED`; it shows exact issued/current differences and applicable superseding events. A stale checkout URL or payment rail is non-authoritative context and never becomes buyer acceptance, payment authorization, a signed contract, outbound authority, or revenue.
+Schema v2 is required to mint a fresh `CURRENT_FOR_OWNER_USE` result. The issued snapshot binds `offer_id`, source generation **and source digest**, pricing revision, currency, exact scope/economics JSON, issuance time, explicit validity semantics, buyer deadline when present, and optional non-authoritative payment-road identity.
 
-The production CLI obtains its evaluation time from the runtime UTC clock. Offer/current JSON cannot inject `as_of`, `now`, or `evaluated_at`: strict unknown-key rejection closes that backdating seam. The verifier recomputes the exact packet at its bound evaluation instant and source snapshots; if that packet claimed `CURRENT_FOR_OWNER_USE`, it also re-evaluates against the live runtime clock so an old green packet cannot remain green after expiry or other current-state loss.
+The v2 current snapshot binds the same live commercial semantics plus exact controlling source generation + digest; `source_status` (`CURRENT`, `STALE`, or `WITHDRAWN`); timezone-aware `source_observed_at`; current payment-road identity/state when the issued offer carried one; and source-bound supersession events.
+
+For a CURRENT result, source observation must be no earlier than issuance and no later than the trusted runtime clock. Source digest/generation/status drift or a stale/replaced/withdrawn payment road produces `HOLD_SOURCE_DRIFT`. Pricing, currency, scope, or economics drift remains `SUPERSEDED`.
+
+Supersession kinds are `AMENDMENT`, `REDLINE`, `CHANGE_ORDER`, `REPRICE`, and `WITHDRAWAL`. V2 events are bound to the exact current source generation/digest and cannot postdate the current source observation. Events at or before issuance do not supersede the issued offer.
+
+### V1 compatibility / migration
+
+Legacy schema-v1 issued/current JSON is still accepted so callers receive a deterministic bounded result instead of a parser break. Because v1 lacks the source digest/status/observation and current payment-road evidence needed for current commercial truth, unchanged v1 snapshots are truth-narrowed to `HOLD_SOURCE_DRIFT` with `LEGACY_SOURCE_EVIDENCE_MISSING`; they cannot mint a new CURRENT receipt. Recompile with v2 evidence to regain a CURRENT determination. Pre-hardening v1 packets should likewise be recompiled rather than treated as current proof.
+
+## Time and replay boundary
+
+The production CLI obtains evaluation time from the process UTC clock and exposes **no `--as-of`** option. The clock callable is captured from the standard library at module import, so ordinary rebinding of `gate._dt.datetime` cannot freeze public evaluation at a historical time.
+
+The private `_evaluate_at` helper defaults to `clock_basis=TEST_EXPLICIT`; those packets are intentionally not accepted by `verify_packet` as process-current evidence. Public `evaluate_offer`/CLI packets carry `clock_basis=PROCESS_UTC`.
+
+Verification exact-rebuilds at the packet's bound evaluation instant and then performs a fresh process-UTC evaluation whose **semantic projection** must still match, not merely its coarse five-state string. This rejects both an old CURRENT packet after expiry and subtler same-state drift, such as an already-expired packet later crossing a buyer deadline and gaining a new requote reason.
+
+## Strict input boundary
+
+JSON is fail-closed and bounded. The parser rejects duplicate keys, floats, non-finite numbers, overlarge integer tokens before Python integer conversion, lone-surrogate Unicode keys/values, excessive nesting/collections, unknown contract fields, bool-as-int money/durations, and malformed or timezone-naive timestamps. Runtime JSON/Unicode/recursion/overflow failures are translated into bounded gate errors; the CLI returns status 2 without a traceback under normal Python and real `python -O`.
+
+`requote_delta` remains `PROPOSED_NOT_ACCEPTED` and records exact commercial changes, applicable source-bound supersession events, source-currentness reasons, and time reasons. Every packet keeps buyer acceptance, contract signed, checkout/payment rail as acceptance, payment authorization, revenue recognition, and outbound authorization hard false.
 
 ## Run
 
@@ -32,6 +54,8 @@ python revenue/proposal_validity_expiry_requote_gate/gate.py verify \
   --packet /tmp/proposal-validity-packet.json
 ```
 
+Output creation is exclusive: an existing target is never overwritten.
+
 ## Tests
 
 ```bash
@@ -40,4 +64,4 @@ python -m unittest -v tests/test_proposal_validity_expiry_requote_gate.py
 python -O -m unittest -v tests/test_proposal_validity_expiry_requote_gate.py
 ```
 
-The hostile suite covers expired quotes copied into later pursuits, source drift, currency/scope/economics/pricing drift, all three superseding event classes, buyer deadline caps, timezone omission, packet clock injection, stale payment rails, bool/float money, duplicate/non-finite JSON, tampered receipts, an old-current packet replayed after runtime expiry, and create-exclusive CLI output.
+The retained hostile suite covers legacy truth narrowing, source generation/digest/status/chronology, commercial drift, all five supersession kinds and source binding, payment-road drift, validity/deadline boundaries, explicit-test-clock rejection, stdlib-clock rebinding, duplicate/nonfinite/float/giant-int/surrogate/deep JSON hostiles, tampered receipts, historical CURRENT replay, same-state temporal semantic drift, create-exclusive output, no `--as-of`, and bounded CLI failures under normal and optimized Python.
