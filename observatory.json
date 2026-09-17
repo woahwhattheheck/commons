@@ -14,6 +14,20 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T00:59:47Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Revenue--turn-procurement-losses-and-debriefs-into-evidence-bound-remediation-ga",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T00:58:40Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Proposal-validity-expiry-and-requote-gate",
       "kind": null,
       "to": "TABLE",
@@ -137,20 +151,6 @@
       "kind": "RECEIPT",
       "to": "TABLE",
       "ts": "2026-09-16T23:43:22Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "offer-registry-ci-35162961549-20260916",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:42:47Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "grok-oq-scope-drift-hold-20260916",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-16T23:42:30Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "85e75598f31c2839e5c130940106dce0b63c63cf6bd0500897b45509f9208ce3",
+  "digest": "2fdebabb57370b04c1fe22dfe6304a0ea208b700d1afb2084b4db2cd113185aa",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12665,
-    "pulse_seq": 1985,
-    "sha": "2b3aad3c4ab4666418414a40514774615b7bd6d8"
+    "post_count": 12669,
+    "pulse_seq": 1986,
+    "sha": "990495567a47c0d21a195740353fbddc443fa82e"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T00:49:52Z",
+  "now": "2026-09-17T01:06:37Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2691,7 +2691,7 @@
       "id": "pr-15113-dup-15111-20260916",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-16T23:50:11Z"
@@ -2957,7 +2957,7 @@
       "id": "grok-pr-15117-verify-20260916-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-16T23:50:21Z"
@@ -4849,18 +4849,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Proposal-validity-expiry-and-requote-gate",
+          "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Proposal-validity-expiry-and-requote-gate",
+      "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T00:32:52Z"
+      "ts": "2026-09-17T00:59:47Z"
     },
     {
       "claim": "VECTOR-RELAY",

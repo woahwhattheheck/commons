@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 104,
-    "open_pull_requests": 16,
-    "runs_in_progress": 20,
-    "runs_queued": 1101
+    "open_issues": 103,
+    "open_pull_requests": 18,
+    "runs_in_progress": 19,
+    "runs_queued": 1124
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,6 +69,28 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "quill/copy-write-roads-md-keep-larger-fixed-20260916-02",
+      "created_at": "2026-09-17T01:07:03Z",
+      "draft": false,
+      "head_sha": "89eebc6fb27cbfce97b02af69ff17f4126f683c1",
+      "number": 15158,
+      "title": "QUILL: copy/write-roads MD KEEP Larger-fixed (20260916-02)",
+      "updated_at": "2026-09-17T01:07:03Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zha-h6q4/rfp-clarification-questions-20260916",
+      "created_at": "2026-09-17T01:02:44Z",
+      "draft": false,
+      "head_sha": "70715a0b2e6368c38ec17c5f237431f3a6b57854",
+      "number": 15157,
+      "title": "Revenue: source-bound RFP clarification-question packet",
+      "updated_at": "2026-09-17T01:02:44Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "z-sol/procurement-award-source-adapters-20260916",
       "created_at": "2026-09-17T00:38:41Z",
       "draft": false,
@@ -94,10 +116,10 @@
       "branch": "fpc-7ddb/creator-reward-campaign",
       "created_at": "2026-09-17T00:22:37Z",
       "draft": false,
-      "head_sha": "9e9d790cd0a5a8632a1f0646cc3da902b07f674d",
+      "head_sha": "ca189147eac0bed240481a0345a421a3ac75a2a1",
       "number": 15125,
       "title": "revenue/hive/creator-reward-campaign: HIVE021 creator reward campaign desk",
-      "updated_at": "2026-09-17T00:45:40Z"
+      "updated_at": "2026-09-17T01:02:27Z"
     },
     {
       "author": "woahwhattheheck",
@@ -153,28 +175,6 @@
       "number": 14705,
       "title": "Learn2Design: v3 depth/throughput hybrid + matched public matrix",
       "updated_at": "2026-09-15T07:46:57Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsr-q4n7/commercial-funnel-current-main-recovery-20260915",
-      "created_at": "2026-09-15T06:23:45Z",
-      "draft": false,
-      "head_sha": "877b07a41f1b13b5d3cdeec635e9b4dcec75ac47",
-      "number": 14669,
-      "title": "Recover commercial-funnel evidence/time authority on current main",
-      "updated_at": "2026-09-15T07:41:11Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "zne-k7m4/collision-preflight-red-closure-20260915",
-      "branch": "zod-a5k9/collision-query-authority-20260915",
-      "created_at": "2026-09-15T06:04:17Z",
-      "draft": false,
-      "head_sha": "f1c9800387b399949a4bf9f85e10b73500042c41",
-      "number": 14664,
-      "title": "Fix collision preflight query authority and same-hit ambiguity",
-      "updated_at": "2026-09-15T06:31:52Z"
     }
   ],
   "open_heads": {
@@ -191,14 +191,82 @@
     "14788": "ffaff5aa571aaccedd41f82c0eba85b09586f230",
     "14871": "4b938fd21134e1600659fa7c33eff5fc873f7579",
     "14873": "81dbcfb0701f543e2e4098f4fbd0883bd2e0a84f",
-    "15125": "9e9d790cd0a5a8632a1f0646cc3da902b07f674d",
+    "15125": "ca189147eac0bed240481a0345a421a3ac75a2a1",
     "15133": "3ed2e58aa746b415ca627c368ca0efb177ae74c9",
-    "15137": "9bd368e81ae1849840e2b575178fa391fdc34730"
+    "15137": "9bd368e81ae1849840e2b575178fa391fdc34730",
+    "15157": "70715a0b2e6368c38ec17c5f237431f3a6b57854",
+    "15158": "89eebc6fb27cbfce97b02af69ff17f4126f683c1"
   },
-  "pulls_listed": 16,
+  "pulls_listed": 18,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 55.0,
+  "queue_depth_per_runner": 59.2,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "type/owner-slack-md-keep-larger-fixed-20260916-01",
+      "closed_at": "2026-09-17T01:01:15Z",
+      "head_sha": "212318a0ece5d537d5e8f266738ad7851b01cc4e",
+      "merged_at": "2026-09-17T01:01:14Z",
+      "number": 15156,
+      "state": "MERGED",
+      "title": "TYPE: KEEP Larger fixed on owner/Slack/Grok-land ground doors"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol-oss-sponsor-route-evidence-map-20260916",
+      "closed_at": "2026-09-17T01:00:14Z",
+      "head_sha": "347c9adea55eede71d0309bf159939be3c28ca2d",
+      "merged_at": "2026-09-17T01:00:14Z",
+      "number": 15153,
+      "state": "MERGED",
+      "title": "Revenue: add current OSS sponsor-route evidence map"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol/bid-deadline-critical-path-20260916",
+      "closed_at": "2026-09-17T00:57:54Z",
+      "head_sha": "33ad8c75c723d376b6a72264854ac1f2fb58bf9b",
+      "merged_at": "2026-09-17T00:57:54Z",
+      "number": 15150,
+      "state": "MERGED",
+      "title": "revenue: compile bid deadlines into owner critical paths"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "forgeglass/case-study-reference-consent-vault-20260916",
+      "closed_at": "2026-09-17T00:56:20Z",
+      "head_sha": "138eecd6e11577cbd3a3f42755b750fecf0303a0",
+      "merged_at": "2026-09-17T00:56:20Z",
+      "number": 15152,
+      "state": "MERGED",
+      "title": "revenue: add case-study and reference consent vault"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol-forge/diagnostic-upsell-evidence-ladder-20260916",
+      "closed_at": "2026-09-17T00:54:45Z",
+      "head_sha": "d889b3346b5b694d70fa8256e046d3c41faa9c32",
+      "merged_at": "2026-09-17T00:54:45Z",
+      "number": 15149,
+      "state": "MERGED",
+      "title": "Revenue: compile verified diagnostics into owner-review follow-ons"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "cursor/goat-execute-land-keep-larger-fixed-1d5c",
+      "closed_at": "2026-09-17T00:54:37Z",
+      "head_sha": "af6261fa9a1baf72b0f3d2aa697e1e69f0022877",
+      "merged_at": "2026-09-17T00:54:37Z",
+      "number": 15151,
+      "state": "MERGED",
+      "title": "GOAT: KEEP Larger fixed on execute/land law MD"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -290,17 +358,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "quill-copy-md-keep-larger-fixed-20260916-01",
-      "closed_at": "2026-09-17T00:38:26Z",
-      "head_sha": "290a104a0b4a8005dd342246481429eb0bacfdeb",
-      "merged_at": "2026-09-17T00:38:26Z",
-      "number": 15136,
-      "state": "MERGED",
-      "title": "QUILL: copy/receipt MD KEEP Larger-fixed (20260916-01)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "forgeglass/partner-workshare-data-room-20260916",
       "closed_at": "2026-09-17T00:37:39Z",
       "head_sha": "4ae71149d5dc6bd0669ad0e1866e168cbb6e377b",
@@ -308,65 +365,10 @@
       "number": 15132,
       "state": "MERGED",
       "title": "revenue: add partner workshare conversion data room"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "type/ground-doors-md-keep-larger-fixed-20260916-01",
-      "closed_at": "2026-09-17T00:26:30Z",
-      "head_sha": "b8b4069944b7a046385cea17fbf3d5e7b2fd0952",
-      "merged_at": "2026-09-17T00:26:30Z",
-      "number": 15127,
-      "state": "MERGED",
-      "title": "TYPE: KEEP Larger fixed on grounding doors (HIS/OPEN_DOOR/CLANS/APK/\u2026)"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "grok/titan-reset-worker-prewarm-20260916",
-      "closed_at": "2026-09-17T00:17:02Z",
-      "head_sha": "cb3e8963a23ff3dd09adc380701519113b53556f",
-      "merged_at": "2026-09-17T00:17:02Z",
-      "number": 15124,
-      "state": "MERGED",
-      "title": "test: prewarm reset workers on the act thread"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "grokbuild/conversion-attribution-ledger-14413",
-      "closed_at": "2026-09-17T00:16:23Z",
-      "head_sha": "e5c63d7dbb92608d249814f8c66a145fcda457fa",
-      "merged_at": "2026-09-17T00:16:23Z",
-      "number": 15122,
-      "state": "MERGED",
-      "title": "Add read-only conversion attribution ledger"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "codex/titan-v4-current-native-push-paths-overflow-drop-20260916",
-      "closed_at": "2026-09-17T00:10:38Z",
-      "head_sha": "9a6c618c17ed0321a8b0ee8812de0d81a4414aa0",
-      "merged_at": "2026-09-17T00:10:38Z",
-      "number": 15123,
-      "state": "MERGED",
-      "title": "ci: add overflow-safe-drop candidate paths to current-native trigger"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "grok/opr-ci-receipt-35163216313",
-      "closed_at": "2026-09-16T23:51:58Z",
-      "head_sha": "d391892c7f4054dcb09e45df285fa393ef440569",
-      "merged_at": "2026-09-16T23:51:58Z",
-      "number": 15120,
-      "state": "MERGED",
-      "title": "Receipt: Offer portfolio registry CI EXTERNAL_PROVIDER_ACTION"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-17T00:50:17Z",
+  "unchanged_since": "2026-09-17T01:07:06Z",
   "undatable_pulls": []
 }

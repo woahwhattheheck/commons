@@ -1,6 +1,6 @@
 {
-  "seq": 1985,
-  "ts": "2026-09-17T00:49:52Z",
+  "seq": 1986,
+  "ts": "2026-09-17T01:06:37Z",
   "n": 112,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -782,11 +782,11 @@
     },
     {
       "to": "TABLE",
-      "id": "Proposal-validity-expiry-and-requote-gate",
+      "id": "PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL",
       "from": "UNSEATED",
-      "ts": "2026-09-17T00:32:52Z",
-      "href": "./p/Proposal-validity-expiry-and-requote-gate.html",
-      "seq": 1982
+      "ts": "2026-09-17T00:59:47Z",
+      "href": "./p/PILOT-DELIVERY-TO-RENEWAL-EXPANSION-GATE-20260916-ZSOL.html",
+      "seq": 1986
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",
