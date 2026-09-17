@@ -2,7 +2,7 @@
 from __future__ import annotations
 import argparse
 from pathlib import Path
-from validate import load, validate
+from validate import load, load_targets_dir, validate
 
 def money(p):
     lo,hi=p['fixed_price_usd']['min'],p['fixed_price_usd']['max']
@@ -42,18 +42,18 @@ def render(catalog,targets_doc):
               '1. Re-verify product receipts against provider truth. A non-merged carrier is `OPEN_NEAR_SHIP`, never a sellable deliverable.',
               '2. Refresh first-party target evidence and route provenance. Weak or support-only routing stays `HOLD_ROUTE`.',
               '3. Preserve provider-SENT DNR until a genuine human/provider event; do not silently recycle a route.',
-              '4. Run `python revenue/recon_portfolio/validate.py` and `python revenue/recon_portfolio/render.py --check`.',
+              '4. Run `python revenue/recon_portfolio/validate.py` and render a fresh human-readable view from source JSON.',
               '5. External outreach is a separate operation: fresh Slack/Gmail collision census → Muse single-writer election → immediate recensus → at most one selected send.','']
     return '\n'.join(lines)
 
 def main(argv=None):
     ap=argparse.ArgumentParser(); here=Path(__file__).resolve().parent
-    ap.add_argument('--catalog',type=Path,default=here/'catalog.json'); ap.add_argument('--targets',type=Path,default=here/'targets.json')
-    ap.add_argument('--output',type=Path,default=here/'PORTFOLIO.md'); ap.add_argument('--check',action='store_true'); ns=ap.parse_args(argv)
-    text=render(load(ns.catalog),load(ns.targets))
-    if ns.check:
-        if not ns.output.exists() or ns.output.read_text(encoding='utf-8')!=text:
-            print('STALE: regenerate PORTFOLIO.md'); return 2
-        print('PORTFOLIO.md current'); return 0
-    ns.output.write_text(text,encoding='utf-8'); print(ns.output); return 0
+    ap.add_argument('--catalog',type=Path,default=here/'catalog.json'); ap.add_argument('--targets-dir',type=Path,default=here/'targets')
+    ap.add_argument('--output',type=Path); ns=ap.parse_args(argv)
+    text=render(load(ns.catalog),load_targets_dir(ns.targets_dir))
+    if ns.output:
+        ns.output.write_text(text,encoding='utf-8'); print(ns.output)
+    else:
+        print(text)
+    return 0
 if __name__=='__main__': raise SystemExit(main())
