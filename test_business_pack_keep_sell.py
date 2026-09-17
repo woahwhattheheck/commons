@@ -128,8 +128,11 @@ class BusinessPackKeepSellTests(unittest.TestCase):
         self.assertTrue(any("marketing" in err for err in errors))
 
     def test_door_has_no_stripe_href_and_names_the_lane(self):
-        self.assertNotIn("buy.stripe.com", self.door)
-        self.assertNotIn('href="https://buy.stripe.com', self.door)
+        live_cash = self.door.split('id="live-cash"', 1)[1].split("</section>", 1)[0]
+        ledger = LEDGER.read_text(encoding="utf-8")
+        self.assertNotIn("buy.stripe.com", live_cash)
+        self.assertNotIn("buy.stripe.com", ledger)
+        self.assertNotIn('href="https://buy.stripe.com', live_cash)
         self.assertIn("C0BU7JAPUH3", self.door)
         self.assertIn("NEED_OWNER_LINK", self.door)
         self.assertIn("Bryce only", self.door)

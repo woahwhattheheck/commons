@@ -13,18 +13,18 @@ HELPER = ROOT / "host/harborline_pack_market_render.py"
 RECEIPT = ROOT / "p/cursor-harborline-pack-market-render-20260902-01.md"
 
 KEEP = {
-    "ground/OWNER_NOW.md": "4b2a58ed",
+    "ground/OWNER_NOW.md": "a17b0afb",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "host/harborline_qualify_live_probe.py": "2c1797b2",
-    "test_harborline_qualify_live_probe.py": "90194757",
+    "test_harborline_qualify_live_probe.py": "af2c2fae",
     "p/cursor-big-things-incoming-alert-20260902-01.md": "fde94226",
     "p/cursor-big-things-incoming-shots-20260902-01.md": "60b24eff",
     "p/cursor-big-things-incoming-shots-readback-20260902-01.md": "3cabb764",
     "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "p/cursor-owner-now-revenue-20260902-01.md": "fe5ba035",
-    "owner-now-revenue.html": "7c98199a",
-    "autogtm.html": "2fe108f4",
+    "owner-now-revenue.html": "ccdf3185",
+    "autogtm.html": "1009c4cd",
     "packs/desk-website-service-20260902-01/door.html": "299b01fd",
     "p/cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01.md": "7a8987b5",
 }

@@ -20,7 +20,7 @@ KEEP = {
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "host/landed_work_feed.py": "5a5e5804",
     "ground/LANDED_WORK_FEED.json": "4c42f69f",
-    "landed-work.html": "c7510c57",
+    "landed-work.html": "b1d09014",
     "repo_pulse.py": "298716e9",
 }
 
@@ -53,9 +53,9 @@ class TestGrokbuildPr8365Terminal(unittest.TestCase):
     def test_leftover_tests_keep_lifted_after_337_remint(self) -> None:
         self.assertNotEqual(KEEP.get("test_landed_work_feed.py"), "1c35b970")
         self.assertNotEqual(KEEP.get("test_landed_work_feed_readback.py"), "cb58ab08")
-        self.assertTrue(git_blob("test_landed_work_feed.py").startswith("41a4318b"))
+        self.assertTrue(git_blob("test_landed_work_feed.py").startswith("268a709d"))
         self.assertTrue(
-            git_blob("test_landed_work_feed_readback.py").startswith("a50bb53c")
+            git_blob("test_landed_work_feed_readback.py").startswith("932df736")
         )
         self.assertTrue(
             git_blob("p/grokbuild-pr8365-terminal-20260902-01.md").startswith("212208a2")

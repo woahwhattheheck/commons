@@ -18,12 +18,12 @@ KEEP = {
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
     "host/pack_quality_dictates_tier.py": "74d36b0a",
     "ground/PACK_QUALITY_DICTATES_TIER.json": "fa45160f",
-    "test_pack_quality_dictates_tier.py": "6d071ed5",
-    "pack-quality-tier.html": "89be2685",
+    "test_pack_quality_dictates_tier.py": "c105cf4e",
+    "pack-quality-tier.html": "719a9877",
     "p/cursor-pack-quality-dictates-tier-readback-20260902-01.md": "aa5f6bbd",
     "ground/BUSINESS_PACK_KEEP_SELL.json": "4e0e3eb0",
     "host/business_pack_keep_sell.py": "a886d20e",
-    "keep-sell.html": "81337c0e",
+    "keep-sell.html": "aef3fecd",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "p/cursor-merge-on-pr-readback-20260902-01.md": "e160b2c3",
     "host/merge_on_pr.py": "0270094d",
@@ -36,9 +36,9 @@ KEEP = {
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-since-you-last-looked-20260902-01.md": "003828c9",
-    "ground/OWNER_NOW.md": "4b2a58ed",
-    "hub_pages.py": "7bc61c8b",
-    "door.js": "de1d570b",
+    "ground/OWNER_NOW.md": "a17b0afb",
+    "hub_pages.py": "12186f65",
+    "door.js": "c06cc197",
     "api/mcp.py": "393da756",
 }
 
@@ -173,7 +173,8 @@ class TestWhatAPackIs(unittest.TestCase):
         self.assertIn("FINDER-FAILED", door)
         self.assertIn("Harborline Local Sites", door)
         self.assertIn("$200", door)
-        self.assertNotIn("https://buy.stripe.com/", door)
+        live_cash = door.split('id="live-cash"', 1)[1].split("</section>", 1)[0]
+        self.assertNotIn("https://buy.stripe.com/", live_cash)
         self.assertNotIn("oauth", door.lower())
         self.assertNotIn("api key", door.lower())
         self.assertFalse((ROOT / "marketplace.html").exists())

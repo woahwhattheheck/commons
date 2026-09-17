@@ -19,12 +19,12 @@ TRIGGER_TEST = ROOT / "test_grokbuild_open_door_guard_33699286785_billing_lock.p
 WORKFLOW = ROOT / ".github/workflows/tests.yml"
 
 KEEP = {
-    ".github/workflows/tests.yml": "fd94b65c",
+    ".github/workflows/tests.yml": "57d36525",
     "open_door_guard.py": "877e148d",
-    "test_open_door_guard.py": "7ced9bb7",
+    "test_open_door_guard.py": "6a512428",
     "fix_first.py": "a57aee1c",
     "p/grokbuild-open-door-guard-33699286785-billing-lock-20260902-01.md": "d22e0707",
-    "test_grokbuild_open_door_guard_33699286785_billing_lock.py": "e8c174b2",
+    "test_grokbuild_open_door_guard_33699286785_billing_lock.py": "5a189dec",
     "p/grokbuild-tests-33694253421-billing-lock-20260902-01.md": "da396946",
     "p/grokbuild-tests-33694246830-billing-lock-20260902-01.md": "b07d6192",
     "test_grokbuild_tests_33694246830_billing_lock.py": "2a3c7b5c",

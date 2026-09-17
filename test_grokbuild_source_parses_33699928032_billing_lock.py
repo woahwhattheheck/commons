@@ -19,12 +19,12 @@ WORKFLOW = ROOT / ".github/workflows/source-parses.yml"
 
 KEEP = {
     "source_parses.py": "abba903d",
-    "test_source_parses.py": "595e543c",
-    ".github/workflows/source-parses.yml": "9b4be350",
+    "test_source_parses.py": "71e0c9b6",
+    ".github/workflows/source-parses.yml": "0a8cf371",
     "p/grokbuild-source-parses-33689088174-billing-lock-20260902-01.md": "3b13ac02",
-    "test_grokbuild_source_parses_33689088174_billing_lock.py": "fa8eaf21",
+    "test_grokbuild_source_parses_33689088174_billing_lock.py": "d6ea6574",
     "p/grokbuild-open-door-guard-33699286785-billing-lock-20260902-01.md": "d22e0707",
-    "test_grokbuild_open_door_guard_33699286785_billing_lock.py": "e8c174b2",
+    "test_grokbuild_open_door_guard_33699286785_billing_lock.py": "5a189dec",
     "open_door_guard.py": "877e148d",
 }
 

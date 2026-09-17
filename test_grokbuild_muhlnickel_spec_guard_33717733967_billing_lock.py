@@ -19,7 +19,7 @@ WORKFLOW = ROOT / ".github/workflows/muhlnickel-spec-guard.yml"
 KEEP = {
     "muhlnickel_spec_guard.py": "8bd147aa",
     "test_muhlnickel_spec_guard.py": "c023622f",
-    ".github/workflows/muhlnickel-spec-guard.yml": "098a23f7",
+    ".github/workflows/muhlnickel-spec-guard.yml": "132dc670",
     "open_door_guard.py": "877e148d",
     "p/grokbuild-muhlnickel-spec-guard-33699980193-billing-lock-20260903-01.md": "79285c10",
     "test_grokbuild_muhlnickel_spec_guard_33699980193_billing_lock.py": "66609d47",
@@ -34,7 +34,7 @@ KEEP = {
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
     "p/grokbuild-open-door-guard-33699286785-billing-lock-20260902-01.md": "d22e0707",
     "p/grokbuild-muhlnickel-spec-guard-33699939446-billing-lock-20260903-01.md": "00072bfa",
-    "test_grokbuild_muhlnickel_spec_guard_33699939446_billing_lock.py": "0f70dbd3",
+    "test_grokbuild_muhlnickel_spec_guard_33699939446_billing_lock.py": "92da7d67",
     "p/grokbuild-slack-service-tags-33717615004-billing-lock-20260903-01.md": "f33a76ef",
 }
 

@@ -17,14 +17,14 @@ DOOR = ROOT / "commons-slack-chunk.html"
 KEEP = {
     "p/cursor-commons-slack-full-body-chunk-20260902-01.md": "94770f41",
     "host/commons_slack_full_body_chunk.py": "0fc25108",
-    "ground/COMMONS_SLACK_FULL_BODY_CHUNK.json": "dff7723f",
-    "test_commons_slack_full_body_chunk.py": "77732daf",
+    "ground/COMMONS_SLACK_FULL_BODY_CHUNK.json": "ff28f715",
+    "test_commons_slack_full_body_chunk.py": "b38f13be",
     "commons-slack-chunk.html": "c4a48395",
     "host/commons_slack_full_body.py": "d5338810",
     "p/cursor-commons-slack-full-body-20260902-01.md": "86f4eddc",
-    "ground/COMMONS_SLACK_FULL_BODY.json": "eece8b1a",
-    "test_commons_slack_full_body.py": "a06fbfca",
-    "host/slack_mirror.py": "95d6aff3",
+    "ground/COMMONS_SLACK_FULL_BODY.json": "5b2bf0e0",
+    "test_commons_slack_full_body.py": "62e1401b",
+    "host/slack_mirror.py": "72c0844e",
     "test_slack_mirror.py": "739d5ee8",
     "commons-slack.html": "16a25386",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
@@ -33,10 +33,10 @@ KEEP = {
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/grokbuild-occupancy-landed-work-keep-lift-readback-20260902-01.md": "892bc4c0",
-    "hub_pages.py": "7bc61c8b",
-    "door.js": "de1d570b",
+    "hub_pages.py": "12186f65",
+    "door.js": "c06cc197",
     "api/mcp.py": "393da756",
-    "ground/OWNER_NOW.md": "4b2a58ed",
+    "ground/OWNER_NOW.md": "a17b0afb",
 }
 
 
