@@ -45,8 +45,11 @@ class HuskStartLiveCashTest(unittest.TestCase):
                 self.assertIn(marker, text)
         # Survival Proof buyers must not be sent to agent-rescue as $2500
         self.assertNotIn("$2500", text)
-        self.assertNotIn("buy.stripe.com", text)
-        self.assertNotIn("donate.stripe.com", text)
+        # Convert shelf reuses existing live buys; Live cash product-page
+        # doors stay relative (latch-start-ledger-convert-shelf-20260917-01).
+        live_cash = text.split('id="live-cash"', 1)[1].split("</section>", 1)[0]
+        self.assertNotIn("buy.stripe.com", live_cash)
+        self.assertNotIn("donate.stripe.com", live_cash)
 
 
 if __name__ == "__main__":
