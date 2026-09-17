@@ -74,6 +74,28 @@
         "optimal pressure-robust divergence-free convergence is achievable on smooth domains with curved/isoparametric geometry",
         "this is a different method and does not by itself prove the polygonal Nitsche prize theorem"
       ]
+    },
+    {
+      "kind": "scott_vogelius_local_fortin_reference",
+      "citation": "F. Eickmann, J. Guzman, M. Neilan, L. R. Scott, T. Tscherpel, A local Fortin projection for the Scott-Vogelius elements on general meshes, Journal of Numerical Mathematics (2026), DOI 10.1515/jnma-2025-0178; arXiv:2512.18033",
+      "url": "https://arxiv.org/abs/2512.18033",
+      "facts_used": [
+        "constructs a local Fortin projection for Scott-Vogelius degree k >= 4 on general shape-regular 2D triangulations, including singular vertices",
+        "projection preserves divergence in the dual of the pressure space",
+        "projection preserves discrete boundary data and has local stability estimates",
+        "this is the closest current tool for discharging the weak-boundary divergence-preserving approximation gap, but applicability to the Nitsche boundary trace must be checked rather than assumed"
+      ]
+    },
+    {
+      "kind": "inhomogeneous_dirichlet_scott_vogelius_reference",
+      "citation": "F. Eickmann, L. R. Scott, T. Tscherpel, Scott-Vogelius element and iterated penalty method for inhomogeneous Dirichlet boundary conditions, arXiv:2509.17899 (2025)",
+      "url": "https://arxiv.org/abs/2509.17899",
+      "facts_used": [
+        "gives quasi-optimal mixed-FEM estimates for inhomogeneous Dirichlet Stokes problems and pressure-robust Scott-Vogelius estimates",
+        "exact divergence requires a boundary-data compatibility condition",
+        "key tool is a modified Fortin operator preserving that compatibility condition",
+        "supports treating boundary compatibility as a theorem hypothesis rather than assuming arbitrary weak boundary traces are divergence-compatible"
+      ]
     }
   ],
   "authority": {
