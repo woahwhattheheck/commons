@@ -1,0 +1,53 @@
+{
+  "checked_at": "2026-09-17T19:31:00Z",
+  "opportunity_id": "002100000088314",
+  "schema": "indiana-apcd-rfi-sources/v1",
+  "sources": [
+    {
+      "authority": "OFFICIAL_PUBLIC_NOTICE",
+      "claims": {
+        "buyer_contact": "ESturgeon@idoa.IN.gov",
+        "market_research_topics": ["products", "services", "approaches", "cost_structures", "capabilities", "modern_practices", "emerging_technologies", "pricing_models"],
+        "procurement_stage": "RFI_EXPLORATORY_NOT_SOLICITATION",
+        "program_goals": ["administration", "maintenance", "modernization", "enhancement", "secure_data_ingestion", "public_transparency", "analytics", "consumer_tools", "regulatory_compliance"],
+        "response_deadline": "2026-10-21T15:00:00-04:00",
+        "title": "Administration of the Indiana All Payer Claims Database"
+      },
+      "controls": [],
+      "id": "idoa-current-opportunities",
+      "retained": false,
+      "url": "https://secure.in.gov/idoa/procurement/current-business-opportunities/"
+    },
+    {
+      "authority": "OFFICIAL_PROGRAM_CONTEXT",
+      "claims": {
+        "consumer_portal": "Indiana Health Prices",
+        "program_data": ["eligibility", "medical_claims", "pharmacy_claims", "non_fee_for_service", "provider_data"]
+      },
+      "controls": [],
+      "id": "idoi-apcd-program-page",
+      "retained": false,
+      "url": "https://www.in.gov/idoi/apcd/"
+    },
+    {
+      "authority": "OFFICIAL_HISTORICAL_CONTEXT",
+      "claims": {
+        "historical_record_count_gt": 2300000000,
+        "historical_reporting_organizations": 38,
+        "historical_unique_members": 7700000
+      },
+      "controls": [],
+      "id": "idoi-apcd-2025-annual-report",
+      "retained": false,
+      "url": "https://www.in.gov/dA/a34bbf7098/2025-Indiana-APCD-Annual-Report-FINAL.pdf?language_id=1"
+    },
+    {
+      "authority": "OFFICIAL_CONTROLLING_RFI_PACKAGE",
+      "claims": {},
+      "controls": [],
+      "id": "current-rfi-package",
+      "retained": false,
+      "url": "https://secure.in.gov/idoa/procurement/current-business-opportunities/"
+    }
+  ]
+}
