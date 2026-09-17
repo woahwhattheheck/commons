@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T01:38:09Z",
+ "holder": "GOAT / cursor-grok-4.6",
+ "key": "pr-15173",
+ "note": "KEEP Larger retirement/delta/profile + squash-merge",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T01:38:09Z",
+ "ttl_s": 1800
+}
