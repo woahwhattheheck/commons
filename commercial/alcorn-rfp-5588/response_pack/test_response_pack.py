@@ -11,7 +11,8 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 MODULE_PATH = HERE / "response_pack.py"
 SPEC = importlib.util.spec_from_file_location("alcorn_response_pack", MODULE_PATH)
-assert SPEC is not None and SPEC.loader is not None
+if SPEC is None or SPEC.loader is None:
+    raise RuntimeError("cannot load response_pack module")
 rp = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(rp)
 
@@ -25,8 +26,14 @@ class ResponsePackTests(unittest.TestCase):
         parent = Path(self.tmp.name) / "alcorn-rfp-5588"
         self.root = parent / "response_pack"
         shutil.copytree(HERE, self.root)
-        shutil.copy2(HERE.parent / "qualification_spec.json", parent / "qualification_spec.json")
-        shutil.copy2(HERE.parent / "current_result.json", parent / "current_result.json")
+        for name in (
+            "qualification_spec.json",
+            "current_evidence.json",
+            "current_result.json",
+            "qualification.py",
+            "qualification_guarded.py",
+        ):
+            shutil.copy2(HERE.parent / name, parent / name)
 
     def load(self, path: Path):
         return json.loads(path.read_text(encoding="utf-8"))
@@ -34,15 +41,28 @@ class ResponsePackTests(unittest.TestCase):
     def dump(self, path: Path, value) -> None:
         path.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
-    def test_current_pack_is_complete_but_qualification_held(self) -> None:
+    def result_path(self) -> Path:
+        return self.root.parent / "current_result.json"
+
+    def evidence_path(self) -> Path:
+        return self.root.parent / "current_evidence.json"
+
+    def test_current_pack_is_complete_but_authenticated_qualification_held(self) -> None:
         receipt = rp.compile_pack(self.root)
         self.assertEqual(receipt["state"], "HOLD_QUALIFICATION")
-        self.assertEqual(receipt["reason"], "canonical_qualification_not_ready")
+        self.assertEqual(receipt["reason"], "canonical_authenticated_qualification_not_ready")
         self.assertEqual(receipt["qualification_state"], "HOLD")
         self.assertTrue(receipt["qualification_blockers"])
+        self.assertTrue(receipt["qualification_authenticated_replay"])
+        self.assertFalse(receipt["source_buyer_artifacts_resolved"])
+        self.assertFalse(receipt["owner_gates_ready"])
         self.assertTrue(receipt["response_artifacts_prepared"])
         self.assertTrue(all(value is False for value in receipt["authority"].values()))
         self.assertEqual(len(receipt["receipt_sha256"]), 64)
+        self.assertEqual(
+            set(receipt["source_missing_buyer_artifacts"]),
+            rp.EXPECTED_MISSING_BUYER_ARTIFACTS,
+        )
 
     def test_compile_is_deterministic(self) -> None:
         one = rp.compile_pack(self.root)
@@ -77,12 +97,12 @@ class ResponsePackTests(unittest.TestCase):
         with self.assertRaisesRegex(rp.ContractError, "lost required anchors"):
             rp.compile_pack(self.root)
 
-    def test_customer_price_cannot_be_added(self) -> None:
+    def test_customer_price_amount_cannot_be_published(self) -> None:
         path = self.root / "pricing_basis.json"
         pricing = self.load(path)
         pricing["customer_price_amount"] = 12345
         self.dump(path, pricing)
-        with self.assertRaisesRegex(rp.ContractError, "may not contain a customer price"):
+        with self.assertRaisesRegex(rp.ContractError, "may not contain a customer price amount"):
             rp.compile_pack(self.root)
 
     def test_price_release_cannot_be_self_authorized(self) -> None:
@@ -93,21 +113,40 @@ class ResponsePackTests(unittest.TestCase):
         with self.assertRaisesRegex(rp.ContractError, "may not release"):
             rp.compile_pack(self.root)
 
-    def test_pricing_approval_cannot_be_self_authorized(self) -> None:
+    def test_pricing_approval_requires_source_bound_evidence_id(self) -> None:
         path = self.root / "pricing_basis.json"
         pricing = self.load(path)
         pricing["pricing_approved"] = True
         self.dump(path, pricing)
-        with self.assertRaisesRegex(rp.ContractError, "may not self-approve"):
+        with self.assertRaisesRegex(rp.ContractError, "requires a source-bound pricing approval evidence id"):
             rp.compile_pack(self.root)
 
-    def test_missing_buyer_cost_form_cannot_be_invented(self) -> None:
+    def test_approved_pricing_requires_buyer_cost_form(self) -> None:
+        path = self.root / "pricing_basis.json"
+        pricing = self.load(path)
+        pricing["pricing_approved"] = True
+        pricing["pricing_approval_evidence_id"] = "owner:pricing-approval:example"
+        self.dump(path, pricing)
+        with self.assertRaisesRegex(rp.ContractError, "requires the controlling buyer cost form"):
+            rp.compile_pack(self.root)
+
+    def test_unapproved_pricing_may_not_carry_approval_receipt(self) -> None:
+        path = self.root / "pricing_basis.json"
+        pricing = self.load(path)
+        pricing["pricing_approval_evidence_id"] = "owner:pricing-approval:example"
+        self.dump(path, pricing)
+        with self.assertRaisesRegex(rp.ContractError, "unapproved pricing basis may not carry"):
+            rp.compile_pack(self.root)
+
+    def test_buyer_cost_form_claim_does_not_override_canonical_source_hold(self) -> None:
         path = self.root / "pricing_basis.json"
         pricing = self.load(path)
         pricing["buyer_cost_form_present"] = True
         self.dump(path, pricing)
-        with self.assertRaisesRegex(rp.ContractError, "may not invent"):
-            rp.compile_pack(self.root)
+        receipt = rp.compile_pack(self.root)
+        self.assertEqual(receipt["state"], "HOLD_QUALIFICATION")
+        self.assertFalse(receipt["source_buyer_artifacts_resolved"])
+        self.assertIn("section_viii_cost_information", receipt["source_missing_buyer_artifacts"])
 
     def test_numeric_cost_bucket_value_fails_closed(self) -> None:
         path = self.root / "pricing_basis.json"
@@ -147,6 +186,22 @@ class ResponsePackTests(unittest.TestCase):
         plan["artifacts"] = plan["artifacts"][:-1]
         self.dump(path, plan)
         with self.assertRaisesRegex(rp.ContractError, "artifact set drift"):
+            rp.compile_pack(self.root)
+
+    def test_plan_cannot_disable_declared_owner_gate(self) -> None:
+        path = self.root / "response_plan.json"
+        plan = self.load(path)
+        plan["owner_gate_policy"]["pricing_must_be_owner_approved"] = False
+        self.dump(path, plan)
+        with self.assertRaisesRegex(rp.ContractError, "pricing_must_be_owner_approved must remain true"):
+            rp.compile_pack(self.root)
+
+    def test_plan_cannot_delete_declared_owner_gate(self) -> None:
+        path = self.root / "response_plan.json"
+        plan = self.load(path)
+        del plan["owner_gate_policy"]["signature_officer_must_be_ready"]
+        self.dump(path, plan)
+        with self.assertRaisesRegex(rp.ContractError, "owner_gate_policy key drift"):
             rp.compile_pack(self.root)
 
     def test_unprepared_manifest_status_keeps_response_layer_unready(self) -> None:
@@ -199,7 +254,7 @@ class ResponsePackTests(unittest.TestCase):
             rp.compile_pack(self.root)
 
     def test_result_cannot_rewrite_addendum_as_oem_authority(self) -> None:
-        path = self.root.parent / "current_result.json"
+        path = self.result_path()
         result = self.load(path)
         result["source_findings"]["addendum_1"]["nvidia_oem_authority_granted"] = True
         self.dump(path, result)
@@ -207,7 +262,7 @@ class ResponsePackTests(unittest.TestCase):
             rp.compile_pack(self.root)
 
     def test_result_cannot_inherit_partner_credentials(self) -> None:
-        path = self.root.parent / "current_result.json"
+        path = self.result_path()
         result = self.load(path)
         result["source_findings"]["addendum_1"]["partner_credentials_inherited"] = True
         self.dump(path, result)
@@ -215,7 +270,7 @@ class ResponsePackTests(unittest.TestCase):
             rp.compile_pack(self.root)
 
     def test_result_authority_escalation_fails_closed(self) -> None:
-        path = self.root.parent / "current_result.json"
+        path = self.result_path()
         result = self.load(path)
         result["authority"]["buyer_contact_authorized"] = True
         self.dump(path, result)
@@ -223,19 +278,69 @@ class ResponsePackTests(unittest.TestCase):
             rp.compile_pack(self.root)
 
     def test_ready_state_with_blockers_is_rejected(self) -> None:
-        path = self.root.parent / "current_result.json"
+        path = self.result_path()
         result = self.load(path)
         result["state"] = "TEAMING_READY"
         self.dump(path, result)
-        with self.assertRaisesRegex(rp.ContractError, "may not retain blockers"):
+        with self.assertRaisesRegex(rp.ContractError, "may not retain missing buyer artifacts|may not retain blockers"):
+            rp.compile_pack(self.root)
+
+    def test_exact_stale_receipt_predecessor_state_and_blockers_fails_closed(self) -> None:
+        path = self.result_path()
+        result = self.load(path)
+        result["state"] = "TEAMING_READY"
+        result["blockers"] = []
+        self.dump(path, result)
+        with self.assertRaisesRegex(rp.ContractError, "may not retain missing buyer artifacts"):
+            rp.compile_pack(self.root)
+
+    def test_forged_resealed_result_cannot_replace_upstream_replay(self) -> None:
+        path = self.result_path()
+        result = self.load(path)
+        result["reason"] = "forged_but_locally_resealed"
+        unsigned = dict(result)
+        unsigned.pop("receipt_sha256")
+        result["receipt_sha256"] = rp.sha256_bytes(rp.canonical_json(unsigned).encode("ascii"))
+        self.dump(path, result)
+        with self.assertRaisesRegex(rp.ContractError, "not an authenticated replay of current evidence"):
             rp.compile_pack(self.root)
 
     def test_result_cannot_hide_known_missing_buyer_artifact(self) -> None:
-        path = self.root.parent / "current_result.json"
+        path = self.result_path()
         result = self.load(path)
         result["missing_buyer_artifacts"] = result["missing_buyer_artifacts"][:-1]
         self.dump(path, result)
         with self.assertRaisesRegex(rp.ContractError, "hides a known missing buyer artifact"):
+            rp.compile_pack(self.root)
+
+    def test_current_evidence_mutation_requires_regenerated_authenticated_result(self) -> None:
+        path = self.evidence_path()
+        evidence = self.load(path)
+        evidence["current_time"] = "2026-09-16T17:40:09-04:00"
+        self.dump(path, evidence)
+        with self.assertRaisesRegex(rp.ContractError, "not an authenticated replay of current evidence"):
+            rp.compile_pack(self.root)
+
+    def test_owner_gate_status_is_explicitly_fail_closed_on_current_evidence(self) -> None:
+        evidence = self.load(self.evidence_path())
+        pricing = rp.validate_pricing_basis(self.load(self.root / "pricing_basis.json"))
+        status = rp.owner_gate_status(evidence, pricing)
+        self.assertEqual(set(status), rp.OWNER_GATE_STATUS_KEYS)
+        self.assertTrue(all(value is False for value in status.values()))
+
+    def test_local_pricing_approval_must_match_upstream_source_evidence(self) -> None:
+        evidence = self.load(self.evidence_path())
+        pricing = self.load(self.root / "pricing_basis.json")
+        pricing["pricing_approved"] = True
+        pricing["pricing_approval_evidence_id"] = "owner:pricing-approval:local-only"
+        pricing["buyer_cost_form_present"] = True
+        validated = rp.validate_pricing_basis(pricing)
+        status = rp.owner_gate_status(evidence, validated)
+        self.assertFalse(status["pricing_must_be_owner_approved"])
+
+    def test_upstream_qualification_implementation_is_required(self) -> None:
+        (self.root.parent / "qualification_guarded.py").unlink()
+        with self.assertRaisesRegex(rp.ContractError, "canonical upstream qualification implementation is missing"):
             rp.compile_pack(self.root)
 
     def test_duplicate_json_key_is_rejected(self) -> None:
