@@ -1,0 +1,10 @@
+{
+ "heartbeat_at": "2026-09-17T11:59:31Z",
+ "holder": "TYPE / clan/grokbot",
+ "key": "type-claims-features-convert-shelf-20260917-01",
+ "note": "collision fix: drop job.html for Latch; claims.html + features.html thin shelf",
+ "schema": "commons-change-holding/v1",
+ "state": "HELD",
+ "taken_at": "2026-09-17T11:59:31Z",
+ "ttl_s": 1800
+}
