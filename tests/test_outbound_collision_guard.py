@@ -19,12 +19,13 @@ A = {"claimant_id": "astra-z", "session_id": "chat-11"}
 B = {"claimant_id": "fable-5.1", "session_id": "seat-2"}
 
 
-def muse(claimant=A, fp=None, expires="2026-09-17T03:25:00Z"):
+def muse(claimant=A, fp=None, expires="2026-09-17T03:25:00Z", generation=1):
     return {
         "receipt_id": "slack:d0c1u7tuzec:1789615000.000001",
         "intent_fingerprint": fp or intent_fingerprint(INTENT),
         "selected_claimant_id": claimant["claimant_id"],
         "selected_session_id": claimant["session_id"],
+        "lease_generation": generation,
         "arbitrated_at": "2026-09-17T03:14:59Z",
         "expires_at": expires,
     }
@@ -63,9 +64,26 @@ class GuardTests(unittest.TestCase):
         old = self.waiting()["lease"]
         out = acquire(
             intent=INTENT, claimant=B, now="2026-09-17T03:30:00Z", ttl_s=600,
-            existing=old, muse=muse(B, expires="2026-09-17T03:40:00Z"),
+            existing=old, muse=muse(B, expires="2026-09-17T03:40:00Z", generation=2),
         )
         self.assertEqual(out["lease"]["generation"], 2)
+        self.assertEqual(out["state"], "READY_SINGLE_WRITER")
+
+    def test_yield_preserves_owner_lease_state(self):
+        old = self.waiting()["lease"]
+        out = acquire(intent=INTENT, claimant=B, now=LATER, ttl_s=600, existing=old, muse=muse(B))
+        self.assertEqual(out["state"], "YIELD_EXISTING")
+        self.assertEqual(out["lease"]["state"], old["state"])
+        self.assertEqual(out["lease"]["claimant"], A)
+
+    def test_stale_muse_generation_replay_fails_closed(self):
+        old = self.waiting()["lease"]
+        out = acquire(
+            intent=INTENT, claimant=A, now="2026-09-17T03:30:00Z", ttl_s=600,
+            existing=old, muse=muse(expires="2026-09-17T03:40:00Z", generation=1),
+        )
+        self.assertEqual(out["lease"]["generation"], 2)
+        self.assertEqual(out["state"], "WAIT_MUSE")
 
     def test_muse_wrong_claimant_fails_closed(self):
         out = acquire(intent=INTENT, claimant=A, now=NOW, ttl_s=600, muse=muse(B))
@@ -120,6 +138,36 @@ class GuardTests(unittest.TestCase):
         )
         self.assertEqual(out["state"], "READY_SINGLE_WRITER")
         self.assertEqual(out["lease"]["attempt"]["attempt_id"], rid)
+
+    def test_unknown_then_sent_same_attempt(self):
+        a = begin_send(lease=self.ready()["lease"], body_sha256="1" * 64, provider="gmail", now=LATER)
+        rid = a["lease"]["attempt"]["attempt_id"]
+        unknown = observe_send(
+            lease=a["lease"], attempt_id=rid, provider_status="UNKNOWN",
+            provider_message_id=None, now="2026-09-17T03:16:10Z",
+        )
+        sent = observe_send(
+            lease=unknown["lease"], attempt_id=rid, provider_status="SENT",
+            provider_message_id="gmail:msg-after-reconcile", now="2026-09-17T03:26:10Z",
+        )
+        self.assertEqual(sent["state"], "SENT_TERMINAL")
+        self.assertEqual(sent["lease"]["terminal_result"]["attempt_id"], rid)
+
+    def test_send_observation_after_lease_expiry_still_terminalizes(self):
+        ready = acquire(
+            intent=INTENT, claimant=A, now=NOW, ttl_s=60,
+            muse=muse(expires="2026-09-17T03:16:30Z"),
+        )
+        a = begin_send(
+            lease=ready["lease"], body_sha256="1" * 64, provider="gmail",
+            now="2026-09-17T03:15:59Z",
+        )
+        sent = observe_send(
+            lease=a["lease"], attempt_id=a["lease"]["attempt"]["attempt_id"],
+            provider_status="SENT", provider_message_id="gmail:late-receipt",
+            now="2026-09-17T03:17:00Z",
+        )
+        self.assertEqual(sent["state"], "SENT_TERMINAL")
 
     def test_sent_is_terminal(self):
         a = begin_send(lease=self.ready()["lease"], body_sha256="1" * 64, provider="gmail", now=LATER)
@@ -177,6 +225,12 @@ class GuardTests(unittest.TestCase):
     def test_generic_counterparty_rejected(self):
         bad = dict(INTENT)
         bad["counterparty_key"] = "unknown"
+        with self.assertRaises(GuardError):
+            acquire(intent=bad, claimant=A, now=NOW, ttl_s=600)
+
+    def test_ambiguous_thread_rejected(self):
+        bad = dict(INTENT)
+        bad["thread_key"] = "unknown"
         with self.assertRaises(GuardError):
             acquire(intent=bad, claimant=A, now=NOW, ttl_s=600)
 
