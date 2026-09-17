@@ -189,10 +189,18 @@ def owner_usable(rail: dict[str, Any]) -> bool:
 
 
 def catalog_checkouts(catalog: dict[str, Any]) -> dict[str, str]:
-    """Return exact Stripe URLs for every catalog-proven active checkout."""
+    """Return active Stripe checkouts, failing closed on duplicate SKU ids."""
+    counts: dict[str, int] = {}
+    for listing in catalog.get("listings") or []:
+        if isinstance(listing, dict) and isinstance(listing.get("id"), str):
+            sku = listing["id"]
+            counts[sku] = counts.get(sku, 0) + 1
     out: dict[str, str] = {}
     for listing in catalog.get("listings") or []:
         if not isinstance(listing, dict) or not isinstance(listing.get("id"), str):
+            continue
+        sku = listing["id"]
+        if counts.get(sku) != 1:
             continue
         checkout = listing.get("checkout") if isinstance(listing.get("checkout"), dict) else {}
         url = checkout.get("url")
@@ -205,23 +213,130 @@ def catalog_checkouts(catalog: dict[str, Any]) -> dict[str, str]:
             and isinstance(url, str)
             and STRIPE_URL_RE.fullmatch(url)
         ):
-            out[listing["id"]] = url
+            out[sku] = url
     return out
 
 
-def project_rail(rail: dict[str, Any], checkouts: dict[str, str]) -> dict[str, Any]:
+def catalog_checkout_evidence(catalog: dict[str, Any]) -> dict[str, dict[str, str]]:
+    """Return evidence from the same unique listing admitted as active."""
+    active = catalog_checkouts(catalog)
+    out: dict[str, dict[str, str]] = {}
+    for listing in catalog.get("listings") or []:
+        if not isinstance(listing, dict) or not isinstance(listing.get("id"), str):
+            continue
+        sku = listing["id"]
+        checkout = listing.get("checkout") if isinstance(listing.get("checkout"), dict) else {}
+        url = checkout.get("url")
+        if active.get(sku) != url:
+            continue
+        evidence = checkout.get("capability_evidence") if isinstance(checkout.get("capability_evidence"), dict) else {}
+        reference = evidence.get("reference")
+        observed_at = evidence.get("observed_at")
+        if not isinstance(reference, str) or not reference.strip():
+            continue
+        if not isinstance(observed_at, str) or not observed_at:
+            continue
+        try:
+            _timestamp(observed_at, "%s.checkout.capability_evidence.observed_at" % sku)
+        except RegistryError:
+            continue
+        out[sku] = {
+            "url": str(url),
+            "reference": reference,
+            "observed_at": observed_at,
+        }
+    return out
+
+
+def canonical_payment_authority() -> dict[str, dict[str, str]]:
+    """Caller-independent Stripe authority from canonical registry + catalog."""
+    try:
+        registry = _load(ROOT_DEFAULT, REGISTRY)
+        catalog = _load(ROOT_DEFAULT, CATALOG)
+        if registry.get("kind") != "PAYMENT_CAPABILITY_REGISTRY":
+            return {}
+        if registry.get("schema_version") != "commons-payment-capability/v1":
+            return {}
+        _timestamp(registry.get("observed_at"), "canonical.observed_at")
+    except (OSError, ValueError, json.JSONDecodeError, RegistryError):
+        return {}
+    checkouts = catalog_checkouts(catalog)
+    checkout_evidence = catalog_checkout_evidence(catalog)
+    out: dict[str, dict[str, str]] = {}
+    duplicate: set[str] = set()
+    for rail in registry.get("rails") or []:
+        if not isinstance(rail, dict):
+            continue
+        if rail.get("provider") != "stripe" or not public_storefront_eligible(rail):
+            continue
+        rail_id = str(rail.get("id") or "")
+        supported = {
+            sku for sku in rail.get("supported_skus") or [] if isinstance(sku, str)
+        }
+        rail_evidence = rail.get("evidence") if isinstance(rail.get("evidence"), dict) else {}
+        for link in rail.get("canonical_links") or []:
+            if not isinstance(link, dict) or not isinstance(link.get("sku"), str):
+                continue
+            sku = link["sku"]
+            if sku in out:
+                duplicate.add(sku)
+                continue
+            url = str(link.get("url") or "")
+            exposure = str(link.get("exposure") or "")
+            evidence = link.get("evidence") if isinstance(link.get("evidence"), dict) else rail_evidence
+            reference = evidence.get("reference")
+            observed_at = evidence.get("observed_at")
+            catalog_evidence = checkout_evidence.get(sku) or {}
+            if not (
+                link.get("link_active") is True
+                and link.get("livemode") is True
+                and sku in supported
+                and checkouts.get(sku) == url
+                and bool(STRIPE_URL_RE.fullmatch(url))
+                and isinstance(reference, str)
+                and bool(reference.strip())
+                and isinstance(observed_at, str)
+                and catalog_evidence.get("url") == url
+                and catalog_evidence.get("reference") == reference
+                and catalog_evidence.get("observed_at") == observed_at
+            ):
+                continue
+            try:
+                _timestamp(observed_at, "%s.canonical.evidence.observed_at" % sku)
+            except RegistryError:
+                continue
+            out[sku] = {
+                "rail_id": rail_id,
+                "url": url,
+                "reference": reference,
+                "observed_at": observed_at,
+                "exposure": exposure,
+            }
+    for sku in duplicate:
+        out.pop(sku, None)
+    return out
+
+
+def project_rail(
+    rail: dict[str, Any],
+    checkouts: dict[str, str],
+    checkout_evidence: dict[str, dict[str, str]],
+    authority: dict[str, dict[str, str]],
+) -> dict[str, Any]:
     eligible = public_storefront_eligible(rail)
     links = rail.get("canonical_links") if isinstance(rail.get("canonical_links"), list) else []
     supported_skus = {
         sku for sku in rail.get("supported_skus") or [] if isinstance(sku, str)
     }
     public_links = []
+    rail_id = str(rail.get("id") or "")
     if eligible and rail.get("provider") == "stripe":
         for link in links:
             if not isinstance(link, dict):
                 continue
             url = str(link.get("url") or "")
             sku = str(link.get("sku") or "")
+            exposure = str(link.get("exposure") or "")
             evidence = link.get("evidence") if isinstance(link.get("evidence"), dict) else rail.get("evidence") or {}
             evidence_ready = bool(evidence.get("reference") and evidence.get("observed_at"))
             if evidence_ready:
@@ -229,6 +344,20 @@ def project_rail(rail: dict[str, Any], checkouts: dict[str, str]) -> dict[str, A
                     _timestamp(evidence["observed_at"], "%s.evidence.observed_at" % sku)
                 except RegistryError:
                     evidence_ready = False
+            catalog_evidence = checkout_evidence.get(sku) or {}
+            evidence_matches = (
+                catalog_evidence.get("url") == url
+                and catalog_evidence.get("reference") == evidence.get("reference")
+                and catalog_evidence.get("observed_at") == evidence.get("observed_at")
+            )
+            canonical = authority.get(sku) or {}
+            authority_matches = (
+                canonical.get("rail_id") == rail_id
+                and canonical.get("url") == url
+                and canonical.get("reference") == evidence.get("reference")
+                and canonical.get("observed_at") == evidence.get("observed_at")
+                and canonical.get("exposure") == exposure
+            )
             if (
                 link.get("link_active") is True
                 and link.get("livemode") is True
@@ -236,6 +365,8 @@ def project_rail(rail: dict[str, Any], checkouts: dict[str, str]) -> dict[str, A
                 and checkouts.get(sku) == url
                 and STRIPE_URL_RE.fullmatch(url)
                 and evidence_ready
+                and evidence_matches
+                and authority_matches
             ):
                 public_links.append(
                     {
@@ -259,7 +390,7 @@ def project_rail(rail: dict[str, Any], checkouts: dict[str, str]) -> dict[str, A
             )
     dest = rail.get("settlement_destination") if isinstance(rail.get("settlement_destination"), dict) else {}
     return {
-        "id": str(rail.get("id") or ""),
+        "id": rail_id,
         "provider": str(rail.get("provider") or ""),
         "capability_state": str(rail.get("capability_state") or ""),
         "public_presentation": "EXPOSE" if eligible and public_links else "INERT",
@@ -284,7 +415,13 @@ def project(registry: dict[str, Any], catalog: dict[str, Any]) -> dict[str, Any]
     _timestamp(registry.get("observed_at"), "observed_at")
     rails = registry.get("rails") if isinstance(registry.get("rails"), list) else []
     checkouts = catalog_checkouts(catalog)
-    projected = [project_rail(rail, checkouts) for rail in rails if isinstance(rail, dict)]
+    checkout_evidence = catalog_checkout_evidence(catalog)
+    authority = canonical_payment_authority()
+    projected = [
+        project_rail(rail, checkouts, checkout_evidence, authority)
+        for rail in rails
+        if isinstance(rail, dict)
+    ]
     public = [row for row in projected if row["public_presentation"] == "EXPOSE"]
     usable = [row for row in projected if row["owner_usable"]]
     active = public[0]["id"] if public else ""
@@ -538,6 +675,7 @@ def measure_root(root: str) -> dict[str, Any]:
         if rail.get("public_presentation") == "EXPOSE" and rail.get("capability_state") != "CHARGEABLE":
             errors.append("rail %s cannot EXPOSE unless CHARGEABLE" % rid)
         if rail.get("capability_state") != "CHARGEABLE" and rail.get("canonical_links"):
+            # inert rails may omit links; if present they still must not be public
             pass
         if rail.get("id") != "stripe-livemode-acct_1U6HI9ATH4EDE7XD" and rail.get("public_presentation") == "EXPOSE":
             errors.append("non-Stripe rail must stay inert until a later evidence pass")
@@ -685,6 +823,8 @@ def _self_test() -> bool:
             },
         ],
     }
+    # PayPal fixture is CHARGEABLE but has no public checkout URL of a known kind,
+    # so public_presentation stays INERT. That is honest: chargeable is not a URL.
     alt = project(live, fixture_catalog)
     if alt["has_public_storefront"]:
         return False

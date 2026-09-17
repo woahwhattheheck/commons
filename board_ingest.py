@@ -305,6 +305,28 @@ LIVE_DELTA_CONVERT_SHELF = (
     "No new Payment Links.</p>\n"
     "</section>\n"
 )
+BOARDS_BUILDS_CONVERT_PAGES = ("boards.html", "builds.html")
+BOARDS_BUILDS_CONVERT_SHELF = (
+    '<section id="buy-now-live-checkout" class="law" '
+    'aria-label="Buy now — live checkout">\n'
+    "<strong>Buy now — live checkout.</strong> Existing live Payment Links. "
+    "No invented Stripe. A click is intent, not cash.\n"
+    "<p>\n"
+    '<a class="cta" data-checkout '
+    'href="https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g">'
+    "Buy Autopsy $29</a>\n"
+    '<a class="cta" data-checkout '
+    'href="https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07">'
+    "Buy one White Box hour $250</a>\n"
+    "</p>\n"
+    '<p class="note">Reuse only. Cite '
+    "<code>wire-boards-builds-convert-shelf-20260917-01</code>. Sources: "
+    '<a href="./agent-rescue.html">agent-rescue.html</a> · '
+    '<a href="./commercial.html">commercial.html</a> / '
+    '<a href="./diagnostic.html">diagnostic.html</a>. Tip KEEP. #8802 off. '
+    "No new Payment Links.</p>\n"
+    "</section>\n"
+)
 TOOLS_CASH_HOOK = (
     '<p class="note" id="cash-hook"><strong>Catalog cash</strong> — '
     '<a href="./tools.json"><code>tools.json</code> → <code>cash</code></a>: '
@@ -453,6 +475,52 @@ def splice_live_delta_convert_shelf(root=None):
             any_changed = True
     return any_changed
 
+
+
+def splice_boards_builds_convert_shelf(root=None):
+    """Keep boards.html + builds.html convert shelves across remints.
+
+    hub_pages.rebuild_boards and builds_ledger.project remint those pages and
+    drop a first-screen Buy shelf. Compose the existing Autopsy $29 + White
+    Box hour $250 Payment Links back after each rebuild. Same cash-doors
+    splice pattern as tools.html (#15402) / live+delta (#15479). Cite
+    wire-boards-builds-convert-shelf-20260917-01. Do not remint hub_pages.py leftover bytes.
+    """
+    base = root or ROOT
+    any_changed = False
+    for name in BOARDS_BUILDS_CONVERT_PAGES:
+        path = os.path.join(base, name)
+        if not os.path.isfile(path):
+            continue
+        with open(path, encoding="utf-8") as handle:
+            text = handle.read()
+        changed = False
+        if 'id="buy-now-live-checkout"' not in text:
+            needle = '<section id="live-cash"'
+            idx = text.find(needle)
+            if idx < 0:
+                raise RuntimeError(
+                    "%s lost live-cash splice point for convert shelf" % name
+                )
+            text = text[:idx] + BOARDS_BUILDS_CONVERT_SHELF + text[idx:]
+            changed = True
+        if ".cta{" not in text:
+            css_mark = 'href="./commons.css'
+            css_at = text.find(css_mark)
+            close = text.find(">", css_at) if css_at >= 0 else -1
+            if close < 0:
+                raise RuntimeError(
+                    "%s lost commons.css splice point for convert CTA" % name
+                )
+            insert_at = close + 1
+            if insert_at < len(text) and text[insert_at] == "\n":
+                insert_at += 1
+            text = text[:insert_at] + TOOLS_CONVERT_SHELF_STYLE + text[insert_at:]
+            changed = True
+        if changed:
+            _write(path, text)
+            any_changed = True
+    return any_changed
 
 def splice_features_digit_seat(root=None):
     """Keep the DIGIT seat callout on features.html across lane rebuilds.
@@ -3528,6 +3596,7 @@ def rebuild():
     hub_pages.rebuild_hub(sys.modules[__name__], rows)
     splice_tools_cash_doors()
     splice_live_delta_convert_shelf()
+    splice_boards_builds_convert_shelf()
     splice_features_digit_seat()
     write_mail(rows, write_pulse(rows))
     # Observatory consumes these freshly emitted bakes, including pulse. Keep

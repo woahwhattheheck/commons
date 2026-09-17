@@ -5,7 +5,9 @@ on:
     paths:
       - '.github/workflows/titan-reset-invariance.yml'
       - 'revenue/kaggriculture/cloud-execution-lab/test_worker_reset.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_worker_reset_deterministic.py'
       - 'revenue/kaggriculture/cloud-execution-lab/test_reset_invariance_hosted_checkout.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_reset_invariance_deterministic_oracle.py'
       - 'revenue/kaggriculture/cloud-execution-lab/main.py'
       - 'revenue/kaggriculture/cloud-execution-lab/titan_runtime.py'
       - 'revenue/kaggriculture/cloud-execution-lab/build_integrated.py'
@@ -26,7 +28,9 @@ on:
     paths:
       - '.github/workflows/titan-reset-invariance.yml'
       - 'revenue/kaggriculture/cloud-execution-lab/test_worker_reset.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_worker_reset_deterministic.py'
       - 'revenue/kaggriculture/cloud-execution-lab/test_reset_invariance_hosted_checkout.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_reset_invariance_deterministic_oracle.py'
       - 'revenue/kaggriculture/cloud-execution-lab/main.py'
       - 'revenue/kaggriculture/cloud-execution-lab/titan_runtime.py'
       - 'revenue/kaggriculture/cloud-execution-lab/build_integrated.py'
@@ -76,7 +80,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python3 -B -m unittest -v test_reset_invariance_hosted_checkout
+          python3 -B -m unittest -v \
+            test_reset_invariance_hosted_checkout \
+            test_reset_invariance_deterministic_oracle
           python3 -B test_worker_reset.py --check-sources
       - name: Verify current canonical package
         working-directory: revenue/kaggriculture/cloud-execution-lab
@@ -94,13 +100,16 @@ jobs:
           LIVE="$RUNNER_TEMP/titan-reset-live-root"
           mkdir -p "$OUT"
           python3 -B "$LAB/test_worker_reset.py" --materialize-live "$LIVE"
-          python3 -I "$LAB/test_worker_reset.py" --worker "$LIVE" --order A B --output "$OUT/live-ab.json"
-          python3 -I "$LAB/test_worker_reset.py" --worker "$LIVE" --order B A --output "$OUT/live-ba.json"
+          python3 -I "$LAB/test_worker_reset_deterministic.py" --worker "$LIVE" --order A B --output "$OUT/live-ab.json"
+          python3 -I "$LAB/test_worker_reset_deterministic.py" --worker "$LIVE" --order B A --output "$OUT/live-ba.json"
           python3 - "$OUT/live-ab.json" "$OUT/live-ba.json" "$OUT/live-summary.json" <<'PY'
           import json, sys
           from pathlib import Path
           ab = json.loads(Path(sys.argv[1]).read_text())
           ba = json.loads(Path(sys.argv[2]).read_text())
+          expected_mode = 'deterministic-reset-oracle/no-wallclock-cancellation'
+          if ab.get('deadline_mode') != expected_mode or ba.get('deadline_mode') != expected_mode:
+              raise SystemExit('live reset workers did not use deterministic deadline mode')
           keys = ('seed','seat','calls','last_step','action_sha256','status','rewards','singleton_replaced')
           mismatches = {}
           for name in ('A','B'):
@@ -113,8 +122,9 @@ jobs:
           if mismatches:
               raise SystemExit(json.dumps(mismatches, indent=2, sort_keys=True))
           summary = {
-              'schema': 'titan-v4-reset-invariance-live-source/v1',
+              'schema': 'titan-v4-reset-invariance-live-source-deterministic/v1',
               'result': 'PASS',
+              'deadline_mode': expected_mode,
               'orders': [ab['order'], ba['order']],
               'results': ab['results'],
               'module_cache_keys': ab['module_cache_keys'],
@@ -131,7 +141,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/titan-reset-invariance"
-          python3 -B revenue/kaggriculture/cloud-execution-lab/test_worker_reset.py \
+          python3 -B revenue/kaggriculture/cloud-execution-lab/test_worker_reset_deterministic.py \
             | tee "$RUNNER_TEMP/titan-reset-invariance/archive-summary.json"
       - uses: actions/upload-artifact@v4
         if: ${{ always() }}

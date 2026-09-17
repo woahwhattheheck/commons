@@ -34,7 +34,7 @@ UNITTEST_TERMINAL = re.compile(
 
 
 def reported_test_count(stderr: str) -> int:
-    """Return unittest's terminal stderr execution count or fail closed."""
+    """Return unittest's terminal successful execution count or fail closed."""
     match = UNITTEST_TERMINAL.search(stderr)
     if match is None:
         raise ValueError(f"unittest stderr has no terminal executed-test summary:\n{stderr}")
@@ -76,6 +76,11 @@ class RuntimeProvenanceRetainedTests(unittest.TestCase):
         except (AssertionError, ValueError):
             return
         self.fail(f"zero-test child unexpectedly satisfied non-vacuity:\n{self.child_output(proc)}")
+
+    def test_public_registry_module_exports_canonical_json(self) -> None:
+        from tools.runtime_provenance.runtime_registry import canonical_json
+
+        self.assertEqual(canonical_json({"b": 1, "a": 2}), '{"a":2,"b":1}')
 
     def test_focused_suite_normal_and_optimized_is_nonvacuous(self) -> None:
         counts: list[int] = []
