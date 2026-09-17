@@ -146,6 +146,43 @@ class CurrentSemanticGenerationTests(unittest.TestCase):
         with self.assertRaisesRegex(engine.GateError, "exact built-in plain-JSON"):
             engine.compile_current(p)
 
+    def test_lone_surrogate_packet_and_receipt_text_fail_as_gate_errors(self):
+        p = current_packet()
+        receipt = engine.compile_current(p)
+        p["baseline"]["source"]["source_id"] = "bad\ud800text"
+        with self.assertRaisesRegex(engine.GateError, "valid UTF-8 text required"):
+            engine.compile_current(p)
+
+        bad_receipt = copy.deepcopy(receipt)
+        bad_receipt["truth"]["ready_means"] = "bad\ud800text"
+        with self.assertRaisesRegex(engine.GateError, "valid UTF-8 text required"):
+            engine.verify_receipt(current_packet(), bad_receipt)
+
+    def test_lone_surrogate_object_key_fails_without_echoing_key(self):
+        p = current_packet()
+        p["baseline"]["bad\ud800key"] = None
+        try:
+            engine.compile_current(p)
+        except engine.GateError as exc:
+            message = str(exc)
+            self.assertIn("valid UTF-8 text required", message)
+            self.assertNotIn("\ud800", message)
+        else:
+            self.fail("expected GateError")
+
+    def test_pathological_integers_fail_before_canonical_serialization(self):
+        huge = 10**5000
+        p = current_packet()
+        p["baseline"]["generation"] = huge
+        with self.assertRaisesRegex(engine.GateError, "integer outside supported range"):
+            engine.compile_current(p)
+
+        p = current_packet()
+        receipt = engine.compile_current(p)
+        receipt["effective_total_cents"] = huge
+        with self.assertRaisesRegex(engine.GateError, "integer outside supported range"):
+            engine.verify_receipt(p, receipt)
+
 
 if __name__ == "__main__":
     unittest.main()
