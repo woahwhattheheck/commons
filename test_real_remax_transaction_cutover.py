@@ -34,12 +34,17 @@ class RealRemaxCutoverTest(unittest.TestCase):
 
     def test_order_invariance(self):
         expected = self.compile()
+        self.source["offices"].reverse()
+        self.target["offices"].reverse()
+        self.mapping["offices"].reverse()
         self.source["transactions"].reverse()
         self.target["transactions"].reverse()
         self.mapping["transactions"].reverse()
         self.source["agents"].reverse()
         self.target["agents"].reverse()
         self.mapping["agents"].reverse()
+        self.policy["active_source_stages"].reverse()
+        self.policy["required_relationship_roles"].reverse()
         for txn in self.source["transactions"]:
             txn["relationships"].reverse()
         for txn in self.target["transactions"]:
@@ -178,6 +183,11 @@ class RealRemaxCutoverTest(unittest.TestCase):
             self.assertEqual(b"", displaced.read_bytes())
 
     def test_direct_object_aggregate_bound(self):
+        source, target, mapping, policy = build_synthetic_bundle(1)
+        with mock.patch("revenue.real_remax_transaction_cutover.schema.MAX_ITEMS", 35):
+            with self.assertRaisesRegex(CutoverError, "aggregate 35 row limit"):
+                compile_cutover(source, target, mapping, policy)
+
         source, target, mapping, policy = build_synthetic_bundle(3)
         with mock.patch("revenue.real_remax_transaction_cutover.schema.MAX_ITEMS", 40):
             with self.assertRaisesRegex(CutoverError, "aggregate 40 row limit"):
