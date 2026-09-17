@@ -71,11 +71,11 @@ Run from this directory:
 ```bash
 python3 acceptance.py verify-machine state_machine.json
 python3 acceptance.py replay state_machine.json demo_events.json
-python3 -m unittest test_acceptance.py -v
-python3 -O -m unittest test_acceptance.py -v
+python3 -m unittest discover -v
+python3 -O -m unittest discover -v
 ```
 
-The hostile suite rejects duplicate JSON keys, non-finite numbers, semantic contract remints, authority escalation, duplicate or cross-type reused workspace identifiers, nonmonotone timestamps, invalid lease types, non-holder outcomes, expired-holder outcomes, provider outcomes on the wrong route, malformed/credentialed/ported domains, and whitespace/padded/control/category-C/Default_Ignorable/combining-only event/provider/human identifiers. It proves visible-base+combining identifiers remain admissible, cross-route collision, normalized-domain equivalence, one-shot human reopen re-fencing after expiry, and receipt-digest movement under evidence/lease/reason substitution.
+The hostile suite rejects duplicate JSON keys, non-finite numbers, semantic contract remints, the prior blanket-stale-recovery authenticated machine generation, authority escalation, duplicate or cross-type reused workspace identifiers, nonmonotone timestamps, invalid lease types, non-holder outcomes, expired-holder outcomes, provider outcomes on the wrong route, malformed/credentialed/ported domains, and whitespace/padded/control/category-C/Default_Ignorable/combining-only event/provider/human identifiers. It proves the current ordinary-only stale-recovery machine digest under normal and optimized Python, visible-base+combining identifiers remain admissible, cross-route collision, normalized-domain equivalence, one-shot human reopen re-fencing after expiry, and receipt-digest movement under evidence/lease/reason substitution.
 
 ## Emergent build handoff
 
