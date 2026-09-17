@@ -42,6 +42,9 @@ TARGETS = (
 # (type-flipbook-compress-convert-shelf-20260917-01).
 # insights.html and grounding.html convert shelves reuse the same two
 # live Payment Links (type-insights-grounding-convert-shelf-20260917-01).
+# interconnect.html convert shelf reuses the same two live Payment Links
+# (anvil-opendoor-interconnect-convert-shelf-20260917-01;
+# type-expertise-interconnect-convert-shelf-20260917-01 ALREADY_DONE).
 VERIFIED_PRODUCT_CHECKOUT = {
     'invoice-exception-pack.html': (
         b'https://buy.stripe.com/14A00i84Jdvz36hdxg43S0l',
@@ -86,6 +89,10 @@ VERIFIED_PRODUCT_CHECKOUT = {
         b'https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07',
     ),
     'grounding.html': (
+        b'https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g',
+        b'https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07',
+    ),
+    'interconnect.html': (
         b'https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g',
         b'https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07',
     ),

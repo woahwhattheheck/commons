@@ -36,8 +36,17 @@ class ExpertiseSurfaceTests(unittest.TestCase):
     def test_only_existing_whitebox_commerce_route_is_chargeable(self):
         self.assertEqual(self.html.count('href="./commerce.html#sku-whitebox-hour-20260826"'), 1)
         self.assertIn('$250 · one hour', self.html)
-        self.assertNotIn('buy.stripe.com', self.html)
         self.assertNotIn('donate.stripe.com', self.html)
+        live_cash = self.html.split('id="live-cash"', 1)[1].split("</section>", 1)[0]
+        self.assertNotIn("buy.stripe.com", live_cash)
+        self.assertIn("https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g", self.html)
+        self.assertIn("https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07", self.html)
+        self.assertEqual(
+            self.html.count("https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g"), 1
+        )
+        self.assertEqual(
+            self.html.count("https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07"), 1
+        )
 
     def test_other_seven_lanes_are_quote_only(self):
         quote_routes = re.findall(r'href="mailto:tokenjunkielabs@gmail.com\?subject=[^"]+"', self.html)
