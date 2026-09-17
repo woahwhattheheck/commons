@@ -1,10 +1,11 @@
 """Retained-battery bridge for the GGUF $12k enterprise close/delivery kit.
 
-Commons' retained `tests` workflow discovers root `test_*.py` files.  The GGUF
-close kit keeps its hostile suites under `tests/`, so this bridge re-exports both
-suites for ordinary root discovery and explicitly reruns the same suites under
-`python -O`.  This preserves the exact source/privacy regression coverage
-without consuming a dedicated active Actions workflow slot.
+Commons' retained `tests` workflow discovers root test_*.py files. The GGUF
+close kit keeps its core/privacy hostile suites under `tests/` and the paid
+expansion predecessor at the root, so this bridge re-exports the nested suites
+for ordinary root discovery and explicitly reruns all GGUF suites under
+`python -O`. This preserves exact source/privacy/commercial-state regression
+coverage without consuming a dedicated active Actions workflow slot.
 """
 
 from __future__ import annotations
@@ -49,6 +50,7 @@ class OptimizedModeTests(unittest.TestCase):
                 "unittest",
                 "tests.test_gguf_enterprise_close_kit",
                 "tests.test_gguf_enterprise_close_kit_script_confusables",
+                "test_gguf_enterprise_close_kit_paid_expansion_gate",
             ],
             cwd=ROOT,
             stdout=subprocess.PIPE,
