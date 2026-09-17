@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 34,
+ "n_open_prs": 35,
  "open_prs": [
   {
    "number": 15640,
@@ -817,38 +817,6 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 15707,
-   "author": "woahwhattheheck",
-   "title": "feat(outbound): enforce mandatory organization-aware provider chain",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15707",
-   "base_freshness": {
-    "base_sha": "93f16474245efa9caac3590cb138ce58bc7c06fb",
-    "main_sha": "93bd35f557a00bbbcceb49a5543c70d43905feff",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 15794,
-   "author": "woahwhattheheck",
-   "title": "Muse: rejoin atomic send lease onto current main",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15794",
-   "base_freshness": {
-    "base_sha": "93bd35f557a00bbbcceb49a5543c70d43905feff",
-    "main_sha": "93bd35f557a00bbbcceb49a5543c70d43905feff",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "FRESH"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 15728,
    "author": "woahwhattheheck",
    "title": "Revenue: compile explicit payoff paths for uncompensated work",
@@ -881,6 +849,38 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
+   "number": 15794,
+   "author": "woahwhattheheck",
+   "title": "Muse: rejoin atomic send lease onto current main",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15794",
+   "base_freshness": {
+    "base_sha": "93bd35f557a00bbbcceb49a5543c70d43905feff",
+    "main_sha": "93bd35f557a00bbbcceb49a5543c70d43905feff",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "FRESH"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15707,
+   "author": "woahwhattheheck",
+   "title": "feat(outbound): enforce mandatory organization-aware provider chain",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15707",
+   "base_freshness": {
+    "base_sha": "93f16474245efa9caac3590cb138ce58bc7c06fb",
+    "main_sha": "93bd35f557a00bbbcceb49a5543c70d43905feff",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
    "number": 15758,
    "author": "woahwhattheheck",
    "title": "Revenue coordination: canonical current-state compiler + stale-body guard",
@@ -891,6 +891,22 @@
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15796,
+   "author": "woahwhattheheck",
+   "title": "Truth-narrow exact-head evidence broker provenance",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15796",
+   "base_freshness": {
+    "base_sha": "93bd35f557a00bbbcceb49a5543c70d43905feff",
+    "main_sha": "93bd35f557a00bbbcceb49a5543c70d43905feff",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "FRESH"
    },
    "status": "PR_OPEN",
    "road": "pr",
