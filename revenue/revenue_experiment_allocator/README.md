@@ -24,6 +24,8 @@ Each segment binds one evidence reference + SHA-256 and reports:
 - whether an outbound route is available;
 - whether a collision is unresolved.
 
+A commercial segment is identified by the canonicalized tuple `offer_id × route_kind × audience_label`, not by caller-chosen `segment_id` alone. `offer_id` and `audience_label` are NFKC-normalized, whitespace-collapsed, and case-folded for the uniqueness fence; Unicode control/format characters are rejected at that identity boundary. Two rows therefore cannot alias the same commercial segment under distinct IDs or distinct evidence bindings to multiply the hard share cap.
+
 The funnel counts must be monotone. Cash cannot exist without a retained paid signal, and a retained paid signal must carry positive retained cash.
 
 The truth boundary is:
@@ -50,7 +52,7 @@ There is intentionally **no headline ticket-value input**. The allocator uses ob
 
 Two controls prevent naive winner-take-all spray:
 
-- `max_segment_share_bps` caps any one segment's share of the requested batch;
+- `max_segment_share_bps` caps any one semantic segment's share of the requested batch;
 - `exploration_slots` reserves bounded capacity for strong collision-clean segments that have not yet produced a retained paid outcome.
 
 Allocation is round-robin within the deterministic ranking, so the share cap is respected even when the requested batch is larger than available capacity.
@@ -89,10 +91,13 @@ Input loading is strict: bounded retained regular file, no symlink following whe
 
 ## Tests
 
-The root `test_revenue_experiment_allocator.py` covers normal and hostile semantics including:
+The root `test_revenue_experiment_allocator.py` and `test_revenue_experiment_allocator_strict_share.py` cover normal and hostile semantics including:
 
 - ranking without headline ticket value;
-- hard segment concentration cap, including non-divisible batch/share arithmetic;
+- hard semantic-segment concentration cap, including non-divisible batch/share arithmetic;
+- duplicate-ID aliases with distinct evidence cannot multiply capacity;
+- NFKC/case/spacing aliases and Unicode format-character aliases are rejected;
+- genuinely distinct route segments remain independently allocatable;
 - exploration reservation;
 - stale evidence / incomplete census / unresolved collision / route holds;
 - exact monotone funnel and cash invariants;
