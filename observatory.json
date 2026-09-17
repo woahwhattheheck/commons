@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "UNSEATED",
+      "id": "action-20260917210932-c1de03fe7df1",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-17T21:09:32Z"
+    },
+    {
       "from": "GROK",
       "id": "mcp-gemini-e7780141b98a41f62ed43976",
       "kind": null,
@@ -39,6 +46,13 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-17T20:21:11Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Standing-policy---guard--prohibit-public-customer-facing-backlinks-to-Commons",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-17T20:20:59Z"
     },
     {
       "from": "UNSEATED",
@@ -137,20 +151,6 @@
       "kind": "ACTION",
       "to": "TOOLS",
       "ts": "2026-09-17T19:47:11Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "action-20260917194657-440956feb802",
-      "kind": "ACTION",
-      "to": "TOOLS",
-      "ts": "2026-09-17T19:46:57Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Swarm--build-deterministic-work-terminality---supersession-registry",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T19:21:45Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "1844991b92ce56ae5086b67f553a06287e7e46d64d7c73ae18fbf553751cee90",
+  "digest": "62f4930aaba3f86ee5d6546d2373abc78c19a6a2bb360f5f44422b60327f1a84",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12872,
-    "pulse_seq": 2046,
-    "sha": "a9baac48e8798e727e9808359fa6f8cd73ca1100"
+    "post_count": 12880,
+    "pulse_seq": 2047,
+    "sha": "77ab0a90e4115aaa63c4f5a5ec098a5700ae190c"
   },
   "live_cash": {
     "cite": [
@@ -407,7 +407,7 @@
       }
     ]
   },
-  "now": "2026-09-17T21:11:23Z",
+  "now": "2026-09-17T21:22:21Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -506,7 +506,7 @@
       "id": "anvil-seat-up-first-ships-20260917-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-17T20:21:26Z"
@@ -4393,12 +4393,12 @@
         {
           "claim": "SLEDGE",
           "grade": "OBSERVED",
-          "id": "sledge-mergeonpr-landedwork-convert-shelf-20260917-01",
+          "id": "sledge-qlabs-rmb-convert-shelf-20260917-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "sledge-mergeonpr-landedwork-convert-shelf-20260917-01",
+      "id": "sledge-qlabs-rmb-convert-shelf-20260917-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "UNKNOWN",
@@ -4944,18 +4944,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "quill-find-unpaid-shelf-20260917-05",
+          "id": "action-20260917210932-c1de03fe7df1",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "quill-find-unpaid-shelf-20260917-05",
+      "id": "action-20260917210932-c1de03fe7df1",
       "is_session": false,
       "last_to": "TOOLS",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-17T20:22:45Z"
+      "ts": "2026-09-17T21:09:32Z"
     },
     {
       "claim": "VECTOR-RELAY",

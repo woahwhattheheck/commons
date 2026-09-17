@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 37,
+ "n_open_prs": 36,
  "open_prs": [
   {
    "number": 15640,
@@ -359,22 +359,6 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15640",
    "base_freshness": {
     "base_sha": "8580b0c8086262c099515acbf6c4d9b7220b6444",
-    "main_sha": "93f16474245efa9caac3590cb138ce58bc7c06fb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 15631,
-   "author": "woahwhattheheck",
-   "title": "ARC3 SAGE: close exact-evidence ambiguity and abstract lookahead (#14735)",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15631",
-   "base_freshness": {
-    "base_sha": "e8e5e08fddddf4333e34476319b48012ffe5566d",
     "main_sha": "93f16474245efa9caac3590cb138ce58bc7c06fb",
     "ahead_by": null,
     "behind_by": null,
@@ -753,22 +737,6 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 15732,
-   "author": "woahwhattheheck",
-   "title": "infra: add bounded canonical JSON verifier boundary",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15732",
-   "base_freshness": {
-    "base_sha": "e182cad7382b7d7b49dab7bcbed14eea54cfa0c0",
-    "main_sha": "93f16474245efa9caac3590cb138ce58bc7c06fb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 15643,
    "author": "woahwhattheheck",
    "title": "Fix pilot-renewal receipt reseal and current-clock authority",
@@ -801,108 +769,12 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 15758,
-   "author": "woahwhattheheck",
-   "title": "Revenue coordination: canonical current-state compiler + stale-body guard",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15758",
-   "base_freshness": {
-    "base_sha": "0d05eab6fb34681c9903b7820de8bcb8a54db72f",
-    "main_sha": "93f16474245efa9caac3590cb138ce58bc7c06fb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 15714,
    "author": "woahwhattheheck",
    "title": "ci: recover workflow-surface 67-slot budget after pilot gate merge",
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15714",
    "base_freshness": {
     "base_sha": "d5ffb66144424a0c6c652e5bee5517ee940c810c",
-    "main_sha": "93f16474245efa9caac3590cb138ce58bc7c06fb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 15717,
-   "author": "woahwhattheheck",
-   "title": "Fix relationship contact guard lineage and current-time trust",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15717",
-   "base_freshness": {
-    "base_sha": "73eda37c0491d31a57e5563c8f5963be02d1d552",
-    "main_sha": "93f16474245efa9caac3590cb138ce58bc7c06fb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 15761,
-   "author": "woahwhattheheck",
-   "title": "TITAN V5: bind post-auth WHEAT carry census to D2 source",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15761",
-   "base_freshness": {
-    "base_sha": "d498af472c632ea1c6ab40914a2c4fa3f2b8fec5",
-    "main_sha": "93f16474245efa9caac3590cb138ce58bc7c06fb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 15751,
-   "author": "woahwhattheheck",
-   "title": "Outreach qualification firewall: fail closed before send",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15751",
-   "base_freshness": {
-    "base_sha": "eaa9a6484412a03e6b0cd1826c7feedae5f9148b",
-    "main_sha": "93f16474245efa9caac3590cb138ce58bc7c06fb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 15728,
-   "author": "woahwhattheheck",
-   "title": "Revenue: compile explicit payoff paths for uncompensated work",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15728",
-   "base_freshness": {
-    "base_sha": "e182cad7382b7d7b49dab7bcbed14eea54cfa0c0",
-    "main_sha": "93f16474245efa9caac3590cb138ce58bc7c06fb",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 15756,
-   "author": "woahwhattheheck",
-   "title": "Add deterministic stale Actions queue auditor",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15756",
-   "base_freshness": {
-    "base_sha": "3c4cd0c0254eb9b79680e821e8aeb26d740e796f",
     "main_sha": "93f16474245efa9caac3590cb138ce58bc7c06fb",
     "ahead_by": null,
     "behind_by": null,
@@ -929,12 +801,124 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 15726,
+   "number": 15717,
    "author": "woahwhattheheck",
-   "title": "Policy: enforce no public Commons backlinks on customer surfaces",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15726",
+   "title": "Fix relationship contact guard lineage and current-time trust",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15717",
    "base_freshness": {
-    "base_sha": "576ed0b469c0666e7cf03cbc73053349c9bfedf7",
+    "base_sha": "73eda37c0491d31a57e5563c8f5963be02d1d552",
+    "main_sha": "93f16474245efa9caac3590cb138ce58bc7c06fb",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15631,
+   "author": "woahwhattheheck",
+   "title": "ARC3 SAGE: close exact-evidence ambiguity and abstract lookahead (#14735)",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15631",
+   "base_freshness": {
+    "base_sha": "e8e5e08fddddf4333e34476319b48012ffe5566d",
+    "main_sha": "93f16474245efa9caac3590cb138ce58bc7c06fb",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15756,
+   "author": "woahwhattheheck",
+   "title": "Add deterministic stale Actions queue auditor",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15756",
+   "base_freshness": {
+    "base_sha": "3c4cd0c0254eb9b79680e821e8aeb26d740e796f",
+    "main_sha": "93f16474245efa9caac3590cb138ce58bc7c06fb",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15728,
+   "author": "woahwhattheheck",
+   "title": "Revenue: compile explicit payoff paths for uncompensated work",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15728",
+   "base_freshness": {
+    "base_sha": "e182cad7382b7d7b49dab7bcbed14eea54cfa0c0",
+    "main_sha": "93f16474245efa9caac3590cb138ce58bc7c06fb",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15751,
+   "author": "woahwhattheheck",
+   "title": "Outreach qualification firewall: fail closed before send",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15751",
+   "base_freshness": {
+    "base_sha": "eaa9a6484412a03e6b0cd1826c7feedae5f9148b",
+    "main_sha": "93f16474245efa9caac3590cb138ce58bc7c06fb",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15761,
+   "author": "woahwhattheheck",
+   "title": "TITAN V5: bind post-auth WHEAT carry census to D2 source",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15761",
+   "base_freshness": {
+    "base_sha": "06536461fbef73b801d8c04749512dc04ae2484e",
+    "main_sha": "93f16474245efa9caac3590cb138ce58bc7c06fb",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15732,
+   "author": "woahwhattheheck",
+   "title": "infra: add bounded canonical JSON verifier boundary",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15732",
+   "base_freshness": {
+    "base_sha": "e182cad7382b7d7b49dab7bcbed14eea54cfa0c0",
+    "main_sha": "93f16474245efa9caac3590cb138ce58bc7c06fb",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15758,
+   "author": "woahwhattheheck",
+   "title": "Revenue coordination: canonical current-state compiler + stale-body guard",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15758",
+   "base_freshness": {
+    "base_sha": "0d05eab6fb34681c9903b7820de8bcb8a54db72f",
     "main_sha": "93f16474245efa9caac3590cb138ce58bc7c06fb",
     "ahead_by": null,
     "behind_by": null,
