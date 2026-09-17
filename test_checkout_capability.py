@@ -120,7 +120,7 @@ class CheckoutCapability(unittest.TestCase):
             self.assertRegex(html, r"js-checkout-slot")
             self.assertIn("mailto:tokenjunkielabs@gmail.com", html)
             self.assertIn("pay.js", html)
-            if name in ("pay.html", "commerce.html"):
+            if name in ("pay.html", "commerce.html", "tips.html"):
                 continue
             self.assertNotRegex(html, stripe_url)
 

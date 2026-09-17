@@ -23,6 +23,7 @@ CATALOG = os.path.join("revenue", "outcome_commerce", "catalog.json")
 STRIPE_URL_RE = re.compile(r"^https://(?:buy|donate)\.stripe\.com/[A-Za-z0-9_-]+$")
 STRIPE_HTML_URL_RE = re.compile(r"https://(?:buy|donate)\.stripe\.com/")
 BUY_HOST_PATH_RE = re.compile(r"https?://buy\.stripe\.com/([A-Za-z0-9_-]+)", re.I)
+DONATE_HOST_PATH_RE = re.compile(r"https?://donate\.stripe\.com/([A-Za-z0-9_-]+)", re.I)
 PAY_CONVERT_SHELF_LIVE_BUYS = frozenset(
     {
         "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
@@ -49,6 +50,15 @@ CONVERT_SHELF_LIVE_BUYS = {
     "pay.html": PAY_CONVERT_SHELF_LIVE_BUYS,
     "commerce.html": COMMERCE_CONVERT_SHELF_LIVE_BUYS,
 }
+TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
+    {
+        "https://donate.stripe.com/fZucN40Ch9fj7mxgJs43S08",
+        "https://buy.stripe.com/3cIeVc5WB1MRgX7al443S03",
+        "https://buy.stripe.com/3cIbJ0ckZgHL36h8cW43S04",
+        "https://buy.stripe.com/bJe28qacR4Z3gX7bp843S05",
+        "https://buy.stripe.com/3cIfZgacRezDfT39h043S06",
+    }
+)
 FORBIDDEN = (
     r"\brouting[_\s-]?number\b.+\d{9}\b",
     r"\baccount[_\s-]?number\b.+\d{8,17}\b",
@@ -279,8 +289,24 @@ def live_buy_urls(html: str) -> set[str]:
     }
 
 
+def live_stripe_checkout_urls(html: str) -> set[str]:
+    """Canonical https://(buy|donate).stripe.com/<path> identities found in HTML."""
+    return live_buy_urls(html) | {
+        "https://donate.stripe.com/%s" % path
+        for path in DONATE_HOST_PATH_RE.findall(html)
+    }
+
+
 def html_stripe_url_errors(name: str, text: str) -> list[str]:
-    """tips stay inert; pay/commerce convert shelves reuse existing live buys only."""
+    """tips convert shelf reuses existing tip-shelf Stripe URLs; pay/commerce reuse live buys."""
+    if name == "tips.html":
+        found = live_stripe_checkout_urls(text)
+        if found != TIPS_CONVERT_SHELF_LIVE_CHECKOUTS:
+            return [
+                "%s convert shelf must reuse exactly the existing tip-shelf Stripe URLs"
+                % name
+            ]
+        return []
     allowed = CONVERT_SHELF_LIVE_BUYS.get(name)
     if allowed is not None:
         found = live_buy_urls(text)
