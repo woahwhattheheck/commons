@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 9,
+ "n_open_prs": 12,
  "open_prs": [
   {
    "number": 15266,
@@ -359,7 +359,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15266",
    "base_freshness": {
     "base_sha": "08485af56317e2a43f8b400f8d32b88e66570c5b",
-    "main_sha": "08b98f010f7af70fa7cc52655e5168102e7b9c70",
+    "main_sha": "1e077c64cb230c51984b5cd68b89f72f36d290ad",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -375,23 +375,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15293",
    "base_freshness": {
     "base_sha": "4ef13e33d87946973cce01a47fafa8a3240d5587",
-    "main_sha": "08b98f010f7af70fa7cc52655e5168102e7b9c70",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 15137,
-   "author": "woahwhattheheck",
-   "title": "feat(procurement): ingest structured award-source evidence",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15137",
-   "base_freshness": {
-    "base_sha": "30b79fcdebf750a3085a1a1bf05c295796ec14b8",
-    "main_sha": "08b98f010f7af70fa7cc52655e5168102e7b9c70",
+    "main_sha": "1e077c64cb230c51984b5cd68b89f72f36d290ad",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -407,7 +391,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15301",
    "base_freshness": {
     "base_sha": "57a379abaa9d8a02e1855371bb80ad64d75afa83",
-    "main_sha": "08b98f010f7af70fa7cc52655e5168102e7b9c70",
+    "main_sha": "1e077c64cb230c51984b5cd68b89f72f36d290ad",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -423,7 +407,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15317",
    "base_freshness": {
     "base_sha": "74c12162bff05f23614f03f7e13d44dfa7b0f9b0",
-    "main_sha": "08b98f010f7af70fa7cc52655e5168102e7b9c70",
+    "main_sha": "1e077c64cb230c51984b5cd68b89f72f36d290ad",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -438,24 +422,8 @@
    "title": "Rule 30: exact period-two trace frontier and bounded fiber engine",
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15318",
    "base_freshness": {
-    "base_sha": "1e077c64cb230c51984b5cd68b89f72f36d290ad",
-    "main_sha": "08b98f010f7af70fa7cc52655e5168102e7b9c70",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 15311,
-   "author": "woahwhattheheck",
-   "title": "Harden procurement award source locator custody",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15311",
-   "base_freshness": {
-    "base_sha": "f1884d153cb70bd233197409a8032944097d4fe8",
-    "main_sha": "08b98f010f7af70fa7cc52655e5168102e7b9c70",
+    "base_sha": "5b49ee7ee5ff731d1f94ef6d296f944cfd5e529a",
+    "main_sha": "1e077c64cb230c51984b5cd68b89f72f36d290ad",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -470,8 +438,8 @@
    "title": "USAC IT-26-139: keep recovered hashes distinct from durable custody",
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15331",
    "base_freshness": {
-    "base_sha": "154dbefad2e050705e7ac074bf2e5188cb0e6fb8",
-    "main_sha": "08b98f010f7af70fa7cc52655e5168102e7b9c70",
+    "base_sha": "e81acda2b3841389438087e9d86230f8a8869638",
+    "main_sha": "1e077c64cb230c51984b5cd68b89f72f36d290ad",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -481,13 +449,93 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 15338,
+   "number": 15345,
    "author": "woahwhattheheck",
-   "title": "GOAT: wire existing tip-shelf Payment Links onto tips.html",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15338",
+   "title": "Procurement source adapters: close syntactic userinfo boundary",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15345",
    "base_freshness": {
-    "base_sha": "5b49ee7ee5ff731d1f94ef6d296f944cfd5e529a",
-    "main_sha": "08b98f010f7af70fa7cc52655e5168102e7b9c70",
+    "base_sha": "445312eaec7097c5fc8a31b2119f5cc25371f951",
+    "main_sha": "1e077c64cb230c51984b5cd68b89f72f36d290ad",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15344,
+   "author": "woahwhattheheck",
+   "title": "Fix human-reply workshare commercial-claim smuggling",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15344",
+   "base_freshness": {
+    "base_sha": "11be28220ebaf288906da6de968c0c18770c2b7a",
+    "main_sha": "1e077c64cb230c51984b5cd68b89f72f36d290ad",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15341,
+   "author": "woahwhattheheck",
+   "title": "Add evidence-bound revenue funnel realization control",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15341",
+   "base_freshness": {
+    "base_sha": "11be28220ebaf288906da6de968c0c18770c2b7a",
+    "main_sha": "1e077c64cb230c51984b5cd68b89f72f36d290ad",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15346,
+   "author": "woahwhattheheck",
+   "title": "Human workshare: close post-merge commercial-truth RED",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15346",
+   "base_freshness": {
+    "base_sha": "445312eaec7097c5fc8a31b2119f5cc25371f951",
+    "main_sha": "1e077c64cb230c51984b5cd68b89f72f36d290ad",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15347,
+   "author": "woahwhattheheck",
+   "title": "Revenue: harden Invest Appalachia attachment recovery",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15347",
+   "base_freshness": {
+    "base_sha": "445312eaec7097c5fc8a31b2119f5cc25371f951",
+    "main_sha": "1e077c64cb230c51984b5cd68b89f72f36d290ad",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15348,
+   "author": "woahwhattheheck",
+   "title": "FIX: close workshare rendered-claim and retained-CI gaps",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15348",
+   "base_freshness": {
+    "base_sha": "445312eaec7097c5fc8a31b2119f5cc25371f951",
+    "main_sha": "1e077c64cb230c51984b5cd68b89f72f36d290ad",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
