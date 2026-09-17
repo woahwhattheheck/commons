@@ -26,9 +26,6 @@ from host import settled_awards, settled_cash, smart_outreach  # noqa: E402
 
 CATALOG_PATH = ROOT / "revenue" / "right_now" / "catalog.json"
 DIAGNOSTIC_PATH = ROOT / "revenue" / "right_now" / "diagnostic_offer.json"
-AUTOPSY_PATH = ROOT / "revenue" / "right_now" / "autopsy_offer.json"
-AUTOPSY_PROVIDER_PATH = ROOT / "revenue" / "agent_failure_autopsy" / "offer.json"
-AUTOPSY_PUBLIC_PAGE_PATH = ROOT / "agent-rescue.html"
 SETTLED_AWARDS_PATH = ROOT / "revenue" / "right_now" / "settled_awards.json"
 SETTLED_CASH_PATH = ROOT / "revenue" / "right_now" / "settled_cash.json"
 OUTREACH_PATH = ROOT / "revenue" / "smart_outreach" / "candidates.json"
@@ -47,7 +44,6 @@ DECISION_PRIORITY = {
 }
 LIVE_CASH_CITE = "goat-right-now-catalog-json-live-cash-20260909-01"
 LIVE_CASH_PRODUCTS = (
-    {"name": "Agent Failure Autopsy", "price_usd": 29, "path": "agent-rescue.html"},
     {"name": "Dealer Service Lead Rescue", "price_usd": 199, "path": "dealer-service-lead-rescue.html"},
     {"name": "Referral Intake Completeness", "price_usd": 199, "path": "referral-intake-completeness.html"},
     {"name": "Repair Booking Preflight", "price_usd": 199, "path": "repair-booking-preflight.html"},
@@ -157,105 +153,16 @@ def _provider_utc(value: Any, where: str) -> datetime:
     return moment.astimezone(timezone.utc)
 
 
-def validate_checkout_authority(
-    provider_offer: dict[str, Any],
-    public_page: str,
-    catalog_as_of: str,
-) -> dict[str, Any]:
-    """Bind active-checkout truth to retained Stripe evidence plus the public page."""
-
-    if provider_offer.get("kind") != "AGENT_FAILURE_AUTOPSY_OFFER":
-        raise ControlError("checkout provider offer kind mismatch")
-    for field in ("offer_id", "name"):
-        if provider_offer.get(field) != CHECKOUT_AUTHORITY[field]:
-            raise ControlError(f"checkout provider offer {field} drift")
-    if provider_offer.get("status") != "ACTIVE_VERIFIED":
-        raise ControlError("checkout provider offer must be ACTIVE_VERIFIED")
-
-    price = provider_offer.get("price")
-    if not isinstance(price, dict):
-        raise ControlError("checkout provider offer price must be an object")
-    expected_price = {
-        "currency": CHECKOUT_AUTHORITY["currency"],
-        "amount": CHECKOUT_AUTHORITY["amount"],
-        "payment_url": CHECKOUT_AUTHORITY["payment_url"],
-        "payment_url_state": "LIVE_VERIFIED",
-        "provider": CHECKOUT_AUTHORITY["provider"],
-        "provider_account_id": CHECKOUT_AUTHORITY["provider_account_id"],
-        "provider_product_id": CHECKOUT_AUTHORITY["provider_product_id"],
-        "provider_price_id": CHECKOUT_AUTHORITY["provider_price_id"],
-        "provider_payment_link_id": CHECKOUT_AUTHORITY["provider_payment_link_id"],
-        "provider_receipt_sha256": CHECKOUT_AUTHORITY["provider_receipt_sha256"],
-    }
-    for field, expected in expected_price.items():
-        if price.get(field) != expected:
-            raise ControlError(f"checkout provider price {field} drift")
-
-    binding = price.get("provider_account_binding")
-    if not isinstance(binding, dict):
-        raise ControlError("checkout provider account binding must be an object")
-    if binding.get("source") != "STRIPE_OFFICIAL_KEY_CREATION_UI":
-        raise ControlError("checkout provider account binding source drift")
-    if binding.get("key_name") != "Commons shared commerce":
-        raise ControlError("checkout provider account binding key drift")
-    if binding.get("live_mode_verified_from_objects") is not True:
-        raise ControlError("checkout provider authority lacks live-mode evidence")
-
-    verified_at = _provider_utc(
-        price.get("verified_at_utc"), "checkout provider verified_at_utc"
-    )
-    canonical_catalog_as_of = _latest_as_of(catalog_as_of)
-    catalog_moment = datetime.strptime(
-        canonical_catalog_as_of, "%Y-%m-%dT%H:%M:%SZ"
-    ).replace(tzinfo=timezone.utc)
-    if verified_at > catalog_moment:
-        raise ControlError("checkout provider evidence is later than catalog as_of")
-
-    if not isinstance(public_page, str) or not public_page.strip():
-        raise ControlError("checkout public page must be non-empty text")
-    parser = _CheckoutAnchorParser()
-    parser.feed(public_page)
-    if not parser.hrefs:
-        raise ControlError("checkout public page lacks a data-checkout anchor")
-    expected_url = CHECKOUT_AUTHORITY["payment_url"]
-    wrong = [href for href in parser.hrefs if href.split("?", 1)[0] != expected_url]
-    if wrong:
-        raise ControlError("checkout public page exposes a non-authoritative payment URL")
-
-    return {
-        "active": True,
-        "offer_id": CHECKOUT_AUTHORITY["offer_id"],
-        "provider": CHECKOUT_AUTHORITY["provider"],
-        "public_checkout_page": "agent-rescue.html",
-        "payment_url": CHECKOUT_AUTHORITY["payment_url"],
-        "provider_payment_link_id": CHECKOUT_AUTHORITY["provider_payment_link_id"],
-        "provider_receipt_sha256": CHECKOUT_AUTHORITY["provider_receipt_sha256"],
-        "verified_at_utc": price["verified_at_utc"],
-    }
-
-
-def build_checkout_authority(catalog_as_of: str) -> dict[str, Any]:
-    try:
-        public_page = AUTOPSY_PUBLIC_PAGE_PATH.read_text(encoding="utf-8")
-    except OSError as error:
-        raise ControlError(f"cannot read {AUTOPSY_PUBLIC_PAGE_PATH}: {error}") from error
-    return validate_checkout_authority(
-        read_object(AUTOPSY_PROVIDER_PATH),
-        public_page,
-        catalog_as_of,
-    )
-
-
 def validate_live_cash(value: Any) -> dict[str, Any]:
     """Keep the leftover live-cash shelf inside the control contract.
 
     GOAT added verified product-page cites on the catalog. Exact-set
     validation used to reject that extra field. Expand the contract so
-    the five public checkouts stay measured instead of being dropped.
+    the four public checkouts stay measured instead of being dropped.
     Catalog JSON KEEP (#15021) added live_cash.larger_fixed
     (diagnostic.html/$12k · commercial.html/$30k). Exact-set used to
     reject that extra field too, wiping Larger fixed on every control
-    compile while Autopsy/$199 stayed. KEEP Larger fixed so remints
+    compile while $199 stayed. KEEP Larger fixed so remints
     cannot drop those doors. Paths only — no invented Stripe URLs.
     """
     if not isinstance(value, dict):
@@ -282,7 +189,7 @@ def validate_live_cash(value: Any) -> dict[str, Any]:
         raise ControlError("live_cash.note must keep Larger fixed engagements")
     products = value["products"]
     if not isinstance(products, list) or len(products) != len(LIVE_CASH_PRODUCTS):
-        raise ControlError("live_cash.products must list the five verified product pages")
+        raise ControlError("live_cash.products must list the four verified product pages")
     for actual, expected in zip(products, LIVE_CASH_PRODUCTS):
         if not isinstance(actual, dict):
             raise ControlError("live_cash.products entries must be objects")
@@ -322,7 +229,6 @@ def validate_live_cash(value: Any) -> dict[str, Any]:
 
 def validate_catalog(
     catalog: dict[str, Any],
-    checkout_authority: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     required = {
         "schema_version", "kind", "as_of", "canonical_page", "purpose",
@@ -340,26 +246,15 @@ def validate_catalog(
     if type(truth.get("active_chargeable_checkout")) is not bool:
         raise ControlError("truth.active_chargeable_checkout must be boolean")
 
-    checkout = checkout_authority or build_checkout_authority(catalog["as_of"])
-    if checkout.get("active") is not True:
-        raise ControlError("checkout authority must fail closed instead of promoting inactive state")
-
     human = read_object(HUMAN_PATH)
     survival = read_object(SURVIVAL_PATH)
     diagnostic = read_object(DIAGNOSTIC_PATH)
-    autopsy = read_object(AUTOPSY_PATH)
-    if autopsy.get("canonical_live_offer") != "revenue/agent_failure_autopsy/offer.json":
-        raise ControlError("autopsy canonical_live_offer drift")
-    if autopsy.get("public_checkout_page") != checkout["public_checkout_page"]:
-        raise ControlError("autopsy public_checkout_page drift")
     canonical = {row["id"]: row for row in human["offers"]}
     entry = survival["entry_offer"]
     canonical[entry["id"]] = entry
     canonical[diagnostic["id"]] = diagnostic
-    canonical[autopsy["id"]] = autopsy
     allowed_payment_states = {
         "BUYER_SPECIFIC_HANDOFF_REQUIRED",
-        "LIVE_PUBLIC_CHECKOUT_PAGE",
     }
     offers = catalog["offers"]
     if not isinstance(offers, list) or not offers:
@@ -367,7 +262,6 @@ def validate_catalog(
     if [row.get("rank") for row in offers] != list(range(1, len(offers) + 1)):
         raise ControlError("offer rank must be unique and contiguous")
     seen: set[str] = set()
-    live_checkout_ids: set[str] = set()
     for row in offers:
         offer_id = row.get("id")
         if not isinstance(offer_id, str) or offer_id in seen:
@@ -381,39 +275,16 @@ def validate_catalog(
         payment_state = row.get("payment_state")
         if payment_state not in allowed_payment_states:
             raise ControlError(f"unexpected payment state: {offer_id}")
-        if payment_state == "LIVE_PUBLIC_CHECKOUT_PAGE":
-            live_checkout_ids.add(offer_id)
-            if row.get("start_route") != checkout["public_checkout_page"]:
-                raise ControlError(
-                    f"live checkout offer must start on {checkout['public_checkout_page']}: {offer_id}"
-                )
-            if canonical[offer_id].get("payment_collection") != "LIVE_PUBLIC_CHECKOUT_PAGE":
-                raise ControlError(
-                    f"live checkout canonical payment_collection mismatch: {offer_id}"
-                )
         for field in (
             "delivery_window", "buyer_input", "deliverable", "start_route",
             "source", "next_external_event", "founder_bottleneck", "commons_bottleneck",
         ):
             if not isinstance(row.get(field), str) or not row[field].strip():
                 raise ControlError(f"offers.{offer_id}.{field} must be non-empty")
-    expected_live_ids = {checkout["offer_id"]}
-    if live_checkout_ids != expected_live_ids:
+    if catalog["truth"]["active_chargeable_checkout"] is not False:
         raise ControlError(
-            "LIVE_PUBLIC_CHECKOUT_PAGE offers must match retained checkout authority exactly"
+            "truth.active_chargeable_checkout must be false (no live public checkout)"
         )
-    if catalog["truth"]["active_chargeable_checkout"] is not checkout["active"]:
-        raise ControlError(
-            "truth.active_chargeable_checkout must match retained checkout authority"
-        )
-    if "agent-failure-autopsy-29" in seen:
-        survival_row = next(
-            r for r in offers if r["id"] == "same-day-agent-survival-proof"
-        )
-        if survival_row.get("start_route") == "agent-rescue.html":
-            raise ControlError(
-                "same-day-agent-survival-proof must not use agent-rescue.html while Autopsy owns that page"
-            )
     validate_live_cash(catalog["live_cash"])
     return catalog
 
@@ -446,8 +317,7 @@ def payment_truth(value: dict[str, Any]) -> dict[str, Any]:
 
 def build_control() -> dict[str, Any]:
     raw_catalog = read_object(CATALOG_PATH)
-    checkout = build_checkout_authority(raw_catalog["as_of"])
-    catalog = validate_catalog(raw_catalog, checkout)
+    catalog = validate_catalog(raw_catalog)
     payment = payment_truth(read_object(PAYMENT_PATH))
     awards = settled_awards.summarize_ledger(
         settled_awards.read_ledger(SETTLED_AWARDS_PATH)
@@ -529,9 +399,6 @@ def build_control() -> dict[str, Any]:
     source_paths = [
         CATALOG_PATH,
         DIAGNOSTIC_PATH,
-        AUTOPSY_PATH,
-        AUTOPSY_PROVIDER_PATH,
-        AUTOPSY_PUBLIC_PAGE_PATH,
         SETTLED_AWARDS_PATH,
         SETTLED_CASH_PATH,
         OUTREACH_PATH,
@@ -551,7 +418,7 @@ def build_control() -> dict[str, Any]:
             "collected_cash_usd": catalog_cash,
             "verified_positive_replies": catalog["truth"]["verified_positive_replies"],
             "accepted_scopes": catalog["truth"]["accepted_scopes"],
-            "active_chargeable_checkout": checkout["active"],
+            "active_chargeable_checkout": False,
             "prospects_evaluated": outreach["truth"]["prospects_evaluated"],
             "ready_to_draft": counts["READY_TO_DRAFT"],
             "transport_actions": outreach["truth"]["transport_actions"],

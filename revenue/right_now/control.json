@@ -101,18 +101,6 @@
   "kind": "RIGHT_NOW_REVENUE_CONTROL",
   "offers": [
     {
-      "commons_bottleneck": "Deliver the full-strength autopsy (or refund) against the live offer contract without reminting Stripe.",
-      "delivery_window": "one business day",
-      "founder_bottleneck": "Confirm usable redacted evidence arrived after payment, start the one-business-day clock, and assign fulfillment.",
-      "id": "agent-failure-autopsy-29",
-      "name": "Agent Failure Autopsy",
-      "next_external_event": "A real buyer pays the live $29 checkout on agent-rescue.html and sends redacted one-run evidence inside the intake boundary.",
-      "payment_state": "LIVE_PUBLIC_CHECKOUT_PAGE",
-      "price_usd": 29,
-      "rank": 1,
-      "start_route": "agent-rescue.html"
-    },
-    {
       "commons_bottleneck": "Deliver the Markdown and JSON receipt against all five acceptance checks after funding.",
       "delivery_window": "one business day",
       "founder_bottleneck": "Confirm the exact diagnostic scope and window, then issue the buyer-specific $199 payment handoff.",
@@ -121,7 +109,7 @@
       "next_external_event": "A real buyer sends one client-safe failure sentence and accepts the exact diagnostic scope.",
       "payment_state": "BUYER_SPECIFIC_HANDOFF_REQUIRED",
       "price_usd": 199,
-      "rank": 2,
+      "rank": 1,
       "start_route": "agent-triage.html"
     },
     {
@@ -133,7 +121,7 @@
       "next_external_event": "A real buyer posts a public interest signal naming the page and job.",
       "payment_state": "BUYER_SPECIFIC_HANDOFF_REQUIRED",
       "price_usd": 800,
-      "rank": 3,
+      "rank": 2,
       "start_route": "humans.html#interest"
     },
     {
@@ -145,7 +133,7 @@
       "next_external_event": "A real buyer posts the meeting name, date, and public inputs.",
       "payment_state": "BUYER_SPECIFIC_HANDOFF_REQUIRED",
       "price_usd": 1200,
-      "rank": 4,
+      "rank": 3,
       "start_route": "humans.html#interest"
     },
     {
@@ -157,7 +145,7 @@
       "next_external_event": "A real buyer names the issue and confirms they can accept or sponsor the merged result.",
       "payment_state": "BUYER_SPECIFIC_HANDOFF_REQUIRED",
       "price_usd": 2500,
-      "rank": 5,
+      "rank": 4,
       "start_route": "humans.html#interest"
     },
     {
@@ -169,7 +157,7 @@
       "next_external_event": "A real buyer starts from revenue/production_survival/README.md with the one-sentence failure and agrees to a start window.",
       "payment_state": "BUYER_SPECIFIC_HANDOFF_REQUIRED",
       "price_usd": 2500,
-      "rank": 6,
+      "rank": 5,
       "start_route": "revenue/production_survival/README.md"
     }
   ],
@@ -228,6 +216,8 @@
   },
   "settled_cash": {
     "as_of": "2026-09-13T15:34:33Z",
+    "authority_root_sha256": "57f731e6999ec9740dd4c82cf3567b7f9ff72bbad748691c9f05979ab08ddfe3",
+    "authority_state": "PINNED_RETAINED_PROVIDER_EVIDENCE",
     "bank_availability_asserted": false,
     "receipts": [
       {
@@ -244,10 +234,11 @@
         "provider_receipt_id": "r/ef2f247c",
         "provider_url": "https://gofrantic.com/",
         "result_url": "https://github.com/sourcey/startup-credits/pull/1423",
+        "source_evidence_ref": "https://gofrantic.com/a/agent-df56d0",
         "withdrawability_state": "NOT_ASSERTED"
       }
     ],
-    "schema_version": "commons-settled-cash-summary/v1",
+    "schema_version": "commons-settled-cash-summary/v2",
     "settled_receipts": 1,
     "settled_usd": "1",
     "withdrawability_asserted": false
@@ -255,23 +246,11 @@
   "source_receipts": [
     {
       "path": "revenue/right_now/catalog.json",
-      "sha256": "58aa2987feca960ecc683a12b7fae7f6c493c495a07a2ab024ed48aa8be157f5"
+      "sha256": "4636ed8991bf8679a71720b544f28ee8bd1992fdc1d246e497b7fade40859866"
     },
     {
       "path": "revenue/right_now/diagnostic_offer.json",
       "sha256": "ea5cfa1ba7be0972f188f35149e18dab1733a79b000a0268eff64433df8d7cda"
-    },
-    {
-      "path": "revenue/right_now/autopsy_offer.json",
-      "sha256": "1803396c0851b0eda5996f0d6c5cb802c91ff431eeb9d8f71ceb20422f77990f"
-    },
-    {
-      "path": "revenue/agent_failure_autopsy/offer.json",
-      "sha256": "a04b373563f468edb0afe47bc32ba1a5608aa7bc5e00b5956a996e84d6070b32"
-    },
-    {
-      "path": "agent-rescue.html",
-      "sha256": "b23983d65b6335668ff3b9067f0ace94c7c64025548fd0b79c9e1912bdca88d7"
     },
     {
       "path": "revenue/right_now/settled_awards.json",
@@ -296,11 +275,91 @@
     {
       "path": "revenue/production_survival/offer.json",
       "sha256": "4a9af0433bad940797703921b6faf7476d0421a9687f947bda76011a17958569"
+    },
+    {
+      "path": "revenue/reply_to_revenue/observations.json",
+      "sha256": "b26393ed926b50f1437b1f2cc1a20c2182d1576eb5879ccd4e967f9cc510ed8b"
+    },
+    {
+      "path": "revenue/payment_ready/outreach_receipts/20260826-anythingllm-mintplex-6a8e640556046a000f481b98.json",
+      "sha256": "acbf27218aa16fea138a77e0e2121446e3bb5ca0c38a1fb340220166690e98ce"
+    },
+    {
+      "path": "revenue/payment_ready/outreach_receipts/20260826-anythingllm-mintplex-duplicate-6a8e6452641e500010a2128f-corr-01.json",
+      "sha256": "f4cf32a14b23c9b878c057491e56afcb5dc4bf9d99ff350f55a47f254935ce13"
+    },
+    {
+      "path": "revenue/payment_ready/outreach_receipts/20260826-jan-menlo-6a8e622206f694001471e868.json",
+      "sha256": "6ee769b6e5b384a503019ee810a55cdc695bc5f7e305648477cc6542c8079b5a"
+    },
+    {
+      "path": "revenue/payment_ready/outreach_receipts/20260826-jan-menlo-duplicate-6a8e644e8cd0c600105fe3d3-corr-01.json",
+      "sha256": "93c61c393126a6dd02ba9d698ca4551f98a64d4d03d46f696c0949a157b7b80a"
+    },
+    {
+      "path": "revenue/payment_ready/outreach_receipts/20260826-lm-studio-6a8e640456046a000c34514e.json",
+      "sha256": "bd8a6616ee1e47758f4980e4eeccc91f1f3d0b07afe53bc57180c279e9e199fb"
+    },
+    {
+      "path": "revenue/payment_ready/outreach_receipts/20260826-lyceum-6a8e64023bce020018b38a74.json",
+      "sha256": "fc742ece103e35a803abb2617d7c4eebd1a018fc19227311409d076ffd6c1261"
+    },
+    {
+      "path": "revenue/payment_ready/outreach_receipts/20260826-nextgen-federal-6a8e5fbd06f69400180b0e8a.json",
+      "sha256": "32c85a758219ca547f8bede167ea1a5d572aea40d6048587528ab87733b7005e"
+    },
+    {
+      "path": "revenue/payment_ready/outreach_receipts/20260826-nextgen-federal-duplicate-6a8e60c8f255ec000c2e8bb4-corr-01.json",
+      "sha256": "936eb0edc45bcaba7b7eb233e98adb510e071ada43d7bc61446ae2d3054db997"
+    },
+    {
+      "path": "revenue/payment_ready/outreach_receipts/20260826-ollama-6a8e6221b0bf220018f25741.json",
+      "sha256": "a6a1e67d732c1033e2b491e57855f3f37589d4e8d7773266e4a9fa7f3f5e59ac"
+    },
+    {
+      "path": "revenue/payment_ready/outreach_receipts/20260826-ollama-duplicate-6a8e644f8cd0c600105fe3da-corr-01.json",
+      "sha256": "40bcab664393ed8a4c216147fb3c2cc9bfb44d834eaf917d89262e790233db29"
+    },
+    {
+      "path": "revenue/payment_ready/outreach_receipts/20260826-parallel-wireless-6a8e5fbc8cd0c6000c217b30.json",
+      "sha256": "c03bd96fd234c826be71dc6fc960d7042112fb9c99c34e616d8b5bd58af01567"
+    },
+    {
+      "path": "revenue/payment_ready/outreach_receipts/20260826-parallel-wireless-duplicate-6a8e60ca134de500105f9921-corr-01.json",
+      "sha256": "15101fab0727f81390dd741823d52d3c3a4162c488d576917a55b6e00e01fde9"
+    },
+    {
+      "path": "revenue/payment_ready/outreach_receipts/20260826-upvest-6a8ef3350ebff2001074edb3.json",
+      "sha256": "533ba9947d6daa02b48f64983ce4b8a4d245abd74df6f17556b65898ea3d9d73"
+    },
+    {
+      "path": "revenue/payment_ready/outreach_receipts/20260827-dexmate-6a8ef772e426be000cf97772.json",
+      "sha256": "ae81e98106e6fed252a8aa23454c97b36d9392745b10a86f7e48e9c0c733d40a"
+    },
+    {
+      "path": "revenue/payment_ready/outreach_receipts/20260827-metaforms-6a8f9759437c7d0010ef8788.json",
+      "sha256": "e14030f92ef5ca734b705097d3ea5697eb3354fd392af270aeb48cf31590afff"
+    },
+    {
+      "path": "revenue/payment_ready/outreach_receipts/20260827-nextdata-6a8faa92579ff9000cb874e2.json",
+      "sha256": "b1405f3931ea2b6918d857d4535d05f8d14f0df52b885237aaecf0fcdb3476a4"
+    },
+    {
+      "path": "revenue/payment_ready/outreach_receipts/20260828-langfuse-1a0496451e052b9d.json",
+      "sha256": "19e81674509bf34fa3df9608e9d8a61eec5f373b25c5ec6294517922031d6d21"
+    },
+    {
+      "path": "revenue/payment_ready/outreach_receipts/20260830-composio-1a053aa4f8a0014a.json",
+      "sha256": "ac224fadf092d684208dd81c5d4645f639bb3792bf250ea7c1efd9477b0906de"
+    },
+    {
+      "path": "revenue/payment_ready/outreach_receipts/20260914-nysa-technology-do-not-resend.json",
+      "sha256": "1945e22513e06d3600f224d2e5d87a0c38919e2b5ba3bff7eb57db9fd1475082"
     }
   ],
   "truth": {
     "accepted_scopes": 0,
-    "active_chargeable_checkout": true,
+    "active_chargeable_checkout": false,
     "award_bank_availability_asserted": false,
     "award_withdrawability_asserted": false,
     "cash_bank_availability_asserted": false,

@@ -6,9 +6,7 @@ Extend: rivet-r4-handoff-prove-diag-receipt-fulfill-20260905-01 — also prove
 diagnostic_receipt + diagnostic_fulfill after handoff.
 Extend: hinge-r4-handoff-prove-diag-sla-20260905-01 — also prove
 diagnostic_fulfill.run_sla_status (OPEN|MISSED).
-Extend: wedge-r4-handoff-prove-autopsy-sla-20260905-01 — also prove
-autopsy_fulfill.run_sla_status (OPEN|MISSED) after handoff.
-Import-only wraps of landed autopsy_paid / autopsy_fulfill / diagnostic_*.
+Import-only wraps of landed diagnostic_* helpers.
 Does not remint paid_case, fulfillment, diagnostic_fulfill body, or peers.py.
 """
 
@@ -17,8 +15,6 @@ from __future__ import annotations
 import json
 from typing import Any
 
-from autopsy_fulfill import run_deadline, run_sla_status, run_validate
-from autopsy_paid import build_g2_case_from_role, build_receipt_row_from_role
 from diagnostic_contract import load_contract_from_role
 from diagnostic_fulfill import run_deadline as run_diagnostic_deadline
 from diagnostic_fulfill import run_sla_status as run_diagnostic_sla
@@ -74,27 +70,6 @@ def prove_successor_executes(
     executes: dict[str, Any] = {}
     sla_as_of = str(as_of or usable_evidence_at).strip()
 
-    if "autopsy_paid_case" in names:
-        executes["autopsy-case"] = build_g2_case_from_role(
-            role, case_ref=case_ref
-        )
-        executes["autopsy-receipt-row"] = build_receipt_row_from_role(
-            role,
-            case_ref=case_ref,
-            state="UNVERIFIED",
-        )
-
-    if "autopsy_fulfillment" in names:
-        executes["autopsy-fulfill-deadline"] = run_deadline(
-            role, usable_evidence_at=usable_evidence_at
-        )
-        executes["autopsy-fulfill-validate"] = run_validate(role)
-        executes["autopsy-fulfill-sla"] = run_sla_status(
-            role,
-            usable_evidence_at=usable_evidence_at,
-            as_of=sla_as_of,
-        )
-
     if "diagnostic_contract" in names:
         executes["diagnostic-contract"] = load_contract_from_role(
             role, slug=diagnostic_slug
@@ -123,8 +98,7 @@ def prove_successor_executes(
     if not executes:
         raise RoleError(
             f"role {role_id} has no role-gated execute tools "
-            "(autopsy_paid_case / autopsy_fulfillment / diagnostic_contract / "
-            "diagnostic_receipt / diagnostic_fulfill); "
+            "(diagnostic_contract / diagnostic_receipt / diagnostic_fulfill); "
             "refusing prove (CRM / non-execute role)"
         )
 

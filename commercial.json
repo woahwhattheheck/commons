@@ -124,7 +124,7 @@
     "cite": [
       "goat-commercial-json-live-cash-20260909-01",
       "goat-bazaar-json-live-cash-20260909-01",
-      "commercial.html smaller-step Autopsy"
+      "commercial.html"
     ],
     "note": "Optional smaller-step paid diagnostics with live checkout on product pages. White Box offer terms above stay canonical. No invent Stripe URLs.",
     "larger_fixed": [
@@ -140,11 +140,6 @@
       }
     ],
     "products": [
-      {
-        "name": "Agent Failure Autopsy",
-        "price_usd": 29,
-        "path": "agent-rescue.html"
-      },
       {
         "name": "Dealer Service Lead Rescue",
         "price_usd": 199,
