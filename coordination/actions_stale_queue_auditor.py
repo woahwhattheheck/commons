@@ -34,71 +34,50 @@ REPO = re.compile(r"^[A-Za-z0-9_.-]{1,100}/[A-Za-z0-9_.-]{1,100}$")
 
 INPUT_KEYS = {"schema", "repository", "default_branch", "observed_at", "runs"}
 RUN_KEYS = {
-    "run_id",
-    "workflow",
-    "event",
-    "status",
-    "head_branch",
-    "head_sha",
-    "provenance",
+    "run_id", "workflow", "event", "status", "head_branch", "head_sha", "provenance",
 }
 PROVENANCE_KEYS = {"complete", "sources", "pull_requests"}
 PR_KEYS = {"number", "state", "current_head_sha"}
 
 REPORT_KEYS = {
-    "schema",
-    "product",
-    "version",
-    "repository",
-    "default_branch",
-    "observed_at",
-    "input_digest",
-    "authority",
-    "retained_input",
-    "rows",
-    "counts",
-    "report_receipt",
+    "schema", "product", "version", "repository", "default_branch", "observed_at",
+    "input_digest", "authority", "retained_input", "rows", "counts", "report_receipt",
 }
 ROW_KEYS = {
-    "run_id",
-    "workflow",
-    "head_branch",
-    "head_sha",
-    "decision",
-    "reasons",
-    "associated_pr_numbers",
-    "requires_live_reread",
+    "run_id", "workflow", "head_branch", "head_sha", "decision", "reasons",
+    "associated_pr_numbers", "requires_live_reread",
 }
 AUTHORITY_KEYS = {
-    "cancel_run_authorized",
-    "rerun_authorized",
-    "merge_authorized",
-    "ref_mutation_authorized",
-    "provider_mutation_authorized",
-    "outbound_authorized",
-    "payment_authorized",
-    "revenue_recognition_authorized",
+    "cancel_run_authorized", "rerun_authorized", "merge_authorized",
+    "ref_mutation_authorized", "provider_mutation_authorized", "outbound_authorized",
+    "payment_authorized", "revenue_recognition_authorized",
 }
-REQUIRED_PROVENANCE_SOURCES = {
-    "RUN_DIRECT",
-    "BRANCH_QUERY",
-    "COMMIT_QUERY",
-}
-ALLOWED_PROVENANCE_SOURCES = REQUIRED_PROVENANCE_SOURCES
+
+# Capture semantic provenance policy into function defaults. These immutable public
+# views may be rebound by a caller, but that does not widen this import generation.
+_REQUIRED_PROVENANCE_SOURCES_LITERAL = frozenset(
+    {"RUN_DIRECT", "BRANCH_QUERY", "COMMIT_QUERY"}
+)
+_ALLOWED_PROVENANCE_SOURCES_LITERAL = _REQUIRED_PROVENANCE_SOURCES_LITERAL
+REQUIRED_PROVENANCE_SOURCES = _REQUIRED_PROVENANCE_SOURCES_LITERAL
+ALLOWED_PROVENANCE_SOURCES = _ALLOWED_PROVENANCE_SOURCES_LITERAL
 
 
 class AuditError(ValueError):
     """Stable fail-closed boundary for invalid audit input or report."""
 
 
-def _exact_keys(value: Any, expected: set[str], label: str) -> dict[str, Any]:
+def _exact_keys(
+    value: Any, expected: set[str] | frozenset[str], label: str
+) -> dict[str, Any]:
     if type(value) is not dict:
         raise AuditError(f"{label} must be an exact object")
     keys = set(value)
-    if keys != expected:
+    expected_set = set(expected)
+    if keys != expected_set:
         raise AuditError(
-            f"{label} schema mismatch missing={sorted(expected - keys)} "
-            f"unknown={sorted(keys - expected)}"
+            f"{label} schema mismatch missing={sorted(expected_set - keys)} "
+            f"unknown={sorted(keys - expected_set)}"
         )
     return dict(value)
 
@@ -156,51 +135,108 @@ def _utc(value: Any, label: str) -> str:
     return value
 
 
+def _json_string_serialized_size(value: str, *, remaining: int) -> int:
+    """Exact UTF-8 byte size for this encoder, before serializer entry."""
+    if type(value) is not str:
+        raise AuditError("JSON string must be an exact string")
+    if len(value) + 2 > remaining:
+        raise AuditError(f"canonical JSON exceeds {MAX_JSON_BYTES} bytes")
+    total = 2
+    for ch in value:
+        code = ord(ch)
+        if 0xD800 <= code <= 0xDFFF:
+            raise AuditError("JSON string contains surrogate code point")
+        if ch == '"' or ch == "\\":
+            step = 2
+        elif code in {0x08, 0x09, 0x0A, 0x0C, 0x0D}:
+            step = 2
+        elif code < 0x20:
+            step = 6
+        elif code <= 0x7F:
+            step = 1
+        elif code <= 0x7FF:
+            step = 2
+        elif code <= 0xFFFF:
+            step = 3
+        else:
+            step = 4
+        total += step
+        if total > remaining:
+            raise AuditError(f"canonical JSON exceeds {MAX_JSON_BYTES} bytes")
+    return total
+
+
 def _freeze_plain_json(value: Any) -> Any:
-    counter = [0]
+    """Detach exact JSON and charge every node/canonical byte before dumps.
+
+    Repeated aliases are charged once per serialized occurrence. Dict keys count
+    as work nodes. Immediate container cardinality is rejected before children
+    are touched, and over-budget direct objects fail before json.dumps is called.
+    """
+    nodes = [0]
+    bytes_used = [0]
+
+    def charge(amount: int) -> None:
+        if type(amount) is not int or amount < 0:
+            raise AuditError("invalid canonical JSON work charge")
+        if amount > MAX_JSON_BYTES - bytes_used[0]:
+            raise AuditError(f"canonical JSON exceeds {MAX_JSON_BYTES} bytes")
+        bytes_used[0] += amount
+
+    def take_node() -> None:
+        nodes[0] += 1
+        if nodes[0] > MAX_JSON_NODES:
+            raise AuditError(f"JSON node count exceeds {MAX_JSON_NODES}")
+
+    def string_cost(item: str) -> int:
+        return _json_string_serialized_size(
+            item, remaining=MAX_JSON_BYTES - bytes_used[0]
+        )
 
     def freeze(item: Any, depth: int) -> Any:
         if depth > MAX_JSON_DEPTH:
             raise AuditError(f"JSON nesting exceeds {MAX_JSON_DEPTH}")
-        counter[0] += 1
-        if counter[0] > MAX_JSON_NODES:
-            raise AuditError(f"JSON node count exceeds {MAX_JSON_NODES}")
-
-        if item is None or type(item) is bool:
+        take_node()
+        if item is None:
+            charge(4)
+            return None
+        if type(item) is bool:
+            charge(4 if item else 5)
             return item
         if type(item) is int:
-            return _exact_int(
+            checked = _exact_int(
                 item,
                 "JSON integer",
                 minimum=-MAX_SAFE_INTEGER,
                 maximum=MAX_SAFE_INTEGER,
             )
+            charge(len(str(checked)))
+            return checked
         if type(item) is str:
-            if any(0xD800 <= ord(ch) <= 0xDFFF for ch in item):
-                raise AuditError("JSON string contains surrogate code point")
+            charge(string_cost(item))
             return item
         if type(item) is list:
-            if len(item) > MAX_JSON_NODES - counter[0]:
+            remaining_nodes = MAX_JSON_NODES - nodes[0]
+            if len(item) > remaining_nodes:
                 raise AuditError("JSON container exceeds remaining node budget")
+            charge(2 + max(0, len(item) - 1))
             return [freeze(child, depth + 1) for child in item]
         if type(item) is dict:
-            if len(item) > MAX_JSON_NODES - counter[0]:
+            remaining_nodes = MAX_JSON_NODES - nodes[0]
+            if len(item) * 2 > remaining_nodes:
                 raise AuditError("JSON object exceeds remaining node budget")
+            charge(2 + max(0, len(item) - 1) + len(item))
             out: dict[str, Any] = {}
             for key, child in item.items():
                 if type(key) is not str:
                     raise AuditError("JSON object keys must be exact strings")
-                if any(0xD800 <= ord(ch) <= 0xDFFF for ch in key):
-                    raise AuditError("JSON object key contains surrogate code point")
+                take_node()
+                charge(string_cost(key))
                 out[key] = freeze(child, depth + 1)
             return out
         raise AuditError(f"unsupported JSON value type: {type(item).__name__}")
 
-    frozen = freeze(value, 0)
-    packed = canonical_json(frozen)
-    if len(packed) > MAX_JSON_BYTES:
-        raise AuditError(f"canonical JSON exceeds {MAX_JSON_BYTES} bytes")
-    return frozen
+    return freeze(value, 0)
 
 
 def _parse_int_token(token: str) -> int:
@@ -249,21 +285,18 @@ def loads_strict(raw: str) -> Any:
     except AuditError:
         raise
     except (
-        json.JSONDecodeError,
-        TypeError,
-        ValueError,
-        OverflowError,
-        RecursionError,
-        UnicodeError,
+        json.JSONDecodeError, TypeError, ValueError, OverflowError,
+        RecursionError, UnicodeError,
     ) as exc:
         raise AuditError(f"invalid JSON: {exc}") from exc
     return _freeze_plain_json(value)
 
 
 def canonical_json(value: Any) -> bytes:
+    frozen = _freeze_plain_json(value)
     try:
         return json.dumps(
-            value,
+            frozen,
             sort_keys=True,
             separators=(",", ":"),
             ensure_ascii=False,
@@ -290,7 +323,11 @@ def _normalize_pr(value: Any) -> dict[str, Any]:
     }
 
 
-def _normalize_run(value: Any) -> dict[str, Any]:
+def _normalize_run(
+    value: Any,
+    *,
+    _allowed_sources: frozenset[str] = _ALLOWED_PROVENANCE_SOURCES_LITERAL,
+) -> dict[str, Any]:
     row = _exact_keys(value, RUN_KEYS, "run")
     run_id = _exact_int(row["run_id"], "run_id", minimum=1)
     workflow = _bounded_string(row["workflow"], "workflow", maximum=256)
@@ -304,12 +341,12 @@ def _normalize_run(value: Any) -> dict[str, Any]:
     sources_raw = provenance["sources"]
     if type(sources_raw) is not list:
         raise AuditError("provenance.sources must be a list")
-    if len(sources_raw) > len(ALLOWED_PROVENANCE_SOURCES):
+    if len(sources_raw) > len(_allowed_sources):
         raise AuditError("too many provenance sources")
     sources: list[str] = []
-    for value in sources_raw:
-        source = _bounded_string(value, "provenance source", maximum=32)
-        if source not in ALLOWED_PROVENANCE_SOURCES:
+    for source_value in sources_raw:
+        source = _bounded_string(source_value, "provenance source", maximum=32)
+        if source not in _allowed_sources:
             raise AuditError(f"unknown provenance source: {source}")
         if source in sources:
             raise AuditError(f"duplicate provenance source: {source}")
@@ -381,9 +418,13 @@ def normalize_packet(packet: Any) -> dict[str, Any]:
     }
 
 
-def _classify(run: dict[str, Any], default_branch: str) -> tuple[str, list[str]]:
+def _classify(
+    run: dict[str, Any],
+    default_branch: str,
+    *,
+    _required_sources: frozenset[str] = _REQUIRED_PROVENANCE_SOURCES_LITERAL,
+) -> tuple[str, list[str]]:
     reasons: list[str] = []
-
     if run["status"] != "queued":
         reasons.append("RUN_NOT_QUEUED")
     if run["event"] != "pull_request":
@@ -394,12 +435,11 @@ def _classify(run: dict[str, Any], default_branch: str) -> tuple[str, list[str]]
     provenance = run["provenance"]
     if not provenance["complete"]:
         reasons.append("PROVENANCE_INCOMPLETE")
-    if set(provenance["sources"]) != REQUIRED_PROVENANCE_SOURCES:
+    if set(provenance["sources"]) != set(_required_sources):
         reasons.append("PROVENANCE_SOURCES_INCOMPLETE")
     prs = provenance["pull_requests"]
     if not prs:
         reasons.append("PROVENANCE_EMPTY")
-
     if any(
         pr["state"] == "OPEN" and pr["current_head_sha"] == run["head_sha"]
         for pr in prs
@@ -433,9 +473,7 @@ def build_report(packet: Any) -> dict[str, Any]:
 
     counts = {
         "HOLD": sum(row["decision"] == "HOLD" for row in rows),
-        "SAFE_TO_CANCEL": sum(
-            row["decision"] == "SAFE_TO_CANCEL" for row in rows
-        ),
+        "SAFE_TO_CANCEL": sum(row["decision"] == "SAFE_TO_CANCEL" for row in rows),
     }
     report: dict[str, Any] = {
         "schema": REPORT_SCHEMA,
@@ -506,9 +544,7 @@ def verify_report(report: Any) -> bool:
         checked = _exact_keys(item, ROW_KEYS, "audit row")
         _exact_int(checked["run_id"], "audit row run_id", minimum=1)
         _bounded_string(checked["workflow"], "audit row workflow", maximum=256)
-        _bounded_string(
-            checked["head_branch"], "audit row head_branch", maximum=256
-        )
+        _bounded_string(checked["head_branch"], "audit row head_branch", maximum=256)
         _sha(checked["head_sha"], "audit row head_sha")
         if checked["decision"] not in {"SAFE_TO_CANCEL", "HOLD"}:
             raise AuditError("unknown audit decision")
@@ -520,9 +556,7 @@ def verify_report(report: Any) -> bool:
             raise AuditError("associated_pr_numbers must be a list")
         for number in checked["associated_pr_numbers"]:
             _exact_int(number, "associated PR number", minimum=1)
-        if _exact_bool(
-            checked["requires_live_reread"], "requires_live_reread"
-        ) is not True:
+        if _exact_bool(checked["requires_live_reread"], "requires_live_reread") is not True:
             raise AuditError("requires_live_reread must be literal true")
 
     counts = _exact_keys(row["counts"], {"HOLD", "SAFE_TO_CANCEL"}, "counts")
