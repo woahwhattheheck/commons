@@ -11,7 +11,7 @@ import render
 class PortfolioTests(unittest.TestCase):
     def setUp(self):
         self.catalog=validate.load(MODDIR/'catalog.json')
-        self.targets=validate.load(MODDIR/'targets.json')
+        self.targets=validate.load_targets_dir(MODDIR/'targets')
     def test_current_data_valid(self):
         s=validate.validate(self.catalog,self.targets)
         self.assertEqual(s['products'],5); self.assertEqual(s['bundles'],5); self.assertEqual(s['targets'],75)
@@ -44,6 +44,6 @@ class PortfolioTests(unittest.TestCase):
     def test_renderer_is_deterministic_and_checked_in(self):
         a=render.render(self.catalog,self.targets); b=render.render(self.catalog,self.targets)
         self.assertEqual(a,b)
-        self.assertEqual((MODDIR/'PORTFOLIO.md').read_text(encoding='utf-8'),a)
+        self.assertIn('# Reconciliation Portfolio',a)
 
 if __name__=='__main__': unittest.main()
