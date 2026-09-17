@@ -183,6 +183,61 @@ class NhdesLims2026093CarrierTests(unittest.TestCase):
             for name, value in originals.items():
                 setattr(carrier, name, value)
 
+    def test_runtime_generation_ignores_builtin_and_exception_shadowing(self) -> None:
+        baseline = carrier.build_receipt(self.source, self.candidate)
+        original_error = carrier.CarrierError
+        real_set = set
+
+        def forged_set(value=()):
+            result = real_set(value)
+            if "ACTIVE_ORG_ROUTE_COLLISION_PENDING_MUSE" in result:
+                return real_set()
+            return result
+
+        class ForgedCarrierError(Exception):
+            pass
+
+        poison = {
+            "set": forged_set,
+            "sorted": lambda values: [],
+            "type": lambda value: object,
+            "any": lambda values: False,
+            "len": lambda value: 0,
+            "dict": lambda *args, **kwargs: {"forged": True},
+            "list": tuple,
+            "str": bytes,
+            "int": bool,
+            "TypeError": RuntimeError,
+            "ValueError": RuntimeError,
+            "UnicodeError": RuntimeError,
+            "RecursionError": RuntimeError,
+            "OverflowError": RuntimeError,
+            "CarrierError": ForgedCarrierError,
+        }
+        originals: dict[str, tuple[bool, object]] = {}
+        try:
+            for name, value in poison.items():
+                originals[name] = (name in carrier.__dict__, carrier.__dict__.get(name))
+                setattr(carrier, name, value)
+
+            rebuilt = carrier.build_receipt(self.source, self.candidate)
+            self.assertEqual(rebuilt, baseline)
+            self.assertIn("ACTIVE_ORG_ROUTE_COLLISION_PENDING_MUSE", rebuilt["runtime_gate"]["holds"])
+            self.assertEqual(rebuilt["partner_conversion_posture"], "HOLD_ACTIVE_ORG_COLLISION_PENDING_MUSE")
+            self.assertTrue(all(value is False for value in rebuilt["authority"].values()))
+            carrier.verify_receipt(baseline, self.source, self.candidate)
+
+            forged = copy.deepcopy(self.candidate)
+            forged["current_collision"]["muse_resolution"] = "CLEAR_NHDES"
+            with self.assertRaises(original_error):
+                carrier.validate_candidate(forged)
+        finally:
+            for name, (existed, value) in originals.items():
+                if existed:
+                    setattr(carrier, name, value)
+                else:
+                    delattr(carrier, name)
+
     def test_receipt_tamper_fails_recompile_verification(self) -> None:
         receipt = carrier.build_receipt(self.source, self.candidate)
         receipt["candidate"]["govramp_authorization"] = "VERIFIED"
