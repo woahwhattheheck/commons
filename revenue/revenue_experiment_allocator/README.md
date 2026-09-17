@@ -24,6 +24,8 @@ Each segment binds one evidence reference + SHA-256 and reports:
 - whether an outbound route is available;
 - whether a collision is unresolved.
 
+`segment_id` must be unique, but it is not allowed to mint extra concentration capacity. The commercial segment identity is the normalized `offer_id × route_kind × audience_label` tuple. Offer/audience identity text is NFKC-normalized, case-folded, and whitespace-collapsed; Unicode format/control identity text is rejected. Two rows that normalize to the same semantic segment are rejected even when they use distinct `segment_id`, evidence references, and evidence digests.
+
 The funnel counts must be monotone. Cash cannot exist without a retained paid signal, and a retained paid signal must carry positive retained cash.
 
 The truth boundary is:
@@ -50,7 +52,7 @@ There is intentionally **no headline ticket-value input**. The allocator uses ob
 
 Two controls prevent naive winner-take-all spray:
 
-- `max_segment_share_bps` caps any one segment's share of the requested batch;
+- `max_segment_share_bps` caps any one canonical semantic segment's share of the requested batch; caller-selected alias ids cannot multiply this cap;
 - `exploration_slots` reserves bounded capacity for strong collision-clean segments that have not yet produced a retained paid outcome.
 
 Allocation is round-robin within the deterministic ranking, so the share cap is respected even when the requested batch is larger than available capacity.
@@ -89,10 +91,11 @@ Input loading is strict: bounded retained regular file, no symlink following whe
 
 ## Tests
 
-The root `test_revenue_experiment_allocator.py` covers normal and hostile semantics including:
+The retained root tests cover normal and hostile semantics including:
 
 - ranking without headline ticket value;
 - hard segment concentration cap, including non-divisible batch/share arithmetic;
+- semantic alias rejection across distinct ids/evidence bindings, including NFKC/case/whitespace aliases and Unicode format controls;
 - exploration reservation;
 - stale evidence / incomplete census / unresolved collision / route holds;
 - exact monotone funnel and cash invariants;
@@ -105,7 +108,7 @@ The root `test_revenue_experiment_allocator.py` covers normal and hostile semant
 Run:
 
 ```bash
-python -m unittest -q test_revenue_experiment_allocator.py test_revenue_experiment_allocator_strict_share.py
-python -O -m unittest -q test_revenue_experiment_allocator.py test_revenue_experiment_allocator_strict_share.py
-python -m py_compile revenue/revenue_experiment_allocator/engine.py test_revenue_experiment_allocator.py test_revenue_experiment_allocator_strict_share.py
+python -m unittest -q test_revenue_experiment_allocator.py test_revenue_experiment_allocator_strict_share.py test_revenue_experiment_allocator_semantic_identity.py
+python -O -m unittest -q test_revenue_experiment_allocator.py test_revenue_experiment_allocator_strict_share.py test_revenue_experiment_allocator_semantic_identity.py
+python -m py_compile revenue/revenue_experiment_allocator/engine.py test_revenue_experiment_allocator.py test_revenue_experiment_allocator_strict_share.py test_revenue_experiment_allocator_semantic_identity.py
 ```
