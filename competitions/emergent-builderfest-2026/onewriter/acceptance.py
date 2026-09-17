@@ -15,6 +15,7 @@ EVENTS=["CLAIM","SENT","BOUNCE","HUMAN_EVENT","HOLD"]
 FIELDS=["org","domain","route","purpose","opportunity"]
 NORMALIZATION={"org":"unicode-casefold-trim-collapse-space","domain":"ascii-lower-strip-scheme-www-path-trailing-dot","route":"unicode-casefold-trim-collapse-space","purpose":"unicode-casefold-trim-collapse-space","opportunity":"unicode-casefold-trim-collapse-space"}
 INVARIANTS=["exactly_one_active_lease_per_collision_key","active_lease_blocks_parallel_claims","expired_lease_may_be_recovered","sent_requires_current_lease_holder_and_provider_receipt","sent_hard_fences_lane_until_genuine_human_event","bounce_requires_current_lease_holder_and_provider_receipt","bounce_is_route_failure_not_buyer_rejection","human_event_requires_distinct_retained_evidence","human_event_reopens_only_a_bounded_next_action","hold_blocks_claims_until_new_human_event","event_ids_provider_receipts_and_human_evidence_ids_are_single_use","timestamps_are_strictly_monotone_utc","no_event_grants_external_send_authority"]
+EVIDENCE_ID_MAX=240
 
 class ContractError(ValueError): pass
 def require(ok,msg):
@@ -46,6 +47,11 @@ def norm_text(v,name):
     require(isinstance(v,str),f"{name} must be a string"); v=_space.sub(" ",v.strip()).casefold(); require(bool(v) and len(v)<=240,f"{name} invalid"); return v
 def norm_domain(v):
     require(isinstance(v,str),"domain must be a string"); v=_scheme.sub("",v.strip().lower()).split("/",1)[0]; v=v[4:] if v.startswith("www.") else v; v=v.rstrip("."); require(bool(v) and " " not in v and "@" not in v and len(v)<=253,"domain shape invalid"); return v
+def evidence_id(v,name):
+    require(type(v) is str,f"{name} must be a string")
+    require(v==v.strip() and 1<=len(v)<=EVIDENCE_ID_MAX,f"{name} must be trimmed nonempty text <= {EVIDENCE_ID_MAX} chars")
+    require(not any(ord(ch)<32 or ord(ch)==127 for ch in v),f"{name} contains control characters")
+    return v
 def identity(e): return {"org":norm_text(e["org"],"org"),"domain":norm_domain(e["domain"]),"route":norm_text(e["route"],"route"),"purpose":norm_text(e["purpose"],"purpose"),"opportunity":norm_text(e["opportunity"],"opportunity")}
 def collision_key(e): return hashlib.sha256(canonical_bytes(identity(e))).hexdigest()
 def utc(v):
@@ -57,11 +63,14 @@ def validate_event(e):
     for f in ("id","kind","actor","org","domain","route","purpose","opportunity","reason"): require(isinstance(e[f],str) and e[f].strip(),f"{f} must be nonempty")
     require(e["kind"] in EVENTS,"unknown event kind"); utc(e["at_utc"]); identity(e)
     lease=e["lease_seconds"]; provider=e["provider_receipt"]; human=e["human_evidence_id"]
-    require(lease is None or type(lease) is int,"lease_seconds must be null or integer (bool forbidden)"); require(provider is None or isinstance(provider,str),"provider receipt invalid"); require(human is None or isinstance(human,str),"human evidence invalid")
+    require(lease is None or type(lease) is int,"lease_seconds must be null or integer (bool forbidden)")
+    require(provider is None or type(provider) is str,"provider receipt invalid"); require(human is None or type(human) is str,"human evidence invalid")
+    if provider is not None: evidence_id(provider,"provider_receipt")
+    if human is not None: evidence_id(human,"human_evidence_id")
     require(isinstance(e["expect"],dict) and set(e["expect"])=={"decision","state"} and e["expect"]["state"] in STATES,"expect invalid")
     if e["kind"]=="CLAIM": require(type(lease) is int and 30<=lease<=1800 and provider is None and human is None,"CLAIM lease/evidence invalid")
-    elif e["kind"] in {"SENT","BOUNCE"}: require(lease is None and bool(provider) and human is None,f"{e['kind']} evidence invalid")
-    elif e["kind"]=="HUMAN_EVENT": require(lease is None and provider is None and bool(human),"HUMAN_EVENT evidence invalid")
+    elif e["kind"] in {"SENT","BOUNCE"}: require(lease is None and provider is not None and human is None,f"{e['kind']} evidence invalid")
+    elif e["kind"]=="HUMAN_EVENT": require(lease is None and provider is None and human is not None,"HUMAN_EVENT evidence invalid")
     else: require(lease is None and provider is None and human is None,"HOLD evidence invalid")
 
 @dataclass
