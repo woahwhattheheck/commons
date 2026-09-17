@@ -32,7 +32,9 @@ def load_json(path):
     try: return json.loads(Path(path).read_text(encoding="utf-8"),object_pairs_hook=_object,parse_constant=_constant)
     except ContractError: raise
     except Exception as exc: raise ContractError(f"could not load {path}: {exc}") from exc
-def canonical_bytes(v): return json.dumps(v,ensure_ascii=False,sort_keys=True,separators=(",",":"),allow_nan=False).encode()
+def canonical_bytes(v):
+    try: return json.dumps(v,ensure_ascii=False,sort_keys=True,separators=(",",":"),allow_nan=False).encode()
+    except (TypeError,ValueError,UnicodeError) as exc: raise ContractError("value is not canonical JSON") from exc
 def machine_semantic(m): return {k:m[k] for k in sorted(ROOT_KEYS-{"contract_digest_sha256"})}
 def validate_machine(m):
     require(isinstance(m,dict) and set(m)==ROOT_KEYS,"state-machine root key set changed")
@@ -49,8 +51,7 @@ def norm_text(v,name):
     require(isinstance(v,str),f"{name} must be a string"); v=_space.sub(" ",v.strip()).casefold(); require(bool(v) and len(v)<=240,f"{name} invalid"); return v
 def norm_domain(v):
     require(isinstance(v,str),"domain must be a string"); raw=v.strip(); require(bool(raw),"domain shape invalid")
-    try:
-        parsed=urlsplit(raw if _scheme.match(raw) else "https://"+raw)
+    try: parsed=urlsplit(raw if _scheme.match(raw) else "https://"+raw)
     except ValueError as exc: raise ContractError("domain shape invalid") from exc
     require(parsed.username is None and parsed.password is None,"domain credentials forbidden")
     try: port=parsed.port
@@ -93,31 +94,47 @@ def validate_event(e):
     elif e["kind"]=="HUMAN_EVENT": require(lease is None and provider is None and bool(human),"HUMAN_EVENT evidence invalid")
     else: require(lease is None and provider is None and human is None,"HOLD evidence invalid")
 
+def accepted_event(e,route,key):
+    return {"event_id":e["id"],"at_utc":e["at_utc"],"kind":e["kind"],"actor":e["actor"],"identity":identity(e),"collision_key":key,"event_route":route,"lease_seconds":e["lease_seconds"],"provider_receipt":e["provider_receipt"],"human_evidence_id":e["human_evidence_id"],"reason":e["reason"]}
+
 @dataclass
 class Lane:
-    state:str="CLEAR"; holder:str|None=None; until:datetime|None=None; route:str|None=None
+    state:str="CLEAR"; holder:str|None=None; until:datetime|None=None; route:str|None=None; reopen_from:str|None=None; reopen_route:str|None=None
 
-def replay(machine,doc):
+def _refence_expired_reopen(lane,now):
+    if lane.state=="LEASED" and lane.reopen_from is not None and lane.until is not None and now>=lane.until:
+        lane.state=lane.reopen_from; lane.holder=None; lane.until=None; lane.route=lane.reopen_route; lane.reopen_from=None; lane.reopen_route=None; return True
+    return False
+
+def evaluate(machine,doc):
     validate_machine(machine); require(isinstance(doc,dict) and set(doc)=={"schema_version","scenario","events","expected_summary"},"demo-events root key set changed"); require(doc["schema_version"]==2 and doc["scenario"]=="synthetic-onewriter-business-demo-v2","demo metadata changed")
-    ids=set(); providers=set(); humans=set(); lanes={}; receipts=[]; prev=None; metrics={"claims_granted":0,"collisions_prevented":0,"duplicate_touches_prevented":0,"stale_lanes_recovered":0,"sent_hard_fences":0,"dead_routes_recorded":0,"human_reopens":0}
+    used_ids=set(); lanes={}; receipts=[]; prev=None; metrics={"claims_granted":0,"collisions_prevented":0,"duplicate_touches_prevented":0,"stale_lanes_recovered":0,"sent_hard_fences":0,"dead_routes_recorded":0,"human_reopens":0}
     for pos,e in enumerate(doc["events"]):
-        validate_event(e); require(e["id"] not in ids,f"duplicate event id: {e['id']}"); ids.add(e["id"]); now=utc(e["at_utc"]); require(prev is None or now>prev,"timestamps must be strictly monotone"); prev=now
-        if e["provider_receipt"] is not None: require(e["provider_receipt"] not in providers,"provider receipt reused"); providers.add(e["provider_receipt"])
-        if e["human_evidence_id"] is not None: require(e["human_evidence_id"] not in humans,"human evidence reused"); humans.add(e["human_evidence_id"])
-        key=collision_key(e); lane=lanes.setdefault(key,Lane()); prior=lane.state; kind=e["kind"]; route=event_route(e)
+        validate_event(e); now=utc(e["at_utc"]); require(prev is None or now>prev,"timestamps must be strictly monotone"); prev=now
+        for label,value in (("event id",e["id"]),("provider receipt",e["provider_receipt"]),("human evidence",e["human_evidence_id"])):
+            if value is not None:
+                require(value not in used_ids,f"workspace identifier reused: {label} {value}"); used_ids.add(value)
+        key=collision_key(e); lane=lanes.setdefault(key,Lane()); refenced=_refence_expired_reopen(lane,now); prior=lane.state; kind=e["kind"]; route=event_route(e)
         if kind=="CLAIM":
             if lane.state=="LEASED" and now<lane.until: decision="DENIED_ACTIVE_LEASE"; metrics["collisions_prevented"]+=1; metrics["duplicate_touches_prevented"]+=1
             elif lane.state=="LEASED": lane.holder=e["actor"]; lane.until=now+timedelta(seconds=e["lease_seconds"]); lane.route=route; decision="GRANTED_STALE_RECOVERY"; metrics["claims_granted"]+=1; metrics["stale_lanes_recovered"]+=1
             elif lane.state in {"HARD_DNR","DEAD_ROUTE","HOLD"}: decision=f"DENIED_{lane.state}"; metrics["duplicate_touches_prevented"]+=1
-            else: decision="GRANTED_AFTER_HUMAN_EVENT" if lane.state=="HUMAN_EVENT_REOPEN" else "GRANTED"; lane.state="LEASED"; lane.holder=e["actor"]; lane.until=now+timedelta(seconds=e["lease_seconds"]); lane.route=route; metrics["claims_granted"]+=1
+            else:
+                decision="GRANTED_AFTER_HUMAN_EVENT" if lane.state=="HUMAN_EVENT_REOPEN" else "GRANTED"; lane.state="LEASED"; lane.holder=e["actor"]; lane.until=now+timedelta(seconds=e["lease_seconds"]); lane.route=route; metrics["claims_granted"]+=1
         elif kind in {"SENT","BOUNCE"}:
-            require(lane.state=="LEASED",f"{kind} requires an active lease"); require(lane.holder==e["actor"],f"{kind} actor is not current lease holder"); require(now<lane.until,f"{kind} lease expired"); require(lane.route==route,f"{kind} route does not match current leased route"); lane.holder=None; lane.until=None
+            require(lane.state=="LEASED",f"{kind} requires an active lease"); require(lane.holder==e["actor"],f"{kind} actor is not current lease holder"); require(now<lane.until,f"{kind} lease expired"); require(lane.route==route,f"{kind} route does not match current leased route"); lane.holder=None; lane.until=None; lane.reopen_from=None; lane.reopen_route=None
             if kind=="SENT": lane.state="HARD_DNR"; decision="RECORDED_SENT"; metrics["sent_hard_fences"]+=1
             else: lane.state="DEAD_ROUTE"; decision="RECORDED_DEAD_ROUTE"; metrics["dead_routes_recorded"]+=1
-        elif kind=="HUMAN_EVENT": require(lane.state in {"HARD_DNR","DEAD_ROUTE","HOLD"},"HUMAN_EVENT requires fenced prior lane"); lane.state="HUMAN_EVENT_REOPEN"; decision="REOPENED_HUMAN_EVENT"; metrics["human_reopens"]+=1
-        else: require(lane.state!="LEASED","HOLD cannot revoke active lease"); lane.state="HOLD"; lane.route=route; decision="RECORDED_HOLD"
-        observed={"decision":decision,"state":lane.state}; require(observed==e["expect"],f"expected receipt mismatch at {e['id']}"); sem={"position":pos,"event_id":e["id"],"at_utc":e["at_utc"],"actor":e["actor"],"collision_key":key,"event_route":route,"lane_route":lane.route,"prior_state":prior,"decision":decision,"state":lane.state,"external_send_authorized":False}; receipts.append({**sem,"receipt_sha256":hashlib.sha256(canonical_bytes(sem)).hexdigest()})
-    summary={"status":"OK","scenario":doc["scenario"],"event_count":len(doc["events"]),"lane_count":len(lanes),"metrics":metrics,"authority":AUTHORITY,"receipt_chain_sha256":hashlib.sha256(canonical_bytes(receipts)).hexdigest()}; require(summary==doc["expected_summary"],"expected_summary mismatch"); return {"summary":summary,"receipts":receipts}
+        elif kind=="HUMAN_EVENT":
+            require(lane.state in {"HARD_DNR","DEAD_ROUTE","HOLD"},"HUMAN_EVENT requires fenced prior lane"); lane.reopen_from=lane.state; lane.reopen_route=lane.route; lane.state="HUMAN_EVENT_REOPEN"; decision="REOPENED_HUMAN_EVENT"; metrics["human_reopens"]+=1
+        else:
+            require(lane.state!="LEASED","HOLD cannot revoke active lease"); lane.state="HOLD"; lane.route=route; lane.reopen_from=None; lane.reopen_route=None; decision="RECORDED_HOLD"
+        observed={"decision":decision,"state":lane.state}; require(observed==e["expect"],f"expected receipt mismatch at {e['id']}: computed {observed}")
+        ae=accepted_event(e,route,key); sem={"position":pos,"event_id":e["id"],"at_utc":e["at_utc"],"actor":e["actor"],"collision_key":key,"event_route":route,"lane_route":lane.route,"prior_state":prior,"decision":decision,"state":lane.state,"reopen_expiry_refenced":refenced,"accepted_event":ae,"accepted_event_sha256":hashlib.sha256(canonical_bytes(ae)).hexdigest(),"external_send_authorized":False}; receipts.append({**sem,"receipt_sha256":hashlib.sha256(canonical_bytes(sem)).hexdigest()})
+    summary={"status":"OK","scenario":doc["scenario"],"event_count":len(doc["events"]),"lane_count":len(lanes),"metrics":metrics,"authority":AUTHORITY,"receipt_chain_sha256":hashlib.sha256(canonical_bytes(receipts)).hexdigest()}; return {"summary":summary,"receipts":receipts}
+
+def replay(machine,doc):
+    result=evaluate(machine,doc); require(result["summary"]==doc["expected_summary"],"expected_summary mismatch: computed "+json.dumps(result["summary"],sort_keys=True,separators=(",",":"))); return result
 
 def main(argv=None):
     p=argparse.ArgumentParser(); s=p.add_subparsers(dest="cmd",required=True); v=s.add_parser("verify-machine"); v.add_argument("machine",type=Path); r=s.add_parser("replay"); r.add_argument("machine",type=Path); r.add_argument("events",type=Path); a=p.parse_args(argv)

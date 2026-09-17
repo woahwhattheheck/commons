@@ -20,7 +20,7 @@
     "event_count": 14,
     "lane_count": 3,
     "metrics": {"claims_granted":5,"collisions_prevented":1,"dead_routes_recorded":1,"duplicate_touches_prevented":4,"human_reopens":2,"sent_hard_fences":1,"stale_lanes_recovered":1},
-    "receipt_chain_sha256": "c95eafb53ee570fad6c2b41dfe6b590dbf7faf0c789c99b1ece2679407883338",
+    "receipt_chain_sha256": "06daedce149f3d575c7d34758a1e411d8d5b4304380c44b0a26cb58368529ac8",
     "scenario": "synthetic-onewriter-business-demo-v2",
     "status": "OK"
   },

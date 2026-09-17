@@ -29,20 +29,24 @@ The SHA-256 collision key is deterministic over canonical JSON. State is one of 
 Important semantics:
 - exactly one live writer lease per organization lane, across routes;
 - an active lease blocks parallel claims even when the proposed alias differs;
-- an expired lease can be recovered with an explicitly selected route;
+- an **ordinary** expired lease can be stale-recovered with an explicitly selected route;
 - only the current holder can record `SENT` or `BOUNCE`, and the recorded route must match the currently leased route;
 - `SENT` creates `HARD_DNR`;
 - a provider bounce records `DEAD_ROUTE`, **not buyer rejection**;
 - no fallback alias is opened merely because a route failed;
 - a retained genuine human event is the only event that reopens a fenced lane;
-- after a genuine reopen, the next lease may intentionally select a new route;
+- one human event authorizes exactly one bounded next lease attempt; if that lease expires unused, the lane restores its exact prior fence instead of becoming stale-recoverable;
+- event ids, provider receipts, and human evidence ids share one workspace uniqueness namespace, preventing cross-type evidence reuse;
+- every receipt binds a canonical normalized accepted-event object, so evidence/lease/reason/identity/route/actor/kind/time substitution changes the receipt digest;
 - no event in this source packet authorizes an external send.
 
 See `state_machine.json`, `acceptance.py`, and `product_spec.md`.
 
-## Retained evidence identifier contract
+## Retained identifier contract
 
-`provider_receipt` and `human_evidence_id` are opaque retained-evidence identifiers, not notes. Admission is exact: **trimmed nonempty text, 1–240 characters, no ASCII control characters, no Unicode category-C codepoints, no non-category-C Default_Ignorable codepoints, and at least one visible base codepoint outside Unicode C/M/Z categories**. Reject whitespace-only, padded, overlong, control/format/private/unassigned, grapheme-joiner, Hangul-filler, variation-selector, other Default_Ignorable-bearing, or combining-mark-only values; do not silently normalize them. Ordinary combining marks remain admissible when attached to a visible base. Admitted IDs remain globally single-use in the workspace.
+`provider_receipt` and `human_evidence_id` are opaque retained-evidence identifiers, not notes. Admission is exact: **trimmed nonempty text, 1–240 characters, no ASCII control characters**. Reject whitespace-only, padded, overlong, or control-character values; do not silently trim them and do not rely on language truthiness.
+
+After admission, event ids + provider receipt ids + human evidence ids use one workspace-wide uniqueness namespace. A provider id cannot later masquerade as human evidence, and vice versa.
 
 ## Synthetic demo
 
@@ -53,7 +57,7 @@ See `state_machine.json`, `acceptance.py`, and `product_spec.md`.
 3. provider `SENT` on Alpha's leased route hard-fences the lane;
 4. a claim through yet another alias is blocked;
 5. retained human evidence reopens one bounded next action, which may choose a new route explicitly;
-6. an expired Harbor Forge lease is recovered;
+6. an expired **ordinary** Harbor Forge lease is recovered;
 7. a matching-route provider bounce creates `DEAD_ROUTE` without claiming buyer rejection;
 8. a fallback alias remains blocked absent a genuine reopen;
 9. a Cedar Works `HOLD` blocks claims across aliases until human evidence.
@@ -71,7 +75,7 @@ python3 -m unittest test_acceptance.py -v
 python3 -O -m unittest test_acceptance.py -v
 ```
 
-The hostile suite rejects duplicate JSON keys, non-finite numbers, semantic contract remints, authority escalation, duplicate evidence IDs, nonmonotone timestamps, invalid lease types, non-holder outcomes, expired-holder outcomes, provider outcomes on the wrong route, malformed/credentialed/ported domains, whitespace/padded/control/category-C/Default_Ignorable/combining-only evidence IDs, and unknown authority-bearing event fields. It also proves ordinary combining evidence attached to a visible base remains admissible, cross-route collision, and normalized-domain equivalence.
+The hostile suite rejects duplicate JSON keys, non-finite numbers, semantic contract remints, authority escalation, duplicate or cross-type reused workspace identifiers, nonmonotone timestamps, invalid lease types, non-holder outcomes, expired-holder outcomes, provider outcomes on the wrong route, malformed/credentialed/ported domains, whitespace/padded/control evidence IDs, and unknown authority-bearing event fields. It proves cross-route collision, normalized-domain equivalence, one-shot human reopen re-fencing after expiry, and receipt-digest movement under evidence/lease/reason substitution.
 
 ## Emergent build handoff
 
