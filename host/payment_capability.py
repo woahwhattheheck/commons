@@ -157,6 +157,8 @@ CONVERT_SHELF_LIVE_BUYS = {
     "subzero-proof.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "pixel-unify.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "proof-spiral-succinct-argument.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "muhlnickel-free-sample.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "titan-hands-free-sample.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
 }
 TIPS_CONVERT_SHELF_LIVE_CHECKOUTS = frozenset(
     {
@@ -291,6 +293,8 @@ PUBLIC_HTML = (
     "subzero-proof.html",
     "pixel-unify.html",
     "proof-spiral-succinct-argument.html",
+    "muhlnickel-free-sample.html",
+    "titan-hands-free-sample.html",
 )
 REQUIRED_RAIL_FIELDS = (
     "id",
