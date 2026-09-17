@@ -3,13 +3,15 @@
 from __future__ import annotations
 
 import copy
+import importlib
+import importlib.util
 from pathlib import Path
 import subprocess
 import sys
 import textwrap
 import unittest
 
-from revenue.inbound_lead_control import _engine_v1
+import revenue.inbound_lead_control.engine as engine_module
 from revenue.inbound_lead_control.engine import InputError, compile_snapshot
 from revenue.inbound_lead_control.test_engine import _doc, _event
 
@@ -58,14 +60,19 @@ class InboundLeadChronologyHostiles(unittest.TestCase):
         ]
         self._rejects_both_orders(events)
 
-    def test_private_legacy_import_path_is_also_fenced(self):
+    def test_unfenced_legacy_module_is_not_importable(self):
+        self.assertIsNone(importlib.util.find_spec("revenue.inbound_lead_control._engine_v1"))
+
+    def test_public_engine_reload_keeps_compile_and_verify_fenced(self):
+        reloaded = importlib.reload(engine_module)
         doc = _doc()
         doc["leads"][0]["events"] = [
             _event("E-in", "HUMAN_INBOUND", "2026-09-17T08:55:00Z", content="human"),
             _event("E-out", "OUTBOUND_SENT", "2026-09-17T08:55:00Z", content="sent"),
         ]
-        with self.assertRaisesRegex(InputError, "chronology ambiguity"):
-            _engine_v1.compile_snapshot(doc)
+        with self.assertRaisesRegex(reloaded.InputError, "chronology ambiguity"):
+            reloaded.compile_snapshot(doc)
+        self.assertFalse(reloaded.verify_compiled(doc, {}))
 
     def test_distinct_seconds_preserve_existing_state_machine(self):
         doc = _doc()
@@ -82,9 +89,13 @@ class InboundLeadChronologyHostiles(unittest.TestCase):
         code = textwrap.dedent(
             r'''
             import copy
-            from revenue.inbound_lead_control import _engine_v1
-            from revenue.inbound_lead_control.engine import InputError, compile_snapshot
+            import importlib
+            import importlib.util
+            import revenue.inbound_lead_control.engine as engine_module
             from revenue.inbound_lead_control.test_engine import _doc, _event
+
+            if importlib.util.find_spec("revenue.inbound_lead_control._engine_v1") is not None:
+                raise SystemExit(10)
 
             cases = [
                 [
@@ -100,23 +111,29 @@ class InboundLeadChronologyHostiles(unittest.TestCase):
                     _event("E-bounce", "BOUNCE", "2026-09-17T08:55:00Z", content="bounce"),
                 ],
             ]
-            for compiler in (compile_snapshot, _engine_v1.compile_snapshot):
+
+            def check(module):
                 for events in cases:
                     messages = []
                     for ordered in (events, list(reversed(events))):
                         doc = _doc()
                         doc["leads"][0]["events"] = copy.deepcopy(ordered)
                         try:
-                            compiler(doc)
-                        except InputError as exc:
+                            module.compile_snapshot(doc)
+                        except module.InputError as exc:
                             message = str(exc)
                             if "chronology ambiguity" not in message:
                                 raise SystemExit(11)
                             messages.append(message)
                         else:
                             raise SystemExit(12)
+                        if module.verify_compiled(doc, {}):
+                            raise SystemExit(14)
                     if messages[0] != messages[1]:
                         raise SystemExit(13)
+
+            check(engine_module)
+            check(importlib.reload(engine_module))
             '''
         )
         root = Path(__file__).resolve().parents[2]
