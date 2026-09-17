@@ -190,7 +190,7 @@ def _validate_manifest(raw: Any) -> dict[str,Any]:
     return _manifest(generation,genesis,previous,entries)
 
 
-def _read_generation(token: str, head: str):
+def _read_generation(token: str, head: str, *, verify_receipts: bool = True):
     commit=_get_commit(token,head); tree=_get_tree(token,commit["tree_sha"]); receipt_paths={p for p in tree if p.startswith(RECEIPT_PREFIX)}
     if any(p.startswith("provider/muse_receipt_ledger_v1/") and p!=MANIFEST_PATH and p not in receipt_paths for p in tree): raise MuseProviderReceiptLedgerError("undeclared ledger file")
     blob=tree.get(MANIFEST_PATH)
@@ -199,29 +199,43 @@ def _read_generation(token: str, head: str):
     if _canon(value)!=raw: raise MuseProviderReceiptLedgerError("manifest not canonical")
     manifest=_validate_manifest(value); declared={e["receipt_path"] for e in manifest["entries"]}
     if declared!=receipt_paths: raise MuseProviderReceiptLedgerError("receipt object set mismatch")
-    for entry in manifest["entries"]:
-        rraw=_get_blob(token,tree[entry["receipt_path"]]); obj=_parse_json_bytes(rraw,entry["receipt_path"])
-        if _canon(obj)!=rraw or hashlib.sha256(rraw).hexdigest()!=entry["receipt_sha256"]: raise MuseProviderReceiptLedgerError("receipt bytes/digest mismatch")
-        facts=_receipt_facts(obj)
-        for key in ("receipt_sha256","request_sha256","request_id","publication_key","candidate_sha256","decision","compiled_at","selection_message_ts"):
-            if facts[key]!=entry[key]: raise MuseProviderReceiptLedgerError(f"receipt metadata mismatch: {key}")
-    return manifest,commit,tree
+    receipts=[]
+    if verify_receipts:
+        for entry in manifest["entries"]:
+            rraw=_get_blob(token,tree[entry["receipt_path"]]); obj=_parse_json_bytes(rraw,entry["receipt_path"])
+            if _canon(obj)!=rraw or hashlib.sha256(rraw).hexdigest()!=entry["receipt_sha256"]: raise MuseProviderReceiptLedgerError("receipt bytes/digest mismatch")
+            facts=_receipt_facts(obj)
+            for key in ("receipt_sha256","request_sha256","request_id","publication_key","candidate_sha256","decision","compiled_at","selection_message_ts"):
+                if facts[key]!=entry[key]: raise MuseProviderReceiptLedgerError(f"receipt metadata mismatch: {key}")
+            receipts.append(obj)
+    return manifest,commit,tree,receipts
 
 
-def verify_remote_complete_prefix(*, token: str|None=None) -> dict[str,Any]:
-    token=_token() if token is None else token; start=_get_ref(token); head=start; newer=None; current=None
+def _verify_remote_complete_prefix_state(token: str) -> dict[str,Any]:
+    start=_get_ref(token); head=start; newer=None; newer_tree=None; current=None; current_tree=None; current_receipts=None
     for _ in range(MAX_ENTRIES+1):
-        manifest,commit,_tree=_read_generation(token,head); current=current or manifest
+        is_current=current is None
+        manifest,commit,tree,receipts=_read_generation(token,head,verify_receipts=is_current)
+        if is_current:
+            current=manifest; current_tree=tree; current_receipts=receipts
         if newer is not None:
             if newer["previous_head_sha"]!=head or newer["generation"]!=manifest["generation"]+1 or newer["genesis_parent_sha"]!=manifest["genesis_parent_sha"] or newer["entries"][:-1]!=manifest["entries"]: raise MuseProviderReceiptLedgerError("non-append ledger history")
+            for entry in manifest["entries"]:
+                path=entry["receipt_path"]
+                if newer_tree.get(path)!=tree.get(path): raise MuseProviderReceiptLedgerError("historical receipt blob changed")
         if manifest["generation"]==0:
             if commit["parent_sha"]!=manifest["genesis_parent_sha"]: raise MuseProviderReceiptLedgerError("genesis parent mismatch")
             break
         if commit["parent_sha"]!=manifest["previous_head_sha"]: raise MuseProviderReceiptLedgerError("commit/manifest parent mismatch")
-        newer=manifest; head=commit["parent_sha"]
+        newer=manifest; newer_tree=tree; head=commit["parent_sha"]
     else: raise MuseProviderReceiptLedgerError("ledger chain too long")
     if _get_ref(token)!=start: raise MuseProviderReceiptLedgerError("provider head changed during verification")
-    return {"provider_head_sha":start,"manifest":current}
+    return {"provider_head_sha":start,"manifest":current,"tree":current_tree,"receipts":current_receipts}
+
+
+def verify_remote_complete_prefix(*, token: str|None=None) -> dict[str,Any]:
+    token=_token() if token is None else token; state=_verify_remote_complete_prefix_state(token)
+    return {"provider_head_sha":state["provider_head_sha"],"manifest":state["manifest"]}
 
 
 def _post_tree(token: str, base: str, files: Mapping[str,bytes]) -> str:
@@ -255,36 +269,42 @@ def append_receipt(receipt: Mapping[str,Any], *, token: str|None=None) -> dict[s
     return verify_remote_complete_prefix(token=token)
 
 
-def build_request_bound_proof(request: Mapping[str,Any], *, token: str|None=None) -> dict[str,Any]:
-    token=_token() if token is None else token; req=_request_facts(request); state=verify_remote_complete_prefix(token=token); manifest=state["manifest"]
+def _build_request_bound_proof_with_state(request: Mapping[str,Any], token: str):
+    req=_request_facts(request); state=_verify_remote_complete_prefix_state(token); manifest=state["manifest"]
     if any(e["request_sha256"]==req["request_sha256"] for e in manifest["entries"]): raise MuseProviderReceiptLedgerError("current request already in prior ledger")
     payload={"schema_version":PROOF_SCHEMA,"provider_repo":PROVIDER_REPO_FULL_NAME,"provider_ref":PROVIDER_REF,"provider_head_sha":state["provider_head_sha"],"generation":manifest["generation"],"entry_count":len(manifest["entries"]),"complete_prefix_sha256":manifest["complete_prefix_sha256"],"manifest_sha256":_digest(manifest),**req,"prior_receipt_ledger_authenticated":True,"ledger_complete":True,"terminal_election_authorized":False,"requires_current_worker_lease_possession":True,"requires_fresh_provider_preflight":True,"external_send_authorized":False,"side_effects_authorized":False}
-    return {"payload":payload,"proof_sha256":_digest(payload)}
+    return {"payload":payload,"proof_sha256":_digest(payload)},state
 
 
-def verify_request_bound_proof(request: Mapping[str,Any], proof: Mapping[str,Any], *, token: str|None=None) -> bool:
+def build_request_bound_proof(request: Mapping[str,Any], *, token: str|None=None) -> dict[str,Any]:
+    token=_token() if token is None else token; proof,_state=_build_request_bound_proof_with_state(request,token); return proof
+
+
+def _verify_request_bound_proof_with_state(request: Mapping[str,Any], proof: Mapping[str,Any], token: str):
     try:
-        if type(proof) is not dict or set(proof)!={"payload","proof_sha256"}: return False
+        if type(proof) is not dict or set(proof)!={"payload","proof_sha256"}: return False,None
         p=_exact(proof["payload"],PROOF_FIELDS,"proof"); _sha(p["provider_head_sha"],"proof head"); _uint(p["generation"],"proof generation",MAX_ENTRIES); _uint(p["entry_count"],"proof entry count",MAX_ENTRIES)
         for key in ("complete_prefix_sha256","manifest_sha256","request_sha256","publication_key","candidate_sha256"): _hex64(p[key],f"proof {key}")
         _text(p["request_id"],"proof request id",160)
-        if p["schema_version"]!=PROOF_SCHEMA or p["provider_repo"]!=PROVIDER_REPO_FULL_NAME or p["provider_ref"]!=PROVIDER_REF or proof["proof_sha256"]!=_digest(p): return False
-        if p["prior_receipt_ledger_authenticated"] is not True or p["ledger_complete"] is not True or p["terminal_election_authorized"] is not False or p["requires_current_worker_lease_possession"] is not True or p["requires_fresh_provider_preflight"] is not True or p["external_send_authorized"] is not False or p["side_effects_authorized"] is not False: return False
+        if p["schema_version"]!=PROOF_SCHEMA or p["provider_repo"]!=PROVIDER_REPO_FULL_NAME or p["provider_ref"]!=PROVIDER_REF or proof["proof_sha256"]!=_digest(p): return False,None
+        if p["prior_receipt_ledger_authenticated"] is not True or p["ledger_complete"] is not True or p["terminal_election_authorized"] is not False or p["requires_current_worker_lease_possession"] is not True or p["requires_fresh_provider_preflight"] is not True or p["external_send_authorized"] is not False or p["side_effects_authorized"] is not False: return False,None
         req=_request_facts(request)
-        if any(p[k]!=req[k] for k in req): return False
-        token=_token() if token is None else token
-        return build_request_bound_proof(request,token=token)==proof
-    except (MuseProviderReceiptLedgerError,KeyError,TypeError,ValueError,OSError): return False
+        if any(p[k]!=req[k] for k in req): return False,None
+        expected,state=_build_request_bound_proof_with_state(request,token)
+        if expected!=proof: return False,None
+        return True,state
+    except (MuseProviderReceiptLedgerError,KeyError,TypeError,ValueError,OSError): return False,None
+
+
+def verify_request_bound_proof(request: Mapping[str,Any], proof: Mapping[str,Any], *, token: str|None=None) -> bool:
+    token=_token() if token is None else token; ok,_state=_verify_request_bound_proof_with_state(request,proof,token); return ok
 
 
 def load_prior_receipts(request: Mapping[str,Any], proof: Mapping[str,Any], *, token: str|None=None):
-    token=_token() if token is None else token
-    if not verify_request_bound_proof(request,proof,token=token): raise MuseProviderReceiptLedgerError("ledger proof is not current")
-    state=verify_remote_complete_prefix(token=token)
-    if state["provider_head_sha"]!=proof["payload"]["provider_head_sha"]: raise MuseProviderReceiptLedgerError("provider head changed")
-    tree=_get_tree(token,_get_commit(token,state["provider_head_sha"])["tree_sha"]); out=[_parse_json_bytes(_get_blob(token,tree[e["receipt_path"]]),e["receipt_path"]) for e in state["manifest"]["entries"]]
+    token=_token() if token is None else token; ok,state=_verify_request_bound_proof_with_state(request,proof,token)
+    if not ok: raise MuseProviderReceiptLedgerError("ledger proof is not current")
     if _get_ref(token)!=state["provider_head_sha"]: raise MuseProviderReceiptLedgerError("provider head changed during load")
-    return out
+    return list(state["receipts"])
 
 
 def verify_terminal_coordination(request: Mapping[str,Any], slack_provider_receipt: Mapping[str,Any], ledger_proof: Mapping[str,Any], *, token: str|None=None) -> bool:
