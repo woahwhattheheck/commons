@@ -15,17 +15,10 @@ import re
 import unicodedata
 from typing import Any
 
-from tools.procurement_win_loss import VerificationError, verify_record
+from tools.procurement_win_loss import VerificationError, normalize_record, verify_record
 
 INPUT_SCHEMA = "procurement-loss-remediation-input/v1"
 RECEIPT_SCHEMA = "procurement-loss-remediation-receipt/v1"
-STATUSES = {
-    "ACTIONABLE_GAPS",
-    "NO_ACTIONABLE_GAP",
-    "HOLD_SOURCE",
-    "HOLD_CONTRADICTION",
-    "HOLD_UNATTRIBUTED_REASON",
-}
 BUYER_REASON_CATEGORIES = {
     "QUALIFICATION_EVIDENCE",
     "SCOPE_TECHNICAL_FIT",
@@ -140,7 +133,7 @@ def _positive_int(value: Any, label: str) -> int:
     return value
 
 
-def _verified_source(outcome_record: Any, outcome_receipt: Any) -> dict[str, Any]:
+def _verify_source(outcome_record: Any, outcome_receipt: Any) -> dict[str, Any]:
     try:
         return verify_record(outcome_record, outcome_receipt)
     except VerificationError as exc:
@@ -157,12 +150,16 @@ def normalize_input(raw: Any) -> dict[str, Any]:
     if obj.get("schema") != INPUT_SCHEMA:
         raise RemediationError(f"record.schema must be {INPUT_SCHEMA}")
 
-    outcome_record = _dict(obj.get("outcome_record"), "record.outcome_record")
+    raw_outcome_record = _dict(obj.get("outcome_record"), "record.outcome_record")
     outcome_receipt = _dict(obj.get("outcome_receipt"), "record.outcome_receipt")
-    verified = _verified_source(outcome_record, outcome_receipt)
+    verified = _verify_source(raw_outcome_record, outcome_receipt)
     source_receipt_sha = _sha(outcome_receipt.get("receipt_sha256"), "record.outcome_receipt.receipt_sha256")
     if source_receipt_sha != verified["receipt_sha256"]:
         raise RemediationError("verified source receipt digest mismatch")
+    # Canonicalize the already-verified source record before binding our own
+    # input digest. This preserves order invariance inherited from the source
+    # compiler instead of making raw caller evidence order authoritative here.
+    outcome_record = normalize_record(raw_outcome_record)
 
     mappings_raw = _list(obj.get("buyer_reason_mappings"), "record.buyer_reason_mappings", MAX_REASONS)
     mappings: list[dict[str, Any]] = []
@@ -276,8 +273,9 @@ def derive_semantics(normalized: dict[str, Any]) -> dict[str, Any]:
                 "evidence_id": mapping["evidence_id"],
                 "source_digest_sha256": mapping["source_digest_sha256"],
                 "category": mapping["category"],
+                "category_attribution": "OPERATOR_TAXONOMY_CLASSIFICATION",
                 "statement": statement["text"],
-                "attribution": "BUYER_STATED_SOURCE_BOUND",
+                "statement_attribution": "BUYER_STATED_SOURCE_BOUND",
             }
         )
 
@@ -304,10 +302,9 @@ def derive_semantics(normalized: dict[str, Any]) -> dict[str, Any]:
         gaps.append({**gap, "basis_valid": valid_basis})
 
     source_hold = receipt["outcome"] == "UNKNOWN" or bool(receipt["hold_reasons"])
-    contradictions = bool(hold_reasons)
     if source_hold:
         status = "HOLD_SOURCE"
-    elif contradictions:
+    elif hold_reasons:
         status = "HOLD_CONTRADICTION"
     elif missing_statement_ids:
         status = "HOLD_UNATTRIBUTED_REASON"
