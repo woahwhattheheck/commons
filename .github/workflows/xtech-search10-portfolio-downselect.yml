@@ -48,5 +48,7 @@ jobs:
           assert report['authority']['submissionAuthorized'] is False, report
           assert report['authority']['entitySlotConsumed'] is False, report
           assert report['authority']['awardOrPrizeClaimed'] is False, report
+          assert len(report['retainedEvidenceManifestSha256']) == 64, report
+          assert 'does not independently authenticate' in report['evidenceTrustBoundary'], report
           assert len(report['receiptSha256']) == 64, report
           PY
