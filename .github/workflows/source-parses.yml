@@ -9,6 +9,7 @@ on:
       - "revenue/multi_framework_evidence_freshness/**"
       - "tests/test_multi_framework_evidence_freshness*.py"
       - "tools/provider_cost_truth/**"
+      - "tools/tree_preservation_exact/**"
       - ".github/workflows/source-parses.yml"
   pull_request:
     paths:
@@ -31,6 +32,21 @@ jobs:
 
       - name: Verify checker contract
         run: python3 -m unittest -v test_source_parses.py
+
+      - name: Verify exact Git-tree preservation contract
+        working-directory: tools/tree_preservation_exact
+        run: |
+          python3 -m py_compile treeguard.py test_treeguard.py demo.py
+          python3 - <<'PY'
+          import unittest
+          suite = unittest.defaultTestLoader.loadTestsFromName('test_treeguard')
+          count = suite.countTestCases()
+          print(f'exact-tree tests discovered: {count}')
+          if count < 98:
+              raise SystemExit('EXACT-TREE TEST COVERAGE MISSING')
+          PY
+          python3 -m unittest -v test_treeguard
+          python3 -O -m unittest -v test_treeguard
 
       - name: Parse every tracked Python and JavaScript source
         run: python3 source_parses.py
