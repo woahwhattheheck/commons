@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 119,
-    "open_pull_requests": 70,
-    "runs_in_progress": 15,
-    "runs_queued": 267
+    "open_issues": 122,
+    "open_pull_requests": 73,
+    "runs_in_progress": 18,
+    "runs_queued": 326
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -15,10 +15,10 @@
       "branch": "z-atlasforge/swarmops-current-freshness-20260917",
       "created_at": "2026-09-17T18:46:46Z",
       "draft": false,
-      "head_sha": "f4f1a938de70001cf7d6e3980f5de6d8204f532c",
+      "head_sha": "96be91936b40e03845096e93d906cc9b5d6f1865",
       "number": 15613,
       "title": "SwarmOps: harden current semantic readiness verification",
-      "updated_at": "2026-09-18T03:15:09Z"
+      "updated_at": "2026-09-18T06:38:26Z"
     },
     {
       "author": "woahwhattheheck",
@@ -69,6 +69,61 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "swarm-z/provider-actions-health-15947-20260918",
+      "created_at": "2026-09-18T06:46:10Z",
+      "draft": false,
+      "head_sha": "832fe34f9cbb5c04715103a03771869be7c90a51",
+      "number": 15963,
+      "title": "Provider Actions health audit and deterministic classifier",
+      "updated_at": "2026-09-18T06:46:10Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-blackglass/actions-merge-train-15946",
+      "created_at": "2026-09-18T06:40:45Z",
+      "draft": false,
+      "head_sha": "288f1a3b73d9e07b7c55180c0c696ac0b95480ad",
+      "number": 15958,
+      "title": "CI: recover provider-starvation-aware merge train",
+      "updated_at": "2026-09-18T06:42:04Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-obliqueledger/github-read-coordinator-15951",
+      "created_at": "2026-09-18T06:40:41Z",
+      "draft": false,
+      "head_sha": "e72e8715b85a2cce40f3bdcd709ca239d8fc80e6",
+      "number": 15957,
+      "title": "GitHub read-rate coordinator for swarm secondary-limit control",
+      "updated_at": "2026-09-18T06:45:01Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zcost/ky-rfi-2700000006-workflow-surface-recovery-20260918",
+      "created_at": "2026-09-18T06:39:17Z",
+      "draft": false,
+      "head_sha": "1120270bd502573578b5ba915667e2bc15aed871",
+      "number": 15956,
+      "title": "Revenue: recover Kentucky reporting carrier inside 67-workflow budget",
+      "updated_at": "2026-09-18T06:46:05Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-obliqueledger/unc-ap-ai-15930-recovery-20260918",
+      "created_at": "2026-09-18T06:36:15Z",
+      "draft": false,
+      "head_sha": "df762d6933f0b2b7bd263aa1121f76529f297e35",
+      "number": 15954,
+      "title": "Recover UNC AP AI evidence binding on current main",
+      "updated_at": "2026-09-18T06:46:27Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "z-sol17/e2b-executor-15922-20260918-r2",
       "created_at": "2026-09-18T06:32:11Z",
       "draft": false,
@@ -83,10 +138,10 @@
       "branch": "anvil/autopsy-retirement-stage2",
       "created_at": "2026-09-18T06:31:12Z",
       "draft": false,
-      "head_sha": "2755526e8a41f4d1d670992b47d36e2e82900311",
+      "head_sha": "ebddb3b0f6aa06fd6a0602eab95c23b3f5384bcd",
       "number": 15952,
       "title": "purge: finish Agent Failure Autopsy retirement \u2014 generators, registries, dead code, stale tests",
-      "updated_at": "2026-09-18T06:31:12Z"
+      "updated_at": "2026-09-18T06:44:47Z"
     },
     {
       "author": "woahwhattheheck",
@@ -120,65 +175,10 @@
       "number": 15943,
       "title": "Guard PR root-tree retention in trusted collision listener",
       "updated_at": "2026-09-18T04:16:06Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-costaqua/15926-provider-observed-truth-20260917",
-      "created_at": "2026-09-18T04:04:40Z",
-      "draft": false,
-      "head_sha": "ee52bc783f9ba97c32a3cbc9213ab3335dcf5457",
-      "number": 15942,
-      "title": "Repair provider submission observation truth",
-      "updated_at": "2026-09-18T06:32:24Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-quoin/workflow-budget-68-to-67-20260917",
-      "created_at": "2026-09-18T03:57:13Z",
-      "draft": false,
-      "head_sha": "af98a5bdfdbfc9eba99318aa675843e159fe0d00",
-      "number": 15940,
-      "title": "Restore 67-workflow budget and throttle scheduled polling",
-      "updated_at": "2026-09-18T06:19:59Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-relaydsn/tree-recovery-15931",
-      "created_at": "2026-09-18T03:43:16Z",
-      "draft": true,
-      "head_sha": "593ece690eb2ae18773121855d60e323e7b5c854",
-      "number": 15935,
-      "title": "HOLD: restore Commons tree after PR 15921 truncation",
-      "updated_at": "2026-09-18T04:06:25Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-alder/bid-cockpit-14184-recovery-20260917",
-      "created_at": "2026-09-18T03:41:34Z",
-      "draft": false,
-      "head_sha": "10bfbf40c5cad7f490c4de2ff37689c513f61b78",
-      "number": 15933,
-      "title": "Fix bid-owner cockpit breadth, freshness, and retained I/O custody",
-      "updated_at": "2026-09-18T03:41:34Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zlw2304-unc-ap-ai-currentmain",
-      "created_at": "2026-09-18T03:38:30Z",
-      "draft": false,
-      "head_sha": "395a7f1d3fc3e18595c95bf9ff58c1dffacbea2d",
-      "number": 15930,
-      "title": "UNC AP AI evidence-binding repair",
-      "updated_at": "2026-09-18T06:30:40Z"
     }
   ],
   "open_heads": {
-    "15613": "f4f1a938de70001cf7d6e3980f5de6d8204f532c",
+    "15613": "96be91936b40e03845096e93d906cc9b5d6f1865",
     "15629": "df5666d5a47cad829f07c142285053277e1470c7",
     "15631": "db0e8838d61cd6133154bf2008aefb5b94fc5acd",
     "15635": "1c5d3124d105457b83015f767c1628a9905dc080",
@@ -223,21 +223,19 @@
     "15841": "6fc34824119487c0bd292afc5687c8e5792866b1",
     "15843": "2fa099d3627947bcd343bc62119c0b952a760a46",
     "15857": "1bc841e9815298565cef6cc80773a0ebab9d04bf",
-    "15863": "02210d46101c4b8c9a0f80d0a14fb1843ee40c2f",
+    "15863": "79ba7a61b66d0ffd841ac2210cae69b23a914a42",
     "15865": "d6ba9099718fab8b308daeab7c7b57d1e97aa786",
     "15866": "d4a6d1eb3ed0f7615f22c1847f9c379e9f468135",
     "15867": "7353c760d9f4c8a3d9f9ceeb1e753f93887c5067",
     "15868": "4fdb67823db0349de7b70717af7aa5b517eccaf3",
     "15869": "0029c8cfd68a9966b035e00838fb030ebe9850fb",
-    "15875": "42fc7c08ad7640b73ad7ff4af4df677a04e0bd92",
+    "15875": "2fa251337c2fcb8b3bb409ef3d8b74bb4ef97c0a",
     "15877": "a4672c41352745889717172e08616533a542467a",
     "15884": "fc85ecf3036d57c69c8685068a1f2f49d88c2e8c",
     "15888": "abb4d4b8f9e1b223c21a28e644132ebdd3b50085",
     "15889": "0d0283b19d0528d2c74d66fba7d04a73dafadab4",
     "15918": "1331d8c6e20ad7be456794814ce416eba4a474fd",
-    "15924": "6d911b19c9a1bdd33a064edc2486d6f2c4986f8e",
     "15927": "7a3ac3bda36fcf33b62d0817c18120111deb3874",
-    "15929": "db44d860e2e10b2a1f27f0535b14794b9f77ed0a",
     "15930": "395a7f1d3fc3e18595c95bf9ff58c1dffacbea2d",
     "15933": "10bfbf40c5cad7f490c4de2ff37689c513f61b78",
     "15935": "593ece690eb2ae18773121855d60e323e7b5c854",
@@ -246,13 +244,51 @@
     "15943": "63a71753078decb3af0a80ee02cd0da193dcc003",
     "15945": "e561fee5e53bcd24bf50893f87c26aafde07d8f5",
     "15949": "33827c082c125ff900463bc78876658147831c0e",
-    "15952": "2755526e8a41f4d1d670992b47d36e2e82900311",
-    "15953": "76a838d99f33d6acee4b73e7c833cd4da80f8caa"
+    "15952": "ebddb3b0f6aa06fd6a0602eab95c23b3f5384bcd",
+    "15953": "76a838d99f33d6acee4b73e7c833cd4da80f8caa",
+    "15954": "df762d6933f0b2b7bd263aa1121f76529f297e35",
+    "15956": "1120270bd502573578b5ba915667e2bc15aed871",
+    "15957": "e72e8715b85a2cce40f3bdcd709ca239d8fc80e6",
+    "15958": "288f1a3b73d9e07b7c55180c0c696ac0b95480ad",
+    "15963": "832fe34f9cbb5c04715103a03771869be7c90a51"
   },
-  "pulls_listed": 70,
+  "pulls_listed": 73,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 17.8,
+  "queue_depth_per_runner": 18.1,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-argentvector-2318/tn-34201-02431-current-state-repair",
+      "closed_at": "2026-09-18T06:42:54Z",
+      "head_sha": "db44d860e2e10b2a1f27f0535b14794b9f77ed0a",
+      "merged_at": null,
+      "number": 15929,
+      "state": "CLOSED",
+      "title": "Refresh Tennessee 34201-02431 source state"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol17/muse-stale-queue-15903-20260917",
+      "closed_at": "2026-09-18T06:42:35Z",
+      "head_sha": "6d911b19c9a1bdd33a064edc2486d6f2c4986f8e",
+      "merged_at": "2026-09-18T06:42:35Z",
+      "number": 15924,
+      "state": "MERGED",
+      "title": "Muse: deterministic stale arbitration queue recovery compiler"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol17/commerce-conversion-loop-20260918",
+      "closed_at": "2026-09-18T06:42:22Z",
+      "head_sha": "86f1b15a42158734a9ea7b85f9db200423316b83",
+      "merged_at": "2026-09-18T06:42:22Z",
+      "number": 15955,
+      "state": "MERGED",
+      "title": "Revenue: add provenance-bound commerce conversion loop"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -285,28 +321,6 @@
       "number": 15941,
       "state": "MERGED",
       "title": "Refresh Tennessee 34201-02431 source state"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/single-writer-lease-authority-14812-20260917",
-      "closed_at": "2026-09-18T03:54:22Z",
-      "head_sha": "d75e50524a828242a72b459a5daf94e3ba4a9e5f",
-      "merged_at": "2026-09-18T03:54:22Z",
-      "number": 15936,
-      "state": "MERGED",
-      "title": "Fix workshare coordination"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol17/15926",
-      "closed_at": "2026-09-18T03:47:27Z",
-      "head_sha": "156f4b20f005d0af163773f5809bf7be96056b2b",
-      "merged_at": null,
-      "number": 15937,
-      "state": "CLOSED",
-      "title": "Complete outbound delivery state-machine coverage"
     },
     {
       "author": "woahwhattheheck",
@@ -406,21 +420,10 @@
       "number": 15902,
       "state": "MERGED",
       "title": "Muse runtime adoption: fresh-main gate without workflow fanout"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol/muse-send-lease-main4cf-20260917-2305",
-      "closed_at": "2026-09-18T03:10:23Z",
-      "head_sha": "6f1755c1c4aa04a8443059e24d599d50ff67ffe5",
-      "merged_at": "2026-09-18T03:10:23Z",
-      "number": 15905,
-      "state": "MERGED",
-      "title": "Muse: land sealed atomic send lease on current main (4cf generation)"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-18T06:36:16Z",
+  "unchanged_since": "2026-09-18T06:46:58Z",
   "undatable_pulls": []
 }
