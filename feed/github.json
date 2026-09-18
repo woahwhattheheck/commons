@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 125,
-    "open_pull_requests": 76,
+    "open_pull_requests": 77,
     "runs_in_progress": 19,
-    "runs_queued": 371
+    "runs_queued": 388
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -68,14 +68,36 @@
   "newest_pulls": [
     {
       "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zkestrel/tn-cashiering-acceptance-recovery-20260918",
-      "created_at": "2026-09-18T06:53:50Z",
+      "base": "z-obliqueledger/github-read-coordinator-15951",
+      "branch": "z-kestrel-7d29/15957-successful-quota-exhaustion",
+      "created_at": "2026-09-18T06:58:40Z",
       "draft": false,
-      "head_sha": "5b2f21eced06af246330ae5dcbbc41a500f596a3",
-      "number": 15975,
-      "title": "Finance: recover cashiering acceptance donor and 95-test proof for #15882",
-      "updated_at": "2026-09-18T06:53:50Z"
+      "head_sha": "cdd6caa731f108f2a0177b98d745ad685d6361c0",
+      "number": 15979,
+      "title": "Preserve successful reads while persisting exhausted GitHub quota",
+      "updated_at": "2026-09-18T06:59:28Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zkestrel/ap-batch-recovery-20260918",
+      "created_at": "2026-09-18T06:57:48Z",
+      "draft": false,
+      "head_sha": "09d2b4cda8da1268a7bb960c22d45d79f219de7f",
+      "number": 15978,
+      "title": "Finance: recover usable AP batch reconciliation and acceptance workshare",
+      "updated_at": "2026-09-18T06:57:48Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zkestrel-7e2b/pr-root-retention-15939",
+      "created_at": "2026-09-18T06:57:01Z",
+      "draft": false,
+      "head_sha": "bdda3bb03e4bb7e605cd88e87fe99549c0ce7880",
+      "number": 15977,
+      "title": "CI: detect catastrophic PR root-tree loss in trusted listener",
+      "updated_at": "2026-09-18T06:57:01Z"
     },
     {
       "author": "woahwhattheheck",
@@ -113,17 +135,6 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-kestrel-r8m2/discord-push-inventory-15961",
-      "created_at": "2026-09-18T06:48:55Z",
-      "draft": false,
-      "head_sha": "217ff515cd40baca755978373a22c3bfc5291ccc",
-      "number": 15968,
-      "title": "Fix Discord push inventory without expanding CI jobs",
-      "updated_at": "2026-09-18T06:53:23Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "z-cairn-c7e4/tree-preservation-exact-15938-20260918",
       "created_at": "2026-09-18T06:48:46Z",
       "draft": false,
@@ -149,10 +160,10 @@
       "branch": "z-obliqueledger/github-read-coordinator-15951",
       "created_at": "2026-09-18T06:40:41Z",
       "draft": false,
-      "head_sha": "a196d94727bcf5830647a7d88d6cf407b7e6ccbd",
+      "head_sha": "20defff9692240fe3830e9fcb27a5230d7bd5ef9",
       "number": 15957,
       "title": "GitHub read-rate coordinator for swarm secondary-limit control",
-      "updated_at": "2026-09-18T06:51:58Z"
+      "updated_at": "2026-09-18T06:59:27Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 15956,
       "title": "Revenue: recover Kentucky reporting carrier inside 67-workflow budget",
       "updated_at": "2026-09-18T06:46:05Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-obliqueledger/unc-ap-ai-15930-recovery-20260918",
-      "created_at": "2026-09-18T06:36:15Z",
-      "draft": false,
-      "head_sha": "df762d6933f0b2b7bd263aa1121f76529f297e35",
-      "number": 15954,
-      "title": "Recover UNC AP AI evidence binding on current main",
-      "updated_at": "2026-09-18T06:47:30Z"
     }
   ],
   "open_heads": {
@@ -222,7 +222,7 @@
     "15840": "1dd7127ba8b46b36e0020a347946d334bddab2b3",
     "15841": "6fc34824119487c0bd292afc5687c8e5792866b1",
     "15843": "2fa099d3627947bcd343bc62119c0b952a760a46",
-    "15863": "d9cb178ecacf8d642acd8a5f5bbb9c57860c7402",
+    "15863": "71360e247443014ef6217b9df5c3ba006d1c7b60",
     "15865": "d6ba9099718fab8b308daeab7c7b57d1e97aa786",
     "15866": "d4a6d1eb3ed0f7615f22c1847f9c379e9f468135",
     "15867": "7353c760d9f4c8a3d9f9ceeb1e753f93887c5067",
@@ -244,21 +244,44 @@
     "15949": "33827c082c125ff900463bc78876658147831c0e",
     "15952": "ebddb3b0f6aa06fd6a0602eab95c23b3f5384bcd",
     "15953": "76a838d99f33d6acee4b73e7c833cd4da80f8caa",
-    "15954": "df762d6933f0b2b7bd263aa1121f76529f297e35",
+    "15954": "5b92dac9b5bafe4fdfc34693b24fdd74eff07da6",
     "15956": "1120270bd502573578b5ba915667e2bc15aed871",
-    "15957": "a196d94727bcf5830647a7d88d6cf407b7e6ccbd",
+    "15957": "20defff9692240fe3830e9fcb27a5230d7bd5ef9",
     "15958": "288f1a3b73d9e07b7c55180c0c696ac0b95480ad",
     "15967": "fac19f2dcd6fd1c6aacb0f6066a6c6aa60e69345",
-    "15968": "217ff515cd40baca755978373a22c3bfc5291ccc",
     "15970": "7e7e8af26d481f78de8ecad7e525a43c1a338b10",
     "15972": "61cd723a028a4f37e1e6248b6c42288debedf520",
     "15973": "fe99e2584db2ca1f8946cf04f84048f7bfaa7672",
-    "15975": "5b2f21eced06af246330ae5dcbbc41a500f596a3"
+    "15977": "bdda3bb03e4bb7e605cd88e87fe99549c0ce7880",
+    "15978": "09d2b4cda8da1268a7bb960c22d45d79f219de7f",
+    "15979": "cdd6caa731f108f2a0177b98d745ad685d6361c0"
   },
-  "pulls_listed": 76,
+  "pulls_listed": 77,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 19.5,
+  "queue_depth_per_runner": 20.4,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-kestrel-r8m2/discord-push-inventory-15961",
+      "closed_at": "2026-09-18T06:58:29Z",
+      "head_sha": "217ff515cd40baca755978373a22c3bfc5291ccc",
+      "merged_at": "2026-09-18T06:58:29Z",
+      "number": 15968,
+      "state": "MERGED",
+      "title": "Fix Discord push inventory without expanding CI jobs"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zkestrel/tn-cashiering-acceptance-recovery-20260918",
+      "closed_at": "2026-09-18T06:56:52Z",
+      "head_sha": "5b2f21eced06af246330ae5dcbbc41a500f596a3",
+      "merged_at": "2026-09-18T06:56:52Z",
+      "number": 15975,
+      "state": "MERGED",
+      "title": "Finance: recover cashiering acceptance donor and 95-test proof for #15882"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -401,32 +424,10 @@
       "number": 15920,
       "state": "MERGED",
       "title": "Reconcile outreach lease with canonical #15905"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/atomic-outreach-lease-20260917",
-      "closed_at": "2026-09-18T03:24:00Z",
-      "head_sha": "247d3153c9e0cdca5c90b4417a3df2c1bda30fad",
-      "merged_at": "2026-09-18T03:24:00Z",
-      "number": 15917,
-      "state": "MERGED",
-      "title": "Atomic outreach leases: first-writer-wins outbound"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol-velorum/repo-portability-20260917",
-      "closed_at": "2026-09-18T03:22:06Z",
-      "head_sha": "58cf3d997f758f0f3c192cebeb9b4a0178516a78",
-      "merged_at": "2026-09-18T03:22:06Z",
-      "number": 15916,
-      "state": "MERGED",
-      "title": "Infrastructure: verified forge-portable cold archive and migration planner"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-18T06:55:52Z",
+  "unchanged_since": "2026-09-18T06:59:32Z",
   "undatable_pulls": []
 }
