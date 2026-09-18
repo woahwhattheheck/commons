@@ -35,17 +35,31 @@ except ImportError:
 
 
 
-def _preserve_live_cash(prev, doc):
+def _preserve_live_cash(prev, doc, root=None):
     """Keep tip Autopsy/$199 product doors across feature-tracker remints.
 
     Paths only — never invent Stripe. Mirrors hub_pages KEEP (newbot-13/14).
+    Retired products (deleted checkout page) are not resurrected.
     """
     if hub_pages is not None:
-        return hub_pages._preserve_live_cash(prev, doc)
+        return hub_pages._preserve_live_cash(prev, doc, root)
     if not isinstance(prev, dict) or not isinstance(doc, dict):
         return doc
     live = prev.get("live_cash")
     if isinstance(live, dict) and live.get("products"):
+        if root is not None:
+            live = dict(live)
+            for key in ("products", "larger_fixed"):
+                items = live.get(key)
+                if isinstance(items, list):
+                    live[key] = [
+                        item for item in items
+                        if not isinstance(item, dict)
+                        or not item.get("path")
+                        or os.path.isfile(os.path.join(root, item["path"]))
+                    ]
+            if not live.get("products") and not live.get("larger_fixed"):
+                return doc
         doc["live_cash"] = live
     return doc
 
@@ -783,7 +797,7 @@ def write_projection(root, projection):
     html_path = os.path.join(root, HTML_OUT)
     # KEEP tip live_cash across feature-tracker remints (newbot-05 doors;
     # --write rebuilds wipe Autopsy/$199 + Larger fixed otherwise).
-    projection = _preserve_live_cash(_load_prev_tip_json(root, JSON_OUT), projection)
+    projection = _preserve_live_cash(_load_prev_tip_json(root, JSON_OUT), projection, root)
     with open(json_path, "w", encoding="utf-8") as handle:
         handle.write(_sorted_json(projection))
     with open(html_path, "w", encoding="utf-8") as handle:
