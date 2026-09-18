@@ -364,7 +364,13 @@ def validate_packet(packet: Any, evaluation_time: str) -> tuple[dict[str, Any], 
         "schema_version": SCHEMA_VERSION,
         **identity,
         "currentness_seconds": currentness,
-        "events": [event.raw for event in sorted(active, key=lambda e: (e.generation, e.occurred_at, e.event_id))],
+        "events": [
+            event.raw
+            for event in sorted(
+                parsed,
+                key=lambda e: (e.generation, e.occurred_at, e.event_id),
+            )
+        ],
     }
     return normalized, active, eval_dt
 
