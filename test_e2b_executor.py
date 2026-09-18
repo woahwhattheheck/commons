@@ -321,6 +321,8 @@ class E2BExecutorTests(unittest.TestCase):
         secret = "e2b_live_SUPER_SECRET"
 
         def one():
+            packet = json.loads(json.dumps(self.packet))
+            packet["commands"][0]["argv"].extend(["--api-key", secret])
             sandbox = FakeSandbox(
                 self.digest,
                 user_results=[
@@ -338,6 +340,7 @@ class E2BExecutorTests(unittest.TestCase):
             )
             receipt, _ = self.run_job(
                 sandbox,
+                packet=packet,
                 api_key=secret,
             )
             return receipt
@@ -347,6 +350,7 @@ class E2BExecutorTests(unittest.TestCase):
         self.assertEqual(first, second)
         rendered = json.dumps(first, sort_keys=True)
         self.assertNotIn(secret, rendered)
+        self.assertIn("[REDACTED_E2B_API_KEY]", first["commands"][0]["argv"])
         self.assertEqual(first["sandbox_id"], "sbx-fixed-123")
         self.assertEqual(first["commit_sha"], "a" * 40)
         self.assertEqual(
