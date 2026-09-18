@@ -419,7 +419,7 @@ def _build_public_api():
     _qualification_error = QualificationError
     def _state(partner, gates, sources, runway, as_of, selected_timing, controls_current):
         timing_status = selected_timing.get(partner["name"])
-        if runway["runway_state"] not in {"_ready_states", "ASK_CAPACITY_FIRST"} or timing_status is None:
+        if runway["runway_state"] not in {"READY", "ASK_CAPACITY_FIRST"} or timing_status is None:
             return "HOLD_RUNWAY", [f"runway state/selection does not admit partner: {runway['runway_state']}"]
         if timing_status == "EXPLICIT_MISS":
             return "HOLD_RUNWAY", ["candidate upstream timing status is EXPLICIT_MISS"]
@@ -466,8 +466,8 @@ def _build_public_api():
                     f"partner {partner['name']} gate {disposition['gate_id']} disposition evidence "
                     "must be wholly bound in that gate's source_refs"
                 )
-    # Capture the exact imported runway API generation once. Public compile/verify
-    # paths below no longer resolve mutable module aliases for these trust roots.
+    # Capture the exact sealed runway + local-normalizer generations once. Public
+    # compile/verify paths below do not resolve mutable donor/helper module aliases.
     _normalize_runway = _sealed_normalize_runway
     _compile_runway = _sealed_compile_runway
     _runway_receipt = _sealed_runway_receipt
