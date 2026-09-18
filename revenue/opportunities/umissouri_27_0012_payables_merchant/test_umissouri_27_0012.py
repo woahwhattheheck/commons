@@ -4,6 +4,7 @@ import copy
 import unittest
 from pathlib import Path
 
+import umissouri_27_0012 as module_under_test
 from umissouri_27_0012 import (
     AUTHORITY_FALSE,
     CASE_SCHEMA,
@@ -183,6 +184,58 @@ class ManifestTests(unittest.TestCase):
             "HOLD_RESPONSE_WINDOW",
         )
 
+    def test_exported_policy_rebinding_cannot_widen_runtime_truth(self):
+        original_authority = dict(module_under_test.AUTHORITY_FALSE)
+        original_policy = {
+            "SOLICITATION_ID": module_under_test.SOLICITATION_ID,
+            "BUYER": module_under_test.BUYER,
+            "TITLE": module_under_test.TITLE,
+            "DUE_UTC": module_under_test.DUE_UTC,
+            "QUESTION_CUTOFF_UTC": module_under_test.QUESTION_CUTOFF_UTC,
+            "MAX_SOURCE_AGE_SECONDS": module_under_test.MAX_SOURCE_AGE_SECONDS,
+        }
+        stale = manifest()
+        stale["source_evidence"]["notice"]["captured_at_utc"] = "2026-09-15T01:40:00Z"
+        try:
+            module_under_test.AUTHORITY_FALSE["submission_authorized"] = True
+            module_under_test.AUTHORITY_FALSE["payment_authorized"] = True
+            module_under_test.AUTHORITY_FALSE["revenue_recognized"] = True
+            module_under_test.SOLICITATION_ID = "attacker-id"
+            module_under_test.BUYER = "Attacker Buyer"
+            module_under_test.TITLE = "Attacker Title"
+            module_under_test.DUE_UTC = "2099-12-31T23:59:59Z"
+            module_under_test.QUESTION_CUTOFF_UTC = "2099-12-01T00:00:00Z"
+            module_under_test.MAX_SOURCE_AGE_SECONDS = 10**15
+
+            pursuit = module_under_test.validate_manifest(manifest(), AS_OF)
+            self.assertEqual(pursuit["solicitation_id"], "27-0012")
+            self.assertEqual(pursuit["teaming_build_state"], "READY_FOR_PARTNER_REVIEW")
+            stale_pursuit = module_under_test.validate_manifest(stale, AS_OF)
+            self.assertEqual(stale_pursuit["teaming_build_state"], "HOLD_SOURCE_REFRESH_REQUIRED")
+
+            bundle = module_under_test.compile_bundle(manifest(), partners(), matrix(), AS_OF)
+            self.assertFalse(bundle["submission_authorized"])
+            self.assertFalse(bundle["payment_authorized"])
+            self.assertFalse(bundle["revenue_recognized"])
+            self.assertEqual(bundle["partner_outreach_state"], "HOLD_OUTBOUND_CUSTODY_REQUIRED")
+            self.assertTrue(module_under_test.verify_bundle(bundle, manifest(), partners(), matrix(), AS_OF))
+
+            poisoned = manifest()
+            poisoned["solicitation"].update({
+                "id": "attacker-id",
+                "buyer": "Attacker Buyer",
+                "title": "Attacker Title",
+                "due_utc": "2099-12-31T23:59:59Z",
+                "question_cutoff_utc": "2099-12-01T00:00:00Z",
+            })
+            with self.assertRaises(ContractError):
+                module_under_test.validate_manifest(poisoned, AS_OF)
+        finally:
+            module_under_test.AUTHORITY_FALSE.clear()
+            module_under_test.AUTHORITY_FALSE.update(original_authority)
+            for name, value in original_policy.items():
+                setattr(module_under_test, name, value)
+
 
 class PartnerTests(unittest.TestCase):
     def test_fixture_candidates_are_research_only(self):
@@ -321,7 +374,7 @@ class BundleTests(unittest.TestCase):
         )
         self.assertEqual(
             bundle["partner_outreach_state"],
-            "HOLD_MUSE_ARBITRATION_REQUIRED",
+            "HOLD_OUTBOUND_CUSTODY_REQUIRED",
         )
         self.assertEqual(
             bundle["submission_state"],
