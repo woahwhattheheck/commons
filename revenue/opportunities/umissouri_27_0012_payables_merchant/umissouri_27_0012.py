@@ -163,8 +163,23 @@ def _https(value: Any, label: str) -> str:
 
 
 def _validate_authority(obj: Any, label: str) -> None:
-    authority = _exact(obj, set(AUTHORITY_FALSE), label)
-    for field in AUTHORITY_FALSE:
+    # Literal field generation is deliberate: exported AUTHORITY_FALSE is an
+    # operator-facing compatibility view, never a production policy root.
+    fields = (
+        "buyer_contact_authorized",
+        "partner_contact_authorized",
+        "submission_authorized",
+        "contract_acceptance_authorized",
+        "banking_authorized",
+        "merchant_acquiring_authorized",
+        "card_issuance_authorized",
+        "payment_authorized",
+        "production_erp_write_authorized",
+        "compliance_certification_authorized",
+        "revenue_recognized",
+    )
+    authority = _exact(obj, set(fields), label)
+    for field in fields:
         if _bool(authority[field], f"{label}.{field}") is not False:
             raise ContractError(f"{label}.{field}: must remain false")
 
@@ -192,14 +207,14 @@ def validate_manifest(manifest: Any, trusted_as_of: str) -> dict[str, Any]:
         "manifest.solicitation",
     )
     if (
-        sol["id"] != SOLICITATION_ID
-        or sol["buyer"] != BUYER
-        or sol["title"] != TITLE
+        sol["id"] != "27-0012"
+        or sol["buyer"] != "University of Missouri System"
+        or sol["title"] != "Payables Program and Merchant Services"
     ):
         raise ContractError("manifest.solicitation: solicitation identity drift")
     if (
-        sol["due_utc"] != DUE_UTC
-        or sol["question_cutoff_utc"] != QUESTION_CUTOFF_UTC
+        sol["due_utc"] != "2026-09-25T19:00:00Z"
+        or sol["question_cutoff_utc"] != "2026-09-10T19:00:00Z"
     ):
         raise ContractError("manifest.solicitation: deadline drift")
 
@@ -231,7 +246,7 @@ def validate_manifest(manifest: Any, trusted_as_of: str) -> dict[str, Any]:
         )
         if captured > as_of:
             raise ContractError("manifest.source_evidence: future capture")
-        if int((as_of - captured).total_seconds()) > MAX_SOURCE_AGE_SECONDS:
+        if int((as_of - captured).total_seconds()) > 48 * 60 * 60:
             source_fresh = False
 
     buyer_packet = _exact(
@@ -335,7 +350,7 @@ def validate_manifest(manifest: Any, trusted_as_of: str) -> dict[str, Any]:
 
     packet = {
         "schema": SCHEMA,
-        "solicitation_id": SOLICITATION_ID,
+        "solicitation_id": "27-0012",
         "source_authority_state": (
             "BUYER_PACKET_RETAINED"
             if retained
@@ -343,7 +358,7 @@ def validate_manifest(manifest: Any, trusted_as_of: str) -> dict[str, Any]:
         ),
         "teaming_build_state": (
             "HOLD_RESPONSE_WINDOW"
-            if as_of >= _utc(DUE_UTC, "due")
+            if as_of >= _utc("2026-09-25T19:00:00Z", "due")
             else (
                 "READY_FOR_PARTNER_REVIEW"
                 if source_fresh
@@ -354,7 +369,17 @@ def validate_manifest(manifest: Any, trusted_as_of: str) -> dict[str, Any]:
         "commercial_offer_state": offer["state"],
         "fixed_fee_usd_cents": offer["fixed_fee_usd_cents"],
         "optional_cutover_usd_cents": offer["optional_cutover_usd_cents"],
-        **AUTHORITY_FALSE,
+        "buyer_contact_authorized": False,
+        "partner_contact_authorized": False,
+        "submission_authorized": False,
+        "contract_acceptance_authorized": False,
+        "banking_authorized": False,
+        "merchant_acquiring_authorized": False,
+        "card_issuance_authorized": False,
+        "payment_authorized": False,
+        "production_erp_write_authorized": False,
+        "compliance_certification_authorized": False,
+        "revenue_recognized": False,
     }
     return _add_receipt(packet)
 
@@ -543,7 +568,17 @@ def evaluate_reconciliation_case(
             "variance_cents": processor - erp,
             "unresolved_chargeback_count": chargebacks,
             "evidence_age_seconds": age_seconds,
-            **AUTHORITY_FALSE,
+            "buyer_contact_authorized": False,
+            "partner_contact_authorized": False,
+            "submission_authorized": False,
+            "contract_acceptance_authorized": False,
+            "banking_authorized": False,
+            "merchant_acquiring_authorized": False,
+            "card_issuance_authorized": False,
+            "payment_authorized": False,
+            "production_erp_write_authorized": False,
+            "compliance_certification_authorized": False,
+            "revenue_recognized": False,
         }
     )
 
@@ -596,7 +631,17 @@ def evaluate_matrix(document: Any, trusted_as_of: str) -> dict[str, Any]:
             "case_count": len(results),
             "decision_counts": counts,
             "results": results,
-            **AUTHORITY_FALSE,
+            "buyer_contact_authorized": False,
+            "partner_contact_authorized": False,
+            "submission_authorized": False,
+            "contract_acceptance_authorized": False,
+            "banking_authorized": False,
+            "merchant_acquiring_authorized": False,
+            "card_issuance_authorized": False,
+            "payment_authorized": False,
+            "production_erp_write_authorized": False,
+            "compliance_certification_authorized": False,
+            "revenue_recognized": False,
         }
     )
 
@@ -614,18 +659,28 @@ def compile_bundle(
     return _add_receipt(
         {
             "schema": BUNDLE_SCHEMA,
-            "solicitation_id": SOLICITATION_ID,
+            "solicitation_id": "27-0012",
             "pursuit": pursuit,
             "partners": partner_result,
             "reconciliation_matrix": matrix_result,
-            "partner_outreach_state": "HOLD_MUSE_ARBITRATION_REQUIRED",
+            "partner_outreach_state": "HOLD_OUTBOUND_CUSTODY_REQUIRED",
             "submission_state": (
                 "HOLD_BUYER_PACKET_REQUIRED"
                 if pursuit["source_authority_state"]
                 != "BUYER_PACKET_RETAINED"
                 else "OWNER_REVIEW_REQUIRED"
             ),
-            **AUTHORITY_FALSE,
+            "buyer_contact_authorized": False,
+            "partner_contact_authorized": False,
+            "submission_authorized": False,
+            "contract_acceptance_authorized": False,
+            "banking_authorized": False,
+            "merchant_acquiring_authorized": False,
+            "card_issuance_authorized": False,
+            "payment_authorized": False,
+            "production_erp_write_authorized": False,
+            "compliance_certification_authorized": False,
+            "revenue_recognized": False,
         }
     )
 
