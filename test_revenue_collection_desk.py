@@ -274,5 +274,52 @@ class RevenueCollectionDeskTests(unittest.TestCase):
         with self.assertRaises(c.ContractError):
             c.compile_ledger(ledger([cl]))
 
+    def test_future_settlement_event_cannot_mint_cash(self):
+        cl = claim(instrument="RTC", amount="25", events=[
+            ev("e1", "2026-09-01T00:00:00Z", "WORK_SUBMITTED"),
+            ev("e2", "2026-09-02T00:00:00Z", "ACCEPTED"),
+            ev("e3", "2026-09-19T00:00:00Z", "SETTLED_CASH",
+               settlement_currency="USD", settlement_amount="1.00"),
+        ])
+        with self.assertRaisesRegex(c.ContractError, "event timestamp is after as_of"):
+            c.compile_ledger(ledger([cl], as_of="2026-09-18T00:00:00Z"))
+
+    def test_future_collection_release_cannot_reopen_dnr(self):
+        cl = claim(events=[
+            ev("e1", "2026-09-01T00:00:00Z", "WORK_SUBMITTED"),
+            ev("e2", "2026-09-02T00:00:00Z", "ACCEPTED"),
+            ev("e3", "2026-09-03T00:00:00Z", "COLLECTION_CONTACT_SENT",
+               cooldown_until="2026-09-04T00:00:00Z"),
+            ev("e4", "2026-09-19T00:00:00Z", "COLLECTION_RELEASED"),
+        ])
+        with self.assertRaisesRegex(c.ContractError, "event timestamp is after as_of"):
+            c.compile_ledger(ledger([cl], as_of="2026-09-18T00:00:00Z"))
+
+    def test_future_route_repair_cannot_reopen_dead_route(self):
+        cl = claim(events=[
+            ev("e1", "2026-09-01T00:00:00Z", "WORK_SUBMITTED"),
+            ev("e2", "2026-09-02T00:00:00Z", "ACCEPTED"),
+            ev("e3", "2026-09-03T00:00:00Z", "COLLECTION_CONTACT_SENT",
+               cooldown_until="2026-09-04T00:00:00Z"),
+            ev("e4", "2026-09-03T01:00:00Z", "DELIVERY_BOUNCED"),
+            ev("e5", "2026-09-19T00:00:00Z", "ROUTE_REPAIRED"),
+        ])
+        with self.assertRaisesRegex(c.ContractError, "event timestamp is after as_of"):
+            c.compile_ledger(ledger([cl], as_of="2026-09-18T00:00:00Z"))
+
+    def test_authority_module_rebind_cannot_widen_emitted_authority(self):
+        original = c.AUTHORITY
+        c.AUTHORITY = {key: True for key in original}
+        try:
+            inp = ledger()
+            out = c.compile_ledger(inp)
+            self.assertTrue(all(value is False for value in out["authority"].values()))
+            self.assertTrue(c.verify_ledger(inp, out))
+        finally:
+            c.AUTHORITY = original
+
+        with self.assertRaises(TypeError):
+            c.AUTHORITY["move_money"] = True
+
 if __name__ == "__main__":
     unittest.main()

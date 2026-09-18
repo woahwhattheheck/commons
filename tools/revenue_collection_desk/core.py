@@ -11,6 +11,7 @@ from decimal import Decimal, InvalidOperation
 import hashlib
 import json
 import re
+from types import MappingProxyType
 from typing import Any, Iterable, Mapping
 
 LEDGER_SCHEMA = "commons.revenue_collection_ledger/v1"
@@ -58,7 +59,7 @@ ACTIONS = {
     "HOLD_CONFLICT",
 }
 
-AUTHORITY = {
+AUTHORITY = MappingProxyType({
     "send_email": False,
     "send_slack": False,
     "submit_claim": False,
@@ -68,7 +69,7 @@ AUTHORITY = {
     "bank_mutation": False,
     "provider_mutation": False,
     "recognize_unsettled_cash": False,
-}
+})
 
 class ContractError(ValueError):
     pass
@@ -319,6 +320,8 @@ def _normalize_claim(value: Any, index: int, as_of_dt: datetime) -> dict[str, An
 
     for eindex, raw_event in enumerate(raw_events):
         event, event_at = _normalize_event(raw_event, f"{label}.events[{eindex}]")
+        if event_at > as_of_dt:
+            raise ContractError(f"{label}: event timestamp is after as_of")
         if event["event_id"] in seen_event_ids:
             raise ContractError(f"{label}: duplicate event_id {event['event_id']}")
         seen_event_ids.add(event["event_id"])
@@ -563,7 +566,17 @@ def compile_ledger(value: Any) -> dict[str, Any]:
         "mixed_currency_sum": None,
         "reference_valuations_recognized_as_cash": False,
         "collection_queue_markdown": _markdown(claims, as_of),
-        "authority": dict(AUTHORITY),
+        "authority": {
+            "send_email": False,
+            "send_slack": False,
+            "submit_claim": False,
+            "create_invoice": False,
+            "move_money": False,
+            "wallet_mutation": False,
+            "bank_mutation": False,
+            "provider_mutation": False,
+            "recognize_unsettled_cash": False,
+        },
     }
     report["receipt_sha256"] = sha256_value(report)
     return report
