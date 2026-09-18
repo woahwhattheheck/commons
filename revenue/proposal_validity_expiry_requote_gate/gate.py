@@ -14,7 +14,17 @@ supersession STOPs without otherwise rewriting that large validated core:
   remains syntactically validated but cannot veto current truth.
 """
 
+import datetime as _facade_dt
 from typing import Any
+
+
+def _facade_utc_now(
+    _now=_facade_dt.datetime.now,
+    _utc=_facade_dt.timezone.utc,
+) -> _facade_dt.datetime:
+    """Facade-owned process clock; independent of mutable private-core bindings."""
+    return _now(_utc).replace(microsecond=0)
+
 
 if __package__:
     from . import _proposal_validity_core as _core
@@ -109,7 +119,7 @@ _active_superseders = _active_superseders_hardened
 
 
 def _build_current_api(
-    _clock=_core._utc_now,
+    _clock=_facade_utc_now,
     _evaluate=_core._evaluate_at,
     _parse=_core._parse_time,
     _canonicalize=_core._canonical,
