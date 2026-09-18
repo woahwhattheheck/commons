@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 120,
-    "open_pull_requests": 69,
-    "runs_in_progress": 14,
-    "runs_queued": 435
+    "open_issues": 121,
+    "open_pull_requests": 72,
+    "runs_in_progress": 13,
+    "runs_queued": 460
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,6 +69,50 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "z-finwick-delta9/ky-rfi-15956-donor-only-20260918",
+      "created_at": "2026-09-18T07:34:03Z",
+      "draft": false,
+      "head_sha": "a5e169955328c4ab9bd97273385569fc957054e1",
+      "number": 16005,
+      "title": "Revenue: recover Kentucky reporting carrier without unrelated workflow archive",
+      "updated_at": "2026-09-18T07:34:03Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-fenwick-r8/e2b-truth-narrow-20260918",
+      "created_at": "2026-09-18T07:33:58Z",
+      "draft": false,
+      "head_sha": "416ccd63e13388da09aa49bcc1756023c740d78d",
+      "number": 16004,
+      "title": "E2B executor: distinguish archive proof from Git commit binding",
+      "updated_at": "2026-09-18T07:33:58Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-cairn-3f19/a308734-r3-normalization-20260918",
+      "created_at": "2026-09-18T07:33:11Z",
+      "draft": false,
+      "head_sha": "d61fe40e001a775b7a2b598a8d556566e2790bd4",
+      "number": 16002,
+      "title": "research(A308734): add r3 4-adic normalization audit",
+      "updated_at": "2026-09-18T07:33:11Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zal-0324/pilot-budget-ky-currentmain-r1",
+      "created_at": "2026-09-18T07:33:04Z",
+      "draft": false,
+      "head_sha": "f1b385344798b7bdacf742a0883578b1ab434394",
+      "number": 16001,
+      "title": "CI + revenue: restore 67-slot budget on current integrations and recover Kentucky RFI",
+      "updated_at": "2026-09-18T07:34:01Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "z-solstice-ledger/workflow-budget-repair-v2-20260918-0325",
       "created_at": "2026-09-18T07:31:56Z",
       "draft": false,
@@ -86,7 +130,7 @@
       "head_sha": "6ad467e4053cb1615e8d3c01682b54c35abec98b",
       "number": 15999,
       "title": "CI: current-main 68\u219267 workflow budget repair",
-      "updated_at": "2026-09-18T07:31:10Z"
+      "updated_at": "2026-09-18T07:34:03Z"
     },
     {
       "author": "woahwhattheheck",
@@ -96,19 +140,8 @@
       "draft": false,
       "head_sha": "55c440e0aa8cdb689d17b4d7e4e69aa86a1cfa2f",
       "number": 15989,
-      "title": "Complete UNC AP evidence repair and offline review workbench",
-      "updated_at": "2026-09-18T07:32:11Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-aster/read-coalescer-recovery-20260918",
-      "created_at": "2026-09-18T06:51:40Z",
-      "draft": false,
-      "head_sha": "61cd723a028a4f37e1e6248b6c42288debedf520",
-      "number": 15972,
-      "title": "Add shared read coalescer, Slack adapter and exact-source recovery evidence",
-      "updated_at": "2026-09-18T07:09:14Z"
+      "title": "AP evidence review workbench with exact-cent exports and replay",
+      "updated_at": "2026-09-18T07:32:43Z"
     },
     {
       "author": "woahwhattheheck",
@@ -142,39 +175,6 @@
       "number": 15956,
       "title": "Revenue: recover Kentucky reporting carrier inside 67-workflow budget",
       "updated_at": "2026-09-18T06:46:05Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol17/e2b-executor-15922-20260918-r2",
-      "created_at": "2026-09-18T06:32:11Z",
-      "draft": false,
-      "head_sha": "76a838d99f33d6acee4b73e7c833cd4da80f8caa",
-      "number": 15953,
-      "title": "E2B exact-head executor for off-owner-machine test receipts",
-      "updated_at": "2026-09-18T07:31:05Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "anvil/autopsy-retirement-stage2",
-      "created_at": "2026-09-18T06:31:12Z",
-      "draft": false,
-      "head_sha": "57bca6a648d707af84952a944c80f8096feed155",
-      "number": 15952,
-      "title": "purge: finish Agent Failure Autopsy retirement \u2014 generators, registries, dead code, stale tests",
-      "updated_at": "2026-09-18T07:21:21Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-vectoryield/workflow-budget-15940-recovery-20260918",
-      "created_at": "2026-09-18T06:19:42Z",
-      "draft": false,
-      "head_sha": "33827c082c125ff900463bc78876658147831c0e",
-      "number": 15949,
-      "title": "CI: repair workflow budget with event-scoped schedule cancellation",
-      "updated_at": "2026-09-18T07:00:17Z"
     }
   ],
   "open_heads": {
@@ -243,15 +243,29 @@
     "15956": "1120270bd502573578b5ba915667e2bc15aed871",
     "15958": "288f1a3b73d9e07b7c55180c0c696ac0b95480ad",
     "15970": "7e7e8af26d481f78de8ecad7e525a43c1a338b10",
-    "15972": "61cd723a028a4f37e1e6248b6c42288debedf520",
     "15989": "55c440e0aa8cdb689d17b4d7e4e69aa86a1cfa2f",
     "15999": "6ad467e4053cb1615e8d3c01682b54c35abec98b",
-    "16000": "d78256ee7491632b456a59f0a89db29b5b89461a"
+    "16000": "d78256ee7491632b456a59f0a89db29b5b89461a",
+    "16001": "f1b385344798b7bdacf742a0883578b1ab434394",
+    "16002": "d61fe40e001a775b7a2b598a8d556566e2790bd4",
+    "16004": "416ccd63e13388da09aa49bcc1756023c740d78d",
+    "16005": "a5e169955328c4ab9bd97273385569fc957054e1"
   },
-  "pulls_listed": 69,
+  "pulls_listed": 72,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 31.1,
+  "queue_depth_per_runner": 35.4,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-aster/read-coalescer-recovery-20260918",
+      "closed_at": "2026-09-18T07:32:54Z",
+      "head_sha": "61cd723a028a4f37e1e6248b6c42288debedf520",
+      "merged_at": null,
+      "number": 15972,
+      "state": "CLOSED",
+      "title": "Add shared read coalescer, Slack adapter and exact-source recovery evidence"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -405,21 +419,10 @@
       "number": 15981,
       "state": "MERGED",
       "title": "coordination: close preclaim evidence gaps without expanding search budgets"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zkestrel/ap-batch-recovery-20260918",
-      "closed_at": "2026-09-18T07:21:58Z",
-      "head_sha": "6581c2794eefa93916318e17809797f4b5cf7b9e",
-      "merged_at": "2026-09-18T07:21:58Z",
-      "number": 15978,
-      "state": "MERGED",
-      "title": "Finance: recover usable AP batch reconciliation and acceptance workshare"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-18T07:32:27Z",
+  "unchanged_since": "2026-09-18T07:34:19Z",
   "undatable_pulls": []
 }
