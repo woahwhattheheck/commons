@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<title>Two-source reconciler — Commons</title>
+<link rel="stylesheet" href="./commons.css?v=20260823f">
+</head>
+<body>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./tools.html">tools</a></p>
+<h1>Two-source reconciler</h1>
+<p>A dependency-free deterministic comparison primitive for two closed datasets keyed by one stable identifier and an explicit list of safe-integer fields.</p>
+<ul>
+<li>Sorted output keys make classification independent of input row ordering.</li>
+<li>Missing-left, missing-right, duplicate-key, and per-field mismatch states remain explicit.</li>
+<li>The core has no network adapter and no mutation adapter.</li>
+<li>Aggregate left, right, and delta totals are returned for every declared field.</li>
+</ul>
+<h2>Input contract</h2>
+<pre>{
+  "fields": ["a", "b", "c"],
+  "left":  [{"rowId":"L1","key":"K1","values":{"a":100,"b":10,"c":90}}],
+  "right": [{"rowId":"R1","key":"K1","values":{"a":100,"b":10,"c":90}}]
+}</pre>
+<h2>Run</h2>
+<p>Core: <a href="./tools/two-source-reconciler.js"><code>tools/two-source-reconciler.js</code></a></p>
+<p>Regression suite: <code>node tests/test_two_source_reconciler.js</code>.</p>
+</body>
+</html>
