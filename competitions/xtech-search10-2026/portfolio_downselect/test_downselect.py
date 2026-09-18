@@ -374,6 +374,29 @@ class DownselectTests(unittest.TestCase):
         self.assertEqual(report["holdReason"], "TOP_READINESS_TIE")
         self.assertIsNone(report["selectedCandidateId"])
 
+    def test_candidate_alias_cannot_replay_same_source_generation(self) -> None:
+        packet = ready_packet()
+        packet["candidates"][1]["source"] = copy.deepcopy(packet["candidates"][0]["source"])
+        with self.assertRaisesRegex(ContractError, "CANDIDATE_SOURCE_REPLAY"):
+            self.compile(packet)
+
+    def test_external_traction_artifact_cannot_be_replayed_across_candidates(self) -> None:
+        packet = bind_evidence(ready_packet())
+        alpha = next(
+            row
+            for row in packet["evidenceRecords"]
+            if row["binding"] == "candidate:alpha:traction:alpha.pilot"
+        )
+        beta = next(
+            row
+            for row in packet["evidenceRecords"]
+            if row["binding"] == "candidate:beta:traction:beta.pilot"
+        )
+        beta["locator"] = alpha["locator"]
+        beta["sha256"] = alpha["sha256"]
+        with self.assertRaisesRegex(ContractError, "EXTERNAL_EVIDENCE_CANDIDATE_REPLAY"):
+            compile_portfolio(packet)
+
     def test_duplicate_candidate_id_fails_before_evidence_use(self) -> None:
         packet = ready_packet()
         packet["candidates"][1]["candidateId"] = "alpha"
