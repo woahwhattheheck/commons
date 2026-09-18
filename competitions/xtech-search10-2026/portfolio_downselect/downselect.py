@@ -565,6 +565,7 @@ def compile_portfolio(packet: Any) -> dict[str, Any]:
             "version",
             "entityId",
             "globalGates",
+            "evidenceRecords",
             "candidates",
         },
         "$",
@@ -572,6 +573,8 @@ def compile_portfolio(packet: Any) -> dict[str, Any]:
     if root["version"] != PORTFOLIO_VERSION:
         raise ContractError("UNSUPPORTED_VERSION")
     entity_id = _id(root["entityId"], "$.entityId")
+    registry = _evidence_registry(root["evidenceRecords"])
+    used_evidence: set[str] = set()
     gates = _exact(
         root["globalGates"],
         {
@@ -593,7 +596,14 @@ def compile_portfolio(packet: Any) -> dict[str, Any]:
         "employeeCeilingMet",
         "sbirSmallBusinessRequirementsMet",
     ):
-        state, _ = _fact(gates[name], f"$.globalGates.{name}")
+        state, _ = _fact(
+            gates[name],
+            f"$.globalGates.{name}",
+            binding=f"global:{name}",
+            allowed_classes={"OWNER"},
+            registry=registry,
+            used=used_evidence,
+        )
         if state != "CONFIRMED_TRUE":
             global_blockers.append(f"global:{name}:{state}")
 
@@ -602,6 +612,10 @@ def compile_portfolio(packet: Any) -> dict[str, Any]:
         "$.globalGates.federalSupportCensus",
         SUPPORT_STATES,
         ready="CLEAR",
+        binding="global:federalSupportCensus",
+        allowed_classes={"OWNER"},
+        registry=registry,
+        used=used_evidence,
     )
     if not support_ready:
         global_blockers.append(f"global:federalSupportCensus:{support_state}")
@@ -611,6 +625,10 @@ def compile_portfolio(packet: Any) -> dict[str, Any]:
         "$.globalGates.oneSubmissionSlot",
         SLOT_STATES,
         ready="AVAILABLE",
+        binding="global:oneSubmissionSlot",
+        allowed_classes={"OWNER", "PROVIDER"},
+        registry=registry,
+        used=used_evidence,
     )
     if not slot_ready:
         global_blockers.append(f"global:oneSubmissionSlot:{slot_state}")
@@ -620,6 +638,10 @@ def compile_portfolio(packet: Any) -> dict[str, Any]:
         "$.globalGates.officialTemplate",
         TEMPLATE_STATES,
         ready="BOUND",
+        binding="global:officialTemplate",
+        allowed_classes={"PROVIDER"},
+        registry=registry,
+        used=used_evidence,
     )
     if not template_ready:
         global_blockers.append(f"global:officialTemplate:{template_state}")
@@ -632,10 +654,16 @@ def compile_portfolio(packet: Any) -> dict[str, Any]:
     ):
         raise ContractError("CANDIDATE_COUNT")
 
-    projections = [_candidate(row, i) for i, row in enumerate(candidates_raw)]
+    projections = [
+        _candidate(row, i, registry=registry, used=used_evidence)
+        for i, row in enumerate(candidates_raw)
+    ]
     ids = [row.candidateId for row in projections]
     if len(ids) != len(set(ids)):
         raise ContractError("DUPLICATE_CANDIDATE_ID")
+    unused = sorted(set(registry) - used_evidence)
+    if unused:
+        raise ContractError("UNUSED_EVIDENCE_RECORD", unused[0])
 
     viable = [row for row in projections if not row.hardBlockers]
     selected: str | None = None
@@ -664,6 +692,14 @@ def compile_portfolio(packet: Any) -> dict[str, Any]:
         "globalBlockers": sorted(global_blockers),
         "projections": [asdict(row) for row in sorted(projections, key=lambda row: row.candidateId)],
         "officialConstraintSnapshot": OFFICIAL_CONSTRAINTS,
+        "retainedEvidenceManifestSha256": sha256_json(
+            [registry[key] for key in sorted(registry)]
+        ),
+        "evidenceTrustBoundary": (
+            "retained references are structurally bound to one semantic use and "
+            "carry immutable repo generation or artifact SHA-256; compiler does "
+            "not independently authenticate the underlying external artifact"
+        ),
         "readinessMetricMeaning": (
             "internal evidence-coverage basis points using published criterion weights; "
             "not an Army score, ranking, selection prediction, or outcome probability"
