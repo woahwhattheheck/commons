@@ -7,7 +7,7 @@ Pinned protocol authority:
 - Slack channel: `C0C2X8CSYEQ`
 - protocol root: `1789718513.003999`
 
-The Slack channel is the race authority. This code does not send email/Slack messages, contact providers, grant sales authority, move money, or infer revenue. It only turns a retained direct channel read plus separately-computed provider/relationship/DNR gates into a deterministic decision receipt.
+`#outbound-leases` is a **fallback visibility rail, not canonical custody**. A newer owner correction pins canonical custody to Commons `#14421` + `#15969/#15988`, with `#15944` owning fleet cutover. This code does not send email/Slack messages, contact providers, grant sales authority, move money, or infer revenue. It only turns a retained direct channel read plus separately-computed canonical-custody/provider/relationship/DNR gates into a deterministic preflight receipt.
 
 ## Why organization scope matters
 
@@ -24,7 +24,7 @@ python tools/outbound_lease_v1/cli.py purpose-fp 'Tennessee 31701-03850 paid spe
 python tools/outbound_lease_v1/cli.py verify snapshot.json
 ```
 
-`verify` returns JSON with `coordination_clean`, the earliest active winner, explicit blockers, and a semantic SHA-256 receipt. It fails closed when the direct channel read failed, history is incomplete, a later claim lost the timestamp race, an outcome is uncertain, provider/DNR gates are not clean, or a prior SENT generation lacks a genuine relationship event.
+`verify` returns JSON with `coordination_clean`, the earliest visible winner, explicit blockers, pinned canonical-custody references, and a semantic SHA-256 receipt. `coordination_clean` is **not sufficient authority to send**; it is only a fail-closed preflight signal over supplied evidence. It fails closed when the direct channel read failed, history is incomplete, a later claim lost the timestamp race, an outcome is uncertain, provider/DNR gates are not clean, or a prior SENT generation lacks a genuine relationship event.
 
 ## Snapshot shape
 
@@ -35,6 +35,7 @@ python tools/outbound_lease_v1/cli.py verify snapshot.json
   "protocol_root_ts": "1789718513.003999",
   "read_ok": true,
   "history_complete": true,
+  "canonical_custody_gate": "CLEAN",
   "provider_gate": "CLEAN",
   "relationship_gate": "CLEAN",
   "dnr_gate": "CLEAN",
@@ -53,7 +54,7 @@ python tools/outbound_lease_v1/cli.py verify snapshot.json
 }
 ```
 
-Gate values are `CLEAN`, `BLOCK`, `UNKNOWN`, or `EVENT_AUTHORIZES`. A prior `SENT` for the organization key requires `relationship_gate=EVENT_AUTHORIZES` before a later generation can become eligible. `OUTCOME_UNKNOWN` remains blocking unless a retained `INBOUND` reconciles the uncertainty and the relationship gate explicitly authorizes the new action.
+The separately-derived `canonical_custody_gate` accepts only `CLEAN`, `BLOCK`, or `UNKNOWN`; this verifier never computes or grants canonical custody itself. Provider/relationship/DNR gate values are `CLEAN`, `BLOCK`, `UNKNOWN`, or `EVENT_AUTHORIZES`. A prior `SENT` for the organization key requires `relationship_gate=EVENT_AUTHORIZES` before a later generation can become eligible. `OUTCOME_UNKNOWN` remains blocking unless a retained `INBOUND` reconciles the uncertainty and the relationship gate explicitly authorizes the new action.
 
 ## Terminal records
 

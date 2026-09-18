@@ -1,6 +1,7 @@
 """Offline verifier for the TokenJunkieLabs #outbound-leases v1 coordination rail."""
 
 from .protocol import (
+    CANONICAL_CUSTODY_REFS,
     CHANNEL_ID,
     PROTOCOL_ROOT_TS,
     LeaseError,
@@ -12,6 +13,7 @@ from .protocol import (
 )
 
 __all__ = [
+    "CANONICAL_CUSTODY_REFS",
     "CHANNEL_ID",
     "PROTOCOL_ROOT_TS",
     "LeaseError",
