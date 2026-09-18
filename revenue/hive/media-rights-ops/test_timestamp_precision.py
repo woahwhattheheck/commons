@@ -51,6 +51,14 @@ class TimestampParsingTests(unittest.TestCase):
             with self.subTest(value=value):
                 self.assertEqual(norm_time(value, 'test'), '2026-09-18T12:34:56Z')
 
+    def test_week_date_time_digits_do_not_mask_fraction(self):
+        for value in ('2026W38112.0000001Z', '2026W38112,0000001Z'):
+            with self.subTest(value=value):
+                with self.assertRaisesRegex(RightsError, 'whole-second'):
+                    norm_time(value, 'test')
+                with self.assertRaisesRegex(RightsError, 'whole-second'):
+                    parse_time(value, 'test')
+
     def test_nonzero_second_fractions_rejected_without_rounding(self):
         for suffix in ('.1', '.100000', ',9', '.000001', '.0000001',
                        '.000000000000000000000000000001'):
