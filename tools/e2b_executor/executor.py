@@ -252,7 +252,7 @@ def _command_result(
         raise ProviderExecutionError("provider command result omitted integer exit_code")
     return {
         "order": order,
-        "argv": list(command.argv),
+        "argv": [_redact(arg, secrets) for arg in command.argv],
         "timeout_seconds": command.timeout_seconds,
         "exit_code": exit_code,
         "stdout_sha256": _sha256_bytes(stdout.encode("utf-8")),
