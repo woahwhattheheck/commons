@@ -109,12 +109,14 @@ _LOW_LEVEL_TARGETS = {
     "revenue.initial_outreach_slot.slot.execute_initial_outreach": "direct-initial-outreach",
     "revenue.outbound_send_consumer.consume_once": "direct-terminal-consumer",
     "revenue.outbound_send_consumer.consume.consume_once": "direct-terminal-consumer",
+    "integrations.grok_slack.bridge.slack_web_call": "direct-slack-web-api-helper",
 }
 _LOW_LEVEL_MODULES = {
     "revenue.initial_outreach_slot",
     "revenue.initial_outreach_slot.slot",
     "revenue.outbound_send_consumer",
     "revenue.outbound_send_consumer.consume",
+    "integrations.grok_slack.bridge",
 }
 _LOW_LEVEL_PRIMITIVES = {
     "revenue/initial_outreach_slot/slot.py",
@@ -303,6 +305,8 @@ def _python_call_violations(
                 violations.add("dynamic-initial-outreach")
             elif attr == "consume_once":
                 violations.add("dynamic-terminal-consumer")
+            elif attr == "slack_web_call":
+                violations.add("dynamic-slack-web-api-helper")
             elif attr in _provider_methods:
                 violations.add(f"dynamic-provider-transport-method:{attr}")
     return violations
