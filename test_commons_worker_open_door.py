@@ -13,6 +13,8 @@ class CommonsWorkerOpenDoorTest(unittest.TestCase):
     def setUpClass(cls):
         cls.path = ".agents/skills/commons-worker/SKILL.md"
         cls.text = (ROOT / cls.path).read_text(encoding="utf-8")
+        cls.write_roads = (ROOT / ".agents/skills/write-roads/SKILL.md").read_text(encoding="utf-8")
+        cls.agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
         cls.registry = json.loads((ROOT / "skills.json").read_text(encoding="utf-8"))
         cls.manual = (ROOT / "skills/MANUAL.md").read_text(encoding="utf-8")
 
@@ -40,6 +42,24 @@ class CommonsWorkerOpenDoorTest(unittest.TestCase):
             "Talk is not landed",
         ):
             self.assertIn(marker, self.text)
+
+    def test_connector_bootstrap_has_discovery_fallback(self):
+        for text in (self.text, self.write_roads, self.agents):
+            self.assertIn("available/dynamic/deferred", text)
+            self.assertIn("api_tool.list_resources", text)
+        for marker in (
+            "Do not assume one particular discovery API name must exist",
+            "tool not discovered",
+            "connector not authenticated",
+            "provider account lacks permission",
+            "typed operation failed",
+            "current session",
+            "merge_pull_request",
+            "send_message",
+            "ALL_TOOLS",
+        ):
+            self.assertIn(marker, self.write_roads)
+        self.assertIn("do not post tool counts", self.agents.lower())
 
     def test_high_contention_and_non_actuation_are_coordination_not_gates(self):
         for marker in (
