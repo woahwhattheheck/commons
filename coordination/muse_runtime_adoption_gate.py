@@ -709,4 +709,18 @@ def _build_api():
     _normalize_packet,
     _compile_at_for_test,
     compile_current,
-    ver
+    verify_artifact,
+    verify_current,
+    _read_packet,
+    _read_diagnostic,
+) = _build_api()
+
+
+def _build_cli(*, read_packet=_read_packet, read_diagnostic=_read_diagnostic, compile_fn=compile_current, verify_fn=verify_current, canonical=canonical_json):
+    parser_cls = _argparse.ArgumentParser
+    stdout_buffer = _sys.stdout.buffer
+    error_cls = AdoptionGateError
+    os_error_cls = OSError
+
+    def main(argv: list[str] | None = None) -> int:
+        parser = parser_cls(description="Offline reta
