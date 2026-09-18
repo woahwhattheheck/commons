@@ -9,6 +9,7 @@ SCHEMA_VERSION = 1
 TOOL_ID = "exact-head-ship-fence/v1"
 MAX_SAFE_INT = 9_007_199_254_740_991
 MAX_JSON_BYTES = 1_048_576
+MAX_DIRECT_NODES = 65_536
 MAX_CLOCK_SKEW_SECONDS = 120
 VERDICTS = {
     "READY_TO_MERGE_EVIDENCE", "HOLD_HEAD_MOVED", "HOLD_BASE_MOVED",
@@ -62,8 +63,12 @@ _CURRENT_CLOCK = _clock_factory()
 
 def _err(msg: str) -> None: raise EvidenceError(msg)
 
-def _plain(v: Any, label="value", depth=0) -> None:
+def _plain(v: Any, label="value", depth=0, budget=None) -> None:
+    if budget is None:
+        budget = [MAX_DIRECT_NODES, MAX_JSON_BYTES]
     if depth > 64: _err(f"{label}: nesting too deep")
+    if budget[0] <= 0: _err(f"{label}: direct-object node budget exceeded")
+    budget[0] -= 1
     t = type(v)
     if v is None or t is bool: return
     if t is int:
@@ -71,16 +76,22 @@ def _plain(v: Any, label="value", depth=0) -> None:
         return
     if t is float: _err(f"{label}: float forbidden")
     if t is str:
-        try: v.encode("utf-8", "strict")
+        if len(v) > budget[1] or len(v) > MAX_JSON_BYTES:
+            _err(f"{label}: direct-object byte budget exceeded")
+        try: encoded = v.encode("utf-8", "strict")
         except UnicodeError as e: raise EvidenceError(f"{label}: invalid unicode") from e
+        if len(encoded) > budget[1]: _err(f"{label}: direct-object byte budget exceeded")
+        budget[1] -= len(encoded)
         return
     if t is list:
-        for i, x in enumerate(v): _plain(x, f"{label}[{i}]", depth + 1)
+        if len(v) > budget[0]: _err(f"{label}: direct-object node budget exceeded")
+        for i, x in enumerate(v): _plain(x, f"{label}[{i}]", depth + 1, budget)
         return
     if t is dict:
+        if len(v) * 2 > budget[0]: _err(f"{label}: direct-object node budget exceeded")
         for k, x in v.items():
             if type(k) is not str: _err(f"{label}: non-string key")
-            _plain(k, f"{label}.<key>", depth + 1); _plain(x, f"{label}.{k}", depth + 1)
+            _plain(k, f"{label}.<key>", depth + 1, budget); _plain(x, f"{label}.{k}", depth + 1, budget)
         return
     _err(f"{label}: non-JSON runtime type")
 
@@ -184,7 +195,14 @@ def _paths(v, label, known):
     return out
 
 def _snapshot(s: Any, now: datetime):
-    _plain(s, "snapshot"); r = _obj(s, "snapshot", ROOT)
+    r = _obj(s, "snapshot", ROOT)
+    # Reject schema-level oversized containers before touching any child.
+    _arr(r["check_policy"], "check_policy", 128)
+    _arr(r["checks"], "checks", 128)
+    _arr(r["reviews"], "reviews", 64)
+    _topology_preflight = _obj(r["topology"], "topology", TOPO)
+    _arr(_topology_preflight["candidate_paths"], "topology.candidate_paths", 1024)
+    _arr(_topology_preflight["base_delta_paths"], "topology.base_delta_paths", 1024)
     _int(r["schema_version"], "schema_version", 1, 1)
     repo = _text(r["repository"], "repository", 201)
     if not REPO.fullmatch(repo): _err("repository: malformed owner/name")
@@ -261,7 +279,7 @@ def _class(n):
         if n["rejoined"] and n["rejoin_head"] != n["head"]: why.append("REJOIN_HEAD_IS_NOT_CURRENT_PR_HEAD")
         if why: return "HOLD_BASE_MOVED", "REJOIN_CURRENT_MAIN", why
     elif n["evaluated"] != n["base"]: return "HOLD_TOPOLOGY_UNKNOWN", "REFRESH_TOPOLOGY", ["EVALUATED_BASE_MISMATCH"]
-    if n["review_req"] and n["stops"]: return "HOLD_REVIEW_STALE", "REREVIEW_EXACT_HEAD", ["EXACT_HEAD_REVIEW_STOP"]
+    if n["stops"]: return "HOLD_REVIEW_STALE", "REREVIEW_EXACT_HEAD", ["EXACT_HEAD_REVIEW_STOP"]
     red, unknown = False, set()
     for name, allow_skip in n["required"]:
         obs = n["checks"].get(name)
@@ -293,7 +311,7 @@ def _build(snapshot: Any, now: datetime) -> dict:
 def compile_current(snapshot: Any, _clock: Callable[[], datetime] = _CURRENT_CLOCK) -> dict: return _build(snapshot, _clock())
 
 def _validate_report(r: Any) -> None:
-    _plain(r, "report"); q = _obj(r, "report", REPORT); _int(q["schema_version"], "report.schema_version", 1, 1)
+    q = _obj(r, "report", REPORT); _int(q["schema_version"], "report.schema_version", 1, 1)
     if _text(q["tool"], "report.tool", 64) != TOOL_ID: _err("report.tool: unsupported")
     _time(q["evaluated_at"], "report.evaluated_at")
     for k in ("snapshot_sha256", "receipt_sha256"):
