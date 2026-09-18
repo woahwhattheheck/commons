@@ -146,7 +146,7 @@ def _freeze_json(
         raise _err("JSON nesting exceeds recursion safety boundary") from exc
 
 
-def loads_strict_json(
+def _loads_strict_json_impl(
     raw: bytes | str,
     _loads=json.loads,
     _pairs_hook=_pairs,
@@ -290,13 +290,6 @@ def _load_host_key(
     if _type(raw) is not _str_type or not _hex_re.fullmatch(raw):
         raise _err("host evidence authority key must be exactly 32 bytes of lowercase hex")
     return _bytes_fromhex(raw)
-
-
-# Authority generation is established exactly once when this module is
-# initialized. Public validation/compile/verify paths bind to this immutable
-# bytes object in function defaults below. Later process-environment mutation
-# cannot substitute a new evidence-signing authority.
-_INITIAL_EVIDENCE_AUTHORITY_KEY = _load_host_key()
 
 
 def _evidence_tag(kind: str, row_without_tag: dict[str, Any], key: bytes, _canonical=_canonical_bytes, _hmac_new=hmac.new, _sha256=hashlib.sha256) -> str:
@@ -464,11 +457,11 @@ def _validate_packet_structure(
     return packet
 
 
-def _validate_packet(
+def _validate_packet_impl(
     packet: Any,
     now: datetime,
+    authority_key: bytes | None,
     _structure=_validate_packet_structure,
-    _authority_key=_INITIAL_EVIDENCE_AUTHORITY_KEY,
     _term=_validate_term,
     _outcome=_validate_outcome,
     _scope=_validate_scope_attestation,
@@ -478,7 +471,7 @@ def _validate_packet(
     _err=GateError,
 ) -> tuple[dict[str, Any], str | None, bool, list[str]]:
     packet = _structure(packet)
-    key = _authority_key
+    key = authority_key
     if (packet["term_evidence"] or packet["outcome_evidence"]) and key is None:
         raise _err(f"host evidence authority unavailable: {_env_name}")
 
@@ -516,10 +509,10 @@ def _receipt_projection(receipt: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def _compile_at(
+def _compile_at_impl(
     packet: Any,
     now: datetime,
-    _validate=_validate_packet,
+    _validate,
     _ts=_timestamp,
     _fmt=_format_ts,
     _sha_fn=_sha,
@@ -754,7 +747,15 @@ def _validate_receipt_shape(
     return receipt
 
 
-def verify_integrity(packet: Any, receipt: Any, _freeze=_freeze_json, _validate_receipt=_validate_receipt_shape, _ts=_timestamp, _compile=_compile_at, _canonical=_canonical_bytes) -> bool:
+def _verify_integrity_impl(
+    packet: Any,
+    receipt: Any,
+    _compile,
+    _freeze=_freeze_json,
+    _validate_receipt=_validate_receipt_shape,
+    _ts=_timestamp,
+    _canonical=_canonical_bytes,
+) -> bool:
     frozen_packet = _freeze(packet)
     frozen_receipt = _validate_receipt(receipt)
     evaluated = _ts(frozen_receipt["evaluated_at_utc"], "receipt evaluated_at_utc")
@@ -762,7 +763,21 @@ def verify_integrity(packet: Any, receipt: Any, _freeze=_freeze_json, _validate_
     return _canonical(expected) == _canonical(frozen_receipt)
 
 
-def _verify_current_at(packet: Any, receipt: Any, now: datetime, _freeze=_freeze_json, _validate_receipt=_validate_receipt_shape, _ts=_timestamp, _compile=_compile_at, _canonical=_canonical_bytes, _projection=_receipt_projection, _utc=timezone.utc, _type=type, _datetime_type=datetime, _err=GateError) -> bool:
+def _verify_current_at_impl(
+    packet: Any,
+    receipt: Any,
+    now: datetime,
+    _compile,
+    _freeze=_freeze_json,
+    _validate_receipt=_validate_receipt_shape,
+    _ts=_timestamp,
+    _canonical=_canonical_bytes,
+    _projection=_receipt_projection,
+    _utc=timezone.utc,
+    _type=type,
+    _datetime_type=datetime,
+    _err=GateError,
+) -> bool:
     frozen_packet = _freeze(packet)
     frozen_receipt = _validate_receipt(receipt)
     evaluated = _ts(frozen_receipt["evaluated_at_utc"], "receipt evaluated_at_utc")
@@ -778,24 +793,301 @@ def _verify_current_at(packet: Any, receipt: Any, now: datetime, _freeze=_freeze
     return _canonical(_projection(current)) == _canonical(_projection(frozen_receipt))
 
 
-def _make_compile_current(compile_at, freeze, process_now, utc):
+def _make_public_generation(
+    authority_key: bytes | None,
+    _loads=json.loads,
+    _dumps=json.dumps,
+    _json_decode_error=json.JSONDecodeError,
+    _hmac_new=hmac.new,
+    _sha256=hashlib.sha256,
+    _compare=hmac.compare_digest,
+    _process_now=datetime.now,
+    _utc=timezone.utc,
+    _datetime_type=datetime,
+    _bytes_type=bytes,
+    _type=type,
+    _bool_type=bool,
+    _int_type=int,
+    _str_type=str,
+    _list_type=list,
+    _dict_type=dict,
+    _len=len,
+    _abs=abs,
+    _set_type=set,
+    _any=any,
+    _all=all,
+    _unicode_error=UnicodeError,
+    _recursion_error=RecursionError,
+    _value_error=ValueError,
+    _type_error=TypeError,
+    _err=GateError,
+):
+    """Construct one import-generation trust boundary for the public API.
+
+    The host evidence key is captured only in closure state, never in function
+    defaults/kwdefaults or module globals. Ordinary post-import name/default
+    replacement cannot substitute a new evidence authority. Direct closure-cell
+    or code-object mutation is outside this in-process boundary.
+    """
+
+    freeze_impl = _freeze_json
+    packet_impl = _validate_packet_impl
+    compile_impl = _compile_at_impl
+    integrity_impl = _verify_integrity_impl
+    current_impl = _verify_current_at_impl
+    receipt_validator = _validate_receipt_shape
+    timestamp = _timestamp
+    format_ts = _format_ts
+    term_validator = _validate_term
+    outcome_validator = _validate_outcome
+    scope_validator = _validate_scope_attestation
+    projection = _receipt_projection
+    hex64 = _HEX64
+    max_safe_int = MAX_SAFE_INT
+    max_text = MAX_TEXT
+    max_rows = MAX_ROWS
+    max_depth = MAX_JSON_DEPTH
+    max_nodes = MAX_JSON_NODES
+    max_input_bytes = MAX_JSON_INPUT_BYTES
+    max_age = MAX_EVIDENCE_AGE
+    evidence_auth_env = EVIDENCE_AUTH_ENV
+    cash_classes = CASH_TERM_CLASSES
+    receipt_schema = SCHEMA_RECEIPT
+    compiler_id = COMPILER_ID
+
+    def sealed_freeze(value: Any) -> Any:
+        return freeze_impl(
+            value,
+            path="$",
+            _type=_type,
+            _bool_type=_bool_type,
+            _int_type=_int_type,
+            _str_type=_str_type,
+            _list_type=_list_type,
+            _dict_type=_dict_type,
+            _len=_len,
+            _abs=_abs,
+            _max_int=max_safe_int,
+            _max_text=max_text,
+            _max_rows=max_rows,
+            _max_depth=max_depth,
+            _max_nodes=max_nodes,
+            _unicode_error=_unicode_error,
+            _recursion_error=_recursion_error,
+            _err=_err,
+        )
+
+    def sealed_canonical(value: Any) -> bytes:
+        frozen = sealed_freeze(value)
+        try:
+            return _dumps(
+                frozen, sort_keys=True, separators=(",", ":"), ensure_ascii=False
+            ).encode("utf-8", "strict")
+        except (_unicode_error, _value_error, _type_error, _recursion_error) as exc:
+            raise _err("cannot canonicalize JSON") from exc
+
+    def sealed_sha(value: Any) -> str:
+        return _sha256(sealed_canonical(value)).hexdigest()
+
+    def sealed_reject_float(_: str) -> Any:
+        raise _err("floating-point JSON is not allowed")
+
+    def sealed_reject_constant(_: str) -> Any:
+        raise _err("non-finite JSON is not allowed")
+
+    def sealed_parse_int(token: str) -> int:
+        if _len(token.lstrip("-")) > 16:
+            raise _err("integer outside safe domain")
+        value = _int_type(token)
+        if _abs(value) > max_safe_int:
+            raise _err("integer outside safe domain")
+        return value
+
+    def sealed_pairs(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+        out: dict[str, Any] = {}
+        for key, value in pairs:
+            if key in out:
+                raise _err("duplicate JSON key")
+            out[key] = value
+        return out
+
+    def loads_strict_json(raw: bytes | str) -> Any:
+        return _loads_strict_json_impl(
+            raw,
+            _loads=_loads,
+            _pairs_hook=sealed_pairs,
+            _reject_float_fn=sealed_reject_float,
+            _parse_int_fn=sealed_parse_int,
+            _reject_constant_fn=sealed_reject_constant,
+            _freeze=sealed_freeze,
+            _json_decode_error=_json_decode_error,
+            _bytes_type=_bytes_type,
+            _str_type=_str_type,
+            _type=_type,
+            _len=_len,
+            _max_input_bytes=max_input_bytes,
+            _unicode_error=_unicode_error,
+            _other_errors=(_value_error, _type_error, _recursion_error),
+            _err=_err,
+        )
+
+    def sealed_tag(kind: str, row_without_tag: dict[str, Any], supplied_key: bytes) -> str:
+        if authority_key is None or supplied_key != authority_key:
+            raise _err("evidence authority generation mismatch")
+        payload = {
+            "domain": "commons-payoff-path-evidence/v2",
+            "kind": kind,
+            "row": row_without_tag,
+        }
+        return _hmac_new(authority_key, sealed_canonical(payload), _sha256).hexdigest()
+
+    def sealed_verify_tag(kind: str, row: dict[str, Any], supplied_key: bytes) -> None:
+        tag = row.get("auth_tag_hex")
+        if _type(tag) is not _str_type or not hex64.fullmatch(tag):
+            raise _err("auth_tag_hex must be lowercase sha256")
+        unsigned = {k: v for k, v in row.items() if k != "auth_tag_hex"}
+        if not _compare(tag, sealed_tag(kind, unsigned, supplied_key)):
+            raise _err("evidence authentication failed")
+
+    def sealed_term(row: Any, key: bytes) -> dict[str, Any]:
+        return term_validator(row, key, _verify_tag=sealed_verify_tag)
+
+    def sealed_outcome(row: Any, key: bytes) -> dict[str, Any]:
+        return outcome_validator(row, key, _verify_tag=sealed_verify_tag)
+
+    def sealed_census(packet: dict[str, Any]) -> str:
+        return sealed_sha({
+            "term_evidence": packet["term_evidence"],
+            "outcome_evidence": packet["outcome_evidence"],
+        })
+
+    def sealed_scope(
+        attestation: Any,
+        packet: dict[str, Any],
+        key: bytes | None,
+        now: datetime,
+    ) -> tuple[bool, list[str]]:
+        return scope_validator(
+            attestation,
+            packet,
+            key,
+            now,
+            _tag_fn=sealed_tag,
+            _compare=_compare,
+            _census=sealed_census,
+        )
+
+    def sealed_validate(
+        packet: Any, now: datetime
+    ) -> tuple[dict[str, Any], str | None, bool, list[str]]:
+        return packet_impl(
+            packet,
+            now,
+            authority_key,
+            _term=sealed_term,
+            _outcome=sealed_outcome,
+            _scope=sealed_scope,
+            _sha256=_sha256,
+            _set_type=_set_type,
+            _env_name=evidence_auth_env,
+            _err=_err,
+        )
+
+    def sealed_compile_at(packet: Any, now: datetime) -> dict[str, Any]:
+        return compile_impl(
+            packet,
+            now,
+            sealed_validate,
+            _ts=timestamp,
+            _fmt=format_ts,
+            _sha_fn=sealed_sha,
+            _cash_classes=cash_classes,
+            _utc=_utc,
+            _max_age=max_age,
+            _receipt_schema=receipt_schema,
+            _compiler_id=compiler_id,
+            _type=_type,
+            _datetime_type=_datetime_type,
+            _any=_any,
+            _len=_len,
+            _set_type=_set_type,
+            _err=_err,
+        )
+
     def compile_current(packet: Any) -> dict[str, Any]:
-        return compile_at(freeze(packet), process_now(utc))
-    return compile_current
+        return sealed_compile_at(sealed_freeze(packet), _process_now(_utc))
 
+    def verify_integrity(packet: Any, receipt: Any) -> bool:
+        return integrity_impl(
+            packet,
+            receipt,
+            sealed_compile_at,
+            _freeze=sealed_freeze,
+            _validate_receipt=receipt_validator,
+            _ts=timestamp,
+            _canonical=sealed_canonical,
+        )
 
-def _make_verify_current(verify_at, freeze, process_now, utc):
     def verify_current(packet: Any, receipt: Any) -> bool:
-        return verify_at(freeze(packet), freeze(receipt), process_now(utc))
-    return verify_current
+        return current_impl(
+            packet,
+            receipt,
+            _process_now(_utc),
+            sealed_compile_at,
+            _freeze=sealed_freeze,
+            _validate_receipt=receipt_validator,
+            _ts=timestamp,
+            _canonical=sealed_canonical,
+            _projection=projection,
+            _utc=_utc,
+            _type=_type,
+            _datetime_type=_datetime_type,
+            _err=_err,
+        )
+
+    # Compatibility/test seams are exact-signature wrappers over the same sealed
+    # generation. They expose deterministic-at-time evaluation, not authority injection.
+    def _validate_packet(packet: Any, now: datetime):
+        return sealed_validate(packet, now)
+
+    def _compile_at(packet: Any, now: datetime):
+        return sealed_compile_at(packet, now)
+
+    def _verify_current_at(packet: Any, receipt: Any, now: datetime):
+        return current_impl(
+            packet,
+            receipt,
+            now,
+            sealed_compile_at,
+            _freeze=sealed_freeze,
+            _validate_receipt=receipt_validator,
+            _ts=timestamp,
+            _canonical=sealed_canonical,
+            _projection=projection,
+            _utc=_utc,
+            _type=_type,
+            _datetime_type=_datetime_type,
+            _err=_err,
+        )
+
+    return (
+        compile_current,
+        verify_current,
+        verify_integrity,
+        loads_strict_json,
+        _validate_packet,
+        _compile_at,
+        _verify_current_at,
+    )
 
 
-compile_current = _make_compile_current(_compile_at, _freeze_json, datetime.now, timezone.utc)
-verify_current = _make_verify_current(_verify_current_at, _freeze_json, datetime.now, timezone.utc)
-del _make_compile_current
-del _make_verify_current
-
-# The public validator already captured the immutable authority bytes above.
-# Remove the module-global binding so ordinary name replacement cannot become
-# a second semantic authority surface.
-del _INITIAL_EVIDENCE_AUTHORITY_KEY
+(
+    compile_current,
+    verify_current,
+    verify_integrity,
+    loads_strict_json,
+    _validate_packet,
+    _compile_at,
+    _verify_current_at,
+) = _make_public_generation(_load_host_key())
+del _make_public_generation
