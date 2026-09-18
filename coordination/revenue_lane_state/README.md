@@ -28,6 +28,12 @@ human-class events. Coordination intent (`TAKE`, `MUSE_PENDING`,
 `MUSE_SELECTED`, `LEASE_CONSUMED`) cannot mint or erase provider/human
 state.
 
+The source-class matrix, state-specific currentness basis, identifier grammar,
+resource ceilings, and all-false authority policy are captured at first import.
+Compiled artifacts bind that exact semantic generation as
+`policy_generation_sha256`; ordinary post-import rebinding of exported policy
+or helper names cannot widen compile/verify semantics for the loaded compiler.
+
 A correction may supersede only an older event from the **same authenticated
 source class**, must be strictly later in time, and cannot reach backward across
 generations. This lets newer provider/human/procurement evidence retire stale
@@ -42,7 +48,9 @@ provider send in the same business lane is classified as
 `COLLISION_DUPLICATE_SEND_DNR`, even if a caller changes generation, route, or
 adds a correction edge. Generation/route changes cannot reset send permission,
 and a later coordination generation cannot hide an earlier retained provider
-send.
+send. A later `BOUNCED` or `DEAD_ROUTE` event on another route/generation
+remains retained evidence but cannot downgrade an already-contacted lane back to
+transport-only truth; the retained successful send keeps the lane DNR.
 
 Each event repeats the lane/opportunity/counterparty/purpose identity, so a
 retained event transplanted from another lane fails closed. Alternate route IDs
@@ -103,8 +111,10 @@ python -m coordination.revenue_lane_state.cli verify \
   generation regression, cross-generation retained provider truth and
   second-send collision, same-source authenticated correction with retained
   superseded-history digest binding, coordination-cannot-erase authority,
-  provider-send non-retirement, supersession-cycle rejection, compiler-bounded
-  currentness, state-basis currentness, lease-without-provider HOLD, conflicting
+  provider-send non-retirement, later unrelated route-bounce send preservation,
+  post-import policy/helper rebinding resistance, supersession-cycle rejection,
+  compiler-bounded currentness, state-basis currentness,
+  lease-without-provider HOLD, conflicting
   procurement/human terminal truth, event transplant, replay/currentness,
   malformed projection blocks, semantic tamper, and CLI create-exclusive
   replay.
