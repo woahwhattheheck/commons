@@ -60,3 +60,7 @@ This package performs no network calls and grants no authority to send email/Sla
 submit claims, create invoices, move money, mutate wallets/banks/providers, or
 recognize unsettled cash. `AUTHORITY` is hard-false. Customer/public artifacts
 should not expose this internal control surface.
+
+## Currentness and hard-false authority
+
+Every retained event timestamp must be at or before the ledger `as_of` instant before any financial or route state is applied. Future-dated settlement, release, or route-repair evidence is rejected rather than treated as current. The exported `AUTHORITY` view is read-only compatibility metadata; emitted reports construct the hard-false authority object from source literals and do not trust that module binding.
