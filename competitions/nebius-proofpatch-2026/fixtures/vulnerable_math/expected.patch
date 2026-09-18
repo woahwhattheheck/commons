@@ -1,0 +1,6 @@
+--- a/calc.py
++++ b/calc.py
+@@
+ def ratio(a, b):
+-    return a // b
++    return a / b
