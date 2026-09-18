@@ -28,6 +28,7 @@ MAX_JSON_DEPTH = 48
 SAFE_INT = (1 << 53) - 1
 ID_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:/-]{0,191}$")
 SHA40_RE = re.compile(r"^[0-9a-f]{40}$")
+SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 UTC_RE = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$")
 
 CRITERIA_WEIGHTS = {
@@ -67,6 +68,7 @@ SUPPORT_STATES = {"UNKNOWN", "CLEAR", "BLOCKED"}
 SLOT_STATES = {"UNKNOWN", "AVAILABLE", "CONSUMED_OR_RESERVED"}
 TEMPLATE_STATES = {"UNKNOWN", "BOUND", "MISMATCH"}
 OVERLAP_STATES = {"UNKNOWN", "NONE", "POTENTIALLY_SAME", "SUBSTANTIALLY_SAME"}
+EVIDENCE_CLASSES = {"REPO", "OWNER", "PROVIDER", "EXTERNAL_COUNTERPARTY"}
 
 # Hard-coded from the current official competition announcement/RFI and kept
 # separate from any candidate-controlled packet.
@@ -263,6 +265,94 @@ def _evidence_ref(value: Any, path: str) -> str:
     if any(ord(ch) < 0x20 for ch in value):
         raise ContractError("INVALID_EVIDENCE_REF", path)
     return value
+
+
+def _repo_name(value: Any, path: str) -> str:
+    text = _evidence_ref(value, path)
+    if text.count("/") != 1 or text.startswith("/") or text.endswith("/"):
+        raise ContractError("INVALID_SOURCE_REPO", path)
+    return text
+
+
+def _evidence_registry(raw: Any) -> dict[str, dict[str, Any]]:
+    if not isinstance(raw, list) or len(raw) > MAX_JSON_NODES:
+        raise ContractError("INVALID_EVIDENCE_REGISTRY")
+    registry: dict[str, dict[str, Any]] = {}
+    for index, value in enumerate(raw):
+        path = f"$.evidenceRecords[{index}]"
+        row = _exact(
+            value,
+            {
+                "evidenceId",
+                "binding",
+                "sourceClass",
+                "repo",
+                "commit",
+                "path",
+                "locator",
+                "sha256",
+            },
+            path,
+        )
+        evidence_id = _id(row["evidenceId"], path + ".evidenceId")
+        if evidence_id in registry:
+            raise ContractError("DUPLICATE_EVIDENCE_ID", evidence_id)
+        binding = _evidence_ref(row["binding"], path + ".binding")
+        source_class = row["sourceClass"]
+        if source_class not in EVIDENCE_CLASSES:
+            raise ContractError("INVALID_EVIDENCE_CLASS", evidence_id)
+        normalized = dict(row)
+        normalized["evidenceId"] = evidence_id
+        normalized["binding"] = binding
+        if source_class == "REPO":
+            normalized["repo"] = _repo_name(row["repo"], path + ".repo")
+            commit = row["commit"]
+            if not isinstance(commit, str) or SHA40_RE.fullmatch(commit) is None:
+                raise ContractError("INVALID_EVIDENCE_COMMIT", evidence_id)
+            normalized["commit"] = commit
+            normalized["path"] = _evidence_ref(row["path"], path + ".path")
+            if row["locator"] is not None or row["sha256"] is not None:
+                raise ContractError("REPO_EVIDENCE_VARIANT_MISMATCH", evidence_id)
+        else:
+            if row["repo"] is not None or row["commit"] is not None or row["path"] is not None:
+                raise ContractError("ARTIFACT_EVIDENCE_VARIANT_MISMATCH", evidence_id)
+            normalized["locator"] = _evidence_ref(row["locator"], path + ".locator")
+            digest = row["sha256"]
+            if not isinstance(digest, str) or SHA256_RE.fullmatch(digest) is None:
+                raise ContractError("INVALID_EVIDENCE_SHA256", evidence_id)
+            normalized["sha256"] = digest
+        registry[evidence_id] = normalized
+    return registry
+
+
+def _consume_evidence(
+    evidence_ref: Any,
+    *,
+    binding: str,
+    allowed_classes: set[str],
+    registry: dict[str, dict[str, Any]],
+    used: set[str],
+    candidate_source: dict[str, str] | None = None,
+) -> dict[str, Any]:
+    evidence_id = _id(evidence_ref, binding + ".evidenceRef")
+    row = registry.get(evidence_id)
+    if row is None:
+        raise ContractError("EVIDENCE_REF_MISSING", evidence_id)
+    if evidence_id in used:
+        raise ContractError("EVIDENCE_RECORD_REUSED", evidence_id)
+    if row["binding"] != binding:
+        raise ContractError("EVIDENCE_BINDING_MISMATCH", evidence_id)
+    if row["sourceClass"] not in allowed_classes:
+        raise ContractError("EVIDENCE_CLASS_MISMATCH", evidence_id)
+    if row["sourceClass"] == "REPO" and candidate_source is not None:
+        if row["repo"] != candidate_source["repo"] or row["commit"] != candidate_source["commit"]:
+            raise ContractError("EVIDENCE_CANDIDATE_GENERATION_MISMATCH", evidence_id)
+        base_path = candidate_source["path"].rstrip("/")
+        evidence_path = row["path"]
+        if evidence_path != base_path and not evidence_path.startswith(base_path + "/"):
+            raise ContractError("EVIDENCE_CANDIDATE_PATH_MISMATCH", evidence_id)
+    used.add(evidence_id)
+    return row
 
 
 def _fact(value: Any, path: str) -> tuple[str, str | None]:
