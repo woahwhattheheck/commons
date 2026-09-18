@@ -523,7 +523,7 @@ def _totals(claims: list[dict[str, Any]]) -> tuple[dict[str, Any], dict[str, str
                 continue
             amount = Decimal(claim["amount"])
             if claim["state"] == STATE_ACCEPTED:
-                if claim["entitlement_evidence is not None"]:
+                if claim["entitlement_confirmed"]:
                     buckets["accepted_outstanding"] += amount
                 else:
                     buckets["accepted_unconfirmed"] += amount
