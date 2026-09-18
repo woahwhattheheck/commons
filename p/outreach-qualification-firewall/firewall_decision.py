@@ -4,7 +4,8 @@ from datetime import datetime
 from typing import Any
 
 from firewall_codec import (
-    DECISION_SCHEMA, DECISION_KEYS, FirewallError, canonical_json, sha256_hex,
+    DECISION_SCHEMA, DECISION_KEYS, MAX_RELATIONSHIP_AGE_SECONDS,
+    FirewallError, canonical_json, sha256_hex,
     _digest, _exact_keys, _process_utc_now, _utc, _utc_text,
 )
 from firewall_model import compute_dedupe_key, normalize_packet
@@ -27,33 +28,72 @@ def _evaluate(
 ) -> dict[str, Any]:
     source = normalized["source_packet"]
     contact = normalized["contact"]
+    identity = normalized["identity_binding"]
     lease = normalized["writer_lease"]
     dedupe_key = compute_dedupe_key(source, contact)
     reasons: list[str] = []
+
     observed = _utc(source["observed_at"], "observed_at")
-    if observed > as_of: reasons.append("HOLD_SOURCE_FUTURE")
+    if observed > as_of:
+        reasons.append("HOLD_SOURCE_FUTURE")
     deadline = _utc(source["deadline_at"], "deadline_at")
-    if int((deadline - as_of).total_seconds()) < source["min_runway_seconds"]: reasons.append("HOLD_RUNWAY")
-    if source["registration_required"] and source["registration_state"] != "READY": reasons.append("HOLD_REGISTRATION")
+    if int((deadline - as_of).total_seconds()) < source["min_runway_seconds"]:
+        reasons.append("HOLD_RUNWAY")
+    if source["registration_required"] and source["registration_state"] != "READY":
+        reasons.append("HOLD_REGISTRATION")
+
     required_gates = [g for g in normalized["qualifications"] if g["required_for_outreach"]]
-    if any(g["disposition"] == "UNSATISFIED" for g in required_gates): reasons.append("HOLD_QUALIFICATION_UNSATISFIED")
-    if any(g["disposition"] == "UNKNOWN" for g in required_gates): reasons.append("HOLD_QUALIFICATION_UNKNOWN")
-    if contact["relationship_state"] in {"DNR", "BOUNCE", "SENT_DNR"}: reasons.append("HOLD_RELATIONSHIP")
+    if any(g["disposition"] == "UNSATISFIED" for g in required_gates):
+        reasons.append("HOLD_QUALIFICATION_UNSATISFIED")
+    if any(g["disposition"] == "UNKNOWN" for g in required_gates):
+        reasons.append("HOLD_QUALIFICATION_UNKNOWN")
+
+    identity_observed = _utc(identity["observed_at"], "identity.observed_at")
+    identity_valid_until = _utc(identity["valid_until"], "identity.valid_until")
+    if not identity["authority_authenticated"]:
+        reasons.append("HOLD_IDENTITY_AUTHORITY")
+    if identity_observed > as_of:
+        reasons.append("HOLD_IDENTITY_FUTURE")
+    if as_of >= identity_valid_until:
+        reasons.append("HOLD_IDENTITY_EXPIRED")
+
+    relationship_observed = _utc(contact["relationship_observed_at"], "relationship_observed_at")
+    relationship_valid_until = _utc(contact["relationship_valid_until"], "relationship_valid_until")
+    if not contact["relationship_authority_authenticated"]:
+        reasons.append("HOLD_RELATIONSHIP_AUTHORITY")
+    if relationship_observed > as_of:
+        reasons.append("HOLD_RELATIONSHIP_FUTURE")
+    if as_of >= relationship_valid_until or (as_of - relationship_observed).total_seconds() > MAX_RELATIONSHIP_AGE_SECONDS:
+        reasons.append("HOLD_RELATIONSHIP_STALE")
+    if contact["relationship_state"] in {"DNR", "BOUNCE", "SENT_DNR"}:
+        reasons.append("HOLD_RELATIONSHIP")
+
     qualified = not reasons
     send_reasons: list[str] = []
-    if not current_process: send_reasons.append("HOLD_HISTORICAL_EVALUATION")
+    if not current_process:
+        send_reasons.append("HOLD_HISTORICAL_EVALUATION")
     if lease is None:
         send_reasons.append("HOLD_WRITER_LEASE_MISSING")
     else:
-        if not lease["authority_authenticated"]: send_reasons.append("HOLD_WRITER_LEASE_UNAUTHENTICATED")
-        if lease["status"] != "GO": send_reasons.append("HOLD_WRITER_LEASE_STATUS")
-        if lease["collision_key"] != dedupe_key: send_reasons.append("HOLD_WRITER_LEASE_KEY")
-        if lease["seat"] != normalized["requesting_seat"]: send_reasons.append("HOLD_WRITER_LEASE_SEAT")
-        if lease["session_nonce"] != normalized["session_nonce"]: send_reasons.append("HOLD_WRITER_LEASE_SESSION")
+        if not lease["authority_authenticated"]:
+            send_reasons.append("HOLD_WRITER_LEASE_UNAUTHENTICATED")
+        if lease["status"] != "GO":
+            send_reasons.append("HOLD_WRITER_LEASE_STATUS")
+        if lease["collision_key"] != dedupe_key:
+            send_reasons.append("HOLD_WRITER_LEASE_KEY")
+        if lease["seat"] != normalized["requesting_seat"]:
+            send_reasons.append("HOLD_WRITER_LEASE_SEAT")
+        if lease["session_nonce"] != normalized["session_nonce"]:
+            send_reasons.append("HOLD_WRITER_LEASE_SESSION")
         issued = _utc(lease["issued_at"], "lease.issued_at")
         expires = _utc(lease["expires_at"], "lease.expires_at")
-        if as_of < issued: send_reasons.append("HOLD_WRITER_LEASE_NOT_YET_VALID")
-        if as_of >= expires: send_reasons.append("HOLD_WRITER_LEASE_EXPIRED")
+        if as_of < issued:
+            send_reasons.append("HOLD_WRITER_LEASE_NOT_YET_VALID")
+        if as_of >= expires:
+            send_reasons.append("HOLD_WRITER_LEASE_EXPIRED")
+        if current_process and relationship_observed < issued:
+            send_reasons.append("HOLD_RELATIONSHIP_PRECEDES_LEASE")
+
     authorized = qualified and not send_reasons
     decision: dict[str, Any] = {
         "schema": DECISION_SCHEMA,
@@ -88,16 +128,27 @@ def verify_receipt(
 ) -> bool:
     normalized = _normalize(payload)
     row = _exact_keys(decision, DECISION_KEYS, "decision")
-    if row["schema"] != DECISION_SCHEMA: raise FirewallError("wrong decision schema")
+    if row["schema"] != DECISION_SCHEMA:
+        raise FirewallError("wrong decision schema")
     supplied = _digest(row["receipt_sha256"], "receipt_sha256")
-    unsigned = dict(row); unsigned.pop("receipt_sha256")
-    if sha256_hex(canonical_json(unsigned)) != supplied: raise FirewallError("receipt digest mismatch")
-    if row["authority"] != _authority_factory(): raise FirewallError("authority ceiling changed")
+    unsigned = dict(row)
+    unsigned.pop("receipt_sha256")
+    if sha256_hex(canonical_json(unsigned)) != supplied:
+        raise FirewallError("receipt digest mismatch")
+    if row["authority"] != _authority_factory():
+        raise FirewallError("authority ceiling changed")
     mode = row["evaluation_mode"]
-    if mode not in {"CURRENT_PROCESS", "HISTORICAL_REVIEW_ONLY"}: raise FirewallError("unknown evaluation mode")
-    original = _evaluate_fn(normalized, _utc(row["evaluated_at"], "evaluated_at"), current_process=(mode == "CURRENT_PROCESS"))
-    if canonical_json(original) != canonical_json(row): raise FirewallError("semantic receipt mismatch")
+    if mode not in {"CURRENT_PROCESS", "HISTORICAL_REVIEW_ONLY"}:
+        raise FirewallError("unknown evaluation mode")
+    original = _evaluate_fn(
+        normalized,
+        _utc(row["evaluated_at"], "evaluated_at"),
+        current_process=(mode == "CURRENT_PROCESS"),
+    )
+    if canonical_json(original) != canonical_json(row):
+        raise FirewallError("semantic receipt mismatch")
     if mode == "CURRENT_PROCESS" and row["authorized_to_send"]:
         fresh = _evaluate_fn(normalized, _now(), current_process=True)
-        if not fresh["authorized_to_send"]: raise FirewallError("current send authorization is stale")
+        if not fresh["authorized_to_send"]:
+            raise FirewallError("current send authorization is stale")
     return True
