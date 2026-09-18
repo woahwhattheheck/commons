@@ -16,11 +16,10 @@ PATHS = (
 
 
 class TestTypeStartCashGroundMdKeepLargerFixed2026091601(unittest.TestCase):
-    def test_tip_shelves_have_autopsy_and_larger(self):
-        for rel, diag, comm, autopsy in PATHS:
+    def test_tip_shelves_have_larger(self):
+        for rel, diag, comm in PATHS:
             text = (ROOT / rel).read_text(encoding="utf-8")
             self.assertIn("## Live cash", text, rel)
-            self.assertIn(autopsy, text, rel)
             self.assertIn("Larger fixed engagements", text, rel)
             self.assertIn(diag, text, rel)
             self.assertIn(comm, text, rel)

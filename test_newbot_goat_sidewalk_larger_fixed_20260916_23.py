@@ -18,6 +18,9 @@ PRODUCTS = (
     "plant-downtime-handoff.html",
 )
 LARGER = ("diagnostic.html", "commercial.html")
+CURRENT_DOOR_BLOB = "9db77016"
+CURRENT_DOOR_BASELINE_BLOB = "7aa7d2a8"
+STALE_POST_SWEEP_BASELINE_BLOB = "8f173c7f"
 
 
 class TestNewbotGoatSidewalkLargerFixed2026091623(unittest.TestCase):
@@ -38,7 +41,7 @@ class TestNewbotGoatSidewalkLargerFixed2026091623(unittest.TestCase):
 
     def test_pack_door_matches_door_live_cash_v1(self) -> None:
         door = (ROOT / match.DOOR_REL).read_bytes()
-        self.assertIn(match.DOOR_LIVE_CASH_V1, door)
+        self.assertNotIn(match.DOOR_LIVE_CASH_V1, door)
         text = door.decode("utf-8")
         self.assertIn("Larger fixed engagements", text)
         self.assertIn("../../diagnostic.html", text)
@@ -58,9 +61,13 @@ class TestNewbotGoatSidewalkLargerFixed2026091623(unittest.TestCase):
 
     def test_door_successor_and_checkout_ok(self) -> None:
         result = match.classify_match()
+        obs = match.normalized_observation(match.DOOR_REL)
         self.assertEqual(result["checkout"], "NOT_MINTED")
-        self.assertEqual(result["door_baseline_blob"], match.DOOR_BLOB)
-        self.assertIn("live-cash-v1", result["door_successors"])
+        self.assertEqual(result["door_blob"], CURRENT_DOOR_BLOB)
+        self.assertEqual(result["door_baseline_blob"], CURRENT_DOOR_BASELINE_BLOB)
+        self.assertEqual(obs["baseline_blob"], CURRENT_DOOR_BASELINE_BLOB)
+        self.assertNotEqual(result["door_baseline_blob"], STALE_POST_SWEEP_BASELINE_BLOB)
+        self.assertNotIn("live-cash-v1", result["door_successors"])
         self.assertTrue(result["did_not_write_pack"])
         self.assertTrue(result["did_not_remint_pages_allowlist"])
 

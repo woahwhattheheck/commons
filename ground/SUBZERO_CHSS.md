@@ -42,8 +42,6 @@ Organs 25–31 stay NOT_LANDED. An intro / looking-forward note is not this file
 ## Live cash
 
 Verified product pages only — no invented Stripe links.
-
-- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
 - [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../referral-intake-completeness.html)
 - [$199 repair diagnostic](../repair-booking-preflight.html)
