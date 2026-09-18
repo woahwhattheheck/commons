@@ -21,6 +21,8 @@ Removing only a signed adverse row changes the census digest and invalidates the
 
 The host key is never accepted from packet/API/CLI arguments and is never emitted. Receipts retain only SHA-256 of the active key. The compiler intentionally has no signing CLI: an evidence authority must authenticate source facts and census completeness outside the packet-ingest path, then issue the tags.
 
+**Initialization boundary:** `PAYOFF_PATH_EVIDENCE_AUTHORITY_KEY_HEX` must be present and valid **before the payoff-path module/process is imported or the CLI process starts**. The module samples that authority generation once and public compile/verify paths retain the immutable decoded key. Changing, removing, or corrupting the environment variable after initialization does not rotate signing authority. Rotation requires a fresh trusted process/module initialization; an in-process environment write is never authority.
+
 ## Bounded strategic/product conversion
 
 `PRODUCT_CONVERSION` without authenticated cash terms and every `STRATEGIC_UNPAID` lane require a nonempty conversion milestone, a strictly positive effort ceiling, and an expiry/review boundary. A positive plan-only state still requires authenticated census completeness, because readiness depends on the absence of settlement/duplicate/conflicting evidence. The compiler validates retained structure/provenance; it **does not establish that a milestone is realistic, likely, externally accepted, or economically attractive**.
