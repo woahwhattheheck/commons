@@ -8,11 +8,14 @@ import tempfile
 import unittest
 from pathlib import Path
 from types import SimpleNamespace
+from unittest.mock import patch
 
+import tools.e2b_executor.executor as executor_mod
 from tools.e2b_executor.executor import (
     JOB_SCHEMA,
     JobValidationError,
     execute_job,
+    parse_job_packet_text,
     validate_job,
 )
 
@@ -316,6 +319,54 @@ class E2BExecutorTests(unittest.TestCase):
             receipt["truth_boundary"]["git_commit_binding_verified"],
             False,
         )
+
+    def test_duplicate_and_nonfinite_job_json_are_rejected(self):
+        with self.assertRaisesRegex(JobValidationError, "duplicate JSON key"):
+            parse_job_packet_text('{"schema":"one","schema":"two"}')
+        with self.assertRaisesRegex(JobValidationError, "non-finite"):
+            parse_job_packet_text('{"value":NaN}')
+
+    def test_manifest_cardinality_is_bounded(self):
+        packet = json.loads(json.dumps(self.packet))
+        packet["manifest"] = [
+            {"path": "one", "sha256": "1" * 64},
+            {"path": "two", "sha256": "2" * 64},
+        ]
+        with patch.object(executor_mod, "MAX_MANIFEST_ENTRIES", 1):
+            with self.assertRaisesRegex(JobValidationError, "at most 1"):
+                validate_job(packet)
+
+    def test_archive_byte_limit_blocks_before_provider(self):
+        factory = Factory(FakeSandbox(self.digest))
+        with patch.object(
+            executor_mod,
+            "MAX_SOURCE_ARCHIVE_BYTES",
+            self.archive.stat().st_size - 1,
+        ):
+            with self.assertRaisesRegex(JobValidationError, "archive exceeds byte limit"):
+                execute_job(
+                    self.packet,
+                    sandbox_factory=factory,
+                    environ={"E2B_API_KEY": "secret"},
+                )
+        self.assertEqual(factory.calls, [])
+
+    def test_archive_member_and_expansion_limits_block_before_provider(self):
+        for attribute, value, message in (
+            ("MAX_ARCHIVE_MEMBERS", 0, "member count"),
+            ("MAX_ARCHIVE_MEMBER_BYTES", 1, "member exceeds"),
+            ("MAX_ARCHIVE_UNCOMPRESSED_BYTES", 1, "total uncompressed"),
+        ):
+            with self.subTest(attribute=attribute):
+                factory = Factory(FakeSandbox(self.digest))
+                with patch.object(executor_mod, attribute, value):
+                    with self.assertRaisesRegex(JobValidationError, message):
+                        execute_job(
+                            self.packet,
+                            sandbox_factory=factory,
+                            environ={"E2B_API_KEY": "secret"},
+                        )
+                self.assertEqual(factory.calls, [])
 
     def test_receipt_is_deterministic_and_redacts_api_key(self):
         secret = "e2b_live_SUPER_SECRET"
