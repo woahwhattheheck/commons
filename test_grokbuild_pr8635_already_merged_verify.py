@@ -9,6 +9,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 
 ROOT = Path(__file__).resolve().parent
 # This receipt records this immutable tree; it does not freeze evolving main.
@@ -20,8 +21,8 @@ BODY_SHA256 = "4e64d46e75b9dab032e758e52e19a4156fd9da00b5dcd18c3d126f315faf0250"
 
 KEEP = {
     "p/grok-build-commons-board-billing-lock-20260903-01.md": "c07bf913",
-    ".github/workflows/commons-board.yml": "c9da64cb",
-    "board_ingest.py": "a8a5f52c",
+    ".github/workflows/commons-board.yml": "0086f987",
+    "board_ingest.py": "00193658",
     "open_door_guard.py": "877e148d",
     "enqueue_pending_grok_com.py": "d1e4b9e7",
     "fix_first.py": "a57aee1c",
@@ -91,7 +92,7 @@ class TestGrokbuildPr8635AlreadyMergedVerify(unittest.TestCase):
 
     def test_publisher_checkout_contract_still_green(self) -> None:
         proc = subprocess.run(
-            ["python3", "test_board_checkout_head.py"],
+            [sys.executable, "test_board_checkout_head.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -100,7 +101,7 @@ class TestGrokbuildPr8635AlreadyMergedVerify(unittest.TestCase):
         self.assertEqual(proc.returncode, 0, msg=proc.stdout + proc.stderr)
         self.assertIn("BOARD CHECKOUT HEAD TEST", proc.stdout)
         fanout = subprocess.run(
-            ["python3", "-m", "unittest", "test_board_issue_fanout.py", "test_enqueue_pending_grok_com.py"],
+            [sys.executable, "-m", "unittest", "test_board_issue_fanout.py", "test_enqueue_pending_grok_com.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -135,7 +136,7 @@ class TestGrokbuildPr8635AlreadyMergedVerify(unittest.TestCase):
         }
         self.assertEqual(fix_first.validate(packet)["state"], "EXTERNAL_BLOCKER")
         proc = subprocess.run(
-            ["python3", "fix_first.py", "--json", __import__("json").dumps(packet)],
+            [sys.executable, "fix_first.py", "--json", __import__("json").dumps(packet)],
             cwd=ROOT,
             text=True,
             capture_output=True,

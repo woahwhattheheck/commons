@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import open_door_guard as guard
 
 ROOT = Path(__file__).resolve().parent
@@ -25,15 +26,15 @@ KEEP = {
     "p/grokbuild-path-manifest-33718116313-billing-lock-20260903-01.md": "02c74649",
     "p/grokbuild-path-manifest-33717733938-billing-lock-20260903-01.md": "85a5f189",
     "p/grokbuild-path-manifest-33699980177-billing-lock-20260903-01.md": "d9365b97",
-    "test_grokbuild_path_manifest_33699980177_billing_lock.py": "1aa76baa",
+    "test_grokbuild_path_manifest_33699980177_billing_lock.py": "c298de07",
     "p/grokbuild-path-manifest-33694214802-billing-lock-20260902-01.md": "d9331b17",
-    "test_grokbuild_path_manifest_33694214802_billing_lock.py": "2125e542",
+    "test_grokbuild_path_manifest_33694214802_billing_lock.py": "c690b812",
     "p/grokbuild-pr8415-path-manifest-33689243555-20260902-01.md": "3c72cd09",
-    "test_grokbuild_pr8415_path_manifest_33689243555.py": "4fa393cc",
+    "test_grokbuild_pr8415_path_manifest_33689243555.py": "eeca0bf5",
     "p/grokbuild-leftover-id-census-33723043828-billing-lock-20260903-01.md": "e135862e",
-    "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "4d5f069a",
+    "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "8849de18",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
-    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "297f868b",
+    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "347eb396",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
     "open_door_guard.py": "877e148d",
 }
@@ -62,7 +63,7 @@ class TestGrokbuildPathManifest33723885216BillingLock(unittest.TestCase):
 
     def test_local_failed_step_still_passes(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_path_manifest"],
+            [sys.executable, "-m", "unittest", "test_path_manifest"],
             cwd=ROOT,
             text=True,
             capture_output=True,

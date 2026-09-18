@@ -8,6 +8,7 @@ import subprocess
 import unittest
 import urllib.request
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/cursor-wire-super-mcp-marketplace-readback-20260902-01.md"
@@ -21,10 +22,10 @@ KEEP = {
     ".agents/plugins/marketplace.json": "97875086",
     "integrations/commons_network_plugin/.codex-plugin/plugin.json": "0bc6fd84",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
-    "wire.html": "3f030862",
-    "ground/WIRE_SUPER_MCP.md": "6a50f614",
+    "wire.html": "623602a7",
+    "ground/WIRE_SUPER_MCP.md": "dba33cf7",
     "p/wire-shared-super-mcp-catalog-20260902-01.md": "b6cb27ef",
-    "super-mcp.html": "d72c7828",
+    "super-mcp.html": "9deb2201",
     "host/super_mcp.py": "defaf19f",
     "p/latch-wake-super-mcp-pointer-20260902-01.md": "a35e63c3",
     "p/cursor-wire-super-mcp-fold-readback-20260902-01.md": "63b8221d",
@@ -32,9 +33,9 @@ KEEP = {
     "p/cursor-big-huge-commerce-agents-readback-20260902-01.md": "2a5ce894",
     "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
     "api/mcp.py": "393da756",
-    "hub_pages.py": "7bc61c8b",
-    "door.js": "de1d570b",
-    "ground/OWNER_NOW.md": "4b2a58ed",
+    "hub_pages.py": "673dab89",
+    "door.js": "5899223c",
+    "ground/OWNER_NOW.md": "40f786fe",
 }
 
 
@@ -83,7 +84,7 @@ class TestCursorWireSuperMcpMarketplaceReadback(unittest.TestCase):
 
     def test_leftover_marketplace_tests_still_pass(self) -> None:
         leftover = subprocess.run(
-            ["python3", "-m", "unittest", "test_wire_super_mcp_marketplace.py"],
+            [sys.executable, "-m", "unittest", "test_wire_super_mcp_marketplace.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

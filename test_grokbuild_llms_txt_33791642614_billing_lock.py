@@ -9,6 +9,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/grokbuild-llms-txt-33791642614-billing-lock-20260903-01.md"
@@ -19,7 +20,7 @@ WORKFLOW = ROOT / ".github/workflows/llms-txt.yml"
 
 KEEP = {
     ".github/workflows/llms-txt.yml": "d2182a3d",
-    "llms_txt.py": "70daec62",
+    "llms_txt.py": "b70aa03d",
     "owner_pin.py": "76e19209",
     "test_llms_publish.py": "c07317be",
     "test_llms_pulse.py": "e79f7851",
@@ -29,7 +30,7 @@ KEEP = {
     "p/grokbuild-llms-txt-33723638519-billing-lock-20260903-01.md": "98285e08",
     "p/grok-build-llms-txt-billing-lock-20260902-01.md": "cf9c9f40",
     "p/grokbuild-staleness-alarm-33767754124-billing-lock-20260903-01.md": "49d0ad65",
-    "test_grokbuild_staleness_alarm_33767754124_billing_lock.py": "a1d917e1",
+    "test_grokbuild_staleness_alarm_33767754124_billing_lock.py": "4a5b2472",
 }
 
 
@@ -113,7 +114,7 @@ class TestGrokbuildLlmsTxt33791642614BillingLock(unittest.TestCase):
         env = os.environ.copy()
         env.pop("GITHUB_ACTIONS", None)
         rc = subprocess.run(
-            ["python3", "llms_txt.py", "--publish"],
+            [sys.executable, "llms_txt.py", "--publish"],
             cwd=ROOT,
             capture_output=True,
             text=True,
@@ -144,7 +145,7 @@ class TestGrokbuildLlmsTxt33791642614BillingLock(unittest.TestCase):
 
         self.addCleanup(restore)
         proc = subprocess.run(
-            ["python3", "llms_txt.py", "--bake-only"],
+            [sys.executable, "llms_txt.py", "--bake-only"],
             cwd=ROOT,
             capture_output=True,
             text=True,

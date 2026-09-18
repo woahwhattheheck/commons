@@ -18,6 +18,7 @@ from __future__ import annotations
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 PR7915 = "307abd15"
@@ -26,7 +27,7 @@ CHUNK_HTML = "c4a48395"
 STALE_CHUNK_HTML = "1304e4ec"
 HELPER = "0fc25108"
 STALE_HELPER = "95dd6557"
-MERGE = "3a738da0"
+MERGE = "30a2bdd5"
 ORIGINALS = (
     "test_merge_on_pr.py",
     "test_pr7915_closed_unmerged.py",
@@ -97,7 +98,7 @@ class TestGrokbuildTestsBattery34398152660KeepLift(unittest.TestCase):
         for name in ORIGINALS:
             with self.subTest(name=name):
                 proc = subprocess.run(
-                    ["python3", name],
+                    [sys.executable, name],
                     cwd=ROOT,
                     text=True,
                     capture_output=True,

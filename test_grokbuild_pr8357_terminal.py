@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 # This receipt records this immutable tree; it does not freeze evolving main.
@@ -20,21 +21,21 @@ RECEIPT = ROOT / "p/grokbuild-pr8357-terminal-20260902-01.md"
 PEER = ROOT / "p/grokbuild-pr8345-terminal-20260902-01.md"
 
 KEEP = {
-    "host/harborline_pack_market_render_ship.py": "cafe72c9",
-    "test_harborline_pack_market_render_ship.py": "4b7417b0",
+    "host/harborline_pack_market_render_ship.py": "b0fce94f",
+    "test_harborline_pack_market_render_ship.py": "0b78a15c",
     "p/cursor-harborline-pack-market-render-ship-20260902-01.md": "89457966",
     "host/harborline_pack_market_render.py": "cc9a3320",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
-    "test_harborline_pack_market_render.py": "5ba443dd",
+    "test_harborline_pack_market_render.py": "395b96ef",
     "p/cursor-harborline-pack-market-render-readback-20260902-01.md": "6efbac54",
     "p/cursor-harborline-pack-market-slack-render-20260902-01.md": "0d95f2ab",
     "host/harborline_pack_market_slack_render.py": "a03534da",
-    "test_harborline_pack_market_slack_render.py": "fc8f3d6e",
+    "test_harborline_pack_market_slack_render.py": "94eff6a4",
     "p/cursor-harborline-pack-market-render-readback-rematch-20260902-01.md": "f965e00f",
     "p/cursor-harborline-pack-market-render-readback-ack-20260902-01.md": "9d221c75",
-    "ground/OWNER_NOW.md": "4b2a58ed",
+    "ground/OWNER_NOW.md": "40f786fe",
     "p/grokbuild-pr8345-terminal-20260902-01.md": "baae9aaf",
-    "test_grokbuild_pr8345_terminal.py": "9967129f",
+    "test_grokbuild_pr8345_terminal.py": "ed9666b8",
 }
 
 
@@ -57,7 +58,7 @@ class TestGrokbuildPr8357Terminal(unittest.TestCase):
 
     def test_ship_helper_still_ships_standalone_store(self) -> None:
         proc = subprocess.run(
-            ["python3", str(HELPER), "--json"],
+            [sys.executable, str(HELPER), "--json"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -75,7 +76,7 @@ class TestGrokbuildPr8357Terminal(unittest.TestCase):
         self.assertEqual(payload["sent"], 0)
         self.assertEqual(payload["checkout"], "FINDER-FAILED")
         leftover = subprocess.run(
-            ["python3", str(LEFTOVER_HELPER), "--json"],
+            [sys.executable, str(LEFTOVER_HELPER), "--json"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -86,7 +87,7 @@ class TestGrokbuildPr8357Terminal(unittest.TestCase):
         self.assertEqual(leftover_payload["verdict"], "RENDER")
         self.assertEqual(leftover_payload["price_usd"], 200)
         refused = subprocess.run(
-            ["python3", str(HELPER), "--send"],
+            [sys.executable, str(HELPER), "--send"],
             cwd=ROOT,
             text=True,
             capture_output=True,

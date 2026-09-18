@@ -158,7 +158,7 @@ def bake_plan() -> dict[str, Any]:
         "project": PROJECT,
         "scope": SCOPE,
         "stager": STAGER,
-        "stage_argv": ["python3", STAGER, "--src", ".", "--dst", "<stage>"],
+        "stage_argv": [sys.executable, STAGER, "--src", ".", "--dst", "<stage>"],
         "deploy_argv": ["vercel", "deploy", "--prod", "--yes"],
         "auth_env": "VERCEL_TEAM_TOKEN",
         "org_env": "VERCEL_ORG_ID",

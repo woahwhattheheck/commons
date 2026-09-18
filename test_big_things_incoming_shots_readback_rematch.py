@@ -6,6 +6,7 @@ from __future__ import annotations
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/cursor-big-things-incoming-shots-readback-rematch-20260902-01.md"
@@ -28,9 +29,9 @@ KEEP = {
     "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
     "p/cursor-incoming-models-hub-payload-readback-20260902-01.md": "2d297673",
     "p/cursor-incoming-models-hub-payload-readback-rematch-20260902-01.md": "c6707847",
-    "ground/OWNER_NOW.md": "a17b0afb",
+    "ground/OWNER_NOW.md": "40f786fe",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
-    "autogtm.html": "1009c4cd",
+    "autogtm.html": "5c966110",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "host/harborline_pack_market_render.py": "cc9a3320",
@@ -60,7 +61,7 @@ class TestBigThingsIncomingShotsReadbackRematch(unittest.TestCase):
     def test_leftover_tests_fail_only_on_hub_pages_remint(self) -> None:
         proc = subprocess.run(
             [
-                "python3",
+                sys.executable,
                 "-m",
                 "unittest",
                 "test_big_things_incoming_shots.py",

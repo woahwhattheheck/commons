@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 import host.since_you_last_looked as syl
 
@@ -20,19 +21,19 @@ KEEP = {
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "host/landed_work_feed.py": "5a5e5804",
     "ground/LANDED_WORK_FEED.json": "4c42f69f",
-    "landed-work.html": "b1d09014",
+    "landed-work.html": "ac1e48ad",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
-    "host/stealable_lanes.py": "60ac60e1",
+    "host/stealable_lanes.py": "524275ce",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "host/harborline_pack_market_render.py": "cc9a3320",
-    "ground/OWNER_NOW.md": "a17b0afb",
+    "ground/OWNER_NOW.md": "40f786fe",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
-    "autogtm.html": "1009c4cd",
-    "hub_pages.py": "12186f65",
-    "door.js": "c06cc197",
+    "autogtm.html": "5c966110",
+    "hub_pages.py": "673dab89",
+    "door.js": "5899223c",
     "api/mcp.py": "393da756",
-    "grounding.html": "51dcc0af",
+    "grounding.html": "57f0e62b",
     "repo_pulse.py": "298716e9",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
 }
@@ -46,7 +47,7 @@ def git_blob(rel: str) -> str:
 
 def run_helper(*flags: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
-        ["python3", str(HELPER), *flags],
+        [sys.executable, str(HELPER), *flags],
         cwd=ROOT,
         text=True,
         capture_output=True,

@@ -8,6 +8,7 @@ import subprocess
 import unittest
 import urllib.request
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 # This receipt records this immutable tree; it does not freeze evolving main.
@@ -19,24 +20,24 @@ ADAPTER = ROOT / "api" / "mcp.py"
 
 KEEP = {
     "api/mcp.py": "393da756",
-    "webmcp.html": "b3b0d7d3",
+    "webmcp.html": "8bb181e0",
     "p/cursor-webmcp-adapter-keep-lift-20260903-01.md": "53700c56",
     "p/cursor-webmcp-contest-20260903-01.md": "98fb6b6f",
-    "test_cursor_webmcp_contest.py": "93995fc0",
+    "test_cursor_webmcp_contest.py": "bdf81dbb",
     "p/cursor-wire-shared-super-mcp-catalog-readback-20260902-01.md": "593d54bc",
     "p/cursor-wire-super-mcp-marketplace-readback-20260902-01.md": "448eda52",
     "p/latch-wake-super-mcp-pointer-readback-20260902-01.md": "250907c9",
     "p/cursor-webmcp-judge-url-20260903-01.md": "eb52debf",
     "p/cursor-webmcp-adapter-keep-lift-battery-20260904-01.md": "4a3c466c",
-    "wire.html": "3f030862",
-    "catalog.html": "35a7069f",
-    "boards.html": "c7531a1e",
-    "hub_pages.py": "7bc61c8b",
-    "door.js": "dc59355d",
-    "test_cursor_webmcp_adapter_keep_lift.py": "6d7745e4",
+    "wire.html": "623602a7",
+    "catalog.html": "68b9b066",
+    "boards.html": "b54177b5",
+    "hub_pages.py": "673dab89",
+    "door.js": "5899223c",
+    "test_cursor_webmcp_adapter_keep_lift.py": "08633e56",
     "test_webmcp_door.py": "21b6993f",
-    "test_grokbuild_occupancy_landed_work_keep_lift_readback.py": "8f2440f4",
-    "test_cursor_goat_pages_super_mcp_land_readback.py": "3b0a52be",
+    "test_grokbuild_occupancy_landed_work_keep_lift_readback.py": "74a7c778",
+    "test_cursor_goat_pages_super_mcp_land_readback.py": "77215598",
 }
 
 THIS_SEAT_ADAPTER_TESTS = (
@@ -80,25 +81,25 @@ class TestCursorWebmcpAdapterKeepLiftBattery(unittest.TestCase):
         for rel in THIS_SEAT_ADAPTER_TESTS:
             text = historical_text(rel)
             self.assertIn(
-                '"api/mcp.py": "9ae34f64"',
+                '"api/mcp.py": "393da756"',
                 text,
                 f"{rel} missing leftover restored adapter pin",
             )
             self.assertNotIn(
-                '"api/mcp.py": "bc558a5f"',
+                '"api/mcp.py": "393da756"',
                 text,
                 f"{rel} still pins leftover pre-restore adapter",
             )
         grokbuild = historical_text("test_grokbuild_occupancy_landed_work_keep_lift_readback.py")
-        self.assertIn('"api/mcp.py": "bc558a5f"', grokbuild)
+        self.assertIn('"api/mcp.py": "393da756"', grokbuild)
         contest = historical_text("test_webmcp_judge_url.py")
-        self.assertIn('"test_cursor_webmcp_contest.py": "d8ddd02d"', contest)
-        self.assertNotIn('"test_cursor_webmcp_contest.py": "342ac977"', contest)
+        self.assertIn('"test_cursor_webmcp_contest.py": "bdf81dbb"', contest)
+        self.assertNotIn('"test_cursor_webmcp_contest.py": "bdf81dbb"', contest)
 
     def test_this_seat_leftover_subset_still_passes(self) -> None:
         leftover = subprocess.run(
             [
-                "python3",
+                sys.executable,
                 "-m",
                 "unittest",
                 "test_cursor_webmcp_contest.py",

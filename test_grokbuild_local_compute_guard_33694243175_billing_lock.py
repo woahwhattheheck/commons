@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import local_compute_guard as guard
 
 ROOT = Path(__file__).resolve().parent
@@ -22,7 +23,7 @@ KEEP = {
     "p/grokbuild-local-compute-guard-33689357241-billing-lock-20260902-01.md": "2517b71d",
     "p/grok-build-local-compute-guard-33689281338-billing-lock-20260902-01.md": "a33a1c81",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
-    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "21631fce",
+    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "f23d4cff",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "local_compute_guard.py": "6be242af",
     "test_local_compute_guard.py": "b8d65280",
@@ -54,7 +55,7 @@ class TestGrokbuildLocalComputeGuard33694243175BillingLock(unittest.TestCase):
     def test_local_failed_step_still_passes(self) -> None:
         self.assertEqual(guard.validate(), [])
         proc = subprocess.run(
-            ["python3", "local_compute_guard.py"],
+            [sys.executable, "local_compute_guard.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -63,7 +64,7 @@ class TestGrokbuildLocalComputeGuard33694243175BillingLock(unittest.TestCase):
         self.assertEqual(proc.returncode, 0, msg=proc.stdout + proc.stderr)
         self.assertIn("CLOUD_PRIMARY / SAFE_STANDBY", proc.stdout)
         tests = subprocess.run(
-            ["python3", "-m", "unittest", "test_local_compute_guard"],
+            [sys.executable, "-m", "unittest", "test_local_compute_guard"],
             cwd=ROOT,
             text=True,
             capture_output=True,

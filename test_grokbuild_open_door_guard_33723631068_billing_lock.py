@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import open_door_guard as guard
 
 ROOT = Path(__file__).resolve().parent
@@ -18,10 +19,10 @@ TRIGGER = ROOT / "p/grok-build-repo-pulse-billing-lock-20260903-01.md"
 
 KEEP = {
     "open_door_guard.py": "877e148d",
-    "test_open_door_guard.py": "6a512428",
+    "test_open_door_guard.py": "cfa7c8a4",
     ".github/workflows/open-door-guard.yml": "ac6c46c4",
     "p/grokbuild-open-door-guard-33718116356-billing-lock-20260903-01.md": "25781cf5",
-    "test_grokbuild_open_door_guard_33718116356_billing_lock.py": "60664842",
+    "test_grokbuild_open_door_guard_33718116356_billing_lock.py": "3a8b11f7",
     "p/grok-build-repo-pulse-billing-lock-20260903-01.md": "b6e5953c",
 }
 
@@ -43,7 +44,7 @@ class TestGrokbuildOpenDoorGuard33723631068BillingLock(unittest.TestCase):
 
     def test_local_failed_step_still_passes(self) -> None:
         proc = subprocess.run(
-            ["python3", "test_open_door_guard.py"],
+            [sys.executable, "test_open_door_guard.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

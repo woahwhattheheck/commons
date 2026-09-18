@@ -6,6 +6,7 @@ import tempfile
 import unittest
 from pathlib import Path
 from unittest import mock
+import sys
 
 import muhlnickel_spec_guard as guard
 
@@ -114,7 +115,7 @@ class MuhlnickelSpecGuardTests(unittest.TestCase):
         self.addCleanup(td.cleanup)
         (root / "launcher.py").write_text(
             "import subprocess\nfrom pfc_fire import submit\n"
-            "submit(1)\nsubprocess.run(['python3', 'worker.py'])\n",
+            "submit(1)\nsubprocess.run([sys.executable, 'worker.py'])\n",
             encoding="utf-8",
         )
         self.assertIn("dynamic host code", self.errors(root)[0])
@@ -369,7 +370,7 @@ class MuhlnickelSpecGuardTests(unittest.TestCase):
             "from .services import submit\n"
             "def publish():\n"
             "    submit(1)\n"
-            "    return subprocess.run(['python3', 'publish.py'])\n",
+            "    return subprocess.run([sys.executable, 'publish.py'])\n",
             encoding="utf-8",
         )
         errors = self.errors(root)

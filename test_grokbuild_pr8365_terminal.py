@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 HELPER = ROOT / "host/landed_work_feed.py"
@@ -20,7 +21,7 @@ KEEP = {
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "host/landed_work_feed.py": "5a5e5804",
     "ground/LANDED_WORK_FEED.json": "4c42f69f",
-    "landed-work.html": "b1d09014",
+    "landed-work.html": "ac1e48ad",
     "repo_pulse.py": "298716e9",
 }
 
@@ -33,7 +34,7 @@ def git_blob(rel: str) -> str:
 
 def run_helper(*flags: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
-        ["python3", str(HELPER), *flags],
+        [sys.executable, str(HELPER), *flags],
         cwd=ROOT,
         text=True,
         capture_output=True,
@@ -53,15 +54,15 @@ class TestGrokbuildPr8365Terminal(unittest.TestCase):
     def test_leftover_tests_keep_lifted_after_337_remint(self) -> None:
         self.assertNotEqual(KEEP.get("test_landed_work_feed.py"), "1c35b970")
         self.assertNotEqual(KEEP.get("test_landed_work_feed_readback.py"), "cb58ab08")
-        self.assertTrue(git_blob("test_landed_work_feed.py").startswith("268a709d"))
+        self.assertTrue(git_blob("test_landed_work_feed.py").startswith("d9e8a18b"))
         self.assertTrue(
-            git_blob("test_landed_work_feed_readback.py").startswith("932df736")
+            git_blob("test_landed_work_feed_readback.py").startswith("01adaf18")
         )
         self.assertTrue(
             git_blob("p/grokbuild-pr8365-terminal-20260902-01.md").startswith("212208a2")
         )
         leftover = subprocess.run(
-            ["python3", "-m", "unittest", "test_landed_work_feed.py"],
+            [sys.executable, "-m", "unittest", "test_landed_work_feed.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -69,7 +70,7 @@ class TestGrokbuildPr8365Terminal(unittest.TestCase):
         )
         self.assertEqual(leftover.returncode, 0, msg=leftover.stdout + leftover.stderr)
         readback = subprocess.run(
-            ["python3", "-m", "unittest", "test_landed_work_feed_readback.py"],
+            [sys.executable, "-m", "unittest", "test_landed_work_feed_readback.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

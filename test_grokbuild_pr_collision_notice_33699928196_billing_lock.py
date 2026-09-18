@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import open_door_guard as guard
 import pr_collision_notice as notice
 
@@ -23,19 +24,19 @@ WORKFLOW = ROOT / ".github/workflows/pr-collision-notice.yml"
 KEEP = {
     "pr_collision_notice.py": "381d6b9b",
     "test_pr_collision_notice.py": "18a87c08",
-    ".github/workflows/pr-collision-notice.yml": "1c2ebcd5",
+    ".github/workflows/pr-collision-notice.yml": "deeeaf57",
     "p/grokbuild-pr-collision-notice-33689085107-billing-lock-20260902-01.md": "594b5e71",
-    "test_grokbuild_pr_collision_notice_33689085107_billing_lock.py": "e850c579",
+    "test_grokbuild_pr_collision_notice_33689085107_billing_lock.py": "162d5ddf",
     "p/grokbuild-pr-collision-notice-33689347426-billing-lock-20260902-01.md": "e92d45af",
-    "test_grokbuild_pr_collision_notice_33689347426_billing_lock.py": "92d06e74",
+    "test_grokbuild_pr_collision_notice_33689347426_billing_lock.py": "19b2e473",
     "p/grokbuild-pr-collision-notice-33694241061-billing-lock-20260902-01.md": "71afa5e6",
-    "test_grokbuild_pr_collision_notice_33694241061_billing_lock.py": "4deeeae9",
+    "test_grokbuild_pr_collision_notice_33694241061_billing_lock.py": "82491704",
     "p/grokbuild-pr-collision-notice-33699600937-billing-lock-20260903-01.md": "0fc75f49",
-    "test_grokbuild_pr_collision_notice_33699600937_billing_lock.py": "959bc058",
+    "test_grokbuild_pr_collision_notice_33699600937_billing_lock.py": "7f8d0b03",
     "p/grokbuild-open-door-guard-33699286785-billing-lock-20260902-01.md": "d22e0707",
-    "test_grokbuild_open_door_guard_33699286785_billing_lock.py": "5a189dec",
+    "test_grokbuild_open_door_guard_33699286785_billing_lock.py": "2424eadd",
     "open_door_guard.py": "877e148d",
-    "test_open_door_guard.py": "6a512428",
+    "test_open_door_guard.py": "cfa7c8a4",
 }
 
 
@@ -64,7 +65,7 @@ class TestGrokbuildPrCollisionNotice33699928196BillingLock(unittest.TestCase):
 
     def test_local_failed_step_still_passes(self) -> None:
         proc = subprocess.run(
-            ["python3", "test_pr_collision_notice.py"],
+            [sys.executable, "test_pr_collision_notice.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

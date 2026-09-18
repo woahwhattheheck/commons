@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/cursor-stealable-lanes-roles-readback-match-20260902-01.md"
@@ -19,29 +20,29 @@ DOOR = ROOT / "stealable-lanes.html"
 
 KEEP = {
     "p/cursor-stealable-lanes-roles-readback-20260902-01.md": "ada92980",
-    "test_cursor_stealable_lanes_readback.py": "bafb3640",
+    "test_cursor_stealable_lanes_readback.py": "60256df6",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
-    "host/stealable_lanes.py": "60ac60e1",
+    "host/stealable_lanes.py": "524275ce",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
-    "test_stealable_lanes.py": "23a902a9",
+    "test_stealable_lanes.py": "1b9ef2a9",
     "ground/STEALABLE_ROLES.json": "ab601590",
-    "ground/STEALABLE_ROLES.md": "66f4feda",
-    "ground/STEALABLE_LANES.json": "68e78277",
-    "ground/STEALABLE_LANES.md": "3743d4f5",
-    "stealable-lanes.html": "a15f15b5",
+    "ground/STEALABLE_ROLES.md": "3a81ebb4",
+    "ground/STEALABLE_LANES.json": "821244b1",
+    "ground/STEALABLE_LANES.md": "6ab6f75f",
+    "stealable-lanes.html": "18d0ae64",
     "p/grok-build-pr8353-caec56f3-terminal-20260902-01.md": "7e8db90d",
-    "lanes.json": "d0acc369",
+    "lanes.json": "1c4569ef",
     "roles.json": "9fb3f2c2",
     "ground/HEAVY_LANES.json": "7849eac9",
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "p/cursor-landed-work-feed-readback-20260902-01.md": "d37eb307",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
-    "autogtm.html": "1009c4cd",
-    "hub_pages.py": "12186f65",
-    "door.js": "c06cc197",
+    "autogtm.html": "5c966110",
+    "hub_pages.py": "673dab89",
+    "door.js": "5899223c",
     "api/mcp.py": "393da756",
-    "ground/OWNER_NOW.md": "a17b0afb",
+    "ground/OWNER_NOW.md": "40f786fe",
 }
 
 
@@ -53,7 +54,7 @@ def git_blob(rel: str) -> str:
 
 def run_helper(*flags: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
-        ["python3", str(HELPER), *flags],
+        [sys.executable, str(HELPER), *flags],
         cwd=ROOT,
         text=True,
         capture_output=True,
@@ -92,7 +93,7 @@ class TestCursorStealableLanesReadbackMatch(unittest.TestCase):
 
     def test_leftover_and_unique_pack_tests_still_pass(self) -> None:
         leftover = subprocess.run(
-            ["python3", "-m", "unittest", "test_stealable_lanes.py"],
+            [sys.executable, "-m", "unittest", "test_stealable_lanes.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -114,7 +115,7 @@ class TestCursorStealableLanesReadbackMatch(unittest.TestCase):
             cwd=ROOT,
         )
         unique = subprocess.run(
-            ["python3", "-m", "unittest", "test_cursor_stealable_lanes_readback.py"],
+            [sys.executable, "-m", "unittest", "test_cursor_stealable_lanes_readback.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

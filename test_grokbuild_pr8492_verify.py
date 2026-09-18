@@ -12,9 +12,9 @@ VERIFY = ROOT / "p/grokbuild-pr8492-verify-20260902-01.md"
 
 KEEP = {
     "p/grokbuild-open-door-guard-33694243180-billing-lock-20260902-01.md": "4d7812f8",
-    "test_grokbuild_open_door_guard_33694243180_billing_lock.py": "c52b09e4",
+    "test_grokbuild_open_door_guard_33694243180_billing_lock.py": "557cc648",
     "open_door_guard.py": "877e148d",
-    "test_open_door_guard.py": "6a512428",
+    "test_open_door_guard.py": "cfa7c8a4",
     ".github/workflows/open-door-guard.yml": "ac6c46c4",
 }
 

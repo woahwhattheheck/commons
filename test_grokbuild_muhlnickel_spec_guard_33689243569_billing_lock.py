@@ -18,12 +18,12 @@ WORKFLOW = ROOT / ".github/workflows/muhlnickel-spec-guard.yml"
 
 KEEP = {
     "p/grokbuild-pr8411-verify-20260902-01.md": "642dea64",
-    "test_grokbuild_pr8411_verify.py": "f2468c3d",
+    "test_grokbuild_pr8411_verify.py": "c1c37c21",
     "p/grok-build-llms-txt-33687829181-billing-lock-20260902-01.md": "3183564c",
-    "test_grokbuild_llms_txt_33687829181_billing_lock.py": "eea1a9f3",
+    "test_grokbuild_llms_txt_33687829181_billing_lock.py": "a93e988e",
     "p/grok-build-llms-txt-billing-lock-20260902-01.md": "cf9c9f40",
-    ".github/workflows/muhlnickel-spec-guard.yml": "098a23f7",
-    "llms_txt.py": "70daec62",
+    ".github/workflows/muhlnickel-spec-guard.yml": "132dc670",
+    "llms_txt.py": "b70aa03d",
 }
 
 

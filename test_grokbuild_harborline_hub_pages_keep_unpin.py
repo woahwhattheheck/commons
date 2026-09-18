@@ -6,6 +6,7 @@ import importlib
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/grokbuild-harborline-hub-pages-keep-unpin-20260902-01.md"
@@ -24,8 +25,8 @@ KEEP_UNREAD = {
     "host/harborline_pack_market_render.py": "cc9a3320",
     "p/cursor-harborline-pack-market-render-readback-20260902-01.md": "6efbac54",
     "p/cursor-harborline-pack-market-render-readback-rematch-20260902-01.md": "f965e00f",
-    "ground/OWNER_NOW.md": "a17b0afb",
-    "autogtm.html": "1009c4cd",
+    "ground/OWNER_NOW.md": "40f786fe",
+    "autogtm.html": "5c966110",
 }
 
 KEEP_MODULES = (
@@ -64,7 +65,7 @@ class GrokbuildHarborlineHubPagesKeepUnpinTest(unittest.TestCase):
     def test_leftover_harborline_and_rematch_now_pass(self) -> None:
         proc = subprocess.run(
             [
-                "python3",
+                sys.executable,
                 "-m",
                 "unittest",
                 "test_harborline_pack_market_render.py",
@@ -85,9 +86,9 @@ class GrokbuildHarborlineHubPagesKeepUnpinTest(unittest.TestCase):
     def test_hub_still_names_live_get_without_remint(self) -> None:
         hub = git_blob("hub_pages.py")
         door = git_blob("door.js")
-        self.assertTrue(hub.startswith("12186f65"), hub)
+        self.assertTrue(hub.startswith("673dab89"), hub)
         self.assertFalse(hub.startswith("14eeedb0"), hub)
-        self.assertTrue(door.startswith("c06cc197"), door)
+        self.assertTrue(door.startswith("5899223c"), door)
         self.assertFalse(door.startswith("1f9e8d14"), door)
         text = (ROOT / "hub_pages.py").read_text(encoding="utf-8")
         self.assertIn(LIVE_GET, text)
@@ -104,7 +105,7 @@ class GrokbuildHarborlineHubPagesKeepUnpinTest(unittest.TestCase):
         self.assertIn("Did **not** remint leftover tests to lift that pin", rematch)
         self.assertIn("want `14eeedb0` got `5ac12648`", rematch)
         helper = subprocess.run(
-            ["python3", str(HELPER), "--json"],
+            [sys.executable, str(HELPER), "--json"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -114,7 +115,7 @@ class GrokbuildHarborlineHubPagesKeepUnpinTest(unittest.TestCase):
         self.assertIn('"verdict": "RENDER"', helper.stdout)
         self.assertIn('"store": "standalone"', helper.stdout)
         refused = subprocess.run(
-            ["python3", str(HELPER), "--send"],
+            [sys.executable, str(HELPER), "--send"],
             cwd=ROOT,
             text=True,
             capture_output=True,

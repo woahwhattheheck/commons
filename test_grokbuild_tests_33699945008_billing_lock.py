@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import open_door_guard as guard
 
 ROOT = Path(__file__).resolve().parent
@@ -20,17 +21,17 @@ WORKFLOW = ROOT / ".github/workflows/tests.yml"
 KEEP = {
     "p/grokbuild-tests-33694253421-billing-lock-20260902-01.md": "da396946",
     "p/grokbuild-tests-33694246830-billing-lock-20260902-01.md": "b07d6192",
-    "test_grokbuild_tests_33694246830_billing_lock.py": "2a3c7b5c",
+    "test_grokbuild_tests_33694246830_billing_lock.py": "b000f3e4",
     "p/grokbuild-tests-battery-33689096444-billing-lock-20260902-01.md": "a7ff1feb",
-    "test_grokbuild_tests_battery_33689096444_billing_lock.py": "7df152ce",
+    "test_grokbuild_tests_battery_33689096444_billing_lock.py": "b41b3721",
     "p/grok-build-llms-txt-33699286770-billing-lock-20260903-01.md": "43c6e5cb",
-    "test_grokbuild_llms_txt_33699286770_billing_lock.py": "21037a27",
+    "test_grokbuild_llms_txt_33699286770_billing_lock.py": "71ad16e0",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daa",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
-    "catalog.html": "71c0c5fd",
-    "hub_pages.py": "12186f65",
-    ".github/workflows/tests.yml": "57d36525",
+    "catalog.html": "68b9b066",
+    "hub_pages.py": "673dab89",
+    ".github/workflows/tests.yml": "92cddb81",
     "open_door_guard.py": "877e148d",
 }
 
@@ -60,7 +61,7 @@ class TestGrokbuildTests33699945008BillingLock(unittest.TestCase):
 
     def test_local_failed_step_still_passes(self) -> None:
         proc = subprocess.run(
-            ["python3", "test_subject_keep.py"],
+            [sys.executable, "test_subject_keep.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

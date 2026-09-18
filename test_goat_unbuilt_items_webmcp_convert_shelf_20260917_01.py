@@ -101,6 +101,7 @@ class TestGoatUnbuiltItemsWebmcpConvertShelf2026091701(unittest.TestCase):
         autopsy = DEALER.read_text(encoding="utf-8")
         commercial = COMMERCIAL.read_text(encoding="utf-8")
         self.assertIn(
+            "https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b",
             autopsy,
         )
         self.assertIn(
@@ -167,6 +168,7 @@ class TestGoatUnbuiltItemsWebmcpConvertShelf2026091701(unittest.TestCase):
                 [],
             )
             forged = page_html.replace(
+                "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
                 "https://buy.stripe.com/not-a-canonical-link",
                 1,
             )

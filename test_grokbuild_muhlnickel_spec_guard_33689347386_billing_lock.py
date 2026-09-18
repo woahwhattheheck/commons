@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/grokbuild-muhlnickel-spec-guard-33689347386-billing-lock-20260902-01.md"
@@ -18,10 +19,10 @@ WORKFLOW = ROOT / ".github/workflows/muhlnickel-spec-guard.yml"
 
 KEEP = {
     "muhlnickel_spec_guard.py": "8bd147aa",
-    "test_muhlnickel_spec_guard.py": "c023622f",
-    ".github/workflows/muhlnickel-spec-guard.yml": "098a23f7",
+    "test_muhlnickel_spec_guard.py": "107fa191",
+    ".github/workflows/muhlnickel-spec-guard.yml": "132dc670",
     "p/grok-build-muhlnickel-spec-guard-33689243569-billing-lock-20260902-01.md": "7032fbcf",
-    "test_grokbuild_muhlnickel_spec_guard_33689243569_billing_lock.py": "9fab6bdd",
+    "test_grokbuild_muhlnickel_spec_guard_33689243569_billing_lock.py": "a2b9339f",
     "p/grokbuild-pr8409-verify-20260902-01.md": "199cc075",
     "p/grokbuild-pr8402-verify-20260902-01.md": "3524e382",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
@@ -55,7 +56,7 @@ class TestGrokbuildMuhlnickelSpecGuard33689347386BillingLock(unittest.TestCase):
 
     def test_local_failed_step_still_passes(self) -> None:
         proc = subprocess.run(
-            ["python3", "muhlnickel_spec_guard.py", "--base", "HEAD^", "--worktree"],
+            [sys.executable, "muhlnickel_spec_guard.py", "--base", "HEAD^", "--worktree"],
             cwd=ROOT,
             text=True,
             capture_output=True,
@@ -64,7 +65,7 @@ class TestGrokbuildMuhlnickelSpecGuard33689347386BillingLock(unittest.TestCase):
         self.assertEqual(proc.returncode, 0, msg=proc.stdout + proc.stderr)
         self.assertIn("MUHLNICKEL SPEC GUARD: clean", proc.stdout)
         tests = subprocess.run(
-            ["python3", "-m", "unittest", "test_muhlnickel_spec_guard"],
+            [sys.executable, "-m", "unittest", "test_muhlnickel_spec_guard"],
             cwd=ROOT,
             text=True,
             capture_output=True,

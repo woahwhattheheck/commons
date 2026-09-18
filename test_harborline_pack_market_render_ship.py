@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 HELPER = ROOT / "host/harborline_pack_market_render_ship.py"
@@ -23,7 +24,7 @@ KEEP = {
     "host/harborline_pack_market_slack_render.py": "a03534da",
     "p/cursor-harborline-pack-market-render-readback-rematch-20260902-01.md": "f965e00f",
     "p/cursor-harborline-pack-market-render-readback-ack-20260902-01.md": "9d221c75",
-    "ground/OWNER_NOW.md": "4b2a58ed",
+    "ground/OWNER_NOW.md": "40f786fe",
 }
 
 
@@ -35,7 +36,7 @@ def git_blob(rel: str) -> str:
 
 def run_helper(*flags: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
-        ["python3", str(HELPER), *flags],
+        [sys.executable, str(HELPER), *flags],
         cwd=ROOT,
         text=True,
         capture_output=True,

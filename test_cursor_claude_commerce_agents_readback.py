@@ -7,6 +7,7 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/cursor-claude-commerce-agents-readback-20260902-01.md"
@@ -18,15 +19,15 @@ KEEP = {
     "p/cursor-claude-commerce-agents-20260902-01.md": "3e48f691",
     "host/commerce_agents.py": "8d2ddf29",
     "ground/COMMERCE_AGENTS.json": "ab6f56a8",
-    "commerce-agents.html": "7e4e621b",
-    ".agents/skills/commerce-agents/SKILL.md": "1c0da1d4",
-    "test_commerce_agents.py": "8ca269cd",
+    "commerce-agents.html": "cbf2325d",
+    ".agents/skills/commerce-agents/SKILL.md": "4cf66eed",
+    "test_commerce_agents.py": "7ec07521",
     "p/cursor-explee-skills-adopt-20260902-01.md": "20db155c",
-    ".agents/skills/autogtm/SKILL.md": "9c944e77",
-    "autogtm.html": "1009c4cd",
+    ".agents/skills/autogtm/SKILL.md": "a3ca5a74",
+    "autogtm.html": "5c966110",
     "p/cursor-big-huge-commerce-agents-20260902-01.md": "fddb5a7c",
     "host/commerce_agents_same_loop.py": "c90f6e50",
-    "test_commerce_agents_same_loop.py": "f45d3a49",
+    "test_commerce_agents_same_loop.py": "a1ab8b26",
     "p/cursor-harborline-commerce-compose-20260902-01.md": "45b7d435",
     "host/harborline_commerce_compose.py": "75128e5d",
     "p/cursor-harborline-commerce-compose-keep-lift-20260902-01.md": "668dd5c4",
@@ -34,9 +35,9 @@ KEEP = {
     "p/cursor-what-a-pack-is-20260902-01.md": "a4e4dd89",
     "p/cursor-pack-is-ready-to-run-20260902-01.md": "897b00ba",
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
-    "hub_pages.py": "12186f65",
-    "door.js": "c06cc197",
-    "ground/OWNER_NOW.md": "a17b0afb",
+    "hub_pages.py": "673dab89",
+    "door.js": "5899223c",
+    "ground/OWNER_NOW.md": "40f786fe",
 }
 
 
@@ -48,7 +49,7 @@ def git_blob(rel: str) -> str:
 
 def run_helper(*flags: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
-        ["python3", str(HELPER), *flags],
+        [sys.executable, str(HELPER), *flags],
         cwd=ROOT,
         text=True,
         capture_output=True,
@@ -98,7 +99,7 @@ class TestCursorClaudeCommerceAgentsReadback(unittest.TestCase):
 
     def test_leftover_tests_still_pass(self) -> None:
         proc = subprocess.run(
-            ["python3", "-m", "unittest", "test_commerce_agents.py"],
+            [sys.executable, "-m", "unittest", "test_commerce_agents.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,

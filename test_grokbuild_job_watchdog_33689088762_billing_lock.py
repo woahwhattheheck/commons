@@ -10,6 +10,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/grok-build-job-watchdog-33689088762-billing-lock-20260902-01.md"
@@ -28,7 +29,7 @@ KEEP = {
     "p/cursor-merge-on-pr-readback-20260902-01.md": "e160b2c3",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "p/grokbuild-pr8414-verify-20260902-01.md": "587cc1cf",
-    "test_grokbuild_pr8414_verify.py": "e750d062",
+    "test_grokbuild_pr8414_verify.py": "e9f5918e",
     "p/grokbuild-pr-collision-notice-33689085107-billing-lock-20260902-01.md": "594b5e71",
     "p/grok-build-llms-txt-33687829181-billing-lock-20260902-01.md": "3183564c",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
@@ -59,7 +60,7 @@ class TestGrokbuildJobWatchdog33689088762BillingLock(unittest.TestCase):
     def test_local_failed_step_still_passes(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             proc = subprocess.run(
-                ["python3", "-m", "harness_wake", "--tick", "--jobs-dir", tmp],
+                [sys.executable, "-m", "harness_wake", "--tick", "--jobs-dir", tmp],
                 cwd=ROOT,
                 text=True,
                 capture_output=True,

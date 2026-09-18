@@ -4,6 +4,7 @@ import importlib.util
 import json
 import unittest
 from pathlib import Path
+import sys
 
 
 ROOT = Path(__file__).resolve().parent
@@ -159,7 +160,7 @@ class ScopeToDeliveryTests(unittest.TestCase):
         import subprocess
         result = subprocess.run(
             [
-                "python3", "host/scope_to_delivery.py", "project",
+                sys.executable,"host/scope_to_delivery.py", "project",
                 "--agreement", "revenue/scope_to_delivery/fixtures/accepted_agreement.json",
                 "--observations", "revenue/scope_to_delivery/fixtures/accepted_observations.json",
                 "--payment", "revenue/scope_to_delivery/fixtures/payment_authorized.json",

@@ -4,11 +4,13 @@
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import open_door_guard as guard
 
 ROOT = Path(__file__).resolve().parent
@@ -30,21 +32,21 @@ WORKFLOW = ROOT / ".github/workflows/commons-discord-cloud.yml"
 KEEP = {
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "p/grok-build-discord-cloud-billing-lock-readback-20260902-01.md": "e14e443b",
-    "test_grok_build_discord_cloud_billing_lock_readback.py": "197da638",
+    "test_grok_build_discord_cloud_billing_lock_readback.py": "dc14be14",
     "p/grok-build-discord-cloud-33689083145-billing-lock-20260902-01.md": "6e34f897",
     "p/grok-build-discord-cloud-33689281288-billing-lock-20260902-01.md": "89fdbcf0",
     "p/grok-build-discord-cloud-33694219370-billing-lock-20260902-01.md": "9dcc171b",
-    "test_grokbuild_discord_cloud_33694219370_billing_lock.py": "71ea6b6e",
+    "test_grokbuild_discord_cloud_33694219370_billing_lock.py": "2c2d165f",
     "p/grok-build-discord-cloud-33699286743-billing-lock-20260902-01.md": "e8d308ed",
-    "test_grokbuild_discord_cloud_33699286743_billing_lock.py": "38d8e7b0",
+    "test_grokbuild_discord_cloud_33699286743_billing_lock.py": "be8205fd",
     "p/grok-build-discord-cloud-33699607389-billing-lock-20260903-01.md": "0a4e42d4",
-    "test_grokbuild_discord_cloud_33699607389_billing_lock.py": "affc64ee",
+    "test_grokbuild_discord_cloud_33699607389_billing_lock.py": "218b8f53",
     "p/grok-build-discord-cloud-33699945007-billing-lock-20260903-01.md": "2d62ec88",
-    "test_grokbuild_discord_cloud_33699945007_billing_lock.py": "c13fbd23",
+    "test_grokbuild_discord_cloud_33699945007_billing_lock.py": "811c2928",
     "p/grok-build-discord-cloud-33699986516-billing-lock-20260903-01.md": "a29c05fc",
-    "test_grokbuild_discord_cloud_33699986516_billing_lock.py": "0bddfb38",
+    "test_grokbuild_discord_cloud_33699986516_billing_lock.py": "2b607217",
     "p/grok-build-discord-cloud-33717741051-billing-lock-20260903-01.md": "b7a4ea0e",
-    "test_grokbuild_discord_cloud_33717741051_billing_lock.py": "e1a42726",
+    "test_grokbuild_discord_cloud_33717741051_billing_lock.py": "ed4adf9d",
     "p/grok-build-discord-cloud-33718131448-billing-lock-20260903-01.md": "861911cb",
     "p/grok-build-discord-cloud-33723595201-billing-lock-20260903-01.md": "5f1426b3",
     "p/grok-discord-cloud-dark-20260831-01.md": "cdbad10b",
@@ -52,9 +54,9 @@ KEEP = {
     "p/grok-build-moving-main-mirror-billing-lock-20260903-01.md": "4550e922",
     "p/grok-build-commons-board-billing-lock-20260903-01.md": "c07bf913",
     "p/grokbuild-slack-service-tags-33717615004-billing-lock-20260903-01.md": "f33a76ef",
-    "test_grokbuild_slack_service_tags_33717615004_billing_lock.py": "5aa976c0",
+    "test_grokbuild_slack_service_tags_33717615004_billing_lock.py": "f417e943",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
-    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "297f868b",
+    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "347eb396",
     "p/grok-build-job-watchdog-33717741080-billing-lock-20260903-01.md": "f3afb926",
     "p/grok-build-llms-txt-33699286770-billing-lock-20260903-01.md": "43c6e5cb",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
@@ -65,7 +67,7 @@ KEEP = {
     "infra/discord/test_commons_discord_bridge.py": "9c623e59",
     "infra/discord/test_windows_runtime.py": "158feb48",
     "infra/discord/assert_ready.py": "ad33fdba",
-    ".github/workflows/commons-discord-cloud.yml": "6f1c1479",
+    ".github/workflows/commons-discord-cloud.yml": "90738ad6",
     "open_door_guard.py": "877e148d",
 }
 
@@ -92,7 +94,9 @@ class TestGrokbuildDiscordCloud33723638521BillingLock(unittest.TestCase):
         self.assertNotIn("continue-on-error: true", yml)
         self.assertNotIn("billing", yml.lower())
         self.assertIn("runs-on: ubuntu-latest", yml)
-        self.assertIn("cancel-in-progress: false", yml)
+        self.assertIn(
+            "cancel-in-progress: ${{ github.event_name == 'schedule' }}", yml
+        )
 
     def test_receipt_is_unique_and_does_not_remint(self) -> None:
         text = RECEIPT.read_text(encoding="utf-8")
@@ -186,7 +190,7 @@ class TestGrokbuildDiscordCloud33723638521BillingLock(unittest.TestCase):
     def test_discord_battery_and_format_still_pass(self) -> None:
         proc = subprocess.run(
             [
-                "python3",
+                sys.executable,
                 "-m",
                 "unittest",
                 "test_commons_discord.py",
@@ -203,7 +207,7 @@ class TestGrokbuildDiscordCloud33723638521BillingLock(unittest.TestCase):
         self.assertIn("Ran 34 tests", proc.stderr)
         fmt = subprocess.run(
             [
-                "python3",
+                sys.executable,
                 "commons_discord.py",
                 "to-discord",
                 "format",
@@ -213,6 +217,7 @@ class TestGrokbuildDiscordCloud33723638521BillingLock(unittest.TestCase):
             text=True,
             capture_output=True,
             check=False,
+            env={**os.environ, "PYTHONIOENCODING": "utf-8"},
         )
         self.assertEqual(fmt.returncode, 0, msg=fmt.stdout + fmt.stderr)
         self.assertIn(
@@ -256,7 +261,7 @@ class TestGrokbuildDiscordCloud33723638521BillingLock(unittest.TestCase):
         result = fix_first.validate(packet)
         self.assertEqual(result["state"], "EXTERNAL_BLOCKER")
         proc = subprocess.run(
-            ["python3", "fix_first.py", "--json", json.dumps(packet)],
+            [sys.executable, "fix_first.py", "--json", json.dumps(packet)],
             cwd=ROOT,
             text=True,
             capture_output=True,

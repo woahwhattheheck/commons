@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 import fix_first
+import sys
 import open_door_guard as guard
 
 ROOT = Path(__file__).resolve().parent
@@ -17,14 +18,14 @@ SIBLING_TEST = ROOT / "test_grokbuild_open_door_guard_33694402752_billing_lock.p
 
 KEEP = {
     "open_door_guard.py": "877e148d",
-    "test_open_door_guard.py": "6a512428",
+    "test_open_door_guard.py": "cfa7c8a4",
     ".github/workflows/open-door-guard.yml": "ac6c46c4",
     "p/grokbuild-open-door-guard-33694402752-billing-lock-20260902-01.md": "e3d789b6",
-    "test_grokbuild_open_door_guard_33694402752_billing_lock.py": "4248a8cb",
+    "test_grokbuild_open_door_guard_33694402752_billing_lock.py": "8086a30f",
     "p/grokbuild-open-door-guard-33689357297-billing-lock-20260902-01.md": "261c9cf6",
-    "test_grokbuild_open_door_guard_33689357297_billing_lock.py": "26e08ff3",
+    "test_grokbuild_open_door_guard_33689357297_billing_lock.py": "e3d7e6ea",
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",
-    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "e535b364",
+    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "7f46b502",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
 }
 
@@ -46,7 +47,7 @@ class TestGrokbuildOpenDoorGuard33699286785BillingLock(unittest.TestCase):
 
     def test_local_failed_step_still_passes(self) -> None:
         proc = subprocess.run(
-            ["python3", "test_open_door_guard.py"],
+            [sys.executable, "test_open_door_guard.py"],
             cwd=ROOT,
             text=True,
             capture_output=True,
