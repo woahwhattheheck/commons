@@ -267,6 +267,83 @@ class RelationshipGuardDirectBoundaryTests(unittest.TestCase):
         finally:
             datetime_module.datetime = original_datetime
 
+    def test_json_transitive_module_rebinding_cannot_weaken_loaded_generation(self):
+        sample = {
+            "z": "\u007f\U0001f600\n",
+            "a": [True, False, None, -7, 1.5, "quote\\\"slash\\\\tab\\t"],
+        }
+        expected_compact = json.dumps(
+            sample,
+            sort_keys=True,
+            separators=(",", ":"),
+            ensure_ascii=True,
+            allow_nan=False,
+        ).encode("ascii")
+        expected_pretty = json.dumps(
+            sample,
+            sort_keys=True,
+            indent=2,
+            ensure_ascii=True,
+            allow_nan=False,
+        )
+        self.assertEqual(guard.canonical_bytes(sample), expected_compact)
+        self.assertEqual(guard._json_text(sample, pretty=True), expected_pretty)
+
+        packet = {"candidate": candidate(), "events": []}
+        raw_packet = json.dumps(packet, sort_keys=True).encode("utf-8")
+        artifact = compile_guard(packet)
+
+        original = {
+            "dumps": guard.json.dumps,
+            "loads": guard.json.loads,
+            "JSONEncoder": guard.json.JSONEncoder,
+            "JSONDecoder": guard.json.JSONDecoder,
+            "encode_basestring_ascii": guard.json.encoder.encode_basestring_ascii,
+            "c_make_encoder": guard.json.encoder.c_make_encoder,
+            "_make_iterencode": guard.json.encoder._make_iterencode,
+            "scanstring": guard.json.decoder.scanstring,
+            "make_scanner": guard.json.scanner.make_scanner,
+        }
+
+        def bomb(*args, **kwargs):
+            raise AssertionError("mutable public json generation used")
+
+        class Bomb:
+            def __init__(self, *args, **kwargs):
+                bomb()
+
+        guard.json.dumps = bomb
+        guard.json.loads = bomb
+        guard.json.JSONEncoder = Bomb
+        guard.json.JSONDecoder = Bomb
+        guard.json.encoder.encode_basestring_ascii = bomb
+        guard.json.encoder.c_make_encoder = bomb
+        guard.json.encoder._make_iterencode = bomb
+        guard.json.decoder.scanstring = bomb
+        guard.json.scanner.make_scanner = bomb
+        try:
+            self.assertEqual(guard.canonical_bytes(sample), expected_compact)
+            self.assertEqual(guard._json_text(sample, pretty=True), expected_pretty)
+            self.assertEqual(guard._decode_json_bytes(raw_packet, "packet"), packet)
+
+            fresh = compile_guard(packet)
+            self.assertEqual(fresh["decision"]["status"], "NO_CONFLICT_FOUND")
+            self.assertFalse(any(fresh["decision"]["authority"].values()))
+
+            checked = verify_guard(packet, artifact)
+            self.assertEqual(checked["fresh_status"], "NO_CONFLICT_FOUND")
+            self.assertFalse(any(checked["authority"].values()))
+        finally:
+            guard.json.dumps = original["dumps"]
+            guard.json.loads = original["loads"]
+            guard.json.JSONEncoder = original["JSONEncoder"]
+            guard.json.JSONDecoder = original["JSONDecoder"]
+            guard.json.encoder.encode_basestring_ascii = original["encode_basestring_ascii"]
+            guard.json.encoder.c_make_encoder = original["c_make_encoder"]
+            guard.json.encoder._make_iterencode = original["_make_iterencode"]
+            guard.json.decoder.scanstring = original["scanstring"]
+            guard.json.scanner.make_scanner = original["make_scanner"]
+
     def test_saved_main_ignores_module_global_cli_rebinding(self):
         saved_main = guard.main
         original = {
