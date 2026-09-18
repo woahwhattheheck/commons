@@ -55,7 +55,7 @@ class TestGrokbuildPr8365Terminal(unittest.TestCase):
         self.assertNotEqual(KEEP.get("test_landed_work_feed_readback.py"), "cb58ab08")
         self.assertTrue(git_blob("test_landed_work_feed.py").startswith("55edf425"))
         self.assertTrue(
-            git_blob("test_landed_work_feed_readback.py").startswith("b55c8954")
+            git_blob("test_landed_work_feed_readback.py").startswith("ac39d344")
         )
         self.assertTrue(
             git_blob("p/grokbuild-pr8365-terminal-20260902-01.md").startswith("212208a2")
