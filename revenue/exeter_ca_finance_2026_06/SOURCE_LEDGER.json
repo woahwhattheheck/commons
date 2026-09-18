@@ -1,0 +1,56 @@
+{
+  "schema": "tjlabs.public_procurement_source_ledger/v1",
+  "generated_at_utc": "2026-09-18T03:00:00Z",
+  "operation": "EXETER-CA-2026-06-MUNICIPAL-FINANCE-ACCEPTANCE-ZSOL-20260917",
+  "commercial_state": "PROPOSED_NOT_ACCEPTED",
+  "opportunity": {
+    "buyer": "City of Exeter",
+    "jurisdiction": "Exeter, California, USA",
+    "solicitation_id": "RFP No. 2026-06",
+    "title": "Municipal Financial Management System Software, Application Hosting, Implementation and Technology Services",
+    "issued_on": "2026-08-31",
+    "due_at_local": "2026-10-02T16:00:00-07:00",
+    "questions_due_at_local": "2026-09-11T17:00:00-07:00",
+    "questions_contact": "Janie Rodriguez, Finance Director",
+    "buyer_contact_authorized_for_this_carrier": false
+  },
+  "sources": [
+    {
+      "id": "EXETER_PROCUREMENT_CURRENT",
+      "authority": "BUYER_FIRST_PARTY_CURRENT_INDEX",
+      "url": "https://cityofexeter.ca.gov/bid-opportunities-and-requests-for-proposals/",
+      "observed_utc": "2026-09-18T02:54:00Z",
+      "supports": [
+        "RFP 2026-06 is listed as a current City procurement opportunity",
+        "issue date 2026-08-31",
+        "proposal deadline 2026-10-02 16:00 Pacific"
+      ]
+    },
+    {
+      "id": "EXETER_RFP_2026_06",
+      "authority": "BUYER_FIRST_PARTY_SOLICITATION",
+      "url": "https://cityofexeter.ca.gov/wp-content/uploads/2026/08/rfp-no.-2026-06-municipal-financial-management-system-software-1.pdf",
+      "observed_utc": "2026-09-18T02:55:00Z",
+      "supports": [
+        "buyer seeks an off-the-shelf municipal financial management system plus hosting, implementation and technology services",
+        "mandatory finance scope includes GL/fund accounting, budgeting, procurement, vendors, AP, AR, payroll, cashiering, cash management, bank reconciliation and reporting",
+        "mandatory utility scope includes customer accounts, rates/fees, billing, payments, integrations and delinquency management",
+        "testing and implementation validation includes system testing, data validation and UAT",
+        "evaluation allocates 20 points to implementation/data conversion and 15 to technology/hosting/security/integration",
+        "minimum qualifications require an established commercially supported government financial/ERP solution and successful municipal or government implementations"
+      ]
+    }
+  ],
+  "source_refresh": {
+    "expected_questions_response_date_local": "2026-09-18",
+    "status": "HOLD_UNTIL_CURRENT_ADDENDA_QA_RECHECK",
+    "reason": "The RFP schedule says written responses to questions are targeted for 2026-09-18; proposal-facing use must recheck the official procurement page before outreach or submission support."
+  },
+  "non_inferences": [
+    "TJLabs is not represented as the municipal ERP software prime",
+    "no candidate prime is known to be bidding from this packet",
+    "no buyer contact or submission is authorized by this packet",
+    "no buyer acceptance, contract, invoice, receivable, payment, cash or recognized revenue exists",
+    "a TJLabs evidence receipt cannot create bank, payroll, ERP, go-live or buyer authority"
+  ]
+}
