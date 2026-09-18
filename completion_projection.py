@@ -115,6 +115,16 @@ def build_marker(
     rel, blob_sha1 = _source_blob(root, operation_id)
     issue_url = str(issue.get("html_url") or issue.get("url") or "")
     pr_url = str(pull_request.get("html_url") or pull_request.get("url") or "")
+    expected_issue_urls = {
+        "https://github.com/woahwhattheheck/commons/issues/%s" % issue_number,
+        "https://api.github.com/repos/woahwhattheheck/commons/issues/%s" % issue_number,
+    }
+    expected_pr_urls = {
+        "https://github.com/woahwhattheheck/commons/pull/%s" % pr_number,
+        "https://api.github.com/repos/woahwhattheheck/commons/pulls/%s" % pr_number,
+    }
+    if issue_url not in expected_issue_urls or pr_url not in expected_pr_urls:
+        raise CompletionEvidenceError("completion evidence is not from this repository")
     return {
         "schema": SCHEMA,
         "state": STATE,
@@ -189,14 +199,26 @@ def marker_is_valid(root: str | os.PathLike[str], row: Any) -> bool:
         number = issue.get("number")
         if not isinstance(number, int) or isinstance(number, bool) or number < 1:
             return False
-        if not str(issue.get("closed_at") or ""):
+        closed_at = str(issue.get("closed_at") or "")
+        if not closed_at:
             return False
-        if merge.get("base") != "main" or not str(merge.get("merged_at") or ""):
+        merged_at = str(merge.get("merged_at") or "")
+        if merge.get("base") != "main" or not merged_at or merged_at > closed_at:
             return False
         if not HEX40_RE.fullmatch(str(merge.get("merge_commit_sha") or "").lower()):
             return False
         pr_number = merge.get("pr_number")
         if not isinstance(pr_number, int) or isinstance(pr_number, bool) or pr_number < 1:
+            return False
+        if issue.get("url") not in {
+            "https://github.com/woahwhattheheck/commons/issues/%s" % number,
+            "https://api.github.com/repos/woahwhattheheck/commons/issues/%s" % number,
+        }:
+            return False
+        if merge.get("url") not in {
+            "https://github.com/woahwhattheheck/commons/pull/%s" % pr_number,
+            "https://api.github.com/repos/woahwhattheheck/commons/pulls/%s" % pr_number,
+        }:
             return False
         rel, blob_sha1 = _source_blob(root, operation_id)
         return source.get("path") == rel and source.get("blob_sha1") == blob_sha1
