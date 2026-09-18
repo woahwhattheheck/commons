@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import copy
 import json
+import os
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
@@ -52,7 +53,13 @@ def ev(name="private-one", *, intent="review_public", sha=SHA, owner=True, secre
 
 
 def compile_at(snap=None, evid=None, now=NOW):
-    return rr._compile_at(snap or snapshot(), evid or evidence(), now=now)
+    return rr._compile_at(
+        snap or snapshot(),
+        evid or evidence(),
+        now=now,
+        _trusted_owner_refs=frozenset({"issue:16003#owner"}),
+        _trusted_archive_refs=frozenset({"issue:16003#archive"}),
+    )
 
 
 def by_repo(packet, name):
@@ -102,11 +109,11 @@ def test_keep_private_never_requires_public_release_classification():
     assert by_repo(packet, "private-one")["reasons"] == ["OWNER_KEEP_PRIVATE"]
 
 
-def test_keep_private_without_owner_authority_holds():
+def test_keep_private_is_conservative_even_without_publication_authority():
     packet = compile_at(evid=evidence([ev(intent="keep_private", owner=False)]))
     row = by_repo(packet, "private-one")
-    assert row["state"] == "HOLD"
-    assert row["reasons"] == ["OWNER_AUTHORITY_NOT_PROVEN"]
+    assert row["state"] == "KEEP_PRIVATE"
+    assert row["reasons"] == ["CONSERVATIVE_KEEP_PRIVATE"]
 
 
 def test_archive_review_requires_explicit_authority_and_no_work_or_consumers():
@@ -186,17 +193,47 @@ def test_packet_receipt_tamper_detected(monkeypatch):
     assert rr.verify_packet(packet, snapshot(), evidence([ev()])) is False
 
 
-def test_verify_recompiles_exact_sources(monkeypatch):
-    packet = compile_at(evid=evidence([ev()]))
+def test_verify_recompiles_exact_sources():
+    packet = rr._compile_at(snapshot(), evidence([ev()]), now=NOW)
     class Clock(datetime):
         @classmethod
         def now(cls, tz=None):
             return NOW if tz is None else NOW.astimezone(tz)
-    monkeypatch.setattr(rr, "datetime", Clock)
-    assert rr.verify_packet(packet, snapshot(), evidence([ev()])) is True
+    assert rr.verify_packet(packet, snapshot(), evidence([ev()]), _clock=Clock) is True
     drift = snapshot()
     drift["repositories"][1]["default_branch_sha"] = SHA2
-    assert rr.verify_packet(packet, drift, evidence([ev()])) is False
+    assert rr.verify_packet(packet, drift, evidence([ev()]), _clock=Clock) is False
+
+
+def test_public_compile_rejects_caller_claimed_authority_without_source_trust():
+    packet = rr._compile_at(snapshot(), evidence([ev()]), now=NOW)
+    row = by_repo(packet, "private-one")
+    assert row["state"] == "HOLD"
+    assert "OWNER_AUTHORITY_NOT_SOURCE_TRUSTED" in row["reasons"]
+
+
+def test_exported_policy_globals_cannot_widen_captured_generation(monkeypatch):
+    monkeypatch.setitem(rr.AUTHORITY, "repository_visibility_mutation_authorized", True)
+    monkeypatch.setitem(rr.AUTHORITY, "publication_safety_certified", True)
+    monkeypatch.setattr(rr, "SECRET_CLEAR", "FINDINGS")
+    monkeypatch.setattr(rr, "PUBLIC_CLASS", "PRIVATE_OR_UNKNOWN")
+    monkeypatch.setattr(rr, "LEGAL_PUBLIC", "UNKNOWN")
+    packet = compile_at(evid=evidence([ev()]))
+    row = by_repo(packet, "private-one")
+    assert row["state"] == "PUBLICATION_REVIEW"
+    assert packet["authority"]["repository_visibility_mutation_authorized"] is False
+    assert packet["authority"]["publication_safety_certified"] is False
+
+
+def test_evidence_row_order_is_receipt_independent():
+    repos = [
+        {"name": "alpha", "visibility": "private", "archived": False, "default_branch": "main", "default_branch_sha": SHA},
+        {"name": "beta", "visibility": "private", "archived": False, "default_branch": "main", "default_branch_sha": SHA2},
+    ]
+    evidence_rows = [ev("alpha", sha=SHA), ev("beta", sha=SHA2)]
+    a = compile_at(snapshot(*repos), evidence(evidence_rows))
+    b = compile_at(snapshot(*reversed(repos)), evidence(list(reversed(evidence_rows))))
+    assert a == b
 
 
 def test_snapshot_stale_or_future_rejected():
@@ -224,6 +261,56 @@ def test_create_exclusive_and_symlink_refusal(tmp_path):
     link = tmp_path / "link"; link.symlink_to(target)
     with pytest.raises(rr.EstateError):
         rr._read_regular(link)
+
+
+def test_read_regular_parent_symlink_is_refused(tmp_path):
+    real = tmp_path / "real"
+    real.mkdir()
+    (real / "input.json").write_text("{}", encoding="utf-8")
+    link = tmp_path / "link"
+    link.symlink_to(real, target_is_directory=True)
+    with pytest.raises(rr.EstateError):
+        rr._read_regular(link / "input.json")
+
+
+def test_read_regular_swap_to_fifo_fails_without_blocking(tmp_path, monkeypatch):
+    source = tmp_path / "input.json"
+    source.write_text("{}", encoding="utf-8")
+    real_open = rr.os.open
+    swapped = False
+
+    def hostile_open(path, flags, *args, **kwargs):
+        nonlocal swapped
+        if kwargs.get("dir_fd") is not None and path == source.name and not swapped:
+            swapped = True
+            os.unlink(source)
+            os.mkfifo(source)
+        return real_open(path, flags, *args, **kwargs)
+
+    monkeypatch.setattr(rr.os, "open", hostile_open)
+    with pytest.raises(rr.EstateError):
+        rr._read_regular(source)
+    assert swapped
+
+
+def test_write_failure_never_unlinks_foreign_successor(tmp_path, monkeypatch):
+    out = tmp_path / "out.json"
+    real_write = rr.os.write
+    triggered = False
+
+    def hostile_write(fd, data):
+        nonlocal triggered
+        if not triggered:
+            triggered = True
+            os.unlink(out)
+            out.write_text("foreign-successor", encoding="utf-8")
+            raise OSError("injected write failure")
+        return real_write(fd, data)
+
+    monkeypatch.setattr(rr.os, "write", hostile_write)
+    with pytest.raises(OSError, match="injected write failure"):
+        rr._write_exclusive(out, "payload")
+    assert out.read_text(encoding="utf-8") == "foreign-successor"
 
 
 def test_archive_replacement_can_be_none_when_no_consumers():
@@ -264,9 +351,15 @@ def _optimized_smoke():
     if by_repo(packet, "private-one")["state"] != "HOLD":
         raise RuntimeError("optimized smoke: private no-evidence hold")
 
+    untrusted = rr._compile_at(snapshot(), evidence([ev()]), now=NOW)
+    if by_repo(untrusted, "private-one")["state"] != "HOLD":
+        raise RuntimeError("optimized smoke: caller authority must remain untrusted")
+    if "OWNER_AUTHORITY_NOT_SOURCE_TRUSTED" not in by_repo(untrusted, "private-one")["reasons"]:
+        raise RuntimeError("optimized smoke: missing source-trust authority fence")
+
     published = compile_at(evid=evidence([ev()]))
     if by_repo(published, "private-one")["state"] != "PUBLICATION_REVIEW":
-        raise RuntimeError("optimized smoke: positive evidence review")
+        raise RuntimeError("optimized smoke: source-trusted positive evidence review")
     if published["authority"]["repository_visibility_mutation_authorized"] is not False:
         raise RuntimeError("optimized smoke: authority ceiling")
 

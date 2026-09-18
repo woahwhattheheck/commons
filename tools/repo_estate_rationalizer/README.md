@@ -17,7 +17,7 @@ It emits one deterministic packet plus Markdown with one state per repo:
 - `ARCHIVE_REVIEW`
 - `HOLD`
 
-A positive `PUBLICATION_REVIEW` is deliberately expensive: it requires exact current branch identity, explicit owner publication authorization, a fresh exact-commit secret scan, public-release content classification, clear legal/IP review, and fresh open-work/dependency observations. `ARCHIVE_REVIEW` additionally requires explicit archive authority and no open PR/issue/claim or active consumer. The tool never mutates GitHub.
+A positive `PUBLICATION_REVIEW` is deliberately expensive: it requires exact current branch identity, a source-trusted owner-authority reference, a fresh exact-commit secret scan, public-release content classification, clear legal/IP review, and fresh open-work/dependency observations. `ARCHIVE_REVIEW` additionally requires a source-trusted archive-authority reference and no open PR/issue/claim or active consumer. Caller-supplied `owner_authorized` / `archive_authorized` booleans are assertions, not trust roots. The shipped generation has no production authority refs source-trusted by default, so private publication/archive requests remain `HOLD` until an exact authority reference is deliberately bound by a reviewed source generation. The tool never mutates GitHub.
 
 `PUBLICATION_REVIEW` / `ARCHIVE_REVIEW` mean “evidence is sufficient for a separate human/operator review,” not “safe to execute automatically.”
 
@@ -59,8 +59,10 @@ Each evidence row binds one exact repository generation and carries:
 - fresh consumer/replacement relation census;
 - explicit archive authority when archive review is requested.
 
-Missing, stale, conflicting or generation-mismatched evidence produces `HOLD`.
+Missing, stale, conflicting, generation-mismatched, or merely caller-asserted authority produces `HOLD`. `keep_private` is intentionally conservative and does not require publication authority. Evidence rows are canonicalized by repository identity before the source digest is computed, so semantically identical row ordering cannot change the packet receipt.
 
 ## Authority ceiling
 
-This package cannot change visibility, archive/delete a repository, move refs, alter Actions, spend money, or certify that publication is legally/safely complete. It reports evidence state only.
+This package cannot change visibility, archive/delete a repository, move refs, alter Actions, spend money, or certify that publication is legally/safely complete. The emitted authority ceiling is captured from a source-literal immutable generation rather than the exported mutable compatibility dictionary. It reports evidence state only.
+
+The dedicated test workflow is retained as `ci/workflow-recipes/repo-estate-rationalizer.yml` rather than an active `.github/workflows` slot. This avoids raising the Commons active-workflow ceiling while preserving an exact reusable recipe for normal and real `python -O` proof.
