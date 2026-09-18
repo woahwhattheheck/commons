@@ -291,5 +291,45 @@ class MuseRuntimeAdoptionGateTests(unittest.TestCase):
             self.assertEqual(cp2.stdout, b"")
 
 
+    def test_cli_hold_status_is_nonzero_for_compile_and_verify(self):
+        now = int(__import__("time").time())
+        p = self.packet(("SELECTED",), capture=now, max_age=60)
+        p["events"][0]["occurred_at"] = __import__("datetime").datetime.fromtimestamp(
+            now - 10, tz=__import__("datetime").timezone.utc
+        ).strftime("%Y-%m-%dT%H:%M:%SZ")
+        with tempfile.TemporaryDirectory() as td:
+            td = Path(td)
+            packet_path = td / "packet.json"
+            diag_path = td / "diag.json"
+            packet_path.write_text(json.dumps(p, separators=(",", ":")), encoding="utf-8")
+            cp = subprocess.run(
+                [sys.executable, "coordination/muse_runtime_adoption_gate.py", "compile", "--input", str(packet_path)],
+                cwd=Path(__file__).parent,
+                capture_output=True,
+                check=False,
+            )
+            self.assertEqual(cp.returncode, 3, cp.stdout + cp.stderr)
+            self.assertEqual(cp.stdout, b"")
+            diagnostic = g.compile_current(p)
+            self.assertEqual(diagnostic["status"], "HOLD_SELECTED_ONLY")
+            diag_path.write_bytes(g.canonical_json(diagnostic))
+            verified = subprocess.run(
+                [
+                    sys.executable,
+                    "coordination/muse_runtime_adoption_gate.py",
+                    "verify",
+                    "--input",
+                    str(packet_path),
+                    "--diagnostic",
+                    str(diag_path),
+                ],
+                cwd=Path(__file__).parent,
+                capture_output=True,
+                check=False,
+            )
+            self.assertEqual(verified.returncode, 3, verified.stdout + verified.stderr)
+            self.assertEqual(verified.stdout, b"")
+
+
 if __name__ == "__main__":
     unittest.main()
