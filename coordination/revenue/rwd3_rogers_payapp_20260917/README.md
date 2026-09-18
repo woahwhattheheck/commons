@@ -46,8 +46,6 @@ Public agenda facts do not establish the owner-side schedule of values, complete
 
 ```bash
 python coordination/revenue/rwd3_rogers_payapp_20260917/verify_packet.py
-python -m unittest test_rwd3_rogers_payapp_owner_packet.py
-python -O -m unittest test_rwd3_rogers_payapp_owner_packet.py
 ```
 
 A valid packet returns `OWNER_PACKET_READY_NO_OUTBOUND`. Any outbound action remains a later, separately censused and Muse-arbitrated operation.
