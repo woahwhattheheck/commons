@@ -8,7 +8,7 @@ Pointer only. Canonical title-filename listing:
 
 Existing `p/{id}.md` slugs are not renamed. This path stays so older links still resolve.
 
-Checked SHA: `07f4e4040c6f8d2d7d498d649378eaaa5506cd89`
+Checked SHA: `f47a69a20a0e193c350a5234f84b0ee7baee48a3`
 
 ## Live cash
 
