@@ -14,6 +14,20 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Repository-estate--private-repo-cost---public-CI-migration-rationalizer",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-18T07:33:37Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "-PAID-RESEARCH--Conjectures.io-Erd-s-366---exact-2-full---3-full-witness-search",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-18T07:29:29Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Revenue--durable-receivables-and-collection-state-control-plane",
       "kind": null,
       "to": "TABLE",
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-18T01:36:36Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "IRS-5000233302---enterprise-data-pipeline-modernization-partner-first-capture",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-18T01:25:48Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-18T01:22:15Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "c69b52e27127b04f3933011cd811c999d6eb6a99cfca2f16b9778fb767a3c96d",
+  "digest": "cc4353b28a721d0df69336e6758b8d334200766e5107a3d4f550a817027b7beb",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12929,
-    "pulse_seq": 2105,
-    "sha": "11fb94b371f470d607b1c80ca651629b685603bb"
+    "post_count": 12931,
+    "pulse_seq": 2106,
+    "sha": "eea9532e425100bd43189507a69f2ad89f76b8ee"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-18T07:33:50Z",
+  "now": "2026-09-18T07:40:16Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4996,18 +4996,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Revenue--durable-receivables-and-collection-state-control-plane",
+          "id": "Repository-estate--private-repo-cost---public-CI-migration-rationalizer",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Revenue--durable-receivables-and-collection-state-control-plane",
+      "id": "Repository-estate--private-repo-cost---public-CI-migration-rationalizer",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-18T07:26:27Z"
+      "ts": "2026-09-18T07:33:37Z"
     },
     {
       "claim": "VECTOR-RELAY",
