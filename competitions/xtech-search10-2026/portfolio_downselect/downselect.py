@@ -68,6 +68,7 @@ SUPPORT_STATES = {"UNKNOWN", "CLEAR", "BLOCKED"}
 SLOT_STATES = {"UNKNOWN", "AVAILABLE", "CONSUMED_OR_RESERVED"}
 TEMPLATE_STATES = {"UNKNOWN", "BOUND", "MISMATCH"}
 OVERLAP_STATES = {"UNKNOWN", "NONE", "POTENTIALLY_SAME", "SUBSTANTIALLY_SAME"}
+EXCLUSIVITY_STATES = {"UNKNOWN", "NOT_EXCLUSIVE", "EXCLUSIVE"}
 EVIDENCE_CLASSES = {"REPO", "OWNER", "PROVIDER", "EXTERNAL_COUNTERPARTY"}
 
 # Hard-coded from the current official competition announcement/RFI and kept
@@ -488,11 +489,44 @@ def _candidate(
     priority = obj["priorityArea"]
     if priority not in PRIORITY_AREAS:
         raise ContractError("INVALID_PRIORITY_AREA", candidate_id)
-    if type(obj["usamrdcExclusive"]) is not bool:
-        raise ContractError("INVALID_USAMRDC_FLAG", candidate_id)
-    overlap = obj["federalSupportOverlap"]
+
+    exclusivity = _exact(
+        obj["usamrdcExclusive"], {"state", "evidenceRef"}, path + ".usamrdcExclusive"
+    )
+    exclusivity_state = exclusivity["state"]
+    if exclusivity_state not in EXCLUSIVITY_STATES:
+        raise ContractError("INVALID_USAMRDC_STATE", candidate_id)
+    if exclusivity_state == "UNKNOWN":
+        if exclusivity["evidenceRef"] is not None:
+            raise ContractError("UNKNOWN_WITH_EVIDENCE", path + ".usamrdcExclusive")
+    else:
+        _consume_evidence(
+            exclusivity["evidenceRef"],
+            binding=f"candidate:{candidate_id}:usamrdcExclusive",
+            allowed_classes={"OWNER"},
+            registry=registry,
+            used=used,
+        )
+
+    overlap_gate = _exact(
+        obj["federalSupportOverlap"],
+        {"state", "evidenceRef"},
+        path + ".federalSupportOverlap",
+    )
+    overlap = overlap_gate["state"]
     if overlap not in OVERLAP_STATES:
         raise ContractError("INVALID_SUPPORT_OVERLAP", candidate_id)
+    if overlap == "UNKNOWN":
+        if overlap_gate["evidenceRef"] is not None:
+            raise ContractError("UNKNOWN_WITH_EVIDENCE", path + ".federalSupportOverlap")
+    else:
+        _consume_evidence(
+            overlap_gate["evidenceRef"],
+            binding=f"candidate:{candidate_id}:federalSupportOverlap",
+            allowed_classes={"OWNER"},
+            registry=registry,
+            used=used,
+        )
 
     criteria = _exact(obj["criteria"], set(CRITERIA_WEIGHTS), path + ".criteria")
     criterion_bp: dict[str, int] = {}
@@ -547,8 +581,8 @@ def _candidate(
         blockers.append("commercial_traction:missing_external_evidence")
     if overlap != "NONE":
         blockers.append(f"federal_support_overlap:{overlap}")
-    if obj["usamrdcExclusive"]:
-        blockers.append("scope:USAMRDC_EXCLUSIVE")
+    if exclusivity_state != "NOT_EXCLUSIVE":
+        blockers.append(f"scope:USAMRDC_EXCLUSIVE:{exclusivity_state}")
     return CandidateProjection(
         candidateId=candidate_id,
         readinessBasisPoints=total_bp,
