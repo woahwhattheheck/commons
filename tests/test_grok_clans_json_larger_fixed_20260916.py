@@ -13,14 +13,13 @@ class T(unittest.TestCase):
         self.assertEqual(
             [p["path"] for p in products],
             [
-                "agent-rescue.html",
                 "dealer-service-lead-rescue.html",
                 "referral-intake-completeness.html",
                 "repair-booking-preflight.html",
                 "plant-downtime-handoff.html",
             ],
         )
-        self.assertEqual([p["price_usd"] for p in products], [29, 199, 199, 199, 199])
+        self.assertEqual([p["price_usd"] for p in products], [199, 199, 199, 199])
         larger = cash["larger_fixed"]
         self.assertEqual([x["path"] for x in larger], ["diagnostic.html", "commercial.html"])
         self.assertEqual(larger[0]["price_usd"], 12000)

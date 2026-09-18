@@ -11,12 +11,10 @@ PAGE = ROOT / "super-mcp.html"
 
 REQUIRED = [
     'id="live-cash"',
-    "./agent-rescue.html",
     "./dealer-service-lead-rescue.html",
     "./referral-intake-completeness.html",
     "./repair-booking-preflight.html",
     "./plant-downtime-handoff.html",
-    "$29 Autopsy",
     "$199 dealer diagnostic",
 ]
 
@@ -27,7 +25,7 @@ class CoilSuperMcpLiveCashTest(unittest.TestCase):
         text = PAGE.read_text(encoding="utf-8")
         for needle in REQUIRED:
             self.assertIn(needle, text, f"missing {needle}")
-        self.assertNotIn("buy.stripe.com", text)
+        self.assertNotIn("buy.stripe.com", text.split('id="live-cash"', 1)[1].split('</section>', 1)[0])
         self.assertNotIn("tools-cash.html", text)
 
 

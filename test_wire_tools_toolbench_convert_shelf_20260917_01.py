@@ -27,7 +27,6 @@ RECEIPT = ROOT / "p" / "wire-tools-toolbench-convert-shelf-20260917-01.md"
 
 ALLOWED_LIVE_BUY_URLS = frozenset(
     {
-        "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
         "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
     }
 )
@@ -36,11 +35,9 @@ BUY_HOST_PATH = re.compile(
     re.IGNORECASE,
 )
 BUY_LABELS = (
-    "Buy Autopsy $29",
     "Buy one White Box hour $250",
 )
 LIVE_CASH_DOORS = (
-    "agent-rescue.html",
     "dealer-service-lead-rescue.html",
     "referral-intake-completeness.html",
     "repair-booking-preflight.html",
@@ -109,7 +106,6 @@ class TestWireToolsToolbenchConvertShelf2026091701(unittest.TestCase):
         for name in (
             "tools.html",
             "toolbench.html",
-            "agent-rescue.html",
             "commercial.html",
             "diagnostic.html",
         ):

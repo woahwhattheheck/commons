@@ -26,7 +26,6 @@ BUY_HOST_PATH_RE = re.compile(r"https?://buy\.stripe\.com/([A-Za-z0-9_-]+)", re.
 DONATE_HOST_PATH_RE = re.compile(r"https?://donate\.stripe\.com/([A-Za-z0-9_-]+)", re.I)
 PAY_CONVERT_SHELF_LIVE_BUYS = frozenset(
     {
-        "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
         "https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e",
         "https://buy.stripe.com/28E9AS70F6378qB2SC43S0w",
         "https://buy.stripe.com/14AfZg1Gl3UZ7mxfFo43S0x",
@@ -35,7 +34,6 @@ PAY_CONVERT_SHELF_LIVE_BUYS = frozenset(
 )
 COMMERCE_CONVERT_SHELF_LIVE_BUYS = frozenset(
     {
-        "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
         "https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b",
         "https://buy.stripe.com/9B600i98N77b9uFeBk43S0c",
         "https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d",

@@ -1,4 +1,4 @@
-"""Hermetic: START.md Live cash names Autopsy $29 + tip-shelf diagnostics."""
+"""Hermetic: START.md Live cash names tip-shelf diagnostics."""
 from pathlib import Path
 START = Path(__file__).resolve().parent / "START.md"
 

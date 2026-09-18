@@ -29,7 +29,6 @@ import commons_publication_policy as publication_policy
 from host import correction_link
 from relay_manifest import NTFY_HOSTS, NTFY_TOPIC
 import exact_body_redact
-import completion_projection
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 POSTS = os.path.join(ROOT, "p")
@@ -55,7 +54,7 @@ PROJECTION_STATUS = {
 # Bump when renderer semantics or the set of projection inputs changes. The
 # protocol component prevents an old receipt for the same post corpus from
 # masquerading as proof for a new renderer.
-PROJECTION_PROTOCOL = "v2"
+PROJECTION_PROTOCOL = "v1"
 SCRATCH_RESET = (
     ".ingest.lock",
     ".push_fail_receipt",
@@ -762,7 +761,7 @@ def doors(parent=False):
 
 
 ASSET_PATHS = [
-    "p", "completion", "by", "to", "memory", "board.html", "board.md", "posts.json", "recent.json", "board.js", "carrier.js",
+    "p", "by", "to", "memory", "board.html", "board.md", "posts.json", "recent.json", "board.js", "carrier.js",
     "court.html", "court.js", "docket.json", "roles.json", "resources.json",
     "books.html", "books.json",
     "lastseen.json", "rejects.json", "removed_posts.json", "durable_gaps.json", "suggestions.json", "presence.json", "commons.css",
@@ -1012,12 +1011,11 @@ def _snapshot(relpaths):
 
 
 def post_source_snapshot():
-    """Digest durable posts plus completion markers; derived HTML stays excluded."""
+    """Digest the canonical post corpus; tracked HTML is deliberately excluded."""
     pdir = os.path.join(ROOT, "p")
     names = []
     if os.path.isdir(pdir):
         names = ["p/" + name for name in os.listdir(pdir) if name.endswith(".md")]
-    names.extend(completion_projection.source_paths(ROOT))
     return _snapshot(names)
 
 
@@ -1044,7 +1042,7 @@ def projection_surface_snapshot():
     """Digest the tracked board surfaces emitted/staged by a full rebuild."""
     paths = []
     for rel in ASSET_PATHS:
-        if rel in ("land", "artifacts", "completion", "projection_state.json", "projection/converged"):
+        if rel in ("land", "artifacts", "projection_state.json", "projection/converged"):
             continue
         if rel == "p":
             pdir = os.path.join(ROOT, "p")
@@ -1083,7 +1081,7 @@ def _write_projection_state(source=None):
         "state": "MEASURED_CONVERGED_WHEN_WRITTEN",
         "source": source,
         "projection": surface,
-        "scope": "p/*.md + completion/operations/*.json -> tracked Commons board surfaces",
+        "scope": "p/*.md -> tracked Commons board surfaces",
         "health_contract": "recompute source and projection digests at exact current HEAD",
         "pages_deployment": "UNVERIFIED",
     }
@@ -1093,7 +1091,7 @@ def _write_projection_state(source=None):
 
 
 def write_projection_convergence():
-    """Write deterministic phase-two proof for posts plus completion markers."""
+    """Write deterministic phase-two proof for the exact p/*.md snapshot."""
     source = post_source_snapshot()
     row = _write_projection_state(source)
     receipt = {
@@ -1101,7 +1099,7 @@ def write_projection_convergence():
         "protocol": PROJECTION_PROTOCOL,
         "state": "CONVERGED_SOURCE_SNAPSHOT",
         "source": source,
-        "scope": "p/*.md + completion/operations/*.json",
+        "scope": "p/*.md",
         "pages_deployment": "UNVERIFIED",
     }
     rel = _projection_receipt_rel(source["sha256"], "converged")
@@ -1849,7 +1847,7 @@ def write_projection_pending():
         "protocol": PROJECTION_PROTOCOL,
         "state": "PENDING_REBAKE",
         "source": source,
-        "scope": "p/*.md + completion/operations/*.json",
+        "scope": "p/*.md",
         "repair": "repository dispatch once after an issue run; five-minute schedule fallback",
         "pages_deployment": "UNVERIFIED",
     }
@@ -2785,19 +2783,13 @@ def rewrite_script_v(text, filename, floor):
     return pat.sub(repl, text)
 
 
-def fill_index_recent(rows, hidden, completed_ids=None):
+def fill_index_recent(rows, hidden):
     path = os.path.join(ROOT, "index.html")
     text = _read(path)
     items = []
-    completed_ids = completed_ids or frozenset()
     for ts, meta, body in rows:
         mid = meta.get("id") or ""
-        if (
-            not mid
-            or mid in hidden
-            or meta.get("invalidated_by")
-            or completion_projection.is_completed_actionable(meta, completed_ids)
-        ):
+        if not mid or mid in hidden or meta.get("invalidated_by"):
             continue
         items.append(article_html(meta, body))
         if len(items) >= 8:
@@ -2866,8 +2858,6 @@ def rebuild_board(rows):
     items = []
     md_items = []
     feed = []
-    active_feed = []
-    completed_ids = completion_projection.completed_operation_ids(ROOT, _completion_merge_is_ancestor)
     seen_from = []
     seen_to = []
     for ts, meta, body in rows:
@@ -2903,20 +2893,14 @@ def rebuild_board(rows):
             rec["body"] = ""
             feed.append(rec)
             continue
-        md_items.append("## %s → %s\n\nid=`%s` · %s\n\n%s\n" % (
-            meta.get("from") or "", meta.get("to") or "", mid, ts, body
-        ))
-        if completion_projection.is_completed_actionable(meta, completed_ids):
-            rec["completed"] = "1"
-            rec["completion_marker"] = completion_projection.marker_rel(mid)
-            feed.append(rec)
-            continue
         n_feed += 1
         if len(items) < chunk_board.BOARD_SEED_N and not meta.get("invalidated_by"):
             items.append(article_html(meta, body))
+        md_items.append("## %s \u2192 %s\n\nid=`%s` \u00b7 %s\n\n%s\n" % (
+            meta.get("from") or "", meta.get("to") or "", mid, ts, body
+        ))
         feed.append(rec)
-        active_feed.append(rec)
-    chunk_board.write_chunks(active_feed, ROOT)
+    chunk_board.write_chunks(feed, ROOT)
     filters = """<p class="filters">
 <label>from <select id="fromFilter">%s</select></label>
 <label>to <select id="toFilter">%s</select></label>
@@ -2953,9 +2937,9 @@ def rebuild_board(rows):
     _write(os.path.join(ROOT, "board.html"), page)
     _write(os.path.join(ROOT, "board.md"), "# Commons board\n\n" + "\n".join(md_items) + "\n")
     _write(os.path.join(ROOT, "posts.json"), json.dumps(feed, indent=2))
-    recent = correction_link.current_recent(active_feed, RECENT_N)
+    recent = correction_link.current_recent(feed, RECENT_N)
     _write(os.path.join(ROOT, "recent.json"), json.dumps(recent, indent=2))
-    fill_index_recent(rows, hidden, completed_ids)
+    fill_index_recent(rows, hidden)
     _write(os.path.join(ROOT, "export.txt"), "\n\n---\n\n".join(
         "%s %s \u2192 %s %s\n%s" % (p["ts"], p["from"], p["to"], p["id"], p["body"])
         for p in feed if p.get("hidden") != "1" and not p.get("invalidated_by")
@@ -2966,14 +2950,13 @@ def rebuild_board(rows):
 def rebuild_by(rows):
     os.makedirs(BY, exist_ok=True)
     hidden = set(hub_pages.mod_state(rows)["hidden"])
-    completed_ids = completion_projection.completed_operation_ids(ROOT, _completion_merge_is_ancestor)
     grouped = {}
     for ts, meta, body in rows:
         src = (meta.get("from") or "").upper()
         mid = meta.get("id") or ""
         if not src:
             continue
-        if mid in hidden or completion_projection.is_completed_actionable(meta, completed_ids):
+        if mid in hidden:
             continue
         grouped.setdefault(src, []).append((ts, meta, body))
     for known in FROM_OK:
@@ -3011,14 +2994,13 @@ def rebuild_by(rows):
 def rebuild_to(rows):
     os.makedirs(TO, exist_ok=True)
     hidden = set(hub_pages.mod_state(rows)["hidden"])
-    completed_ids = completion_projection.completed_operation_ids(ROOT, _completion_merge_is_ancestor)
     grouped = {}
     for ts, meta, body in rows:
         dest = (meta.get("to") or "").upper()
         mid = meta.get("id") or ""
         if not dest:
             continue
-        if mid in hidden or completion_projection.is_completed_actionable(meta, completed_ids):
+        if mid in hidden:
             continue
         grouped.setdefault(dest, []).append((ts, meta, body))
     for known in TO_OK:
@@ -4149,128 +4131,6 @@ def _slack_connector_declared_id(issue, outer_src, outer_dest, outer_id, text, e
     return declared if declared != fallback else ""
 
 
-
-def _completion_merge_is_ancestor(merge_sha):
-    """Fail-closed proof that a retained merge commit is in checked-out HEAD."""
-    try:
-        landed = _git(
-            ["merge-base", "--is-ancestor", str(merge_sha or ""), "HEAD"],
-            git_env(),
-        )
-    except (OSError, subprocess.TimeoutExpired, ValueError):
-        return False
-    return landed.returncode == 0
-
-
-def _completion_marker_for_closed_issue(issue):
-    """Return strongest same-repo main-merge evidence, or None when unproven."""
-    number = issue.get("number")
-    if not isinstance(number, int) or isinstance(number, bool):
-        return None
-    canonical_issue = _gh_api(
-        "https://api.github.com/repos/woahwhattheheck/commons/issues/%s" % number
-    )
-    if not isinstance(canonical_issue, dict):
-        return None
-    issue = canonical_issue
-    if issue.get("state") != "closed" or issue.get("state_reason") != "completed":
-        return None
-    operation_id = completion_projection.stable_operation_id_from_issue(issue)
-    if not operation_id:
-        return None
-    timeline = _gh_api(
-        "https://api.github.com/repos/woahwhattheheck/commons/issues/%s/timeline?per_page=100"
-        % number
-    )
-    if not isinstance(timeline, list):
-        return None
-    candidates = []
-    for event in timeline:
-        if not isinstance(event, dict) or event.get("event") != "cross-referenced":
-            continue
-        source_issue = ((event.get("source") or {}).get("issue") or {})
-        if not isinstance(source_issue, dict) or not source_issue.get("pull_request"):
-            continue
-        if source_issue.get("repository_url") != (
-            "https://api.github.com/repos/woahwhattheheck/commons"
-        ):
-            continue
-        pr_number = source_issue.get("number")
-        if not isinstance(pr_number, int) or isinstance(pr_number, bool):
-            continue
-        pr = _gh_api(
-            "https://api.github.com/repos/woahwhattheheck/commons/pulls/%s" % pr_number
-        )
-        if not isinstance(pr, dict):
-            continue
-        try:
-            marker = completion_projection.build_marker(ROOT, operation_id, issue, pr)
-        except completion_projection.CompletionEvidenceError:
-            continue
-        merge_sha = marker["merge"]["merge_commit_sha"]
-        if not _completion_merge_is_ancestor(merge_sha):
-            continue
-        candidates.append(marker)
-    if not candidates:
-        return None
-    candidates.sort(
-        key=lambda row: (row["merge"]["merged_at"], row["merge"]["pr_number"])
-    )
-    return candidates[-1]
-
-
-def _handle_completion_issue_event(ev):
-    """Project close/reopen state without re-ingesting the issue as a post."""
-    action = str(ev.get("action") or "")
-    issue = ev.get("issue") or {}
-    number = issue.get("number")
-    if not isinstance(number, int) or isinstance(number, bool) or number < 1:
-        print("COMPLETION_HOLD reason=missing_issue_number", flush=True)
-        return 0
-    if action == "reopened":
-        removed = completion_projection.remove_markers_for_issue(ROOT, number)
-        print(
-            "COMPLETION_REOPEN issue=%s removed=%s ids=%s"
-            % (number, len(removed), ",".join(removed)),
-            flush=True,
-        )
-        return 0
-    if action != "closed":
-        return 0
-    marker = _completion_marker_for_closed_issue(issue)
-    if marker is None:
-        print(
-            "COMPLETION_HOLD issue=%s reason=no_verified_main_merge_or_identity"
-            % number,
-            flush=True,
-        )
-        return 0
-    operation_id = marker["operation_id"]
-    try:
-        state = completion_projection.write_marker(
-            ROOT, marker, _completion_merge_is_ancestor
-        )
-    except completion_projection.CompletionEvidenceError as exc:
-        print(
-            "COMPLETION_HOLD id=%s issue=%s reason=%s"
-            % (operation_id, number, str(exc)),
-            flush=True,
-        )
-        return 0
-    print(
-        "COMPLETION_%s id=%s issue=%s pr=%s merge=%s"
-        % (
-            state.upper(),
-            operation_id,
-            number,
-            marker["merge"]["pr_number"],
-            marker["merge"]["merge_commit_sha"],
-        ),
-        flush=True,
-    )
-    return 0
-
-
 def ingest_github_event():
     path = os.environ.get("GITHUB_EVENT_PATH")
     if not path or not os.path.isfile(path):
@@ -4278,11 +4138,6 @@ def ingest_github_event():
     try:
         ev = json.loads(_read(path))
     except json.JSONDecodeError:
-        return 0
-    action = str(ev.get("action") or "opened")
-    if action in ("closed", "reopened"):
-        return _handle_completion_issue_event(ev)
-    if action != "opened":
         return 0
     issue = ev.get("issue") or {}
     src, dest, mid, text, extra = _issue_post_fields(issue)

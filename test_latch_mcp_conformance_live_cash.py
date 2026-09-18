@@ -3,7 +3,7 @@
 
 GOAT convert leftover `goat-mcp-conformance-checkout-wire-20260917-01`
 wires the existing livemode Payment Links as static/noscript CTAs so checkout
-does not wait on catalog hydration. Live-cash Autopsy/$199 pointers stay.
+does not wait on catalog hydration. Live-cash $199/$199 pointers stay.
 """
 from __future__ import annotations
 
@@ -16,12 +16,10 @@ RECEIPT_RUN = "https://buy.stripe.com/fZudR8bgV637fT3ctc43S0r"
 SAME_DAY = "https://buy.stripe.com/14AeVcgBf2QV5epbp843S0s"
 REQUIRED = [
     'id="live-cash"',
-    "./agent-rescue.html",
     "./dealer-service-lead-rescue.html",
     "./referral-intake-completeness.html",
     "./repair-booking-preflight.html",
     "./plant-downtime-handoff.html",
-    "$29 Autopsy",
     "$199 dealer diagnostic",
     RECEIPT_RUN,
     SAME_DAY,

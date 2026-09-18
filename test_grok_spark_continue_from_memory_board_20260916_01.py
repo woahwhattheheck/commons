@@ -78,7 +78,7 @@ class TestGrokSparkContinueFromMemoryBoard2026091601(unittest.TestCase):
         self.assertNotIn("buy.stripe.com", STAGER.read_text(encoding="utf-8"))
 
     def test_product_pages_untouched(self):
-        for name in ("diagnostic.html", "commercial.html", "agent-rescue.html"):
+        for name in ("diagnostic.html", "commercial.html"):
             self.assertTrue((ROOT / name).is_file(), name)
 
 

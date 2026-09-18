@@ -40,7 +40,7 @@ _ID_DATE = re.compile(r"(20\d{6})(?:T(\d{6})Z)?")
 
 
 def _ok(rec):
-    if rec.get("hidden") == "1" or rec.get("completed") == "1":
+    if rec.get("hidden") == "1":
         return False
     board = str(rec.get("board") or "").upper()
     lane = str(rec.get("lane") or "").upper()

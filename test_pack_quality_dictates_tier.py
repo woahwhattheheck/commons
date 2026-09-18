@@ -21,7 +21,7 @@ KEEP = {
     "p/cursor-since-you-last-looked-20260902-01.md": "003828c9",
     "host/since_you_last_looked.py": "3578783c",
     "p/cursor-commons-slack-full-body-20260902-01.md": "86f4eddc",
-    "host/commons_slack_full_body.py": "d5338810",
+    "host/commons_slack_full_body.py": "1a0b2d58",
     "host/slack_mirror.py": "72c0844e",
     "slack_ingest.py": "a35169fe",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",

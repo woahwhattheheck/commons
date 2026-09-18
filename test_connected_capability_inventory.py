@@ -116,6 +116,27 @@ class ConnectedCapabilityInventoryTests(unittest.TestCase):
         self.assertEqual(row["allocation"], "ACTIVATE_FIRST")
         self.assertIn("no first inbox yet", row["value"])
 
+    def test_armory_rows_are_present_and_activation_only(self) -> None:
+        rows = {row["id"]: row for row in self.catalog["providers"]}
+        expected = {
+            "groq-api", "cerebras-api", "e2b", "langfuse", "zep",
+            "openrouter", "firecrawl", "parallel", "alibaba-cloud",
+        }
+        self.assertTrue(expected <= rows.keys())
+        for provider_id in expected:
+            row = rows[provider_id]
+            self.assertEqual(row["authority"], "SHARED_ALL_CARRIERS")
+            self.assertEqual(row["allocation"], "ACTIVATE_FIRST")
+
+    def test_armory_source_rows_have_only_public_metadata_axes(self) -> None:
+        expected = {
+            "groq-api", "cerebras-api", "e2b", "langfuse", "zep",
+            "openrouter", "firecrawl", "parallel", "alibaba-cloud",
+        }
+        rows = {row["id"]: row for row in self.source["providers"]}
+        for provider_id in expected:
+            self.assertEqual(set(rows[provider_id]), inventory.REQUIRED_PROVIDER_FIELDS)
+
     def test_catalog_is_deterministic_and_input_is_not_mutated(self) -> None:
         before = copy.deepcopy(self.source)
         first = inventory.compile_catalog(self.source)

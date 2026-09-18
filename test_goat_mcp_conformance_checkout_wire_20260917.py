@@ -27,7 +27,6 @@ PLINKS = {
     "mcp-conformance-same-day-repair": "plink_1UEGWqATH4EDE7XDatjbiRHb",
 }
 SIBLING_RAILS = {
-    "agent-rescue.html": "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
     "dealer-service-lead-rescue.html": "https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b",
     "referral-intake-completeness.html": "https://buy.stripe.com/9B600i98N77b9uFeBk43S0c",
     "repair-booking-preflight.html": "https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d",

@@ -24,12 +24,14 @@
   "component_freshness": {
     "account_roles": "2026-09-07T10:02:06Z",
     "github_portfolio": "2026-09-07T04:35:09Z",
+    "provider_armory": "2026-09-18T03:00:37Z",
     "tool_fleet": "2026-09-07T04:08:47Z"
   },
   "durable_evidence": {
-    "current_main": "https://github.com/woahwhattheheck/commons/commit/4da8a89435a5a04ce460ee28c041ed868bb6328a",
+    "current_main": "https://github.com/woahwhattheheck/commons/commit/d66ac9862e3448e2bff54c7386ce27f5a81b3640",
     "owner_correction": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788305523796789?thread_ts=1788304349.282199&cid=C0BRGMDQB6G",
     "peer_handoff_and_build_order": "https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1788305514110759",
+    "provider_armory_issue": "https://github.com/woahwhattheheck/commons/issues/15900",
     "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788755643262339"
   },
   "github_portfolio": {
@@ -160,7 +162,8 @@
     "No literal password, token, API secret, OAuth credential, recovery link, verification link, card data, or bank data persisted.",
     "No Claude use, delegation, measurement, quota publication, review, or file mutation.",
     "No Grok submission or token spend.",
-    "No prospect outreach, resend, deployment, device action, payment, revenue, settlement, payout, or cash."
+    "No prospect outreach, resend, deployment, device action, payment, revenue, settlement, payout, or cash.",
+    "No armory row claims a callable adapter, provider execution, quota, spend, or value merely from account or credential existence."
   ],
   "policy": {
     "admission_gate": false,
@@ -213,6 +216,27 @@
       "source_kind": "CONNECTED_APP_PROBE",
       "stage": "REACHABLE",
       "value": "Connected Airtable workspace with 29 tools."
+    },
+    {
+      "allocation": "ACTIVATE_FIRST",
+      "authority": "SHARED_ALL_CARRIERS",
+      "capacity": "DECLARED",
+      "condition": "ACTIVE_UNKNOWN",
+      "consumers": [
+        "compute workers",
+        "hosting experiments"
+      ],
+      "evidence": "Commons issue #15900 records an Alibaba Cloud account/SSO surface only. API credential, callable adapter, quota, and execution are not claimed.",
+      "freshness": "ACCOUNT_RECEIPT",
+      "holder": "Commons",
+      "id": "alibaba-cloud",
+      "kind": "CLOUD_COMPUTE",
+      "last_use": "ACCOUNT_SURFACE_ONLY",
+      "mutation": "INTEGRATE_SHARED_ADAPTER_THEN_TASK_SCOPED",
+      "route_state": "ACTIVATE_FIRST",
+      "source_kind": "ACCOUNT_AND_SSO_RECEIPT",
+      "stage": "AVAILABLE",
+      "value": "Alibaba Cloud account/SSO surface is present; API credential and callable Commons adapter are not proven."
     },
     {
       "allocation": "CALLABLE_WITH_CONSTRAINT",
@@ -279,6 +303,27 @@
       "source_kind": "EMAIL_RECEIPT",
       "stage": "AVAILABLE",
       "value": "Cal.com signup confirmed."
+    },
+    {
+      "allocation": "ACTIVATE_FIRST",
+      "authority": "SHARED_ALL_CARRIERS",
+      "capacity": "LIVE",
+      "condition": "CONSTRAINED",
+      "consumers": [
+        "model workers",
+        "inference experiments"
+      ],
+      "evidence": "Commons issue #15900 records the 2026-09-17 Cerebras credential as vaulted/verified without exposing its value; callable integration remains unproven.",
+      "freshness": "SWARM_ARMORY_RECEIPT",
+      "holder": "Commons",
+      "id": "cerebras-api",
+      "kind": "MODEL_INFERENCE_API",
+      "last_use": "NOT_YET_SHARED_ADAPTER",
+      "mutation": "INTEGRATE_SHARED_ADAPTER_THEN_TASK_SCOPED",
+      "route_state": "ACTIVATE_FIRST",
+      "source_kind": "SWARM_ARMORY_RECEIPT",
+      "stage": "AVAILABLE",
+      "value": "Shared Cerebras provider capacity is vaulted; a callable Commons adapter is not yet proven."
     },
     {
       "allocation": "CALLABLE_WITH_CONSTRAINT",
@@ -409,6 +454,48 @@
       "value": "Connected Dropbox Basic account, ChatGPT/Google connections, and file-request capability."
     },
     {
+      "allocation": "ACTIVATE_FIRST",
+      "authority": "SHARED_ALL_CARRIERS",
+      "capacity": "LIVE",
+      "condition": "CONSTRAINED",
+      "consumers": [
+        "sandbox workers",
+        "isolated execution"
+      ],
+      "evidence": "Commons issue #15900 records the 2026-09-17 E2B credential as vaulted/verified without exposing its value; callable integration remains unproven.",
+      "freshness": "SWARM_ARMORY_RECEIPT",
+      "holder": "Commons",
+      "id": "e2b",
+      "kind": "SANDBOX_COMPUTE",
+      "last_use": "NOT_YET_SHARED_ADAPTER",
+      "mutation": "INTEGRATE_SHARED_ADAPTER_THEN_TASK_SCOPED",
+      "route_state": "ACTIVATE_FIRST",
+      "source_kind": "SWARM_ARMORY_RECEIPT",
+      "stage": "AVAILABLE",
+      "value": "Shared E2B provider capacity is vaulted; a callable Commons adapter is not yet proven."
+    },
+    {
+      "allocation": "ACTIVATE_FIRST",
+      "authority": "SHARED_ALL_CARRIERS",
+      "capacity": "LIVE",
+      "condition": "CONSTRAINED",
+      "consumers": [
+        "research workers",
+        "web extraction"
+      ],
+      "evidence": "Commons issue #15900 records the 2026-09-17 Firecrawl credential as vaulted/verified without exposing its value; callable integration remains unproven.",
+      "freshness": "SWARM_ARMORY_RECEIPT",
+      "holder": "Commons",
+      "id": "firecrawl",
+      "kind": "WEB_EXTRACTION",
+      "last_use": "NOT_YET_SHARED_ADAPTER",
+      "mutation": "INTEGRATE_SHARED_ADAPTER_THEN_TASK_SCOPED",
+      "route_state": "ACTIVATE_FIRST",
+      "source_kind": "SWARM_ARMORY_RECEIPT",
+      "stage": "AVAILABLE",
+      "value": "Shared Firecrawl provider capacity is vaulted; a callable Commons adapter is not yet proven."
+    },
+    {
       "allocation": "CALLABLE_WITH_CONSTRAINT",
       "authority": "SHARED_ALL_CARRIERS",
       "capacity": "LIVE",
@@ -495,6 +582,27 @@
       "value": "Two staggered Grokbot token pools exposed by Heavy and the second Ultimate account."
     },
     {
+      "allocation": "ACTIVATE_FIRST",
+      "authority": "SHARED_ALL_CARRIERS",
+      "capacity": "LIVE",
+      "condition": "CONSTRAINED",
+      "consumers": [
+        "model workers",
+        "inference experiments"
+      ],
+      "evidence": "Commons issue #15900 records the 2026-09-17 Groq credential as vaulted/verified without exposing its value; callable integration remains unproven.",
+      "freshness": "SWARM_ARMORY_RECEIPT",
+      "holder": "Commons",
+      "id": "groq-api",
+      "kind": "MODEL_INFERENCE_API",
+      "last_use": "NOT_YET_SHARED_ADAPTER",
+      "mutation": "INTEGRATE_SHARED_ADAPTER_THEN_TASK_SCOPED",
+      "route_state": "ACTIVATE_FIRST",
+      "source_kind": "SWARM_ARMORY_RECEIPT",
+      "stage": "AVAILABLE",
+      "value": "Shared Groq provider capacity is vaulted; a callable Commons adapter is not yet proven."
+    },
+    {
       "allocation": "DISCOVER_IN_CARRIER",
       "authority": "SHARED_ALL_CARRIERS",
       "capacity": "LIVE",
@@ -561,6 +669,27 @@
     {
       "allocation": "ACTIVATE_FIRST",
       "authority": "SHARED_ALL_CARRIERS",
+      "capacity": "LIVE",
+      "condition": "CONSTRAINED",
+      "consumers": [
+        "agent observability",
+        "evaluation workers"
+      ],
+      "evidence": "Commons issue #15900 records the 2026-09-17 Langfuse credential as vaulted/verified without exposing its value; callable integration remains unproven.",
+      "freshness": "SWARM_ARMORY_RECEIPT",
+      "holder": "Commons",
+      "id": "langfuse",
+      "kind": "OBSERVABILITY",
+      "last_use": "NOT_YET_SHARED_ADAPTER",
+      "mutation": "INTEGRATE_SHARED_ADAPTER_THEN_TASK_SCOPED",
+      "route_state": "ACTIVATE_FIRST",
+      "source_kind": "SWARM_ARMORY_RECEIPT",
+      "stage": "AVAILABLE",
+      "value": "Shared Langfuse provider capacity is vaulted; a callable Commons adapter is not yet proven."
+    },
+    {
+      "allocation": "ACTIVATE_FIRST",
+      "authority": "SHARED_ALL_CARRIERS",
       "capacity": "DECLARED",
       "condition": "ACTIVE_UNKNOWN",
       "consumers": [
@@ -605,6 +734,27 @@
     {
       "allocation": "ACTIVATE_FIRST",
       "authority": "SHARED_ALL_CARRIERS",
+      "capacity": "LIVE",
+      "condition": "CONSTRAINED",
+      "consumers": [
+        "model workers",
+        "routing experiments"
+      ],
+      "evidence": "Commons issue #15900 records the 2026-09-17 OpenRouter credential as vaulted/verified without exposing its value; callable integration remains unproven.",
+      "freshness": "SWARM_ARMORY_RECEIPT",
+      "holder": "Commons",
+      "id": "openrouter",
+      "kind": "MODEL_ROUTER_API",
+      "last_use": "NOT_YET_SHARED_ADAPTER",
+      "mutation": "INTEGRATE_SHARED_ADAPTER_THEN_TASK_SCOPED",
+      "route_state": "ACTIVATE_FIRST",
+      "source_kind": "SWARM_ARMORY_RECEIPT",
+      "stage": "AVAILABLE",
+      "value": "Shared OpenRouter provider capacity is vaulted; a callable Commons adapter is not yet proven."
+    },
+    {
+      "allocation": "ACTIVATE_FIRST",
+      "authority": "SHARED_ALL_CARRIERS",
       "capacity": "DECLARED",
       "condition": "CONSTRAINED",
       "consumers": [
@@ -623,6 +773,27 @@
       "source_kind": "EMAIL_RECEIPT",
       "stage": "AVAILABLE",
       "value": "Oracle Cloud verification receipt."
+    },
+    {
+      "allocation": "ACTIVATE_FIRST",
+      "authority": "SHARED_ALL_CARRIERS",
+      "capacity": "LIVE",
+      "condition": "CONSTRAINED",
+      "consumers": [
+        "research workers",
+        "data gathering"
+      ],
+      "evidence": "Commons issue #15900 records the 2026-09-17 Parallel credential as vaulted/verified without exposing its value and records a provider-entitlement constraint; callable integration remains unproven.",
+      "freshness": "SWARM_ARMORY_RECEIPT",
+      "holder": "Commons",
+      "id": "parallel",
+      "kind": "RESEARCH_API",
+      "last_use": "NOT_YET_SHARED_ADAPTER",
+      "mutation": "INTEGRATE_SHARED_ADAPTER_THEN_TASK_SCOPED",
+      "route_state": "ACTIVATE_FIRST",
+      "source_kind": "SWARM_ARMORY_RECEIPT",
+      "stage": "AVAILABLE",
+      "value": "Shared Parallel provider capacity is vaulted; a callable Commons adapter is not yet proven and provider entitlement is constrained."
     },
     {
       "allocation": "ACTIVATE_FIRST",
@@ -832,21 +1003,42 @@
       "source_kind": "EMAIL_RECEIPT",
       "stage": "REACHABLE",
       "value": "Zapier account connected with Google and MCP setup receipt."
+    },
+    {
+      "allocation": "ACTIVATE_FIRST",
+      "authority": "SHARED_ALL_CARRIERS",
+      "capacity": "LIVE",
+      "condition": "CONSTRAINED",
+      "consumers": [
+        "agent memory experiments",
+        "retrieval workers"
+      ],
+      "evidence": "Commons issue #15900 records the 2026-09-17 Zep credential as vaulted/verified without exposing its value; callable integration remains unproven.",
+      "freshness": "SWARM_ARMORY_RECEIPT",
+      "holder": "Commons",
+      "id": "zep",
+      "kind": "AGENT_MEMORY_DATA",
+      "last_use": "NOT_YET_SHARED_ADAPTER",
+      "mutation": "INTEGRATE_SHARED_ADAPTER_THEN_TASK_SCOPED",
+      "route_state": "ACTIVATE_FIRST",
+      "source_kind": "SWARM_ARMORY_RECEIPT",
+      "stage": "AVAILABLE",
+      "value": "Shared Zep provider capacity is vaulted; a callable Commons adapter is not yet proven."
     }
   ],
   "schema": "commons-connected-capabilities/v1",
   "snapshot": {
-    "base_main_sha": "42df8480bedf254b121a179ea5c7b2f51747fb1b",
-    "observed_at": "2026-09-07T10:22:14Z",
+    "base_main_sha": "d66ac9862e3448e2bff54c7386ce27f5a81b3640",
+    "observed_at": "2026-09-18T03:00:37Z",
     "route_rule": "All Commons carriers may consume all shared resources; Claude is the sole owner-handled exception.",
     "secret_rule": "Share account roles, business identity, services, quotas, and routes; never persist passwords, tokens, recovery links, verification links, or payment credentials.",
-    "source_watermark": "2026-09-07T07:11:48Z",
+    "source_watermark": "2026-09-18T03:00:37Z",
     "truth_rule": "Exposure, successful probe, lifecycle stage, condition, authority, mutation, consumption, and value are independent facts."
   },
   "summary": {
-    "activation_or_discovery": 12,
+    "activation_or_discovery": 21,
     "allocation_counts": {
-      "ACTIVATE_FIRST": 5,
+      "ACTIVATE_FIRST": 14,
       "CALLABLE": 6,
       "CALLABLE_WITH_CONSTRAINT": 10,
       "DISCOVER_IN_CARRIER": 7,
@@ -855,20 +1047,20 @@
     },
     "authority_counts": {
       "OWNER_ONLY": 1,
-      "SHARED_ALL_CARRIERS": 30
+      "SHARED_ALL_CARRIERS": 39
     },
     "callable_now": 16,
     "condition_counts": {
-      "ACTIVE_UNKNOWN": 8,
-      "CONSTRAINED": 14,
+      "ACTIVE_UNKNOWN": 9,
+      "CONSTRAINED": 22,
       "HELD": 1,
       "IDLE": 1,
       "LIVE": 7
     },
     "owner_handled": 1,
-    "resources": 31,
+    "resources": 40,
     "stage_counts": {
-      "AVAILABLE": 13,
+      "AVAILABLE": 22,
       "EXERCISED": 1,
       "PRODUCING": 14,
       "REACHABLE": 3

@@ -21,6 +21,11 @@ COMPOSIO_RECEIPT = (
     "20260830-composio-1a053aa4f8a0014a.json"
 )
 
+SIGNOZ_RECEIPT = (
+    "revenue/payment_ready/outreach_receipts/"
+    "20260915-signoz-1a0a32516d82ccb0.json"
+)
+
 
 def qualified_prospect() -> dict:
     return {
@@ -57,6 +62,7 @@ class SmartOutreachTests(unittest.TestCase):
         self.assertEqual(decisions["composio"], "HOLD_DO_NOT_RESEND")
         signoz = next(item for item in plan["items"] if item["prospect_id"] == "signoz")
         self.assertIn("REJECTED_AS_BUYER", " ".join(signoz["disqualifiers"]))
+        self.assertEqual(signoz["collision_receipts"], [SIGNOZ_RECEIPT])
         self.assertEqual(
             signoz["next_action"],
             "retain suppression; no draft and no transport handoff",
@@ -84,6 +90,32 @@ class SmartOutreachTests(unittest.TestCase):
         self.assertEqual(receipt["evidence"]["gmail_thread_message_count"], 1)
         self.assertEqual(
             receipt["evidence"]["canonical_crm_record"], "rec7R1lsHI4m51Cn1"
+        )
+        self.assertIs(receipt["dedupe"]["do_not_resend"], True)
+        self.assertEqual(receipt["response_state"], "NO_REPLY_OBSERVED")
+        self.assertIs(receipt["facts"]["cash_claimed"], False)
+        self.assertEqual(receipt["facts"]["collected_cash_usd"], 0)
+
+    def test_signoz_gmail_receipt_is_source_bound(self) -> None:
+        receipt = smart.read_object(ROOT / SIGNOZ_RECEIPT)
+        self.assertEqual(receipt["target_id"], "signoz")
+        self.assertEqual(receipt["organization"], "SigNoz")
+        self.assertEqual(receipt["recipient_email"], "dev@signoz.io")
+        self.assertEqual(receipt["provider"], "GMAIL")
+        self.assertEqual(
+            receipt["provider_reference"], "gmail:message:1a0a32516d82ccb0"
+        )
+        self.assertEqual(receipt["evidence"]["gmail_thread_id"], "1a0a32516d82ccb0")
+        self.assertEqual(receipt["evidence"]["gmail_thread_message_count"], 1)
+        self.assertEqual(
+            receipt["evidence"]["canonical_crm_record"], "recAejCRStalFim0K"
+        )
+        self.assertEqual(
+            receipt["evidence"]["public_slack_ts"], "1789443531.724309"
+        )
+        self.assertEqual(
+            receipt["message_contract"]["sha256"],
+            "eed5d79110953834f857cbc27dda257ac732017dab367eab144bf3ae5af448e3",
         )
         self.assertIs(receipt["dedupe"]["do_not_resend"], True)
         self.assertEqual(receipt["response_state"], "NO_REPLY_OBSERVED")

@@ -32,7 +32,6 @@ BUY_HTTPS_URL_RE = re.compile(r"https://buy\.stripe\.com/[A-Za-z0-9_-]+")
 HTTP_BUY_URL_RE = re.compile(r"http://buy\.stripe\.com/", re.I)
 PAY_CONVERT_SHELF_LIVE_BUYS = frozenset(
     {
-        "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
         "https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e",
         "https://buy.stripe.com/28E9AS70F6378qB2SC43S0w",
         "https://buy.stripe.com/14AfZg1Gl3UZ7mxfFo43S0x",
@@ -41,7 +40,6 @@ PAY_CONVERT_SHELF_LIVE_BUYS = frozenset(
 )
 COMMERCE_CONVERT_SHELF_LIVE_BUYS = frozenset(
     {
-        "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
         "https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b",
         "https://buy.stripe.com/9B600i98N77b9uFeBk43S0c",
         "https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d",
@@ -54,7 +52,6 @@ COMMERCE_CONVERT_SHELF_LIVE_BUYS = frozenset(
 )
 PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS = frozenset(
     {
-        "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
         "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
     }
 )
@@ -97,6 +94,7 @@ CONVERT_SHELF_LIVE_BUYS = {
     "interconnect.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "merge-on-pr.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "landed-work.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "owner-now-revenue.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "ace-qat-thermal-rheology-capacity-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "agriseed-rush-work-allocator-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "ait-mn-metrc-capacity-gate.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
