@@ -7,13 +7,16 @@ import tempfile
 import unittest
 from datetime import datetime, timedelta, timezone
 
+TEST_KEY_HEX = "31" * 32
+TEST_KEY = bytes.fromhex(TEST_KEY_HEX)
+_PREIMPORT_KEY = os.environ.get("PAYOFF_PATH_EVIDENCE_AUTHORITY_KEY_HEX")
+os.environ["PAYOFF_PATH_EVIDENCE_AUTHORITY_KEY_HEX"] = TEST_KEY_HEX
+
 from revenue.payoff_path_ledger import core
 from revenue.payoff_path_ledger.cli import main as cli_main
 
 NOW = datetime(2026, 9, 17, 20, 30, 0, tzinfo=timezone.utc)
 A, B, C = "a" * 64, "b" * 64, "c" * 64
-TEST_KEY_HEX = "31" * 32
-TEST_KEY = bytes.fromhex(TEST_KEY_HEX)
 
 
 def ts(dt):
@@ -108,8 +111,7 @@ def refresh_scope(p, *, observed=None, valid=None, source_id="census-source", so
 class PayoffPathV3Tests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.old_key = os.environ.get(core.EVIDENCE_AUTH_ENV)
-        os.environ[core.EVIDENCE_AUTH_ENV] = TEST_KEY_HEX
+        cls.old_key = _PREIMPORT_KEY
 
     @classmethod
     def tearDownClass(cls):
@@ -180,19 +182,18 @@ class PayoffPathV3Tests(unittest.TestCase):
         self.assertEqual(self.compile(p)["state"], "HOLD_INCOMPLETE_EVIDENCE")
 
     def test_14_missing_host_key_rejects_external_rows(self):
-        p = packet(); old = os.environ.pop(core.EVIDENCE_AUTH_ENV, None)
-        try:
-            with self.assertRaises(core.GateError): self.compile(p)
-        finally:
-            if old is not None: os.environ[core.EVIDENCE_AUTH_ENV] = old
+        p = packet()
+        with self.assertRaises(core.GateError):
+            core._validate_packet(p, NOW, _authority_key=None)
 
     def test_15_missing_host_key_plan_only_complete_holds(self):
         p = packet("STRATEGIC_UNPAID"); p["conversion_plan"] = plan(); refresh_scope(p)
-        old = os.environ.pop(core.EVIDENCE_AUTH_ENV, None)
-        try:
-            self.assertEqual(self.compile(p)["state"], "HOLD_INCOMPLETE_EVIDENCE")
-        finally:
-            if old is not None: os.environ[core.EVIDENCE_AUTH_ENV] = old
+        _, fingerprint, scope_valid, reasons = core._validate_packet(
+            p, NOW, _authority_key=None
+        )
+        self.assertIsNone(fingerprint)
+        self.assertFalse(scope_valid)
+        self.assertIn("SCOPE_AUTHORITY_UNAVAILABLE", reasons)
 
     def test_16_term_relabel_without_retag_rejected(self):
         p = packet(); p["term_evidence"][0]["evidence_class"] = "PAID_WORK"
@@ -274,6 +275,40 @@ class PayoffPathV3Tests(unittest.TestCase):
         unsigned = dict(r); unsigned.pop("receipt_digest_sha256")
         r["receipt_digest_sha256"] = hashlib.sha256(canonical(unsigned)).hexdigest()
         with self.assertRaises(core.GateError): core.verify_integrity(p, r)
+
+    def test_35b_post_import_env_replacement_cannot_substitute_authority(self):
+        old = os.environ.get(core.EVIDENCE_AUTH_ENV)
+        os.environ[core.EVIDENCE_AUTH_ENV] = "22" * 32
+        try:
+            self.assertEqual(self.compile(packet())["state"], "PAYOFF_BOUND")
+            evil = packet()
+            for row in evil["term_evidence"]:
+                unsigned = {k: v for k, v in row.items() if k != "auth_tag_hex"}
+                payload = {"domain": "commons-payoff-path-evidence/v2", "kind": "TERM", "row": unsigned}
+                row["auth_tag_hex"] = hmac.new(
+                    bytes.fromhex("22" * 32), canonical(payload), hashlib.sha256
+                ).hexdigest()
+            refresh_scope(evil)
+            with self.assertRaises(core.GateError):
+                self.compile(evil)
+        finally:
+            if old is None:
+                os.environ.pop(core.EVIDENCE_AUTH_ENV, None)
+            else:
+                os.environ[core.EVIDENCE_AUTH_ENV] = old
+
+    def test_35c_post_import_env_removal_and_malformed_values_are_inert(self):
+        old = os.environ.get(core.EVIDENCE_AUTH_ENV)
+        try:
+            os.environ.pop(core.EVIDENCE_AUTH_ENV, None)
+            self.assertEqual(self.compile(packet())["state"], "PAYOFF_BOUND")
+            os.environ[core.EVIDENCE_AUTH_ENV] = "not-hex"
+            self.assertEqual(self.compile(packet())["state"], "PAYOFF_BOUND")
+        finally:
+            if old is None:
+                os.environ.pop(core.EVIDENCE_AUTH_ENV, None)
+            else:
+                os.environ[core.EVIDENCE_AUTH_ENV] = old
 
     def test_36_now_name_injection_inert(self):
         now = datetime.now(timezone.utc).replace(microsecond=0)
