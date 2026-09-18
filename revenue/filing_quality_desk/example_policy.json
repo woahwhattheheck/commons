@@ -1,0 +1,26 @@
+{
+  "schema": "TJL_FILING_QUALITY_POLICY_V1",
+  "cik": "0000123456",
+  "filing_cutoff": "2026-08-31",
+  "selections": [
+    {"id": "assets", "taxonomy": "us-gaap", "concept": "Assets", "unit": "USD", "period": {"kind": "instant", "end": "2026-06-30"}},
+    {"id": "liabilities", "taxonomy": "us-gaap", "concept": "Liabilities", "unit": "USD", "period": {"kind": "instant", "end": "2026-06-30"}},
+    {"id": "equity", "taxonomy": "us-gaap", "concept": "StockholdersEquity", "unit": "USD", "period": {"kind": "instant", "end": "2026-06-30"}},
+    {"id": "revenue_prior", "taxonomy": "us-gaap", "concept": "Revenue", "unit": "USD", "period": {"kind": "duration", "start": "2024-07-01", "end": "2025-06-30"}},
+    {"id": "revenue_current", "taxonomy": "us-gaap", "concept": "Revenue", "unit": "USD", "period": {"kind": "duration", "start": "2025-07-01", "end": "2026-06-30"}}
+  ],
+  "comparisons": [
+    {"id": "reported_revenue_change", "left": "revenue_prior", "right": "revenue_current"}
+  ],
+  "checks": [
+    {
+      "id": "balance_equation",
+      "terms": [
+        {"selection": "liabilities", "coefficient": "1"},
+        {"selection": "equity", "coefficient": "1"}
+      ],
+      "target": "assets",
+      "tolerance": "0"
+    }
+  ]
+}
