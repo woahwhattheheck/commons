@@ -14,6 +14,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable
 
+from .provider_boundary import registered_boundary_types
+
 
 @dataclass(frozen=True)
 class Adapter:
@@ -275,7 +277,25 @@ def validate_registry(repository_root: str | Path) -> list[str]:
     if len(_PROVIDER_METHODS) != len(ADAPTERS):
         violations.append("registry:duplicate-transport-method")
 
+    runtime_types = registered_boundary_types()
+    runtime_by_name = {boundary.__name__: boundary for boundary in runtime_types}
+    if len(runtime_by_name) != len(runtime_types):
+        violations.append("registry:duplicate-runtime-boundary-type")
+    if set(runtime_by_name) != {item.boundary_class_name for item in ADAPTERS}:
+        violations.append("registry:runtime-boundary-set-not-exact")
+
     for item in ADAPTERS:
+        runtime_boundary = runtime_by_name.get(item.boundary_class_name)
+        if runtime_boundary is None:
+            violations.append(f"registry:{item.provider}:runtime-boundary-missing")
+        else:
+            if getattr(runtime_boundary, "provider", None) != item.provider:
+                violations.append(f"registry:{item.provider}:runtime-provider-mismatch")
+            if getattr(runtime_boundary, "transport_method", None) != item.transport_method:
+                violations.append(f"registry:{item.provider}:runtime-transport-method-mismatch")
+            if tuple(getattr(runtime_boundary, "host_mutation_identities", ())) != item.host_mutation_identities:
+                violations.append(f"registry:{item.provider}:runtime-host-identities-mismatch")
+
         if not item.host_mutation_identities:
             violations.append(f"registry:{item.provider}:host-mutation-identities-empty")
         adapter_path = root / item.module_path
