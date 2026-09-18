@@ -395,7 +395,7 @@ def _normalize_claim(value: Any, index: int, as_of_dt: datetime) -> dict[str, An
             if kind == "COLLECTION_CONTACT_SENT":
                 if state != STATE_ACCEPTED:
                     raise ContractError(f"{label}: collection contact only allowed while awaiting payment")
-                if not entitlement_evidence is not None:
+                if entitlement_evidence is None:
                     raise ContractError(
                         f"{label}: collection contact requires confirmed compensation entitlement"
                     )
@@ -454,7 +454,7 @@ def _normalize_claim(value: Any, index: int, as_of_dt: datetime) -> dict[str, An
     elif state == STATE_AVAILABLE:
         next_action = "VERIFY_SETTLEMENT"
     elif state == STATE_ACCEPTED:
-        if not entitlement_evidence is not None:
+        if entitlement_evidence is None:
             next_action = "VERIFY_ENTITLEMENT"
         elif route_dead:
             next_action = "ROUTE_REPAIR_REQUIRED"
