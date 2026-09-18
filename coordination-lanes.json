@@ -1,5 +1,6 @@
 {
  "lanes": [
+  {"canonical":16069,"chain":[15733,16063,16069],"content_keys":["0602e51a447a2c0c"],"families":[],"lane":"lane-15733","open":[15733,16063,16069],"state":"OPEN","title":"rejoin: pressure-trace counterexample carrier on current main"},
   {"canonical":15840,"chain":[15811,15840],"content_keys":["10ace36f5f61f2d9"],"families":[],"lane":"lane-15811","open":[15811,15840],"state":"OPEN","title":"CI: rejoin pilot-renewal trust repair with 67-slot workflow recovery"},
   {"canonical":15797,"chain":[15382,15645,15797],"content_keys":["47acce249358712d","afeb7304edf3b4fb"],"families":[],"lane":"lane-15382","open":[15645,15797],"state":"OPEN","title":"Hamilton: rejoin retained-evidence gate with exact projection and strict ingress"},
   {"canonical":15949,"chain":[15949,15999],"content_keys":["05defcf6a6875d51"],"families":[],"lane":"lane-15949","open":[15949],"state":"OPEN","title":"CI: current-main 68→67 workflow budget repair"},
@@ -26,7 +27,7 @@
   {"canonical":15406,"chain":[15403,15406],"content_keys":["01dcaca0f7f2814b"],"families":[],"lane":"lane-15403","open":[],"state":"MERGED","title":"GOAT: clean current-main carrier for pay tip-shelf checkout"}
  ],
  "note": "lanes with two or more members; an open pull request row without a lane field is a lane of its own",
- "observed_at": "2026-09-18T19:55:47Z",
+ "observed_at": "2026-09-18T22:30:25Z",
  "recent_closed": [
   {"closed_at":"2026-09-18T07:39:35Z","content_key":"UNKNOWN","created_at":"2026-09-18T07:31:10Z","head":"626eb3925717460635371cc0cbc5860eebafa99c","links":[],"markers":[],"number":15999,"state":"MERGED","title":"CI: current-main 68→67 workflow budget repair"},
   {"closed_at":"2026-09-18T02:17:32Z","content_key":"ca75b0eb7559c999","created_at":"2026-09-18T02:10:02Z","head":"43ef1cfcdb22835ad169b4ffe906bf33f84017a0","links":[],"markers":["PRODUCT-LIFECYCLE-STRUCTURED-WAKE-CLOSURE-ZSOL17"],"number":15880,"state":"MERGED","title":"revenue: close structured lifecycle guard bypasses"},
