@@ -556,8 +556,15 @@ _QUOTED_STRING = re.compile(
 
 
 def _compact_provider_text(value: str) -> str:
-    """Conservative lexical view defeating simple split-string construction."""
-    return "".join(ch for ch in value if ch.isalnum() or ch == "_")
+    """Conservative lexical view defeating simple split-string construction.
+
+    Keep alphanumerics, underscore, dots, and '(' so method-call markers such
+    as ``.sendmail(`` do not collide with English ``send mail`` or identifiers
+    such as ``sendmailbox``. Quotes, operators, whitespace, slashes, and other
+    punctuation are stripped so ``'.' + 'sendmail('`` still reconstructs
+    ``.sendmail(`` and host identities still reconstruct across concatenations.
+    """
+    return "".join(ch for ch in value if ch.isalnum() or ch in "_.(")
 
 
 def _literal_stream(source: str) -> str:

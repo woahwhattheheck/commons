@@ -874,6 +874,43 @@ class RegistryTest(unittest.TestCase):
                 violations,
             )
 
+    def test_english_send_mail_is_not_a_sendmail_call(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            (root / "notes.py").write_text(
+                '"""This helper cannot send mail or a send mailbox."""\n'
+                "SENDMAIL = 'adapter-name-only'\n",
+                encoding="utf-8",
+            )
+            self.assertEqual(find_bypasses(root, validate_manifest=False), [])
+
+            (root / "live.py").write_text(
+                "def fire(smtp):\n    smtp.sendmail('a', 'b', 'c')\n",
+                encoding="utf-8",
+            )
+            live = find_bypasses(root, validate_manifest=False)
+            self.assertIn("live.py:provider-marker:.sendmail(", live)
+
+            (root / "split.js").write_text(
+                "const m = '.' + 'sendmail(';\n",
+                encoding="utf-8",
+            )
+            split = find_bypasses(root, validate_manifest=False)
+            self.assertIn("split.js:provider-marker:.sendmail(", split)
+
+            (root / "hook.js").write_text(
+                "fetch('https://hooks.slack.com/services/T00/B00/xxx');\n",
+                encoding="utf-8",
+            )
+            hook = find_bypasses(root, validate_manifest=False)
+            self.assertTrue(
+                any(
+                    "hook.js:provider-marker:hooks.slack.com/services/" in item
+                    for item in hook
+                ),
+                hook,
+            )
+
     def test_registry_public_rebinding_cannot_redefine_first_load_generation(self):
         root = Path(__file__).resolve().parents[1]
         with patch.object(registry_impl, "ADAPTERS", ()):
