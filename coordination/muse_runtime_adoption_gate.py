@@ -668,3 +668,11 @@ def _build_api():
                 fail("retained file grew during read")
             after = os_fstat(fd)
             if (after.st_dev, after.st_ino, after.st_size, after.st_mtime_ns, after.st_ctime_ns) != (
+                st.st_dev,
+                st.st_ino,
+                st.st_size,
+                st.st_mtime_ns,
+                st.st_ctime_ns,
+            ):
+                fail("retained file generation changed during read")
+            return 
