@@ -67,7 +67,7 @@ def candidate(
         "demonstratedMetrics": [claim(f"{cid}.metric", state)],
         "transitionPath": [claim(f"{cid}.transition", state)],
         "traction": (
-            [{"evidenceId": f"{cid}.pilot", "kind": "CUSTOMER_PILOT", "evidenceRef": None}]
+            [{"evidenceId": f"{cid}.contract", "kind": "CUSTOMER_CONTRACT", "evidenceRef": None}]
             if traction
             else []
         ),
@@ -324,6 +324,21 @@ class DownselectTests(unittest.TestCase):
         alpha = next(row for row in report["projections"] if row["candidateId"] == "alpha")
         self.assertIn("claim:alpha.metric:OWNER_REQUIRED", alpha["hardBlockers"])
 
+    def test_pilot_or_loi_alone_does_not_clear_strong_traction_gate(self) -> None:
+        packet = ready_packet()
+        packet["candidates"][0]["traction"] = [
+            {"evidenceId": "alpha.pilot", "kind": "CUSTOMER_PILOT", "evidenceRef": None}
+        ]
+        report = self.compile(packet)
+        alpha = next(row for row in report["projections"] if row["candidateId"] == "alpha")
+        self.assertEqual(alpha["externalTractionEvidenceCount"], 1)
+        self.assertEqual(alpha["strongCommercialTractionEvidenceCount"], 0)
+        self.assertIn(
+            "commercial_traction:missing_strong_external_evidence",
+            alpha["hardBlockers"],
+        )
+        self.assertEqual(report["state"], "HOLD")
+
     def test_no_external_traction_is_hard_blocker(self) -> None:
         packet = ready_packet()
         packet["candidates"][0]["traction"] = []
@@ -385,12 +400,12 @@ class DownselectTests(unittest.TestCase):
         alpha = next(
             row
             for row in packet["evidenceRecords"]
-            if row["binding"] == "candidate:alpha:traction:alpha.pilot"
+            if row["binding"] == "candidate:alpha:traction:alpha.contract"
         )
         beta = next(
             row
             for row in packet["evidenceRecords"]
-            if row["binding"] == "candidate:beta:traction:beta.pilot"
+            if row["binding"] == "candidate:beta:traction:beta.contract"
         )
         beta["locator"] = alpha["locator"]
         beta["sha256"] = alpha["sha256"]
