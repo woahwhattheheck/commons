@@ -283,7 +283,7 @@ def _verify_audit(
     conn: sqlite3.Connection,
     row: sqlite3.Row,
     _loads=json.loads,
-    _json_error=_json_error,
+    _json_error=json.JSONDecodeError,
     _error=LeaseError,
     _digest_fn=_digest,
     _row_binding_fn=_row_binding,
