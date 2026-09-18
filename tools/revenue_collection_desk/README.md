@@ -1,62 +1,42 @@
 # Revenue Collection Desk
 
-Internal, deterministic collection-state compiler for sanitized retained evidence.
+Offline, stdlib-only control plane for **sanitized retained evidence** about money owed to the Commons. It separates work acceptance, payment assertions, hosted availability, and exact settlement so the swarm does not count assertions as cash or spam a counterparty after silence.
 
-It keeps these facts separate:
+## Authority boundary
 
-- submitted work is not accepted work;
-- accepted work is not paid work;
-- a provider/email statement that payment was sent is not bank settlement;
-- a hosted token balance or reference valuation is not USD cash;
-- a sent collection message is not proof of delivery;
-- a hard-bounced route is not a successful contact;
-- silence never authorizes another collection message.
+This package does not send email or Slack, submit claims, create invoices, access providers, touch wallets/banks, move money, perform FX/token conversion, or decide accounting revenue. `COLLECTION_ELIGIBLE` means only that retained evidence includes an unexpired explicit collection release and the local DNR/route rules allow a human-controlled next step. It is not send authorization outside that evidence context.
 
-## Lifecycle
+## Source contract
 
-Financial states:
+`source/v1` contains an `as_of` UTC timestamp and claims with immutable `claim_id`, `counterparty_id`, `work_ref`, `instrument`, exact decimal-string `amount`, optional `reference_value_usd`, and retained evidence events. Opaque refs only: do not paste emails, secrets, wallet keys, bank details, or message bodies.
 
-`WORK_SUBMITTED` → `ACCEPTED_AWAITING_PAYMENT` → optionally
-`PAYMENT_ASSERTED_HOLD` → `PAYMENT_AVAILABLE` → `SETTLED_CASH`.
+Financial states are ordered evidence, never inferred from route delivery:
 
-`DISPUTED` and `CLOSED_NO_PAY` are explicit alternatives. Direct settlement from an
-accepted/asserted state is allowed only when a retained `SETTLED_CASH` event supplies
-the exact settlement currency and amount. The compiler never calculates FX or
-token-to-USD value.
+`WORK_SUBMITTED -> ACCEPTED_AWAITING_PAYMENT -> PAYMENT_ASSERTED_HOLD -> PAYMENT_AVAILABLE -> SETTLED_CASH`
 
-Collection-route events are orthogonal:
+`DISPUTED` and `CLOSED_NO_PAY` are explicit alternatives. Every financial event repeats the exact claim economics; conflicts fail closed. A `SETTLED_CASH` event requires an opaque settlement reference. Totals are emitted **per instrument only**. Reference USD valuations are metadata and never enter cash totals.
 
-- `COLLECTION_CONTACT_SENT` requires an explicit `cooldown_until`;
-- `DELIVERY_CONFIRMED` records delivery evidence but never changes financial state;
-- `DELIVERY_BOUNCED` marks the route dead and yields `ROUTE_REPAIR_REQUIRED`;
-- `ROUTE_REPAIRED` clears the dead route;
-- `COLLECTION_RELEASED` is the explicit retained-evidence generation that can end
-  a prior contact DNR. Mere passage of time never does.
+Collection evidence is orthogonal. A release has an explicit validity window. A delivered contact can carry a DNR timestamp. Silence after a delivered contact stays `WAIT_REPLY` until a *newer* explicit release exists. `BOUNCED` or `DEAD` delivery becomes `ROUTE_REPAIR_REQUIRED`; repair alone does not authorize contact.
 
-## CLI
+## Next actions
+
+The compiler emits only: `WAIT_HOLD`, `WAIT_REPLY`, `VERIFY_AVAILABLE`, `VERIFY_SETTLEMENT`, `COLLECTION_ELIGIBLE`, `ROUTE_REPAIR_REQUIRED`, `DONE`, or `HOLD_CONFLICT`.
+
+## Run
+
+From repository root:
 
 ```bash
-python -m tools.revenue_collection_desk compile examples/collections.json --pretty
-python -m tools.revenue_collection_desk queue examples/collections.json
-python -m tools.revenue_collection_desk verify examples/collections.json report.json
+python -m py_compile tools/revenue_collection_desk/*.py tests/test_revenue_collection_desk.py
+python -m unittest -v tests.test_revenue_collection_desk
+python -O -m unittest -v tests.test_revenue_collection_desk
 
-python -m unittest -v test_revenue_collection_desk.py
-python -O -m unittest -v test_revenue_collection_desk.py
-python -m py_compile tools/revenue_collection_desk/*.py test_revenue_collection_desk.py
+python -m tools.revenue_collection_desk.cli compile \
+  tools/revenue_collection_desk/example.synthetic.json /tmp/revenue-collection-demo
+python -m tools.revenue_collection_desk.cli verify \
+  tools/revenue_collection_desk/example.synthetic.json /tmp/revenue-collection-demo
 ```
 
-Input is strict JSON: duplicate keys and non-finite constants are rejected; unknown
-fields fail closed; amounts are exact positive decimal strings; event timestamps
-must be strictly increasing within a claim; source references are opaque bounded
-identifiers plus SHA-256 digests, never email bodies or secrets.
+Compile creates a new directory only: `report.json`, `queue.md`, and `receipt.json`. Verification recompiles all artifacts exactly. Existing destinations are refused; verifier inputs must be ordinary non-symlink files. JSON duplicate keys, numeric fractions/non-finite numbers, event duplicates, future evidence, conflicting economics, and illegal financial transitions fail closed.
 
-The report sorts claims by `claim_id`, so claim-list order does not change the
-receipt. Event order is evidence chronology and is intentionally validated rather
-than reordered.
-
-## Authority
-
-This package performs no network calls and grants no authority to send email/Slack,
-submit claims, create invoices, move money, mutate wallets/banks/providers, or
-recognize unsettled cash. `AUTHORITY` is hard-false. Customer/public artifacts
-should not expose this internal control surface.
+The synthetic example intentionally includes a USD accepted claim with explicit collection release and an RTC payment assertion still in hold. Its `$75.00` RTC reference valuation never creates a USD cash row.

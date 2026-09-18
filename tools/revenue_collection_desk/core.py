@@ -1,581 +1,213 @@
-"""Deterministic receivables / collection-state compiler.
-
-Consumes sanitized retained evidence only. It never sends messages, moves money,
-creates invoices, contacts providers, or recognizes cash without explicit
-SETTLED_CASH evidence.
-"""
 from __future__ import annotations
-
+import hashlib, json, re, stat
 from datetime import datetime, timezone
 from decimal import Decimal, InvalidOperation
-import hashlib
-import json
-import re
-from typing import Any, Iterable, Mapping
+from pathlib import Path
+from typing import Any
 
-LEDGER_SCHEMA = "commons.revenue_collection_ledger/v1"
-REPORT_SCHEMA = "commons.revenue_collection_report/v1"
-
-_HEX64 = re.compile(r"^[0-9a-f]{64}$")
-_TOKEN = re.compile(r"^[A-Za-z0-9._:@/-]{1,256}$")
-_INSTRUMENT = re.compile(r"^[A-Z][A-Z0-9._-]{0,15}$")
-_AMOUNT = re.compile(r"^(?:0|[1-9][0-9]*)(?:\.[0-9]{1,18})?$")
-
-FINANCIAL_KINDS = {
-    "WORK_SUBMITTED",
-    "ACCEPTED",
-    "PAYMENT_ASSERTED",
-    "PAYMENT_AVAILABLE",
-    "SETTLED_CASH",
-    "DISPUTED",
-    "CLOSED_NO_PAY",
-}
-ROUTE_KINDS = {
-    "COLLECTION_CONTACT_SENT",
-    "DELIVERY_CONFIRMED",
-    "DELIVERY_BOUNCED",
-    "ROUTE_REPAIRED",
-    "COLLECTION_RELEASED",
-}
-ALL_KINDS = FINANCIAL_KINDS | ROUTE_KINDS
-
-STATE_SUBMITTED = "WORK_SUBMITTED"
-STATE_ACCEPTED = "ACCEPTED_AWAITING_PAYMENT"
-STATE_ASSERTED = "PAYMENT_ASSERTED_HOLD"
-STATE_AVAILABLE = "PAYMENT_AVAILABLE"
-STATE_SETTLED = "SETTLED_CASH"
-STATE_DISPUTED = "DISPUTED"
-STATE_CLOSED = "CLOSED_NO_PAY"
-
-ACTIONS = {
-    "WAIT_HOLD",
-    "WAIT_REPLY",
-    "VERIFY_AVAILABLE",
-    "VERIFY_SETTLEMENT",
-    "COLLECTION_ELIGIBLE",
-    "ROUTE_REPAIR_REQUIRED",
-    "DONE",
-    "HOLD_CONFLICT",
+SOURCE_SCHEMA='revenue-collection-desk/source/v1'
+REPORT_SCHEMA='revenue-collection-desk/report/v1'
+RECEIPT_SCHEMA='revenue-collection-desk/receipt/v1'
+MAX_BYTES=5*1024*1024
+TOKEN=re.compile(r'^[A-Za-z0-9][A-Za-z0-9._:/@+-]{0,127}$')
+MONEY=re.compile(r'^(?:0|[1-9][0-9]*)(?:\.[0-9]{1,9})?$')
+TS=re.compile(r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$')
+FIN={'WORK_SUBMITTED','ACCEPTED_AWAITING_PAYMENT','PAYMENT_ASSERTED_HOLD','PAYMENT_AVAILABLE','SETTLED_CASH','DISPUTED','CLOSED_NO_PAY'}
+AUX={'COLLECTION_RELEASED','COLLECTION_CONTACT','COUNTERPARTY_REPLY','ROUTE_REPAIRED'}
+NEXT={
+ 'WORK_SUBMITTED':{'ACCEPTED_AWAITING_PAYMENT','DISPUTED','CLOSED_NO_PAY'},
+ 'ACCEPTED_AWAITING_PAYMENT':{'PAYMENT_ASSERTED_HOLD','PAYMENT_AVAILABLE','DISPUTED','CLOSED_NO_PAY'},
+ 'PAYMENT_ASSERTED_HOLD':{'PAYMENT_AVAILABLE','DISPUTED','CLOSED_NO_PAY'},
+ 'PAYMENT_AVAILABLE':{'SETTLED_CASH','DISPUTED','CLOSED_NO_PAY'},
+ 'DISPUTED':{'ACCEPTED_AWAITING_PAYMENT','CLOSED_NO_PAY'},
+ 'SETTLED_CASH':set(),'CLOSED_NO_PAY':set(),
 }
 
-AUTHORITY = {
-    "send_email": False,
-    "send_slack": False,
-    "submit_claim": False,
-    "create_invoice": False,
-    "move_money": False,
-    "wallet_mutation": False,
-    "bank_mutation": False,
-    "provider_mutation": False,
-    "recognize_unsettled_cash": False,
-}
+class CollectionError(ValueError): pass
 
-class ContractError(ValueError):
-    pass
+def _pairs(pairs):
+ out={}
+ for k,v in pairs:
+  if k in out: raise CollectionError(f'duplicate JSON key: {k}')
+  out[k]=v
+ return out
 
-def _reject_constant(value: str) -> None:
-    raise ContractError(f"non-finite JSON constant: {value}")
+def _no_int(v): raise CollectionError(f'JSON integers forbidden; use strings: {v}')
+def _no_float(v): raise CollectionError(f'JSON numeric fractions forbidden: {v}')
+def _no_const(v): raise CollectionError(f'JSON non-finite value forbidden: {v}')
 
-def _pairs_no_duplicates(pairs: Iterable[tuple[str, Any]]) -> dict[str, Any]:
-    out: dict[str, Any] = {}
-    for key, value in pairs:
-        if key in out:
-            raise ContractError(f"duplicate JSON key: {key}")
-        out[key] = value
-    return out
+def _reject_bool(value,path='json'):
+ if type(value) is bool: raise CollectionError(f'{path}: JSON booleans forbidden')
+ if type(value) is list:
+  for i,item in enumerate(value): _reject_bool(item,f'{path}[{i}]')
+ elif type(value) is dict:
+  for k,item in value.items(): _reject_bool(item,f'{path}.{k}')
 
-def loads_strict(raw: str | bytes) -> Any:
-    if isinstance(raw, bytes):
-        try:
-            raw = raw.decode("utf-8", "strict")
-        except UnicodeDecodeError as exc:
-            raise ContractError("input must be strict UTF-8") from exc
-    if type(raw) is not str:
-        raise ContractError("JSON input must be str or bytes")
-    try:
-        return json.loads(
-            raw,
-            object_pairs_hook=_pairs_no_duplicates,
-            parse_constant=_reject_constant,
-        )
-    except ContractError:
-        raise
-    except (json.JSONDecodeError, ValueError) as exc:
-        raise ContractError(f"invalid JSON: {exc}") from exc
+def load_json_bytes(raw:bytes,label='source'):
+ if type(raw) is not bytes or len(raw)>MAX_BYTES: raise CollectionError(f'{label}: bounded bytes required')
+ try:
+  value=json.loads(raw.decode('utf-8'),object_pairs_hook=_pairs,parse_int=_no_int,parse_float=_no_float,parse_constant=_no_const)
+  _reject_bool(value,label)
+  return value
+ except CollectionError: raise
+ except Exception as e: raise CollectionError(f'{label}: invalid JSON: {e}') from e
 
-def canonical_bytes(value: Any) -> bytes:
-    try:
-        return json.dumps(
-            value,
-            sort_keys=True,
-            separators=(",", ":"),
-            ensure_ascii=False,
-            allow_nan=False,
-        ).encode("utf-8")
-    except (TypeError, ValueError) as exc:
-        raise ContractError(f"value is not canonical JSON: {exc}") from exc
+def canonical(value): return (json.dumps(value,sort_keys=True,separators=(',',':'),ensure_ascii=False)+'\n').encode()
+def digest(raw:bytes): return hashlib.sha256(raw).hexdigest()
 
-def sha256_value(value: Any) -> str:
-    return hashlib.sha256(canonical_bytes(value)).hexdigest()
+def exact(v,label,fields):
+ if type(v) is not dict: raise CollectionError(f'{label}: object required')
+ if set(v)!=set(fields): raise CollectionError(f'{label}: exact fields required')
+ return v
 
-def _exact_object(value: Any, required: set[str], allowed: set[str], label: str) -> dict[str, Any]:
-    if type(value) is not dict:
-        raise ContractError(f"{label} must be an object")
-    keys = set(value)
-    missing = required - keys
-    extra = keys - allowed
-    if missing or extra:
-        raise ContractError(
-            f"{label} keys mismatch missing={sorted(missing)} extra={sorted(extra)}"
-        )
-    return value
+def token(v,label):
+ if type(v) is not str or TOKEN.fullmatch(v) is None: raise CollectionError(f'{label}: opaque token required')
+ return v
 
-def _text(value: Any, label: str, pattern: re.Pattern[str] | None = None, maximum: int = 256) -> str:
-    if type(value) is not str or not value or len(value) > maximum:
-        raise ContractError(f"{label} must be a non-empty bounded string")
-    if pattern is not None and pattern.fullmatch(value) is None:
-        raise ContractError(f"{label} has invalid format")
-    return value
+def timestamp(v,label):
+ if type(v) is not str or TS.fullmatch(v) is None: raise CollectionError(f'{label}: UTC timestamp required')
+ try: dt=datetime.strptime(v,'%Y-%m-%dT%H:%M:%SZ').replace(tzinfo=timezone.utc)
+ except ValueError as e: raise CollectionError(f'{label}: invalid UTC timestamp') from e
+ return v,dt
 
-def _digest(value: Any, label: str) -> str:
-    if type(value) is not str or _HEX64.fullmatch(value) is None:
-        raise ContractError(f"{label} must be lowercase sha256")
-    return value
+def money(v,label,positive=True):
+ if type(v) is not str or MONEY.fullmatch(v) is None: raise CollectionError(f'{label}: unsigned decimal string required')
+ try: d=Decimal(v)
+ except InvalidOperation as e: raise CollectionError(f'{label}: invalid decimal') from e
+ if not d.is_finite() or (positive and d<=0): raise CollectionError(f'{label}: positive finite amount required')
+ return v,d
 
-def _instant(value: Any, label: str) -> tuple[datetime, str]:
-    text = _text(value, label, maximum=64)
-    normalized = text[:-1] + "+00:00" if text.endswith("Z") else text
-    try:
-        parsed = datetime.fromisoformat(normalized)
-    except ValueError as exc:
-        raise ContractError(f"{label} must be ISO-8601") from exc
-    if parsed.tzinfo is None:
-        raise ContractError(f"{label} must include timezone")
-    utc = parsed.astimezone(timezone.utc)
-    rendered = utc.isoformat(timespec="microseconds").replace("+00:00", "Z")
-    return utc, rendered
+def mtext(d):
+ s=format(d,'f')
+ if '.' in s: s=s.rstrip('0').rstrip('.')
+ return s or '0'
 
-def _amount(value: Any, label: str, *, allow_zero: bool = False) -> tuple[Decimal, str]:
-    if type(value) is not str or _AMOUNT.fullmatch(value) is None:
-        raise ContractError(f"{label} must be an exact non-negative decimal string")
-    try:
-        dec = Decimal(value)
-    except InvalidOperation as exc:
-        raise ContractError(f"{label} is invalid decimal") from exc
-    if dec < 0 or (dec == 0 and not allow_zero):
-        raise ContractError(f"{label} must be {'non-negative' if allow_zero else 'positive'}")
-    return dec, value
+def event_data(kind,raw,label,amount,instrument):
+ if kind in FIN:
+  fields={'amount','instrument'}
+  if kind=='PAYMENT_ASSERTED_HOLD': fields.add('hold_until')
+  if kind=='SETTLED_CASH': fields.add('settlement_ref')
+  d=exact(raw,label+'.data',fields)
+  if d['amount']!=amount or d['instrument']!=instrument: raise CollectionError(f'{label}: conflicting economics')
+  money(d['amount'],label+'.amount'); token(d['instrument'],label+'.instrument')
+  out={'amount':amount,'instrument':instrument}
+  if kind=='PAYMENT_ASSERTED_HOLD': out['hold_until']=timestamp(d['hold_until'],label+'.hold_until')[0]
+  if kind=='SETTLED_CASH': out['settlement_ref']=token(d['settlement_ref'],label+'.settlement_ref')
+  return out
+ if kind=='COLLECTION_RELEASED':
+  d=exact(raw,label+'.data',{'not_before','expires_at'}); nb,nbd=timestamp(d['not_before'],label+'.not_before'); ex,exd=timestamp(d['expires_at'],label+'.expires_at')
+  if exd<=nbd: raise CollectionError(f'{label}: invalid release window')
+  return {'not_before':nb,'expires_at':ex}
+ if kind=='COLLECTION_CONTACT':
+  d=exact(raw,label+'.data',{'delivery','dnr_until'})
+  if d['delivery'] not in {'DELIVERED','BOUNCED','DEAD'}: raise CollectionError(f'{label}: bad delivery')
+  until=None if d['dnr_until'] is None else timestamp(d['dnr_until'],label+'.dnr_until')[0]
+  return {'delivery':d['delivery'],'dnr_until':until}
+ exact(raw,label+'.data',set()); return {}
 
-def _decimal_text(value: Decimal) -> str:
-    text = format(value, "f")
-    if "." in text:
-        text = text.rstrip("0").rstrip(".")
-    return text or "0"
+def normalize_claim(raw,index,asof_dt):
+ label=f'claims[{index}]'; c=exact(raw,label,{'claim_id','counterparty_id','work_ref','instrument','amount','reference_value_usd','events'})
+ cid=token(c['claim_id'],label+'.claim_id'); cp=token(c['counterparty_id'],label+'.counterparty_id'); work=token(c['work_ref'],label+'.work_ref'); inst=token(c['instrument'],label+'.instrument'); amt,amt_d=money(c['amount'],label+'.amount')
+ ref=c['reference_value_usd']
+ if ref is not None: ref,_=money(ref,label+'.reference_value_usd',positive=False)
+ if type(c['events']) is not list or not c['events'] or len(c['events'])>1000: raise CollectionError(label+'.events: bounded non-empty array required')
+ seen=set(); times=set(); packed=[]
+ for i,r in enumerate(c['events']):
+  el=f'{label}.events[{i}]'; e=exact(r,el,{'event_id','at','kind','source_ref','data'}); eid=token(e['event_id'],el+'.event_id')
+  if eid in seen: raise CollectionError(f'{label}: duplicate event_id {eid}')
+  seen.add(eid); at,dt=timestamp(e['at'],el+'.at')
+  if dt>asof_dt or at in times: raise CollectionError(f'{el}: future or duplicate timestamp')
+  times.add(at); kind=e['kind']
+  if kind not in FIN|AUX: raise CollectionError(f'{el}: unsupported kind')
+  item={'event_id':eid,'at':at,'kind':kind,'source_ref':token(e['source_ref'],el+'.source_ref'),'data':event_data(kind,e['data'],el,amt,inst)}
+  packed.append((dt,item))
+ packed.sort(key=lambda x:(x[0],x[1]['event_id'])); events=[x[1] for x in packed]
+ financial=[e for e in events if e['kind'] in FIN]
+ if not financial or financial[0]['kind']!='WORK_SUBMITTED' or sum(e['kind']=='WORK_SUBMITTED' for e in financial)!=1: raise CollectionError(f'{label}: exactly one first WORK_SUBMITTED required')
+ state='WORK_SUBMITTED'
+ for e in financial[1:]:
+  if e['kind'] not in NEXT[state]: raise CollectionError(f'{label}: illegal transition {state}->{e["kind"]}')
+  state=e['kind']
+ hold=None; delivered=None; reply=None; route_broken=False; dnr=None; releases=[]
+ for dt,e in packed:
+  d=e['data']; k=e['kind']
+  if k=='PAYMENT_ASSERTED_HOLD':
+   hold,hd=timestamp(d['hold_until'],'hold_until')
+   if hd<dt: raise CollectionError(f'{label}: hold predates assertion')
+  elif k=='COLLECTION_CONTACT':
+   if d['delivery']=='DELIVERED':
+    delivered=dt; route_broken=False
+    if d['dnr_until'] is not None:
+     _,dnr=timestamp(d['dnr_until'],'dnr_until')
+     if dnr<dt: raise CollectionError(f'{label}: DNR predates contact')
+   else: route_broken=True
+  elif k=='ROUTE_REPAIRED': route_broken=False
+  elif k=='COUNTERPARTY_REPLY': reply=dt
+  elif k=='COLLECTION_RELEASED':
+   _,nb=timestamp(d['not_before'],'not_before'); _,ex=timestamp(d['expires_at'],'expires_at'); releases.append((dt,nb,ex))
+ if state in {'SETTLED_CASH','CLOSED_NO_PAY'}: action='DONE'
+ elif state=='DISPUTED': action='HOLD_CONFLICT'
+ elif state=='PAYMENT_AVAILABLE': action='VERIFY_SETTLEMENT'
+ elif state=='PAYMENT_ASSERTED_HOLD':
+  if hold is None: raise CollectionError(f'{label}: missing hold')
+  _,hd=timestamp(hold,'hold_until'); action='WAIT_HOLD' if asof_dt<hd else 'VERIFY_AVAILABLE'
+ elif state=='WORK_SUBMITTED': action='WAIT_REPLY'
+ elif route_broken: action='ROUTE_REPAIR_REQUIRED'
+ elif delivered is not None and (reply is None or reply<delivered):
+  newer=any(rd>delivered and nb<=asof_dt<ex for rd,nb,ex in releases)
+  action='WAIT_REPLY' if (dnr is not None and asof_dt<dnr) or not newer else 'COLLECTION_ELIGIBLE'
+ else: action='COLLECTION_ELIGIBLE' if any(nb<=asof_dt<ex for _,nb,ex in releases) else 'WAIT_REPLY'
+ return {'claim_id':cid,'counterparty_id':cp,'work_ref':work,'instrument':inst,'amount':amt,'reference_value_usd':ref,'state':state,'next_action':action,'hold_until':hold,'events':events,'_amount':amt_d}
 
-def _instrument(value: Any, label: str) -> str:
-    return _text(value, label, _INSTRUMENT, 16)
+def compile_ledger(source:Any):
+ root=exact(source,'source',{'schema','as_of','claims'})
+ if root['schema']!=SOURCE_SCHEMA: raise CollectionError('source.schema mismatch')
+ asof,asof_dt=timestamp(root['as_of'],'source.as_of')
+ if type(root['claims']) is not list or len(root['claims'])>10000: raise CollectionError('source.claims: bounded array required')
+ claims=[]; ids=set(); identities=set()
+ for i,raw in enumerate(root['claims']):
+  c=normalize_claim(raw,i,asof_dt)
+  if c['claim_id'] in ids: raise CollectionError('duplicate claim_id')
+  ident=(c['counterparty_id'],c['work_ref'])
+  if ident in identities: raise CollectionError('duplicate counterparty/work_ref')
+  ids.add(c['claim_id']); identities.add(ident); claims.append(c)
+ claims.sort(key=lambda c:c['claim_id']); totals={}
+ for c in claims:
+  b=totals.setdefault(c['instrument'],{k:Decimal(0) for k in ('accepted_outstanding','asserted_hold','available_not_settled','settled_cash')}); a=c['_amount']; s=c['state']
+  if s in {'ACCEPTED_AWAITING_PAYMENT','PAYMENT_ASSERTED_HOLD','PAYMENT_AVAILABLE'}: b['accepted_outstanding']+=a
+  if s=='PAYMENT_ASSERTED_HOLD': b['asserted_hold']+=a
+  if s=='PAYMENT_AVAILABLE': b['available_not_settled']+=a
+  if s=='SETTLED_CASH': b['settled_cash']+=a
+ clean=[{k:v for k,v in c.items() if not k.startswith('_')} for c in claims]
+ payload={'schema':REPORT_SCHEMA,'as_of':asof,'claims':clean,'totals_by_instrument':{i:{k:mtext(v) for k,v in b.items()} for i,b in sorted(totals.items())},'recognition':{'accepted_is_not_paid':True,'provider_assertion_is_not_settlement':True,'reference_valuation_is_never_cash':True,'mixed_instrument_sum':None,'settled_cash_requires_exact_event':True},'authority':{'external_contact':False,'invoice_creation':False,'claim_submission':False,'provider_mutation':False,'wallet_or_bank_mutation':False,'payment_movement':False,'revenue_recognition_authority':False}}
+ return {'payload':payload,'semantic_sha256':digest(canonical(payload))}
 
-def _source_ref(value: Any, label: str) -> str:
-    return _text(value, label, _TOKEN, 256)
+def verify_ledger(source,report):
+ if canonical(compile_ledger(source))!=canonical(report): raise CollectionError('report verification failed')
+ return True
 
-_ROOT_REQUIRED = {"schema", "as_of", "claims"}
-_CLAIM_REQUIRED = {
-    "claim_id", "counterparty_id", "work_ref", "instrument", "amount", "events"
-}
-_CLAIM_ALLOWED = _CLAIM_REQUIRED | {"reference_valuation"}
-_REF_REQUIRED = {"currency", "amount", "source_ref", "source_digest"}
-_EVENT_COMMON = {"event_id", "at", "kind", "source_ref", "source_digest"}
-_EVENT_ALLOWED = _EVENT_COMMON | {
-    "hold_until",
-    "cooldown_until",
-    "settlement_currency",
-    "settlement_amount",
-}
+def markdown_queue(report):
+ lines=['# Revenue collection queue','',f"As of `{report['payload']['as_of']}`. Internal evidence compiler only; **no message is authorized by this file**.",'','| Claim | Counterparty | Instrument | Amount | State | Next action |','|---|---|---|---:|---|---|']
+ for r in report['payload']['claims']:
+  vals=[str(r[k]).replace('|','\\|') for k in ('claim_id','counterparty_id','instrument','amount','state','next_action')]; lines.append('| '+' | '.join(vals)+' |')
+ lines+=['','Reference valuations are retained metadata only and never enter settled-cash totals.','']; return '\n'.join(lines).encode()
 
-def _normalize_reference(value: Any, label: str) -> dict[str, Any]:
-    obj = _exact_object(value, _REF_REQUIRED, _REF_REQUIRED, label)
-    _, amount = _amount(obj["amount"], f"{label}.amount")
-    return {
-        "currency": _instrument(obj["currency"], f"{label}.currency"),
-        "amount": amount,
-        "source_ref": _source_ref(obj["source_ref"], f"{label}.source_ref"),
-        "source_digest": _digest(obj["source_digest"], f"{label}.source_digest"),
-        "cash_recognition": False,
-    }
+def artifact_bundle(source_bytes):
+ source=load_json_bytes(source_bytes); report=compile_ledger(source); rb=canonical(report); mb=markdown_queue(report); receipt={'schema':RECEIPT_SCHEMA,'normalized_source_sha256':digest(canonical(source)),'report_semantic_sha256':report['semantic_sha256'],'artifacts':{'report.json':digest(rb),'queue.md':digest(mb)},'authority':'INTERNAL_OFFLINE_CONTROL_ONLY'}
+ return {'report.json':rb,'queue.md':mb,'receipt.json':canonical(receipt)}
 
-def _normalize_event(value: Any, label: str) -> tuple[dict[str, Any], datetime]:
-    obj = _exact_object(value, _EVENT_COMMON, _EVENT_ALLOWED, label)
-    kind = _text(obj["kind"], f"{label}.kind", maximum=64)
-    if kind not in ALL_KINDS:
-        raise ContractError(f"{label}.kind unsupported: {kind}")
-    at_dt, at = _instant(obj["at"], f"{label}.at")
-    out = {
-        "event_id": _source_ref(obj["event_id"], f"{label}.event_id"),
-        "at": at,
-        "kind": kind,
-        "source_ref": _source_ref(obj["source_ref"], f"{label}.source_ref"),
-        "source_digest": _digest(obj["source_digest"], f"{label}.source_digest"),
-    }
-    extras = set(obj) - _EVENT_COMMON
-    if kind == "PAYMENT_ASSERTED":
-        if extras - {"hold_until"}:
-            raise ContractError(f"{label}: PAYMENT_ASSERTED only permits hold_until")
-        if "hold_until" in obj:
-            hold_dt, hold = _instant(obj["hold_until"], f"{label}.hold_until")
-            if hold_dt < at_dt:
-                raise ContractError(f"{label}.hold_until precedes event")
-            out["hold_until"] = hold
-    elif kind == "COLLECTION_CONTACT_SENT":
-        if extras != {"cooldown_until"}:
-            raise ContractError(f"{label}: COLLECTION_CONTACT_SENT requires only cooldown_until")
-        cooldown_dt, cooldown = _instant(obj["cooldown_until"], f"{label}.cooldown_until")
-        if cooldown_dt < at_dt:
-            raise ContractError(f"{label}.cooldown_until precedes event")
-        out["cooldown_until"] = cooldown
-    elif kind == "SETTLED_CASH":
-        if extras != {"settlement_currency", "settlement_amount"}:
-            raise ContractError(
-                f"{label}: SETTLED_CASH requires settlement_currency and settlement_amount"
-            )
-        _, settlement_amount = _amount(obj["settlement_amount"], f"{label}.settlement_amount")
-        out["settlement_currency"] = _instrument(
-            obj["settlement_currency"], f"{label}.settlement_currency"
-        )
-        out["settlement_amount"] = settlement_amount
-    elif extras:
-        raise ContractError(f"{label}: {kind} does not permit extra fields")
-    return out, at_dt
+def read_regular(path:Path,maximum=MAX_BYTES):
+ st=path.lstat()
+ if stat.S_ISLNK(st.st_mode) or not stat.S_ISREG(st.st_mode) or st.st_size>maximum: raise CollectionError(f'ordinary bounded file required: {path}')
+ return path.read_bytes()
 
-def _apply_financial(state: str | None, kind: str) -> str:
-    if state is None:
-        if kind != "WORK_SUBMITTED":
-            raise ContractError("first financial event must be WORK_SUBMITTED")
-        return STATE_SUBMITTED
-    if kind == "WORK_SUBMITTED":
-        raise ContractError("WORK_SUBMITTED cannot repeat")
-    allowed: dict[str, dict[str, str]] = {
-        STATE_SUBMITTED: {
-            "ACCEPTED": STATE_ACCEPTED,
-            "DISPUTED": STATE_DISPUTED,
-            "CLOSED_NO_PAY": STATE_CLOSED,
-        },
-        STATE_ACCEPTED: {
-            "PAYMENT_ASSERTED": STATE_ASSERTED,
-            "PAYMENT_AVAILABLE": STATE_AVAILABLE,
-            "SETTLED_CASH": STATE_SETTLED,
-            "DISPUTED": STATE_DISPUTED,
-            "CLOSED_NO_PAY": STATE_CLOSED,
-        },
-        STATE_ASSERTED: {
-            "PAYMENT_AVAILABLE": STATE_AVAILABLE,
-            "SETTLED_CASH": STATE_SETTLED,
-            "DISPUTED": STATE_DISPUTED,
-            "CLOSED_NO_PAY": STATE_CLOSED,
-        },
-        STATE_AVAILABLE: {
-            "SETTLED_CASH": STATE_SETTLED,
-            "DISPUTED": STATE_DISPUTED,
-            "CLOSED_NO_PAY": STATE_CLOSED,
-        },
-        STATE_DISPUTED: {
-            "SETTLED_CASH": STATE_SETTLED,
-            "CLOSED_NO_PAY": STATE_CLOSED,
-        },
-        STATE_SETTLED: {},
-        STATE_CLOSED: {},
-    }
-    if kind not in allowed[state]:
-        raise ContractError(f"illegal financial transition {state} -> {kind}")
-    return allowed[state][kind]
+def publish_bundle(source_bytes,output:Path):
+ artifacts=artifact_bundle(source_bytes); output.mkdir(mode=0o700,parents=False,exist_ok=False)
+ for name,data in artifacts.items():
+  with (output/name).open('xb') as f: f.write(data)
+ return artifacts
 
-def _normalize_claim(value: Any, index: int, as_of_dt: datetime) -> dict[str, Any]:
-    label = f"claims[{index}]"
-    obj = _exact_object(value, _CLAIM_REQUIRED, _CLAIM_ALLOWED, label)
-    claim_id = _source_ref(obj["claim_id"], f"{label}.claim_id")
-    counterparty_id = _source_ref(obj["counterparty_id"], f"{label}.counterparty_id")
-    work_ref = _source_ref(obj["work_ref"], f"{label}.work_ref")
-    instrument = _instrument(obj["instrument"], f"{label}.instrument")
-    amount_dec, amount = _amount(obj["amount"], f"{label}.amount")
-
-    raw_events = obj["events"]
-    if type(raw_events) is not list or not raw_events:
-        raise ContractError(f"{label}.events must be a non-empty list")
-
-    events: list[dict[str, Any]] = []
-    seen_event_ids: set[str] = set()
-    previous_at: datetime | None = None
-    state: str | None = None
-    asserted_hold_until: datetime | None = None
-    asserted_hold_text: str | None = None
-    settlement: dict[str, str] | None = None
-
-    contact_sent = False
-    contact_open = False
-    contact_delivered = False
-    route_dead = False
-    collection_released = False
-    cooldown_until: datetime | None = None
-    cooldown_text: str | None = None
-
-    for eindex, raw_event in enumerate(raw_events):
-        event, event_at = _normalize_event(raw_event, f"{label}.events[{eindex}]")
-        if event["event_id"] in seen_event_ids:
-            raise ContractError(f"{label}: duplicate event_id {event['event_id']}")
-        seen_event_ids.add(event["event_id"])
-        if previous_at is not None and event_at <= previous_at:
-            raise ContractError(f"{label}: event timestamps must be strictly increasing")
-        previous_at = event_at
-        kind = event["kind"]
-
-        if kind in FINANCIAL_KINDS:
-            state = _apply_financial(state, kind)
-            if kind == "PAYMENT_ASSERTED":
-                if "hold_until" in event:
-                    asserted_hold_until, asserted_hold_text = _instant(
-                        event["hold_until"], "normalized hold_until"
-                    )
-                else:
-                    asserted_hold_until = None
-                    asserted_hold_text = None
-            if kind == "SETTLED_CASH":
-                settlement = {
-                    "currency": event["settlement_currency"],
-                    "amount": event["settlement_amount"],
-                    "source_ref": event["source_ref"],
-                    "source_digest": event["source_digest"],
-                    "at": event["at"],
-                }
-        else:
-            if state not in {STATE_ACCEPTED, STATE_ASSERTED, STATE_AVAILABLE, STATE_DISPUTED}:
-                raise ContractError(f"{label}: route event {kind} not allowed in state {state}")
-            if kind == "COLLECTION_CONTACT_SENT":
-                if state != STATE_ACCEPTED:
-                    raise ContractError(f"{label}: collection contact only allowed while awaiting payment")
-                if route_dead:
-                    raise ContractError(f"{label}: cannot contact a dead route")
-                if contact_open and not collection_released:
-                    raise ContractError(f"{label}: collection DNR is still active")
-                contact_sent = True
-                contact_open = True
-                contact_delivered = False
-                collection_released = False
-                cooldown_until, cooldown_text = _instant(
-                    event["cooldown_until"], "normalized cooldown_until"
-                )
-            elif kind == "DELIVERY_CONFIRMED":
-                if not contact_open or route_dead:
-                    raise ContractError(f"{label}: no live contact to confirm")
-                contact_delivered = True
-            elif kind == "DELIVERY_BOUNCED":
-                if not contact_open:
-                    raise ContractError(f"{label}: no live contact to bounce")
-                route_dead = True
-                contact_open = False
-                contact_delivered = False
-            elif kind == "ROUTE_REPAIRED":
-                if not route_dead:
-                    raise ContractError(f"{label}: route is not dead")
-                route_dead = False
-                contact_open = False
-                contact_delivered = False
-                collection_released = True
-            elif kind == "COLLECTION_RELEASED":
-                if not contact_sent or route_dead:
-                    raise ContractError(f"{label}: no retained contact generation can be released")
-                contact_open = False
-                contact_delivered = False
-                collection_released = True
-        events.append(event)
-
-    if state is None:
-        raise ContractError(f"{label}: missing financial lifecycle")
-
-    if state == STATE_SETTLED:
-        next_action = "DONE"
-    elif state == STATE_CLOSED:
-        next_action = "DONE"
-    elif state == STATE_DISPUTED:
-        next_action = "HOLD_CONFLICT"
-    elif state == STATE_SUBMITTED:
-        next_action = "HOLD_CONFLICT"
-    elif state == STATE_ASSERTED:
-        if asserted_hold_until is not None and as_of_dt < asserted_hold_until:
-            next_action = "WAIT_HOLD"
-        else:
-            next_action = "VERIFY_AVAILABLE"
-    elif state == STATE_AVAILABLE:
-        next_action = "VERIFY_SETTLEMENT"
-    elif state == STATE_ACCEPTED:
-        if route_dead:
-            next_action = "ROUTE_REPAIR_REQUIRED"
-        elif contact_open and not collection_released:
-            next_action = "WAIT_REPLY"
-        else:
-            next_action = "COLLECTION_ELIGIBLE"
-    else:
-        raise ContractError(f"{label}: unhandled state {state}")
-
-    reference = None
-    if "reference_valuation" in obj:
-        reference = _normalize_reference(obj["reference_valuation"], f"{label}.reference_valuation")
-
-    result: dict[str, Any] = {
-        "claim_id": claim_id,
-        "counterparty_id": counterparty_id,
-        "work_ref": work_ref,
-        "instrument": instrument,
-        "amount": amount,
-        "state": state,
-        "next_action": next_action,
-        "events": events,
-        "route": {
-            "contact_sent": contact_sent,
-            "contact_open_dnr": bool(contact_open and not route_dead),
-            "delivery_confirmed": contact_delivered,
-            "route_dead": route_dead,
-            "collection_released": collection_released,
-            "cooldown_until": cooldown_text,
-            "silence_authorizes_retry": False,
-        },
-        "payment_asserted_hold_until": asserted_hold_text,
-        "settlement": settlement,
-        "reference_valuation": reference,
-        "economics_receipt_sha256": sha256_value(
-            {
-                "claim_id": claim_id,
-                "counterparty_id": counterparty_id,
-                "work_ref": work_ref,
-                "instrument": instrument,
-                "amount": amount,
-                "reference_valuation": reference,
-            }
-        ),
-    }
-    result["claim_receipt_sha256"] = sha256_value(result)
-    return result
-
-def _totals(claims: list[dict[str, Any]]) -> tuple[dict[str, Any], dict[str, str]]:
-    instruments = sorted({claim["instrument"] for claim in claims})
-    totals: dict[str, Any] = {}
-    for instrument in instruments:
-        buckets = {
-            "accepted_outstanding": Decimal(0),
-            "asserted_hold": Decimal(0),
-            "available_not_settled": Decimal(0),
-            "disputed": Decimal(0),
-        }
-        for claim in claims:
-            if claim["instrument"] != instrument:
-                continue
-            amount = Decimal(claim["amount"])
-            if claim["state"] == STATE_ACCEPTED:
-                buckets["accepted_outstanding"] += amount
-            elif claim["state"] == STATE_ASSERTED:
-                buckets["asserted_hold"] += amount
-            elif claim["state"] == STATE_AVAILABLE:
-                buckets["available_not_settled"] += amount
-            elif claim["state"] == STATE_DISPUTED:
-                buckets["disputed"] += amount
-        totals[instrument] = {key: _decimal_text(value) for key, value in buckets.items()}
-
-    settled: dict[str, Decimal] = {}
-    for claim in claims:
-        item = claim["settlement"]
-        if item is None:
-            continue
-        settled.setdefault(item["currency"], Decimal(0))
-        settled[item["currency"]] += Decimal(item["amount"])
-    return totals, {key: _decimal_text(settled[key]) for key in sorted(settled)}
-
-def _markdown(claims: list[dict[str, Any]], as_of: str) -> str:
-    action_order = {
-        "ROUTE_REPAIR_REQUIRED": 0,
-        "VERIFY_SETTLEMENT": 1,
-        "VERIFY_AVAILABLE": 2,
-        "COLLECTION_ELIGIBLE": 3,
-        "WAIT_HOLD": 4,
-        "WAIT_REPLY": 5,
-        "HOLD_CONFLICT": 6,
-        "DONE": 7,
-    }
-    rows = sorted(claims, key=lambda c: (action_order[c["next_action"]], c["claim_id"]))
-    lines = [
-        "# Revenue collection queue",
-        "",
-        f"As of `{as_of}`. Evidence compiler only; this output sends nothing and moves no money.",
-        "",
-        "| Next action | Claim | Counterparty | Work | Instrument | Amount | State |",
-        "|---|---|---|---|---|---:|---|",
-    ]
-    for claim in rows:
-        vals = [
-            claim["next_action"],
-            claim["claim_id"],
-            claim["counterparty_id"],
-            claim["work_ref"],
-            claim["instrument"],
-            claim["amount"],
-            claim["state"],
-        ]
-        safe = [str(v).replace("|", r"\|").replace("\n", " ") for v in vals]
-        lines.append("| " + " | ".join(safe) + " |")
-    return "\n".join(lines) + "\n"
-
-def compile_ledger(value: Any) -> dict[str, Any]:
-    root = _exact_object(value, _ROOT_REQUIRED, _ROOT_REQUIRED, "ledger")
-    if root["schema"] != LEDGER_SCHEMA:
-        raise ContractError(f"schema must be exactly {LEDGER_SCHEMA}")
-    as_of_dt, as_of = _instant(root["as_of"], "as_of")
-    raw_claims = root["claims"]
-    if type(raw_claims) is not list or not raw_claims:
-        raise ContractError("claims must be a non-empty list")
-
-    claims = [_normalize_claim(claim, index, as_of_dt) for index, claim in enumerate(raw_claims)]
-    ids = [claim["claim_id"] for claim in claims]
-    if len(ids) != len(set(ids)):
-        raise ContractError("duplicate claim_id")
-    claims.sort(key=lambda c: c["claim_id"])
-
-    totals_by_instrument, settled_cash_by_currency = _totals(claims)
-    normalized_input = {
-        "schema": LEDGER_SCHEMA,
-        "as_of": as_of,
-        "claims": [
-            {
-                "claim_id": c["claim_id"],
-                "counterparty_id": c["counterparty_id"],
-                "work_ref": c["work_ref"],
-                "instrument": c["instrument"],
-                "amount": c["amount"],
-                "reference_valuation": c["reference_valuation"],
-                "events": c["events"],
-            }
-            for c in claims
-        ],
-    }
-    report: dict[str, Any] = {
-        "schema": REPORT_SCHEMA,
-        "as_of": as_of,
-        "input_receipt_sha256": sha256_value(normalized_input),
-        "claims": claims,
-        "totals_by_instrument": totals_by_instrument,
-        "settled_cash_by_currency": settled_cash_by_currency,
-        "mixed_currency_sum": None,
-        "reference_valuations_recognized_as_cash": False,
-        "collection_queue_markdown": _markdown(claims, as_of),
-        "authority": dict(AUTHORITY),
-    }
-    report["receipt_sha256"] = sha256_value(report)
-    return report
-
-def compile_json(raw: str | bytes) -> dict[str, Any]:
-    return compile_ledger(loads_strict(raw))
-
-def verify_ledger(value: Any, report: Any) -> bool:
-    if type(report) is not dict:
-        raise ContractError("report must be an object")
-    expected = compile_ledger(value)
-    return canonical_bytes(expected) == canonical_bytes(report)
-
-def verify_json(raw_ledger: str | bytes, raw_report: str | bytes) -> bool:
-    return verify_ledger(loads_strict(raw_ledger), loads_strict(raw_report))
+def verify_bundle(source_bytes,output:Path):
+ for name,data in artifact_bundle(source_bytes).items():
+  if read_regular(output/name)!=data: raise CollectionError(f'artifact mismatch: {name}')
+ return True
