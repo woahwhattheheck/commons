@@ -506,6 +506,14 @@ class MuseSendLeaseTests(unittest.TestCase):
             "_verify_audit",
             "_assert_identity",
             "_expire_locked",
+            "json",
+            "hashlib",
+            "secrets",
+            "sqlite3",
+            "unicodedata",
+            "time",
+            "Path",
+            "LeaseError",
         )
         original = {name: getattr(m, name) for name in names}
 
@@ -528,6 +536,15 @@ class MuseSendLeaseTests(unittest.TestCase):
             m.ROW_BINDING_SCHEMA = "attacker-binding"
             m._PRIVATE_ROW_FIELDS = set()
             m._RUNTIME_AUTHORITY = None
+            original_error = original["LeaseError"]
+            m.json = object()
+            m.hashlib = object()
+            m.secrets = object()
+            m.sqlite3 = object()
+            m.unicodedata = object()
+            m.time = object()
+            m.Path = object()
+            m.LeaseError = RuntimeError
             for name in (
                 "_canonical",
                 "_digest",
@@ -546,6 +563,11 @@ class MuseSendLeaseTests(unittest.TestCase):
                 "_expire_locked",
             ):
                 setattr(m, name, poison)
+
+            sent_status = m.status(self.db, lease_id=sent["lease_id"])
+            self.assertEqual(sent_status["status"], "SENT")
+            self.assertEqual(sent_status["send_gate"], "TERMINAL_SENT")
+            self.assert_no_capability(sent_status)
 
             terminal_cases = (
                 (sent, "REBIND-SENT", "SENT"),
@@ -571,7 +593,7 @@ class MuseSendLeaseTests(unittest.TestCase):
 
             # Bounds and validation also come from the sealed generation, not the
             # compatibility mirrors poisoned above.
-            with self.assertRaises(original["_integer"].__kwdefaults__["_error"]):
+            with self.assertRaises(original_error):
                 m._issue_at(
                     self.db,
                     **self.identity,
