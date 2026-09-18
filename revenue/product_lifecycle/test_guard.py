@@ -311,6 +311,61 @@ class ProductLifecycleGuardTests(unittest.TestCase):
         with self.assertRaisesRegex(LifecycleError, "host/product_lifecycle_guard.py"):
             check_repo(root)
 
+    def test_alias_backed_exact_negative_path_filter_fails_closed(self):
+        td, root = self.make_repo()
+        self.addCleanup(td.cleanup)
+        text = workflow_text((SOURCE,)).replace(
+            "      - 'host/product_lifecycle_guard.py'\n",
+            "      - 'host/product_lifecycle_guard.py'\n"
+            "      - '!host/product_lifecycle_guard.py'\n",
+        )
+        (root / ".github/workflows/capability-entrypoints.yml").write_text(text, encoding="utf-8")
+        with self.assertRaisesRegex(LifecycleError, "negative lifecycle workflow path filter"):
+            check_repo(root)
+
+    def test_alias_backed_wildcard_negative_path_filter_fails_closed(self):
+        td, root = self.make_repo()
+        self.addCleanup(td.cleanup)
+        text = workflow_text((SOURCE,)).replace(
+            "      - 'host/product_lifecycle_guard.py'\n",
+            "      - 'host/product_lifecycle_guard.py'\n"
+            "      - '!host/**'\n",
+        )
+        (root / ".github/workflows/capability-entrypoints.yml").write_text(text, encoding="utf-8")
+        with self.assertRaisesRegex(LifecycleError, "negative lifecycle workflow path filter"):
+            check_repo(root)
+
+    def test_direct_pull_exact_negative_path_filter_fails_closed(self):
+        td, root = self.make_repo()
+        self.addCleanup(td.cleanup)
+        pull_paths = [*required_workflow_paths((SOURCE,)), "!host/product_lifecycle_guard.py"]
+        (root / ".github/workflows/capability-entrypoints.yml").write_text(
+            workflow_text((SOURCE,), pull_paths=pull_paths), encoding="utf-8"
+        )
+        with self.assertRaisesRegex(LifecycleError, "negative lifecycle workflow path filter"):
+            check_repo(root)
+
+    def test_direct_pull_wildcard_negative_path_filter_fails_closed(self):
+        td, root = self.make_repo()
+        self.addCleanup(td.cleanup)
+        pull_paths = [*required_workflow_paths((SOURCE,)), "!revenue/**"]
+        (root / ".github/workflows/capability-entrypoints.yml").write_text(
+            workflow_text((SOURCE,), pull_paths=pull_paths), encoding="utf-8"
+        )
+        with self.assertRaisesRegex(LifecycleError, "negative lifecycle workflow path filter"):
+            check_repo(root)
+
+    def test_paths_ignore_fails_closed(self):
+        td, root = self.make_repo()
+        self.addCleanup(td.cleanup)
+        text = workflow_text((SOURCE,)).replace(
+            "  pull_request:\n",
+            "    paths-ignore:\n      - 'host/**'\n  pull_request:\n",
+        )
+        (root / ".github/workflows/capability-entrypoints.yml").write_text(text, encoding="utf-8")
+        with self.assertRaisesRegex(LifecycleError, "paths-ignore is forbidden"):
+            check_repo(root)
+
     def test_retired_product_cannot_be_downgraded(self):
         old = validate_registry(registry("RETIRED"))
         new = validate_registry(registry("RETIRING"))
