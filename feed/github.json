@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 125,
-    "open_pull_requests": 74,
+    "open_pull_requests": 76,
     "runs_in_progress": 18,
-    "runs_queued": 343
+    "runs_queued": 367
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -18,7 +18,7 @@
       "head_sha": "96be91936b40e03845096e93d906cc9b5d6f1865",
       "number": 15613,
       "title": "SwarmOps: harden current semantic readiness verification",
-      "updated_at": "2026-09-18T06:38:26Z"
+      "updated_at": "2026-09-18T06:51:31Z"
     },
     {
       "author": "woahwhattheheck",
@@ -69,13 +69,57 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "zkestrel/tn-cashiering-acceptance-recovery-20260918",
+      "created_at": "2026-09-18T06:53:50Z",
+      "draft": false,
+      "head_sha": "5b2f21eced06af246330ae5dcbbc41a500f596a3",
+      "number": 15975,
+      "title": "Finance: recover cashiering acceptance donor and 95-test proof for #15882",
+      "updated_at": "2026-09-18T06:53:50Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zkestrel-rights-7p9/timestamp-precision-20260918",
+      "created_at": "2026-09-18T06:53:09Z",
+      "draft": false,
+      "head_sha": "fe99e2584db2ca1f8946cf04f84048f7bfaa7672",
+      "number": 15973,
+      "title": "fix(media-rights): prevent timestamp truncation from changing authority and replay identity",
+      "updated_at": "2026-09-18T06:54:24Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-aster/read-coalescer-recovery-20260918",
+      "created_at": "2026-09-18T06:51:40Z",
+      "draft": false,
+      "head_sha": "61cd723a028a4f37e1e6248b6c42288debedf520",
+      "number": 15972,
+      "title": "Add shared read coalescer, Slack adapter and exact-source recovery evidence",
+      "updated_at": "2026-09-18T06:51:40Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zcost/pilot-budget-ky-rfi-current-main-finalizer-20260918",
+      "created_at": "2026-09-18T06:50:50Z",
+      "draft": false,
+      "head_sha": "7e7e8af26d481f78de8ecad7e525a43c1a338b10",
+      "number": 15970,
+      "title": "CI + revenue: current-main pilot budget repair and Kentucky reporting recovery",
+      "updated_at": "2026-09-18T06:54:06Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "z-kestrel-r8m2/discord-push-inventory-15961",
       "created_at": "2026-09-18T06:48:55Z",
       "draft": false,
       "head_sha": "217ff515cd40baca755978373a22c3bfc5291ccc",
       "number": 15968,
       "title": "Fix Discord push inventory without expanding CI jobs",
-      "updated_at": "2026-09-18T06:48:55Z"
+      "updated_at": "2026-09-18T06:53:23Z"
     },
     {
       "author": "woahwhattheheck",
@@ -87,17 +131,6 @@
       "number": 15967,
       "title": "Preserve exact Git trees against undeclared changes and sparse-tree publication",
       "updated_at": "2026-09-18T06:48:46Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-z/provider-actions-health-15947-20260918",
-      "created_at": "2026-09-18T06:46:10Z",
-      "draft": false,
-      "head_sha": "832fe34f9cbb5c04715103a03771869be7c90a51",
-      "number": 15963,
-      "title": "Provider Actions health audit and deterministic classifier",
-      "updated_at": "2026-09-18T06:46:10Z"
     },
     {
       "author": "woahwhattheheck",
@@ -119,7 +152,7 @@
       "head_sha": "a196d94727bcf5830647a7d88d6cf407b7e6ccbd",
       "number": 15957,
       "title": "GitHub read-rate coordinator for swarm secondary-limit control",
-      "updated_at": "2026-09-18T06:49:27Z"
+      "updated_at": "2026-09-18T06:51:58Z"
     },
     {
       "author": "woahwhattheheck",
@@ -142,39 +175,6 @@
       "number": 15954,
       "title": "Recover UNC AP AI evidence binding on current main",
       "updated_at": "2026-09-18T06:47:30Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-sol17/e2b-executor-15922-20260918-r2",
-      "created_at": "2026-09-18T06:32:11Z",
-      "draft": false,
-      "head_sha": "76a838d99f33d6acee4b73e7c833cd4da80f8caa",
-      "number": 15953,
-      "title": "E2B exact-head executor for off-owner-machine test receipts",
-      "updated_at": "2026-09-18T06:32:11Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "anvil/autopsy-retirement-stage2",
-      "created_at": "2026-09-18T06:31:12Z",
-      "draft": false,
-      "head_sha": "ebddb3b0f6aa06fd6a0602eab95c23b3f5384bcd",
-      "number": 15952,
-      "title": "purge: finish Agent Failure Autopsy retirement \u2014 generators, registries, dead code, stale tests",
-      "updated_at": "2026-09-18T06:44:47Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-vectoryield/workflow-budget-15940-recovery-20260918",
-      "created_at": "2026-09-18T06:19:42Z",
-      "draft": false,
-      "head_sha": "33827c082c125ff900463bc78876658147831c0e",
-      "number": 15949,
-      "title": "CI: repair workflow budget with event-scoped schedule cancellation",
-      "updated_at": "2026-09-18T06:23:51Z"
     }
   ],
   "open_heads": {
@@ -227,7 +227,6 @@
     "15866": "d4a6d1eb3ed0f7615f22c1847f9c379e9f468135",
     "15867": "7353c760d9f4c8a3d9f9ceeb1e753f93887c5067",
     "15868": "4fdb67823db0349de7b70717af7aa5b517eccaf3",
-    "15869": "0029c8cfd68a9966b035e00838fb030ebe9850fb",
     "15875": "82b3c6efe5cd87650cb66ca89213d0928ab2cbe3",
     "15877": "a4672c41352745889717172e08616533a542467a",
     "15884": "fc85ecf3036d57c69c8685068a1f2f49d88c2e8c",
@@ -249,14 +248,50 @@
     "15956": "1120270bd502573578b5ba915667e2bc15aed871",
     "15957": "a196d94727bcf5830647a7d88d6cf407b7e6ccbd",
     "15958": "288f1a3b73d9e07b7c55180c0c696ac0b95480ad",
-    "15963": "832fe34f9cbb5c04715103a03771869be7c90a51",
     "15967": "fac19f2dcd6fd1c6aacb0f6066a6c6aa60e69345",
-    "15968": "217ff515cd40baca755978373a22c3bfc5291ccc"
+    "15968": "217ff515cd40baca755978373a22c3bfc5291ccc",
+    "15970": "7e7e8af26d481f78de8ecad7e525a43c1a338b10",
+    "15972": "61cd723a028a4f37e1e6248b6c42288debedf520",
+    "15973": "fe99e2584db2ca1f8946cf04f84048f7bfaa7672",
+    "15975": "5b2f21eced06af246330ae5dcbbc41a500f596a3"
   },
-  "pulls_listed": 74,
+  "pulls_listed": 76,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 19.1,
+  "queue_depth_per_runner": 20.4,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "sol-z/signoz-sep15-collision-truth-20260917",
+      "closed_at": "2026-09-18T06:54:08Z",
+      "head_sha": "0029c8cfd68a9966b035e00838fb030ebe9850fb",
+      "merged_at": null,
+      "number": 15869,
+      "state": "CLOSED",
+      "title": "revenue: bind SigNoz Sep 15 send into collision truth"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-tern/lacsd-15865-proof-recovery-20260918",
+      "closed_at": "2026-09-18T06:52:39Z",
+      "head_sha": "c659109d41964d3bf62337c1a0f15e49d923a8d6",
+      "merged_at": "2026-09-18T06:52:39Z",
+      "number": 15971,
+      "state": "MERGED",
+      "title": "LACSD: recover exact-source proof and reusable UAT report"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-z/provider-actions-health-15947-20260918",
+      "closed_at": "2026-09-18T06:51:38Z",
+      "head_sha": "832fe34f9cbb5c04715103a03771869be7c90a51",
+      "merged_at": "2026-09-18T06:51:38Z",
+      "number": 15963,
+      "state": "MERGED",
+      "title": "Provider Actions health audit and deterministic classifier"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -388,43 +423,10 @@
       "number": 15916,
       "state": "MERGED",
       "title": "Infrastructure: verified forge-portable cold archive and migration planner"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/alameda-902737",
-      "closed_at": "2026-09-18T03:19:12Z",
-      "head_sha": "6d821c5eebcbf4d95a91915e9b38e2de7cbbd9aa",
-      "merged_at": "2026-09-18T03:19:11Z",
-      "number": 15838,
-      "state": "MERGED",
-      "title": "Alameda 902737 qualification carrier"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "grokbuild/pr15902-odg-field-text-20260917",
-      "closed_at": "2026-09-18T03:16:04Z",
-      "head_sha": "c023b47686a54b0d70c5719bc51021ec90fbbdda",
-      "merged_at": "2026-09-18T03:16:04Z",
-      "number": 15910,
-      "state": "MERGED",
-      "title": "Muse runtime adoption: open-door README wording + scan regression"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol17/muse-runtime-adoption-fixforward-20260917-2305",
-      "closed_at": "2026-09-18T03:11:10Z",
-      "head_sha": "b96d8d8e4811978e8e586a9b6b631bb7b778f35f",
-      "merged_at": "2026-09-18T03:11:10Z",
-      "number": 15902,
-      "state": "MERGED",
-      "title": "Muse runtime adoption: fresh-main gate without workflow fanout"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-18T06:50:32Z",
+  "unchanged_since": "2026-09-18T06:54:26Z",
   "undatable_pulls": []
 }
