@@ -729,5 +729,70 @@ def main(argv: Sequence[str] | None = None) -> int:
     return 0 if valid else 2
 
 
+
+def _seal_runtime_generation() -> dict[str, Any]:
+    """Freeze this module's function/helper generation after first load.
+
+    Public functions are rebound to copies whose globals dictionary is private
+    to this generation.  Runtime leaves that matter to canonicalization and
+    hashing are captured as immutable attribute surfaces so later rebinding of
+    this module's public names cannot change conformance semantics.
+    """
+    from types import FunctionType
+
+    class _FrozenJSON:
+        __slots__ = ()
+        dumps = staticmethod(json.dumps)
+        loads = staticmethod(json.loads)
+        JSONDecodeError = json.JSONDecodeError
+
+    class _FrozenHashlib:
+        __slots__ = ()
+        sha256 = staticmethod(hashlib.sha256)
+
+    class _FrozenRegex:
+        __slots__ = ()
+        compile = staticmethod(re.compile)
+        fullmatch = staticmethod(re.fullmatch)
+
+    live = globals()
+    frozen_globals = dict(live)
+    frozen_globals["json"] = _FrozenJSON()
+    frozen_globals["hashlib"] = _FrozenHashlib()
+    frozen_globals["re"] = _FrozenRegex()
+
+    originals = {
+        name: value
+        for name, value in live.items()
+        if isinstance(value, FunctionType)
+        and value.__module__ == __name__
+        and name != "_seal_runtime_generation"
+    }
+    sealed: dict[str, Any] = {}
+    for name, function in originals.items():
+        clone = FunctionType(
+            function.__code__,
+            frozen_globals,
+            function.__name__,
+            function.__defaults__,
+            function.__closure__,
+        )
+        clone.__kwdefaults__ = (
+            dict(function.__kwdefaults__) if function.__kwdefaults__ else None
+        )
+        clone.__annotations__ = dict(function.__annotations__)
+        clone.__doc__ = function.__doc__
+        clone.__module__ = function.__module__
+        clone.__qualname__ = function.__qualname__
+        sealed[name] = clone
+
+    # Cross-calls within the cloned functions resolve through this exact graph.
+    frozen_globals.update(sealed)
+    return sealed
+
+
+globals().update(_seal_runtime_generation())
+del _seal_runtime_generation
+
 if __name__ == "__main__":
     raise SystemExit(main())
