@@ -184,6 +184,51 @@ class RevenueCollectionDeskTests(unittest.TestCase):
         with self.assertRaisesRegex(c.ContractError, "duplicate event_id"):
             c.compile_ledger(ledger([cl]))
 
+    def test_future_settlement_cannot_mint_current_cash(self):
+        cl = claim(instrument="RTC", amount="25", events=[
+            ev("e1", "2026-09-01T00:00:00Z", "WORK_SUBMITTED"),
+            ev("e2", "2026-09-02T00:00:00Z", "ACCEPTED"),
+            ev("e3", "2026-09-19T00:00:00Z", "SETTLED_CASH",
+               settlement_currency="USD", settlement_amount="1.00"),
+        ])
+        with self.assertRaisesRegex(c.ContractError, "after ledger as_of"):
+            c.compile_ledger(ledger([cl], as_of="2026-09-18T00:00:00Z"))
+
+    def test_future_collection_release_cannot_end_current_dnr(self):
+        cl = claim(events=[
+            ev("e1", "2026-09-01T00:00:00Z", "WORK_SUBMITTED"),
+            ev("e2", "2026-09-02T00:00:00Z", "ACCEPTED"),
+            ev("e3", "2026-09-03T00:00:00Z", "COLLECTION_CONTACT_SENT",
+               cooldown_until="2026-09-04T00:00:00Z"),
+            ev("e4", "2026-09-03T01:00:00Z", "DELIVERY_CONFIRMED"),
+            ev("e5", "2026-09-19T00:00:00Z", "COLLECTION_RELEASED"),
+        ])
+        with self.assertRaisesRegex(c.ContractError, "after ledger as_of"):
+            c.compile_ledger(ledger([cl], as_of="2026-09-18T00:00:00Z"))
+
+    def test_future_route_repair_cannot_restore_current_eligibility(self):
+        cl = claim(events=[
+            ev("e1", "2026-09-01T00:00:00Z", "WORK_SUBMITTED"),
+            ev("e2", "2026-09-02T00:00:00Z", "ACCEPTED"),
+            ev("e3", "2026-09-03T00:00:00Z", "COLLECTION_CONTACT_SENT",
+               cooldown_until="2026-09-04T00:00:00Z"),
+            ev("e4", "2026-09-03T01:00:00Z", "DELIVERY_BOUNCED"),
+            ev("e5", "2026-09-19T00:00:00Z", "ROUTE_REPAIRED"),
+        ])
+        with self.assertRaisesRegex(c.ContractError, "after ledger as_of"):
+            c.compile_ledger(ledger([cl], as_of="2026-09-18T00:00:00Z"))
+
+    def test_event_exactly_at_as_of_is_current(self):
+        cl = claim(events=[
+            ev("e1", "2026-09-01T00:00:00Z", "WORK_SUBMITTED"),
+            ev("e2", "2026-09-02T00:00:00Z", "ACCEPTED"),
+            ev("e3", "2026-09-18T00:00:00Z", "SETTLED_CASH",
+               settlement_currency="USD", settlement_amount="1.00"),
+        ])
+        out = c.compile_ledger(ledger([cl], as_of="2026-09-18T00:00:00Z"))
+        self.assertEqual(out["claims"][0]["state"], c.STATE_SETTLED)
+        self.assertEqual(out["settled_cash_by_currency"], {"USD": "1"})
+
     def test_nonmonotone_event_time_fails(self):
         cl = claim(events=[
             ev("e1", "2026-09-02T00:00:00Z", "WORK_SUBMITTED"),
