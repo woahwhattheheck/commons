@@ -1,0 +1,41 @@
+{
+  "schema": "co-hcpf-hcbs-quality-prime-research/v1",
+  "pursuit_id": "CO-HCPF-HCBS-QUALITY-258",
+  "production_authority": false,
+  "candidates": [
+    {
+      "org_id": "vital-research",
+      "priority": "HIGH",
+      "why": "Current Colorado NCI survey contractor/interviewer and multi-state NCI operator; strongest directly relevant prime evidence.",
+      "evidence_urls": ["https://vitalresearch.com/colorado/nci/", "https://nci-ad.org/states/CO/"]
+    },
+    {
+      "org_id": "qlarant",
+      "priority": "HIGH",
+      "why": "Conducts NCI surveys for states since 2007; reports 30,000+ NCI in-person surveys and healthcare quality/data analytics capabilities.",
+      "evidence_urls": [
+        "https://www.qlarant.com/solutions/quality-improvement/national-core-indicators-surveys/",
+        "https://www.qlarant.com/wp-content/uploads/2025/09/IDD-single-sheet-8_2025.pdf"
+      ]
+    },
+    {
+      "org_id": "knowledge-services",
+      "priority": "HIGH",
+      "why": "Current California DHCS NCI-AD Adult Consumer Survey vendor with in-person, phone, and videoconference operations.",
+      "evidence_urls": [
+        "https://www.dhcs.ca.gov/services/national-core-indicators-aging-and-disabilities/",
+        "https://nci-ad.org/states/CA/"
+      ]
+    },
+    {
+      "org_id": "mathematica",
+      "priority": "MEDIUM_HIGH",
+      "why": "Supports California HCBS quality measures and NCI-AD launch with Knowledge Services; strong Medicaid/HCBS analytics and evaluation fit.",
+      "evidence_urls": [
+        "https://www.mathematica.org/projects/california-home-and-community-based-services-gap-analysis-and-multi-year-roadmap"
+      ]
+    }
+  ],
+  "contact_authority": false,
+  "next_gate": "Retain exact current buyer package and use Muse before any partner outreach."
+}
