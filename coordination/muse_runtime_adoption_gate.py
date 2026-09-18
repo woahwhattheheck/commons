@@ -736,4 +736,16 @@ def _build_cli(*, read_packet=_read_packet, read_diagnostic=_read_diagnostic, co
             if args.command == "compile":
                 result = compile_fn(packet)
             else:
-                result = ver
+                result = verify_fn(packet, read_diagnostic(args.diagnostic))
+            return 0 if args.command == "compile" or result["valid"] else 3
+        except (error_cls, os_error_cls):
+            return 2
+
+    return main
+
+
+main = _build_cli()
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
