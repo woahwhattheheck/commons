@@ -99,14 +99,15 @@ case evidence; do not send it to unrelated recipients or publish real buyer data
 ## Testing and integration
 
 ```sh
-python -m unittest -v test_unc_ap_review.py
+python -m unittest -v test_unc_ap_ai_peoplesoft.py
 # Or from this package directory:
 python -m unittest -v test_ap_review.py
 python -O -m unittest -v test_ap_review.py
 ```
 
-The root hook discovers at least 71 tests, refuses a vacuous or skipped suite,
-and executes both normal and real optimized Python. No Actions workflow is added;
+The existing root hook discovers at least 116 tests: source and correlation,
+Cairn batch identity, and the 71-test review surface. It refuses a vacuous or
+skipped suite and executes both normal and real optimized Python. No Actions workflow is added;
 it participates in existing root test discovery. Hosted execution must be reported
 separately from local cloud execution.
 
