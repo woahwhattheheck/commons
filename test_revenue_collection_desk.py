@@ -192,6 +192,16 @@ class RevenueCollectionDeskTests(unittest.TestCase):
         with self.assertRaisesRegex(c.ContractError, "strictly increasing"):
             c.compile_ledger(ledger([cl]))
 
+    def test_future_event_after_as_of_fails(self):
+        cl = claim(events=[
+            ev("e1", "2026-09-01T00:00:00Z", "WORK_SUBMITTED"),
+            ev("e2", "2026-09-02T00:00:00Z", "ACCEPTED"),
+            ev("e3", "2026-09-20T00:00:00Z", "SETTLED_CASH",
+               settlement_currency="USD", settlement_amount="10.00"),
+        ])
+        with self.assertRaisesRegex(c.ContractError, "after ledger as_of"):
+            c.compile_ledger(ledger([cl], as_of="2026-09-18T00:00:00Z"))
+
     def test_illegal_financial_skip_fails(self):
         cl = claim(events=[
             ev("e1", "2026-09-01T00:00:00Z", "WORK_SUBMITTED"),
