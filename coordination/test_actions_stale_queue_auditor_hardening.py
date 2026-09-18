@@ -298,5 +298,60 @@ class CanonicalWorkBoundaryTests(unittest.TestCase):
             auditor.canonical_json = original_canonical_json
 
 
+    def test_transitive_module_rebind_cannot_change_semantic_generation(self):
+        data = packet()
+        data["runs"][0]["provenance"]["pull_requests"] = [
+            {"number": 1, "state": "OPEN", "current_head_sha": SHA_A}
+        ]
+        baseline = auditor.build_report(data)
+        self.assertEqual(baseline["rows"][0]["decision"], "HOLD")
+        self.assertIn("OPEN_PR_CURRENT_HEAD", baseline["rows"][0]["reasons"])
+
+        def bomb(*args, **kwargs):
+            raise AssertionError("live module helper must not be consulted")
+
+        sentinel = object()
+        replacements = {
+            "any": lambda _iterable: False,
+            "set": lambda *_args, **_kwargs: set(),
+            "sorted": lambda *_args, **_kwargs: [],
+            "sum": lambda *_args, **_kwargs: 0,
+            "_classify": lambda *_args, **_kwargs: (
+                "SAFE_TO_CANCEL", ["ALL_ASSOCIATED_PRS_CLOSED_OR_STALE"]
+            ),
+            "_normalize_run": bomb,
+            "_normalize_pr": bomb,
+            "_freeze_plain_json": bomb,
+            "_exact_keys": bomb,
+            "_bounded_string": bomb,
+            "_utc": bomb,
+        }
+        originals = {
+            name: getattr(auditor, name, sentinel)
+            for name in replacements
+        }
+        try:
+            for name, value in replacements.items():
+                setattr(auditor, name, value)
+
+            rebuilt = auditor.build_report(data)
+            self.assertEqual(rebuilt, baseline)
+            self.assertTrue(auditor.verify_report(rebuilt))
+            self.assertEqual(
+                auditor.normalize_packet(data),
+                baseline["retained_input"],
+            )
+            self.assertEqual(
+                auditor.canonical_json(baseline),
+                auditor.canonical_json(rebuilt),
+            )
+        finally:
+            for name, value in originals.items():
+                if value is sentinel:
+                    delattr(auditor, name)
+                else:
+                    setattr(auditor, name, value)
+
+
 if __name__ == "__main__":
     unittest.main()
