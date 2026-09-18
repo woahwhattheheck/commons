@@ -13,7 +13,10 @@ Security properties of this generation:
   paths cannot recover it from retained state;
 - every mutation verifies the current lease row is bound to the latest valid
   audit receipt before it can grant or advance authority;
-- public ``*_current`` entry points capture process UTC at module initialization;
+- public ``*_current`` entry points bind process UTC at module initialization
+  and sample it only after acquiring the SQLite write transaction;
+- an expired or failed post-commit GO handoff never releases a retryable token;
+- status reads the lease row and its audit chain from one coherent snapshot;
   explicit-time helpers are private deterministic test surfaces.
 """
 from __future__ import annotations
@@ -413,6 +416,7 @@ def _issue_at(
     session_nonce: str,
     ttl_seconds: int,
     now_s: int,
+    _clock: Callable[[], int] | None = None,
     _rt=_RUNTIME_AUTHORITY,
 ) -> dict[str, Any]:
     identity = _rt.identity(operation_key, counterparty, route, purpose)
@@ -424,6 +428,8 @@ def _issue_at(
     conn = _rt.connect(db_path)
     try:
         conn.execute("BEGIN IMMEDIATE")
+        # Queued writers must not authorize a transition using pre-lock time.
+        now_s = _rt.integer(_clock() if _clock is not None else now_s, "transaction_now_s")
         existing = conn.execute("SELECT * FROM send_leases WHERE semantic_key=?", (semantic,)).fetchone()
         if existing is not None:
             _rt.verify_audit(conn, existing)
@@ -432,7 +438,7 @@ def _issue_at(
             result = _rt.public_row(existing)
             result.update({"decision": "EXISTING_LEASE", "send_gate": "HOLD"})
             return result
-        expires = now_s + ttl_seconds
+        expires = _rt.integer(now_s + ttl_seconds, "expires_at_s")
         lease_id = _rt.digest(
             {
                 "schema": "commons.muse-send-lease-id/v1",
@@ -492,7 +498,9 @@ def _issue_at(
 
 
 def _expire_locked(conn: sqlite3.Connection, row: sqlite3.Row, now_s: int, _rt=_RUNTIME_AUTHORITY) -> sqlite3.Row:
-    _rt.verify_audit(conn, row)
+    audit, _ = _rt.verify_audit(conn, row)
+    if now_s < row["issued_at_s"] or now_s < audit[-1]["event_at_s"]:
+        raise _rt.error("transaction clock precedes lease history")
     if now_s < row["expires_at_s"] or row["status"] in _rt.terminal_or_hold:
         return row
     if row["status"] == _rt.leased:
@@ -530,6 +538,7 @@ def _consume_at(
     purpose: str,
     session_nonce: str,
     now_s: int,
+    _clock: Callable[[], int] | None = None,
     _rt=_RUNTIME_AUTHORITY,
     _expire_locked_fn=_expire_locked,
 ) -> dict[str, Any]:
@@ -539,6 +548,8 @@ def _consume_at(
     conn = _rt.connect(db_path)
     try:
         conn.execute("BEGIN IMMEDIATE")
+        # Queued writers must not authorize a transition using pre-lock time.
+        now_s = _rt.integer(_clock() if _clock is not None else now_s, "transaction_now_s")
         row = _rt.fetch(conn, lease_id)
         _rt.verify_audit(conn, row)
         _rt.assert_identity(row, identity)
@@ -607,6 +618,7 @@ def _commit_at(
     provider: str,
     provider_message_id: str,
     now_s: int,
+    _clock: Callable[[], int] | None = None,
     _rt=_RUNTIME_AUTHORITY,
     _expire_locked_fn=_expire_locked,
 ) -> dict[str, Any]:
@@ -619,6 +631,8 @@ def _commit_at(
     conn = _rt.connect(db_path)
     try:
         conn.execute("BEGIN IMMEDIATE")
+        # Queued writers must not authorize a transition using pre-lock time.
+        now_s = _rt.integer(_clock() if _clock is not None else now_s, "transaction_now_s")
         row = _rt.fetch(conn, lease_id)
         _rt.verify_audit(conn, row)
         if row["status"] == _rt.sent:
@@ -689,6 +703,7 @@ def _expire_at(
     *,
     lease_id: str,
     now_s: int,
+    _clock: Callable[[], int] | None = None,
     _rt=_RUNTIME_AUTHORITY,
     _expire_locked_fn=_expire_locked,
 ) -> dict[str, Any]:
@@ -696,6 +711,8 @@ def _expire_at(
     conn = _rt.connect(db_path)
     try:
         conn.execute("BEGIN IMMEDIATE")
+        # Queued writers must not authorize a transition using pre-lock time.
+        now_s = _rt.integer(_clock() if _clock is not None else now_s, "transaction_now_s")
         row = _rt.fetch(conn, lease_id)
         _rt.verify_audit(conn, row)
         row = _expire_locked_fn(conn, row, now_s)
@@ -725,6 +742,7 @@ def _reconcile_at(
     provider_message_id: str | None,
     note: str,
     now_s: int,
+    _clock: Callable[[], int] | None = None,
     _rt=_RUNTIME_AUTHORITY,
     _expire_locked_fn=_expire_locked,
 ) -> dict[str, Any]:
@@ -740,6 +758,8 @@ def _reconcile_at(
     conn = _rt.connect(db_path)
     try:
         conn.execute("BEGIN IMMEDIATE")
+        # Queued writers must not authorize a transition using pre-lock time.
+        now_s = _rt.integer(_clock() if _clock is not None else now_s, "transaction_now_s")
         row = _rt.fetch(conn, lease_id)
         _rt.verify_audit(conn, row)
         row = _expire_locked_fn(conn, row, now_s)
@@ -803,12 +823,15 @@ def _reconcile_at(
 def status(db_path: str | os.PathLike[str], *, lease_id: str, _rt=_RUNTIME_AUTHORITY) -> dict[str, Any]:
     conn = _rt.connect(db_path)
     try:
+        # Autocommit otherwise lets the row and audit SELECTs straddle a commit.
+        conn.execute("BEGIN")
         row = _rt.fetch(conn, lease_id)
         audit, head = _rt.verify_audit(conn, row)
         result = _rt.public_row(row)
         result["audit"] = audit
         result["audit_head_sha256"] = head
         result["send_gate"] = "TERMINAL_SENT" if row["status"] == _rt.sent else "HOLD"
+        conn.commit()
         return result
     finally:
         conn.close()
@@ -840,6 +863,7 @@ def _seal_runtime_surfaces(
         session_nonce: str,
         ttl_seconds: int,
         now_s: int,
+        _clock: Callable[[], int] | None = None,
     ) -> dict[str, Any]:
         return _issue_impl(
             db_path,
@@ -851,6 +875,7 @@ def _seal_runtime_surfaces(
             session_nonce=session_nonce,
             ttl_seconds=ttl_seconds,
             now_s=now_s,
+            _clock=_clock,
             _rt=_runtime,
         )
 
@@ -864,6 +889,7 @@ def _seal_runtime_surfaces(
         purpose: str,
         session_nonce: str,
         now_s: int,
+        _clock: Callable[[], int] | None = None,
     ) -> dict[str, Any]:
         return _consume_impl(
             db_path,
@@ -874,6 +900,7 @@ def _seal_runtime_surfaces(
             purpose=purpose,
             session_nonce=session_nonce,
             now_s=now_s,
+            _clock=_clock,
             _rt=_runtime,
             _expire_locked_fn=expire_locked,
         )
@@ -887,6 +914,7 @@ def _seal_runtime_surfaces(
         provider: str,
         provider_message_id: str,
         now_s: int,
+        _clock: Callable[[], int] | None = None,
     ) -> dict[str, Any]:
         return _commit_impl(
             db_path,
@@ -896,6 +924,7 @@ def _seal_runtime_surfaces(
             provider=provider,
             provider_message_id=provider_message_id,
             now_s=now_s,
+            _clock=_clock,
             _rt=_runtime,
             _expire_locked_fn=expire_locked,
         )
@@ -905,11 +934,13 @@ def _seal_runtime_surfaces(
         *,
         lease_id: str,
         now_s: int,
+        _clock: Callable[[], int] | None = None,
     ) -> dict[str, Any]:
         return _expire_impl(
             db_path,
             lease_id=lease_id,
             now_s=now_s,
+            _clock=_clock,
             _rt=_runtime,
             _expire_locked_fn=expire_locked,
         )
@@ -923,6 +954,7 @@ def _seal_runtime_surfaces(
         provider_message_id: str | None,
         note: str,
         now_s: int,
+        _clock: Callable[[], int] | None = None,
     ) -> dict[str, Any]:
         return _reconcile_impl(
             db_path,
@@ -932,6 +964,7 @@ def _seal_runtime_surfaces(
             provider_message_id=provider_message_id,
             note=note,
             now_s=now_s,
+            _clock=_clock,
             _rt=_runtime,
             _expire_locked_fn=expire_locked,
         )
@@ -956,7 +989,7 @@ def _process_clock_factory(
     return sample
 
 
-def _bind_current_api(clock: Callable[[], int]):
+def _bind_current_api(clock: Callable[[], int], _integer_fn=_integer, _error=LeaseError):
     issue_impl, consume_impl, commit_impl, expire_impl, reconcile_impl = (
         _issue_at,
         _consume_at,
@@ -975,11 +1008,12 @@ def _bind_current_api(clock: Callable[[], int]):
             seat=seat,
             session_nonce=session_nonce,
             ttl_seconds=ttl_seconds,
-            now_s=clock(),
+            now_s=0,
+            _clock=clock,
         )
 
     def consume_current(db_path, *, lease_id, operation_key, counterparty, route, purpose, session_nonce):
-        return consume_impl(
+        result = consume_impl(
             db_path,
             lease_id=lease_id,
             operation_key=operation_key,
@@ -987,8 +1021,18 @@ def _bind_current_api(clock: Callable[[], int]):
             route=route,
             purpose=purpose,
             session_nonce=session_nonce,
-            now_s=clock(),
+            now_s=0,
+            _clock=clock,
         )
+        if result["decision"] == "GO":
+            # Commit/fsync or scheduling can consume the remaining lease lifetime.
+            # Suppress stale capabilities; the durable CONSUMED state prevents retry.
+            handoff_s = _integer_fn(clock(), "handoff_now_s")
+            if handoff_s < result["consumed_at_s"]:
+                raise _error("process clock moved backwards before GO handoff")
+            if handoff_s >= result["expires_at_s"]:
+                return expire_impl(db_path, lease_id=lease_id, now_s=handoff_s)
+        return result
 
     def commit_current(db_path, *, lease_id, session_nonce, go_token, provider, provider_message_id):
         return commit_impl(
@@ -998,11 +1042,12 @@ def _bind_current_api(clock: Callable[[], int]):
             go_token=go_token,
             provider=provider,
             provider_message_id=provider_message_id,
-            now_s=clock(),
+            now_s=0,
+            _clock=clock,
         )
 
     def expire_current(db_path, *, lease_id):
-        return expire_impl(db_path, lease_id=lease_id, now_s=clock())
+        return expire_impl(db_path, lease_id=lease_id, now_s=0, _clock=clock)
 
     def reconcile_current(db_path, *, lease_id, provider_seen, provider=None, provider_message_id=None, note):
         return reconcile_impl(
@@ -1012,7 +1057,8 @@ def _bind_current_api(clock: Callable[[], int]):
             provider=provider,
             provider_message_id=provider_message_id,
             note=note,
-            now_s=clock(),
+            now_s=0,
+            _clock=clock,
         )
 
     return issue_current, consume_current, commit_current, expire_current, reconcile_current
