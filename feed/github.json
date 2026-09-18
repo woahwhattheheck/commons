@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 118,
-    "open_pull_requests": 69,
-    "runs_in_progress": 14,
-    "runs_queued": 260
+    "open_issues": 119,
+    "open_pull_requests": 70,
+    "runs_in_progress": 15,
+    "runs_queued": 267
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -69,6 +69,28 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
+      "branch": "z-sol17/e2b-executor-15922-20260918-r2",
+      "created_at": "2026-09-18T06:32:11Z",
+      "draft": false,
+      "head_sha": "76a838d99f33d6acee4b73e7c833cd4da80f8caa",
+      "number": 15953,
+      "title": "E2B exact-head executor for off-owner-machine test receipts",
+      "updated_at": "2026-09-18T06:32:11Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "anvil/autopsy-retirement-stage2",
+      "created_at": "2026-09-18T06:31:12Z",
+      "draft": false,
+      "head_sha": "2755526e8a41f4d1d670992b47d36e2e82900311",
+      "number": 15952,
+      "title": "purge: finish Agent Failure Autopsy retirement \u2014 generators, registries, dead code, stale tests",
+      "updated_at": "2026-09-18T06:31:12Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
       "branch": "z-vectoryield/workflow-budget-15940-recovery-20260918",
       "created_at": "2026-09-18T06:19:42Z",
       "draft": false,
@@ -80,24 +102,13 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "sledge/agent-rescue-emitter-residue-20260918",
-      "created_at": "2026-09-18T06:19:13Z",
-      "draft": false,
-      "head_sha": "852b08f26fecdbcd1c43a8175f5f0642ac6833d3",
-      "number": 15948,
-      "title": "emitters: drop retired agent-rescue.html from live-cash surfaces + rules",
-      "updated_at": "2026-09-18T06:19:13Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
       "branch": "z-sol/recover-org-outbound-chain-14269-20260918",
       "created_at": "2026-09-18T04:38:17Z",
       "draft": false,
-      "head_sha": "06f88b9d48f5f3b7b62d29ac8dc45a64b5d2a677",
+      "head_sha": "e561fee5e53bcd24bf50893f87c26aafde07d8f5",
       "number": 15945,
       "title": "fix(outbound): recover mandatory organization provider chain on fresh main",
-      "updated_at": "2026-09-18T06:24:42Z"
+      "updated_at": "2026-09-18T06:35:36Z"
     },
     {
       "author": "woahwhattheheck",
@@ -119,7 +130,7 @@
       "head_sha": "ee52bc783f9ba97c32a3cbc9213ab3335dcf5457",
       "number": 15942,
       "title": "Repair provider submission observation truth",
-      "updated_at": "2026-09-18T06:23:38Z"
+      "updated_at": "2026-09-18T06:32:24Z"
     },
     {
       "author": "woahwhattheheck",
@@ -163,18 +174,7 @@
       "head_sha": "395a7f1d3fc3e18595c95bf9ff58c1dffacbea2d",
       "number": 15930,
       "title": "UNC AP AI evidence-binding repair",
-      "updated_at": "2026-09-18T03:39:57Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-argentvector-2318/tn-34201-02431-current-state-repair",
-      "created_at": "2026-09-18T03:38:28Z",
-      "draft": false,
-      "head_sha": "db44d860e2e10b2a1f27f0535b14794b9f77ed0a",
-      "number": 15929,
-      "title": "Refresh Tennessee 34201-02431 source state",
-      "updated_at": "2026-09-18T03:38:28Z"
+      "updated_at": "2026-09-18T06:30:40Z"
     }
   ],
   "open_heads": {
@@ -223,7 +223,7 @@
     "15841": "6fc34824119487c0bd292afc5687c8e5792866b1",
     "15843": "2fa099d3627947bcd343bc62119c0b952a760a46",
     "15857": "1bc841e9815298565cef6cc80773a0ebab9d04bf",
-    "15863": "9213866d2c9b3ba3093ee6c5b3702c6aba87019f",
+    "15863": "02210d46101c4b8c9a0f80d0a14fb1843ee40c2f",
     "15865": "d6ba9099718fab8b308daeab7c7b57d1e97aa786",
     "15866": "d4a6d1eb3ed0f7615f22c1847f9c379e9f468135",
     "15867": "7353c760d9f4c8a3d9f9ceeb1e753f93887c5067",
@@ -244,14 +244,26 @@
     "15940": "af98a5bdfdbfc9eba99318aa675843e159fe0d00",
     "15942": "ee52bc783f9ba97c32a3cbc9213ab3335dcf5457",
     "15943": "63a71753078decb3af0a80ee02cd0da193dcc003",
-    "15945": "06f88b9d48f5f3b7b62d29ac8dc45a64b5d2a677",
-    "15948": "852b08f26fecdbcd1c43a8175f5f0642ac6833d3",
-    "15949": "33827c082c125ff900463bc78876658147831c0e"
+    "15945": "e561fee5e53bcd24bf50893f87c26aafde07d8f5",
+    "15949": "33827c082c125ff900463bc78876658147831c0e",
+    "15952": "2755526e8a41f4d1d670992b47d36e2e82900311",
+    "15953": "76a838d99f33d6acee4b73e7c833cd4da80f8caa"
   },
-  "pulls_listed": 69,
+  "pulls_listed": 70,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 18.6,
+  "queue_depth_per_runner": 17.8,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "sledge/agent-rescue-emitter-residue-20260918",
+      "closed_at": "2026-09-18T06:29:21Z",
+      "head_sha": "648e74f76c68c5818f5ad816f398d28c825fd0fa",
+      "merged_at": "2026-09-18T06:29:21Z",
+      "number": 15948,
+      "state": "MERGED",
+      "title": "emitters: drop retired agent-rescue.html from live-cash surfaces + rules"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -298,25 +310,14 @@
     },
     {
       "author": "woahwhattheheck",
-      "base": "zsol/main-full-tree-recovery-20260917",
-      "branch": "zsol/main-full-tree-recovery-v2-20260917",
-      "closed_at": "2026-09-18T03:43:34Z",
-      "head_sha": "b2c15fa80f28ba00cc80421bf2da9952129034a1",
-      "merged_at": null,
-      "number": 15934,
-      "state": "CLOSED",
-      "title": "Combine recovery carriers"
-    },
-    {
-      "author": "woahwhattheheck",
       "base": "main",
-      "branch": "z-alder/restore-commons-tree-15cdfe-20260917",
-      "closed_at": "2026-09-18T03:39:35Z",
-      "head_sha": "1a2a108e1580503572ed1fc5a20609c91d9cc7d6",
-      "merged_at": "2026-09-18T03:39:35Z",
-      "number": 15928,
-      "state": "MERGED",
-      "title": "Restore Commons tree without discarding post-truncation work"
+      "branch": "z-ledger/tn-34201-02431-lab-finalize",
+      "closed_at": "2026-09-18T03:33:09Z",
+      "head_sha": "c714484aa87095a75d98b8ceb49e25a43289e057",
+      "merged_at": null,
+      "number": 15923,
+      "state": "CLOSED",
+      "title": "Revenue: publish Tennessee 34201-02431 partner response lab"
     },
     {
       "author": "woahwhattheheck",
@@ -420,6 +421,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-18T06:28:28Z",
+  "unchanged_since": "2026-09-18T06:36:16Z",
   "undatable_pulls": []
 }
