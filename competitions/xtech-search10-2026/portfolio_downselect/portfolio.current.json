@@ -47,7 +47,7 @@
           {
             "claimId": "sustainproof.existing-prototype",
             "state": "EVIDENCED",
-            "evidenceRef": "git:woahwhattheheck/commons@9fdaea9b7238bd3467afa8b32ac253e9f495f417:competitions/xtech-search10-2026/sustainproof"
+            "evidenceRef": "ev:sustainproof:existing-prototype"
           },
           {
             "claimId": "sustainproof.submitting-entity",
@@ -66,7 +66,7 @@
           {
             "claimId": "sustainproof.prototype-and-tests",
             "state": "EVIDENCED",
-            "evidenceRef": "git:woahwhattheheck/commons@9fdaea9b7238bd3467afa8b32ac253e9f495f417:competitions/xtech-search10-2026/sustainproof"
+            "evidenceRef": "ev:sustainproof:prototype-and-tests"
           },
           {
             "claimId": "sustainproof.army-environment-validation",
@@ -85,7 +85,7 @@
           {
             "claimId": "sustainproof.three-page-draft",
             "state": "EVIDENCED",
-            "evidenceRef": "git:woahwhattheheck/commons@9fdaea9b7238bd3467afa8b32ac253e9f495f417:competitions/xtech-search10-2026/sustainproof/whitepaper.md"
+            "evidenceRef": "ev:sustainproof:three-page-draft"
           },
           {
             "claimId": "sustainproof.valid-eval-template-binding",
@@ -111,7 +111,7 @@
           {
             "claimId": "acqatlas.existing-prototype",
             "state": "EVIDENCED",
-            "evidenceRef": "git:woahwhattheheck/commons@ad4d7c322a1909fcd99b5ac389f19b4bf83e4335:competitions/nawcad-acqdoc-acqatlas-2026"
+            "evidenceRef": "ev:acqatlas:existing-prototype"
           }
         ],
         "armyBenefits": [
@@ -125,7 +125,7 @@
           {
             "claimId": "acqatlas.deterministic-engine-and-tests",
             "state": "EVIDENCED",
-            "evidenceRef": "git:woahwhattheheck/commons@ad4d7c322a1909fcd99b5ac389f19b4bf83e4335:competitions/nawcad-acqdoc-acqatlas-2026"
+            "evidenceRef": "ev:acqatlas:deterministic-engine-and-tests"
           },
           {
             "claimId": "acqatlas.army-use-validation",
@@ -165,7 +165,7 @@
           {
             "claimId": "lda.public-software-generation",
             "state": "EVIDENCED",
-            "evidenceRef": "git:woahwhattheheck/LocalDeviceAgent@fd54957dd34d09a4f7762058561cbdc6af502b7c:README.md"
+            "evidenceRef": "ev:local-device-agent:public-software-generation"
           }
         ],
         "armyBenefits": [
@@ -179,7 +179,7 @@
           {
             "claimId": "lda.source-generation",
             "state": "EVIDENCED",
-            "evidenceRef": "git:woahwhattheheck/LocalDeviceAgent@fd54957dd34d09a4f7762058561cbdc6af502b7c:README.md"
+            "evidenceRef": "ev:local-device-agent:source-generation"
           },
           {
             "claimId": "lda.army-environment-validation",
@@ -203,6 +203,78 @@
         ]
       },
       "traction": []
+    }
+  ],
+  "evidenceRecords": [
+    {
+      "evidenceId": "ev:acqatlas:deterministic-engine-and-tests",
+      "binding": "candidate:acqatlas:claim:acqatlas.deterministic-engine-and-tests",
+      "sourceClass": "REPO",
+      "repo": "woahwhattheheck/commons",
+      "commit": "ad4d7c322a1909fcd99b5ac389f19b4bf83e4335",
+      "path": "competitions/nawcad-acqdoc-acqatlas-2026",
+      "locator": null,
+      "sha256": null
+    },
+    {
+      "evidenceId": "ev:acqatlas:existing-prototype",
+      "binding": "candidate:acqatlas:claim:acqatlas.existing-prototype",
+      "sourceClass": "REPO",
+      "repo": "woahwhattheheck/commons",
+      "commit": "ad4d7c322a1909fcd99b5ac389f19b4bf83e4335",
+      "path": "competitions/nawcad-acqdoc-acqatlas-2026",
+      "locator": null,
+      "sha256": null
+    },
+    {
+      "evidenceId": "ev:local-device-agent:public-software-generation",
+      "binding": "candidate:local-device-agent:claim:lda.public-software-generation",
+      "sourceClass": "REPO",
+      "repo": "woahwhattheheck/LocalDeviceAgent",
+      "commit": "fd54957dd34d09a4f7762058561cbdc6af502b7c",
+      "path": "README.md",
+      "locator": null,
+      "sha256": null
+    },
+    {
+      "evidenceId": "ev:local-device-agent:source-generation",
+      "binding": "candidate:local-device-agent:claim:lda.source-generation",
+      "sourceClass": "REPO",
+      "repo": "woahwhattheheck/LocalDeviceAgent",
+      "commit": "fd54957dd34d09a4f7762058561cbdc6af502b7c",
+      "path": "README.md",
+      "locator": null,
+      "sha256": null
+    },
+    {
+      "evidenceId": "ev:sustainproof:existing-prototype",
+      "binding": "candidate:sustainproof:claim:sustainproof.existing-prototype",
+      "sourceClass": "REPO",
+      "repo": "woahwhattheheck/commons",
+      "commit": "9fdaea9b7238bd3467afa8b32ac253e9f495f417",
+      "path": "competitions/xtech-search10-2026/sustainproof",
+      "locator": null,
+      "sha256": null
+    },
+    {
+      "evidenceId": "ev:sustainproof:prototype-and-tests",
+      "binding": "candidate:sustainproof:claim:sustainproof.prototype-and-tests",
+      "sourceClass": "REPO",
+      "repo": "woahwhattheheck/commons",
+      "commit": "9fdaea9b7238bd3467afa8b32ac253e9f495f417",
+      "path": "competitions/xtech-search10-2026/sustainproof",
+      "locator": null,
+      "sha256": null
+    },
+    {
+      "evidenceId": "ev:sustainproof:three-page-draft",
+      "binding": "candidate:sustainproof:claim:sustainproof.three-page-draft",
+      "sourceClass": "REPO",
+      "repo": "woahwhattheheck/commons",
+      "commit": "9fdaea9b7238bd3467afa8b32ac253e9f495f417",
+      "path": "competitions/xtech-search10-2026/sustainproof/whitepaper.md",
+      "locator": null,
+      "sha256": null
     }
   ]
 }
