@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import os
 from pathlib import Path
 import subprocess
@@ -68,6 +69,37 @@ class ChsdQualificationTests(unittest.TestCase):
         self.assertIsNone(result["official_buyer_source"])
         self.assertTrue(result["evaluated_at"].endswith("Z"))
         self.assertTrue(all(value is False for value in result["authority"].values()))
+
+    def test_production_api_ignores_post_import_dependency_rebind(self):
+        original_engine = q._PRODUCTION_ENGINE
+        original_loader = q.loads_strict
+        original_validate = q._validate_tree
+        original_canonical = q.canonical_bytes
+        original_schema = q.PACKET_SCHEMA
+        try:
+            q._PRODUCTION_ENGINE = lambda payload: {
+                "state": "PWNED",
+                "authority": {"revenue": True},
+            }
+            q.loads_strict = lambda raw: packet(
+                evidence_rows("OWNER", q.PRIME_GATES + q.OWNER_REVIEW_GATES)
+            )
+            q._validate_tree = lambda value: None
+            q.canonical_bytes = lambda value: b"pwned"
+            q.PACKET_SCHEMA = "attacker-schema"
+
+            direct = q.compile_packet(packet())
+            raw = q.compile_json(json.dumps(packet(), separators=(",", ":")))
+            for result in (direct, raw):
+                self.assertEqual(result["state"], "HOLD_MISSING_BUYER_SOURCE")
+                self.assertEqual(result["commercial_posture"], "RESEARCH_HOLD")
+                self.assertTrue(all(value is False for value in result["authority"].values()))
+        finally:
+            q._PRODUCTION_ENGINE = original_engine
+            q.loads_strict = original_loader
+            q._validate_tree = original_validate
+            q.canonical_bytes = original_canonical
+            q.PACKET_SCHEMA = original_schema
 
     def test_official_source_without_owner_evidence_is_fail_closed(self):
         result = self.engine()(packet())
