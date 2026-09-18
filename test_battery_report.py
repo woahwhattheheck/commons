@@ -63,7 +63,7 @@ class BatteryReportTests(unittest.TestCase):
         return report.build_report(self.root, raw, outcome, environ or {})
 
     def test_success_is_linked_to_the_recorded_commit(self):
-        data = self.build(self.raw((sys.executable, "./test_alpha.py", 0)), environ={"GITHUB_SHA": "b" * 40, "GITHUB_RUN_ID": "123", "GITHUB_WORKFLOW_REF": "owner/repo/.github/workflows/tests.yml@refs/heads/main"})
+        data = self.build(self.raw(("python3", "./test_alpha.py", 0)), environ={"GITHUB_SHA": "b" * 40, "GITHUB_RUN_ID": "123", "GITHUB_WORKFLOW_REF": "owner/repo/.github/workflows/tests.yml@refs/heads/main"})
         self.assertEqual(data["conclusion"], "PASSED")
         self.assertEqual(data["checkout_sha"], self.sha)
         self.assertEqual(data["event_sha"], "b" * 40)
@@ -72,7 +72,7 @@ class BatteryReportTests(unittest.TestCase):
         self.assertEqual(data["results"][0]["source_blob_sha"], self.git("rev-parse", self.sha + ":test_alpha.py"))
 
     def test_moving_head_does_not_change_source_attribution(self):
-        raw = self.raw((sys.executable, "test_alpha.py", 0))
+        raw = self.raw(("python3", "test_alpha.py", 0))
         old_sha = self.sha
         old_blob = self.git("rev-parse", old_sha + ":test_alpha.py")
         (self.root / "test_alpha.py").write_text("print('changed')\n", encoding="utf-8")
@@ -83,7 +83,7 @@ class BatteryReportTests(unittest.TestCase):
         self.assertEqual(data["results"][0]["source_blob_sha"], old_blob)
 
     def test_untracked_path_is_not_invented_as_a_source(self):
-        data = self.build(self.raw((sys.executable, "test_not_tracked.py", 9), failed=1), "failure")
+        data = self.build(self.raw(("python3", "test_not_tracked.py", 9), failed=1), "failure")
         self.assertEqual(data["conclusion"], "FAILED")
         self.assertIsNone(data["results"][0]["source_blob_sha"])
         self.assertFalse(data["results"][0]["source_in_checkout_commit"])

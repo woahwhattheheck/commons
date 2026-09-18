@@ -123,7 +123,7 @@ class DuplicateResultReportTests(unittest.TestCase):
 
     def test_duplicate_success_is_not_reported_as_passed(self):
         data = report.build_report(self.root, raw(
-            (sys.executable, "test_a.py", 0), (sys.executable, "./test_a.py", 0), sha=self.sha),
+            ("python3", "test_a.py", 0), ("python3", "./test_a.py", 0), sha=self.sha),
             "success", {"GITHUB_SHA": "b" * 40})
         self.assertEqual(data["conclusion"], "INCOMPLETE")
         self.assertFalse(data["complete"])
@@ -135,7 +135,7 @@ class DuplicateResultReportTests(unittest.TestCase):
 
     def test_failure_evidence_is_kept_under_incomplete_conclusion(self):
         data = report.build_report(self.root, raw(
-            (sys.executable, "test_a.py", 7), (sys.executable, "./test_a.py", 0),
+            ("python3", "test_a.py", 7), ("python3", "./test_a.py", 0),
             sha=self.sha, failed=1), "failure", {})
         self.assertEqual(data["conclusion"], "INCOMPLETE")
         self.assertEqual(data["counts"]["failed_files"], 1)
@@ -143,7 +143,7 @@ class DuplicateResultReportTests(unittest.TestCase):
         self.assertIn("| 7 |", report.summary(data))
 
     def test_unique_control_still_passes(self):
-        data = report.build_report(self.root, raw((sys.executable, "test_a.py", 0), sha=self.sha),
+        data = report.build_report(self.root, raw(("python3", "test_a.py", 0), sha=self.sha),
                                    "success", {})
         self.assertEqual(data["conclusion"], "PASSED")
         self.assertTrue(data["complete"])

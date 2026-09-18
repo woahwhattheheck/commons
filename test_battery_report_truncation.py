@@ -124,7 +124,7 @@ class CliTruncationTests(unittest.TestCase):
             git("add", ".")
             git("-c", "commit.gpgsign=false", "commit", "-qm", "fixture")
             sha = git("rev-parse", "HEAD")
-            raw = stream(("checkout_sha", sha, ""), (sys.executable, "test_finished.py", 0))
+            raw = stream(("checkout_sha", sha, ""), ("python3", "test_finished.py", 0))
             raw += b"python3\0test_cut.py\0" + b"12"
             inputs, output, summary = root / "results.nul", root / "report.json", root / "summary.md"
             inputs.write_bytes(raw)
