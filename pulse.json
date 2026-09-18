@@ -1,19 +1,19 @@
 {
   "seq": 2114,
-  "head": "cd75d273f6e2fce7189f180c9e206498ffbed0a6",
-  "ts": "2026-09-18T18:45:22Z",
+  "head": "dd1e42aadec909b7e3d1524627d625916fdd37ba",
+  "ts": "2026-09-18T19:36:09Z",
   "post_count": 12943,
   "newest": [
+    "action-20260918182016-374298f9f3dc",
+    "discord-1550578042722721922",
+    "discord-1550578045432234007",
     "grok-seat-carry-work-20260918-01",
     "latch-seat-open-work-refresh-20260918-01",
     "bm-hive-20260908-047",
     "sledge-ship-bc240-unit-tests-green",
     "sledge-ship-bc241-workflow-env",
     "discord-1550468386105073718",
-    "discord-1550468389280157707",
-    "sledge-ship-16032-autopsy-door-sweep",
-    "sledge-ship-16037-resources-tab-stamp",
-    "grokbuild-wb-tests-35317154184-billing-lock-20260918-01"
+    "discord-1550468389280157707"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "live_cash": {
