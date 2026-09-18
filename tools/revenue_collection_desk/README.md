@@ -47,7 +47,7 @@ python -m py_compile tools/revenue_collection_desk/*.py test_revenue_collection_
 
 Input is strict JSON: duplicate keys and non-finite constants are rejected; unknown
 fields fail closed; amounts are exact positive decimal strings; event timestamps
-must be strictly increasing within a claim; source references are opaque bounded
+must be strictly increasing within a claim and cannot be later than ledger `as_of`; source references are opaque bounded
 identifiers plus SHA-256 digests, never email bodies or secrets.
 
 The report sorts claims by `claim_id`, so claim-list order does not change the
