@@ -87,7 +87,15 @@ def _kernels(memory_size, initial_radius, max_radius, armijo, shrink,
         finite = jnp.all(jnp.isfinite(raw), axis=1)
         bounded = _cap(jnp.where(finite[:, None], raw, -g), radius)
         slope = jnp.sum(g * bounded, axis=1)
-        descent = jnp.isfinite(slope) & (slope < 0)
+        # Preserve the established finite path. Only when the reduction
+        # overflows do we normalize the finite gradient before checking sign.
+        g_scale = jnp.maximum(jnp.max(jnp.abs(g), axis=1), jnp.finfo(g.dtype).tiny)
+        normalized_slope = jnp.sum((g / g_scale[:, None]) * bounded, axis=1)
+        descent = jnp.where(
+            jnp.isfinite(slope),
+            slope < 0,
+            jnp.isfinite(normalized_slope) & (normalized_slope < 0),
+        )
         return jnp.where(descent[:, None], bounded, _cap(-g, radius))
 
     @jax.jit
@@ -97,7 +105,26 @@ def _kernels(memory_size, initial_radius, max_radius, armijo, shrink,
                  & jnp.all(jnp.isfinite(st.trial), axis=1))
         no_base = ~jnp.isfinite(st.f)
         slope = jnp.sum(st.g * st.direction, axis=1)
-        accepted = valid & (no_base | (losses <= st.f + armijo * st.step * slope))
+        threshold = st.f + armijo * st.step * slope
+
+        # The ordinary path retains its exact prior arithmetic whenever both
+        # the directional derivative and threshold are representable. If that
+        # reduction overflows, compare the same inequality after dividing all
+        # terms by one positive scale. This avoids both overflow and the
+        # small-gradient underflow caused by multiplying g by Armijo first.
+        scale = jnp.maximum(
+            jnp.maximum(jnp.abs(st.f), jnp.abs(losses)),
+            jnp.max(jnp.abs(st.g), axis=1),
+        )
+        scale = jnp.maximum(scale, jnp.finfo(st.g.dtype).tiny)
+        scaled_slope = jnp.sum((st.g / scale[:, None]) * st.direction, axis=1)
+        scaled_accept = (
+            losses / scale
+            <= st.f / scale + armijo * st.step * scaled_slope
+        )
+        ordinary = jnp.isfinite(slope) & jnp.isfinite(threshold)
+        armijo_accept = jnp.where(ordinary, losses <= threshold, scaled_accept)
+        accepted = valid & (no_base | armijo_accept)
         safe_g = jnp.where(valid[:, None], grads, 0.0)
         ds = st.trial - st.x
         dy = safe_g - st.g

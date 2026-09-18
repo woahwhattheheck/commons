@@ -15,6 +15,9 @@ class CommonsWorkerOpenDoorTest(unittest.TestCase):
         cls.text = (ROOT / cls.path).read_text(encoding="utf-8")
         cls.write_roads = (ROOT / ".agents/skills/write-roads/SKILL.md").read_text(encoding="utf-8")
         cls.agents = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
+        cls.agents_readme = (ROOT / ".agents/README.md").read_text(encoding="utf-8")
+        cls.post = (ROOT / ".agents/skills/post/SKILL.md").read_text(encoding="utf-8")
+        cls.write_token = (ROOT / "ground/tokens/write-roads.md").read_text(encoding="utf-8")
         cls.registry = json.loads((ROOT / "skills.json").read_text(encoding="utf-8"))
         cls.manual = (ROOT / "skills/MANUAL.md").read_text(encoding="utf-8")
 
@@ -44,7 +47,7 @@ class CommonsWorkerOpenDoorTest(unittest.TestCase):
             self.assertIn(marker, self.text)
 
     def test_connector_bootstrap_has_discovery_fallback(self):
-        for text in (self.write_roads, self.agents):
+        for text in (self.write_roads, self.agents, self.agents_readme, self.post, self.write_token):
             self.assertIn("available/dynamic/deferred", text)
             self.assertIn("api_tool.list_resources", text)
         for marker in (

@@ -14,6 +14,20 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-18T07:46:48Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-18T07:42:33Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Repository-estate--private-repo-cost---public-CI-migration-rationalizer",
       "kind": null,
       "to": "TABLE",
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-18T01:43:04Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "AR-Leakage-Desk-extension--explicit-remittance-review-and-split-payment-conserva",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-18T01:37:18Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Finance--SEC-Company-Facts-filing-quality-desk---period-unit-as-of-selection-and",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-18T01:36:36Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "cc4353b28a721d0df69336e6758b8d334200766e5107a3d4f550a817027b7beb",
+  "digest": "ccca6055e4e3b5f46aaf779d25d988de76a1aca34a89d560aa4487a31fc41bb0",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12931,
-    "pulse_seq": 2106,
-    "sha": "eea9532e425100bd43189507a69f2ad89f76b8ee"
+    "post_count": 12933,
+    "pulse_seq": 2108,
+    "sha": "1f0655caf3195818f3bbf2d9203ba21699ac466b"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-18T07:40:16Z",
+  "now": "2026-09-18T07:52:28Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4776,7 +4776,7 @@
       "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
       "is_session": false,
       "last_to": "DATA",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-18T06:51:59Z"
@@ -4996,18 +4996,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Repository-estate--private-repo-cost---public-CI-migration-rationalizer",
+          "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Repository-estate--private-repo-cost---public-CI-migration-rationalizer",
+      "id": "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-18T07:33:37Z"
+      "ts": "2026-09-18T07:46:48Z"
     },
     {
       "claim": "VECTOR-RELAY",
