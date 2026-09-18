@@ -93,8 +93,8 @@ class TestCursorWebmcpAdapterKeepLiftBattery(unittest.TestCase):
         grokbuild = historical_text("test_grokbuild_occupancy_landed_work_keep_lift_readback.py")
         self.assertIn('"api/mcp.py": "bc558a5f"', grokbuild)
         contest = historical_text("test_webmcp_judge_url.py")
-        self.assertIn('"test_cursor_webmcp_contest.py": "eebd8db6"', contest)
-        self.assertNotIn('"test_cursor_webmcp_contest.py": "eebd8db6"', contest)
+        self.assertIn('"test_cursor_webmcp_contest.py": "d8ddd02d"', contest)
+        self.assertNotIn('"test_cursor_webmcp_contest.py": "342ac977"', contest)
 
     def test_this_seat_leftover_subset_still_passes(self) -> None:
         leftover = subprocess.run(
