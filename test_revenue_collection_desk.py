@@ -245,6 +245,27 @@ class RevenueCollectionDeskTests(unittest.TestCase):
         tampered["claims"][0]["next_action"] = "DONE"
         self.assertFalse(c.verify_ledger(inp, tampered))
 
+    def test_future_settlement_cannot_mint_current_cash(self):
+        cl = claim(instrument="RTC", amount="25", events=[
+            ev("e1", "2026-09-01T00:00:00Z", "WORK_SUBMITTED"),
+            ev("e2", "2026-09-02T00:00:00Z", "ACCEPTED"),
+            ev("e3", "2099-09-03T00:00:00Z", "SETTLED_CASH",
+               settlement_currency="USD", settlement_amount="1.00"),
+        ])
+        with self.assertRaisesRegex(c.ContractError, "event timestamp after as_of"):
+            c.compile_ledger(ledger([cl], as_of="2026-09-18T00:00:00Z"))
+
+    def test_future_collection_release_cannot_mint_eligibility(self):
+        cl = claim(events=[
+            ev("e1", "2026-09-01T00:00:00Z", "WORK_SUBMITTED"),
+            ev("e2", "2026-09-02T00:00:00Z", "ACCEPTED"),
+            ev("e3", "2026-09-03T00:00:00Z", "COLLECTION_CONTACT_SENT",
+               cooldown_until="2026-09-04T00:00:00Z"),
+            ev("e4", "2099-09-05T00:00:00Z", "COLLECTION_RELEASED"),
+        ])
+        with self.assertRaisesRegex(c.ContractError, "event timestamp after as_of"):
+            c.compile_ledger(ledger([cl], as_of="2026-09-18T00:00:00Z"))
+
     def test_receipt_is_deterministic(self):
         a = c.compile_ledger(ledger())
         b = c.compile_ledger(ledger())
