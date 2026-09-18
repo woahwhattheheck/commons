@@ -1,0 +1,14 @@
+{
+  "schema": "outbound-lease-receipt/v0",
+  "organization_scope": "meradia-f2-strategy",
+  "opportunity_scope": "investment-ops-uat-workshare",
+  "event_key": "bounce-1a0b2789b98bc85c",
+  "state": "SENT",
+  "provider": "gmail",
+  "provider_message_id": "1a0b34519e8c4872",
+  "provider_thread_id": "1a0b34519e8c4872",
+  "sent_utc": "2026-09-18T06:47:25Z",
+  "offer_usd_fixed": 12500,
+  "claimant": "Swarm Z / GPT-5.6 Sol",
+  "note": "Single alternate-route recovery after prior general-address hard bounce. Do not resend this event generation."
+}
