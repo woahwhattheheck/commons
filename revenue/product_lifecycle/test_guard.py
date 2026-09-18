@@ -37,6 +37,40 @@ def registry(state: str = "RETIRED", *, url: str = URL, source: str = SOURCE):
     }
 
 
+def required_workflow_paths(sources=()):
+    return [
+        ".github/workflows/capability-entrypoints.yml",
+        "*.html",
+        "host/payment_capability.py",
+        "host/product_lifecycle_guard.py",
+        "revenue/product_lifecycle/**",
+        "revenue/outcome_commerce/catalog.json",
+        *sources,
+    ]
+
+
+def workflow_text(sources=(), *, pull_paths=None):
+    push_paths = required_workflow_paths(sources)
+    lines = [
+        "name: fixture",
+        "",
+        "on:",
+        "  push:",
+        "    branches:",
+        "      - main",
+        "    paths: &entrypoint_paths",
+        *(f"      - '{path}'" for path in push_paths),
+        "  pull_request:",
+    ]
+    if pull_paths is None:
+        lines.append("    paths: *entrypoint_paths")
+    else:
+        lines.append("    paths:")
+        lines.extend(f"      - '{path}'" for path in pull_paths)
+    lines.extend(["  workflow_dispatch:", "", "jobs:", "  noop:", "    runs-on: ubuntu-latest"])
+    return "\n".join(lines) + "\n"
+
+
 class ProductLifecycleGuardTests(unittest.TestCase):
     def make_repo(self, doc=None, *, source_present=False):
         td = tempfile.TemporaryDirectory()
@@ -56,7 +90,7 @@ class ProductLifecycleGuardTests(unittest.TestCase):
         for product in actual["products"]:
             sources.extend(product["catalog_sources"])
         (root / ".github/workflows/capability-entrypoints.yml").write_text(
-            "paths:\n" + "".join(f"  - '{source}'\n" for source in sources),
+            workflow_text(sources),
             encoding="utf-8",
         )
         if source_present:
@@ -170,9 +204,111 @@ class ProductLifecycleGuardTests(unittest.TestCase):
         td, root = self.make_repo()
         self.addCleanup(td.cleanup)
         (root / ".github/workflows/capability-entrypoints.yml").write_text(
-            "paths:\n  - 'revenue/not-it/offer.json'\n", encoding="utf-8"
+            workflow_text(()), encoding="utf-8"
         )
-        with self.assertRaisesRegex(LifecycleError, "missing exact lifecycle workflow trigger"):
+        with self.assertRaisesRegex(LifecycleError, "missing required trigger"):
+            check_repo(root)
+
+    def test_escaped_solidus_checkout_in_active_json_is_rejected(self):
+        td, root = self.make_repo()
+        self.addCleanup(td.cleanup)
+        (root / "revenue/outcome_commerce/catalog.json").write_text(
+            r'{"nested":{"checkout":"https:\/\/buy.stripe.com\/exampleABC123"}}',
+            encoding="utf-8",
+        )
+        rows = check_repo(root)
+        self.assertTrue(
+            any(row.kind == "checkout_url" and row.identity == URL for row in rows),
+            rows,
+        )
+
+    def test_escaped_catalog_source_in_active_json_is_rejected(self):
+        td, root = self.make_repo()
+        self.addCleanup(td.cleanup)
+        (root / "revenue/outcome_commerce/catalog.json").write_text(
+            r'{"nested":{"source":"revenue\/example_offer\/offer.json"}}',
+            encoding="utf-8",
+        )
+        rows = check_repo(root)
+        self.assertTrue(
+            any(row.kind == "catalog_source_reference" for row in rows),
+            rows,
+        )
+
+    def test_invalid_active_json_fails_closed(self):
+        td, root = self.make_repo()
+        self.addCleanup(td.cleanup)
+        (root / "revenue/outcome_commerce/catalog.json").write_text(
+            '{"broken":', encoding="utf-8"
+        )
+        with self.assertRaisesRegex(LifecycleError, "invalid active JSON"):
+            check_repo(root)
+
+    def test_duplicate_key_active_json_fails_closed(self):
+        td, root = self.make_repo()
+        self.addCleanup(td.cleanup)
+        (root / "revenue/outcome_commerce/catalog.json").write_text(
+            '{"checkout":"a","checkout":"b"}', encoding="utf-8"
+        )
+        with self.assertRaisesRegex(LifecycleError, "duplicate JSON key"):
+            check_repo(root)
+
+    def test_comment_cannot_fake_workflow_catalog_source_wake(self):
+        td, root = self.make_repo()
+        self.addCleanup(td.cleanup)
+        fake = workflow_text(()) + f"# - '{SOURCE}'\n"
+        (root / ".github/workflows/capability-entrypoints.yml").write_text(
+            fake, encoding="utf-8"
+        )
+        with self.assertRaisesRegex(LifecycleError, "missing required trigger"):
+            check_repo(root)
+
+    def test_unrelated_list_cannot_fake_workflow_catalog_source_wake(self):
+        td, root = self.make_repo()
+        self.addCleanup(td.cleanup)
+        fake = workflow_text(()) + f"x-fake:\n  - '{SOURCE}'\n"
+        (root / ".github/workflows/capability-entrypoints.yml").write_text(
+            fake, encoding="utf-8"
+        )
+        with self.assertRaisesRegex(LifecycleError, "missing required trigger"):
+            check_repo(root)
+
+    def test_heredoc_cannot_fake_workflow_catalog_source_wake(self):
+        td, root = self.make_repo()
+        self.addCleanup(td.cleanup)
+        fake = workflow_text(()) + (
+            "x-job:\n"
+            "  run: |\n"
+            f"    - '{SOURCE}'\n"
+        )
+        (root / ".github/workflows/capability-entrypoints.yml").write_text(
+            fake, encoding="utf-8"
+        )
+        with self.assertRaisesRegex(LifecycleError, "missing required trigger"):
+            check_repo(root)
+
+    def test_push_coverage_cannot_substitute_for_pull_request_coverage(self):
+        td, root = self.make_repo()
+        self.addCleanup(td.cleanup)
+        pull_paths = [
+            path for path in required_workflow_paths(()) if path != SOURCE
+        ]
+        (root / ".github/workflows/capability-entrypoints.yml").write_text(
+            workflow_text((SOURCE,), pull_paths=pull_paths), encoding="utf-8"
+        )
+        with self.assertRaisesRegex(LifecycleError, "on.pull_request.paths"):
+            check_repo(root)
+
+    def test_workflow_must_wake_on_its_own_guard_surface(self):
+        td, root = self.make_repo()
+        self.addCleanup(td.cleanup)
+        text = workflow_text((SOURCE,)).replace(
+            "      - 'host/product_lifecycle_guard.py'\n", ""
+        )
+        (root / ".github/workflows/capability-entrypoints.yml").write_text(
+            text, encoding="utf-8"
+        )
+        with self.assertRaisesRegex(LifecycleError, "host/product_lifecycle_guard.py"):
             check_repo(root)
 
     def test_retired_product_cannot_be_downgraded(self):
