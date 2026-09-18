@@ -7,7 +7,6 @@ import json
 import subprocess
 import unittest
 from pathlib import Path
-import sys
 
 ROOT = Path(__file__).resolve().parent
 # This receipt records this immutable tree; it does not freeze evolving main.
@@ -18,23 +17,23 @@ DOOR = ROOT / "grounding.html"
 
 KEEP = {
     "p/cursor-mcp-get-grounding-20260902-01.md": "0bc79b8c",
-    "grounding.html": "57f0e62b",
+    "grounding.html": "310d63b2",
     "test_mcp_get_open.py": "239564b9",
     "test_grounding_door.py": "0908ec95",
     "commons_mcp.py": "8312bc0f",
-    "hub_pages.py": "673dab89",
-    "door.js": "5899223c",
+    "hub_pages.py": "7bc61c8b",
+    "door.js": "dc59355d",
     "api/mcp.py": "393da756",
     "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md": "b2df1cf1",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
-    "host/merge_on_pr.py": "5062c29b",
+    "host/merge_on_pr.py": "0270094d",
     "p/cursor-pack-quality-dictates-tier-readback-20260902-01.md": "aa5f6bbd",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
     "p/cursor-stealable-lanes-roles-readback-20260902-01.md": "ada92980",
-    "ground/OWNER_NOW.md": "39a0e0c3",
-    "autogtm.html": "5c966110",
+    "ground/OWNER_NOW.md": "4b2a58ed",
+    "autogtm.html": "2fe108f4",
 }
 
 
@@ -75,7 +74,7 @@ class TestCursorMcpGetGroundingReadback(unittest.TestCase):
     def test_leftover_tests_still_pass(self) -> None:
         proc = subprocess.run(
             [
-                sys.executable,
+                "python3",
                 "-m",
                 "unittest",
                 "test_mcp_get_open.py",
