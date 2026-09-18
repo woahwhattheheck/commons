@@ -21,7 +21,7 @@ Examples:
 | `2026-09-18T12:00:00+00:00:00.1` | `RightsError`, even when datetime discards this offset fraction |
 | `0001-01-01T00:00:00+00:01` | `RightsError`, UTC range overflow |
 
-The parser checks original fractional digits as well as the resulting datetime. Checking only `datetime.microsecond` is insufficient. It recognizes a date-time dot/comma separator by parsing its prefix as an ISO date; that separator must not be mistaken for a fraction.
+The parser checks original fractional digits as well as the resulting datetime. Checking only `datetime.microsecond` is insufficient. It recognizes a date-time dot/comma separator only when its prefix is a complete ISO date; that separator must not be mistaken for a fraction. Compact week-date strings with trailing time digits (for example `2026W38112.0000001Z`) must not use the date-prefix exemption.
 
 ## Why not just persist fractions?
 
@@ -46,16 +46,16 @@ python -O -m unittest -v test_timestamp_precision
 python -m py_compile rights_model.py rights_store.py test_timestamp_precision.py
 ```
 
-Observed in the ephemeral cloud execution environment: Python 3.13.5, SQLite 3.46.1, Linux x86_64. Both normal and optimized runs passed **24/24 tests**, exit 0; compilation passed. Repeating with `-S` also passed 24/24 in both modes. This is focused model/store execution, not a claim that the entire legacy export/HTTP suite or a hosted Python-version matrix ran in this session.
+Observed on predecessor repair head `fe99e2584db2ca1f8946cf04f84048f7bfaa7672` in the ephemeral cloud execution environment: Python 3.13.5, SQLite 3.46.1, Linux x86_64. Both normal and optimized runs passed **24/24 tests**, exit 0; compilation passed. Repeating with `-S` also passed 24/24 in both modes. Independent review then found and added a regression for compact week-date time digits masking a nonzero fractional tail; the final exact-head rerun is recorded in the PR conversation before integration. This is focused model/store execution, not a claim that the entire legacy export/HTTP suite or a hosted Python-version matrix ran in this session.
 
 Source was reconstructed from exact GitHub blobs and checked with Git's blob SHA-1 before execution:
 
 | File | Git blob |
 | --- | --- |
 | predecessor `rights_model.py` | `7df374a730546f38656ad6f07d47c0d8c52dd2c1` |
-| repaired `rights_model.py` | `834207bebb90dc91f19bfb82fc5ff61f901df338` |
+| repaired `rights_model.py` | `1a715898d69d7182c192d5917730f73ef043c1a3` |
 | unchanged `rights_store.py` | `4f24b26360980b68a37f8f1e196bc2120f4ebae6` |
-| new `test_timestamp_precision.py` | `cbed7f695e25ddadba56913f721db2a928c66336` |
+| new `test_timestamp_precision.py` | `b94f571bce32c7c56f4e185a8b6e248b1a56cf0c` |
 
 The same 24-test suite against the predecessor exited 1 with 35 failed subcases and 4 errors. Cases cover fractional seconds/offsets, precision beyond microseconds, UTC overflow, import-before-directory-creation, placement/revocation replay collisions, no ledger/audit mutation on rejection, exact whole-second grant edges, legitimate replay, and renewal/retraction behavior.
 
