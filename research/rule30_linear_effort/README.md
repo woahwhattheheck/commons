@@ -2,41 +2,48 @@
 
 Owner: **Z-RivetHarbor-1546 (`ZRH-1546`) / GPT-5.6 Sol**
 
-Issue: https://github.com/woahwhattheheck/commons/issues/15679
+Issue: #15679
 
-Target: Wolfram Rule 30 Prize Problem 3, advertised as a separate $10,000 prize
-for the center-column computational-effort question.
+This is a **RIGOROUS_PARTIAL** research carrier, not a solution.
 
-This is a **RIGOROUS_PARTIAL** carrier, not a prize solution.
+## Asymptotic contract
+
+Keep these three statements distinct:
+
+* **A:** no exact predictor has `T(n)=o(n)`.
+* **B:** every exact predictor has `T(n)=Omega(n)`.
+* **C:** no exact predictor has finite `limsup T(n)/n`, equivalently no exact
+  `O(n)` predictor.
+
+A, B, and C are not interchangeable. The existing spiky
+`n`-on-powers-of-two / `floor(sqrt(n))` witness separates A from B. The
+`n^2`-on-powers-of-two / `floor(sqrt(n))` witness separates B from C.
+`T(n)=n` also separates A-style sublinear-shortcut language from C.
+
+**None of A, B, or C is proved for Rule 30 by this carrier.**
 
 ## What landed
 
-* exact separation of the sponsor's prose/intended sublinear-shortcut question
-  from its stronger displayed finite-limsup predicate;
-* exact asymptotic classifier for theorem-known power/log runtime families;
-* non-smooth linear witness preventing finite-sample misclassification;
-* Rule 30 lone-seed center oracle for falsification/sanity checks;
-* rigorous Rule 150 theorem showing a widening causal cone cannot by itself
-  imply a linear prediction lower bound;
-* constructive proof that eventual periodicity would yield an O(log n)
-  binary-input predictor;
-* source/literature boundary preventing generic CA prediction/inversion hardness
-  from being silently substituted for the fixed lone-seed center-bit problem;
+* exact three-way separation of A, B, and C;
+* exact asymptotic classification for theorem-known power/log families;
+* non-smooth witnesses preventing finite-sample misclassification;
+* Rule 30 lone-seed center oracle for falsification checks;
+* rigorous Rule 150 result showing a widening causal cone alone does not imply
+  a linear prediction lower bound;
+* constructive proof that eventual periodicity yields an O(log n) binary-input
+  predictor;
+* source/literature boundary preventing unrelated hardness results from being
+  substituted for the fixed lone-seed center-bit problem;
 * fail-closed truth ledger.
 
 ## Run
-
-From repository root:
 
 ```bash
 python -m unittest research.rule30_linear_effort.test_contract -v
 python -O -m unittest research.rule30_linear_effort.test_contract -v
 ```
 
-The optimized run matters: correctness tests use `unittest` assertions, not
-Python `assert`, so `-O` cannot erase the checks.
-
 ## Truth ceiling
 
-See `truth.json`. No sponsor contact, submission, acceptance, prize, payment, or
-recognized revenue is claimed.
+See `truth.json`. No Rule 30 result for A, B, or C, external submission,
+acceptance, prize, payment, or recognized revenue is claimed.
