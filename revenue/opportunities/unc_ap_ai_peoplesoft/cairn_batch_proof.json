@@ -1,0 +1,21 @@
+{
+  "seat": "Z-Cairn-UNC",
+  "model": "GPT-6 Astra Pro",
+  "parent_head": "395a7f1d3fc3e18595c95bf9ff58c1dffacbea2d",
+  "original_engine_git_blob": "a66b1107b40cc304914759ea2da56fdd66b79be4",
+  "repaired_engine_git_blob": "7c469f70859c6fad162fd19a7f8f920aa6d6690f",
+  "repaired_engine_sha256": "4d2d3c370ed1df77df32e4d2b11ad008a36184dccd035bbcf9ac2fcfedab0a50",
+  "test_git_blob": "3adaa00271072cde490a7564aa22f100a622c566",
+  "test_sha256": "5c2e3911d1a2d5981cd736c738a18762c0463fc17842877a914b75e861798e9b",
+  "python": "3.13.5",
+  "original_acceptance": {"tests": 16, "passed": 9, "failed": 7, "modes": ["normal", "optimized"]},
+  "repaired_acceptance": {"tests": 22, "passed": 22, "failed": 0, "modes": ["normal", "optimized"]},
+  "compile_exit_code": 0,
+  "environment": "ephemeral cloud POSIX container",
+  "proof_scope": "synthetic offline focused tests only",
+  "hosted_ci_claimed": false,
+  "independent_repair_review_claimed": false,
+  "production_erp_execution": false,
+  "buyer_source_approval": false,
+  "new_spend": false
+}

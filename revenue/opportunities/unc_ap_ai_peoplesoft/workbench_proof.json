@@ -1,0 +1,88 @@
+{
+  "seat": "Z-Fenwick-R8",
+  "model": "GPT-6 Astra Pro",
+  "source_head": "58e9da318cc2089f58358205346fa8a91753ccd7",
+  "python": "3.13.5",
+  "environment": "ephemeral cloud POSIX; not owner hardware",
+  "package_tests_discovered": 116,
+  "normal_tests_passed": 116,
+  "optimized_tests_passed": 116,
+  "skips": 0,
+  "proof_command": "python -m unittest -v test_unc_ap_ai_peoplesoft.py",
+  "root_hook_tests_passed": 2,
+  "root_elapsed_seconds": 26.642,
+  "execution_scope": "focused package suites via real normal and -O subprocesses; not full repository or hosted CI",
+  "py_compile": "PASS for all 7 selected Python files",
+  "logs": {
+    "zfr8-composed-root-proof.log": {
+      "bytes": 245,
+      "sha256": "36070ae65378d299f9bce71daf269160c878020b7452c640b76614c04db3c0d6"
+    },
+    "zfr8-current-normal.log": {
+      "bytes": 6528,
+      "sha256": "f7e39ce3e0253314876564e05b05dbdd72fb3af7670ea5e9df4acde702263dd4"
+    },
+    "zfr8-current-optimized.log": {
+      "bytes": 6528,
+      "sha256": "839b0f27a415f5657296e315c7285c935f3133dc296e02f987fdf501a42d34dd"
+    }
+  },
+  "files": {
+    "revenue/opportunities/unc_ap_ai_peoplesoft/REVIEW_WORKBENCH.md": {
+      "bytes": 7627,
+      "git_blob": "4476d303da9d90fb06f6565329b28818af6b467c",
+      "sha256": "a65d9ac36dd9acc86d8a8c350ea9bb72a7d6d2ef55b4c9a5095a71fbbe28c126"
+    },
+    "revenue/opportunities/unc_ap_ai_peoplesoft/ap_review.py": {
+      "bytes": 19894,
+      "git_blob": "bf0ddbfa5790f2e47256c347b98bb2384035975b",
+      "sha256": "5a973d8e0c002c97dcbc4f0b569e84b6dd09ea3b6dbcd5e98bc7a87803141599"
+    },
+    "revenue/opportunities/unc_ap_ai_peoplesoft/examples/review_intake.json": {
+      "bytes": 3606,
+      "git_blob": "f466fcf4d12acc390c4a1bff73dc34e2406f3bee",
+      "sha256": "d0d4bf4e21ef37bca9729fe6ff85fdab4916902ba09b01654ffffbb702e3ac61"
+    },
+    "revenue/opportunities/unc_ap_ai_peoplesoft/source_ledger.json": {
+      "bytes": 387,
+      "git_blob": "6c9668a310862804a52b3e5efdd782069d5f9b2e",
+      "sha256": "76f84ffe0f6811e39b61577e282110751fc840b1fd04d27bbceace41f70ee111"
+    },
+    "revenue/opportunities/unc_ap_ai_peoplesoft/test_ap_review.py": {
+      "bytes": 20474,
+      "git_blob": "506ec3c0d1379215d71554f2ca10541b81b5b021",
+      "sha256": "25481e277e8d5c7f620ec431f8677e64ded59af3fcddbc7a2a40d9e9660795ba"
+    },
+    "revenue/opportunities/unc_ap_ai_peoplesoft/test_cairn_batch_identity.py": {
+      "bytes": 7712,
+      "git_blob": "3adaa00271072cde490a7564aa22f100a622c566",
+      "sha256": "5c2e3911d1a2d5981cd736c738a18762c0463fc17842877a914b75e861798e9b"
+    },
+    "revenue/opportunities/unc_ap_ai_peoplesoft/test_unc_ap_ai.py": {
+      "bytes": 6095,
+      "git_blob": "792b15a3cb4afc7b75a250379b7e70188ee90b62",
+      "sha256": "b3f1d68c011e7128db2c9b0bf30efa14cd975810da0aace4238c7fcffa5d89f4"
+    },
+    "revenue/opportunities/unc_ap_ai_peoplesoft/unc_ap_ai.py": {
+      "bytes": 275,
+      "git_blob": "bf021ad98d43e256cdc9c625bbfb0753dcc4b7c0",
+      "sha256": "098d44b1ec22c527d407789e1d150c7226821d87abebf0794a748696427dab03"
+    },
+    "revenue/opportunities/unc_ap_ai_peoplesoft/unc_ap_ai_v2.py": {
+      "bytes": 24968,
+      "git_blob": "7c469f70859c6fad162fd19a7f8f920aa6d6690f",
+      "sha256": "4d2d3c370ed1df77df32e4d2b11ad008a36184dccd035bbcf9ac2fcfedab0a50"
+    },
+    "test_unc_ap_ai_peoplesoft.py": {
+      "bytes": 1173,
+      "git_blob": "7cf8fe3103efde1cbf7487400e5e379d97524224",
+      "sha256": "0ddfc9a920a9a6050ffe08c1079ba6dadc2d102cf49ca7798ba9d8dd932dabac"
+    }
+  },
+  "hosted_ci_claimed": false,
+  "browser_visual_review_claimed": false,
+  "buyer_source_admitted": false,
+  "provider_execution_claimed": false,
+  "new_workflow": false,
+  "payment_or_revenue_claimed": false
+}

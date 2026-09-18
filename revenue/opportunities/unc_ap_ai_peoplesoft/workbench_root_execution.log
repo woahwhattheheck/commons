@@ -1,0 +1,7 @@
+test_normal (test_unc_ap_ai_peoplesoft.UNCAPProof.test_normal) ... ok
+test_optimized (test_unc_ap_ai_peoplesoft.UNCAPProof.test_optimized) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 26.642s
+
+OK

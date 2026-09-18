@@ -1,0 +1,104 @@
+{
+  "schema": "unc.ap-review-input/v1",
+  "evidence_class": "SYNTHETIC",
+  "currency": "USD",
+  "extraction_threshold_basis_points": 9900,
+  "cases": [
+    {
+      "invoice_id": "INV-001",
+      "supplier_id": "SUP-7",
+      "extracted_supplier_id": "SUP-7",
+      "expected_amount_cents": 12500,
+      "extracted_amount_cents": 12500,
+      "match_mode": "THREE_WAY",
+      "purchase_order_amount_cents": 12500,
+      "receipt_amount_cents": 12500,
+      "routing_signoff_needed": true,
+      "routing_signoff_present": true,
+      "extraction_fields_total": 100,
+      "extraction_fields_correct": 100,
+      "duplicate_seen": false,
+      "audit_events": [
+        "received",
+        "extracted",
+        "validated",
+        "matched",
+        "routing_started",
+        "routing_completed",
+        "erp_staged"
+      ],
+      "integration": {
+        "request_sha256": "753ba55dd49cd9b03e5cf2d315b5e329fa1ed45671d5d4882b2c0381c38eb916",
+        "ack_sha256": "b292e8e4d1d28aac73044f4af938dbcea94da943d84a5954c0bcfa1ed505f984",
+        "effect_key": "invoice:bbc1db6a872e56076e99509a19d487d5a6cea835987757ec56cbda23573ba42e",
+        "retry_effect_key": "invoice:bbc1db6a872e56076e99509a19d487d5a6cea835987757ec56cbda23573ba42e",
+        "effect_count": 1,
+        "retry_count": 1
+      }
+    },
+    {
+      "invoice_id": "INV-002",
+      "supplier_id": "SUP-7",
+      "extracted_supplier_id": "SUP-7",
+      "expected_amount_cents": 24990,
+      "extracted_amount_cents": 24991,
+      "match_mode": "THREE_WAY",
+      "purchase_order_amount_cents": 24990,
+      "receipt_amount_cents": 24990,
+      "routing_signoff_needed": true,
+      "routing_signoff_present": true,
+      "extraction_fields_total": 100,
+      "extraction_fields_correct": 100,
+      "duplicate_seen": false,
+      "audit_events": [
+        "received",
+        "extracted",
+        "validated",
+        "matched",
+        "routing_started",
+        "routing_completed",
+        "erp_staged"
+      ],
+      "integration": {
+        "request_sha256": "43814017a2d0c5a8df3a50dc245d46de0a41952b93741e60c464320aeda2180a",
+        "ack_sha256": "3089e2b7ecb58149180e1494c91629502d18834ab85b6e1521aa7e077ce46370",
+        "effect_key": "invoice:bf5dc357276ee74bb2ec4eccd73c05d035951835622f932c3e6d5db5451cf453",
+        "retry_effect_key": "invoice:bf5dc357276ee74bb2ec4eccd73c05d035951835622f932c3e6d5db5451cf453",
+        "effect_count": 1,
+        "retry_count": 1
+      }
+    },
+    {
+      "invoice_id": "INV-003",
+      "supplier_id": "SUP-7",
+      "extracted_supplier_id": "SUP-7",
+      "expected_amount_cents": 8999,
+      "extracted_amount_cents": 8998,
+      "match_mode": "THREE_WAY",
+      "purchase_order_amount_cents": 8999,
+      "receipt_amount_cents": 8999,
+      "routing_signoff_needed": true,
+      "routing_signoff_present": true,
+      "extraction_fields_total": 100,
+      "extraction_fields_correct": 100,
+      "duplicate_seen": false,
+      "audit_events": [
+        "received",
+        "extracted",
+        "validated",
+        "matched",
+        "routing_started",
+        "routing_completed",
+        "erp_staged"
+      ],
+      "integration": {
+        "request_sha256": "78b8cb937485575bca6af4ceac37b6e8defda69d80aa79fe24e83afd359ab4cf",
+        "ack_sha256": "73748c04f3bdb5f197b65ee95427d3fa546b562c1c975d00404bc71c4d104b27",
+        "effect_key": "invoice:e4212e45bc69965149106eb2cac3e2bfb72f4b6d2e00d3efdf594b0eb977fcdf",
+        "retry_effect_key": "invoice:e4212e45bc69965149106eb2cac3e2bfb72f4b6d2e00d3efdf594b0eb977fcdf",
+        "effect_count": 1,
+        "retry_count": 1
+      }
+    }
+  ]
+}
