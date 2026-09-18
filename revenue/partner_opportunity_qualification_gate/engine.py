@@ -88,7 +88,8 @@ def _validate_disposition_source_binding(partner: dict[str, Any], gates: dict[st
             )
 
 
-def compile_qualification(raw: Any, _authority_factory=_fresh_false_authority) -> dict[str, Any]:
+def compile_qualification(raw: Any) -> dict[str, Any]:
+    _authority_factory = lambda: {key: False for key in ("partner_contact_authorized","buyer_contact_authorized","muse_election_granted","account_registration_authorized","eligibility_certified","portal_submission_authorized","signature_authorized","contract_authorized","award_inferred","payment_authorized","cash_received","revenue_recognized")}
     doc = normalize_input(raw)
     try:
         runway_doc = normalize_runway(doc["runway_input"])
@@ -153,7 +154,8 @@ def compile_qualification(raw: Any, _authority_factory=_fresh_false_authority) -
     }
 
 
-def make_receipt(raw_input: Any, output: dict[str, Any], _authority_factory=_fresh_false_authority) -> dict[str, Any]:
+def make_receipt(raw_input: Any, output: dict[str, Any]) -> dict[str, Any]:
+    _authority_factory = lambda: {key: False for key in ("partner_contact_authorized","buyer_contact_authorized","muse_election_granted","account_registration_authorized","eligibility_certified","portal_submission_authorized","signature_authorized","contract_authorized","award_inferred","payment_authorized","cash_received","revenue_recognized")}
     doc = normalize_input(raw_input)
     semantic = {k: v for k, v in doc.items() if k != "runway_input"}
     semantic["runway_binding"] = output["runway_binding"]
