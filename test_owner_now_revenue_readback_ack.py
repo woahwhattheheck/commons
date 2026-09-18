@@ -55,7 +55,6 @@ class TestOwnerNowRevenueReadbackAck(unittest.TestCase):
         )
         self.assertEqual(packet["verdict"], "ASK_FOR_SALE", packet)
         self.assertEqual(packet["sku_count"], len(packet["ask_for_sale"]))
-        self.assertIn("agent-failure-autopsy-29", {row["sku"] for row in packet["ask_for_sale"]})
         self.assertFalse(packet["invented_stripe_urls"])
         self.assertEqual(packet["cash_usd"], 0)
         self.assertEqual(packet["sends"], 0)

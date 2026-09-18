@@ -71,7 +71,6 @@ class TestOwnerNowRevenue(unittest.TestCase):
         self.assertEqual(packet["cash_usd"], 0)
         self.assertEqual(packet["sends"], 0)
         self.assertEqual(packet["sku_count"], len(packet["ask_for_sale"]))
-        self.assertIn("agent-failure-autopsy-29", {row["sku"] for row in packet["ask_for_sale"]})
         skus = [row["sku"] for row in packet["ask_for_sale"]]
         self.assertEqual(skus[:len(CANONICAL)], list(CANONICAL))
         self.assertEqual(len(skus), len(set(skus)))

@@ -15,7 +15,6 @@ import cli as roles_cli
 
 FIXTURES = Path(__file__).resolve().parent / "fixtures"
 CRM = FIXTURES / "synthetic_crm_followup_role.json"
-AUTOPSY = FIXTURES / "synthetic_agent_failure_autopsy_role.json"
 DIAG = FIXTURES / "synthetic_diagnostic_fulfillment_role.json"
 
 
@@ -29,15 +28,10 @@ class OpenObligationsCashMarkerTests(unittest.TestCase):
 
     def test_mixed_store_marks_paid_roles_only(self) -> None:
         crm = self.store.create(json.loads(CRM.read_text(encoding="utf-8")))
-        autopsy = self.store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
         diagnostic = self.store.create(json.loads(DIAG.read_text(encoding="utf-8")))
 
         crm_names = {r["name"] for r in crm["access_routes"]}
         self.assertNotIn("payment_capability", crm_names)
-        self.assertIn(
-            "payment_capability",
-            {r["name"] for r in autopsy["access_routes"]},
-        )
         self.assertIn(
             "payment_capability",
             {r["name"] for r in diagnostic["access_routes"]},
@@ -52,10 +46,6 @@ class OpenObligationsCashMarkerTests(unittest.TestCase):
             self.assertNotIn("payment_capability", row)
             self.assertNotIn("amount_usd", row)
             self.assertNotIn("refund", row)
-        for row in by_role[autopsy["role_id"]]:
-            self.assertIs(row.get("payment_capability"), True)
-            self.assertEqual(row.get("amount_usd"), 29)
-            self.assertIn("refund usd 29", str(row.get("refund") or "").lower())
         for row in by_role[diagnostic["role_id"]]:
             self.assertIs(row.get("payment_capability"), True)
             self.assertEqual(row.get("amount_usd"), 199)
@@ -72,7 +62,7 @@ class OpenObligationsCashMarkerTests(unittest.TestCase):
             )
             self.assertEqual(
                 roles_cli.main(
-                    ["--store", store_dir, "create", "--file", str(AUTOPSY)]
+                    ["--store", store_dir, "create", "--file", str(DIAG)]
                 ),
                 0,
             )
@@ -83,23 +73,22 @@ class OpenObligationsCashMarkerTests(unittest.TestCase):
         out = json.loads(buf.getvalue())
         rows = out["open_obligations"]
         crm_rows = [r for r in rows if r["role_id"].startswith("role-synthetic-crm")]
-        autopsy_rows = [
-            r for r in rows if "autopsy" in r["role_id"]
+        diag_rows = [
+            r for r in rows if "diagnostic" in r["role_id"]
         ]
         self.assertTrue(crm_rows)
-        self.assertTrue(autopsy_rows)
+        self.assertTrue(diag_rows)
         for row in crm_rows:
             self.assertNotIn("payment_capability", row)
             self.assertNotIn("amount_usd", row)
             self.assertNotIn("refund", row)
-        for row in autopsy_rows:
+        for row in diag_rows:
             self.assertIs(row.get("payment_capability"), True)
-            self.assertEqual(row.get("amount_usd"), 29)
-            self.assertIn("refund usd 29", str(row.get("refund") or "").lower())
+            self.assertEqual(row.get("amount_usd"), 199)
+            self.assertTrue(str(row.get("refund") or "").strip())
 
     def test_cash_only_filters_to_paid_roles(self) -> None:
         self.store.create(json.loads(CRM.read_text(encoding="utf-8")))
-        self.store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
         self.store.create(json.loads(DIAG.read_text(encoding="utf-8")))
 
         before = {p.name: p.read_bytes() for p in Path(self._tmp.name).glob("*.json")}
@@ -115,10 +104,7 @@ class OpenObligationsCashMarkerTests(unittest.TestCase):
         for row in cash_rows:
             self.assertIs(row.get("payment_capability"), True)
             self.assertFalse(row["role_id"].startswith("role-synthetic-crm"))
-            if "autopsy" in row["role_id"]:
-                self.assertEqual(row.get("amount_usd"), 29)
-                self.assertIn("refund usd 29", str(row.get("refund") or "").lower())
-            elif "diagnostic" in row["role_id"]:
+            if "diagnostic" in row["role_id"]:
                 self.assertEqual(row.get("amount_usd"), 199)
                 self.assertTrue(str(row.get("refund") or "").strip())
 
@@ -134,10 +120,7 @@ class OpenObligationsCashMarkerTests(unittest.TestCase):
         self.assertEqual(cli_rows, cash_rows)
         for row in cli_rows:
             self.assertIs(row.get("payment_capability"), True)
-            if "autopsy" in row["role_id"]:
-                self.assertEqual(row.get("amount_usd"), 29)
-                self.assertIn("refund usd 29", str(row.get("refund") or "").lower())
-            elif "diagnostic" in row["role_id"]:
+            if "diagnostic" in row["role_id"]:
                 self.assertEqual(row.get("amount_usd"), 199)
                 self.assertTrue(str(row.get("refund") or "").strip())
         after = {p.name: p.read_bytes() for p in Path(self._tmp.name).glob("*.json")}

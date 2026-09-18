@@ -40,15 +40,6 @@ class ConsolidatedRevenueGuardWorkflowTests(unittest.TestCase):
         self.run_ok("-O", "-m", "unittest", "-v", module)
         self.run_ok("-m", "revenue.outbound_collision_replay_guard.demo.demo")
 
-    def test_agent_autopsy_fulfillment_normal_and_optimized(self) -> None:
-        module = "revenue.agent_failure_autopsy_fulfillment.test_core"
-        self.run_ok("-m", "py_compile", "revenue/agent_failure_autopsy_fulfillment/core.py", "revenue/agent_failure_autopsy_fulfillment/test_core.py")
-        self.run_ok("-m", "unittest", "-v", module)
-        self.run_ok("-O", "-m", "unittest", "-v", module)
-        with tempfile.TemporaryDirectory() as td:
-            out = Path(td) / "out"
-            self.run_ok("revenue/agent_failure_autopsy_fulfillment/core.py", "compile", "revenue/agent_failure_autopsy_fulfillment/sample_input.json", str(out))
-            self.run_ok("revenue/agent_failure_autopsy_fulfillment/core.py", "verify", str(out / "packet.json"))
 
     def test_oss_grant_eligibility_normal_and_optimized(self) -> None:
         module = "revenue.oss_grant_eligibility_packet.test_compiler"

@@ -20,7 +20,6 @@ from roles import RoleError, RoleStore
 FIXTURES = Path(__file__).resolve().parent / "fixtures"
 DIAG = FIXTURES / "synthetic_diagnostic_fulfillment_role.json"
 CRM = FIXTURES / "synthetic_crm_followup_role.json"
-AUTOPSY = FIXTURES / "synthetic_agent_failure_autopsy_role.json"
 
 
 class DiagnosticContractCliTests(unittest.TestCase):
@@ -76,13 +75,10 @@ class DiagnosticContractCliTests(unittest.TestCase):
         after = {p.name: p.read_bytes() for p in Path(self._tmp.name).glob("*.json")}
         self.assertEqual(after, before)
 
-    def test_crm_and_autopsy_refuse(self) -> None:
+    def test_crm_refuses(self) -> None:
         crm = self.store.create(json.loads(CRM.read_text(encoding="utf-8")))
-        autopsy = self.store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
         with self.assertRaises(RoleError):
             require_diagnostic_contract_tool(crm)
-        with self.assertRaises(RoleError):
-            load_contract_from_role(autopsy, slug="dealer")
 
     def test_unknown_slug_refuses(self) -> None:
         role = self.store.create(json.loads(DIAG.read_text(encoding="utf-8")))

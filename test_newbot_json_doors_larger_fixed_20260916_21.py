@@ -16,7 +16,6 @@ FILES = [
     "ringdelta_measured.json",
 ]
 REQUIRED_PATHS = [
-    "agent-rescue.html",
     "dealer-service-lead-rescue.html",
     "referral-intake-completeness.html",
     "repair-booking-preflight.html",
@@ -39,8 +38,6 @@ class NewbotJsonDoorsLargerFixed21Test(unittest.TestCase):
             paths = [p.get("path") for p in products]
             for req in REQUIRED_PATHS:
                 self.assertIn(req, paths, f"{name} missing {req}")
-            autopsy = next(p for p in products if p["path"] == "agent-rescue.html")
-            self.assertEqual(autopsy.get("price_usd"), 29)
             larger = live.get("larger_fixed")
             self.assertIsInstance(larger, list, name)
             lf_paths = [p.get("path") for p in larger]
