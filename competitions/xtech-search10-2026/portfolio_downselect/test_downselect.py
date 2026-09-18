@@ -450,6 +450,18 @@ class DownselectTests(unittest.TestCase):
         self.assertEqual(second["officialConstraintPolicySha256"], policy_digest)
         self.assertEqual(second["receiptSha256"], original_receipt)
 
+    def test_clone_style_repo_alias_is_rejected(self) -> None:
+        packet = ready_packet()
+        packet["candidates"][0]["source"]["repo"] = "woahwhattheheck/example.git"
+        with self.assertRaisesRegex(ContractError, "INVALID_SOURCE_REPO"):
+            self.compile(packet)
+
+    def test_dot_segment_repo_identity_is_rejected(self) -> None:
+        packet = ready_packet()
+        packet["candidates"][0]["source"]["repo"] = "../example"
+        with self.assertRaisesRegex(ContractError, "INVALID_SOURCE_REPO"):
+            self.compile(packet)
+
     def test_candidate_alias_cannot_replay_same_source_generation(self) -> None:
         packet = ready_packet()
         packet["candidates"][1]["source"] = copy.deepcopy(packet["candidates"][0]["source"])
