@@ -117,28 +117,28 @@ def _build_codec():
                 raise error("JSON value exceeds node limit")
             if depth > max_depth:
                 raise error("JSON value exceeds depth limit")
-            t = type(value)
-            if value is None or t is bool:
+            t = builtin_type(value)
+            if value is None or t is bool_type:
                 return value
-            if t is int:
-                if abs(value) > max_safe:
+            if t is int_type:
+                if builtin_abs(value) > max_safe:
                     raise error("unsafe JSON integer")
                 return value
-            if t is float:
+            if t is float_type:
                 raise error("floating-point value forbidden")
-            if t is str:
-                if len(value) > max_bytes - string_bytes:
+            if t is str_type:
+                if builtin_len(value) > max_bytes - string_bytes:
                     raise error("JSON value exceeds aggregate string-byte limit")
                 try:
                     encoded = value.encode("utf-8", "strict")
                 except UnicodeEncodeError as exc:
                     raise error("invalid Unicode string") from exc
-                string_bytes += len(encoded)
+                string_bytes += builtin_len(encoded)
                 if string_bytes > max_bytes:
                     raise error("JSON value exceeds aggregate string-byte limit")
                 return value
-            if t is list:
-                marker = id(value)
+            if t is list_type:
+                marker = builtin_id(value)
                 if marker in seen:
                     raise error("shared/cyclic JSON container")
                 seen.add(marker)
@@ -146,30 +146,30 @@ def _build_codec():
                 try:
                     for item in value:
                         out.append(detach(item, depth + 1))
-                except RuntimeError as exc:
+                except runtime_error as exc:
                     raise error("JSON container mutated during snapshot") from exc
                 return out
-            if t is dict:
-                marker = id(value)
+            if t is dict_type:
+                marker = builtin_id(value)
                 if marker in seen:
                     raise error("shared/cyclic JSON container")
                 seen.add(marker)
                 out = {}
                 try:
                     for key, item in value.items():
-                        if type(key) is not str:
+                        if builtin_type(key) is not str_type:
                             raise error("JSON object key must be string")
-                        if len(key) > max_bytes - string_bytes:
+                        if builtin_len(key) > max_bytes - string_bytes:
                             raise error("JSON value exceeds aggregate string-byte limit")
                         try:
                             encoded = key.encode("utf-8", "strict")
                         except UnicodeEncodeError as exc:
                             raise error("invalid Unicode object key") from exc
-                        string_bytes += len(encoded)
+                        string_bytes += builtin_len(encoded)
                         if string_bytes > max_bytes:
                             raise error("JSON value exceeds aggregate string-byte limit")
                         out[key] = detach(item, depth + 1)
-                except RuntimeError as exc:
+                except runtime_error as exc:
                     raise error("JSON container mutated during snapshot") from exc
                 return out
             raise error(f"unsupported JSON type: {t.__name__}")
