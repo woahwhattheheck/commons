@@ -10,11 +10,16 @@ call that never enters repository code.
 from __future__ import annotations
 
 import ast
+import re
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable
 
-from .provider_boundary import registered_boundary_types
+from .provider_boundary import (
+    ProviderBoundaryError,
+    registered_boundary_generation,
+    registered_boundary_types,
+)
 
 
 @dataclass(frozen=True)
@@ -164,7 +169,11 @@ def _target_label(dotted: str | None) -> str | None:
     return None
 
 
-def _python_call_violations(tree: ast.AST) -> set[str]:
+def _python_call_violations(
+    tree: ast.AST,
+    *,
+    _provider_methods: frozenset[str] = _PROVIDER_METHODS,
+) -> set[str]:
     """Resolve direct imports, aliases and simple rebinding of guarded callsites."""
     callable_aliases: dict[str, str] = {}
     module_aliases: dict[str, str] = {}
@@ -233,7 +242,7 @@ def _python_call_violations(tree: ast.AST) -> set[str]:
                 label = _target_label(dotted)
                 if label:
                     violations.add(label)
-            if isinstance(fn, ast.Attribute) and fn.attr in _PROVIDER_METHODS:
+            if isinstance(fn, ast.Attribute) and fn.attr in _provider_methods:
                 violations.add(f"provider-transport-method:{fn.attr}")
 
         # Literal getattr(module, "consume_once") / getattr(..., provider_method)
@@ -249,7 +258,7 @@ def _python_call_violations(tree: ast.AST) -> set[str]:
                 violations.add("dynamic-initial-outreach")
             elif attr == "consume_once":
                 violations.add("dynamic-terminal-consumer")
-            elif attr in _PROVIDER_METHODS:
+            elif attr in _provider_methods:
                 violations.add(f"dynamic-provider-transport-method:{attr}")
     return violations
 
@@ -265,36 +274,74 @@ def _top_level_defs(tree: ast.AST) -> tuple[set[str], set[str]]:
     return functions, classes
 
 
-def validate_registry(repository_root: str | Path) -> list[str]:
-    """Prove the provider manifest is closed and its named code surfaces exist."""
+def validate_registry(
+    repository_root: str | Path,
+    *,
+    _trusted_adapters: tuple[Adapter, ...] = ADAPTERS,
+    _expected_providers: tuple[str, ...] = _EXPECTED_PROVIDERS,
+    _provider_methods: frozenset[str] = _PROVIDER_METHODS,
+) -> list[str]:
+    """Prove the first-load provider manifest and runtime generation are closed.
+
+    Public ADAPTERS and provider-boundary ClassVars are compatibility views only.
+    Ordinary post-import rebinding cannot redefine the generation used here; any
+    visible drift is reported as a failure instead of becoming new authority.
+    """
     root = Path(repository_root)
     violations: list[str] = []
-    providers = tuple(item.provider for item in ADAPTERS)
-    if providers != _EXPECTED_PROVIDERS:
+    if ADAPTERS != _trusted_adapters:
+        violations.append("registry:public-manifest-drift")
+
+    providers = tuple(item.provider for item in _trusted_adapters)
+    if providers != _expected_providers:
         violations.append("registry:provider-set-not-exact")
     if len(set(providers)) != len(providers):
         violations.append("registry:duplicate-provider")
-    if len(_PROVIDER_METHODS) != len(ADAPTERS):
+    if len(_provider_methods) != len(_trusted_adapters):
         violations.append("registry:duplicate-transport-method")
 
-    runtime_types = registered_boundary_types()
-    runtime_by_name = {boundary.__name__: boundary for boundary in runtime_types}
-    if len(runtime_by_name) != len(runtime_types):
+    try:
+        runtime_generation = registered_boundary_generation()
+        runtime_types = registered_boundary_types()
+    except ProviderBoundaryError:
+        violations.append("registry:runtime-boundary-metadata-drift")
+        return sorted(set(violations))
+
+    runtime_by_name = {
+        boundary_type.__name__: (
+            boundary_type,
+            provider,
+            transport_method,
+            tuple(host_identities),
+        )
+        for boundary_type, provider, transport_method, host_identities
+        in runtime_generation
+    }
+    if len(runtime_by_name) != len(runtime_generation):
         violations.append("registry:duplicate-runtime-boundary-type")
-    if set(runtime_by_name) != {item.boundary_class_name for item in ADAPTERS}:
+    if tuple(entry[0] for entry in runtime_generation) != runtime_types:
+        violations.append("registry:runtime-boundary-type-view-mismatch")
+    if set(runtime_by_name) != {
+        item.boundary_class_name for item in _trusted_adapters
+    }:
         violations.append("registry:runtime-boundary-set-not-exact")
 
-    for item in ADAPTERS:
-        runtime_boundary = runtime_by_name.get(item.boundary_class_name)
-        if runtime_boundary is None:
+    for item in _trusted_adapters:
+        runtime_entry = runtime_by_name.get(item.boundary_class_name)
+        if runtime_entry is None:
             violations.append(f"registry:{item.provider}:runtime-boundary-missing")
         else:
-            if getattr(runtime_boundary, "provider", None) != item.provider:
+            _boundary_type, provider, transport_method, host_identities = runtime_entry
+            if provider != item.provider:
                 violations.append(f"registry:{item.provider}:runtime-provider-mismatch")
-            if getattr(runtime_boundary, "transport_method", None) != item.transport_method:
-                violations.append(f"registry:{item.provider}:runtime-transport-method-mismatch")
-            if tuple(getattr(runtime_boundary, "host_mutation_identities", ())) != item.host_mutation_identities:
-                violations.append(f"registry:{item.provider}:runtime-host-identities-mismatch")
+            if transport_method != item.transport_method:
+                violations.append(
+                    f"registry:{item.provider}:runtime-transport-method-mismatch"
+                )
+            if host_identities != item.host_mutation_identities:
+                violations.append(
+                    f"registry:{item.provider}:runtime-host-identities-mismatch"
+                )
 
         if not item.host_mutation_identities:
             violations.append(f"registry:{item.provider}:host-mutation-identities-empty")
@@ -327,9 +374,13 @@ def validate_registry(repository_root: str | Path) -> list[str]:
     return sorted(set(violations))
 
 
-def _iter_code_files(root: Path) -> Iterable[Path]:
+def _iter_code_files(
+    root: Path,
+    *,
+    _code_suffixes: frozenset[str] = _CODE_SUFFIXES,
+) -> Iterable[Path]:
     for file in root.rglob("*"):
-        if not file.is_file() or file.suffix.lower() not in _CODE_SUFFIXES:
+        if not file.is_file() or file.suffix.lower() not in _code_suffixes:
             continue
         parts = set(file.parts)
         if ".git" in parts or "node_modules" in parts or "__pycache__" in parts:
@@ -337,10 +388,46 @@ def _iter_code_files(root: Path) -> Iterable[Path]:
         yield file
 
 
+_QUOTED_STRING = re.compile(
+    r"""(?:"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*')""",
+    re.DOTALL,
+)
+
+
+def _compact_provider_text(value: str) -> str:
+    """Conservative lexical view defeating simple split-string construction."""
+    return "".join(ch for ch in value if ch.isalnum() or ch == "_")
+
+
+def _literal_stream(source: str) -> str:
+    """Concatenate quoted literal payloads across supported source languages."""
+    return "".join(match.group(0)[1:-1] for match in _QUOTED_STRING.finditer(source))
+
+
+def _contains_provider_marker(source: str, marker: str) -> bool:
+    if marker in source:
+        return True
+    compact_marker = _compact_provider_text(marker)
+    if not compact_marker:
+        return False
+    if compact_marker in _compact_provider_text(source):
+        return True
+    return compact_marker in _compact_provider_text(_literal_stream(source))
+
+
 def find_bypasses(
     repository_root: str | Path,
     *,
     validate_manifest: bool = True,
+    _validate_registry=validate_registry,
+    _iter_files=_iter_code_files,
+    _python_scan=_python_call_violations,
+    _marker_match=_contains_provider_marker,
+    _provider_markers: tuple[str, ...] = PROVIDER_MARKERS,
+    _low_level_primitives: frozenset[str] = frozenset(_LOW_LEVEL_PRIMITIVES),
+    _chain_files: frozenset[str] = frozenset(_CHAIN_FILES),
+    _provider_method_allowed: frozenset[str] = frozenset(_PROVIDER_METHOD_ALLOWED),
+    _marker_allowed: frozenset[str] = frozenset(_MARKER_ALLOWED),
 ) -> list[str]:
     """Return code paths that bypass the mandatory provider-bound composition.
 
@@ -352,11 +439,11 @@ def find_bypasses(
     root = Path(repository_root)
     violations: list[str] = []
     if validate_manifest:
-        violations.extend(validate_registry(root))
+        violations.extend(_validate_registry(root))
 
-    for file in _iter_code_files(root):
+    for file in _iter_files(root):
         rel = file.relative_to(root).as_posix()
-        if _is_test(rel) or rel in _LOW_LEVEL_PRIMITIVES:
+        if _is_test(rel) or rel in _low_level_primitives:
             continue
         try:
             source = file.read_text(encoding="utf-8")
@@ -370,25 +457,29 @@ def find_bypasses(
             except SyntaxError as exc:
                 violations.append(f"{rel}:unscannable:{type(exc).__name__}")
                 continue
-            if rel not in _CHAIN_FILES:
-                for label in _python_call_violations(tree):
+            if rel not in _chain_files:
+                for label in _python_scan(tree):
                     violations.append(f"{rel}:{label}")
-            elif rel not in _PROVIDER_METHOD_ALLOWED:
-                for label in _python_call_violations(tree):
+            elif rel not in _provider_method_allowed:
+                for label in _python_scan(tree):
                     if label.startswith("provider-transport-method:") or label.startswith("dynamic-provider-transport-method:"):
                         violations.append(f"{rel}:{label}")
 
-        if rel not in _MARKER_ALLOWED:
-            for marker in PROVIDER_MARKERS:
-                if marker in source:
+        if rel not in _marker_allowed:
+            for marker in _provider_markers:
+                if _marker_match(source, marker):
                     violations.append(f"{rel}:provider-marker:{marker}")
 
     return sorted(set(violations))
 
 
-def registered_provider_names() -> tuple[str, ...]:
-    return tuple(item.provider for item in ADAPTERS)
+def registered_provider_names(
+    _trusted_adapters: tuple[Adapter, ...] = ADAPTERS,
+) -> tuple[str, ...]:
+    return tuple(item.provider for item in _trusted_adapters)
 
 
-def registered_host_mutation_identities() -> tuple[str, ...]:
-    return tuple(sorted(_HOST_MUTATION_IDENTITIES))
+def registered_host_mutation_identities(
+    _trusted_identities: frozenset[str] = _HOST_MUTATION_IDENTITIES,
+) -> tuple[str, ...]:
+    return tuple(sorted(_trusted_identities))
