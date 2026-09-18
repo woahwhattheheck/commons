@@ -31,7 +31,7 @@ def _strict_load(path: Path) -> Any:
     if path.is_symlink() or not path.is_file():
         raise ValueError("input must be an ordinary non-symlink file")
     if path.stat().st_size > 4_000_000:
-        raise ValueError("input too lare")
+        raise ValueError("input too large")
 
     def pairs(values: list[tuple[str, Any]]) -> dict[str, Any]:
         out: dict[str, Any] = {}
