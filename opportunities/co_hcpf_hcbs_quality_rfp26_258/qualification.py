@@ -437,9 +437,9 @@ def _build_engine(
         if not builtin_isinstance(now, dt_type) or now.tzinfo is None:
             raise error("trusted clock must return aware datetime")
         now = now.astimezone(utc)
-        qualified = sorted(
+        qualified = builtin_sorted(
             org for org, gates in prime_by_org.items()
-            if set(prime_gates).issubset(gates)
+            if builtin_set(prime_gates).issubset(gates)
         )
         missing_work = [gate for gate in workshare_gates if gate not in work_gates]
 
@@ -490,8 +490,8 @@ def _build_engine(
             "official_source_set": source_receipt,
             "qualified_prime_org_ids": qualified,
             "missing_workshare_gates": missing_work,
-            "admitted_prime_evidence_ids": sorted(admitted_prime_ids),
-            "admitted_workshare_evidence_ids": sorted(admitted_work_ids),
+            "admitted_prime_evidence_ids": builtin_sorted(admitted_prime_ids),
+            "admitted_workshare_evidence_ids": builtin_sorted(admitted_work_ids),
             "input_digest_sha256": digest(canonical(packet)).hexdigest(),
             "authority": {
                 "buyer_contact": False,
@@ -507,7 +507,7 @@ def _build_engine(
                 "public_commons_backlink": False,
             },
         }
-        core = dict(result)
+        core = builtin_dict(result)
         result["receipt_sha256"] = digest(canonical(core)).hexdigest()
         return result
 
