@@ -127,6 +127,7 @@ def classify(op,es,ev,cap,stale,ttl,dupids,duprec,capture_stale):
     seq=[selected,leased,consumed,go,prov]
     flat=[x[0] for x in seq if x]
     if any(a[0]>=b[0] for a,b in zip(flat,flat[1:])): bad.append("ATOMIC_SEQUENCE_ORDER")
+    if rel and rel[0] != es[-1]: bad.append("EVENT_AFTER_RELEASE_TERMINAL")
     if rel and prov: bad.append("RELEASE_AND_PROVIDER_TERMINAL_CONFLICT")
     if h and selected: bad.append("SELECTED_AND_HOLD_COLLISION_CONFLICT")
     if bad: return hold(op,ident,es,*bad)
@@ -164,7 +165,7 @@ def compile_packet(data):
     dupids={k for k,v in ids.items() if len(v)>1}; duprec={k for k,v in receipts.items() if len(v)>1}; cstale=int((p["ev"]-p["cap"]).total_seconds())>p["maxage"]
     ops=[classify(k,v,p["ev"],p["cap"],p["stale"],p["ttl"],dupids,duprec,cstale) for k,v in sorted(by.items())]
     markdown=md(ops)
-    core={"schema":REPORT_SCHEMA,"packet_sha256":sha(p["raw"]),"captured_at":p["captured"],"evaluated_at":p["evaluated"],"policy":{"stale_after_seconds":p["stale"],"selection_ttl_seconds":p["ttl"],"max_capture_age_seconds":p["maxage"]},"operations":ops,"resurface_operation_keys":[x["operation_key"] for x in ops if x["state"] in {"UNANSWERED_STALE","BARE_SELECTED_STALE"}],"markdown_sha256":sha(markdown.encode()),"authority":dict(AUTH)}
+    core={"schema":REPORT_SCHEMA,"packet_sha256":sha(p["raw"]),"captured_at":p["captured"],"evaluated_at":p["evaluated"],"policy":{"stale_after_seconds":p["stale"],"selection_ttl_seconds":p["ttl"],"max_capture_age_seconds":p["maxage"]},"operations":ops,"resurface_operation_keys":[x["operation_key"] for x in ops if x["state"] in {"UNANSWERED_STALE","BARE_SELECTED_STALE"}],"markdown_sha256":sha(markdown.encode()),"authority":{"external_send_authorized":False,"muse_selection_authorized":False,"provider_action_authorized":False,"payment_authorized":False,"cash_proven":False,"revenue_recognized":False}}
     receipt={"packet_sha256":core["packet_sha256"],"report_sha256":sha(core),"markdown_sha256":core["markdown_sha256"]}
     report=dict(core); report["semantic_receipt_sha256"]=sha(receipt); return report,markdown
 

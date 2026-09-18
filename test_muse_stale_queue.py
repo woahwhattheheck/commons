@@ -64,6 +64,22 @@ class T(unittest.TestCase):
         es=[self.req(),self.event("SELECTED",10),self.event("LEASED",20),self.event("CONSUMED",30),self.event("GO",40)]; a,_=self.comp(self.packet(es)); b,_=self.comp(self.packet(list(reversed(es))));
         for r in (a,b): r.pop("packet_sha256"); r.pop("semantic_receipt_sha256")
         self.assertEqual(a,b)
+    def test_authority_template_mutation_and_rebinding_cannot_widen(self):
+        raw=json.dumps(self.packet([self.req()]),separators=(",",":")).encode(); saved=copy.deepcopy(m.AUTH)
+        try:
+            m.AUTH["external_send_authorized"]=True
+            a,amd=m.compile_packet(raw); self.assertTrue(all(v is False for v in a["authority"].values())); self.assertTrue(m.verify_compiled(raw,a,amd))
+            m.AUTH={"external_send_authorized":True,"muse_selection_authorized":True,"provider_action_authorized":True,"payment_authorized":True,"cash_proven":True,"revenue_recognized":True}
+            b,bmd=m.compile_packet(raw); self.assertTrue(all(v is False for v in b["authority"].values())); self.assertTrue(m.verify_compiled(raw,b,bmd))
+        finally: m.AUTH=saved
+    def test_release_family_is_terminal(self):
+        for term in ("WITHDRAW","RELEASE","SUPERSEDE"):
+            with self.subTest(term=term,later="SELECTED"):
+                es=[self.req(),self.event(term,10),self.event("SELECTED",20)]
+                self.assertEqual(self.state(self.packet(es))["state"],"HOLD_EVIDENCE")
+            with self.subTest(term=term,later="ATOMIC"):
+                es=[self.req(),self.event("SELECTED",5),self.event(term,10),self.event("LEASED",20),self.event("CONSUMED",30),self.event("GO",40)]
+                self.assertEqual(self.state(self.packet(es))["state"],"HOLD_EVIDENCE")
     def test_verify_detects_report_markdown_tamper(self):
         raw=json.dumps(self.packet([self.req()]),separators=(",",":")).encode(); r,md=m.compile_packet(raw); self.assertTrue(m.verify_compiled(raw,r,md)); q=copy.deepcopy(r); q["authority"]["cash_proven"]=True; self.assertFalse(m.verify_compiled(raw,q,md)); self.assertFalse(m.verify_compiled(raw,r,md+"x"))
     def test_markdown_escapes_table_html(self):
