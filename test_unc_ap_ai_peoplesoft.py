@@ -1,4 +1,4 @@
-"""Hosted proof hook for the UNC AP/PeopleSoft compiler."""
+"""Hosted proof hook for the UNC AP/PeopleSoft compiler.\n\nA branch-head change to this file intentionally triggers the standard tests workflow.\n"""
 
 from pathlib import Path
 import subprocess
