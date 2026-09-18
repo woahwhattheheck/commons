@@ -173,3 +173,43 @@ def filter_actionable_rows(rows, root=".", registry=None, head="HEAD", is_ancest
         for row in list(rows or [])
         if not is_actionable_terminal(row, index)
     ]
+
+GENERATED_HIDDEN_REASON = "TERMINAL_WORK"
+GENERATED_HIDDEN_ORDER = "work_terminality.json"
+
+
+def project_hidden(existing, index):
+    """Merge active terminal cards into hidden.json without touching manual hides.
+
+    Prior generated terminal rows are replaced from the current active index so a
+    registry correction can unhide them. Non-terminal/manual moderation records
+    are preserved byte-semantically apart from deterministic key ordering.
+    """
+    out = {}
+    if isinstance(existing, dict):
+        for key, value in existing.items():
+            generated = (
+                isinstance(value, dict)
+                and value.get("reason") == GENERATED_HIDDEN_REASON
+                and value.get("order") == GENERATED_HIDDEN_ORDER
+            )
+            if not generated:
+                out[str(key)] = value
+
+    cards = (index or {}).get("card_ids") or {}
+    operations = (index or {}).get("operation_ids") or {}
+    for card_id in sorted(cards):
+        operation_id = cards[card_id]
+        evidence_commit = operations.get(operation_id)
+        if not evidence_commit:
+            continue
+        out[card_id] = {
+            "target": card_id,
+            "reason": GENERATED_HIDDEN_REASON,
+            "by": "SYSTEM",
+            "order": GENERATED_HIDDEN_ORDER,
+            "operation_id": operation_id,
+            "evidence_commit": evidence_commit,
+        }
+    return {key: out[key] for key in sorted(out)}
+
