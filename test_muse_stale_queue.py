@@ -72,6 +72,19 @@ class T(unittest.TestCase):
             m.AUTH={"external_send_authorized":True,"muse_selection_authorized":True,"provider_action_authorized":True,"payment_authorized":True,"cash_proven":True,"revenue_recognized":True}
             b,bmd=m.compile_packet(raw); self.assertTrue(all(v is False for v in b["authority"].values())); self.assertTrue(m.verify_compiled(raw,b,bmd))
         finally: m.AUTH=saved
+    def test_policy_global_mutation_and_rebinding_cannot_change_semantics(self):
+        terminal_raw=json.dumps(self.packet([self.req(),self.event("RELEASE",20)]),separators=(",",":")).encode()
+        bad_actor=self.packet([self.req()]); bad_actor["events"][0]["actor_class"]="MUSE"; bad_actor_raw=json.dumps(bad_actor,separators=(",",":")).encode()
+        names=("REL","PROV","DEC","PK","EF","ACT","KINDS","WHO","PACKET_SCHEMA","REPORT_SCHEMA","MAXINT","ID","OP")
+        saved={name:copy.deepcopy(getattr(m,name)) for name in names}
+        try:
+            m.REL.clear(); m.PROV.clear(); m.DEC.clear(); m.PK.clear(); m.EF.clear(); m.ACT.clear(); m.KINDS.clear(); m.WHO["REQUEST"].add("MUSE")
+            m.PACKET_SCHEMA="attacker.packet/v1"; m.REPORT_SCHEMA="attacker.report/v1"; m.MAXINT=0; m.ID=m.re.compile(r".*"); m.OP=m.re.compile(r".*")
+            r,md=m.compile_packet(terminal_raw)
+            self.assertEqual(r["schema"],saved["REPORT_SCHEMA"]); self.assertEqual(r["operations"][0]["state"],"TERMINAL_RELEASED"); self.assertTrue(m.verify_compiled(terminal_raw,r,md))
+            with self.assertRaises(m.Error): m.compile_packet(bad_actor_raw)
+        finally:
+            for name,value in saved.items(): setattr(m,name,value)
     def test_release_family_is_terminal(self):
         for term in ("WITHDRAW","RELEASE","SUPERSEDE"):
             with self.subTest(term=term,later="SELECTED"):

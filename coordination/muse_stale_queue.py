@@ -31,7 +31,7 @@ def _pairs(xs):
     return d
 
 def _badnum(x): raise Error("floats/nonfinite are not allowed")
-def loads(data):
+def loads(data,_maxint=MAXINT):
     if isinstance(data,str): data=data.encode()
     if not isinstance(data,(bytes,bytearray)) or len(data)>4*1024*1024: raise Error("invalid packet bytes")
     try: v=json.loads(bytes(data).decode("utf-8"),object_pairs_hook=_pairs,parse_float=_badnum,parse_constant=_badnum)
@@ -41,7 +41,7 @@ def loads(data):
         if n>48: raise Error("JSON nesting too deep")
         if x is None or type(x) is bool: return
         if type(x) is int:
-            if abs(x)>MAXINT: raise Error("unsafe integer")
+            if abs(x)>_maxint: raise Error("unsafe integer")
             return
         if isinstance(x,str):
             if len(x)>4096 or any(ord(c)<32 or ord(c)==127 or 0xD800<=ord(c)<=0xDFFF for c in x): raise Error("unsafe text")
@@ -78,24 +78,24 @@ def exact(d,fields,name):
 def canon(x): return json.dumps(x,sort_keys=True,separators=(",",":"),ensure_ascii=False,allow_nan=False).encode()
 def sha(x): return hashlib.sha256(x if isinstance(x,bytes) else canon(x)).hexdigest()
 
-def parse(data):
-    raw=data.encode() if isinstance(data,str) else bytes(data); p=loads(raw); exact(p,PK,"packet")
-    if p["schema"]!=PACKET_SCHEMA: raise Error("bad schema")
+def parse(data,_pk=frozenset(PK),_ef=frozenset(EF),_packet_schema=PACKET_SCHEMA,_act=frozenset(ACT),_kinds=frozenset(KINDS),_who=tuple((k,frozenset(v)) for k,v in sorted(WHO.items())),_prov=frozenset(PROV),_id=ID,_op=OP):
+    raw=data.encode() if isinstance(data,str) else bytes(data); p=loads(raw); exact(p,_pk,"packet")
+    if p["schema"]!=_packet_schema: raise Error("bad schema")
     cap,ev=ts(p["captured_at"],"captured_at"),ts(p["evaluated_at"],"evaluated_at")
     if ev<cap: raise Error("evaluation precedes capture")
     stale=sint(p["stale_after_seconds"],"stale_after_seconds",1); ttl=sint(p["selection_ttl_seconds"],"selection_ttl_seconds",1); maxage=sint(p["max_capture_age_seconds"],"max_capture_age_seconds")
     if not isinstance(p["events"],list) or not 1<=len(p["events"])<=10000: raise Error("bad events")
-    out=[]
+    out=[]; who=dict(_who)
     for e in p["events"]:
-        exact(e,EF,"event"); eid=txt(e["event_id"],"event_id",192,ID); op=txt(e["operation_key"],"operation_key",192,OP)
+        exact(e,_ef,"event"); eid=txt(e["event_id"],"event_id",192,_id); op=txt(e["operation_key"],"operation_key",192,_op)
         actor=txt(e["actor_class"],"actor_class",32); kind=txt(e["event_kind"],"event_kind",32)
-        if actor not in ACT or kind not in KINDS or actor not in WHO[kind]: raise Error("actor/event mismatch")
+        if actor not in _act or kind not in _kinds or actor not in who[kind]: raise Error("actor/event mismatch")
         when=ts(e["occurred_at"],"occurred_at"); src=txt(e["source_ref"],"source_ref",1024)
         if ":" not in src: raise Error("source_ref not retained")
         identity=tuple(txt(e[k],k,2048 if k=="purpose" else 1024) for k in ("counterparty","route","purpose","seat"))
         pr=e["provider_receipt_id"]
-        if kind in PROV:
-            pr=txt(pr,"provider_receipt_id",192,ID)
+        if kind in _prov:
+            pr=txt(pr,"provider_receipt_id",192,_id)
         elif pr is not None: raise Error("provider receipt on non-provider event")
         out.append((when,eid,op,actor,kind,src,identity,pr))
     return {"raw":raw,"cap":cap,"ev":ev,"stale":stale,"ttl":ttl,"maxage":maxage,"events":out,"captured":p["captured_at"],"evaluated":p["evaluated_at"]}
@@ -104,7 +104,7 @@ def hold(op,ident,events,*reasons):
     i=ident or ("UNKNOWN",)*4
     return {"operation_key":op,"state":"HOLD_EVIDENCE","counterparty":i[0],"route":i[1],"purpose":i[2],"seat":i[3],"request_event_id":next((e[1] for e in events if e[4]=="REQUEST"),None),"latest_event_id":events[-1][1] if events else None,"latest_event_at":events[-1][0].strftime("%Y-%m-%dT%H:%M:%SZ") if events else None,"reasons":sorted(set(reasons)),"resurface_recommended":False,"requires_fresh_arbitration":False}
 
-def classify(op,es,ev,cap,stale,ttl,dupids,duprec,capture_stale):
+def classify(op,es,ev,cap,stale,ttl,dupids,duprec,capture_stale,_prov=frozenset(PROV),_rel=frozenset(REL),_dec=frozenset(DEC)):
     es=sorted(es); ident=es[0][6]; bad=[]
     if capture_stale: bad.append("STALE_CAPTURE")
     if any(e[6]!=ident for e in es): bad.append("IDENTITY_DRIFT")
@@ -116,9 +116,9 @@ def classify(op,es,ev,cap,stale,ttl,dupids,duprec,capture_stale):
     req=[e for e in es if e[4]=="REQUEST"]
     if len(req)!=1: bad.append("EXACTLY_ONE_REQUEST_REQUIRED")
     if es[0][4]!="REQUEST": bad.append("REQUEST_MUST_BE_FIRST")
-    dec=[e for e in es if e[4] in DEC]
+    dec=[e for e in es if e[4] in _dec]
     if len(dec)>1: bad.append("MULTIPLE_MUSE_DECISIONS_AMBIGUOUS")
-    selected=[e for e in es if e[4]=="SELECTED"]; leased=[e for e in es if e[4]=="LEASED"]; consumed=[e for e in es if e[4]=="CONSUMED"]; go=[e for e in es if e[4]=="GO"]; prov=[e for e in es if e[4] in PROV]; rel=[e for e in es if e[4] in REL]; h=[e for e in es if e[4] in {"HOLD","COLLISION"}]
+    selected=[e for e in es if e[4]=="SELECTED"]; leased=[e for e in es if e[4]=="LEASED"]; consumed=[e for e in es if e[4]=="CONSUMED"]; go=[e for e in es if e[4]=="GO"]; prov=[e for e in es if e[4] in _prov]; rel=[e for e in es if e[4] in _rel]; h=[e for e in es if e[4] in {"HOLD","COLLISION"}]
     if any(len(x)>1 for x in (selected,leased,consumed,go,prov,rel)): bad.append("DUPLICATE_STATE_EVENT")
     if any((leased,consumed,go,prov)) and not selected: bad.append("ATOMIC_OR_PROVIDER_EVENT_WITHOUT_SELECTED")
     if consumed and not leased: bad.append("CONSUMED_WITHOUT_LEASE")
@@ -157,21 +157,21 @@ def md(ops):
     for x in rows: lines.append("| "+" | ".join(esc(v) for v in (x["operation_key"],x["state"],x["request_event_id"],x["counterparty"],x["route"],x["seat"],action))+" |")
     return "\n".join(lines+[""])
 
-def compile_packet(data):
-    p=parse(data); by={}; ids={}; receipts={}
+def compile_packet(data,_report_schema=REPORT_SCHEMA,_parse=parse,_classify=classify,_md=md):
+    p=_parse(data); by={}; ids={}; receipts={}
     for e in p["events"]:
         by.setdefault(e[2],[]).append(e); ids.setdefault(e[1],[]).append(e)
         if e[7]: receipts.setdefault(e[7],set()).add(e[2])
     dupids={k for k,v in ids.items() if len(v)>1}; duprec={k for k,v in receipts.items() if len(v)>1}; cstale=int((p["ev"]-p["cap"]).total_seconds())>p["maxage"]
-    ops=[classify(k,v,p["ev"],p["cap"],p["stale"],p["ttl"],dupids,duprec,cstale) for k,v in sorted(by.items())]
-    markdown=md(ops)
-    core={"schema":REPORT_SCHEMA,"packet_sha256":sha(p["raw"]),"captured_at":p["captured"],"evaluated_at":p["evaluated"],"policy":{"stale_after_seconds":p["stale"],"selection_ttl_seconds":p["ttl"],"max_capture_age_seconds":p["maxage"]},"operations":ops,"resurface_operation_keys":[x["operation_key"] for x in ops if x["state"] in {"UNANSWERED_STALE","BARE_SELECTED_STALE"}],"markdown_sha256":sha(markdown.encode()),"authority":{"external_send_authorized":False,"muse_selection_authorized":False,"provider_action_authorized":False,"payment_authorized":False,"cash_proven":False,"revenue_recognized":False}}
+    ops=[_classify(k,v,p["ev"],p["cap"],p["stale"],p["ttl"],dupids,duprec,cstale) for k,v in sorted(by.items())]
+    markdown=_md(ops)
+    core={"schema":_report_schema,"packet_sha256":sha(p["raw"]),"captured_at":p["captured"],"evaluated_at":p["evaluated"],"policy":{"stale_after_seconds":p["stale"],"selection_ttl_seconds":p["ttl"],"max_capture_age_seconds":p["maxage"]},"operations":ops,"resurface_operation_keys":[x["operation_key"] for x in ops if x["state"] in {"UNANSWERED_STALE","BARE_SELECTED_STALE"}],"markdown_sha256":sha(markdown.encode()),"authority":{"external_send_authorized":False,"muse_selection_authorized":False,"provider_action_authorized":False,"payment_authorized":False,"cash_proven":False,"revenue_recognized":False}}
     receipt={"packet_sha256":core["packet_sha256"],"report_sha256":sha(core),"markdown_sha256":core["markdown_sha256"]}
     report=dict(core); report["semantic_receipt_sha256"]=sha(receipt); return report,markdown
 
-def verify_compiled(data,report,markdown):
+def verify_compiled(data,report,markdown,_compile=compile_packet):
     if not isinstance(report,dict): return False
-    try: want,wmd=compile_packet(data)
+    try: want,wmd=_compile(data)
     except Error: return False
     return canon(want)==canon(report) and wmd==markdown
 
