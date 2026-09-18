@@ -458,13 +458,13 @@ def _malformed_mentions_retired_host(token: str, retired_hosts: set[str]) -> boo
     return any(host and host.casefold() in folded for host in retired_hosts)
 
 
-_WORKFLOW_EVENT_RE = re.compile(r"^  ([A-Za-z0-9_-]+):\\s*(?:#.*)?$")
+_WORKFLOW_EVENT_RE = re.compile(r"^  ([A-Za-z0-9_-]+):\s*(?:#.*)?$")
 _WORKFLOW_PATHS_RE = re.compile(
-    r"^    paths:\\s*(?:(?:&([A-Za-z0-9_-]+))|(?:\\*([A-Za-z0-9_-]+)))?"
-    r"\\s*(?:#.*)?$"
+    r"^    paths:\s*(?:(?:&([A-Za-z0-9_-]+))|(?:\*([A-Za-z0-9_-]+)))?"
+    r"\s*(?:#.*)?$"
 )
 _WORKFLOW_PATH_ITEM_RE = re.compile(
-    r"^      -\\s+'((?:[^']|'')*)'\\s*(?:#.*)?$"
+    r"^      -\s+'((?:[^']|'')*)'\s*(?:#.*)?$"
 )
 
 
@@ -488,7 +488,7 @@ def _workflow_event_paths(text: str) -> dict[str, tuple[str, ...]]:
         line = lines[index]
         if not line.strip() or line.lstrip().startswith("#"):
             continue
-        if "\\t" in line[: len(line) - len(line.lstrip())]:
+        if "\t" in line[: len(line) - len(line.lstrip())]:
             raise LifecycleError("tabs are forbidden in lifecycle workflow indentation")
         if len(line) - len(line.lstrip(" ")) == 0:
             end = index
