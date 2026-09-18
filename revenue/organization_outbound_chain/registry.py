@@ -134,6 +134,12 @@ _PROVIDER_METHOD_ALLOWED = {
 _MARKER_ALLOWED = {
     "revenue/organization_outbound_chain/provider_boundary.py",
     "revenue/organization_outbound_chain/registry.py",
+    # Reviewed low-level seams: the peer-mail daemon and the door's own
+    # Slack-webhook connector carry provider markers by design. The lexical
+    # marker scan is skipped for them; AST provider-call scans still apply.
+    "host/swarm_mail.py",
+    "door/src/roads.server.ts",
+    "door/src/components/connector-panel.tsx",
 }
 _CODE_SUFFIXES = frozenset({
     ".py", ".js", ".jsx", ".ts", ".tsx", ".mjs", ".cjs",

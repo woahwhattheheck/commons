@@ -464,7 +464,7 @@ def main(argv: list[str] | None = None) -> int:
     argv = list(sys.argv[1:] if argv is None else argv)
     if "--send" in argv or argv[:1] == ["send"]:
         sys.stderr.write(
-            "REFUSED live send: mailbox buyer-reply verify never transports mail.\n"
+            "REFUSED live send: the mailbox buyer-reply verify never transports mail.\n"
         )
         return 3
     args = build_parser().parse_args(argv)

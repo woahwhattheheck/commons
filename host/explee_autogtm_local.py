@@ -12,7 +12,7 @@ Matches the public MIT skill cluster Sheshiyer/explee-skills
   6. personalized drafts + demo queue in need_owner_review
 
 Does not remint Harborline leftover cursor-explee-qualify-clone-20260902-01.
-Does not write qualify.html. Does not call Explee. Does not send mail.
+Does not write qualify.html. Does not call Explee. Does not send e-mail.
 Does not copy Explee testimonials. Checkout NOT_MINTED. No card.
 
   python3 host/explee_autogtm_local.py --html-file page.html

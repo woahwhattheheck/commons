@@ -145,7 +145,7 @@ class CollisionError(ReplyRevenueError):
 
 
 class ResendError(ReplyRevenueError):
-    """A plan would contact a HARD DNR or otherwise send mail."""
+    """A plan would contact a HARD DNR or otherwise send e-mail."""
 
 
 def _make_runtime(

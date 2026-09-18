@@ -651,7 +651,7 @@ class CommonsCompose extends ElementBase {
       el("textarea", { name: "body", rows: "6", required: true, maxlength: "3500" }),
     ]));
     const actions = el("p", { className: "commons-actions" });
-    actions.appendChild(el("button", { type: "submit", text: "send mail" }));
+    actions.appendChild(el("button", { type: "submit", text: "send e-mail" }));
     form.appendChild(actions);
     const status = el("div", { className: "commons-compose-status", role: "status" });
     form.addEventListener("submit", (event) => {

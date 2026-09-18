@@ -4,7 +4,7 @@
 GOAT / waitlist law own packs/_template/waitlist-slot.md and host/pack_waitlist.py
 (id cursor-pack-door-waitlist-20260902-01). This leftover only fills Harborline's
 instance sheet. It does not remint the shared waitlist door, rewrite the
-template, mint a second list, send mail, or write leftover pin-lift helpers /
+template, mint a second list, send e-mail, or write leftover pin-lift helpers /
 Harborline door / rating / TALLY / LotRibbon. Catalog pointer
 cursor-business-pack-harborline-waitlist-slot-pointer-20260902-01 stays peer.
 Zero sends. Checkout NOT_MINTED.

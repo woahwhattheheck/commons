@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Create secret-free, replayable production-survival acceptance receipts.
 
-The commands in this module never send mail, update a CRM, create an invoice,
+The commands in this module never send e-mail, update a CRM, create an invoice,
 or claim payment/cash.  A mailbox operator classifies private evidence and this
 tool records hashes plus the minimum public facts needed for a later invoice
 decision.

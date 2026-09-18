@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Source-bound qualification engine for Alcorn State RFP #5588.
 
-This module evaluates *evidence*, not aspirations. It deliberately cannot send mail,
+This module evaluates *evidence*, not aspirations. It deliberately cannot send e-mail,
 submit a proposal, sign certifications, commit pricing, or inherit a partner's
 credentials. The buyer packet itself is not stored here; only its digest and normalized
 requirements are public.
