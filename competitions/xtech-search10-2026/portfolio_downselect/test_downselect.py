@@ -389,6 +389,49 @@ class DownselectTests(unittest.TestCase):
         self.assertEqual(report["holdReason"], "TOP_READINESS_TIE")
         self.assertIsNone(report["selectedCandidateId"])
 
+    def test_nonrepo_evidence_source_transplant_changes_receipt(self) -> None:
+        packet = bind_evidence(ready_packet())
+        for row in packet["evidenceRecords"]:
+            if row["binding"].startswith("candidate:alpha:claim:") and row["sourceClass"] == "REPO":
+                row["sourceClass"] = "OWNER"
+                row["repo"] = None
+                row["commit"] = None
+                row["path"] = None
+                row["locator"] = "fixture:owner:" + row["evidenceId"]
+                row["sha256"] = digest("owner:" + row["evidenceId"])
+
+        first = compile_portfolio(copy.deepcopy(packet))
+        packet["candidates"][0]["source"]["commit"] = "3" * 40
+        second = compile_portfolio(copy.deepcopy(packet))
+
+        self.assertEqual(
+            first["retainedEvidenceManifestSha256"],
+            second["retainedEvidenceManifestSha256"],
+        )
+        self.assertNotEqual(
+            first["projections"][0]["sourceIdentity"],
+            second["projections"][0]["sourceIdentity"],
+        )
+        self.assertNotEqual(first["receiptSha256"], second["receiptSha256"])
+
+    def test_mutating_prior_report_cannot_mutate_scoring_policy(self) -> None:
+        packet = bind_evidence(ready_packet())
+        first = compile_portfolio(copy.deepcopy(packet))
+        original_receipt = first["receiptSha256"]
+        policy_digest = first["officialConstraintPolicySha256"]
+
+        first["officialConstraintSnapshot"]["weights"]["technicalApproach"] = 0
+        first["officialConstraintSnapshot"]["priorityAreas"].append("MUTATED")
+
+        second = compile_portfolio(copy.deepcopy(packet))
+        self.assertEqual(
+            second["officialConstraintSnapshot"]["weights"]["technicalApproach"],
+            40,
+        )
+        self.assertNotIn("MUTATED", second["officialConstraintSnapshot"]["priorityAreas"])
+        self.assertEqual(second["officialConstraintPolicySha256"], policy_digest)
+        self.assertEqual(second["receiptSha256"], original_receipt)
+
     def test_candidate_alias_cannot_replay_same_source_generation(self) -> None:
         packet = ready_packet()
         packet["candidates"][1]["source"] = copy.deepcopy(packet["candidates"][0]["source"])
