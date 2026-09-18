@@ -723,4 +723,10 @@ def _build_cli(*, read_packet=_read_packet, read_diagnostic=_read_diagnostic, co
     os_error_cls = OSError
 
     def main(argv: list[str] | None = None) -> int:
-        parser = parser_cls(description="Offline reta
+        parser = parser_cls(description="Offline retained-evidence gate for Muse atomic runtime adoption")
+        sub = parser.add_subparsers(dest="command", required=True)
+        p_compile = sub.add_parser("compile", help="compile a CURRENT diagnostic from retained transcript evidence")
+        p_compile.add_argument("--input", required=True)
+        p_verify = sub.add_parser("verify", help="authenticate a diagnostic and recheck its CURRENT status")
+        p_verify.add_argument("--input", required=True)
+        p_verify.add_argument("--diagnos
