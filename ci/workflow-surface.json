@@ -1160,6 +1160,12 @@
       "bytes": 1943
     },
     {
+      "source": ".github/workflows/repo-estate-rationalizer.yml",
+      "archive": "ci/workflow-recipes/repo-estate-rationalizer.yml",
+      "sha256": "e15d1e9761e640faa79d9aced0354d00900f71c07c577271feaffa0075b37cd9",
+      "bytes": 902
+    },
+    {
       "source": ".github/workflows/revenue-opportunity-portfolio-intake.yml",
       "archive": "ci/workflow-recipes/revenue-opportunity-portfolio-intake.yml",
       "sha256": "a58dcd07b684b5adb7517fd80c14c15ebd485d157f2d5e523629843da3010d18",
