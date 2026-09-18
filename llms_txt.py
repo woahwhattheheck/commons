@@ -10,6 +10,7 @@ import json, os, re, subprocess, sys, time
 from datetime import datetime, timezone
 
 import read_mesh
+import work_terminality
 
 ROOT = os.environ.get("GITHUB_WORKSPACE", ".")
 N = 24
@@ -128,6 +129,7 @@ def rows_from_git():
         )
     except (OSError, subprocess.CalledProcessError):
         return []
+    terminal_index = work_terminality.active_terminal_index(root=ROOT, head="HEAD")
     rows, seen, ts = [], set(), ""
     for line in out.splitlines():
         if line.startswith("TS "):
@@ -143,6 +145,11 @@ def rows_from_git():
         rec = parse_post(os.path.join(ROOT, rel))
         rec["id"] = rec.get("id") or pid
         rec["ts"] = rec.get("ts") or ts
+        # Durable history stays in p/. Only the actionable newest-work projection
+        # skips identities whose explicit terminal receipt is actually on HEAD.
+        # Filter before the N cutoff so the next open card backfills the queue.
+        if work_terminality.is_actionable_terminal(rec, terminal_index):
+            continue
         rows.append(rec)
         if len(rows) >= N:
             break
@@ -334,7 +341,10 @@ def rows_from_recent():
         data = data.get("items") or data.get("posts") or []
     if not isinstance(data, list):
         return []
-    return data[:N]
+    # recent.json is only a fallback when the git walk is unavailable. Apply
+    # the same explicit terminality contract so a stale bake cannot resurrect
+    # completed UNSEATED work merely because the preferred source was missing.
+    return work_terminality.filter_actionable_rows(data, root=ROOT, head="HEAD")[:N]
 
 
 def branch_tips():
