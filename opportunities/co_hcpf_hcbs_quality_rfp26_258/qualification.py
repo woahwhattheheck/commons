@@ -95,10 +95,10 @@ def _build_codec():
 
     def parse_int(text: str) -> int:
         digits = text[1:] if text.startswith("-") else text
-        if not digits or not digits.isdigit() or len(digits) > max_digits:
+        if not digits or not digits.isdigit() or builtin_len(digits) > max_digits:
             raise error("unsafe JSON integer")
-        number = int(text)
-        if abs(number) > max_safe:
+        number = builtin_int(text)
+        if builtin_abs(number) > max_safe:
             raise error("unsafe JSON integer")
         return number
 
@@ -106,7 +106,7 @@ def _build_codec():
         raise error(f"floating/non-finite JSON number forbidden: {text}")
 
     def snapshot(root: Any) -> Any:
-        seen: set[int] = set()
+        seen: set[int] = builtin_set()
         nodes = 0
         string_bytes = 0
 
