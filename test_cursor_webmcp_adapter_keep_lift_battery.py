@@ -80,20 +80,20 @@ class TestCursorWebmcpAdapterKeepLiftBattery(unittest.TestCase):
         for rel in THIS_SEAT_ADAPTER_TESTS:
             text = historical_text(rel)
             self.assertIn(
-                '"api/mcp.py": "393da756"',
+                '"api/mcp.py": "9ae34f64"',
                 text,
                 f"{rel} missing leftover restored adapter pin",
             )
             self.assertNotIn(
-                '"api/mcp.py": "393da756"',
+                '"api/mcp.py": "bc558a5f"',
                 text,
                 f"{rel} still pins leftover pre-restore adapter",
             )
         grokbuild = historical_text("test_grokbuild_occupancy_landed_work_keep_lift_readback.py")
-        self.assertIn('"api/mcp.py": "393da756"', grokbuild)
+        self.assertIn('"api/mcp.py": "bc558a5f"', grokbuild)
         contest = historical_text("test_webmcp_judge_url.py")
-        self.assertIn('"test_cursor_webmcp_contest.py": "6d10141b"', contest)
-        self.assertNotIn('"test_cursor_webmcp_contest.py": "6d10141b"', contest)
+        self.assertIn('"test_cursor_webmcp_contest.py": "d8ddd02d"', contest)
+        self.assertNotIn('"test_cursor_webmcp_contest.py": "342ac977"', contest)
 
     def test_this_seat_leftover_subset_still_passes(self) -> None:
         leftover = subprocess.run(
