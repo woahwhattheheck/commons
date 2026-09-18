@@ -12,7 +12,7 @@ class TestGrokOpenWorkMdKeepLargerFixed2026091601(unittest.TestCase):
     def test_tip_open_work_has_autopsy_and_larger(self):
         text = (ROOT / "ground" / "OPEN_WORK.md").read_text(encoding="utf-8")
         self.assertIn("## Live cash", text)
-        self.assertIn("../agent-rescue.html", text)
+        self.assertIn("../dealer-service-lead-rescue.html", text)
         self.assertIn("Larger fixed engagements", text)
         self.assertIn("../diagnostic.html", text)
         self.assertIn("../commercial.html", text)
@@ -24,14 +24,14 @@ class TestGrokOpenWorkMdKeepLargerFixed2026091601(unittest.TestCase):
         from host.open_work import render_pointer
         html = render_pointer({"main_sha": "deadbeef"})
         self.assertIn("## Live cash", html)
-        self.assertIn("../agent-rescue.html", html)
+        self.assertIn("../dealer-service-lead-rescue.html", html)
         self.assertIn("Larger fixed engagements", html)
         self.assertIn("../diagnostic.html", html)
         self.assertIn("../commercial.html", html)
         self.assertNotIn("buy.stripe.com", html)
 
     def test_product_pages_exist(self):
-        for name in ("agent-rescue.html", "diagnostic.html", "commercial.html"):
+        for name in ("diagnostic.html", "commercial.html"):
             self.assertTrue((ROOT / name).is_file(), name)
 
 
