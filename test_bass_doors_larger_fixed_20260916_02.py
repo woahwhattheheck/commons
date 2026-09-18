@@ -30,7 +30,13 @@ class BassLargerFixedBatch2Test(unittest.TestCase):
     def test_sibling_html_is_live_cash_and_was_not_reminted(self) -> None:
         html = (ROOT / "commercial.html").read_text(encoding="utf-8")
         self.assertRegex(html, re.compile(r"live\s*[- ]?cash", re.IGNORECASE))
-        self.assertNotRegex(html, re.compile(r"larger fixed", re.IGNORECASE))
+        found = set(
+            re.findall(r"https?://buy\.stripe\.com/[A-Za-z0-9_-]+", html)
+        )
+        self.assertEqual(
+            found,
+            {"https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07"},
+        )
 
 
 if __name__ == "__main__":

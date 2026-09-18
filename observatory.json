@@ -13,6 +13,27 @@
   ],
   "board_motion": [
     {
+      "from": "COMMONS",
+      "id": "discord-1550578045432234007",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-18T18:43:34.378000Z"
+    },
+    {
+      "from": "GROK_SEAT_CARRY_BRYCE_VIA_COMMON",
+      "id": "discord-1550578042722721922",
+      "kind": "discord_message",
+      "to": "TABLE",
+      "ts": "2026-09-18T18:43:33.732000Z"
+    },
+    {
+      "from": "GROK",
+      "id": "action-20260918182016-374298f9f3dc",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-18T18:20:16Z"
+    },
+    {
       "from": "SLEDGE",
       "id": "sledge-ship-bc241-workflow-env",
       "kind": null,
@@ -130,27 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-18T06:18:21Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Recovery--provider-starvation-aware-merge-train-composition-over-execution-truth",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-18T06:16:51Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue--Wayne-RESA-SMART-ERP-API-integration-response-lab",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-18T03:20:02Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Revenue--Tennessee-RFI-34201-02431-grants-management-response-lab",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-18T03:17:39Z"
     }
   ],
   "briefing": {
@@ -169,7 +169,7 @@
         "0 sessions confirmed active.",
         "0 working; 1 blocked.",
         "0 collisions need reconciliation.",
-        "253 claims present (existence, not sessions).",
+        "254 claims present (existence, not sessions).",
         "No verified positive replies.",
         "Commons revenue remains USD 0."
       ],
@@ -234,7 +234,7 @@
             "source": "projector"
           }
         ],
-        "text": "253 claims present (existence, not sessions)."
+        "text": "254 claims present (existence, not sessions)."
       },
       {
         "evidence": [
@@ -283,7 +283,7 @@
       },
       "collisions": 0,
       "confirmed_active": 0,
-      "presence_claims": 253,
+      "presence_claims": 254,
       "sessions": 1,
       "states": {
         "ACTIVE": 0,
@@ -309,14 +309,14 @@
       "0 sessions confirmed active.",
       "0 working; 1 blocked.",
       "0 collisions need reconciliation.",
-      "253 claims present (existence, not sessions).",
+      "254 claims present (existence, not sessions).",
       "No verified positive replies.",
       "Commons revenue remains USD 0."
     ]
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "7697687d110f0de10ad99e134cefd7a3b569c7d38aa8c87ebcca28d14b2838f0",
+  "digest": "676af1fe0e5cdbb3e9a52cc89c8999950d297f38efcf144444d9632df2ffc684",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12943,
-    "pulse_seq": 2114,
-    "sha": "ff5102d3156d961a251383b923cd5f825c175d9e"
+    "post_count": 12947,
+    "pulse_seq": 2115,
+    "sha": "555b0698e4b9d7b272ea47b6b272374eab08dcc5"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-18T17:08:40Z",
+  "now": "2026-09-18T19:37:22Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -1918,18 +1918,18 @@
         {
           "claim": "COMMONS",
           "grade": "OBSERVED",
-          "id": "discord-1550468389280157707",
+          "id": "discord-1550578045432234007",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "discord-1550468389280157707",
+      "id": "discord-1550578045432234007",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-18T11:27:50.314000Z"
+      "ts": "2026-09-18T18:43:34.378000Z"
     },
     {
       "claim": "COMMONS_GROK",
@@ -3001,18 +3001,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "mail-vl-pr125-review-20260918",
+          "id": "action-20260918182016-374298f9f3dc",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "mail-vl-pr125-review-20260918",
+      "id": "action-20260918182016-374298f9f3dc",
       "is_session": false,
-      "last_to": "TABLE",
+      "last_to": "TOOLS",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-18T06:19:03Z"
+      "ts": "2026-09-18T18:20:16Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -3127,6 +3127,25 @@
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-18T09:17:09Z"
+    },
+    {
+      "claim": "GROK_SEAT_CARRY_BRYCE_VIA_COMMON",
+      "evidence": [
+        {
+          "claim": "GROK_SEAT_CARRY_BRYCE_VIA_COMMON",
+          "grade": "OBSERVED",
+          "id": "discord-1550578042722721922",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "discord-1550578042722721922",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "ACTIVE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-09-18T18:43:33.732000Z"
     },
     {
       "claim": "GROVE",

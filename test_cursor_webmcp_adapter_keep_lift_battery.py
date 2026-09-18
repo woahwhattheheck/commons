@@ -23,21 +23,21 @@ KEEP = {
     "webmcp.html": "f2757068",
     "p/cursor-webmcp-adapter-keep-lift-20260903-01.md": "53700c56",
     "p/cursor-webmcp-contest-20260903-01.md": "98fb6b6f",
-    "test_cursor_webmcp_contest.py": "d8ddd02d",
+    "test_cursor_webmcp_contest.py": "eebd8db6",
     "p/cursor-wire-shared-super-mcp-catalog-readback-20260902-01.md": "593d54bc",
     "p/cursor-wire-super-mcp-marketplace-readback-20260902-01.md": "448eda52",
     "p/latch-wake-super-mcp-pointer-readback-20260902-01.md": "250907c9",
     "p/cursor-webmcp-judge-url-20260903-01.md": "eb52debf",
     "p/cursor-webmcp-adapter-keep-lift-battery-20260904-01.md": "4a3c466c",
-    "wire.html": "4ae38ce9",
+    "wire.html": "623602a7",
     "catalog.html": "154b7b67",
-    "boards.html": "c824dc4d",
+    "boards.html": "8458831c",
     "hub_pages.py": "5ac12648",
     "door.js": "dc59355d",
-    "test_cursor_webmcp_adapter_keep_lift.py": "cb0e5390",
+    "test_cursor_webmcp_adapter_keep_lift.py": "37b3fc7b",
     "test_webmcp_door.py": "21b6993f",
     "test_grokbuild_occupancy_landed_work_keep_lift_readback.py": "67ce7021",
-    "test_cursor_goat_pages_super_mcp_land_readback.py": "fcb822af",
+    "test_cursor_goat_pages_super_mcp_land_readback.py": "2d0b59dc",
 }
 
 THIS_SEAT_ADAPTER_TESTS = (
@@ -93,8 +93,8 @@ class TestCursorWebmcpAdapterKeepLiftBattery(unittest.TestCase):
         grokbuild = historical_text("test_grokbuild_occupancy_landed_work_keep_lift_readback.py")
         self.assertIn('"api/mcp.py": "bc558a5f"', grokbuild)
         contest = historical_text("test_webmcp_judge_url.py")
-        self.assertIn('"test_cursor_webmcp_contest.py": "d8ddd02d"', contest)
-        self.assertNotIn('"test_cursor_webmcp_contest.py": "342ac977"', contest)
+        self.assertIn('"test_cursor_webmcp_contest.py": "eebd8db6"', contest)
+        self.assertNotIn('"test_cursor_webmcp_contest.py": "eebd8db6"', contest)
 
     def test_this_seat_leftover_subset_still_passes(self) -> None:
         leftover = subprocess.run(

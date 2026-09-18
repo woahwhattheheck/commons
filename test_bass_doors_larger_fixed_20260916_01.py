@@ -41,6 +41,12 @@ TARGETS = (
 # (type-flipbook-compress-convert-shelf-20260917-01).
 # insights.html and grounding.html convert shelves reuse the same two
 # live Payment Links (type-insights-grounding-convert-shelf-20260917-01).
+# interconnect.html convert shelf reuses the White Box hour link
+# (anvil-opendoor-interconnect-convert-shelf-20260917-01).
+# landed-work.html convert shelf reuses the White Box hour link
+# (sledge-mergeonpr-landedwork-convert-shelf-20260917-01).
+# lexington-mrf-diversion-gate.html convert shelf reuses the White Box
+# hour link (sledge-kincell-lexington-convert-shelf-20260917-01).
 VERIFIED_PRODUCT_CHECKOUT = {
     'invoice-exception-pack.html': (
         b'https://buy.stripe.com/14A00i84Jdvz36hdxg43S0l',
@@ -77,6 +83,15 @@ VERIFIED_PRODUCT_CHECKOUT = {
         b'https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07',
     ),
     'grounding.html': (
+        b'https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07',
+    ),
+    'interconnect.html': (
+        b'https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07',
+    ),
+    'landed-work.html': (
+        b'https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07',
+    ),
+    'lexington-mrf-diversion-gate.html': (
         b'https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07',
     ),
 }

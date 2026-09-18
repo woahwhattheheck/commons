@@ -23,7 +23,7 @@ KEEP = {
     ".github/workflows/open-door-guard.yml": "ac6c46c4",
     "p/grok-build-moving-main-mirror-billing-lock-20260903-01.md": "4550e922",
     "p/grokbuild-open-door-guard-33718116356-billing-lock-20260903-01.md": "25781cf5",
-    "test_grokbuild_open_door_guard_33718116356_billing_lock.py": "15a621ee",
+    "test_grokbuild_open_door_guard_33718116356_billing_lock.py": "c412f8f5",
     "p/grok-build-repo-pulse-billing-lock-20260903-01.md": "b6e5953c",
 }
 

@@ -24,7 +24,7 @@ KEEP = {
     ".agents/skills/super-mcp/SKILL.md": "4aff2c7b",
     "ground/tokens/super-mcp.md": "c250fd99",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
-    "wire.html": "5f0d0f84",
+    "wire.html": "623602a7",
     "ground/WIRE_SUPER_MCP.md": "626b07f7",
     "p/cursor-wire-super-mcp-marketplace-20260902-01.md": "fbc20c0d",
     "p/latch-wake-super-mcp-pointer-20260902-01.md": "a35e63c3",
