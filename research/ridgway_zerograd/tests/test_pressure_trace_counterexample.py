@@ -1,5 +1,9 @@
+import subprocess
+import sys
 import unittest
+from pathlib import Path
 
+import pressure_trace_counterexample as pt
 from pressure_trace_counterexample import (
     certificate,
     fully_weak_low_degree_witness,
@@ -25,6 +29,75 @@ class PressureTraceCounterexampleTests(unittest.TestCase):
         self.assertTrue(w["contained_in_full_P4_velocity_space"])
         self.assertEqual(w["divergence_polynomial"], {})
         self.assertTrue(w["zero_extension_trace_zero"])
+
+    def test_bad_local_velocities_cannot_mint_positive_certificate(self):
+        psi = pt.mul(pt.X, pt.X, pt.Y, pt.Y)
+        vx = pt.derivative(psi, "y")
+        vy = pt.scale(pt.derivative(psi, "x"), -1)
+
+        with self.assertRaisesRegex(pt.CertificateError, "not divergence-free"):
+            pt._certify_local_p4_velocity(pt.add(vx, pt.X), vy)
+
+        bad_trace_psi = pt.add(psi, pt.mul(pt.X, pt.Y))
+        bad_trace_vx = pt.derivative(bad_trace_psi, "y")
+        bad_trace_vy = pt.scale(pt.derivative(bad_trace_psi, "x"), -1)
+        self.assertFalse(
+            pt.add(
+                pt.derivative(bad_trace_vx, "x"),
+                pt.derivative(bad_trace_vy, "y"),
+            )
+        )
+        with self.assertRaisesRegex(pt.CertificateError, "zero vector trace"):
+            pt._certify_local_p4_velocity(bad_trace_vx, bad_trace_vy)
+
+    def test_bad_witness_is_rejected_under_real_optimized_python(self):
+        module_dir = Path(__file__).resolve().parents[1]
+        code = r"""
+import pressure_trace_counterexample as pt
+
+if __debug__:
+    raise SystemExit("optimized interpreter required")
+
+psi = pt.mul(pt.X, pt.X, pt.Y, pt.Y)
+vx = pt.derivative(psi, "y")
+vy = pt.scale(pt.derivative(psi, "x"), -1)
+
+try:
+    pt._certify_local_p4_velocity(pt.add(vx, pt.X), vy)
+except pt.CertificateError:
+    pass
+else:
+    raise SystemExit("non-divergence-free witness was certified")
+
+bad_trace_psi = pt.add(psi, pt.mul(pt.X, pt.Y))
+bad_trace_vx = pt.derivative(bad_trace_psi, "y")
+bad_trace_vy = pt.scale(pt.derivative(bad_trace_psi, "x"), -1)
+try:
+    pt._certify_local_p4_velocity(bad_trace_vx, bad_trace_vy)
+except pt.CertificateError:
+    pass
+else:
+    raise SystemExit("bad zero-extension trace was certified")
+
+local = pt.local_p4_boundary_triangle_witness()
+annulus = pt.square_annulus_witness()
+if local["divergence_polynomial"] != {} or not local["zero_extension_trace_zero"]:
+    raise SystemExit("local positive certificate changed")
+if annulus["divergence_polynomial"] != {} or not annulus["strong_outer_trace_zero"]:
+    raise SystemExit("annulus positive certificate changed")
+"""
+        run = subprocess.run(
+            [sys.executable, "-O", "-c", code],
+            cwd=module_dir,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(
+            run.returncode,
+            0,
+            msg=f"optimized hostile failed\nstdout={run.stdout}\nstderr={run.stderr}",
+        )
 
     def test_p4_compatible_boundary_triangle_exposes_pressure_defect(self):
         w = local_p4_boundary_triangle_witness()
