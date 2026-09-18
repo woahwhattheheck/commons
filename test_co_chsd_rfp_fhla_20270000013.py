@@ -71,25 +71,31 @@ class ChsdQualificationTests(unittest.TestCase):
         self.assertTrue(all(value is False for value in result["authority"].values()))
 
     def test_production_api_ignores_post_import_dependency_rebind(self):
+        direct_input = packet()
+        raw_input = json.dumps(direct_input, separators=(",", ":"))
         original_engine = q._PRODUCTION_ENGINE
         original_loader = q.loads_strict
         original_validate = q._validate_tree
         original_canonical = q.canonical_bytes
         original_schema = q.PACKET_SCHEMA
+        original_opportunity = q.OPPORTUNITY_ID
+        original_max_bytes = q.MAX_JSON_BYTES
+        original_datetime = q.datetime
         try:
             q._PRODUCTION_ENGINE = lambda payload: {
                 "state": "PWNED",
                 "authority": {"revenue": True},
             }
-            q.loads_strict = lambda raw: packet(
-                evidence_rows("OWNER", q.PRIME_GATES + q.OWNER_REVIEW_GATES)
-            )
+            q.loads_strict = lambda raw: {"schema": "pwned"}
             q._validate_tree = lambda value: None
             q.canonical_bytes = lambda value: b"pwned"
             q.PACKET_SCHEMA = "attacker-schema"
+            q.OPPORTUNITY_ID = "attacker-opportunity"
+            q.MAX_JSON_BYTES = 1
+            q.datetime = object
 
-            direct = q.compile_packet(packet())
-            raw = q.compile_json(json.dumps(packet(), separators=(",", ":")))
+            direct = q.compile_packet(direct_input)
+            raw = q.compile_json(raw_input)
             for result in (direct, raw):
                 self.assertEqual(result["state"], "HOLD_MISSING_BUYER_SOURCE")
                 self.assertEqual(result["commercial_posture"], "RESEARCH_HOLD")
@@ -100,6 +106,9 @@ class ChsdQualificationTests(unittest.TestCase):
             q._validate_tree = original_validate
             q.canonical_bytes = original_canonical
             q.PACKET_SCHEMA = original_schema
+            q.OPPORTUNITY_ID = original_opportunity
+            q.MAX_JSON_BYTES = original_max_bytes
+            q.datetime = original_datetime
 
     def test_official_source_without_owner_evidence_is_fail_closed(self):
         result = self.engine()(packet())
