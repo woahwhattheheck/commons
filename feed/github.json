@@ -3,14 +3,80 @@
     "open_issues": 116,
     "open_pull_requests": 58,
     "runs_in_progress": 15,
-    "runs_queued": 490
+    "runs_queued": 502
   },
   "counts_source": "graphql",
-  "degraded": [
-    "pulls-partial"
-  ],
+  "degraded": [],
   "drafts": 1,
+  "longest_open": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-atlasforge/swarmops-current-freshness-20260917",
+      "created_at": "2026-09-17T18:46:46Z",
+      "draft": false,
+      "head_sha": "f4f1a938de70001cf7d6e3980f5de6d8204f532c",
+      "number": 15613,
+      "title": "SwarmOps: harden current semantic readiness verification",
+      "updated_at": "2026-09-18T03:15:09Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zeta-sol/pilot-renewal-expansion-gate-20260917",
+      "created_at": "2026-09-17T19:00:55Z",
+      "draft": false,
+      "head_sha": "df5666d5a47cad829f07c142285053277e1470c7",
+      "number": 15629,
+      "title": "Revenue: gate pilot delivery into renewal/expansion review",
+      "updated_at": "2026-09-17T20:37:49Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol-1447/arc3-sage-unanimous-reachability-14735",
+      "created_at": "2026-09-17T19:02:30Z",
+      "draft": false,
+      "head_sha": "db0e8838d61cd6133154bf2008aefb5b94fc5acd",
+      "number": 15631,
+      "title": "ARC3 SAGE: close exact-evidence ambiguity and abstract lookahead (#14735)",
+      "updated_at": "2026-09-17T22:46:11Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-proofforge/proofpatch-recovery-20260917",
+      "created_at": "2026-09-17T19:04:10Z",
+      "draft": false,
+      "head_sha": "1c5d3124d105457b83015f767c1628a9905dc080",
+      "number": 15635,
+      "title": "Recover Nebius ProofPatch evidence-bound coding agent",
+      "updated_at": "2026-09-18T01:07:22Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol/partner-qual-clean-current-main-20260917",
+      "created_at": "2026-09-17T19:07:58Z",
+      "draft": false,
+      "head_sha": "a13fa73e10612ed8f1d07feda42afd624a33e891",
+      "number": 15640,
+      "title": "Revenue: recover partner qualification gate on clean current main",
+      "updated_at": "2026-09-18T02:13:19Z"
+    }
+  ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-vector-9d3/onewriter-retained-proof-current-main",
+      "created_at": "2026-09-18T03:23:38Z",
+      "draft": false,
+      "head_sha": "1331d8c6e20ad7be456794814ce416eba4a474fd",
+      "number": 15918,
+      "title": "CI: recover retained OneWriter proof on current source-parses",
+      "updated_at": "2026-09-18T03:23:38Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -64,7 +130,7 @@
       "head_sha": "c99ecdfd1313bdf5f7f6bae3468d9252cea412a3",
       "number": 15877,
       "title": "Finance: Kentucky enterprise reporting discovery response carrier",
-      "updated_at": "2026-09-18T02:14:45Z"
+      "updated_at": "2026-09-18T03:24:06Z"
     },
     {
       "author": "woahwhattheheck",
@@ -109,17 +175,6 @@
       "number": 15867,
       "title": "Revenue: build OCS2026.01 multi-tenant TPRM teaming carrier",
       "updated_at": "2026-09-18T01:51:09Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/aidt-ewds-workshare-20260918",
-      "created_at": "2026-09-18T01:48:14Z",
-      "draft": false,
-      "head_sha": "d4a6d1eb3ed0f7615f22c1847f9c379e9f468135",
-      "number": 15866,
-      "title": "AIDT: add migration and Salesforce/LMS specialist workshare",
-      "updated_at": "2026-09-18T01:48:14Z"
     }
   ],
   "open_heads": {
@@ -179,12 +234,24 @@
     "15884": "fc85ecf3036d57c69c8685068a1f2f49d88c2e8c",
     "15888": "abb4d4b8f9e1b223c21a28e644132ebdd3b50085",
     "15889": "0d0283b19d0528d2c74d66fba7d04a73dafadab4",
-    "15909": "024a6eae976c504cb56edc29b9d747b9b9383dec"
+    "15909": "024a6eae976c504cb56edc29b9d747b9b9383dec",
+    "15918": "1331d8c6e20ad7be456794814ce416eba4a474fd"
   },
-  "pulls_listed": 57,
-  "pulls_listing": "PARTIAL",
-  "queue_depth_per_runner": 32.7,
+  "pulls_listed": 58,
+  "pulls_listing": "COMPLETE",
+  "queue_depth_per_runner": 33.5,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol/atomic-outreach-lease-20260917",
+      "closed_at": "2026-09-18T03:24:00Z",
+      "head_sha": "247d3153c9e0cdca5c90b4417a3df2c1bda30fad",
+      "merged_at": "2026-09-18T03:24:00Z",
+      "number": 15917,
+      "state": "MERGED",
+      "title": "Atomic outreach leases: first-writer-wins outbound"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -338,21 +405,10 @@
       "number": 15887,
       "state": "MERGED",
       "title": "AR diagnostics: paid partner qualification and delivery playbook"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zrh1546/rule30-linear-effort-20260917",
-      "closed_at": "2026-09-18T02:23:24Z",
-      "head_sha": "8bc90eedfd545cab08277ba8df1937bf4629e8c0",
-      "merged_at": null,
-      "number": 15682,
-      "state": "CLOSED",
-      "title": "Research: formalize Rule 30 linear-effort prize boundary"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-18T03:23:32Z",
+  "unchanged_since": "2026-09-18T03:24:41Z",
   "undatable_pulls": []
 }
