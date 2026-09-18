@@ -161,14 +161,20 @@ def _validate_json_structure(value: Any) -> None:
                     raise DomainError("value is not strict UTF-8") from exc
             continue
         if item_type is list:
+            remaining = MAX_JSON_NODES - nodes
+            if len(item) > remaining:
+                raise DomainError("JSON node limit exceeded")
             for child in reversed(item):
                 stack.append((child, depth + 1))
             continue
         if item_type is dict:
-            for key, child in reversed(list(item.items())):
+            remaining = MAX_JSON_NODES - nodes
+            if len(item) > remaining // 2:
+                raise DomainError("JSON node limit exceeded")
+            for key in reversed(item):
                 if type(key) is not str:
                     raise DomainError("JSON object keys must be exact strings")
-                stack.append((child, depth + 1))
+                stack.append((item[key], depth + 1))
                 stack.append((key, depth + 1))
             continue
         raise DomainError("value contains non-JSON type")
@@ -535,6 +541,10 @@ def compile_values(
     manifest_value: Any,
     binding_value: Any | None = None,
 ) -> dict[str, Any]:
+    _validate_json_structure(request_value)
+    _validate_json_structure(manifest_value)
+    if binding_value is not None:
+        _validate_json_structure(binding_value)
     request = _request(request_value)
     manifest = _manifest(manifest_value)
     project_binding = _binding(binding_value) if binding_value is not None else None
