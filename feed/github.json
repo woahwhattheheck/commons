@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 126,
-    "open_pull_requests": 80,
-    "runs_in_progress": 19,
-    "runs_queued": 399
+    "open_pull_requests": 81,
+    "runs_in_progress": 14,
+    "runs_queued": 401
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -18,7 +18,7 @@
       "head_sha": "96be91936b40e03845096e93d906cc9b5d6f1865",
       "number": 15613,
       "title": "SwarmOps: harden current semantic readiness verification",
-      "updated_at": "2026-09-18T06:51:31Z"
+      "updated_at": "2026-09-18T07:01:41Z"
     },
     {
       "author": "woahwhattheheck",
@@ -69,13 +69,24 @@
     {
       "author": "woahwhattheheck",
       "base": "main",
-      "branch": "zeta-faraday/ref-immutability-admin-cutover-14357",
-      "created_at": "2026-09-18T07:00:21Z",
+      "branch": "z-meridian-q7l9/localized-media-ingest-stability-20260918",
+      "created_at": "2026-09-18T07:02:23Z",
       "draft": false,
-      "head_sha": "126944975a7d10d701bfadc07f5d3b50a3fff1d7",
-      "number": 15982,
-      "title": "Outbound: publish ref-immutability admin cutover helper",
-      "updated_at": "2026-09-18T07:00:21Z"
+      "head_sha": "a0ea16d98da937e69fe0a1a68737b89e15fa6b07",
+      "number": 15985,
+      "title": "Localized media: reject changing inputs and non-regular blocking sources",
+      "updated_at": "2026-09-18T07:02:23Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "z-obliqueledger/unc-ap-ai-15930-recovery-20260918",
+      "branch": "zcairn-unc/batch-identity-donor-20260918",
+      "created_at": "2026-09-18T07:02:20Z",
+      "draft": false,
+      "head_sha": "5563dcaf07ff9a3f46a4e33959dd1d8230fbb757",
+      "number": 15984,
+      "title": "UNC AP: reconcile invoice identity and retain full evidence receipts",
+      "updated_at": "2026-09-18T07:02:21Z"
     },
     {
       "author": "woahwhattheheck",
@@ -86,7 +97,7 @@
       "head_sha": "7492cdd1bdf89450aef3d443f41cc82914e9e07a",
       "number": 15981,
       "title": "coordination: close preclaim evidence gaps without expanding search budgets",
-      "updated_at": "2026-09-18T07:00:06Z"
+      "updated_at": "2026-09-18T07:02:38Z"
     },
     {
       "author": "woahwhattheheck",
@@ -97,7 +108,7 @@
       "head_sha": "fca39de2e29f8a727838086df532a4341fb8a48d",
       "number": 15980,
       "title": "research(A308734): prove infinite obstructions to one-prime shortcuts",
-      "updated_at": "2026-09-18T06:59:47Z"
+      "updated_at": "2026-09-18T07:03:00Z"
     },
     {
       "author": "woahwhattheheck",
@@ -130,7 +141,7 @@
       "head_sha": "bdda3bb03e4bb7e605cd88e87fe99549c0ce7880",
       "number": 15977,
       "title": "CI: detect catastrophic PR root-tree loss in trusted listener",
-      "updated_at": "2026-09-18T06:57:01Z"
+      "updated_at": "2026-09-18T07:02:33Z"
     },
     {
       "author": "woahwhattheheck",
@@ -164,17 +175,6 @@
       "number": 15970,
       "title": "CI + revenue: current-main pilot budget repair and Kentucky reporting recovery",
       "updated_at": "2026-09-18T06:54:06Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "z-cairn-c7e4/tree-preservation-exact-15938-20260918",
-      "created_at": "2026-09-18T06:48:46Z",
-      "draft": false,
-      "head_sha": "fac19f2dcd6fd1c6aacb0f6066a6c6aa60e69345",
-      "number": 15967,
-      "title": "Preserve exact Git trees against undeclared changes and sparse-tree publication",
-      "updated_at": "2026-09-18T06:48:46Z"
     }
   ],
   "open_heads": {
@@ -257,12 +257,24 @@
     "15979": "cdd6caa731f108f2a0177b98d745ad685d6361c0",
     "15980": "fca39de2e29f8a727838086df532a4341fb8a48d",
     "15981": "7492cdd1bdf89450aef3d443f41cc82914e9e07a",
-    "15982": "126944975a7d10d701bfadc07f5d3b50a3fff1d7"
+    "15984": "5563dcaf07ff9a3f46a4e33959dd1d8230fbb757",
+    "15985": "a0ea16d98da937e69fe0a1a68737b89e15fa6b07"
   },
-  "pulls_listed": 80,
+  "pulls_listed": 81,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 21.0,
+  "queue_depth_per_runner": 28.6,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zeta-faraday/ref-immutability-admin-cutover-14357",
+      "closed_at": "2026-09-18T07:01:50Z",
+      "head_sha": "126944975a7d10d701bfadc07f5d3b50a3fff1d7",
+      "merged_at": "2026-09-18T07:01:50Z",
+      "number": 15982,
+      "state": "MERGED",
+      "title": "Outbound: publish ref-immutability admin cutover helper"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -416,21 +428,10 @@
       "number": 15909,
       "state": "MERGED",
       "title": "Inventory: expose vaulted free-provider armory as activation-only"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/reconcile-outreach-lease-15905",
-      "closed_at": "2026-09-18T03:25:49Z",
-      "head_sha": "39b21706a407489e24a8b6548ccd2eda986e86b8",
-      "merged_at": "2026-09-18T03:25:49Z",
-      "number": 15920,
-      "state": "MERGED",
-      "title": "Reconcile outreach lease with canonical #15905"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-18T07:00:59Z",
+  "unchanged_since": "2026-09-18T07:03:15Z",
   "undatable_pulls": []
 }
