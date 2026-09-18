@@ -503,10 +503,15 @@ def _build_engine(
             for gate in (partner_gates - owner_gates)
             if gate in set(team_gates) | set(personnel_gates)
         )
-        owner_control_gaps = [
-            gate for gate in owner_control_gates if gate not in owner_gates
-        ]
         teaming_agreement = "teaming_agreement" in owner_gates
+        required_owner_controls = [
+            gate
+            for gate in owner_control_gates
+            if gate != "teaming_agreement" or partner_required_gates
+        ]
+        owner_control_gaps = [
+            gate for gate in required_owner_controls if gate not in owner_gates
+        ]
 
         state = "HOLD_EVIDENCE"
         commercial_posture = "RESEARCH_HOLD"
