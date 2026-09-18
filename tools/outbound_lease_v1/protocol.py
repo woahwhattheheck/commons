@@ -1,9 +1,11 @@
 """Deterministic, mutation-free verifier for #outbound-leases v1.
 
-The Slack channel remains the coordination authority.  This module only converts a
-retained, complete channel read plus separately-computed provider/relationship/DNR
-gates into a deterministic decision receipt.  It performs no network or provider
-mutation and cannot grant authority that is absent from its supplied evidence.
+The Slack channel is a fallback visibility rail, not canonical custody.  Canonical
+custody remains the Commons contact-custody protocol family pinned below.  This
+module only converts a retained, complete channel read plus separately-computed
+canonical-custody/provider/relationship/DNR gates into a deterministic receipt.
+It performs no network or provider mutation and cannot grant authority that is
+absent from its supplied evidence.
 """
 
 from __future__ import annotations
@@ -17,6 +19,7 @@ from typing import Any, Mapping, Sequence
 
 CHANNEL_ID = "C0C2X8CSYEQ"
 PROTOCOL_ROOT_TS = "1789718513.003999"
+CANONICAL_CUSTODY_REFS = ("commons#14421", "commons#15969", "commons#15988", "commons#15944")
 SCHEMA = "outbound-lease-v1/snapshot"
 REPORT_SCHEMA = "outbound-lease-v1/report"
 KEY_DOMAIN = b"outbound-lease-v1\0organization\0"
@@ -31,6 +34,7 @@ PRIMARY = {"SENT", "OUTCOME_UNKNOWN", "UNSENT_RELEASED"}
 LIFECYCLE = {"INBOUND", "BOUNCED", "DNR"}
 KNOWN = PRIMARY | LIFECYCLE
 GATES = {"CLEAN", "BLOCK", "UNKNOWN", "EVENT_AUTHORIZES"}
+CUSTODY_GATES = {"CLEAN", "BLOCK", "UNKNOWN"}
 
 
 class LeaseError(ValueError):
@@ -205,6 +209,13 @@ def _gate(value: Any, name: str) -> str:
     return value
 
 
+def _custody_gate(value: Any) -> str:
+    value = _token(value, "canonical_custody_gate", max_len=32).upper()
+    if value not in CUSTODY_GATES:
+        raise LeaseError("canonical_custody_gate invalid")
+    return value
+
+
 def _candidate(raw: Mapping[str, Any]) -> dict[str, str]:
     if type(raw) is not dict:
         raise LeaseError("candidate must be an object")
@@ -218,12 +229,12 @@ def _candidate(raw: Mapping[str, Any]) -> dict[str, str]:
 
 
 def compile_snapshot(snapshot: Mapping[str, Any]) -> dict[str, Any]:
-    """Compile a retained direct channel read into a deterministic send-eligibility report."""
+    """Compile fallback visibility plus external gate evidence into a deterministic preflight report."""
     if type(snapshot) is not dict:
         raise LeaseError("snapshot must be an object")
     required = {
         "schema", "channel_id", "protocol_root_ts", "read_ok", "history_complete",
-        "provider_gate", "relationship_gate", "dnr_gate", "candidate", "messages",
+        "canonical_custody_gate", "provider_gate", "relationship_gate", "dnr_gate", "candidate", "messages",
     }
     if set(snapshot) != required:
         raise LeaseError("snapshot field set mismatch")
@@ -234,6 +245,7 @@ def compile_snapshot(snapshot: Mapping[str, Any]) -> dict[str, Any]:
 
     read_ok = _bool(snapshot["read_ok"], "read_ok")
     complete = _bool(snapshot["history_complete"], "history_complete")
+    canonical_custody_gate = _custody_gate(snapshot["canonical_custody_gate"])
     provider_gate = _gate(snapshot["provider_gate"], "provider_gate")
     relationship_gate = _gate(snapshot["relationship_gate"], "relationship_gate")
     dnr_gate = _gate(snapshot["dnr_gate"], "dnr_gate")
@@ -299,6 +311,8 @@ def compile_snapshot(snapshot: Mapping[str, Any]) -> dict[str, Any]:
         blockers.append("CHANNEL_READ_FAILED")
     if not complete:
         blockers.append("HISTORY_INCOMPLETE")
+    if canonical_custody_gate != "CLEAN":
+        blockers.append(f"CANONICAL_CUSTODY_GATE_{canonical_custody_gate}")
     if provider_gate != "CLEAN":
         blockers.append(f"PROVIDER_GATE_{provider_gate}")
     if dnr_gate != "CLEAN":
@@ -341,6 +355,7 @@ def compile_snapshot(snapshot: Mapping[str, Any]) -> dict[str, Any]:
         "schema": REPORT_SCHEMA,
         "channel_id": CHANNEL_ID,
         "protocol_root_ts": PROTOCOL_ROOT_TS,
+        "canonical_custody_refs": list(CANONICAL_CUSTODY_REFS),
         "candidate": candidate,
         "winner": None if winner is None else {
             "ts": winner["ts"], "seat": winner["seat"], "nonce": winner["nonce"],
@@ -351,7 +366,7 @@ def compile_snapshot(snapshot: Mapping[str, Any]) -> dict[str, Any]:
         "coordination_clean": coordination_clean,
         "blockers": blockers,
         "gates": {
-            "read_ok": read_ok, "history_complete": complete, "provider": provider_gate,
+            "read_ok": read_ok, "history_complete": complete, "canonical_custody": canonical_custody_gate, "provider": provider_gate,
             "relationship": relationship_gate, "dnr": dnr_gate,
         },
         "primary_terminal_count": len(primary_by_claim),

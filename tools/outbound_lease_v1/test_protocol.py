@@ -36,6 +36,7 @@ def snap(messages, candidate, **overrides):
         "protocol_root_ts": PROTOCOL_ROOT_TS,
         "read_ok": True,
         "history_complete": True,
+        "canonical_custody_gate": "CLEAN",
         "provider_gate": "CLEAN",
         "relationship_gate": "CLEAN",
         "dnr_gate": "CLEAN",
@@ -155,6 +156,12 @@ class Grammar(unittest.TestCase):
             with self.subTest(field=field):
                 report = compile_snapshot(snap([msg("10.000001", self.intent)], self.candidate, **{field: False}))
                 self.assertFalse(report["coordination_clean"])
+
+    def test_canonical_custody_gate_blocks(self):
+        report = compile_snapshot(snap([msg("10.000001", self.intent)], self.candidate, canonical_custody_gate="UNKNOWN"))
+        self.assertFalse(report["coordination_clean"])
+        self.assertIn("CANONICAL_CUSTODY_GATE_UNKNOWN", report["blockers"])
+        self.assertFalse(report["external_send_authorized"])
 
     def test_provider_dnr_and_relationship_unknown_block(self):
         cases = [
