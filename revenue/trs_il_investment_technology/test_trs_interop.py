@@ -3,6 +3,7 @@ import hashlib
 import json
 import unittest
 
+import trs_interop
 from trs_interop import ContractError, compile_packet, loads_strict, verify_packet
 
 def base():
@@ -135,6 +136,36 @@ class TestTRSInterop(unittest.TestCase):
         data["commercial"]["state"] = "ACCEPTED"
         with self.assertRaises(ContractError):
             compile_packet(data)
+
+    def test_post_import_authority_global_mutation_cannot_widen_report(self):
+        original_obj = trs_interop.AUTHORITY_CEILING
+        original_value = dict(original_obj)
+        try:
+            original_obj["bid_submission"] = True
+            original_obj["recognized_revenue"] = True
+            mutated = compile_packet(base())
+            self.assertTrue(all(v is False for v in mutated["authority_ceiling"].values()))
+            trs_interop.AUTHORITY_CEILING = {"bid_submission": True, "recognized_revenue": True}
+            rebound = compile_packet(base())
+            self.assertTrue(all(v is False for v in rebound["authority_ceiling"].values()))
+            self.assertEqual(mutated["authority_ceiling"], rebound["authority_ceiling"])
+        finally:
+            original_obj.clear()
+            original_obj.update(original_value)
+            trs_interop.AUTHORITY_CEILING = original_obj
+
+    def test_post_import_commercial_state_rebind_cannot_self_promote(self):
+        original = trs_interop.COMMERCIAL_STATE
+        try:
+            trs_interop.COMMERCIAL_STATE = "ACCEPTED"
+            promoted = base()
+            promoted["commercial"]["state"] = "ACCEPTED"
+            with self.assertRaises(ContractError):
+                compile_packet(promoted)
+            report = compile_packet(base())
+            self.assertEqual(report["commercial"]["state"], "PROPOSED_NOT_ACCEPTED")
+        finally:
+            trs_interop.COMMERCIAL_STATE = original
 
     def test_bool_money_rejected(self):
         data = base()
