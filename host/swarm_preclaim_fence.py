@@ -532,7 +532,7 @@ def _references_target(text, target):
     )
     # Neither an embedded repository name nor a longer issue number is exact.
     return any(
-        re.search(r"(?<![\w./:-])" + re.escape(needle) + r"(?![\w-])", lowered)
+        re.search(r"(?<![\w./-])" + re.escape(needle) + r"(?![\w-])", lowered)
         for needle in needles
     )
 

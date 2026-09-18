@@ -306,6 +306,8 @@ class TargetIdentityTests(unittest.TestCase):
 
     def test_exact_target_positive_forms(self):
         for value in ("upstream/repo#842", "(UPSTREAM/REPO#842).",
+                      "target:upstream/repo#842",
+                      "target:https://github.com/upstream/repo/pull/842",
                       "https://github.com/upstream/repo/pull/842",
                       "https://github.com/upstream/repo/pulls/842/",
                       "<https://github.com/upstream/repo/issues/842?x=1|issue>",
