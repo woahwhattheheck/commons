@@ -16,6 +16,7 @@ BUYER = "University of Missouri System"
 TITLE = "Payables Program and Merchant Services"
 DUE_UTC = "2026-09-25T19:00:00Z"
 QUESTION_CUTOFF_UTC = "2026-09-10T19:00:00Z"
+MAX_SOURCE_AGE_SECONDS = 48 * 60 * 60
 
 AUTHORITY_FALSE = {
     "buyer_contact_authorized": False,
@@ -208,6 +209,7 @@ def validate_manifest(manifest: Any, trusted_as_of: str) -> dict[str, Any]:
         {"notice", "scope"},
         "manifest.source_evidence",
     )
+    source_fresh = True
     for key in ("notice", "scope"):
         row = _exact(
             source[key],
@@ -223,11 +225,14 @@ def validate_manifest(manifest: Any, trusted_as_of: str) -> dict[str, Any]:
             raise ContractError(
                 f"manifest.source_evidence.{key}.source_class: unsupported"
             )
-        if _utc(
+        captured = _utc(
             row["captured_at_utc"],
             f"manifest.source_evidence.{key}.captured_at_utc",
-        ) > as_of:
+        )
+        if captured > as_of:
             raise ContractError("manifest.source_evidence: future capture")
+        if int((as_of - captured).total_seconds()) > MAX_SOURCE_AGE_SECONDS:
+            source_fresh = False
 
     buyer_packet = _exact(
         doc["buyer_packet"],
@@ -239,19 +244,14 @@ def validate_manifest(manifest: Any, trusted_as_of: str) -> dict[str, Any]:
     )
     digest = buyer_packet["sha256"]
     if retained:
-        if type(digest) is not str or not re.fullmatch(r"[0-9a-f]{64}", digest):
-            raise ContractError(
-                "manifest.buyer_packet.sha256: retained packet requires digest"
-            )
-        if buyer_packet["authority"] != "BUYER_PACKET":
-            raise ContractError(
-                "manifest.buyer_packet.authority: exact buyer authority required"
-            )
-    else:
-        if digest is not None or buyer_packet["authority"] != "NOT_RETAINED":
-            raise ContractError(
-                "manifest.buyer_packet: absent packet must remain unasserted"
-            )
+        raise ContractError(
+            "manifest.buyer_packet.retained: verifier-owned packet bytes "
+            "are required; caller metadata cannot mint buyer authority"
+        )
+    if digest is not None or buyer_packet["authority"] != "NOT_RETAINED":
+        raise ContractError(
+            "manifest.buyer_packet: absent packet must remain unasserted"
+        )
 
     req = _exact(
         doc["requirements"],
@@ -342,9 +342,13 @@ def validate_manifest(manifest: Any, trusted_as_of: str) -> dict[str, Any]:
             else "HOLD_BUYER_PACKET_REQUIRED"
         ),
         "teaming_build_state": (
-            "READY_FOR_PARTNER_REVIEW"
-            if as_of < _utc(DUE_UTC, "due")
-            else "HOLD_RESPONSE_WINDOW"
+            "HOLD_RESPONSE_WINDOW"
+            if as_of >= _utc(DUE_UTC, "due")
+            else (
+                "READY_FOR_PARTNER_REVIEW"
+                if source_fresh
+                else "HOLD_SOURCE_REFRESH_REQUIRED"
+            )
         ),
         "direct_prime_state": "HOLD_PRIME_CAPABILITY_REQUIRED",
         "commercial_offer_state": offer["state"],
