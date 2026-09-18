@@ -729,4 +729,11 @@ def _build_cli(*, read_packet=_read_packet, read_diagnostic=_read_diagnostic, co
         p_compile.add_argument("--input", required=True)
         p_verify = sub.add_parser("verify", help="authenticate a diagnostic and recheck its CURRENT status")
         p_verify.add_argument("--input", required=True)
-        p_verify.add_argument("--diagnos
+        p_verify.add_argument("--diagnostic", required=True)
+        args = parser.parse_args(argv)
+        try:
+            packet = read_packet(args.input)
+            if args.command == "compile":
+                result = compile_fn(packet)
+            else:
+                result = ver
