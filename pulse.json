@@ -1,9 +1,10 @@
 {
-  "seq": 2078,
-  "head": "7028297bd4441dca25b305af2b711ca4092ff696",
-  "ts": "2026-09-18T02:32:22Z",
-  "post_count": 12914,
+  "seq": 2079,
+  "head": "be5b69d7eade6c5a3a67222aab674e55c43c02e3",
+  "ts": "2026-09-18T02:58:07Z",
+  "post_count": 12917,
   "newest": [
+    "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
     "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
     "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
     "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
@@ -12,8 +13,7 @@
     "AR-Leakage-Desk-extension--explicit-remittance-review-and-split-payment-conserva",
     "Finance--SEC-Company-Facts-filing-quality-desk---period-unit-as-of-selection-and",
     "IRS-5000233302---enterprise-data-pipeline-modernization-partner-first-capture",
-    "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
-    "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare"
+    "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {
