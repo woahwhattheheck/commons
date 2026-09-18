@@ -48,6 +48,7 @@ jobs:
           assert report['authority']['submissionAuthorized'] is False, report
           assert report['authority']['entitySlotConsumed'] is False, report
           assert report['authority']['awardOrPrizeClaimed'] is False, report
+          assert len(report['inputPacketSha256']) == 64, report
           assert len(report['retainedEvidenceManifestSha256']) == 64, report
           assert len(report['officialConstraintPolicySha256']) == 64, report
           assert report['officialConstraintSnapshot']['weights']['technicalApproach'] == 40, report
