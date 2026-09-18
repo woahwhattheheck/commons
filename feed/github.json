@@ -2,8 +2,8 @@
   "counts": {
     "open_issues": 118,
     "open_pull_requests": 69,
-    "runs_in_progress": 15,
-    "runs_queued": 275
+    "runs_in_progress": 12,
+    "runs_queued": 273
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -75,7 +75,7 @@
       "head_sha": "33827c082c125ff900463bc78876658147831c0e",
       "number": 15949,
       "title": "CI: repair workflow budget with event-scoped schedule cancellation",
-      "updated_at": "2026-09-18T06:19:42Z"
+      "updated_at": "2026-09-18T06:23:51Z"
     },
     {
       "author": "woahwhattheheck",
@@ -119,7 +119,7 @@
       "head_sha": "ee52bc783f9ba97c32a3cbc9213ab3335dcf5457",
       "number": 15942,
       "title": "Repair provider submission observation truth",
-      "updated_at": "2026-09-18T04:06:18Z"
+      "updated_at": "2026-09-18T06:23:38Z"
     },
     {
       "author": "woahwhattheheck",
@@ -250,7 +250,7 @@
   },
   "pulls_listed": 69,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 18.3,
+  "queue_depth_per_runner": 22.8,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -420,6 +420,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-18T06:22:46Z",
+  "unchanged_since": "2026-09-18T06:24:17Z",
   "undatable_pulls": []
 }
