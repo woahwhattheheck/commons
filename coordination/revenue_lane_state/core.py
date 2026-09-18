@@ -221,56 +221,197 @@ def _validate_json_value(value: Any) -> None:
             raise ContractError("non-JSON value type")
 
 
-def strict_json_loads(data: bytes | str) -> Any:
-    if isinstance(data, bytes):
-        if len(data) > MAX_INPUT_BYTES:
-            raise ContractError("JSON input byte limit exceeded")
+def _bind_strict_json_loads():
+    """Capture ingress parser policy/primitives at first import."""
+    max_input_bytes = MAX_INPUT_BYTES
+    safe_int_max = SAFE_INT_MAX
+    max_json_depth = MAX_JSON_DEPTH
+    max_json_nodes = MAX_JSON_NODES
+    max_string_utf8_bytes = MAX_STRING_UTF8_BYTES
+    json_loads = json.loads
+    contract_error = ContractError
+
+    def reject_float_local(_: str) -> float:
+        raise contract_error("floats forbidden")
+
+    def reject_constant_local(_: str) -> float:
+        raise contract_error("non-finite number forbidden")
+
+    def parse_int_local(value: str) -> int:
         try:
-            text = data.decode("utf-8", "strict")
-        except UnicodeDecodeError as exc:
-            raise ContractError("invalid UTF-8") from exc
-    elif isinstance(data, str):
+            number = int(value)
+        except ValueError as exc:
+            raise contract_error("invalid integer") from exc
+        if abs(number) > safe_int_max:
+            raise contract_error("unsafe integer")
+        return number
+
+    def object_no_dupes_local(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+        out: dict[str, Any] = {}
+        for key, value in pairs:
+            if key in out:
+                raise contract_error(f"duplicate JSON key: {key}")
+            out[key] = value
+        return out
+
+    def validate_local(value: Any) -> None:
+        stack: list[tuple[Any, int]] = [(value, 0)]
+        seen_containers: set[int] = set()
+        nodes = 0
+        while stack:
+            item, depth = stack.pop()
+            nodes += 1
+            if nodes > max_json_nodes:
+                raise contract_error("JSON node limit exceeded")
+            if depth > max_json_depth:
+                raise contract_error("JSON depth limit exceeded")
+            item_type = type(item)
+            if item_type is str:
+                try:
+                    encoded = item.encode("utf-8", "strict")
+                except UnicodeEncodeError as exc:
+                    raise contract_error("lone surrogate forbidden") from exc
+                if len(encoded) > max_string_utf8_bytes:
+                    raise contract_error("JSON string byte limit exceeded")
+            elif item_type is int:
+                if abs(item) > safe_int_max:
+                    raise contract_error("unsafe integer")
+            elif item_type is bool or item is None:
+                continue
+            elif item_type is list:
+                marker = id(item)
+                if marker in seen_containers:
+                    raise contract_error("container alias or cycle forbidden")
+                seen_containers.add(marker)
+                stack.extend((child, depth + 1) for child in reversed(item))
+            elif item_type is dict:
+                marker = id(item)
+                if marker in seen_containers:
+                    raise contract_error("container alias or cycle forbidden")
+                seen_containers.add(marker)
+                for key, child in reversed(list(item.items())):
+                    if type(key) is not str:
+                        raise contract_error("JSON object keys must be exact strings")
+                    stack.append((child, depth + 1))
+                    stack.append((key, depth + 1))
+            else:
+                raise contract_error("non-JSON value type")
+
+    def strict_json_loads(data: bytes | str) -> Any:
+        if isinstance(data, bytes):
+            if len(data) > max_input_bytes:
+                raise contract_error("JSON input byte limit exceeded")
+            try:
+                text = data.decode("utf-8", "strict")
+            except UnicodeDecodeError as exc:
+                raise contract_error("invalid UTF-8") from exc
+        elif isinstance(data, str):
+            try:
+                encoded = data.encode("utf-8", "strict")
+            except UnicodeEncodeError as exc:
+                raise contract_error("invalid UTF-8") from exc
+            if len(encoded) > max_input_bytes:
+                raise contract_error("JSON input byte limit exceeded")
+            text = data
+        else:
+            raise TypeError("strict_json_loads accepts bytes or str")
         try:
-            encoded = data.encode("utf-8", "strict")
-        except UnicodeEncodeError as exc:
-            raise ContractError("invalid UTF-8") from exc
-        if len(encoded) > MAX_INPUT_BYTES:
-            raise ContractError("JSON input byte limit exceeded")
-        text = data
-    else:
-        raise TypeError("strict_json_loads accepts bytes or str")
-    try:
-        value = json.loads(
-            text,
-            object_pairs_hook=_object_no_dupes,
-            parse_float=_reject_float,
-            parse_int=_parse_int,
-            parse_constant=_reject_constant,
-        )
-    except ContractError:
-        raise
-    except (json.JSONDecodeError, UnicodeError, RecursionError, ValueError) as exc:
-        raise ContractError("invalid JSON") from exc
-    _validate_json_value(value)
-    return value
+            value = json_loads(
+                text,
+                object_pairs_hook=object_no_dupes_local,
+                parse_float=reject_float_local,
+                parse_int=parse_int_local,
+                parse_constant=reject_constant_local,
+            )
+        except contract_error:
+            raise
+        except (json.JSONDecodeError, UnicodeError, RecursionError, ValueError) as exc:
+            raise contract_error("invalid JSON") from exc
+        validate_local(value)
+        return value
+
+    return strict_json_loads
 
 
-def canonical_bytes(value: Any) -> bytes:
-    _validate_json_value(value)
-    try:
-        text = json.dumps(
-            value,
-            ensure_ascii=False,
-            sort_keys=True,
-            separators=(",", ":"),
-            allow_nan=False,
-        )
-        payload = text.encode("utf-8", "strict")
-    except (TypeError, ValueError, UnicodeError, RecursionError) as exc:
-        raise ContractError("value is not canonicalizable") from exc
-    if len(payload) > MAX_CANONICAL_BYTES:
-        raise ContractError("canonical JSON byte limit exceeded")
-    return payload
+strict_json_loads = _bind_strict_json_loads()
+del _bind_strict_json_loads
+
+
+def _bind_canonical_bytes():
+    """Capture canonicalization policy/primitives at first import."""
+    max_canonical_bytes = MAX_CANONICAL_BYTES
+    safe_int_max = SAFE_INT_MAX
+    max_json_depth = MAX_JSON_DEPTH
+    max_json_nodes = MAX_JSON_NODES
+    max_string_utf8_bytes = MAX_STRING_UTF8_BYTES
+    json_dumps = json.dumps
+    contract_error = ContractError
+
+    def validate_local(value: Any) -> None:
+        stack: list[tuple[Any, int]] = [(value, 0)]
+        seen_containers: set[int] = set()
+        nodes = 0
+        while stack:
+            item, depth = stack.pop()
+            nodes += 1
+            if nodes > max_json_nodes:
+                raise contract_error("JSON node limit exceeded")
+            if depth > max_json_depth:
+                raise contract_error("JSON depth limit exceeded")
+            item_type = type(item)
+            if item_type is str:
+                try:
+                    encoded = item.encode("utf-8", "strict")
+                except UnicodeEncodeError as exc:
+                    raise contract_error("lone surrogate forbidden") from exc
+                if len(encoded) > max_string_utf8_bytes:
+                    raise contract_error("JSON string byte limit exceeded")
+            elif item_type is int:
+                if abs(item) > safe_int_max:
+                    raise contract_error("unsafe integer")
+            elif item_type is bool or item is None:
+                continue
+            elif item_type is list:
+                marker = id(item)
+                if marker in seen_containers:
+                    raise contract_error("container alias or cycle forbidden")
+                seen_containers.add(marker)
+                stack.extend((child, depth + 1) for child in reversed(item))
+            elif item_type is dict:
+                marker = id(item)
+                if marker in seen_containers:
+                    raise contract_error("container alias or cycle forbidden")
+                seen_containers.add(marker)
+                for key, child in reversed(list(item.items())):
+                    if type(key) is not str:
+                        raise contract_error("JSON object keys must be exact strings")
+                    stack.append((child, depth + 1))
+                    stack.append((key, depth + 1))
+            else:
+                raise contract_error("non-JSON value type")
+
+    def canonical_bytes(value: Any) -> bytes:
+        validate_local(value)
+        try:
+            text = json_dumps(
+                value,
+                ensure_ascii=False,
+                sort_keys=True,
+                separators=(",", ":"),
+                allow_nan=False,
+            )
+            payload = text.encode("utf-8", "strict")
+        except (TypeError, ValueError, UnicodeError, RecursionError) as exc:
+            raise contract_error("value is not canonicalizable") from exc
+        if len(payload) > max_canonical_bytes:
+            raise contract_error("canonical JSON byte limit exceeded")
+        return payload
+
+    return canonical_bytes
+
+
+canonical_bytes = _bind_canonical_bytes()
+del _bind_canonical_bytes
 
 
 def sha256_bytes(data: bytes) -> str:
@@ -447,52 +588,59 @@ def _bind_validate_packet():
                 f"currentness_seconds exceeds compiler maximum {max_currentness_seconds}"
             )
         eval_dt = timestamp_local(evaluation_time, "evaluation_time")
-        events_raw = packet["events"]
-        if not isinstance(events_raw, list) or not events_raw:
+        packet_events = packet["events"]
+        if not isinstance(packet_events, list) or not packet_events:
             raise contract_error("events must be non-empty list")
-        if len(events_raw) > max_events:
+        if len(packet_events) > max_events:
             raise contract_error("event count limit exceeded")
+        # Detach list membership/order before per-event admission. Caller-owned
+        # containers are never reread by reduction or retained-history hashing.
+        events_raw = list(packet_events)
         parsed: list[ParsedEvent] = []
         seen: set[str] = set()
         for raw in events_raw:
             if not isinstance(raw, dict):
                 raise contract_error("event must be object")
+            # Event fields are schema primitives. Copy the mapping first, then
+            # validate and parse only this compiler-owned generation.
+            admitted = dict(raw)
+            validate_json_value_local(admitted)
             require_exact_keys_local(
-                raw,
+                admitted,
                 event_keys,
                 optional=frozenset({"route_id", "supersedes"}),
             )
             for field, expected in identity.items():
-                if id_local(raw[field], field) != expected:
+                if id_local(admitted[field], field) != expected:
                     raise contract_error("cross-lane/counterparty/opportunity/purpose transplant")
-            event_id = id_local(raw["event_id"], "event_id")
+            event_id = id_local(admitted["event_id"], "event_id")
             if event_id in seen:
                 raise contract_error(f"duplicate event_id: {event_id}")
             seen.add(event_id)
-            generation = safe_positive_int_local(raw["generation"], "generation")
-            kind = raw["kind"]
+            generation = safe_positive_int_local(admitted["generation"], "generation")
+            kind = admitted["kind"]
             if kind not in kinds:
                 raise contract_error(f"invalid event kind: {kind}")
-            source_class = raw["source_class"]
+            source_class = admitted["source_class"]
             if source_class not in source_classes:
                 raise contract_error(f"invalid source_class: {source_class}")
             if source_class not in source_requirements[kind]:
                 raise contract_error(f"{kind} cannot be proven by source_class={source_class}")
-            id_local(raw["source_ref"], "source_ref")
-            occurred_at = timestamp_local(raw["occurred_at"], "occurred_at")
+            id_local(admitted["source_ref"], "source_ref")
+            occurred_at = timestamp_local(admitted["occurred_at"], "occurred_at")
             if occurred_at > eval_dt:
                 raise contract_error("future event relative to trusted evaluation time")
             route_id = None
-            if "route_id" in raw:
-                route_id = id_local(raw["route_id"], "route_id")
+            if "route_id" in admitted:
+                route_id = id_local(admitted["route_id"], "route_id")
             supersedes = None
-            if "supersedes" in raw:
-                supersedes = id_local(raw["supersedes"], "supersedes")
+            if "supersedes" in admitted:
+                supersedes = id_local(admitted["supersedes"], "supersedes")
                 if supersedes == event_id:
                     raise contract_error("event cannot supersede itself")
             parsed.append(
                 parsed_event_type(
-                    raw,
+                    admitted,
                     event_id,
                     generation,
                     kind,
