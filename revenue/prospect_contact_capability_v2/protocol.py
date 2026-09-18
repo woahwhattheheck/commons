@@ -1218,3 +1218,187 @@ def verify_dispatch_possession(
         "compensation_category": receipt["compensation_category"],
     }
     if not hmac.compare_digest(_dispatch_proof(cap, material), receipt["holder_proof_hmac_sha256"]):
+        raise CustodyError("dispatch holder proof mismatch")
+    return True
+
+
+def prepare_contacted(
+    dispatch_receipt_raw: Mapping[str, Any],
+    *, capability: str,
+    live_claim_branch_sha: str,
+    live_claim_parent_sha: str,
+    live_claim_metadata_json: str,
+    live_terminal_branch_sha: str,
+    live_terminal_parent_sha: str,
+    live_terminal_metadata_json: str,
+    provider_receipt: str,
+) -> dict[str, Any]:
+    dispatch = verify_terminal_receipt(dispatch_receipt_raw)
+    verify_dispatch_possession(
+        dispatch,
+        capability=capability,
+        live_claim_branch_sha=live_claim_branch_sha,
+        live_claim_parent_sha=live_claim_parent_sha,
+        live_claim_metadata_json=live_claim_metadata_json,
+        live_terminal_branch_sha=live_terminal_branch_sha,
+        live_terminal_parent_sha=live_terminal_parent_sha,
+        live_terminal_metadata_json=live_terminal_metadata_json,
+    )
+    if type(provider_receipt) is not str:
+        raise CustodyError("provider_receipt must be text")
+    provider_receipt = unicodedata.normalize("NFKC", provider_receipt.strip())
+    if not provider_receipt or len(provider_receipt) > 1000 or CONTROL_RE.search(provider_receipt):
+        raise CustodyError("provider_receipt invalid")
+    provider_digest = hashlib.sha256(provider_receipt.encode()).hexdigest()
+    metadata = {
+        "schema": SCHEMA,
+        "record_type": "CONTACTED",
+        "state": "CONTACTED",
+        "generation": dispatch["generation"],
+        "key_sha256": dispatch["key_sha256"],
+        "claim_seam_sha256": dispatch["claim_seam_sha256"],
+        "claim_commit_sha": dispatch["claim_commit_sha"],
+        "terminal_commit_sha": dispatch["terminal_commit_sha"],
+        "terminal_receipt_sha256": dispatch["receipt_sha256"],
+        "claim_capability_sha256": dispatch["claim_capability_sha256"],
+        "provider_receipt_sha256": provider_digest,
+        **_authority_flags(),
+    }
+    metadata_json = _canonical_json_text(metadata)
+    plan = {
+        "schema": CONTACTED_PLAN_SCHEMA,
+        "state": "CONTACTED",
+        "generation": dispatch["generation"],
+        "key_sha256": dispatch["key_sha256"],
+        "claim_seam_sha256": dispatch["claim_seam_sha256"],
+        "claim_commit_sha": dispatch["claim_commit_sha"],
+        "terminal_commit_sha": dispatch["terminal_commit_sha"],
+        "terminal_receipt_sha256": dispatch["receipt_sha256"],
+        "claim_capability_sha256": dispatch["claim_capability_sha256"],
+        "provider_receipt_sha256": provider_digest,
+        "contacted_branch_name": contacted_branch(dispatch["claim_seam_sha256"]),
+        "metadata_path": _metadata_path(dispatch["claim_seam_sha256"], "contacted"),
+        "metadata_sha256": _text_digest(metadata_json),
+        "metadata_json": metadata_json,
+        **_authority_flags(),
+    }
+    return _seal(plan, "plan_sha256")
+
+
+def verify_contacted_plan(raw: Mapping[str, Any]) -> dict[str, Any]:
+    plan = _verify_seal(raw, "plan_sha256")
+    if plan.get("schema") != CONTACTED_PLAN_SCHEMA or plan.get("state") != "CONTACTED":
+        raise CustodyError("contacted plan schema/state mismatch")
+    if plan.get("contacted_branch_name") != contacted_branch(plan["claim_seam_sha256"]):
+        raise CustodyError("contacted branch mismatch")
+    if plan.get("metadata_path") != _metadata_path(plan["claim_seam_sha256"], "contacted"):
+        raise CustodyError("contacted metadata path mismatch")
+    for field in ("terminal_receipt_sha256","claim_capability_sha256","provider_receipt_sha256"):
+        _sha64(plan[field], field)
+    _sha40(plan["claim_commit_sha"], "claim_commit_sha")
+    _sha40(plan["terminal_commit_sha"], "terminal_commit_sha")
+    expected_metadata = {
+        "schema": SCHEMA,
+        "record_type": "CONTACTED",
+        "state": "CONTACTED",
+        "generation": plan["generation"],
+        "key_sha256": plan["key_sha256"],
+        "claim_seam_sha256": plan["claim_seam_sha256"],
+        "claim_commit_sha": plan["claim_commit_sha"],
+        "terminal_commit_sha": plan["terminal_commit_sha"],
+        "terminal_receipt_sha256": plan["terminal_receipt_sha256"],
+        "claim_capability_sha256": plan["claim_capability_sha256"],
+        "provider_receipt_sha256": plan["provider_receipt_sha256"],
+        **_authority_flags(),
+    }
+    expected_text = _canonical_json_text(expected_metadata)
+    if plan.get("metadata_json") != expected_text or plan.get("metadata_sha256") != _text_digest(expected_text):
+        raise CustodyError("contacted metadata binding mismatch")
+    return plan
+
+
+def bind_contacted_commit(plan_raw: Mapping[str, Any], contacted_commit_sha: str) -> dict[str, Any]:
+    plan = verify_contacted_plan(plan_raw)
+    intent = {
+        "schema": CONTACTED_INTENT_SCHEMA,
+        "state": "CONTACTED",
+        "generation": plan["generation"],
+        "key_sha256": plan["key_sha256"],
+        "claim_seam_sha256": plan["claim_seam_sha256"],
+        "terminal_commit_sha": plan["terminal_commit_sha"],
+        "terminal_receipt_sha256": plan["terminal_receipt_sha256"],
+        "contacted_branch_name": plan["contacted_branch_name"],
+        "metadata_path": plan["metadata_path"],
+        "metadata_sha256": plan["metadata_sha256"],
+        "plan_sha256": plan["plan_sha256"],
+        "contacted_commit_sha": _sha40(contacted_commit_sha, "contacted_commit_sha"),
+        **_authority_flags(),
+    }
+    return _seal(intent, "intent_sha256")
+
+
+def contacted_receipt_from_readback(
+    plan_raw: Mapping[str, Any], intent_raw: Mapping[str, Any], *,
+    live_branch_sha: str, live_parent_sha: str, live_metadata_json: str,
+) -> dict[str, Any]:
+    plan = verify_contacted_plan(plan_raw)
+    intent = _verify_seal(intent_raw, "intent_sha256")
+    if intent.get("schema") != CONTACTED_INTENT_SCHEMA or intent.get("plan_sha256") != plan["plan_sha256"]:
+        raise CustodyError("contacted intent mismatch")
+    if _sha40(live_branch_sha, "live_branch_sha") != intent["contacted_commit_sha"]:
+        raise CustodyError("contacted branch head mismatch")
+    if _sha40(live_parent_sha, "live_parent_sha") != plan["terminal_commit_sha"]:
+        raise CustodyError("contacted parent mismatch")
+    _verify_live_metadata(plan["metadata_json"], live_metadata_json)
+    receipt = {
+        "schema": CONTACTED_RECEIPT_SCHEMA,
+        "state": "CONTACTED",
+        "generation": plan["generation"],
+        "key_sha256": plan["key_sha256"],
+        "claim_seam_sha256": plan["claim_seam_sha256"],
+        "claim_commit_sha": plan["claim_commit_sha"],
+        "claim_capability_sha256": plan["claim_capability_sha256"],
+        "terminal_commit_sha": plan["terminal_commit_sha"],
+        "terminal_receipt_sha256": plan["terminal_receipt_sha256"],
+        "provider_receipt_sha256": plan["provider_receipt_sha256"],
+        "contacted_branch_name": plan["contacted_branch_name"],
+        "metadata_path": plan["metadata_path"],
+        "metadata_sha256": plan["metadata_sha256"],
+        "metadata_json": plan["metadata_json"],
+        "contacted_commit_sha": intent["contacted_commit_sha"],
+        "plan_sha256": plan["plan_sha256"],
+        "intent_sha256": intent["intent_sha256"],
+        **_authority_flags(),
+    }
+    return _seal(receipt, "receipt_sha256")
+
+
+def verify_contacted_receipt(raw: Mapping[str, Any]) -> dict[str, Any]:
+    receipt = _verify_seal(raw, "receipt_sha256")
+    if receipt.get("schema") != CONTACTED_RECEIPT_SCHEMA or receipt.get("state") != "CONTACTED":
+        raise CustodyError("contacted receipt schema/state mismatch")
+    if receipt.get("contacted_branch_name") != contacted_branch(receipt["claim_seam_sha256"]):
+        raise CustodyError("contacted receipt branch mismatch")
+    _sha40(receipt["terminal_commit_sha"], "terminal_commit_sha")
+    _sha40(receipt["contacted_commit_sha"], "contacted_commit_sha")
+    _sha64(receipt["provider_receipt_sha256"], "provider_receipt_sha256")
+    expected_metadata = {
+        "schema": SCHEMA,
+        "record_type": "CONTACTED",
+        "state": "CONTACTED",
+        "generation": receipt["generation"],
+        "key_sha256": receipt["key_sha256"],
+        "claim_seam_sha256": receipt["claim_seam_sha256"],
+        "claim_commit_sha": receipt.get("claim_commit_sha"),
+        "terminal_commit_sha": receipt["terminal_commit_sha"],
+        "terminal_receipt_sha256": receipt["terminal_receipt_sha256"],
+        "claim_capability_sha256": receipt.get("claim_capability_sha256"),
+        "provider_receipt_sha256": receipt["provider_receipt_sha256"],
+        **_authority_flags(),
+    }
+    _sha40(expected_metadata["claim_commit_sha"], "claim_commit_sha")
+    _sha64(expected_metadata["claim_capability_sha256"], "claim_capability_sha256")
+    expected_text = _canonical_json_text(expected_metadata)
+    if receipt.get("metadata_json") != expected_text or receipt.get("metadata_sha256") != _text_digest(expected_text):
+        raise CustodyError("contacted receipt metadata binding mismatch")
+    return receipt
