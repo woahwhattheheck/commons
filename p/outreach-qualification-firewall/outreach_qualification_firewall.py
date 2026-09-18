@@ -1,3 +1,7 @@
+THREAT_MODEL_ID = "trusted-python-interpreter-v1"
+REFLECTIVE_INTERPRETER_TAMPER_IN_SCOPE = False
+REQUIRES_ISOLATED_PROCESS_FOR_UNTRUSTED_CODE = True
+
 from firewall_codec import (
     FirewallError,
     MAX_INPUT_BYTES,
@@ -21,6 +25,9 @@ from firewall_model import (
 from firewall_decision import compile_current, compile_historical, verify_receipt
 
 __all__ = [
+    "THREAT_MODEL_ID",
+    "REFLECTIVE_INTERPRETER_TAMPER_IN_SCOPE",
+    "REQUIRES_ISOLATED_PROCESS_FOR_UNTRUSTED_CODE",
     "FirewallError",
     "MAX_INPUT_BYTES",
     "MAX_QUANTITY",
