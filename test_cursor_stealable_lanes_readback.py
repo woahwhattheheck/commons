@@ -17,26 +17,26 @@ DOOR = ROOT / "stealable-lanes.html"
 
 KEEP = {
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
-    "host/stealable_lanes.py": "60ac60e1",
+    "host/stealable_lanes.py": "524275ce",
     "ground/STEALABLE_ROLES.json": "ab601590",
     "ground/STEALABLE_ROLES.md": "66f4feda",
-    "test_stealable_lanes.py": "23a902a9",
-    "ground/STEALABLE_LANES.json": "68e78277",
+    "test_stealable_lanes.py": "4b90b09b",
+    "ground/STEALABLE_LANES.json": "3627162a",
     "ground/STEALABLE_LANES.md": "3743d4f5",
     "stealable-lanes.html": "a15f15b5",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
-    "lanes.json": "d0acc369",
+    "lanes.json": "1c4569ef",
     "roles.json": "9fb3f2c2",
     "ground/HEAVY_LANES.json": "7849eac9",
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "p/cursor-landed-work-feed-readback-20260902-01.md": "d37eb307",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
-    "autogtm.html": "1009c4cd",
-    "hub_pages.py": "12186f65",
+    "autogtm.html": "dec0ecbe",
+    "hub_pages.py": "673dab89",
     "door.js": "c06cc197",
     "api/mcp.py": "393da756",
-    "ground/OWNER_NOW.md": "a17b0afb",
+    "ground/OWNER_NOW.md": "39a0e0c3",
 }
 
 

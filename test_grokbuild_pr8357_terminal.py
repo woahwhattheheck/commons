@@ -20,21 +20,21 @@ RECEIPT = ROOT / "p/grokbuild-pr8357-terminal-20260902-01.md"
 PEER = ROOT / "p/grokbuild-pr8345-terminal-20260902-01.md"
 
 KEEP = {
-    "host/harborline_pack_market_render_ship.py": "cafe72c9",
-    "test_harborline_pack_market_render_ship.py": "4b7417b0",
+    "host/harborline_pack_market_render_ship.py": "a31a492d",
+    "test_harborline_pack_market_render_ship.py": "a9b5de26",
     "p/cursor-harborline-pack-market-render-ship-20260902-01.md": "89457966",
     "host/harborline_pack_market_render.py": "cc9a3320",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
-    "test_harborline_pack_market_render.py": "5ba443dd",
+    "test_harborline_pack_market_render.py": "76ba2366",
     "p/cursor-harborline-pack-market-render-readback-20260902-01.md": "6efbac54",
     "p/cursor-harborline-pack-market-slack-render-20260902-01.md": "0d95f2ab",
     "host/harborline_pack_market_slack_render.py": "a03534da",
-    "test_harborline_pack_market_slack_render.py": "fc8f3d6e",
+    "test_harborline_pack_market_slack_render.py": "f7089a2d",
     "p/cursor-harborline-pack-market-render-readback-rematch-20260902-01.md": "f965e00f",
     "p/cursor-harborline-pack-market-render-readback-ack-20260902-01.md": "9d221c75",
-    "ground/OWNER_NOW.md": "4b2a58ed",
+    "ground/OWNER_NOW.md": "39a0e0c3",
     "p/grokbuild-pr8345-terminal-20260902-01.md": "baae9aaf",
-    "test_grokbuild_pr8345_terminal.py": "9967129f",
+    "test_grokbuild_pr8345_terminal.py": "6da965b8",
 }
 
 

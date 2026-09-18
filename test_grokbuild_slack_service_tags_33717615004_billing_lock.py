@@ -25,7 +25,7 @@ KEEP = {
     "p/cursor-slack-service-tags-20260902-01.md": "4e8382f1",
     "p/cursor-slack-service-tags-peer-pointer-20260902-01.md": "6b13ba9a",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
-    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "297f868b",
+    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "5d77b1cd",
     "p/grokbuild-main-range-verify-33717084528-billing-lock-20260903-01.md": "2b0fd9c9",
     "test_grokbuild_main_range_verify_33717084528_billing_lock.py": "dc173cae",
     "p/grokbuild-pr8546-verify-20260903-01.md": "4e4d8003",

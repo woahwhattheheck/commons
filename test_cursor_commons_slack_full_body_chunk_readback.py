@@ -17,13 +17,13 @@ DOOR = ROOT / "commons-slack-chunk.html"
 KEEP = {
     "p/cursor-commons-slack-full-body-chunk-20260902-01.md": "94770f41",
     "host/commons_slack_full_body_chunk.py": "c2b66c4d",
-    "ground/COMMONS_SLACK_FULL_BODY_CHUNK.json": "ff28f715",
-    "test_commons_slack_full_body_chunk.py": "5b624237",
+    "ground/COMMONS_SLACK_FULL_BODY_CHUNK.json": "3dc4d270",
+    "test_commons_slack_full_body_chunk.py": "70d6ed53",
     "commons-slack-chunk.html": "4d9ebea2",
     "host/commons_slack_full_body.py": "1a0b2d58",
     "p/cursor-commons-slack-full-body-20260902-01.md": "86f4eddc",
     "ground/COMMONS_SLACK_FULL_BODY.json": "5b2bf0e0",
-    "test_commons_slack_full_body.py": "62e1401b",
+    "test_commons_slack_full_body.py": "c7a57b33",
     "host/slack_mirror.py": "72c0844e",
     "test_slack_mirror.py": "739d5ee8",
     "commons-slack.html": "b7630b56",
@@ -33,10 +33,10 @@ KEEP = {
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/grokbuild-occupancy-landed-work-keep-lift-readback-20260902-01.md": "892bc4c0",
-    "hub_pages.py": "12186f65",
+    "hub_pages.py": "673dab89",
     "door.js": "c06cc197",
     "api/mcp.py": "393da756",
-    "ground/OWNER_NOW.md": "a17b0afb",
+    "ground/OWNER_NOW.md": "39a0e0c3",
 }
 
 

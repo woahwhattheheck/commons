@@ -27,8 +27,8 @@ KEEP_UNREAD = {
     "p/cursor-harborline-pack-market-render-readback-20260902-01.md": "6efbac54",
     "p/grokbuild-pr8350-verify-20260902-01.md": "538a4d1e",
     "p/grokbuild-owner-now-337-closer-strip-20260902-01.md": "71135011",
-    "ground/OWNER_NOW.md": "4b2a58ed",
-    "autogtm.html": "2fe108f4",
+    "ground/OWNER_NOW.md": "39a0e0c3",
+    "autogtm.html": "dec0ecbe",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
 }
 
@@ -60,7 +60,7 @@ class TestGrokbuildPr8350Run33681923354KeepUnpin(unittest.TestCase):
             self.assertNotEqual(keep.get("door.js"), "1f9e8d14", name)
             self.assertNotEqual(unread.get("hub_pages.py"), "14eeedb0", name)
             self.assertNotEqual(unread.get("door.js"), "1f9e8d14", name)
-        self.assertNotIn('"hub_pages.py": "55bffe39"', SLACK_TEST.read_text(encoding="utf-8"))
+        self.assertNotIn('"hub_pages.py": "673dab89"', SLACK_TEST.read_text(encoding="utf-8"))
         self.assertTrue(git_blob("hub_pages.py").startswith("5ac12648"))
         self.assertFalse(git_blob("hub_pages.py").startswith("14eeedb0"))
         self.assertTrue(git_blob("door.js").startswith("dc59355d"))

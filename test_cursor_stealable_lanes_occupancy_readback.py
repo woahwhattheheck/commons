@@ -16,12 +16,12 @@ DOOR = ROOT / "stealable-lanes.html"
 
 KEEP = {
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
-    "host/stealable_lanes.py": "60ac60e1",
-    "ground/STEALABLE_LANES.json": "68e78277",
+    "host/stealable_lanes.py": "524275ce",
+    "ground/STEALABLE_LANES.json": "3627162a",
     "ground/STEALABLE_LANES.md": "3743d4f5",
     "stealable-lanes.html": "a15f15b5",
-    "test_stealable_lanes.py": "23a902a9",
-    "test_stealable_lanes_occupancy.py": "745dcd19",
+    "test_stealable_lanes.py": "4b90b09b",
+    "test_stealable_lanes_occupancy.py": "c1b2d2c0",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
     "p/cursor-stealable-lanes-roles-readback-20260902-01.md": "ada92980",
     "p/grokbuild-occupancy-landed-work-keep-lift-20260902-01.md": "67a8a527",
@@ -33,14 +33,14 @@ KEEP = {
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "p/cursor-commons-slack-full-body-20260902-01.md": "86f4eddc",
     "p/cursor-since-you-last-looked-20260902-01.md": "003828c9",
-    "lanes.json": "d0acc369",
+    "lanes.json": "1c4569ef",
     "roles.json": "9fb3f2c2",
     "ground/HEAVY_LANES.json": "7849eac9",
-    "hub_pages.py": "12186f65",
+    "hub_pages.py": "673dab89",
     "door.js": "c06cc197",
     "api/mcp.py": "393da756",
-    "ground/OWNER_NOW.md": "a17b0afb",
-    "autogtm.html": "1009c4cd",
+    "ground/OWNER_NOW.md": "39a0e0c3",
+    "autogtm.html": "dec0ecbe",
 }
 
 

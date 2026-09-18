@@ -22,7 +22,7 @@ LIVE = {
     "open_door_guard.py": "877e148d",
     "test_open_door_guard_production_lims_release.py": "08142804",
     "p/grok-repair-tests-lims-odg-keep-lift-20260909-01.md": "a3c7ea0b",
-    "open_door_guard_core.py": "861958e9",
+    "open_door_guard_core.py": "977abc2f",
 }
 
 

@@ -57,13 +57,13 @@
   "source_blobs": {
     "skills.json": "7f1280ef735a59ecfa29b7a6e5bd7c1631246fb7",
     "commands.json": "7a6dba1803e3a97b29355c0f08710533abaa7e45",
-    "tools.json": "4c3909acd166c8a4590ae34da3c6bc2eaa3ce7a9",
+    "tools.json": "870e772cf7ffe6563486529bebe57b3760b865a0",
     "share.json": "3b7029a80e1f4f0f3d0a414c6604898ba3a70da0"
   },
   "exact_blobs": {
     "host/tool_consumption_index.py": "53cca608877f0eeea3b6c43e08216c057b1fdc30",
     "test_tool_consumption_index.py": "cd5c374597eb455e5e49e19d8350c256ac66d08f",
-    "inventory/resources/tool_consumption.json": "ba4b3537b04ae6ec6e8ddb0d45c846f24769f626",
+    "inventory/resources/tool_consumption.json": "2beda5057c7e4a7817ad52d20de0e9c5b3c12852",
     "ground/RESOURCE_LEDGER.json": "cec7fbd9708ae9d9ecc970673686979b3729d47b"
   },
   "verification": {

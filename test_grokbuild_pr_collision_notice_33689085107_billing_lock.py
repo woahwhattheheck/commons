@@ -20,10 +20,10 @@ DISCORD = ROOT / "p/grok-build-discord-cloud-billing-lock-20260902-01.md"
 KEEP = {
     "pr_collision_notice.py": "381d6b9b",
     "test_pr_collision_notice.py": "18a87c08",
-    ".github/workflows/pr-collision-notice.yml": "1c2ebcd5",
+    ".github/workflows/pr-collision-notice.yml": "deeeaf57",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "p/cursor-merge-on-pr-readback-20260902-01.md": "e160b2c3",
-    "test_cursor_merge_on_pr_readback.py": "5a33ec30",
+    "test_cursor_merge_on_pr_readback.py": "6387d6fe",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "p/grok-build-local-compute-guard-billing-lock-20260902-01.md": "de59bf75",
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",

@@ -19,17 +19,17 @@ WORKFLOW = ROOT / ".github/workflows/tests.yml"
 
 KEEP = {
     "p/grokbuild-leftover-id-census-33723043828-billing-lock-20260903-01.md": "e135862e",
-    "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "4d5f069a",
+    "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "ed237a30",
     "p/grokbuild-tests-33718131413-billing-lock-20260903-01.md": "9fa188cb",
     "p/grokbuild-tests-33717741059-billing-lock-20260903-01.md": "1b6c3021",
     "p/grok-build-repo-pulse-billing-lock-20260903-01.md": "b6e5953c",
     "p/grok-build-owner-net-33723510040-billing-lock-20260903-01.md": "6a2c8239",
-    "test_grokbuild_owner_net_33723510040_billing_lock.py": "4acaf69b",
+    "test_grokbuild_owner_net_33723510040_billing_lock.py": "b4a7a5dc",
     "p/grok-build-job-watchdog-33723631044-billing-lock-20260903-01.md": "dc553557",
-    ".github/workflows/tests.yml": "fd94b65c",
+    ".github/workflows/tests.yml": "57d36525",
     "open_door_guard.py": "877e148d",
     "fix_first.py": "a57aee1c",
-    ".github/workflows/leftover-id-census.yml": "cd2ac955",
+    ".github/workflows/leftover-id-census.yml": "ac462ac5",
     "host/leftover_id_census.py": "1cfba147",
 }
 

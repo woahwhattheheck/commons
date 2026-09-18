@@ -17,10 +17,10 @@ import owner_now_revenue as onr  # noqa: E402
 
 
 KEEP = {
-    "ground/OWNER_NOW.md": "a17b0afb",
+    "ground/OWNER_NOW.md": "39a0e0c3",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "p/cursor-big-things-incoming-alert-20260902-01.md": "fde94226",
-    "autogtm.html": "1009c4cd",
+    "autogtm.html": "dec0ecbe",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-autogtm-hub-pages-live-get-readback-20260902-01.md": "c2829fc5",
 }

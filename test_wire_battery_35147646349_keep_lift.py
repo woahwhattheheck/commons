@@ -51,7 +51,7 @@ KEEP_UNREAD = {
     "p/cursor-claude-commerce-agents-20260902-01.md": "3e48f691",
     "p/cursor-big-huge-commerce-agents-20260902-01.md": "fddb5a7c",
     "p/cursor-harborline-commerce-compose-keep-lift-20260902-01.md": "668dd5c4",
-    "autogtm.html": "1009c4cd",
+    "autogtm.html": "dec0ecbe",
 }
 
 

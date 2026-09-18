@@ -31,7 +31,7 @@ KEEP = {
     "test_discord_mirror.py": "45043494",
     "infra/discord/test_commons_discord_bridge.py": "9c623e59",
     "infra/discord/test_windows_runtime.py": "158feb48",
-    ".github/workflows/commons-discord-cloud.yml": "6f1c1479",
+    ".github/workflows/commons-discord-cloud.yml": "90738ad6",
 }
 
 

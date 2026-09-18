@@ -16,7 +16,7 @@ RECEIPT = ROOT / "p/grok-build-live-mirror-commons-33791064118-billing-lock-2026
 PRIOR = ROOT / "p/grok-live-mirror-force-graft-20260828-01.md"
 
 KEEP = {
-    "host/live_mirror.py": "ada86332",
+    "host/live_mirror.py": "08abe648",
     "test_live_mirror.py": "0fee48fd",
     "open_door_guard.py": "877e148d",
     "fix_first.py": "a57aee1c",

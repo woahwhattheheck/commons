@@ -18,7 +18,7 @@ WORKFLOW = ROOT / ".github/workflows/source-parses.yml"
 KEEP = {
     "source_parses.py": "abba903d",
     "test_source_parses.py": "71e0c9b6",
-    ".github/workflows/source-parses.yml": "0a8cf371",
+    ".github/workflows/source-parses.yml": "6bcdbde1",
     "p/grok-build-llms-txt-33687829181-billing-lock-20260902-01.md": "3183564c",
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",
     "p/grok-build-llms-txt-billing-lock-20260902-01.md": "cf9c9f40",
@@ -26,15 +26,15 @@ KEEP = {
     "p/grok-build-local-compute-guard-billing-lock-20260902-01.md": "de59bf75",
     "p/grok-resources-tab-freshness-billing-lock-20260902-01.md": "ac39fe78",
     "p/cursor-merge-on-pr-readback-20260902-01.md": "e160b2c3",
-    "test_cursor_merge_on_pr_readback.py": "5a33ec30",
-    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "e535b364",
-    "test_grokbuild_llms_txt_33687829181_billing_lock.py": "eea1a9f3",
+    "test_cursor_merge_on_pr_readback.py": "6387d6fe",
+    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "c465ba49",
+    "test_grokbuild_llms_txt_33687829181_billing_lock.py": "ce7b327f",
     "open_door_guard.py": "877e148d",
     "p/grok-build-llms-txt-33689096471-billing-lock-20260902-01.md": "e739b9cd",
-    "test_grokbuild_llms_txt_33689096471_billing_lock.py": "fbd781aa",
+    "test_grokbuild_llms_txt_33689096471_billing_lock.py": "73e0a58e",
     "p/grokbuild-pr-collision-notice-33689085107-billing-lock-20260902-01.md": "594b5e71",
     "p/grokbuild-pr8414-verify-20260902-01.md": "587cc1cf",
-    "test_grokbuild_pr8414_verify.py": "e750d062",
+    "test_grokbuild_pr8414_verify.py": "23b4f613",
 }
 
 

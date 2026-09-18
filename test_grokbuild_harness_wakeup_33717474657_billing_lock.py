@@ -21,7 +21,7 @@ WORKFLOW = ROOT / ".github/workflows/harness-wakeup.yml"
 
 KEEP = {
     ".github/workflows/harness-wakeup.yml": "813043ab",
-    "wakeup.py": "7988ceb2",
+    "wakeup.py": "c284ff5e",
     "test_wakeup_reliability.py": "aca39ab4",
     "open_door_guard.py": "877e148d",
     "p/grokbuild-main-range-verify-33717084528-billing-lock-20260903-01.md": "2b0fd9c9",

@@ -24,9 +24,9 @@ KEEP = {
     ".github/workflows/local-compute-guard.yml": "43576548",
     "test_local_compute_guard.py": "b8d65280",
     "p/grokbuild-pr8411-verify-20260902-01.md": "642dea64",
-    "test_grokbuild_pr8411_verify.py": "f2468c3d",
+    "test_grokbuild_pr8411_verify.py": "3b831583",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
-    "host/stealable_lanes.py": "c90284fb",
+    "host/stealable_lanes.py": "524275ce",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
 }

@@ -32,10 +32,10 @@ READBACK_TEST = "c7d491e4"
 KEEP = {
     f"p/{READBACK_ID}.md": READBACK_BLOB,
     f"p/{ASK_ID}.md": LEFTOVER_BLOB,
-    "owner-now-revenue.html": "7c98199a",
+    "owner-now-revenue.html": "df6e7ac2",
     "land/owner-now-revenue-20260902.md": "aa193e21",
     "pay.js": "65a960f2",
-    "ground/OWNER_NOW.md": "4b2a58ed",
+    "ground/OWNER_NOW.md": "39a0e0c3",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
 }
