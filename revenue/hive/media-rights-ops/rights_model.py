@@ -1,7 +1,7 @@
 """Strict schemas and canonicalization for the media-rights operations desk."""
 from __future__ import annotations
 import hashlib,json,re
-from datetime import datetime,timezone
+from datetime import date,datetime,timezone
 from pathlib import Path
 SCHEMA='media-rights-ops/v1'; EXPORT_SCHEMA='media-rights-ops-export/v1'; RECEIPT_SCHEMA='media-rights-ops-receipt/v1'; MAX_INPUT_BYTES=8*1024*1024
 ID_RE=re.compile(r'^[a-z0-9][a-z0-9._-]{1,79}$'); CHANNEL_RE=re.compile(r'^[a-z0-9][a-z0-9._-]{1,63}$'); TERRITORY_RE=re.compile(r'^[A-Z][A-Z0-9-]{1,15}$'); SHA256_RE=re.compile(r'^[0-9a-f]{64}$')
@@ -11,10 +11,26 @@ def require(ok,msg):
 def canonical_bytes(v): return (json.dumps(v,sort_keys=True,separators=(',',':'),ensure_ascii=False)+'\n').encode()
 def sha256_bytes(b): return hashlib.sha256(b).hexdigest()
 def parse_time(v,at):
-    require(isinstance(v,str) and v,f'{at} must be an offset-aware timestamp'); text=v[:-1]+'+00:00' if v.endswith('Z') else v
+    """Accept only timestamps representable by the v1 whole-second ledger.
+
+    Inspect original fractions: datetime can discard sub-microsecond digits
+    and fractions on a zero UTC offset before the caller sees the value.
+    A dot/comma separating a complete ISO date from its time is not a fraction.
+    """
+    require(isinstance(v,str) and v,f'{at} must be an offset-aware timestamp')
+    text=v[:-1]+'+00:00' if v.endswith('Z') else v
     try: dt=datetime.fromisoformat(text)
     except ValueError as e: raise RightsError(f'{at} must be an ISO-8601 timestamp') from e
-    require(dt.tzinfo is not None and dt.utcoffset() is not None,f'{at} must include an offset'); return dt.astimezone(timezone.utc)
+    require(dt.tzinfo is not None and dt.utcoffset() is not None,f'{at} must include an offset')
+    for match in re.finditer(r'[.,]([0-9]+)',text):
+        try: date.fromisoformat(text[:match.start()])
+        except ValueError:
+            require(not any(digit!='0' for digit in match.group(1)),
+                    f'{at} must use whole-second precision; nonzero fractions are unsupported')
+    try: utc=dt.astimezone(timezone.utc)
+    except (ValueError,OverflowError) as e: raise RightsError(f'{at} is outside the supported UTC range') from e
+    require(utc.microsecond==0,f'{at} must use whole-second precision')
+    return utc
 def norm_time(v,at): return parse_time(v,at).isoformat(timespec='seconds').replace('+00:00','Z')
 def strict_object(v,keys,at): require(isinstance(v,dict),f'{at} must be an object'); require(set(v)==keys,f'{at} keys invalid: expected {sorted(keys)}'); return v
 def strict_id(v,at): require(isinstance(v,str) and ID_RE.fullmatch(v) is not None,f'{at} invalid'); return v
