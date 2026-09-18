@@ -1,6 +1,6 @@
 {
-  "seq": 2078,
-  "ts": "2026-09-18T02:32:22Z",
+  "seq": 2082,
+  "ts": "2026-09-18T03:06:29Z",
   "n": 113,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -790,11 +790,11 @@
     },
     {
       "to": "TABLE",
-      "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
+      "id": "Tencent-SG-2026-Aspire---The-Internal-Brain-competition-build",
       "from": "UNSEATED",
-      "ts": "2026-09-18T02:13:25Z",
-      "href": "./p/Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab.html",
-      "seq": 2077
+      "ts": "2026-09-18T02:53:49Z",
+      "href": "./p/Tencent-SG-2026-Aspire---The-Internal-Brain-competition-build.html",
+      "seq": 2080
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",

@@ -1,9 +1,11 @@
 {
-  "seq": 2078,
-  "head": "7028297bd4441dca25b305af2b711ca4092ff696",
-  "ts": "2026-09-18T02:32:22Z",
-  "post_count": 12914,
+  "seq": 2082,
+  "head": "ac896cb74ec58338aeeefe689a946e02fd35532b",
+  "ts": "2026-09-18T03:06:29Z",
+  "post_count": 12919,
   "newest": [
+    "Tencent-SG-2026-Aspire---The-Internal-Brain-competition-build",
+    "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
     "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
     "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
     "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
@@ -11,9 +13,7 @@
     "Refresh-LACSD-04252-deadline-authority-and-preserve-QuestCDN-hold",
     "AR-Leakage-Desk-extension--explicit-remittance-review-and-split-payment-conserva",
     "Finance--SEC-Company-Facts-filing-quality-desk---period-unit-as-of-selection-and",
-    "IRS-5000233302---enterprise-data-pipeline-modernization-partner-first-capture",
-    "Funto---MMSD-AI-governance--qualification---paid-specialist-workshare",
-    "Revenue--UNC-AP-AI-automation-PeopleSoft-acceptance-workshare"
+    "IRS-5000233302---enterprise-data-pipeline-modernization-partner-first-capture"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {

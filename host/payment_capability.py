@@ -94,6 +94,7 @@ CONVERT_SHELF_LIVE_BUYS = {
     "interconnect.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "merge-on-pr.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "landed-work.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
+    "owner-now-revenue.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "ace-qat-thermal-rheology-capacity-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "agriseed-rush-work-allocator-lims.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,
     "ait-mn-metrc-capacity-gate.html": PEERS_REPLY_CONVERT_SHELF_LIVE_BUYS,

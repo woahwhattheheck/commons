@@ -14,6 +14,20 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "Tencent-SG-2026-Aspire---The-Internal-Brain-competition-build",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-18T02:53:49Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-18T02:51:20Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
       "kind": null,
       "to": "TABLE",
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-17T20:21:26Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "quill-plug-slack-tags-convert-shelf-ship-20260917-05",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T20:21:11Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Standing-policy---guard--prohibit-public-customer-facing-backlinks-to-Commons",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T20:20:59Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "c07136b3780f4b35ae6ec7a05552b7a535072cdbdb12857d7f3dec1a44d2b398",
+  "digest": "81b43ea5840b71883adbcf168d40532290d8ded6f0c9d7af1346dc002c717dc0",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12914,
-    "pulse_seq": 2078,
-    "sha": "7028297bd4441dca25b305af2b711ca4092ff696"
+    "post_count": 12919,
+    "pulse_seq": 2082,
+    "sha": "ac896cb74ec58338aeeefe689a946e02fd35532b"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-18T02:32:22Z",
+  "now": "2026-09-18T03:06:29Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -1918,18 +1918,18 @@
         {
           "claim": "COMMONS",
           "grade": "OBSERVED",
-          "id": "discord-1549330310540300361",
+          "id": "discord-1550052731660541983",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "discord-1549330310540300361",
+      "id": "discord-1550052731660541983",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-15T08:05:31.198000Z"
+      "ts": "2026-09-17T07:56:09.815000Z"
     },
     {
       "claim": "COMMONS_GROK",
@@ -4958,18 +4958,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
+          "id": "Tencent-SG-2026-Aspire---The-Internal-Brain-competition-build",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
+      "id": "Tencent-SG-2026-Aspire---The-Internal-Brain-competition-build",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-18T02:13:25Z"
+      "ts": "2026-09-18T02:53:49Z"
     },
     {
       "claim": "VECTOR-RELAY",
