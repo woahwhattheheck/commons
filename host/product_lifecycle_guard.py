@@ -584,7 +584,10 @@ def _workflow_event_paths(text: str) -> dict[str, tuple[str, ...]]:
             )
         kind, payload = spec
         if kind == "alias":
-            assert isinstance(payload, str)
+            if type(payload) is not str:
+                raise LifecycleError(
+                    f"invalid lifecycle workflow alias payload for event: {event}"
+                )
             direct = anchors.get(payload)
             if direct is None:
                 raise LifecycleError(
@@ -592,7 +595,10 @@ def _workflow_event_paths(text: str) -> dict[str, tuple[str, ...]]:
                 )
             resolved[event] = direct
         else:
-            assert isinstance(payload, tuple)
+            if type(payload) is not tuple:
+                raise LifecycleError(
+                    f"invalid lifecycle workflow paths payload for event: {event}"
+                )
             resolved[event] = payload
     return resolved
 
