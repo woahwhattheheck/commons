@@ -36,6 +36,13 @@ _MAX_ARGV = 64
 _MAX_ARG_CHARS = 8192
 _MAX_EXCERPT_CHARS = 4096
 _MAX_TIMEOUT_SECONDS = 3600
+MAX_PACKET_BYTES = 2 * 1024 * 1024
+_MAX_JSON_DEPTH = 32
+_MAX_MANIFEST_ENTRIES = 4096
+_MAX_ARCHIVE_BYTES = 128 * 1024 * 1024
+_MAX_ARCHIVE_MEMBERS = 20000
+_MAX_ARCHIVE_ENTRY_BYTES = 64 * 1024 * 1024
+_MAX_ARCHIVE_UNCOMPRESSED_BYTES = 512 * 1024 * 1024
 
 _ARCHIVE_REMOTE = "/tmp/e2b-exact-head-source.archive"
 _MANIFEST_REMOTE = "/tmp/e2b-exact-head-manifest.json"
@@ -89,15 +96,66 @@ def _sha256_bytes(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
-def _sha256_file(path: Path) -> str:
-    digest = hashlib.sha256()
+def _read_archive_bounded(path: Path) -> tuple[bytes, str]:
+    size = path.stat().st_size
+    if size > _MAX_ARCHIVE_BYTES:
+        raise JobValidationError(
+            f"source archive exceeds {_MAX_ARCHIVE_BYTES} byte limit"
+        )
     with path.open("rb") as handle:
-        while True:
-            chunk = handle.read(1024 * 1024)
-            if not chunk:
-                break
-            digest.update(chunk)
-    return digest.hexdigest()
+        data = handle.read(_MAX_ARCHIVE_BYTES + 1)
+    if len(data) > _MAX_ARCHIVE_BYTES:
+        raise JobValidationError(
+            f"source archive exceeds {_MAX_ARCHIVE_BYTES} byte limit"
+        )
+    return data, _sha256_bytes(data)
+
+
+def load_job_packet_bytes(raw: bytes | bytearray) -> dict[str, Any]:
+    if not isinstance(raw, (bytes, bytearray)):
+        raise JobValidationError("job packet must be bytes")
+    if len(raw) > MAX_PACKET_BYTES:
+        raise JobValidationError(
+            f"job packet exceeds {MAX_PACKET_BYTES} byte limit"
+        )
+
+    def reject_constant(value: str) -> Any:
+        raise JobValidationError(f"non-finite JSON constant is forbidden: {value}")
+
+    def unique_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+        out: dict[str, Any] = {}
+        for key, value in pairs:
+            if key in out:
+                raise JobValidationError(f"duplicate JSON key: {key}")
+            out[key] = value
+        return out
+
+    try:
+        parsed = json.loads(
+            bytes(raw),
+            object_pairs_hook=unique_object,
+            parse_constant=reject_constant,
+        )
+    except JobValidationError:
+        raise
+    except (json.JSONDecodeError, UnicodeDecodeError) as exc:
+        raise JobValidationError(f"invalid job JSON: {exc}") from exc
+
+    stack: list[tuple[Any, int]] = [(parsed, 1)]
+    while stack:
+        value, depth = stack.pop()
+        if depth > _MAX_JSON_DEPTH:
+            raise JobValidationError(
+                f"job JSON exceeds {_MAX_JSON_DEPTH} nesting depth"
+            )
+        if isinstance(value, dict):
+            stack.extend((item, depth + 1) for item in value.values())
+        elif isinstance(value, list):
+            stack.extend((item, depth + 1) for item in value)
+
+    if not isinstance(parsed, dict):
+        raise JobValidationError("job packet must be a JSON object")
+    return parsed
 
 
 def _require_exact_keys(value: Mapping[str, Any], allowed: set[str], where: str) -> None:
@@ -178,6 +236,10 @@ def validate_job(packet: Mapping[str, Any]) -> JobSpec:
     raw_manifest = packet.get("manifest", [])
     if not isinstance(raw_manifest, list):
         raise JobValidationError("manifest must be a list when supplied")
+    if len(raw_manifest) > _MAX_MANIFEST_ENTRIES:
+        raise JobValidationError(
+            f"manifest must contain at most {_MAX_MANIFEST_ENTRIES} entries"
+        )
     manifest: list[ManifestEntry] = []
     seen_paths: set[str] = set()
     for index, raw in enumerate(raw_manifest):
@@ -312,6 +374,9 @@ import zipfile
 
 src = pathlib.Path(sys.argv[1])
 dst = pathlib.Path(sys.argv[2])
+max_members = int(sys.argv[3])
+max_entry = int(sys.argv[4])
+max_total = int(sys.argv[5])
 dst.mkdir(parents=True, exist_ok=True)
 
 def safe(name):
@@ -320,10 +385,21 @@ def safe(name):
         part not in ("", ".", "..") for part in p.parts
     )
 
+def charge(size, total):
+    if size < 0 or size > max_entry:
+        raise SystemExit(96)
+    total += size
+    if total > max_total:
+        raise SystemExit(97)
+    return total
+
 if tarfile.is_tarfile(src):
     with tarfile.open(src, "r:*") as tf:
-        members = tf.getmembers()
-        for member in members:
+        members = []
+        total = 0
+        for member in tf:
+            if len(members) >= max_members:
+                raise SystemExit(95)
             if (
                 not safe(member.name)
                 or member.issym()
@@ -331,16 +407,24 @@ if tarfile.is_tarfile(src):
                 or not (member.isfile() or member.isdir())
             ):
                 raise SystemExit(91)
-        tf.extractall(dst)
+            if member.isfile():
+                total = charge(member.size, total)
+            members.append(member)
+        tf.extractall(dst, members=members)
 elif zipfile.is_zipfile(src):
     with zipfile.ZipFile(src) as zf:
         infos = zf.infolist()
+        if len(infos) > max_members:
+            raise SystemExit(95)
+        total = 0
         for info in infos:
             if not safe(info.filename):
                 raise SystemExit(92)
             mode = (info.external_attr >> 16) & 0o170000
-            if mode == 0o120000:
+            if mode not in (0, 0o040000, 0o100000):
                 raise SystemExit(93)
+            if not info.is_dir():
+                total = charge(info.file_size, total)
         zf.extractall(dst)
 else:
     raise SystemExit(94)
@@ -431,12 +515,11 @@ def execute_job(
         raise JobValidationError(
             "archive_path must name an existing regular non-symlink file"
         )
-    local_digest = _sha256_file(archive)
+    archive_bytes, local_digest = _read_archive_bounded(archive)
     if local_digest != job.source_archive_sha256:
         raise JobValidationError(
             "local source archive digest does not match source_archive_sha256"
         )
-    archive_bytes = archive.read_bytes()
 
     env = os.environ if environ is None else environ
     api_key = env.get("E2B_API_KEY", "")
@@ -495,7 +578,13 @@ def execute_job(
             "SAFE_EXTRACT",
             _SAFE_EXTRACT_SCRIPT,
             min(job.sandbox_timeout_seconds, 180),
-            args=[_ARCHIVE_REMOTE, _WORKSPACE_REMOTE],
+            args=[
+                _ARCHIVE_REMOTE,
+                _WORKSPACE_REMOTE,
+                str(_MAX_ARCHIVE_MEMBERS),
+                str(_MAX_ARCHIVE_ENTRY_BYTES),
+                str(_MAX_ARCHIVE_UNCOMPRESSED_BYTES),
+            ],
         )
 
         if job.manifest:

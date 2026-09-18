@@ -5,13 +5,24 @@ import json
 import sys
 from pathlib import Path
 
-from .executor import JobValidationError, execute_job
+from .executor import (
+    MAX_PACKET_BYTES,
+    JobValidationError,
+    execute_job,
+    load_job_packet_bytes,
+)
 
 
 def _load_packet(path: str | None) -> dict:
     if path:
-        return json.loads(Path(path).read_text("utf-8"))
-    return json.load(sys.stdin)
+        with Path(path).open("rb") as handle:
+            raw = handle.read(MAX_PACKET_BYTES + 1)
+    else:
+        stream = getattr(sys.stdin, "buffer", sys.stdin)
+        raw = stream.read(MAX_PACKET_BYTES + 1)
+        if isinstance(raw, str):
+            raw = raw.encode("utf-8")
+    return load_job_packet_bytes(raw)
 
 
 def main(argv: list[str] | None = None) -> int:

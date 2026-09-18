@@ -3,12 +3,16 @@ from __future__ import annotations
 import hashlib
 import io
 import json
+import subprocess
+import sys
 import tarfile
 import tempfile
 import unittest
 from pathlib import Path
 from types import SimpleNamespace
 
+from tools.e2b_executor import executor as executor_module
+from tools.e2b_executor.__main__ import _load_packet
 from tools.e2b_executor.executor import (
     JOB_SCHEMA,
     JobValidationError,
@@ -181,6 +185,98 @@ class E2BExecutorTests(unittest.TestCase):
         ]
         with self.assertRaisesRegex(JobValidationError, "unsupported keys"):
             validate_job(bad_shell)
+
+    def test_packet_loader_rejects_oversize_duplicate_nonfinite_and_deep_json(self):
+        with self.assertRaisesRegex(JobValidationError, "byte limit"):
+            executor_module.load_job_packet_bytes(
+                b" " * (executor_module.MAX_PACKET_BYTES + 1)
+            )
+        with self.assertRaisesRegex(JobValidationError, "duplicate JSON key"):
+            executor_module.load_job_packet_bytes(b'{"schema":"a","schema":"b"}')
+        with self.assertRaisesRegex(JobValidationError, "non-finite"):
+            executor_module.load_job_packet_bytes(b'{"value":NaN}')
+        deep = ("[" * (executor_module._MAX_JSON_DEPTH + 1) + "0" +
+                "]" * (executor_module._MAX_JSON_DEPTH + 1)).encode()
+        with self.assertRaisesRegex(JobValidationError, "nesting depth"):
+            executor_module.load_job_packet_bytes(deep)
+
+        packet_file = Path(self.tmp.name) / "oversize.json"
+        with packet_file.open("wb") as handle:
+            handle.truncate(executor_module.MAX_PACKET_BYTES + 1)
+        with self.assertRaisesRegex(JobValidationError, "byte limit"):
+            _load_packet(str(packet_file))
+
+    def test_archive_byte_ceiling_blocks_before_hash_or_provider(self):
+        archive = Path(self.tmp.name) / "oversize.tar"
+        with archive.open("wb") as handle:
+            handle.truncate(executor_module._MAX_ARCHIVE_BYTES + 1)
+        packet = dict(
+            self.packet,
+            archive_path=str(archive),
+            source_archive_sha256="0" * 64,
+        )
+        factory = Factory(FakeSandbox(self.digest))
+        with self.assertRaisesRegex(JobValidationError, "archive exceeds"):
+            execute_job(
+                packet,
+                sandbox_factory=factory,
+                environ={"E2B_API_KEY": "secret"},
+            )
+        self.assertEqual(factory.calls, [])
+
+    def test_manifest_cardinality_is_bounded(self):
+        packet = dict(self.packet)
+        packet["manifest"] = [
+            {"path": f"pkg/{index}.py", "sha256": "1" * 64}
+            for index in range(executor_module._MAX_MANIFEST_ENTRIES + 1)
+        ]
+        with self.assertRaisesRegex(JobValidationError, "at most"):
+            validate_job(packet)
+
+    def test_safe_extract_preflights_member_entry_and_aggregate_limits(self):
+        archive = Path(self.tmp.name) / "limits.tar"
+        payloads = {"a.txt": b"1234", "b.txt": b"5678"}
+        with tarfile.open(archive, "w") as tf:
+            for name, payload in payloads.items():
+                info = tarfile.TarInfo(name)
+                info.size = len(payload)
+                tf.addfile(info, io.BytesIO(payload))
+
+        def run(max_members, max_entry, max_total, suffix):
+            out = Path(self.tmp.name) / f"extract-{suffix}"
+            proc = subprocess.run(
+                [
+                    sys.executable,
+                    "-c",
+                    "# E2B_STAGE_SAFE_EXTRACT\n" + executor_module._SAFE_EXTRACT_SCRIPT,
+                    str(archive),
+                    str(out),
+                    str(max_members),
+                    str(max_entry),
+                    str(max_total),
+                ],
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            return proc, out
+
+        count, count_out = run(1, 100, 100, "count")
+        self.assertEqual(count.returncode, 95)
+        self.assertFalse((count_out / "a.txt").exists())
+
+        entry, entry_out = run(10, 3, 100, "entry")
+        self.assertEqual(entry.returncode, 96)
+        self.assertFalse((entry_out / "a.txt").exists())
+
+        total, total_out = run(10, 10, 7, "total")
+        self.assertEqual(total.returncode, 97)
+        self.assertFalse((total_out / "a.txt").exists())
+
+        ok, ok_out = run(10, 10, 8, "ok")
+        self.assertEqual(ok.returncode, 0, ok.stderr)
+        self.assertEqual((ok_out / "a.txt").read_bytes(), b"1234")
+        self.assertEqual((ok_out / "b.txt").read_bytes(), b"5678")
 
     def test_upload_digest_extract_manifest_then_commands(self):
         packet = dict(self.packet)
