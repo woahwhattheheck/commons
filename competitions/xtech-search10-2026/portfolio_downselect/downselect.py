@@ -516,6 +516,8 @@ def _candidate(
             "usamrdcExclusive",
             "federalSupportOverlap",
             "criteria",
+            "demonstratedMetrics",
+            "transitionPath",
             "traction",
         },
         path,
@@ -610,6 +612,18 @@ def _candidate(
         criterion_bp[criterion] = weighted_bp
         total_bp += weighted_bp
         blockers.extend(claim_blockers)
+
+    for auxiliary_name in ("demonstratedMetrics", "transitionPath"):
+        _, auxiliary_blockers = _criterion_projection(
+            obj[auxiliary_name],
+            f"{path}.{auxiliary_name}",
+            candidate_id=candidate_id,
+            candidate_source=candidate_source,
+            registry=registry,
+            used=used,
+            seen_claim_ids=seen_claim_ids,
+        )
+        blockers.extend(auxiliary_blockers)
 
     traction = obj["traction"]
     if not isinstance(traction, list) or len(traction) > 32:
