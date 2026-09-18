@@ -75,10 +75,10 @@ def _validate_disposition_source_binding(partner: dict[str, Any], gates: dict[st
         gate = gates[disposition["gate_id"]]
         gate_sources = {(ref["source_id"], ref["source_sha256"]) for ref in gate["source_refs"]}
         disposition_sources = {(ref["source_id"], ref["source_sha256"]) for ref in disposition["evidence_refs"]}
-        if not (gate_sources & disposition_sources):
+        if not disposition_sources or not disposition_sources.issubset(gate_sources):
             raise QualificationError(
                 f"partner {partner['name']} gate {disposition['gate_id']} disposition evidence "
-                "must be explicitly bound in that gate's source_refs"
+                "must be wholly bound in that gate's source_refs"
             )
 
 
