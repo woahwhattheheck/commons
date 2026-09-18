@@ -1,0 +1,91 @@
+import io
+import unittest
+import urllib.error
+from unittest import mock
+
+from broker import Upstream
+from gateway import API_ROOT, GitHubProvider, NoRedirect, build_url
+
+
+class Response(io.BytesIO):
+    def __init__(self, body, status=200, headers=None):
+        super().__init__(body)
+        self.status = status
+        self.headers = headers or {}
+    def __enter__(self):
+        return self
+    def __exit__(self, *args):
+        self.close()
+    def read1(self, n=-1):
+        return self.read(n)
+
+
+class URLTests(unittest.TestCase):
+    def test_fixed_routes_encode_dynamic_segments(self):
+        self.assertEqual(API_ROOT + "/repos/o/r", build_url("repo.get", {"owner": "o", "repo": "r"}))
+        url = build_url("contents.get", {"owner": "o", "repo": "r", "path": "dir/a b.txt", "ref": "main"})
+        self.assertEqual(API_ROOT + "/repos/o/r/contents/dir/a%20b.txt?ref=main", url)
+        url = build_url("search.issues", {"q": "repo:o/r is:issue bug", "page": 2, "per_page": 50})
+        self.assertTrue(url.startswith(API_ROOT + "/search/issues?"))
+        self.assertIn("q=repo%3Ao%2Fr+is%3Aissue+bug", url)
+    def test_traversal_and_header_injection_rejected(self):
+        for route, params in [
+            ("contents.get", {"owner": "o", "repo": "r", "path": "../x"}),
+            ("commit.get", {"owner": "o", "repo": "r", "ref": "x\nInjected: y"}),
+        ]:
+            with self.assertRaises(ValueError):
+                build_url(route, params)
+
+
+class ProviderTests(unittest.TestCase):
+    def test_get_only_fixed_origin_and_token_never_in_url(self):
+        provider = GitHubProvider("synthetic-token-never-real")
+        opener = mock.Mock()
+        opener.open.return_value = Response(b'{"name":"demo"}', headers={})
+        provider._opener = opener
+        result = provider("repo.get", {"owner": "o", "repo": "r"})
+        request = opener.open.call_args.args[0]
+        self.assertEqual(200, result.status)
+        self.assertEqual("GET", request.method)
+        self.assertEqual(API_ROOT + "/repos/o/r", request.full_url)
+        self.assertNotIn("synthetic-token", request.full_url)
+        self.assertEqual("Bearer synthetic-token-never-real", request.get_header("Authorization"))
+
+    def test_redirects_are_never_followed(self):
+        self.assertIsNone(NoRedirect().redirect_request(None, None, 302, "redirect", {}, "https://evil.invalid"))
+
+    def test_secondary_limit_is_detected_but_body_is_not_returned(self):
+        provider = GitHubProvider("synthetic-token-never-real")
+        body = io.BytesIO(b'{"message":"You have exceeded a secondary rate limit. Please wait."}')
+        err = urllib.error.HTTPError(API_ROOT + "/repos/o/r", 403, "Forbidden", {"Retry-After": "60", "X-RateLimit-Remaining": "4999"}, body)
+        provider._opener = mock.Mock(); provider._opener.open.side_effect = err
+        result = provider("repo.get", {"owner": "o", "repo": "r"})
+        self.assertTrue(result.secondary_limited)
+        self.assertEqual("60", result.retry_after)
+        self.assertIsNone(result.payload)
+
+    def test_primary_limit_headers_preserved(self):
+        provider = GitHubProvider("synthetic-token-never-real")
+        err = urllib.error.HTTPError(API_ROOT + "/repos/o/r", 403, "Forbidden", {"X-RateLimit-Remaining": "0", "X-RateLimit-Reset": "2000"}, io.BytesIO(b'{"message":"rate limit exceeded"}'))
+        provider._opener = mock.Mock(); provider._opener.open.side_effect = err
+        result = provider("repo.get", {"owner": "o", "repo": "r"})
+        self.assertEqual(("0", "2000", False), (result.rate_remaining, result.rate_reset, result.secondary_limited))
+
+    def test_authentication_checks_expected_login(self):
+        provider = GitHubProvider("synthetic-token-never-real")
+        with mock.patch.object(provider, "_request", return_value=Upstream(200, {"login": "woahwhattheheck"})):
+            provider.authenticate("woahwhattheheck")
+            with self.assertRaises(ValueError):
+                provider.authenticate("someone-else")
+        with self.assertRaises(ValueError):
+            provider.authenticate("bad/login")
+
+    def test_invalid_or_oversize_json_is_upstream_error(self):
+        for raw in (b"not-json", b'{"x":1,"x":2}', b'{"x":NaN}', b"x" * 1048577, b"\xff"):
+            provider = GitHubProvider("synthetic-token-never-real")
+            provider._opener = mock.Mock(); provider._opener.open.return_value = Response(raw)
+            self.assertEqual(502, provider("repo.get", {"owner": "o", "repo": "r"}).status)
+
+
+if __name__ == "__main__":
+    unittest.main()
