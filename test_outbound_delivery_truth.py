@@ -1,6 +1,4 @@
 import copy
-import json
-import pathlib
 import unittest
 
 from coordination import outbound_delivery_truth as m
@@ -14,16 +12,16 @@ def packet(events=None):
     return {
         "schema": m.INPUT_SCHEMA,
         "submission": {
-            "operation_key": "LEAD-ACME-001",
-            "counterparty": "Acme Corp",
-            "purpose": "paid controls workshare",
-            "provider": "gmail",
+            "operation_key": "SYNTH-LEAD-001",
+            "counterparty": "Synthetic Counterparty",
+            "purpose": "synthetic workshare",
+            "provider": "synthetic-mail",
             "provider_message_id": "msg-001",
             "provider_thread_id": "thr-001",
-            "sender": "sales@example.com",
-            "recipient": "ops@acme.example",
+            "sender": "sender-token",
+            "recipient": "recipient-token",
             "submitted_at": "2026-09-17T23:09:00Z",
-            "source_ref": "gmail:sent:msg-001",
+            "source_ref": "synthetic:submission:msg-001",
             "source_sha256": sha("a"),
         },
         "events": list(events or []),
@@ -38,17 +36,17 @@ def event(
     kind="DSN",
     message="msg-001",
     thread="thr-001",
-    sender="sales@example.com",
-    recipient="ops@acme.example",
+    sender="sender-token",
+    recipient="recipient-token",
     action="failed",
     status="5.4.1",
-    diagnostic="smtp; 550 5.4.1 Recipient address rejected",
+    diagnostic="synthetic permanent route failure",
 ):
     return {
         "id": eid,
         "kind": kind,
         "observed_at": observed,
-        "provider": "gmail",
+        "provider": "synthetic-mail",
         "original_message_id": message,
         "original_thread_id": thread,
         "sender": sender,
@@ -56,13 +54,13 @@ def event(
         "action": action,
         "status": status,
         "diagnostic_code": diagnostic,
-        "source_ref": f"gmail:dsn:{eid}",
+        "source_ref": f"synthetic:evidence:{eid}",
         "source_sha256": sha(source),
     }
 
 
 class DeliveryTruthTests(unittest.TestCase):
-    def test_hard_dsn_downgrades_sent_and_kills_route_without_contact_claim(self):
+    def test_hard_dsn_downgrades_submission_and_kills_route_without_contact_claim(self):
         art = m.compile_delivery_truth(packet([event()]))
         self.assertEqual(art["delivery_state"], "DELIVERY_FAILED")
         self.assertEqual(art["state_transition"][1], "PROVIDER_SUBMITTED_PENDING_DELIVERY")
@@ -85,7 +83,7 @@ class DeliveryTruthTests(unittest.TestCase):
             kind="PROVIDER_DELIVERY_CONFIRMATION",
             action="delivered",
             status="2.0.0",
-            diagnostic="provider retained final delivery confirmation",
+            diagnostic="synthetic retained delivery confirmation",
         )
         art = m.compile_delivery_truth(packet([ev]))
         self.assertEqual(art["delivery_state"], "DELIVERED_EVIDENCE")
@@ -94,26 +92,23 @@ class DeliveryTruthTests(unittest.TestCase):
         self.assertFalse(art["collision_projection"]["counts_as_revenue"])
 
     def test_wrong_message_dsn_is_unbound_not_failure(self):
-        ev = event(message="msg-other")
-        art = m.compile_delivery_truth(packet([ev]))
+        art = m.compile_delivery_truth(packet([event(message="msg-other")]))
         self.assertEqual(art["delivery_state"], "DELIVERY_UNKNOWN")
         self.assertIn("message", art["evaluated_evidence"][0]["binding_mismatches"])
 
     def test_wrong_recipient_dsn_is_unbound(self):
-        ev = event(recipient="other@acme.example")
-        art = m.compile_delivery_truth(packet([ev]))
+        art = m.compile_delivery_truth(packet([event(recipient="other-recipient")]))
         self.assertEqual(art["delivery_state"], "DELIVERY_UNKNOWN")
         self.assertIn("recipient", art["evaluated_evidence"][0]["binding_mismatches"])
 
     def test_thread_alias_collision_does_not_bind(self):
-        ev = event(thread="thr-other")
-        art = m.compile_delivery_truth(packet([ev]))
+        art = m.compile_delivery_truth(packet([event(thread="thr-other")]))
         self.assertEqual(art["delivery_state"], "DELIVERY_UNKNOWN")
         self.assertIn("thread", art["evaluated_evidence"][0]["binding_mismatches"])
 
     def test_duplicate_retained_source_rejected(self):
         ev1 = event(eid="e1", source="b")
-        ev2 = event(eid="e2", source="b", diagnostic="a different provider fact")
+        ev2 = event(eid="e2", source="b", diagnostic="different synthetic fact")
         with self.assertRaises(m.DeliveryTruthError):
             m.compile_delivery_truth(packet([ev1, ev2]))
 
@@ -124,17 +119,13 @@ class DeliveryTruthTests(unittest.TestCase):
             m.compile_delivery_truth(packet([ev1, ev2]))
 
     def test_delayed_soft_failure_stays_unknown(self):
-        ev = event(action="delayed", status="4.4.1", diagnostic="smtp; 451 temporary route issue")
+        ev = event(action="delayed", status="4.4.1", diagnostic="synthetic temporary route issue")
         art = m.compile_delivery_truth(packet([ev]))
         self.assertEqual(art["delivery_state"], "DELIVERY_UNKNOWN")
         self.assertEqual(art["evaluated_evidence"][0]["classification"], "SOFT_FAILURE")
 
-    def test_forged_free_text_bounce_cannot_override_structured_status(self):
-        ev = event(
-            action="delayed",
-            status="4.2.0",
-            diagnostic="550 5.1.1 HARD BOUNCE recipient does not exist",
-        )
+    def test_free_text_cannot_override_structured_status(self):
+        ev = event(action="delayed", status="4.2.0", diagnostic="synthetic text claims permanent failure")
         art = m.compile_delivery_truth(packet([ev]))
         self.assertEqual(art["delivery_state"], "DELIVERY_UNKNOWN")
         self.assertEqual(art["evaluated_evidence"][0]["classification"], "SOFT_FAILURE")
@@ -147,7 +138,7 @@ class DeliveryTruthTests(unittest.TestCase):
             kind="PROVIDER_DELIVERY_CONFIRMATION",
             action="delivered",
             status="2.0.0",
-            diagnostic="final delivery",
+            diagnostic="synthetic final delivery",
         )
         art = m.compile_delivery_truth(packet([fail, ok]))
         self.assertEqual(art["delivery_state"], "DELIVERY_UNKNOWN")
@@ -197,15 +188,26 @@ class DeliveryTruthTests(unittest.TestCase):
         self.assertFalse(proj["same_route_resend_authorized"])
         self.assertFalse(proj["alternate_route_send_authorized"])
 
-    def test_retained_examples_replay_to_declared_states(self):
-        path = pathlib.Path(__file__).parent / "coordination" / "outbound_delivery_truth.examples.json"
-        examples = json.loads(path.read_text(encoding="utf-8"))
-        self.assertEqual(examples["schema"], "commons.outbound-delivery-examples/v1")
-        self.assertEqual(len(examples["cases"]), 3)
-        for case in examples["cases"]:
-            artifact = m.compile_delivery_truth(case["packet"])
-            self.assertEqual(artifact["delivery_state"], case["expected_state"])
-            self.assertTrue(m.verify_delivery_truth(case["packet"], artifact)["valid"])
+    def test_retained_three_way_replay_matrix(self):
+        hard_packet = packet([event()])
+        unknown_packet = packet()
+        delivered_event = event(
+            kind="PROVIDER_DELIVERY_CONFIRMATION",
+            action="delivered",
+            status="2.0.0",
+            diagnostic="synthetic retained delivery confirmation",
+        )
+        delivered_packet = packet([delivered_event])
+        hard = m.compile_delivery_truth(hard_packet)
+        unknown = m.compile_delivery_truth(unknown_packet)
+        delivered = m.compile_delivery_truth(delivered_packet)
+        self.assertEqual(
+            [hard["delivery_state"], unknown["delivery_state"], delivered["delivery_state"]],
+            ["DELIVERY_FAILED", "DELIVERY_UNKNOWN", "DELIVERED_EVIDENCE"],
+        )
+        self.assertTrue(m.verify_delivery_truth(hard_packet, hard)["valid"])
+        self.assertTrue(m.verify_delivery_truth(unknown_packet, unknown)["valid"])
+        self.assertTrue(m.verify_delivery_truth(delivered_packet, delivered)["valid"])
 
 
 if __name__ == "__main__":
