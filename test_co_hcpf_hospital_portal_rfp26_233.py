@@ -13,6 +13,14 @@ from opportunities.co_hcpf_hospital_portal_rfp26_233 import qualification as q
 
 SOURCE_SHA = "a" * 64
 EVIDENCE_SHA = "b" * 64
+ROSTER_SHA = "d" * 64
+
+PERSON_BY_ROLE = {
+    "project_lead": "person-alice",
+    "project_manager": "person-morgan",
+    "web_app_lead": "person-wren",
+    "quality_lead": "person-quinn",
+}
 
 
 def source_set():
@@ -32,20 +40,35 @@ def source_set():
     }
 
 
-def evidence(party, gate, suffix=None):
+def proposed_roster(assignments=None):
+    return {
+        "id": "owner-proposed-personnel-v1",
+        "sha256": ROSTER_SHA,
+        "assignments": dict(assignments or PERSON_BY_ROLE),
+    }
+
+
+def evidence(party, gate, suffix=None, subject_person_id=None):
+    if gate in q.PERSONNEL_GATES and subject_person_id is None:
+        role = q.PERSONNEL_ROLE_BY_GATE[gate]
+        subject_person_id = PERSON_BY_ROLE[role]
+    if gate not in q.PERSONNEL_GATES:
+        subject_person_id = None
     return {
         "id": suffix or f"{party.lower()}-{gate}",
         "party": party,
         "gate": gate,
+        "subject_person_id": subject_person_id,
         "sha256": EVIDENCE_SHA,
     }
 
 
-def packet(rows=None):
+def packet(rows=None, roster=None):
     return {
         "schema": q.PACKET_SCHEMA,
         "pursuit_id": q.PURSUIT_ID,
         "buyer_source_sets": [source_set()],
+        "proposed_roster": proposed_roster() if roster is None else roster,
         "qualification_evidence": rows or [],
     }
 
@@ -58,12 +81,14 @@ class HcpfHospitalPortalQualificationTests(unittest.TestCase):
     def fixed_clock(self):
         return datetime(2026, 9, 18, 1, 0, tzinfo=timezone.utc)
 
-    def engine(self, rows=(), *, when=None, sources=None):
+    def engine(self, rows=(), *, when=None, sources=None, rosters=None, clock=None):
         source_rows = sources or [source_set()]
+        roster_rows = rosters or [proposed_roster()]
         return q._build_engine(
             {row["id"]: dict(row) for row in source_rows},
             roots(rows),
-            (lambda: when) if when is not None else self.fixed_clock,
+            {row["id"]: dict(row) for row in roster_rows},
+            clock or ((lambda: when) if when is not None else self.fixed_clock),
         )
 
     def all_owner_rows(self):
@@ -75,6 +100,7 @@ class HcpfHospitalPortalQualificationTests(unittest.TestCase):
         self.assertEqual(result["state"], "HOLD_MISSING_BUYER_SOURCE")
         self.assertEqual(result["commercial_posture"], "RESEARCH_HOLD")
         self.assertIsNone(result["official_source_set"])
+        self.assertIsNone(result["proposed_roster"])
         self.assertTrue(all(value is False for value in result["authority"].values()))
 
     def test_source_without_qualification_evidence_stays_qualification_hold(self):
@@ -89,6 +115,7 @@ class HcpfHospitalPortalQualificationTests(unittest.TestCase):
         self.assertEqual(result["state"], "RESPONSE_READY_FOR_OWNER_REVIEW")
         self.assertEqual(result["commercial_posture"], "PRIME_CANDIDATE")
         self.assertEqual(result["partner_required_gates"], [])
+        self.assertEqual(len(result["personnel_bindings"]), len(q.PERSONNEL_GATES))
         self.assertFalse(result["authority"]["submit"])
         self.assertFalse(result["authority"]["sign"])
         self.assertFalse(result["authority"]["box_upload"])
@@ -107,14 +134,10 @@ class HcpfHospitalPortalQualificationTests(unittest.TestCase):
         self.assertEqual(result["owner_control_gaps"], [])
         self.assertFalse(result["trusted_teaming_agreement"])
 
-    def test_partner_can_supply_individual_and_team_evidence_but_needs_agreement(self):
+    def test_partner_can_supply_team_and_personnel_evidence_but_needs_agreement(self):
         owner_rows = [
             evidence("OWNER", gate)
-            for gate in (
-                "colorado_vss_legal",
-                "price_approved",
-                "signatory_authorized",
-            )
+            for gate in ("colorado_vss_legal", "price_approved", "signatory_authorized")
         ]
         partner_rows = [
             evidence("PARTNER", gate)
@@ -138,7 +161,13 @@ class HcpfHospitalPortalQualificationTests(unittest.TestCase):
     def test_partner_cannot_self_mint_owner_control_gates(self):
         for gate in q.OWNER_CONTROL_GATES:
             with self.subTest(gate=gate):
-                row = evidence("PARTNER", gate)
+                row = {
+                    "id": f"partner-{gate}",
+                    "party": "PARTNER",
+                    "gate": gate,
+                    "subject_person_id": None,
+                    "sha256": EVIDENCE_SHA,
+                }
                 with self.assertRaisesRegex(q.QualificationError, "owner-controlled"):
                     self.engine()(packet([row]))
 
@@ -160,6 +189,14 @@ class HcpfHospitalPortalQualificationTests(unittest.TestCase):
                 self.assertEqual(result["state"], "HOLD_MISSING_BUYER_SOURCE")
                 self.assertIsNone(result["official_source_set"])
 
+    def test_same_sha_personnel_evidence_cannot_relabel_subject_person(self):
+        trusted = evidence("OWNER", "project_lead_qualifications")
+        forged = dict(trusted)
+        forged["subject_person_id"] = "person-bob"
+        result = self.engine([trusted])(packet([forged]))
+        self.assertIn("project_lead_qualifications", result["personnel_gaps"])
+        self.assertEqual(result["personnel_bindings"], [])
+
     def test_equal_effective_trusted_source_generations_fail_ambiguous(self):
         second = source_set()
         second["id"] = "hcpf-rfp26-233-generation-3b"
@@ -170,6 +207,55 @@ class HcpfHospitalPortalQualificationTests(unittest.TestCase):
         with self.assertRaisesRegex(q.QualificationError, "ambiguous current official buyer generation"):
             engine(p)
 
+    def test_roster_same_sha_relabel_is_not_admitted(self):
+        rows = self.all_owner_rows()
+        forged_roster = proposed_roster()
+        forged_roster["assignments"]["project_lead"] = "person-bob"
+        result = self.engine(rows)(packet(rows, forged_roster))
+        self.assertEqual(result["state"], "HOLD_PERSONNEL_ROSTER")
+        self.assertIsNone(result["proposed_roster"])
+
+    def test_alice_evidence_cannot_satisfy_bob_proposed_as_project_lead(self):
+        bob_assignments = dict(PERSON_BY_ROLE)
+        bob_assignments["project_lead"] = "person-bob"
+        bob_roster = proposed_roster(bob_assignments)
+
+        rows = self.all_owner_rows()
+        result = self.engine(rows, rosters=[bob_roster])(packet(rows, bob_roster))
+        self.assertEqual(result["state"], "HOLD_PERSONNEL")
+        self.assertIn("project_lead_qualifications", result["personnel_gaps"])
+        self.assertNotIn(
+            "project_lead_qualifications",
+            {binding["gate"] for binding in result["personnel_bindings"]},
+        )
+
+    def test_one_person_cannot_occupy_two_required_roster_roles(self):
+        duplicate = proposed_roster()
+        duplicate["assignments"]["project_manager"] = duplicate["assignments"]["project_lead"]
+        with self.assertRaisesRegex(q.QualificationError, "distinct people"):
+            self.engine(rosters=[duplicate])
+
+    def test_direct_object_snapshot_detaches_before_clock_and_receipt_reads(self):
+        baseline_packet = packet()
+        baseline = self.engine()(baseline_packet)
+
+        mutable_packet = packet()
+
+        def mutating_clock():
+            mutable_packet["buyer_source_sets"][0]["submission_route"] = "ATTACKER_ROUTE"
+            mutable_packet["buyer_source_sets"][0]["five_year_cap_usd"] = 5
+            mutable_packet["proposed_roster"]["assignments"]["project_lead"] = "person-attacker"
+            return self.fixed_clock()
+
+        result = self.engine(clock=mutating_clock)(mutable_packet)
+        self.assertEqual(result["official_source_set"]["submission_route"], "HCPF_BOX")
+        self.assertEqual(result["official_source_set"]["five_year_cap_usd"], 2191010)
+        self.assertEqual(
+            result["proposed_roster"]["assignments"]["project_lead"],
+            PERSON_BY_ROLE["project_lead"],
+        )
+        self.assertEqual(result["input_digest_sha256"], baseline["input_digest_sha256"])
+
     def test_deadline_uses_trusted_process_time(self):
         rows = self.all_owner_rows()
         after = datetime(2026, 9, 21, 21, 0, 0, tzinfo=timezone.utc)
@@ -177,7 +263,7 @@ class HcpfHospitalPortalQualificationTests(unittest.TestCase):
         self.assertEqual(result["state"], "HOLD_DEADLINE")
         self.assertFalse(result["authority"]["submit"])
 
-    def test_receipt_binds_full_runtime_packet(self):
+    def test_receipt_binds_full_detached_runtime_packet(self):
         first = self.engine()(packet())
         changed = packet()
         changed["buyer_source_sets"][0]["submission_route"] = "OTHER"
@@ -214,6 +300,7 @@ class HcpfHospitalPortalQualificationTests(unittest.TestCase):
         originals = {
             "_PRODUCTION_ENGINE": q._PRODUCTION_ENGINE,
             "loads_strict": q.loads_strict,
+            "_snapshot_json": q._snapshot_json,
             "_validate_tree": q._validate_tree,
             "canonical_bytes": q.canonical_bytes,
             "PACKET_SCHEMA": q.PACKET_SCHEMA,
@@ -227,16 +314,14 @@ class HcpfHospitalPortalQualificationTests(unittest.TestCase):
                 "authority": {"revenue": True},
             }
             q.loads_strict = lambda raw: {"schema": "pwned"}
+            q._snapshot_json = lambda value: {"schema": "pwned"}
             q._validate_tree = lambda value: None
             q.canonical_bytes = lambda value: b"pwned"
             q.PACKET_SCHEMA = "attacker-schema"
             q.PURSUIT_ID = "attacker-pursuit"
             q.MAX_JSON_BYTES = 1
             q.datetime = object
-            for result in (
-                q.compile_packet(direct_input),
-                q.compile_json(raw_input),
-            ):
+            for result in (q.compile_packet(direct_input), q.compile_json(raw_input)):
                 self.assertEqual(result["state"], "HOLD_MISSING_BUYER_SOURCE")
                 self.assertEqual(result["commercial_posture"], "RESEARCH_HOLD")
                 self.assertTrue(all(value is False for value in result["authority"].values()))
