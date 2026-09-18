@@ -18,98 +18,152 @@ from .core import (
 MAX_INPUT_BYTES = 2_000_000
 
 
+def _require_dirfd_nofollow() -> None:
+    needed = ("O_NOFOLLOW", "O_DIRECTORY", "open", "unlink")
+    missing = [name for name in needed if not hasattr(os, name)]
+    if missing:
+        raise ValidationError(
+            "descriptor-relative no-follow directory primitives unavailable: " + ",".join(missing)
+        )
+
+
+def _split_retained_path(path: str | os.PathLike[str]) -> tuple[str, list[str], str]:
+    raw = os.fspath(path)
+    if not raw:
+        raise ValidationError("path must be non-empty")
+    if raw.endswith(os.sep) or raw.endswith("/"):
+        raise ValidationError(f"path must name a file, not a directory: {raw}")
+    abs_path = raw if os.path.isabs(raw) else os.path.abspath(raw)
+    parent, name = os.path.split(abs_path)
+    if not name or name in {".", ".."}:
+        raise ValidationError(f"path must name a file: {raw}")
+    comps: list[str] = []
+    cur = parent
+    while True:
+        nxt, part = os.path.split(cur)
+        if part:
+            if part in {".", ".."}:
+                raise ValidationError(f"unresolved path component: {raw}")
+            comps.append(part)
+            cur = nxt
+            continue
+        root = cur if cur else os.sep
+        break
+    comps.reverse()
+    return root, comps, name
+
+
+def _open_retained_parent(path: str | os.PathLike[str]) -> tuple[int, str]:
+    _require_dirfd_nofollow()
+    root, comps, name = _split_retained_path(path)
+    flags = os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW
+    fd = os.open(root, flags)
+    try:
+        for part in comps:
+            nxt = os.open(part, flags, dir_fd=fd)
+            os.close(fd)
+            fd = nxt
+        return fd, name
+    except OSError as exc:
+        os.close(fd)
+        raise ValidationError(f"cannot retain directory custody for {path}: {exc}") from exc
+
+
 def _read_regular(path: str | os.PathLike[str], limit: int = MAX_INPUT_BYTES) -> bytes:
     path = os.fspath(path)
-    flags = os.O_RDONLY
-    if hasattr(os, "O_NOFOLLOW"):
-        flags |= os.O_NOFOLLOW
+    parent_fd, name = _open_retained_parent(path)
     try:
-        fd = os.open(path, flags)
-    except OSError as exc:
-        raise ValidationError(f"cannot open regular input {path}: {exc}") from exc
-    try:
-        before = os.fstat(fd)
-        if not stat.S_ISREG(before.st_mode):
-            raise ValidationError(f"input is not a regular file: {path}")
-        if before.st_size > limit:
-            raise ValidationError(f"input exceeds {limit} bytes: {path}")
-        chunks = []
-        total = 0
-        while True:
-            chunk = os.read(fd, min(65536, limit + 1 - total))
-            if not chunk:
-                break
-            chunks.append(chunk)
-            total += len(chunk)
-            if total > limit:
+        flags = os.O_RDONLY | os.O_NOFOLLOW
+        try:
+            fd = os.open(name, flags, dir_fd=parent_fd)
+        except OSError as exc:
+            raise ValidationError(f"cannot open regular input {path}: {exc}") from exc
+        try:
+            before = os.fstat(fd)
+            if not stat.S_ISREG(before.st_mode):
+                raise ValidationError(f"input is not a regular file: {path}")
+            if before.st_size > limit:
                 raise ValidationError(f"input exceeds {limit} bytes: {path}")
-        after = os.fstat(fd)
-        fingerprint_before = (before.st_dev, before.st_ino, before.st_mode, before.st_size, before.st_mtime_ns, before.st_ctime_ns)
-        fingerprint_after = (after.st_dev, after.st_ino, after.st_mode, after.st_size, after.st_mtime_ns, after.st_ctime_ns)
-        if fingerprint_before != fingerprint_after:
-            raise ValidationError(f"input changed while reading: {path}")
-        raw = b"".join(chunks)
-        if len(raw) != after.st_size:
-            raise ValidationError(f"input size changed while reading: {path}")
-        return raw
+            chunks = []
+            total = 0
+            while True:
+                chunk = os.read(fd, min(65536, limit + 1 - total))
+                if not chunk:
+                    break
+                chunks.append(chunk)
+                total += len(chunk)
+                if total > limit:
+                    raise ValidationError(f"input exceeds {limit} bytes: {path}")
+            after = os.fstat(fd)
+            fingerprint_before = (before.st_dev, before.st_ino, before.st_mode, before.st_size, before.st_mtime_ns, before.st_ctime_ns)
+            fingerprint_after = (after.st_dev, after.st_ino, after.st_mode, after.st_size, after.st_mtime_ns, after.st_ctime_ns)
+            if fingerprint_before != fingerprint_after:
+                raise ValidationError(f"input changed while reading: {path}")
+            raw = b"".join(chunks)
+            if len(raw) != after.st_size:
+                raise ValidationError(f"input size changed while reading: {path}")
+            return raw
+        finally:
+            os.close(fd)
     finally:
-        os.close(fd)
+        os.close(parent_fd)
 
 
-def _preflight_absent(path: str | os.PathLike[str]) -> None:
-    path = os.fspath(path)
-    parent = os.path.dirname(path) or "."
-    try:
-        st = os.stat(parent, follow_symlinks=False)
-    except OSError as exc:
-        raise ValidationError(f"output parent unavailable: {parent}") from exc
-    if not stat.S_ISDIR(st.st_mode):
-        raise ValidationError(f"output parent is not a directory: {parent}")
-    if os.path.lexists(path):
-        raise ValidationError(f"output already exists: {path}")
-
-
-def _write_exclusive(path: str | os.PathLike[str], data: bytes) -> None:
-    path = os.fspath(path)
-    _preflight_absent(path)
-    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
-    if hasattr(os, "O_NOFOLLOW"):
-        flags |= os.O_NOFOLLOW
+def _write_exclusive_at(parent_fd: int, name: str, data: bytes, *, display_path: str) -> None:
     fd = None
     identity = None
     success = False
     try:
-        fd = os.open(path, flags, 0o600)
+        try:
+            existing = os.lstat(name, dir_fd=parent_fd)
+        except FileNotFoundError:
+            existing = None
+        except OSError as exc:
+            raise ValidationError(f"output parent unavailable: {display_path}: {exc}") from exc
+        if existing is not None:
+            raise ValidationError(f"output already exists: {display_path}")
+        flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW
+        try:
+            fd = os.open(name, flags, 0o600, dir_fd=parent_fd)
+        except FileExistsError as exc:
+            raise ValidationError(f"output already exists: {display_path}") from exc
+        except OSError as exc:
+            raise ValidationError(f"output write failed: {display_path}: {exc}") from exc
         created = os.fstat(fd)
         if not stat.S_ISREG(created.st_mode):
-            raise ValidationError(f"output is not a regular file: {path}")
+            raise ValidationError(f"output is not a regular file: {display_path}")
         identity = (created.st_dev, created.st_ino)
         view = memoryview(data)
         offset = 0
         while offset < len(view):
             written = os.write(fd, view[offset:])
             if written <= 0:
-                raise ValidationError(f"short write: {path}")
+                raise ValidationError(f"short write: {display_path}")
             offset += written
         os.fsync(fd)
         after = os.fstat(fd)
         if after.st_size != len(data):
-            raise ValidationError(f"output size mismatch: {path}")
+            raise ValidationError(f"output size mismatch: {display_path}")
         success = True
-    except FileExistsError as exc:
-        raise ValidationError(f"output already exists: {path}") from exc
-    except OSError as exc:
-        raise ValidationError(f"output write failed: {path}: {exc}") from exc
     finally:
         if fd is not None:
             os.close(fd)
         if not success and identity is not None:
             try:
-                visible = os.stat(path, follow_symlinks=False)
+                visible = os.lstat(name, dir_fd=parent_fd)
                 if (visible.st_dev, visible.st_ino) == identity:
-                    os.unlink(path)
+                    os.unlink(name, dir_fd=parent_fd)
             except OSError:
                 pass
+
+
+def _write_exclusive(path: str | os.PathLike[str], data: bytes) -> None:
+    path = os.fspath(path)
+    parent_fd, name = _open_retained_parent(path)
+    try:
+        _write_exclusive_at(parent_fd, name, data, display_path=path)
+    finally:
+        os.close(parent_fd)
 
 
 def _load(path: str) -> object:
@@ -129,11 +183,26 @@ def cmd_compile(args: argparse.Namespace) -> int:
     outputs = [args.output]
     if args.markdown:
         outputs.append(args.markdown)
-    for path in outputs:
-        _preflight_absent(path)
-    _write_exclusive(args.output, json_bytes)
-    if args.markdown:
-        _write_exclusive(args.markdown, md_bytes)
+    parents = []
+    names = []
+    try:
+        for path in outputs:
+            parent_fd, name = _open_retained_parent(path)
+            parents.append(parent_fd)
+            names.append(name)
+            try:
+                os.lstat(name, dir_fd=parent_fd)
+            except FileNotFoundError:
+                continue
+            except OSError as exc:
+                raise ValidationError(f"output parent unavailable: {path}: {exc}") from exc
+            raise ValidationError(f"output already exists: {path}")
+        _write_exclusive(args.output, json_bytes)
+        if args.markdown:
+            _write_exclusive(args.markdown, md_bytes)
+    finally:
+        for fd in parents:
+            os.close(fd)
     print(out["receipt_sha256"])
     return 0
 
@@ -156,7 +225,6 @@ def cmd_render(args: argparse.Namespace) -> int:
     compiled = _load(args.output)
     if not verify_cockpit(packet, policy, compiled, current_as_of=_now()):
         raise ValidationError("compiled output is not currently verified")
-    _preflight_absent(args.markdown)
     _write_exclusive(args.markdown, render_markdown(compiled).encode("utf-8"))
     return 0
 
