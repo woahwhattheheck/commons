@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import json
 import os
 from pathlib import Path
 import subprocess
@@ -48,7 +47,7 @@ def evidence_rows(party, gates):
 
 
 def roots(rows):
-    return {row["id"]: row["sha256"] for row in rows}
+    return {row["id"]: dict(row) for row in rows}
 
 
 class ChsdQualificationTests(unittest.TestCase):
@@ -57,15 +56,16 @@ class ChsdQualificationTests(unittest.TestCase):
 
     def engine(self, rows=(), *, when=None):
         return q._build_engine(
-            {"official-rfp-generation": BUYER_SHA},
+            {"official-rfp-generation": buyer()},
             roots(rows),
             (lambda: when) if when is not None else self.fixed_clock,
         )
 
-    def test_production_caller_cannot_mint_official_source(self):
+    def test_production_clock_and_caller_source_fail_closed(self):
         result = q.compile_packet(packet())
         self.assertEqual(result["state"], "HOLD_MISSING_BUYER_SOURCE")
         self.assertIsNone(result["official_buyer_source"])
+        self.assertTrue(result["evaluated_at"].endswith("Z"))
         self.assertTrue(all(value is False for value in result["authority"].values()))
 
     def test_official_source_without_owner_evidence_is_fail_closed(self):
@@ -108,6 +108,23 @@ class ChsdQualificationTests(unittest.TestCase):
         self.assertEqual(result["state"], "HOLD_DEADLINE")
         self.assertFalse(result["authority"]["submit"])
 
+    def test_sha_match_cannot_relabel_trusted_buyer_deadline_or_generation(self):
+        p = packet()
+        p["buyer_sources"][0]["proposal_deadline"] = "2099-10-01T14:00:00-06:00"
+        result = self.engine()(p)
+        self.assertEqual(result["state"], "HOLD_MISSING_BUYER_SOURCE")
+        self.assertIsNone(result["official_proposal_deadline"])
+
+    def test_sha_match_cannot_relabel_evidence_party_or_gate(self):
+        original = evidence_rows("PARTNER", ("biztalk_certification",))[0]
+        forged = dict(original)
+        forged["party"] = "OWNER"
+        forged["gate"] = "price_approved"
+        p = packet([forged])
+        result = self.engine([original])(p)
+        self.assertEqual(result["state"], "HOLD_CERTIFICATION")
+        self.assertNotIn(forged["id"], result["admitted_evidence_ids"])
+
     def test_fake_sha_and_authority_label_do_not_enter_trusted_generation(self):
         fake = buyer()
         fake["sha256"] = "c" * 64
@@ -136,7 +153,7 @@ class ChsdQualificationTests(unittest.TestCase):
                 with self.assertRaises(q.QualificationError):
                     q.loads_strict(raw)
 
-    def test_bool_is_not_integer_evidence_alias(self):
+    def test_bool_is_not_evidence_gate_alias(self):
         p = packet()
         p["qualification_evidence"] = [
             {"id": "x", "party": "OWNER", "gate": True, "sha256": EVIDENCE_SHA}
@@ -144,11 +161,13 @@ class ChsdQualificationTests(unittest.TestCase):
         with self.assertRaises(q.QualificationError):
             self.engine()(p)
 
-    def test_receipt_binds_full_runtime_packet(self):
+    def test_receipt_binds_full_runtime_packet_even_when_source_becomes_untrusted(self):
         one = self.engine()(packet())
         changed = packet()
         changed["buyer_sources"][0]["effective_at"] = "2026-09-10T08:00:00-06:00"
         two = self.engine()(changed)
+        self.assertEqual(one["state"], "HOLD_CERTIFICATION")
+        self.assertEqual(two["state"], "HOLD_MISSING_BUYER_SOURCE")
         self.assertNotEqual(one["input_digest_sha256"], two["input_digest_sha256"])
         self.assertNotEqual(one["receipt_sha256"], two["receipt_sha256"])
 
