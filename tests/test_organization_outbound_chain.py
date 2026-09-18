@@ -19,8 +19,10 @@ from revenue.organization_outbound_chain.provider_boundary import (
     ProviderBoundaryError,
     invoke_provider_boundary,
     provider_name,
+    registered_boundary_types,
 )
 from revenue.organization_outbound_chain.registry import (
+    ADAPTERS,
     find_bypasses,
     registered_host_mutation_identities,
     registered_provider_names,
@@ -725,6 +727,31 @@ class RegistryTest(unittest.TestCase):
         self.assertIn("mcp__Gmail__forward_emails", identities)
         self.assertIn("mcp__Slack__slack_send_message", identities)
         self.assertIn("mcp__Slack__slack_schedule_message", identities)
+
+    def test_manifest_exactly_matches_runtime_boundary_metadata(self):
+        rows = {item.provider: item for item in ADAPTERS}
+        boundaries = {
+            boundary.provider: boundary
+            for boundary in registered_boundary_types()
+        }
+        self.assertEqual(set(rows), set(boundaries))
+        for provider, boundary in boundaries.items():
+            row = rows[provider]
+            self.assertEqual(row.boundary_class_name, boundary.__name__)
+            self.assertEqual(row.transport_method, boundary.transport_method)
+            self.assertEqual(
+                tuple(row.host_mutation_identities),
+                tuple(boundary.host_mutation_identities),
+            )
+        runtime_identities = {
+            identity
+            for boundary in registered_boundary_types()
+            for identity in boundary.host_mutation_identities
+        }
+        self.assertEqual(
+            set(registered_host_mutation_identities()),
+            runtime_identities,
+        )
 
     def test_direct_lower_primitive_provider_method_and_host_marker_fail_registry(self):
         with tempfile.TemporaryDirectory() as td:
