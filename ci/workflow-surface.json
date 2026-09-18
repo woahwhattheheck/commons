@@ -1,7 +1,7 @@
 {
   "schema": "commons.workflow-surface.v1",
   "source_commit": "4592104ca9fd37f7546b0b39f01badb83f8a1300",
-  "source_workflows": 435,
+  "source_workflows": 436,
   "max_active_workflows": 67,
   "retained": [
     ".github/workflows/affordable-housing-compliance-demo.yml",
@@ -1158,6 +1158,12 @@
       "archive": "ci/workflow-recipes/reply-to-revenue-chronology.yml",
       "sha256": "940b4eb28838160da0bfad47264d775d6c1ef31cb6fd8a946fd24eb86674679b",
       "bytes": 1943
+    },
+    {
+      "source": ".github/workflows/repo-estate-rationalizer.yml",
+      "archive": "ci/workflow-recipes/repo-estate-rationalizer.yml",
+      "sha256": "e15d1e9761e640faa79d9aced0354d00900f71c07c577271feaffa0075b37cd9",
+      "bytes": 902
     },
     {
       "source": ".github/workflows/revenue-opportunity-portfolio-intake.yml",
