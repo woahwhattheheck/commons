@@ -285,4 +285,48 @@ def _build_api():
             fail(f"{name} must be canonical whole-second UTC")
         return value, int(dt.timestamp())
 
-    def utc_fro
+    def utc_from_epoch(second: int) -> str:
+        integer(second, "epoch_second")
+        return dt_cls.fromtimestamp(second, tz=utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+    root_keys = {
+        "schema",
+        "operation_key",
+        "counterparty",
+        "route",
+        "purpose",
+        "lease_id",
+        "selected_session",
+        "runtime",
+        "capture",
+        "transcript_source_ref",
+        "transcript_source_sha256",
+        "events",
+    }
+    runtime_keys = {"instance_id", "build_id", "source_sha256"}
+    capture_keys = {"captured_at", "max_age_seconds"}
+    event_base = {
+        "id",
+        "event_class",
+        "occurred_at",
+        "operation_key",
+        "counterparty",
+        "route",
+        "purpose",
+        "lease_id",
+        "session",
+        "runtime_instance_id",
+        "runtime_build_id",
+        "runtime_source_sha256",
+        "source_ref",
+        "source_sha256",
+    }
+
+    def normalize_packet(packet: _Any) -> dict[str, _Any]:
+        exact_keys(packet, "packet", root_keys)
+        if packet["schema"] != input_schema:
+            fail("unsupported input schema")
+        runtime = exact_keys(packet["runtime"], "runtime", runtime_keys)
+        capture = exact_keys(packet["capture"], "capture", capture_keys)
+        events = packet["events"]
+   
