@@ -79,6 +79,14 @@ Every state transition appends a canonical-JSON SHA-256 chained audit event. `st
 
 Public mutation entry points are `issue_current`, `consume_current`, `commit_current`, `expire_current`, and `reconcile_current`. Their process clock is captured in a closure at module initialization. Explicit-time helpers are private and exist only for deterministic tests.
 
+## Runtime-policy boundary
+
+The state-machine generation is sealed at first module load. Transition labels, terminal-state membership, TTL bounds, canonicalization/digest/identity/database helpers, token primitives, and SQLite integrity-error semantics are captured behind an immutable private runtime authority. Exported constants and helper names remain compatibility/test mirrors only; ordinary post-import module rebinding cannot change which persisted state is LEASED/CONSUMED/terminal or make a terminal generation mint a new GO capability.
+
+The explicit-time deterministic helpers and the public `*_current` entry points are closure-bound to that same first-load runtime; callers cannot select an alternate runtime through those surfaces. The process clock remains separately captured at initialization for the current-time APIs.
+
+This is a semantic-generation fence, not a Python process-isolation claim: an actor already able to replace function objects/closure cells or mutate process memory is outside this module's coordination boundary.
+
 ## Reference CLI sequence
 
 The CLI is intentionally explicit. Illustrative field values only:
