@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 98,
-    "open_pull_requests": 51,
-    "runs_in_progress": 17,
-    "runs_queued": 260
+    "open_pull_requests": 52,
+    "runs_in_progress": 14,
+    "runs_queued": 274
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -19,17 +19,6 @@
       "number": 15613,
       "title": "SwarmOps: harden current semantic readiness verification",
       "updated_at": "2026-09-17T22:48:12Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "swarm-z/commercial-laundry-ops-14558-20260917",
-      "created_at": "2026-09-17T18:59:49Z",
-      "draft": false,
-      "head_sha": "fc2ad19ab3179b7d46e5d405cc163aa8ff3806f8",
-      "number": 15627,
-      "title": "Build Commercial Laundry Route & Linen Custody Operations Desk",
-      "updated_at": "2026-09-17T23:21:00Z"
     },
     {
       "author": "woahwhattheheck",
@@ -63,9 +52,42 @@
       "number": 15635,
       "title": "Recover Nebius ProofPatch evidence-bound coding agent",
       "updated_at": "2026-09-18T01:07:22Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zsol/partner-qual-clean-current-main-20260917",
+      "created_at": "2026-09-17T19:07:58Z",
+      "draft": false,
+      "head_sha": "a13fa73e10612ed8f1d07feda42afd624a33e891",
+      "number": 15640,
+      "title": "Revenue: recover partner qualification gate on clean current main",
+      "updated_at": "2026-09-18T00:33:01Z"
     }
   ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "sol-delta/mmsd-15831-cancel-correction-20260917",
+      "created_at": "2026-09-18T01:31:15Z",
+      "draft": false,
+      "head_sha": "098f78d025fa39701241a7e72fe3bd35200765d9",
+      "number": 15844,
+      "title": "revenue: stop stale MMSD pursuit after buyer cancellation",
+      "updated_at": "2026-09-18T01:31:15Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "zharbor/commercial-laundry-current-main-20260917",
+      "created_at": "2026-09-18T01:30:23Z",
+      "draft": false,
+      "head_sha": "2fa099d3627947bcd343bc62119c0b952a760a46",
+      "number": 15843,
+      "title": "Recover Commercial Laundry operations desk on current main",
+      "updated_at": "2026-09-18T01:30:23Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -75,7 +97,7 @@
       "head_sha": "568a80567ae0d16bd343299b681aac683fc98f5e",
       "number": 15841,
       "title": "Revenue: UNC AP AI / PeopleSoft acceptance workshare",
-      "updated_at": "2026-09-18T01:26:56Z"
+      "updated_at": "2026-09-18T01:30:13Z"
     },
     {
       "author": "woahwhattheheck",
@@ -86,7 +108,7 @@
       "head_sha": "1dd7127ba8b46b36e0020a347946d334bddab2b3",
       "number": 15840,
       "title": "CI: rejoin pilot-renewal trust repair with 67-slot workflow recovery",
-      "updated_at": "2026-09-18T01:26:14Z"
+      "updated_at": "2026-09-18T01:30:22Z"
     },
     {
       "author": "woahwhattheheck",
@@ -127,10 +149,10 @@
       "branch": "z-argent/ky-ai-workforce-response-kit-recovery-20260917",
       "created_at": "2026-09-18T01:21:13Z",
       "draft": false,
-      "head_sha": "2fbb85ed66dcd4ed2e6153e2e746a567c03ed2b9",
+      "head_sha": "77e1bf2042f12bfc7bcfeb7702e54c7701e5da0e",
       "number": 15832,
       "title": "Revenue: recover Kentucky AI workforce response assembly kit",
-      "updated_at": "2026-09-18T01:22:20Z"
+      "updated_at": "2026-09-18T01:31:30Z"
     },
     {
       "author": "woahwhattheheck",
@@ -153,33 +175,10 @@
       "number": 15822,
       "title": "Revenue: qualify HCPF HCBS monitoring for paid partner workshare",
       "updated_at": "2026-09-18T01:20:05Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/co-hcpf-hospital-portal-15809-20260917",
-      "created_at": "2026-09-18T00:36:01Z",
-      "draft": false,
-      "head_sha": "bfaf415a8f0ba3b9f2cae990b5bbddb4063854e0",
-      "number": 15818,
-      "title": "Revenue: add source-bound HCPF Hospital Portal partner-first carrier",
-      "updated_at": "2026-09-18T01:18:14Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/payoff-path-authority-init-fixforward-20260917",
-      "created_at": "2026-09-18T00:34:21Z",
-      "draft": false,
-      "head_sha": "4d3a2688d70aada5b87e5957f7ad7167a677c9a1",
-      "number": 15817,
-      "title": "Revenue: seal payoff evidence authority generation",
-      "updated_at": "2026-09-18T01:30:09Z"
     }
   ],
   "open_heads": {
     "15613": "f4f1a938de70001cf7d6e3980f5de6d8204f532c",
-    "15627": "fc2ad19ab3179b7d46e5d405cc163aa8ff3806f8",
     "15629": "df5666d5a47cad829f07c142285053277e1470c7",
     "15631": "db0e8838d61cd6133154bf2008aefb5b94fc5acd",
     "15635": "1c5d3124d105457b83015f767c1628a9905dc080",
@@ -219,21 +218,34 @@
     "15811": "c4bd51dbf9e71bd53fa8d85685edb71af4dc5a06",
     "15812": "46a5911866f1ddf1b634f662ff138ee815bdeaba",
     "15815": "9774850de83d1c467264f5e88082b68e72301b6d",
-    "15817": "4d3a2688d70aada5b87e5957f7ad7167a677c9a1",
+    "15817": "ee123d32349afef40d145cc9a135d331ad9fa7a0",
     "15818": "bfaf415a8f0ba3b9f2cae990b5bbddb4063854e0",
     "15822": "d16105e6759e92870b31f2d795b86383333f898d",
     "15823": "783792d04073809967c44caaa80d754bd79f5466",
-    "15832": "2fbb85ed66dcd4ed2e6153e2e746a567c03ed2b9",
+    "15832": "77e1bf2042f12bfc7bcfeb7702e54c7701e5da0e",
     "15834": "c3464df897f45c235b3ec385d6cd1bf83dc1f9f9",
     "15836": "b053ab20ae622e273b8a776d326d5a4323c7835e",
     "15838": "0874f8f06e4709d32d9aacf445a4be2ef19514f2",
     "15840": "1dd7127ba8b46b36e0020a347946d334bddab2b3",
-    "15841": "568a80567ae0d16bd343299b681aac683fc98f5e"
+    "15841": "568a80567ae0d16bd343299b681aac683fc98f5e",
+    "15843": "2fa099d3627947bcd343bc62119c0b952a760a46",
+    "15844": "098f78d025fa39701241a7e72fe3bd35200765d9"
   },
-  "pulls_listed": 51,
+  "pulls_listed": 52,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 15.3,
+  "queue_depth_per_runner": 19.6,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "swarm-z/commercial-laundry-ops-14558-20260917",
+      "closed_at": "2026-09-18T01:30:41Z",
+      "head_sha": "fc2ad19ab3179b7d46e5d405cc163aa8ff3806f8",
+      "merged_at": null,
+      "number": 15627,
+      "state": "CLOSED",
+      "title": "Build Commercial Laundry Route & Linen Custody Operations Desk"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -387,21 +399,10 @@
       "number": 15805,
       "state": "MERGED",
       "title": "board: WRF 5417 authority-recovery land receipt"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/provider-cost-determinism-currentmain-20260917",
-      "closed_at": "2026-09-18T00:13:26Z",
-      "head_sha": "fea5af41c839d293363b33becc64b577b2a6ac0a",
-      "merged_at": "2026-09-18T00:13:26Z",
-      "number": 15799,
-      "state": "MERGED",
-      "title": "Fleet: rejoin provider cost truth with deterministic receipts"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-18T01:30:20Z",
+  "unchanged_since": "2026-09-18T01:31:45Z",
   "undatable_pulls": []
 }
