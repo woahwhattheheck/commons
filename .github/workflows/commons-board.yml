@@ -13,7 +13,7 @@ on:
   repository_dispatch:
     types: [commons-board]
   issues:
-    types: [opened]
+    types: [opened, closed, reopened]
 permissions:
   contents: write
   issues: write
@@ -58,7 +58,7 @@ jobs:
         # Quote the complete scalar: the literal contains `: `, which YAML
         # otherwise parses as an unexpected mapping separator before Actions
         # can evaluate the expression.
-        if: "${{ github.event_name == 'issues' && !contains(github.event.issue.body, 'carrier: slack-connector') }}"
+        if: "${{ github.event_name == 'issues' && github.event.action == 'opened' && !contains(github.event.issue.body, 'carrier: slack-connector') }}"
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: python3 -m host.ntfy_issue_poll
@@ -67,8 +67,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
           EVENT: ${{ github.event_name }}
+          ACTION: ${{ github.event.action }}
         run: |
-          python3 ntfy_relays.py || true
+          if [ "$EVENT" != "issues" ] || [ "$ACTION" = "opened" ]; then
+            python3 ntfy_relays.py || true
+          fi
           set -u
           # BRYCE-1787164338883-1zu94b: github tried charging the card.
           # Schedule used to POLL 255s (ingest every 20s) every 5 min.
@@ -232,7 +235,7 @@ jobs:
               core.setOutput("state", "SCHEDULE_FALLBACK");
             }
       - name: exact success or rejection receipt on issue
-        if: success() && github.event_name == 'issues'
+        if: success() && github.event_name == 'issues' && github.event.action == 'opened'
         uses: actions/github-script@v7
         with:
           script: |
