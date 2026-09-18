@@ -97,13 +97,14 @@ class WorkTerminalityTests(unittest.TestCase):
 
     def test_producer_and_home_renderer_are_wired_to_registry(self):
         llms = (ROOT / "llms_txt.py").read_text(encoding="utf-8")
-        board = (ROOT / "board.js").read_text(encoding="utf-8")
+        head = (ROOT / "head.js").read_text(encoding="utf-8")
         self.assertIn("import work_terminality", llms)
         self.assertIn("work_terminality.is_actionable_terminal", llms)
-        self.assertIn("loadTerminalRegistry", board)
-        self.assertIn("isActionableTerminal", board)
-        self.assertIn("work_terminality.json", board)
-        self.assertIn("owner-pin", board)
+        self.assertIn("bindActionableTerminality", head)
+        self.assertIn("parseTerminalRegistry", head)
+        self.assertIn("work_terminality.json", head)
+        self.assertIn("MutationObserver", head)
+        self.assertIn("owner-pin", head)
 
 
 if __name__ == "__main__":
