@@ -948,6 +948,121 @@ class RegistryTest(unittest.TestCase):
                     violations,
                 )
 
+    def test_internal_provider_exemption_requires_semantic_guard_contract(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            path = root / "unsafe.py"
+            raw = b"def send(client, channel):\n    client.chat_postMessage(channel=channel, text='x')\n"
+            path.write_bytes(raw)
+            sha = registry_impl._git_blob_sha(raw)
+            violations = find_bypasses(
+                root,
+                validate_manifest=False,
+                _internal_provider_marker_exemptions=(
+                    (
+                        "unsafe.py",
+                        sha,
+                        ("class InternalSlackScope", "self.scope.require_channel(channel)"),
+                    ),
+                ),
+            )
+            self.assertIn(
+                "unsafe.py:internal-provider-exemption-guard-missing",
+                violations,
+            )
+            self.assertTrue(
+                any(item.startswith("unsafe.py:provider-marker:") for item in violations),
+                violations,
+            )
+
+    def test_gemini_peer_bridge_scope_blocks_shared_cross_team_and_nonmember_posts(self):
+        from integrations.gemini_slack.bridge import (
+            BridgeError as GeminiBridgeError,
+            InternalSlackScope as GeminiInternalSlackScope,
+            SlackSink,
+        )
+
+        class FakeWeb:
+            def __init__(self, channel_info):
+                self.channel_info = dict(channel_info)
+                self.posts = []
+
+            def conversations_info(self, *, channel, include_num_members=False):
+                del include_num_members
+                return {"ok": True, "channel": {"id": channel, **self.channel_info}}
+
+            def chat_postMessage(self, **kwargs):
+                self.posts.append(dict(kwargs))
+                return {"ok": True, "ts": "1.0"}
+
+        cases = (
+            {"is_member": True, "is_ext_shared": True},
+            {"is_member": True, "context_team_id": "TOTHER"},
+            {"is_member": False},
+        )
+        for info in cases:
+            with self.subTest(info=info):
+                web = FakeWeb(info)
+                sink = SlackSink(
+                    web,
+                    GeminiInternalSlackScope(web, "TLOCAL"),
+                )
+                with self.assertRaises(GeminiBridgeError):
+                    sink.post("CDEST", "1.0", "MERIDIAN", "Internal peer reply.")
+                self.assertEqual(web.posts, [])
+
+    def test_grok_peer_bridge_scope_blocks_shared_cross_team_and_nonmember_posts(self):
+        from integrations.grok_slack.bridge import (
+            BridgeError as GrokBridgeError,
+            BridgeStore,
+            InternalSlackScope as GrokInternalSlackScope,
+            SlackTransport,
+        )
+
+        class FakeWeb:
+            def __init__(self, channel_info):
+                self.channel_info = dict(channel_info)
+                self.posts = []
+
+            def conversations_info(self, *, channel, include_num_members=False):
+                del include_num_members
+                return {"ok": True, "channel": {"id": channel, **self.channel_info}}
+
+            def chat_postMessage(self, **kwargs):
+                self.posts.append(dict(kwargs))
+                return {"ok": True, "ts": "1.0"}
+
+        cases = (
+            {"is_member": True, "is_ext_shared": True},
+            {"is_member": True, "context_team_id": "TOTHER"},
+            {"is_member": False},
+        )
+        with tempfile.TemporaryDirectory() as td:
+            store = BridgeStore(Path(td) / "scope.sqlite3")
+            try:
+                for info in cases:
+                    with self.subTest(info=info):
+                        web = FakeWeb(info)
+                        transport = SlackTransport(
+                            web,
+                            store,
+                            scope=GrokInternalSlackScope(web, "TLOCAL"),
+                        )
+                        with self.assertRaises(GrokBridgeError):
+                            transport.post_chunk(
+                                "CDEST",
+                                "1.0",
+                                "Internal peer reply.",
+                                event_id="evt-scope",
+                                phase="RESULT",
+                                index=0,
+                                count=1,
+                            )
+                        self.assertEqual(web.posts, [])
+            finally:
+                store.close()
+
+
     def test_parse_incompatible_python_still_gets_sensitive_lexical_scan(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)

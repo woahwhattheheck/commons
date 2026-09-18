@@ -140,11 +140,29 @@ _CODE_SUFFIXES = frozenset({
 
 # These two integrations are inbound-triggered Commons peer bridges. Their Slack
 # mutation is a reply to the originating internal workspace thread, not commercial
-# customer/prospect outreach. The exemption is bound to the exact Git blob bytes:
-# any bridge edit automatically loses the exemption and re-enters provider scanning.
+# customer/prospect outreach. Exemption requires BOTH the exact reviewed Git blob
+# and a fail-closed internal-scope guard contract. Hash identity alone is insufficient.
+_INTERNAL_PROVIDER_GUARD_MARKERS = (
+    "class InternalSlackScope",
+    "conversations_info(",
+    "self.scope.require_channel(channel)",
+    "\"is_ext_shared\"",
+    "\"is_org_shared\"",
+    "\"is_pending_ext_shared\"",
+    "\"is_member\"",
+    'payload.get("team_id") != team_id',
+)
 _INTERNAL_PROVIDER_MARKER_EXEMPTIONS = (
-    ("integrations/gemini_slack/bridge.py", "dee078ddc42c0cca2b9ba6d9d7f784a19667ffca"),
-    ("integrations/grok_slack/bridge.py", "fae069abfd0d69d7cd778e7223683dc1500a843d"),
+    (
+        "integrations/gemini_slack/bridge.py",
+        "85dcb65a61af0aa6b198b014ebb16217a83a4661",
+        _INTERNAL_PROVIDER_GUARD_MARKERS,
+    ),
+    (
+        "integrations/grok_slack/bridge.py",
+        "d7a7fdc09b6a0a19a078a4d962b95e003c618e78",
+        _INTERNAL_PROVIDER_GUARD_MARKERS,
+    ),
 )
 
 # If this interpreter cannot parse a Python generation, we still fail closed on
@@ -455,7 +473,9 @@ def find_bypasses(
     _chain_files: frozenset[str] = frozenset(_CHAIN_FILES),
     _provider_method_allowed: frozenset[str] = frozenset(_PROVIDER_METHOD_ALLOWED),
     _marker_allowed: frozenset[str] = frozenset(_MARKER_ALLOWED),
-    _internal_provider_marker_exemptions: tuple[tuple[str, str], ...] = _INTERNAL_PROVIDER_MARKER_EXEMPTIONS,
+    _internal_provider_marker_exemptions: tuple[
+        tuple[str, str, tuple[str, ...]], ...
+    ] = _INTERNAL_PROVIDER_MARKER_EXEMPTIONS,
     _parse_incompatible_sensitive_markers: tuple[str, ...] = _PARSE_INCOMPATIBLE_SENSITIVE_MARKERS,
 ) -> list[str]:
     """Return code paths that bypass the mandatory provider-bound composition.
@@ -482,12 +502,18 @@ def find_bypasses(
             continue
 
         exact_internal_marker_exempt = False
-        exemption_map = dict(_internal_provider_marker_exemptions)
+        exemption_map = {
+            path: (expected_sha, required_markers)
+            for path, expected_sha, required_markers in _internal_provider_marker_exemptions
+        }
         if rel in exemption_map:
-            if _git_blob_sha(raw) == exemption_map[rel]:
-                exact_internal_marker_exempt = True
-            else:
+            expected_sha, required_markers = exemption_map[rel]
+            if _git_blob_sha(raw) != expected_sha:
                 violations.append(f"{rel}:internal-provider-exemption-drift")
+            elif not all(marker in source for marker in required_markers):
+                violations.append(f"{rel}:internal-provider-exemption-guard-missing")
+            else:
+                exact_internal_marker_exempt = True
 
         if file.suffix.lower() == ".py":
             tree = None
