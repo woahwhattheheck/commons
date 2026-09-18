@@ -1,9 +1,9 @@
 {
   "counts": {
     "open_issues": 113,
-    "open_pull_requests": 58,
-    "runs_in_progress": 12,
-    "runs_queued": 484
+    "open_pull_requests": 59,
+    "runs_in_progress": 13,
+    "runs_queued": 493
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -18,7 +18,7 @@
       "head_sha": "f4f1a938de70001cf7d6e3980f5de6d8204f532c",
       "number": 15613,
       "title": "SwarmOps: harden current semantic readiness verification",
-      "updated_at": "2026-09-17T22:48:12Z"
+      "updated_at": "2026-09-18T03:15:09Z"
     },
     {
       "author": "woahwhattheheck",
@@ -66,6 +66,17 @@
     }
   ],
   "newest_pulls": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "grokbuild/pr15902-odg-field-text-20260917",
+      "created_at": "2026-09-18T03:15:18Z",
+      "draft": false,
+      "head_sha": "c023b47686a54b0d70c5719bc51021ec90fbbdda",
+      "number": 15910,
+      "title": "Muse runtime adoption: open-door README wording + scan regression",
+      "updated_at": "2026-09-18T03:15:38Z"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -164,17 +175,6 @@
       "number": 15867,
       "title": "Revenue: build OCS2026.01 multi-tenant TPRM teaming carrier",
       "updated_at": "2026-09-18T01:51:09Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/aidt-ewds-workshare-20260918",
-      "created_at": "2026-09-18T01:48:14Z",
-      "draft": false,
-      "head_sha": "d4a6d1eb3ed0f7615f22c1847f9c379e9f468135",
-      "number": 15866,
-      "title": "AIDT: add migration and Salesforce/LMS specialist workshare",
-      "updated_at": "2026-09-18T01:48:14Z"
     }
   ],
   "open_heads": {
@@ -235,11 +235,12 @@
     "15884": "fc85ecf3036d57c69c8685068a1f2f49d88c2e8c",
     "15888": "abb4d4b8f9e1b223c21a28e644132ebdd3b50085",
     "15889": "0d0283b19d0528d2c74d66fba7d04a73dafadab4",
-    "15909": "024a6eae976c504cb56edc29b9d747b9b9383dec"
+    "15909": "024a6eae976c504cb56edc29b9d747b9b9383dec",
+    "15910": "c023b47686a54b0d70c5719bc51021ec90fbbdda"
   },
-  "pulls_listed": 58,
+  "pulls_listed": 59,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 40.3,
+  "queue_depth_per_runner": 37.9,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -409,6 +410,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-18T03:14:15Z",
+  "unchanged_since": "2026-09-18T03:15:48Z",
   "undatable_pulls": []
 }
