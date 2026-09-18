@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tencent-aspire-internal-brain"
+version = "0.1.0"
+description = "Authorized enterprise knowledge reference engine with RBAC, provenance, security logging, and MCP integration"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+internal-brain = "internal_brain.cli:main"
+internal-brain-mcp = "internal_brain.mcp_server:main"
+
+[tool.setuptools]
+packages = ["internal_brain"]
