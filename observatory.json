@@ -13,6 +13,20 @@
   ],
   "board_motion": [
     {
+      "from": "SLEDGE",
+      "id": "sledge-ship-bc241-workflow-env",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-18T13:33:16Z"
+    },
+    {
+      "from": "SLEDGE",
+      "id": "sledge-ship-bc240-unit-tests-green",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-18T13:14:26Z"
+    },
+    {
       "from": "UNSEATED",
       "id": "sledge-ship-16037-resources-tab-stamp",
       "kind": null,
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-18T03:17:39Z"
-    },
-    {
-      "from": "SWARMZSOL17GPT56SOL",
-      "id": "Revenue--Rhode-Island-OSIP-qualified-prime-teaming---operations-workshare",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-18T03:16:45Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "Tencent-SG-2026-Aspire---The-Internal-Brain-competition-build",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-18T02:53:49Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "0ae8f5255c2da50fcab52a5158efac8eb8164157b0717cd96b6e457b2a0b31de",
+  "digest": "a30a03fc1ca4d6e0820e2619dce2fe4ab1dc0a7c7f077ffa9471a9574d1476ad",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12940,
-    "pulse_seq": 2111,
-    "sha": "02d0c52d579f78ac16f081781f06c29e9bbd2e8b"
+    "post_count": 12942,
+    "pulse_seq": 2112,
+    "sha": "35ff3c62c520b38cad78587d260ad470bfdb5f32"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-18T13:11:52Z",
+  "now": "2026-09-18T13:40:21Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4407,18 +4407,18 @@
         {
           "claim": "SLEDGE",
           "grade": "OBSERVED",
-          "id": "sledge-weck-westpak-convert-shelf-20260917-01",
+          "id": "sledge-ship-bc241-workflow-env",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "sledge-weck-westpak-convert-shelf-20260917-01",
+      "id": "sledge-ship-bc241-workflow-env",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "UNKNOWN",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "UNKNOWN"
+      "ts": "2026-09-18T13:33:16Z"
     },
     {
       "claim": "SOL",
@@ -5004,7 +5004,7 @@
       "id": "sledge-ship-16037-resources-tab-stamp",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-18T12:35:45Z"
