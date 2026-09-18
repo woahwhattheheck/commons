@@ -802,6 +802,7 @@ def _make_public_generation(
     _sha256=hashlib.sha256,
     _compare=hmac.compare_digest,
     _process_now=datetime.now,
+    _strptime=datetime.strptime,
     _utc=timezone.utc,
     _datetime_type=datetime,
     _bytes_type=bytes,
@@ -832,18 +833,28 @@ def _make_public_generation(
     """
 
     freeze_impl = _freeze_json
+    exact_impl = _exact_keys
+    text_impl = _text
+    identifier_impl = _identifier
+    digest_impl = _digest
+    timestamp_impl = _timestamp
+    format_impl = _format_ts
+    positive_impl = _positive_int
+    plan_impl = _validate_plan
+    structure_impl = _validate_packet_structure
     packet_impl = _validate_packet_impl
     compile_impl = _compile_at_impl
     integrity_impl = _verify_integrity_impl
     current_impl = _verify_current_at_impl
-    receipt_validator = _validate_receipt_shape
-    timestamp = _timestamp
-    format_ts = _format_ts
+    receipt_impl = _validate_receipt_shape
     term_validator = _validate_term
     outcome_validator = _validate_outcome
     scope_validator = _validate_scope_attestation
     projection = _receipt_projection
     hex64 = _HEX64
+    id_re = _ID
+    ts_re = _TS
+    currency_re = _CURRENCY
     max_safe_int = MAX_SAFE_INT
     max_text = MAX_TEXT
     max_rows = MAX_ROWS
@@ -853,6 +864,13 @@ def _make_public_generation(
     max_age = MAX_EVIDENCE_AGE
     evidence_auth_env = EVIDENCE_AUTH_ENV
     cash_classes = CASH_TERM_CLASSES
+    payoff_classes = PAYOFF_CLASSES
+    evidence_classes = EVIDENCE_CLASSES
+    outcome_kinds = OUTCOME_KINDS
+    scope_statuses = SCOPE_STATUSES
+    amount_modes = AMOUNT_MODES
+    states = STATES
+    input_schema = SCHEMA_INPUT
     receipt_schema = SCHEMA_RECEIPT
     compiler_id = COMPILER_ID
     authority_override_sentinel = _object()
@@ -876,6 +894,105 @@ def _make_public_generation(
             _max_nodes=max_nodes,
             _unicode_error=_unicode_error,
             _recursion_error=_recursion_error,
+            _err=_err,
+        )
+
+    def sealed_exact(obj: Any, keys: set[str], label: str) -> dict[str, Any]:
+        return exact_impl(
+            obj,
+            keys,
+            label,
+            _type=_type,
+            _dict_type=_dict_type,
+            _set=_set_type,
+            _err=_err,
+        )
+
+    def sealed_text(value: Any, label: str, *, _max=max_text) -> str:
+        return text_impl(
+            value,
+            label,
+            _type=_type,
+            _str_type=_str_type,
+            _len=_len,
+            _max=_max,
+            _unicode_error=_unicode_error,
+            _err=_err,
+        )
+
+    def sealed_identifier(value: Any, label: str) -> str:
+        return identifier_impl(
+            value,
+            label,
+            _text_fn=sealed_text,
+            _id_re=id_re,
+            _err=_err,
+        )
+
+    def sealed_digest(value: Any, label: str) -> str:
+        return digest_impl(
+            value,
+            label,
+            _text_fn=sealed_text,
+            _hex_re=hex64,
+            _err=_err,
+        )
+
+    def sealed_timestamp(value: Any, label: str) -> datetime:
+        return timestamp_impl(
+            value,
+            label,
+            _text_fn=sealed_text,
+            _ts_re=ts_re,
+            _strptime=_strptime,
+            _utc=_utc,
+            _value_error=_value_error,
+            _err=_err,
+        )
+
+    def sealed_format_ts(dt: datetime) -> str:
+        return format_impl(
+            dt,
+            _datetime_type=_datetime_type,
+            _type=_type,
+            _utc=_utc,
+            _err=_err,
+        )
+
+    def sealed_positive(value: Any, label: str) -> int:
+        return positive_impl(
+            value,
+            label,
+            _type=_type,
+            _int_type=_int_type,
+            _max=max_safe_int,
+            _err=_err,
+        )
+
+    def sealed_plan(plan: Any) -> dict[str, Any] | None:
+        return plan_impl(
+            plan,
+            _exact=sealed_exact,
+            _text_fn=sealed_text,
+            _pos=sealed_positive,
+            _ts=sealed_timestamp,
+        )
+
+    def sealed_structure(packet: Any) -> dict[str, Any]:
+        return structure_impl(
+            packet,
+            _freeze=sealed_freeze,
+            _exact=sealed_exact,
+            _id=sealed_identifier,
+            _dig=sealed_digest,
+            _classes=payoff_classes,
+            _scopes=scope_statuses,
+            _plan=sealed_plan,
+            _schema=input_schema,
+            _max_rows=max_rows,
+            _type=_type,
+            _list_type=_list_type,
+            _len=_len,
             _err=_err,
         )
 
@@ -952,10 +1069,35 @@ def _make_public_generation(
             raise _err("evidence authentication failed")
 
     def sealed_term(row: Any, key: bytes) -> dict[str, Any]:
-        return term_validator(row, key, _verify_tag=sealed_verify_tag)
+        return term_validator(
+            row,
+            key,
+            _exact=sealed_exact,
+            _id=sealed_identifier,
+            _dig=sealed_digest,
+            _ts=sealed_timestamp,
+            _pos=sealed_positive,
+            _classes=evidence_classes,
+            _modes=amount_modes,
+            _currency=currency_re,
+            _verify_tag=sealed_verify_tag,
+            _type=_type,
+            _str_type=_str_type,
+            _err=_err,
+        )
 
     def sealed_outcome(row: Any, key: bytes) -> dict[str, Any]:
-        return outcome_validator(row, key, _verify_tag=sealed_verify_tag)
+        return outcome_validator(
+            row,
+            key,
+            _exact=sealed_exact,
+            _id=sealed_identifier,
+            _dig=sealed_digest,
+            _ts=sealed_timestamp,
+            _kinds=outcome_kinds,
+            _verify_tag=sealed_verify_tag,
+            _err=_err,
+        )
 
     def sealed_census(packet: dict[str, Any]) -> str:
         return sealed_sha({
@@ -974,9 +1116,15 @@ def _make_public_generation(
             packet,
             key,
             now,
+            _exact=sealed_exact,
+            _id=sealed_identifier,
+            _dig=sealed_digest,
+            _ts=sealed_timestamp,
             _tag_fn=sealed_tag,
             _compare=_compare,
             _census=sealed_census,
+            _max_age=max_age,
+            _err=_err,
         )
 
     def sealed_validate(
@@ -986,6 +1134,7 @@ def _make_public_generation(
             packet,
             now,
             authority_key,
+            _structure=sealed_structure,
             _term=sealed_term,
             _outcome=sealed_outcome,
             _scope=sealed_scope,
@@ -1000,8 +1149,8 @@ def _make_public_generation(
             packet,
             now,
             sealed_validate,
-            _ts=timestamp,
-            _fmt=format_ts,
+            _ts=sealed_timestamp,
+            _fmt=sealed_format_ts,
             _sha_fn=sealed_sha,
             _cash_classes=cash_classes,
             _utc=_utc,
@@ -1016,6 +1165,31 @@ def _make_public_generation(
             _err=_err,
         )
 
+    def sealed_validate_receipt(receipt: Any) -> dict[str, Any]:
+        return receipt_impl(
+            receipt,
+            _freeze=sealed_freeze,
+            _exact=sealed_exact,
+            _id=sealed_identifier,
+            _dig=sealed_digest,
+            _ts=sealed_timestamp,
+            _states=states,
+            _classes=payoff_classes,
+            _sha_fn=sealed_sha,
+            _schema=receipt_schema,
+            _compiler_id=compiler_id,
+            _type=_type,
+            _list_type=_list_type,
+            _str_type=_str_type,
+            _dict_type=_dict_type,
+            _bool_type=_bool_type,
+            _set=_set_type,
+            _all=_all,
+            _any=_any,
+            _dict_ctor=_dict_type,
+            _err=_err,
+        )
+
     def compile_current(packet: Any) -> dict[str, Any]:
         return sealed_compile_at(sealed_freeze(packet), _process_now(_utc))
 
@@ -1025,8 +1199,8 @@ def _make_public_generation(
             receipt,
             sealed_compile_at,
             _freeze=sealed_freeze,
-            _validate_receipt=receipt_validator,
-            _ts=timestamp,
+            _validate_receipt=sealed_validate_receipt,
+            _ts=sealed_timestamp,
             _canonical=sealed_canonical,
         )
 
@@ -1037,8 +1211,8 @@ def _make_public_generation(
             _process_now(_utc),
             sealed_compile_at,
             _freeze=sealed_freeze,
-            _validate_receipt=receipt_validator,
-            _ts=timestamp,
+            _validate_receipt=sealed_validate_receipt,
+            _ts=sealed_timestamp,
             _canonical=sealed_canonical,
             _projection=projection,
             _utc=_utc,
@@ -1062,6 +1236,7 @@ def _make_public_generation(
             packet,
             now,
             None,
+            _structure=sealed_structure,
             _term=sealed_term,
             _outcome=sealed_outcome,
             _scope=sealed_scope,
@@ -1081,8 +1256,8 @@ def _make_public_generation(
             now,
             sealed_compile_at,
             _freeze=sealed_freeze,
-            _validate_receipt=receipt_validator,
-            _ts=timestamp,
+            _validate_receipt=sealed_validate_receipt,
+            _ts=sealed_timestamp,
             _canonical=sealed_canonical,
             _projection=projection,
             _utc=_utc,
