@@ -1,0 +1,147 @@
+name: Mapping Equity Northern-CA one-shot evidence
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/mapping-equity-northern-ca-live-run-zrook.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mapping-equity-northern-ca-one-shot-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+
+jobs:
+  real-public-run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install pinned execution dependency
+        run: python -m pip install --disable-pip-version-check 'duckdb==1.5.4'
+
+      - name: Compile existing runner
+        working-directory: revenue/bias-bounty-mapping-equity/aggregation
+        run: |
+          python -m py_compile aggregate.py _aggregate_unsealed.py _zsa_d6p2_core.py
+
+      - name: Execute Northern California public-data aggregation
+        working-directory: revenue/bias-bounty-mapping-equity/aggregation
+        run: |
+          mkdir -p "${RUNNER_TEMP}/mapping-equity-nca"
+          python aggregate.py run \
+            --region northern-ca \
+            --output "${RUNNER_TEMP}/mapping-equity-nca/northern-ca.aggregates.csv" \
+            --receipt "${RUNNER_TEMP}/mapping-equity-nca/northern-ca.aggregates.receipt.json"
+
+      - name: Verify receipt, source generations, and output digest
+        env:
+          EVIDENCE_DIR: ${{ runner.temp }}/mapping-equity-nca
+          SOURCE_COMMIT: ${{ github.event.pull_request.head.sha }}
+        run: |
+          python - <<'PY'
+          import csv
+          import hashlib
+          import json
+          import os
+          import re
+          from pathlib import Path
+
+          root = Path(os.environ["EVIDENCE_DIR"])
+          csv_path = root / "northern-ca.aggregates.csv"
+          receipt_path = root / "northern-ca.aggregates.receipt.json"
+          receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+          if set(receipt) != {"payload", "payload_sha256"}:
+              raise SystemExit("receipt envelope keys mismatch")
+          payload = receipt["payload"]
+          body = json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
+          if hashlib.sha256(body.encode()).hexdigest() != receipt["payload_sha256"]:
+              raise SystemExit("payload digest mismatch")
+
+          expected = {
+              "schema": "mapping-equity-public-aggregation/v2",
+              "region": "northern-ca",
+              "duckdb_version": "1.5.4",
+              "overture_release": "2026-08-19.0",
+              "real_public_data_executed": True,
+              "row_count": 591,
+          }
+          for key, value in expected.items():
+              if payload.get(key) != value:
+                  raise SystemExit(f"{key} mismatch: {payload.get(key)!r}")
+
+          csv_bytes = csv_path.read_bytes()
+          csv_sha = hashlib.sha256(csv_bytes).hexdigest()
+          if csv_sha != payload.get("output_csv_sha256"):
+              raise SystemExit("CSV digest mismatch")
+
+          with csv_path.open(newline="", encoding="utf-8") as handle:
+              reader = csv.DictReader(handle)
+              if not reader.fieldnames or len(reader.fieldnames) != 13:
+                  raise SystemExit(f"expected 13 output columns, got {reader.fieldnames!r}")
+              rows = list(reader)
+          if len(rows) != 591:
+              raise SystemExit(f"expected 591 data rows, got {len(rows)}")
+          if "GEOID" not in rows[0]:
+              raise SystemExit("GEOID column missing")
+          geoids = [row["GEOID"] for row in rows]
+          if any(re.fullmatch(r"\d{11}", value or "") is None for value in geoids):
+              raise SystemExit("bad GEOID")
+          if geoids != sorted(geoids) or len(set(geoids)) != 591:
+              raise SystemExit("GEOID order/uniqueness mismatch")
+
+          gens = payload.get("input_generations")
+          if not isinstance(gens, dict) or len(gens) != 11:
+              raise SystemExit(f"expected 11 input generations, got {len(gens) if isinstance(gens, dict) else type(gens)}")
+          for name, item in sorted(gens.items()):
+              if set(item) != {"uri", "resolved_url", "sha256", "bytes", "generation"}:
+                  raise SystemExit(f"{name}: generation receipt keys mismatch")
+              if item["uri"] != item["resolved_url"]:
+                  raise SystemExit(f"{name}: redirect identity mismatch")
+              if re.fullmatch(r"[0-9a-f]{64}", item["sha256"]) is None:
+                  raise SystemExit(f"{name}: bad sha256")
+              if item["generation"] != "sha256:" + item["sha256"]:
+                  raise SystemExit(f"{name}: generation binding mismatch")
+              if type(item["bytes"]) is not int or item["bytes"] <= 0:
+                  raise SystemExit(f"{name}: byte count invalid")
+
+          claims = payload.get("claims")
+          if not isinstance(claims, dict) or not claims or any(value is not False for value in claims.values()):
+              raise SystemExit(f"external claims must all be false: {claims!r}")
+
+          summary = {
+              "schema": "mapping-equity-northern-ca-real-run-evidence/v1",
+              "source_commit": os.environ["SOURCE_COMMIT"],
+              "region": payload["region"],
+              "row_count": payload["row_count"],
+              "output_csv_sha256": csv_sha,
+              "receipt_payload_sha256": receipt["payload_sha256"],
+              "duckdb_version": payload["duckdb_version"],
+              "overture_release": payload["overture_release"],
+              "real_public_data_executed": payload["real_public_data_executed"],
+              "input_generation_count": len(gens),
+              "input_generations": gens,
+              "claims": claims,
+          }
+          summary_text = json.dumps(summary, sort_keys=True, indent=2) + "\n"
+          (root / "evidence-summary.json").write_text(summary_text, encoding="utf-8")
+          print("MAPPING_EQUITY_EVIDENCE_SUMMARY=" + json.dumps(summary, sort_keys=True, separators=(",", ":")))
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mapping-equity-northern-ca-real-run
+          path: |
+            ${{ runner.temp }}/mapping-equity-nca/northern-ca.aggregates.csv
+            ${{ runner.temp }}/mapping-equity-nca/northern-ca.aggregates.receipt.json
+            ${{ runner.temp }}/mapping-equity-nca/evidence-summary.json
+          if-no-files-found: error
+          retention-days: 1
