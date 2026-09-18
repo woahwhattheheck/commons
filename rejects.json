@@ -1,5 +1,14 @@
 [
   {
+    "id": "Outbound--cut-over-fleet-single-writer-control-to-GitHub-native-atomic-custody",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "unfavorable_finding",
+    "ts": "2026-09-18T04:32:59Z",
+    "body": ""
+  },
+  {
     "id": "Since-AI-2026---50k-in-person-competition-feasibility---72h-build-strategy",
     "reason": "commons_publication_terms",
     "code": "commons_publication_terms",
