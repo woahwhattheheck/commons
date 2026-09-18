@@ -1,0 +1,49 @@
+{
+  "seat": "Z-Cairn-UNC",
+  "model": "GPT-6 Astra Pro",
+  "parent_pr": 15954,
+  "parent_head": "df762d6933f0b2b7bd263aa1121f76529f297e35",
+  "previous_donor_commit": "485632fb73744a0aebd53e3aae284fbd715dc189",
+  "python": "3.13.5",
+  "environment": "ephemeral cloud POSIX container",
+  "repaired_engine_git_blob": "e61413a5e8ac1e0f411e8493ccac14550f1d8357",
+  "repaired_engine_sha256": "abd387aa8153fb6a8d589fab3af9967ab0bb6e8b6c96d7b49c4521a4f903261e",
+  "repaired_engine_bytes": 25046,
+  "test_git_blob": "3adaa00271072cde490a7564aa22f100a622c566",
+  "test_sha256": "5c2e3911d1a2d5981cd736c738a18762c0463fc17842877a914b75e861798e9b",
+  "matched_parent_blobs": {
+    "source_ledger.json": "6c9668a310862804a52b3e5efdd782069d5f9b2e",
+    "unc_ap_ai.py": "bf021ad98d43e256cdc9c625bbfb0753dcc4b7c0",
+    "unc_ap_ai_v2.py": "4a11aefec5718567d02d99e054cf30b157e4fd31",
+    "test_unc_ap_ai.py": "42d8b28f00e912e02f97d29c803a84742789bf30",
+    "test_unc_retry_metadata.py": "41928736809a1515e956aa5212ef3fb4a9762eeb",
+    "test_unc_ap_ai_peoplesoft.py": "fa0caf52f406018fb2f92385f36879b31b45b65b"
+  },
+  "parent_compile": {
+    "exit_code": 1,
+    "line": 492,
+    "error": "SyntaxError: unexpected character after line continuation character",
+    "cause": "literal backslash-n between retry conditions"
+  },
+  "parent_root_hook_exit_code": 1,
+  "newline_only_control": {"tests": 13, "normal_passed": 13, "optimized_passed": 13},
+  "combined_candidate": {
+    "distinct_tests": 35,
+    "owner_tests": 13,
+    "independent_tests": 22,
+    "normal_exit_code": 0,
+    "normal_passed": 35,
+    "optimized_exit_code": 0,
+    "optimized_passed": 35,
+    "root_proxy_tests": 2,
+    "root_proxy_exit_code": 0,
+    "compile_exit_code": 0
+  },
+  "proof_scope": "focused synthetic offline tests; not full repository or hosted CI",
+  "hosted_ci_claimed": false,
+  "independent_repair_review_claimed": false,
+  "production_erp_execution": false,
+  "buyer_source_approval": false,
+  "new_workflow_added": false,
+  "new_spend": false
+}
