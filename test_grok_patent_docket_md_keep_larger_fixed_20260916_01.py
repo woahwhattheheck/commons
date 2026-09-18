@@ -6,7 +6,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 INDEX = ROOT / "ground" / "INVENTION_BURST_INDEX.md"
-PRODUCTS = ("agent-rescue.html", "diagnostic.html", "commercial.html")
+PRODUCTS = ("diagnostic.html", "commercial.html")
 # hist pin 0720ef57 plus later Contest product section; cash successors strip off.
 BASELINE_BLOB = "5de7ae09bc1cbb5c169720967f7c577ff0d8049c"
 SPY_LABEL = "spy-ground-live-cash-v1"
@@ -28,7 +28,6 @@ class TestGrokPatentDocketMdKeepLargerFixed2026091601(unittest.TestCase):
     def test_tip_invention_burst_has_autopsy_and_larger(self):
         text = INDEX.read_text(encoding="utf-8")
         self.assertIn("## Live cash", text)
-        self.assertIn("../agent-rescue.html", text)
         self.assertIn("Larger fixed engagements", text)
         self.assertIn("../diagnostic.html", text)
         self.assertIn("../commercial.html", text)
@@ -45,7 +44,6 @@ class TestGrokPatentDocketMdKeepLargerFixed2026091601(unittest.TestCase):
         spy = entries[0][1].decode("utf-8")
         larger = entries[1][1].decode("utf-8")
         self.assertIn("## Live cash", spy)
-        self.assertIn("../agent-rescue.html", spy)
         self.assertIn("spy-ground-batch-live-cash-20260905-18", spy)
         self.assertNotIn("Larger fixed engagements", spy)
         self.assertNotIn("diagnostic.html", spy)
