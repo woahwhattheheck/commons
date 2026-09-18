@@ -1,0 +1,106 @@
+{
+  "schema": "nhc-fin-systems-source-ledger/v1",
+  "opportunity_id": "NHC RFP 110004726",
+  "buyer": "Nunavut Housing Corporation / Government of Nunavut",
+  "observed_utc": "2026-09-18T06:30:00Z",
+  "production_authority": false,
+  "current_state": "CONTROLLING_PACKET_HOLD",
+  "sources": [
+    {
+      "source_id": "bidsfactory-nunavut-tenders-mirror",
+      "authority": "SECONDARY_DISCOVERY_WITH_OFFICIAL_SOURCE_ATTRIBUTION",
+      "url": "https://bidsfactory.com/en/tenders/soa-financial-accounting-audit-systems-and-advisor-nunavut_tenders-4540a0668ab6994a",
+      "exact_bytes_retained": false,
+      "claims": {
+        "title": "SOA Financial, Accounting, Audit, Systems and Advisory Services",
+        "reference": "NHC RFP 110004726",
+        "location": "Iqaluit, Nunavut, Canada",
+        "published_date_reported": "2026-09-14",
+        "closing_reported": "2026-10-12T15:00:00-04:00",
+        "buyer_reported": "Government of Nunavut / Nunavut Housing Corporation",
+        "contract_type_reported": "Consulting",
+        "eligibility_summary_reported": "Firms / Consortiums"
+      }
+    },
+    {
+      "source_id": "settle-canada-rfp-index",
+      "authority": "SECONDARY_DISCOVERY_ONLY",
+      "url": "https://usesettle.com/rfp-hunter?countries=Canada",
+      "exact_bytes_retained": false,
+      "claims": {
+        "scope_summary_reported": [
+          "financial",
+          "accounting",
+          "audit",
+          "systems",
+          "training",
+          "advisory",
+          "internal_controls",
+          "financial_systems_improvement",
+          "staff_capacity"
+        ],
+        "use_limit": "scope discovery only; no eligibility, value, acceptance or buyer-demand authority"
+      }
+    },
+    {
+      "source_id": "government-of-nunavut-contract-reporting",
+      "authority": "FIRST_PARTY_GENERAL_PROCUREMENT_CONTEXT",
+      "url": "https://public.govnu.ca/",
+      "exact_bytes_retained": false,
+      "claims": {
+        "general_context": "Government of Nunavut public contract reporting database",
+        "use_limit": "does not itself establish current solicitation requirements"
+      }
+    },
+    {
+      "source_id": "government-of-nunavut-procurement-links",
+      "authority": "FIRST_PARTY_GENERAL_ROUTE",
+      "url": "https://public.govnu.ca/Links.aspx",
+      "exact_bytes_retained": false,
+      "claims": {
+        "general_context": "Government page links to Government of Nunavut RFP/Tender Notification List",
+        "use_limit": "route context only; exact solicitation bytes not retained"
+      }
+    }
+  ],
+  "missing_authority": [
+    "exact current solicitation packet bytes",
+    "all addenda and Q&A",
+    "service-category definitions and mandatory qualifications",
+    "professional accounting/audit designation and licensing requirements",
+    "Inuit/Nunavut procurement preference and participation rules",
+    "business registration and tax requirements",
+    "teaming/consortium/subcontract permission and disclosure rules",
+    "insurance/indemnity requirements",
+    "reference and past-performance requirements",
+    "local-presence/travel/language requirements",
+    "security/privacy/data-residency requirements",
+    "evaluation criteria and weights",
+    "rate/pricing forms and ceilings",
+    "term/call-up mechanism and statement-of-work process",
+    "required signatures/representations/forms",
+    "final submission mechanics"
+  ],
+  "commercial_state": {
+    "partner_first": true,
+    "internal_fixed_fee_hypothesis_usd_equivalent": 24000,
+    "proposed_not_accepted": true,
+    "booked_revenue": 0,
+    "cash": 0
+  },
+  "authority_ceiling": {
+    "buyer_contact": false,
+    "partner_contact": false,
+    "portal_mutation": false,
+    "proposal_submission": false,
+    "professional_audit_opinion": false,
+    "regulated_accounting_signoff": false,
+    "signature": false,
+    "customer_data_access": false,
+    "spend": false,
+    "contract_acceptance": false,
+    "award": false,
+    "payment": false,
+    "revenue_recognition": false
+  }
+}
