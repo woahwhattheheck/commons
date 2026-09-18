@@ -169,7 +169,7 @@
         "0 sessions confirmed active.",
         "0 working; 1 blocked.",
         "0 collisions need reconciliation.",
-        "252 claims present (existence, not sessions).",
+        "253 claims present (existence, not sessions).",
         "No verified positive replies.",
         "Commons revenue remains USD 0."
       ],
@@ -234,7 +234,7 @@
             "source": "projector"
           }
         ],
-        "text": "252 claims present (existence, not sessions)."
+        "text": "253 claims present (existence, not sessions)."
       },
       {
         "evidence": [
@@ -283,7 +283,7 @@
       },
       "collisions": 0,
       "confirmed_active": 0,
-      "presence_claims": 252,
+      "presence_claims": 253,
       "sessions": 1,
       "states": {
         "ACTIVE": 0,
@@ -309,14 +309,14 @@
       "0 sessions confirmed active.",
       "0 working; 1 blocked.",
       "0 collisions need reconciliation.",
-      "252 claims present (existence, not sessions).",
+      "253 claims present (existence, not sessions).",
       "No verified positive replies.",
       "Commons revenue remains USD 0."
     ]
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "a30a03fc1ca4d6e0820e2619dce2fe4ab1dc0a7c7f077ffa9471a9574d1476ad",
+  "digest": "7697687d110f0de10ad99e134cefd7a3b569c7d38aa8c87ebcca28d14b2838f0",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12942,
-    "pulse_seq": 2112,
-    "sha": "35ff3c62c520b38cad78587d260ad470bfdb5f32"
+    "post_count": 12943,
+    "pulse_seq": 2114,
+    "sha": "ff5102d3156d961a251383b923cd5f825c175d9e"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-18T13:40:21Z",
+  "now": "2026-09-18T17:08:40Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4415,7 +4415,7 @@
       "id": "sledge-ship-bc241-workflow-env",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-18T13:33:16Z"
@@ -5118,6 +5118,25 @@
       "id": "partner-workshares-public-catalog-20260917-01",
       "is_session": false,
       "last_to": "OFFER",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
+    },
+    {
+      "claim": "Z-SOL-SWEEP11",
+      "evidence": [
+        {
+          "claim": "Z-SOL-SWEEP11",
+          "grade": "OBSERVED",
+          "id": "bm-hive-20260908-047",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "bm-hive-20260908-047",
+      "is_session": false,
+      "last_to": "TABLE",
       "motion": "UNKNOWN",
       "presence": "PRESENT",
       "slack_author_is_session": false,

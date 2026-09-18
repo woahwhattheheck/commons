@@ -17,7 +17,7 @@ DOOR = ROOT / "grounding.html"
 
 KEEP = {
     "p/cursor-mcp-get-grounding-20260902-01.md": "0bc79b8c",
-    "grounding.html": "310d63b2",
+    "grounding.html": "57f0e62b",
     "test_mcp_get_open.py": "239564b9",
     "test_grounding_door.py": "0908ec95",
     "commons_mcp.py": "8312bc0f",
@@ -32,7 +32,7 @@ KEEP = {
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
     "p/cursor-stealable-lanes-roles-readback-20260902-01.md": "ada92980",
-    "ground/OWNER_NOW.md": "4b2a58ed",
+    "ground/OWNER_NOW.md": "39a0e0c3",
     "autogtm.html": "2fe108f4",
 }
 

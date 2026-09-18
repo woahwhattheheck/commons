@@ -21,7 +21,7 @@ HALL = ROOT / "p/cursor-google-ai-mode-hall-pass-20260902-01.md"
 KEEP = {
     "p/cursor-wire-super-mcp-fold-readback-20260902-01.md": "63b8221d",
     "p/cursor-google-ai-mode-hall-pass-readback-20260902-01.md": "42e9e750",
-    "test_cursor_wire_super_mcp_fold_readback.py": "b277ad4c",
+    "test_cursor_wire_super_mcp_fold_readback.py": "eb63b4e7",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
     "wire.html": "623602a7",
     "ground/WIRE_SUPER_MCP.md": "dba33cf7",
@@ -37,7 +37,7 @@ KEEP = {
     "p/cursor-goat-pages-super-mcp-land-readback-20260902-01.md": "f98887bf",
     "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
     "p/cursor-claude-commerce-agents-20260902-01.md": "3e48f691",
-    "ground/OWNER_NOW.md": "40f786fe",
+    "ground/OWNER_NOW.md": "39a0e0c3",
 }
 
 # Preserve the last historical KEEP-lift at its immutable tree. The live skill

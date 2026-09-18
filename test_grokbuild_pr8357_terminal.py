@@ -21,7 +21,7 @@ RECEIPT = ROOT / "p/grokbuild-pr8357-terminal-20260902-01.md"
 PEER = ROOT / "p/grokbuild-pr8345-terminal-20260902-01.md"
 
 KEEP = {
-    "host/harborline_pack_market_render_ship.py": "b0fce94f",
+    "host/harborline_pack_market_render_ship.py": "7f1022bf",
     "test_harborline_pack_market_render_ship.py": "d763b575",
     "p/cursor-harborline-pack-market-render-ship-20260902-01.md": "89457966",
     "host/harborline_pack_market_render.py": "cc9a3320",

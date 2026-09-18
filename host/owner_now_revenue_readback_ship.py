@@ -35,7 +35,7 @@ KEEP = {
     "owner-now-revenue.html": "ae172d9e",
     "land/owner-now-revenue-20260902.md": "aa193e21",
     "pay.js": "d5d92b33",
-    "ground/OWNER_NOW.md": "40f786fe",
+    "ground/OWNER_NOW.md": "39a0e0c3",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
 }

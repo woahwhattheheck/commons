@@ -25,7 +25,7 @@ KEEP = {
     f"p/{LEFTOVER_ID}.md": "003828c9",
     "host/since_you_last_looked.py": "3578783c",
     "ground/SINCE_YOU_LAST_LOOKED.json": "749c8220",
-    "test_since_you_last_looked.py": "f069d141",
+    "test_since_you_last_looked.py": "96f6fa5b",
     "since-you-last-looked.html": "60b1350e",
     f"p/{UNIQUE_PACK_ID}.md": "bc71c9fe",
     "test_cursor_since_you_last_looked_readback.py": "ec35edc0",
@@ -35,7 +35,7 @@ KEEP = {
     "p/cursor-stealable-lanes-roles-readback-20260902-01.md": "ada92980",
     "p/cursor-commons-slack-full-body-20260902-01.md": "86f4eddc",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
-    "ground/OWNER_NOW.md": "40f786fe",
+    "ground/OWNER_NOW.md": "39a0e0c3",
     "grounding.html": "57f0e62b",
     "hub_pages.py": "673dab89",
 }

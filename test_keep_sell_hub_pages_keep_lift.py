@@ -26,7 +26,7 @@ STALE_BOARDS = "a44e8e3e"
 KEEP_UNREAD = {
     "autogtm.html": "5c966110",
     "door.js": "5899223c",
-    "ground/OWNER_NOW.md": "40f786fe",
+    "ground/OWNER_NOW.md": "39a0e0c3",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "p/cursor-pack-is-ready-to-run-20260902-01.md": "897b00ba",
     "test_keep_sell_board_projection.py": "48a06148",
