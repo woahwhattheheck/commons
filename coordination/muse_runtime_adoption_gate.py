@@ -550,4 +550,50 @@ def _build_api():
             "reasons": reasons,
             "event_counts": counts,
             "event_classes": [e["event_class"] for e in normalized["events"]],
-            "atomic_sequ
+            "atomic_sequence_consistent": status == "ATOMIC_SEQUENCE_OBSERVED",
+            "provider_commit_observed": commit is not None,
+            "provider_commit": (
+                {"provider": commit["provider"], "provider_message_id": commit["provider_message_id"]}
+                if commit is not None
+                else None
+            ),
+            "evidence_claims": {
+                "retained_transcript_internally_consistent": status == "ATOMIC_SEQUENCE_OBSERVED",
+                "runtime_deployment_independently_authenticated": False,
+                "provider_send_independently_authenticated": False,
+            },
+            "authority": dict(authority_items),
+        }
+        diagnostic["receipt_sha256"] = digest(diagnostic)
+        return diagnostic
+
+    def process_now_s() -> int:
+        return time_ns() // 1_000_000_000
+
+    def compile_current(packet: _Any) -> dict[str, _Any]:
+        return compile_at(packet, process_now_s())
+
+    diagnostic_keys = {
+        "schema",
+        "input_schema",
+        "input_sha256",
+        "operation_key",
+        "counterparty",
+        "route",
+        "purpose",
+        "lease_id",
+        "selected_session",
+        "runtime",
+        "captured_at",
+        "max_age_seconds",
+        "evaluated_at",
+        "status",
+        "reasons",
+        "event_counts",
+        "event_classes",
+        "atomic_sequence_consistent",
+        "provider_commit_observed",
+        "provider_commit",
+        "evidence_claims",
+        "authority",
+  
