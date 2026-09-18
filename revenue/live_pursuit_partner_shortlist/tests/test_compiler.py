@@ -27,7 +27,7 @@ class CompilerTests(unittest.TestCase):
     def test_sensitive_generic_cannot_promote(self):
         x = copy.deepcopy(FIX)
         x["pursuits"][0]["evidence"].append({"evidence_id": "E3", "owner": "PRIME", "category": "GENERIC", "status": "VERIFIED", "source_uri": "f/g", "source_sha256": "d" * 64, "observed_at": "2026-09-17T12:00:00-04:00", "valid_until": None, "covers_requirement_ids": ["R2"]})
-        self.assertEqual({r["requirement_id"]: r["state"] for r in self.c(x)["payload"]["crosswalk"]}["R2"], "PARTNER_REQUIRED")
+        self.assertEqual({r["requirement_id"]: r["state"] for r in self.c(x)["payload"]["crosswalk"]}["R2"], "OWNER_INPUT")
 
     def test_bad_mapped_evidence_holds_even_with_other_prime(self):
         x = copy.deepcopy(FIX)
@@ -123,6 +123,111 @@ class CompilerTests(unittest.TestCase):
         authority = self.c()["payload"]["authority"]
         self.assertTrue(authority)
         self.assertTrue(all(v is False for v in authority.values()))
+
+    def test_trusted_generation_is_receipt_bound(self):
+        out = self.c()
+        n = out["normalized_input"]
+        self.assertRegex(n["trusted_generation_sha256"], r"^[0-9a-f]{64}$")
+        self.assertEqual(n["currentness_basis"], "CALLER_HISTORICAL_SYNTHETIC")
+        self.assertEqual(
+            out["payload"]["trusted_generation_sha256"],
+            n["trusted_generation_sha256"],
+        )
+        self.assertEqual(
+            out["receipt"]["trusted_generation_sha256"],
+            n["trusted_generation_sha256"],
+        )
+
+    def test_forged_tjlabs_verified_digest_cannot_promote(self):
+        x = copy.deepcopy(FIX)
+        x["pursuits"][0]["evidence"][0]["source_sha256"] = "d" * 64
+        row = [
+            r for r in self.c(x)["payload"]["crosswalk"]
+            if r["requirement_id"] == "R1"
+        ][0]
+        self.assertEqual(row["state"], "OWNER_INPUT")
+        self.assertEqual(row["reason"], "MAPPED_EVIDENCE_NOT_AUTHENTICATED")
+
+    def test_forged_prime_source_cannot_promote(self):
+        x = copy.deepcopy(FIX)
+        x["pursuits"][0]["evidence"][1]["source_uri"] = "fixtures/e1.json"
+        x["pursuits"][0]["evidence"][1]["source_sha256"] = (
+            "cd9ada0ba1c2654c738c618008f1627c0744e5a9e840544de377ed0fcb94abce"
+        )
+        row = [
+            r for r in self.c(x)["payload"]["crosswalk"]
+            if r["requirement_id"] == "R3"
+        ][0]
+        self.assertEqual(row["state"], "OWNER_INPUT")
+        self.assertNotEqual(row["state"], "PRIME_SUPPORTED")
+
+    def test_owner_relabel_cannot_promote(self):
+        x = copy.deepcopy(FIX)
+        x["pursuits"][0]["evidence"][1]["owner"] = "TJLABS"
+        row = [
+            r for r in self.c(x)["payload"]["crosswalk"]
+            if r["requirement_id"] == "R3"
+        ][0]
+        self.assertEqual(row["state"], "OWNER_INPUT")
+        self.assertNotEqual(row["state"], "PASS")
+
+    def test_requirement_mapping_transplant_cannot_promote(self):
+        x = copy.deepcopy(FIX)
+        x["pursuits"][0]["evidence"][0]["covers_requirement_ids"] = ["R2"]
+        rows = {
+            r["requirement_id"]: r
+            for r in self.c(x)["payload"]["crosswalk"]
+        }
+        self.assertNotIn(rows["R1"]["state"], {"PASS", "PRIME_SUPPORTED"})
+        self.assertEqual(rows["R2"]["state"], "OWNER_INPUT")
+
+    def test_requirement_contract_remint_cannot_promote(self):
+        x = copy.deepcopy(FIX)
+        x["pursuits"][0]["requirements"][0]["text"] = (
+            "Reminted requirement wording"
+        )
+        row = [
+            r for r in self.c(x)["payload"]["crosswalk"]
+            if r["requirement_id"] == "R1"
+        ][0]
+        self.assertEqual(row["state"], "OWNER_INPUT")
+        self.assertEqual(
+            row["reason"],
+            "REQUIREMENT_CONTRACT_NOT_AUTHENTICATED",
+        )
+
+    def test_synthetic_trust_generation_grants_no_live_authority(self):
+        x = copy.deepcopy(FIX)
+        x["materialization_mode"] = "LIVE"
+        out = self.c(x)
+        self.assertEqual(out["payload"]["status"], compiler.BLOCKED_NO_CARRIER)
+        self.assertEqual(
+            out["normalized_input"]["currentness_basis"],
+            "PROCESS_UTC",
+        )
+        self.assertFalse(
+            out["normalized_input"]["pursuits"][0]["source_authenticated"]
+        )
+        self.assertTrue(
+            all(r["state"] == "OWNER_INPUT" for r in out["payload"]["crosswalk"])
+        )
+
+    def test_live_caller_clock_rollback_cannot_revive_expired_source(self):
+        x = copy.deepcopy(FIX)
+        x["materialization_mode"] = "LIVE"
+        x["as_of"] = "2020-01-05T00:00:00Z"
+        x["pursuits"][0]["source_observed_at"] = "2020-01-01T00:00:00Z"
+        x["pursuits"][0]["source_valid_until"] = "2020-01-10T00:00:00Z"
+        out = self.c(x)
+        p = out["normalized_input"]["pursuits"][0]
+        self.assertEqual(
+            out["normalized_input"]["currentness_basis"],
+            "PROCESS_UTC",
+        )
+        self.assertFalse(p["source_current"])
+        self.assertTrue(
+            all(r["state"] == "OWNER_INPUT" for r in out["payload"]["crosswalk"])
+        )
 
     def test_real_python_O_guard(self):
         with tempfile.TemporaryDirectory() as d:

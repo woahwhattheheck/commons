@@ -8,12 +8,18 @@ This offline compiler turns source-bound mandatory pursuit requirements into a d
 
 Every retained requirement compiles to exactly one of:
 
-- `PASS` — current verified TJLabs-owned evidence exactly covers it.
-- `PRIME_SUPPORTED` — current verified retained prime-side evidence exactly covers it.
+- `PASS` — current retained TJLabs evidence matches the repository trust generation.
+- `PRIME_SUPPORTED` — current retained prime evidence matches the repository trust generation.
 - `PARTNER_REQUIRED` — mandatory, uncovered, and explicitly partner-eligible.
 - `OWNER_INPUT` — stale, ambiguous, missing, conflicting, unsupported, or unsafe to map.
 
 For `CERTIFICATION`, `REFERENCE`, `SLA`, `SECURITY`, and `LEGAL`, generic capability prose cannot promote the requirement. Explicitly mapped stale/unverified/conflicting evidence forces `OWNER_INPUT`; unrelated prime evidence cannot wash it away.
+
+## Retained trust generation
+
+The compiler initializes from `trusted_evidence_manifest.json` and checks the committed source files against their retained SHA-256 values. The current generation is `SYNTHETIC_ONLY`: it supports the mechanics fixture but does not establish LIVE qualification evidence.
+
+Synthetic `as_of` is historical fixture time. LIVE currentness uses a process UTC clock captured during initialization. The trust-generation digest and currentness basis are retained in the compiled evidence.
 
 ## Live truth boundary
 

@@ -16,6 +16,11 @@ from datetime import datetime, timezone
 from typing import Any
 from urllib.parse import urlsplit
 
+try:
+    from . import trusted_generation as _trusted_generation
+except ImportError:
+    import trusted_generation as _trusted_generation
+
 SCHEMA_VERSION = "live-pursuit-partner-shortlist/v1"
 BLOCKED_NO_CARRIER = "LIVE_MATERIALIZATION_BLOCKED_NO_VERIFIED_CARRIER_SET"
 OWNERS = {"TJLABS", "PRIME"}
@@ -126,7 +131,7 @@ def _current(observed: str, valid_until: str | None, as_of) -> bool:
     return valid_dt >= as_of
 
 
-def validate_and_normalize(raw: Any) -> dict[str, Any]:
+def _validate_impl(raw: Any, authenticate, live_now, generation_sha) -> dict[str, Any]:
     root = _obj(raw, "root")
     _closed(root, {"schema_version", "as_of", "materialization_mode", "verified_carrier_set", "pursuits"}, "root")
     if _str(root, "schema_version", "root") != SCHEMA_VERSION:
@@ -136,6 +141,8 @@ def validate_and_normalize(raw: Any) -> dict[str, Any]:
     mode = _str(root, "materialization_mode", "root")
     if mode not in MODES:
         raise InputError("root.materialization_mode: invalid")
+    current_as_of = as_of if mode == "SYNTHETIC" else live_now()
+    currentness_basis = "CALLER_HISTORICAL_SYNTHETIC" if mode == "SYNTHETIC" else "PROCESS_UTC"
     carriers_out = []
     carrier_ids = set()
     for i, c0 in enumerate(_list(root.get("verified_carrier_set"), "root.verified_carrier_set")):
@@ -149,7 +156,7 @@ def validate_and_normalize(raw: Any) -> dict[str, Any]:
         vu = c.get("valid_until")
         if vu is not None and type(vu) is not str:
             raise InputError("carrier.valid_until: string/null")
-        carriers_out.append({"pursuit_id": cid, "source_uri": _source(_str(c, "source_uri", f"carrier[{i}]"), f"carrier[{i}].source_uri"), "source_sha256": _digest(_str(c, "source_sha256", f"carrier[{i}]"), f"carrier[{i}].source_sha256"), "observed_at": obs, "valid_until": vu, "verified": _bool(c, "verified", f"carrier[{i}]"), "current": _current(obs, vu, as_of)})
+        carriers_out.append({"pursuit_id": cid, "source_uri": _source(_str(c, "source_uri", f"carrier[{i}]"), f"carrier[{i}].source_uri"), "source_sha256": _digest(_str(c, "source_sha256", f"carrier[{i}]"), f"carrier[{i}].source_sha256"), "observed_at": obs, "valid_until": vu, "verified": _bool(c, "verified", f"carrier[{i}]"), "current": _current(obs, vu, current_as_of)})
 
     pursuits_out = []
     pursuit_ids = set()
@@ -166,7 +173,7 @@ def validate_and_normalize(raw: Any) -> dict[str, Any]:
         pvu = p.get("source_valid_until")
         if pvu is not None and type(pvu) is not str:
             raise InputError("source_valid_until: string/null")
-        pcurrent = _current(po, pvu, as_of)
+        pcurrent = _current(po, pvu, current_as_of)
 
         reqs = []
         req_ids = set()
@@ -211,17 +218,73 @@ def validate_and_normalize(raw: Any) -> dict[str, Any]:
             vu = e.get("valid_until")
             if vu is not None and type(vu) is not str:
                 raise InputError("evidence.valid_until: string/null")
-            evs.append({"evidence_id": eid, "owner": owner, "category": cat, "status": status, "source_uri": _source(_str(e, "source_uri", f"evidence[{pi}:{ei}]"), f"evidence[{pi}:{ei}].source_uri"), "source_sha256": _digest(_str(e, "source_sha256", f"evidence[{pi}:{ei}]"), f"evidence[{pi}:{ei}].source_sha256"), "observed_at": obs, "valid_until": vu, "current": _current(obs, vu, as_of), "covers_requirement_ids": sorted(covers)})
-        pursuits_out.append({"pursuit_id": pid, "source_uri": ps, "source_sha256": pd, "source_observed_at": po, "source_valid_until": pvu, "source_current": pcurrent, "requirements": sorted(reqs, key=lambda x: x["requirement_id"]), "evidence": sorted(evs, key=lambda x: x["evidence_id"])})
+            evs.append({"evidence_id": eid, "owner": owner, "category": cat, "status": status, "source_uri": _source(_str(e, "source_uri", f"evidence[{pi}:{ei}]"), f"evidence[{pi}:{ei}].source_uri"), "source_sha256": _digest(_str(e, "source_sha256", f"evidence[{pi}:{ei}]"), f"evidence[{pi}:{ei}].source_sha256"), "observed_at": obs, "valid_until": vu, "current": _current(obs, vu, current_as_of), "covers_requirement_ids": sorted(covers)})
+        source_claim = {
+            "source_uri": ps,
+            "source_sha256": pd,
+            "source_observed_at": po,
+            "source_valid_until": pvu,
+        }
+        source_authenticated, requirement_ids, evidence_ids = authenticate(
+            mode, pid, source_claim, reqs, evs
+        )
+        requirement_ids = set(requirement_ids)
+        evidence_ids = set(evidence_ids)
+        for row in reqs:
+            row["authenticated"] = row["requirement_id"] in requirement_ids
+        for row in evs:
+            row["authenticated"] = row["evidence_id"] in evidence_ids
+        pursuits_out.append({
+            "pursuit_id": pid,
+            "source_uri": ps,
+            "source_sha256": pd,
+            "source_observed_at": po,
+            "source_valid_until": pvu,
+            "source_current": pcurrent,
+            "source_authenticated": source_authenticated,
+            "requirements": sorted(reqs, key=lambda x: x["requirement_id"]),
+            "evidence": sorted(evs, key=lambda x: x["evidence_id"]),
+        })
     if not pursuits_out:
         raise InputError("root.pursuits: at least one required")
-    return {"schema_version": SCHEMA_VERSION, "as_of": as_of_s, "materialization_mode": mode, "verified_carrier_set": sorted(carriers_out, key=lambda x: x["pursuit_id"]), "pursuits": sorted(pursuits_out, key=lambda x: x["pursuit_id"])}
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "as_of": as_of_s,
+        "materialization_mode": mode,
+        "currentness_basis": currentness_basis,
+        "trusted_generation_sha256": generation_sha,
+        "verified_carrier_set": sorted(carriers_out, key=lambda x: x["pursuit_id"]),
+        "pursuits": sorted(pursuits_out, key=lambda x: x["pursuit_id"]),
+    }
+
+
+def _build_validator():
+    authenticate = _trusted_generation.authenticate
+    live_now = _trusted_generation.live_now
+    generation_sha = _trusted_generation.GENERATION_SHA256
+    impl = _validate_impl
+
+    def validate_and_normalize(raw: Any) -> dict[str, Any]:
+        return impl(raw, authenticate, live_now, generation_sha)
+
+    return validate_and_normalize
+
+
+validate_and_normalize = _build_validator()
+TRUSTED_GENERATION_SHA256 = _trusted_generation.GENERATION_SHA256
+del _trusted_generation
 
 
 def _state_for(req, pursuit):
+    if not pursuit["source_authenticated"]:
+        return "OWNER_INPUT", "PURSUIT_SOURCE_NOT_AUTHENTICATED"
+    if not req["authenticated"]:
+        return "OWNER_INPUT", "REQUIREMENT_CONTRACT_NOT_AUTHENTICATED"
     if not pursuit["source_current"]:
         return "OWNER_INPUT", "PURSUIT_SOURCE_NOT_CURRENT"
     mapped = [e for e in pursuit["evidence"] if req["requirement_id"] in e["covers_requirement_ids"]]
+    if any(not e["authenticated"] for e in mapped):
+        return "OWNER_INPUT", "MAPPED_EVIDENCE_NOT_AUTHENTICATED"
     if any(e["status"] != "VERIFIED" or not e["current"] for e in mapped):
         return "OWNER_INPUT", "MAPPED_EVIDENCE_NOT_CURRENT_VERIFIED"
     exact = []
@@ -265,8 +328,12 @@ def compile_payload(raw: Any) -> dict[str, Any]:
     rows = sorted(rows, key=lambda x: (x["pursuit_id"], x["requirement_id"]))
     status = BLOCKED_NO_CARRIER if blocker else ("OWNER_REVIEW_READY" if not any(r["state"] == "OWNER_INPUT" for r in rows) else "HOLD_OWNER_INPUT")
     core = {"schema_version": SCHEMA_VERSION, "as_of": n["as_of"], "materialization_mode": n["materialization_mode"], "status": status, "blockers": blocker, "crosswalk": rows, "partner_capability_shortlist": shortlist, "authority": {"company_recommendation": False, "route_recommendation": False, "external_contact": False, "buyer_submission": False, "signature": False, "price_commitment": False, "award": False, "payment": False, "revenue": False}}
+    core["currentness_basis"] = n["currentness_basis"]
+    core["trusted_generation_sha256"] = n["trusted_generation_sha256"]
     md = render_markdown(core)
     receipt = {"schema_version": SCHEMA_VERSION, "canonical_input_sha256": sha256(canonical_bytes(n)), "payload_sha256": sha256(canonical_bytes(core)), "crosswalk_sha256": sha256(canonical_bytes(rows)), "shortlist_sha256": sha256(canonical_bytes(shortlist)), "markdown_sha256": sha256(md.encode("utf-8")), "status": status, "blockers": blocker}
+    receipt["currentness_basis"] = n["currentness_basis"]
+    receipt["trusted_generation_sha256"] = n["trusted_generation_sha256"]
     return {"normalized_input": n, "payload": core, "markdown": md, "receipt": receipt}
 
 
