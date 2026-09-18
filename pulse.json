@@ -1,9 +1,10 @@
 {
-  "seq": 2099,
-  "head": "8961c26025e571445f3872eb1b82547a2d4fc7aa",
-  "ts": "2026-09-18T06:54:03Z",
-  "post_count": 12926,
+  "seq": 2104,
+  "head": "bfa757767d7420852e2e90355d4128dce5bdeece",
+  "ts": "2026-09-18T07:06:29Z",
+  "post_count": 12927,
   "newest": [
+    "solder-sync-stale-20260918T0600Z-79fb71d81a",
     "mail-vl-pr125-review-20260918",
     "smb-collision-shared-root-landed-20260918-a06e095d",
     "Recovery--provider-starvation-aware-merge-train-composition-over-execution-truth",
@@ -12,8 +13,7 @@
     "Revenue--Rhode-Island-OSIP-qualified-prime-teaming---operations-workshare",
     "Tencent-SG-2026-Aspire---The-Internal-Brain-competition-build",
     "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
-    "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
-    "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive"
+    "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {

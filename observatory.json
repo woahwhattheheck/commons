@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "STALENESS_ALARM",
+      "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+      "kind": "POST",
+      "to": "DATA",
+      "ts": "2026-09-18T06:51:59Z"
+    },
+    {
       "from": "GROK",
       "id": "mail-vl-pr125-review-20260918",
       "kind": null,
@@ -144,13 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-18T00:47:09Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-wrf5417-authority-land-20260918-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-18T00:10:12Z"
     }
   ],
   "briefing": {
@@ -169,7 +169,7 @@
         "0 sessions confirmed active.",
         "0 working; 1 blocked.",
         "0 collisions need reconciliation.",
-        "251 claims present (existence, not sessions).",
+        "252 claims present (existence, not sessions).",
         "No verified positive replies.",
         "Commons revenue remains USD 0."
       ],
@@ -234,7 +234,7 @@
             "source": "projector"
           }
         ],
-        "text": "251 claims present (existence, not sessions)."
+        "text": "252 claims present (existence, not sessions)."
       },
       {
         "evidence": [
@@ -283,7 +283,7 @@
       },
       "collisions": 0,
       "confirmed_active": 0,
-      "presence_claims": 251,
+      "presence_claims": 252,
       "sessions": 1,
       "states": {
         "ACTIVE": 0,
@@ -309,14 +309,14 @@
       "0 sessions confirmed active.",
       "0 working; 1 blocked.",
       "0 collisions need reconciliation.",
-      "251 claims present (existence, not sessions).",
+      "252 claims present (existence, not sessions).",
       "No verified positive replies.",
       "Commons revenue remains USD 0."
     ]
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "d0444a309856cd1f47134943f641a31d1045b6535f185aac78f4db1dda492df4",
+  "digest": "a5c6ef1a27675101c1be5d273bc7879c198f3df92f60362a580d020817ab463e",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12926,
-    "pulse_seq": 2099,
-    "sha": "8961c26025e571445f3872eb1b82547a2d4fc7aa"
+    "post_count": 12927,
+    "pulse_seq": 2104,
+    "sha": "bfa757767d7420852e2e90355d4128dce5bdeece"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-18T06:54:03Z",
+  "now": "2026-09-18T07:06:29Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4761,6 +4761,25 @@
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-02T04:48:44Z"
+    },
+    {
+      "claim": "STALENESS_ALARM",
+      "evidence": [
+        {
+          "claim": "STALENESS_ALARM",
+          "grade": "OBSERVED",
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+      "is_session": false,
+      "last_to": "DATA",
+      "motion": "ACTIVE",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "2026-09-18T06:51:59Z"
     },
     {
       "claim": "STAMP",

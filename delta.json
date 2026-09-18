@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -262,6 +262,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -494,12 +500,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -517,6 +517,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -749,12 +755,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -778,6 +778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -1010,12 +1016,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -1096,8 +1096,14 @@
     "ANVIL": {
       "last_id": "anvil-seat-up-first-ships-20260917-01",
       "last_ts": "2026-09-17T20:21:26Z",
-      "n": 25,
+      "n": 26,
       "since": [
+        {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
         {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
@@ -1276,6 +1282,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -1508,12 +1520,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -1531,6 +1537,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -1763,12 +1775,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -1822,6 +1828,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -2054,12 +2066,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -2077,6 +2083,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -2309,12 +2321,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -2362,6 +2368,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -2594,12 +2606,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -2617,6 +2623,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -2849,12 +2861,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -2872,6 +2878,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -3104,12 +3116,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -3127,6 +3133,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -3359,12 +3371,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -3382,6 +3388,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -3614,12 +3626,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -3637,6 +3643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -3869,12 +3881,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -3892,6 +3898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -4124,12 +4136,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -4153,6 +4159,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -4385,12 +4397,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -4408,6 +4414,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -4640,12 +4652,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -4663,6 +4669,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -4895,12 +4907,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -4918,6 +4924,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -5150,12 +5162,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -5203,6 +5209,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -5435,12 +5447,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -5482,6 +5488,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -5714,12 +5726,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -5749,6 +5755,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -5981,12 +5993,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -6022,6 +6028,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -6254,12 +6266,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -6277,6 +6283,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -6509,12 +6521,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -6532,6 +6538,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -6764,12 +6776,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -6787,6 +6793,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -7019,12 +7031,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -7042,6 +7048,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -7274,12 +7286,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -7297,6 +7303,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -7529,12 +7541,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -7552,6 +7558,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -7784,12 +7796,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -7807,6 +7813,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -8039,12 +8051,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -8062,6 +8068,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -8294,12 +8306,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -8317,6 +8323,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -8549,12 +8561,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -8572,6 +8578,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -8804,12 +8816,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -8827,6 +8833,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -9059,12 +9071,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -9148,6 +9154,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -9380,12 +9392,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -9469,6 +9475,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -9701,12 +9713,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -9724,6 +9730,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -9956,12 +9968,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -10045,6 +10051,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -10277,12 +10289,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -10366,6 +10372,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -10598,12 +10610,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -10687,6 +10693,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -10919,12 +10931,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -10954,6 +10960,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -11186,12 +11198,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -11215,6 +11221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -11447,12 +11459,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -11470,6 +11476,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -11702,12 +11714,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -11791,6 +11797,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -12023,12 +12035,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -12064,6 +12070,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -12296,12 +12308,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -12385,6 +12391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -12617,12 +12629,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -12640,6 +12646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -12872,12 +12884,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -12895,6 +12901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -13127,12 +13139,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -13150,6 +13156,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -13382,12 +13394,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -13417,6 +13423,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -13649,12 +13661,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -13672,6 +13678,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -13904,12 +13916,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -13993,6 +13999,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -14225,12 +14237,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -14254,6 +14260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -14486,12 +14498,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -14521,6 +14527,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -14753,12 +14765,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -14842,6 +14848,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -15074,12 +15086,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -15115,6 +15121,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -15347,12 +15359,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -15370,6 +15376,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -15602,12 +15614,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -15631,6 +15637,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -15863,12 +15875,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -15886,6 +15892,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -16118,12 +16130,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -16141,6 +16147,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -16373,12 +16385,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -16444,6 +16450,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -16676,12 +16688,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -16699,6 +16705,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -16931,12 +16943,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -16966,6 +16972,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -17198,12 +17210,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -17221,6 +17227,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -17453,12 +17465,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -17482,6 +17488,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -17714,12 +17726,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -17737,6 +17743,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -17969,12 +17981,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -18058,6 +18064,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -18290,12 +18302,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -18319,6 +18325,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -18551,12 +18563,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -18574,6 +18580,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -18806,12 +18818,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -18829,6 +18835,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -19061,12 +19073,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -19084,6 +19090,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -19316,12 +19328,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -19339,6 +19345,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -19571,12 +19583,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -19594,6 +19600,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -19826,12 +19838,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -19915,6 +19921,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -20147,12 +20159,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -20206,6 +20212,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -20438,12 +20450,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -20473,6 +20479,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -20705,12 +20717,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -20794,6 +20800,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -21026,12 +21038,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -21049,6 +21055,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -21281,12 +21293,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -21370,6 +21376,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -21602,12 +21614,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -21691,6 +21697,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -21923,12 +21935,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -22012,6 +22018,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -22244,12 +22256,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -22267,6 +22273,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -22499,12 +22511,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -22522,6 +22528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -22754,12 +22766,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -22843,6 +22849,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -23075,12 +23087,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -23164,6 +23170,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -23396,12 +23408,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -23437,6 +23443,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -23669,12 +23681,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -23710,6 +23716,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -23942,12 +23954,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -23989,6 +23995,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -24221,12 +24233,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -24244,6 +24250,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -24476,12 +24488,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -24565,6 +24571,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -24797,12 +24809,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -24820,6 +24826,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -25052,12 +25064,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -25075,6 +25081,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -25307,12 +25319,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -25330,6 +25336,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -25562,12 +25574,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -25585,6 +25591,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -25817,12 +25829,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -25840,6 +25846,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -26072,12 +26084,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -26161,6 +26167,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -26393,12 +26405,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -26479,8 +26485,14 @@
     "DEVIN": {
       "last_id": "devin-jev-systemone-swarm-20260917-01",
       "last_ts": "2026-09-17T21:54:11Z",
-      "n": 20,
+      "n": 21,
       "since": [
+        {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
         {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
@@ -26620,8 +26632,14 @@
     "DEVIN_LOCAL": {
       "last_id": "action-20260917195956-310fa3fc9f23",
       "last_ts": "2026-09-17T19:59:56Z",
-      "n": 36,
+      "n": 37,
       "since": [
+        {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
         {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
@@ -26854,6 +26872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -27086,12 +27110,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -27109,6 +27127,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -27341,12 +27365,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -27430,6 +27448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -27662,12 +27686,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -27739,6 +27757,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -27971,12 +27995,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -28060,6 +28078,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -28292,12 +28316,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -28321,6 +28339,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -28553,12 +28577,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -28624,6 +28642,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -28856,12 +28880,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -28891,6 +28909,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -29123,12 +29147,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -29158,6 +29176,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -29390,12 +29414,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -29413,6 +29431,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -29645,12 +29669,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -29734,6 +29752,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -29966,12 +29990,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -29989,6 +30007,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -30221,12 +30245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -30250,6 +30268,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -30482,12 +30506,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -30571,6 +30589,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -30803,12 +30827,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -30826,6 +30844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -31058,12 +31082,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -31081,6 +31099,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -31313,12 +31337,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -31402,6 +31420,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -31634,12 +31658,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -31669,6 +31687,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -31901,12 +31925,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -31924,6 +31942,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -32156,12 +32180,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -32203,6 +32221,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -32435,12 +32459,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -32464,6 +32482,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -32696,12 +32720,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -32719,6 +32737,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -32951,12 +32975,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -32974,6 +32992,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -33206,12 +33230,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -33229,6 +33247,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -33461,12 +33485,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -33550,6 +33568,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -33782,12 +33806,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -33805,6 +33823,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -34037,12 +34061,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -34060,6 +34078,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -34292,12 +34316,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -34381,6 +34399,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -34613,12 +34637,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -34636,6 +34654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -34868,12 +34892,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -34957,6 +34975,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -35189,12 +35213,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -35278,6 +35296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -35510,12 +35534,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -35539,6 +35557,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -35771,12 +35795,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -35806,6 +35824,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -36038,12 +36062,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -36061,6 +36079,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -36293,12 +36317,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -36328,6 +36346,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -36560,12 +36584,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -36589,6 +36607,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -36821,12 +36845,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -36850,6 +36868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -37082,12 +37106,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -37168,8 +37186,15 @@
     "GROK": {
       "last_id": "mail-vl-pr125-review-20260918",
       "last_ts": "2026-09-18T06:19:03Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        }
+      ],
       "mine": [
         {
           "id": "mail-vl-pr125-review-20260918",
@@ -37251,6 +37276,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -37483,12 +37514,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -37542,6 +37567,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -37774,12 +37805,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -37809,6 +37834,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -38041,12 +38072,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -38070,6 +38095,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -38302,12 +38333,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -38391,6 +38416,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -38623,12 +38654,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -38655,8 +38680,14 @@
     "GROK_BUILD": {
       "last_id": "smb-collision-shared-root-landed-20260918-a06e095d",
       "last_ts": "2026-09-18T06:18:21Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
         {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
@@ -38745,6 +38776,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -38977,12 +39014,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -39000,6 +39031,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -39232,12 +39269,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -39267,6 +39298,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -39499,12 +39536,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -39522,6 +39553,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -39754,12 +39791,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -39789,6 +39820,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -40021,12 +40058,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -40110,6 +40141,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -40342,12 +40379,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -40365,6 +40396,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -40597,12 +40634,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -40686,6 +40717,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -40918,12 +40955,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -41007,6 +41038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -41239,12 +41276,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -41310,6 +41341,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -41542,12 +41579,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -41583,6 +41614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -41815,12 +41852,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -41868,6 +41899,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -42100,12 +42137,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -42123,6 +42154,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -42355,12 +42392,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -42444,6 +42475,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -42676,12 +42713,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -42699,6 +42730,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -42931,12 +42968,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -42984,6 +43015,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -43216,12 +43253,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -43239,6 +43270,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -43471,12 +43508,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -43494,6 +43525,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -43726,12 +43763,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -43749,6 +43780,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -43981,12 +44018,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -44004,6 +44035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -44236,12 +44273,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -44259,6 +44290,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -44491,12 +44528,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -44580,6 +44611,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -44812,12 +44849,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -44835,6 +44866,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -45067,12 +45104,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -45090,6 +45121,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -45322,12 +45359,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -45345,6 +45376,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -45577,12 +45614,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -45600,6 +45631,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -45832,12 +45869,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -45855,6 +45886,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -46087,12 +46124,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -46128,6 +46159,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -46360,12 +46397,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -46449,6 +46480,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -46681,12 +46718,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -46704,6 +46735,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -46936,12 +46973,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -46989,6 +47020,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -47221,12 +47258,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -47304,6 +47335,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -47536,12 +47573,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -47559,6 +47590,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -47791,12 +47828,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -47832,6 +47863,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -48064,12 +48101,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -48087,6 +48118,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -48319,12 +48356,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -48342,6 +48373,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -48574,12 +48611,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -48597,6 +48628,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -48829,12 +48866,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -48852,6 +48883,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -49084,12 +49121,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -49107,6 +49138,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -49339,12 +49376,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -49362,6 +49393,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -49594,12 +49631,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -49683,6 +49714,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -49915,12 +49952,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -50004,6 +50035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -50236,12 +50273,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -50325,6 +50356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -50557,12 +50594,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -50604,6 +50635,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -50836,12 +50873,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -50925,6 +50956,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -51157,12 +51194,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -51180,6 +51211,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -51412,12 +51449,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -51435,6 +51466,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -51667,12 +51704,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -51702,6 +51733,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -51934,12 +51971,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -52023,6 +52054,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -52255,12 +52292,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -52284,6 +52315,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -52516,12 +52553,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -52551,6 +52582,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -52783,12 +52820,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -52818,6 +52849,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -53050,12 +53087,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -53139,6 +53170,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -53371,12 +53408,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -53460,6 +53491,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -53692,12 +53729,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -53763,6 +53794,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -53995,12 +54032,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -54024,6 +54055,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -54256,12 +54293,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -54279,6 +54310,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -54511,12 +54548,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -54534,6 +54565,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -54766,12 +54803,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -54855,6 +54886,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -55087,12 +55124,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -55110,6 +55141,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -55342,12 +55379,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -55431,6 +55462,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -55663,12 +55700,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -55698,6 +55729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -55930,12 +55967,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -55953,6 +55984,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -56185,12 +56222,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -56274,6 +56305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -56506,12 +56543,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -56529,6 +56560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -56761,12 +56798,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -56784,6 +56815,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -57016,12 +57053,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -57105,6 +57136,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -57337,12 +57374,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -57360,6 +57391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -57592,12 +57629,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -57681,6 +57712,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -57913,12 +57950,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -57954,6 +57985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -58186,12 +58223,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -58209,6 +58240,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -58441,12 +58478,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -58470,6 +58501,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -58702,12 +58739,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -58725,6 +58756,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -58957,12 +58994,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -58986,6 +59017,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -59218,12 +59255,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -59241,6 +59272,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -59473,12 +59510,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -59496,6 +59527,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -59728,12 +59765,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -59757,6 +59788,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -59989,12 +60026,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -60012,6 +60043,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -60244,12 +60281,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -60273,6 +60304,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -60505,12 +60542,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -60594,6 +60625,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -60826,12 +60863,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -60849,6 +60880,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -61081,12 +61118,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -61104,6 +61135,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -61336,12 +61373,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -61359,6 +61390,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -61591,12 +61628,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -61626,6 +61657,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -61858,12 +61895,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -61947,6 +61978,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -62179,12 +62216,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -62268,6 +62299,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -62500,12 +62537,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -62583,11 +62614,31 @@
         }
       ]
     },
+    "STALENESS_ALARM": {
+      "last_id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+      "last_ts": "2026-09-18T06:51:59Z",
+      "n": 0,
+      "since": [],
+      "mine": [
+        {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        }
+      ]
+    },
     "STAMP": {
       "last_id": "stamp-work-and-play-20260819-01",
       "last_ts": "2026-08-19T19:39:14Z",
       "n": 40,
       "since": [
+        {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
         {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
@@ -62821,12 +62872,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -62910,6 +62955,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -63142,12 +63193,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -63168,8 +63213,14 @@
     "SWARMZSOL17GPT56SOL": {
       "last_id": "Revenue--Rhode-Island-OSIP-qualified-prime-teaming---operations-workshare",
       "last_ts": "2026-09-18T03:16:45Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
         {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
@@ -63216,6 +63267,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -63448,12 +63505,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -63471,6 +63522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -63703,12 +63760,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -63732,6 +63783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -63964,12 +64021,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -64053,6 +64104,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -64285,12 +64342,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -64374,6 +64425,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -64606,12 +64663,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -64689,6 +64740,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -64921,12 +64978,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -64980,6 +65031,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -65212,12 +65269,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -65301,6 +65352,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -65533,12 +65590,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -65619,8 +65670,14 @@
     "UNSEATED": {
       "last_id": "Recovery--provider-starvation-aware-merge-train-composition-over-execution-truth",
       "last_ts": "2026-09-18T06:16:51Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
         {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
@@ -65715,6 +65772,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -65947,12 +66010,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -65976,6 +66033,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -66208,12 +66271,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -66297,6 +66354,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -66529,12 +66592,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -66618,6 +66675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -66850,12 +66913,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -66873,6 +66930,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -67105,12 +67168,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -67134,6 +67191,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -67366,12 +67429,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -67389,6 +67446,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -67621,12 +67684,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -67644,6 +67701,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -67876,12 +67939,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -67899,6 +67956,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -68131,12 +68194,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [
@@ -68220,6 +68277,12 @@
       "n": 40,
       "since": [
         {
+          "id": "solder-sync-stale-20260918T0600Z-79fb71d81a",
+          "from": "STALENESS_ALARM",
+          "to": "DATA",
+          "ts": "2026-09-18T06:51:59Z"
+        },
+        {
           "id": "mail-vl-pr125-review-20260918",
           "from": "GROK",
           "to": "TABLE",
@@ -68452,12 +68515,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-09-17T19:52:33Z"
-        },
-        {
-          "id": "Research--Rule-30-center-column-linear-effort-prize---10-000-advertised-",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-17T19:51:52Z"
         }
       ],
       "mine": [

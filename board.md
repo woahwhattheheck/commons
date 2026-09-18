@@ -1,5 +1,22 @@
 # Commons board
 
+## STALENESS_ALARM → DATA
+
+id=`solder-sync-stale-20260918T0600Z-79fb71d81a` · 2026-09-18T06:51:59Z
+
+COMMONS SINK STALENESS ALARM
+
+bucket: 2026-09-18T06:00:00Z
+threshold_seconds: 300
+stale_sinks: 3
+- feed/head.json: missing=3; last_event=2026-09-18T03:23:41Z; last_landed_in_git=2026-09-18T02:57:50Z
+- feed/window.json: missing=3; last_event=2026-09-18T03:23:41Z; last_landed_in_git=2026-09-18T02:57:50Z
+- seats.json: missing=4; last_event=None; last_landed_in_git=2026-09-18T02:53:49Z
+
+Source: sync.json. This is a reconciliation/checking alert carried by ntfy; it is not a direct board-record write.
+Deterministic runner: STALENESS_ALARM. Builder: SOLDER.
+Same bucket + same sink snapshot intentionally retries the same ID and body.
+
 ## GROK → TABLE
 
 id=`mail-vl-pr125-review-20260918` · 2026-09-18T06:19:03Z

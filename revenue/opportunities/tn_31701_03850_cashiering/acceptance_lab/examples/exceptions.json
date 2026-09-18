@@ -1,0 +1,185 @@
+{
+  "batches": [
+    {
+      "agency": "DEMO_AGENCY",
+      "bank_account": "DEMO_BANK",
+      "business_unit": "BU01",
+      "cashier": "DEMO_USER",
+      "closed_at": "2026-09-16T16:00:00-05:00",
+      "counted_cash_minor": 18475,
+      "currency": "USD",
+      "declared_total_minor": 12550,
+      "department": "DEPT01",
+      "id": "B1",
+      "location": "DEMO_OFFICE",
+      "opened_at": "2026-09-16T08:00:00-05:00",
+      "opening_cash_minor": 10000,
+      "retained_cash_minor": 10000,
+      "variance_reason": null
+    },
+    {
+      "agency": "DEMO_AGENCY",
+      "bank_account": "DEMO_BANK",
+      "business_unit": "BU01",
+      "cashier": "DEMO_USER",
+      "closed_at": "2026-09-16T16:00:00-05:00",
+      "counted_cash_minor": 9000,
+      "currency": "USD",
+      "declared_total_minor": 4000,
+      "department": "DEPT01",
+      "id": "B2",
+      "location": "DEMO_OFFICE",
+      "opened_at": "2026-09-16T08:00:00-05:00",
+      "opening_cash_minor": 5000,
+      "retained_cash_minor": 5000,
+      "variance_reason": null
+    }
+  ],
+  "case_id": "SYNTHETIC_EXCEPTIONS",
+  "currency_scale": {
+    "USD": 2
+  },
+  "deposits": [
+    {
+      "agency": "DEMO_AGENCY",
+      "bank_account": "DEMO_BANK",
+      "batch_ids": [
+        "B1",
+        "B2"
+      ],
+      "business_unit": "BU01",
+      "currency": "USD",
+      "department": "DEPT01",
+      "evidence_ref": "SYNTHETIC_DEPOSIT_CASH",
+      "id": "D_CASH",
+      "location": "DEMO_OFFICE",
+      "observed_minor": 12450,
+      "tender": "CASH",
+      "variance_reason": null
+    },
+    {
+      "agency": "DEMO_AGENCY",
+      "bank_account": "DEMO_BANK",
+      "batch_ids": [
+        "B1"
+      ],
+      "business_unit": "BU01",
+      "currency": "USD",
+      "department": "DEPT01",
+      "evidence_ref": "SYNTHETIC_DEPOSIT_CARD",
+      "id": "D_CARD",
+      "location": "DEMO_OFFICE",
+      "observed_minor": 4000,
+      "tender": "CARD",
+      "variance_reason": null
+    }
+  ],
+  "period": {
+    "end": "2026-09-17T00:00:00-05:00",
+    "start": "2026-09-16T00:00:00-05:00"
+  },
+  "schema": "cashiering-acceptance/1",
+  "transactions": [
+    {
+      "allocations": [
+        {
+          "account_id": "FEES",
+          "amount_minor": 8000
+        },
+        {
+          "account_id": "SERVICES",
+          "amount_minor": 2000
+        }
+      ],
+      "batch_id": "B1",
+      "collected_minor": 10000,
+      "evidence_ref": "SYNTHETIC_ROW_T1",
+      "id": "T1",
+      "kind": "RECEIPT",
+      "original_id": null,
+      "original_minor": 10002,
+      "rounding_minor": -2,
+      "tenders": [
+        {
+          "amount_minor": 6000,
+          "type": "CASH"
+        },
+        {
+          "amount_minor": 4000,
+          "type": "CARD"
+        }
+      ],
+      "timestamp": "2026-09-16T09:00:00-05:00"
+    },
+    {
+      "allocations": [
+        {
+          "account_id": "FEES",
+          "amount_minor": 2900
+        }
+      ],
+      "batch_id": "B1",
+      "collected_minor": 3000,
+      "evidence_ref": "SYNTHETIC_ROW_T2",
+      "id": "T2",
+      "kind": "RECEIPT",
+      "original_id": null,
+      "original_minor": 3000,
+      "rounding_minor": 0,
+      "tenders": [
+        {
+          "amount_minor": 3000,
+          "type": "CASH"
+        }
+      ],
+      "timestamp": "2026-09-16T10:00:00-05:00"
+    },
+    {
+      "allocations": [
+        {
+          "account_id": "FEES",
+          "amount_minor": -500
+        }
+      ],
+      "batch_id": "B1",
+      "collected_minor": -500,
+      "evidence_ref": "SYNTHETIC_ROW_T3",
+      "id": "T3",
+      "kind": "REFUND",
+      "original_id": "T1",
+      "original_minor": -500,
+      "rounding_minor": 0,
+      "tenders": [
+        {
+          "amount_minor": -500,
+          "type": "CASH"
+        }
+      ],
+      "timestamp": "2026-09-16T11:00:00-05:00"
+    },
+    {
+      "allocations": [
+        {
+          "account_id": "FEES",
+          "amount_minor": 4000
+        }
+      ],
+      "batch_id": "B2",
+      "collected_minor": 4000,
+      "evidence_ref": "SYNTHETIC_ROW_T4",
+      "id": "T4",
+      "kind": "RECEIPT",
+      "original_id": null,
+      "original_minor": 4001,
+      "rounding_minor": -1,
+      "tenders": [
+        {
+          "amount_minor": 4000,
+          "type": "CASH"
+        }
+      ],
+      "timestamp": "2026-09-16T10:00:00-05:00"
+    }
+  ],
+  "variance_reason_threshold_minor": 20
+}
