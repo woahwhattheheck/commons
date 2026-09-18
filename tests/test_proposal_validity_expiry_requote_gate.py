@@ -130,6 +130,54 @@ class GateTests(_pre.GateTests):
         finally:
             gate._utc_now = original
 
+    def test_authority_ceiling_ignores_public_and_core_mutation_or_rebind(self):
+        expected = {
+            "owner_review_only": True,
+            "buyer_acceptance": False,
+            "contract_signed": False,
+            "checkout_or_payment_rail_is_acceptance": False,
+            "payment_authorized": False,
+            "revenue_recognized": False,
+            "outbound_authorized": False,
+        }
+        original_public = gate._AUTHORITY
+        original_core = gate._core._AUTHORITY
+        public_snapshot = dict(original_public)
+        core_snapshot = dict(original_core)
+        try:
+            gate._AUTHORITY["revenue_recognized"] = True
+            first = self.process_packet()
+            self.assertEqual(first["authority"], expected)
+
+            gate._AUTHORITY = {key: True for key in expected}
+            second = self.process_packet()
+            self.assertEqual(second["authority"], expected)
+
+            gate._core._AUTHORITY["payment_authorized"] = True
+            third = self.process_packet()
+            self.assertEqual(third["authority"], expected)
+
+            gate._core._AUTHORITY = {key: True for key in expected}
+            fourth = self.process_packet()
+            self.assertEqual(fourth["authority"], expected)
+
+            tampered = dict(fourth)
+            tampered["authority"] = dict(fourth["authority"])
+            tampered["authority"]["outbound_authorized"] = True
+            tampered_without_receipt = dict(tampered)
+            tampered_without_receipt.pop("receipt_sha256")
+            tampered["receipt_sha256"] = gate._sha(tampered_without_receipt)
+
+            _evaluate, verify = gate._build_current_api_for_test(lambda: NOW)
+            self.assertFalse(verify(issued_v2(), current_v2(), tampered))
+        finally:
+            original_public.clear()
+            original_public.update(public_snapshot)
+            original_core.clear()
+            original_core.update(core_snapshot)
+            gate._core._AUTHORITY = original_core
+            gate._AUTHORITY = original_public
+
     def test_other_offer_old_source_history_is_ignored_after_syntax_validation(self):
         b = current_v2()
         b["superseding_events"] = [{
