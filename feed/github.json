@@ -1,9 +1,9 @@
 {
   "counts": {
-    "open_issues": 97,
+    "open_issues": 98,
     "open_pull_requests": 51,
-    "runs_in_progress": 14,
-    "runs_queued": 261
+    "runs_in_progress": 17,
+    "runs_queued": 260
   },
   "counts_source": "graphql",
   "degraded": [],
@@ -97,7 +97,7 @@
       "head_sha": "0874f8f06e4709d32d9aacf445a4be2ef19514f2",
       "number": 15838,
       "title": "Alameda 902737 qualification carrier",
-      "updated_at": "2026-09-18T01:25:07Z"
+      "updated_at": "2026-09-18T01:28:36Z"
     },
     {
       "author": "woahwhattheheck",
@@ -105,10 +105,10 @@
       "branch": "zsol/org-outbound-chain-current-main-r2-20260918",
       "created_at": "2026-09-18T01:22:05Z",
       "draft": false,
-      "head_sha": "1c1e1718242e83a26a0e26afc4c2eff80d7c4c7d",
+      "head_sha": "b053ab20ae622e273b8a776d326d5a4323c7835e",
       "number": 15836,
       "title": "Outbound: recover mandatory organization-aware provider chain on current main",
-      "updated_at": "2026-09-18T01:22:05Z"
+      "updated_at": "2026-09-18T01:30:09Z"
     },
     {
       "author": "woahwhattheheck",
@@ -171,10 +171,10 @@
       "branch": "zsol/payoff-path-authority-init-fixforward-20260917",
       "created_at": "2026-09-18T00:34:21Z",
       "draft": false,
-      "head_sha": "fa8b8ee14f5519d64b2d307917e5fb5d0d37df9c",
+      "head_sha": "4d3a2688d70aada5b87e5957f7ad7167a677c9a1",
       "number": 15817,
-      "title": "Revenue: pin payoff evidence authority at process initialization",
-      "updated_at": "2026-09-18T01:26:21Z"
+      "title": "Revenue: seal payoff evidence authority generation",
+      "updated_at": "2026-09-18T01:30:09Z"
     }
   ],
   "open_heads": {
@@ -219,20 +219,20 @@
     "15811": "c4bd51dbf9e71bd53fa8d85685edb71af4dc5a06",
     "15812": "46a5911866f1ddf1b634f662ff138ee815bdeaba",
     "15815": "9774850de83d1c467264f5e88082b68e72301b6d",
-    "15817": "fa8b8ee14f5519d64b2d307917e5fb5d0d37df9c",
+    "15817": "4d3a2688d70aada5b87e5957f7ad7167a677c9a1",
     "15818": "bfaf415a8f0ba3b9f2cae990b5bbddb4063854e0",
     "15822": "d16105e6759e92870b31f2d795b86383333f898d",
     "15823": "783792d04073809967c44caaa80d754bd79f5466",
     "15832": "2fbb85ed66dcd4ed2e6153e2e746a567c03ed2b9",
     "15834": "c3464df897f45c235b3ec385d6cd1bf83dc1f9f9",
-    "15836": "1c1e1718242e83a26a0e26afc4c2eff80d7c4c7d",
+    "15836": "b053ab20ae622e273b8a776d326d5a4323c7835e",
     "15838": "0874f8f06e4709d32d9aacf445a4be2ef19514f2",
     "15840": "1dd7127ba8b46b36e0020a347946d334bddab2b3",
     "15841": "568a80567ae0d16bd343299b681aac683fc98f5e"
   },
   "pulls_listed": 51,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 18.6,
+  "queue_depth_per_runner": 15.3,
   "recently_closed": [
     {
       "author": "woahwhattheheck",
@@ -402,6 +402,6 @@
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-18T01:27:24Z",
+  "unchanged_since": "2026-09-18T01:30:20Z",
   "undatable_pulls": []
 }
