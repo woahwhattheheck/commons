@@ -9,12 +9,14 @@ perform a fresh live reread before any cancellation.
 from __future__ import annotations
 
 import argparse
+import builtins as _builtins
 import hashlib
 import json
 import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
+from types import FunctionType as _FunctionType
 from typing import Any
 
 PRODUCT = "ActionsStaleQueueAuditor"
@@ -686,6 +688,101 @@ def main(argv: list[str] | None = None) -> int:
     except (AuditError, OSError, UnicodeError) as exc:
         sys.stderr.write(f"AUDIT_ERROR: {exc}\n")
         return 2
+
+
+def _seal_semantic_generation() -> None:
+    """Detach the trust-bearing call graph from later module-global rebinding."""
+    names = (
+        "_exact_keys",
+        "_exact_bool",
+        "_exact_int",
+        "_bounded_string",
+        "_sha",
+        "_utc",
+        "_json_string_serialized_size",
+        "_freeze_plain_json",
+        "_parse_int_token",
+        "_pairs_no_dupes",
+        "loads_strict",
+        "canonical_json",
+        "sha256_hex",
+        "_normalize_pr",
+        "_normalize_run",
+        "normalize_packet",
+        "_classify",
+        "build_report",
+        "verify_report",
+        "_read_json",
+        "_parser",
+        "main",
+    )
+    live_globals = globals()
+    originals = {name: live_globals[name] for name in names}
+    sealed_globals = dict(live_globals)
+
+    # An attacker may add module globals named like builtins after import. Put the
+    # exact primitives used by the semantic graph into the private generation so
+    # those later names cannot shadow builtin fallback lookup.
+    for name in (
+        "any",
+        "dict",
+        "frozenset",
+        "int",
+        "len",
+        "list",
+        "max",
+        "ord",
+        "set",
+        "sorted",
+        "str",
+        "sum",
+        "type",
+    ):
+        sealed_globals[name] = getattr(_builtins, name)
+
+    clones: dict[str, Any] = {}
+    for name, function in originals.items():
+        clone = _FunctionType(
+            function.__code__,
+            sealed_globals,
+            function.__name__,
+            function.__defaults__,
+            function.__closure__,
+        )
+        clone.__kwdefaults__ = (
+            dict(function.__kwdefaults__) if function.__kwdefaults__ else None
+        )
+        clone.__annotations__ = dict(function.__annotations__)
+        clone.__doc__ = function.__doc__
+        clone.__qualname__ = function.__qualname__
+        clones[name] = clone
+
+    # Captured keyword defaults on build/verify point at the pre-seal function
+    # objects. Replace those references with their sealed counterparts too.
+    replacement_by_id = {
+        id(originals[name]): clones[name]
+        for name in names
+    }
+
+    def replace_default(value: Any) -> Any:
+        return replacement_by_id.get(id(value), value)
+
+    for clone in clones.values():
+        if clone.__defaults__:
+            clone.__defaults__ = tuple(
+                replace_default(value) for value in clone.__defaults__
+            )
+        if clone.__kwdefaults__:
+            clone.__kwdefaults__ = {
+                key: replace_default(value)
+                for key, value in clone.__kwdefaults__.items()
+            }
+
+    sealed_globals.update(clones)
+    live_globals.update(clones)
+
+
+_seal_semantic_generation()
 
 
 if __name__ == "__main__":
