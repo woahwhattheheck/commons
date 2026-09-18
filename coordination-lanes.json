@@ -23,11 +23,10 @@
   {"canonical":15464,"chain":[15461,15464],"content_keys":["0565e4c57dbedd2f","57c49fab95951433"],"families":[],"lane":"lane-15461","open":[],"state":"MERGED","title":"Fix revenue allocator semantic-segment cap bypass after #15434"},
   {"canonical":15448,"chain":[15448,15696],"content_keys":["86142d5db1f75a21"],"families":["OPENCV26-AGENTIC-VISION-EVIDENCE-GATE-ZSOL"],"lane":"lane-15448","open":[],"state":"MERGED","title":"[YIELD] OpenCV 2026 ProofCam parallel carrier — superseded by canonical #15448"},
   {"canonical":15417,"chain":[15397,15407,15417,15418],"content_keys":["1b89a86932c44d48"],"families":["PROVIDER-ROUTE-15397-CURRENTMAIN-FINALIZE-ZSOL","PROVIDER-ROUTE-15397-RETAINED-CI-FINALIZE-SWARMZ","PROVIDER-ROUTE-AUTHORITY-RETAINED-CI-CLOSURE-ZFA0302"],"lane":"lane-15397","open":[],"state":"MERGED","title":"Provider-route: clean current-main retained-proof carrier"},
-  {"canonical":15406,"chain":[15403,15406],"content_keys":["01dcaca0f7f2814b"],"families":[],"lane":"lane-15403","open":[],"state":"MERGED","title":"GOAT: clean current-main carrier for pay tip-shelf checkout"},
-  {"canonical":15329,"chain":[15327,15329],"content_keys":["8900878e8c238b29"],"families":["PROCUREMENT-AWARD-SOURCE-PATH-CUSTODY-15311-STOP-CLOSURE-ZSOL17"],"lane":"lane-15327","open":[],"state":"CLOSED","title":"fix(procurement): recover source-path custody without workflow drift"}
+  {"canonical":15406,"chain":[15403,15406],"content_keys":["01dcaca0f7f2814b"],"families":[],"lane":"lane-15403","open":[],"state":"MERGED","title":"GOAT: clean current-main carrier for pay tip-shelf checkout"}
  ],
  "note": "lanes with two or more members; an open pull request row without a lane field is a lane of its own",
- "observed_at": "2026-09-18T08:57:49Z",
+ "observed_at": "2026-09-18T13:33:40Z",
  "recent_closed": [
   {"closed_at":"2026-09-18T07:39:35Z","content_key":"UNKNOWN","created_at":"2026-09-18T07:31:10Z","head":"626eb3925717460635371cc0cbc5860eebafa99c","links":[],"markers":[],"number":15999,"state":"MERGED","title":"CI: current-main 68→67 workflow budget repair"},
   {"closed_at":"2026-09-18T02:17:32Z","content_key":"ca75b0eb7559c999","created_at":"2026-09-18T02:10:02Z","head":"43ef1cfcdb22835ad169b4ffe906bf33f84017a0","links":[],"markers":["PRODUCT-LIFECYCLE-STRUCTURED-WAKE-CLOSURE-ZSOL17"],"number":15880,"state":"MERGED","title":"revenue: close structured lifecycle guard bypasses"},
@@ -74,9 +73,7 @@
   {"closed_at":"2026-09-17T08:12:08Z","content_key":"UNKNOWN","created_at":"2026-09-17T08:11:07Z","head":"f7f54af0685ca0b7640a478db879671fcdf97338","links":[],"markers":[],"number":15406,"state":"MERGED","title":"GOAT: clean current-main carrier for pay tip-shelf checkout"},
   {"closed_at":"2026-09-17T08:12:42Z","content_key":"01dcaca0f7f2814b","created_at":"2026-09-17T07:46:32Z","head":"c967b4991932b8b1101a4e53d24d46a718486eb3","links":[15406],"markers":[],"number":15403,"state":"CLOSED","title":"GOAT: wire existing tip-shelf Payment Links onto pay.html"},
   {"closed_at":"2026-09-17T08:18:07Z","content_key":"1b89a86932c44d48","created_at":"2026-09-17T07:34:46Z","head":"7cb915f39c5e4da18ded542d85b87e633f007f29","links":[],"markers":["PROVIDER-ROUTE-AUTHORITY-RETAINED-CI-CLOSURE-ZFA0302"],"number":15397,"state":"CLOSED","title":"Retain provider-route authority tests in Commons battery"},
-  {"closed_at":"2026-09-17T20:13:04Z","content_key":"afeb7304edf3b4fb","created_at":"2026-09-17T07:23:10Z","head":"67ea52d849be72b4c348f7e09356d61e25a17ba2","links":[15645],"markers":[],"number":15382,"state":"CLOSED","title":"Fix Hamilton pursuit evidence, deadline, and semantic receipt authority"},
-  {"closed_at":"2026-09-17T06:47:40Z","content_key":"8900878e8c238b29","created_at":"2026-09-17T06:45:11Z","head":"65736fa5acb4ab47f4b61393ab3fcb2421667722","links":[],"markers":[],"number":15329,"state":"CLOSED","title":"fix(procurement): recover source-path custody without workflow drift"},
-  {"closed_at":"2026-09-17T06:50:02Z","content_key":"8900878e8c238b29","created_at":"2026-09-17T06:44:35Z","head":"1a3d40bff152beb807100a01fa9ee6c298a61f5d","links":[],"markers":["PROCUREMENT-AWARD-SOURCE-PATH-CUSTODY-15311-STOP-CLOSURE-ZSOL17"],"number":15327,"state":"CLOSED","title":"Recompose procurement source custody without workflow drift"}
+  {"closed_at":"2026-09-17T20:13:04Z","content_key":"afeb7304edf3b4fb","created_at":"2026-09-17T07:23:10Z","head":"67ea52d849be72b4c348f7e09356d61e25a17ba2","links":[15645],"markers":[],"number":15382,"state":"CLOSED","title":"Fix Hamilton pursuit evidence, deadline, and semantic receipt authority"}
  ],
  "repo": "woahwhattheheck/commons",
  "schema": "commons-coordination-lanes/v1"
