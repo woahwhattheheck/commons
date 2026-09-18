@@ -33,7 +33,6 @@ AVATARS = ROOT / "avatars.html"
 
 ALLOWED_LIVE_BUY_URLS = frozenset(
     {
-        "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
         "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07",
     }
 )
@@ -42,11 +41,9 @@ BUY_HOST_PATH = re.compile(
     re.IGNORECASE,
 )
 BUY_LABELS = (
-    "Buy Autopsy $29",
     "Buy one White Box hour $250",
 )
 LIVE_CASH_DOORS = (
-    "agent-rescue.html",
     "dealer-service-lead-rescue.html",
     "referral-intake-completeness.html",
     "repair-booking-preflight.html",
@@ -203,7 +200,7 @@ class TestTypeClaimsFeaturesConvertShelf2026091701(unittest.TestCase):
                 hub_pages.rebuild_claims(board_ingest, rows)
             html = (tmp / "claims.html").read_text(encoding="utf-8")
             self.assertEqual(live_buy_urls(html), ALLOWED_LIVE_BUY_URLS)
-            self.assertIn("Buy Autopsy $29", html)
+
             self.assertIn("Buy one White Box hour $250", html)
             self.assertIn("Buy now", html)
             self.assertIn('class="cta"', html)
@@ -227,7 +224,6 @@ class TestTypeClaimsFeaturesConvertShelf2026091701(unittest.TestCase):
             "claims.html",
             "features.html",
             "avatars.html",
-            "agent-rescue.html",
             "commercial.html",
             "diagnostic.html",
         ):

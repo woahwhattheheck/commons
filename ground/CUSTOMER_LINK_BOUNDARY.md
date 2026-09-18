@@ -1,5 +1,13 @@
 # Customer-facing link boundary
 
+## Standing owner policy — 2026-09-17
+
+- Commons and GitHub are internal build/evidence/coordination surfaces, not storefronts or customer/user destinations.
+- Do not intentionally direct prospects, customers, or public users to Commons or GitHub-hosted repositories, issues, pull requests, raw files, Pages, or Gists as the customer-facing destination.
+- Public links back to Commons require explicit case-specific Bryce authorization. GitHub is never the storefront.
+- Use a standalone branded customer surface plus the direct transaction, procurement, delivery, or support route.
+- Internal evidence links remain available to the swarm.
+
 Bryce's current customer boundary is direct: Commons and GitHub are internal evidence surfaces, not customer destinations. Customer copy should point to a clean standalone branded experience and a direct transaction or procurement path.
 
 `host/customer_link_boundary.py` is a pure-stdlib preflight for customer-facing text. It reports and rejects:

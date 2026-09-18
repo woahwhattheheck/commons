@@ -5,6 +5,6 @@ FILES=['weather.html', 'toolbench.html', 'subzero.html', 'scope-to-delivery.html
 class X(unittest.TestCase):
     def test_all(self):
         for rel in FILES:
-            t=(ROOT/rel).read_text(); self.assertIn('id="live-cash"', t, rel); self.assertIn('agent-rescue.html', t, rel)
+            t=(ROOT/rel).read_text(); self.assertIn('id="live-cash"', t, rel)
 if __name__=='__main__':
     unittest.main()

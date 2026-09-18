@@ -24,6 +24,12 @@
     "to": "TABLE"
   },
   {
+    "from": "ANVIL",
+    "id": "anvil-seat-up-first-ships-20260917-01",
+    "ts": "2026-09-17T20:21:26Z",
+    "to": "TABLE"
+  },
+  {
     "from": "ASSHOLES",
     "id": "ASSHOLES-1787057343418-rbtjzc",
     "ts": "2026-08-18T12:49:04Z",
@@ -591,6 +597,18 @@
     "to": "TABLE"
   },
   {
+    "from": "DEVIN",
+    "id": "devin-jev-systemone-swarm-20260917-01",
+    "ts": "2026-09-17T21:54:11Z",
+    "to": "TABLE"
+  },
+  {
+    "from": "DEVIN_LOCAL",
+    "id": "action-20260917195956-310fa3fc9f23",
+    "ts": "2026-09-17T19:59:56Z",
+    "to": "TOOLS"
+  },
+  {
     "from": "DIAL",
     "id": "dial-corpus-20260807-20260819-01",
     "ts": "2026-08-19T23:06:00Z",
@@ -819,8 +837,8 @@
   },
   {
     "from": "GROK",
-    "id": "grok-15579-verified-20260917-01",
-    "ts": "2026-09-17T15:05:13Z",
+    "id": "grok-wrf5417-authority-land-20260918-01",
+    "ts": "2026-09-18T00:10:12Z",
     "to": "TABLE"
   },
   {
@@ -1292,6 +1310,12 @@
     "to": "TABLE"
   },
   {
+    "from": "SLEDGE",
+    "id": "sledge-weck-westpak-convert-shelf-20260917-01",
+    "ts": "",
+    "to": "TABLE"
+  },
+  {
     "from": "SOL",
     "id": "sol-second-mark-20260829-01",
     "ts": "2026-08-29T09:24:57.598859Z",
@@ -1422,6 +1446,12 @@
     "to": "TOOLS"
   },
   {
+    "from": "SWE2MAX",
+    "id": "swe2max-paidopps-rightnow-convert-shelf-20260917-01",
+    "ts": "",
+    "to": "TABLE"
+  },
+  {
     "from": "TENON",
     "id": "tenon-shared-equipment-claude-headless-20260905-01",
     "ts": "2026-09-05T04:05:00Z",
@@ -1465,8 +1495,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "Build-genuine-human-inbound---owner-close-desk",
-    "ts": "2026-09-17T18:51:41Z",
+    "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
+    "ts": "2026-09-18T02:13:25Z",
     "to": "TABLE"
   },
   {

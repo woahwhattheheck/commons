@@ -9,8 +9,6 @@ conventions used by C1 (claude_headless @ 8879).
 
 from .gateway import DEFAULT_PORT, build_server, main
 from .paid_case import (
-    case_from_autopsy_offer,
-    load_autopsy_offer,
     receipt_from_g2_submit,
     receipt_row_from_case,
 )
@@ -23,9 +21,7 @@ __all__ = [
     "HARNESS",
     "RunStore",
     "build_server",
-    "case_from_autopsy_offer",
     "list_pools",
-    "load_autopsy_offer",
     "main",
     "normalize_case",
     "receipt_from_g2_submit",

@@ -13,7 +13,6 @@ from unittest.mock import MagicMock
 ROOT = Path(__file__).resolve().parent
 CLAIM = "newbot-ingest-keep-live-cash-20260916-13"
 PRODUCTS = [
-    "agent-rescue.html",
     "dealer-service-lead-rescue.html",
     "referral-intake-completeness.html",
     "repair-booking-preflight.html",
@@ -37,7 +36,6 @@ def _live_cash(cite=CLAIM):
         "cite": [cite],
         "note": "fixture keep",
         "products": [
-            {"name": "Agent Failure Autopsy", "price_usd": 29, "path": "agent-rescue.html"},
             {"name": "Dealer Service Lead Rescue", "price_usd": 199, "path": "dealer-service-lead-rescue.html"},
             {"name": "Referral Intake Completeness", "price_usd": 199, "path": "referral-intake-completeness.html"},
             {"name": "Repair Booking Preflight", "price_usd": 199, "path": "repair-booking-preflight.html"},
@@ -117,6 +115,9 @@ class TestNewbotIngestKeepLiveCash2026091613(unittest.TestCase):
         }
         for name, doc in seeds.items():
             (root / name).write_text(json.dumps(doc, indent=2) + "\n", encoding="utf-8")
+        # Preserved live-cash entries must resolve to a checkout page on disk.
+        for page in PRODUCTS:
+            (root / page).write_text("<html>fixture</html>", encoding="utf-8")
 
         mod = MagicMock()
         mod.ROOT = str(root)
@@ -181,6 +182,8 @@ class TestNewbotIngestKeepLiveCash2026091613(unittest.TestCase):
         subprocess.run(["git", "commit", "-qm", "seed"], cwd=root, check=True)
         sha = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip()
 
+        for page in PRODUCTS:
+            (root / page).write_text("<html>fixture</html>", encoding="utf-8")
         live = _live_cash()
         (root / "pulse.json").write_text(
             json.dumps(

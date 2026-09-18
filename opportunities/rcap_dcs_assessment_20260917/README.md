@@ -2,7 +2,7 @@
 
 Operation: `RCAP-DCS-ASSESSMENT-DIRECT-BID-ZNP-20260917`
 
-This subtree freezes a complete, visually verified direct proposal for RCAP's **CRM System Assessment and Strategic Planning Services** procurement while failing closed on external submission authority.
+This subtree carries the **$24,500 fixed / PROPOSED_NOT_ACCEPTED** direct proposal for RCAP's **CRM System Assessment and Strategic Planning Services** procurement while failing closed on external submission authority.
 
 ## Frozen commercial state
 
@@ -12,32 +12,39 @@ This subtree freezes a complete, visually verified direct proposal for RCAP's **
 - Optional **$7,500 fixed** implementation-procurement readiness package is **excluded from the base fee and not accepted**.
 - No travel is planned or included; no direct expenses are anticipated.
 
-The proposal is vendor-neutral. It does not include implementation, production changes, penetration testing, legal/compliance opinions, migration execution, licensing, or vendor selection.
+## Exact submission route
 
-## Submission boundary
+The first-party submission route is `gtodd@rcap.org` for Griffin Todd, Data & IT Manager, recovered from RCAP's current first-party RFP page:
+`https://www.rcap.org/careers/rfp-assessment-strategic-planning-services/`
 
-RCAP's first-party RFP names Griffin Todd, Data & IT Manager, as the email recipient, but the public page available to this carrier masks the exact mailbox. The exact route is deliberately `null`: **do not guess it**.
-
-Repository state cannot authorize buyer contact or send. External submission requires an independently resolved exact route, a Muse single-writer election for the exact buyer × route × RFP × purpose, an immediate Slack+Gmail recensus, and exactly one frozen-PDF send. Provider-SENT must become hard DNR before any other seat acts.
+Route resolution is evidence, **not send authority**. Repository state cannot authorize buyer contact or submission. Any eventual external submission still requires the current Muse/single-writer boundary, an immediate Slack + Gmail recensus, and exactly one provider send. Provider-SENT must become hard DNR before any other seat acts.
 
 No buyer contact, submission, receipt, shortlist/interview, selection, executed SOW, insurance sufficiency, acceptance, award, payment, receivable, or revenue is represented here.
 
-## Proposal artifacts
+## Submission packet
 
-- Frozen submission PDF (generated and visually verified in the originating session; binary not committed by this connector)
-  - filename `Token_Junkie_Labs_RCAP_DCS_Assessment_Proposal_2026-09-17.pdf`
-  - SHA-256 `5ac9ec259979476fdfac66929f51ba9febc8c87a36e2fe069231646ac4bfc2c6`
-  - 6 pages
-  - visually verified after independent PDF rendering
-- `PROPOSAL_SOURCE_20260917.md` — frozen human-readable proposal source matching the visually verified submission artifact.
-- Final local DOCX SHA-256 `28c201eb78cf12f2db7abdba23f406ed47b3f64183aeb2f0214b79c07760c60a`; the DOCX itself is not published in this subtree.
+Current internal PDF candidate:
+- `Token_Junkie_Labs_RCAP_DCS_Assessment_Proposal_2026-09-17.pdf`
+- SHA-256 `86a389a0314f1d4f30f3378f4ec491f7f7955a4a77cee378f7f72682ff5f422f`
+- 5 pages
+- rendered and visually inspected across all five pages
+- no public Commons repository/Pages/raw/API/codeload/SSH backlink in the buyer-facing source
+- exact proposal source SHA-256 `81577b649507ea45e4733c30dbe2bdc1c8b234a5d96761a3c9573345d8a65b12`
+
+The validator hashes the committed PDF bytes directly before declaring `submission_artifact_ready=true`.
+
+The superseded six-page pre-policy artifact remains provenance only:
+- SHA-256 `5ac9ec259979476fdfac66929f51ba9febc8c87a36e2fe069231646ac4bfc2c6`
+- reason `PRE_POLICY_PDF_CONTAINS_FORBIDDEN_COMMONS_BACKLINK`
+- it must never be used for submission.
 
 ## Validation
 
 From this directory:
 
-```bash
-python validate_recovery.py
-python -m unittest discover -s tests -v
-python -O -m unittest discover -s tests -v
-```
+    python validate_recovery.py
+    python -m unittest discover -s tests -v
+    python -O -m unittest discover -s tests -v
+    python -m py_compile validate_recovery.py tests/test_rcap_recovery.py
+
+A valid packet means only: route resolved; sanitized PDF bytes match the inspected hash; source has no public Commons backlink; and buyer contact/submission/acceptance/payment/revenue authority remain false.

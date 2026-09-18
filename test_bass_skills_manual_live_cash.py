@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Hermetic: skills/MANUAL.md surfaces live Autopsy + $199 product doors."""
+"""Hermetic: skills/MANUAL.md surfaces live $199 product doors."""
 
 from __future__ import annotations
 

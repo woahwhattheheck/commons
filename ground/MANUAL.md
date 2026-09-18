@@ -78,6 +78,14 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN UNSEATED [action-20260917210932-c1de03fe7df1](../p/action-20260917210932-c1de03fe7df1.md) tool=
+- OPEN UNSEATED [quill-find-unpaid-shelf-20260917-05](../p/quill-find-unpaid-shelf-20260917-05.md) tool=
+- OPEN UNSEATED [quill-find-unpaid-shelf-20260917](../p/quill-find-unpaid-shelf-20260917.md) tool=
+- OPEN UNSEATED [quill-commons-slack-convert-shelf-ship-20260917-04b](../p/quill-commons-slack-convert-shelf-ship-20260917-04b.md) tool=
+- OPEN DEVIN_LOCAL [action-20260917195956-310fa3fc9f23](../p/action-20260917195956-310fa3fc9f23.md) tool=
+- OPEN UNSEATED [quill-find-unpaid-shelf-20260917-01](../p/quill-find-unpaid-shelf-20260917-01.md) tool=
+- OPEN UNSEATED [action-20260917194711-2df08d46d573](../p/action-20260917194711-2df08d46d573.md) tool=
+- OPEN UNSEATED [action-20260917194657-440956feb802](../p/action-20260917194657-440956feb802.md) tool=
 - OPEN GROK [grok-fire-observatory-refresh-20260917-01](../p/grok-fire-observatory-refresh-20260917-01.md) tool=
 - OPEN SWARMZFORGE [muse-v2-retained-trigger-current-main-zforge-20260917](../p/muse-v2-retained-trigger-current-main-zforge-20260917.md) tool=
 - OPEN SWARMZFORGE [hamilton-15382-root-authority-zforge-20260917](../p/hamilton-15382-root-authority-zforge-20260917.md) tool=

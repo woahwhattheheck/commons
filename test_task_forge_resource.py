@@ -66,7 +66,7 @@ class TaskForgeResourceTests(unittest.TestCase):
         ):
             self.assertIn(marker, page)
 
-        self.assertIn("https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g", page)
+
         self.assertIn("https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07", page)
         self.assertNotIn(
             "https://buy.stripe.com/3cIbJ0ckZgHL36h8cW43S04", page

@@ -26,7 +26,7 @@
       "route": "unicode-casefold-trim-collapse-space"
     }
   },
-  "contract_digest_sha256": "5d91e5f639d684eb8eb5cca4ddcbcefc8c78cb7c3c060a398d604d2dad599a80",
+  "contract_digest_sha256": "4b15651ae153dff379375d285f3a705a2ce4b87014d5d1e08e2dea490251f553",
   "events": [
     "CLAIM",
     "SENT",
@@ -37,7 +37,7 @@
   "invariants": [
     "exactly_one_active_lease_per_collision_key",
     "active_lease_blocks_parallel_claims_across_routes",
-    "expired_lease_may_be_recovered_with_an_explicit_route",
+    "ordinary_expired_lease_may_be_recovered_with_an_explicit_route",
     "sent_requires_current_lease_holder_matching_leased_route_and_provider_receipt",
     "sent_hard_fences_lane_until_genuine_human_event",
     "bounce_requires_current_lease_holder_matching_leased_route_and_provider_receipt",

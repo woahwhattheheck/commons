@@ -38,14 +38,6 @@
   }
 
   function nextOffer(hits) {
-    if (hits.indexOf("RETRY_LOOP") !== -1 || hits.indexOf("NO_STOP") !== -1 || hits.indexOf("NO_ROLLBACK") !== -1) {
-      return {
-        id: "agent-failure-autopsy-29",
-        name: "Agent Failure Autopsy",
-        price: "$29",
-        href: "./agent-rescue.html"
-      };
-    }
     return {
       id: "ho-agent-failure-diagnostic",
       name: "Agent Failure Diagnostic",

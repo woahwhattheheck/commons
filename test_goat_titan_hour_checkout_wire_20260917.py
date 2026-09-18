@@ -21,7 +21,6 @@ SKU = "sku-whitebox-hour-20260826"
 CHECKOUT_URL = "https://buy.stripe.com/8x27sK2Kp3UZ9uF2SC43S07"
 PLINK = "plink_1U8lgGATH4EDE7XDlrVYTWhu"
 SIBLING_RAILS = {
-    "agent-rescue.html": "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
     "dealer-service-lead-rescue.html": "https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b",
     "referral-intake-completeness.html": "https://buy.stripe.com/9B600i98N77b9uFeBk43S0c",
     "repair-booking-preflight.html": "https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d",

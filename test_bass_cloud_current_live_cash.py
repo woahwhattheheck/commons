@@ -9,7 +9,7 @@ class BassCloudCurrentLiveCashTest(unittest.TestCase):
     def test_live_cash(self) -> None:
         text = PAGE.read_text(encoding="utf-8")
         self.assertIn('id="live-cash"', text)
-        self.assertIn("agent-rescue.html", text)
+
         self.assertIn("dealer-service-lead-rescue.html", text)
         self.assertIn("referral-intake-completeness.html", text)
         self.assertIn("repair-booking-preflight.html", text)

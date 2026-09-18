@@ -9,7 +9,6 @@ ROOT = Path(__file__).resolve().parent
 PAGE = ROOT / "boards.html"
 
 DOORS = (
-    ("sku-agent-failure-autopsy", "./agent-rescue.html", "Open $29 Autopsy checkout"),
     ("sku-dealer-service-lead-rescue", "./dealer-service-lead-rescue.html", "Open $199 dealer diagnostic"),
     ("sku-referral-intake-completeness", "./referral-intake-completeness.html", "Open $199 referral diagnostic"),
     ("sku-repair-booking-preflight", "./repair-booking-preflight.html", "Open $199 repair diagnostic"),
@@ -33,7 +32,7 @@ class TestGoatBoardsLiveCashDoors(unittest.TestCase):
         src = (ROOT / "hub_pages.py").read_text(encoding="utf-8")
         self.assertIn('id="live-cash-doors"', src)
         self.assertIn('id="sku-agent-failure-autopsy"', src)
-        self.assertIn("Open $29 Autopsy checkout", src)
+
 
 
 if __name__ == "__main__":

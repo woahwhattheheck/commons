@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "operation_id": "RCAP-DCS-ASSESSMENT-DIRECT-BID-ZNP-20260917",
   "proposal_state": "PROPOSED_NOT_SUBMITTED_NOT_ACCEPTED",
   "buyer": "Rural Community Assistance Partnership (RCAP)",
@@ -59,10 +59,17 @@
   },
   "artifacts": {
     "pdf_filename": "Token_Junkie_Labs_RCAP_DCS_Assessment_Proposal_2026-09-17.pdf",
-    "pdf_sha256": "5ac9ec259979476fdfac66929f51ba9febc8c87a36e2fe069231646ac4bfc2c6",
-    "pdf_pages": 6,
-    "pdf_visual_verification": "PASS_RENDERED_ALL_6_PAGES",
-    "pdf_published_in_repo": false,
+    "pdf_sha256": "86a389a0314f1d4f30f3378f4ec491f7f7955a4a77cee378f7f72682ff5f422f",
+    "pdf_pages": 5,
+    "pdf_visual_verification": "PASS_RENDERED_ALL_5_PAGES",
+    "pdf_published_in_repo": true,
+    "submission_eligible": true,
+    "regeneration_required": false,
+    "ineligibility_reason": null,
+    "proposal_source_sha256": "81577b649507ea45e4733c30dbe2bdc1c8b234a5d96761a3c9573345d8a65b12",
+    "superseded_pdf_sha256": "5ac9ec259979476fdfac66929f51ba9febc8c87a36e2fe069231646ac4bfc2c6",
+    "superseded_pdf_pages": 6,
+    "superseded_pdf_reason": "PRE_POLICY_PDF_CONTAINS_FORBIDDEN_COMMONS_BACKLINK",
     "docx_filename": "Token_Junkie_Labs_RCAP_DCS_Assessment_Proposal_2026-09-17.docx",
     "docx_sha256": "28c201eb78cf12f2db7abdba23f406ed47b3f64183aeb2f0214b79c07760c60a",
     "docx_published_in_repo": false
@@ -70,11 +77,15 @@
   "experience_truth": {
     "client_references_invented": false,
     "authorized_client_references_included": false,
-    "public_work_sample": "https://github.com/woahwhattheheck/commons"
+    "public_work_sample": null,
+    "external_work_sample_included": false,
+    "public_commons_backlink_present": false
   },
   "submission": {
-    "exact_recipient_resolved": false,
-    "exact_recipient": null,
+    "exact_recipient_resolved": true,
+    "exact_recipient": "gtodd@rcap.org",
+    "route_source_url": "https://www.rcap.org/careers/rfp-assessment-strategic-planning-services/",
+    "route_observed_on": "2026-09-17",
     "muse_request_ts": [],
     "muse_explicit_clearance_observed": false,
     "muse_clearance_ts": null,

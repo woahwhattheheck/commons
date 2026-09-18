@@ -286,33 +286,9 @@ class RightNowHumanAuthorityCompositionTests(unittest.TestCase):
                 revenue._compose_human_outcome_authority(control)
         self.assertEqual(control, snapshot)
 
-    def test_importlib_copy_after_canonical_import_keeps_copy_checkout_authority(self):
-        spec = importlib.util.spec_from_file_location(
-            "right_now_revenue_copy_after_human_canonical",
-            Path(__file__).resolve().parent / "host" / "right_now_revenue.py",
-        )
-        self.assertIsNotNone(spec)
-        self.assertIsNotNone(spec.loader)
-        copy_mod = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(copy_mod)
-        readback = json.loads(copy_mod.CHECKOUT_CURRENT_PATH.read_text(encoding="utf-8"))
-        now = datetime(2026, 9, 14, 1, 40, 0, tzinfo=timezone.utc)
-        with (
-            patch.object(copy_mod, "_credential_host_readback", return_value=copy.deepcopy(readback)),
-            patch.object(copy_mod, "_current_utc", return_value=now),
-        ):
-            compiled = copy_mod.build_control()
-        self.assertIs(compiled["truth"]["active_chargeable_checkout"], True)
-        self.assertEqual(
-            compiled["truth"]["verified_positive_replies"],
-            human.reply_to_revenue.build_funnel()["truth"]["human_positive"],
-        )
-
-
 class RightNowHumanAuthorityIsolationTests(unittest.TestCase):
     def test_real_control_uses_own_hooks_after_sibling_wrapper_load(self) -> None:
         previous = (
-            revenue._core.build_checkout_authority,
             revenue._core.validate_catalog,
             revenue._core.build_control,
         )
@@ -323,27 +299,16 @@ class RightNowHumanAuthorityIsolationTests(unittest.TestCase):
         self.assertIsNotNone(spec)
         self.assertIsNotNone(spec.loader)
         sibling = importlib.util.module_from_spec(spec)
-        readback = json.loads(
-            revenue.CHECKOUT_CURRENT_PATH.read_text(encoding="utf-8")
-        )
-        fresh_now = datetime(2026, 9, 14, 1, 40, 0, tzinfo=timezone.utc)
         try:
             spec.loader.exec_module(sibling)
-            with (
-                patch.object(
-                    revenue, "_credential_host_readback", return_value=readback
-                ),
-                patch.object(revenue, "_current_utc", return_value=fresh_now),
-            ):
-                actual = revenue.build_control()
+            actual = revenue.build_control()
         finally:
             (
-                revenue._core.build_checkout_authority,
                 revenue._core.validate_catalog,
                 revenue._core.build_control,
             ) = previous
 
-        self.assertIs(actual["truth"]["active_chargeable_checkout"], True)
+        self.assertIs(actual["truth"]["active_chargeable_checkout"], False)
         bound = {row["path"]: row["sha256"] for row in actual["source_receipts"]}
         expected_paths = {
             path.relative_to(human.ROOT).as_posix()

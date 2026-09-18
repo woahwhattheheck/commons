@@ -22,7 +22,7 @@ Token Junkie Labs proposes a four-week, evidence-first assessment of RCAP's cust
 
 ## Delivery model
 
-Bryce is proposed as project lead and remains directly accountable for discovery synthesis, technical analysis, written assessment and final presentation. Public work sample: https://github.com/woahwhattheheck/commons . Client references are not invented; only references authorized for disclosure would be provided during clarification.
+Bryce is proposed as project lead and remains directly accountable for discovery synthesis, technical analysis, written assessment and final presentation. Client references and external work samples are not invented; only materials authorized for external disclosure would be provided during clarification.
 
 ## Six discovery sessions
 
