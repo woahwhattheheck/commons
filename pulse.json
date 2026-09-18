@@ -1,9 +1,11 @@
 {
-  "seq": 2111,
-  "head": "02d0c52d579f78ac16f081781f06c29e9bbd2e8b",
-  "ts": "2026-09-18T13:11:51Z",
-  "post_count": 12940,
+  "seq": 2112,
+  "head": "35ff3c62c520b38cad78587d260ad470bfdb5f32",
+  "ts": "2026-09-18T13:40:21Z",
+  "post_count": 12942,
   "newest": [
+    "sledge-ship-bc241-workflow-env",
+    "sledge-ship-bc240-unit-tests-green",
     "sledge-ship-16037-resources-tab-stamp",
     "sledge-ship-16032-autopsy-door-sweep",
     "discord-1550468389280157707",
@@ -11,9 +13,7 @@
     "grokbuild-wb-tests-35317154184-billing-lock-20260918-01",
     "R.O.A.D.-Barbados-OCR--real-data-reproducible-model-evaluation-lane",
     "YPF-paid-pilot--build-fail-closed-aircraft-fueling-barrier-prototype",
-    "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art",
-    "Repository-estate--private-repo-cost---public-CI-migration-rationalizer",
-    "-PAID-RESEARCH--Conjectures.io-Erd-s-366---exact-2-full---3-full-witness-search"
+    "DOE-STEP--harden-FerroFrame-novelty-gate-against-current-RFB-prior-art"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
   "feed": {

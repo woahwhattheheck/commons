@@ -1,8 +1,8 @@
 {
   "counts": {
-    "open_issues": 115,
-    "open_pull_requests": 60,
-    "runs_in_progress": 13,
+    "open_issues": 116,
+    "open_pull_requests": 59,
+    "runs_in_progress": 6,
     "runs_queued": 70
   },
   "counts_source": "graphql",
@@ -72,21 +72,10 @@
       "branch": "anvil/test-portability-repin",
       "created_at": "2026-09-18T13:11:36Z",
       "draft": false,
-      "head_sha": "ab0172118e7d5bb718de0b7cfce12d980834c19b",
+      "head_sha": "10556f426e53ddd5b53244ae0c9b893fa2fbb6c6",
       "number": 16040,
       "title": "test-infra: sys.executable portability + pin-reconcile fixpoint",
-      "updated_at": "2026-09-18T13:12:02Z"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "anvil/outbound-seam-registry",
-      "created_at": "2026-09-18T12:31:41Z",
-      "draft": false,
-      "head_sha": "415fb580c7baa6a9af94f8ba9e6048f68446ba14",
-      "number": 16036,
-      "title": "fix(outbound): clear 10 provider-marker violations \u2014 register reviewed seams, de-collide refusal prose",
-      "updated_at": "2026-09-18T12:37:52Z"
+      "updated_at": "2026-09-18T13:38:41Z"
     },
     {
       "author": "woahwhattheheck",
@@ -94,10 +83,10 @@
       "branch": "anvil/workflow-budget-fix",
       "created_at": "2026-09-18T10:16:30Z",
       "draft": false,
-      "head_sha": "f24be538021a8441f75a6bff41e2b0e2957ffdd0",
+      "head_sha": "d86cca1da2cbca76a04842760d4ea59f88b884a6",
       "number": 16030,
       "title": "ci: archive repo-estate-rationalizer recipe \u2014 restore 67-workflow budget",
-      "updated_at": "2026-09-18T12:50:41Z"
+      "updated_at": "2026-09-18T13:23:04Z"
     },
     {
       "author": "woahwhattheheck",
@@ -105,10 +94,10 @@
       "branch": "anvil/autopsy-boilerplate-sweep",
       "created_at": "2026-09-18T09:54:24Z",
       "draft": false,
-      "head_sha": "3cc4ae43f1d95f6c4ce8a99f5b56c9d7025fcb73",
+      "head_sha": "84756272f164912ba00f45177cbe65a95a410f57",
       "number": 16029,
       "title": "purge: sweep retired Autopsy boilerplate \u2014 1371 files (docs, orphan shelf li, registries, CI filters)",
-      "updated_at": "2026-09-18T12:47:28Z"
+      "updated_at": "2026-09-18T13:17:56Z"
     },
     {
       "author": "woahwhattheheck",
@@ -175,6 +164,17 @@
       "number": 15958,
       "title": "CI: recover provider-starvation-aware merge train",
       "updated_at": "2026-09-18T08:17:47Z"
+    },
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "z-sol17/e2b-executor-15922-20260918-r2",
+      "created_at": "2026-09-18T06:32:11Z",
+      "draft": false,
+      "head_sha": "76a838d99f33d6acee4b73e7c833cd4da80f8caa",
+      "number": 15953,
+      "title": "E2B exact-head executor for off-owner-machine test receipts",
+      "updated_at": "2026-09-18T08:02:24Z"
     }
   ],
   "open_heads": {
@@ -226,7 +226,7 @@
     "15940": "af98a5bdfdbfc9eba99318aa675843e159fe0d00",
     "15942": "ee52bc783f9ba97c32a3cbc9213ab3335dcf5457",
     "15949": "33827c082c125ff900463bc78876658147831c0e",
-    "15952": "7a5b7e88bef82aa696c6ca6eab5da8c7de354827",
+    "15952": "fca8265de250ea0cf949574d43b2ffedf641d5ca",
     "15953": "76a838d99f33d6acee4b73e7c833cd4da80f8caa",
     "15958": "288f1a3b73d9e07b7c55180c0c696ac0b95480ad",
     "15970": "7e7e8af26d481f78de8ecad7e525a43c1a338b10",
@@ -234,15 +234,25 @@
     "16012": "a08d73c13394cf6f1719befdb168065ec94381c8",
     "16015": "5c4e04aeccb9a02035cf0775750669180dde5521",
     "16022": "57851a1b908e65b9a6bd49aa56329e1c096bd15a",
-    "16029": "3cc4ae43f1d95f6c4ce8a99f5b56c9d7025fcb73",
-    "16030": "f24be538021a8441f75a6bff41e2b0e2957ffdd0",
-    "16036": "415fb580c7baa6a9af94f8ba9e6048f68446ba14",
-    "16040": "ab0172118e7d5bb718de0b7cfce12d980834c19b"
+    "16029": "84756272f164912ba00f45177cbe65a95a410f57",
+    "16030": "d86cca1da2cbca76a04842760d4ea59f88b884a6",
+    "16040": "10556f426e53ddd5b53244ae0c9b893fa2fbb6c6"
   },
-  "pulls_listed": 60,
+  "pulls_listed": 59,
   "pulls_listing": "COMPLETE",
-  "queue_depth_per_runner": 5.4,
+  "queue_depth_per_runner": 11.7,
   "recently_closed": [
+    {
+      "author": "woahwhattheheck",
+      "base": "main",
+      "branch": "anvil/outbound-seam-registry",
+      "closed_at": "2026-09-18T13:18:34Z",
+      "head_sha": "415fb580c7baa6a9af94f8ba9e6048f68446ba14",
+      "merged_at": null,
+      "number": 16036,
+      "state": "CLOSED",
+      "title": "fix(outbound): clear 10 provider-marker violations \u2014 register reviewed seams, de-collide refusal prose"
+    },
     {
       "author": "woahwhattheheck",
       "base": "main",
@@ -396,21 +406,10 @@
       "number": 15927,
       "state": "MERGED",
       "title": "Revenue: implement Exeter finance acceptance engine"
-    },
-    {
-      "author": "woahwhattheheck",
-      "base": "main",
-      "branch": "zsol/relationship-contact-guard-15683-stop-closure-20260917",
-      "closed_at": "2026-09-18T08:03:32Z",
-      "head_sha": "6ac53a8823b08f9b30b0d5b76248582ee3d69585",
-      "merged_at": "2026-09-18T08:03:32Z",
-      "number": 15717,
-      "state": "MERGED",
-      "title": "Fix relationship contact guard lineage and current-time trust"
     }
   ],
   "repository": "woahwhattheheck/commons",
   "schema": "commons-github-state/v1",
-  "unchanged_since": "2026-09-18T13:12:16Z",
+  "unchanged_since": "2026-09-18T13:40:38Z",
   "undatable_pulls": []
 }
