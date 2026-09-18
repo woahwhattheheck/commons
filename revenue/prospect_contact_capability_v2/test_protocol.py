@@ -198,3 +198,186 @@ class TerminalTests(unittest.TestCase):
                 live_claim_branch_sha="f"*40, live_claim_parent_sha=ANCHOR, live_claim_metadata_json=claim_plan["metadata_json"],
                 live_terminal_branch_sha=TERMINAL_COMMIT, live_terminal_parent_sha=CLAIM_COMMIT, live_terminal_metadata_json=terminal_plan["metadata_json"],
             )
+
+    def test_zero_compensation_fails(self):
+        claim_plan, _, claim_receipt, cap = claim_flow()
+        with self.assertRaises(p.CustodyError):
+            p.prepare_dispatch_terminal(claim_receipt, capability=cap, live_claim_branch_sha=CLAIM_COMMIT, live_claim_parent_sha=ANCHOR, live_claim_metadata_json=claim_plan["metadata_json"], message_sha256=MESSAGE, channel="email", compensation_path="$0 bounty")
+
+    def test_unpaid_compensation_fails(self):
+        claim_plan, _, claim_receipt, cap = claim_flow()
+        with self.assertRaises(p.CustodyError):
+            p.prepare_dispatch_terminal(claim_receipt, capability=cap, live_claim_branch_sha=CLAIM_COMMIT, live_claim_parent_sha=ANCHOR, live_claim_metadata_json=claim_plan["metadata_json"], message_sha256=MESSAGE, channel="email", compensation_path="unpaid volunteer pilot")
+
+    def test_positive_amount_accepted(self):
+        _, _, _, plan, _ = dispatch_flow()
+        self.assertEqual(plan["compensation_category"], "priced_service")
+
+
+class ReleaseChainTests(unittest.TestCase):
+    def _next_claim(self, *, claim_plan, terminal_plan, reveal_plan, reveal_receipt,
+                    claim_sha=CLAIM_COMMIT, terminal_sha=TERMINAL_COMMIT, reveal_sha=REVEAL_COMMIT):
+        caps = []
+        plan = p.prepare_claim(
+            "email", "lead.person+pilot@example.com",
+            claimant="Z-NEXT", operation_id="OP-NEXT",
+            anchor_sha=ANCHOR2, preflight_sha256="3"*64,
+            retain_capability=caps.append,
+            prior_release_reveal_receipt=reveal_receipt,
+            live_prior_claim_branch_sha=claim_sha,
+            live_prior_claim_parent_sha=ANCHOR,
+            live_prior_claim_metadata_json=claim_plan["metadata_json"],
+            live_prior_terminal_branch_sha=terminal_sha,
+            live_prior_terminal_parent_sha=CLAIM_COMMIT,
+            live_prior_terminal_metadata_json=terminal_plan["metadata_json"],
+            live_prior_reveal_branch_sha=reveal_sha,
+            live_prior_reveal_parent_sha=TERMINAL_COMMIT,
+            live_prior_reveal_metadata_json=reveal_plan["metadata_json"],
+        )
+        return plan, caps[0]
+
+    def test_release_reopens_exact_next_generation(self):
+        claim_plan, _, _, terminal_plan, _, reveal_plan, reveal = release_flow()
+        next_plan, _ = self._next_claim(
+            claim_plan=claim_plan, terminal_plan=terminal_plan,
+            reveal_plan=reveal_plan, reveal_receipt=reveal,
+        )
+        self.assertEqual(next_plan["generation"], 2)
+        self.assertNotEqual(next_plan["branch_name"], claim_plan["branch_name"])
+        self.assertEqual(next_plan["prior_release_reveal_receipt_sha256"], reveal["receipt_sha256"])
+
+    def test_dispatch_cannot_reopen(self):
+        claim_plan, _, _, terminal_plan, dispatch = dispatch_flow()
+        with self.assertRaises(p.CustodyError):
+            p.prepare_claim(
+                "email", "lead.person+pilot@example.com",
+                claimant="Z-NEXT", operation_id="OP-NEXT", anchor_sha=ANCHOR2, preflight_sha256="3"*64,
+                retain_capability=lambda _: None,
+                prior_release_reveal_receipt=dispatch,
+                live_prior_claim_branch_sha=CLAIM_COMMIT, live_prior_claim_parent_sha=ANCHOR, live_prior_claim_metadata_json=claim_plan["metadata_json"],
+                live_prior_terminal_branch_sha=TERMINAL_COMMIT, live_prior_terminal_parent_sha=CLAIM_COMMIT, live_prior_terminal_metadata_json=terminal_plan["metadata_json"],
+                live_prior_reveal_branch_sha=REVEAL_COMMIT, live_prior_reveal_parent_sha=TERMINAL_COMMIT, live_prior_reveal_metadata_json="{}\n",
+            )
+
+    def test_stale_prior_claim_readback_blocks_reopen(self):
+        claim_plan, _, _, terminal_plan, _, reveal_plan, reveal = release_flow()
+        with self.assertRaises(p.CustodyError):
+            self._next_claim(claim_plan=claim_plan, terminal_plan=terminal_plan, reveal_plan=reveal_plan, reveal_receipt=reveal, claim_sha="f"*40)
+
+    def test_stale_prior_terminal_readback_blocks_reopen(self):
+        claim_plan, _, _, terminal_plan, _, reveal_plan, reveal = release_flow()
+        with self.assertRaises(p.CustodyError):
+            self._next_claim(claim_plan=claim_plan, terminal_plan=terminal_plan, reveal_plan=reveal_plan, reveal_receipt=reveal, terminal_sha="f"*40)
+
+    def test_stale_prior_reveal_readback_blocks_reopen(self):
+        claim_plan, _, _, terminal_plan, _, reveal_plan, reveal = release_flow()
+        with self.assertRaises(p.CustodyError):
+            self._next_claim(claim_plan=claim_plan, terminal_plan=terminal_plan, reveal_plan=reveal_plan, reveal_receipt=reveal, reveal_sha="f"*40)
+
+    def test_reveal_receipt_retired_secret_tamper_fails(self):
+        _, _, _, _, _, _, reveal = release_flow()
+        bad = copy.deepcopy(reveal)
+        bad["retired_capability"] = "f"*64
+        material = dict(bad); material.pop("receipt_sha256")
+        bad["receipt_sha256"] = p._digest(material)
+        with self.assertRaises(p.CustodyError):
+            p.verify_release_reveal_receipt(bad)
+
+    def test_release_reveal_requires_live_terminal_before_secret_disclosure(self):
+        claim_plan, _, cap, terminal_plan, release, _, _ = release_flow()
+        with self.assertRaises(p.CustodyError):
+            p.prepare_release_reveal(
+                release, capability=cap,
+                live_claim_branch_sha=CLAIM_COMMIT, live_claim_parent_sha=ANCHOR, live_claim_metadata_json=claim_plan["metadata_json"],
+                live_terminal_branch_sha="f"*40, live_terminal_parent_sha=CLAIM_COMMIT, live_terminal_metadata_json=terminal_plan["metadata_json"],
+            )
+
+    def test_reveal_parent_mismatch_fails(self):
+        _, _, _, _, _, reveal_plan, _ = release_flow()
+        intent = p.bind_release_reveal_commit(reveal_plan, REVEAL_COMMIT)
+        with self.assertRaises(p.CustodyError):
+            p.release_reveal_receipt_from_readback(
+                reveal_plan, intent,
+                live_branch_sha=REVEAL_COMMIT,
+                live_parent_sha="f"*40,
+                live_metadata_json=reveal_plan["metadata_json"],
+            )
+
+    def test_wrong_secret_cannot_prepare_release_reveal(self):
+        claim_plan, _, _, terminal_plan, release, _, _ = release_flow()
+        with self.assertRaises(p.CustodyError):
+            p.prepare_release_reveal(
+                release, capability="f"*64,
+                live_claim_branch_sha=CLAIM_COMMIT, live_claim_parent_sha=ANCHOR, live_claim_metadata_json=claim_plan["metadata_json"],
+                live_terminal_branch_sha=TERMINAL_COMMIT, live_terminal_parent_sha=CLAIM_COMMIT, live_terminal_metadata_json=terminal_plan["metadata_json"],
+            )
+
+
+class ContactedTests(unittest.TestCase):
+    def test_contacted_binds_provider_digest_not_plaintext(self):
+        claim_plan, _, cap, terminal_plan, dispatch = dispatch_flow()
+        provider = "gmail-message-id:abc123 accepted"
+        plan = p.prepare_contacted(
+            dispatch,
+            capability=cap,
+            live_claim_branch_sha=CLAIM_COMMIT, live_claim_parent_sha=ANCHOR, live_claim_metadata_json=claim_plan["metadata_json"],
+            live_terminal_branch_sha=TERMINAL_COMMIT, live_terminal_parent_sha=CLAIM_COMMIT, live_terminal_metadata_json=terminal_plan["metadata_json"],
+            provider_receipt=provider,
+        )
+        self.assertNotIn(provider, json.dumps(plan, sort_keys=True))
+        intent = p.bind_contacted_commit(plan, CONTACTED_COMMIT)
+        receipt = p.contacted_receipt_from_readback(plan, intent, live_branch_sha=CONTACTED_COMMIT, live_parent_sha=TERMINAL_COMMIT, live_metadata_json=plan["metadata_json"])
+        self.assertEqual(p.verify_contacted_receipt(receipt)["state"], "CONTACTED")
+
+    def test_release_cannot_be_finalized_contacted(self):
+        claim_plan, _, cap, terminal_plan, release, _, _ = release_flow()
+        with self.assertRaises(p.CustodyError):
+            p.prepare_contacted(
+                release,
+                capability=cap,
+                live_claim_branch_sha=CLAIM_COMMIT, live_claim_parent_sha=ANCHOR, live_claim_metadata_json=claim_plan["metadata_json"],
+                live_terminal_branch_sha=TERMINAL_COMMIT, live_terminal_parent_sha=CLAIM_COMMIT, live_terminal_metadata_json=terminal_plan["metadata_json"],
+                provider_receipt="accepted",
+            )
+
+
+class AuthorityCeilingTests(unittest.TestCase):
+    def test_every_receipt_keeps_authority_false(self):
+        _, _, claim, _ = claim_flow()
+        _, _, _, terminal_plan, release, reveal_plan, reveal = release_flow()
+        _, _, _, dispatch_plan, dispatch = dispatch_flow()
+        docs = [claim, release, reveal, terminal_plan, reveal_plan, dispatch, dispatch_plan]
+        for doc in docs:
+            self.assertIs(doc["external_send_authorized"], False)
+            self.assertIs(doc["provider_send_completed"], False)
+            self.assertIs(doc["payment_or_revenue_inferred"], False)
+
+    def test_resealed_unknown_authority_field_is_rejected(self):
+        _, _, claim, _ = claim_flow()
+        forged = copy.deepcopy(claim)
+        forged["approved"] = True
+        material = dict(forged); material.pop("receipt_sha256")
+        forged["receipt_sha256"] = p._digest(material)
+        with self.assertRaises(p.CustodyError):
+            p.verify_claim_receipt(forged)
+
+    def test_resealed_reveal_still_requires_live_readback(self):
+        claim_plan, _, _, terminal_plan, _, reveal_plan, reveal = release_flow()
+        forged = copy.deepcopy(reveal)
+        forged["reveal_commit_sha"] = "f"*40
+        material = dict(forged); material.pop("receipt_sha256")
+        forged["receipt_sha256"] = p._digest(material)
+        with self.assertRaises(p.CustodyError):
+            p.prepare_claim(
+                "email", "lead.person+pilot@example.com",
+                claimant="Z-NEXT", operation_id="OP-NEXT", anchor_sha=ANCHOR2, preflight_sha256="3"*64,
+                retain_capability=lambda _: None,
+                prior_release_reveal_receipt=forged,
+                live_prior_claim_branch_sha=CLAIM_COMMIT, live_prior_claim_parent_sha=ANCHOR, live_prior_claim_metadata_json=claim_plan["metadata_json"],
+                live_prior_terminal_branch_sha=TERMINAL_COMMIT, live_prior_terminal_parent_sha=CLAIM_COMMIT, live_prior_terminal_metadata_json=terminal_plan["metadata_json"],
+                live_prior_reveal_branch_sha=REVEAL_COMMIT, live_prior_reveal_parent_sha=TERMINAL_COMMIT, live_prior_reveal_metadata_json=reveal_plan["metadata_json"],
+            )
+
+
+if __name__ == "__main__":
+    unittest.main()
