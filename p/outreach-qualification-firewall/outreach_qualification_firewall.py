@@ -2,6 +2,7 @@ from firewall_codec import (
     FirewallError,
     MAX_INPUT_BYTES,
     MAX_QUANTITY,
+    MAX_RELATIONSHIP_AGE_SECONDS,
     _datetime,
     canonical_json,
     sha256_hex,
@@ -10,6 +11,7 @@ from firewall_codec import (
     _utc,
     _utc_text,
 )
+from context_authority import CONTEXT_AUTHORITY_ENV
 from firewall_model import (
     compute_dedupe_key,
     normalize_packet,
@@ -22,6 +24,8 @@ __all__ = [
     "FirewallError",
     "MAX_INPUT_BYTES",
     "MAX_QUANTITY",
+    "MAX_RELATIONSHIP_AGE_SECONDS",
+    "CONTEXT_AUTHORITY_ENV",
     "canonical_json",
     "sha256_hex",
     "strict_json_loads",
