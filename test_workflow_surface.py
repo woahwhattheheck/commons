@@ -182,6 +182,21 @@ class WorkflowSurfaceTests(unittest.TestCase):
         self.assertLessEqual(result['active'], data['max_active_workflows'])
         self.assertEqual(result['status'], 'PASS', result['errors'])
 
+    def test_discord_schedule_floor_never_cancels_push_outbound(self):
+        parsed = surface.workflow(Path('.github/workflows/commons-discord-cloud.yml').read_bytes())
+        self.assertEqual(parsed['on']['schedule'], [{'cron': '*/15 * * * *'}])
+        self.assertIn('push', parsed['on'])
+        self.assertIn('workflow_dispatch', parsed['on'])
+        concurrency = parsed['concurrency']
+        self.assertIn('github.event_name', concurrency['group'])
+        self.assertIn('schedule', concurrency['group'])
+        self.assertIn('github.run_id', concurrency['group'])
+        self.assertIn('github.event_name', str(concurrency['cancel-in-progress']))
+        self.assertIn('schedule', str(concurrency['cancel-in-progress']))
+        self.assertEqual(parsed['jobs']['outbound']['if'], "github.event_name == 'push'")
+        self.assertIn('schedule', parsed['jobs']['inbound']['if'])
+        self.assertIn('workflow_dispatch', parsed['jobs']['inbound']['if'])
+
     def test_procurement_award_price_intelligence_recipe_stays_archived(self):
         """Regress run 35159989477: path-scoped price-intel CI stays archived in the 67-slot budget."""
         self.assertFalse(Path('.github/workflows/procurement-award-price-intelligence.yml').exists())
