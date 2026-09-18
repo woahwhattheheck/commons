@@ -48,7 +48,7 @@ class LivePursuitPartnerShortlistBridge(unittest.TestCase):
         result = _run(argv)
         combined = result.stdout + result.stderr
         self.assertEqual(result.returncode, 0, combined)
-        self.assertRegex(combined, r"Ran 24 tests")
+        self.assertRegex(combined, r"Ran 25 tests")
         self.assertIn("OK", combined)
 
     def test_nested_suite_normal(self):
