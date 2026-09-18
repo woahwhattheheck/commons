@@ -13,7 +13,9 @@ from datetime import timedelta
 from pathlib import Path
 
 TEST_WRITER_KEY_HEX = "11" * 32
+TEST_CONTEXT_KEY_HEX = "22" * 32
 os.environ.setdefault("OUTREACH_WRITER_LEASE_AUTHORITY_KEY_HEX", TEST_WRITER_KEY_HEX)
+os.environ.setdefault("OUTREACH_CONTEXT_AUTHORITY_KEY_HEX", TEST_CONTEXT_KEY_HEX)
 
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
