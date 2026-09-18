@@ -21,7 +21,7 @@ def buyer():
         "sha256": BUYER_SHA,
         "effective_at": "2026-09-09T08:00:00-06:00",
         "proposal_deadline": "2026-10-01T14:00:00-06:00",
-        "solicitation_id": q.OPPORTUNITY_ID,
+        "solicitation_id": "RFP-FHLA-2027000001-3",
     }
 
 
@@ -64,6 +64,7 @@ class ChsdQualificationTests(unittest.TestCase):
     def test_production_clock_and_caller_source_fail_closed(self):
         result = q.compile_packet(packet())
         self.assertEqual(result["state"], "HOLD_MISSING_BUYER_SOURCE")
+        self.assertEqual(result["commercial_posture"], "RESEARCH_HOLD")
         self.assertIsNone(result["official_buyer_source"])
         self.assertTrue(result["evaluated_at"].endswith("Z"))
         self.assertTrue(all(value is False for value in result["authority"].values()))
@@ -114,6 +115,36 @@ class ChsdQualificationTests(unittest.TestCase):
         result = self.engine()(p)
         self.assertEqual(result["state"], "HOLD_MISSING_BUYER_SOURCE")
         self.assertIsNone(result["official_proposal_deadline"])
+
+    def test_sha_match_cannot_relabel_trusted_solicitation_identity(self):
+        p = packet()
+        p["buyer_sources"][0]["solicitation_id"] = "RFP-FHLA-FORGED"
+        result = self.engine()(p)
+        self.assertEqual(result["state"], "HOLD_MISSING_BUYER_SOURCE")
+        self.assertIsNone(result["official_buyer_source"])
+
+    def test_equal_effective_trusted_buyer_generations_fail_ambiguous(self):
+        second = buyer()
+        second["id"] = "official-rfp-generation-b"
+        second["sha256"] = "c" * 64
+        engine = q._build_engine(
+            {
+                "official-rfp-generation": buyer(),
+                "official-rfp-generation-b": second,
+            },
+            {},
+            self.fixed_clock,
+        )
+        p = packet()
+        p["buyer_sources"].append(second)
+        with self.assertRaisesRegex(q.QualificationError, "ambiguous current official buyer generation"):
+            engine(p)
+
+    def test_direct_object_oversized_string_fails_before_compilation(self):
+        p = packet()
+        p["buyer_sources"][0]["solicitation_id"] = "X" * (q.MAX_JSON_BYTES + 1)
+        with self.assertRaisesRegex(q.QualificationError, "string-byte limit"):
+            self.engine()(p)
 
     def test_sha_match_cannot_relabel_evidence_party_or_gate(self):
         original = evidence_rows("PARTNER", ("biztalk_certification",))[0]
