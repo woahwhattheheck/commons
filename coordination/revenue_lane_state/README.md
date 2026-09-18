@@ -25,16 +25,24 @@ mistaken for independently verified truth.
 Within that pre-authenticated packet, provider state must come from
 provider-class events; human reply/decline or partner acceptance must come from
 human-class events. Coordination intent (`TAKE`, `MUSE_PENDING`,
-`MUSE_SELECTED`) cannot mint or erase a sent/human state. Supersession is
-restricted to coordination→coordination corrections that are strictly later in
-time and cannot reach backward across generations. Retained provider, human,
-and procurement evidence is immutable in this reducer.
+`MUSE_SELECTED`, `LEASE_CONSUMED`) cannot mint or erase provider/human
+state.
 
-Schema v1 has no authenticated reopen/reset event. Therefore any second active
-`PROVIDER_SENT` in the same business lane is classified as
-`COLLISION_DUPLICATE_SEND_DNR`, even if a caller changes generation or route.
-Generation/route changes cannot reset send permission, and a later coordination
-generation cannot hide an earlier retained provider send.
+A correction may supersede only an older event from the **same authenticated
+source class**, must be strictly later in time, and cannot reach backward across
+generations. This lets newer provider/human/procurement evidence retire stale
+modeled state without allowing coordination evidence to erase stronger truth.
+Superseded rows remain in the canonical retained-event history and therefore
+remain bound into the exact event digest; only the active reduction view omits
+them.
+
+Schema v1 has no authenticated reopen/reset event, and retained
+`PROVIDER_SENT` evidence is deliberately non-retirable. Therefore any second
+provider send in the same business lane is classified as
+`COLLISION_DUPLICATE_SEND_DNR`, even if a caller changes generation, route, or
+adds a correction edge. Generation/route changes cannot reset send permission,
+and a later coordination generation cannot hide an earlier retained provider
+send.
 
 Each event repeats the lane/opportunity/counterparty/purpose identity, so a
 retained event transplanted from another lane fails closed. Alternate route IDs
@@ -43,11 +51,13 @@ do not change the business identity or reset permission.
 ## Currentness
 
 The trusted evaluation timestamp is supplied outside the event packet. Packets
-also carry an owner-authored `currentness_seconds`. Actionable intent/readiness
-states age from the latest event that actually establishes that state—not from
-an unrelated newer coordination event—and stale states fail to
-`HOLD_EVIDENCE`. Terminal/DNR transport truth is retained rather than
-incorrectly becoming fresh authority on replay.
+may choose a **smaller** freshness horizon with `currentness_seconds`, but the
+compiler enforces a code-owned maximum of 604800 seconds (7 days). A packet
+cannot extend that ceiling. Actionable intent/readiness states age from the
+latest event that actually establishes that state—not from an unrelated newer
+coordination event—and stale states fail to `HOLD_EVIDENCE`. Terminal/DNR
+transport truth is retained rather than incorrectly becoming fresh authority on
+historical replay.
 
 ## Projection
 
@@ -91,10 +101,13 @@ python -m coordination.revenue_lane_state.cli verify \
   integers, deep nesting, unsafe integers, bool-as-int, lone surrogates,
   control-shaped IDs, future events, bounded event count/depth/nodes/bytes,
   generation regression, cross-generation retained provider truth and
-  second-send collision, coordination-only supersession, immutable external
-  evidence, supersession-cycle rejection, state-basis currentness, event
-  transplant, replay/currentness, malformed projection blocks, semantic tamper,
-  and CLI create-exclusive replay.
+  second-send collision, same-source authenticated correction with retained
+  superseded-history digest binding, coordination-cannot-erase authority,
+  provider-send non-retirement, supersession-cycle rejection, compiler-bounded
+  currentness, state-basis currentness, lease-without-provider HOLD, conflicting
+  procurement/human terminal truth, event transplant, replay/currentness,
+  malformed projection blocks, semantic tamper, and CLI create-exclusive
+  replay.
 
 Expected proof:
 `python -m unittest -v test_revenue_lane_current_state.py`,
