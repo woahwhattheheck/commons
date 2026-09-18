@@ -1,1 +1,0 @@
-Synthetic evidence: privileged administrative actions emit structured audit events in the reviewed configuration.
