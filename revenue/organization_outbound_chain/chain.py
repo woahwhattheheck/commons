@@ -356,7 +356,7 @@ def _finalize_organization_lease(
     }
 
 
-def execute_guarded_initial_outreach(
+def _execute_guarded_initial_outreach_impl(
     opportunity_raw: Mapping[str, Any],
     *,
     actor_owner: str,
@@ -373,6 +373,9 @@ def execute_guarded_initial_outreach(
     route_identity: bytes,
     provider_boundary: ProviderBoundary,
     provider_request_bytes: bytes,
+    _boundary_provider_name: Callable[[ProviderBoundary], str],
+    _invoke_provider_boundary: Callable[..., Any],
+    _provider_boundary_error: type[BaseException],
 ) -> dict[str, Any]:
     """Execute one initial provider mutation through the full mandatory chain.
 
@@ -382,8 +385,8 @@ def execute_guarded_initial_outreach(
     commitment helpers exported by this module.
     """
     try:
-        provider_name = boundary_provider_name(provider_boundary)
-    except ProviderBoundaryError as exc:
+        provider_name = _boundary_provider_name(provider_boundary)
+    except _provider_boundary_error as exc:
         raise ChainError("exact registered provider boundary required") from exc
     request_bytes = _private_bytes(provider_request_bytes, "provider_request_bytes", maximum=2 * 1024 * 1024)
 
@@ -486,7 +489,7 @@ def execute_guarded_initial_outreach(
         }
 
         def terminal_provider(idempotency_key: str) -> Any:
-            return invoke_provider_boundary(
+            return _invoke_provider_boundary(
                 provider_boundary,
                 idempotency_key=idempotency_key,
                 request_bytes=request_bytes,
@@ -578,3 +581,57 @@ def execute_guarded_initial_outreach(
     }
     result["receipt_sha256"] = _sha(result)
     return result
+
+
+def _build_first_load_entrypoint(
+    _impl=_execute_guarded_initial_outreach_impl,
+    _provider_name_fn=boundary_provider_name,
+    _invoke_provider_fn=invoke_provider_boundary,
+    _provider_error=ProviderBoundaryError,
+):
+    """Seal the production provider boundary generation at first module load."""
+
+    def execute_guarded_initial_outreach(
+        opportunity_raw: Mapping[str, Any],
+        *,
+        actor_owner: str,
+        actor_operation: str,
+        lower_lease_receipt: Mapping[str, Any],
+        lower_claim_capability: str,
+        git_transport: GitTransport,
+        pressure_receipt_data: bytes,
+        organization_lease_store: LeaseStore,
+        organization_lease_receipt: Mapping[str, Any],
+        organization_lease_generation: str,
+        organization_holder_capability: bytes,
+        prospect_identity: bytes,
+        route_identity: bytes,
+        provider_boundary: ProviderBoundary,
+        provider_request_bytes: bytes,
+    ) -> dict[str, Any]:
+        return _impl(
+            opportunity_raw,
+            actor_owner=actor_owner,
+            actor_operation=actor_operation,
+            lower_lease_receipt=lower_lease_receipt,
+            lower_claim_capability=lower_claim_capability,
+            git_transport=git_transport,
+            pressure_receipt_data=pressure_receipt_data,
+            organization_lease_store=organization_lease_store,
+            organization_lease_receipt=organization_lease_receipt,
+            organization_lease_generation=organization_lease_generation,
+            organization_holder_capability=organization_holder_capability,
+            prospect_identity=prospect_identity,
+            route_identity=route_identity,
+            provider_boundary=provider_boundary,
+            provider_request_bytes=provider_request_bytes,
+            _boundary_provider_name=_provider_name_fn,
+            _invoke_provider_boundary=_invoke_provider_fn,
+            _provider_boundary_error=_provider_error,
+        )
+
+    return execute_guarded_initial_outreach
+
+
+execute_guarded_initial_outreach = _build_first_load_entrypoint()
+del _build_first_load_entrypoint
