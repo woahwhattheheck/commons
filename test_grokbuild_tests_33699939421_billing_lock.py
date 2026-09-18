@@ -22,7 +22,7 @@ WORKFLOW = ROOT / ".github/workflows/tests.yml"
 KEEP = {
     ".github/workflows/tests.yml": "57d36525",
     "open_door_guard.py": "877e148d",
-    "test_open_door_guard.py": "cfa7c8a4",
+    "test_open_door_guard.py": "2e2cc164",
     "fix_first.py": "a57aee1c",
     "p/grokbuild-tests-33694253421-billing-lock-20260902-01.md": "da396946",
     "p/grokbuild-tests-33694246830-billing-lock-20260902-01.md": "b07d6192",

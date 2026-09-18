@@ -32,7 +32,7 @@ KEEP = {
     "p/grok-build-llms-txt-billing-lock-20260902-01.md": "cf9c9f40",
     "p/grok-resources-tab-freshness-billing-lock-20260902-01.md": "ac39fe78",
     "open_door_guard.py": "877e148d",
-    "test_open_door_guard.py": "cfa7c8a4",
+    "test_open_door_guard.py": "2e2cc164",
 }
 
 

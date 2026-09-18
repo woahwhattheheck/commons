@@ -914,7 +914,7 @@ def test_workflow_diff_base():
     )
     scanner = root / 'open_door_guard.py'
     cases = []
-    with tempfile.TemporaryDirectory(prefix='guard-base-') as temporary:
+    with tempfile.TemporaryDirectory(prefix='guard-base-', ignore_cleanup_errors=True) as temporary:
         tmp = Path(temporary)
         home = tmp / 'home'
         home.mkdir()

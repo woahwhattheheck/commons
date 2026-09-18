@@ -31,7 +31,7 @@ KEEP = {
     "test_cursor_goat_pages_super_mcp_land_readback_match.py": "6a372963",
     "p/grokbuild-pr8479-verify-20260902-01.md": "658530be",
     "p/grokbuild-open-door-guard-33694243180-billing-lock-20260902-01.md": "4d7812f8",
-    "test_grokbuild_open_door_guard_33694243180_billing_lock.py": "889a7bba",
+    "test_grokbuild_open_door_guard_33694243180_billing_lock.py": "0b7a467b",
 }
 
 

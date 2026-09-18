@@ -20,10 +20,10 @@ MERGE_ON_PR = ROOT / "p/cursor-merge-on-pr-20260902-01.md"
 
 KEEP = {
     "open_door_guard.py": "877e148d",
-    "test_open_door_guard.py": "cfa7c8a4",
+    "test_open_door_guard.py": "2e2cc164",
     ".github/workflows/open-door-guard.yml": "ac6c46c4",
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",
-    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "71b64e8e",
+    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "5f3c1ed5",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "p/grok-build-local-compute-guard-billing-lock-20260902-01.md": "de59bf75",
     "p/grok-build-llms-txt-33687829181-billing-lock-20260902-01.md": "3183564c",

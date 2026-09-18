@@ -28,7 +28,7 @@ KEEP = {
     "p/grok-resources-tab-freshness-billing-lock-20260902-01.md": "ac39fe78",
     "p/cursor-merge-on-pr-readback-20260902-01.md": "e160b2c3",
     "test_cursor_merge_on_pr_readback.py": "36a79283",
-    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "71b64e8e",
+    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "5f3c1ed5",
     "test_grokbuild_llms_txt_33687829181_billing_lock.py": "a93e988e",
     "open_door_guard.py": "877e148d",
     "p/grok-build-llms-txt-33689096471-billing-lock-20260902-01.md": "e739b9cd",
