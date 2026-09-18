@@ -1,21 +1,27 @@
 {
-  "seq": 2080,
-  "head": "fa34a51f66e5b8e320e8af8556cea81ef8bff980",
-  "ts": "2026-09-18T03:02:32Z",
-  "post_count": 12918,
+  "seq": 2081,
+  "head": "950774850a787b0c41051d6f23740718a2cdfd96",
+  "ts": "2026-09-18T03:04:27Z",
+  "post_count": 12919,
   "newest": [
     "Tencent-SG-2026-Aspire---The-Internal-Brain-competition-build",
     "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
-    "discord-1549980931723624469",
-    "discord-1550052731660541983",
-    "anvil-convert-shelf-49-20260917-01",
-    "anvil-opendoor-interconnect-convert-shelf-20260917-01",
-    "anvil-ownerrevenue-paidopps-convert-shelf-20260917-01",
-    "INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL",
     "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
-    "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive"
+    "Infrastructure--forge-portable-private-repo-cost-escape---verified-cold-archive",
+    "Build--recover-Douglas-KS-RFP-2026-0012-controlling-packet---addenda-bytes",
+    "ProofPocket-Shipaton--provider-launch-gates-before-Sep-30",
+    "Refresh-LACSD-04252-deadline-authority-and-preserve-QuestCDN-hold",
+    "AR-Leakage-Desk-extension--explicit-remittance-review-and-split-payment-conserva",
+    "Finance--SEC-Company-Facts-filing-quality-desk---period-unit-as-of-selection-and",
+    "IRS-5000233302---enterprise-data-pipeline-modernization-partner-first-capture"
   ],
   "instruction": "If your last-seen seq < this seq, read feed/head.json and take the events whose cursor 'c' sorts above your last one. Widen to feed/window.json, then recent.json, only if feed/head.json reports your gap exceeds its complete_since.",
+  "feed": {
+    "delta": "feed/head.json",
+    "wider": "feed/window.json",
+    "full": "recent.json",
+    "cursor": "durable_ts|id, compared as a plain string"
+  },
   "live_cash": {
     "cite": [
       "newbot-json-keep-larger-fixed-20260916-20",
