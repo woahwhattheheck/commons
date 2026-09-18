@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 57,
+ "n_open_prs": 58,
  "open_prs": [
   {
    "number": 15613,
@@ -407,22 +407,6 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15668",
    "base_freshness": {
     "base_sha": "27a7022e1433cf0baa65e95139f4901ce39e7baa",
-    "main_sha": "1ea7897d3ca561f386df87c8c4579d30fed442f0",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 15734,
-   "author": "woahwhattheheck",
-   "title": "OneWriter: restore strict deployment identifier contract",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15734",
-   "base_freshness": {
-    "base_sha": "e182cad7382b7d7b49dab7bcbed14eea54cfa0c0",
     "main_sha": "1ea7897d3ca561f386df87c8c4579d30fed442f0",
     "ahead_by": null,
     "behind_by": null,
@@ -535,22 +519,6 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15732",
    "base_freshness": {
     "base_sha": "e182cad7382b7d7b49dab7bcbed14eea54cfa0c0",
-    "main_sha": "1ea7897d3ca561f386df87c8c4579d30fed442f0",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 15761,
-   "author": "woahwhattheheck",
-   "title": "TITAN V5: bind post-auth WHEAT carry census to D2 source",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15761",
-   "base_freshness": {
-    "base_sha": "f3383d74882c9390b4960c9213ac7e3e0d618d07",
     "main_sha": "1ea7897d3ca561f386df87c8c4579d30fed442f0",
     "ahead_by": null,
     "behind_by": null,
@@ -945,22 +913,6 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 15803,
-   "author": "woahwhattheheck",
-   "title": "NIH temporal KG: rejoin policy-clean ontology interoperability profile",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15803",
-   "base_freshness": {
-    "base_sha": "b8796ab1628a34ca7ff4f5c0c99149ded4eccfb4",
-    "main_sha": "1ea7897d3ca561f386df87c8c4579d30fed442f0",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 15801,
    "author": "woahwhattheheck",
    "title": "board: suppress proven-complete UNSEATED work from live queue",
@@ -1217,22 +1169,6 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 15724,
-   "author": "woahwhattheheck",
-   "title": "Close Indiana IOT retained-evidence trust-root defect",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/15724",
-   "base_freshness": {
-    "base_sha": "2c0ac9930f0df2daf7285b6e32e38a27eb976217",
-    "main_sha": "1ea7897d3ca561f386df87c8c4579d30fed442f0",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 15867,
    "author": "woahwhattheheck",
    "title": "Revenue: build OCS2026.01 multi-tenant TPRM teaming carrier",
@@ -1255,6 +1191,86 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/15811",
    "base_freshness": {
     "base_sha": "e031a9f12e7699d2708347f9f77d27437e655901",
+    "main_sha": "1ea7897d3ca561f386df87c8c4579d30fed442f0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15724,
+   "author": "woahwhattheheck",
+   "title": "Close Indiana IOT retained-evidence trust-root defect",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15724",
+   "base_freshness": {
+    "base_sha": "2c0ac9930f0df2daf7285b6e32e38a27eb976217",
+    "main_sha": "1ea7897d3ca561f386df87c8c4579d30fed442f0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15868,
+   "author": "woahwhattheheck",
+   "title": "AR Leakage Desk: explicit remittance review, split payments, and conserved residuals",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15868",
+   "base_freshness": {
+    "base_sha": "118e3330eef642a69d8542aa748a4ee3ce4555cf",
+    "main_sha": "1ea7897d3ca561f386df87c8c4579d30fed442f0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15869,
+   "author": "woahwhattheheck",
+   "title": "revenue: bind SigNoz Sep 15 send into collision truth",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15869",
+   "base_freshness": {
+    "base_sha": "9dd9683dcebbdeb954bd82659f71edbf53e5f030",
+    "main_sha": "1ea7897d3ca561f386df87c8c4579d30fed442f0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15803,
+   "author": "woahwhattheheck",
+   "title": "NIH temporal KG: rejoin policy-clean ontology interoperability profile",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15803",
+   "base_freshness": {
+    "base_sha": "b8796ab1628a34ca7ff4f5c0c99149ded4eccfb4",
+    "main_sha": "1ea7897d3ca561f386df87c8c4579d30fed442f0",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 15761,
+   "author": "woahwhattheheck",
+   "title": "TITAN V5: bind post-auth WHEAT carry census to D2 source",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/15761",
+   "base_freshness": {
+    "base_sha": "f3383d74882c9390b4960c9213ac7e3e0d618d07",
     "main_sha": "1ea7897d3ca561f386df87c8c4579d30fed442f0",
     "ahead_by": null,
     "behind_by": null,

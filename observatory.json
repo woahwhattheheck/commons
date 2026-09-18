@@ -14,6 +14,20 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "AR-Leakage-Desk-extension--explicit-remittance-review-and-split-payment-conserva",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-18T01:37:18Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "Finance--SEC-Company-Facts-filing-quality-desk---period-unit-as-of-selection-and",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-18T01:36:36Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "IRS-5000233302---enterprise-data-pipeline-modernization-partner-first-capture",
       "kind": null,
       "to": "TABLE",
@@ -137,20 +151,6 @@
       "kind": "ACTION",
       "to": "TOOLS",
       "ts": "2026-09-17T20:16:05Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "quill-commons-slack-convert-shelf-ship-20260917-04",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T20:15:35Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "quill-supermcp-telegram-convert-shelf-ship-20260917-03",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-17T20:09:03Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "917e1d231766fc150fe80edfbbb6f9969532b1897ba789d46cce326a4925297b",
+  "digest": "70ecfb820f78dc71f58c0c672a5ef46c237c9e5932268d461912a5f06b671934",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,9 +353,9 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12907,
-    "pulse_seq": 2070,
-    "sha": "118e3330eef642a69d8542aa748a4ee3ce4555cf"
+    "post_count": 12909,
+    "pulse_seq": 2071,
+    "sha": "6329c605fe76c49a4b8a6af3cf7f40cd8e6a9f34"
   },
   "live_cash": {
     "cite": [
@@ -402,7 +402,7 @@
       }
     ]
   },
-  "now": "2026-09-18T01:53:07Z",
+  "now": "2026-09-18T01:55:54Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -4958,18 +4958,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "IRS-5000233302---enterprise-data-pipeline-modernization-partner-first-capture",
+          "id": "AR-Leakage-Desk-extension--explicit-remittance-review-and-split-payment-conserva",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "IRS-5000233302---enterprise-data-pipeline-modernization-partner-first-capture",
+      "id": "AR-Leakage-Desk-extension--explicit-remittance-review-and-split-payment-conserva",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-18T01:25:48Z"
+      "ts": "2026-09-18T01:37:18Z"
     },
     {
       "claim": "VECTOR-RELAY",
