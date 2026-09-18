@@ -1,7 +1,7 @@
 {
   "schema": "commons.workflow-surface.v1",
   "source_commit": "4592104ca9fd37f7546b0b39f01badb83f8a1300",
-  "source_workflows": 435,
+  "source_workflows": 436,
   "max_active_workflows": 67,
   "retained": [
     ".github/workflows/affordable-housing-compliance-demo.yml",
@@ -1014,6 +1014,12 @@
       "archive": "ci/workflow-recipes/pazhou-offboardmesh.yml",
       "sha256": "f4694414d6ba4d858cdf025d6eacaa3e1d6544c4faa3ebc38b0f3ca8aea96dce",
       "bytes": 1274
+    },
+    {
+      "source": ".github/workflows/pilot-delivery-renewal-expansion-gate.yml",
+      "archive": "ci/workflow-recipes/pilot-delivery-renewal-expansion-gate.yml",
+      "sha256": "fa81ffb09ea594a1c73105fba4add0c0f4b85ac345a0b2e24a5c085def32885e",
+      "bytes": 1534
     },
     {
       "source": ".github/workflows/pinellas-26-0732-teaming.yml",
