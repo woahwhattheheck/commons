@@ -492,7 +492,7 @@ class DownselectTests(unittest.TestCase):
         target = next(
             row
             for row in packet["evidenceRecords"]
-            if row["binding"] == "candidate:alpha:traction:alpha.pilot"
+            if row["binding"] == "candidate:alpha:traction:alpha.contract"
         )
         target["sourceClass"] = "OWNER"
         with self.assertRaisesRegex(ContractError, "EVIDENCE_CLASS_MISMATCH"):
