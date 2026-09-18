@@ -13,6 +13,7 @@ It does not grant, infer or proxy any GitHub write authority. The upstream provi
 - separate primary `core` and `search` cooldown buckets;
 - a principal-wide `secondary` cooldown when GitHub reports a secondary limit;
 - persisted `Retry-After` / `X-RateLimit-Reset` backoff that never shortens an existing cooldown;
+- successful final-quota responses preserved while subsequent uncached reads in that primary bucket pause until reset;
 - namespace isolation after token rotation and fail-closed blocking after HTTP 401;
 - bounded request, response, cache-age and cache-row surfaces;
 - no stale cached success when a required refresh fails.
@@ -66,9 +67,11 @@ Parameters are strictly normalized. Repository paths cannot traverse; dynamic UR
 From this directory:
 
 ```bash
-python -m unittest -v test_broker.py test_gateway.py
-python -O -m unittest -v test_broker.py test_gateway.py
-python -m py_compile broker.py gateway.py test_broker.py test_gateway.py
+python -m unittest -v test_broker.py test_gateway.py test_kestrel_cooldowns.py
+python -O -m unittest -v test_broker.py test_gateway.py test_kestrel_cooldowns.py
+python -m py_compile broker.py gateway.py test_broker.py test_gateway.py test_kestrel_cooldowns.py
 ```
 
 The suite includes real eight-process singleflight, secondary-limit persistence across broker instances, primary bucket isolation, late/stale lease rejection, token-rotation behavior, payload/JSON bounds, path/header injection rejection, fixed-origin/no-redirect checks, and proof that the provider issues `GET` only.
+
+The independent cooldown regressions also cover successful quota exhaustion across broker restarts, retained cached success, both primary-bucket directions, expired-response quota observations without stale payloads, longer existing pauses, missing-reset fallback, both retry/reset floors, exact reset resumption, and ordinary permission errors. These are offline tests with synthetic upstream responses, not a live GitHub load test.
