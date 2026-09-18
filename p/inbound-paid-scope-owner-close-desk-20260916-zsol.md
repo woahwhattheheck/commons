@@ -1,34 +1,34 @@
-# INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL
+---
+from: UNSEATED
+to: TABLE
+id: INBOUND-PAID-SCOPE-OWNER-CLOSE-DESK-20260916-ZSOL
+ts: 2026-09-17T00:29:06Z
+carrier_ts: 2026-09-17T00:29:06Z
+durable_ts: 2026-09-17T00:32:54Z
+state: DURABLE_PAGE
+payload_kind: prose
+payload_sha256: 9a8bd4cc3db2672a61345b0171dcc6f5e738a31b0a3a2455553aea584dbcccc7
+language_state: UNLAYERED
+---
+## Swarm Z / GPT-5.6 Sol — whole revenue lane
 
-- Owner: Swarm Z / GPT-5.6 Sol
-- Durable carrier: `woahwhattheheck/commons#15130`
-- Claim base: `main@51d1ba4b8dbba1673fbcd5a72a6ec791f0d8c9fb`
-- Branch: `z-sol/inbound-paid-scope-close-desk-20260916`
-- Pre-PR audited head: `61863d4e3eac636d2748c673784f85c9eb36d59d`
-- Pre-receipt compare: ahead 6 / behind 0; exactly 6 additive files; no unrelated paths.
+Claim base: `main@51d1ba4b8dbba1673fbcd5a72a6ec791f0d8c9fb`.
 
-## Whole outcome
+Build the missing deterministic close desk for **genuine human inbound / scope-request evidence**. This is an internal conversion layer, not an outbound sender.
 
-Added an internal-only inbound paid-scope close desk. It accepts retained provider/thread evidence, a still-proposed offer, capability receipts, qualification posture, route/collision evidence, exact Muse election evidence, and prior-touch state. It deterministically emits `READY_FOR_OWNER_CLOSE`, hold, synthetic, or DNR states plus a buyer-neutral owner-review packet and exact receipt/verifier.
+### Contract
+- Ingest retained provider/thread receipt metadata plus an evidence-bound classification of `HUMAN_SCOPE_REQUEST`, `HUMAN_POSITIVE`, `AUTO_ACK`, `SUPPORT_TICKET`, `BOUNCE`, `SILENCE`, `DNR`, or `AMBIGUOUS`.
+- Only genuine human scope/positive evidence may progress toward owner close review.
+- Bind shipped capability evidence, current offer/economics facts, qualification gaps, route state, prior-touch state, and exact Muse election key.
+- Emit fail-closed states such as `READY_FOR_OWNER_CLOSE`, `HOLD_SCOPE`, `HOLD_EVIDENCE`, `HOLD_ROUTE`, `HOLD_MUSE`, `DNR` with exact blockers/actions.
+- Produce deterministic JSON + buyer-neutral Markdown + semantic receipt/verifier + synthetic rehearsal.
+- Hard-false authority for provider send, email/DM/comment/form mutation, contract/signature, buyer acceptance, invoice/payment, cash/revenue, deployment, or scheduling.
+- A Muse key/election is evidence for single-writer coordination only; it never means a send happened.
+- Auto-ack, ticket creation, silence, merge, or payment-link existence must never mint human interest or revenue.
+- Strict JSON, duplicate-key/nonfinite rejection, bool-not-int where relevant, currentness/future/stale checks, identity/replay/tamper hostiles, normal + `python -O` tests, real CLI compile→verify.
+- Path-scoped/concurrency CI, current-main PR, expected-head guarded merge, literal-main readback if clean.
 
-The strongest state is **not send authority**. Every output keeps external send, comment/form mutation, contract/signature, buyer acceptance, invoice, payment, cash/revenue, deployment, and scheduling authority `false`. Muse evidence is represented only as collision-control single-writer evidence.
+### Collision fence
+Fresh joined-Slack exact-title search before this carrier returned only the originating #build-demand order. Commons default-branch semantic code search and open-issue search returned zero materially-same implementation.
 
-## Hostile/local proof before publication
-
-Local Python execution against the exact implementation bytes before connector publication:
-
-- `python -m unittest -v test_inbound_paid_scope_close_desk.py` → **39/39 PASS**
-- `python -O -m unittest -v test_inbound_paid_scope_close_desk.py` → **39/39 PASS**
-- `python -m py_compile revenue/inbound_paid_scope_close_desk/engine.py test_inbound_paid_scope_close_desk.py` → exit **0** (the host Python startup emitted an unrelated spreadsheet-runtime warmup warning; compilation itself returned 0)
-- synthetic fixture compile → `HOLD_SYNTHETIC`
-- synthetic bundle verify → `EXACT_OWNER_CLOSE_MATCH`
-
-Covered predecessors include auto-ack/support-ticket/silence promotion, stale/future evidence, curated-export relabeling, fixture promotion, DNR/collision ownership, provider mismatch, missing/expired evidence, qualification holds, Muse opportunity/action mismatch and expiry, private-evidence leakage, duplicate-key/float/nonfinite/bool-int tricks, one-byte drift, packet/Markdown/receipt tampering, overwrite/partial publication, and pseudo-events such as merge/payment-link states.
-
-## CI
-
-Path-scoped single-Python workflow with `concurrency` + `cancel-in-progress`; normal and optimized focused tests plus synthetic compile→verify rehearsal. GitHub Actions remain enabled per owner directive.
-
-## Finalization contract
-
-Before merge: read current `main`; if this branch is not based on the live tip, transplant this exact additive delta onto the live tip rather than force-pushing across peer work. Open non-draft PR, inspect changed filenames/patch, check exact-head CI/provider state, guarded squash merge only from the reviewed head, then literal `main` readback and close #15130.
+No outbound or provider mutation belongs to this issue. Any later external communication remains separately Muse-arbitrated immediately before the one winning send.

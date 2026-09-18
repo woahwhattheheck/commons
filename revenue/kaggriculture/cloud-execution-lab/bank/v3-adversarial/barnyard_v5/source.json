@@ -14,7 +14,9 @@
   "license_sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
   "acquired_utc": "2026-08-22T00:06:06Z",
   "acquisition": "Kaggle version redirect plus authenticated DownloadKernelOutput(owner=romanrozen, slug=strong-barnyard-economist, version=4, file=main.py)",
-  "dependencies": ["python-standard-library"],
+  "dependencies": [
+    "python-standard-library"
+  ],
   "effective_config": {
     "TRAVEL": 8.0,
     "MAX_HANDS": 12,
@@ -35,23 +37,29 @@
     "LAND_BUFFER": 900.0,
     "SEED_HOLDBACK": 1,
     "HAND_DIV": 8.0,
-    "HAND_BUDGET": 0.10,
+    "HAND_BUDGET": 0.1,
     "FEED_STOCK_DAYS": 3.0,
     "WHEAT_KEEP": 2.0,
     "RESERVE_FRAC": {
-      "WHEAT": 0.70,
+      "WHEAT": 0.7,
       "CARROT": 0.62,
       "TOMATO": 0.55,
-      "STRAWBERRY": 0.50,
-      "MELON": 0.60,
+      "STRAWBERRY": 0.5,
+      "MELON": 0.6,
       "EGG": 0.72,
-      "MILK": 0.80,
-      "WOOL": 0.80,
+      "MILK": 0.8,
+      "WOOL": 0.8,
       "FERTILIZER": 0.15
     },
-    "ANIMAL_SEQ": ["COW", "SHEEP", "SHEEP"]
+    "ANIMAL_SEQ": [
+      "COW",
+      "SHEEP",
+      "SHEEP"
+    ]
   },
   "default_enabled": false,
   "public_score_used_for_promotion": false,
-  "kaggle_submission": "NOT_PERFORMED"
+  "kaggle_submission": "NOT_PERFORMED",
+  "family": "animal-heavy",
+  "vendored_as": "barnyard_v5"
 }
