@@ -1,0 +1,15 @@
+{
+  "evidence_class": "Retained local real Git and production Bash; inert sender/readiness; no external delivery",
+  "source_sha256": {
+    ".github/workflows/commons-discord-cloud.yml": "cbfb33271a167b6091ee46773aefbb28792256cf1e32656661c23e484fff8f17",
+    ".github/workflows/source-parses.yml": "b58b962c921793a8f1c9174e446728388b63e408ccfb55ec56b356e7bb3328f8",
+    "test_discord_push_scope.py": "daf66609ba0682ae2373fa8cad6294e0ae56b65ec27622101e8f3cdfdcac5b7b",
+    "test_pilot_proof_scope.py": "4676555ea6a067fab811aa09c4b3e4f01fdcdfefdfa346e6afbb4b7b8b10876b"
+  },
+  "normal": {"tests": 61, "pilot_tests": 33, "discord_tests": 28, "exit_code": 0, "seconds": 20.936, "source_unchanged_during_execution": true, "historical_log_sha256": "39f90a37cc737b2bd6fd38d583c6e741949f503707a852b90ab9c7206715f2ed"},
+  "optimized": {"tests": 61, "pilot_tests": 33, "discord_tests": 28, "exit_code": 0, "seconds": 22.095, "source_unchanged_during_execution": true, "historical_log_sha256": "964b4b9c9ce10c1406083965fe2347a910f8dad3b5a30c8fcc8ac92ac99e8d1f"},
+  "python": "3.13.5", "git": "2.47.3", "bash": "5.2.37",
+  "hosted_green_claimed": false, "live_delivery_claimed": false,
+  "historical_raw_logs_in_this_branch": false,
+  "note": "Hashes identify the retained session logs; this record does not pretend they are stored on this branch. Reexecute the public source/tests for fresh evidence."
+}

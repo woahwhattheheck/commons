@@ -12,13 +12,17 @@ on:
       - "revenue/pilot_delivery_renewal_expansion_gate/**"
       - "test_pilot_delivery_renewal_expansion_gate.py"
       - "test_pilot_delivery_renewal_reload_trust_root.py"
+      - "test_pilot_proof_scope.py"
+      - "test_discord_push_scope.py"
       - ".github/workflows/source-parses.yml"
+      - ".github/workflows/commons-discord-cloud.yml"
   pull_request:
     paths:
       - "**/*.py"
       - "**/*.js"
       - ".github/workflows/pilot-delivery-renewal-expansion-gate.yml"
       - ".github/workflows/source-parses.yml"
+      - ".github/workflows/commons-discord-cloud.yml"
 
 permissions:
   contents: read
@@ -34,7 +38,9 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Verify checker contract
-        run: python3 -m unittest -v test_source_parses.py
+        run: |
+          python3 -m unittest -v test_source_parses.py test_pilot_proof_scope.py test_discord_push_scope.py
+          python3 -O -m unittest -v test_pilot_proof_scope.py test_discord_push_scope.py
 
       - name: Parse every tracked Python and JavaScript source
         run: python3 source_parses.py
@@ -165,29 +171,55 @@ jobs:
       - name: Detect pilot-renewal proof-surface changes
         id: scope
         shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BASE_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
           set -euo pipefail
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+          case "$EVENT_NAME" in
+            pull_request|push|workflow_dispatch) ;;
+            *) echo "Unsupported pilot proof-scope event: $EVENT_NAME" >&2; exit 2 ;;
+          esac
+          if [[ ! "$HEAD_SHA" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "Pilot proof scope requires an exact head commit SHA" >&2
+            exit 2
+          fi
+          git rev-parse --verify "${HEAD_SHA}^{commit}" >/dev/null
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
             echo "run=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          if [ "${{ github.event_name }}" = "pull_request" ]; then
-            base='${{ github.event.pull_request.base.sha }}'
-            head='${{ github.event.pull_request.head.sha }}'
-          else
-            base='${{ github.event.before }}'
-            head='${{ github.sha }}'
+          if [[ ! "$BASE_SHA" =~ ^[0-9a-f]{40}$ ]]; then
+            echo "Pilot proof scope requires an exact base commit SHA" >&2
+            exit 2
           fi
-          if git diff --name-only "$base" "$head" -- \
+          if [ "$BASE_SHA" = "0000000000000000000000000000000000000000" ]; then
+            if [ "$EVENT_NAME" = "push" ]; then
+              # A newly created branch has no before commit: conservatively run proof.
+              echo "run=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            echo "A pull request cannot use the new-branch sentinel as its base" >&2
+            exit 2
+          fi
+          git rev-parse --verify "${BASE_SHA}^{commit}" >/dev/null
+          # Exit 0 means no relevant change, 1 means change, >1 means an error.
+          # Do not pipe to grep -q: its early close can SIGPIPE git and hide changes.
+          diff_status=0
+          git diff --quiet --no-ext-diff --no-textconv "$BASE_SHA" "$HEAD_SHA" -- \
               'revenue/pilot_delivery_renewal_expansion_gate/**' \
               'test_pilot_delivery_renewal_expansion_gate.py' \
               'test_pilot_delivery_renewal_reload_trust_root.py' \
+              'test_pilot_proof_scope.py' \
               '.github/workflows/pilot-delivery-renewal-expansion-gate.yml' \
-              '.github/workflows/source-parses.yml' | grep -q .; then
-            echo "run=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "run=false" >> "$GITHUB_OUTPUT"
-          fi
+              '.github/workflows/source-parses.yml' || diff_status=$?
+          case "$diff_status" in
+            0) echo "run=false" >> "$GITHUB_OUTPUT" ;;
+            1) echo "run=true" >> "$GITHUB_OUTPUT" ;;
+            *) echo "Pilot proof-scope git diff failed (exit $diff_status)" >&2
+               exit "$diff_status" ;;
+          esac
 
       - name: Set up Python
         if: steps.scope.outputs.run == 'true'
