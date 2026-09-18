@@ -28,6 +28,7 @@ MAX_JSON_NODES = 20_000
 MAX_JSON_DEPTH = 48
 SAFE_INT = (1 << 53) - 1
 ID_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._:/-]{0,191}$")
+REPO_RE = re.compile(r"^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$")
 SHA40_RE = re.compile(r"^[0-9a-f]{40}$")
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 UTC_RE = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$")
@@ -318,9 +319,9 @@ def _claim_text(value: Any, path: str) -> str:
 
 def _repo_name(value: Any, path: str) -> str:
     text = _evidence_ref(value, path)
-    if text.count("/") != 1 or text.startswith("/") or text.endswith("/"):
+    if REPO_RE.fullmatch(text) is None:
         raise ContractError("INVALID_SOURCE_REPO", path)
-    return text
+    return text.casefold()
 
 
 def _repo_path(value: Any, path: str) -> str:
@@ -382,13 +383,13 @@ def _evidence_registry(raw: Any) -> dict[str, dict[str, Any]]:
             normalized["sha256"] = digest
         registry[evidence_id] = normalized
 
-    external_artifacts: dict[tuple[str, str], str] = {}
+    external_artifacts: dict[str, str] = {}
     for row in registry.values():
         if row["sourceClass"] != "EXTERNAL_COUNTERPARTY":
             continue
         parts = row["binding"].split(":")
         candidate_id = parts[1] if len(parts) >= 3 and parts[0] == "candidate" else ""
-        identity = (row["locator"], row["sha256"])
+        identity = row["sha256"]
         prior_candidate = external_artifacts.get(identity)
         if prior_candidate is not None and prior_candidate != candidate_id:
             raise ContractError("EXTERNAL_EVIDENCE_CANDIDATE_REPLAY", row["evidenceId"])
