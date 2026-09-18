@@ -1,5 +1,5 @@
 from __future__ import annotations
-import copy, importlib.util, json, tempfile, unittest
+import copy, importlib.util, json, shutil, tempfile, unittest
 from pathlib import Path
 HERE=Path(__file__).resolve().parents[1]
 SPEC=importlib.util.spec_from_file_location('rcap_validate',HERE/'validate_recovery.py'); mod=importlib.util.module_from_spec(SPEC); assert SPEC.loader; SPEC.loader.exec_module(mod)
@@ -14,8 +14,9 @@ class Tests(unittest.TestCase):
         with self.assertRaises(mod.PacketError): mod.validate_truth(p,HERE)
     def test_baseline(self):
         self.assertIn('EXACT_ROUTE_FIRST_PARTY_RESOLVED',mod.validate_public(self.pub))
-        self.assertIn('HISTORICAL_PDF_INELIGIBLE_REGEN_REQUIRED',mod.validate_truth(self.truth,HERE))
-        self.assertEqual(mod.validate_public_surface(HERE),['NO_PUBLIC_COMMONS_BACKLINK'])
+        self.assertIn('SUBMISSION_PDF_METADATA_READY',mod.validate_truth(self.truth,HERE))
+        self.assertEqual(mod.validate_public_surface(HERE),['PROPOSAL_SOURCE_BYTES_BOUND','NO_PUBLIC_COMMONS_BACKLINK'])
+        self.assertEqual(mod.validate_pdf_artifact(HERE),['SUBMISSION_PDF_BYTES_BOUND'])
     def test_duplicate_key(self):
         with tempfile.TemporaryDirectory() as td:
             p=Path(td)/'x.json'; p.write_text('{"schema_version":2,"schema_version":2}',encoding='utf-8')
@@ -39,9 +40,9 @@ class Tests(unittest.TestCase):
     def test_optional_folded_into_base(self): self.truth_bad(lambda p:p['optional_service'].__setitem__('included_in_base',True))
     def test_optional_acceptance_rejected(self): self.truth_bad(lambda p:p['optional_service'].__setitem__('accepted',True))
     def test_pdf_hash_drift(self): self.truth_bad(lambda p:p['artifacts'].__setitem__('pdf_sha256','0'*64))
-    def test_pdf_page_drift(self): self.truth_bad(lambda p:p['artifacts'].__setitem__('pdf_pages',5))
-    def test_historical_pdf_cannot_be_submission_eligible(self): self.truth_bad(lambda p:p['artifacts'].__setitem__('submission_eligible',True))
-    def test_pdf_regeneration_cannot_be_suppressed(self): self.truth_bad(lambda p:p['artifacts'].__setitem__('regeneration_required',False))
+    def test_pdf_page_drift(self): self.truth_bad(lambda p:p['artifacts'].__setitem__('pdf_pages',4))
+    def test_current_pdf_cannot_be_marked_ineligible(self): self.truth_bad(lambda p:p['artifacts'].__setitem__('submission_eligible',False))
+    def test_pdf_regeneration_cannot_be_reopened(self): self.truth_bad(lambda p:p['artifacts'].__setitem__('regeneration_required',True))
     def test_invented_reference_rejected(self): self.truth_bad(lambda p:p['experience_truth'].__setitem__('client_references_invented',True))
     def test_commons_work_sample_rejected(self): self.truth_bad(lambda p:p['experience_truth'].__setitem__('public_work_sample','https://github.com/woahwhattheheck/commons'))
     def test_commons_backlink_claim_rejected(self): self.truth_bad(lambda p:p['experience_truth'].__setitem__('public_commons_backlink_present',True))
@@ -55,29 +56,58 @@ class Tests(unittest.TestCase):
     def test_acceptance_escalation(self): self.truth_bad(lambda p:p['commercial_truth'].__setitem__('accepted_offer',True))
     def test_payment_escalation(self): self.truth_bad(lambda p:p['commercial_truth'].__setitem__('payment',True))
     def test_revenue_truth_escalation(self): self.truth_bad(lambda p:p['commercial_truth'].__setitem__('revenue',True))
-    def test_unknown_public_authority_key_rejected(self):
-        self.pub_bad(lambda p:p['authority'].__setitem__('send_authorized',True))
-    def test_unknown_truth_submission_key_rejected(self):
-        self.truth_bad(lambda p:p['submission'].__setitem__('route_guessed',True))
-    def test_unknown_truth_commercial_key_rejected(self):
-        self.truth_bad(lambda p:p['commercial_truth'].__setitem__('booked_revenue',True))
-    def test_unknown_public_top_key_rejected(self):
-        self.pub_bad(lambda p:p.__setitem__('extra_authority',True))
-    def test_unknown_truth_top_key_rejected(self):
-        self.truth_bad(lambda p:p.__setitem__('extra_commercial',True))
     def test_public_source_guard_rejects_commons_repo_url(self):
         with tempfile.TemporaryDirectory() as td:
             root=Path(td)
-            (root/mod.PROPOSAL_SOURCE).write_text('Public work sample: https://github.com/woahwhattheheck/commons',encoding='utf-8')
-            with self.assertRaisesRegex(mod.PacketError,'forbidden public Commons backlink'): mod.validate_public_surface(root)
+            data='Public work sample: https://github.com/woahwhattheheck/commons'
+            (root/mod.PROPOSAL_SOURCE).write_text(data,encoding='utf-8')
+            old=mod.PROPOSAL_SHA
+            try:
+                import hashlib
+                mod.PROPOSAL_SHA=hashlib.sha256(data.encode()).hexdigest()
+                with self.assertRaisesRegex(mod.PacketError,'forbidden public Commons backlink'): mod.validate_public_surface(root)
+            finally: mod.PROPOSAL_SHA=old
     def test_public_source_guard_rejects_pages_url_casefolded(self):
         with tempfile.TemporaryDirectory() as td:
             root=Path(td)
-            (root/mod.PROPOSAL_SOURCE).write_text('HTTPS://WOAHWHATTHEHECK.GITHUB.IO/COMMONS/demo',encoding='utf-8')
-            with self.assertRaisesRegex(mod.PacketError,'forbidden public Commons backlink'): mod.validate_public_surface(root)
+            data='HTTPS://WOAHWHATTHEHECK.GITHUB.IO/COMMONS/demo'
+            (root/mod.PROPOSAL_SOURCE).write_text(data,encoding='utf-8')
+            old=mod.PROPOSAL_SHA
+            try:
+                import hashlib
+                mod.PROPOSAL_SHA=hashlib.sha256(data.encode()).hexdigest()
+                with self.assertRaisesRegex(mod.PacketError,'forbidden public Commons backlink'): mod.validate_public_surface(root)
+            finally: mod.PROPOSAL_SHA=old
     def test_public_source_guard_accepts_self_contained_source(self):
+        self.assertEqual(mod.validate_public_surface(HERE),['PROPOSAL_SOURCE_BYTES_BOUND','NO_PUBLIC_COMMONS_BACKLINK'])
+    def test_proposal_source_actual_bytes_tamper_rejected(self):
         with tempfile.TemporaryDirectory() as td:
             root=Path(td)
-            (root/mod.PROPOSAL_SOURCE).write_text('Standalone proposal; external materials only on request.',encoding='utf-8')
-            self.assertEqual(mod.validate_public_surface(root),['NO_PUBLIC_COMMONS_BACKLINK'])
+            (root/mod.PROPOSAL_SOURCE).write_bytes((HERE/mod.PROPOSAL_SOURCE).read_bytes()+b"\nTamper")
+            with self.assertRaisesRegex(mod.PacketError,'sha256 drift'): mod.validate_public_surface(root)
+    def test_public_top_level_unknown_key_rejected(self): self.pub_bad(lambda p:p.__setitem__('unexpected_authority',True))
+    def test_public_authority_unknown_true_rejected(self): self.pub_bad(lambda p:p['authority'].__setitem__('send_authorized',True))
+    def test_public_submission_unknown_true_rejected(self): self.pub_bad(lambda p:p['submission'].__setitem__('route_authorized',True))
+    def test_truth_top_level_unknown_key_rejected(self): self.truth_bad(lambda p:p.__setitem__('unexpected_commercial_state',True))
+    def test_truth_submission_unknown_true_rejected(self): self.truth_bad(lambda p:p['submission'].__setitem__('send_authorized',True))
+    def test_truth_commercial_unknown_true_rejected(self): self.truth_bad(lambda p:p['commercial_truth'].__setitem__('booked_revenue',True))
+    def test_truth_artifacts_unknown_eligibility_rejected(self): self.truth_bad(lambda p:p['artifacts'].__setitem__('safe_to_send',True))
+    def test_pdf_actual_bytes_tamper_rejected(self):
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td)
+            (root/mod.PDF).write_bytes((HERE/mod.PDF).read_bytes()+b"x")
+            with self.assertRaisesRegex(mod.PacketError,'sha256 drift'): mod.validate_pdf_artifact(root)
+    def test_pdf_symlink_rejected(self):
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td); target=root/'target.pdf'; target.write_bytes((HERE/mod.PDF).read_bytes())
+            try: (root/mod.PDF).symlink_to(target)
+            except (OSError, NotImplementedError): self.skipTest('symlink unavailable')
+            with self.assertRaisesRegex(mod.PacketError,'symlink'): mod.validate_pdf_artifact(root)
+    def test_proposal_source_digest_drift_rejected(self): self.truth_bad(lambda p:p['artifacts'].__setitem__('proposal_source_sha256','0'*64))
+    def test_superseded_pdf_hash_drift_rejected(self): self.truth_bad(lambda p:p['artifacts'].__setitem__('superseded_pdf_sha256','0'*64))
+    def test_superseded_pdf_reason_drift_rejected(self): self.truth_bad(lambda p:p['artifacts'].__setitem__('superseded_pdf_reason','SAFE'))
+    def test_public_observed_at_type_rejected(self): self.pub_bad(lambda p:p.__setitem__('observed_at_utc',1))
+    def test_schedule_starts_after_type_rejected(self): self.truth_bad(lambda p:p['schedule'].__setitem__('starts_after',1))
+    def test_optional_currency_type_rejected(self): self.truth_bad(lambda p:p['optional_service'].__setitem__('currency',1))
+    def test_docx_metadata_type_rejected(self): self.truth_bad(lambda p:p['artifacts'].__setitem__('docx_sha256',1))
 if __name__=='__main__': unittest.main()
