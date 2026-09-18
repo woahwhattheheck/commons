@@ -55,9 +55,9 @@ class QualificationError(ValueError):
 
 
 def _build_codec():
-    loads = json.loads
-    dumps = json.dumps
+    decoder_cls = json.JSONDecoder
     decode_error = json.JSONDecodeError
+    encode_string = json.encoder.encode_basestring
     error = QualificationError
     max_bytes = MAX_JSON_BYTES
     max_depth = MAX_JSON_DEPTH
@@ -70,6 +70,8 @@ def _build_codec():
     builtin_int = int
     builtin_id = id
     builtin_set = set
+    builtin_sorted = sorted
+    builtin_str = str
     bytes_type = bytes
     str_type = str
     bool_type = bool
@@ -105,6 +107,35 @@ def _build_codec():
     def reject_number(text: str):
         raise error(f"floating/non-finite JSON number forbidden: {text}")
 
+    decoder = decoder_cls(
+        object_hook=None,
+        object_pairs_hook=pairs,
+        parse_float=reject_number,
+        parse_int=parse_int,
+        parse_constant=reject_number,
+        strict=True,
+    )
+    raw_decode = decoder.raw_decode
+
+    def encode_canonical(value: Any) -> str:
+        t = builtin_type(value)
+        if value is None:
+            return "null"
+        if t is bool_type:
+            return "true" if value else "false"
+        if t is int_type:
+            return builtin_str(value)
+        if t is str_type:
+            return encode_string(value)
+        if t is list_type:
+            return "[" + ",".join(encode_canonical(item) for item in value) + "]"
+        if t is dict_type:
+            return "{" + ",".join(
+                encode_string(key) + ":" + encode_canonical(value[key])
+                for key in builtin_sorted(value)
+            ) + "}"
+        raise error(f"unsupported canonical JSON type: {t.__name__}")
+
     def snapshot(root: Any) -> Any:
         seen: set[int] = builtin_set()
         nodes = 0
@@ -131,7 +162,7 @@ def _build_codec():
                     raise error("JSON value exceeds aggregate string-byte limit")
                 try:
                     encoded = value.encode("utf-8", "strict")
-                except UnicodeEncodeError as exc:
+                except unicode_encode_error as exc:
                     raise error("invalid Unicode string") from exc
                 string_bytes += builtin_len(encoded)
                 if string_bytes > max_bytes:
@@ -163,7 +194,7 @@ def _build_codec():
                             raise error("JSON value exceeds aggregate string-byte limit")
                         try:
                             encoded = key.encode("utf-8", "strict")
-                        except UnicodeEncodeError as exc:
+                        except unicode_encode_error as exc:
                             raise error("invalid Unicode object key") from exc
                         string_bytes += builtin_len(encoded)
                         if string_bytes > max_bytes:
@@ -175,10 +206,7 @@ def _build_codec():
             raise error(f"unsupported JSON type: {t.__name__}")
 
         detached = detach(root, 0)
-        raw = dumps(
-            detached, ensure_ascii=False, sort_keys=True,
-            separators=(",", ":"), allow_nan=False,
-        ).encode("utf-8", "strict")
+        raw = encode_canonical(detached).encode("utf-8", "strict")
         if builtin_len(raw) > max_bytes:
             raise error("canonical JSON exceeds byte limit")
         return detached
@@ -189,12 +217,12 @@ def _build_codec():
                 raise error("JSON input exceeds byte limit")
             try:
                 text = raw.decode("utf-8", "strict")
-            except UnicodeDecodeError as exc:
+            except unicode_decode_error as exc:
                 raise error("invalid UTF-8") from exc
         elif builtin_type(raw) is str_type:
             try:
                 encoded = raw.encode("utf-8", "strict")
-            except UnicodeEncodeError as exc:
+            except unicode_encode_error as exc:
                 raise error("invalid UTF-8") from exc
             if builtin_len(encoded) > max_bytes:
                 raise error("JSON input exceeds byte limit")
@@ -202,22 +230,22 @@ def _build_codec():
         else:
             raise error("JSON input must be bytes or str")
         try:
-            value = loads(
-                text, object_pairs_hook=pairs, parse_int=parse_int,
-                parse_float=reject_number, parse_constant=reject_number,
-            )
+            start = builtin_len(text) - builtin_len(text.lstrip(" \t\n\r"))
+            value, end = raw_decode(text, start)
+            if text[end:].strip(" \t\n\r"):
+                raise error("invalid JSON")
         except error:
             raise
-        except (decode_error, ValueError, OverflowError, RecursionError, UnicodeError) as exc:
+        except (
+            decode_error, value_error, overflow_error,
+            recursion_error, unicode_error,
+        ) as exc:
             raise error("invalid JSON") from exc
         return snapshot(value)
 
     def canonical(value: Any) -> bytes:
         detached = snapshot(value)
-        raw = dumps(
-            detached, ensure_ascii=False, sort_keys=True,
-            separators=(",", ":"), allow_nan=False,
-        ).encode("utf-8", "strict")
+        raw = encode_canonical(detached).encode("utf-8", "strict")
         if builtin_len(raw) > max_bytes:
             raise error("canonical JSON exceeds byte limit")
         return raw
