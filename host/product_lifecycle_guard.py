@@ -20,6 +20,9 @@ ACTIVE_STATIC_PATHS = (
     Path("host/payment_capability.py"),
     Path("revenue/outcome_commerce/catalog.json"),
 )
+# Root HTML that projects historical board receipts rather than a customer
+# storefront. Retirement must not rewrite append-only board evidence.
+HISTORICAL_ROOT_HTML = frozenset({"board.html"})
 STRUCTURED_ACTIVE_JSON_PATHS = frozenset(
     {Path("revenue/outcome_commerce/catalog.json")}
 )
@@ -424,7 +427,7 @@ def enforce_retired_monotonicity(
 def active_surface_paths(repo_root: Path) -> tuple[Path, ...]:
     paths: set[Path] = set()
     for candidate in repo_root.glob("*.html"):
-        if candidate.is_file():
+        if candidate.is_file() and candidate.name not in HISTORICAL_ROOT_HTML:
             paths.add(candidate)
     for rel in ACTIVE_STATIC_PATHS:
         candidate = repo_root / rel
