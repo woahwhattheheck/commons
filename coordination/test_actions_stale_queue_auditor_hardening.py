@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import copy
 import importlib.util
 import json
 import unittest
@@ -135,6 +136,110 @@ class CanonicalWorkBoundaryTests(unittest.TestCase):
         finally:
             auditor.REQUIRED_PROVENANCE_SOURCES = old_required
             auditor.ALLOWED_PROVENANCE_SOURCES = old_allowed
+
+
+    def test_live_serializer_rebind_cannot_self_ratify_false_safe(self):
+        data = packet()
+        data["runs"][0]["provenance"]["pull_requests"] = [
+            {"number": 1, "state": "OPEN", "current_head_sha": SHA_A}
+        ]
+        report = auditor.build_report(data)
+        self.assertEqual(report["rows"][0]["decision"], "HOLD")
+
+        tampered = copy.deepcopy(report)
+        tampered["rows"][0]["decision"] = "SAFE_TO_CANCEL"
+        tampered["rows"][0]["reasons"] = ["ALL_ASSOCIATED_PRS_CLOSED_OR_STALE"]
+        tampered["counts"] = {"HOLD": 0, "SAFE_TO_CANCEL": 1}
+
+        old_dumps = auditor.json.dumps
+        auditor.json.dumps = lambda *args, **kwargs: "{}"
+        try:
+            unsigned = dict(tampered)
+            unsigned.pop("report_receipt")
+            tampered["report_receipt"] = auditor.sha256_hex(
+                auditor.canonical_json(unsigned)
+            )
+            with self.assertRaisesRegex(
+                auditor.AuditError, "semantic recompile mismatch"
+            ):
+                auditor.verify_report(tampered)
+        finally:
+            auditor.json.dumps = old_dumps
+
+    def test_live_digest_rebind_cannot_change_report_generation(self):
+        baseline = auditor.build_report(packet())
+
+        class FakeDigest:
+            def hexdigest(self):
+                return "0" * 64
+
+        old_sha256 = auditor.hashlib.sha256
+        auditor.hashlib.sha256 = lambda *args, **kwargs: FakeDigest()
+        try:
+            rebuilt = auditor.build_report(packet())
+            self.assertEqual(rebuilt, baseline)
+            self.assertTrue(auditor.verify_report(rebuilt))
+        finally:
+            auditor.hashlib.sha256 = old_sha256
+
+    def test_live_parser_rebind_does_not_change_strict_parse(self):
+        old_loads = auditor.json.loads
+        auditor.json.loads = lambda *args, **kwargs: {"forged": True}
+        try:
+            self.assertEqual(auditor.loads_strict('{"x":1}'), {"x": 1})
+        finally:
+            auditor.json.loads = old_loads
+
+    def test_public_work_limit_rebind_cannot_widen_captured_generation(self):
+        original_safe = auditor.MAX_SAFE_INTEGER
+        original_bytes = auditor.MAX_JSON_BYTES
+        original_depth = auditor.MAX_JSON_DEPTH
+        original_nodes = auditor.MAX_JSON_NODES
+        original_runs = auditor.MAX_RUNS
+        original_prs = auditor.MAX_PULL_REQUESTS_PER_RUN
+        auditor.MAX_SAFE_INTEGER = 10**100
+        auditor.MAX_JSON_BYTES = 10**9
+        auditor.MAX_JSON_DEPTH = 10**6
+        auditor.MAX_JSON_NODES = 10**9
+        auditor.MAX_RUNS = 10**9
+        auditor.MAX_PULL_REQUESTS_PER_RUN = 10**9
+        try:
+            with self.assertRaises(auditor.AuditError):
+                auditor._freeze_plain_json(original_safe + 1)
+
+            with self.assertRaisesRegex(auditor.AuditError, "canonical JSON exceeds"):
+                auditor._freeze_plain_json("x" * (original_bytes + 1))
+
+            deep = None
+            for _ in range(original_depth + 2):
+                deep = [deep]
+            with self.assertRaisesRegex(auditor.AuditError, "nesting"):
+                auditor._freeze_plain_json(deep)
+
+            with self.assertRaisesRegex(auditor.AuditError, "node budget|node count"):
+                auditor._freeze_plain_json([None] * (original_nodes + 1))
+
+            too_many_runs = packet()
+            too_many_runs["runs"] = [packet()["runs"][0]] * (original_runs + 1)
+            with self.assertRaisesRegex(auditor.AuditError, "runs exceeds"):
+                auditor.normalize_packet(too_many_runs)
+
+            too_many_prs = packet()
+            template_pr = too_many_prs["runs"][0]["provenance"]["pull_requests"][0]
+            too_many_prs["runs"][0]["provenance"]["pull_requests"] = [
+                dict(template_pr) for _ in range(original_prs + 1)
+            ]
+            with self.assertRaisesRegex(
+                auditor.AuditError, "too many associated pull requests"
+            ):
+                auditor.normalize_packet(too_many_prs)
+        finally:
+            auditor.MAX_SAFE_INTEGER = original_safe
+            auditor.MAX_JSON_BYTES = original_bytes
+            auditor.MAX_JSON_DEPTH = original_depth
+            auditor.MAX_JSON_NODES = original_nodes
+            auditor.MAX_RUNS = original_runs
+            auditor.MAX_PULL_REQUESTS_PER_RUN = original_prs
 
 
 if __name__ == "__main__":
