@@ -112,7 +112,23 @@
       "sourceCurrentness": {
         "state": "UNKNOWN",
         "evidenceRef": null
-      }
+      },
+      "demonstratedMetrics": [
+        {
+          "claimId": "sustainproof.demonstrated-metric",
+          "text": "The pinned SustainProof carrier contains retained prototype/test evidence that can support a demonstrated-technical-metric section.",
+          "state": "EVIDENCED",
+          "evidenceRef": "ev:sustainproof:claim:sustainproof.demonstrated-metric"
+        }
+      ],
+      "transitionPath": [
+        {
+          "claimId": "sustainproof.transition-path",
+          "text": "A transition path could move from evidence-bound prototype hardening into a bounded Army sustainment evaluation and then a separately authorized pilot.",
+          "state": "PROPOSED",
+          "evidenceRef": null
+        }
+      ]
     },
     {
       "candidateId": "acqatlas",
@@ -182,7 +198,23 @@
       "sourceCurrentness": {
         "state": "UNKNOWN",
         "evidenceRef": null
-      }
+      },
+      "demonstratedMetrics": [
+        {
+          "claimId": "acqatlas.demonstrated-metric",
+          "text": "The pinned AcqAtlas carrier contains deterministic engine/test evidence that can support a demonstrated-technical-metric section.",
+          "state": "EVIDENCED",
+          "evidenceRef": "ev:acqatlas:claim:acqatlas.demonstrated-metric"
+        }
+      ],
+      "transitionPath": [
+        {
+          "claimId": "acqatlas.transition-path",
+          "text": "A transition path could move from acquisition-document benchmark validation into a bounded Army acquisition workflow evaluation.",
+          "state": "PROPOSED",
+          "evidenceRef": null
+        }
+      ]
     },
     {
       "candidateId": "local-device-agent",
@@ -252,10 +284,36 @@
       "sourceCurrentness": {
         "state": "UNKNOWN",
         "evidenceRef": null
-      }
+      },
+      "demonstratedMetrics": [
+        {
+          "claimId": "lda.demonstrated-metric",
+          "text": "A competition-ready demonstrated metric for the pinned LocalDeviceAgent generation must be selected and evidenced.",
+          "state": "OWNER_REQUIRED",
+          "evidenceRef": null
+        }
+      ],
+      "transitionPath": [
+        {
+          "claimId": "lda.transition-path",
+          "text": "A transition path could move from pinned local-agent software into a bounded degraded-connectivity workflow evaluation.",
+          "state": "PROPOSED",
+          "evidenceRef": null
+        }
+      ]
     }
   ],
   "evidenceRecords": [
+    {
+      "evidenceId": "ev:acqatlas:claim:acqatlas.demonstrated-metric",
+      "binding": "candidate:acqatlas:claim:acqatlas.demonstrated-metric",
+      "sourceClass": "REPO",
+      "repo": "woahwhattheheck/commons",
+      "commit": "ad4d7c322a1909fcd99b5ac389f19b4bf83e4335",
+      "path": "competitions/nawcad-acqdoc-acqatlas-2026",
+      "locator": null,
+      "sha256": null
+    },
     {
       "evidenceId": "ev:acqatlas:deterministic-engine-and-tests",
       "binding": "candidate:acqatlas:claim:acqatlas.deterministic-engine-and-tests",
@@ -293,6 +351,16 @@
       "repo": "woahwhattheheck/LocalDeviceAgent",
       "commit": "fd54957dd34d09a4f7762058561cbdc6af502b7c",
       "path": "README.md",
+      "locator": null,
+      "sha256": null
+    },
+    {
+      "evidenceId": "ev:sustainproof:claim:sustainproof.demonstrated-metric",
+      "binding": "candidate:sustainproof:claim:sustainproof.demonstrated-metric",
+      "sourceClass": "REPO",
+      "repo": "woahwhattheheck/commons",
+      "commit": "9fdaea9b7238bd3467afa8b32ac253e9f495f417",
+      "path": "competitions/xtech-search10-2026/sustainproof",
       "locator": null,
       "sha256": null
     },
