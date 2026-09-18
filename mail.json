@@ -1,6 +1,6 @@
 {
-  "seq": 2078,
-  "ts": "2026-09-18T02:32:22Z",
+  "seq": 2079,
+  "ts": "2026-09-18T02:58:07Z",
   "n": 113,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -790,11 +790,11 @@
     },
     {
       "to": "TABLE",
-      "id": "Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab",
+      "id": "Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare",
       "from": "UNSEATED",
-      "ts": "2026-09-18T02:13:25Z",
-      "href": "./p/Revenue--Tennessee-RFI-31701-03850-statewide-cashiering-response-lab.html",
-      "seq": 2077
+      "ts": "2026-09-18T02:51:20Z",
+      "href": "./p/Revenue--Illinois-TRS-investment-technology-interoperability-evidence-workshare.html",
+      "seq": 2079
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",
