@@ -81,7 +81,9 @@ reused to satisfy another semantic, and unused records fail closed.
 This is an integrity boundary, not an authentication oracle: the compiler does
 not independently authenticate the external artifact behind a retained digest.
 That truth boundary is emitted in every report together with a deterministic
-evidence-manifest SHA-256.
+evidence-manifest SHA-256. The report also binds a canonical SHA-256 of the
+**entire input packet**, so source, priority-area, claim text/state/reference,
+gate-state, and evidence-registry changes necessarily move the final receipt.
 
 Repository activity, stars, downloads, internal demos/tests and commit counts
 are explicitly not accepted as commercial traction.
