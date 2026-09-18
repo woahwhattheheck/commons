@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -351,6 +352,118 @@ class RevenueLaneStateTest(unittest.TestCase):
             ),
         ])
         self.assertEqual(result["state"], "SENT_DNR_PENDING_EVENT")
+
+    def test_caller_event_mutation_after_admission_cannot_split_state_from_digest(self):
+        baseline_packet = packet([
+            ev(
+                "trace-sent",
+                1,
+                "PROVIDER_SENT",
+                "provider",
+                "2026-09-17T20:00:00Z",
+                route_id="route-a",
+            )
+        ])
+        baseline = compile_state(baseline_packet, body_text="", evaluation_time=EVAL)
+
+        attacked_packet = packet([
+            ev(
+                "trace-sent",
+                1,
+                "PROVIDER_SENT",
+                "provider",
+                "2026-09-17T20:00:00Z",
+                route_id="route-a",
+            )
+        ])
+        mutated = False
+        reduce_code = core_module.reduce_state.__code__
+
+        def trace(frame, event, arg):
+            nonlocal mutated
+            if not mutated and event == "call" and frame.f_code is reduce_code:
+                attacked_packet["events"][0]["kind"] = "RESEARCHED"
+                attacked_packet["events"][0]["source_class"] = "coordination"
+                attacked_packet["events"][0]["source_ref"] = "ref:mutated-after-admission"
+                attacked_packet["events"][0]["route_id"] = "route-b"
+                mutated = True
+            return trace
+
+        previous = sys.gettrace()
+        sys.settrace(trace)
+        try:
+            attacked = compile_state(attacked_packet, body_text="", evaluation_time=EVAL)
+        finally:
+            sys.settrace(previous)
+
+        self.assertTrue(mutated)
+        self.assertEqual(attacked["state"], "SENT_DNR_PENDING_EVENT")
+        self.assertEqual(attacked["state"], baseline["state"])
+        self.assertEqual(
+            attacked["event_digest_sha256"],
+            baseline["event_digest_sha256"],
+        )
+        self.assertEqual(
+            attacked["semantic_receipt_sha256"],
+            baseline["semantic_receipt_sha256"],
+        )
+
+    def test_json_policy_generation_is_closed_over_limits_and_helpers(self):
+        p = packet([
+            ev("json-policy", 1, "RESEARCHED", "coordination", "2026-09-17T20:00:00Z")
+        ])
+        raw = json.dumps(p, sort_keys=True, separators=(",", ":")).encode("utf-8")
+        baseline = compile_from_json(raw, body_text="", evaluation_time=EVAL)
+        originals = {
+            "MAX_INPUT_BYTES": core_module.MAX_INPUT_BYTES,
+            "MAX_CANONICAL_BYTES": core_module.MAX_CANONICAL_BYTES,
+            "_validate_json_value": core_module._validate_json_value,
+            "_parse_int": core_module._parse_int,
+            "_object_no_dupes": core_module._object_no_dupes,
+            "strict_json_loads": core_module.strict_json_loads,
+            "canonical_bytes": core_module.canonical_bytes,
+        }
+        try:
+            core_module.MAX_INPUT_BYTES = 1
+            core_module.MAX_CANONICAL_BYTES = 1
+            core_module._validate_json_value = lambda _value: (_ for _ in ()).throw(
+                AssertionError("rebound validator must not be used")
+            )
+            core_module._parse_int = lambda _value: (_ for _ in ()).throw(
+                AssertionError("rebound integer parser must not be used")
+            )
+            core_module._object_no_dupes = lambda _pairs: (_ for _ in ()).throw(
+                AssertionError("rebound pair hook must not be used")
+            )
+            core_module.strict_json_loads = lambda _data: (_ for _ in ()).throw(
+                AssertionError("rebound strict_json_loads name must not be used")
+            )
+            core_module.canonical_bytes = lambda _value: (_ for _ in ()).throw(
+                AssertionError("rebound canonical_bytes name must not be used")
+            )
+
+            after = compile_from_json(raw, body_text="", evaluation_time=EVAL)
+            self.assertEqual(after["state"], baseline["state"])
+            self.assertEqual(
+                after["event_digest_sha256"],
+                baseline["event_digest_sha256"],
+            )
+            self.assertEqual(
+                after["semantic_receipt_sha256"],
+                baseline["semantic_receipt_sha256"],
+            )
+        finally:
+            for name, value in originals.items():
+                setattr(core_module, name, value)
+
+        original_canonical_limit = originals["MAX_CANONICAL_BYTES"]
+        core_module.MAX_CANONICAL_BYTES = original_canonical_limit * 4
+        try:
+            oversized = ["x" * 8000] * (original_canonical_limit // 8000 + 8)
+            with self.assertRaisesRegex(ContractError, "canonical JSON byte limit exceeded"):
+                canonical_bytes(oversized)
+        finally:
+            core_module.MAX_CANONICAL_BYTES = original_canonical_limit
 
     def test_post_import_policy_rebind_cannot_widen_or_self_ratify(self):
         baseline = self.compile([
