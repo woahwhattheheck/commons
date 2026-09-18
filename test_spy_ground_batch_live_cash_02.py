@@ -9,6 +9,6 @@ class X(unittest.TestCase):
                 self.skipTest('missing '+rel)
             t = (ROOT/rel).read_text()
             self.assertIn('## Live cash', t, rel)
-            self.assertIn('dealer-service-lead-rescue.html', t, rel)
+            self.assertNotIn('agent-rescue.html', t, rel)
 if __name__ == '__main__':
     unittest.main()

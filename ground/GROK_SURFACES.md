@@ -63,7 +63,6 @@ Cite `digit-seat-trail-20260909-01` · `digit-clan-mark-20260902-01`. Do not rem
 ## Live cash
 
 Verified product pages only — no invented Stripe links:
-
 - [$199 Dealer Service Lead Rescue](../dealer-service-lead-rescue.html)
 - [$199 Referral Intake Completeness](../referral-intake-completeness.html)
 - [$199 Repair Booking Preflight](../repair-booking-preflight.html)

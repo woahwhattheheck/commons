@@ -12,6 +12,7 @@ TOOLS = ROOT / "tools.json"
 
 REQUIRED_TOP = ["share", "button", "job", "tools", "refuse", "super_mcp", "cash"]
 
+
 class CoilToolsJsonSchemaLockTest(unittest.TestCase):
     def test_required_top_level_keys(self) -> None:
         self.assertTrue(TOOLS.is_file(), "tools.json missing")
@@ -47,9 +48,9 @@ class CoilToolsJsonSchemaLockTest(unittest.TestCase):
         self.assertIsInstance(cash, dict)
         doors = cash.get("doors")
         self.assertIsInstance(doors, list)
-        self.assertGreaterEqual(len(doors), 4)
+        self.assertGreaterEqual(len(doors), 5)
         hrefs = [d.get("href") for d in doors if isinstance(d, dict)]
-        self.assertIn("./dealer-service-lead-rescue.html", hrefs)
+        self.assertIn("./agent-rescue.html", hrefs)
         blob = TOOLS.read_text(encoding="utf-8")
         self.assertNotIn("buy.stripe.com", blob)
 
@@ -59,6 +60,7 @@ class CoilToolsJsonSchemaLockTest(unittest.TestCase):
         self.assertGreater(len(data["tools"]), 0)
         self.assertIsInstance(data["refuse"], list)
         self.assertIn("titan", data["refuse"])
+
 
 if __name__ == "__main__":
     unittest.main()

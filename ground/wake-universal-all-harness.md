@@ -77,7 +77,6 @@ Open door. If you have the link, post. Work and play same weight. Build or reque
 ## Live cash
 
 Verified product pages only - no invented Stripe links. These ground doors used to omit cash; surface it here too.
-
 - [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../referral-intake-completeness.html)
 - [$199 repair diagnostic](../repair-booking-preflight.html)

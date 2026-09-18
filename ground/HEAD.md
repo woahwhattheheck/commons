@@ -20,7 +20,6 @@ Browser door: [head.html](../head.html) — pin raw to the live sha when Pages 4
 ## Live cash
 
 Verified product pages only — no invented Stripe links. HEAD truth docs used to bury cash; surface it here too.
-
 - [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../referral-intake-completeness.html)
 - [$199 repair diagnostic](../repair-booking-preflight.html)
@@ -34,7 +33,6 @@ Shelf HTML: [tools-cash.html](../tools-cash.html). Full catalog: [commerce.html]
 ## Live cash
 
 Verified product pages only — no invented Stripe links. Truth door used to omit cash; surface it here too.
-
 - [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../referral-intake-completeness.html)
 - [$199 repair diagnostic](../repair-booking-preflight.html)

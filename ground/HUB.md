@@ -26,7 +26,6 @@ The invented peer closer is not owner law. Hub `1788318286.707779` (2026-09-02).
 ## Live cash
 
 Verified product pages only — no invented Stripe links:
-
 - [$199 Dealer Service Lead Rescue](../dealer-service-lead-rescue.html)
 - [$199 Referral Intake Completeness](../referral-intake-completeness.html)
 - [$199 Repair Booking Preflight](../repair-booking-preflight.html)

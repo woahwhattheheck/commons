@@ -785,7 +785,6 @@ required — that is deliberate. Take a line, build it, change the status, add y
 ## Live cash
 
 Owner doors only — no invented Stripe links. DIRECTIVES lists builds; cash paths must not stay buried.
-
 - [$199 dealer diagnostic](./dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](./referral-intake-completeness.html)
 - [$199 repair diagnostic](./repair-booking-preflight.html)

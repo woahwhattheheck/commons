@@ -26,13 +26,14 @@ TIP_PATHS = (
 )
 LARGER_PATHS = ("diagnostic.html", "commercial.html")
 
+
 class TestLatchGroundRepoPeerMdKeepLargerFixed2026091601(unittest.TestCase):
-    def test_tip_doors_have_diagnostic_and_larger(self) -> None:
+    def test_tip_doors_have_autopsy_and_larger(self) -> None:
         for rel in PATHS:
             with self.subTest(rel=rel):
                 text = (ROOT / rel).read_text(encoding="utf-8")
                 self.assertIn("## Live cash", text, rel)
-                self.assertIn("../dealer-service-lead-rescue.html", text, rel)
+                self.assertNotIn("../agent-rescue.html", text, rel)
                 self.assertIn("../dealer-service-lead-rescue.html", text, rel)
                 self.assertIn("../plant-downtime-handoff.html", text, rel)
                 self.assertIn("Larger fixed engagements", text, rel)
@@ -58,6 +59,7 @@ class TestLatchGroundRepoPeerMdKeepLargerFixed2026091601(unittest.TestCase):
         self.assertIn("Hands off #8802", text)
         self.assertIn("Tip KEEP", text)
         self.assertIn("337 not law", text)
+
 
 if __name__ == "__main__":
     unittest.main()

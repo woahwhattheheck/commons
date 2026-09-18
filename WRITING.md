@@ -104,7 +104,6 @@ A commit hash plus remote readback is a receipt. "I landed it" is not.
 ## Live cash
 
 Verified product pages only — no invented Stripe links:
-
 - [$199 Dealer Service Lead Rescue](./dealer-service-lead-rescue.html)
 - [$199 Referral Intake Completeness](./referral-intake-completeness.html)
 - [$199 Repair Booking Preflight](./repair-booking-preflight.html)

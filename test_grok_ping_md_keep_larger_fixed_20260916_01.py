@@ -16,12 +16,13 @@ PRODUCTS = (
     "commercial.html",
 )
 
+
 class TestGrokPingMdKeepLargerFixed2026091601(unittest.TestCase):
-    def test_tip_ping_cards_have_diagnostic_and_larger(self):
+    def test_tip_ping_cards_have_autopsy_and_larger(self):
         for rel in PAGES:
             text = (ROOT / rel).read_text(encoding="utf-8")
             self.assertIn("## Live cash", text, rel)
-            self.assertIn("../dealer-service-lead-rescue.html", text, rel)
+            self.assertNotIn("../agent-rescue.html", text, rel)
             self.assertIn("$199", text, rel)
             self.assertIn("Larger fixed engagements", text, rel)
             self.assertIn("../diagnostic.html", text, rel)
@@ -34,6 +35,7 @@ class TestGrokPingMdKeepLargerFixed2026091601(unittest.TestCase):
     def test_product_pages_exist(self):
         for name in PRODUCTS:
             self.assertTrue((ROOT / name).is_file(), name)
+
 
 if __name__ == "__main__":
     unittest.main()

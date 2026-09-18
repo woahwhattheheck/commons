@@ -59,7 +59,6 @@ or organs 1/2/3/4/5/7/8/9/10/11/13/15/16/17/18/19.
 ## Live cash
 
 Verified product pages only — no invented Stripe links.
-
 - [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../referral-intake-completeness.html)
 - [$199 repair diagnostic](../repair-booking-preflight.html)

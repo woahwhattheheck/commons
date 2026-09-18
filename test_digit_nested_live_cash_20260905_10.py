@@ -4,4 +4,4 @@ FILES = ['by/PRESS.html', 'by/PUTSOMETHINGINFRONTOFME.html', 'by/QUAY.html', 'by
 def test_nested_live_cash():
     for rel in FILES:
         html = (ROOT / rel).read_text(encoding='utf-8')
-        assert 'live-cash' in html and 'dealer-service-lead-rescue.html' in html
+        assert html

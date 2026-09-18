@@ -33,7 +33,6 @@ For each channel, count qualified first-party signals, unique delivered proposal
 ## Live cash
 
 Verified Commons product pages only — no invented Stripe links. Marketplace listings are Survival entry routes; Autopsy is a different SKU.
-
 - [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
 - [$199 referral diagnostic](../../referral-intake-completeness.html)
 - [$199 repair diagnostic](../../repair-booking-preflight.html)
