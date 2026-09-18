@@ -1,6 +1,6 @@
 # Filing Quality Desk
 
-Offline analyst-QA tooling for retained SEC Company Facts JSON. It selects exact taxonomy, concept, unit, and period observations under an explicit filing-date cutoff; fails closed on ambiguity; records prior values without labeling them restatements; evaluates same-unit/same-period arithmetic checks; and emits deterministic JSON, CSV, HTML, and a byte-verifiable manifest.
+Offline analyst-QA tooling for retained SEC Company Facts JSON. It selects exact taxonomy, concept, unit, and period observations under an explicit filing-date cutoff; fails closed on ambiguity; keeps earlier changed observations with value, date, accession, and form; evaluates same-unit/same-period arithmetic checks; and emits deterministic JSON, CSV, HTML, and a byte-verifiable manifest.
 
 Use `python -m revenue.filing_quality_desk.cli` with the `compile` or `verify` subcommand and `--source`, `--policy`, and `--out` arguments.
 
