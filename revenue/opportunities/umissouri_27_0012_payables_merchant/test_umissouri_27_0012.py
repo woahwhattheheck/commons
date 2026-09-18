@@ -441,6 +441,14 @@ class BundleTests(unittest.TestCase):
             "evaluate_matrix",
             "_add_receipt",
             "sha256_hex",
+            "_exact",
+            "_text",
+            "_id",
+            "_bool",
+            "_int",
+            "_utc",
+            "_https",
+            "_validate_authority",
         )
         originals = {
             name: getattr(module_under_test, name)
@@ -448,6 +456,17 @@ class BundleTests(unittest.TestCase):
         }
         original_json_dumps = module_under_test.json.dumps
         original_sha256 = module_under_test.sha256
+        original_constants = {
+            "SCHEMA": module_under_test.SCHEMA,
+            "PARTNER_SCHEMA": module_under_test.PARTNER_SCHEMA,
+            "CASE_SCHEMA": module_under_test.CASE_SCHEMA,
+            "BUNDLE_SCHEMA": module_under_test.BUNDLE_SCHEMA,
+            "TERMINAL_DECISIONS": module_under_test.TERMINAL_DECISIONS,
+            "_ID": module_under_test._ID,
+            "ContractError": module_under_test.ContractError,
+            "datetime": module_under_test.datetime,
+            "timezone": module_under_test.timezone,
+        }
 
         def poisoned(*_args, **_kwargs):
             raise AssertionError("later exported semantic binding was reached")
@@ -457,6 +476,15 @@ class BundleTests(unittest.TestCase):
                 setattr(module_under_test, name, poisoned)
             module_under_test.json.dumps = poisoned
             module_under_test.sha256 = poisoned
+            module_under_test.SCHEMA = "attacker-schema"
+            module_under_test.PARTNER_SCHEMA = "attacker-partners"
+            module_under_test.CASE_SCHEMA = "attacker-case"
+            module_under_test.BUNDLE_SCHEMA = "attacker-bundle"
+            module_under_test.TERMINAL_DECISIONS = ("ATTACKER_READY",)
+            module_under_test._ID = None
+            module_under_test.ContractError = RuntimeError
+            module_under_test.datetime = None
+            module_under_test.timezone = None
 
             self.assertTrue(
                 saved_verify(
@@ -483,6 +511,8 @@ class BundleTests(unittest.TestCase):
                 setattr(module_under_test, name, value)
             module_under_test.json.dumps = original_json_dumps
             module_under_test.sha256 = original_sha256
+            for name, value in original_constants.items():
+                setattr(module_under_test, name, value)
 
 
 if __name__ == "__main__":
