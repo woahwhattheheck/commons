@@ -11,6 +11,56 @@ from pathlib import Path
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
+SETUP_ANDROID_USES = re.compile(
+    r"^(?P<indent>[ \t]*)uses:[ \t]*android-actions/setup-android@v(?P<major>\d+)\S*[ \t]*$",
+    re.MULTILINE,
+)
+
+
+def setup_android_package_tokens(workflow_text: str) -> tuple[int, list[str] | None]:
+    """Return (major version, packages list or None if the step does not pin packages).
+
+    Tokenize on whitespace so `cmdline-tools` is not treated as the retired
+    `tools` package. android-actions/setup-android@v3 defaults to
+    `tools platform-tools`; Google stopped serving `tools` on 2026-09-15.
+    """
+    match = SETUP_ANDROID_USES.search(workflow_text)
+    if match is None:
+        raise AssertionError("workflow is missing android-actions/setup-android")
+    indent = match.group("indent")
+    major = int(match.group("major"))
+    packages = None
+    for line in workflow_text[match.end() :].splitlines():
+        if not line.strip():
+            continue
+        stripped = line.lstrip(" \t")
+        line_indent = line[: len(line) - len(stripped)]
+        if stripped.startswith("- ") and len(line_indent) <= len(indent):
+            break
+        if len(line_indent) < len(indent):
+            break
+        if stripped.startswith("packages:"):
+            raw = stripped.split(":", 1)[1].strip().strip("'\"")
+            packages = [token for token in raw.split() if token]
+    return major, packages
+
+
+def assert_setup_android_skips_retired_tools(workflow_text: str) -> list[str]:
+    major, packages = setup_android_package_tokens(workflow_text)
+    if major < 4:
+        raise AssertionError(
+            "setup-android@v%s still defaults to the retired tools package" % major
+        )
+    if packages is None:
+        raise AssertionError(
+            "setup-android must pin packages; do not inherit a default that requests tools"
+        )
+    if "tools" in packages:
+        raise AssertionError("setup-android still requests the retired SDK tools package")
+    if "platform-tools" not in packages:
+        raise AssertionError("setup-android must still install platform-tools")
+    return packages
+
 
 class CommonsAndroidProjectTests(unittest.TestCase):
     def test_gradle_tree_exists(self):
@@ -48,6 +98,47 @@ class CommonsAndroidProjectTests(unittest.TestCase):
         self.assertIn("workflow_dispatch", text)
         self.assertNotIn("listArtifactsForRepo", text)
         self.assertNotIn("deleteArtifact", text)
+
+    def test_unpinned_v3_setup_android_is_the_measured_failure(self):
+        hostile = (
+            "      - name: Setup Android SDK\n"
+            "        uses: android-actions/setup-android@v3\n"
+            "\n"
+            "      - name: assembleDebug\n"
+        )
+        major, packages = setup_android_package_tokens(hostile)
+        self.assertEqual(major, 3)
+        self.assertIsNone(packages)
+        with self.assertRaisesRegex(AssertionError, "retired tools package"):
+            assert_setup_android_skips_retired_tools(hostile)
+
+    def test_explicit_tools_package_is_rejected_and_cmdline_tools_is_not_tools(self):
+        pinned_tools = (
+            "      - name: Setup Android SDK\n"
+            "        uses: android-actions/setup-android@v4\n"
+            "        with:\n"
+            "          packages: tools platform-tools\n"
+        )
+        with self.assertRaisesRegex(AssertionError, "retired SDK tools package"):
+            assert_setup_android_skips_retired_tools(pinned_tools)
+        ok = (
+            "      - name: Setup Android SDK\n"
+            "        uses: android-actions/setup-android@v4\n"
+            "        with:\n"
+            "          packages: cmdline-tools platform-tools\n"
+        )
+        self.assertEqual(
+            assert_setup_android_skips_retired_tools(ok),
+            ["cmdline-tools", "platform-tools"],
+        )
+
+    def test_workflow_does_not_request_removed_sdk_tools_package(self):
+        text = Path(os.path.join(ROOT, ".github/workflows/commons-android.yml")).read_text(
+            encoding="utf-8"
+        )
+        packages = assert_setup_android_skips_retired_tools(text)
+        self.assertEqual(packages, ["platform-tools"])
+        self.assertIn("android-actions/setup-android@v4", text)
 
     def test_ntfy_hosts_match_relay_manifest(self):
         manifest = json.loads(Path(os.path.join(ROOT, "relay-manifest.json")).read_text(encoding="utf-8"))
