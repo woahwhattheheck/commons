@@ -15,11 +15,13 @@ so answers are consumed directly by code — no parsing, no guardrails.
   python3 host/jev.py --questions-file q.json --state-file post.md
   python3 host/jev.py --questions-file q.json --state - < post.md
 
-Key resolution order (never printed, never written to the repo):
-  1. env TYPESAFE_API_KEY   (TypeSafe SDK convention)
-  2. credvault: Windows Credential Manager generic target
+Key resolution policy (never printed, never written to the repo):
+  1. credvault: Windows Credential Manager generic target
      "commons:typesafe:api-key" then "typesafe/api-key"
      (credential_sources.json naming convention)
+  2. env TYPESAFE_API_KEY is a compatibility fallback only when no vaulted
+     key exists. If env and vault (or two vault targets) disagree, resolution
+     fails closed with KEY_SOURCE_CONFLICT instead of guessing a generation.
 
 NO_KEY is a typed result, not a crash — callers branch on it like any
 other answer.
@@ -28,6 +30,7 @@ from __future__ import annotations
 
 import argparse
 import ctypes
+import hmac
 import json
 import os
 import re
@@ -99,31 +102,55 @@ def _cred_read(target: str) -> str:
     return ""
 
 
-def load_key() -> str:
-    """Resolve the TypeSafe API key. Never logs the value."""
-    key = os.environ.get(ENV_KEY, "").strip()
-    if key:
-        return key
+def _read_key_sources() -> tuple[str, list[tuple[str, str]]]:
+    """Read configured key sources without selecting or exposing a value."""
+    env_key = os.environ.get(ENV_KEY, "").strip()
+    vault_keys: list[tuple[str, str]] = []
     for target in CREDVAULT_TARGETS:
         try:
             key = _cred_read(target)
         except Exception:
             key = ""
         if key:
-            return key
-    return ""
+            vault_keys.append((target, key))
+    return env_key, vault_keys
+
+
+def _select_key(env_key: str, vault_keys: list[tuple[str, str]]) -> str:
+    """Select one credential generation, failing closed on source disagreement."""
+    vault_key = vault_keys[0][1] if vault_keys else ""
+    if vault_key:
+        for _, candidate in vault_keys[1:]:
+            if not hmac.compare_digest(vault_key, candidate):
+                raise JevError("KEY_SOURCE_CONFLICT")
+        if env_key and not hmac.compare_digest(vault_key, env_key):
+            raise JevError("KEY_SOURCE_CONFLICT")
+        # A vaulted generation is authoritative whenever it exists. If an
+        # environment copy also exists it must match byte-for-byte.
+        return vault_key
+    return env_key
+
+
+def load_key() -> str:
+    """Resolve one TypeSafe API-key generation. Never logs the value."""
+    env_key, vault_keys = _read_key_sources()
+    return _select_key(env_key, vault_keys)
 
 
 def key_state() -> str:
-    """Report WHERE a key resolves from without exposing it."""
-    if os.environ.get(ENV_KEY, "").strip():
+    """Report credential source state without exposing credential material."""
+    env_key, vault_keys = _read_key_sources()
+    try:
+        _select_key(env_key, vault_keys)
+    except JevError:
+        return "KEY_SOURCE_CONFLICT"
+    if vault_keys:
+        state = "KEY_PRESENT_CREDVAULT:" + vault_keys[0][0]
+        if env_key:
+            state += "+ENV_MATCH"
+        return state
+    if env_key:
         return "KEY_PRESENT_ENV"
-    for target in CREDVAULT_TARGETS:
-        try:
-            if _cred_read(target):
-                return "KEY_PRESENT_CREDVAULT:" + target
-        except Exception:
-            continue
     return "NO_KEY"
 
 
@@ -186,11 +213,11 @@ def systemone(state, questions, model=DEFAULT_MODEL, timeout=60, key=None):
         with urllib.request.urlopen(req, timeout=timeout) as resp:
             data = json.load(resp)
     except urllib.error.HTTPError as err:
-        raise JevError(f"HTTP_{err.code}") from err
+        raise JevError(f"HTTP_{err.code}") from None
     except urllib.error.URLError as err:
-        raise JevError("TRANSPORT") from err
+        raise JevError("TRANSPORT") from None
     except ValueError as err:
-        raise JevError("BAD_REPLY") from err
+        raise JevError("BAD_REPLY") from None
     if not isinstance(data, dict) or "answers" not in data:
         raise JevError("BAD_REPLY")
     return data
