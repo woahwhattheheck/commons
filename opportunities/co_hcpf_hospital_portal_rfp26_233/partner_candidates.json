@@ -1,0 +1,89 @@
+{
+  "schema": "co-hcpf-hospital-portal-partner-candidates/v1",
+  "pursuit_id": "CO-HCPF-HOSPITAL-PORTAL",
+  "state": "RESEARCH_ONLY_NO_CONTACT_AUTHORITY",
+  "candidates": [
+    {
+      "name": "Gainwell Technologies",
+      "qualification_state": "STRONG_STATE_MEDICAID_PORTAL_RESEARCH_CANDIDATE_NOT_QUALIFIED",
+      "evidence": [
+        {
+          "url": "https://www.in.gov/medicaid/partners/medicaid-partners/gainwell-technologies/",
+          "supports": [
+            "Indiana Medicaid provider portal and CoreMMIS operations",
+            "provider enrollment/profile, eligibility, claims/payment and secure portal workflows"
+          ]
+        },
+        {
+          "url": "https://colorado-hcp-portal.coxix.gainwelltechnologies.com/hcp/provider/Home/tabid/135/Default.aspx",
+          "supports": [
+            "current Colorado Medicaid provider portal surface on Gainwell infrastructure"
+          ]
+        },
+        {
+          "url": "https://jobs.gainwelltechnologies.com/job/Any-city-_NET-Web-Developer-AR-99999/1413526400/",
+          "supports": [
+            "current healthcare/Medicaid web-system delivery and WCAG 2.0/2.1/2.2 skills evidence"
+          ]
+        }
+      ],
+      "unresolved": [
+        "proposed-solution security-assessment evidence meeting the exact current RFP",
+        "exact similar-project and reference requirements",
+        "Colorado legal/VSS and insurance evidence",
+        "exact key-personnel evidence",
+        "Denver-area / staffing commitments",
+        "willingness to pursue RFP26-233 and negotiate a paid TJLabs workshare"
+      ],
+      "contact_authorized": false
+    },
+    {
+      "name": "Acentra Health",
+      "qualification_state": "STRONG_SECURE_STATE_HEALTH_PORTAL_RESEARCH_CANDIDATE_NOT_QUALIFIED",
+      "evidence": [
+        {
+          "url": "https://www.in.gov/medicaid/partners/medicaid-partners/acentra-health/",
+          "supports": [
+            "Indiana Medicaid fee-for-service prior-authorization/utilization-management contractor and Atrezzo portal"
+          ]
+        },
+        {
+          "url": "https://acentra.com/solutions/member-services",
+          "supports": [
+            "FedRAMP-compliant hosting and HIPAA-eligible services claims"
+          ]
+        },
+        {
+          "url": "https://acentra.com/technologies/ecams-hce",
+          "supports": [
+            "provider portal delivery and FedRAMP-authorized / AWS GovCloud deployment positioning"
+          ]
+        },
+        {
+          "url": "https://inmedicaidffs.acentra.com/web-accessibility/",
+          "supports": [
+            "live Medicaid accessibility program/surface"
+          ]
+        }
+      ],
+      "unresolved": [
+        "exact Hospital Portal solution security-assessment fit",
+        "exact WCAG/VPAT evidence for proposed solution",
+        "hospital-reporting/comparable project evidence and buyer-acceptable references",
+        "Colorado legal/VSS and insurance evidence",
+        "exact Project Lead/Project Manager/Web App Lead/Quality Lead qualifications",
+        "Denver-area / staffing commitments",
+        "willingness and commercial role"
+      ],
+      "contact_authorized": false
+    }
+  ],
+  "outbound_policy": {
+    "fresh_slack_gmail_github_dedupe_required": true,
+    "muse_single_writer_required": true,
+    "one_initial_message_max": true,
+    "commons_public_backlink_forbidden": true,
+    "buyer_contact_authorized": false,
+    "partner_contact_authorized": false
+  }
+}
