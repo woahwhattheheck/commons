@@ -349,8 +349,8 @@ def validate_packet(packet: Any, evaluation_time: str) -> tuple[dict[str, Any], 
                 raise ContractError("supersession chronology invalid")
             if event.generation < target.generation:
                 raise ContractError("supersession generation regressed")
-            if target.source_class != "coordination" or event.source_class != "coordination":
-                raise ContractError("external provider/human/procurement evidence is immutable")
+            if event.source_class != target.source_class:
+                raise ContractError("supersession source authority mismatch")
             if target.event_id in superseded:
                 raise ContractError("multiple supersessions of one event")
             superseded.add(target.event_id)
