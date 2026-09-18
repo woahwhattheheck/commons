@@ -7,7 +7,7 @@ This is not buyer pricing and is not evidence that a prime wants the work. The p
 ## Deliverables
 
 - Exact requirement/evidence matrix with unresolved gaps and owners.
-- Integration contract matrix for GIS, emergency notification, emergency-management, identity, export and packet-required interfaces.
+- Integration contract matrix for GIS, emergency notification, emergency-management, identity, export and packet-specified interfaces.
 - Configuration/migration reconciliation: inventory, mapping, deterministic checks, exceptions.
 - Cross-jurisdiction access/governance acceptance matrix.
 - Demo/implementation proof plan with evidence artifacts and pass/fail criteria.

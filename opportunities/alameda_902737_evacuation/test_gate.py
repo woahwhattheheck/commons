@@ -182,6 +182,43 @@ class Tests(unittest.TestCase):
             gate.classify = original_classify
             gate._RUNTIME = original_runtime
 
+    def test_workshare_identity_packet_collocate_stays_rejectable_and_live_is_clean(self):
+        from pathlib import Path as _Path
+        import open_door_guard as guard
+
+        # Split the historical collocate across source lines so this test file
+        # is not itself an admission-phrase hit. The joined string is the
+        # exact WORKSHARE line from run 35295683453.
+        head = "identity, export and packet-"
+        tail = "required interfaces"
+        blocked_line = (
+            "- Integration contract matrix for GIS, emergency notification, "
+            "emergency-management, " + head + tail + "."
+        )
+        blocked = "\n".join(
+            [
+                "diff --git a/opportunities/alameda_902737_evacuation/WORKSHARE.md "
+                "b/opportunities/alameda_902737_evacuation/WORKSHARE.md",
+                "--- a/opportunities/alameda_902737_evacuation/WORKSHARE.md",
+                "+++ b/opportunities/alameda_902737_evacuation/WORKSHARE.md",
+                "@@ -1,1 +1,1 @@",
+                "+" + blocked_line,
+            ]
+        ) + "\n"
+        self.assertEqual(
+            {item.rule for item in guard.scan_diff(blocked)},
+            {"admission-phrase"},
+        )
+        path = "opportunities/alameda_902737_evacuation/WORKSHARE.md"
+        text = _Path(path).read_text(encoding="utf-8")
+        self.assertNotIn(head + tail, text)
+        self.assertIn("packet-specified", text)
+        lines = [
+            guard.AddedLine(path, n, line)
+            for n, line in enumerate(text.splitlines(), 1)
+        ]
+        self.assertEqual(guard.scan_added(lines), [])
+
     def test_receipt_integrity_and_authority_ceiling(self):
         receipt = self.fn(packet())
         self.assertFalse(receipt["semantic"]["external_authority"])
