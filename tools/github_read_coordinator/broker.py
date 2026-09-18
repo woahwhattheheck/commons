@@ -301,8 +301,11 @@ class Broker:
             delay = retry or reset_delay(result.rate_reset, now) or 60
             limit_bucket = lease.bucket
         elif generic_429:
+            # GitHub may signal secondary throttling with a bare 429 and no
+            # parseable body/header distinction. Fail conservatively across
+            # all routes for this credential instead of stampeding another bucket.
             delay = retry or 60
-            limit_bucket = lease.bucket
+            limit_bucket = "secondary"
         else:
             delay = None
             limit_bucket = None
