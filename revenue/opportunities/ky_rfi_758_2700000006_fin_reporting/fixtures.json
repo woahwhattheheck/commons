@@ -1,0 +1,310 @@
+{
+  "manifest": {
+    "schema": "tjlabs.ky-rfi-758-2700000006-fin-reporting/v1",
+    "solicitation": {
+      "id": "RFI 758 2700000006",
+      "buyer": "Commonwealth of Kentucky Finance and Administration Cabinet",
+      "office": "Office of Statewide Accounting Services",
+      "title": "Enterprise Financial Reporting Discovery",
+      "close_utc": "2026-10-02T19:30:00Z",
+      "addendum_qa_target_date": "2026-09-23"
+    },
+    "source_evidence": [
+      {
+        "url": "https://www.governmentcontracts.us/government-contracts/opportunity-details/52682979308811428.htm?cts=55b9b",
+        "captured_at_utc": "2026-09-18T02:10:00Z",
+        "source_class": "SECONDARY_PUBLIC_INDEX",
+        "note": "Public index identifies amended RFI-758-2700000006-2, Office of the Controller, Oct 2 2026 3:30 PM ET close, and buyer Lana Durbin."
+      },
+      {
+        "url": "https://govtribe.com/opportunity/state-local-contract-opportunity/rfi-sas-enterprise-financial-reporting-discovery-rfi75827000000062",
+        "captured_at_utc": "2026-09-18T02:10:00Z",
+        "source_class": "PUBLIC_PROCUREMENT_MIRROR",
+        "note": "Public procurement mirror exposes current solicitation generation and addendum-document inventory. Mirror evidence is research-only until exact buyer packet bytes are retained."
+      },
+      {
+        "url": "https://www.lightrfp.com/marketplace/bid/KY_EMARS-RFI-758-2700000006-2/rfi-sas-enterprise-financial-reporting-discovery",
+        "captured_at_utc": "2026-09-18T02:10:00Z",
+        "source_class": "SECONDARY_PUBLIC_INDEX",
+        "note": "Public index reports environment leads including SAP BusinessObjects 4.3, WebI inventory, user population, GCC compatibility, and electronic procurement routing; all remain unverified secondary leads."
+      }
+    ],
+    "buyer_packet": {
+      "retained": false,
+      "sha256": null,
+      "source_generation": null,
+      "authority": "NOT_RETAINED"
+    },
+    "research_leads": [
+      {
+        "lead_id": "sap-businessobjects-43",
+        "claim": "Current enterprise financial reporting environment may use SAP BusinessObjects 4.3.",
+        "status": "UNVERIFIED_SECONDARY_LEAD",
+        "source_url": "https://www.lightrfp.com/marketplace/bid/KY_EMARS-RFI-758-2700000006-2/rfi-sas-enterprise-financial-reporting-discovery"
+      },
+      {
+        "lead_id": "enterprise-users-2500",
+        "claim": "Secondary indexing reports approximately 2,500 enterprise user accounts.",
+        "status": "UNVERIFIED_SECONDARY_LEAD",
+        "source_url": "https://www.lightrfp.com/marketplace/bid/KY_EMARS-RFI-758-2700000006-2/rfi-sas-enterprise-financial-reporting-discovery"
+      },
+      {
+        "lead_id": "webi-documents-5000",
+        "claim": "Secondary indexing reports approximately 5,000 WebI documents.",
+        "status": "UNVERIFIED_SECONDARY_LEAD",
+        "source_url": "https://www.lightrfp.com/marketplace/bid/KY_EMARS-RFI-758-2700000006-2/rfi-sas-enterprise-financial-reporting-discovery"
+      },
+      {
+        "lead_id": "microsoft-gcc",
+        "claim": "Secondary indexing says proposed solutions should address Microsoft Government Community Cloud compatibility.",
+        "status": "UNVERIFIED_SECONDARY_LEAD",
+        "source_url": "https://www.lightrfp.com/marketplace/bid/KY_EMARS-RFI-758-2700000006-2/rfi-sas-enterprise-financial-reporting-discovery"
+      },
+      {
+        "lead_id": "electronic-procurement-route",
+        "claim": "Secondary indexing indicates electronic procurement submission after vendor registration.",
+        "status": "UNVERIFIED_SECONDARY_LEAD",
+        "source_url": "https://www.governmentcontracts.us/government-contracts/opportunity-details/52682979308811428.htm?cts=55b9b"
+      }
+    ],
+    "response_posture": {
+      "state": "INTERNAL_RESPONSE_READINESS",
+      "buyer_packet_required": true,
+      "portal_or_submission_authority_required": true,
+      "external_send_authorized": false
+    },
+    "commercial_follow_on": {
+      "state": "INTERNAL_HYPOTHESIS_NOT_SUBMITTED",
+      "name": "Financial Reporting Discovery Evidence Sprint",
+      "price_usd_cents": 2500000,
+      "included_in_rfi_response": false
+    },
+    "authority": {
+      "buyer_contact_authorized": false,
+      "portal_action_authorized": false,
+      "vendor_registration_authorized": false,
+      "terms_acceptance_authorized": false,
+      "signature_authorized": false,
+      "submission_authorized": false,
+      "contract_acceptance_authorized": false,
+      "production_access_authorized": false,
+      "production_data_authorized": false,
+      "payment_authorized": false,
+      "revenue_recognized": false
+    }
+  },
+  "matrix": {
+    "schema": "tjlabs.fin-reporting-discovery-matrix/v1",
+    "cases": [
+      {
+        "expected_decision": "DISCOVERY_EVIDENCE_READY",
+        "case": {
+          "schema": "tjlabs.fin-reporting-discovery-case/v1",
+          "case_id": "ready-001",
+          "report_id": "synthetic-report-001",
+          "semantic_parity_evidenced": true,
+          "source_lineage_complete": true,
+          "access_model_mapped": true,
+          "gcc_compatibility_evidenced": true,
+          "accessibility_evidenced": true,
+          "performance_target_met": true,
+          "distribution_contract_evidenced": true,
+          "migration_reconciled": true,
+          "operability_dr_evidenced": true,
+          "sensitive_production_data_present": false,
+          "observed_at_utc": "2026-09-18T01:30:00Z"
+        }
+      },
+      {
+        "expected_decision": "HOLD_REPORT_SEMANTICS",
+        "case": {
+          "schema": "tjlabs.fin-reporting-discovery-case/v1",
+          "case_id": "semantic-001",
+          "report_id": "synthetic-report-001",
+          "semantic_parity_evidenced": false,
+          "source_lineage_complete": true,
+          "access_model_mapped": true,
+          "gcc_compatibility_evidenced": true,
+          "accessibility_evidenced": true,
+          "performance_target_met": true,
+          "distribution_contract_evidenced": true,
+          "migration_reconciled": true,
+          "operability_dr_evidenced": true,
+          "sensitive_production_data_present": false,
+          "observed_at_utc": "2026-09-18T01:30:00Z"
+        }
+      },
+      {
+        "expected_decision": "HOLD_SOURCE_LINEAGE",
+        "case": {
+          "schema": "tjlabs.fin-reporting-discovery-case/v1",
+          "case_id": "lineage-001",
+          "report_id": "synthetic-report-001",
+          "semantic_parity_evidenced": true,
+          "source_lineage_complete": false,
+          "access_model_mapped": true,
+          "gcc_compatibility_evidenced": true,
+          "accessibility_evidenced": true,
+          "performance_target_met": true,
+          "distribution_contract_evidenced": true,
+          "migration_reconciled": true,
+          "operability_dr_evidenced": true,
+          "sensitive_production_data_present": false,
+          "observed_at_utc": "2026-09-18T01:30:00Z"
+        }
+      },
+      {
+        "expected_decision": "HOLD_ACCESS_MODEL",
+        "case": {
+          "schema": "tjlabs.fin-reporting-discovery-case/v1",
+          "case_id": "access-001",
+          "report_id": "synthetic-report-001",
+          "semantic_parity_evidenced": true,
+          "source_lineage_complete": true,
+          "access_model_mapped": false,
+          "gcc_compatibility_evidenced": true,
+          "accessibility_evidenced": true,
+          "performance_target_met": true,
+          "distribution_contract_evidenced": true,
+          "migration_reconciled": true,
+          "operability_dr_evidenced": true,
+          "sensitive_production_data_present": false,
+          "observed_at_utc": "2026-09-18T01:30:00Z"
+        }
+      },
+      {
+        "expected_decision": "HOLD_GCC_COMPATIBILITY",
+        "case": {
+          "schema": "tjlabs.fin-reporting-discovery-case/v1",
+          "case_id": "gcc-001",
+          "report_id": "synthetic-report-001",
+          "semantic_parity_evidenced": true,
+          "source_lineage_complete": true,
+          "access_model_mapped": true,
+          "gcc_compatibility_evidenced": false,
+          "accessibility_evidenced": true,
+          "performance_target_met": true,
+          "distribution_contract_evidenced": true,
+          "migration_reconciled": true,
+          "operability_dr_evidenced": true,
+          "sensitive_production_data_present": false,
+          "observed_at_utc": "2026-09-18T01:30:00Z"
+        }
+      },
+      {
+        "expected_decision": "HOLD_ACCESSIBILITY",
+        "case": {
+          "schema": "tjlabs.fin-reporting-discovery-case/v1",
+          "case_id": "a11y-001",
+          "report_id": "synthetic-report-001",
+          "semantic_parity_evidenced": true,
+          "source_lineage_complete": true,
+          "access_model_mapped": true,
+          "gcc_compatibility_evidenced": true,
+          "accessibility_evidenced": false,
+          "performance_target_met": true,
+          "distribution_contract_evidenced": true,
+          "migration_reconciled": true,
+          "operability_dr_evidenced": true,
+          "sensitive_production_data_present": false,
+          "observed_at_utc": "2026-09-18T01:30:00Z"
+        }
+      },
+      {
+        "expected_decision": "HOLD_PERFORMANCE",
+        "case": {
+          "schema": "tjlabs.fin-reporting-discovery-case/v1",
+          "case_id": "perf-001",
+          "report_id": "synthetic-report-001",
+          "semantic_parity_evidenced": true,
+          "source_lineage_complete": true,
+          "access_model_mapped": true,
+          "gcc_compatibility_evidenced": true,
+          "accessibility_evidenced": true,
+          "performance_target_met": false,
+          "distribution_contract_evidenced": true,
+          "migration_reconciled": true,
+          "operability_dr_evidenced": true,
+          "sensitive_production_data_present": false,
+          "observed_at_utc": "2026-09-18T01:30:00Z"
+        }
+      },
+      {
+        "expected_decision": "HOLD_DISTRIBUTION",
+        "case": {
+          "schema": "tjlabs.fin-reporting-discovery-case/v1",
+          "case_id": "distribution-001",
+          "report_id": "synthetic-report-001",
+          "semantic_parity_evidenced": true,
+          "source_lineage_complete": true,
+          "access_model_mapped": true,
+          "gcc_compatibility_evidenced": true,
+          "accessibility_evidenced": true,
+          "performance_target_met": true,
+          "distribution_contract_evidenced": false,
+          "migration_reconciled": true,
+          "operability_dr_evidenced": true,
+          "sensitive_production_data_present": false,
+          "observed_at_utc": "2026-09-18T01:30:00Z"
+        }
+      },
+      {
+        "expected_decision": "HOLD_MIGRATION_RECONCILIATION",
+        "case": {
+          "schema": "tjlabs.fin-reporting-discovery-case/v1",
+          "case_id": "reconcile-001",
+          "report_id": "synthetic-report-001",
+          "semantic_parity_evidenced": true,
+          "source_lineage_complete": true,
+          "access_model_mapped": true,
+          "gcc_compatibility_evidenced": true,
+          "accessibility_evidenced": true,
+          "performance_target_met": true,
+          "distribution_contract_evidenced": true,
+          "migration_reconciled": false,
+          "operability_dr_evidenced": true,
+          "sensitive_production_data_present": false,
+          "observed_at_utc": "2026-09-18T01:30:00Z"
+        }
+      },
+      {
+        "expected_decision": "HOLD_OPERABILITY_DR",
+        "case": {
+          "schema": "tjlabs.fin-reporting-discovery-case/v1",
+          "case_id": "dr-001",
+          "report_id": "synthetic-report-001",
+          "semantic_parity_evidenced": true,
+          "source_lineage_complete": true,
+          "access_model_mapped": true,
+          "gcc_compatibility_evidenced": true,
+          "accessibility_evidenced": true,
+          "performance_target_met": true,
+          "distribution_contract_evidenced": true,
+          "migration_reconciled": true,
+          "operability_dr_evidenced": false,
+          "sensitive_production_data_present": false,
+          "observed_at_utc": "2026-09-18T01:30:00Z"
+        }
+      },
+      {
+        "expected_decision": "REJECT_SENSITIVE_PRODUCTION_DATA",
+        "case": {
+          "schema": "tjlabs.fin-reporting-discovery-case/v1",
+          "case_id": "sensitive-001",
+          "report_id": "synthetic-report-001",
+          "semantic_parity_evidenced": true,
+          "source_lineage_complete": true,
+          "access_model_mapped": true,
+          "gcc_compatibility_evidenced": true,
+          "accessibility_evidenced": true,
+          "performance_target_met": true,
+          "distribution_contract_evidenced": true,
+          "migration_reconciled": true,
+          "operability_dr_evidenced": true,
+          "sensitive_production_data_present": true,
+          "observed_at_utc": "2026-09-18T01:30:00Z"
+        }
+      }
+    ]
+  }
+}
